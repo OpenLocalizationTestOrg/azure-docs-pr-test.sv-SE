@@ -1,6 +1,6 @@
 ---
-title: "Skapa din första Azure Resource Manager-mall | Microsoft Docs"
-description: "Stegvisa instruktioner för hur du skapar din första Azure Resource Manager-mall. I guiden beskrivs hur du skapar mallen med hjälp av mallreferensen för ett lagringskonto."
+title: "aaaCreate första Azure Resource Manager-mall | Microsoft Docs"
+description: "En stegvis guide toocreating ditt första Azure Resource Manager-mallen. Den visar hur toouse hello Mallreferens för en storage-konto toocreate hello mall."
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 07/27/2017
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.openlocfilehash: 49086b51e2db1aebed45746306ae14b6f1feb631
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 92e6d6bb7094fe0e4537ee080704967862804bdb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>Skapa och distribuera din första Azure Resource Manager-mall
-Den här artikeln beskriver steg för steg hur du skapar din första Azure Resource Manager-mall. Resource Manager-mallar är JSON-filer som definierar de resurser du behöver för att distribuera lösningen. En beskrivning av de begrepp som används i samband med distribution och hantering av Azure-lösningar finns i [Översikt över Azure Resource Manager](resource-group-overview.md). Om du har befintliga resurser och behöver en mall för dessa resurser kan du läsa [Exportera en Azure Resource Manager-mall från befintliga resurser](resource-manager-export-template.md).
+Det här avsnittet vägleder dig genom hello stegen för att skapa din första Azure Resource Manager-mall. Resource Manager-mallarna är JSON-filer som definierar hello resurser du behöver toodeploy för din lösning. toounderstand hello begrepp som är associerade med att distribuera och hantera dina Azure lösningar finns [översikt över Azure Resource Manager](resource-group-overview.md). Om du har befintliga resurser och vill tooget en mall för dessa resurser, se [exportera en Azure Resource Manager-mall från befintliga resurser](resource-manager-export-template.md).
 
-Du behöver en JSON-redigerare för att skapa och ändra mallar. [Visual Studio Code](https://code.visualstudio.com/) är en enkel, plattformsoberoende kodredigerare med öppen källkod. Vi rekommenderar starkt att du använder Visual Studio Code för att skapa Resource Manager-mallar. Den här artikeln förutsätter att du använder Virtual Studio Code, men om du har en annan JSON-redigerare kan du använda den.
+toocreate och ändra mallar, behöver du en JSON-redigerare. [Visual Studio Code](https://code.visualstudio.com/) är en enkel, plattformsoberoende kodredigerare med öppen källkod. Vi rekommenderar starkt att du använder Visual Studio Code för att skapa Resource Manager-mallar. Den här artikeln förutsätter att du använder Virtual Studio Code, men om du har en annan JSON-redigerare kan du använda den.
 
 ## <a name="prerequisites"></a>Krav
 
@@ -31,13 +31,13 @@ Du behöver en JSON-redigerare för att skapa och ändra mallar. [Visual Studio 
 
 ## <a name="create-template"></a>Skapa mallen
 
-Vi ska börja med en enkel mall som distribuerar ett lagringskonto till din prenumeration.
+Låt oss börja med en enkel mall som distribuerar en tooyour lagringskontoprenumerationen.
 
 1. Välj **Arkiv** > **Ny fil**. 
 
    ![Ny fil](./media/resource-manager-create-first-template/new-file.png)
 
-2. Kopiera och klistra in följande JSON-syntax i filen:
+2. Kopiera och klistra in hello följande JSON-syntax i filen:
 
    ```json
    {
@@ -65,17 +65,17 @@ Vi ska börja med en enkel mall som distribuerar ett lagringskonto till din pren
    }
    ```
 
-   Lagringskontonamn har flera begränsningar som gör att de är svåra att ange. Namnet måste vara mellan 3 och 24 tecken långt, endast bestå av siffror och gemener samt vara unikt. I den föregående mallen används funktionen [uniqueString](resource-group-template-functions-string.md#uniquestring) för att generera ett hash-värde. För att hash-värdet ska vara lättare att förstå har prefixet *storage* lagts till. 
+   Lagringskontonamn har flera begränsningar som gör dem svåra tooset. hello namn måste vara mellan 3 och 24 tecken, Använd endast siffror och gemener och vara unika. hello föregående mallen använder hello [uniqueString](resource-group-template-functions-string.md#uniquestring) fungerar toogenerate ett hash-värde. toogive hashvärdet värde mer innebörd, läggs hello prefixet *lagring*. 
 
-3. Spara den här filen som **azuredeploy.json** i en lokal mapp.
+3. Spara filen som **azuredeploy.json** tooa lokal mapp.
 
    ![Spara mallen](./media/resource-manager-create-first-template/save-template.png)
 
 ## <a name="deploy-template"></a>Distribuera mallen
 
-Nu är det dags att distribuera den här mallen. Du använder PowerShell eller Azure CLI för att skapa en resursgrupp. Sedan distribuerar du ett lagringskonto till resursgruppen.
+Du är klar toodeploy den här mallen. Du kan använda PowerShell eller Azure CLI toocreate en resursgrupp. Sedan distribuerar du en resursgrupp för storage-konto toothat.
 
-* Om du använder PowerShell använder du följande kommandon från mappen som innehåller mallen:
+* Använd följande kommandon från hello mapp som innehåller hello mall hello för PowerShell:
 
    ```powershell
    Login-AzureRmAccount
@@ -84,7 +84,7 @@ Nu är det dags att distribuera den här mallen. Du använder PowerShell eller A
    New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile azuredeploy.json
    ```
 
-* Om du använder en lokal installation av Azure CLI använder du följande kommandon från mappen som innehåller mallen:
+* Använd hello följande kommandon från hello mapp som innehåller hello mall för en lokal installation av Azure CLI:
 
    ```azurecli
    az login
@@ -93,19 +93,19 @@ Nu är det dags att distribuera den här mallen. Du använder PowerShell eller A
    az group deployment create --resource-group examplegroup --template-file azuredeploy.json
    ```
 
-När distributionen är klar finns ditt lagringskonto i resursgruppen.
+När distributionen är klar finns ditt lagringskonto i hello resursgruppen.
 
 ## <a name="deploy-template-from-cloud-shell"></a>Distribuera mallen från Cloud Shell
 
-Du kan använda [Cloud Shell](../cloud-shell/overview.md) för att köra Azure CLI-kommandona och distribuera mallen. Först måste du dock läsa in mallen till filresursen för Cloud Shell. Om du inte har använt Cloud Shell tidigare läser du [Overview of Azure Cloud Shell](../cloud-shell/overview.md) (Översikt över Azure Cloud Shell), som innehåller information om hur du konfigurerar Cloud Shell.
+Du kan använda [moln Shell](../cloud-shell/overview.md) toorun hello Azure CLI-kommandon för att distribuera mallen. Men du måste först läsa in mallen i hello filresurs för moln-gränssnittet. Om du inte har använt Cloud Shell tidigare läser du [Overview of Azure Cloud Shell](../cloud-shell/overview.md) (Översikt över Azure Cloud Shell), som innehåller information om hur du konfigurerar Cloud Shell.
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).   
+1. Logga in toohello [Azure-portalen](https://portal.azure.com).   
 
-2. Välj din Cloud Shell-resursgrupp. Namnet har formatet `cloud-shell-storage-<region>`.
+2. Välj din Cloud Shell-resursgrupp. hello namnmönstret är `cloud-shell-storage-<region>`.
 
    ![Välj resursgrupp](./media/resource-manager-create-first-template/select-cs-resource-group.png)
 
-3. Välj lagringskontot för Cloud Shell.
+3. Välj hello storage-konto för moln-gränssnittet.
 
    ![Välj lagringskonto](./media/resource-manager-create-first-template/select-storage.png)
 
@@ -113,7 +113,7 @@ Du kan använda [Cloud Shell](../cloud-shell/overview.md) för att köra Azure C
 
    ![Välj filer](./media/resource-manager-create-first-template/select-files.png)
 
-5. Välj filresursen för Cloud Shell. Namnet har formatet `cs-<user>-<domain>-com-<uniqueGuid>`.
+5. Välj hello filresurs för molnet Shell. hello namnmönstret är `cs-<user>-<domain>-com-<uniqueGuid>`.
 
    ![Välj filresurs](./media/resource-manager-create-first-template/select-file-share.png)
 
@@ -137,24 +137,24 @@ Du kan använda [Cloud Shell](../cloud-shell/overview.md) för att köra Azure C
 
    ![Ladda upp filen](./media/resource-manager-create-first-template/upload-files.png)
 
-11. Öppna kommandotolken.
+11. Öppna hello-prompt.
 
    ![Öppna Cloud Shell](./media/resource-manager-create-first-template/start-cloud-shell.png)
 
-12. Ange följande kommandon i Cloud Shell:
+12. Ange följande kommandon i hello molnet Shell hello:
 
    ```azurecli
    az group create --name examplegroup --location "South Central US"
    az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
    ```
 
-När distributionen är klar finns ditt lagringskonto i resursgruppen.
+När distributionen är klar finns ditt lagringskonto i hello resursgruppen.
 
-## <a name="customize-the-template"></a>Anpassa mallen
+## <a name="customize-hello-template"></a>Anpassa hello-mall
 
-Mallen fungerar bra, men den är inte flexibel. Den distribuerar alltid lokal redundant lagring till Södra centrala USA. Namnet är alltid *storage* följt av ett hash-värde. Lägg till parametrar till mallen om du vill använda den i andra scenarier.
+hello mallen fungerar bra, men det är inte flexibel. Den distribuerar alltid en lokalt redundant lagring tooSouth centrala USA. hello namn är alltid *lagring* följt av ett hash-värde. tooenable använder hello mall för olika scenarier, lägga till parametrar toohello mall.
 
-Följande exempel illustrerar parameters-avsnittet med två parametrar. Med den första parametern, `storageSKU`, kan du ange typen av redundans. Den begränsar de värden som du kan använda till värden som är giltiga för ett lagringskonto. Den definierar också ett standardvärde. Den andra parametern, `storageNamePrefix`, har konfigurerats att tillåta högst 11 tecken. Den definierar ett standardvärde.
+hello visar följande exempel hello parametrar avsnitt med två parametrar. Hej första parametern `storageSKU` kan du toospecify hello typen av redundans. Det begränsar hello-värden som du kan skicka in toovalues som är giltiga för ett lagringskonto. Den definierar också ett standardvärde. Hej andra parametern `storageNamePrefix` är uppsättningen tooallow Maximalt 11 tecken. Den definierar ett standardvärde.
 
 ```json
 "parameters": {
@@ -169,7 +169,7 @@ Följande exempel illustrerar parameters-avsnittet med två parametrar. Med den 
     ],
     "defaultValue": "Standard_LRS",
     "metadata": {
-      "description": "The type of replication to use for the storage account."
+      "description": "hello type of replication toouse for hello storage account."
     }
   },
   "storageNamePrefix": {
@@ -177,13 +177,13 @@ Följande exempel illustrerar parameters-avsnittet med två parametrar. Med den 
     "maxLength": 11,
     "defaultValue": "storage",
     "metadata": {
-      "description": "The value to use for starting the storage account name. Use only lowercase letters and numbers."
+      "description": "hello value toouse for starting hello storage account name. Use only lowercase letters and numbers."
     }
   }
 },
 ```
 
-Lägg till en variabel med namnet `storageName` i variables-avsnittet. Den kombinerar prefixvärdet från parametrarna och ett hash-värde från funktionen [uniqueString](resource-group-template-functions-string.md#uniquestring). Den använder funktionen [toLower](resource-group-template-functions-string.md#tolower) för att konvertera alla tecken till gemener.
+Lägg till en variabel med namnet under hello variabler `storageName`. Det kombinerar hello prefixvärde från hello parametrar och ett hash-värde från hello [uniqueString](resource-group-template-functions-string.md#uniquestring) funktion. Den använder hello [toLower](resource-group-template-functions-string.md#tolower) fungerar tooconvert toolowercase för alla tecken.
 
 ```json
 "variables": {
@@ -191,7 +191,7 @@ Lägg till en variabel med namnet `storageName` i variables-avsnittet. Den kombi
 },
 ```
 
-Ändra resursdefinitionen om du vill använda dessa nya värden för ditt lagringskonto:
+toouse dessa nya värden för ditt lagringskonto, ändra hello resursdefinitionen:
 
 ```json
 "resources": [
@@ -210,11 +210,11 @@ Lägg till en variabel med namnet `storageName` i variables-avsnittet. Den kombi
 ],
 ```
 
-Observera att namnet på lagringskontot använder variabeln som du lade till. SKU-namnet motsvarar värdet för parametern. Platsen är samma som för resursgruppen.
+Observera att hello hello lagring kontonamn anges nu toohello variabel som du har lagt till. hello SKU namn anges toohello hello parameterns värde. hello platsen angetts hello samma plats som hello resursgrupp.
 
 Spara filen. 
 
-När du har slutfört stegen i den här artikeln ser din mall ut så här:
+När du har slutfört hello stegen i den här artikeln mallen nu ser ut som:
 
 ```json
 {
@@ -232,7 +232,7 @@ När du har slutfört stegen i den här artikeln ser din mall ut så här:
       ],
       "defaultValue": "Standard_LRS",
       "metadata": {
-        "description": "The type of replication to use for the storage account."
+        "description": "hello type of replication toouse for hello storage account."
       }
     },   
     "storageNamePrefix": {
@@ -240,7 +240,7 @@ När du har slutfört stegen i den här artikeln ser din mall ut så här:
       "maxLength": 11,
       "defaultValue": "storage",
       "metadata": {
-        "description": "The value to use for starting the storage account name. Use only lowercase letters and numbers."
+        "description": "hello value toouse for starting hello storage account name. Use only lowercase letters and numbers."
       }
     }
   },
@@ -267,7 +267,7 @@ När du har slutfört stegen i den här artikeln ser din mall ut så här:
 
 ## <a name="redeploy-template"></a>Distribuera om mallen
 
-Distribuera om mallen med andra värden.
+Omdistribuera hello mallen med olika värden.
 
 Om du använder PowerShell använder du:
 
@@ -281,7 +281,7 @@ Om du använder Azure CLI använder du:
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
 ```
 
-Om du använder Cloud Shell laddar du upp den ändrade mallen till filresursen. Skriv över den befintliga filen. Använd sedan följande kommando:
+Överför ändrade mallen toohello filresursen för hello molnet Shell. Skriv över befintlig hello-fil. Använd sedan följande kommando hello:
 
 ```azurecli
 az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
@@ -289,7 +289,7 @@ az group deployment create --resource-group examplegroup --template-file clouddr
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När de inte längre behövs rensar du de resurser som du har distribuerat genom att ta bort resursgruppen.
+Rensa hello-resurser som du har distribuerat genom att ta bort resursgruppen hello när de inte längre behövs.
 
 Om du använder PowerShell använder du:
 
@@ -304,6 +304,6 @@ az group delete --name examplegroup
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-* Mer information om strukturen i en mall finns i [Redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
-* Mer information om egenskaperna för ett lagringskonto finns i [mallreferensen för lagringskonton](/azure/templates/microsoft.storage/storageaccounts).
-* Om du vill visa kompletta mallar för många olika typer av lösningar kan du se [Azure-snabbstartsmallar](https://azure.microsoft.com/documentation/templates/).
+* toolearn mer om hello strukturen i en mall finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
+* toolearn om hello egenskaper för ett lagringskonto finns [lagringskonton mallreferensen](/azure/templates/microsoft.storage/storageaccounts).
+* tooview fullständig mallar för många olika typer av lösningar, se hello [Azure Quickstart mallar](https://azure.microsoft.com/documentation/templates/).

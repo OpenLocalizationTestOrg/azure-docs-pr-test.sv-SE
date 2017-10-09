@@ -1,5 +1,5 @@
 ---
-title: Skriptexempel Azure CLI - montera operativsystemdisk | Microsoft Docs
+title: aaaAzure skriptexempel CLI - montera operativsystemdisk | Microsoft Docs
 description: Skriptexempel Azure CLI - montera operativsystemdisk
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b54a94d833644ebfae4c1fac59e4753ab723ced4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5c614d09a64780575b70424d29052f1a6affec59
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>Felsöka en operativsystemdisk för virtuella datorer
 
-Det här skriptet monterar operativsystemdisken för en misslyckad eller problematiska virtuell dator som en datadisk till en andra virtuell dator. Detta kan vara användbar vid felsökning av disk problem eller återställa data. 
+Det här skriptet monterar hello operativsystemdisken för en misslyckad eller problematiska virtuell dator som data disk tooa andra virtuella datorer. Detta kan vara användbar vid felsökning av disk problem eller återställa data. 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -32,22 +32,22 @@ Det här skriptet monterar operativsystemdisken för en misslyckad eller problem
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-azurecli-interactive[huvudsakliga](../../../cli_scripts/virtual-machine/mount-os-disk/mount-os-disk.sh "snabbt skapa virtuell dator")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/mount-os-disk/mount-os-disk.sh "Quick Create VM")]
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon för att skapa en resursgrupp, virtuell dator och alla relaterade resurser. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder hello följande kommandon toocreate en resursgrupp, en virtuell dator, och alla relaterade resurser. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
-| [AZ vm visa](https://docs.microsoft.com/cli/azure/vm#show) | Returnera en lista över virtuella datorer. I det här fallet används frågealternativet att returnera den virtuella disken för operativsystemet. Det här värdet läggs sedan till ett variabelnamn 'uri'. |
+| [AZ vm visa](https://docs.microsoft.com/cli/azure/vm#show) | Returnera en lista över virtuella datorer. I det här fallet är hello frågealternativet används tooreturn hello virtuella operativsystemdisken. Det här värdet läggs sedan tooa variabelnamnet 'uri'. |
 | [AZ virtuella ta bort](https://docs.microsoft.com/cli/azure/vm#delete) | Tar bort en virtuell dator. |
 | [Skapa AZ vm](https://docs.microsoft.com/cli/azure/vm#create) | Skapar en virtuell dator.  |
-| [Koppla AZ virtuell disk](https://docs.microsoft.com/cli/azure/vm/disk#attach) | Bifogar en disk till en virtuell dator. |
-| [AZ vm lista-ip-adresser](https://docs.microsoft.com/cli/azure/vm#list-ip-addresses) | Returnerar IP-adresser för en virtuell dator. |
+| [Koppla AZ virtuell disk](https://docs.microsoft.com/cli/azure/vm/disk#attach) | Bifogar en disk tooa virtuell dator. |
+| [AZ vm lista-ip-adresser](https://docs.microsoft.com/cli/azure/vm#list-ip-addresses) | Returnerar hello IP-adresser för en virtuell dator. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
+Mer information om hello Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
 
-Ytterligare virtuella CLI skriptexempel finns i den [virtuella Azure Linux-datorn dokumentationen](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ytterligare virtuella CLI skriptexempel finns i hello [virtuella Azure Linux-datorn dokumentationen](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

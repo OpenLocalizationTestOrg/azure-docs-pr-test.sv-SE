@@ -1,8 +1,8 @@
 ---
-title: Anslut Excel till SQL Database | Microsoft Docs
-description: "Lär dig hur man ansluter Microsoft Excel till en Azure SQL-databas i molnet. Importera data till Excel för rapportering och dataundersökning."
+title: aaaConnect Excel tooSQL databasen | Microsoft Docs
+description: "Lär dig hur tooconnect Microsoft Excel tooAzure SQL-databas i hello molnet. Importera data till Excel för rapportering och dataundersökning."
 services: sql-database
-keywords: ansluta excel till sql, importera data till excel
+keywords: ansluta excel toosql, importera data tooexcel
 documentationcenter: 
 author: joseidz
 manager: jhubbard
@@ -16,67 +16,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: jhubbard
-ms.openlocfilehash: 97344d7c0be38b3092a3224074d486b5bb984176
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0048849432023145bd1009d45b6d9b64a9c7ac3c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Anslut Excel till en Azure SQL database och skapa en rapport
+# <a name="connect-excel-tooan-azure-sql-database-and-create-a-report"></a>Ansluta Excel tooan Azure SQL-databas och skapa en rapport
 
-Anslut Excel till en SQL-databas i molnet och importera data och skapa tabeller och diagram baserat på värdena i databasen. I de här självstudierna kommer du att ställa in anslutningen mellan Excel och en databastabell, spara filen som lagrar data och anslutningsinformationen för Excel och sedan skapa ett pivotdiagram från databasvärdena.
+Ansluta Excel tooa SQL-databas i molnet hello och importera data och skapa tabeller och diagram baserat på värdena i hello-databasen. I den här kursen ska du ställa in hello anslutningen mellan Excel och en databastabell, spara hello-filen som lagrar data och hello anslutningsinformationen för Excel och skapa ett pivotdiagram från hello databasvärden.
 
-Du behöver en SQL-databas i Azure innan du börjar. Om du inte har någon, kan du se [Skapa din första SQL-databas](sql-database-get-started-portal.md) för att starta en databas med exempeldata på några minuter. I den här artikeln, ska du importera exempeldata till Excel från artikeln, men du kan följa liknande steg med dina egna data.
+Du behöver en SQL-databas i Azure innan du börjar. Om du inte har någon [skapa din första SQL-databas](sql-database-get-started-portal.md) tooget en databas med exempeldata på några minuter. I den här artikeln, ska du importera exempeldata till Excel från artikeln, men du kan följa liknande steg med dina egna data.
 
 Du kommer också behöva en kopia av Excel. Den här artikeln använder [Microsoft Excel 2016](https://products.office.com/).
 
-## <a name="connect-excel-to-a-sql-database-and-create-an-odc-file"></a>Anslut Excel till en SQL-databas och skapa en odc-fil
-1. För att ansluta Excel till SQL-databasen, öppnar du Excel och skapar en ny arbetsbok, eller öppnar en befintlig Excel-arbetsbok.
-2. I menyraden överst på sidan, klickar du på **Data**, klickar på **Från andra källor** och klickar sedan på **Från SQL Server**.
+## <a name="connect-excel-tooa-sql-database-and-create-an-odc-file"></a>Anslut Excel tooa SQL-databas och skapa en odc-fil
+1. tooconnect Excel tooSQL databas, öppnar du Excel och sedan skapa en ny arbetsbok eller öppna en befintlig Excel-arbetsbok.
+2. I hello menyraden överst hello på hello-sidan klickar du på **Data**, klickar du på **från andra källor**, och klicka sedan på **från SQL Server**.
    
-   ![Välj datakälla: Anslut Excel till SQL-databas.](./media/sql-database-connect-excel/excel_data_source.png)
+   ![Välj datakälla: Anslut Excel tooSQL-databas.](./media/sql-database-connect-excel/excel_data_source.png)
    
-   Dataanslutningsguiden öppnas.
-3. I dialogrutan **Anslut till databasserver**, skriver du **Servernamnet** för den SQL Database du vill ansluta till i formatet <*servernamn*>**. database.windows.net**. Till exempel **adworkserver.database.windows.net**.
-4. Under **Inloggningsuppgifter**, klickar du på **Använd följande användarnamn och lösenord** och fyller i det **Användarnamn** och **Lösenord** du ställde in för SQL Database-servern när du skapade den och klickar sedan på **Nästa**.
+   Hej Dataanslutningsguiden öppnas.
+3. I hello **ansluta tooDatabase Server** dialogrutan typen hello SQL Database **servernamn** du vill att tooconnect tooin hello formuläret <*servername* > **. database.windows.net**. Till exempel **adworkserver.database.windows.net**.
+4. Under **inloggningsuppgifter**, klickar du på **Använd hello följande användarnamn och lösenord**, typen hello **användarnamn** och **lösenord** du ställt in för Hej SQL Database-server när du skapade den och klicka sedan på **nästa**.
    
-   ![Ange servernamn och inloggningsuppgifter](./media/sql-database-connect-excel/connect-to-server.png)
+   ![Skriv hello server servernamn och inloggningsuppgifter](./media/sql-database-connect-excel/connect-to-server.png)
    
    > [!TIP]
-   > Beroende på din nätverksmiljö, är det möjligt att du inte kan ansluta, eller så kan du tappa anslutningen om SQL Database-servern inte tillåter trafik från din klient-IP-adress. Gå till [Azure-portalen](https://portal.azure.com/), klicka på SQL-servrar, klicka på din server, klicka på brandvägg under inställningar och lägg till din klient-IP-adress. Se [Så här konfigurerar du brandväggsinställningar](sql-database-configure-firewall-settings.md) för mer information.
+   > Beroende på din nätverksmiljö, kanske du inte kan tooconnect eller hello anslutning kan gå förlorade om hello SQL Database-server som inte tillåter trafik från klientens IP-adress. Gå toohello [Azure-portalen](https://portal.azure.com/), klicka på SQL-servrar, servern, klicka på brandvägg under inställningar och Lägg till klientens IP-adress. Se [hur tooconfigure brandväggsinställningar](sql-database-configure-firewall-settings.md) mer information.
    > 
    > 
-5. I dialogen **Välj databas och tabell** väljer du den databas du vill arbeta med från listan och klickar sedan på de tabeller eller vyer som du vill arbeta med (vi valde **vGetAllCategories**) och klickar sedan på **Nästa**.
+5. I hello **Välj databas och tabell** dialogrutan, Välj hello databas du vill toowork med hello listan och klicka på hello tabeller eller vyer som du vill toowork med (vi valde **vGetAllCategories**), och sedan Klicka på **nästa**.
    
     ![Välj en databas och en tabell.](./media/sql-database-connect-excel/select-database-and-table.png)
    
-    Dialogrutan **Spara dataanslutningsfil och slutför** öppnas. Där anger du information om Office-databasanslutningen (*.odc)-filen som Excel använder sig av. Du kan lämna standardvärdena eller anpassa dina val.
-6. Du kan lämna standardvärdena, men lägg speciellt märke till **Filnamn**. En **Beskrivning**, ett **Eget namn**, och **Sökord** hjälper dig och andra användare att komma ihåg vad du ansluter till och hitta anslutningen. Klicka på **Försök alltid använda den här filen för datauppdateringar** om du vill att anslutningsinformation lagras i filen så att den kan uppdatera när du ansluter till den och klicka sedan på **Slutför**.
+    Hej **Spara dataanslutningsfil och slutför** öppnas, där du kan ange information om hello filen Office-databasanslutningar (*.odc) som används av Excel. Du kan lämna hello standardvärden eller anpassa dina val.
+6. Du kan lämna hello standard, men Observera hello **filnamn** särskilt. En **beskrivning**, **eget namn**, och **sökord** hjälper dig och andra användare att komma ihåg vad du ansluter tooand hitta hello-anslutning. Klicka på **alltid försöker toouse informationen filen toorefresh** om du vill att anslutningsinformation lagras i hello odc-filen så att den kan uppdatera när du ansluter tooit och klicka sedan på **Slutför**.
    
     ![Spara en odc-fil](./media/sql-database-connect-excel/save-odc-file.png)
    
-    Dialogrutan **Importera data** visas.
+    Hej **dataimport** dialogrutan visas.
 
-## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>Importera data till Excel och skapa ett pivotdiagram
-Nu när du har etablerat anslutningen och skapat filen med data och anslutningsinformation, är du redo att börja importera data.
+## <a name="import-hello-data-into-excel-and-create-a-pivot-chart"></a>Importera hello data till Excel och skapa ett pivotdiagram
+Nu när du har skapat hello anslutning och skapade hello med data och anslutningsinformation, läser du tooimport hello data.
 
-1. I dialogen **Importera data**, klickar du på alternativet som du vill ha för att presentera dina data i kalkylbladet och klickar sedan på **OK**. Vi valde **PivotChart**. Du kan också välja att skapa ett **Nytt kalkylblad** eller **Lägg till den här datan i en Datamodell**. Mer information om datamodeller finns i [Skapa en datamodell i Excel](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B). Klicka på **Egenskaper** för att utforska information om odc-filen som du skapade i föregående steg och för att välja alternativ för datauppdatering.
+1. I hello **importera Data** dialogrutan hello-alternativ som du vill använda för att presentera dina data i hello kalkylblad och klicka sedan på **OK**. Vi valde **PivotChart**. Du kan också välja toocreate en **nytt kalkylblad** eller för**lägga till den här data tooa datamodellen**. Mer information om datamodeller finns i [Skapa en datamodell i Excel](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B). Klicka på **egenskaper** tooexplore information om hello odc-filen som du skapade i hello föregående steg och toochoose alternativ för datauppdatering hello.
    
-    ![Välja dataformat i Excel](./media/sql-database-connect-excel/import-data.png)
+    ![Välja hello dataformat i Excel](./media/sql-database-connect-excel/import-data.png)
    
-    Kalkylbladet har nu en tom pivottabell och diagram.
-2. Under **PivotTable-fält** väljer du alla kryssrutor för fälten du vill visa.
+    hello kalkylbladet har nu en tom pivottabell och diagram.
+2. Under **PivotTable-Fields**, Välj alla hello kryssrutorna för hello fält som du vill tooview.
    
     ![Konfigurera databasrapporten.](./media/sql-database-connect-excel/power-pivot-results.png)
 
 > [!TIP]
-> Om du vill ansluta andra Excel-arbetsböcker och kalkylblad till databasen, klickar du på **Data**, klickar på **Anslutningar**, klickar på **Lägg till**, väljer den anslutning som du skapade i listan och klickar sedan på **Öppna**.
+> Om du vill tooconnect andra Excel-arbetsböcker och kalkylblad toohello databasen, klickar du på **Data**, klickar du på **anslutningar**, klickar du på **Lägg till**, Välj hello-anslutning som du skapade hello listan och klicka sedan på **öppna**.
 > ![Öppna en anslutning från en annan arbetsbok](./media/sql-database-connect-excel/open-from-another-workbook.png)
 > 
 > 
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig hur du [Ansluter till SQL Database med SQL Server Management Studio](sql-database-connect-query-ssms.md) för avancerade frågor och analys.
-* Lär dig mer om fördelarna med [elastiska pooler](sql-database-elastic-pool.md).
-* Lär dig hur du [skapar en webbapp som ansluter till SQL Database på serverdelen](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md).
+* Lär dig hur för[ansluta tooSQL databasen med SQL Server Management Studio](sql-database-connect-query-ssms.md) för avancerade frågor och analys.
+* Lär dig mer om hello fördelarna med [elastiska pooler](sql-database-elastic-pool.md).
+* Lär dig hur för[skapa ett webbprogram som ansluter tooSQL databasen på hello backend-](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "Hantera databasroller och användare i Azure Analysis Services | Microsoft Docs"
-description: "Lär dig hur du hanterar databasroller och användare på en Analysis Services-server i Azure."
+title: "aaaManage roller och användare i Azure Analysis Services-databas | Microsoft Docs"
+description: "Lär dig hur toomanage databasen roller och användare på en Analysis Services-server i Azure."
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -15,46 +15,46 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
-ms.openlocfilehash: d0bc7d7514f111b4bbde33bd60ae21264bd797fc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2ad069a6bcce11bc43347625cb32ec400d48af18
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-database-roles-and-users"></a>Hantera databasroller och användare
 
-Alla användare måste höra till en roll på databasnivå modellen. Rollerna för att definiera användare med särskilda behörigheter för modelldatabasen. Alla användare eller säkerhetsgrupp som lagts till i en roll måste ha ett konto i Azure AD-klient på samma prenumeration som servern.
+Alla användare måste tillhöra tooa roll på hello modellen databasnivå. Rollerna för att definiera användare med särskilda behörigheter för hello modelldatabasen. Alla användare eller säkerhetsgrupp grupp läggs tooa roll måste ha ett konto i Azure AD-klient i hello samma prenumeration som hello-server.
 
-Hur du definierar roller skiljer sig åt beroende på hur du använder verktyget men effekten är samma.
+Hur du definierar roller är olika beroende på hello-verktyg som du använder, men hello effekt är hello samma.
 
 Rollbehörigheter inkluderar:
-*  **Administratören** -användare har fullständig behörighet till databasen. Databasroller med administratörsbehörighet skiljer sig från server-administratörer.
-*  **Processen** -användare kan ansluta till och utföra åtgärder för processen på databasen och analysera modellen databasdata.
-*  **Läs** -användare kan använda ett klientprogram att ansluta till och analysera modellen databasdata.
+*  **Administratören** -användare har fullständig behörighet för hello-databasen. Databasroller med administratörsbehörighet skiljer sig från server-administratörer.
+*  **Processen** -användare kan ansluta tooand processen utförs på hello databas och analysera modellen databasdata.
+*  **Läs** -användare kan använda ett program tooconnect tooand analysera modellen databasdata.
 
-När du skapar en tabellmodell-projekt kan du skapa roller och Lägg till användare eller grupper rollerna genom att använda rollhanteraren i SSDT. När distribuerats till en server kan du använda SSMS, [Analysis Services PowerShell-cmdlets](https://msdn.microsoft.com/library/hh758425.aspx), eller [Tabular modellen Scripting språk](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) för att lägga till eller ta bort roller och användaren medlemmar.
+När du skapar en tabellmodell-projekt kan du skapa roller och lägga till användare eller grupper toothose roller med hjälp av rollhanteraren i SSDT. När distribuerade tooa server kan du använda SSMS, [Analysis Services PowerShell-cmdlets](https://msdn.microsoft.com/library/hh758425.aspx), eller [Tabular modellen Scripting språk](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) tooadd eller ta bort roller och användaren medlemmar.
 
-## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>Att lägga till eller hantera roller och användare i SSDT  
+## <a name="tooadd-or-manage-roles-and-users-in-ssdt"></a>tooadd eller hantera roller och användare i SSDT  
   
 1.  I SSDT > **Tabular modellen Explorer**, högerklicka på **roller**.  
   
 2.  Klicka på **Ny** i **rollhanteraren**.  
   
-3.  Ange ett namn för rollen.  
+3.  Ange ett namn för hello roll.  
   
-     Som standard numreras inkrementellt namnet på standardrollen som för varje ny roll. Det rekommenderas att du skriver ett namn som tydligt identifierar medlemstypen, till exempel finansiella chefer eller personal specialister.  
+     Som standard numreras inkrementellt hello namnet på hello standardroll för varje ny roll. Det rekommenderas att du skriver ett namn som tydligt identifierar hello Medlemstyp, till exempel finansiella chefer eller personal specialister.  
   
-4.  Välj något av följande behörigheter:  
+4.  Välj något av hello följande behörigheter:  
   
     |Behörighet|Beskrivning|  
     |----------------|-----------------|  
-    |**Ingen**|Medlemmar kan inte ändra modellschemat och det går inte att fråga efter data.|  
-    |**Läsa**|Medlemmar kan fråga efter data (baserat på radfilter) men det går inte att ändra modellschemat.|  
-    |**Läs- och processen**|Medlemmar kan fråga data (baserat på radnivå filter) och kör processen och bearbeta alla åtgärder, men det går inte att ändra modellschemat.|  
-    |**Processen**|Medlemmar kan köra processen och bearbeta alla åtgärder. Det går inte att ändra modellschemat och det går inte att fråga efter data.|  
-    |**Administratören**|Medlemmar kan ändra modellschemat och läsa alla data.|   
+    |**Ingen**|Medlemmar kan inte ändra hello modellschemat och det går inte att fråga efter data.|  
+    |**Läsa**|Medlemmar kan fråga efter data (baserat på radfilter) men det går inte att ändra hello modellschemat.|  
+    |**Läs- och processen**|Medlemmar kan fråga data (baserat på radnivå filter) och kör processen och bearbeta alla åtgärder, men det går inte att ändra hello modellschemat.|  
+    |**Processen**|Medlemmar kan köra processen och bearbeta alla åtgärder. Det går inte att ändra hello modellschemat och det går inte att fråga efter data.|  
+    |**Administratören**|Medlemmar kan ändra hello modellschemat och läsa alla data.|   
   
-5.  Om rollen som du skapar har läs- eller Läs- och processen behörighet, du kan lägga till radfilter med hjälp av en DAX-formel. Klicka på den **radfilter** , och sedan markera en tabell och klicka sedan på den **DAX-Filter** fältet och skriv sedan en DAX-formel.
+5.  Om hello roll du skapar har läs- eller Läs- och processen behörighet, du kan lägga till radfilter med hjälp av en DAX-formel. Klicka på hello **radfilter** , och sedan markera en tabell och klicka sedan på hello **DAX-Filter** fältet och skriv sedan en DAX-formel.
   
 6.  Klicka på **medlemmar** > **lägga till externa**.  
   
@@ -62,11 +62,11 @@ När du skapar en tabellmodell-projekt kan du skapa roller och Lägg till använ
  
      ![Roller och användare i tabellform modellen Explorer](./media/analysis-services-database-users/aas-roles-tmexplorer.png)
 
-9. Distribuera till Azure Analysis Services-servern.
+9. Distribuera tooyour Azure Analysis Services-servern.
 
 
-## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>Att lägga till eller hantera roller och användare i SSMS
-Lägg till roller och användare i en distribuerad modelldatabasen, måste du vara ansluten till servern som en serveradministratör eller redan i en databasroll med administratörsbehörighet.
+## <a name="tooadd-or-manage-roles-and-users-in-ssms"></a>tooadd eller hantera roller och användare i SSMS
+tooadd roller och användare tooa distribueras modelldatabasen måste du vara ansluten toohello server som en serveradministratör eller redan i en databasroll med administratörsbehörighet.
 
 1. Högerklicka i objektet Exporer **roller** > **ny roll**.
 
@@ -75,22 +75,22 @@ Lägg till roller och användare i en distribuerad modelldatabasen, måste du va
 3. Markera en behörighet.
    |Behörighet|Beskrivning|  
    |----------------|-----------------|  
-   |**Fullständig behörighet (administratör)**|Medlemmar kan ändra modellschemat, bearbeta och kan fråga efter alla data.| 
-   |**Process-databas**|Medlemmar kan köra processen och bearbeta alla åtgärder. Det går inte att ändra modellschemat och det går inte att fråga efter data.|  
-   |**Läsa**|Medlemmar kan fråga efter data (baserat på radfilter) men det går inte att ändra modellschemat.|  
+   |**Fullständig behörighet (administratör)**|Medlemmar kan ändra hello modellschemat bearbeta och kan fråga efter alla data.| 
+   |**Process-databas**|Medlemmar kan köra processen och bearbeta alla åtgärder. Det går inte att ändra hello modellschemat och det går inte att fråga efter data.|  
+   |**Läsa**|Medlemmar kan fråga efter data (baserat på radfilter) men det går inte att ändra hello modellschemat.|  
   
 4. Klicka på **medlemskap**, ange en användare eller grupp i din Azure AD-klient av e-postadress.
 
      ![Lägga till användare](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
-5. Om du skapar rollen har behörighet att läsa, kan du lägga till radfilter med hjälp av en DAX-formel. Klicka på **radfilter**, markera en tabell och skriv sedan en DAX-formel i den **DAX-Filter** fältet. 
+5. Hello-roll som du skapar har behörighet att läsa, kan du lägga till radfilter med hjälp av en DAX-formel. Klicka på **radfilter**, markera en tabell och skriv sedan en DAX-formel i hello **DAX-Filter** fältet. 
 
-## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Lägg till roller och användare med ett TMSL skript
-Du kan köra ett skript för TMSL i fönstret XMLA i SSMS eller med hjälp av PowerShell. Använd den [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) kommando och [roller](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) objekt.
+## <a name="tooadd-roles-and-users-by-using-a-tmsl-script"></a>tooadd roller och användare med ett TMSL skript
+Du kan köra ett skript för TMSL i hello XMLA-fönstret i SSMS eller med hjälp av PowerShell. Använd hello [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) kommandot och hello [roller](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) objekt.
 
 **Exempelskript för TMSL**
 
-I det här exemplet läggs en B2B externa användare och en grupp till rollen analytiker med läsbehörighet för databasen SalesBI. Både externa användare och grupper måste vara i samma Azure AD-klient.
+I det här exemplet läggs en B2B externa användare och en grupp toohello analytiker rollen med läsbehörighet för hello SalesBI databasen. Både hello extern användare och grupp måste vara i samma Azure AD-klient.
 
 ```
 {
@@ -101,7 +101,7 @@ I det här exemplet läggs en B2B externa användare och en grupp till rollen an
     },
     "role": {
       "name": "Users",
-      "description": "All allowed users to query the model",
+      "description": "All allowed users tooquery hello model",
       "modelPermission": "read",
       "members": [
         {
@@ -118,23 +118,23 @@ I det här exemplet läggs en B2B externa användare och en grupp till rollen an
 }
 ```
 
-## <a name="to-add-roles-and-users-by-using-powershell"></a>Lägg till roller och användare med PowerShell
-Den [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) modulen innehåller cmdlet: ar uppgiftsspecifika databasen och den allmänna Invoke-ASCmd cmdlet som accepterar en tabellvy modellen Scripting språk (TMSL) fråga eller skript. Följande cmdlets används för att hantera databasroller och användare.
+## <a name="tooadd-roles-and-users-by-using-powershell"></a>tooadd roller och användare med hjälp av PowerShell
+Hej [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) modulen innehåller uppgiftsspecifika databasen management-cmdlets och hello allmänna Invoke-ASCmd cmdlet som accepterar en tabellvy modellen Scripting språk (TMSL) fråga eller skript. hello följande cmdlets används för att hantera databasroller och användare.
   
 |Cmdlet|Beskrivning|
 |------------|-----------------| 
-|[Lägg till RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Lägga till en medlem i en databasroll.| 
+|[Lägg till RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Lägg till en medlem tooa databasroll.| 
 |[Ta bort RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|Ta bort en medlem från en databasroll.|   
 |[Anropa ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Köra ett skript för TMSL.|
 
 ## <a name="row-filters"></a>Radfilter  
 Radfilter definiera vilka rader i en tabell kan efterfrågas av medlemmar i en viss roll. Radfilter definieras för varje tabell i en modell med hjälp av DAX-formler.  
   
-Radfilter kan definieras endast för roller med läs- och läs och processen behörigheter. Som standard om ett radfilter inte har definierats för en viss tabell kan medlemmar fråga efter alla rader i tabellen om filtrering av mellan gäller från en annan tabell.
+Radfilter kan definieras endast för roller med läs- och läs och processen behörigheter. Som standard om ett radfilter inte har definierats för en viss tabell kan medlemmar fråga efter alla rader i tabellen hello såvida inte mellan filtrering gäller från en annan tabell.
   
- Radfilter kräver en DAX-formel måste utvärderas till ett TRUE/FALSE-värde, att definiera de rader som kan efterfrågas av medlemmar i specifika rollen. Det går inte att uppdatera rader som inte ingår i DAX-formel. Till exempel tabellen kunder med följande rad filtrerar uttryck, *= kunder [Land] = ”USA”*, medlemmar i rollen kan bara se kunder i USA.  
+ Radfilter kräver en DAX-formel, som måste utvärderas tooa TRUE/FALSE-värde, toodefine hello rader som kan efterfrågas av medlemmar i specifika rollen. Det går inte att uppdatera rader som inte ingår i hello DAX-formel. Till exempel hello tabellen kunder med hello följande rad filter uttryck *= kunder [Land] = ”USA”*, medlemmar i hello försäljningsrollen kan bara se kunder i hello USA.  
   
-Radfilter gäller för de angivna raderna och relaterade rader. När en tabell har flera relationer, tillämpa filter säkerhet för relationen är aktiv. Radfilter överlappar med andra raden filter som definierats för relaterade tabeller, till exempel:  
+Radfilter gäller toohello angivna rader och relaterade rader. När en tabell har flera relationer, tillämpa filter säkerhet för hello relation som är aktiv. Radfilter överlappar med andra raden filter som definierats för relaterade tabeller, till exempel:  
   
 |Tabell|DAX-uttryck|  
 |-----------|--------------------|  
@@ -142,9 +142,9 @@ Radfilter gäller för de angivna raderna och relaterade rader. När en tabell h
 |Produktkategori|= Produktkategori [Name] = ”cyklar”|  
 |Transaktioner|= Transaktioner [år] = 2016|  
   
- Net effekten är att medlemmar kan fråga datarader där kunden finns i USA, produktkategorin cyklar och året 2016. Användare kan inte fråga transaktioner utanför USA, transaktioner som inte cyklar eller transaktioner inte 2016 såvida de inte är medlem i en annan roll som ger dessa behörigheter.
+ hello net effekten är att medlemmar kan fråga datarader där hello kunden är i USA hello, hello produktkategori cyklar och hello år 2016. Användare kan inte fråga transaktioner utanför USA hello, transaktioner som inte cyklar eller transaktioner inte 2016 såvida de inte är medlem i en annan roll som ger dessa behörigheter.
   
- Du kan använda filter, *=FALSE()*, för att neka åtkomst till alla rader för en hel tabell.
+ Du kan använda hello filtrera *=FALSE()*, toodeny åtkomst tooall rader för en hel tabell.
 
 ## <a name="next-steps"></a>Nästa steg
   [Hantera server-administratörer](analysis-services-server-admins.md)   

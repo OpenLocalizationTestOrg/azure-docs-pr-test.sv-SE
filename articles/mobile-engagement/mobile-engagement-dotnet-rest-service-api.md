@@ -1,6 +1,6 @@
 ---
-title: "Använda REST API för att komma åt Azure Mobile Engagement Service API: er"
-description: "Beskriver hur du använder Mobile Engagement REST-API: er för att komma åt Azure Mobile Engagement Service API: er"
+title: 'aaaUsing hello REST API tooaccess Azure Mobile Engagement Service API: er'
+description: 'Beskriver hur toouse hello Mobile Engagement REST API: er tooaccess Azure Mobile Engagement Service API: er'
 services: mobile-engagement
 documentationcenter: mobile
 author: wesmc7777
@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 4b21bca6fee7012ce1dba96950ae075eded414f8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 315761299a42df6f65e81df20e632f9713844b0b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-rest-to-access-azure-mobile-engagement-service-apis"></a>Med hjälp av REST API: er Azure Mobile Engagement Service
-Azure Mobile Engagement tillhandahåller den [Azure Mobile Engagement REST API](https://msdn.microsoft.com/library/azure/mt683754.aspx) att hantera enheter, Reach/Push-kampanjer osv.
+# <a name="using-rest-tooaccess-azure-mobile-engagement-service-apis"></a>Med hjälp av REST tooaccess Azure Mobile Engagement Service API: er
+Azure Mobile Engagement tillhandahåller hello [Azure Mobile Engagement REST API](https://msdn.microsoft.com/library/azure/mt683754.aspx) du toomanage enheter Reach/Push-kampanjer osv.
 
 > [!NOTE]
-> Tjänsten Azure Mobile Engagement kommer att dras tillbaka i mars 2018 och är för närvarande endast tillgänglig för befintliga kunder. Mer information finns i [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/).
+> hello Azure Mobile Engagement-tjänsten kommer att dras tillbaka mars 2018 och är för närvarande bara tillgänglig tooexisting kunder. Mer information finns i [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/).
 
-Om du inte vill använda REST-API: er direkt vi tillhandahåller även en [Swagger-filen](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json) att du kan använda med verktyg för att generera SDK: er för ditt språk. Vi rekommenderar att du använder den [AutoRest](https://github.com/Azure/AutoRest) verktyget att generera din SDK från våra Swagger-fil. Vi har skapat en .NET-SDK på ett liknande sätt som gör att du kan interagera med dessa API: er med hjälp av en C#-omslutning och du behöver inte göra autentisering token förhandlingen och uppdatera själv. Se [Service API .NET SDK-exempel](mobile-engagement-dotnet-sdk-service-api.md) att lära dig hur du använder .net SDK-API: t
+Om du inte vill toouse hello REST API: er direkt vi tillhandahåller även en [Swagger-filen](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json) som du kan använda med verktygen toogenerate SDK: er för ditt språk. Vi rekommenderar att du använder hello [AutoRest](https://github.com/Azure/AutoRest) verktyget toogenerate din SDK från våra Swagger-fil. Vi har skapat en .NET-SDK på liknande sätt som gör att du toointeract med dessa API: er med hjälp av en C#-omslutning och du har inte toodo hello autentisering token förhandling och uppdatera själv. Se [Service API .NET SDK-exempel](mobile-engagement-dotnet-sdk-service-api.md) toolearn hur toouse hello .net SDK-API: t

@@ -1,6 +1,6 @@
 ---
-title: "Asynkrona åtgärder i Azure | Microsoft Docs"
-description: "Beskriver hur du spårar asynkrona åtgärder i Azure."
+title: "aaaAzure asynkrona åtgärder | Microsoft Docs"
+description: "Beskriver hur tootrack asynkrona åtgärder i Azure."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9fe3d98cd345aae45722295b6c1b7fc3e9036e95
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b81254196013adf87998eff11a50993efa52d40d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="track-asynchronous-azure-operations"></a>Spåra asynkrona åtgärder i Azure
-Vissa Azure REST-åtgärder körs asynkront eftersom åtgärden inte går att slutföra snabbt. Det här avsnittet beskriver hur du spåra statusen för asynkrona åtgärder via värden som returneras i svaret.  
+Vissa Azure REST-åtgärder körs asynkront eftersom hello-åtgärden inte kan slutföras snabbt. Det här avsnittet beskrivs hur tootrack hello status för asynkrona åtgärder via värden returneras i hello svar.  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>Statuskoder för asynkrona åtgärder
 En asynkron åtgärd returnerar först en HTTP-statuskod antingen:
@@ -29,23 +29,23 @@ En asynkron åtgärd returnerar först en HTTP-statuskod antingen:
 * 201 (skapad)
 * 202 (accepterad) 
 
-När åtgärden har slutförts, returnerar antingen:
+När hello-åtgärden har slutförts, returnerar antingen:
 
 * 200 (OK)
 * 204 (inget innehåll) 
 
-Referera till den [REST API-dokumentation](/rest/api/) att se svar för åtgärden som du kör. 
+Se toohello [REST API-dokumentation](/rest/api/) toosee hello svar för hello åtgärden som du kör. 
 
 ## <a name="monitor-status-of-operation"></a>Övervaka status för åtgärden
-De asynkrona REST-åtgärderna returvärden huvud som du använder för att avgöra status för åtgärden. Det finns potentiellt tre värden i huvudet för att granska:
+hello asynkron REST operations returnera huvudvärden som du använder toodetermine hello status för hello igen. Det finns potentiellt tre sidhuvud värden tooexamine:
 
-* `Azure-AsyncOperation`-URL för att kontrollera pågående status för åtgärden. Om åtgärden returnerar det här värdet måste du alltid använda den (i stället för platsen) att spåra status för åtgärden.
+* `Azure-AsyncOperation`-URL för att kontrollera hello pågående status för hello-åtgärd. Om åtgärden returnerar det här värdet måste alltid använda it (i stället för plats) tootrack hello status för hello-åtgärd.
 * `Location`-URL för att avgöra när en åtgärd har slutförts. Använd det här värdet bara när Azure-asynkrona åtgärder inte returneras.
-* `Retry-After`-Antalet sekunder som ska förflyta innan kontrollerar statusen för den asynkrona åtgärden.
+* `Retry-After`-hello antal sekunder toowait innan hello status för hello asynkron åtgärd.
 
-Men returnerar inte varje asynkron åtgärd dessa värden. Du kan behöva utvärdera huvudvärde Azure-asynkrona åtgärder för en åtgärd och huvudvärde platsen för en annan åtgärd. 
+Men returnerar inte varje asynkron åtgärd dessa värden. Exempelvis kan du behöva tooevaluate hello Azure-asynkrona åtgärder huvudets värde för en åtgärd och hello plats huvudvärde för en annan åtgärd. 
 
-Du kan hämta huvudvärden som du vill hämta alla huvudvärde för en begäran. Till exempel i C# kan du hämta huvudvärde från en `HttpWebResponse` objekt med namnet `response` med följande kod:
+Du kan hämta hello huvudvärden som du vill hämta alla huvudvärde för en begäran. Till exempel i C# kan du hämta hello huvudvärde från en `HttpWebResponse` objekt med namnet `response` med hello följande kod:
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
@@ -53,9 +53,9 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Azure-asynkrona åtgärder förfrågan och svar
 
-Om du vill hämta status för den asynkrona åtgärden att skicka en GET-begäran till URL: en i Azure-asynkrona åtgärder huvudets värde.
+tooget hello status för hello asynkron åtgärd, skickar en GET-begäran toohello URL i Azure-asynkrona åtgärder huvudvärde.
 
-Brödtexten i svaret från den här åtgärden innehåller information om åtgärden. I följande exempel visas de möjliga värdena som returnerades från igen:
+hello innehåller hello svar från den här åtgärden information om hello igen. hello visar följande exempel hello möjliga värden som returneras från hello-åtgärd:
 
 ```json
 {
@@ -75,7 +75,7 @@ Brödtexten i svaret från den här åtgärden innehåller information om åtgä
 }
 ```
 
-Endast `status` returneras för alla svar. Felobjekt returneras när det har status misslyckad eller annullerad. Alla andra värden är valfritt. därför se det svar du får annorlunda ut än exemplet.
+Endast `status` returneras för alla svar. hello felobjekt returneras när hello status är misslyckad eller avbruten. Alla andra värden är valfritt. därför se hello svar du får annorlunda ut än hello exempel.
 
 ## <a name="provisioningstate-values"></a>provisioningState värden
 
@@ -85,32 +85,32 @@ Endast `status` returneras för alla svar. Felobjekt returneras när det har sta
 * Det gick inte
 * Avbrutna
 
-Alla andra värden anger åtgärden körs fortfarande. Resursprovidern kan returnera ett anpassat värde som anger dess tillstånd. Du kan till exempel få **godkända** när begäran har tagits emot och körs.
+Alla andra värden indikera hello-åtgärden körs fortfarande. Hej resursprovidern kan returnera ett anpassat värde som anger dess tillstånd. Du kan till exempel få **godkända** när hello begäran har tagits emot och körs.
 
 ## <a name="example-requests-and-responses"></a>Exempel och -svar
 
 ### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>Starta den virtuella datorn (202 med Azure-asynkrona åtgärder)
-Det här exemplet visar hur du bestämma tillståndet hos **starta** åtgärden för virtuella datorer. Den första begäranden är i följande format:
+Det här exemplet illustrerar hur toodetermine hello status för **starta** åtgärden för virtuella datorer. hello första begäran har hello följande format:
 
 ```HTTP
 POST 
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/{vm-name}/start?api-version=2016-03-30
 ```
 
-Den returnerar statuskod 202. Mellan huvudvärden visas:
+Den returnerar statuskod 202. Bland hello huvudvärden visas:
 
 ```HTTP
 Azure-AsyncOperation : https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
 ```
 
-För att kontrollera status för den asynkrona åtgärden som en annan begäran skickades till URL: en.
+toocheck hello status för hello asynkron åtgärd, skickar ett annat toothat URL-begäran.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
 ```
 
-Svarstexten innehåller status för åtgärden:
+hello svarstexten innehåller hello status för hello åtgärd:
 
 ```json
 {
@@ -122,39 +122,39 @@ Svarstexten innehåller status för åtgärden:
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Distribuera resurser (201 med Azure-asynkrona åtgärder)
 
-Det här exemplet visar hur du bestämma tillståndet hos **distributioner** åtgärden för att distribuera resurser till Azure. Den första begäranden är i följande format:
+Det här exemplet illustrerar hur toodetermine hello status för **distributioner** åtgärden för att distribuera resurser tooAzure. hello första begäran har hello följande format:
 
 ```HTTP
 PUT
 https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/microsoft.resources/deployments/{deployment-name}?api-version=2016-09-01
 ```
 
-Den returnerar statuskod 201. Brödtexten i svaret innehåller:
+Den returnerar statuskod 201. hello brödtexten i svaret hello innehåller:
 
 ```json
 "provisioningState":"Accepted",
 ```
 
-Mellan huvudvärden visas:
+Bland hello huvudvärden visas:
 
 ```HTTP
 Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
 ```
 
-För att kontrollera status för den asynkrona åtgärden som en annan begäran skickades till URL: en.
+toocheck hello status för hello asynkron åtgärd, skickar ett annat toothat URL-begäran.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
 ```
 
-Svarstexten innehåller status för åtgärden:
+hello svarstexten innehåller hello status för hello åtgärd:
 
 ```json
 {"status":"Running"}
 ```
 
-När distributionen är klar visas innehåller svaret:
+När hello distributionen är klar innehåller hello svar:
 
 ```json
 {"status":"Succeeded"}
@@ -162,37 +162,37 @@ När distributionen är klar visas innehåller svaret:
 
 ### <a name="create-storage-account-202-with-location-and-retry-after"></a>Skapa lagringskonto (202 med plats och försök igen efter)
 
-Det här exemplet visar hur du bestämma tillståndet hos den **skapa** åtgärden för storage-konton. Den första begäranden är i följande format:
+Det här exemplet illustrerar hur toodetermine hello status för hello **skapa** åtgärden för storage-konton. hello första begäran har hello följande format:
 
 ```HTTP
 PUT
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2016-01-01
 ```
 
-Och begärandetexten innehåller egenskaper för lagringskontot:
+Och hello begärandetexten innehåller egenskaper för hello storage-konto:
 
 ```json
 { "location": "South Central US", "properties": {}, "sku": { "name": "Standard_LRS" }, "kind": "Storage" }
 ```
 
-Den returnerar statuskod 202. Bland huvudvärden Se följande två värden:
+Den returnerar statuskod 202. Bland hello huvudvärden finns hello följande två värden:
 
 ```HTTP
 Location: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 Retry-After: 17
 ```
 
-När väntar antalet sekunder anges i försök igen efter, kontrollera status för den asynkrona åtgärden genom att skicka en annan begäran till URL: en.
+Efter antal sekunder som anges i försök igen efter markerar hello status för hello asynkron åtgärd genom att skicka en annan toothat URL-begäran.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 ```
 
-Om begäran körs får du en statuskod 202. Om begäran har slutförts, din får en statuskod 200 och brödtexten i svaret innehåller egenskaper för det lagringskonto som har skapats.
+Om hello begäran körs får du en statuskod 202. Om hello begäran har slutförts, din får en statuskod 200 och hello hello svaret innehåller hello egenskaper för hello storage-konto som har skapats.
 
 ## <a name="next-steps"></a>Nästa steg
 
 * Dokumentation om varje REST-åtgärd finns [REST API-dokumentation](/rest/api/).
-* Information om hur du hanterar resurser via Hanteraren för filserverresurser REST-API finns [med hjälp av hanteraren för filserverresurser REST API](resource-manager-rest-api.md).
-* information om hur du distribuerar mallar via Hanteraren för filserverresurser REST-API finns [distribuera resurser med Resource Manager-mallar och Resource Manager REST API](resource-group-template-deploy-rest.md).
+* Information om hur du hanterar resurser via hello Resource Manager REST-API finns [Using hello Resource Manager REST API](resource-manager-rest-api.md).
+* information om hur du distribuerar mallar via hello Resource Manager REST-API finns [distribuera resurser med Resource Manager-mallar och Resource Manager REST API](resource-group-template-deploy-rest.md).

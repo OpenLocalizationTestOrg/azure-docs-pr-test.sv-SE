@@ -1,5 +1,5 @@
 ---
-title: "Azure PowerShell skriptexempel - Peer två virtuella nätverk | Microsoft Docs"
+title: "aaaAzure PowerShell skriptexempel - Peer-två virtuella nätverk | Microsoft Docs"
 description: "Azure PowerShell skriptexempel - Peer två virtuella nätverk"
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,27 +15,27 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: gwallace
-ms.openlocfilehash: 51c0b98727e148671cfd7ab2b31ffd1c705d8a4e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8b66085c35de2fc30bcef57a00d7d370911d1f3c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="peer-two-virtual-networks"></a>Peer-två virtuella nätverk
 
-Det här skriptet skapar och ansluter två virtuella nätverk i samma region-trhough Azure-nätverk. När du har kört skriptet skapar du en peering mellan två virtuella nätverk.
+Det här skriptet skapar och ansluter två virtuella nätverk i hello samma region trhough hello Azure-nätverk. När du har kört hello skript skapar du en peering mellan två virtuella nätverk.
 
-Om det behövs installerar du Azure PowerShell med hjälp av anvisningarna i den [Azure PowerShell guiden](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), och kör sedan `Login-AzureRmAccount` att skapa en anslutning med Azure.
+Om det behövs installerar du Azure PowerShell med hjälp av hello-instruktion finns i hello hello [Azure PowerShell guiden](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), och kör sedan `Login-AzureRmAccount` toocreate en anslutning till Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-azurepowershell[huvudsakliga](../../../powershell_scripts/virtual-network/peer-two-virtual-networks/peer-two-virtual-networks.ps1 "Peer två nätverk")]
+[!code-azurepowershell[main](../../../powershell_scripts/virtual-network/peer-two-virtual-networks/peer-two-virtual-networks.ps1 "Peer two networks")]
 
 ## <a name="clean-up-deployment"></a>Rensa distribution 
 
-Kör följande kommando för att ta bort resursgruppen, virtuell dator och alla relaterade resurser.
+Kör följande kommando tooremove hello resursgrupp, VM och alla relaterade resurser hello.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -43,7 +43,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon för att skapa en resursgrupp, virtuell dator och alla relaterade resurser. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder hello följande kommandon toocreate en resursgrupp, en virtuell dator, och alla relaterade resurser. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
@@ -54,6 +54,6 @@ Det här skriptet använder följande kommandon för att skapa en resursgrupp, v
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure PowerShell finns [Azure PowerShell dokumentationen](https://docs.microsoft.com/powershell/azure/overview).
+Mer information om hello Azure PowerShell finns [Azure PowerShell dokumentationen](https://docs.microsoft.com/powershell/azure/overview).
 
-Ytterligare nätverk PowerShell-skript-exempel finns i den [dokumentation för Azure-nätverk – översikt](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).
+Ytterligare nätverk PowerShell-skript-exempel finns i hello [dokumentation för Azure-nätverk – översikt](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

@@ -1,4 +1,4 @@
-### <a name="create-a-new-logical-sql-server-in-the-azure-portal"></a>Skapa en ny logisk SQL-server på Azure Portal
+### <a name="create-a-new-logical-sql-server-in-hello-azure-portal"></a>Skapa en ny logisk SQLServer i hello Azure-portalen
 
 1. Klicka på **Nytt**, sök efter **logisk server** och tryck på **Retur**.
 
@@ -7,37 +7,37 @@
 
     ![välj logisk server](./media/sql-data-warehouse-create-logical-server/select-logical-server.png)
   
-3. Öppna bladet för den nya SQL-servern (logisk server) genom att klicka på **Skapa**.
+3. Klicka på **skapa** tooopen hello-bladet ny SQL Server (logisk server).
 
    <kbd>![öppna logiska serverblad](./media/sql-data-warehouse-create-logical-server/open-logical-server-blade.png) </kbd> <kbd> ![logiska serverblad](./media/sql-data-warehouse-create-logical-server/logical-server-blade.png)</kbd>
   
-3. Ange ett giltigt namn för den nya logiska servern i rutan för servernamn på bladet SQL Server (logisk server). En grön kryssmarkering visar att du har angett ett giltigt namn.
+3. Ange ett giltigt namn för hello ny logisk server i hello SQL Server (logisk server) bladet server name textruta. En grön kryssmarkering visar att du har angett ett giltigt namn.
     
     ![Namn på ny server](./media/sql-data-warehouse-create-logical-server/new-name-logical-server.png)
 
     > [!IMPORTANT]
-    > Det fullständigt kvalificerade namnet för den nya servern är <ditt_servernamn>. database.windows.net.
+    > hello fullständigt kvalificerade namn för den nya servern kommer att < namn_på_servern >. database.windows.net.
     >
     
-4. I textrutan Inloggning för serveradministratör anger du ett användarnamn för SQL-autentiseringsinloggningen för den här servern. Den här inloggningen kallas den primära server-inloggningen. En grön kryssmarkering visar att du har angett ett giltigt namn.
+4. Ange ett användarnamn för inloggning för hello SQL-autentisering för den här servern hello Server-administratören logga in i textrutan. Den här inloggningen kallas hello huvudsaklig inloggning på servern. En grön kryssmarkering visar att du har angett ett giltigt namn.
     
     ![SQL-administratörsinloggning](./media/sql-data-warehouse-create-logical-server/sql-admin-login.png)
-5. I textrutorna **Lösenord** och **Bekräfta lösenord** anger du ett lösenord för inloggningskontot för serverhuvudobjektet. En grön kryssmarkering visar att du har angett ett giltigt lösenord.
+5. I hello **lösenord** och **Bekräfta lösenord** textrutor, ange ett lösenord för hello server huvudsaklig inloggning på kontot. En grön kryssmarkering visar att du har angett ett giltigt lösenord.
     
     ![SQL-administratörslösenord](./media/sql-data-warehouse-create-logical-server/sql-admin-password.png)
-6. Välj en prenumeration som du har behörighet att skapa objekt i.
+6. Välj en prenumeration där du har behörighet toocreate objekt.
 
     ![prenumeration](./media/sql-data-warehouse-create-logical-server/subscription.png)
-7. I textrutan Resursgrupp väljer du **Skapa nytt** och anger sedan ett giltigt namn för den nya resursgruppen i textrutan Resursgrupp. (Du kan också använda en befintlig resursgrupp om du redan har skapat en.) En grön kryssmarkering visar att du har angett ett giltigt namn.
+7. Hello resurs gruppen i textrutan Välj **Skapa nytt** och ange ett giltigt namn för hello ny resursgrupp (du kan också använda en befintlig resursgrupp om du redan har skapat en själv) hello resurs gruppen i textrutan. En grön kryssmarkering visar att du har angett ett giltigt namn.
 
     ![Ny resursgrupp](./media/sql-data-warehouse-create-logical-server/new-resource-group.png)
 
-8. I textrutan **Plats** väljer du ett lämpligt datacenter för din plats, t.ex. ”Australien, östra”.
+8. I hello **plats** textruta, Välj en datatyp center lämpliga tooyour plats - till exempel ”östra”.
     
     ![Serverplats](./media/sql-data-warehouse-create-logical-server/server-location.png)
     
     > [!TIP]
-    > Du kan inte ändra kryssrutan för **Ge Azure-tjänster åtkomst till servern** på det här bladet. Du kan ändra den här inställningen på bladet Serverbrandvägg. Mer information finns i [Get started with security](../articles/sql-database/sql-database-manage-servers-portal.md) (Komma igång med säkerhet).
+    > Hej kryssrutan för **Tillåt azure-tjänster tooaccess server** kan inte ändras på det här bladet. Du kan ändra den här inställningen på hello serverblad för brandväggen. Mer information finns i [Get started with security](../articles/sql-database/sql-database-manage-servers-portal.md) (Komma igång med säkerhet).
     >
     
 9. Klicka på **Skapa**.

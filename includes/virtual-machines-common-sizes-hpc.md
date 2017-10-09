@@ -1,10 +1,10 @@
 <!-- A-series - compute-intensive instances, H-series -->
 
-Storlekarna i A8–A11- och H-serien kallas även för *beräkningsintensiva instanser*. Maskinvaran som kör dessa storlekar är utformad och optimerad för beräkningsintensiva och nätverksintensiva program, inklusive HPC-klustertillämpningar (databehandling med höga prestanda), modellering och simuleringar. A8–A11-serien använder Intel Xeon E5-2670 @ 2,6 GHZ och H-serien använder Intel Xeon E5-2667 v3 @ 3,2 GHz. 
+hello A8 A11 och H-serien storlek kallas även *beräkningsintensiva instanser*. hello-maskinvara som kör dessa storlekar har utformats och optimerats för beräkningsintensiva och nätverks-intensiva program, inklusive högpresterande Datorsystem kluster program, modellering och simulering. hello A8 A11 serien använder Intel Xeon E5-2670 @ 2.6 GHZ och hello H-serien använder Intel Xeon E5-2667 v3 @ 3,2 GHz. 
 
-Virtuella datorer i Azure H-serien är nästa generations virtuella datorer för databehandling med höga prestanda och är avsedda för höga beräkningsbehov, som molekylär modellering och beräkningsströmningsdynamik. Dessa virtuella datorer med 8 och 16 virtuella processorer bygger på Intel Haswell E5-2667 V3-processorteknik med DDR4-minne och SSD-baserad temporär lagring. 
+Virtuella datorer i Azure H-serien är hello nästa generation med höga prestanda VMs syftar till att avancerad beräkningar behov som molekylär utformning och beräkningsprogram. Dessa 8 och 16 vCPU VMs bygger på hello Intel Haswell E5 2667 V3 processor technology med DDR4 minne och tillfällig lagring för SSD-baserad. 
 
-Förutom den imponerande processorkraften erbjuder H-serien olika alternativ för RDMA-nätverk med låg fördröjning med FDR InfiniBand och flera minneskonfigurationer som ger stöd för minnesintensiva beräkningskrav.
+Dessutom toohello betydande CPU-ström hello H-serien finns olika alternativ för låg latens RDMA nätverk med hjälp av FDR InfiniBand och flera konfigurationer toosupport minne beräkningsintensiva beräkningar minneskrav.
 
 
 

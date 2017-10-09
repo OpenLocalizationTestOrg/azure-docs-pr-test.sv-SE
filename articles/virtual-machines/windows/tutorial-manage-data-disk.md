@@ -1,6 +1,6 @@
 ---
-title: Hantera Azure-diskarna med Azure PowerShell | Microsoft Docs
-description: "Självstudiekurs – hantera Azure-diskarna med Azure PowerShell"
+title: aaaManage Azure diskar med hello Azure PowerShell | Microsoft Docs
+description: "Självstudiekurs – hantera Azure-diskarna med hello Azure PowerShell"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6f1bc9361745adc211f22416a7ba8ac1b8dc614e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2f61ad18bc94bab527d7ae593da603c6073adc89
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-disks-with-powershell"></a>Hantera Azure-diskar med PowerShell
 
-Virtuella Azure-datorer använder diskar för att lagra virtuella datorer operativsystem, program och data. När du skapar en virtuell dator är det viktigt att välja en diskstorleken och konfiguration som är lämpligt att förväntade arbetsbelastningen. Den här kursen ingår distribuerar och hanterar Virtuella diskar. Du lär dig mer om:
+Azure virtual machines använder diskar toostore hello virtuella datorer, operativsystem, program och data. När du skapar en virtuell dator är det viktigt toochoose storleken för en disk och konfiguration lämpliga toohello förväntades arbetsbelastning. Den här kursen ingår distribuerar och hanterar Virtuella diskar. Du lär dig mer om:
 
 > [!div class="checklist"]
 > * OS-diskar och tillfällig diskar
@@ -33,15 +33,15 @@ Virtuella Azure-datorer använder diskar för att lagra virtuella datorer operat
 > * Diskprestanda
 > * Koppla och förbereda datadiskar
 
-Den här självstudien kräver Azure PowerShell-modul version 3.6 eller senare. Kör ` Get-Module -ListAvailable AzureRM` för att hitta versionen. Om du behöver uppgradera [installera Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps).
+Den här kursen kräver hello Azure PowerShell module 3,6 eller senare. Kör ` Get-Module -ListAvailable AzureRM` toofind hello version. Om du behöver tooupgrade finns [installera Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps).
 
 ## <a name="default-azure-disks"></a>Standard Azure-diskar
 
-När en virtuell Azure-dator har skapats är automatiskt två diskar kopplade till den virtuella datorn. 
+När en virtuell dator i Azure skapas är två diskar automatiskt bifogade toohello virtuella datorn. 
 
-**Operativsystemdisken** -drift systemdiskar kan storleksändras upp till 1 terabyte och är värd för operativsystemet för virtuella datorer.  OS-disken har tilldelats en enhetsbokstav för *c:* som standard. Disken cachelagring konfigurationen av OS-disken har optimerats för OS-prestanda. OS-disk **bör inte** värd för program eller data. Använd en datadisk, vilket beskrivs senare i den här artikeln för program och data.
+**Operativsystemdisken** - operativsystemet diskar kan storleksändras in too1 terabyte och värdar hello operativsystemet för virtuella datorer.  hello OS-disken har kopplats enhetsbeteckningen för *c:* som standard. hello disk cachelagring konfigurationen av hello OS-disken har optimerats för OS-prestanda. hello OS-disk **bör inte** värd för program eller data. Använd en datadisk, vilket beskrivs senare i den här artikeln för program och data.
 
-**Diskutrymme** -tillfälliga diskar använder ett SSD-enhet som finns på samma Azure-värd som den virtuella datorn. Temporär diskar har hög performant och kan användas för åtgärder som till exempel temporär databearbetning. Om den virtuella datorn flyttas till en ny värd bort data som lagrats på en tillfällig disk. Storleken på den tillfälliga disken bestäms av VM-storlek. Tillfällig diskar tilldelas en enhetsbeteckning för *d:* som standard.
+**Diskutrymme** -tillfälliga diskar använder ett SSD-enhet som finns på hello samma Azure-värd som hello VM. Temporär diskar har hög performant och kan användas för åtgärder som till exempel temporär databearbetning. Om hello VM är flyttade tooa nya värden kan bort data som lagrats på en tillfällig disk. hello hello tillfälliga diskens storlek bestäms av hello VM-storlek. Tillfällig diskar tilldelas en enhetsbeteckning för *d:* som standard.
 
 ### <a name="temporary-disk-sizes"></a>Tillfällig diskstorlekar
 
@@ -56,7 +56,7 @@ När en virtuell Azure-dator har skapats är automatiskt två diskar kopplade ti
 
 ## <a name="azure-data-disks"></a>Azure datadiskar
 
-Ytterligare datadiskar kan läggas till för att installera program och lagra data. Datadiskar som ska användas i en situation där varaktiga och känslig datalagring önskas. Varje datadisk har en maximal kapacitet för 1 terabyte. Storleken på den virtuella datorn avgör hur många datadiskar som kan kopplas till en virtuell dator. För varje VM-core kan två diskar kopplas. 
+Ytterligare datadiskar kan läggas till för att installera program och lagra data. Datadiskar som ska användas i en situation där varaktiga och känslig datalagring önskas. Varje datadisk har en maximal kapacitet för 1 terabyte. hello storleken på hello virtuella datorn anger hur många datadiskar kan vara anslutna tooa VM. För varje VM-core kan två diskar kopplas. 
 
 ### <a name="max-data-disks-per-vm"></a>Maximalt antal datadiskar per VM
 
@@ -79,7 +79,7 @@ Standard Storage stöds av hårddiskar och levererar kostnadseffektiv lagring sa
 
 ### <a name="premium-disk"></a>Premium-disk
 
-Premiumdiskar backas upp av SSD-baserad hög prestanda, låg latens disk. Perfekt för virtuella datorer som kör produktion arbetsbelastning. Premium-lagring stöder DS-serien, DSv2-serien GS-serien och FS-serien virtuella datorer. Premiumdiskar finns i tre olika typer (P10 P20, P30) och storleken på disken fastställer typ av disk. När du väljer, avrundat diskstorleken värdet till nästa typen. Till exempel om storleken är lägre än 128 GB blir disktyp P10, mellan 129 och 512 P20 och över 512 P30. 
+Premiumdiskar backas upp av SSD-baserad hög prestanda, låg latens disk. Perfekt för virtuella datorer som kör produktion arbetsbelastning. Premium-lagring stöder DS-serien, DSv2-serien GS-serien och FS-serien virtuella datorer. Premiumdiskar finns i tre olika typer (P10 P20, P30), hello hello diskens storlek avgör hello disktyp. När du väljer, avrundat ett värde för disk hello toohello nästa typen. Till exempel om hello storlek är lägre än 128 GB hello disktyp blir P10, mellan 129 och 512 P20 och över 512 P30. 
 
 ### <a name="premium-disk-performance"></a>Premium-diskprestanda
 
@@ -89,37 +89,37 @@ Premiumdiskar backas upp av SSD-baserad hög prestanda, låg latens disk. Perfek
 | IOPS per disk | 500 | 2,300 | 5,000 |
 Dataflöde per disk | 100 MB/s | 150 MB/s | 200 MB/s |
 
-När tabellen ovan identifierar högsta IOPS per disk, kan en högre nivå av prestanda uppnås genom striping flera datadiskar. Till exempel kan 64 diskar kopplas till Standard_GS5 VM. Om var och en av dessa diskar har storlek som en P30 kan högst 80 000 IOPS uppnås. Detaljerad information om högsta IOPS per VM finns [Linux VM-storlekar](./sizes.md).
+Medan hello ovanför tabell identifierar högsta IOPS per disk, kan en högre nivå av prestanda uppnås genom striping flera datadiskar. 64 data diskar kan vara kopplad till exempel tooStandard_GS5 VM. Om var och en av dessa diskar har storlek som en P30 kan högst 80 000 IOPS uppnås. Detaljerad information om högsta IOPS per VM finns [Linux VM-storlekar](./sizes.md).
 
 ## <a name="create-and-attach-disks"></a>Skapa och koppla diskar
 
-Du måste ha en befintlig virtuell dator för att slutföra exemplet i den här självstudiekursen. Om det behövs, detta [skriptexempel](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) kan skapa en åt dig. När gå igenom kursen, ersätter namn resursgrupp och VM där det behövs.
+toocomplete hello exempel i den här självstudiekursen, måste du ha en befintlig virtuell dator. Om det behövs, detta [skriptexempel](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) kan skapa en åt dig. När gå igenom självstudiekursen hello ersätter namn hello resursgrupp och VM där det behövs.
 
-Skapa den första konfigurationen med [ny AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig). I följande exempel konfigureras en disk som är 128 GB i storlek.
+Skapa hello startkonfiguration med [ny AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig). hello följande exempel konfigurerar en disk som är 128 GB i storlek.
 
 ```powershell
 $diskConfig = New-AzureRmDiskConfig -Location EastUS -CreateOption Empty -DiskSizeGB 128
 ```
 
-Skapa datadisk med den [ny AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk) kommando.
+Skapa hello-datadisk med hello [ny AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk) kommando.
 
 ```powershell
 $dataDisk = New-AzureRmDisk -ResourceGroupName myResourceGroup -DiskName myDataDisk -Disk $diskConfig
 ```
 
-Hämta den virtuella dator som du vill lägga till datadisk för med den [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) kommando.
+Get hello virtuell dator som du vill tooadd hello data disk toowith hello [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) kommando.
 
 ```powershell
 $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
 ```
 
-Lägg till datadisk i konfigurationen av virtuella datorn med den [Lägg till AzureRmVMDataDisk](/powershell/module/azurerm.compute/add-azurermvmdatadisk) kommando.
+Lägg till hello data disk toohello konfiguration av virtuell dator med hello [Lägg till AzureRmVMDataDisk](/powershell/module/azurerm.compute/add-azurermvmdatadisk) kommando.
 
 ```powershell
 $vm = Add-AzureRmVMDataDisk -VM $vm -Name myDataDisk -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 1
 ```
 
-Uppdatera den virtuella datorn med den [uppdatering AzureRmVM](/powershell/module/azurerm.compute/add-azurermvmdatadisk) kommando.
+Uppdatera hello virtuella datorn med hello [uppdatering AzureRmVM](/powershell/module/azurerm.compute/add-azurermvmdatadisk) kommando.
 
 ```powershell
 Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm
@@ -127,11 +127,11 @@ Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm
 
 ## <a name="prepare-data-disks"></a>Förbereda datadiskar
 
-När en disk har kopplats till den virtuella datorn, måste operativsystemet konfigureras för att använda disken. I följande exempel visas hur du konfigurerar den första disk som lagts till i den virtuella datorn manuellt. Den här processen kan också automatiseras med hjälp av den [tillägget för anpassat skript](./tutorial-automate-vm-deployment.md).
+När en disk ansluten toohello virtuell dator, måste hello operativsystemet toobe konfigurerats toouse hello disk. hello följande exempel visar hur toomanually konfigurera hello första diskar som lagts toohello VM. Den här processen kan också automatiseras med hjälp av hello [tillägget för anpassat skript](./tutorial-automate-vm-deployment.md).
 
 ### <a name="manual-configuration"></a>Manuell konfiguration
 
-Skapa en RDP-anslutning med den virtuella datorn. Öppna PowerShell och kör det här skriptet.
+Skapa en RDP-anslutning med hello virtuell dator. Öppna PowerShell och kör det här skriptet.
 
 ```powershell
 Get-Disk | Where partitionstyle -eq 'raw' | `
@@ -151,7 +151,7 @@ I kursen får du lärt dig om Virtuella diskar ämnen som:
 > * Diskprestanda
 > * Koppla och förbereda datadiskar
 
-Gå vidare till nästa kurs mer information om hur du automatiserar VM-konfiguration.
+Avancera toohello nästa självstudiekurs toolearn om hur du automatiserar VM-konfiguration.
 
 > [!div class="nextstepaction"]
 > [Automatisera konfiguration av virtuella datorer](./tutorial-automate-vm-deployment.md)

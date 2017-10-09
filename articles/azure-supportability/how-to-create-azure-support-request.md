@@ -1,6 +1,6 @@
 ---
-title: "Så här skapar du en Azure-supportbegäran | Microsoft Docs"
-description: "Så här skapar du en Azure-supportbegäran."
+title: "aaaHow toocreate en Azure-supportbegäran | Microsoft Docs"
+description: "Hur stöder toocreate en Azure begäran."
 services: Azure Supportability
 documentationcenter: 
 author: ganganarayanan
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-ms.openlocfilehash: 70a4762383d64dc8d568c628cf260ebd8f2d179d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 19283a8cc1c4fc6b8277efdc60640bec8a90d40a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-an-azure-support-request"></a>Skapa en supportförfrågan för Azure
+# <a name="how-toocreate-an-azure-support-request"></a>Hur toocreate en Azure stöd för begäran
 ## <a name="summary"></a>Sammanfattning
-Azure-kunder kan skapa och hantera supportärenden i Azure-portalen [https://portal.azure.com](https://portal.azure.com).
+Azure-kunder kan skapa och hantera supportärenden i hello Azure-portalen [https://portal.azure.com](https://portal.azure.com).
 
 > [!NOTE]
-> Azure portal för Tyskland är [https://portal.microsoftazure.de](https://portal.microsoftazure.de) Azure portal för USA: S regering är [https://portal.azure.us](https://portal.azure.us).
+> Azure portal för Tyskland är [https://portal.microsoftazure.de](https://portal.microsoftazure.de) Azure portal för hello amerikanska myndigheter är [https://portal.azure.us](https://portal.azure.us).
 > 
 > 
 
-Utifrån feedback har vi uppdaterat begäran supporten att fokusera på tre huvudsakliga målen:
+Vi har uppdaterat hello stöd begäran upplevelse toofocus på tre huvudsakliga målen utifrån feedback:
 
-* **Effektiviserad**: minska klickningar och blad till gör det enkelt att processen för att skicka en supportförfrågan.
-* **Integrerad**: när du felsöker ett problem med en Azure-resurs det ska vara enkelt att öppna en supportförfrågan för den här resursen utan att växla kontext.
-* **Effektiv**: samla in viktig information som supportpersonalen behöver effektivt lösa problemet.
+* **Effektiviserad**: minska blad och gånger toomake hello överföringsprocessen stöd begäran enkel.
+* **Integrerad**: när du felsöker ett problem med en Azure-resurs det ska vara enkelt tooopen en supportförfrågan för den här resursen utan att växla kontext.
+* **Effektiv**: samla hello nyckelinformation supportpersonalen behöver tooefficiently lösa problemet.
 
 ## <a name="getting-started"></a>Komma igång
-Du kan skapa en supportbegäran från menyn övre navigeringsfältet eller direkt från ett Resursblad.
+Du kan skapa en supportbegäran hello övre navigeringsfältet-menyn eller direkt från ett Resursblad.
 
-**Från det övre navigeringsfältet**
+**Hello övre navigeringsfältet**
 
 ![Ny supportbegäran](./media/how-to-create-azure-support-request/NewSupportRequest.png)
 
@@ -47,10 +47,10 @@ Du kan skapa en supportbegäran från menyn övre navigeringsfältet eller direk
 ![I kontexten](./media/how-to-create-azure-support-request/Incontext.png)
 
 ## <a name="basics"></a>Grundläggande inställningar
-Det första steget i begäran supportprocessen samlar in grundläggande information om problemet och ditt supportavtal.
+hello första steget i hello begäran supportprocessen samlar in grundläggande information om problemet och ditt supportavtal.
 
 Låt oss ta ett exempel: du med tekniska problem med den virtuella datorn och misstänker ett nätverksanslutningsproblem.
-Markera tjänsten (”virtuell dator som kör Windows”) och resurs (namnet på den virtuella datorn) i det första steget i guiden startar processen för att få hjälp med problemet.
+Om du väljer hello service (”virtuell dator som kör Windows”) och hello resurs (hello namnet på den virtuella datorn) i hello första steget i guiden hello startar hello processen för att få hjälp med problemet.
 
 ![Bladet Grundläggande inställningar](./media/how-to-create-azure-support-request/Basics.png)
 
@@ -60,49 +60,49 @@ Markera tjänsten (”virtuell dator som kör Windows”) och resurs (namnet på
 > 
 
 ## <a name="problem"></a>Problem
-Det andra steget i guiden samlar in ytterligare information om problemet. Med korrekt information i det här steget kan vi att dirigera ditt ärende till bästa supportteknikern för utfärdande och för att starta diagnostisera problemet så snart som möjligt.
+hello andra steget hello guiden samlar in detaljerad information om hello problemet. Med korrekt information i det här steget kan vi tooroute ditt ärende toohello bästa stöd tekniker för hello problemet och toobegin diagnostisera hello problemet så snart som möjligt.
 
 ![Problemet bladet](./media/how-to-create-azure-support-request/Problem.png)
 
-Fortsätter med det virtuella anslutning exemplet ovan, Fyll i det här formuläret för att ange ett nätverksanslutningsproblem och du vill ange ytterligare information om problemet, inklusive den ungefärliga tid när du har haft problemet.
+Fortsätter med hello virtuella anslutningen exemplet ovan, Fyll i det här formuläret tooindicate ett nätverksanslutningsproblem och du skulle ger mer information om hello problem, inklusive hello ungefärliga tid när du har haft hello problemet.
 
 ## <a name="related-help"></a>Relaterade hjälp
-För vissa problem ger vi relaterade länkar om du vill felsöka problemet. Om de rekommenderade dokument inte hjälper, kan du fortsätta processen för att skapa en supportbegäran.
+För vissa problem kan hjälpa vi relaterade länkar tootroubleshoot hello problemet. Om hello rekommenderade dokument inte hjälper, kan du fortsätta med hello processen toocreate en supportbegäran.
 ![Relaterade hjälp](./media/how-to-create-azure-support-request/RelatedHelp.png)
 
 ## <a name="contact-information"></a>Kontaktinformation
-Det sista steget i guiden bekräftar din kontaktinformation så att vi vet hur kan nå dig.
+hello sista steget i guiden hello bekräftar din kontaktinformation så att vi vet hur tooreach du.
 ![Kontaktuppgifter](./media/how-to-create-azure-support-request/ContactInformation.png)
 
-Beroende på hur allvarligt problemet, kan du bli ombedd att ange om du vill att vi ska kontakta dig under kontorstid eller om du vill använda ett 24 x 7 svar, vilket innebär att vi kan kontakta dig när som helst.
+Beroende på hello allvarlighetsgraden problemet, kan du uppmanas tooindicate om du vill att vi toocontact du under kontorstid eller om du vill använda ett 24 x 7 svar, vilket innebär att vi kan kontakta dig när som helst.
 ![Kontaktinformation 24 x 7](./media/how-to-create-azure-support-request/ContactInformation-2.png)
 
 ## <a name="manage-support-requests"></a>Hantera supportärenden
-När du har skapat supportbegäran, kan du visa information från den **stöd för begäran om att hantera** sidan.
+När du har skapat supportförfrågan hello kan du visa hello information från hello **stöd för begäran om att hantera** sidan.
 
-**Från det övre navigeringsfältet**
+**Hello övre navigeringsfältet**
 
 ![Hantera supportärende länk](./media/how-to-create-azure-support-request/ManageSupportRequest-link.png)
 
-På den **hantera supportärenden** sidan kan du visa alla supportärenden och deras status.
+På hello **hantera supportärenden** sidan kan du visa alla supportärenden och deras status.
 ![Hantera supportärende](./media/how-to-create-azure-support-request/ManageSupportRequest.png)
 
-Välj supportbegäran för att visa information, inklusive allvarlighetsgrad och den förväntade tiden det tar för en supporttekniker att svara.
+Välj hello tooview information om supportärende, inklusive allvarlighetsgrad och hello förväntad tid det tar för en tekniker toorespond för support.
 ![VID](./media/how-to-create-azure-support-request/VID.png)
 
-Om du vill ändra allvarlighetsgrad för begäran, klickar du på den **inverkan på verksamheten** panelen. Begäran är i föregående exempel för närvarande inställd till allvarlighetsgrad C.
+Om du vill toochange hello allvarlighetsgraden hello begäran klickar du på hello **inverkan på verksamheten** panelen. I exemplet som föregår hello är hello-begäran inställd på tooSeverity C.
 
-Klicka på panelen visar listan över allvarlighetsgraderna som du kan tilldela en öppen supportbegäran.
+Klicka på hello panelen visar hello av listan över allvarlighetsgraderna som du kan tilldela tooan öppna supportbegäran.
 
 > [!NOTE]
-> Maximal allvarlighetsgrad beror på ditt supportavtal. [Mer information om supportplaner](https://azure.microsoft.com/support/plans).
+> hello maximal allvarlighetsgrad beror på ditt supportavtal. [Mer information om supportplaner](https://azure.microsoft.com/support/plans).
 > 
 > 
 
 ![VID 2](./media/how-to-create-azure-support-request/VID-2.png)
 
 ## <a name="feedback"></a>Feedback
-Vi är alltid öppna för feedback och förslag! Skicka oss dina [förslag](https://feedback.azure.com/forums/266794-support-feedback). Dessutom kan du kan interagera med oss via [Twitter](https://twitter.com/azuresupport) eller [MSDN-forum](https://social.msdn.microsoft.com/Forums/azure).
+Vi är alltid öppna toofeedback och förslag! Skicka oss dina [förslag](https://feedback.azure.com/forums/266794-support-feedback). Dessutom kan du kan interagera med oss via [Twitter](https://twitter.com/azuresupport) eller hello [MSDN-forum](https://social.msdn.microsoft.com/Forums/azure).
 
 ## <a name="learn-more"></a>Läs mer
 [Azure-supporten vanliga frågor och svar](https://azure.microsoft.com/support/faq)

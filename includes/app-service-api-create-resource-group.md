@@ -1,11 +1,11 @@
-Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#create).
+Skapa en resursgrupp med hello [az gruppen skapa](/cli/azure/group#create) kommando.
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 
-I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *westeurope*.
+hello följande exempel skapar en resursgrupp med namnet *myResourceGroup* i hello *westeurope* plats.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
-Om du vill se tillgängliga platser kör du kommandot `az appservice list-locations`. Du skapar vanligtvis resurser i en region nära dig.
+toosee hello tillgängliga platser, kör hello `az appservice list-locations` kommando. Du skapar vanligtvis resurser i en region nära dig.

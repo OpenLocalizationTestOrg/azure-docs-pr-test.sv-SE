@@ -1,6 +1,6 @@
 ---
-title: "Ansluta säkert till ett Azure Service Fabric-kluster | Microsoft Docs"
-description: "Beskriver hur du autentiserar klientåtkomst till ett Service Fabric-kluster och hur för säker kommunikation mellan klienter och ett kluster."
+title: "aaaConnect på ett säkert sätt tooan Azure Service Fabric-kluster | Microsoft Docs"
+description: "Beskriver hur tooauthenticate klienten komma åt tooa Service Fabric-kluster och toosecure kommunikationen mellan klienterna och ett kluster."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/01/2017
 ms.author: ryanwi
-ms.openlocfilehash: d6a13ceb8ccd9207ecacc166247535d496d5dec7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1b6a87a1fefaddce2043c604ca53751157232170
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-to-a-secure-cluster"></a>Ansluta till ett säkert kluster
+# <a name="connect-tooa-secure-cluster"></a>Ansluta tooa säker kluster
 
-När en klient ansluter till en klusternod för Service Fabric, kan klienten vara autentiserad och säker kommunikation upprättas med hjälp av certifikatet säkerhets- eller Azure Active Directory (AAD). Den här autentiseringen säkerställer att endast behöriga användare har åtkomst till klustret och distribuerade program och utföra administrativa uppgifter.  Certifikat eller AAD säkerhet måste ha tidigare aktiverats på klustret när klustret skapades.  Mer information om kluster säkerhetsscenarier finns [kluster säkerhet](service-fabric-cluster-security.md). Om du ansluter till ett kluster som skyddas med certifikat, [konfigurera klientcertifikatet](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) på den dator som ansluter till klustret. 
+När en klient ansluter tooa Service Fabric-nod i klustret, kan hello-klient vara autentiserad och säker kommunikation upprättas med hjälp av certifikatet säkerhets- eller Azure Active Directory (AAD). Den här autentiseringen säkerställer att endast auktoriserade användare kan komma åt hello kluster och distribuerade program och utföra administrativa uppgifter.  Certifikat eller AAD säkerhet måste ha tidigare aktiverats på hello klustret när hello klustret har skapats.  Mer information om kluster säkerhetsscenarier finns [kluster säkerhet](service-fabric-cluster-security.md). Om du ansluter tooa kluster skyddas med certifikat, [konfigurera hello klientcertifikat](service-fabric-connect-to-secure-cluster.md#connectsecureclustersetupclientcert) på hello-dator som ansluter toohello klustret. 
 
 <a id="connectsecureclustercli"></a> 
 
-## <a name="connect-to-a-secure-cluster-using-azure-service-fabric-cli-sfctl"></a>Ansluta till en säker kluster med hjälp av Azure Service Fabric CLI (sfctl)
+## <a name="connect-tooa-secure-cluster-using-azure-service-fabric-cli-sfctl"></a>Ansluta tooa säker kluster med hjälp av Azure Service Fabric CLI (sfctl)
 
-Det finns några olika sätt att ansluta till en säker kluster med hjälp av Service Fabric-CLI (sfctl). När du använder ett klientcertifikat för autentisering måste certifikatinformationen matcha ett certifikat som distribuerats till klusternoderna. Om ditt certifikat har certifikatutfärdare (CA), måste du dessutom ange betrodda certifikatutfärdare.
+Det finns några olika sätt tooconnect tooa säker kluster med hjälp av hello Service Fabric CLI (sfctl). När du använder ett klientcertifikat för autentisering, distribueras hello certifikat information måste matcha ett certifikat toohello klusternoder. Om ditt certifikat har certifikatutfärdare (CA), måste du tooadditionally ange hello betrodda certifikatutfärdare.
 
-Du kan ansluta till ett kluster med hjälp av den `sfctl cluster select` kommando.
+Du kan ansluta tooa kluster med hjälp av hello `sfctl cluster select` kommando.
 
-Klientcertifikat kan anges i två olika sätt, som ett certifikat och nyckelpar, eller som en enda pem-fil. För lösenordsskyddade `pem` filer, uppmanas du att automatiskt för att ange lösenordet.
+Klientcertifikat kan anges i två olika sätt, som ett certifikat och nyckelpar, eller som en enda pem-fil. För lösenordsskyddade `pem` filer, kommer du att uppmanas automatiskt tooenter hello lösenord.
 
-Om du vill ange klientcertifikatet som en pem-fil, ange sökvägen till filen i den `--pem` argumentet. Exempel:
+toospecify hello klientcertifikat som en pem-fil, ange sökväg till hello i hello `--pem` argumentet. Exempel:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
-Lösenordsskyddad pem-filer ska fråga efter lösenord innan du kör ett kommando.
+Lösenordet skyddas pem-filer ombeds du att lösenordet tidigare toorunning ett kommando.
 
-Nyckeln par används för att ange ett certifikat, de `--cert` och `--key` argument för att ange sökvägar till varje respektive fil.
+toospecify ett certifikat, nyckelpar använda hello `--cert` och `--key` argument toospecify hello sökvägar tooeach respektive fil.
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Certifikat som används för att säkra test- eller dev kluster misslyckas ibland valideringen av servercertifikatet. Om du vill kringgå certifikatverifiering, ange den `--no-verify` alternativet. Exempel:
+Certifikat används ibland toosecure test eller dev kluster misslyckas valideringen av servercertifikatet. toobypass certifikat verifiering, ange hello `--no-verify` alternativet. Exempel:
 
 > [!WARNING]
-> Använd inte den `no-verify` alternativ när du ansluter till produktion Service Fabric-kluster.
+> Använd inte hello `no-verify` alternativ när du ansluter tooproduction Service Fabric-kluster.
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Du kan dessutom ange sökvägar till kataloger av certifikat för betrodd Certifikatutfärdare eller enskilda certifikat. Använd för att ange dessa sökvägar i `--ca` argumentet. Exempel:
+Du kan dessutom ange sökvägar toodirectories av certifikat för betrodd Certifikatutfärdare eller enskilda certifikat. toospecify dessa sökvägar använda hello `--ca` argumentet. Exempel:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 
-När du ansluter du ska kunna [köra andra sfctl kommandon](service-fabric-cli.md) att interagera med klustret.
+När du ansluter du borde för[köra andra sfctl kommandon](service-fabric-cli.md) toointeract med hello-kluster.
 
 <a id="connectsecurecluster"></a>
 
-## <a name="connect-to-a-cluster-using-powershell"></a>Ansluta till ett kluster med hjälp av PowerShell
-Innan du utför åtgärder på ett kluster med hjälp av PowerShell först upprätta en anslutning till klustret. Kluster-anslutning används för alla efterföljande kommandon i den angivna PowerShell-sessionen.
+## <a name="connect-tooa-cluster-using-powershell"></a>Ansluta tooa kluster med hjälp av PowerShell
+Upprätta en anslutning toohello klustret innan du utför åtgärder på ett kluster med hjälp av PowerShell. hello klustret anslutningen används för alla efterföljande kommandon i hello angivna PowerShell-session.
 
-### <a name="connect-to-an-unsecure-cluster"></a>Ansluta till ett oskyddat kluster
+### <a name="connect-tooan-unsecure-cluster"></a>Ansluta tooan oskyddade kluster
 
-För att ansluta till ett oskyddat kluster, ger slutpunktsadress klustret till det **Connect-ServiceFabricCluster** kommando:
+tooconnect tooan oskyddade kluster, ange hello klustret endpoint adress toohello **Connect-ServiceFabricCluster** kommando:
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 
 ```
 
-### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Ansluta till en säker kluster med hjälp av Azure Active Directory
+### <a name="connect-tooa-secure-cluster-using-azure-active-directory"></a>Ansluta tooa säker kluster med hjälp av Azure Active Directory
 
-Ange tumavtrycket klustret för att ansluta till en säker kluster som använder Azure Active Directory för att auktorisera administratörsåtkomst för klustret, och använda den *AzureActiveDirectory* flaggan.  
+tooconnect tooa säker kluster som använder Azure Active Directory tooauthorize klustret administratörsåtkomst, ange hello tumavtryck för klustret och använda hello *AzureActiveDirectory* flaggan.  
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
@@ -88,8 +88,8 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 -AzureActiveDirectory
 ```
 
-### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Ansluta till en säker kluster som använder ett klientcertifikat
-Kör följande PowerShell-kommando för att ansluta till en säker kluster som använder klientcertifikat för att auktorisera administratörsåtkomst. Ange tumavtrycket kluster och tumavtrycket för det klientcertifikat som har beviljats behörigheter för klusterhantering. Certifikatinformation måste matcha ett certifikat på klusternoderna.
+### <a name="connect-tooa-secure-cluster-using-a-client-certificate"></a>Ansluta tooa säker kluster med ett klientcertifikat
+Kör hello följande PowerShell-kommando tooconnect tooa säker kluster som använder klienten certifikat tooauthorize administratörsåtkomst. Ange hello tumavtryck för klustret och hello tumavtryck hello klientcertifikat som har beviljats behörigheter för klusterhantering. information om hello certifikat måste matcha ett certifikat på hello klusternoder.
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
@@ -99,8 +99,8 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
           -StoreLocation CurrentUser -StoreName My
 ```
 
-*ServerCertThumbprint* är tumavtrycket för certifikatet installeras på klusternoderna. *FindValue* är tumavtrycket för admin-klientcertifikat.
-När parametrarna är ifyllda ser kommandot ut som i följande exempel: 
+*ServerCertThumbprint* är hello tumavtryck hello servercertifikat installerat på hello klusternoder. *FindValue* är hello hello admin klienten certifikatets tumavtryck.
+När hello parametrar är ifyllda hello kommando som ser ut så hello följande exempel: 
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `
@@ -110,8 +110,8 @@ Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azu
           -StoreLocation CurrentUser -StoreName My
 ```
 
-### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>Ansluta till en säker kluster med hjälp av Windows Active Directory
-Om fristående klustret distribueras med hjälp av AD-säkerhetsgrupp, kan du ansluta till klustret genom att lägga till växeln ”WindowsCredential”.
+### <a name="connect-tooa-secure-cluster-using-windows-active-directory"></a>Ansluta tooa säker kluster med hjälp av Windows Active Directory
+Om fristående klustret distribueras med hjälp av AD-säkerhetsgrupp, kan du ansluta toohello klustret genom att lägga till hello växel ”WindowsCredential”.
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
@@ -120,26 +120,26 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 
 <a id="connectsecureclusterfabricclient"></a>
 
-## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>Ansluta till ett kluster med FabricClient APIs
-Service Fabric-SDK tillhandahåller den [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) klass för klusterhantering. Om du vill använda FabricClient APIs hämta Microsoft.ServiceFabric NuGet-paketet.
+## <a name="connect-tooa-cluster-using-hello-fabricclient-apis"></a>Ansluta tooa kluster med hjälp av hello FabricClient APIs
+hello Service Fabric SDK innehåller hello [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) klass för klusterhantering. toouse hello FabricClient APIs hämta hello Microsoft.ServiceFabric NuGet-paketet.
 
-### <a name="connect-to-an-unsecure-cluster"></a>Ansluta till ett oskyddat kluster
+### <a name="connect-tooan-unsecure-cluster"></a>Ansluta tooan oskyddade kluster
 
-Skapa en instans av FabricClient för att ansluta till en oskyddad fjärrkluster och tillhandahålla klusteradress:
+tooconnect tooa oskyddade kluster, skapa en FabricClient-instans och ange hello klusteradress:
 
 ```csharp
 FabricClient fabricClient = new FabricClient("clustername.westus.cloudapp.azure.com:19000");
 ```
 
-För kod som körs från inom ett kluster, till exempel i en tillförlitlig tjänst, skapa en FabricClient *utan* anger klusteradress. FabricClient ansluter till lokala management-gateway på noden koden körs på, undvika en extra nätverket hopp.
+För kod som körs från inom ett kluster, till exempel i en tillförlitlig tjänst, skapa en FabricClient *utan* att ange hello klusteradress. FabricClient ansluter toohello lokal hantering gateway på hello nod hello kod körs på, undvika en extra nätverket hopp.
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
 ```
 
-### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Ansluta till en säker kluster som använder ett klientcertifikat
+### <a name="connect-tooa-secure-cluster-using-a-client-certificate"></a>Ansluta tooa säker kluster med ett klientcertifikat
 
-Noder i klustret måste ha giltiga certifikat vars nätverksnamn eller DNS-namnet i SAN visas i den [RemoteCommonNames egenskapen](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials#System_Fabric_X509Credentials_RemoteCommonNames) på [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient). Efter den här processen kan ömsesidig autentisering mellan klienten och klusternoder.
+hello-noder i klustret hello måste ha giltiga certifikat vars nätverksnamn eller DNS-namnet i SAN visas i hello [RemoteCommonNames egenskapen](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials#System_Fabric_X509Credentials_RemoteCommonNames) på [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient). Efter den här processen kan ömsesidig autentisering mellan hello-klienten och hello klusternoder.
 
 ```csharp
 using System.Fabric;
@@ -177,11 +177,11 @@ static X509Credentials GetCredentials(string clientCertThumb, string serverCertT
 }
 ```
 
-### <a name="connect-to-a-secure-cluster-interactively-using-azure-active-directory"></a>Ansluta till en säker interaktivt med Azure Active Directory
+### <a name="connect-tooa-secure-cluster-interactively-using-azure-active-directory"></a>Ansluta tooa säker klustret interaktivt med Azure Active Directory
 
-I följande exempel används Azure Active Directory för identitets- och klientcertifikat för serveridentitet.
+hello följande exempel använder Azure Active Directory för identitets- och klientcertifikat för serveridentitet.
 
-En dialogruta visas automatiskt för interaktiv inloggning vid anslutning till klustret.
+En dialogruta visas automatiskt för interaktiv inloggning vid anslutning toohello klustret.
 
 ```csharp
 string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
@@ -203,9 +203,9 @@ catch (Exception e)
 }
 ```
 
-### <a name="connect-to-a-secure-cluster-non-interactively-using-azure-active-directory"></a>Ansluta till en säker icke-interaktivt med Azure Active Directory
+### <a name="connect-tooa-secure-cluster-non-interactively-using-azure-active-directory"></a>Ansluta tooa säker klustret icke-interaktivt med Azure Active Directory
 
-I följande exempel är beroende av Microsoft.IdentityModel.Clients.ActiveDirectory, Version: 2.19.208020213.
+hello följande exempel förlitar sig på Microsoft.IdentityModel.Clients.ActiveDirectory, Version: 2.19.208020213.
 
 Mer information om AAD-token förvärv finns [Microsoft.IdentityModel.Clients.ActiveDirectory](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx).
 
@@ -260,9 +260,9 @@ static string GetAccessToken(
 
 ```
 
-### <a name="connect-to-a-secure-cluster-without-prior-metadata-knowledge-using-azure-active-directory"></a>Ansluta till en säker kluster utan föregående metadata kunskaper med Azure Active Directory
+### <a name="connect-tooa-secure-cluster-without-prior-metadata-knowledge-using-azure-active-directory"></a>Ansluta tooa säker kluster utan föregående metadata kunskaper med Azure Active Directory
 
-I följande exempel används icke-interaktiv token förvärv, men samma metod som kan användas för att skapa en anpassad interaktiva token förvärv upplevelse. Azure Active Directory-metadata som behövs för token läses från klusterkonfigurationen.
+hello följande exempel använder icke-interaktiv token förvärv, men hello samma metod kan vara används toobuild en anpassad interaktiva token förvärv upplevelse. hello Azure Active Directory metadata som behövs för token läses från klusterkonfigurationen.
 
 ```csharp
 string serverCertThumb = "A8136758F4AB8962AF2BF3F27921BE1DF67F4326";
@@ -305,34 +305,34 @@ static string GetAccessToken(AzureActiveDirectoryMetadata aad)
 
 <a id="connectsecureclustersfx"></a>
 
-## <a name="connect-to-a-secure-cluster-using-service-fabric-explorer"></a>Ansluta till en säker kluster med hjälp av Service Fabric Explorer
-Att nå [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) ett kluster, peka i webbläsaren:
+## <a name="connect-tooa-secure-cluster-using-service-fabric-explorer"></a>Ansluta tooa säker kluster med hjälp av Service Fabric Explorer
+tooreach [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) ett kluster, peka i webbläsaren:
 
 `http://<your-cluster-endpoint>:19080/Explorer`
 
-Fullständig URL finns också i fönstret klustret essentials i Azure-portalen.
+hello fullständiga URL: en är också tillgängligt i hello klustret essentials rutan hello Azure-portalen.
 
-### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Ansluta till en säker kluster med hjälp av Azure Active Directory
+### <a name="connect-tooa-secure-cluster-using-azure-active-directory"></a>Ansluta tooa säker kluster med hjälp av Azure Active Directory
 
-Peka webbläsaren för att ansluta till ett kluster som skyddas med AAD:
-
-`https://<your-cluster-endpoint>:19080/Explorer`
-
-Du uppmanas automatiskt att logga in med AAD.
-
-### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Ansluta till en säker kluster som använder ett klientcertifikat
-
-Peka webbläsaren för att ansluta till ett kluster som skyddas av certifikat:
+tooconnect tooa kluster som skyddas med AAD, peka webbläsaren:
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-Du uppmanas automatiskt att välja ett klientcertifikat.
+Du är automatiskt att ange toolog in med AAD.
+
+### <a name="connect-tooa-secure-cluster-using-a-client-certificate"></a>Ansluta tooa säker kluster med ett klientcertifikat
+
+tooconnect tooa kluster som skyddas med certifikat, peka webbläsaren:
+
+`https://<your-cluster-endpoint>:19080/Explorer`
+
+Du är automatiskt att ange tooselect ett klientcertifikat.
 
 <a id="connectsecureclustersetupclientcert"></a>
-## <a name="set-up-a-client-certificate-on-the-remote-computer"></a>Ställ in ett klientcertifikat på fjärrdatorn
-Minst två certifikat ska användas för att skydda klustret, en för klustret och server-certifikat och en annan för klientåtkomst.  Vi rekommenderar att du också använda ytterligare sekundära certifikat- och klientcertifikat åtkomst.  För att säkra kommunikationen mellan en klient och en klusternod som använder för Certifikatsäkerhet, måste du först hämta och installera klientcertifikatet. Du kan installera certifikatet till det personliga (min) arkivet på den lokala datorn eller den aktuella användaren.  Du måste också tumavtrycket för certifikatet så att klienten kan autentisera till klustret.
+## <a name="set-up-a-client-certificate-on-hello-remote-computer"></a>Ställ in ett klientcertifikat på hello fjärrdator
+Minst två certifikat ska användas för att skydda hello kluster, ett för hello klustret och server-certifikat och en annan för klientåtkomst.  Vi rekommenderar att du också använda ytterligare sekundära certifikat- och klientcertifikat åtkomst.  toosecure hello kommunikation mellan en klient och en nod med säkerhet och du behöver tooobtain och installera hello klientcertifikat. hello certifikat installeras i hello (min) datorarkivet hello lokal dator eller hello aktuell användare.  Du måste också hello tumavtryck hello servercertifikatet så att hello klienten kan autentisera hello klustret.
 
-Kör följande PowerShell-cmdlet för att ställa in klientcertifikat på den dator där du får åtkomst till klustret.
+Kör följande PowerShell-cmdlet tooset in hello klientcertifikatet på hello datorn från vilken du åtkomst till klustret hello hello.
 
 ```powershell
 Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
@@ -340,7 +340,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
         -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
 ```
 
-Om det är ett självsignerat certifikat, måste du importera den till din dator ”betrodda personer” store innan du kan använda det här certifikatet för att ansluta till en säker kluster.
+Om det är ett självsignerat certifikat måste tooimport den tooyour datorn ”betrodda personer” lagra innan du kan använda det här certifikatet tooconnect tooa säker klustret.
 
 ```powershell
 Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople `

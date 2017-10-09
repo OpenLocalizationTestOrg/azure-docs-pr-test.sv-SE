@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med SAP HANA Molnplattform | Microsoft Docs"
-description: "Lär dig hur du använder SAP HANA Molnplattform med Azure Active Directory för att aktivera enkel inloggning, Automatisk etablering och mycket mer!"
+description: "Lär dig hur toouse SAP HANA Molnplattform med Azure Active Directory tooenable enkel inloggning, Automatisk etablering och mycket mer!"
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -13,138 +13,138 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/23/2017
 ms.author: jeedes
-ms.openlocfilehash: e03bc2410a8d57363c558f723b3bfd0e69b3f4c0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cc6610969b1c7b08f776e6969a5977fc75eb9ab4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana-cloud-platform"></a>Självstudier: Azure Active Directory-integration med SAP HANA-molnplattformen
-Syftet med den här kursen är att visa integreringen av Azure och Molnplattform för SAP HANA.
+hello syftet med den här kursen är tooshow hello integrering av Azure- och Molnplattform för SAP HANA.
 
-Det scenario som beskrivs i den här kursen förutsätter att du redan har följande objekt:
+hello-scenario som beskrivs i den här kursen förutsätter att du redan har hello följande objekt:
 
 * En giltig Azure-prenumeration
 * En Molnplattform för SAP HANA-konto
 
-Den här kursen Azure AD-användare som du har tilldelat till SAP HANA Molnplattform kommer att kunna enkel inloggning till programmet med hjälp av den [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Den här kursen hello Azure AD-användare som du har tilldelat tooSAP HANA Molnplattform kommer att kunna toosingle logga till hello program med hjälp av hello [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 >[!IMPORTANT]
->Du måste distribuera ditt eget program eller prenumerera på ett program på Molnplattform för SAP HANA-konto för att testa enkel inloggning på. I den här självstudiekursen distribueras ett program i kontot.
+>Du måste toodeploy ditt eget program eller prenumerera tooan program på din SAP HANA-Molnplattform konto tootest enkel inloggning. Ett program ska distribueras i hello-konto i den här självstudiekursen.
 > 
 > 
 
-Det scenario som beskrivs i den här kursen består av följande byggblock:
+hello-scenario som beskrivs i den här kursen består av följande byggblock hello:
 
-1. Aktivera application-integrering för SAP HANA Molnplattform
+1. Aktivera hello programintegrationstyp för SAP HANA Molnplattform
 2. Konfigurera enkel inloggning (SSO)
-3. Tilldela en roll till en användare
+3. Tilldela en roll tooa användare
 4. Tilldela användare
 
 ![Scenariot](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790795.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-sap-hana-cloud-platform"></a>Aktivera application-integrering för SAP HANA Molnplattform
-Syftet med det här avsnittet är att beskriva hur du aktiverar programintegrationstyp för SAP HANA Molnplattform.
+## <a name="enabling-hello-application-integration-for-sap-hana-cloud-platform"></a>Aktivera hello programintegrationstyp för SAP HANA Molnplattform
+hello syftet med det här avsnittet är toooutline hur tooenable hello programintegrationstyp för SAP HANA Molnplattform.
 
-**Utför följande steg om du vill aktivera programmet-integrering för SAP HANA Molnplattform:**
+**tooenable hello programintegrationstyp för SAP HANA Molnplattform, utför hello följande steg:**
 
-1. I Azure-hanteringsportalen på det vänstra navigeringsfönstret klickar du på **Active Directory**.
+1. I hello Azure Management Portal på hello vänstra navigationsfönstret klickar du på **Active Directory**.
    
     ![Active Directory](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC700993.png "Active Directory")
-2. Från den **Directory** listan, Välj den katalog som du vill aktivera katalogintegrering.
-3. Klicka för att öppna vyn program i vyn directory **program** på huvudmenyn.
+2. Från hello **Directory** listan, Välj hello katalog som du vill tooenable katalogintegrering.
+3. tooopen hello program i vyn hello directory vyn klickar du på **program** i hello huvudmenyn.
    
     ![Program](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC700994.png "program")
-4. Klicka på **Lägg till** längst ned på sidan.
+4. Klicka på **Lägg till** på hello hello sidans nederkant.
    
     ![Lägg till program](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC749321.png "lägga till program")
-5. På den **vad vill du göra** dialogrutan klickar du på **lägga till ett program från galleriet**.
+5. På hello **vad vill du vill toodo** dialogrutan klickar du på **lägga till ett program från galleriet hello**.
    
     ![Lägga till ett program från gallerry](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC749322.png "lägga till ett program från gallerry")
-6. I den **sökrutan**, typen **Molnplattform för SAP HANA**.
+6. I hello **sökrutan**, typen **Molnplattform för SAP HANA**.
    
     ![Programgalleriet](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790796.png "Programgalleriet")
-7. I resultatfönstret, Välj **Molnplattform för SAP HANA**, och klicka sedan på **Slutför** lägga till programmet.
+7. I resultatfönstret hello väljer **Molnplattform för SAP HANA**, och klicka sedan på **Slutför** tooadd hello program.
    
     ![SAP Hana](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC793929.png "SAP Hana")
    
 ## <a name="configure-single-sign-on"></a>Konfigurera enkel inloggning
 
-Syftet med det här avsnittet är att beskriva hur användarna att autentisera till SAP HANA Molnplattform med ett konto i Azure AD med hjälp av federation baserat på SAML-protokoll.
+hello syftet med det här avsnittet är toooutline hur tooenable användare tooauthenticate tooSAP HANA Molnplattform med ett konto i Azure AD med hjälp av federation baserat på hello SAML-protokoll.
 
-Som en del av den här proceduren måste krävs du för att överföra en Base64-kodade certifikat till din Molnplattform för SAP HANA-klient.  
+Som en del av den här proceduren är obligatoriska tooupload en Base64-kodade certifikatet tooyour Molnplattform för SAP HANA-klient.  
 
-Om du inte är bekant med den här proceduren, se [hur du konverterar ett binärt certifikat till en textfil](http://youtu.be/PlgrzUZ-Y1o)
+Om du inte är bekant med den här proceduren, se [hur tooconvert en binär certifikat i en textfil](http://youtu.be/PlgrzUZ-Y1o)
 
-**Utför följande steg för att konfigurera enkel inloggning:**
+**tooconfigure enkel inloggning, utföra hello följande steg:**
 
-1. I den klassiska Azure-portalen på den **Molnplattform för SAP HANA** integreringssidan för programmet, klickar du på **Konfigurera enkel inloggning** att öppna den **Konfigurera enkel inloggning** dialogrutan.
+1. I hello klassiska Azure-portalen på hello **Molnplattform för SAP HANA** integreringssidan för programmet, klickar du på **Konfigurera enkel inloggning** tooopen hello **Konfigurera enkel inloggning**dialogrutan.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC778552.png "Konfigurera enkel inloggning")
-2. På den **hur vill du att användarna kan logga in på Molnplattform för SAP HANA** väljer **Microsoft Azure AD enkel inloggning**, och klicka sedan på **nästa**.
+2. På hello **hur skulle du som användare toosign på tooSAP HANA Molnplattform** väljer **Microsoft Azure AD enkel inloggning**, och klicka sedan på **nästa**.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790797.png "Konfigurera enkel inloggning")
-3. Logga in till SAP HANA Cloud Platform Cockpit på https://account i ett annat webbläsarfönster. \<liggande värden\>.ondemand.com/cockpit (t.ex.: *https://account.hanatrial.ondemand.com/cockpit*).
-4. Klicka på den **förtroende** fliken.
+3. Inloggning i en annan webbläsarfönster toohello SAP HANA Cloud Platform Cockpit på https://account. \<liggande värden\>.ondemand.com/cockpit (t.ex.: *https://account.hanatrial.ondemand.com/cockpit*).
+4. Klicka på hello **förtroende** fliken.
    
     ![Förtroende](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790800.png "förtroende")
-5. Utför följande steg i förtroende i avsnittet:
+5. Utför följande hello under förtroende management:
    
     ![Hämta Metadata](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC793930.png "hämta Metadata")
    
-   1. Klicka på den **lokal-leverantör** fliken.
-   2. Hämta Molnplattform för SAP HANA-metadatafil Klicka **hämta Metadata**.
-6. I Azure Active-klassiska portalen på den **konfigurera App-URL** , utför följande steg, och klickar sedan på **nästa**.
+   1. Klicka på hello **lokal-leverantör** fliken.
+   2. toodownload hello Molnplattform för SAP HANA metadatafil klickar du på **hämta Metadata**.
+6. I hello Azure Active klassiska portalen på hello **konfigurera App-URL** , utför följande steg hello, och klickar sedan på **nästa**.
    
     ![Konfigurera App-URL](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790798.png "konfigurera App-URL")
    
-   1. I den **logga URL** textruta, Skriv URL-Adressen används av användarna att logga in på ditt **Molnplattform för SAP HANA** program. Detta är en skyddad resurs i ditt program för SAP HANA Molnplattform kontospecifikt URL. URL: en är baserad på följande mönster: *https://\<applicationName\>\<accountName\>.\< liggande värden\>.ondemand.com/\<sökväg\_till\_skyddade\_resurs\>*  (t.ex.: *https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*)
+   1. I hello **logga URL** textruta typen hello URL som används av din toosign för användare i din **Molnplattform för SAP HANA** program. Det här är hello kontospecifikt URL för en skyddad resurs i ditt Molnplattform för SAP HANA-program. hello URL är baserad på hello följer mönstret: *https://\<applicationName\>\<accountName\>.\< liggande värden\>.ondemand.com/\<sökväg\_till\_skyddade\_resurs\>*  (t.ex.: *https://xleavep1941203872trial.hanatrial.ondemand.com/xleave*)
       
      >[!NOTE]
-     >Det här är URL-Adressen i din Molnplattform för SAP HANA-program som kräver att användaren autentiseras.
+     >Detta är hello URL: en i din Molnplattform för SAP HANA-program som kräver hello användaren tooauthenticate.
      > 
 
-   2. Öppna den hämta filen för SAP HANA Molnplattform metadata och välj sedan den **ns3:AssertionConsumerService** tagg.
-   3. Kopiera värdet för den **plats** attributet och klistrar in det i den **Reply-URL för SAP HANA Cloud Platform** textruta.
+   2. Öppna hello hämtas Molnplattform för SAP HANA-metadatafil och välj sedan hello **ns3:AssertionConsumerService** tagg.
+   3. Kopiera hello värdet för hello **plats** attributet och klistra in den i hello **Reply-URL för SAP HANA Cloud Platform** textruta.
 
-7. På den **Konfigurera enkel inloggning på SAP HANA Molnplattform** att hämta metadata, klickar du på **hämtar metadata**, och sedan spara filen på datorn.
+7. På hello **Konfigurera enkel inloggning på SAP HANA Molnplattform** sida, toodownload metadata, klickar du på **hämtar metadata**, och spara sedan hello på datorn.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790799.png "Konfigurera enkel inloggning")
-8. På SAP HANA Cloud Platform Cockpit i den **lokal-leverantör** avsnittet, utför följande steg:
+8. På hello SAP HANA Cloud Platform Cockpit i hello **lokal-leverantör** avsnittet, utföra hello följande steg:
    
     ![Förtroende Management](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC793931.png "förtroende för hantering")
    
   1. Klicka på **Redigera**.
   2. Som **konfigurationstypen**väljer **anpassad**.
-  3. Som **lokala providernamn**, låt standardvärdet.
-  4. Generera en **signeringsnyckeln** och en **signeringscertifikat** nyckelpar, klickar du på **Generera nyckel**.
+  3. Som **lokala providernamn**, lämna hello standardvärdet.
+  4. toogenerate en **signeringsnyckeln** och en **signeringscertifikat** nyckelpar, klickar du på **Generera nyckel**.
   5. Som **huvudnamn spridningen**väljer **inaktiverade**.
   6. Som **kraft autentisering**väljer **inaktiverade**.
   7. Klicka på **Spara**.
 
-9. Klicka på den **betrodda identitetsleverantör** fliken och klicka sedan på **lägga till betrodda identitetsleverantör**.
+9. Klicka på hello **betrodda identitetsleverantör** fliken och klicka sedan på **lägga till betrodda identitetsleverantör**.
    
     ![Förtroende Management](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790802.png "förtroende för hantering")
    
     >[!NOTE]
-    >Om du vill hantera listan över betrodda identitetsleverantörer, måste du har valt typen för anpassad konfiguration i avsnittet lokal-leverantör. Standard konfigurationstypen har du en redigeras och implicit förtroende till SAP-ID-tjänst. Ingen har du inte för förtroendeinställningar.
+    >toomanage hello lista över betrodda identitetsleverantörer, behöver du toohave valt hello typen för anpassad konfiguration i hello lokal-leverantör avsnitt. Konfiguration av standardtyp har du en redigeras och implicit förtroende toohello SAP-ID-tjänst. Ingen har du inte för förtroendeinställningar.
     > 
     > 
 
-10. Klicka på den **allmänna** fliken och klicka sedan på **Bläddra** att överföra metadatafilen hämtade.
+10. Klicka på hello **allmänna** fliken och klicka sedan på **Bläddra** tooupload hello hämtas metadatafil.
     
     ![Förtroende Management](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC793932.png "förtroende för hantering")
     
     >[!NOTE]
-    >Efter överföring metadatafil värdena för **URL för enkel inloggning**, **URL för enkel logga ut** och **signeringscertifikat** fylls i automatiskt.
+    >Efter överföring hello metadatafil hello värden för **URL för enkel inloggning**, **URL för enkel logga ut** och **signeringscertifikat** fylls i automatiskt.
     > 
     > 
 
-11. Klicka på fliken **Attribut**.
-12. På den **attribut** fliken, utför följande steg:
+11. Klicka på hello **attribut** fliken.
+12. På hello **attribut** fliken, utföra hello följande steg:
     
     ![Attribut](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790804.png "attribut") 
-  * Klicka på **Add Assertion-Based attributet**, och Lägg sedan till följande assertion-baserade attribut:
+  * Klicka på **Add Assertion-Based attributet**, och Lägg sedan till hello följande assertion-baserade attribut:
        
     | Attributet för kontrollen | Huvudnamn attribut |
     | --- | --- |
@@ -153,54 +153,54 @@ Om du inte är bekant med den här proceduren, se [hur du konverterar ett binär
     | http://schemas.xmlsoap.org/ws/2005/05/Identity/Claims/emailaddress |E-post 
    
      >[!NOTE]
-     >Konfigurationen av attributen beror på hur program på HCP utvecklas, d.v.s. vilka attribut som de förväntas i SAML-svaret och under vilka namn (Principal attribut) de har åtkomst till det här attributet i koden.
+     >hello konfiguration av hello attribut beror på hur hello program på HCP utvecklas, d.v.s. vilka attribut som de förväntar sig i hello SAML-svar och under vilka namn (Principal attribut) de har åtkomst till det här attributet i hello kod.
      > 
      >  
 
-    1.  Den **standard attributet** i skärmbilden är precis som illustration. Det krävs inte för att göra scenariot som fungerar.   
-    2.  Namn och värden för **Principal attributet** visas i skärmbilden beror på hur programmet utvecklas. Det är möjligt att ditt program kräver olika mappningar.
+    1.  Hej **standard attributet** i hello skärmbild är precis som illustration. Det är inte krävs toomake hello scenariot arbete.   
+    2.  Hej namn och värden för **Principal attributet** visas i hello skärmbild beror på hur hello program utvecklas. Det är möjligt att ditt program kräver olika mappningar.
      
-13. I den klassiska Azure-portalen på den **Konfigurera enkel inloggning på SAP HANA Molnplattform** dialog sidan Välj konfiguration för enkel inloggning bekräftelsen och klicka sedan på **Slutför**.
+13. I hello klassiska Azure-portalen på hello **Konfigurera enkel inloggning på SAP HANA Molnplattform** dialog sidan Välj hello konfiguration för enkel inloggning bekräftelse och klicka sedan på **Slutför**.
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC796933.png "Konfigurera enkel inloggning")
 
 ###<a name="assertion-based-groups"></a>Assertion-baserade grupper
 Som ett valfritt steg kan du konfigurera assertion-baserade grupper för identitetsprovider Azure Active Directory.
 
-Om du använder grupper på Molnplattform för SAP HANA kan du dynamiskt tilldela en eller flera användare till en eller flera roller i din Molnplattform för SAP HANA-program, fastställs av värdena på attributen i SAML 2.0-kontroll. 
+Använda grupper för SAP HANA-Molnplattform kan du toodynamically tilldela en eller flera användare tooone eller flera roller i dina Molnplattform för SAP HANA-program som bestäms av värdena på attributen i hello SAML 2.0-kontroll. 
 
-Om kontrollen innehåller attributet exempelvis ”*kontraktet = temporära*”, kan du vill att alla berörda användare som ska läggas till i gruppen ”*tillfälliga*”. Gruppen ”*tillfälliga*” kan innehålla en eller flera roller från en eller flera program som distribueras i Molnplattform för SAP HANA-konto.
+Innehåller till exempel om hello assertion hello attributet ”*kontraktet = temporära*”, kan du vill att alla berörda toobe tillagda toohello användargruppen ”*tillfälliga*”. Hej grupp ”*tillfälliga*” kan innehålla en eller flera roller från en eller flera program som distribueras i Molnplattform för SAP HANA-konto.
  
-Använda assertion-baserade grupper när du vill tilldela många användare samtidigt till en eller flera roller för program i Molnplattform för SAP HANA-konto. Om du vill tilldela specifika roller bara ett enda eller litet antal användare, rekommenderar vi att tilldela dem direkt i den ”**tillstånd**” för SAP HANA Molnplattform cockpit.
+Använda assertion-baserade grupper när du vill tilldela toosimultaneously många användare tooone eller flera roller av program i Molnplattform för SAP HANA-konto. Om du vill att tooassign bara ett enda eller litet antal användare toospecific roller, rekommenderar vi att tilldela dem direkt i hello ”**tillstånd**” Hej Molnplattform för SAP HANA cockpit fliken.
 
-## <a name="assign-a-role-to-a-user"></a>Tilldela en roll till en användare
-För att aktivera Azure AD-användare att logga in på Molnplattform för SAP HANA, måste du tilldela roller i Molnplattform för SAP HANA dem.
+## <a name="assign-a-role-tooa-user"></a>Tilldela en roll tooa användare
+I ordning tooenable Azure AD-användare toolog till SAP HANA Molnplattform, måste du tilldela roller i hello SAP HANA Molnplattform toothem.
 
-**Utför följande steg om du vill tilldela en roll till en användare:**
+**tooassign en roll tooa användare utför hello följande steg:**
 
-1. Logga in på ditt **Molnplattform för SAP HANA** cockpit.
-2. Utför följande:
+1. Logga in tooyour **Molnplattform för SAP HANA** cockpit.
+2. Utför hello följande:
    
    ![Tillstånd](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790805.png "tillstånd")
    
   1. Klicka på **auktorisering**.
-  2. Klicka på den **användare** fliken.
-  3. I den **användaren** textruta Skriv användarens e-postadress.
-  4. Klicka på **tilldela** tilldela användaren till en roll.
+  2. Klicka på hello **användare** fliken.
+  3. I hello **användaren** textruta typen hello användarens e-postadress.
+  4. Klicka på **tilldela** tooassign hello tooa användarroll.
   5. Klicka på **Spara**.
 
 ## <a name="assign-users"></a>Tilldela användare
-Om du vill testa konfigurationen måste du bevilja Azure AD-användare som du vill tillåta med hjälp av ditt programåtkomst till den genom att tilldela dem.
+tootest konfigurationen, måste toogrant hello Azure AD-användare som du vill med hjälp av ditt program åtkomst tooit genom att tilldela dem tooallow.
 
-**Utför följande steg för att tilldela användare till SAP HANA Molnplattform:**
+**tooassign användare tooSAP HANA Molnplattform utför hello följande steg:**
 
-1. Skapa ett testkonto i den klassiska Azure-portalen.
-2. På den **Molnplattform för SAP HANA** integreringssidan för programmet, klickar du på **tilldela användare**.
+1. Skapa ett testkonto i hello klassiska Azure-portalen.
+2. På hello **Molnplattform för SAP HANA** integreringssidan för programmet, klickar du på **tilldela användare**.
    
    ![Tilldela användare](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC790806.png "tilldela användare")
-3. Välj din testanvändare, klicka på **tilldela**, och klicka sedan på **Ja** att bekräfta din tilldelning.
+3. Välj din testanvändare, klicka på **tilldela**, och klicka sedan på **Ja** tooconfirm tilldelningen.
    
    ![Ja](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/IC767830.png "Ja")
 
-Om du vill testa inställningarna för enkel inloggning, öppna åtkomstpanelen. Mer information om åtkomstpanelen finns [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Om du vill tootest SSO-inställningarna, öppna hello åtkomstpanelen. Mer information om hello åtkomstpanelen finns [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 

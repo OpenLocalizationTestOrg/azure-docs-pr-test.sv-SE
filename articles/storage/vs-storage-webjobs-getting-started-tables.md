@@ -1,6 +1,6 @@
 ---
-title: "Komma igång med Azure storage och Visual Studio anslutna tjänster (Webbjobb projekt)"
-description: "Hur du kommer igång med Azure Table storage i Azure WebJobs-projekt i Visual Studio efter anslutning till ett lagringskonto med hjälp av Visual Studio anslutna tjänster"
+title: "aaaGetting igång med Azure storage och Visual Studio anslutna tjänster (Webbjobb projekt)"
+description: "Hur tooget igång med Azure Table storage i ett Azure WebJobs-projekt i Visual Studio när ansluter tooa lagringskonto med hjälp av Visual Studio anslutna tjänster"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
-ms.openlocfilehash: 79fba102377cdc6b681f6798699767961040a7e2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 448dee3369207062ee85c6636c84bcb4e26a2085
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Komma igång med Azure Storage (Azure Webjobs-projekt)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Översikt
-Den här artikeln innehåller C#-kodexempel som visar visar hur du använder Azure WebJobs SDK version 1.x med Azure table storage-tjänsten. Koden exempel användning av [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) version 1.x.
+Den här artikeln innehåller C#-kodexempel som visar visa hur toouse hello Azure WebJobs SDK version 1.x med hello Azure table storage-tjänsten. hello kodexempel använda hello [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) version 1.x.
 
-Tjänsten Azure Table storage kan du lagra stora mängder strukturerade data. Tjänsten är en NoSQL-datalager som tar emot autentiserade anrop inuti och utanför Azure-molnet. Azure-tabeller passar utmärkt för att lagra strukturerade, icke-relationella data.  Se [komma igång med Azure Table storage med hjälp av .NET](storage-dotnet-how-to-use-tables.md#create-a-table) för mer information.
+hello Azure Table storage-tjänst kan du toostore stora mängder strukturerade data. hello-tjänsten är en NoSQL-datalager som tar emot autentiserade anrop inuti och utanför hello Azure-molnet. Azure-tabeller passar utmärkt för att lagra strukturerade, icke-relationella data.  Se [komma igång med Azure Table storage med hjälp av .NET](storage-dotnet-how-to-use-tables.md#create-a-table) för mer information.
 
-Vissa av koden kodavsnitt visas den **tabell** attribut som används i funktioner som kallas manuellt, det vill säga inte genom att använda ett av attributen för utlösare.
+Vissa hello kodstycken som visar hello **tabell** attribut som används i funktioner som kallas manuellt, det vill säga inte med någon av hello utlösaren attribut.
 
-## <a name="how-to-add-entities-to-a-table"></a>Lägga till entiteter i en tabell
-Om du vill lägga till enheter i en tabell, använder den **tabell** attribut med ett **ICollector<T>**  eller **IAsyncCollector<T>**  parametern där **T** anger schemat för de enheter som du vill lägga till. Attributkonstruktorn använder en strängparameter som anger namnet på tabellen.
+## <a name="how-tooadd-entities-tooa-table"></a>Hur tooadd entiteter tooa tabell
+tooadd entiteter tooa tabell, Använd hello **tabell** attribut med ett **ICollector<T>**  eller **IAsyncCollector<T>**  parametern där **T** anger hello schemat hello entiteter som du vill tooadd. hello Attributkonstruktorn använder en strängparameter som anger hello namnet på hello tabell.
 
-Följande kodexempel lägger till **Person** enheter till en tabell med namnet *ingång*.
+hello följande kodexempel lägger till **Person** entiteter tooa tabell med namnet *ingång*.
 
         [NoAutomaticTrigger]
         public static void IngressDemo(
@@ -50,7 +50,7 @@ Följande kodexempel lägger till **Person** enheter till en tabell med namnet *
             }
         }
 
-Typen du använder vanligtvis med **ICollector** härleds från **TableEntity** eller implementerar **ITableEntity**, men det behöver inte. Något av följande **Person** klasserna arbete med koden som visas i den föregående **ingång** metod.
+Vanligtvis hello typ som du använder med **ICollector** härleds från **TableEntity** eller implementerar **ITableEntity**, men det behöver inte. Något av följande hello **Person** klasserna arbete med hello koden som visas i föregående hello **ingång** metod.
 
         public class Person : TableEntity
         {
@@ -64,25 +64,25 @@ Typen du använder vanligtvis med **ICollector** härleds från **TableEntity** 
             public string Name { get; set; }
         }
 
-Om du vill arbeta direkt med Azure storage API, kan du lägga till en **CloudStorageAccount** parameter till Metodsignaturen.
+Om du vill toowork direkt med hello Azure storage-API, kan du lägga till en **CloudStorageAccount** Metodsignaturen för parametern toohello.
 
 ## <a name="real-time-monitoring"></a>Realtidsövervakning
-Eftersom dataåtkomstfunktioner ofta bearbetar stora mängder data, innehåller WebJobs SDK instrumentpanelen övervakning realtidsdata. Den **anrop loggen** avsnittet berättar om funktionen fortfarande körs.
+Eftersom dataåtkomstfunktioner ofta bearbetar stora mängder data, innehåller hello WebJobs SDK instrumentpanelen övervakning realtidsdata. Hej **anrop loggen** avsnittet berättar om hello funktionen fortfarande körs.
 
 ![Ingång funktionen körs](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
 
-Den **anrop information** sidan rapporterar funktionens status (antal entiteter som skrivs) medan den körs och ger dig en möjlighet att avbryta den.
+Hej **anrop information** sidan rapporterar hello funktionens förlopp (antal entiteter som skrivs) medan den körs och ger dig en möjlighet tooabort den.
 
 ![Ingång funktionen körs](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
 
-När funktionen har slutförts i **anrop information** sidan rapporterar antalet rader som har skrivits.
+När funktionen hello är klar, hello **anrop information** sidan rapporterar hello antalet rader som har skrivits.
 
 ![Ingång funktionen klar](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
-## <a name="how-to-read-multiple-entities-from-a-table"></a>Läsa flera enheter från en tabell
-Läs en tabell genom att använda den **tabell** attribut med ett **IQueryable<T>**  parametern skriver **T** härleds från **TableEntity**eller implementerar **ITableEntity**.
+## <a name="how-tooread-multiple-entities-from-a-table"></a>Hur tooread flera enheter från en tabell
+tooread en tabell, använder hello **tabell** attribut med ett **IQueryable<T>**  parametern skriver **T** härleds från **TableEntity**eller implementerar **ITableEntity**.
 
-Följande kodexempel läser och loggar alla rader från den **ingång** tabell:
+hello följande kodexempel läser och loggar alla rader från hello **ingång** tabell:
 
         public static void ReadTable(
             [Table("Ingress")] IQueryable<Person> tableBinding,
@@ -96,10 +96,10 @@ Följande kodexempel läser och loggar alla rader från den **ingång** tabell:
             }
         }
 
-### <a name="how-to-read-a-single-entity-from-a-table"></a>Läsa en enda entitet från en tabell
-Det finns en **tabell** Attributkonstruktorn med två ytterligare parametrar som kan du ange partitionsnyckel och radnyckel när du vill binda till en enskild tabell entitet.
+### <a name="how-tooread-a-single-entity-from-a-table"></a>Hur tooread en enda entitet från en tabell
+Det finns en **tabell** Attributkonstruktorn med två ytterligare parametrar som kan du ange hello partitionsnyckel och radnyckel när du vill toobind tooa tabell entitet.
 
-Följande kodexempel läser en tabellrad för en **Person** entitet baserat på partitionen nyckel- och nyckelvärden togs emot i ett kömeddelande:  
+hello följande kodexempel läser en tabellrad för en **Person** entitet baserat på partitionen nyckel- och nyckelvärden togs emot i ett kömeddelande:  
 
         public static void ReadTableEntity(
             [QueueTrigger("inputqueue")] Person personInQueue,
@@ -119,12 +119,12 @@ Följande kodexempel läser en tabellrad för en **Person** entitet baserat på 
         }
 
 
-Den **Person** klassen i det här exemplet behöver inte implementera **ITableEntity**.
+Hej **Person** klassen i det här exemplet har inte tooimplement **ITableEntity**.
 
-## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>Hur du använder .NET Storage API direkt för att arbeta med en tabell
-Du kan också använda den **tabell** attribut med en **CloudTable** objekt för större flexibilitet när du arbetar med en tabell.
+## <a name="how-toouse-hello-net-storage-api-directly-toowork-with-a-table"></a>Hur toouse hello .NET Storage API direkt toowork med en tabell
+Du kan också använda hello **tabell** attribut med en **CloudTable** objekt för större flexibilitet när du arbetar med en tabell.
 
-I följande kod exempel används en **CloudTable** objekt att lägga till en enda entitet till den *ingång* tabell.
+hello följande kod exempel används en **CloudTable** objekt tooadd en enda entitet toohello *ingång* tabell.
 
         public static void UseStorageAPI(
             [Table("Ingress")] CloudTable tableBinding,
@@ -140,11 +140,11 @@ I följande kod exempel används en **CloudTable** objekt att lägga till en end
             tableBinding.Execute(insertOperation);
         }
 
-Mer information om hur du använder den **CloudTable** objekt, se [komma igång med Azure Table storage med hjälp av .NET](storage-dotnet-how-to-use-tables.md).
+Mer information om hur toouse hello **CloudTable** objekt, se [komma igång med Azure Table storage med hjälp av .NET](storage-dotnet-how-to-use-tables.md).
 
-## <a name="related-topics-covered-by-the-queues-how-to-article"></a>Närliggande ämnen som omfattas av den här artikeln köer
-Information om hur du hanterar tabell bearbetning som utlöses av ett kömeddelande eller WebJobs-SDK-scenarier som inte är specifika för bearbetning av tabellen finns [komma igång med Azure Queue storage och Visual Studio anslutna tjänster (Webbjobb projekt) ](vs-storage-webjobs-getting-started-queues.md).
+## <a name="related-topics-covered-by-hello-queues-how-tooarticle"></a>Närliggande ämnen som omfattas av hello köer hur-tooarticle
+Information om hur toohandle tabell bearbetning utlöses av ett kömeddelande eller för WebJobs SDK scenarier inte specifika tootable bearbetning, se [komma igång med Azure Queue storage och Visual Studio anslutna tjänster (Webbjobb projekt) ](vs-storage-webjobs-getting-started-queues.md).
 
 ## <a name="next-steps"></a>Nästa steg
-Den här artikeln har lämnat kodexempel som visar hur du hanterar vanliga scenarier för att arbeta med Azure-tabeller. Mer information om hur du använder Azure WebJobs och WebJobs-SDK finns [Azure WebJobs-dokumentation](http://go.microsoft.com/fwlink/?linkid=390226).
+Den här artikeln har angett koden exempel som visar hur toohandle vanliga scenarier för att arbeta med Azure-tabeller. Mer information om hur toouse Azure WebJobs och hello WebJobs SDK, se [Azure WebJobs-dokumentation](http://go.microsoft.com/fwlink/?linkid=390226).
 

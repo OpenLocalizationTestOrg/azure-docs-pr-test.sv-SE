@@ -1,5 +1,5 @@
 ---
-title: "Vanliga scenarier för Microsoft Power BI Embedded"
+title: Microsoft Power BI Embedded aaaCommon-scenarier
 description: "Vanliga scenarier för Microsoft Power BI Embedded"
 services: power-bi-embedded
 documentationcenter: 
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/06/2017
 ms.author: asaxton
-ms.openlocfilehash: f4d145c9e61929cca97a4dd15c10b1028ca424d2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f898fe26217b8c208c97df65de9f365a62934d04
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="common-power-bi-embedded-scenarios"></a>Vanliga scenarier för Power BI Embedded
-**Microsoft Power BI Embedded** fokuserar på att exponera merparten av befintliga Power BI-API-funktioner som en del av en Azure-tjänst att utveckla ditt program med.  Dessutom kommer du att kunna programmässigt etablerar, utveckla och distribuera de nödvändiga resurser och Power BI-innehåll. Läs mer i [komma igång med Microsoft Power BI Embedded](power-bi-embedded-get-started.md).
+**Microsoft Power BI Embedded** fokuserar på att exponera hello merparten av befintliga Power BI-API-funktioner som en del av en Azure-tjänst för du toodevelop dina program med.  Dessutom kan du vara kan tooprogrammatically etablera, utveckla och distribuera hello nödvändiga resurser och Power BI-innehåll. Det finns fler toolearn [komma igång med Microsoft Power BI Embedded](power-bi-embedded-get-started.md).
 
 Här följer några scenarier för att använda **Power BI Embedded** i dina program.
 
-* Helt interaktiva rapporter som har skapats i Power BI Desktop bäddas in i ditt eget program med en ny modell för programmet tokenautentisering.
-* Oberoende programvaruleverantörer och kunder skapa kundinriktade program kan använda den **Power BI Embedded** service och Power BI SDK, att bädda in interaktiva rapporter. Mer information finns i avsnittet [komma igång med Microsoft Power BI Embedded](power-bi-embedded-get-started.md).
-* Som utvecklare kan använda du Power BI visualiseringen framework för att skapa anpassade visualiseringar som kan användas i din egen app. Se [utöka Power BI med anpassad visuell information](https://powerbi.microsoft.com/custom-visuals/).
+* Helt interaktiva rapporter som har skapats i hello Power BI Desktop bäddas in i ditt eget program med en ny modell för programmet tokenautentisering.
+* Oberoende programvaruleverantörer och kunder skapa kundinriktade program kan använda hello **Power BI Embedded** tjänsten och hello Power BI SDK tooembed interaktiva rapporter. toolearn finns i avsnittet [komma igång med Microsoft Power BI Embedded](power-bi-embedded-get-started.md).
+* Du kan använda hello Power BI visualiseringen framework toocreate anpassade visualiseringar som kan användas i din egna app som en utvecklare. Se [utöka Power BI med anpassad visuell information](https://powerbi.microsoft.com/custom-visuals/).
 
 ### <a name="see-also"></a>Se även
 * [Kom igång med Microsoft Power BI Embedded](power-bi-embedded-get-started.md)

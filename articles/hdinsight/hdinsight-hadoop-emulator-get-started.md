@@ -1,6 +1,6 @@
 ---
-title: "Lär dig använda Hadoop-sandbox - emulatorn – Azure HDInsight | Microsoft Docs"
-description: "Om du vill börja lära dig om att använda Hadoop-ekosystemet, kan du ställa in en Hadoop sandbox från Hortonworks på en virtuell Azure-dator. "
+title: "aaaLearn med Hadoop-sandbox - emulatorn – Azure HDInsight | Microsoft Docs"
+description: "Lär dig hur du använder toostart Hej Hadoop-ekosystemet, du kan ställa in en Hadoop sandbox från Hortonworks på en virtuell Azure-dator. "
 keywords: hadoop-emulatorn hadoop sandbox
 editor: cgronlun
 manager: jhubbard
@@ -17,73 +17,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.openlocfilehash: b701879464205860edd1c097651b532f87bae388
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 91e74f0823fd02e9bb812155a7d09357a77b0736
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Kom igång med Hadoop-sandbox, en emulator på en virtuell dator
 
-Lär dig hur du installerar sandlådan Hadoop från Hortonworks på en virtuell dator om du vill veta mer om Hadoop-ekosystemet. Sandbox tillhandahåller en lokal utvecklingsmiljö mer information om Hadoop, Hadoop Distributed File System (HDFS) och skicka jobbet. När du är bekant med Hadoop, kan du börja använda Hadoop i Azure genom att skapa ett HDInsight-kluster. Mer information om hur du kommer igång finns [Kom igång med Hadoop i HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
+Lär dig hur tooinstall hello Hadoop sandbox från Hortonworks på en virtuell dator toolearn om hello Hadoop-ekosystemet. hello sandbox tillhandahåller en lokal utveckling miljö toolearn om Hadoop, Hadoop Distributed File System (HDFS) och skicka jobbet. När du är bekant med Hadoop, kan du börja använda Hadoop i Azure genom att skapa ett HDInsight-kluster. Mer information om hur tooget igång finns [Kom igång med Hadoop i HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="prerequisites"></a>Krav
 * [Oracle VirtualBox](https://www.virtualbox.org/). Hämta och installera den från [här](https://www.virtualbox.org/wiki/Downloads).
 
 
 
-## <a name="download-and-install-the-virtual-machine"></a>Hämta och installera den virtuella datorn
-1. Bläddra till den [Hortonworks hämtar](http://hortonworks.com/downloads/#sandbox).
+## <a name="download-and-install-hello-virtual-machine"></a>Hämta och installera hello virtuell dator
+1. Bläddra toohello [Hortonworks hämtar](http://hortonworks.com/downloads/#sandbox).
 
-2. Klicka på **hämta VIRTUALBOX** att ladda ned den senaste Hortonworks Sandbox på en virtuell dator. Du uppmanas att registrera med Hortonworks innan hämtningen påbörjas. Det tar en till två timmar att hämta beroende på nätverkets hastighet.
+2. Klicka på **hämta VIRTUALBOX** toodownload hello senaste Hortonworks Sandbox på en virtuell dator. Du kan ange tooregister med Hortonworks innan hello hämtningen påbörjas. Det tar en tootwo timmar toodownload beroende på nätverkets hastighet.
    
     ![Länka bild för att ladda ned Hortonworks Sandbox för VirtualBox](./media/hdinsight-hadoop-emulator-get-started/download-sandbox.png)
-3. Samma webbsida, klicka på den **Import på virtuella** länk för att hämta en PDF-fil som innehåller instruktioner för installation för den virtuella datorn.
+3. Från Hej samma webbsida, klicka på hello **Import på virtuella** länka toodownload en PDF-fil som innehåller instruktioner för installation för hello virtuella datorn.
 
-Om du vill hämta en äldre HDP version sandbox Expandera arkivet:
+toodownload ett äldre HDP version sandbox Expandera hello Arkiv:
 
 ![Hortonworks Sandbox-Arkiv](./media/hdinsight-hadoop-emulator-get-started/hortonworks-sandbox-archive.png)
 
 
-## <a name="start-the-virtual-machine"></a>Starta den virtuella datorn
+## <a name="start-hello-virtual-machine"></a>Starta hello virtuell dator
 
 1. Öppna Oracle VM VirtualBox.
-2. Från den **filen** -menyn klickar du på **importera installation**, och sedan ange avbildningen som Hortonworks Sandbox.
-1. Välj sandlådan Hortonworks, klicka på **starta**, och sedan **Normal Start**. När den virtuella datorn har slutförts startprocessen visar instruktioner för inloggning.
+2. Från hello **filen** -menyn klickar du på **importera installation**, och sedan ange hello Hortonworks Sandbox avbildningen.
+1. Klicka på Välj hello Hortonworks Sandbox **starta**, och sedan **Normal Start**. När hello virtuell dator har slutförts hello startprocessen visar instruktioner för inloggning.
    
     ![Normal start](./media/hdinsight-hadoop-emulator-get-started/normal-start.png)
-2. Öppna en webbläsare och gå till den URL som visas (vanligtvis http://127.0.0.1:8888).
+2. Öppna en webbläsare och gå toohello URL visas (vanligtvis http://127.0.0.1:8888).
 
 ## <a name="set-sandbox-passwords"></a>Ange Sandbox lösenord
 
-1. Från den **Kom igång** steg på sidan Hortonworks Sandbox väljer **visa avancerade alternativ**. Använd informationen på den här sidan för att logga in till sandbox via SSH. Använd namn och lösenord angavs.
+1. Från hello **Kom igång** steg i hello Hortonworks Sandbox-sidan, Välj **visa avancerade alternativ**. Använd hello information på den här sidan toolog i toohello sandbox via SSH. Använd hello namn och lösenord angavs.
    
    > [!NOTE]
-   > Om du inte har en SSH-klienten installerad kan du använda den webbaserade SSH som anges i av den virtuella datorn på **http://localhost:4200 /**.
+   > Om du inte har en SSH-klienten installerad kan du använda hello webbaserade SSH anges i hello virtuell dator på **http://localhost:4200 /**.
    > 
    
-    Första gången du ansluter med SSH, uppmanas du att ändra lösenordet för rotkontot. Ange ett nytt lösenord som du använder när du loggar in via SSH.
+    hello kan första gången du ansluter med SSH, du ange toochange hello lösenordet för rotkontot hello. Ange ett nytt lösenord som du använder när du loggar in via SSH.
 
-2. Efter loggat in kan du ange följande kommando:
+2. Efter loggat in kan du ange hello följande kommando:
    
         ambari-admin-password-reset
    
-    När du uppmanas ange ett lösenord för administratörskontot Ambari. Det här används när du använder Ambari-Webbgränssnittet.
+    När du uppmanas ange ett lösenord för hello Ambari-administratörskonto. Det här används när du använder hello Ambari-Webbgränssnittet.
 
 ## <a name="use-hive-commands"></a>Använda Hive-kommandon
 
-1. Från en SSH-anslutning till sandbox använder du följande kommando för att starta Hive-gränssnittet:
+1. Använd hello följande toostart hello Hive-kommandogränssnittet från en SSH-anslutning toohello sandbox:
    
         hive
-2. När gränssnittet har börjat använda följande för att visa tabeller som tillhandahålls med sandbox:
+2. När hello shell har börjat använda hello följande tooview hello tabeller som tillhandahålls med hello sandbox:
    
         show tables;
-3. Använd följande för att hämta 10 rader från den `sample_07` tabellen:
+3. Använd hello följande tooretrieve 10 rader från hello `sample_07` tabell:
    
         select * from sample_07 limit 10;
 
 ## <a name="next-steps"></a>Nästa steg
-* [Lär dig hur du använder Visual Studio med Hortonworks Sandbox](hdinsight-hadoop-emulator-visual-studio.md)
-* [Learning linor av sandlådan Hortonworks](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Lär dig hur toouse Visual Studio med hello Hortonworks Sandbox](hdinsight-hadoop-emulator-visual-studio.md)
+* [Learning hello linor av hello Hortonworks Sandbox](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 * [Hadoop-vägledning - komma igång med HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
 

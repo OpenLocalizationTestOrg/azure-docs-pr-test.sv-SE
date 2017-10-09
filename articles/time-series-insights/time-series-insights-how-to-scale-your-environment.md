@@ -1,6 +1,6 @@
 ---
-title: "Så här skalar du Azure tid serien Insights miljön | Microsoft Docs"
-description: "Den här kursen ingår så här skalar du Azure tid serien Insights-miljö"
+title: "aaaHow tooscale Azure tid serien Insights miljön | Microsoft Docs"
+description: "Den här självstudiekursen beskrivs hur tooscale Azure tid serien Insights-miljö"
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/19/2017
 ms.author: edett
-ms.openlocfilehash: 8f6c66ea2173c98179ec899d6626c2ab6f7ec4b6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 55eda388997589185bd34228762b95e182b228ba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-scale-your-time-series-insights-environment"></a>Så här skalar du tid serien insikter miljön
+# <a name="how-tooscale-your-time-series-insights-environment"></a>Hur tooscale tid serien insikter miljön
 
-Den här kursen ingår så här skalar du tid serien insikter miljön.
+Den här självstudiekursen beskrivs hur tooscale tid serien insikter miljön.
 
 > [!NOTE]
 > Skala upp över sku-typer tillåts inte. En miljö med en S1 Sku kan inte konverteras till en S2 miljö.
@@ -44,12 +44,12 @@ Den här kursen ingår så här skalar du tid serien insikter miljön.
 
 Kapaciteter skalas linjärt, så en S1 sku med kapacitet 2 stöder 2 GB (2 miljoner) händelser per dag ingång hastighet och 60 GB (60 miljoner händelser) per månad.
 
-## <a name="changing-the-capacity-of-your-environment"></a>Ändra kapaciteten för din miljö
+## <a name="changing-hello-capacity-of-your-environment"></a>Ändra hello kapaciteten för din miljö
 
-1. Välj miljön vars kapacitet du vill ändra i Azure-portalen.
+1. I hello Azure-portalen, Välj hello miljö vars kapacitet du vill toochange.
 1. Klicka på Konfigurera under inställningar.
-1. Använd skjutreglaget kapacitet för att välja den kapacitet som uppfyller kraven för meddelanden om ingångs-priser och lagringskapacitet.
+1. Använd hello kapacitet skjutreglaget tooselect hello kapaciteten som uppfyller hello för meddelanden om ingångs-priser och lagringskapacitet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Kontrollera att den nya kapaciteten är tillräckliga för att förhindra begränsning. Mer information finns i *din miljö kan att komma begränsas* avsnittet [här](time-series-insights-diagnose-and-solve-problems.md).
+* Kontrollera att det räcker hello ny kapacitet tooprevent begränsning. Mer information finns i hello *din miljö kan att komma begränsas* avsnittet [här](time-series-insights-diagnose-and-solve-problems.md).

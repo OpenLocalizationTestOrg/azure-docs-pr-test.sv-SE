@@ -1,6 +1,6 @@
 ---
-title: Visa alla enterprise-appar som jag kan hantera i Azure Active Directory | Microsoft Docs
-description: "Hur du visar en lista över enterprise-appar som du har behörighet att hantera i Azure Active Directory"
+title: aaaView alla hello enterprise-appar som jag kan hantera i Azure Active Directory | Microsoft Docs
+description: "Hur toosee en lista över hello enterprise appar som du har hello behörigheter toomanage i Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: 14b335d14d893640d469508d6f34b4e7ec6bee8b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 269e9e5c7ed185a3f6ed9b020875db10bfaea039
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="view-all-the-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>Visa alla enterprise-appar som jag kan hantera i Azure Active Directory
-Du kan hantera dina företagsprogram i Azure Active Directory (AD Azure). Detta inkluderar att visa de appar som du kan hantera, tilldela användare eller grupper i en app underhålla egenskaper för appen, till exempel program namn/logotyp och även om du inaktiverar ett program så att inga användare kan logga in på den.
+# <a name="view-all-hello-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>Visa alla hello program som jag kan hantera i Azure Active Directory
+Du kan hantera dina företagsprogram i hello Azure Active Directory (AD Azure). Detta inkluderar visar hello-appar som du kan hantera, tilldela användare eller grupper tooan app, underhålla egenskaper för hello app, till exempel hello programmet namn/logotyp och även om du inaktiverar ett program så att inga användare kan logga in tooit.
 
 ## <a name="how-do-i-view-all-my-apps"></a>Hur visar jag Mina appar?
-1. Logga in på den [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för katalogen.
-2. Välj **fler tjänster**, ange **Azure Active Directory** i textrutan och välj sedan **RETUR**.
-3. På den **Azure Active Directory -** ***directoryname*** bladet (det vill säga Azure AD bladet för den katalog som du hanterar), Välj **företagsprogram**.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för hello-katalogen.
+2. Välj **fler tjänster**, ange **Azure Active Directory** i hello textruta och välj sedan **RETUR**.
+3. På hello **Azure Active Directory -** ***directoryname*** bladet (det vill säga hello Azure AD bladet för hello-katalog som du hanterar) Välj **företagsprogram**.
 
     ![Öppna företagsappar](./media/active-directory-coreapps-view-azure-portal/open-enterprise-apps.png)
-4. På den **företagsprogram** bladet väljer **alla program**. Ändra kolumnerna från det här bladet som du kan välja appar att hantera eller filtrera listan för att hitta den app som du vill använda (till exempel visa endast inaktiverade appar).
+4. På hello **företagsprogram** bladet väljer **alla program**. Från det här bladet välj toomanage för appar, ändra hello visas kolumner eller filtrera listan hello toofind den app som du vill använda (till exempel tooview endast inaktiverade appar).
 
 ## <a name="next-steps"></a>Nästa steg
-* [Tilldela en användare eller grupp till en enterprise-app](active-directory-coreapps-assign-user-azure-portal.md)
+* [Tilldela en användare eller grupp tooan enterprise app](active-directory-coreapps-assign-user-azure-portal.md)
 * [Ta bort en användare eller grupp från en enterprise-app](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [Inaktivera användarinloggningar för en enterprise-app](active-directory-coreapps-disable-app-azure-portal.md)
-* [Ändra namnet eller logotypen av en enterprise-app](active-directory-coreapps-change-app-logo-user-azure-portal.md)
+* [Ändra hello namn eller logotyp av en enterprise-app](active-directory-coreapps-change-app-logo-user-azure-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: "Principer för anspråksomvandling till Azure API Management | Microsoft Docs"
-description: "Mer information om principer för anspråksomvandling tillgängligt för användning i Azure API Management."
+title: "principer för anspråksomvandling aaaAzure API-hantering | Microsoft Docs"
+description: "Läs mer om hello omvandling principer kan användas i Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: c2bed904b82c569b28a6e00d0cc9b49107c148dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2891cc52d0017b717b3c12a98bc4941b5fd7ea78
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-transformation-policies"></a>API Management-principer för anspråksomvandling
-Det här avsnittet innehåller en referens för följande API Management-principer. Mer information om att lägga till och konfigurera principer finns [principer i API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Det här avsnittet innehåller en referens för hello följande API Management-principer. Mer information om att lägga till och konfigurera principer finns [principer i API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="TransformationPolicies"></a>Principer för anspråksomvandling  
   
--   [Konvertera JSON till XML](api-management-transformation-policies.md#ConvertJSONtoXML) – konverterar begäran eller svar body från JSON till XML.  
+-   [Konvertera JSON tooXML](api-management-transformation-policies.md#ConvertJSONtoXML) – konverterar begäran eller svar body från JSON tooXML.  
   
--   [Konvertera XML till JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) – konverterar begäran eller svar body från XML till JSON.  
+-   [Konvertera XML-tooJSON](api-management-transformation-policies.md#ConvertXMLtoJSON) – konverterar begäran eller svar body från XML-tooJSON.  
   
 -   [Sök och Ersätt strängen i brödtexten](api-management-transformation-policies.md#Findandreplacestringinbody) - söker efter en begäran eller ett svar delsträng och ersätter den med en annan understräng.  
   
--   [Maskera URL: er i innehåll](api-management-transformation-policies.md#MaskURLSContent) -skriver (masker) länkar i svaret body så att de pekar på motsvarande länk via gatewayen.  
+-   [Maskera URL: er i innehåll](api-management-transformation-policies.md#MaskURLSContent) -skriver (masker) länkar hello svar body så att de pekar toohello motsvarande länk via hello gateway.  
   
--   [Ange serverdelstjänst](api-management-transformation-policies.md#SetBackendService) -ändras serverdelstjänst för en inkommande begäran.  
+-   [Ange serverdelstjänst](api-management-transformation-policies.md#SetBackendService) -ändras hello serverdelstjänst för en inkommande begäran.  
   
--   [Konfigurera brödtext](api-management-transformation-policies.md#SetBody) -anger meddelandetexten för inkommande och utgående förfrågningar.  
+-   [Konfigurera brödtext](api-management-transformation-policies.md#SetBody) -anger hello meddelandetexten för inkommande och utgående förfrågningar.  
   
--   [Ange HTTP-huvudet](api-management-transformation-policies.md#SetHTTPheader) – tilldelar ett värde till en befintlig svar och/eller huvudet i begäran eller lägger till nya svar och/eller begäran-huvud.  
+-   [Ange HTTP-huvudet](api-management-transformation-policies.md#SetHTTPheader) - tilldelar en värdet tooan befintliga svar och/eller huvudet i begäran eller lägger till nya svar och/eller begäran-huvud.  
   
 -   [Ange frågesträngparametern](api-management-transformation-policies.md#SetQueryStringParameter) – lägger till, ersätter värdet eller tar bort frågesträngparametern för begäran.  
   
--   [Skriv om URL: en](api-management-transformation-policies.md#RewriteURL) -konverterar en begärd URL från dess offentliga form i formuläret som förväntades av webbtjänsten.  
+-   [Skriv om URL: en](api-management-transformation-policies.md#RewriteURL) -konverterar en begärd URL från dess offentliga formuläret toohello form som förväntades av hello-webbtjänsten.  
   
--   [Transformera XML med hjälp av en XSLT](api-management-transformation-policies.md#XSLTransform) -tillämpar en XSL-transformation på XML i begäran eller svar.  
+-   [Transformera XML med hjälp av en XSLT](api-management-transformation-policies.md#XSLTransform) -gäller en XSL-transformation tooXML i hello begäran eller svar.  
   
-##  <a name="ConvertJSONtoXML"></a>Konvertera JSON till XML  
- Den `json-to-xml` princip konverterar brödtext begäran eller ett svar från JSON till XML.  
+##  <a name="ConvertJSONtoXML"></a>Konvertera JSON tooXML  
+ Hej `json-to-xml` princip konverterar brödtext begäran eller ett svar från JSON tooXML.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -78,18 +78,18 @@ Det här avsnittet innehåller en referens för följande API Management-princip
   
 |Namn|Beskrivning|Krävs|Standard|  
 |----------|-----------------|--------------|-------------|  
-|tillämpa|Attributet måste anges till ett av följande värden.<br /><br /> -alltid - alltid gäller konvertering.<br />-innehåll typ-json - Konvertera endast om response Content-Type-huvud anger förekomsten av JSON.|Ja|Saknas|  
-|Överväg att acceptera-huvud|Attributet måste anges till ett av följande värden.<br /><br /> tillämpa - true - konvertering om JSON begärs i begäran Accept-huvud.<br />-alltid gäller false - konvertering.|Nej|SANT|  
+|tillämpa|hello-attributet måste anges tooone av hello följande värden.<br /><br /> -alltid - alltid gäller konvertering.<br />-innehåll typ-json - Konvertera endast om response Content-Type-huvud anger förekomsten av JSON.|Ja|Saknas|  
+|Överväg att acceptera-huvud|hello-attributet måste anges tooone av hello följande värden.<br /><br /> tillämpa - true - konvertering om JSON begärs i begäran Accept-huvud.<br />-alltid gäller false - konvertering.|Nej|SANT|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående, vid fel  
   
 -   **Princip för scope:** globala, produkt, API, åtgärden  
   
-##  <a name="ConvertXMLtoJSON"></a>Konvertera XML till JSON  
- Den `xml-to-json` princip konverterar brödtext begäran eller ett svar från XML till JSON. Den här principen kan användas för att modernisera API: er baserat på backend endast XML-webbtjänster.  
+##  <a name="ConvertXMLtoJSON"></a>Konvertera XML-tooJSON  
+ Hej `xml-to-json` princip konverterar brödtext begäran eller ett svar från XML-tooJSON. Den här principen kan vara används toomodernize API: er baserat på backend endast XML-webbtjänster.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -121,24 +121,24 @@ Det här avsnittet innehåller en referens för följande API Management-princip
   
 |Namn|Beskrivning|Krävs|Standard|  
 |----------|-----------------|--------------|-------------|  
-|typ|Attributet måste anges till ett av följande värden.<br /><br /> javascript-anpassad - konverterade JSON har ett eget JavaScript-utvecklare formulär.<br />-direkt - visar konverterade JSON det ursprungliga XML-dokumentets struktur.|Ja|Saknas|  
-|tillämpa|Attributet måste anges till ett av följande värden.<br /><br /> -alltid - konvertera alltid.<br />-innehåll-typ-xml - Konvertera endast om response Content-Type-huvud anger förekomsten av XML.|Ja|Saknas|  
-|Överväg att acceptera-huvud|Attributet måste anges till ett av följande värden.<br /><br /> tillämpa - true - konvertering om begärs XML i begäran Accept-huvud.<br />-alltid gäller false - konvertering.|Nej|SANT|  
+|typ|hello-attributet måste anges tooone av hello följande värden.<br /><br /> -javascript anpassad - hello konverteras JSON har ett eget tooJavaScript utvecklare för formuläret.<br />-direkt - visar hello konverterade JSON hello ursprungliga XML-dokumentets struktur.|Ja|Saknas|  
+|tillämpa|hello-attributet måste anges tooone av hello följande värden.<br /><br /> -alltid - konvertera alltid.<br />-innehåll-typ-xml - Konvertera endast om response Content-Type-huvud anger förekomsten av XML.|Ja|Saknas|  
+|Överväg att acceptera-huvud|hello-attributet måste anges tooone av hello följande värden.<br /><br /> tillämpa - true - konvertering om begärs XML i begäran Accept-huvud.<br />-alltid gäller false - konvertering.|Nej|SANT|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående, vid fel  
   
 -   **Princip för scope:** globala, produkt, API, åtgärden  
   
 ##  <a name="Findandreplacestringinbody"></a>Sök och Ersätt strängen i brödtext  
- Den `find-and-replace` princip söker efter en begäran eller ett svar delsträng och ersätter den med en annan understräng.  
+ Hej `find-and-replace` princip söker efter en begäran eller ett svar delsträng och ersätter den med en annan understräng.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
 ```xml  
-<find-and-replace from="what to replace" to="replacement" />  
+<find-and-replace from="what tooreplace" to="replacement" />  
 ```  
   
 ### <a name="example"></a>Exempel  
@@ -157,21 +157,21 @@ Det här avsnittet innehåller en referens för följande API Management-princip
   
 |Namn|Beskrivning|Krävs|Standard|  
 |----------|-----------------|--------------|-------------|  
-|Från|Sträng att söka efter.|Ja|Saknas|  
-|till|Ersättningssträngen. Ange ersättning nollängd för att ta bort söksträngen.|Ja|Saknas|  
+|Från|hello sträng toosearch för.|Ja|Saknas|  
+|till|hello ersättningssträngen. Ange ersättning sträng tooremove hello Sök nollängd.|Ja|Saknas|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående backend fel  
   
 -   **Princip för scope:** globala, produkt, API, åtgärden  
   
 ##  <a name="MaskURLSContent"></a>Mask-URL: er i innehåll  
- Den `redirect-content-urls` princip skriver (masker) länkar i svarstexten så att de pekar på motsvarande länk via gatewayen. Använda i avsnittet utgående för att Skriv svaret brödtext länkar så att de pekar på gatewayen. Använd i avsnittet inkommande för en motsatt effekt.  
+ Hej `redirect-content-urls` princip skriver (masker) länkar i hello svarstexten så att de pekar toohello motsvarande länk via hello gateway. Använd i hello utgående avsnittet toore Skriv svaret brödtext länkar toomake dem punkt toohello gateway. Använd i hello inkommande avsnittet för en motsatt effekt.  
   
 > [!NOTE]
->  Den här principen ändras inte alla värden i huvudet som `Location` huvuden. Du kan ändra värden i huvudet i [set-huvudet](api-management-transformation-policies.md#SetHTTPheader) princip.  
+>  Den här principen ändras inte alla värden i huvudet som `Location` huvuden. toochange huvudvärden använda hello [set-huvudet](api-management-transformation-policies.md#SetHTTPheader) princip.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -192,19 +192,19 @@ Det här avsnittet innehåller en referens för följande API Management-princip
 |omdirigerings-innehåll-URL: er|Rotelementet.|Ja|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående  
   
 -   **Princip för scope:** globala, produkt, API, åtgärden  
   
 ##  <a name="SetBackendService"></a>Ange backend-tjänst  
- Använd den `set-backend-service` för att omdirigera en inkommande begäran till en annan serverdelen än den som angetts i API-inställningarna för den åtgärden. Den här principen ändras backend service bas-URL till den inkommande begäranden till den som anges i principen.  
+ Använd hello `set-backend-service` princip tooredirect en inkommande begäran tooa olika backend än hello som anges i inställningarna för hello API för åtgärden. Den här principen ändras hello backend service bas-URL för hello inkommande begäran toohello som har angetts i hello princip.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
 ```xml  
-<set-backend-service base-url="base URL of the backend service" />  
+<set-backend-service base-url="base URL of hello backend service" />  
 ```  
   
 ### <a name="example"></a>Exempel  
@@ -227,13 +227,13 @@ Det här avsnittet innehåller en referens för följande API Management-princip
     </outbound>  
 </policies>  
 ```  
-I det här exemplet skickar ange backend service princip förfrågningar baserat på versionsvärdet frågesträngen som skickas till en annan serverdelstjänst än den som anges i Programmeringsgränssnittet.
+I det här exemplet hello dirigerar ange backend service princip förfrågningar baserat på hello versionsvärdet som överförts hello frågan sträng tooa olika serverdelstjänst än hello en anges i hello API.
   
-Den grundläggande Webbadressen för backend-tjänsten är ursprungligen härleds från API-inställningarna. Så den begärda Webbadressen `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` blir `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef` där `http://contoso.com/api/10.4/` är backend-tjänst-URL som anges i inställningarna för API.  
+Ursprungligen är hello grundläggande Webbadressen för backend-tjänsten härledd från hello API-inställningarna. Så hello URL-begäran `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` blir `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef` där `http://contoso.com/api/10.4/` är hello backend tjänst-URL som anges i inställningarna för hello API.  
   
-När den [< Välj\> ](api-management-advanced-policies.md#choose) Principframställning tillämpas den grundläggande Webbadressen för backend-tjänst kan ändra igen antingen `http://contoso.com/api/8.2` eller `http://contoso.com/api/9.1`, beroende på värdet på Frågeparametern version begäran. Om värdet är till exempel `"2013-15"` sista begäran URL blir `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`.  
+När hello [< Välj\> ](api-management-advanced-policies.md#choose) Principframställning tillämpas hello backend service bas-URL kan ändra igen antingen för`http://contoso.com/api/8.2` eller `http://contoso.com/api/9.1`, beroende på hello värdet för Frågeparametern för hello version begäran. Till exempel om hello är värdet `"2013-15"` hello slutliga begäran URL blir `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`.  
   
-Om ytterligare transformering av begäran är önskade, andra [principer för Anspråksomvandling](api-management-transformation-policies.md#TransformationPolicies) kan användas. Till exempel för att ta bort Frågeparametern versionen nu att begäran omdirigeras till en specifik version-serverdelen av [ange frågesträngparametern](api-management-transformation-policies.md#SetQueryStringParameter) princip kan användas för att ta bort Versionsattributet nu redundant.  
+Om ytterligare transformering av hello-begäran är önskade, andra [principer för Anspråksomvandling](api-management-transformation-policies.md#TransformationPolicies) kan användas. Till exempel tooremove hello version fråga parametern nu när hello begäran håller på att dirigeras tooa version specifika serverdel hello [ange frågesträngparametern](api-management-transformation-policies.md#SetQueryStringParameter) policy kan vara används tooremove hello nu redundant versionsattribut.  
   
 ### <a name="example"></a>Exempel  
   
@@ -247,7 +247,7 @@ Om ytterligare transformering av begäran är önskade, andra [principer för An
     </outbound>  
 </policies>  
 ```  
-I det här exemplet dirigerar principen begäran till en service fabric serverdel använder frågesträngen användar-ID som partitionsnyckel och använder den primära repliken av partitionen.  
+I det här exemplet hello princip vägar hello begäran tooa service fabric serverdel använder hello userId frågesträngen som hello partitionsnyckel hello primär replik av hello partitionen.  
 
 ### <a name="elements"></a>Element  
   
@@ -260,33 +260,33 @@ I det här exemplet dirigerar principen begäran till en service fabric serverde
 |Namn|Beskrivning|Krävs|Standard|  
 |----------|-----------------|--------------|-------------|  
 |bas-url|Nya backend service bas-URL.|Nej|Saknas|  
-|backend-id|Identifierare för att dirigera till serverdelen.|Nej|Saknas|  
-|SA partitionsnyckel|Gäller endast när serverdelen är en tjänst för Service Fabric och anges med backend-id. Används för att lösa en specifik partition från Namnmatchningstjänsten.|Nej|Saknas|  
-|SA-replik-typ|Gäller endast när serverdelen är en tjänst för Service Fabric och anges med backend-id. Styr om begäran ska skickas till primär eller sekundär replik av en partition. |Nej|Saknas|    
-|SA Lös villkor|Gäller endast när serverdelen är en tjänst för Service Fabric. Identifiera om anropet till Service Fabric-serverdelen har upprepas med nya lösningar-villkor.|Nej|Saknas|    
-|SA-tjänsten-instansnamn|Gäller endast när serverdelen är en tjänst för Service Fabric. Du kan ändra instanser av tjänsten vid körning. |Nej|Saknas|    
+|backend-id|Identifierare för hello backend tooroute till.|Nej|Saknas|  
+|SA partitionsnyckel|Gäller endast när hello serverdelen är en tjänst för Service Fabric och anges med backend-id. Använda tooresolve en specifik partition från hello namnmatchningstjänst.|Nej|Saknas|  
+|SA-replik-typ|Gäller endast när hello serverdelen är en tjänst för Service Fabric och anges med backend-id. Styr om hello begäran ska gå toohello primär eller sekundär replik av en partition. |Nej|Saknas|    
+|SA Lös villkor|Gäller endast när hello serverdelen är en tjänst för Service Fabric. Villkoret identifierar har om hello anropa tooService Fabric backend toobe upprepas med nya lösningar.|Nej|Saknas|    
+|SA-tjänsten-instansnamn|Gäller endast när hello serverdelen är en tjänst för Service Fabric. Tillåter toochange instanser av tjänsten vid körning. |Nej|Saknas|    
 
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, backend  
   
 -   **Princip för scope:** globala, produkt, API, åtgärden  
   
 ##  <a name="SetBody"></a>Ange brödtext  
- Använd den `set-body` Grupprincip för att ange brödtext för inkommande och utgående förfrågningar. Åtkomst till meddelandetexten som du kan använda den `context.Request.Body` egenskapen eller `context.Response.Body`, beroende på om principen finns i avsnittet inkommande eller utgående.  
+ Använd hello `set-body` princip tooset hello meddelandetexten för inkommande och utgående förfrågningar. tooaccess hello meddelandetexten som du kan använda hello `context.Request.Body` egenskap eller hello `context.Response.Body`, beroende på om hello princip i hello inkommande eller utgående avsnitt.  
   
 > [!IMPORTANT]
->  Observera att som standard när du använder meddelandet body med `context.Request.Body` eller `context.Response.Body`, den ursprungliga meddelandetexten försvinner och måste anges genom att returnera innehållet i uttrycket. Om du vill bevara brödtext innehållet, ange den `preserveContent` parameter till `true` vid åtkomst av meddelandet. Om `preserveContent` är inställd på `true` och en annan text returnerades av uttrycket returnerade brödtexten används.  
+>  Observera att som standard när du använder hello meddelande brödtext med `context.Request.Body` eller `context.Response.Body`, ursprungliga hälsningsmeddelande brödtext går förlorad och måste anges genom att returnera hello brödtext tillbaka i hello uttryck. toopreserve hello brödtext innehåll, ange hello `preserveContent` parameter för`true` vid åtkomst till hello-meddelande. Om `preserveContent` har angetts för`true` och en annan text returneras av hello uttryck hello returnerade brödtext används.  
 >   
->  Observera följande när du använder den `set-body` princip.  
+>  Observera följande överväganden när du använder hello hello `set-body` princip.  
 >   
->  -   Om du använder den `set-body` princip för att returnera en ny eller uppdaterad text som du inte behöver ange `preserveContent` till `true` eftersom tillhandahåller du uttryckligen det nya innehållet i brödtexten.  
-> -   Bevara innehållet i ett svar i pipeline för inkommande passar inte eftersom det inte finns något svar ännu.  
-> -   Bevara innehållet i en begäran i pipeline för utgående vara inte meningsfullt eftersom begäran har redan skickats till serverdelen nu.  
+>  -   Om du använder hello `set-body` princip tooreturn en ny eller uppdaterad text som du inte behöver tooset `preserveContent` för`true` eftersom tillhandahåller du uttryckligen hello nya innehållet i meddelandetexten.  
+> -   Bevara hello innehållet i ett svar i hello inkommande pipeline passar inte eftersom det inte finns något svar ännu.  
+> -   Bevara hello innehållet i en begäran i hello utgående pipeline vara inte meningsfullt eftersom hello begäran har redan skickats toohello backend nu.  
 > -   Om den här principen används när det finns ingen brödtext, genereras till exempel i en inkommande GET ett undantag.  
   
- Mer information finns i `context.Request.Body`, `context.Response.Body`, och `IMessage` avsnitten i den [kontexten variabeln](api-management-policy-expressions.md#ContextVariables) tabell.  
+ Mer information finns i hello `context.Request.Body`, `context.Response.Body`, och hello `IMessage` avsnitt i hello [kontexten variabeln](api-management-policy-expressions.md#ContextVariables) tabell.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -302,7 +302,7 @@ I det här exemplet dirigerar principen begäran till en service fabric serverde
 <set-body>Hello world!</set-body>  
 ```  
   
-#### <a name="example-accessing-the-body-as-a-string-note-that-we-are-preserving-the-original-request-body-so-that-we-can-access-it-later-in-the-pipeline"></a>Exempel åtkomst till innehållet som en sträng. Observera att vi bevarar den ursprungliga begärandetexten så att vi kan komma åt den senare i pipelinen.
+#### <a name="example-accessing-hello-body-as-a-string-note-that-we-are-preserving-hello-original-request-body-so-that-we-can-access-it-later-in-hello-pipeline"></a>Exempel åtkomst till hello brödtext som en sträng. Observera att vi bevarar hello ursprungliga begärandetexten så att vi kan komma åt den senare i hello pipeline.
   
 ```xml  
 <set-body>  
@@ -316,7 +316,7 @@ I det här exemplet dirigerar principen begäran till en service fabric serverde
 </set-body>  
 ```  
   
-#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Exempel åtkomst till innehållet som en JObject. Observera att eftersom vi inte reserverar ursprungliga begärandetexten, öppnar den senare i pipeline resulterar i ett undantag.  
+#### <a name="example-accessing-hello-body-as-a-jobject-note-that-since-we-are-not-reserving-hello-original-request-body-accesing-it-later-in-hello-pipeline-will-result-in-an-exception"></a>Exempel åtkomst till hello brödtext som en JObject. Observera att eftersom vi inte reserverar hello ursprungliga begärantext öppnar det senare i hello pipeline kommer att resultera i ett undantag.  
   
 ```xml  
 <set-body>   
@@ -332,10 +332,10 @@ I det här exemplet dirigerar principen begäran till en service fabric serverde
 ```  
   
 #### <a name="filter-response-based-on-product"></a>Filtrera respons baserat på produkt  
- Det här exemplet illustrerar hur du utför innehållsfiltrering genom att ta bort dataelement från svar togs emot från serverdelstjänsten när du använder den `Starter` produkten. En demonstration av hur du konfigurerar och använder den här principen finns [moln omfattar avsnitt 177: mer API Management-funktioner med Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) och spola framåt till 34:30. Börja med 31:50 att se en översikt över [mörkt Sky prognos API: N](https://developer.forecast.io/) används för den här demon.  
+ Det här exemplet illustrerar hur tooperform innehållsfiltrering genom att ta bort dataelement från hello svar togs emot från hello backend-tjänsten när du använder hello `Starter` produkten. En demonstration av hur du konfigurerar och använder den här principen finns [moln omfattar avsnitt 177: mer API Management-funktioner med Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) och framåt too34:30. Starta en översikt över vid 31:50 toosee [hello mörkt Sky prognos API](https://developer.forecast.io/) används för den här demon.  
   
 ```xml  
-<!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->  
+<!-- Copy this snippet into hello outbound section tooremove a number of data elements from hello response received from hello backend service based on hello name of hello api product -->  
 <choose>  
   <when condition="@(context.Response.StatusCode == 200 && context.Product.Name.Equals("Starter"))">  
     <set-body>@{  
@@ -351,17 +351,17 @@ I det här exemplet dirigerar principen begäran till en service fabric serverde
 ```  
 
 ### <a name="using-liquid-templates-with-set-body"></a>Med hjälp av flytande mallar med set-brödtext 
-Den `set-body` principen kan konfigureras för att använda den [flytande](https://shopify.github.io/liquid/basics/introduction/) templating språk till transfom brödtexten i en begäran eller ett svar. Detta kan vara mycket effektivt om du behöver helt Omforma formatet för meddelandet.
+Hej `set-body` policy kan vara konfigurerade toouse hello [flytande](https://shopify.github.io/liquid/basics/introduction/) templating språk tootransfom hello brödtexten i en begäran eller ett svar. Detta kan vara mycket effektivt om du behöver toocompletely ändra form hello format för meddelandet.
 
 > [!IMPORTANT]
-> Implementeringen av flytande används i den `set-body` principen är konfigurerad i 'C# mode'. Detta är särskilt viktigt när du gör saker, till exempel filtrering. Exempel med hjälp av ett filter kräver användning av Pascal skiftläge och C# datum formatering t.ex.:
+> Hej implementering av flytande som används i hello `set-body` principen är konfigurerad i 'C# mode'. Detta är särskilt viktigt när du gör saker, till exempel filtrering. Exempel med hjälp av ett filter kräver hello Pascal skiftläge och C# datum formatering t.ex.:
 >
 > {{body.foo.startDateTime| Datum: ”yyyyMMddTHH:mm:ddZ”}}
 
 > [!IMPORTANT]
-> För att kunna bindas till en XML-meddelandetext med mallen flytande, använda en `set-header` Grupprincip för att ange Content-Type antingen application/xml, text/xml (eller någon typ som slutar med + xml) till, en JSON-meddelandetext, måste det vara application/json, text/json (eller någon typ som slutar med + JSON).
+> I ordning toocorrectly bind tooan XML-meddelandetext med hello flytande mall, använda en `set-header` princip tooset Content-Type tooeither application/xml, text/xml (eller någon typ som slutar med + xml); för JSON-meddelandetext det måste vara application/json, text/json (eller någon typ avslutas med + json).
 
-#### <a name="convert-json-to-soap-using-a-liquid-template"></a>Konvertera JSON till SOAP med en flytande mall
+#### <a name="convert-json-toosoap-using-a-liquid-template"></a>Konvertera JSON tooSOAP med en flytande mall
 ```xml
 <set-body template="liquid">
     <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -388,15 +388,15 @@ Den `set-body` principen kan konfigureras för att använda den [flytande](https
   
 |Namn|Beskrivning|Krävs|  
 |----------|-----------------|--------------|  
-|Ange brödtext|Rotelementet. Innehåller brödtexten eller ett uttryck som returnerar en brödtext.|Ja|  
+|Ange brödtext|Rotelementet. Innehåller hello brödtext eller ett uttryck som returnerar en brödtext.|Ja|  
 
 ### <a name="properties"></a>Egenskaper  
   
 |Namn|Beskrivning|Krävs|Standard|  
 |----------|-----------------|--------------|-------------|  
-|mall|Används för att ändra läget för templating som ange brödtext princip kommer att köras. För närvarande är det enda värdet som stöds:<br /><br />-flytande - ange brödtext princip kommer att använda flytande templating motorn |Nej|flytande|  
+|mall|Använda toochange hello templating läge som hello ange brödtext princip körs i. För närvarande är hello stöds endast värdet:<br /><br />-flytande - hello ange brödtext princip kommer att använda hello flytande templating motorn |Nej|flytande|  
 
-För att komma åt information om begäran och svar, kan flytande mallen bindas till ett kontextobjekt med följande egenskaper: <br />
+För att komma åt information om hello förfrågan och svar, binda hello flytande mallen tooa context-objektet med hello följande egenskaper: <br />
 <pre>context.
     Request.
         Url
@@ -437,22 +437,22 @@ OriginalUrl.
 
 
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående backend  
   
 -   **Princip för scope:** globala, produkt, API, åtgärden  
   
 ##  <a name="SetHTTPheader"></a>Ange HTTP-huvud  
- Den `set-header` princip tilldelar ett värde till en befintlig svar och/eller huvudet i begäran eller lägger till nya svar och/eller begäran-huvud.  
+ Hej `set-header` principen tilldelas värdet tooan befintliga svar och/eller huvudet i begäran eller lägger till nya svar och/eller begäran-huvud.  
   
- Infogar en lista över HTTP-huvuden i ett HTTP-meddelande. När den placeras i en inkommande pipeline i den här principen anger HTTP-huvuden för begäran som skickas till Måltjänsten. När den placeras i en utgående pipeline i den här principen anger HTTP-huvuden för svar som skickas till en gateway-klienten.  
+ Infogar en lista över HTTP-huvuden i ett HTTP-meddelande. När den placeras i en inkommande pipeline, anger den här principen hello HTTP-huvuden för hello-begäran som skickas toohello Måltjänsten. När den placeras i en utgående pipeline, anger den här principen hello HTTP-huvuden för hello svar skickas toohello gateway-klienten.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
 ```xml  
 <set-header name="header name" exists-action="override | skip | append | delete">  
-    <value>value</value> <!--for multiple headers with the same name add additional value elements-->  
+    <value>value</value> <!--for multiple headers with hello same name add additional value elements-->  
 </set-header>  
 ```  
   
@@ -466,11 +466,11 @@ OriginalUrl.
 </set-header>  
 ```  
   
-#### <a name="forward-context-information-to-the-backend-service"></a>Vidarebefordra kontextinformation till serverdelstjänsten  
- Det här exemplet visar hur du tillämpa principen på API-nivå för att leverera sammanhangsinformation till backend-tjänsten. En demonstration av hur du konfigurerar och använder den här principen finns [moln omfattar avsnitt 177: mer API Management-funktioner med Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) och spola framåt till 10:30. Det finns en demonstration av anropa en funktion i developer-portalen där du kan se principen på arbetet vid 12:10.  
+#### <a name="forward-context-information-toohello-backend-service"></a>Vidarebefordra kontexten information toohello serverdelstjänst  
+ Det här exemplet visar hur tooapply princip hello API-nivå toosupply kontexten information toohello serverdelstjänst. En demonstration av hur du konfigurerar och använder den här principen finns [moln omfattar avsnitt 177: mer API Management-funktioner med Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) och framåt too10:30. Det finns en demonstration av anropa en funktion i hello developer-portalen där du kan se hello princip på arbetet vid 12:10.  
   
 ```xml  
-<!-- Copy this snippet into the inbound element to forward some context information, user id and the region the gateway is hosted in, to the backend service for logging or evaluation -->  
+<!-- Copy this snippet into hello inbound element tooforward some context information, user id and hello region hello gateway is hosted in, toohello backend service for logging or evaluation -->  
 <set-header name="x-request-context-data" exists-action="override">  
   <value>@(context.User.Id)</value>  
   <value>@(context.Deployment.Region)</value>  
@@ -484,30 +484,30 @@ OriginalUrl.
 |Namn|Beskrivning|Krävs|  
 |----------|-----------------|--------------|  
 |set-huvud|Rotelementet.|Ja|  
-|värde|Anger värdet för huvudet anges. För flera huvuden med samma namn Lägg till ytterligare `value` element.|Ja|  
+|värde|Anger hello värdet i hello huvud toobe uppsättning. Flera huvuden med hello samma namn lägga till ytterligare `value` element.|Ja|  
   
 ### <a name="properties"></a>Egenskaper  
   
 |Namn|Beskrivning|Krävs|Standard|  
 |----------|-----------------|--------------|-------------|  
-|Det finns åtgärd|Anger vilken åtgärd som ska vidtas när huvudet har redan angetts. Det här attributet måste ha något av följande värden.<br /><br /> -åsidosätt - ersätter värdet för befintliga-huvud.<br />-skip - ersätter inte det befintliga huvudvärdet.<br />-Tillägg - lägger till värdet på det befintliga huvudvärdet.<br />-delete - tar bort huvudet i begäran.<br /><br /> Om värdet är `override` ta med flera poster med samma namn resulterar i sidhuvudet har angetts enligt alla poster (som visas flera gånger); endast listade värden anges i resultatet.|Nej|åsidosätt|  
-|namn|Anger namnet på huvudet som ska anges.|Ja|Saknas|  
+|Det finns åtgärd|Anger vilken åtgärd tootake när hello-sidhuvudet har redan angetts. Det här attributet måste ha något av följande värden hello.<br /><br /> -åsidosätt - ersätter hello värdet för befintliga hello-huvud.<br />-skip - ersätter inte hello befintliga huvudvärde.<br />-Tillägg - lägger till hello värdet toohello befintliga huvudvärde.<br />-delete - tar bort hello huvudet från hello-begäran.<br /><br /> När värdet för`override` ta med flera poster med hello samma namn resulterar i hello-huvud som set bl.a tooall poster (som visas flera gånger); endast listade värden anges i hello resultat.|Nej|åsidosätt|  
+|namn|Anger namnet på hello huvud toobe uppsättning.|Ja|Saknas|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående backend fel  
   
 -   **Princip för scope:** globala, produkt, API, åtgärden  
   
 ##  <a name="SetQueryStringParameter"></a>Ange frågesträngparametern  
- Den `set-query-parameter` principen läggs till, ersätter värde, eller tar bort begära frågesträngparametern. Kan användas för att skicka fråga parametrar förväntades av backend-tjänsten som är valfria eller aldrig i begäran.  
+ Hej `set-query-parameter` principen läggs till, ersätter värde, eller tar bort begära frågesträngparametern. Kan vara används toopass frågeparametrar förväntades av hello serverdelstjänst som är valfria eller aldrig finns i hello-begäran.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
 ```xml  
 <set-query-parameter name="param name" exists-action="override | skip | append | delete">  
-    <value>value</value> <!--for multiple parameters with the same name add additional value elements-->  
+    <value>value</value> <!--for multiple parameters with hello same name add additional value elements-->  
 </set-query-parameter>  
 ```  
   
@@ -521,16 +521,16 @@ OriginalUrl.
   <parameter name="api-key" exists-action="skip">  
     <value>12345678901</value>  
   </parameter>  
-  <!-- for multiple parameters with the same name add additional value elements -->  
+  <!-- for multiple parameters with hello same name add additional value elements -->  
 </set-query-parameter>  
   
 ```  
   
-#### <a name="forward-context-information-to-the-backend-service"></a>Vidarebefordra kontextinformation till serverdelstjänsten  
- Det här exemplet visar hur du tillämpa principen på API-nivå för att leverera sammanhangsinformation till backend-tjänsten. En demonstration av hur du konfigurerar och använder den här principen finns [moln omfattar avsnitt 177: mer API Management-funktioner med Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) och spola framåt till 10:30. Det finns en demonstration av anropa en funktion i developer-portalen där du kan se principen på arbetet vid 12:10.  
+#### <a name="forward-context-information-toohello-backend-service"></a>Vidarebefordra kontexten information toohello serverdelstjänst  
+ Det här exemplet visar hur tooapply princip hello API-nivå toosupply kontexten information toohello serverdelstjänst. En demonstration av hur du konfigurerar och använder den här principen finns [moln omfattar avsnitt 177: mer API Management-funktioner med Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) och framåt too10:30. Det finns en demonstration av anropa en funktion i hello developer-portalen där du kan se hello princip på arbetet vid 12:10.  
   
 ```xml  
-<!-- Copy this snippet into the inbound element to forward a piece of context, product name in this example, to the backend service for logging or evaluation -->  
+<!-- Copy this snippet into hello inbound element tooforward a piece of context, product name in this example, toohello backend service for logging or evaluation -->  
 <set-query-parameter name="x-product-name" exists-action="override">  
   <value>@(context.Product.Name)</value>  
 </set-query-parameter>  
@@ -544,33 +544,33 @@ OriginalUrl.
 |Namn|Beskrivning|Krävs|  
 |----------|-----------------|--------------|  
 |Ange frågeparameter|Rotelementet.|Ja|  
-|värde|Anger värdet för Frågeparametern anges. För flera frågeparametrar med samma namn Lägg till ytterligare `value` element.|Ja|  
+|värde|Anger hello värdet i hello frågan toobe parameteruppsättning. För flera frågeparametrar med hello samma namn lägga till ytterligare `value` element.|Ja|  
   
 ### <a name="properties"></a>Egenskaper  
   
 |Namn|Beskrivning|Krävs|Standard|  
 |----------|-----------------|--------------|-------------|  
-|Det finns åtgärd|Anger vilken åtgärd som ska vidtas när Frågeparametern har redan angetts. Det här attributet måste ha något av följande värden.<br /><br /> -åsidosätt - ersätter befintliga parameterns värde.<br />-skip - ersätter inte befintliga parametervärdet för frågan.<br />-Tillägg - lägger till värdet till det befintliga frågeparametervärdet.<br />-delete - tar bort Frågeparametern från begäran.<br /><br /> Om värdet är `override` ta med flera poster med samma namn resulterar i Frågeparametern anges enligt alla poster (som visas flera gånger); endast listade värden anges i resultatet.|Nej|åsidosätt|  
-|namn|Anger namnet på Frågeparametern anges.|Ja|Saknas|  
+|Det finns åtgärd|Anger vilken åtgärd tootake när hello frågeparameter har redan angetts. Det här attributet måste ha något av följande värden hello.<br /><br /> -åsidosätt - ersätter hello värdet för befintliga hello-parametern.<br />-skip - ersätter inte hello befintliga frågeparametervärdet.<br />-Tillägg - lägger till hello värdet toohello befintliga frågeparametervärdet.<br />-delete - tar bort hello frågeparameter från hello-begäran.<br /><br /> När värdet för`override` ta med flera poster med hello samma namn resulterar i hello frågeparameter som set bl.a tooall poster (som visas flera gånger); endast listade värden anges i hello resultat.|Nej|åsidosätt|  
+|namn|Anger namnet på hello frågan toobe parameteruppsättning.|Ja|Saknas|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, backend  
   
 -   **Princip för scope:** globala, produkt, API, åtgärden  
   
 ##  <a name="RewriteURL"></a>Omarbetning URL  
- Den `rewrite-uri` princip konverterar en begärd URL från dess offentliga form i formuläret som förväntades av webbtjänsten som visas i följande exempel.  
+ Hej `rewrite-uri` princip konverterar en begärd URL från dess offentliga formuläret toohello form som förväntades av hello-webbtjänsten, som visas i följande exempel hello.  
   
 -   Offentlig URL-`http://api.example.com/storenumber/ordernumber`  
   
 -   URL-begäran-`http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`  
   
- Den här principen kan användas när en mänsklig och/eller webbläsare eget URL bör omvandlas till URL-formatet som förväntas av webbtjänsten. Den här principen behöver bara tillämpas när exponera en alternativ URL-format, till exempel ren URL: er, RESTful-URL: er, användarvänliga URL: er eller SEO eget URL: er som är enbart strukturella URL: er som inte innehåller en frågesträng och i stället innehåller endast sökvägen till resursen ( efter schemat och behörighet). Detta sker ofta för dess estetiska egenskaper, användbarhet eller sökmotor optimeringssyfte (SEO).  
+ Den här principen kan användas när en mänsklig och/eller webbläsare eget URL bör omvandlas till hello URL-format förväntades av hello-webbtjänsten. Den här principen bara behöver toobe tillämpas när exponera en alternativ URL-format, till exempel ren URL: er, RESTful-URL: er, användarvänliga URL: er eller SEO eget URL: er som är enbart strukturella URL: er som inte innehåller en frågesträng och i stället innehåller endast hello sökvägen till hello resurs (efter hello schemat och hello). Detta sker ofta för dess estetiska egenskaper, användbarhet eller sökmotor optimeringssyfte (SEO).  
   
 > [!NOTE]
->  Du kan bara lägga till frågan string-parametrar med principer. Du kan inte lägga till extra sökväg i mallparametrarna i URL: en för omarbetning.  
+>  Du kan bara lägga till sträng frågeparametrar Hej användarprincip. Du kan inte lägga till extra sökväg mallparametrar i hello omarbetning URL.  
 
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -592,7 +592,7 @@ OriginalUrl.
 </policies>  
 ```  
 ```xml
-<!-- Assuming incoming request is /get?a=b&c=d and operation template is set to /get?a={b} -->
+<!-- Assuming incoming request is /get?a=b&c=d and operation template is set too/get?a={b} -->
 <policies>  
     <inbound>  
         <base />  
@@ -605,7 +605,7 @@ OriginalUrl.
 <!-- Resulting URL will be /put?c=d -->
 ```  
 ```xml
-<!-- Assuming incoming request is /get?a=b&c=d and operation template is set to /get?a={b} -->
+<!-- Assuming incoming request is /get?a=b&c=d and operation template is set too/get?a={b} -->
 <policies>  
     <inbound>  
         <base />  
@@ -628,18 +628,18 @@ OriginalUrl.
   
 |Attribut|Beskrivning|Krävs|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|mall|Den faktiska webbtjänst-URL med någon fråga string-parametrar. När du använder uttryck måste hela värdet vara ett uttryck.|Ja|Saknas|  
-|Kopiera omatchade parametrar|Anger om Frågeparametrar i inkommande begäran finns inte i den ursprungliga mallen URL läggs till den URL som definieras i Skriv mallen|Nej|SANT|  
+|mall|hello faktiska webbtjänst-URL med någon fråga string-parametrar. När du använder uttryck måste hello hela värdet vara ett uttryck.|Ja|Saknas|  
+|Kopiera omatchade parametrar|Anger om frågeparametrar Hej inkommande begäran finns inte i hello ursprungliga URL: en mall läggs toohello URL som definierats av hello Skriv mall|Nej|SANT|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande  
   
 -   **Princip för scope:** produkt, API, åtgärden  
   
 ##  <a name="XSLTransform"></a>Transformera XML med hjälp av en XSLT-fil  
- Den `Transform XML using an XSLT` principen gäller en XSL-transformation på XML i begäran eller svar.  
+ Hej `Transform XML using an XSLT` principen gäller en XSL-transformation tooXML i hello begäran eller svar.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -692,11 +692,11 @@ OriginalUrl.
 |Namn|Beskrivning|Krävs|  
 |----------|-----------------|--------------|  
 |XSL-Transformation|Rotelementet.|Ja|  
-|Parametern|Används för att definiera variabler som används i listan i transformeringen|Nej|  
-|XSL: stylesheet|Formatmallen rotelementet. Alla element och attribut som definierats inom följer standarden [XSLT-specifikationen](http://www.w3.org/TR/xslt)|Ja|  
+|Parametern|Använda toodefine variabler som används i hello transformeringen|Nej|  
+|XSL: stylesheet|Formatmallen rotelementet. Alla element och attribut som definierats inom följer hello standard [XSLT-specifikationen](http://www.w3.org/TR/xslt)|Ja|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående  
   

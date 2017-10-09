@@ -1,6 +1,6 @@
 ---
-title: "Hantera medlemmar för en grupp i Azure Active Directory | Microsoft Docs"
-description: "Lägga till eller ta bort användare och enheter från en grupp i Azure Active Directory"
+title: "aaaManage hello medlemmar för en grupp i Azure Active Directory | Microsoft Docs"
+description: "Hur tooadd eller ta bort användare och enheter från en grupp i Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,36 +15,36 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 044e88f95712e1cc5b5532f5492c78d711a8d858
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4cb16ee63828003da251423a04736f7174dd4896
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>Hantera gruppmedlemskap för användare i din Azure Active Directory-klient
-Den här artikeln förklarar hur du hanterar medlemmar för en grupp i Azure Active Directory (AD Azure).
+Den här artikeln förklarar hur toomanage hello medlemmar för en grupp i Azure Active Directory (AD Azure).
 
-## <a name="how-do-i-find-the-members-and-manage-them"></a>Hur gör hitta medlemmarna och hantera dem?
-1. Logga in på den [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för katalogen.
-2. Välj **fler tjänster**, ange **användare och grupper** i textrutan och välj sedan **RETUR**.
+## <a name="how-do-i-find-hello-members-and-manage-them"></a>Hur gör hitta hello medlemmar och hantera dem?
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för hello-katalogen.
+2. Välj **fler tjänster**, ange **användare och grupper** i hello textruta och välj sedan **RETUR**.
 
    ![Öppna användarhantering](./media/active-directory-groups-members-azure-portal/search-user-management.png)
-3. På den **användare och grupper** bladet väljer **alla grupper**.
+3. På hello **användare och grupper** bladet väljer **alla grupper**.
 
-   ![Öppna bladet grupper](./media/active-directory-groups-members-azure-portal/view-groups-blade.png)
-4. På den **användare och grupper – alla grupper** bladet Välj en grupp.
-5. På den **grupp - *groupname***  bladet väljer **medlemmar**.
+   ![Öppna hello grupper bladet](./media/active-directory-groups-members-azure-portal/view-groups-blade.png)
+4. På hello **användare och grupper – alla grupper** bladet Välj en grupp.
+5. På hello **grupp - *groupname***  bladet väljer **medlemmar**.
 
-   ![Öppna bladet medlemmar](./media/active-directory-groups-members-azure-portal/view-group-members.png)
-6. Lägga till medlemmar i gruppen på den **grupp - medlemmar** bladet väljer **lägga till medlemmar**.
+   ![Öppna hello medlemmar bladet](./media/active-directory-groups-members-azure-portal/view-group-members.png)
+6. tooadd medlemmar toohello grupp på hello **grupp - medlemmar** bladet väljer **lägga till medlemmar**.
 
    ![Lägga till medlemmar kommando](./media/active-directory-groups-members-azure-portal/add-group-members-command.png)
-7. På den **medlemmar** bladet, Välj en eller flera användare eller enheter att lägga till i gruppen och välj den **Välj** längst ned på bladet för att lägga till dem i gruppen. Den **användaren** rutan filtrerar baserat på matchning inmatningen till alla delar av namnet på en användare eller enhet. Inga jokertecken godkänns i rutan.
-8. Ta bort medlemmar från gruppen på den **grupp - medlemmar** bladet Välj en medlem.
-9. På den ***membername*** bladet väljer den **ta bort** kommando och bekräfta valet i Kommandotolken.
+7. På hello **medlemmar** bladet, Välj en eller flera användare eller enheter tooadd toohello gruppen och välj hello **Välj** knappen längst ned hello hello bladet tooadd dem toohello grupp. Hej **användaren** filtrerar hello visas baserat på matchning post tooany-tillhör ett namn för användaren eller enheten. Inga jokertecken godkänns i rutan.
+8. tooremove medlemmar från hello gruppen på hello **grupp - medlemmar** bladet Välj en medlem.
+9. På hello ***membername*** bladet, Välj hello **ta bort** kommando och bekräfta valet hello i Kommandotolken.
 
    ![ta bort medlemmar kommandot](./media/active-directory-groups-members-azure-portal/remove-group-members-command.png)
-10. När du har ändrat medlemmar för gruppen, Välj **spara**.
+10. När du har ändrat medlemmar för hello grupp, Välj **spara**.
 
 ## <a name="additional-information"></a>Ytterligare information
 Dessa artiklar innehåller ytterligare information om Azure Active Directory.

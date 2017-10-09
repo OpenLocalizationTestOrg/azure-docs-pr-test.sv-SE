@@ -1,6 +1,6 @@
 ---
-title: Spara rapporterna i Azure Power BI Embedded | Microsoft Docs
-description: "Lär dig mer om att spara rapporter i Power BI embedded. Detta kräver att rätt behörighet för att fungera korrekt."
+title: aaaSave rapporter i Azure Power BI Embedded | Microsoft Docs
+description: "Lär dig hur toosave rapporter i Power BI embedded. Detta kräver har rätt behörigheter i ordning toowork."
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: ad895004cc2972f2ded81566186325a16d401151
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 984537ce1ce1afc787d6c6c9f61ae8d6226d1171
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="save-reports-in-power-bi-embedded"></a>Spara rapporter i Power BI Embedded
 
-Lär dig mer om att spara rapporter i Power BI embedded. Detta kräver att rätt behörighet för att fungera korrekt.
+Lär dig hur toosave rapporter i Power BI embedded. Detta kräver har rätt behörigheter i ordning toowork.
 
-Du kan redigera befintliga rapporter och spara dem i Power BI Embedded. Du kan också skapa en ny rapport och spara som en ny rapport för att skapa en.
+Du kan redigera befintliga rapporter och spara dem i Power BI Embedded. Du kan också skapa en ny rapport och spara som en ny rapport toocreate en.
 
-Om du vill spara en rapport måste du först skapa en token för den valda rapporten med rätt scope:
+I ordning toosave en rapport måste du först toocreate en token för för hello specifika rapporten med rätt hello-scope:
 
-* Om du vill aktivera spara Report.ReadWrite krävs omfattning
-* Om du vill aktivera Spara som, krävs Report.Read och Workspace.Report.Copy scope
-* Om du vill aktivera spara och spara som, är Report.ReadWrite och Workspace.Report.Copy requierd
+* tooenable spara Report.ReadWrite omfång måste anges
+* tooenable Spara som, Report.Read och Workspace.Report.Copy scope krävs
+* tooenable spara och spara som, Report.ReadWrite och Workspace.Report.Copy requierd
 
-Respektive för att aktivera höger save/Spara som knappar Arkiv-menyn som du behöver ge behörighet i konfiguration Embed när du bäddar in rapporten:
+Respektive i ordning tooenable hello rätt save/spara måste som knappar Arkiv-menyn tooprovide hello Högerklicka behörighet i hello bädda in konfiguration när du Embed hello rapporten:
 
 * modeller. Permissions.ReadWrite
 * modeller. Permissions.Copy
 * modeller. Permissions.All
 
 > [!NOTE]
-> Åtkomst-token måste också lämpliga omfattningar. Mer information finns i [scope](power-bi-embedded-app-token-flow.md#scopes).
+> Åtkomst-token måste också hello lämpliga omfattningar. Mer information finns i [scope](power-bi-embedded-app-token-flow.md#scopes).
 
 ## <a name="embed-report-in-edit-mode"></a>Bädda in rapporten i redigeringsläge
 
-Anta att du vill bädda in en rapport i redigeringsläge i din app att bara skicka rätt egenskaperna i konfiguration Embed och anropa powerbi.embed(). Du måste ange behörigheter och en viewMode för att visa spara och spara som knappar när i redigeringsläge. Mer information finns i [bädda in konfigurationsinformation](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
+Vi du vill säger tooEmbed en rapport i redigeringsläge i din app, toodo bara skicka hello rätt egenskaper i konfiguration Embed och anropa powerbi.embed(). Du behöver toosupply behörigheter och en viewMode i ordning toosee hello spara och spara som knappar i redigeringsläget. Mer information finns i [bädda in konfigurationsinformation](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
 
 Till exempel i JavaScript:
 
@@ -54,7 +54,7 @@ Till exempel i JavaScript:
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
-    // Embed configuration used to describe the what and how to embed.
+    // Embed configuration used toodescribe hello what and how tooembed.
     // This object is used when calling powerbi.embed.
     // This also includes settings and options such as filters.
     // You can find more information at https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details.
@@ -71,10 +71,10 @@ Till exempel i JavaScript:
         }
     };
 
-    // Get a reference to the embedded report HTML element
+    // Get a reference toohello embedded report HTML element
     var reportContainer = $('#reportContainer')[0];
 
-    // Embed the report and display it within the div container.
+    // Embed hello report and display it within hello div container.
     var report = powerbi.embed(reportContainer, config);
 ```
 
@@ -82,10 +82,10 @@ En rapport ska nu vara inbäddat i din app i redigeringsläge.
 
 ## <a name="save-report"></a>Spara rapporten
 
-Efter Embbeding rapporten i redigeringsläge med rätt token och behörigheter som du kan spara rapporten från Arkivmenyn eller javascript:
+När Embbeding hello rapporten i redigeringsläge med hello höger token och behörigheter kan du spara hello rapport från hello Arkiv-menyn eller javascript:
 
 ```
- // Get a reference to the embedded report.
+ // Get a reference toohello embedded report.
     report = powerbi.get(reportContainer);
 
  // Save report
@@ -95,7 +95,7 @@ Efter Embbeding rapporten i redigeringsläge med rätt token och behörigheter s
 ## <a name="save-as"></a>Spara som
 
 ```
-// Get a reference to the embedded report.
+// Get a reference toohello embedded report.
     report = powerbi.get(reportContainer);
     
     var saveAsParameters = {
@@ -107,9 +107,9 @@ Efter Embbeding rapporten i redigeringsläge med rätt token och behörigheter s
 ```
 
 > [!IMPORTANT]
-> Endast när *Spara som* är en ny rapport skapas. När du spara visas arbetsytan fortfarande gamla rapporten i redigeringsläge och inte den nya rapporten. Du behöver att bädda in den nya rapporten skapades. Detta kräver en ny åtkomsttoken som har skapats per rapport.
+> Endast när *Spara som* är en ny rapport skapas. När hello spara visas hello arbetsytan fortfarande hello gamla rapporten i Redigera läge och inte hello ny rapport. Du behöver tooembed hello ny rapport som har skapats. Detta kräver en ny åtkomsttoken som har skapats per rapport.
 
-Sedan måste du läsa in den nya rapporten efter en *Spara som*. Detta liknar bädda in en rapport.
+Du måste sedan tooload hello ny rapport efter en *Spara som*. Detta är liknande tooembedding rapport.
 
 ```
 <div id="reportContainer"></div>
@@ -120,7 +120,7 @@ var embedConfiguration = {
         reportId: '5dac7a4a-4452-46b3-99f6-a25915e0fe54',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Embed report
@@ -135,5 +135,5 @@ var embedConfiguration = {
 [Autentisering och auktorisering i Power BI Embedded](power-bi-embedded-app-token-flow.md)  
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [Inbäddat exempel med JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-Fler frågor? [Försök med Power BI Community](http://community.powerbi.com/)
+Fler frågor? [Försök hello Power BI-communityn](http://community.powerbi.com/)
 

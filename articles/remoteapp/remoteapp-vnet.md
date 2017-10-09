@@ -1,6 +1,6 @@
 ---
-title: "Verifiera Azure VNET att använda med Azure RemoteApp | Microsoft Docs"
-description: "Lär dig att kontrollera att ditt Azure VNET är redo att användas med Azure RemoteApp"
+title: aaaValidate hello Azure VNET toouse med Azure RemoteApp | Microsoft Docs
+description: "Lär dig hur toomake till ditt Azure VNET är klar toouse med Azure RemoteApp"
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,31 +13,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 05c8a0ff04293947cec391b6467cc4adddb6a7b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5587556c264356e6ab6039b983a38cb2b95ed268
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="validate-the-azure-vnet-to-use-with-azure-remoteapp"></a>Verifiera Azure VNET att använda med Azure RemoteApp
+# <a name="validate-hello-azure-vnet-toouse-with-azure-remoteapp"></a>Validera hello Azure VNET toouse med Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs [meddelandet](https://go.microsoft.com/fwlink/?linkid=821148) för mer information.
+> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs hello [meddelande](https://go.microsoft.com/fwlink/?linkid=821148) mer information.
 > 
 > 
 
-Innan du använder ett virtuellt Azure-nätverk med Azure RemoteApp kan du vill validera VNET. Detta förhindrar att problem med anslutningen.
+Du kanske vill toovalidate hello VNET innan du använder ett virtuellt Azure-nätverk med Azure RemoteApp. Detta förhindrar att problem med anslutningen.
 
-För att verifiera ditt Azure VNET, gör du följande:
+toovalidate ditt Azure VNET hello följande:
 
-1. Skapa en virtuell Azure-dator i undernätet i Azure-VNET som du vill använda med Azure RemoteApp.
-2. Anslut till den virtuella datorn med hjälp av den **Anslut** alternativet i hanteringsportalen.
-3. Anslut den virtuella datorn till samma domän som du vill använda med Azure RemoteApp. Om du skapar en hybridsamling som ansluter till ditt lokala nätverk, Anslut den virtuella datorn till den lokala domänen.
+1. Skapa en virtuell Azure-dator i hello undernätet för hello Azure VNET som du vill toouse med Azure RemoteApp.
+2. Ansluta toothat VM med hjälp av hello **Anslut** alternativet i hello-hanteringsportalen.
+3. Anslut hello virtuella toohello samma domän som du vill toouse med Azure RemoteApp. Om du skapar en hybridsamling som ansluter tooyour lokalt nätverk att ansluta hello virtuella tooyour lokala domänen.
 
-Om detta lyckas är Azure VNET redo att användas med RemoteApp.
+Om detta lyckas är hello Azure VNET klar toouse med RemoteApp.
 
-Mer information om arbetsflödet för slutpunkt till slutpunkt hybrid-samling finns i följande artiklar:
+Mer information om hello slutpunkt till slutpunkt hybrid samling arbetsflöde finns hello följande artiklar:
 
-* [Planera ditt virtuella nätverk för Azure RemoteApp](remoteapp-planvnet.md)
+* [Hur tooplan ditt virtuella nätverk för Azure RemoteApp](remoteapp-planvnet.md)
 * [Skapa en hybridsamling](remoteapp-create-hybrid-deployment.md)
-* [Distribuera Azure RemoteApp-samling till ditt Azure-nätverk (med stöd för ExpressRoute)](http://blogs.msdn.com/b/rds/archive/2015/04/23/deploy-azure-remoteapp-collection-to-your-azure-virtual-network-with-support-for-expressroute.aspx)
+* [Distribuera Azure RemoteApp-samlingen tooyour Azure Virtual Network (med stöd för ExpressRoute)](http://blogs.msdn.com/b/rds/archive/2015/04/23/deploy-azure-remoteapp-collection-to-your-azure-virtual-network-with-support-for-expressroute.aspx)
 

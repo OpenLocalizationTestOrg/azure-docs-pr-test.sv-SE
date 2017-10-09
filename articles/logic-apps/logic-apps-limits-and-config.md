@@ -1,6 +1,6 @@
 ---
-title: "Logik App gränser och konfiguration | Microsoft Docs"
-description: "Översikt över tjänsten gränser och tillgängliga för Logic Apps konfigurationsvärden."
+title: "aaaLogic App gränser och konfiguration | Microsoft Docs"
+description: "Översikt över hello tjänstbegränsningarna och tillgängliga för Logic Apps konfigurationsvärden."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: da23bd9fe71a0c41bc236b55bc9f56e123a9d77a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 739509afe5c9a7b7e946ba3571951264127e5297
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="logic-app-limits-and-configuration"></a>Logic App-gränser och konfiguration
 
-Följande är information om aktuella begränsningar och konfigurationsinformation för Logikappar i Azure.
+Följande är information om hello aktuella begränsningar och konfigurationsinformation för Logikappar i Azure.
 
 ## <a name="limits"></a>Begränsningar
 
@@ -47,22 +47,22 @@ Nedan följer gränser för ett enda HTTP-begäran och/eller connector-anrop.
 
 |Namn|Gräns|Anteckningar|
 |----|----|----|
-|Antal återförsök|10| Standardvärdet är 4. Konfigurera med den [försök parametern](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
-|Högsta antal försök|1 timme|Konfigurera med den [försök parametern](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
-|Min tid innan nytt försök|5 SEK.|Konfigurera med den [försök parametern](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
+|Antal återförsök|10| Standardvärdet är 4. Konfigurera med hello [försök parametern](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
+|Högsta antal försök|1 timme|Konfigurera med hello [försök parametern](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
+|Min tid innan nytt försök|5 SEK.|Konfigurera med hello [försök parametern](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
 
 ### <a name="run-duration-and-retention"></a>Kör varaktighet och lagring
 
-Nedan följer gränser för en enkel logikapp som körs.
+Följande är hello gränser för en enkel logikapp som körs.
 
 |Namn|Gräns|Anteckningar|
 |----|----|----|
 |Kör varaktighet|90 dagar||
-|Kvarhållning av lagring|90 dagar|Startar från starttiden som kör|
+|Kvarhållning av lagring|90 dagar|Starta från hello starttid för körning|
 |Min upprepningsintervallet|1 sekund|| 15 sekunder för logic apps med App Service-Plan
 |Max upprepningsintervallet|500 dagar||
 
-Om du tror att överskrida kör varaktighet eller Lagringsgränser kvarhållning i normala bearbetningen flöde [kontaktar du oss](mailto://logicappsemail@microsoft.com) så att vi kan hjälpa dig med dina krav.
+Om du räknar tooexceed kör varaktighet eller lagring kvarhållning gränser i normala bearbetningen flöde [kontaktar du oss](mailto://logicappsemail@microsoft.com) så att vi kan hjälpa dig med dina krav.
 
 
 ### <a name="looping-and-debatching-limits"></a>Slingor och debatching gränser
@@ -71,10 +71,10 @@ Nedan följer gränser för en enkel logikapp som körs.
 
 |Namn|Gräns|Anteckningar|
 |----|----|----|
-|ForEach-objekt|100,000|Du kan använda den [fråga åtgärd](../connectors/connectors-native-query.md) att filtrera större matriser efter behov|
+|ForEach-objekt|100,000|Du kan använda hello [fråga åtgärd](../connectors/connectors-native-query.md) toofilter större matriser efter behov|
 |Tills iterationer|5,000||
 |SplitOn objekt|100,000||
-|ForEach parallellitet|50| Standardvärdet är 20. Du kan ange att en sekventiell foreach genom att lägga till `"operationOptions": "Sequential"` till den `foreach` åtgärd eller specifika andelen parallellitet med`runtimeConfiguration`|
+|ForEach parallellitet|50| Standardvärdet är 20. Du kan ange tooa sekventiella foreach genom att lägga till `"operationOptions": "Sequential"` toohello `foreach` åtgärd eller specifika andelen parallellitet med`runtimeConfiguration`|
 
 
 ### <a name="throughput-limits"></a>Genomströmning gränser
@@ -84,12 +84,12 @@ Nedan följer gränser för en enskild logik app-instansen.
 |Namn|Gräns|Anteckningar|
 |----|----|----|
 |Åtgärder körningar per 5 minuter |100,000|Kan fördela belastningen över flera appar efter behov|
-|Åtgärder samtidiga utgående anrop |~2,500|Minska antalet samtidiga begäranden eller minska tidsåtgången vid behov|
-|Runtime endpoint samtidiga inkommande samtal |~1,000|Minska antalet samtidiga begäranden eller minska tidsåtgången vid behov|
+|Åtgärder samtidiga utgående anrop |~2,500|Minska antalet samtidiga begäranden eller minska hello varaktighet efter behov|
+|Runtime endpoint samtidiga inkommande samtal |~1,000|Minska antalet samtidiga begäranden eller minska hello varaktighet efter behov|
 |Runtime endpoint läsa anrop per 5 minuter |60,000|Kan fördela belastningen över flera appar efter behov|
 |Runtime endpoint anropa anrop per 5 minuter |45,000|Kan fördela belastningen över flera appar efter behov|
 
-Om du tänker överskrider den här gränsen i normala bearbetningen eller vill köra belastningen tester kan överskrida begränsningen för en viss tidsperiod, [kontaktar du oss](mailto://logicappsemail@microsoft.com) så att vi kan hjälpa dig med dina krav.
+Om du räknar tooexceed begränsningen i normala bearbetningen eller vill toorun belastningen testning som kan överskrider denna gräns för en viss tidsperiod, [kontaktar du oss](mailto://logicappsemail@microsoft.com) så att vi kan hjälpa dig med dina krav.
 
 ### <a name="definition-limits"></a>Definition av gränser
 
@@ -97,8 +97,8 @@ Nedan följer gränser för en enskild logik app definition.
 
 |Namn|Gräns|Anteckningar|
 |----|----|----|
-|Åtgärder per arbetsflöde|500|Du kan lägga till inkapslade arbetsflöden för att utöka den här gränsen efter behov|
-|Tillåtna åtgärden inkapslingsdjup|8|Du kan lägga till inkapslade arbetsflöden för att utöka den här gränsen efter behov|
+|Åtgärder per arbetsflöde|500|Du kan lägga till inkapslade arbetsflöden tooextend denna gräns efter behov|
+|Tillåtna åtgärden inkapslingsdjup|8|Du kan lägga till inkapslade arbetsflöden tooextend denna gräns efter behov|
 |Arbetsflöden per region per prenumeration|1000||
 |Utlösare per arbetsflöde|10||
 |Växeln scope fall gränsen|25||
@@ -112,26 +112,26 @@ Nedan följer gränser för en enskild logik app definition.
 
 ### <a name="integration-account-limits"></a>Gränser för integrering
 
-Nedan följer gränser för artefakter som lagts till integration konto
+Nedan följer gränser för artefakter läggs toointegration konto
 
 |Namn|Gräns|Anteckningar|
 |----|----|----|
-|Schemat|8 MB|Du kan använda [blob-URI](logic-apps-enterprise-integration-schemas.md) att överföra filer som är större än 2 MB |
+|Schemat|8 MB|Du kan använda [blob-URI](logic-apps-enterprise-integration-schemas.md) tooupload filer som är större än 2 MB |
 |Karta (XSLT-fil)|2 MB| |
 |Runtime endpoint läsa anrop per 5 minuter |60,000|Kan fördela belastningen över flera konton efter behov|
 |Runtime endpoint anropa anrop per 5 minuter |45,000|Kan fördela belastningen över flera konton efter behov|
 |Runtime endpoint spåra anrop per 5 minuter |45,000|Kan fördela belastningen över flera konton efter behov|
-|Runtime-slutpunkt som blockerar samtidiga anrop |~1,000|Minska antalet samtidiga begäranden eller minska tidsåtgången vid behov|
+|Runtime-slutpunkt som blockerar samtidiga anrop |~1,000|Minska antalet samtidiga begäranden eller minska hello varaktighet efter behov|
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>Meddelandestorlek B2B-protokoll (AS2 X12 EDIFACT)
 
-Nedan följer gränser för B2B-protokoll
+Följande är hello gränser för B2B-protokoll
 
 |Namn|Gräns|Anteckningar|
 |----|----|----|
-|AS2|50 MB|Avkoda och koda|
-|X12|50 MB|Avkoda och koda|
-|EDIFACT|50 MB|Avkoda och koda|
+|AS2|50 MB|Tillämpliga toodecode och koda|
+|X12|50 MB|Tillämpliga toodecode och koda|
+|EDIFACT|50 MB|Tillämpliga toodecode och koda|
 
 ## <a name="configuration"></a>Konfiguration
 
@@ -139,7 +139,7 @@ Nedan följer gränser för B2B-protokoll
 
 #### <a name="logic-app-service"></a>Logik för Apptjänst
 
-Anrop från en logikapp direkt (det vill säga via [HTTP](../connectors/connectors-native-http.md) eller [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)) eller andra HTTP-begäranden som kommer från IP-adressen som anges i listan nedan:
+Anrop från en logikapp direkt (det vill säga via [HTTP](../connectors/connectors-native-http.md) eller [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)) eller andra HTTP-begäranden som kommer från hello IP-adress som anges i följande lista hello:
 
 |Logik App Region|Utgående IP|
 |-----|----|
@@ -168,7 +168,7 @@ Anrop från en logikapp direkt (det vill säga via [HTTP](../connectors/connecto
 
 #### <a name="connectors"></a>Anslutningar
 
-Anrop från en [connector](../connectors/apis-list.md) kommer från IP-adressen som anges i listan nedan:
+Anrop från en [connector](../connectors/apis-list.md) kommer från hello IP-adress som anges i följande lista hello:
 
 |Logik App Region|Utgående IP|
 |-----|----|
@@ -198,7 +198,7 @@ Anrop från en [connector](../connectors/apis-list.md) kommer från IP-adressen 
 
 ## <a name="next-steps"></a>Nästa steg  
 
-- Kom igång med Logic Apps genom att följa den [skapa en Logikapp](../logic-apps/logic-apps-create-a-logic-app.md) kursen.  
+- tooget igång med Logic Apps följer hello [skapa en Logikapp](../logic-apps/logic-apps-create-a-logic-app.md) kursen.  
 - [Visa vanliga exempel och scenarier](../logic-apps/logic-apps-examples-and-scenarios.md)
 - [Du kan automatisera verksamhetsprocesser med Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694) 
-- [Läs hur du integrerar dina system med Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)
+- [Lär dig hur tooIntegrate dina system med Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)

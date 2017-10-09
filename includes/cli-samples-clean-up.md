@@ -1,6 +1,6 @@
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Kör följande kommando för att rensa dina resurser:
+tooclean in dina resurser, kör hello följande kommando:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

@@ -1,6 +1,6 @@
 ---
-title: "Arbeta med utlösare och bindningar i Azure Functions | Microsoft Docs"
-description: "Lär dig hur du använder utlösare och bindningar i Azure Functions för att ansluta din kodkörning online händelser och molnbaserade tjänster."
+title: "aaaWork med utlösare och bindningar i Azure Functions | Microsoft Docs"
+description: "Lär dig hur toouse utlösare och bindningar i Azure Functions tooconnect din kod körning tooonline händelser och molnbaserade tjänster."
 services: functions
 documentationcenter: na
 author: lindydonna
@@ -16,56 +16,56 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: donnam
-ms.openlocfilehash: cc41debb2523df77be4db05817a4c7ac55604439
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eb2ebfca172fcc8c0f479adbcfec99e90fc33615
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions-utlösare och bindningar begrepp
-Azure Functions kan du skriva kod som svar på händelser i Azure och andra tjänster via *utlösare* och *bindningar*. Den här artikeln innehåller en översikt av utlösare och bindningar för alla programmeringsspråk som stöds. Här beskrivs funktioner som är gemensamma för alla bindningar.
+Azure Functions kan du toowrite koden i svaret tooevents i Azure och andra tjänster via *utlösare* och *bindningar*. Den här artikeln innehåller en översikt av utlösare och bindningar för alla programmeringsspråk som stöds. Funktioner som är vanliga tooall bindningar beskrivs.
 
 ## <a name="overview"></a>Översikt
 
-Utlösare och bindningar är en deklarativ metod för att definiera hur en funktion anropas och hur det fungerar med data. En *utlösaren* definierar hur en funktion har anropats. En funktion måste ha exakt en utlösare. Utlösare har associerade data, vilket är vanligtvis nyttolasten som utlöste funktionen. 
+Utlösare och bindningar är en deklarativ metod toodefine hur en funktion har anropats och vilka data den fungerar med. En *utlösaren* definierar hur en funktion har anropats. En funktion måste ha exakt en utlösare. Utlösare har associerade data, vilket är vanligtvis hello-nyttolast som utlöste hello-funktionen. 
 
-Indata och utdata *bindningar* tillhandahåller en deklarativ metod för att ansluta till data från i din kod. Precis som utlösare kan du ange anslutningssträngar och andra egenskaper i konfigurationen av funktionen. Bindningar är valfria och en funktion kan ha flera indata och utdata bindningar. 
+Indata och utdata *bindningar* tillhandahåller en deklarativ metod tooconnect toodata från inom din kod. Liknande tootriggers du ange anslutningssträngar och andra egenskaper i konfigurationen av funktionen. Bindningar är valfria och en funktion kan ha flera indata och utdata bindningar. 
 
-Med hjälp av utlösare och bindningar, du kan skriva kod som är mer generisk och har inte hårdkoda information om tjänsterna med den samverkar. Data som kommer från tjänster som bara blir indatavärden för din funktionskoden. Använd returvärdet för metoden för att spara data till en annan tjänst (till exempel skapa en ny rad i Azure Table Storage). Eller Använd en hjälpobjektet om du behöver utdata flera värden. Utlösare och bindningar har en **namn** -egenskap som är en identifierare som du använder i din kod till bindningen.
+Du kan skriva kod som är generisk och har inte hårdkoda hello detaljer om hello-tjänster som samverkar med utlösare och bindningar. Data som kommer från tjänster som bara blir indatavärden för din funktionskoden. toooutput tooanother datatjänst (till exempel skapa en ny rad i Azure Table Storage), Använd hello returvärdet för hello-metoden. Eller, om du behöver toooutput flera värden kan använda en hjälpobjektet. Utlösare och bindningar har en **namn** -egenskap som är en identifierare som du använder i din kod tooaccess hello bindning.
 
-Du kan konfigurera utlösare och bindningar i den **integrera** i Azure Functions-portalen. Under försättsbladen, Användargränssnittet ändrar en fil med namnet *function.json* fil i katalogen funktion. Du kan redigera den här filen genom att ändra till den **redigeraren**.
+Du kan konfigurera utlösare och bindningar i hello **integrera** fliken i hello Azure Functions-portalen. Under hello omfattar hello UI ändrar en fil med namnet *function.json* fil i hello-funktionen. Du kan redigera den här filen genom att ändra toohello **redigeraren**.
 
-I följande tabell visas utlösare och bindningar som stöds med Azure Functions. 
+hello följande tabell visar hello utlösare och bindningar som stöds med Azure Functions. 
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
 ### <a name="example-queue-trigger-and-table-output-binding"></a>Exempel: kön utlösare och tabellen utdatabindning
 
-Anta att du vill skriva en ny rad till Azure Table Storage när ett nytt meddelande visas i Azure Queue Storage. Det här scenariot kan implementeras med hjälp av en Azure-kö utdatabindning utlösare och en tabell. 
+Anta att du vill toowrite en ny rad tooAzure Table Storage när ett nytt meddelande visas i Azure Queue Storage. Det här scenariot kan implementeras med hjälp av en Azure-kö utdatabindning utlösare och en tabell. 
 
-En kö utlösare kräver följande information i den **integrera** fliken:
+En kö utlösare kräver följande information i hello hello **integrera** fliken:
 
-* Namnet på appen inställningen som innehåller anslutningssträngen för lagring konto för kön
-* Könamnet
-* Identifieraren i koden för att läsa innehållet i meddelandet kön som `order`.
+* hello innehåller hello app inställningen som hello konto lagringsanslutningssträng för hello kö
+* hello könamnet
+* Hej identifierare i din kod tooread hello innehållet i hello kömeddelande som `order`.
 
-Använd en output-bindning för att skriva till Azure Table Storage med följande information:
+toowrite tooAzure Table Storage, använda en output-bindning med hello följande information:
 
-* Namnet på appen inställningen som innehåller anslutningssträngen för lagring konto för tabellen
-* Tabellens namn
-* Identifieraren i koden för att skapa utdata objekt eller returvärdet från funktionen.
+* hello innehåller hello app inställningen som hello konto lagringsanslutningssträng för hello tabellen
+* hello tabellnamn
+* hello identifierare i din kod toocreate utdata objekt eller hello returvärde från hello-funktionen.
 
-Bindningar Använd appinställningar för anslutningssträngar för att tillämpa bäst rutin som *function.json* innehåller inte tjänsten hemligheter.
+Bindningar använda app-inställningar för anslutning strängar tooenforce hello bästa rutin som *function.json* innehåller inte tjänsten hemligheter.
 
-Använd sedan de identifierare som du angav för att integrera med Azure Storage i koden.
+Använd sedan hello-identifierare som du angav toointegrate med Azure Storage i din kod.
 
 ```cs
 #r "Newtonsoft.Json"
 
 using Newtonsoft.Json.Linq;
 
-// From an incoming queue message that is a JSON object, add fields and write to Table Storage
-// The method return value creates a new row in Table Storage
+// From an incoming queue message that is a JSON object, add fields and write tooTable Storage
+// hello method return value creates a new row in Table Storage
 public static Person Run(JObject order, TraceWriter log)
 {
     return new Person() { 
@@ -85,8 +85,8 @@ public class Person
 ```
 
 ```javascript
-// From an incoming queue message that is a JSON object, add fields and write to Table Storage
-// The second parameter to context.done is used as the value for the new row
+// From an incoming queue message that is a JSON object, add fields and write tooTable Storage
+// hello second parameter toocontext.done is used as hello value for hello new row
 module.exports = function (context, order) {
     order.PartitionKey = "Orders";
     order.RowKey = generateRandomId(); 
@@ -100,7 +100,7 @@ function generateRandomId() {
 }
 ```
 
-Här är den *function.json* som motsvarar föregående kod. Observera att samma konfiguration kan användas, oavsett vilket språk i funktionen implementering.
+Här är hello *function.json* som motsvarar toohello föregående kod. Observera att hello samma konfiguration kan användas, oavsett hello språket för hello funktionen implementering.
 
 ```json
 {
@@ -122,7 +122,7 @@ Här är den *function.json* som motsvarar föregående kod. Observera att samma
   ]
 }
 ```
-Visa och redigera innehållet i *function.json* i Azure-portalen klickar du på den **redigeraren** alternativet på den **integrera** för din funktion.
+tooview och redigera hello innehållet i *function.json* i hello Azure-portalen klickar du på hello **redigeraren** alternativet på hello **integrera** för din funktion.
 
 Mer kodexempel och information om att integrera med Azure Storage finns [Azure Functions-utlösare och bindningar för Azure Storage](functions-bindings-storage.md).
 
@@ -130,13 +130,13 @@ Mer kodexempel och information om att integrera med Azure Storage finns [Azure F
 
 Alla utlösare och bindningar har en `direction` egenskapen:
 
-- För utlösare är riktningen alltid`in`
+- För utlösare är hello riktningen alltid`in`
 - Inkommande och utgående bindningar använda `in` och`out`
-- Vissa bindningar stöd för en särskild riktning `inout`. Om du använder `inout`, endast den **redigeraren** är tillgängliga i den **integrera** fliken.
+- Vissa bindningar stöd för en särskild riktning `inout`. Om du använder `inout`, endast hello **redigeraren** är tillgänglig i hello **integrera** fliken.
 
-## <a name="using-the-function-return-type-to-return-a-single-output"></a>Använda Returtypen för funktionen för att returnera ett enda utflöde
+## <a name="using-hello-function-return-type-tooreturn-a-single-output"></a>Med hjälp av hello funktionen returtyp tooreturn ett enda utflöde
 
-Föregående exempel visar hur du använder funktionen returvärdet ge utdata till en bindning som uppnås med hjälp av parametern särskilda namnet `$return`. (Detta stöds endast på språk som har ett returvärde, till exempel C#, JavaScript och F #.) Om en funktion har flera bindningar för utdata använder `$return` för endast en av bindningarna som utdata. 
+hello föregående exempel visar hur toouse hello funktionen returvärdet tooprovide utdatabindning tooa, som uppnås med hjälp av hello särskilda name-parametern `$return`. (Detta stöds endast på språk som har ett returvärde, till exempel C#, JavaScript och F #.) Om en funktion har flera bindningar för utdata använder `$return` för endast en av hello utdata bindningar. 
 
 ```json
 // excerpt of function.json
@@ -148,7 +148,7 @@ Föregående exempel visar hur du använder funktionen returvärdet ge utdata ti
 }
 ```
 
-Exemplen nedan visar tillbaka hur typer som används med utdata bindningar i C#, JavaScript och F #.
+hello exemplen nedan visar tillbaka hur typer som används med utdata bindningar i C#, JavaScript och F #.
 
 ```cs
 // C# example: use method return value for output binding
@@ -171,7 +171,7 @@ public static Task<string> Run(WorkItem input, TraceWriter log)
 ```
 
 ```javascript
-// JavaScript: return a value in the second parameter to context.done
+// JavaScript: return a value in hello second parameter toocontext.done
 module.exports = function (context, input) {
     var json = JSON.stringify(input);
     context.log('Node.js script processed queue message', json);
@@ -189,9 +189,9 @@ let Run(input: WorkItem, log: TraceWriter) =
 
 ## <a name="binding-datatype-property"></a>DataType-egenskapen för bindning
 
-Använda typer i .NET, definiera datatypen för indata. Till exempel använda `string` att binda till texten i en kö-utlösare och en bytematris läsa som binary.
+I .NET, använda hello typer toodefine hello datatyp för indata. Till exempel använda `string` toobind toohello texten i en kö-utlösare och en byte-matris tooread som binary.
 
-Språk som skrivs dynamiskt, till exempel JavaScript, använda den `dataType` egenskapen i Bindningsdefinitionen. Till exempel använda typen om du vill läsa innehållet i en HTTP-begäran i binärformat `binary`:
+För språk som skrivs dynamiskt, till exempel JavaScript, använda hello `dataType` egenskap i hello bindning definition. Till exempel tooread hello innehållet i en HTTP-begäran i binärformat, Använd hello typen `binary`:
 
 ```json
 {
@@ -205,13 +205,13 @@ Språk som skrivs dynamiskt, till exempel JavaScript, använda den `dataType` eg
 Andra alternativ för `dataType` är `stream` och `string`.
 
 ## <a name="resolving-app-settings"></a>Lösa app-inställningar
-Som bästa praxis, hemligheter och anslutningssträngar ska hanteras med app-inställningar i stället för konfigurationsfiler. Detta begränsar åtkomst till dessa hemligheter och gör det säkert att lagra *function.json* i en offentlig källkontroll.
+Som bästa praxis, hemligheter och anslutningssträngar ska hanteras med app-inställningar i stället för konfigurationsfiler. Detta begränsar åtkomst toothese hemligheter och gör den säker toostore *function.json* i en offentlig källkontroll.
 
-Appinställningar är också användbara när du vill ändra konfigurationen baserat på miljön. I en testmiljö kan du vill övervaka en annan kö eller blob storage-behållare.
+Appinställningar är också användbara när du vill toochange configuration utifrån hello-miljö. Du kan exempelvis vilja toomonitor en annan kö eller blob storage-behållare i en testmiljö.
 
-Appinställningar är löst när ett värde som omges av procenttecken, `%MyAppSetting%`. Observera att den `connection` egenskapen för utlösare och bindningar är ett specialfall och löser automatiskt värden som app-inställningar. 
+Appinställningar är löst när ett värde som omges av procenttecken, `%MyAppSetting%`. Observera att hello `connection` -egenskapen för utlösare och bindningar är ett specialfall och löser automatiskt värden som app-inställningar. 
 
-I följande exempel är en kö-utlösare som använder en appinställning `%input-queue-name%` att definiera kön att utlösa på.
+hello följande exempel är en kö utlösare som använder en appinställning `%input-queue-name%` toodefine hello kön tootrigger på.
 
 ```json
 {
@@ -229,9 +229,9 @@ I följande exempel är en kö-utlösare som använder en appinställning `%inpu
 
 ## <a name="trigger-metadata-properties"></a>Utlösaren metadataegenskaper
 
-Ange ytterligare metadatavärden förutom datanyttolasten som tillhandahålls av en utlösare (till exempel kön meddelandet som utlöste en funktion) många utlösare. Dessa värden kan användas som indataparametrar i C# och F # eller egenskaper på den `context.bindings` objekt i JavaScript. 
+Ange ytterligare metadatavärden i tillägg toohello datanyttolasten som tillhandahålls av en utlösare (till exempel kön hälsningsmeddelande som utlöste en funktion), många utlösare. Dessa värden kan användas som indataparametrar i C# och F # eller egenskaper för hello `context.bindings` objekt i JavaScript. 
 
-Till exempel stöder en kö utlösare följande egenskaper:
+Till exempel stöder en kö utlösare hello följande egenskaper:
 
 * QueueTrigger - utlösa meddelandeinnehåll om en giltig sträng
 * DequeueCount
@@ -241,9 +241,9 @@ Till exempel stöder en kö utlösare följande egenskaper:
 * NextVisibleTime
 * PopReceipt
 
-Information om metadataegenskaper för varje utlösare beskrivs i motsvarande referensavsnittet. Dokumentation är också tillgänglig i den **integrera** för portalen, i den **dokumentationen** avsnittet nedan konfigurationsområde bindning.  
+Information om metadataegenskaper för varje utlösare beskrivs i hello motsvarande referensavsnittet. Dokumentation är också tillgänglig i hello **integrera** fliken hello portalen i hello **dokumentationen** avsnittet nedan hello konfigurationsområde för bindningen.  
 
-Eftersom blob-utlösare har vissa fördröjningar kan du använda en utlösare för kön för att köra funktionen (se [Blob Storage utlösaren](functions-bindings-storage-blob.md#storage-blob-trigger). Kön meddelandet innehåller blobfilnamn som utlöser på. Med hjälp av den `queueTrigger` metadataegenskapen, du kan ange det här beteendet i konfigurationen, i stället för din kod.
+Till exempel eftersom blob-utlösare har vissa fördröjningar kan du använda en kö utlösaren toorun din funktion (se [Blob Storage utlösaren](functions-bindings-storage-blob.md#storage-blob-trigger). hälsningsmeddelande för kön innehåller hello blob filename tootrigger på. Med hjälp av hello `queueTrigger` metadataegenskapen, du kan ange det här beteendet i konfigurationen, i stället för din kod.
 
 ```json
   "bindings": [
@@ -263,15 +263,15 @@ Eftersom blob-utlösare har vissa fördröjningar kan du använda en utlösare f
   ]
 ```
 
-Metadataegenskaper från en utlösare kan också användas i en *bindande uttryck* för en annan bindning som beskrivs i följande avsnitt.
+Metadataegenskaper från en utlösare kan också användas i en *bindande uttryck* för en annan bindning som beskrivs i hello efter avsnittet.
 
 ## <a name="binding-expressions-and-patterns"></a>Bindande uttryck och mönster
 
-En av de viktigaste funktionerna i utlösare och bindningar är *bindningsuttryck*. Du kan definiera mönster för uttryck som kan användas i andra bindningar eller din kod i din bindning. Utlösaren metadata kan också användas i bindande uttryck, som visas i exemplet i föregående avsnitt.
+En av hello mest kraftfulla funktioner för utlösare och bindningar är *bindningsuttryck*. Du kan definiera mönster för uttryck som kan användas i andra bindningar eller din kod i din bindning. Utlösaren metadata kan också användas i bindande uttryck, som visas i exemplet hello i hello föregående avsnitt.
 
-Anta att du vill ändra storlek på bilder i viss blob storage-behållare, liknar den **storleksändring av** mallen i den **nya funktionen** sidan. Gå till **nya funktionen** -> språk **C#** -> scenariot **exempel** -> **ImageResizer CSharp**. 
+Anta att du vill tooresize bilder i viss blob storage-behållare, liknande toohello **storleksändring av** mallen i hello **nya funktionen** sidan. Gå för**nya funktionen** -> språk **C#** -> scenariot **exempel** -> **ImageResizer CSharp**. 
 
-Här är den *function.json* definition:
+Här är hello *function.json* definition:
 
 ```json
 {
@@ -294,10 +294,10 @@ Här är den *function.json* definition:
 }
 ```
 
-Observera att den `filename` parameter används i både blob utlösardefinition samt blob-utdatabindning. Den här parametern kan också användas i funktionskod.
+Observera att hello `filename` parameter används i både hello blob utlösardefinition samt hello blob-utdatabindning. Den här parametern kan också användas i funktionskod.
 
 ```csharp
-// C# example of binding to {filename}
+// C# example of binding too{filename}
 public static void Run(Stream image, string filename, Stream imageSmall, TraceWriter log)  
 {
     log.Info($"Blob trigger processing: {filename}");
@@ -310,7 +310,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, TraceWr
 
 
 ### <a name="random-guids"></a>Slumpmässig GUID
-Azure Functions erbjuder en bekvämlighet syntax för att skapa GUID i dina bindningar via den `{rand-guid}` bindande uttryck. I följande exempel använder detta för att generera ett unikt blob-namn: 
+Azure Functions erbjuder en bekvämlighet syntax för att skapa GUID i dina bindningar via hello `{rand-guid}` bindande uttryck. hello används följande exempel den här toogenerate ett unikt blob-namn: 
 
 ```json
 {
@@ -323,7 +323,7 @@ Azure Functions erbjuder en bekvämlighet syntax för att skapa GUID i dina bind
 
 ### <a name="current-time"></a>Aktuell tid
 
-Du kan använda Bindningsuttrycket `DateTime`, vilket motsvarar `DateTime.UtcNow`.
+Du kan använda hello Bindningsuttrycket `DateTime`, vilket löser för`DateTime.UtcNow`.
 
 ```json
 {
@@ -334,11 +334,11 @@ Du kan använda Bindningsuttrycket `DateTime`, vilket motsvarar `DateTime.UtcNow
 }
 ```
 
-## <a name="bind-to-custom-input-properties-in-a-binding-expression"></a>Binda till anpassade inkommande egenskaper i ett uttryck för bindning
+## <a name="bind-toocustom-input-properties-in-a-binding-expression"></a>Binda toocustom inkommande egenskaper i ett uttryck för bindning
 
-Bindande uttryck kan även referera till egenskaper som är definierade i utlösaren nyttolasten sig själv. Du kanske vill binda dynamiskt till en blob storage-fil från ett filnamn som anges i en webhook.
+Bindande uttryck kan även referera till egenskaper som har definierats i hello utlösaren nyttolast sig själv. Du kan exempelvis vilja toodynamically bind tooa blob storage-fil från ett filnamn som anges i en webhook.
 
-Till exempel följande *function.json* använder en egenskap som kallas `BlobName` från nyttolasten utlösare:
+Till exempel hello följande *function.json* använder en egenskap som kallas `BlobName` från hello utlösaren nyttolast:
 
 ```json
 {
@@ -365,7 +365,7 @@ Till exempel följande *function.json* använder en egenskap som kallas `BlobNam
 }
 ```
 
-Om du vill åstadkomma detta i C# och F #, måste du definiera en POCO som definierar vilka fält som ska avserialiseras i nyttolasten för utlösare.
+tooaccomplish detta i C# och F #, måste du definiera en POCO som definierar hello fält som ska avserialiseras i hello utlösaren nyttolast.
 
 ```csharp
 using System.Net;
@@ -387,7 +387,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, BlobInfo info, str
 }
 ```
 
-JSON-deserialisering utförs automatiskt i JavaScript, och du kan använda egenskaperna direkt.
+JSON-deserialisering utförs automatiskt i JavaScript, och du kan använda hello egenskaper direkt.
 
 ```javascript
 module.exports = function (context, info) {
@@ -407,10 +407,10 @@ module.exports = function (context, info) {
 
 ## <a name="configuring-binding-data-at-runtime"></a>Konfigurerar bindningsdata vid körning
 
-I C# och andra .NET-språk, kan du använda en tvingande bindning mönster, till skillnad från deklarativ bindningar i *function.json*. Tvingande bindning är användbar när bindande parametrar måste beräknas vid körning i stället för design tidpunkt. Läs mer i [bindning under körning via tvingande bindningar](functions-reference-csharp.md#imperative-bindings) i C#-utvecklare.
+I C# och andra .NET-språk, du kan använda ett absolut nödvändigt bindning mönster som skillnad från toohello deklarativ bindningar i *function.json*. Tvingande bindning är användbart när bindande parametrar behöver toobe beräknade körning i stället för design samtidigt. Det finns fler toolearn [bindning under körning via tvingande bindningar](functions-reference-csharp.md#imperative-bindings) i hello C#-utvecklare.
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om en specifik bindning finns i följande artiklar:
+Mer information om en specifik bindning finns hello följande artiklar:
 
 - [HTTP och webhooks](functions-bindings-http-webhook.md)
 - [Timer](functions-bindings-timer.md)

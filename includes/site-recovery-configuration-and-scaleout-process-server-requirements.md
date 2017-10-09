@@ -9,9 +9,9 @@
 | Operativsystemversion | Windows Server 2012 R2 |
 | Nationella inställningar för operativsystem | Engelska (en-us)|
 | VMware vSphere PowerCLI-version | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
-| Windows Server-roller | Aktivera inte följande roller: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V |
+| Windows Server-roller | Aktivera inte hello följande roller: <br> - Active Directory Domain Services <br>- Internet Information Services <br> - Hyper-V |
 | **Nätverk** | |
 | Nätverksgränssnittets korttyp | VMXNET3 |
 | IP-adresstyp | Statisk |
-| Internet-åtkomst | Servern ska kunna komma åt följande webbadresser antingen direkt eller via en proxyserver: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (krävs inte för skalbara processervrar) <br> - time.nist.gov <br> - time.windows.com |
+| Internet-åtkomst | hello-servern ska kunna tooaccess hello följande URL: er direkt eller via en proxyserver: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (krävs inte för skalbara processervrar) <br> - time.nist.gov <br> - time.windows.com |
 | Portar | 443 (kontrolkanalsorchestration)<br>9443 (dataöverföring)|

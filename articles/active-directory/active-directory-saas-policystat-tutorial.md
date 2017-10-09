@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med PolicyStat | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och PolicyStat."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och PolicyStat."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,139 +13,139 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 704afd5515b02ce2a4fbf35da65fad74dc506271
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 868053cd0d37359fd9b4aeb93dba42cbbaa09845
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Självstudier: Azure Active Directory-integrering med PolicyStat
 
-I kursen får lära du att integrera PolicyStat med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate PolicyStat med Azure Active Directory (AD Azure).
 
-Integrera PolicyStat med Azure AD ger dig följande fördelar:
+Integrera PolicyStat med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till PolicyStat
-- Du kan aktivera användarna att automatiskt hämta loggat in på PolicyStat (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till tooPolicyStat
+- Du kan aktivera din användare tooautomatically get inloggade tooPolicyStat (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med PolicyStat, behöver du följande:
+tooconfigure Azure AD-integrering med PolicyStat, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En PolicyStat enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till PolicyStat från galleriet
+1. Att lägga till PolicyStat från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-policystat-from-the-gallery"></a>Att lägga till PolicyStat från galleriet
-Du måste lägga till PolicyStat från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av PolicyStat i Azure AD.
+## <a name="adding-policystat-from-hello-gallery"></a>Att lägga till PolicyStat från hello-galleriet
+tooconfigure hello integrering av PolicyStat i Azure AD, behöver du tooadd PolicyStat hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till PolicyStat från galleriet:**
+**tooadd PolicyStat från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **PolicyStat**.
+4. Skriv i sökrutan hello **PolicyStat**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_search.png)
 
-5. Välj i resultatpanelen **PolicyStat**, och klicka sedan på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **PolicyStat**, och klicka sedan på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med PolicyStat baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till användaren i PolicyStat motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i PolicyStat upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i PolicyStat är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i PolicyStat toobe upprättas.
 
-I PolicyStat, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+I PolicyStat, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med PolicyStat, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med PolicyStat, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare PolicyStat](#creating-a-policystat-test-user)**  – du har en motsvarighet för Britta Simon i PolicyStat som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare PolicyStat](#creating-a-policystat-test-user)**  -toohave en motsvarighet för Britta Simon i PolicyStat som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt PolicyStat program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt PolicyStat program.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med PolicyStat:**
+**Utför följande steg hello tooconfigure Azure AD enkel inloggning med PolicyStat:**
 
-1. I Azure-portalen på den **PolicyStat** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **PolicyStat** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_samlbase.png)
 
-3. På den **PolicyStat domän och URL: er** avsnittet, utför följande steg:
+3. På hello **PolicyStat domän och URL: er** avsnittet, utföra hello följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_url.png)
 
-    a. I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<companyname>.policystat.com`
+    a. I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<companyname>.policystat.com`
 
-    b. I den **identifierare** textruta Skriv en URL med följande mönster:`https://<companyname>.policystat.com/saml2/metadata/`
+    b. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<companyname>.policystat.com/saml2/metadata/`
 
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska inloggnings-URL och identifierare. Kontakta [PolicyStat klienten supportteamet](http://www.policystat.com/support/) att hämta dessa värden. 
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska inloggnings-URL och identifierare. Kontakta [PolicyStat klienten supportteamet](http://www.policystat.com/support/) tooget dessa värden. 
  
-4. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
+4. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_certificate.png) 
 
-5. Syftet med det här avsnittet är att beskriva hur användarna att autentisera till PolicyStat med sitt konto i Azure AD med hjälp av federation baserat på SAML-protokoll.
+5. hello syftet med det här avsnittet är toooutline hur tooenable användare tooauthenticate tooPolicyStat med sitt konto i Azure AD med hjälp av federation baserat på hello SAML-protokoll.
 
-    Programmet PolicyStat förväntar SAML-intyg i ett specifikt format, vilket kräver att du kan lägga till attributmappningar till din **SAML-Token attribut** konfiguration.  
+    Hej PolicyStat program förväntar hello SAML intyg i ett specifikt format, vilket kräver tooadd attributet mappningar tooyour **SAML-Token attribut** konfiguration.  
 
-     Följande skärmbild visar ett exempel på detta.
+     hello följande skärmbild visar ett exempel på detta.
 
      ![Attribut](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_attribute.png "attribut")
 
-6. Utför följande steg för att lägga till nödvändiga attributmappning:
+6. mappningar av tooadd hello krävs, utför hello följande steg:
 
     | Attributets namn    |   Attributvärdet |
     |------------------- | -------------------- |
     | UID | ExtractMailPrefix([mail]) |
     
-    a. Klicka på **Lägg till attributet** att öppna den **lägga till attributet** dialogrutan.
+    a. Klicka på **Lägg till attributet** tooopen hello **lägga till attributet** dialogrutan.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_04.png)
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_addatribute.png)
     
-    b. I den **attributnamn** textruta typen **uid**.
+    b. I hello **attributnamn** textruta typen **uid**.
 
-    c. I den **attributvärdet** textruta väljer **ExtractMailPrefix()**.    
+    c. I hello **attributvärdet** textruta väljer **ExtractMailPrefix()**.    
    
-    d. Från den **e** väljer **User.mail**.
+    d. Från hello **e** väljer **User.mail**.
     
     e. Klicka på **Ok**
 
@@ -155,98 +155,98 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
 
 8. Logga in på webbplatsen PolicyStat företag som en administratör i en annan webbläsarfönster.
 
-9. Klicka på den **Admin** fliken och klicka sedan på **konfiguration för enkel inloggning** i vänstra navigeringsfönstret.
+9. Klicka på hello **Admin** fliken och klicka sedan på **konfiguration för enkel inloggning** i vänstra navigeringsfönstret.
    
     ![Administratörsmenyn](./media/active-directory-saas-policystat-tutorial/ic808633.png "administratör-menyn")
 
-10. I den **installationsprogrammet** väljer **aktivera enkel inloggning Integration**.
+10. I hello **installationsprogrammet** väljer **aktivera enkel inloggning Integration**.
    
     ![Enkel inloggning Configuration](./media/active-directory-saas-policystat-tutorial/ic808634.png "enkel inloggning konfiguration")
 
-11. Klicka på **Konfigurera attribut**, och sedan, i den **Konfigurera attribut** avsnittet, utför följande steg:
+11. Klicka på **Konfigurera attribut**, och sedan, i hello **Konfigurera attribut** avsnittet, utföra hello följande steg:
    
     ![Enkel inloggning Configuration](./media/active-directory-saas-policystat-tutorial/ic808635.png "enkel inloggning konfiguration")
    
-    a. I den **Username-attributet** textruta typen **uid**.
+    a. I hello **Username-attributet** textruta typen **uid**.
 
-    b. I den **förnamn attributet** textruta typen **Förnamn** för användare **Britta**.
+    b. I hello **förnamn attributet** textruta typen **Förnamn** för användare **Britta**.
 
-    c. I den **senaste namnattributet** textruta typen **efternamn** för användare **Simon**.
+    c. I hello **senaste namnattributet** textruta typen **efternamn** för användare **Simon**.
 
-    d. I den **e-attributet** textruta typen **emailaddress** för användare  **BrittaSimon@contoso.com** .
+    d. I hello **e-attributet** textruta typen **emailaddress** för användare  **BrittaSimon@contoso.com** .
 
     e. Klicka på **spara ändringar**.
 
-12. Klicka på **din IDP Metadata**, och sedan, i den **din IDP Metadata** avsnittet, utför följande steg:
+12. Klicka på **din IDP Metadata**, och sedan, i hello **din IDP Metadata** avsnittet, utför följande steg hello:
    
     ![Enkel inloggning Configuration](./media/active-directory-saas-policystat-tutorial/ic808636.png "enkel inloggning konfiguration")
    
-    a. Öppna metadatafilen hämtade, kopiera innehållet och klistrar in det i den **din identitet providern Metadata** textruta.
+    a. Öppna din hämtade metadatafil, kopiera hello innehåll och klistra in den i hello **din identitet providern Metadata** textruta.
 
     b. Klicka på **spara ändringar**.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-policystat-tutorial/create_aaduser_01.png) 
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-policystat-tutorial/create_aaduser_02.png) 
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-policystat-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-policystat-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="creating-a-policystat-test-user"></a>Skapa en testanvändare PolicyStat
 
-För att aktivera Azure AD-användare att logga in på PolicyStat etableras de i PolicyStat.  
+I ordning tooenable Azure AD-användare toolog i PolicyStat, måste de etableras i PolicyStat.  
 
-PolicyStat stöder bara i tid användaretablering. Det innebär du behöver inte lägga till användare manuellt till PolicyStat. Användarna ska få automatiskt läggas till på deras första inloggning via enkel inloggning.
+PolicyStat stöder bara i tid användaretablering. Det innebär du inte behöver tooadd hello användare manuellt tooPolicyStat. hello användare ska få automatiskt läggas till på deras första inloggning via enkel inloggning.
 
 >[!NOTE]
->Du kan använda något annat PolicyStat användarens konto skapas verktyg eller API: er som tillhandahålls av PolicyStat att etablera Azure AD-användarkonton.
+>Du kan använda något annat PolicyStat användarens konto skapas verktyg eller API: er som tillhandahålls av PolicyStat tooprovision användarkonton i Azure AD.
 > 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till PolicyStat.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooPolicyStat.
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela PolicyStat Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooPolicyStat utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **PolicyStat**.
+2. Välj i listan med program hello **PolicyStat**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-policystat-tutorial/tutorial_policystat_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -254,7 +254,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -262,14 +262,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen PolicyStat på åtkomstpanelen du bör få automatiskt loggat in på ditt PolicyStat program.
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Du bör få automatiskt inloggade tooyour PolicyStat programmet när du klickar på hello PolicyStat panelen i hello åtkomstpanelen.
+Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

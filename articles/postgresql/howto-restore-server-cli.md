@@ -1,6 +1,6 @@
 ---
-title: "Säkerhetskopiera och återställa en server i Azure-databas för PostgreSQL | Microsoft Docs"
-description: "Lär dig mer om att säkerhetskopiera och återställa en server i Azure-databas för PostgreSQL med hjälp av Azure CLI."
+title: "Hur tooback upp och återställa en server i Azure-databas för PostgreSQL | Microsoft Docs"
+description: "Lär dig hur tooback upp och återställning av en server i Azure-databas för PostgreSQL med hjälp av hello Azure CLI."
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -10,18 +10,18 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 06/13/2017
-ms.openlocfilehash: 871887e67d686a965a0648d2c6f0c72b3008db05
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0b9ed25e3e3a88dd5c7ffe2ae7c27f8eef9be710
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>Säkerhetskopiera och återställa en server i Azure-databas för PostgreSQL med hjälp av Azure CLI
+# <a name="how-tooback-up-and-restore-a-server-in-azure-database-for-postgresql-by-using-hello-azure-cli"></a>Hur tooback upp och återställning av en server i Azure-databas för PostgreSQL med hjälp av hello Azure CLI
 
-Använd Azure-databas för PostgreSQL för att återställa en server-databas till ett tidigare datum som sträcker sig från 7 till 35 dagar.
+Använd Azure-databas för PostgreSQL toorestore en server-databasen tooan tidigare datum som sträcker sig från 7 too35 dagar.
 
 ## <a name="prerequisites"></a>Krav
-Du behöver följande för att slutföra den här instruktioner:
+toocomplete detta hur tooguide behöver du:
 - En [Azure-databas för PostgreSQL-server och databas](quickstart-create-server-database-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -29,43 +29,43 @@ Du behöver följande för att slutföra den här instruktioner:
  
 
 > [!IMPORTANT]
-> Om du installerar och använder Azure CLI lokalt, kräver den här instruktioner att du använder Azure CLI version 2.0 eller senare. Om du vill bekräfta version Kommandotolken Azure CLI, ange `az --version`. Om du vill installera eller uppgradera, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli).
+> Om du installerar och använder hello Azure CLI lokalt, kräver den här hur tooguide att du använder Azure CLI version 2.0 eller senare. Ange tooconfirm hello version Kommandotolken hello Azure CLI `az --version`. tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="back-up-happens-automatically"></a>Säkerhetskopiera sker automatiskt
-När du använder Azure-databas för PostgreSQL görs databastjänsten en säkerhetskopia av tjänsten var femte minut. 
+När du använder Azure-databas för PostgreSQL har hello database-tjänsten gör en säkerhetskopia av hello service automatiskt var femte minut. 
 
-För grundläggande nivån finns säkerhetskopieringar för 7 dagar. För standardnivån är säkerhetskopior tillgängliga för 35 dagar. Mer information finns i [Azure-databas för PostgreSQL prisnivåer](concepts-service-tiers.md).
+För grundläggande nivån är hello säkerhetskopior tillgängliga för 7 dagar. För standardnivån är hello säkerhetskopior tillgängliga för 35 dagar. Mer information finns i [Azure-databas för PostgreSQL prisnivåer](concepts-service-tiers.md).
 
-Med funktionen om automatisk säkerhetskopiering kan du återställa servern och databaserna till ett tidigare datum eller tidpunkt.
+Med funktionen om automatisk säkerhetskopiering kan du återställa hello-servern och dess databaser tooan tidigare datum eller tidpunkt.
 
-## <a name="restore-a-database-to-a-previous-point-in-time-by-using-the-azure-cli"></a>Återställa en databas till en tidigare tidpunkt med hjälp av Azure CLI
-Använd Azure-databas för PostgreSQL för att återställa servern till en tidigare tidpunkt. Återställda data kopieras till en ny server och den befintliga servern är kvar. Till exempel kan en tabell av misstag utelämnas kl. tolv idag så, du återställa tiden innan på dagen. Du kan sedan hämta saknas tabellen och data från den återställda kopian av servern. 
+## <a name="restore-a-database-tooa-previous-point-in-time-by-using-hello-azure-cli"></a>Återställa en databas tooa tidigare punkt i tiden med hjälp av hello Azure CLI
+Använd Azure-databas för PostgreSQL toorestore hello server tooa tidigare tidpunkt. hello återställa data är kopierade tooa ny server och hello befintlig server är kvar. Om en tabell av misstag utelämnas kl. tolv idag så, kan du återställa toohello tid innan på dagen. Sedan kan du hämta hello saknas tabellen och data från hello återställts kopia av hello-server. 
 
-Använd Azure CLI för att återställa servern [az postgres server återställning](/cli/azure/postgres/server#restore) kommando.
+Använd hello Azure CLI-toorestore hello servern [az postgres server återställning](/cli/azure/postgres/server#restore) kommando.
 
-### <a name="run-the-restore-command"></a>Kör kommandot restore
+### <a name="run-hello-restore-command"></a>Kör hello restore-kommandot
 
-Om du vill återställa servern Kommandotolken Azure CLI, anger du följande kommando:
+toorestore hello server Kommandotolken hello Azure CLI, ange hello följande kommando:
 
 ```azurecli-interactive
 az postgres server restore --resource-group myResourceGroup --name mypgserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server mypgserver-20170401
 ```
 
-Den `az postgres server restore` kommandot kräver följande parametrar:
+Hej `az postgres server restore` kommandot kräver hello följande parametrar:
 | Inställning | Föreslaget värde | Beskrivning  |
 | --- | --- | --- |
-| resursgruppen. |  myResourceGroup |  Resursgruppen där källservern finns.  |
-| namn | mypgserver återställs | Namnet på den nya servern som skapas med kommandot restore. |
-| Återställ punkt i tiden | 2017-04-13T13:59:00Z | Välj en punkt i tid att återställa till. Datumet och tiden måste vara inom källserverns säkerhetskopiera Bevarandeperiod. Använd formatet ISO8601 datum och tid. Exempelvis kan du använda din egen lokala tidszon som `2017-04-13T05:59:00-08:00`. Du kan också använda Zulu UTC-format, till exempel `2017-04-13T13:59:00Z`. |
-| käll-servern | mypgserver 20170401 | Namnet eller ID på källservern för att återställa från. |
+| resursgruppen. |  myResourceGroup |  Resursgruppens namn där det finns hello källservern.  |
+| namn | mypgserver återställs | hello namnet på hello nya server som skapas av hello restore-kommandot. |
+| Återställ punkt i tiden | 2017-04-13T13:59:00Z | Välj en punkt i tiden toorestore till. Datumet och tiden måste vara inom hello källserverns säkerhetskopiera Bevarandeperiod. Använd hello ISO8601 format för datum och tid. Exempelvis kan du använda din egen lokala tidszon som `2017-04-13T05:59:00-08:00`. Du kan också använda hello UTC Zulu format, till exempel `2017-04-13T13:59:00Z`. |
+| käll-servern | mypgserver 20170401 | hello namnet eller ID för hello källa server toorestore från. |
 
-När du återställer en server till en tidigare tidpunkt, skapas en ny server. Den ursprungliga servern och dess databaser från den angivna tidpunkten kopieras till den nya servern.
+När du återställer en server tooan tidigare tidpunkt, skapas en ny server. hello ursprungliga servern och dess databaser från hello har angetts tidpunkten är kopierade toohello ny server.
 
-Plats och prisnivå nivåvärden för den återställda servern vara densamma som den ursprungliga servern. 
+hello plats och prissättning nivåvärden hello för hello återställa servern vara samma som hello ursprungliga servern. 
 
-Den `az postgres server restore` kommandot är synkront. När servern har återställts kan använda du den för att upprepa processen för en annan tidpunkt. 
+Hej `az postgres server restore` kommandot är synkront. När hello server har återställts, kan du använda det igen toorepeat hello process för en annan plats i tid. 
 
-När återställningen är klar, leta upp den nya servern och kontrollera att data återställs som förväntat.
+Återställa slutförs efter hello, leta upp hello ny server och kontrollera att hello data återställs som förväntat.
 
 ## <a name="next-steps"></a>Nästa steg
 [Anslutningsbibliotek för Azure-databas för PostgreSQL](concepts-connection-libraries.md)

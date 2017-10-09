@@ -1,5 +1,5 @@
 ---
-title: "Azure SDK för .NET viktig information"
+title: "aaaAzure SDK för .NET viktig information"
 description: "Azure SDK för .NET viktig information"
 services: app-service/web
 documentationcenter: 
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/17/2016
 ms.author: juliako
-ms.openlocfilehash: 370f1d20baa6361924debfb1419d7ba4aeda75ef
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 11e3174b72c8786467a8fa4333deff5f8ad2a4da
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-sdk-for-net-release-notes"></a>Azure SDK för .NET viktig information
-Det här avsnittet innehåller länkar till Azure SDK för .NET viktig information. 
+Det här avsnittet innehåller länkar tooAzure SDK för .NET viktig information. 
 
 ## <a name="azure-sdk-for-net-29-release-notes"></a>Azure SDK för .NET 2.9 viktig information
 [Azure SDK för .NET 2.9 viktig information](azure-sdk-dotnet-release-notes-2-9.md)

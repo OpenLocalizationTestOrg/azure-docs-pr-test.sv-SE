@@ -1,6 +1,6 @@
 ---
-title: "Sök efter nästa hopp med Azure Network Watcher nexthop - PowerShell | Microsoft Docs"
-description: "Den här artikeln beskriver hur du kan hitta nästa hopptyp är och ip-adressen med nästa hopp med hjälp av PowerShell."
+title: "aaaFind nästa hopp med Azure Network Watcher nexthop - PowerShell | Microsoft Docs"
+description: "Den här artikeln beskriver hur du kan hitta vad hello nästa hopptyp är och IP-adress med hjälp av nästa hopp med hjälp av PowerShell."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 00161e7c6fb4becdb7d8eab266fa27128e50f8ca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fdb0b4a02d95fc45c103fe952fc1afa095414c18
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-powershell"></a>Ta reda på vilka nästa hopptyp är med nästa hopp-funktionen i Azure Nätverksbevakaren med hjälp av PowerShell
+# <a name="find-out-what-hello-next-hop-type-is-using-hello-next-hop-capability-in-azure-network-watcher-using-powershell"></a>Ta reda på vilka hello nästa hopptyp med hello nexthop-funktionen i Azure Nätverksbevakaren med hjälp av PowerShell
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-check-next-hop-portal.md)
@@ -29,21 +29,21 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-check-next-hop-cli.md)
 > - [Azure REST-API](network-watcher-check-next-hop-rest.md)
 
-Nästa hopp är en funktion i Nätverksbevakaren som tillhandahåller möjligheten get nästa hopptyp och IP-adress baserat på en angiven virtuell dator. Den här funktionen är användbart för att fastställa om trafik som lämnar en virtuell dator som passerar en gateway, internet eller virtuella nätverk för att komma till sin destination.
+Nästa hopp är en funktion i Nätverksbevakaren som ger hello möjlighet hämta hello nästa hopptyp och IP-adress baserat på en angiven virtuell dator. Den här funktionen är användbart för att fastställa om trafik som lämnar en virtuell dator som passerar en gateway, internet eller virtuella nätverk tooget tooits mål.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-I det här scenariot använder du Azure-portalen för att hitta nästa hopptyp och IP-adress.
+I det här scenariot använder du hello Azure portal toofind hello nästa hopptyp och IP-adress.
 
-Det här scenariot förutsätter att du redan har följt stegen i [skapa en Nätverksbevakaren](network-watcher-create.md) att skapa en Nätverksbevakaren. Det här scenariot förutsätter att det finns en resursgrupp med en giltig virtuell dator som ska användas.
+Det här scenariot förutsätter att du redan har följt stegen hello i [skapa en Nätverksbevakaren](network-watcher-create.md) toocreate en Nätverksbevakaren. hello scenariot förutsätter att en resursgrupp med en giltig virtuell dator finns toobe används.
 
 ## <a name="scenario"></a>Scenario
 
-Det scenario som beskrivs i den här artikeln använder nästa hopp, en funktion i Nätverksbevakaren som söker efter nästa hopptyp och IP-adress för en resurs. Läs mer om nästa hopp [nästa hopp översikt](network-watcher-next-hop-overview.md).
+hello-scenario som beskrivs i den här artikeln används nästa hopp, en funktion i Nätverksbevakaren som söker efter hello nästa hopptyp och IP-adress för en resurs. Besök toolearn mer om nästa hopp [nästa hopp översikt](network-watcher-next-hop-overview.md).
 
 ## <a name="retrieve-network-watcher"></a>Hämta Nätverksbevakaren
 
-Det första steget är att hämta Nätverksbevakaren-instans. Den `$networkWatcher` variabel har skickats till nästa hopp Kontrollera cmdlet.
+hello första steget är tooretrieve hello Nätverksbevakaren instans. Hej `$networkWatcher` variabel har skickats toohello nästa hopp Kontrollera cmdlet.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -52,18 +52,18 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ## <a name="get-a-virtual-machine"></a>Hämta en virtuell dator
 
-Nästa hopp Returnerar nästa hopp och IP-adressen för nästa hopp från en virtuell dator. Ett Id för en virtuell dator krävs för cmdlet. Om du redan känner till ID: T för den virtuella datorn att använda, kan du hoppa över det här steget.
+Nästa hopp returnerar hello nästa hopp och hello IP-adressen för nästa hopp för hello från en virtuell dator. Ett Id för en virtuell dator krävs för hello cmdlet. Om du redan vet hello-ID för hello virtuella toouse kan du hoppa över det här steget.
 
 ```powershell
 $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 ```
 
 > [!NOTE]
-> Nästa hopp kräver att den Virtuella datorresursen har allokerats för att köras.
+> Nästa hopp kräver att hello Virtuella datorresursen fördelas toorun.
 
-## <a name="get-the-network-interfaces"></a>Hämta nätverksgränssnitt
+## <a name="get-hello-network-interfaces"></a>Hämta hello nätverksgränssnitt
 
-IP-adressen för ett nätverkskort på den virtuella datorn krävs i det här exemplet vi hämta nätverkskort på en virtuell dator. Om du redan känner till IP-adressen som du vill testa på den virtuella datorn, kan du hoppa över det här steget.
+hello IP-adress till ett nätverkskort på den virtuella datorn hello krävs i det här exemplet vi hämta hello nätverkskort på en virtuell dator. Om du redan vet hello IP-adress som du vill tootest på hello virtuell dator kan du hoppa över det här steget.
 
 ```powershell
 $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.NetworkInterfaces.Id.ForEach({$_})}
@@ -71,7 +71,7 @@ $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.Networ
 
 ## <a name="get-next-hop"></a>Hämta nästa hopp
 
-Nu vi kallar det `Get-AzureRmNetworkWatcherNextHop` cmdlet. Vi skickar cmdlet Nätverksbevakaren, virtuella Id, källans IP-adress och mål-IP-adress. I det här exemplet är den IP-adressen till en virtuell dator i ett annat virtuellt nätverk. Det finns en virtuell nätverksgateway mellan de två virtuella nätverk.
+Nu vi kallar hello `Get-AzureRmNetworkWatcherNextHop` cmdlet. Vi skickar hello cmdlet hello Nätverksbevakaren, virtuella Id, käll-IP-adress och mål-IP-adress. I det här exemplet är IP-måladress hello tooa VM i ett annat virtuellt nätverk. Det finns en virtuell nätverksgateway mellan hello två virtuella nätverk.
 
 ```powershell
 Get-AzureRmNetworkWatcherNextHop -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id -SourceIPAddress $nics[0].IpConfigurations[0].PrivateIpAddress  -DestinationIPAddress 10.0.2.4 
@@ -79,7 +79,7 @@ Get-AzureRmNetworkWatcherNextHop -NetworkWatcher $networkWatcher -TargetVirtualM
 
 ## <a name="review-results"></a>Granska resultaten
 
-När du är färdig tillhandahålls resultaten. Nästa hopp IP-adress returneras samt typ av resurs som det är. I det här scenariot är det offentliga IP-adressen för den virtuella nätverksgatewayen.
+När du är färdig tillhandahålls hello resultat. hello nästa hopp IP-adress returneras samt hello typ av resurs som det är. I det här scenariot är det hello offentliga IP-adress hello virtuell nätverksgateway.
 
 ```
 NextHopIpAddress NextHopType           RouteTableId 
@@ -87,7 +87,7 @@ NextHopIpAddress NextHopType           RouteTableId
 13.78.238.92     VirtualNetworkGateway Gateway Route
 ```
 
-I följande lista visas de tillgängliga värdena för NextHopType:
+hello visar följande lista hello tillgängliga NextHopType värden:
 
 **Nästa Hopptyp**
 
@@ -101,7 +101,7 @@ I följande lista visas de tillgängliga värdena för NextHopType:
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du granskar din grupp för nätverkssäkerhet via programmering genom att besöka [NSG granskning med Nätverksbevakaren](network-watcher-nsg-auditing-powershell.md)
+Lär dig hur tooreview säkerhet grupp nätverksinställningarna via programmering genom att besöka [NSG granskning med Nätverksbevakaren](network-watcher-nsg-auditing-powershell.md)
 
 
 

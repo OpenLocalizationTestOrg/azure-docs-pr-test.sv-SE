@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: .NET exempel DocumentDB-API: t | Microsoft Docs'
+title: 'Azure Cosmos DB: .NET exempel hello DocumentDB API | Microsoft Docs'
 description: "Hitta C# .NET-exemplen på github för vanliga aktiviteter i DocumentDB, inklusive CRUD-åtgärder."
 keywords: NoSQL-exempel
 services: cosmos-db
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: 5f0a7f59c114ab65a19617a62d39dcfa93a25c00
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c731794274d9aecbb1366c8e0e36b7688ed4a531
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-net-examples-for-the-documentdb-api"></a>Azure Cosmos DB: .NET-exempel för DocumentDB-API
+# <a name="azure-cosmos-db-net-examples-for-hello-documentdb-api"></a>Azure Cosmos DB: .NET exempel hello DocumentDB-API
 > [!div class="op_single_selector"]
 > * [.NET-exempel](documentdb-dotnet-samples.md)
 > * [Node.js-exempel](documentdb-nodejs-samples.md)
@@ -30,36 +30,36 @@ ms.lasthandoff: 08/18/2017
 > 
 > 
 
-Senaste exempel lösningar som utför CRUD-åtgärder och andra vanliga åtgärder på Azure DB som Cosmos-resurser som ingår i den [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) GitHub-lagringsplatsen. Den här artikeln innehåller:
+Senaste exempel lösningar som utför CRUD-åtgärder och andra vanliga åtgärder på Azure DB som Cosmos-resurser som ingår i hello [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) GitHub-lagringsplatsen. Den här artikeln innehåller:
 
-* Länkar till aktiviteter i var och en av filerna som exempel C#-projekt. 
-* Länkar till relaterade API: N referera till innehåll.
+* Länkar toohello aktiviteter i varje hello exempel C# project-filer. 
+* Länkar toohello relaterat innehåll för API-referens.
 
 **Förutsättningar**
 
-1. Du behöver ett Azure-konto du använder de här exemplen:
-   * Du kan [kostnadsfritt registrera ett Azure-konto](https://azure.microsoft.com/pricing/free-trial/): du får då krediter som kan användas för att pröva Azure-betaltjänster och när du har använt upp dem så kan du behålla kontot och använda kostnadsfria Azure-tjänster, till exempel Websites. Ditt kreditkort kommer aldrig att debiteras om du inte specifikt ändrar dina inställningar och ber om det.
+1. Du behöver ett Azure-konto toouse exemplen:
+   * Du kan [öppna ett Azure-konto gratis](https://azure.microsoft.com/pricing/free-trial/): du får kredit du kan använda tootry ut betald Azure-tjänster och även när de används upp du kan behålla hello kontot och använda kostnadsfria Azure-tjänster, till exempel Websites. Ditt kreditkort kommer aldrig att debiteras, såvida du inte uttryckligen ändrar dina inställningar och be toobe debiteras.
      * Du kan [aktivera Visual Studio-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/): din Visual Studio-prenumeration ger dig krediter varje månad som du kan använda för Azure-betaltjänster.
-2. Du måste också den [Microsoft.Azure.DocumentDB NuGet-paketet](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/). 
+2. Du måste också hello [Microsoft.Azure.DocumentDB NuGet-paketet](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/). 
 
 > [!NOTE]
-> Varje exempel är självständigt, den konfigurerar sig själv och rensar efter sig själv. Därför utfärda exemplen flera anrop till CreateDocumentCollectionAsync(). Varje gång det gör du din prenumeration faktureras timma användning per prestandanivån på samlingen som skapas. 
+> Varje exempel är självständigt, den konfigurerar sig själv och rensar efter sig själv. Därför utfärda hello exempel flera anrop tooCreateDocumentCollectionAsync(). Varje gång det gör du din prenumeration faktureras timma användning per hello prestandanivån mängden hello håller på att skapas. 
 > 
 > 
 
 ## <a name="database-examples"></a>Databas-exempel
-Den [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L72-L121) -metoden i exemplet på projektet DatabaseManagement visar hur du utför följande uppgifter.
+Hej [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L72-L121) metoden hello exemplet hello DatabaseManagement Project visar hur tooperform hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |
 | [Skapa en databas](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L90) |[DocumentClient.CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) |
 | [Fråga en databas](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L81) |[DocumentQueryable.CreateDatabaseQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdatabasequery.aspx) |
 | [Läs en databas-ID: t](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L102) |[DocumentClient.ReadDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdatabaseasync.aspx) |
-| [Läsa alla databaser](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L108-L113) |[DocumentClient.ReadDatabaseFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdatabasefeedasync.aspx) |
+| [Läsa alla hello-databaser](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L108-L113) |[DocumentClient.ReadDatabaseFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdatabasefeedasync.aspx) |
 | [Ta bort en databas](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L118) |[DocumentClient.DeleteDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.deletedatabaseasync.aspx) |
 
 ## <a name="collection-examples"></a>Exempel för samlingen
-Den [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/CollectionManagement/Program.cs#L96-L185) metod för CollectionManagement exempelprojektet visas hur du gör följande uppgifter.
+Hej [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/CollectionManagement/Program.cs#L96-L185) metod för hello exempelprojektet CollectionManagement visar hur toodo hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |
@@ -67,17 +67,17 @@ Den [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/53
 | [Hämta konfigurerad prestanda i en samling](https://github.com/Azure/azure-documentdb-dotnet/blob/95521ff51ade486bb899d6913880995beaff58ce/samples/code-samples/CollectionManagement/Program.cs#L198) |[DocumentQueryable.CreateOfferQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx) |
 | [Ändra konfigurerade prestanda i en samling](https://github.com/Azure/azure-documentdb-dotnet/blob/95521ff51ade486bb899d6913880995beaff58ce/samples/code-samples/CollectionManagement/Program.cs#L207) |[DocumentClient.ReplaceOfferAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replaceofferasync.aspx) |
 | [Hämta en samling med Id](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L153) |[DocumentClient.ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) |
-| [Läsa alla samlingar i en-databas](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L162) |[DocumentClient.ReadDocumentCollectionFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentcollectionfeedasync.aspx) |
+| [Läsa alla hello samlingar i en-databas](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L162) |[DocumentClient.ReadDocumentCollectionFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentcollectionfeedasync.aspx) |
 | [Ta bort en samling](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L175) |[DocumentClient.DeleteDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.deletedocumentcollectionasync.aspx) |
 
 ## <a name="document-examples"></a>Dokument-exempel
-Den [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L97-L102) metod för DocumentManagement exempelprojektet visas hur du gör följande uppgifter.
+Hej [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L97-L102) metod för hello exempelprojektet DocumentManagement visar hur toodo hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |
 | [Skapa ett dokument](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L198) |[DocumentClient.CreateDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) |
 | [Läsa ett dokument-ID: t](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L211) |[DocumentClient.ReadDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentasync.aspx) |
-| [Läsa alla dokument i en samling](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L227) |[DocumentClient.ReadDocumentFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentfeedasync.aspx) |
+| [Läsa alla hello dokument i en samling](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L227) |[DocumentClient.ReadDocumentFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentfeedasync.aspx) |
 | [Frågan för dokument](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L248-L251) |[DocumentClient.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx) |
 | [Ersätta ett dokument](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L263) |[DocumentClient.ReplaceDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replacedocumentasync.aspx) |
 | [Upsert ett dokument](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L300) |[DocumentClient.UpsertDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.upsertdocumentasync.aspx) |
@@ -87,14 +87,14 @@ Den [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f37
 | [Läs dokument bara om dokumentet har ändrats](https://github.com/Azure/azure-documentdb-dotnet/blob/f2b11dec45a195ddeed333560ebba63055f5ed09/samples/code-samples/DocumentManagement/Program.cs#L442-L470) |[DocumentClient.AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx)<br>[Documents.Client.AccessConditionType](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accessconditiontype.aspx) |
 
 ## <a name="indexing-examples"></a>Indexering exempel
-Den [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) metod för IndexManagement exempelprojektet visar hur du utför följande uppgifter.
+Hej [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) metod för hello exempelprojektet IndexManagement visar hur tooperform hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |
-| [Undanta ett dokument från indexet](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L125-L163) |[IndexingDirective.Exclude](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingdirective.aspx) |
+| [Undanta ett dokument från hello index](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L125-L163) |[IndexingDirective.Exclude](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingdirective.aspx) |
 | [Använda manuell (i stället för automatisk) indexering](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L171-L209) |[IndexingPolicy.Automatic](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.automatic.aspx) |
 | [Använd lazy (i stället för konsekvent) indexering](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L221-L238) |[IndexingMode.Lazy](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.indexingmode.aspx#P:Microsoft.Azure.Documents.IndexingPolicy.IndexingMode) |
-| [Uteslut sökvägar för angivna dokumentet från indexet](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L248-L297) |[IndexingPolicy.ExcludedPaths](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.excludedpaths.aspx) |
+| [Uteslut sökvägar för angivna dokumentet från hello index](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L248-L297) |[IndexingPolicy.ExcludedPaths](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.excludedpaths.aspx) |
 | [Tvinga en intervallet utföras på en indexerad hash-sökväg](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L305-L340) |[FeedOptions.EnableScanInQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx) |
 | [Använd intervallet index i strängar](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L342-L405) |[IndexingPolicy.IncludedPaths](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.includedpaths.aspx)<br>[RangeIndex](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.rangeindex.aspx) |
 | [Utföra en transformering index](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L407-L464) |[ReplaceDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.replacedocumentcollectionasync.aspx) |
@@ -102,7 +102,7 @@ Den [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977
 Mer information om indexering finns [Azure Cosmos DB indexering principer](indexing-policies.md).
 
 ## <a name="geospatial-examples"></a>Geospatiala exempel
-Exempelfilen geospatiala [azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs), visar hur du utföra följande uppgifter.  
+hello geospatiala exempelfilen, [azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs), visar hur toodo hello följande uppgifter.  
 
 | Aktivitet | API-referens |
 | --- | --- |
@@ -116,7 +116,7 @@ Exempelfilen geospatiala [azure-documentdb-dotnet/samples/code-samples/Geospatia
 Mer information om hur du arbetar med geospatiala data finns [arbeta med geospatiala data i Azure Cosmos DB](geospatial.md).  
 
 ## <a name="query-examples"></a>frågan exempel
-Dokumentet frågefilen [azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs), visas hur var och en av följande uppgifter med hjälp av SQL-frågegrammatik LINQ-providern med frågan och Lambda.
+Hej för dokumentet frågefilen [azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs), visar hur toodo av hello följande uppgifter med hjälp av hello SQL-frågegrammatik hello LINQ-providern med frågan och Lambda.
 
 | Aktivitet | API-referens |
 | --- | --- |
@@ -138,17 +138,17 @@ Dokumentet frågefilen [azure-documentdb-dotnet/samples/code-samples/Queries/Pro
 Mer information om hur du skriver frågor finns [SQL-frågan i Azure Cosmos DB](documentdb-sql-query.md).
 
 ## <a name="change-feed-examples"></a>Ändra feed exempel 
-Ändringen feed exemplet [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) visas hur du gör följande uppgifter. 
+Ändra hello feed exemplet [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) visar hur toodo hello följande uppgifter. 
 
 | Aktivitet | API-referens |
 | --- | --- |
 | [Läs ändra feed](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) | 
 | [Läs partition nyckelintervall](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync.aspx) | 
 
-Ändringen feed processor exempel: [ändra Feed Migreringsverktyget](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) visar hur du använder ändra feed processor-biblioteket för att replikera data till en annan Cosmos-DB-samling.   
+hello ändra feed processor exempel: [ändra Feed Migreringsverktyget](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) visar hur toouse ändra feed processor biblioteket tooreplicate tooanother Cosmos DB datainsamling.   
 
 ## <a name="server-side-programming-examples"></a>Serversidan programming exempel
-Filen serversidan programming [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs), visar hur du utföra följande uppgifter.
+hello serversidan programming filen [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs), visar hur toodo hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |
@@ -163,7 +163,7 @@ Filen serversidan programming [azure-documentdb-dotnet/samples/code-samples/Serv
 Mer information om programmering av serversidan finns [Azure Cosmos DB programmering av serversidan: lagrade procedurer, databasutlösare och UDF: er](programming.md).
 
 ## <a name="user-management-examples"></a>Exempel för hantering av användare
-Filen användaren management [azure-documentdb-dotnet/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs), visar hur du utföra följande uppgifter.
+hello användaren management filen [azure-documentdb-dotnet/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs), visar hur toodo hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |

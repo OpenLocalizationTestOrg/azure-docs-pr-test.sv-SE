@@ -1,6 +1,6 @@
 ---
-title: "Skapa en anpassad avsökningsåtgärd - Azure Application Gateway - PowerShell klassisk | Microsoft Docs"
-description: "Lär dig hur du skapar en anpassad avsökningsåtgärd för Programgateway med PowerShell i den klassiska distributionsmodellen"
+title: "aaaCreate klassiska en anpassad avsökningsåtgärd - Azure Application Gateway - PowerShell | Microsoft Docs"
+description: "Lär dig hur toocreate en anpassad avsökning för Programgateway med PowerShell i hello klassiska distributionsmodellen"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: gwallace
-ms.openlocfilehash: bf190741b10c10e885d927ad21a9f2b25107943f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 68332367c99328bd6456b0c339923765637be986
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Skapa en anpassad avsökningsåtgärd för Azure-Programgateway (klassiskt) med hjälp av PowerShell
 
@@ -28,49 +28,49 @@ ms.lasthandoff: 07/11/2017
 > * [PowerShell och Azure Resource Manager](application-gateway-create-probe-ps.md)
 > * [PowerShell och den klassiska Azure-portalen](application-gateway-create-probe-classic-ps.md)
 
-I den här artikeln, lägger du till en anpassad avsökning en befintlig Programgateway med PowerShell. Anpassade avsökningar är användbara för program som har ett visst hälsotillstånd Kontrollera sidan eller för program som inte tillhandahåller ett lyckat svar på standardwebbprogrammet.
+Lägg till en anpassad avsökningsåtgärd tooan befintliga Programgateway med PowerShell i den här artikeln. Anpassade avsökningar är användbara för program som har ett visst hälsotillstånd Kontrollera sidan eller för program som inte tillhandahåller ett lyckat svar på hello standardwebbprogrammet.
 
 > [!IMPORTANT]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../azure-resource-manager/resource-manager-deployment-model.md). Den här artikeln täcker den klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder Resource Manager-modellen. Lär dig hur du [utför dessa steg med hjälp av Resource Manager-modellen](application-gateway-create-probe-ps.md).
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../azure-resource-manager/resource-manager-deployment-model.md). Den här artikeln täcker hello klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen. Lär dig hur för[utföra dessa steg med hello Resource Manager-modellen](application-gateway-create-probe-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
 ## <a name="create-an-application-gateway"></a>Skapa en programgateway
 
-Så här skapar du en programgateway:
+toocreate en Programgateway:
 
 1. Skapa en resurs för en programgateway.
 2. Skapa en XML-konfigurationsfil eller ett konfigurationsobjekt.
-3. Bekräfta konfigurationen för den nyligen skapade programgatewayresursen.
+3. Bekräfta hello configuration toohello nyskapad programresursen gateway.
 
 ### <a name="create-an-application-gateway-resource-with-a-custom-probe"></a>Skapa ett program gateway med en anpassad avsökningsåtgärd
 
-Du skapar en gateway genom att köra cmdleten `New-AzureApplicationGateway`, där du ersätter värdena med dina egna. Faktureringen för gatewayen startar inte i det här läget. Faktureringen börjar i ett senare skede när gatewayen har startats.
+Använd hello-toocreate hello gateway `New-AzureApplicationGateway` cmdlet, ersätter hello värden med dina egna. Fakturering för hello gatewayen startar inte nu. Fakturering börjar i ett senare steg när hello gateway har startat.
 
-I följande exempel skapar vi en programgateway genom att använda ett virtuellt nätverk med namnet ”testvnet1” och undernätet ”subnet-1”.
+hello följande exempel skapas en Programgateway med hjälp av ett virtuellt nätverk kallas ”testvnet1” och ett undernät som kallas ”Undernät 1”.
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
 ```
 
-Du kontrollerar att gatewayen har skapats genom att köra cmdleten `Get-AzureApplicationGateway`.
+toovalidate som hello gateway har skapats kan du använda hello `Get-AzureApplicationGateway` cmdlet.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
 ```
 
 > [!NOTE]
-> Standardvärdet för *InstanceCount* är 2, och det högsta värdet är 10. Standardvärdet för *GatewaySize* är Medium. Du kan välja mellan små, medelstora och stora.
+> Hej standardvärdet för *InstanceCount* är 2, med ett maximalt värde 10. Hej standardvärdet för *GatewaySize* är Medium. Du kan välja mellan små, medelstora och stora.
 > 
 > 
 
-*VirtualIPs* och *DnsName* är tomma eftersom gatewayen inte har startat än. Dessa värden skapas när den är i körläge.
+*Virtualip:* och *DnsName* visas som tomt eftersom hello gateway inte har startat ännu. Dessa värden skapas när hello gateway är i hello körs.
 
 ### <a name="configure-an-application-gateway-by-using-xml"></a>Konfigurera en Programgateway genom att använda XML
 
-I följande exempel använder vi en XML-fil för att konfigurera alla inställningar för programgatewayen och för att skicka dem till programgatewayresursen.  
+I följande exempel hello, och använda en XML-filen tooconfigure alla inställningar för Programgateway och bekräfta dem toohello programresursen gateway.  
 
-Kopiera följande text till Anteckningar.
+Kopiera följande text tooNotepad hello.
 
 ```xml
 <ApplicationGatewayConfiguration xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/windowsazure">
@@ -136,39 +136,39 @@ Kopiera följande text till Anteckningar.
 </ApplicationGatewayConfiguration>
 ```
 
-Redigera värdena mellan parenteserna för konfigurationsobjekten. Spara filen med filnamnstillägget .xml.
+Redigera hello värden mellan hello parenteser för hello konfigurationsobjekt. Spara hello-filen med filnamnstillägget .xml.
 
-I följande exempel visas hur du använder en konfigurationsfil för att ställa in Programgateway belastningsutjämna HTTP-trafik på offentlig port 80 och skicka trafik till backend-port 80 mellan två IP-adresser med hjälp av en anpassad avsökning.
+hello följande exempel visas hur toouse en konfiguration filen tooset in hello programmet gateway tooload balansera HTTP-trafik på offentlig port 80 och skicka nätverkstrafik tooback avslutande port 80 mellan två IP-adresser med hjälp av en anpassad avsökning.
 
 > [!IMPORTANT]
-> Protokollobjekten Http och Https är skiftlägeskänsliga.
+> hello protokollet objektet Http eller Https är skiftlägeskänsliga.
 
-Ett nytt konfigurationsobjekt \<avsökning\> har lagts till i Konfigurera anpassade avsökningar.
+Ett nytt konfigurationsobjekt \<avsökning\> läggs anpassade tooconfigure-avsökningar.
 
-Konfigurationsparametrarna är:
+hello konfigurationsparametrar är:
 
 |Parameter|Beskrivning|
 |---|---|
 |**Namn** |Referensnamn för anpassade avsökningen. |
 * **Protokollet** | Protokoll som används (möjliga värden är HTTP eller HTTPS).|
-| **Värden** och **sökväg** | Fullständiga URL-sökväg som anropas av Programgateway fastställa hälsotillståndet för instansen. Till exempel om du har en webbplats http://contoso.com/ kan sedan den anpassa avsökningen konfigureras för ”http://contoso.com/path/custompath.htm” för avsökning kontrollerar att ett lyckat HTTP-svar.|
-| **Intervall** | Konfigurerar kontroller för avsökning intervall i sekunder.|
-| **Timeout** | Definierar avsökningen timeout-värdet för en kontroll för HTTP-svar.|
-| **UnhealthyThreshold** | Antal misslyckade HTTP-svar som behövs för att flaggan backend-instans som *ohälsosamt*.|
+| **Värden** och **sökväg** | Fullständig URL-sökväg som anropas av hello gateway toodetermine hello programhälsan av hello-instansen. Om du har en webbplats http://contoso.com/ hello anpassad avsökningsåtgärd kan konfigureras för kontrollerar ”http://contoso.com/path/custompath.htm” för avsökningen toohave ett lyckat HTTP-svar.|
+| **Intervall** | Konfigurerar hello avsökningen intervall kontroller i sekunder.|
+| **Timeout** | Definierar hello avsökningen timeout-värdet för en kontroll för HTTP-svar.|
+| **UnhealthyThreshold** | Hej antalet misslyckade HTTP-svar krävs tooflag hello backend-instans som *ohälsosamt*.|
 
-Avsökningsnamnet refererar till den \<BackendHttpSettings\> konfigurationen att tilldela vilka backend-adresspoolen använder anpassad avsökningsåtgärd inställningar.
+Hej avsökningsnamnet refereras i hello \<BackendHttpSettings\> configuration tooassign vilka backend-adresspool använder anpassad avsökningsåtgärd inställningar.
 
-## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Lägg till en anpassad avsökning i en befintlig Programgateway
+## <a name="add-a-custom-probe-tooan-existing-application-gateway"></a>Lägg till en anpassad avsökningsåtgärd tooan befintliga Programgateway
 
-Ändra den aktuella konfigurationen av en Programgateway kräver tre steg: hämta den aktuella XML-konfigurationsfilen, ändra om du vill att en anpassad avsökning och konfigurera programgatewayen med de nya inställningarna för XML.
+Ändra hello aktuella konfigurationen för en Programgateway kräver tre steg: hämta hello aktuella XML-konfigurationsfilen, ändra toohave en anpassad avsökning och konfigurera hello Programgateway med hello nya XML-inställningar.
 
-1. Hämta XML-filen genom att använda `Get-AzureApplicationGatewayConfig`. Denna cmdlet exporterar konfigurations-XML som ska ändras för att lägga till någon avsökningsinställning.
+1. Hämta hello XML-filen genom att använda `Get-AzureApplicationGatewayConfig`. Den här cmdleten export hello configuration XML toobe ändrade tooadd någon avsökningsinställning.
 
   ```powershell
-  Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
+  Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path toofile>"
   ```
 
-1. Öppna XML-filen i en textredigerare. Lägg till en `<probe>` avsnittet efter `<frontendport>`.
+1. Öppna hello XML-filen i en textredigerare. Lägg till en `<probe>` avsnittet efter `<frontendport>`.
 
   ```xml
 <Probes>
@@ -184,7 +184,7 @@ Avsökningsnamnet refererar till den \<BackendHttpSettings\> konfigurationen att
 </Probes>
   ```
 
-  Lägg till avsökningsnamnet i avsnittet backendHttpSettings i XML-koden som visas i följande exempel:
+  Lägg till hello avsökningsnamnet i hello backendHttpSettings avsnittet hello XML, som visas i följande exempel hello:
 
   ```xml
     <BackendHttpSettings>
@@ -197,17 +197,17 @@ Avsökningsnamnet refererar till den \<BackendHttpSettings\> konfigurationen att
     </BackendHttpSettings>
   ```
 
-  Spara XML-filen.
+  Spara hello XML-fil.
 
-1. Uppdatera gateway programkonfigurationen med den nya XML-filen genom att använda `Set-AzureApplicationGatewayConfig`. Denna cmdlet uppdaterar din Programgateway med den nya konfigurationen.
+1. Uppdatera hello programkonfigurationen gateway med hello nya XML-filen med hjälp av `Set-AzureApplicationGatewayConfig`. Denna cmdlet uppdaterar din Programgateway med hello ny konfiguration.
 
 ```powershell
-Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
+Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path toofile>"
 ```
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill konfigurera Secure Sockets Layer (SSL)-avlastning, se [konfigurera en Programgateway för SSL-avlastning](application-gateway-ssl.md).
+Om du vill tooconfigure Secure Sockets Layer (SSL)-avlastning, se [konfigurera en Programgateway för SSL-avlastning](application-gateway-ssl.md).
 
-Om du vill konfigurera en programgateway för användning med en intern belastningsutjämnare läser du [Skapa en programgateway med en intern belastningsutjämnare (ILB)](application-gateway-ilb.md).
+Om du vill tooconfigure ett program gateway toouse med en intern belastningsutjämnare, se [skapa en Programgateway med en intern belastningsutjämnare (ILB)](application-gateway-ilb.md).
 

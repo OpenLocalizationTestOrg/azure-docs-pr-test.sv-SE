@@ -1,6 +1,6 @@
 ---
-title: "Felsöka: Skapa och ansluta till en arbetsyta i Machine Learning | Microsoft Docs"
-description: "Lösningar på vanliga problem med att skapa och ansluta till en Azure Machine Learning-arbetsytan"
+title: "Felsöka: Skapa och ansluta tooa Machine Learning-arbetsytan | Microsoft Docs"
+description: "Lösningar på vanliga problem med att skapa och ansluta tooan Azure Machine Learning-arbetsytan"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-ms.openlocfilehash: 398ac3d9c9d32a1ab10413ce0d7ce8d448890409
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 965a0025e85ba4e22c2b037edfa923e7f7599069
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>Felsökningsguide: Skapa och anslut till en Machine Learning-arbetsyta
+# <a name="troubleshooting-guide-create-and-connect-tooan-machine-learning-workspace"></a>Felsökningsguiden: skapa och ansluta tooan Machine Learning-arbetsytan
 Den här guiden ger lösningar för några vanliga påträffade utmaningar när du ställer in Azure Machine Learning arbetsytor.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="workspace-owner"></a>Arbetsytan ägare
-Om du vill öppna en arbetsyta i Machine Learning Studio, måste du vara inloggad på Account du använde för att skapa arbetsytan eller måste du få en inbjudan från ägare att ansluta till arbetsytan. Du kan hantera arbetsytan, vilket ger möjlighet att konfigurera åtkomst från Azure-portalen.
+tooopen en arbetsyta i Machine Learning Studio, måste du vara inloggad toohello Account du använde toocreate hello arbetsytan eller måste tooreceive en inbjudan från hello ägare toojoin hello arbetsytan. Du kan hantera hello arbetsytan som innehåller hello möjlighet tooconfigure åtkomst från hello Azure-portalen.
 
 Mer information om hur du hanterar en arbetsyta finns [hantera en Azure Machine Learning-arbetsytan].
 
 [hantera en Azure Machine Learning-arbetsytan]: machine-learning-manage-workspace.md
 
 ## <a name="allowed-regions"></a>Tillåtna regioner
-Machine Learning är tillgänglig i ett begränsat antal regioner. Om din prenumeration inte innehåller något av dessa regioner kan du se ett felmeddelande, ”du har inga prenumerationer i tillåtna regioner”.
+Machine Learning är tillgänglig i ett begränsat antal regioner. Om din prenumeration inte innehåller något av dessa regioner kan du se hello felmeddelande, ”du har inga prenumerationer i hello tillåtna regioner”.
 
-Om du vill begära att en region som ska läggas till din prenumeration, skapa en ny Microsoft supportförfrågan från Azure portal, väljer **fakturering** som problemtyp, och följ anvisningarna för att skicka din begäran.
+toorequest som en region läggs tooyour prenumerationen, skapa en ny Microsoft supportförfrågan från hello Azure portal, väljer **fakturering** som hello problemtyp och följ hello uppmanar toosubmit din begäran.
 
 ## <a name="storage-account"></a>Lagringskonto
-Tjänsten Machine Learning måste ett storage-konto för att lagra data. Du kan använda ett befintligt lagringskonto eller skapa ett nytt lagringskonto när du skapar den nya Machine Learning-arbetsytan (om du har en kvot för att skapa ett nytt lagringskonto).
+hello tjänsten Machine Learning måste en toostore kontodata lagring. Du kan använda ett befintligt lagringskonto eller skapa ett nytt lagringskonto när du skapar hello nya Machine Learning-arbetsytan (om du har kvoten toocreate ett nytt lagringskonto).
 
-När den nya Machine Learning-arbetsytan har skapats kan logga du in till Machine Learning Studio med hjälp av Microsoft-konto som du använde för att skapa arbetsytan. Om du får felmeddelandet Använd ”arbetsytan kunde inte hittas” (ungefär som följande skärmbild), följande steg att ta bort cookies i webbläsaren.
+När hello nya Machine Learning-arbetsytan har skapats kan logga du in tooMachine Learning Studio med hjälp av hello Microsoft-konto du använde toocreate hello arbetsytan. Om det uppstår fel hälsningsmeddelande Använd ”arbetsytan kunde inte hittas” (liknande toohello följande skärmbild), följande steg toodelete hello dina cookies.
 
 ![Det gick inte att hitta arbetsytan][screen3]
 
-**Ta bort cookies i webbläsaren**
+**toodelete cookies i webbläsaren**
 
-1. Om du använder Internet Explorer klickar du på den **verktyg** i det övre högra hörnet och välj **Internetalternativ**.  
+1. Om du använder Internet Explorer klickar du på hello **verktyg** i hello övre högra hörnet och välj **Internetalternativ**.  
 
 ![Internet-alternativ][screen4]
 
-2. Under den **allmänna** klickar du på **ta bort...**
+2. Under hello **allmänna** klickar du på **ta bort...**
 
 ![Fliken Allmänt][screen5]
 
-3. I den **ta bort webbhistorik** dialogrutan Kontrollera **Cookies och webbplatsen data** är markerad och klicka på **ta bort**.
+3. I hello **ta bort webbhistorik** dialogrutan Kontrollera **Cookies och webbplatsen data** är markerad och klicka på **ta bort**.
 
 ![Ta bort cookies][screen6]
 
-Starta om webbläsaren efter cookies tas bort och går sedan till den [Microsoft Azure Machine Learning](https://studio.azureml.net) sidan. När du ombeds ange ett användarnamn och lösenord anger du samma Microsoft-konto som du använde för att skapa arbetsytan.
+Starta om hello webbläsaren efter hello cookies bort, och sedan gå toohello [Microsoft Azure Machine Learning](https://studio.azureml.net) sidan. När du uppmanas ange ett användarnamn och lösenord, hello samma Microsoft-konto som du använde toocreate hello arbetsytan.
 
 ## <a name="comments"></a>Kommentarer
 
-Vårt mål är att göra Machine Learning-upplevelse som sömlös som möjligt. Kontrollera efter eventuella kommentarer och problem på den [Azure Machine Learning-forum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) som hjälper oss att hantera du bättre.
+Vårt mål är toomake hello Machine Learning-upplevelse som sömlös som möjligt. Kontrollera efter eventuella kommentarer och problem vid hello [Azure Machine Learning-forum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) toohelp oss fungerar du bättre.
 
 [screen1]:media/machine-learning-troubleshooting-creating-ml-workspace/screen1.png
 [screen2]:media/machine-learning-troubleshooting-creating-ml-workspace/screen2.png

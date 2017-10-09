@@ -3,7 +3,7 @@
 # Kom igång
 ## [Hantera ditt första API](api-management-get-started.md)
 ## [Skydda ditt API med hastighetsbegränsningar](api-management-howto-product-with-rules.md)
-## [Lägg till cachelagring för att förbättra prestandan](api-management-howto-cache.md)
+## [Lägg till cachelagring tooimprove prestanda](api-management-howto-cache.md)
 ## [Vanliga frågor och svar](api-management-faq.md)
 # Gör så här för att
 ## Utveckla API:er
@@ -13,8 +13,8 @@
 ### [Importera en API-definition](api-management-howto-import-api.md)
 ## Skydda din serverdel
 ### [Skydda Webb-API-serverdelen med AAD](api-management-howto-protect-backend-with-aad.md)
-### [Skapa ett virtuellt nätverk](api-management-using-with-vnet.md)
-### [Anslut till ett internt virtuellt nätverk](api-management-using-with-internal-vnet.md)
+### [Ansluta tooa virtuellt nätverk](api-management-using-with-vnet.md)
+### [Ansluta tooan internt virtuellt nätverk](api-management-using-with-internal-vnet.md)
 ### [Integrera Application Gateway i internt VNET](api-management-howto-integrate-internal-vnet-appgateway.md)
 ### [Ömsesidig certifikatautentisering](api-management-howto-mutual-certificates.md)
 ## Konfigurera principer
@@ -26,7 +26,7 @@
 ### [Principöversikt](api-management-howto-policies.md)
 ### [Hantera hemligheter med hjälp av egenskaper](api-management-howto-properties.md)
 ### [Säkra API:er med autentisering med klientcertifikat](api-management-howto-mutual-certificates-for-clients.md)
-## Anpassa utvecklarupplevelsen
+## Anpassa hello-utvecklare
 ### [Ändra innehåll och layout](api-management-modify-content-layout.md)
 ### [Anpassa formatering för sidelement](api-management-customize-styles.md)
 ### [Anpassa systemsidor med mallar](api-management-developer-portal-templates.md)
@@ -37,10 +37,10 @@
 ### [Aktivera OAuth-stöd för konsolen](api-management-howto-oauth2.md)
 ## Hantera i produktionen
 ### [Hantera grupper](api-management-howto-create-groups.md)
-### [Distribuera till flera Azure-regioner](api-management-howto-deploy-multi-region.md)
-### [Logga händelser till Azure Event Hubs](api-management-howto-log-event-hubs.md)
+### [Distribuera toomultiple Azure regioner](api-management-howto-deploy-multi-region.md)
+### [Logga händelser tooAzure Händelsehubbar](api-management-howto-log-event-hubs.md)
 ### [Konfigurera DR med säkerhetskopiering/återställning](api-management-howto-disaster-recovery-backup-restore.md)
-### [Spåra anrop med API Inspector](api-management-howto-api-inspector.md)
+### [Spårning av anrop med hello API Inspector](api-management-howto-api-inspector.md)
 ### [Hantera användarkonton](api-management-howto-create-or-invite-developers.md)
 ### [Hantera med hjälp av automatisering](automation-manage-api-management.md)
 ### [Konfigurera med Git](api-management-configuration-repository-git.md)
@@ -81,14 +81,14 @@
 ## [API Management – fungerar bra med andra Azure-tjänster](http://weblogs.asp.net/cschittko/api-management-plays-well-with-other-azure-services)
 ## [API Management plugin för SmartBear Ready! API](http://smartbear.com/plugins/microsoft-azure-api-management-plugin/)
 ## [Azure-översikt](https://azure.microsoft.com/roadmap/)
-## [Anslut Event Hubs till API Management](http://weblogs.asp.net/cschittko/connecting-eventhubs-to-api-management)
+## [Ansluta Händelsehubbar tooAPI Management](http://weblogs.asp.net/cschittko/connecting-eventhubs-to-api-management)
 ## [Använd SOAP WCF-tjänster via HTTP](http://mostlydotnetdev.blogspot.nl/2015/03/azure-api-management-apim-consuming.html)
 ## [MSDN-forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
 ## [Prissättning](https://azure.microsoft.com/pricing/details/api-management/)
 ## [Priskalkylator](https://azure.microsoft.com/pricing/calculator/)
-## [Tillhandahåll RBAC-liknande åtkomst med REST-API:et](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
+## [Ge RBAC-liknande åtkomst med hjälp av hello REST API](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
 ## [Tjänstuppdateringar](https://azure.microsoft.com/updates/?product=api-management)
-## [Konfigurera PostMan att anropa API Management API:er](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)
+## [Ställ in PostMan toocall API Management-API: er](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-api-management)
 ## [Videoklipp](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 
 ## [Vitbok: Molnbaserad API Management](http://j.mp/ms-apim-whitepaper)

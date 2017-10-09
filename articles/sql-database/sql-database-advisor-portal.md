@@ -1,6 +1,6 @@
 ---
-title: "Tillämpa rekommendationer - Azure SQL Database | Microsoft Docs"
-description: "Du kan använda Azure-portalen för att hitta rekommendationer som kan optimera prestanda för din Azure SQL Database eller åtgärda vissa problem som identifieras i din arbetsbelastning."
+title: "rekommendationer för aaaApply - Azure SQL Database | Microsoft Docs"
+description: "Du kan använda hello Azure portal toofind rekommendationer som kan optimera prestanda för din Azure SQL Database eller toocorrect vissa problem som identifieras i din arbetsbelastning."
 services: sql-database
 documentationcenter: 
 author: stevestein
@@ -15,131 +15,131 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 018afaa8b08bd001e55693390e80c8e2c4f33a30
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0b2234840fc3254d235db9e7d18f5bc912851c6d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Hitta och tillämpa rekommendationer
 
-Du kan använda Azure-portalen för att hitta rekommendationer som kan optimera prestanda för din Azure SQL Database eller åtgärda vissa problem som identifieras i din arbetsbelastning. **Prestanda rekommendation** sidan i Azure-portalen kan du hitta översta rekommendationer baserat på deras eventuella inverkan. 
+Du kan använda hello Azure portal toofind rekommendationer som kan optimera prestanda för din Azure SQL Database eller toocorrect vissa problem som identifieras i din arbetsbelastning. **Prestanda rekommendation** sidan i Azure-portalen kan du toofind hello översta rekommendationer baserat på deras eventuella inverkan. 
 
 ## <a name="viewing-recommendations"></a>Visa rekommendationer
 
-Om du vill visa och använda rekommendationer, behöver du rätt [rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-what-is.md) behörigheter i Azure. **Läsaren**, **SQL DB-deltagare** behörigheter som krävs för att visa rekommendationer och **ägare**, **SQL DB-deltagare** behörigheter som krävs för att utföra några åtgärder; Skapa eller drop index och avbryta skapandet av index.
+tooview och tillämpa rekommendationer, behöver du hello rätt [rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-what-is.md) behörigheter i Azure. **Läsaren**, **SQL DB-deltagare** behörigheter som är nödvändiga tooview rekommendationer och **ägare**, **SQL DB-deltagare** behörigheter som krävs tooexecute alla åtgärder. Skapa eller drop index och avbryta skapandet av index.
 
-Använd följande steg för att hitta rekommendationer på Azure-portalen:
+Använd hello följa steg toofind rekommendationer på Azure-portalen:
 
-1. Logga in på [Azure Portal](https://portal.azure.com/).
-2. Gå till **fler tjänster** > **SQL-databaser**, och välj din databas.
-3. Gå till **prestanda rekommendation** att visa tillgängliga rekommendationer för den valda databasen.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com/).
+2. Gå för**fler tjänster** > **SQL-databaser**, och välj din databas.
+3. Navigera för**prestanda rekommendation** tooview tillgängliga rekommendationer för hello valda databasen.
 
-Rekommendationer är shonw i tabellen som liknar det som visas på följande bild:
+Rekommendationer är shonw hello tabell liknande toohello som visas på följande bild hello:
 
 ![Rekommendationer](./media/sql-database-advisor-portal/recommendations.png)
 
-Rekommendationer sorteras efter deras eventuella inverkan på prestanda i följande kategorier:
+Rekommendationer sorteras efter deras eventuella inverkan på prestanda i hello följande kategorier:
 
 | Påverkan | Beskrivning |
 |:--- |:--- |
-| Hög |Hög inverkan rekommendationer bör ge viktigaste prestandapåverkan. |
+| Hög |Hög inverkan rekommendationer bör ge hello mest betydande inverkan på prestanda. |
 | Medel |Medelhög påverkan rekommendationer bör förbättra prestanda, men inte avsevärt. |
 | Låg |Låg påverkan rekommendationer bör ge bättre prestanda än utan, men kan inte vara betydande förbättringar. |
 
 
 > [!NOTE]
-> Azure SQL Database måste att övervaka aktiviteter minst en dag för att identifiera några rekommendationer. Azure SQL-databasen kan enklare att optimera för konsekvent frågemönster än den för slumpmässiga ojämn belastning för aktiviteten. Om rekommendationerna inte är tillgängliga, corrently den **prestanda rekommendation** sidan visar ett meddelande som förklarar varför.
+> Azure SQL Database måste toomonitor aktiviteter minst en dag i ordning tooidentify några rekommendationer. hello Azure SQL Database kan enklare att optimera för konsekvent frågemönster än den för slumpmässiga ojämn belastning för aktiviteten. Om rekommendationerna inte är tillgängliga corrently, hello **prestanda rekommendation** sidan visar ett meddelande som förklarar varför.
 > 
 
-Du kan också visa status för tidigare åtgärder. Välj en rekommendation eller status för att se mer information.
+Du kan också visa hello status för hello tidigare åtgärder. Välj en rekommendation eller status toosee mer information.
 
-Här är ett exempel på ”Skapa indexet” rekommendation i Azure-portalen.
+Här är ett exempel på ”Skapa indexet” rekommendation i hello Azure-portalen.
 
 ![Skapa index](./media/sql-database-advisor-portal/sql-database-performance-recommendation.png)
 
 ## <a name="applying-recommendations"></a>Tillämpa rekommendationer
-Azure SQL Database ger dig fullständig kontroll över hur rekommendationerna är aktiverad med någon av följande tre alternativ: 
+Azure SQL Database ger dig fullständig kontroll över hur rekommendationerna är aktiverad med någon av följande tre alternativ hello: 
 
 * Använda enskilda rekommendationer en i taget.
-* Aktivera automatisk inställning för att automatiskt använda rekommendationer.
-* För att implementera en rekommendation manuellt, kör du rekommenderade T-SQL-skript mot databasen.
+* Aktivera hello automatisk justering tooautomatically gäller rekommendationer.
+* tooimplement en rekommendation köra manuellt, hello rekommenderas T-SQL-skript mot databasen.
 
-Välj en rekommendation att visa information och klickar sedan på **Visa skript** att granska exakt information om hur rekommendationen skapas.
+Markera varje rekommendation tooview information och klicka på **Visa skript** tooreview hello mer information om hur hello rekommendation skapas.
 
-Databasen är online samtidigt rekommendationen tillämpas--med hjälp av prestanda rekommendation eller automatisk justering aldrig tar en databas offline.
+hello databasen förblir online medan hello rekommendation används – en databas med hjälp av prestanda rekommendation eller automatisk justering aldrig tar offline.
 
 ### <a name="apply-an-individual-recommendation"></a>Använda en enskild rekommendation
 Du kan granska och Godkänn rekommendationer en i taget.
 
-1. På den **rekommendationer** bladet Välj en rekommendation.
-2. På den **information** bladet och klickar på **tillämpa** knappen.
+1. På hello **rekommendationer** bladet Välj en rekommendation.
+2. På hello **information** bladet och klickar på **tillämpa** knappen.
    
     ![Tillämpa rekommendation](./media/sql-database-advisor-portal/apply.png)
 
-Valda rekommendation tillämpas på databasen.
+Valda rekommendation tillämpas på hello-databasen.
 
-### <a name="removing-recommendations-from-the-list"></a>Tar bort rekommendationer från listan
-Om din lista över rekommendationer innehåller objekt som du vill ta bort från listan kan du ta bort rekommendationen:
+### <a name="removing-recommendations-from-hello-list"></a>Ta bort rekommendationer hello listan
+Om din lista över rekommendationer innehåller objekt som du vill tooremove hello listan kan du ta bort hello rekommendation:
 
-1. Välj en rekommendation i listan över **rekommendationer** att öppna information.
-2. Klicka på **Ignorera** på den **information** bladet.
+1. Välj en rekommendation i hello lista över **rekommendationer** tooopen hello information.
+2. Klicka på **Ignorera** på hello **information** bladet.
 
-Om du vill kan du lägga till borttagna objekten tillbaka till den **rekommendationer** lista:
+Om du vill kan du lägga till borttagna objekten tillbaka toohello **rekommendationer** lista:
 
-1. På den **rekommendationer** bladet och klickar på **Visa ignorerade**.
-2. Välj en borttagna objekt från listan för att visa information om den.
-3. Du kan också klicka på **Ångra Ignorera** att lägga till indexet huvudsakliga listan över **rekommendationer**.
+1. På hello **rekommendationer** bladet och klickar på **Visa ignorerade**.
+2. Välj en borttagna objekt från hello listan tooview information.
+3. Du kan också klicka på **Ångra Ignorera** tooadd hello index tillbaka toohello huvudsakliga lista över **rekommendationer**.
 
 
 ### <a name="enable-automatic-tuning"></a>Aktivera automatisk inställning
-Du kan ställa in Azure SQL-databasen för att implementera rekommendationer automatiskt. Rekommendationer blir tillgängliga tillämpas de automatiskt. Som med alla rekommendationer som hanteras av tjänsten om prestandapåverkan är negativt kommer rekommendationen att återställas.
+Du kan ange hello Azure SQL Database tooimplement rekommendationer automatiskt. Rekommendationer blir tillgängliga tillämpas de automatiskt. Som med alla rekommendationer som hanteras av hello kommer service om hello prestanda påverkas negativt hello rekommendation att återställas.
 
-1. På den **rekommendationer** bladet, klickar du på **automatisera**:
+1. På hello **rekommendationer** bladet, klickar du på **automatisera**:
    
     ![Inställningar för klassificering](./media/sql-database-advisor-portal/settings.png)
-2. Välj åtgärder för att automatisera:
+2. Välj åtgärder tooautomate:
    
     ![Rekommenderat index](./media/sql-database-advisor-portal/automation.png)
 
-### <a name="manually-run-the-recommended-t-sql-script"></a>Manuellt köra rekommenderade T-SQL-skript
-Markera varje rekommendation och klicka på **Visa skript**. Köra detta skript mot databasen för att använda rekommendationen manuellt.
+### <a name="manually-run-hello-recommended-t-sql-script"></a>Köra manuellt hello rekommenderas T-SQL-skript
+Markera varje rekommendation och klicka på **Visa skript**. Köra detta skript mot databasen toomanually gäller hello rekommendation.
 
-*Index som utförs manuellt inte övervakas och valideras för prestandapåverkan av tjänsten* så vi rekommenderar att du övervaka dessa index när de har skapats för att verifiera de ger prestandavinster och justera eller ta bort dem om det behövs. Mer information om hur du skapar index finns [CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
+*Index som utförs manuellt inte övervakas och valideras för prestandapåverkan av hello tjänsten* så rekommenderas du övervaka dessa index efter skapa tooverify de ger prestandavinster och justera eller ta bort dem om nödvändiga. Mer information om hur du skapar index finns [CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
 
 ### <a name="canceling-recommendations"></a>Om du avbryter rekommendationer
 Rekommendationer som finns i en **väntande**, **verifiera**, eller **lyckade** status kan avbrytas. Rekommendationer med statusen **Executing** kan inte avbrytas.
 
-1. Välj en rekommendation i den **justera historik** område för att öppna den **rekommendationsdetaljer** bladet.
-2. Klicka på **Avbryt** att avbryta en process för tillämpning rekommendationen.
+1. Välj en rekommendation i hello **justera historik** område tooopen hello **rekommendationsdetaljer** bladet.
+2. Klicka på **Avbryt** tooabort hello process för tillämpning av hello rekommendation.
 
 ## <a name="monitoring-operations"></a>Övervakningsåtgärder
-Tillämpa en rekommendation kanske inte omedelbart sker. Portalen innehåller information om status för rekommendation. Följande är möjliga tillstånd att ett index i:
+Tillämpa en rekommendation kanske inte omedelbart sker. hello portal innehåller information om hello status för rekommendation. hello följande är möjliga tillstånd att ett index i:
 
 | Status | Beskrivning |
 |:--- |:--- |
 | Väntande åtgärder |Tillämpa rekommendation kommandot har tagits emot och har schemalagts för körning. |
-| Köra |Rekommendationen som används. |
-| Verifiera |Rekommendation har tillämpats och tjänsten mäter fördelarna. |
+| Köra |hello rekommendation tillämpas. |
+| Verifiera |Rekommendation har tillämpats och hello tjänst mäter hello fördelar. |
 | Lyckades |Rekommendation har tillämpats och fördelar har tagits mäts. |
-| Fel |Det uppstod ett fel i samband med tillämpandet av rekommendationen. Detta kan vara ett övergående problem eller eventuellt ett schema ändra i tabellen och skriptet är inte längre giltig. |
-| Återställa |Rekommendationen tillämpades, men har bedömts vara icke-performant och återställs automatiskt. |
-| Har återställts |Rekommendationen återställdes. |
+| Fel |Ett fel uppstod under hello process för tillämpning av hello rekommendation. Detta kan vara ett övergående problem eller eventuellt ett schema ändra toohello tabell och hello skript är inte längre giltig. |
+| Återställa |hello rekommendation tillämpades, men har bedömts vara icke-performant och återställs automatiskt. |
+| Har återställts |hello rekommendation återställdes. |
 
-Klicka på ett pågående rekommendation från listan över att se mer information:
+Klicka på ett pågående rekommendation från hello listan toosee mer information:
 
 ![Rekommenderat index](./media/sql-database-advisor-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>Återställa en rekommendation
-Om du använde prestanda rekommendationer för att tillämpa rekommendationerna återställs (vilket innebär att du inte manuellt köra T-SQL-skript) den automatiskt den om den hittar prestandapåverkan vara negativ. Om du av någon anledning som du vill återställa en rekommendation kan du göra följande:
+Om du använde hello prestanda rekommendationer tooapply hello rekommendation återställs (vilket innebär att du inte manuellt köra hello T-SQL-skript) den automatiskt den om den hittar hello prestanda påverkan toobe negativt. Om av någon anledning som du bara vill toorevert en rekommendation kan du göra hello följande:
 
-1. Välj har tillämpade rekommendation i den **justera historik** område.
-2. Klicka på **Återställ** på den **rekommendationsdetaljer** bladet.
+1. Välj en har tillämpade rekommendation i hello **justera historik** område.
+2. Klicka på **Återställ** på hello **rekommendationsdetaljer** bladet.
 
 ![Rekommenderat index](./media/sql-database-advisor-portal/details.png)
 
 ## <a name="monitoring-performance-impact-of-index-recommendations"></a>Övervaka prestandapåverkan index-rekommendationer
-När rekommendationerna har implementerats (för närvarande, index-åtgärder och parameterstyra frågor rekommendationer endast) kan du klicka på **frågan insikter** på informationsbladet rekommendation att öppna [fråga Insikter i frågeprestanda](sql-database-query-performance.md) och se påverkan på prestandan för din de vanligaste frågorna.
+När rekommendationerna har implementerats (för närvarande, index-åtgärder och parameterstyra frågor rekommendationer endast) kan du klicka på **frågan insikter** på hello rekommendation information bladet tooopen [fråga Insikter i frågeprestanda](sql-database-query-performance.md) och se hello prestandapåverkan top-frågor.
 
 ![Övervakaren prestandapåverkan](./media/sql-database-advisor-portal/query-insights.png)
 
@@ -147,11 +147,11 @@ När rekommendationerna har implementerats (för närvarande, index-åtgärder o
 Azure SQL-databasen innehåller rekommendationer för att förbättra prestanda för SQL-databasen. Du får en bra hjälp med att optimera din databas och slutligen förbättra frågeprestanda genom att tillhandahålla T-SQL-skript, samt individuella och fullständigt-automatisk.
 
 ## <a name="next-steps"></a>Nästa steg
-Övervaka dina rekommendationer och fortsätta att använda dem för att förbättra prestanda. Databasarbetsbelastningar är dynamiska och ändra kontinuerligt. Azure SQL-databasen fortsätter att övervaka och ger rekommendationer som kan förbättra dina databasprestanda. 
+Övervaka dina rekommendationer och fortsätta tooapply dem toorefine prestanda. Databasarbetsbelastningar är dynamiska och ändra kontinuerligt. Azure SQL Database fortsätter toomonitor och ger rekommendationer som kan förbättra dina databasprestanda. 
 
-* Se [automatisk justering](sql-database-automatic-tuning.md) att lära dig mer om automatisk inställning i Azure SQL Database.
+* Se [automatisk justering](sql-database-automatic-tuning.md) toolearn mer om hello automatisk justering i Azure SQL Database.
 * Se [rekommendationer](sql-database-advisor.md) en översikt över Azure SQL Database prestanda rekommendationer.
-* Se [insikter i frågeprestanda](sql-database-query-performance.md) mer information om hur du visar påverkan på prestandan för din de vanligaste frågorna.
+* Se [insikter i frågeprestanda](sql-database-query-performance.md) toolearn om hur du visar hello prestandapåverkan top-frågor.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 * [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)

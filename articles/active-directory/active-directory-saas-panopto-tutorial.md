@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Panopto | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Panopto."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Panopto."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,67 +13,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 725fba1227cfc9c4850f9e2d6fd0b13e88eafa20
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 76b30e1cd2782bb5fba3d229378b8f82652b6503
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>Självstudier: Azure Active Directory-integrering med Panopto
 
-I kursen får lära du att integrera Panopto med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate Panopto med Azure Active Directory (AD Azure).
 
-Integrera Panopto med Azure AD ger dig följande fördelar:
+Integrera Panopto med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till Panopto
-- Du kan aktivera användarna att automatiskt hämta loggat in på Panopto (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till tooPanopto
+- Du kan aktivera din användare tooautomatically get inloggade tooPanopto (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med Panopto, behöver du följande:
+tooconfigure Azure AD-integrering med Panopto, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En Panopto enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Panopto från galleriet
+1. Att lägga till Panopto från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-panopto-from-the-gallery"></a>Att lägga till Panopto från galleriet
-Du måste lägga till Panopto från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Panopto i Azure AD.
+## <a name="adding-panopto-from-hello-gallery"></a>Att lägga till Panopto från hello-galleriet
+tooconfigure hello integrering av Panopto i Azure AD, behöver du tooadd Panopto hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till Panopto från galleriet:**
+**tooadd Panopto från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **Panopto**.
+4. Skriv i sökrutan hello **Panopto**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-panopto-tutorial/tutorial_panopto_search.png)
 
-5. Välj i resultatpanelen **Panopto**, och klicka sedan på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **Panopto**, och klicka sedan på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-panopto-tutorial/tutorial_panopto_addfromgallery.png)
 
@@ -81,42 +81,42 @@ Du måste lägga till Panopto från galleriet i listan över hanterade SaaS-appa
 
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Panopto baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till användaren i Panopto motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Panopto upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Panopto är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i Panopto toobe upprättas.
 
-I Panopto, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+I Panopto, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med Panopto, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med Panopto, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Panopto](#creating-a-panopto-test-user)**  – du har en motsvarighet för Britta Simon i Panopto som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Panopto](#creating-a-panopto-test-user)**  -toohave en motsvarighet för Britta Simon i Panopto som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt Panopto program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt Panopto program.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med Panopto:**
+**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Panopto:**
 
-1. I Azure-portalen på den **Panopto** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **Panopto** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-panopto-tutorial/tutorial_panopto_samlbase.png)
 
-3. På den **Panopto domän och URL: er** avsnittet, utför följande steg:
+3. På hello **Panopto domän och URL: er** avsnittet, utföra hello följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-panopto-tutorial/tutorial_panopto_url.png)
 
-    I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<tenant-name>.panopto.com`
+    I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<tenant-name>.panopto.com`
 
     > [!NOTE] 
-    > Det här värdet är inte verkliga. Uppdatera det här värdet med det faktiska inloggnings-URL. Kontakta [Panopto klienten supportteamet](mailto:support@panopto.com‎) att hämta det här värdet. 
+    > Det här värdet är inte verkliga. Uppdatera det här värdet med hello faktiska inloggnings-URL. Kontakta [Panopto klienten supportteamet](mailto:support@panopto.com‎) tooget det här värdet. 
  
-4. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
+4. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-panopto-tutorial/tutorial_panopto_certificate.png) 
 
@@ -124,102 +124,102 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-panopto-tutorial/tutorial_general_400.png)
 
-6. På den **Panopto Configuration** klickar du på **konfigurera Panopto** att öppna **konfigurera inloggning** fönster. Kopiera den **SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
+6. På hello **Panopto Configuration** klickar du på **konfigurera Panopto** tooopen **konfigurera inloggning** fönster. Kopiera hello **SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-panopto-tutorial/tutorial_panopto_configure.png) 
 
-7. I en annan webbläsarfönster loggar du in på webbplatsen Panopto företag som administratör.
+7. Logga in tooyour Panopto företagets webbplats som en administratör i en annan webbläsarfönster.
 
-8. Klicka på i verktygsfältet på vänster **System**, och klicka sedan på **identitetsleverantörer**.
+8. I verktygsfältet hello hello vänster, klickar du på **System**, och klicka sedan på **identitetsleverantörer**.
    
    ![System](./media/active-directory-saas-panopto-tutorial/ic777670.png "System")
 9. Klicka på **Lägg till Provider**.
    
    ![Identitetsleverantörer](./media/active-directory-saas-panopto-tutorial/ic777671.png "identitetsleverantörer")
    
-10. Utför följande steg i avsnittet SAML-provider:
+10. I hello SAML-providern avsnitt, utföra hello följande steg:
    
     ![Konfiguration av SaaS](./media/active-directory-saas-panopto-tutorial/ic777672.png "SaaS-konfiguration")
     
-    a. Från den **providertyp** väljer **SAML20**.    
+    a. Från hello **providertyp** väljer **SAML20**.    
     
-    b. I den **instansnamn** textruta, ange ett namn för instansen.
+    b. I hello **instansnamn** textruta, ange ett namn för hello-instans.
 
-    c. I den **beskrivning** textruta Skriv en beskrivning.
+    c. I hello **beskrivning** textruta Skriv en beskrivning.
     
-    d. I **studs sidadress** textruta klistra in värdet för **SAML inloggning tjänst-URL för enkel**, som du har kopierat från Azure-portalen.
+    d. I **studs sidadress** textruta klistra in hello värdet för **SAML inloggning tjänst-URL för enkel**, som du har kopierat från Azure-portalen.
 
-    e. I den **utfärdaren** textruta klistra in värdet för **SAML enhets-ID**, som du har kopierat från Azure-portalen.
+    e. I hello **utfärdaren** textruta klistra in hello värdet för **SAML enhets-ID**, som du har kopierat från Azure-portalen.
 
-    f. Öppna Base64-kodade certifikatet, som du har hämtat från Azure-portalen, kopiera innehållet i den till Urklipp och klistra in den till den **offentliga nyckel** textruta.
+    f. Öppna Base64-kodade certifikatet, som du har hämtat från Azure portal, kopiera hello innehållet i den i tooyour Urklipp och klistra in den toohello **offentliga nyckel** textruta.
 
 11. Klicka på **Spara**.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
 
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-panopto-tutorial/create_aaduser_01.png) 
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-panopto-tutorial/create_aaduser_02.png) 
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-panopto-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-panopto-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="creating-a-panopto-test-user"></a>Skapa en testanvändare Panopto
 
-Det finns inga uppgiften som du kan konfigurera användaretablering till Panopto.  
-När en tilldelad användare försöker logga in med hjälp av åtkomstpanelen Panopto kontrollerar Panopto om användaren finns.  
+Det finns inga uppgiften för du tooconfigure användaretablering tooPanopto.  
+När en tilldelad användare försöker toolog i tooPanopto med hello åtkomstpanelen, kontrollerar Panopto om hello användaren finns.  
 
 Om det finns inget användarkonto ännu, skapas den automatiskt av Panopto.
 
 >[!NOTE]
->Du kan använda något annat Panopto användarens konto skapas verktyg eller API: er som tillhandahålls av Panopto att etablera Azure AD-användarkonton.
+>Du kan använda något annat Panopto användarens konto skapas verktyg eller API: er som tillhandahålls av Panopto tooprovision användarkonton i Azure AD.
 >
 >
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Panopto.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooPanopto.
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela Panopto Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooPanopto utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **Panopto**.
+2. Välj i listan med program hello **Panopto**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-panopto-tutorial/tutorial_panopto_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -227,7 +227,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -235,14 +235,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen Panopto på åtkomstpanelen ska du automatiskt hämta inloggningssidan för Panopto program.
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+När du klickar på hello Panopto panelen i hello åtkomstpanelen ska du automatiskt hämta inloggningssidan för Panopto program.
+Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

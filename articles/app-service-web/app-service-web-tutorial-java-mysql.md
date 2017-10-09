@@ -1,6 +1,6 @@
 ---
-title: Skapa en Java och MySQL-webbapp i Azure
-description: "Lär dig hur du hämtar en Java-app som ansluter till tjänsten Azure MySQL database arbetar i Azure apptjänst."
+title: aaaBuild en Java och MySQL-webbapp i Azure
+description: "Lär dig hur tooget en Java-app som ansluter toohello Azure MySQL database-tjänsten fungerar i Azure apptjänst."
 services: app-service\web
 documentationcenter: Java
 author: bbenz
@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: eb2d59939c4e4486bb14bb143a4a18f9bc1478e1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0820ee9c2b7bf8fcaa22287c27a7ab848a1c4927
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-a-java-and-mysql-web-app-in-azure"></a>Skapa en Java och MySQL-webbapp i Azure
 
-Den här kursen visar hur du skapar en Java-webbapp i Azure och ansluta till en MySQL-databas. När du är klar har du en [Vårversionen Start](https://projects.spring.io/spring-boot/) program som lagrar data i [Azure-databas för MySQL](https://docs.microsoft.com/azure/mysql/overview) körs på [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview).
+Den här kursen visar hur toocreate en Java webbapp i Azure och koppla den tooa MySQL-databas. När du är klar har du en [Vårversionen Start](https://projects.spring.io/spring-boot/) program som lagrar data i [Azure-databas för MySQL](https://docs.microsoft.com/azure/mysql/overview) körs på [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview).
 
 ![Java-app som körs i Azure apptjänst](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
@@ -31,44 +31,44 @@ I den här guiden får du lära dig hur man:
 
 > [!div class="checklist"]
 > * Skapa en MySQL-databas i Azure
-> * Ansluta en exempelapp till databasen
-> * Distribuera appen till Azure
-> * Uppdatera och distribuera om appen
+> * Ansluta en exempeldatabas app toohello
+> * Distribuera hello app tooAzure
+> * Uppdatera och distribuera hello app
 > * Dataströmmen diagnostiska loggar från Azure
-> * Övervaka app på Azure-portalen
+> * Övervaka hello app i hello Azure-portalen
 
 
 ## <a name="prerequisites"></a>Krav
 
 1. [Hämta och installera Git](https://git-scm.com/)
-1. [Hämta och installera JDK för Java-7 eller senare](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+1. [Hämta och installera hello JDK för Java-7 eller senare](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 1. [Hämta, installera och starta MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kräver i det här avsnittet att du kör hello Azure CLI version 2.0 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="prepare-local-mysql"></a>Förbereda lokala MySQL 
 
-I det här steget skapar du en databas i en lokal MySQL-server för användning i testar appen lokalt på din dator.
+I det här steget skapar du en databas i en lokal MySQL-server för användning i tester hello appen lokalt på din dator.
 
-### <a name="connect-to-mysql-server"></a>Ansluta till MySQL-servern
+### <a name="connect-toomysql-server"></a>Anslut tooMySQL server
 
-Anslut till din lokala MySQL-server i ett terminalfönster. Du kan använda den här terminalfönster för att köra alla kommandon i den här självstudiekursen.
+Anslut tooyour lokala MySQL-servern i ett terminalfönster. Du kan använda den här terminalfönster toorun alla hello-kommandon i den här självstudiekursen.
 
 ```bash
 mysql -u root -p
 ```
 
-Om du uppmanas att ange ett lösenord anger du lösenordet för den `root` konto. Om du inte kommer ihåg rotlösenordet, se [MySQL: hur du återställer Rotlösenordet](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
+Om du uppmanas att ange ett lösenord anger hello lösenordet för hello `root` konto. Om du inte kommer ihåg rotlösenordet, se [MySQL: hur tooReset hello Rotlösenordet](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
 
-Om kommandot körs utan problem, körs MySQL-servern redan. Om inte, kontrollera att den lokala MySQL-servern är igång genom att följa den [MySQL efter installationssteg](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html).
+Om kommandot körs utan problem, körs MySQL-servern redan. Om inte, kontrollera att den lokala MySQL-servern har startats med följande hello [MySQL efter installationssteg](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html).
 
 ### <a name="create-a-database"></a>Skapa en databas 
 
-I den `mysql` uppmanar, skapa en databas och en tabell för att göra-objekt.
+I hello `mysql` uppmanar, skapa en databas och en tabell för hello arbetsuppgifter.
 
 ```sql
 CREATE DATABASE tododb;
@@ -80,49 +80,49 @@ Avsluta anslutningen till servern genom att skriva `quit`.
 quit
 ```
 
-## <a name="create-and-run-the-sample-app"></a>Skapa och kör exempelappen 
+## <a name="create-and-run-hello-sample-app"></a>Skapa och köra hello sample-appen 
 
-I det här steget klona exempelappen källan Start, konfigurera den lokala MySQL-databas och kör det på din dator. 
+I det här steget klona exempelappen källan Start, konfigurera den lokala MySQL-databas i toouse hello och körs på datorn. 
 
-### <a name="clone-the-sample"></a>Klona exemplet
+### <a name="clone-hello-sample"></a>Klona hello-exempel
 
-Navigera till en arbetskatalog och klona lagringsplatsen exempel i fönstret terminal. 
+Navigera i hello terminalfönster, tooa working directory och klona hello exempel lagringsplatsen. 
 
 ```bash
 git clone https://github.com/azure-samples/mysql-spring-boot-todo
 ```
 
-### <a name="configure-the-app-to-use-the-mysql-database"></a>Konfigurera appen för att använda MySQL-databas
+### <a name="configure-hello-app-toouse-hello-mysql-database"></a>Konfigurera hello app toouse hello MySQL-databas
 
-Uppdatering av `spring.datasource.password` och värde i *spring-boot-mysql-todo/src/main/resources/application.properties* med samma rotlösenord som används för att öppna MySQL-fråga:
+Uppdatera hello `spring.datasource.password` och värde i *spring-boot-mysql-todo/src/main/resources/application.properties* med hello används samma rotlösenordet tooopen hello MySQL prompten:
 
 ```
 spring.datasource.password=mysqlpass
 ```
 
-### <a name="build-and-run-the-sample"></a>Skapa och köra exemplet
+### <a name="build-and-run-hello-sample"></a>Skapa och köra hello-exempel
 
-Skapa och köra exemplet med Maven-omslutning som ingår i lagringsplatsen:
+Skapa och köra hello exempel med hjälp av hello Maven wrapper ingår i hello lagringsplatsen:
 
 ```bash
 cd spring-boot-mysql-todo
 mvnw package spring-boot:run
 ```
 
-Öppna din webbläsare till http://localhost: 8080 ska se i exemplet i åtgärden. När du lägger till aktiviteter i listan använda följande SQL-kommandon MySQL-fråga för att visa data som lagras i MySQL.
+Öppna din webbläsare toohttp://localhost:8080 toosee i hello exemplet i åtgärden. När du lägger till toohello uppgiftslistan använda hello följande SQL-kommandon i hello MySQL fråga tooview hello data som lagras i MySQL.
 
 ```SQL
 use testdb;
 select * from todo_item;
 ```
 
-Stoppa programmet genom att träffa `Ctrl` + `C` i terminalen. 
+Stoppa hello program genom att träffa `Ctrl` + `C` i hello terminal. 
 
 ## <a name="create-an-azure-mysql-database"></a>Skapa en Azure MySQL-databas
 
-I det här steget skapar du en [Azure-databas för MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md) instans med det [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Du kan konfigurera exempelprogrammet att använda den här databasen senare under kursen.
+I det här steget skapar du en [Azure-databas för MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md) -instans med hello [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Du konfigurerar hello exempel programmet toouse den här databasen senare i hello kursen.
 
-Använda Azure CLI 2.0 i ett terminalfönster för att skapa de resurser som krävs för att vara värd för Java-program i Azure apptjänst. Logga in på Azure-prenumerationen med kommandot [az login](/cli/azure/#login) och följ anvisningarna på skärmen. 
+Använd hello Azure CLI 2.0 i ett terminalfönster toocreate hello resurser behövs toohost Java-program i Azure apptjänst. Logga in tooyour Azure-prenumeration med hello [az inloggningen](/cli/azure/#login) kommando och följ hello på skärmen riktningar. 
 
 ```azurecli-interactive 
 az login 
@@ -130,20 +130,20 @@ az login
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Skapa en [resursgruppen](../azure-resource-manager/resource-group-overview.md) med den [az gruppen skapa](/cli/azure/group#create) kommando. En Azure-resursgrupp är en logisk behållare där relaterade resurser som webbappar, databaser och storage-konton distribueras och hanteras. 
+Skapa en [resursgruppen](../azure-resource-manager/resource-group-overview.md) med hello [az gruppen skapa](/cli/azure/group#create) kommando. En Azure-resursgrupp är en logisk behållare där relaterade resurser som webbappar, databaser och storage-konton distribueras och hanteras. 
 
-I följande exempel skapas en resursgrupp i Norra Europa region:
+hello följande exempel skapas en resursgrupp i hello Nordeuropa region:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "North Europe"
 ```    
 
-Se möjliga värden du kan använda för `--location`, använda den [az apptjänst lista-platser](/cli/azure/appservice#list-locations) kommando.
+toosee hello möjliga värden du kan använda för `--location`, använda hello [az apptjänst lista-platser](/cli/azure/appservice#list-locations) kommando.
 
 ### <a name="create-a-mysql-server"></a>Skapa en MySQL-server
 
-Skapa en server i Azure-databas för MySQL (förhandsversion) med den [az mysql-servern skapa](/cli/azure/mysql/server#create) kommando.    
-Ersätta en egen unik MySQL-servernamn där du ser den `<mysql_server_name>` platshållare. Det här namnet är en del av MySQL-serverns värdnamn, `<mysql_server_name>.mysql.database.azure.com`, så den behöver vara globalt unika. I stället använda `<admin_user>` och `<admin_password>` med egna värden.
+Skapa en server i Azure-databas för MySQL (förhandsversion) med hello [az mysql-servern skapa](/cli/azure/mysql/server#create) kommando.    
+Ersätt egna unika MySQL namnet på servern där du ser hello `<mysql_server_name>` platshållare. Det här namnet är en del av MySQL-serverns värdnamn, `<mysql_server_name>.mysql.database.azure.com`, så den behöver toobe globalt unika. I stället använda `<admin_user>` och `<admin_password>` med egna värden.
 
 ```azurecli-interactive
 az mysql server create --name <mysql_server_name> \ 
@@ -153,7 +153,7 @@ az mysql server create --name <mysql_server_name> \
     --admin-password <admin_password>
 ```
 
-När MySQL-servern har skapats visas Azure CLI information liknar följande exempel:
+När hello MySQL server skapas visar hello Azure CLI information liknande toohello följande exempel:
 
 ```json
 {
@@ -171,7 +171,7 @@ När MySQL-servern har skapats visas Azure CLI information liknar följande exem
 
 ### <a name="configure-server-firewall"></a>Konfigurera server-brandväggen
 
-Skapa en brandväggsregel för MySQL-servern att tillåta klientanslutningar med hjälp av den [az mysql-brandväggsregel skapa](/cli/azure/mysql/server/firewall-rule#create) kommando. 
+Skapa en brandväggsregel för MySQL server tooallow klienten anslutningar med hello [az mysql-brandväggsregel skapa](/cli/azure/mysql/server/firewall-rule#create) kommando. 
 
 ```azurecli-interactive
 az mysql server firewall-rule create \
@@ -183,11 +183,11 @@ az mysql server firewall-rule create \
 ```
 
 > [!NOTE]
-> Azure-databas för MySQL (förhandsversion) kan inte för närvarande automatiskt anslutningar från Azure-tjänster. IP-adresser i Azure tilldelas dynamiskt, är det bättre att aktivera alla IP-adresser för tillfället. Eftersom tjänsten fortsätter förhandsgranskningen, aktiveras bättre metoder för att skydda databasen.
+> Azure-databas för MySQL (förhandsversion) kan inte för närvarande automatiskt anslutningar från Azure-tjänster. IP-adresser i Azure tilldelas dynamiskt, är det bättre tooenable alla IP-adresser för nu. Eftersom hello tjänsten fortsätter förhandsgranskningen, aktiveras bättre metoder för att skydda databasen.
 
-## <a name="configure-the-azure-mysql-database"></a>Konfigurera Azure MySQL-databas
+## <a name="configure-hello-azure-mysql-database"></a>Konfigurera hello Azure MySQL-databas
 
-I fönstret terminal på din dator att ansluta till MySQL-server i Azure. Använd värdet du angav tidigare för `<admin_user>` och `<mysql_server_name>`.
+Anslut toohello MySQL-server i Azure i hello terminalfönster på datorn. Använd hello-värde som du angav tidigare för `<admin_user>` och `<mysql_server_name>`.
 
 ```bash
 mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
@@ -195,7 +195,7 @@ mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.
 
 ### <a name="create-a-database"></a>Skapa en databas 
 
-I den `mysql` uppmanar, skapa en databas och en tabell för att göra-objekt.
+I hello `mysql` uppmanar, skapa en databas och en tabell för hello arbetsuppgifter.
 
 ```sql
 CREATE DATABASE tododb;
@@ -203,11 +203,11 @@ CREATE DATABASE tododb;
 
 ### <a name="create-a-user-with-permissions"></a>Skapa en användare med behörighet
 
-Skapa en databasanvändare och ge den alla behörigheter i den `tododb` databas. Ersätt platshållarna `<Javaapp_user>` och `<Javaapp_password>` med dina egna unika namn.
+Skapa en databasanvändare och ge den alla behörigheter i hello `tododb` databas. Ersätt platshållarna hello `<Javaapp_user>` och `<Javaapp_password>` med dina egna unika namn.
 
 ```sql
 CREATE USER '<Javaapp_user>' IDENTIFIED BY '<Javaapp_password>'; 
-GRANT ALL PRIVILEGES ON tododb.* TO '<Javaapp_user>';
+GRANT ALL PRIVILEGES ON tododb.* too'<Javaapp_user>';
 ```
 
 Avsluta anslutningen till servern genom att skriva `quit`.
@@ -216,9 +216,9 @@ Avsluta anslutningen till servern genom att skriva `quit`.
 quit
 ```
 
-## <a name="deploy-the-sample-to-azure-app-service"></a>Distribuera exemplet till Azure App Service
+## <a name="deploy-hello-sample-tooazure-app-service"></a>Distribuera hello exempel tooAzure Apptjänst
 
-Skapa en Azure App Service-plan med den **lediga** priser nivå med hjälp av den [az programtjänstplan skapa](/cli/azure/appservice/plan#create) CLI-kommando. Programtjänstplan definierar de fysiska resurserna som används som värd för dina appar. Alla program som har tilldelats en programtjänstplan dela dessa resurser, så att du kan spara kostnader när värd för flera appar. 
+Skapa en Azure App Service-plan med hello **lediga** prisnivån med hello [az programtjänstplan skapa](/cli/azure/appservice/plan#create) CLI-kommando. Hej programtjänstplan definierar hello fysiska resurser som används toohost dina appar. Alla program som tilldelats tooan programtjänstplan dela dessa resurser, så att du toosave kostnad när värd för flera appar. 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -227,7 +227,7 @@ az appservice plan create \
     --sku FREE
 ```
 
-När planen är klar, visas Azure CLI liknande utdata i följande exempel:
+När hello plan är klar, utdata hello Azure CLI visar liknande toohello följande exempel:
 
 ```json
 { 
@@ -247,7 +247,7 @@ När planen är klar, visas Azure CLI liknande utdata i följande exempel:
 
 ### <a name="create-an-azure-web-app"></a>Skapa en Azure-webbapp
 
- Använd den [az webapp skapa](/cli/azure/appservice/web#create) CLI-kommando för att skapa en web app definition i den `myAppServicePlan` App Service-plan. Web app definitionen innehåller en URL för att få åtkomst till ditt program med och konfigurerar du flera alternativ för att distribuera din kod till Azure. 
+ Använd hello [az webapp skapa](/cli/azure/appservice/web#create) CLI kommandot toocreate en web app definition i hello `myAppServicePlan` App Service-plan. hello web app definition innehåller en URL-tooaccess ditt program med och konfigurerar flera alternativ toodeploy tooAzure din kod. 
 
 ```azurecli-interactive
 az webapp create \
@@ -256,9 +256,9 @@ az webapp create \
     --plan myAppServicePlan
 ```
 
-Ersätt den `<app_name>` med dina egna unika namn. Detta unika namn är en del av standarddomännamnet för webbprogram, så att namnet måste vara unikt över alla program i Azure. Du kan mappa en anpassad domän namnpost till webbprogrammet innan du ansluter till dina användare.
+Ersätt hello `<app_name>` med dina egna unika namn. Detta unika namn är en del av hello standarddomännamnet för hello webbprogrammet så hello namn måste toobe unikt över alla program i Azure. Du kan mappa ett webbprogram för domänen namnet post toohello innan exponera tooyour användare.
 
-När web app definitionen är klar, visas Azure CLI information liknar följande exempel: 
+När hello web app definition är klar visar hello Azure CLI information liknande toohello följande exempel: 
 
 ```json 
 {
@@ -277,9 +277,9 @@ När web app definitionen är klar, visas Azure CLI information liknar följande
 
 ### <a name="configure-java"></a>Konfigurera Java 
 
-Ställa in Java runtime-konfiguration som din app behöver med den [uppdatering az apptjänst web-config](/cli/azure/appservice/web/config#update) kommando.
+Konfigurera hello Java runtime konfiguration som din app behöver med hello [uppdatering az apptjänst web-config](/cli/azure/appservice/web/config#update) kommando.
 
-Följande kommando konfigurerar webbprogram för att köra på en senaste Java 8 JDK och [Apache Tomcat](http://tomcat.apache.org/) 8.0.
+hello följande kommando konfigurerar hello web app toorun på en senaste Java 8 JDK och [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 
 ```azurecli-interactive
 az webapp config set \ 
@@ -290,11 +290,11 @@ az webapp config set \
     --java-container-version 8.0
 ```
 
-### <a name="configure-the-app-to-use-the-azure-sql-database"></a>Konfigurera appen för att använda Azure SQL-databas
+### <a name="configure-hello-app-toouse-hello-azure-sql-database"></a>Konfigurera hello app toouse hello Azure SQL-databas
 
-Ange inställningar för webbprogram för att använda Azure MySQL-databasen som du skapade i Azure innan du kör exempelappen. Dessa egenskaper som exponeras av webbprogram som miljövariabler och åsidosätter de värden som anges i application.properties inuti paketerade webbprogrammet. 
+Ange inställningar för program innan du kör hello sample-appen på hello web app toouse hello Azure MySQL-databas du skapade i Azure. De här egenskaperna är exponerade toohello webbprogram som miljövariabler och åsidosätta hello värdena i hello application.properties inuti hello paketerade webbprogrammet. 
 
-Ange inställningar för program med hjälp av [az webapp config appsettings](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) i CLI:
+Ange inställningar för program med hjälp av [az webapp config appsettings](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) i hello CLI:
 
 ```azurecli-interactive
 az webapp config appsettings set \
@@ -318,9 +318,9 @@ az webapp config appsettings set \
 ```
 
 ### <a name="get-ftp-deployment-credentials"></a>Hämta autentiseringsuppgifter för FTP-distribution 
-Du kan distribuera programmet till Azure apptjänst på olika sätt, inklusive FTP, lokal Git, GitHub, Visual Studio Team Services och BitBucket. I det här exemplet FTP för att distribuera den. WAR-fil som skapats tidigare på din lokala dator till Azure App Service.
+Du kan distribuera ditt program tooAzure apptjänst på olika sätt, inklusive FTP, lokal Git, GitHub, Visual Studio Team Services och BitBucket. FTP-toodeploy hello i det här exemplet. WAR-filen tidigare bygger på din lokala dator tooAzure Apptjänst.
 
-Använd för att fastställa vilka autentiseringsuppgifter som skickar vidare i ett ftp-kommando till Webbappen [az apptjänst web distributionsåtgärder lista-publicering-profiler](https://docs.microsoft.com/cli/azure/appservice/web/deployment#list-publishing-profiles) kommando: 
+toodetermine vad autentiseringsuppgifter toopass längs i en FTP-kommandot toohello Web App används [az apptjänst web distributionsåtgärder lista-publicering-profiler](https://docs.microsoft.com/cli/azure/appservice/web/deployment#list-publishing-profiles) kommando: 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles \ 
@@ -340,13 +340,13 @@ az webapp deployment list-publishing-profiles \
 ]
 ```
 
-### <a name="upload-the-app-using-ftp"></a>Ladda upp appen med hjälp av FTP
+### <a name="upload-hello-app-using-ftp"></a>Överför hello-app med FTP
 
-Använda din favorit FTP-verktyget för att distribuera den. WAR-filen till den */site/wwwroot/webapps* mapp på adressen till servern från den `URL` i det föregående kommandot. Ta bort den befintliga programkatalogen (rot) och Ersätt den befintliga ROOT.war med den. WAR-fil i tidigare i kursen.
+Använd din favorit toodeploy hello för FTP-verktyget. WAR-filen toohello */site/wwwroot/webapps* mapp på hello serveradress från hello `URL` i hello föregående kommando. Ta bort hello befintliga (rot) programkatalogen och Ersätt hello befintliga ROOT.war med hello. Inbyggda hello tidigare i kursen hello WAR-filen.
 
 ```bash
 ftp waws-prod-blu-069.ftp.azurewebsites.windows.net
-Connected to waws-prod-blu-069.drip.azurewebsites.windows.net.
+Connected toowaws-prod-blu-069.drip.azurewebsites.windows.net.
 220 Microsoft FTP Service
 Name (waws-prod-blu-069.ftp.azurewebsites.windows.net:raisa): app_name\$app_name
 331 Password required
@@ -357,26 +357,26 @@ rmdir ROOT/
 put target/TodoDemo-0.0.1-SNAPSHOT.war ROOT.war
 ```
 
-### <a name="test-the-web-app"></a>Testa webbappen
+### <a name="test-hello-web-app"></a>Testa hello-webbprogram
 
-Bläddra till `http://<app_name>.azurewebsites.net/` och lägga till några åtgärder i listan. 
+Bläddra för`http://<app_name>.azurewebsites.net/` och lägga till några uppgifter toohello lista. 
 
 ![Java-app som körs i Azure apptjänst](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
 **Grattis!** Du kör en datadrivna Java-app i Azure App Service.
 
-## <a name="update-the-app-and-redeploy"></a>Uppdatera och distribuera om appen
+## <a name="update-hello-app-and-redeploy"></a>Uppdatera hello app och distribuera om
 
-Uppdatera programmet så att ytterligare en kolumn i todo-listan för vilken dag objektet skapades. Källan Start hanterar uppdaterar databasschemat för dig som modellen dataändringar utan att ändra din befintliga databasposter.
+Uppdatera hello programmet tooinclude ytterligare en kolumn i hello todo-listan för vilken dag hello objektet skapades. Källan Start hanterar uppdatering hello-databasschemat för dig som hello datamodelländringar utan att ändra din befintliga databasposter.
 
-1. I det lokala systemet öppna *src/main/java/com/example/fabrikam/TodoItem.java* och Lägg till följande importer i klassen:   
+1. I det lokala systemet öppna *src/main/java/com/example/fabrikam/TodoItem.java* och Lägg till följande hello importerar toohello klass:   
 
     ```java
     import java.text.SimpleDateFormat;
     import java.util.Calendar;
     ```
 
-2. Lägg till en `String` egenskapen `timeCreated` till *src/main/java/com/example/fabrikam/TodoItem.java*, initierar med en tidsstämpel när objektet skapas. Lägg till Get/Set-metoder för den nya `timeCreated` egenskapen när du redigerar filen.
+2. Lägg till en `String` egenskapen `timeCreated` för*src/main/java/com/example/fabrikam/TodoItem.java*, initierar med en tidsstämpel när objektet skapas. Lägg till Get/Set-metoder för hello nya `timeCreated` egenskapen när du redigerar filen.
 
     ```java
     private String name;
@@ -400,7 +400,7 @@ Uppdatera programmet så att ytterligare en kolumn i todo-listan för vilken dag
     }
     ```
 
-3. Uppdatera *src/main/java/com/example/fabrikam/TodoDemoController.java* med en rad i den `updateTodo` metod för att ange tidsstämpeln:
+3. Uppdatera *src/main/java/com/example/fabrikam/TodoDemoController.java* med en rad i hello `updateTodo` metoden tooset hello tidsstämpel:
 
     ```java
     item.setComplete(requestItem.isComplete());
@@ -409,7 +409,7 @@ Uppdatera programmet så att ytterligare en kolumn i todo-listan för vilken dag
     repository.save(item);
     ```
 
-4. Lägga till stöd för det nya fältet i mallen Thymeleaf. Uppdatera *src/main/resources/templates/index.html* med ett nytt huvud för tidsstämpel och ett nytt fält att visa värdet för tidsstämpeln i varje datarad i tabellen.
+4. Lägga till stöd för nya hello-fältet i hello Thymeleaf mall. Uppdatera *src/main/resources/templates/index.html* med ett nytt huvud för hello tidsstämpel och ett nytt fält toodisplay hello-värde för hello tidsstämpeln i varje datarad i tabellen.
 
     ```html
     <th>Name</th>
@@ -422,23 +422,23 @@ Uppdatera programmet så att ytterligare en kolumn i todo-listan för vilken dag
     <td><input type="checkbox" th:checked="${item.complete} == true" th:field="*{todoList[__${i.index}__].complete}"/></td>
     ```
 
-5. Återskapa programmet:
+5. Återskapa hello program:
 
     ```bash
     mvnw clean package 
     ```
 
-6. FTP-den uppdaterade. WAR som tidigare kan ta bort den befintliga *plats/wwwroot/webbappar/ROOT* directory och *ROOT.war*, och sedan ladda upp den uppdaterade. WAR-filen som ROOT.war. 
+6. FTP-hello uppdateras. WAR som tidigare kan ta bort befintliga hello *plats/wwwroot/webbappar/ROOT* directory och *ROOT.war*, och sedan ladda upp hello uppdateras. WAR-filen som ROOT.war. 
 
-När du uppdaterar appen med en **Skapad** kolumnen visas nu. När du lägger till en ny uppgift appen kommer att fylla i tidsstämpeln automatiskt. Din befintliga aktiviteter förblir oförändrad och arbeta med appen även om den underliggande datamodellen har ändrats. 
+När du uppdaterar hello appen, en **Skapad** kolumnen visas nu. När du lägger till en ny uppgift fyller hello app hello tidsstämpel automatiskt. Din befintliga aktiviteter förblir oförändrad och arbeta med hello appen även om hello underliggande datamodellen har ändrats. 
 
 ![Java-app som har uppdaterats med en ny kolumn](./media/app-service-web-tutorial-java-mysql/appservice-updates-java.png)
       
 ## <a name="stream-diagnostic-logs"></a>Dataströmmen diagnostikloggar 
 
-Du kan hämta loggarna för konsolen skickas direkt till terminalen när Java-programmet körs i Azure App Service. På så sätt kan du få samma diagnostiska meddelanden för att felsöka programfel.
+När Java-programmet körs i Azure App Service kan du få hello konsolen loggar skickas direkt tooyour terminal. På så sätt kan du hello diagnostiska meddelanden för samma toohelp du felsöka programfel.
 
-Starta loggen strömning med den [az webapp loggen pilslut](/cli/azure/appservice/web/log#tail) kommando.
+toostart loggen direktuppspelning, Använd hello [az webapp loggen pilslut](/cli/azure/appservice/web/log#tail) kommando.
 
 ```azurecli-interactive 
 az webapp log tail \
@@ -448,19 +448,19 @@ az webapp log tail \
 
 ## <a name="manage-your-azure-web-app"></a>Hantera Azure-webbapp
 
-Gå till Azure portal för att se att webbappen som du skapade.
+Gå toohello Azure portal toosee hello webbappen du skapade.
 
-Logga in på [https://portal.azure.com](https://portal.azure.com).
+toodo, logga in för[https://portal.azure.com](https://portal.azure.com).
 
-Klicka på **App Services** på menyn till vänster och klicka sedan på namnet på din Azure-webbapp.
+Hello vänstra menyn klickar du på **Apptjänst**, klicka på hello namnet på din Azure webbapp.
 
-![Navigera till webbappen på Azure Portal](./media/app-service-web-tutorial-java-mysql/access-portal.png)
+![Portalen navigering tooAzure webbprogram](./media/app-service-web-tutorial-java-mysql/access-portal.png)
 
-Sidan **Översikt** visas som standard på webbappens blad. På den här sidan får du en översikt över hur det går för appen. Här kan utföra du också hanteringsuppgifter som att stoppa, starta, starta om och ta bort. På flikarna till vänster på bladet kan du se olika konfigurationssidor som du kan öppna.
+Som standard visas din webbapps blad hello **översikt** sidan. På den här sidan får du en översikt över hur det går för appen. Här kan utföra du också hanteringsuppgifter som att stoppa, starta, starta om och ta bort. hello flikar hello vänster på hello bladet visar hello annan konfigurationssidor som du kan öppna.
 
 ![App Service-blad på Azure Portal](./media/app-service-web-tutorial-java-mysql/web-app-blade.png)
 
-Flikarna på bladet innehåller många bra funktioner som du kan lägga till i webbappen. I listan nedan kan du se några av möjligheterna:
+Flikarna i hello bladet innehåller hello många bra funktioner som du kan lägga till tooyour webbprogram. hello följande lista innehåller några av hello möjligheter:
 * Mappa ett anpassat DNS-namn
 * Bind ett anpassat SSL-certifikat
 * Konfigurera kontinuerlig distribution
@@ -469,7 +469,7 @@ Flikarna på bladet innehåller många bra funktioner som du kan lägga till i w
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du inte behöver dessa resurser för en annan självstudiekursen (se [nästa steg](#next)), kan du ta bort dem genom att köra följande kommando: 
+Om du inte behöver dessa resurser för en annan självstudiekursen (se [nästa steg](#next)), kan du ta bort dem genom att köra följande kommando hello: 
   
 ```azurecli-interactive
 az group delete --name myResourceGroup 
@@ -481,13 +481,13 @@ az group delete --name myResourceGroup
 
 > [!div class="checklist"]
 > * Skapa en MySQL-databas i Azure
-> * Ansluta en Java-exempelapp till MySQL
-> * Distribuera appen till Azure
-> * Uppdatera och distribuera om appen
+> * Ansluta en exempel Java-app toohello MySQL
+> * Distribuera hello app tooAzure
+> * Uppdatera och distribuera hello app
 > * Dataströmmen diagnostiska loggar från Azure
-> * Hantera appen i Azure-portalen
+> * Hantera hello appen i hello Azure-portalen
 
-Gå vidare till nästa kurs information om hur du mappar en anpassad DNS-namn till appen.
+I förväg toohello nästa självstudiekurs toolearn hur toomap en anpassad DNS namn toohello app.
 
 > [!div class="nextstepaction"] 
-> [Mappa ett befintligt anpassat DNS-namn till Azure Web Apps](app-service-web-tutorial-custom-domain.md)
+> [Mappa en befintlig anpassad DNS-namnet tooAzure Web Apps](app-service-web-tutorial-custom-domain.md)

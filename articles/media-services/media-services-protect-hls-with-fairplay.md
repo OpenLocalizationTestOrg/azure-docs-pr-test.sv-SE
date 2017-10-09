@@ -1,6 +1,6 @@
 ---
-title: "Skydda innehåll med Microsoft PlayReady- eller Apple FairPlay - Azure HLS | Microsoft Docs"
-description: "Det här avsnittet ger en översikt och visar hur du använder Azure Media Services för att kryptera dynamiskt innehåll med Apple FairPlay HTTP Live Streaming (HLS). Den visar även hur du använder Media Services licensleveranstjänst för att leverera FairPlay-licenser till klienter."
+title: "aaaProtect HLS innehåll med Microsoft PlayReady- eller Apple FairPlay - Azure | Microsoft Docs"
+description: "Det här avsnittet ger en översikt och visar hur toouse Azure Media Services toodynamically kryptera din HTTP Live Streaming (HLS) innehåll med Apple FairPlay. Den visar även hur toouse hello Media Services licens leverans av tjänsten toodeliver FairPlay-licenser tooclients."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,152 +14,152 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 895d6307b1cef74e195cc2ffd8dbef4196e97b1f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 91ca451e3e7bf0da1d74dac4c99180f08f39e4ff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Skydda ditt innehåll med Apple FairPlay eller Microsoft PlayReady HLS
-Azure Media Services kan du kryptera dynamiskt innehåll HTTP Live Streaming (HLS) med hjälp av följande format:  
+Azure Media Services aktiverar du toodynamically kryptera innehållet HTTP Live Streaming (HLS) med hjälp av hello följande format:  
 
 * **AES-128 kuvert klartextnyckeln**
 
-    Det hela segmentet krypteras med hjälp av den **AES-128 CBC** läge. Dekryptering av dataströmmen stöds internt av iOS och OS X spelare. Mer information finns i [dynamisk med hjälp av AES-128-kryptering och viktiga leverans tjänsten](media-services-protect-with-aes128.md).
+    hello hela segmentet krypteras med hjälp av hello **AES-128 CBC** läge. hello dekryptering av hello dataströmmen stöds internt av iOS och OS X spelare. Mer information finns i [dynamisk med hjälp av AES-128-kryptering och viktiga leverans tjänsten](media-services-protect-with-aes128.md).
 * **Apple FairPlay**
 
-    Enskilda video och ljud prover krypteras med hjälp av den **AES-128 CBC** läge. **FairPlay strömning** (FPS) är integrerade i enhetens operativsystem, med inbyggt stöd på iOS- och Apple TV. Safari för OS X kan FPS genom att använda stöd för krypterade Media tillägg (EME)-gränssnittet.
+    Hej enskilda video och ljud exempel krypteras med hjälp av hello **AES-128 CBC** läge. **FairPlay strömning** (FPS) är integrerat i hello enhetens operativsystem med inbyggt stöd på iOS- och Apple TV. Safari för OS X kan FPS med hello krypterade Media tillägg (EME) Gränssnittssupport.
 * **Microsoft PlayReady**
 
-Följande bild visar den **HLS + FairPlay eller PlayReady dynamisk kryptering** arbetsflöde.
+hello följande bild visar hello **HLS + FairPlay eller PlayReady dynamisk kryptering** arbetsflöde.
 
 ![Diagram över arbetsflödet för dynamisk kryptering](./media/media-services-content-protection-overview/media-services-content-protection-with-fairplay.png)
 
-Det här avsnittet visar hur du använder Media Services för att kryptera din HLS innehåll med Apple FairPlay dynamiskt. Den visar även hur du använder Media Services licensleveranstjänst för att leverera FairPlay-licenser till klienter.
+Det här avsnittet visar hur toouse Media Services toodynamically kryptera din HLS innehåll med Apple FairPlay. Den visar även hur toouse hello Media Services licens leverans av tjänsten toodeliver FairPlay-licenser tooclients.
 
 > [!NOTE]
-> Om du även vill kryptera dina HLS innehåll med PlayReady måste du skapa en gemensam innehållsnyckel och associera den med din tillgång. Du måste också konfigurera innehållsnyckelns auktoriseringsprincip, enligt beskrivningen i [med PlayReady-kryptering för dynamiska vanliga](media-services-protect-with-drm.md).
+> Om du även vill tooencrypt din HLS innehåll med PlayReady, du behöver toocreate en gemensam innehållsnyckel och associera den med din tillgång. Du måste också tooconfigure hello innehållsnyckelns auktoriseringsprincip, enligt beskrivningen i [med PlayReady-kryptering för dynamiska vanliga](media-services-protect-with-drm.md).
 >
 >
 
 ## <a name="requirements-and-considerations"></a>Krav och överväganden
 
-Följande krävs när du använder Media Services att leverera HLS som krypterats med FairPlay och för att leverera FairPlay-licenser:
+hello följande krävs när du använder Media Services toodeliver HLS som krypterats med FairPlay och toodeliver FairPlay-licenser:
 
   * Ett Azure-konto. Mer information finns i avsnittet om [den kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
-  * Ett Media Services-konto. Om du vill skapa en finns [skapa ett Azure Media Services-konto med hjälp av Azure portal](media-services-portal-create-account.md).
+  * Ett Media Services-konto. toocreate, se [skapa ett Azure Media Services-konto med hello Azure-portalen](media-services-portal-create-account.md).
   * Logga med [Apple Development Program](https://developer.apple.com/).
-  * Apple kräver innehållets ägare att hämta den [distributionspaketet](https://developer.apple.com/contact/fps/). Tillstånd redan implementerats nyckeln Security Module (KSM) med Media Services och att du begär slutliga FPS paketet. Det finns instruktioner i sista FPS paketet för att generera certifiering och hämta program hemlig nyckel (be). Du kan använda be för att konfigurera FairPlay.
+  * Apple kräver hello innehållets ägare tooobtain hello [distributionspaketet](https://developer.apple.com/contact/fps/). Tillstånd redan implementerats nyckeln Security Module (KSM) med Media Services och att du begär hello slutliga FPS paketet. Det finns instruktioner i hello slutliga FPS paketet toogenerate certifiering och få hello programmet hemlig nyckel (be). Du kan använda be tooconfigure FairPlay.
   * Azure Media Services .NET SDK-versionen **3.6.0** eller senare.
 
-Följande måste anges på Media Services viktiga leverans sida:
+följande saker hello måste anges på Media Services viktiga leverans sida:
 
-  * **Appen Cert (nät)**: Detta är en .pfx-fil som innehåller den privata nyckeln. Du skapar den här filen och kryptera den med ett lösenord.
+  * **Appen Cert (nät)**: Detta är en .pfx-fil som innehåller hello privat nyckel. Du skapar den här filen och kryptera den med ett lösenord.
 
-       När du konfigurerar en leveransprincip för viktiga, måste du ange lösenordet och PFX-filen i Base64-format.
+       När du konfigurerar en nyckel leveransprincip måste du ange att lösenordet och hello .pfx-fil i Base64-format.
 
-      Följande steg beskriver hur du skapar en PFX-fil för FairPlay:
+      hello följande steg beskriver hur toogenerate certifikat PFX-filen för FairPlay:
 
     1. Installera OpenSSL från https://slproweb.com/products/Win32OpenSSL.html.
 
-        Gå till den mapp där FairPlay-certifikat och andra filer som levereras av Apple.
-    2. Kör följande kommando från kommandoraden. Detta konverterar CER-filen till en PEM-filen.
+        Gå toohello mapp där hello FairPlay certifikat och andra filer som levereras av Apple.
+    2. Kör följande kommando från kommandoraden hello hello. Detta omvandlar hello .cer-fil tooa PEM-filen.
 
         ”C:\OpenSSL-Win32\bin\openssl.exe” x509-informera der-i fairplay.cer-ut fairplay out.pem
-    3. Kör följande kommando från kommandoraden. Detta konverterar PEM-filen till en .pfx-fil med den privata nyckeln. Lösenordet för PFX-filen blir sedan ombedd av OpenSSL.
+    3. Kör följande kommando från kommandoraden hello hello. Detta omvandlar hello PEM-filen tooa .pfx-filen med hello privat nyckel. hello lösenord för hello PFX-filen blir sedan ombedd av OpenSSL.
 
         ”C:\OpenSSL-Win32\bin\openssl.exe” pkcs12-exportera - ut fairplay out.pfx-inkey privatekey.pem-i fairplay out.pem - passin file:privatekey-pem-pass.txt
-  * **Appen Cert lösenord**: lösenordet för att skapa en .pfx-fil.
-  * **ID för appen Cert lösenord**: du måste överföra lösenordet, som liknar hur de överför andra Media Services-nycklar. Använd den **ContentKeyType.FairPlayPfxPassword** enum-värde för att hämta ID för Media Services Det här är vad de behöver för att använda inuti alternativet viktiga leverans.
-  * **IV**: Detta är ett slumpmässigt värde av 16 byte. Den måste matcha iv i principen för tillgångsleverans. Du genererar iv och placera den på båda platserna: tillgångsleveransprincip och alternativet viktiga leverans.
-  * **Be**: den här nyckeln tas emot när du skapar ett certifikat med hjälp av Apple Developer-portalen. Varje Utvecklingsteamet får en unik be. Spara en kopia av be och lagra den på en säker plats. Du behöver konfigurera be som FairPlayAsk till Media Services senare.
-  * **Be ID**: Detta ID hämtas när du överför be till Media Services. Du måste överföra be med hjälp av den **ContentKeyType.FairPlayAsk** enum-värde. Media Services ID returneras som ett resultat, och det här är vad ska användas när du ställer in alternativet viktiga leverans.
+  * **Appen Cert lösenord**: hello lösenord för att skapa hello .pfx-fil.
+  * **ID för appen Cert lösenord**: du måste överföra hello lösenord, liknande toohow de överför andra Media Services-nycklar. Använd hello **ContentKeyType.FairPlayPfxPassword** enum-värde tooget hello Media Services-ID. Det här är de behöver toouse inuti hello viktiga princip leveransalternativ.
+  * **IV**: Detta är ett slumpmässigt värde av 16 byte. Den måste matcha hello iv i hello tillgångsleveransprincip. Du genererar hello iv och placera den på båda platserna: hello tillgångsleveransprincip och hello viktiga princip leveransalternativ.
+  * **Be**: den här nyckeln tas emot när du skapar hello certifikatutfärdare med hjälp av hello Apple Developer-portalen. Varje Utvecklingsteamet får en unik be. Spara en kopia av hello be och lagra den på en säker plats. Du behöver tooconfigure be som FairPlayAsk tooMedia tjänster senare.
+  * **Be ID**: Detta ID hämtas när du överför be till Media Services. Du måste överföra be med hjälp av hello **ContentKeyType.FairPlayAsk** enum-värde. Hello Media Services ID returneras som hello resultat, och det här är vad ska användas när hello viktiga princip leveransalternativ.
 
-Följande måste anges av klientsidan FPS:
+hello måste följande anges av hello FPS på klientsidan:
 
-  * **Appen Cert (nät)**: Detta är en.cer/.der-fil som innehåller den offentliga nyckeln som operativsystemet använder för att kryptera vissa nyttolast. Media Services behöver veta om den eftersom det krävs av Windows Media player. Tjänsten key dekrypterar den med hjälp av motsvarande privata nyckel.
+  * **Appen Cert (nät)**: Detta är en.cer/.der-fil som innehåller hello offentliga nyckel, vilket hello operativsystem använder tooencrypt vissa nyttolast. Media Services måste tooknow om den eftersom det krävs av hello player. hello viktiga leverans tjänsten dekrypterar den med hjälp av hello motsvarande privata nyckel.
 
-Skaffa en verklig be först om du vill spela upp en krypterad dataström FairPlay och generera ett verkliga certifikat. Den här processen skapar alla tre delar:
+tooplay tillbaka en krypterad dataström FairPlay, skaffa en verklig be först och sedan generera en verklig certifikat. Den här processen skapar alla tre delar:
 
   * .der fil
   * .pfx-fil
-  * lösenordet för PFX
+  * lösenordet för hello .pfx
 
-Följande klienter stöder HLS med **AES-128 CBC** kryptering: Safari på OS X, Apple TV iOS.
+hello följande klienter har stöd för HLS med **AES-128 CBC** kryptering: Safari på OS X, Apple TV iOS.
 
 ## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>Konfigurera FairPlay dynamisk kryptering och licensen för leverans av tjänster
-Följande är allmänna steg för att skydda dina tillgångar med FairPlay med hjälp av Media Services licensleveranstjänst och även med hjälp av dynamisk kryptering.
+hello följande är allmänna steg för att skydda dina tillgångar med FairPlay med hjälp av hello Media Services licensleveranstjänst och även med hjälp av dynamisk kryptering.
 
-1. Skapa en tillgång och överföra filer till tillgången.
-2. Koda den tillgång som innehåller filen för MP4-uppsättningen med anpassad bithastighet.
-3. Skapa en innehållsnyckel och associera den med den kodade tillgången.  
-4. Konfigurera innehållsnyckelns auktoriseringsprincip. Ange följande:
+1. Skapa en tillgång och överföra filer till hello tillgång.
+2. Koda hello tillgång som innehåller hello filen toohello anpassningsbar bithastighet MP4-uppsättningen.
+3. Skapa en innehållsnyckel och associera den med hello kodade tillgången.  
+4. Konfigurera hello innehållsnyckelns auktoriseringsprincip. Ange hello följande:
 
-   * Leveransmetod (i det här fallet FairPlay).
-   * FairPlay alternativkonfiguration. Mer information om hur du konfigurerar FairPlay finns i **ConfigureFairPlayPolicyOptions()** metod i exemplet nedan.
+   * hello leveransmetod (i det här fallet FairPlay).
+   * FairPlay alternativkonfiguration. Mer information om hur tooconfigure FairPlay, se hello **ConfigureFairPlayPolicyOptions()** metod i hello exemplet nedan.
 
      > [!NOTE]
-     > Vanligtvis vill du konfigurera alternativ för FairPlay princip bara en gång, eftersom du bara har en uppsättning av en certifikatutfärdare och en fråga.
+     > Vanligtvis skulle vill tooconfigure FairPlay princip alternativ bara en gång, eftersom du bara har en uppsättning av en certifikatutfärdare och en fråga.
      >
      >
    * Begränsningar (öppen eller token).
-   * Information som är specifik för nyckelleveranstypen och som definierar hur nyckeln levereras till klienten.
-5. Konfigurera i principen för tillgångsleverans. Konfigurationen för leveransprincipen omfattar:
+   * Information specifik toohello nyckelleveranstypen och som definierar hur hello nyckeln levereras toohello klienten.
+5. Konfigurera principen för tillgångsleverans hello. hello konfigurationen för leveransprincipen omfattar:
 
-   * Leveransprotokoll (HLS).
-   * Typen av dynamisk kryptering (vanliga CBC kryptering).
-   * URL för anskaffning av licens.
+   * Hej leveransprotokoll (HLS).
+   * hello typen av dynamisk kryptering (vanliga CBC kryptering).
+   * URL för anskaffning av hello licens.
 
      > [!NOTE]
-     > Du måste konfigurera separata leveransprinciperna om du vill leverera en ström som har krypterats med FairPlay och en annan Digital Rights Management (DRM) system:
+     > Om du vill toodeliver en ström som har krypterats med FairPlay och en annan Digital Rights Management (DRM)-system kan ha tooconfigure separat leveransprinciperna:
      >
-     > * En IAssetDeliveryPolicy att konfigurera dynamisk anpassningsbar strömning via HTTP-(bindestreck) med vanliga kryptering (CENC) (PlayReady och Widevine) och Smooth med PlayReady
-     > * En annan IAssetDeliveryPolicy att konfigurera FairPlay för HLS
+     > * En IAssetDeliveryPolicy tooconfigure dynamiska anpassningsbar strömning via HTTP-(bindestreck) med vanliga kryptering (CENC) (PlayReady och Widevine) och Smooth med PlayReady
+     > * En annan IAssetDeliveryPolicy tooconfigure FairPlay för HLS
      >
      >
-6. Skapa en OnDemand-positionerare för att få en strömnings-URL.
+6. Skapa en OnDemand-positionerare tooget en strömnings-URL.
 
 ## <a name="use-fairplay-key-delivery-by-player-apps"></a>Använd FairPlay viktiga leverans av player appar
-Du kan utveckla player appar med hjälp av iOS SDK. Om du vill kunna spela upp FairPlay innehåll som du behöver implementera licens exchange-protokollet. Det här protokollet har inte angetts av Apple. Det är varje app så att skicka begäranden viktiga leverans. Media Services FairPlay viktiga tjänsten förväntar SPC komma som meddelandet www-form-url kodad post i följande format:
+Du kan utveckla player appar med hjälp av hello iOS SDK. toobe kan tooplay FairPlay innehåll, har du tooimplement hello licens exchange-protokollet. Det här protokollet har inte angetts av Apple. Är det upp tooeach app hur toosend viktiga leverans begäranden. hello Media Services FairPlay viktiga delivery service förväntas hello SPC toocome som meddelandet www-form-url kodad post i hello följande format:
 
     spc=<Base64 encoded SPC>
 
 > [!NOTE]
-> Azure Media Player stöder inte FairPlay uppspelning direkt. Hämta exempel player från Apple developer-konto för att få FairPlay uppspelning i MAC OS X.
+> Azure Media Player stöder inte FairPlay uppspelning out of box hello. tooget FairPlay uppspelning på MAC OS X, hämta hello exempel player från hello Apple developer-konto.
 >
 >
 
 ## <a name="streaming-urls"></a>Strömmande URL: er
-Om din tillgång har krypterats med flera DRM, bör du använda en kryptering-tagg i strömnings-URL: (format = 'm3u8 aapl', kryptering = ”xxx”).
+Om din tillgång har krypterats med flera DRM, bör du använda en tagg för kryptering i hello strömnings-URL: (format = 'm3u8 aapl', kryptering = ”xxx”).
 
-Följande gäller:
+det gäller hello följande överväganden:
 
 * Endast noll eller en typ av enhetskryptering kan anges.
-* Krypteringstypen behöver inte anges i URL: en om bara en kryptering har tillämpats på tillgången.
-* Krypteringstypen är skiftlägeskänsligt.
-* Följande krypteringstyper av kan anges:  
+* hello krypteringstyp saknar toobe som anges i hello URL Om bara en kryptering har tillämpade toohello tillgången.
+* hello krypteringstypen är skiftlägeskänsligt.
+* hello följande krypteringstyper kan anges:  
   * **cenc**: Common encryption (PlayReady eller Widevine)
   * **cbcs aapl**: FairPlay
   * **CBC**: AES envelope kryptering
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Skapa och konfigurera ett Visual Studio-projekt
 
-1. Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
-2. Lägg till följande element i **appSettings** som definieras i filen app.config:
+1. Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
+2. Lägg till följande element för hello**appSettings** definieras i filen app.config:
 
         <add key="Issuer" value="http://testacs.com"/>
         <add key="Audience" value="urn:test"/>
 
 ## <a name="example"></a>Exempel
 
-I följande exempel visar möjligheten att använda Media Services kan leverera ditt innehåll som krypterats med FairPlay. Den här funktionen introducerades i Azure Media Services SDK för .NET version 3.6.0. 
+hello som följande exempel visar hello möjlighet toouse Media Services toodeliver ditt innehåll som krypterats med FairPlay. Den här funktionen introducerades i hello Azure Media Services SDK för .NET version 3.6.0. 
 
-Skriv över koden i Program.cs-filen med koden som visas i det här avsnittet.
+Skriv över hello koden i Program.cs-filen med hello koden som visas i det här avsnittet.
 
 >[!NOTE]
->Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda samma princip-ID om du alltid använder samma dagar/åtkomstbehörigheter, till exempel principer för positionerare som är avsedda att vara på plats under en längre tid (icke-överföringsprinciper). Mer information finns i [detta](media-services-dotnet-manage-entities.md#limit-access-policies) avsnitt.
+>Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda hello samma princip-ID om du alltid använder hello samma dagar / åtkomstbehörigheter, till exempel principer för lokaliserare som är avsedda tooremain på plats för lång tid (icke-överföringen principer). Mer information finns i [detta](media-services-dotnet-manage-entities.md#limit-access-policies) avsnitt.
 
-Se till att uppdatera variablerna så att de pekar på mappar där dina indatafiler finns.
+Se till att tooupdate variabler toopoint toofolders där dina indatafiler finns.
 
     using System;
     using System.Collections.Generic;
@@ -178,7 +178,7 @@ Se till att uppdatera variablerna så att de pekar på mappar där dina indatafi
     {
         class Program
         {
-        // Read values from the App.config file.
+        // Read values from hello App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -215,7 +215,7 @@ Se till att uppdatera variablerna så att de pekar på mappar där dina indatafi
             Console.WriteLine("Encoded asset: {0}", encodedAsset.Id);
 
             IContentKey key = CreateCommonCBCTypeContentKey(encodedAsset);
-            Console.WriteLine("Created key {0} for the asset {1} ", key.Id, encodedAsset.Id);
+            Console.WriteLine("Created key {0} for hello asset {1} ", key.Id, encodedAsset.Id);
             Console.WriteLine("FairPlay License Key delivery URL: {0}", key.GetKeyDeliveryUrl(ContentKeyDeliveryType.FairPlay));
             Console.WriteLine();
 
@@ -238,13 +238,13 @@ Se till att uppdatera variablerna så att de pekar på mappar där dina indatafi
             TokenRestrictionTemplate tokenTemplate =
                 TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-            // Generate a test token based on the the data in the given TokenRestrictionTemplate.
-            // Note, you need to pass the key id Guid because we specified
-            // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
+            // Generate a test token based on hello hello data in hello given TokenRestrictionTemplate.
+            // Note, you need toopass hello key id Guid because we specified
+            // TokenClaim.ContentKeyIdentifierClaim in during hello creation of TokenRestrictionTemplate.
             Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
             string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey,
                                         DateTime.UtcNow.AddDays(365));
-            Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+            Console.WriteLine("hello authorization token is:\nBearer {0}", testToken);
             Console.WriteLine();
             }
 
@@ -312,7 +312,7 @@ Se till att uppdatera variablerna så att de pekar på mappar där dina indatafi
                         "ContentKey",
                         ContentKeyType.CommonEncryptionCbcs);
 
-            // Associate the key with the asset.
+            // Associate hello key with hello asset.
             asset.ContentKeys.Add(key);
 
             return key;
@@ -352,7 +352,7 @@ Se till att uppdatera variablerna så att de pekar på mappar där dina indatafi
 
             contentKeyAuthorizationPolicy.Options.Add(FairPlayPolicy);
 
-            // Associate the content key authorization policy with the content key.
+            // Associate hello content key authorization policy with hello content key.
             contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
             contentKey = contentKey.UpdateAsync().Result;
         }
@@ -388,7 +388,7 @@ Se till att uppdatera variablerna så att de pekar på mappar där dina indatafi
 
             contentKeyAuthorizationPolicy.Options.Add(FairPlayPolicy);
 
-            // Associate the content key authorization policy with the content key
+            // Associate hello content key authorization policy with hello content key
             contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
             contentKey = contentKey.UpdateAsync().Result;
 
@@ -397,20 +397,20 @@ Se till att uppdatera variablerna så att de pekar på mappar där dina indatafi
 
         private static string ConfigureFairPlayPolicyOptions()
         {
-            // For testing you can provide all zeroes for ASK bytes together with the cert from Apple FPS SDK.
-            // However, for production you must use a real ASK from Apple bound to a real prod certificate.
+            // For testing you can provide all zeroes for ASK bytes together with hello cert from Apple FPS SDK.
+            // However, for production you must use a real ASK from Apple bound tooa real prod certificate.
             byte[] askBytes = Guid.NewGuid().ToByteArray();
             var askId = Guid.NewGuid();
-            // Key delivery retrieves askKey by askId and uses this key to generate the response.
+            // Key delivery retrieves askKey by askId and uses this key toogenerate hello response.
             IContentKey askKey = _context.ContentKeys.Create(
                         askId,
                         askBytes,
                         "askKey",
                         ContentKeyType.FairPlayASk);
 
-            //Customer password for creating the .pfx file.
-            string pfxPassword = "<customer password for creating the .pfx file>";
-            // Key delivery retrieves pfxPasswordKey by pfxPasswordId and uses this key to generate the response.
+            //Customer password for creating hello .pfx file.
+            string pfxPassword = "<customer password for creating hello .pfx file>";
+            // Key delivery retrieves pfxPasswordKey by pfxPasswordId and uses this key toogenerate hello response.
             var pfxPasswordId = Guid.NewGuid();
             byte[] pfxPasswordBytes = System.Text.Encoding.UTF8.GetBytes(pfxPassword);
             IContentKey pfxPasswordKey = _context.ContentKeys.Create(
@@ -419,11 +419,11 @@ Se till att uppdatera variablerna så att de pekar på mappar där dina indatafi
                         "pfxPasswordKey",
                         ContentKeyType.FairPlayPfxPassword);
 
-            // iv - 16 bytes random value, must match the iv in the asset delivery policy.
+            // iv - 16 bytes random value, must match hello iv in hello asset delivery policy.
             byte[] iv = Guid.NewGuid().ToByteArray();
 
-            //Specify the .pfx file created by the customer.
-            var appCert = new X509Certificate2("path to the .pfx file created by the customer", pfxPassword, X509KeyStorageFlags.Exportable);
+            //Specify hello .pfx file created by hello customer.
+            var appCert = new X509Certificate2("path toohello .pfx file created by hello customer", pfxPassword, X509KeyStorageFlags.Exportable);
 
             string FairPlayConfiguration =
             Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(
@@ -457,12 +457,12 @@ Se till att uppdatera variablerna så att de pekar på mappar där dina indatafi
 
             FairPlayConfiguration configFP = JsonConvert.DeserializeObject<FairPlayConfiguration>(kdOption.KeyDeliveryConfiguration);
 
-            // Get the FairPlay license service URL.
+            // Get hello FairPlay license service URL.
             Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.FairPlay);
 
-            // The reason the below code replaces "https://" with "skd://" is because
-            // in the IOS player sample code which you obtained in Apple developer account,
-            // the player only recognizes a Key URL that starts with skd://.
+            // hello reason hello below code replaces "https://" with "skd://" is because
+            // in hello IOS player sample code which you obtained in Apple developer account,
+            // hello player only recognizes a Key URL that starts with skd://.
             // However, if you are using a customized player,
             // you can choose whatever protocol you want.
             // For example, "https".
@@ -480,22 +480,22 @@ Se till att uppdatera variablerna så att de pekar på mappar där dina indatafi
             AssetDeliveryProtocol.HLS,
             assetDeliveryPolicyConfiguration);
 
-            // Add AssetDelivery Policy to the asset
+            // Add AssetDelivery Policy toohello asset
             asset.DeliveryPolicies.Add(assetDeliveryPolicy);
 
         }
 
 
         /// <summary>
-        /// Gets the streaming origin locator.
+        /// Gets hello streaming origin locator.
         /// </summary>
         /// <param name="assets"></param>
         /// <returns></returns>
         static public string GetStreamingOriginLocator(IAsset asset)
         {
 
-            // Get a reference to the streaming manifest file from the  
-            // collection of files in the asset.
+            // Get a reference toohello streaming manifest file from hello  
+            // collection of files in hello asset.
 
             var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
                          EndsWith(".ism")).
@@ -506,12 +506,12 @@ Se till att uppdatera variablerna så att de pekar på mappar där dina indatafi
             TimeSpan.FromDays(30),
             AccessPermissions.Read);
 
-            // Create a locator to the streaming content on an origin.
+            // Create a locator toohello streaming content on an origin.
             ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
             policy,
             DateTime.UtcNow.AddMinutes(-5));
 
-            // Create a URL to the manifest file.
+            // Create a URL toohello manifest file.
             return originLocator.Path + assetFile.Name;
         }
 

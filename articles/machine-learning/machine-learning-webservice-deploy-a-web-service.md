@@ -1,6 +1,6 @@
 ---
-title: "Distribuera en ny webbtjänst i Azure Machine Learning | Microsoft Docs"
-description: "Arbetsflöde för att distribuera en ARM-baserad webbtjänst"
+title: "aaaDeploying en ny webbtjänst i Azure Machine Learning | Microsoft Docs"
+description: "hello Arbetsflödesbaserade för att distribuera en ARM webbtjänst"
 services: machine-learning
 documentationcenter: 
 author: vDonGlover
@@ -16,17 +16,17 @@ ms.date: 02/13/2017
 ms.author: v-donglo
 ROBOTS: NOINDEX
 redirect_url: machine-learning-publish-a-machine-learning-web-service
-redirect_document_id: TRUE
-ms.openlocfilehash: 1415709f9da2bb2cce859af9feb0ec15c1fa5801
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 2cbfda44b97a6b992fbdfdfb0c761e6c9e169035
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-a-new-web-service"></a>Distribuera en ny webbtjänst
-Microsoft Azure Machine learning nu innehåller webbtjänster som baseras på [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) tillåter nya fakturering alternativ och distribuera webbtjänsten till flera regioner.
+Microsoft Azure Machine learning nu innehåller webbtjänster som baseras på [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) tillåter nya fakturering alternativ och distribuera din web service toomultiple regioner.
 
-Det allmänna arbetsflödet för att distribuera en webbtjänst med hjälp av Microsoft Azure Machine Learning-webbtjänster är:
+hello Allmänt arbetsflöde toodeploy en webbtjänst med hjälp av Microsoft Azure Machine Learning-webbtjänster är:
 
 * Skapa en prediktiv experiment
 * distribuera den
@@ -35,66 +35,66 @@ Det allmänna arbetsflödet för att distribuera en webbtjänst med hjälp av Mi
 * testa den
 * använda den.
 
-Följande bild illustrerar arbetsflödet.
+hello följande bild illustrerar arbetsflödet för hello.
 
 ![Arbetsflöde för distribution av Web service][1]
 
 ## <a name="deploy-web-service-from-studio"></a>Distribuera webbtjänsten från Studio
-Att distribuera ett experiment som en ny webbtjänst. Logga in på Machine Learning Studio och skapa en ny förutsägande webbtjänst. 
+toodeploy ett experiment som en ny webbtjänst. Logga in på hello Machine Learning Studio och skapa en ny förutsägande webbtjänst. 
 
 **Obs**: Om du redan har distribuerat ett experiment som en klassiska webbtjänst kan du distribuera den som en ny webbtjänst.
 
-Klicka på **kör** längst ned i experimentet arbetsytan och klicka sedan på **distribuera webbtjänsten** och **distribuera webbtjänsten [ny]**. Sidan distribution av Machine Learning-webbtjänst manager öppnas.
+Klicka på **kör** längst hello hello experimentera arbetsytan och klicka sedan på **distribuera webbtjänsten** och **distribuera webbtjänsten [ny]**. hello öppnas distribution av hello Machine Learning-webbtjänst manager.
 
 ## <a name="machine-learning-web-service-manager-deploy-experiment-page"></a>Machine Learning Web Service Manager distribuera Experiment sida
-Ange ett namn för webbtjänsten på sidan distribuera Experiment.
-Välj en prisnivå plan. Om du har en befintlig prisavtal kan du välja det måste annars du skapa en ny prisplan för tjänsten. 
+Ange ett namn för webbtjänsten hello hello distribuera Experiment på sidan.
+Välj en prisnivå plan. Om du har en befintlig prisavtal kan du välja det annars skapa du en ny prisplan för hello-tjänsten. 
 
-1. I den **prisplan** listrutan väljer du ett befintligt schema eller den **Välj ny plan** alternativet.
-2. I **schemanamn**, Skriv ett namn som identifierar planen på fakturan.
-3. Välj en av de **månatliga planera nivåer**. Observera att planen nivåerna standard att planer för standardregion och webbtjänsten har distribuerats till den regionen.
+1. I hello **prisplan** listrutan väljer du ett befintligt schema eller hello **Välj ny plan** alternativet.
+2. I **schemanamn**, Skriv ett namn som identifierar hello plan på fakturan.
+3. Välj en av hello **månatliga planera nivåer**. Observera att hello plan nivåerna standard toohello planer för standardregion och webbtjänsten är distribuerade toothat region.
 
-Klicka på **distribuera** och öppnas sidan Snabbstart för webbtjänsten.
+Klicka på **distribuera** och hello Snabbstart för webbtjänsten öppnas.
 
 ## <a name="quickstart-page"></a>Sidan Snabbstart
-Sidan Snabbstart service ger dig åtkomst och riktlinjer för de vanligaste uppgifterna som du utför när du har skapat en ny webbtjänst. Härifrån du enkelt kan komma åt både den **Test** sidan och **förbruka** sidan.
+hello-webbtjänstsida Quickstart ger dig åtkomst och vägledning på hello vanligaste uppgifter som du utför när du har skapat en ny webbtjänst. Härifrån kan du enkelt komma åt båda hello **Test** sidan och **förbruka** sidan.
 
 ## <a name="testing-your-web-service"></a>Testa din webbtjänst
-Sidan Snabbstart klickar du på Test webbtjänsten under vanliga uppgifter.   
+Klicka på Testa webbtjänsten under vanliga uppgifter från hello Snabbstart.   
 
-Så här testar webbtjänsten som ett svar på begäranden tjänsten (RR):
+tootest hello webbtjänsten som ett svar på begäranden tjänsten (RR):
 
-* Klicka på **Test** på menyraden.
+* Klicka på **Test** hello menyraden.
 * Klicka på **begäran och svar**.
-* Ange lämpliga värden för indatakolumnerna av experimentet.
+* Ange lämpliga värden för hello indatakolumnerna av experimentet.
 * Klicka på Testa **begäran och svar**.
 
-Du resultat visas till höger på sidan.
+Du resultat visas hello höger på sidan hello.
 
-Om du vill testa en Batch Execution Service BES-webbtjänsten använder du en CSV-fil:
+tootest en Batch Execution Service BES-webbtjänsten, ska du använda en CSV-fil:
 
-* Klicka på **Test** på menyraden.
+* Klicka på **Test** hello menyraden.
 * Klicka på **Batch**.
-* Klicka på Bläddra och navigera till din exempeldatafil under dina indata.
+* Klicka på Bläddra och navigera tooyour exempeldatafil under dina indata.
 * Klicka på **Test**.
 
-Status för testet visas under **testa batchjobb**.
+hello status för testet visas under **testa batchjobb**.
 
 ## <a name="consuming-your-web-service"></a>Använda webbtjänsten
-När de distribueras som en webbtjänst ger Azure Machine Learning-experiment en REST-API som kan användas av en mängd olika plattformar och enheter. Detta beror på att enkelt REST API accepterar och svarar med JSON-formaterade meddelanden. Azure Machine Learning-portalen innehåller kod som kan användas för att anropa webbtjänsten i R, C# och Python.
+När de distribueras som en webbtjänst ger Azure Machine Learning-experiment en REST-API som kan användas av en mängd olika plattformar och enheter. Det beror på att hello enkla REST-API accepterar och svarar med JSON-formaterade meddelanden. hello Azure Machine Learning-portalen innehåller koden som du kan använda toocall hello-webbtjänsten i R, C# och Python.
 
-På sidan förbrukning hittar du:
+På sidan för användning av hello du:
 
-* API-nyckel och URI: er för förbrukning av webbtjänsten i appar.
-* Mallar för Excel och web app kan förbättra starta förbrukning-processen.
-* Exempelkoden i C#, python och R att komma igång.
+* hello API-nyckeln och URI: er för förbrukning av webbtjänsten i appar.
+* Excel och web app mallar tookick starta förbrukning-processen.
+* Exempelkoden i C#, python och R tooget du startade.
 
-Mer information om att konsumera webbtjänster finns [använda en Azure Machine Learning-webbtjänst](machine-learning-consume-web-services.md).
+Mer information om att konsumera webbtjänster finns [hur tooconsume en Azure Machine Learning-webbtjänst](machine-learning-consume-web-services.md).
 
 ## <a name="next-steps"></a>Nästa steg
 Mer information om att konsumera webbtjänster finns:
 
-[Använda en Azure Machine Learning-webbtjänst](machine-learning-consume-web-services.md)
+[Hur tooconsume en Azure Machine Learning-webbtjänst](machine-learning-consume-web-services.md)
 
 [Azure Machine Learning-webbtjänster: Distribution och användning](machine-learning-deploy-consume-web-service-guide.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Billing Enterprise API - Prisdokument | Microsoft Docs
-description: "Läs mer om Reporting API: erna som gör att företag Azure-kunder att dra förbrukningsdata programmässigt."
+title: aaaAzure fakturering Enterprise API - Prisdokument | Microsoft Docs
+description: "Läs mer om hello Reporting-API: er som gör att Azure Enterprise-kunder toopull förbrukningsdata programmässigt."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 2e7d6e883abe4cee13bc5f684baf2a1ea9c6c397
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4cfe694c63fba266d117054b046d9caacb3b7197
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---price-sheet"></a>Reporting API: er för företagskunder - Prisdokument
 
-Price Sheet API ger den tillämpliga hastigheten för varje mätaren för den angivna registrering och fakturering Period.
+hello Price Sheet API ger hello tillämpliga hastighet för varje mätaren för hello registrering och fakturering Period.
 
 ##<a name="request"></a>Förfrågan
-Allmänna rubrikegenskaper för som ska läggas till anges [här](billing-enterprise-api.md). Om en faktureringsperiod anges returnerade data för den aktuella faktureringsperioden.
+Allmänna sidhuvudegenskaper för som behöver toobe läggs anges [här](billing-enterprise-api.md). Om en faktureringsperiod anges sedan returneras data för hello aktuella fakturering tidsperiod.
 
 |Metod | URI-begäran|
 |-|-|
@@ -34,7 +34,7 @@ Allmänna rubrikegenskaper för som ska läggas till anges [här](billing-enterp
 |HÄMTA|https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} /billingPeriods/ {billingPeriod} / prisdokument|
 
 > [!Note]
-> Ersätt v2 med v1 i URL: en ovan om du vill använda förhandsversionen av API.
+> toouse hello förhandsversionen av API, Ersätt v2 med v1 hello ovan URL.
 >
 
 ## <a name="response"></a>Svar
@@ -68,22 +68,22 @@ Allmänna rubrikegenskaper för som ska läggas till anges [här](billing-enterp
     
 
 > [!Note]
->MeterId fältet är inte tillgängligt om du använder API: et för förhandsgranskning.
+>Om du använder hello Preview API är meterId fältet inte tillgängligt.
 >
 
 **Svaret egenskapsdefinitioner**
 
 |Egenskapsnamn| Typ| Beskrivning
 |-|-|-|
-|id| Sträng| Unikt Id som representerar ett visst Prisdokument objekt (mätaren av fakturering period)|
-|billingPeriodId| Sträng| Unikt Id som representerar en viss period för fakturering|
-|meterId| Sträng| Identifierare för mätaren. Det går att mappa till meterId för användning.|
-|meterName| Sträng| Namnet på mätaren|
-|unitOfMeasure| Sträng| Enhet för mätning av tjänsten|
+|id| Sträng| hello unikt Id som representerar ett visst Prisdokument objekt (mätaren av fakturering period)|
+|billingPeriodId| Sträng| hello unikt Id som representerar en viss period för fakturering|
+|meterId| Sträng| hello identifierare för hello mätaren. Det kan vara mappade toohello användning meterId.|
+|meterName| Sträng| hello mätaren namn|
+|unitOfMeasure| Sträng| hello enhet för att mäta hello-tjänsten|
 |includedQuantity| Decimal| Antal som ingår |
-|partNumber| Sträng| Artikelnumret som är associerad med mätaren|
-|Enhetspris| Decimal| Enhetspriset för mätaren|
-|currencyCode| Sträng| Koden för Enhetspris|
+|partNumber| Sträng| hello artikelnumret som är associerade med hello mätare|
+|Enhetspris| Decimal| hello enhetspriset för hello mätare|
+|currencyCode| Sträng| hello valutakoden för hello Enhetspris|
 <br/>
 ## <a name="see-also"></a>Se även
 

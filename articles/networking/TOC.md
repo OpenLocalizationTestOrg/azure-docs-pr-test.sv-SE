@@ -54,7 +54,7 @@
 
 ## Självstudier
 ### [Belastningsutjämna virtuella datorer](../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Anslut en dator till ett virtuellt nätverk](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Ansluta ett virtuellt nätverk för dator-tooa](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 # Referens
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/network)

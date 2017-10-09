@@ -1,6 +1,6 @@
 ---
-title: "Användarens profilmallar i Azure API Management | Microsoft Docs"
-description: "Lär dig hur du anpassar innehållet användarprofil sidor i developer-portalen i Azure API Management."
+title: "aaa ”användarens profilmallar i Azure API Management | Microsoft Docs ”"
+description: "Lär dig hur toocustomize hello innehållet i hello användarprofil sidor i hello developer-portalen i Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 9a11bd5800068a5725ab2f099043993bff0b28d8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c8f153b310221164809acf58e4af236928ceb41d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Användarens profilmallar i Azure API Management
-Azure API Management ger dig möjlighet att anpassa innehållet i developer portalens sidor med hjälp av en uppsättning mallar som konfigurerar deras innehåll. Med hjälp av [DotLiquid](http://dotliquidmarkup.org/) syntax och redigeringsprogram, t.ex [DotLiquid för Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), och en angiven uppsättning lokaliserade [String resurser](api-management-template-resources.md#strings), [glyf resurser](api-management-template-resources.md#glyphs), och [sidan kontroller](api-management-page-controls.md), du har stor flexibilitet för att konfigurera innehåll för sidorna som du vill använda dessa mallar.  
+Azure API Management ger du hello möjlighet toocustomize hello innehållet i developer portalens sidor med hjälp av en uppsättning mallar som konfigurerar deras innehåll. Med hjälp av [DotLiquid](http://dotliquidmarkup.org/) syntax och hello redigeringsprogram, t.ex [DotLiquid för Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), och en angiven uppsättning lokaliserade [String resurser](api-management-template-resources.md#strings), [ Glyf resurser](api-management-template-resources.md#glyphs), och [sidan kontroller](api-management-page-controls.md), du har stor flexibilitet tooconfigure hello innehåll hello sidor som du vill använda dessa mallar.  
   
- Mallarna i det här avsnittet kan du anpassa innehållet i användarens profilsidor i developer-portalen.  
+ hello mallar i det här avsnittet kan du toocustomize hello innehåll hello användarens profil sidor i hello developer-portalen.  
   
 -   [Profil](#Profile)  
   
@@ -34,10 +34,10 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 -   [Uppdatera kontoinformation](#UpdateAccountInfo)  
   
 > [!NOTE]
->  Standard exempelmallarna ingår i följande dokumentation, men kan komma att ändras på grund av kontinuerliga förbättringar. Du kan visa live standardmallarna i developer-portalen genom att navigera till önskade enskilda mallar. Mer information om hur du arbetar med mallar finns [hur du anpassar API Management developer-portalen med hjälp av mallar](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Standard exempelmallarna ingår i hello följande dokumentation, men är ämne toochange på grund av toocontinuous förbättringar. Du kan visa hello live standardmallarna i hello developer-portalen genom att gå toohello önskad enskilda mallar. Mer information om hur du arbetar med mallar finns [hur toocustomize hello API Management developer-portalen med hjälp av mallar](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="Profile"></a>Profil  
- Den **profil** mall kan du anpassa avsnittet användarens profil i användarprofilsidan i developer-portalen.  
+ Hej **profil** mall kan du toocustomize hello avsnitt för användarprofil av hello användaren profilsida i hello developer-portalen.  
   
  ![Användaren profilsida](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM användarprofilen sida")  
   
@@ -99,21 +99,21 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ### <a name="data-model"></a>Datamodell  
   
 > [!NOTE]
->  Den [profil](#Profile), [program](#Applications), och [prenumerationer](#Subscriptions) mallar delar samma datamodellen och samma malldata tas emot.  
+>  Hej [profil](#Profile), [program](#Applications), och [prenumerationer](#Subscriptions) mallar delar hello samma data modell och ta emot hello samma malldata.  
   
 |Egenskap|Typ|Beskrivning|  
 |--------------|----------|-----------------|  
-|Förnamn|Sträng|Den aktuella användaren förnamn.|  
-|Efternamn|Sträng|Efternamn för den aktuella användaren.|  
-|Företagsnamn|Sträng|Företagsnamn för den aktuella användaren.|  
-|addresserEmail|Sträng|E-postadressen för den aktuella användaren.|  
-|developersUsageStatisticsLinkk|Sträng|Relativ URL för att visa analytics för den aktuella användaren.|  
-|prenumerationer|Samling av [prenumeration](api-management-template-data-model-reference.md#Subscription) entiteter.|Prenumerationer för den aktuella användaren.|  
-|program|Samling av [programmet](api-management-template-data-model-reference.md#Application) entiteter.|Program för den aktuella användaren.|  
-|changePasswordUrl|Sträng|Relativ URL att ändra den aktuella användarens lösenord.|  
-|changeNameOrEmailUrl|Sträng|Relativ URL som ändra namn och e-post för den aktuella användaren.|  
-|canChangePassword|Booleskt värde|Om den aktuella användaren kan ändra sina lösenord.|  
-|isSystemUser|Booleskt värde|Om den aktuella användaren är medlem i någon av inbyggda [grupper](api-management-key-concepts.md#groups).|  
+|Förnamn|Sträng|Hello aktuella användarens förnamn.|  
+|Efternamn|Sträng|Hello aktuella användarens efternamn.|  
+|Företagsnamn|Sträng|hello företagsnamn för hello aktuella användaren.|  
+|addresserEmail|Sträng|Hello aktuella användarens e-postadress.|  
+|developersUsageStatisticsLinkk|Sträng|Relativ URL tooview analytics för hello aktuella användaren.|  
+|prenumerationer|Samling av [prenumeration](api-management-template-data-model-reference.md#Subscription) entiteter.|hello prenumerationer för hello aktuella användaren.|  
+|program|Samling av [programmet](api-management-template-data-model-reference.md#Application) entiteter.|hello program för hello aktuella användaren.|  
+|changePasswordUrl|Sträng|hello relativ URL toochange hello användarens lösenord.|  
+|changeNameOrEmailUrl|Sträng|Hej relativ URL toochange hello-namn och e-post för den aktuella användaren i hello.|  
+|canChangePassword|Booleskt värde|Om hello aktuella användare kan ändra sina lösenord.|  
+|isSystemUser|Booleskt värde|Om hello aktuella användaren är medlem i en hello inbyggda [grupper](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Mallen exempeldata  
   
@@ -130,7 +130,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "Id": "57026e30de15d80041070001",  
             "ProductId": "57026e30de15d80041060001",  
             "ProductTitle": "Starter",  
-            "ProductDescription": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+            "ProductDescription": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060001",  
             "State": "Active",  
             "DisplayName": "Starter  (default)",  
@@ -153,7 +153,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "Id": "57026e30de15d80041070002",  
             "ProductId": "57026e30de15d80041060002",  
             "ProductTitle": "Unlimited",  
-            "ProductDescription": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
+            "ProductDescription": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060002",  
             "State": "Active",  
             "DisplayName": "Unlimited  (default)",  
@@ -182,7 +182,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ##  <a name="Subscriptions"></a>Prenumerationer  
- Den **prenumerationer** mall kan du anpassa avsnittet prenumerationer i användarprofilsidan i developer-portalen.  
+ Hej **prenumerationer** mall kan du toocustomize hello prenumerationer avsnitt i hello användaren profilsida i hello developer-portalen.  
   
  ![Användaren prenumerationssidan](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM användarsidan prenumeration")  
   
@@ -313,28 +313,28 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ### <a name="controls"></a>Kontroller  
- Den här mallen kan du använda följande [sidan kontroller](api-management-page-controls.md).  
+ Den här mallen kan använda följande hello [sidan kontroller](api-management-page-controls.md).  
   
 -   [Avbryt prenumeration](api-management-page-controls.md#subscription-cancel)  
   
 ### <a name="data-model"></a>Datamodell  
   
 > [!NOTE]
->  Den [profil](#Profile), [program](#Applications), och [prenumerationer](#Subscriptions) mallar delar samma datamodellen och samma malldata tas emot.  
+>  Hej [profil](#Profile), [program](#Applications), och [prenumerationer](#Subscriptions) mallar delar hello samma data modell och ta emot hello samma malldata.  
   
 |Egenskap|Typ|Beskrivning|  
 |--------------|----------|-----------------|  
-|Förnamn|Sträng|Den aktuella användaren förnamn.|  
-|Efternamn|Sträng|Efternamn för den aktuella användaren.|  
-|Företagsnamn|Sträng|Företagsnamn för den aktuella användaren.|  
-|addresserEmail|Sträng|E-postadressen för den aktuella användaren.|  
-|developersUsageStatisticsLinkk|Sträng|Relativ URL för att visa analytics för den aktuella användaren.|  
-|prenumerationer|Samling av [prenumeration](api-management-template-data-model-reference.md#Subscription) entiteter.|Prenumerationer för den aktuella användaren.|  
-|program|Samling av [programmet](api-management-template-data-model-reference.md#Application) entiteter.|Program för den aktuella användaren.|  
-|changePasswordUrl|Sträng|Relativ URL att ändra den aktuella användarens lösenord.|  
-|changeNameOrEmailUrl|Sträng|Relativ URL som ändra namn och e-post för den aktuella användaren.|  
-|canChangePassword|Booleskt värde|Om den aktuella användaren kan ändra sina lösenord.|  
-|isSystemUser|Booleskt värde|Om den aktuella användaren är medlem i någon av inbyggda [grupper](api-management-key-concepts.md#groups).|  
+|Förnamn|Sträng|Hello aktuella användarens förnamn.|  
+|Efternamn|Sträng|Hello aktuella användarens efternamn.|  
+|Företagsnamn|Sträng|hello företagsnamn för hello aktuella användaren.|  
+|addresserEmail|Sträng|Hello aktuella användarens e-postadress.|  
+|developersUsageStatisticsLinkk|Sträng|Relativ URL tooview analytics för hello aktuella användaren.|  
+|prenumerationer|Samling av [prenumeration](api-management-template-data-model-reference.md#Subscription) entiteter.|hello prenumerationer för hello aktuella användaren.|  
+|program|Samling av [programmet](api-management-template-data-model-reference.md#Application) entiteter.|hello program för hello aktuella användaren.|  
+|changePasswordUrl|Sträng|hello relativ URL toochange hello användarens lösenord.|  
+|changeNameOrEmailUrl|Sträng|Hej relativ URL toochange hello-namn och e-post för den aktuella användaren i hello.|  
+|canChangePassword|Booleskt värde|Om hello aktuella användare kan ändra sina lösenord.|  
+|isSystemUser|Booleskt värde|Om hello aktuella användaren är medlem i en hello inbyggda [grupper](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Mallen exempeldata  
   
@@ -351,7 +351,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "Id": "57026e30de15d80041070001",  
             "ProductId": "57026e30de15d80041060001",  
             "ProductTitle": "Starter",  
-            "ProductDescription": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+            "ProductDescription": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060001",  
             "State": "Active",  
             "DisplayName": "Starter  (default)",  
@@ -374,7 +374,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "Id": "57026e30de15d80041070002",  
             "ProductId": "57026e30de15d80041060002",  
             "ProductTitle": "Unlimited",  
-            "ProductDescription": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
+            "ProductDescription": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060002",  
             "State": "Active",  
             "DisplayName": "Unlimited  (default)",  
@@ -403,7 +403,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ##  <a name="Applications"></a>Program  
- Den **program** mall kan du anpassa avsnittet prenumerationer i användarprofilsidan i developer-portalen.  
+ Hej **program** mall kan du toocustomize hello prenumerationer avsnitt i hello användaren profilsida i hello developer-portalen.  
   
  ![Användarsida konto program](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM användarkontot Programsidan")  
   
@@ -476,28 +476,28 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ### <a name="controls"></a>Kontroller  
- Den här mallen kan du använda följande [sidan kontroller](api-management-page-controls.md).  
+ Den här mallen kan använda följande hello [sidan kontroller](api-management-page-controls.md).  
   
 -   [App-åtgärder](api-management-page-controls.md#app-actions)  
   
 ### <a name="data-model"></a>Datamodell  
   
 > [!NOTE]
->  Den [profil](#Profile), [program](#Applications), och [prenumerationer](#Subscriptions) mallar delar samma datamodellen och samma malldata tas emot.  
+>  Hej [profil](#Profile), [program](#Applications), och [prenumerationer](#Subscriptions) mallar delar hello samma data modell och ta emot hello samma malldata.  
   
 |Egenskap|Typ|Beskrivning|  
 |--------------|----------|-----------------|  
-|Förnamn|Sträng|Den aktuella användaren förnamn.|  
-|Efternamn|Sträng|Efternamn för den aktuella användaren.|  
-|Företagsnamn|Sträng|Företagsnamn för den aktuella användaren.|  
-|addresserEmail|Sträng|E-postadressen för den aktuella användaren.|  
-|developersUsageStatisticsLinkk|Sträng|Relativ URL för att visa analytics för den aktuella användaren.|  
-|prenumerationer|Samling av [prenumeration](api-management-template-data-model-reference.md#Subscription) entiteter.|Prenumerationer för den aktuella användaren.|  
-|program|Samling av [programmet](api-management-template-data-model-reference.md#Application) entiteter.|Program för den aktuella användaren.|  
-|changePasswordUrl|Sträng|Relativ URL att ändra den aktuella användarens lösenord.|  
-|changeNameOrEmailUrl|Sträng|Relativ URL som ändra namn och e-post för den aktuella användaren.|  
-|canChangePassword|Booleskt värde|Om den aktuella användaren kan ändra sina lösenord.|  
-|isSystemUser|Booleskt värde|Om den aktuella användaren är medlem i någon av inbyggda [grupper](api-management-key-concepts.md#groups).|  
+|Förnamn|Sträng|Hello aktuella användarens förnamn.|  
+|Efternamn|Sträng|Hello aktuella användarens efternamn.|  
+|Företagsnamn|Sträng|hello företagsnamn för hello aktuella användaren.|  
+|addresserEmail|Sträng|Hello aktuella användarens e-postadress.|  
+|developersUsageStatisticsLinkk|Sträng|Relativ URL tooview analytics för hello aktuella användaren.|  
+|prenumerationer|Samling av [prenumeration](api-management-template-data-model-reference.md#Subscription) entiteter.|hello prenumerationer för hello aktuella användaren.|  
+|program|Samling av [programmet](api-management-template-data-model-reference.md#Application) entiteter.|hello program för hello aktuella användaren.|  
+|changePasswordUrl|Sträng|hello relativ URL toochange hello användarens lösenord.|  
+|changeNameOrEmailUrl|Sträng|Hej relativ URL toochange hello-namn och e-post för den aktuella användaren i hello.|  
+|canChangePassword|Booleskt värde|Om hello aktuella användare kan ändra sina lösenord.|  
+|isSystemUser|Booleskt värde|Om hello aktuella användaren är medlem i en hello inbyggda [grupper](api-management-key-concepts.md#groups).|  
   
 ### <a name="sample-template-data"></a>Mallen exempeldata  
   
@@ -514,7 +514,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "Id": "57026e30de15d80041070001",  
             "ProductId": "57026e30de15d80041060001",  
             "ProductTitle": "Starter",  
-            "ProductDescription": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",  
+            "ProductDescription": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060001",  
             "State": "Active",  
             "DisplayName": "Starter  (default)",  
@@ -537,7 +537,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "Id": "57026e30de15d80041070002",  
             "ProductId": "57026e30de15d80041060002",  
             "ProductTitle": "Unlimited",  
-            "ProductDescription": "Subscribers have completely unlimited access to the API. Administrator approval is required.",  
+            "ProductDescription": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",  
             "ProductDetailsUrl": "/Products/57026e30de15d80041060002",  
             "State": "Active",  
             "DisplayName": "Unlimited  (default)",  
@@ -566,7 +566,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ##  <a name="UpdateAccountInfo"></a>Uppdatera kontoinformation  
- Den **Uodate kontoinformation** mall kan du anpassa den **uppdatera kontoinformation** sida i developer-portalen.  
+ Hej **Uodate kontoinformation** mall kan du toocustomize hello **uppdatera kontoinformation** sida i hello developer-portalen.  
   
  ![Information om sidan Developer Portal mallar för användarkonton](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM Info sidan Developer Portal mallar för användarkonton")  
   
@@ -623,4 +623,4 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om hur du arbetar med mallar finns [hur du anpassar API Management developer-portalen med hjälp av mallar](api-management-developer-portal-templates.md).
+Mer information om hur du arbetar med mallar finns [hur toocustomize hello API Management developer-portalen med hjälp av mallar](api-management-developer-portal-templates.md).

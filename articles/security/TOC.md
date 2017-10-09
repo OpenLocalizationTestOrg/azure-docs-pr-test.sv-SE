@@ -13,7 +13,7 @@
 ### [Aktivera driftsäkerhet](azure-operational-security.md)
 ### [Avancerad hotidentifiering](azure-threat-detection.md)
 ### [Loggning och granskning](azure-log-audit.md)
-### [Isolering i det offentliga molnet](azure-isolation.md)
+### [Isolera i hello offentligt moln](azure-isolation.md)
 ### [Tekniska funktioner för säkerhet](azure-security-technical-capabilities.md)
 ### [Styrning i Azure](governance-in-azure.md)
 ### [Datakryptering i vila](azure-security-encryption-atrest.md)
@@ -48,7 +48,7 @@
 ## Säkerhetshantering och övervakning
 ### [Säkerhetshantering](azure-security-management.md)
 ### [Azure Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
-### [Introduktion till loggintegrering med Azure](security-azure-log-integration-overview.md)
+### [Introduktion tooAzure log-integrering](security-azure-log-integration-overview.md)
 #### [Komma igång med loggintegrering med Azure](security-azure-log-integration-get-started.md)
 #### [Integrera Azure Active Directory med granskningsloggar](security-azure-log-integration-ad.md)
 #### [Integrera aviseringar i Security Center](security-azure-log-integration-security-center.md)

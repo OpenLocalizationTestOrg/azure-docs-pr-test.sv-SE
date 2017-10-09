@@ -1,5 +1,5 @@
 ---
-title: Programmet Gateway-integration med Azure Security Center | Microsoft Docs
+title: aaaApplication Gateway-integration med Azure Security Center | Microsoft Docs
 description: "Den här sidan innehåller information om hur Application Gateway är integrerat i Azure Security Center."
 documentationcenter: na
 services: application-gateway
@@ -15,73 +15,73 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.author: gwallace
-ms.openlocfilehash: 737cdff3140be68cf9d6d396b470dd09c65c52f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6f6ace105e84c01f525ab02938e81ce040c5c9d9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Översikt över integrering mellan Programgateway och Azure Security Center
 
-Lär dig hur Programgateway och Security Center skydda resurser i ditt webbprogram. Brandvägg för programmet gateway webbaserade program (Brandvägg) kan integreras med [Security Center](../security-center/security-center-intro.md) för att ge en smidig vy för att förhindra, identifiera och åtgärda hot till oskyddade webbprogram i din miljö.
+Lär dig hur Programgateway och Security Center skydda resurser i ditt webbprogram. Brandvägg för programmet gateway webbaserade program (Brandvägg) kan integreras med [Security Center](../security-center/security-center-intro.md) tooprovide en sömlös visa tooprevent identifierar och åtgärdar toothreats toounprotected webbprogram i din miljö.
 
 ## <a name="overview"></a>Översikt
 
-Programmet Gateway Brandvägg är en rekommendation i Security Center för att skydda webbprogram från kryphål och säkerhetsproblem. Aktiverad webbresurser som inte skyddas av Brandvägg visas i security center som Hög allvarlighetsgrad rekommendationer. Rekommendationer för web application brandväggar visas på den **översikt** sidan under **program**.
+Programmet Gateway Brandvägg är en rekommendation i Security Center för att skydda webbprogram från kryphål och säkerhetsproblem. Aktiverad webbresurser som inte skyddas av Brandvägg visas i hello security center som Hög allvarlighetsgrad rekommendationer. Rekommendationer för web application brandväggar visas på hello **översikt** sidan under **program**.
 
 ![integrering med security center][1]
 
-Klicka på några rekommendationer om Brandvägg för webbaserade program öppnas ett nytt blad som visar information om rekommendationen.
+Om du klickar på några rekommendationer om Brandvägg för webbaserade program öppnas ett nytt blad som visar hello information om hello rekommendation.
 
-## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Lägg till en brandvägg för webbaserade program i en befintlig resurs
+## <a name="add-a-web-application-firewall-tooan-existing-resource"></a>Lägg till ett program brandväggen tooan befintliga webbresurs
 
-Gå till **fler tjänster** > **säkerhet + identitet** > **Security Center** och på den **Security Center - översikt**  bladet, klickar du på **program**. På den **Security Center - program** bladet tabellen innehåller en lista över program som Security Center identifieras i din prenumeration.
+Navigera för**fler tjänster** > **säkerhet + identitet** > **Security Center** och på hello **Security Center - översikt**  bladet, klickar du på **program**. På hello **Security Center - program** bladet hello tabellen innehåller en lista över program som Security Center identifieras i din prenumeration.
 
 ![webbprogram][3]
 
-Genom att klicka på ett webbprogram med ett allvarligt problem kan du hämta den **programmet säkerhetshälsa** bladet. I bilden nedan, webbprogram som inte skyddas av en brandvägg för webbaserade program. 
+Genom att klicka på ett webbprogram med ett allvarligt problem kan du få hello **programmet säkerhetshälsa** bladet. Hej webbprogram som inte skyddas av en brandvägg för webbaserade program i hello bilden nedan. 
 
 ![webbresurser som inte skyddas][2]
 
-Klicka på **lägga till en brandvägg för webbaserade program** under **rekommendationer** att öppna den **lägga till en brandvägg för webbaserade program** bladet.
+Klicka på **lägga till en brandvägg för webbaserade program** under **rekommendationer** tooopen hello **lägga till en brandvägg för webbaserade program** bladet.
 
-Om du inte har en befintlig Gateway för programmet, eller om du vill skapa en ny, klickar du på **Skapa nytt** och på den **skapa en ny Brandvägg för webbaserade program** bladet och klickar på **Microsoft - program Gateway**. Detta tar dig igenom stegen för att skapa en Programgateway. Webbprogrammet har nu lagts till som en skyddad resurs, Security Center nu spårar att den här resursen skyddas av en brandvägg för webbaserade program. Detta lägger inte till den som en medlem för backend-poolen.
+Om du inte har en befintlig Programgateway eller vill toocreate en ny, klickar du på **Skapa nytt** och på hello **skapa en ny Brandvägg för webbaserade program** bladet och klickar på **Microsoft - Programgateway**. Detta tar dig igenom hello steg toocreate en Programgateway. Webbprogrammet har nu lagts till som en skyddad resurs, Security Center nu spårar att den här resursen skyddas av en brandvägg för webbaserade program. Detta lägger inte till den som en medlem för backend-poolen.
 
 Om du har en befintlig Programgateway, kan du välja den under **med befintliga lösning**
 
 ![Brandvägg för webbaserade program lägger du till bladet][4]
 
-Lägger till ett webbprogram till en Programgateway via Security Center inte lägger till resursen som medlem backend-adresspool, måste du göra det på gateway-programresurs direkt.
+När du lägger till en web application tooan Programgateway via Security Center inte hello resurs som medlem backend-adresspool, måste du göra det på hello programresursen gateway direkt.
 
-## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Lägg till en resurs i en befintlig Brandvägg för webbaserade program
+## <a name="add-a-resource-tooan-existing-web-application-firewall"></a>Lägg till en resurs tooan befintliga Brandvägg för webbaserade program
 
-Gå till **fler tjänster** > **säkerhet + identitet** > **Security Center** och på den **Security Center - översikt**  bladet, klickar du på **partnerlösningar**. Befintliga gateways för Security Center-medvetna programmet visas i den **partnerlösningar** bladet.
+Navigera för**fler tjänster** > **säkerhet + identitet** > **Security Center** och på hello **Security Center - översikt**  bladet, klickar du på **partnerlösningar**. Befintliga gateways för Security Center-medvetna programmet visas i hello **partnerlösningar** bladet.
 
 ![partnerlösningar][7]
 
-Klicka på **Link app** att öppna den **länken program** bladet här du ges alternativ för befintliga program. Välj program att skydda och klicka på **OK**. Detta lägger inte till webbprogrammet till serverdelspoolen för programgatewayen. Anger resurserna som en skyddad resurs så kan spåra av Security Center. Om du vill lägga till resursen som medlem i serverdelen poolen detta måste göras på Programgateway från det aktuella bladet kan du klicka på **lösning konsolen** för att programmet gatewayresursen där du kan lägga till webbprogrammet till den serverdelspool.
+Klicka på **Link app** tooopen hello **länken program** bladet här du ges hello alternativ tooselect befintliga program. Välj hello program tooprotect och på **OK**. Detta lägger inte till hello web toohello backend programpool för hello Programgateway. Detta anger hello resurser som en skyddad resurs så kan spåra av Security Center. tooadd hello resurs som medlem backend-adresspool, måste du göra det på hello Programgateway, från hello aktuella bladet kan du klicka på **lösning konsolen** toobe tas toohello programresursen gateway där du kan lägga till hello web toohello backend programpoolen.
 
 ![partner solutions program][6]
 
 ## <a name="finalize-configuration"></a>Slutför konfiguration
 
-Security Center spårar program som har lagts till i en Programgateway som en skyddad resurs.  Den övervakar tillståndet för den här resursen och garanterar att den skyddas av en Programgateway. Nästa steg är att lägga till privata IP-, offentlig IP-adress eller nätverkskort på den virtuella datorn till serverdelspoolen för programgatewayen. Tills detta görs en ytterligare rekommendation av **Slutför programskydd** visas förrän resursen har lagts till.
+Security Center spårar program till tooan Programgateway som en skyddad resurs.  Den övervakar hello hälsotillståndet för den här resursen och garanterar att den skyddas av en Programgateway. hello nästa steg är tooadd hello privata IP-, offentlig IP-adress eller nätverkskort på din virtuella toohello serverdelspool för hello Programgateway. Tills detta görs en ytterligare rekommendation av **Slutför programskydd** visas förrän hello resursen har lagts till.
 
 ![Brandvägg för webbaserade program lägger du till bladet][5]
 
 ## <a name="security-alerts"></a>Säkerhetsaviseringar
 
-Navigera till i Security Center **identifiering** > **säkerhetsaviseringar**.  Här hittar du Brandvägg aviseringar för din programgatewayer. Aviseringar är fördelade på Brandvägg regeln.
+Navigera för i Security Center**identifiering** > **säkerhetsaviseringar**.  Här hittar du Brandvägg aviseringar för din programgatewayer. Aviseringar är fördelade på Brandvägg regeln.
 
 ![säkerhetsaviseringar][8]
 
-Klicka på en regel ger en lista över aviseringar för den specifika regeln Brandvägg. Varje avisering visar ytterligare information om den söka efter. Informationen innehåller en länk till programgatewayen.
+Klicka på en regel ger en lista över aviseringar för den specifika regeln Brandvägg. Varje avisering visas ytterligare information på hello söka efter. hello information innehåller en länk toohello application gateway.
  
 ![aviseringsinformation][9]
 
 ## <a name="next-steps"></a>Nästa steg
 
-Ta reda på hur du aktiverar Brandvägg för webbaserade program på en befintlig Programgateway [skapa eller uppdatera en Azure Programgateway med Brandvägg för webbaserade program](application-gateway-web-application-firewall-portal.md#add-web-application-firewall-to-an-existing-application-gateway)
+toolearn hur Brandvägg för tooenable webbaserade program på en befintlig Programgateway finns [skapa eller uppdatera en Azure Programgateway med Brandvägg för webbaserade program](application-gateway-web-application-firewall-portal.md#add-web-application-firewall-to-an-existing-application-gateway)
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png
 [2]: ./media/application-gateway-integration-security-center/figure2.png

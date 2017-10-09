@@ -1,6 +1,6 @@
 ---
-title: "Ange en anpassad hemsida för publicerade appar med hjälp av Azure AD Application Proxy | Microsoft Docs"
-description: Beskriver grunderna om Azure AD Application Proxy-kopplingar
+title: "aaaSet en anpassad hemsida för publicerade appar med hjälp av Azure AD Application Proxy | Microsoft Docs"
+description: Beskriver hello grunderna om Azure AD Application Proxy-kopplingar
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,85 +15,85 @@ ms.date: 08/17/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 9069166259265f5d2b43043b75039e239f397f6c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5bb695e904d285c3b440520f107c7bf63ba5cac9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Ange en anpassad hemsida för publicerade appar med hjälp av Azure AD Application Proxy
 
-Den här artikeln beskrivs hur du konfigurerar appar för att dirigera användare till en anpassad startsida. När du publicerar ett program med Application Proxy kan ange du en intern URL men ibland som inte är sidan användarna ska se först. Ange en anpassad hemsida så att dina användare går du till höger sida när de kommer åt appar från åtkomstpanelen Azure Active Directory eller Office 365 app starta.
+Den här artikeln beskrivs hur tooconfigure appar toodirect användare tooa anpassad startsida. När du publicerar ett program med Application Proxy kan du ställa in en intern URL men ibland som är inte hello sidan som användarna ska se först. Ange en anpassad hemsida så att användarna gå toohello höger sida när de kommer åt hello appar från hello Azure Active Directory-åtkomstpanelen eller hello Office 365 app starta.
 
-När användarna startar appen, är de riktade som standard till rot-URL för den publicerade app för domänen. Landningssida anges vanligtvis som URL för startsidan. Använda Azure AD PowerShell-modulen för att definiera anpassade startsidan URL: er när du vill att användarna ska hamna på en viss sida i appen. 
+När användarna startar hello app, är de riktade som standard toohello rot domän-URL för hello publicerade app. hello landningssida anges vanligtvis som hello URL-Adressen. Använd hello Azure AD PowerShell-modulen toodefine anpassad startsida webbadresser när du vill app användare tooland på en viss sida i hello app. 
 
 Exempel:
-- I företagsnätverket, användare går du till *https://ExpenseApp/login/login.aspx* att logga in och komma åt din app.
-- Eftersom du har andra tillgångar som avbildningar som Application Proxy behöver åtkomst till på den översta nivån av mappstrukturen kan du publicera appen med *https://ExpenseApp* som intern URL.
-- Standard-externa URL: en är *https://ExpenseApp-contoso.msappproxy.net*, som tar inte användarna att tecknet på sidan.  
-- Ange *https://ExpenseApp-contoso.msappproxy.net/login/login.aspx* som URL till startsidan för att ge användarna en integrerad upplevelse. 
+- I företagsnätverket, användarna gå för*https://ExpenseApp/login/login.aspx* toosign i och åtkomst till din app.
+- Eftersom du har andra tillgångar som bilder att Application Proxy måste tooaccess toppnivå hello för hello mappstrukturen du publicerar hello app med *https://ExpenseApp* som hello Intern URL.
+- Hej standard externa URL: en är *https://ExpenseApp-contoso.msappproxy.net*, som tar inte användare toohello inloggningen på sidan.  
+- Ange *https://ExpenseApp-contoso.msappproxy.net/login/login.aspx* som hello startsidan URL toogive användarna smidigt. 
 
 >[!NOTE]
->När du ger användare åtkomst till publicerade appar appar visas i den [Azure AD-åtkomstpanelen](active-directory-saas-access-panel-introduction.md) och [Office 365 app starta](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher).
+>När du ge användare åtkomst toopublished appar hello appar visas i hello [Azure AD-åtkomstpanelen](active-directory-saas-access-panel-introduction.md) och hello [Office 365 app starta](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher).
 
 ## <a name="before-you-start"></a>Innan du börjar
 
-Innan du anger URL till startsidan, Tänk på följande krav:
+Innan du kan ange hello URL-Adressen måste ha i åtanke hello följande krav:
 
-* Kontrollera att den angivna sökvägen är en underdomän sökväg av domän rot-URL.
+* Se till att hello sökvägen som du anger är en underdomän sökväg av hello rot domän-URL.
 
-  Om rotdomänen URL: en är till exempel https://apps.contoso.com/app1/, den URL-Adressen som du konfigurerar måste börja med https://apps.contoso.com/app1/.
+  Om hello rotdomänen Webbadress är, till exempel https://apps.contoso.com/app1/, hello URL-Adressen som du konfigurerar måste börja med https://apps.contoso.com/app1/.
 
-* Om du gör en ändring i appen publicerade kan ändringen återställa värdet för URL till startsidan. När du uppdaterar appen i framtiden, bör du kontrollera och, om det behövs, uppdatera URL till startsidan.
+* Om du ändrar toohello publicerade app, hello ändring kan återställa hello värdet för hello URL-Adressen. När du uppdaterar hello app i hello framtida bör du kontrollera och, om det behövs, uppdatera hello URL-Adressen.
 
-## <a name="change-the-home-page-in-the-azure-portal"></a>Ändra startsidan i Azure-portalen
+## <a name="change-hello-home-page-in-hello-azure-portal"></a>Ändra hello startsida i hello Azure-portalen
 
-1. Logga in på [Azure Portal](https://portal.azure.com) som administratör.
-2. Gå till **Azure Active Directory** > **App registreringar** och välj ditt program i listan. 
-3. Välj **egenskaper** från inställningarna.
-4. Uppdatering av **URL-Adressen** med den nya sökvägen. 
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) som administratör.
+2. Navigera för**Azure Active Directory** > **App registreringar** och välja programmet hello-listan. 
+3. Välj **egenskaper** från hello inställningar.
+4. Uppdatera hello **URL-Adressen** med den nya sökvägen. 
 
    ![Ange ny URL-Adressen](./media/application-proxy-office365-app-launcher/homepage.png)
 
 5. Välj **spara**
 
-## <a name="change-the-home-page-with-powershell"></a>Ändra startsidan med PowerShell
+## <a name="change-hello-home-page-with-powershell"></a>Ändra hello startsida med PowerShell
 
-### <a name="install-the-azure-ad-powershell-module"></a>Installera Azure AD PowerShell-modulen
+### <a name="install-hello-azure-ad-powershell-module"></a>Installera hello Azure AD PowerShell-modulen
 
-Installera Azure AD PowerShell-modulen innan du definierar en anpassad URL-Adressen med hjälp av PowerShell. Du kan hämta paketet från den [PowerShell-galleriet](https://www.powershellgallery.com/packages/AzureAD/2.0.0.131), som använder Graph API-slutpunkten. 
+Innan du definierar en anpassad URL-Adressen med hjälp av PowerShell installera hello Azure AD PowerShell-modulen. Du kan hämta hello paketet från hello [PowerShell-galleriet](https://www.powershellgallery.com/packages/AzureAD/2.0.0.131), som använder hello Graph API-slutpunkt. 
 
-Följ dessa steg för att installera paketet:
+tooinstall hello paketet, gör du följande:
 
-1. Öppna ett PowerShell-fönster som standard och kör sedan följande kommando:
+1. Öppna ett PowerShell-fönster som standard och kör sedan följande kommando hello:
 
     ```
      Install-Module -Name AzureAD
     ```
-    Om du använder kommandot som icke-administratörer kan använda den `-scope currentuser` alternativet.
-2. Under installationen, Välj **Y** att installera två paket från Nuget.org. Båda paketen krävs. 
+    Om du använder kommandot hello som icke-administratörer kan använda hello `-scope currentuser` alternativet.
+2. Under installationen av hello väljer **Y** tooinstall två paket från Nuget.org. Båda paketen krävs. 
 
-### <a name="find-the-objectid-of-the-app"></a>Sök efter objekt-ID för appen
+### <a name="find-hello-objectid-of-hello-app"></a>Hitta hello ObjectID hello-appen
 
-Hämta ObjectID för appen och sök sedan efter appen genom att dess hemsida.
+Hämta hello ObjectID hello-appen och sök sedan efter hello app av dess hemsida.
 
-1. Öppna PowerShell och importera Azure AD-modulen.
+1. Öppna PowerShell och importera hello Azure AD-modulen.
 
     ```
     Import-Module AzureAD
     ```
 
-2. Logga in på Azure AD-modulen som Innehavaradministratör.
+2. Logga in toohello Azure AD-modulen som hello Innehavaradministratör.
 
     ```
     Connect-AzureAD
     ```
-3. Hitta appen baserat på dess URL-Adressen. Du hittar Webbadressen i portalen genom att gå till **Azure Active Directory** > **företagsprogram** > **alla program**. Det här exemplet används *sharepoint iddemo*.
+3. Hitta hello app baserat på dess URL-Adressen. Du kan hitta hello URL i hello portal genom att gå för**Azure Active Directory** > **företagsprogram** > **alla program**. Det här exemplet används *sharepoint iddemo*.
 
     ```
     Get-AzureADApplication | where { $_.Homepage -like “sharepoint-iddemo” } | fl DisplayName, Homepage, ObjectID
     ```
-4. Du bör få ett resultat som liknar den som visas här. Kopiera ObjectID GUID för användning i nästa avsnitt.
+4. Du bör få ett resultat som är liknande toohello som visas här. Kopiera hello ObjectID GUID toouse i hello nästa avsnitt.
 
     ```
     DisplayName : SharePoint
@@ -101,44 +101,44 @@ Hämta ObjectID för appen och sök sedan efter appen genom att dess hemsida.
     ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 
-### <a name="update-the-home-page-url"></a>Uppdatera URL till startsidan
+### <a name="update-hello-home-page-url"></a>Uppdatera hello URL-Adressen
 
-Utför följande steg i samma PowerShell-modulen som du använde för steg 1:
+I hello utföra samma PowerShell-modul som du använde för steg 1, hello följande steg:
 
-1. Bekräfta att du har rätt appen och Ersätt *8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4* med objekt-ID som du kopierade i föregående steg.
+1. Bekräfta att du har hello korrigera app och Ersätt *8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4* med hello ObjectID som du kopierade i föregående steg hello.
 
     ```
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
     ```
 
- Nu när du har bekräftat appen, är du redo att uppdatera sidan, enligt följande.
+ Nu när du har bekräftat hello app, är du redo tooupdate hello startsidan på följande sätt.
 
-2. Skapa en tom programobjektet för att lagra de ändringar som du vill göra. Den här variabeln innehåller de värden som du vill uppdatera. Inget har skapats i det här steget.
+2. Skapa en tom programmet objektet toohold hello toomake önskade ändringar. Den här variabeln innehåller hello värden som du vill tooupdate. Inget har skapats i det här steget.
 
     ```
     $appnew = New-Object “Microsoft.Open.AzureAD.Model.Application”
     ```
 
-3. Ange den URL-Adressen till det värde som du vill. Värdet måste vara en underdomän sökvägen till publicerade appen. Till exempel om du ändrar den URL-Adressen från *https://sharepoint-iddemo.msappproxy.net/* till *https://sharepoint-iddemo.msappproxy.net/hybrid/*, appanvändare gå direkt till sidan med anpassade.
+3. Ange hello startsidan URL toohello-värdet som du vill. hello-värdet måste vara en underdomän sökvägen hello publicerade appen. Till exempel om du ändrar hello URL-Adressen från *https://sharepoint-iddemo.msappproxy.net/* för*https://sharepoint-iddemo.msappproxy.net/hybrid/*, appanvändare gå direkt toohello anpassad startsidan.
 
     ```
     $homepage = “https://sharepoint-iddemo.msappproxy.net/hybrid/”
     ```
-4. Gör uppdateringen med hjälp av GUID (objekt-ID) som du kopierade i ”steg 1: hitta ObjectID för appen”.
+4. Se hello uppdateringen med hjälp av hello GUID (objekt-ID) som du kopierade i ”steg 1: hitta hello ObjectID hello-appen”.
 
     ```
     Set-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4 -Homepage $homepage
     ```
-5. Starta om appen för att bekräfta att ändringen har lyckats.
+5. tooconfirm att ändra hello lyckades, starta om hello app.
 
     ```
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 
 >[!NOTE]
->Alla ändringar du gör i appen kan återställa URL till startsidan. Om din startsida URL återställer upprepar du steg 2.
+>Alla ändringar du gör toohello app kan återställa hello URL-Adressen. Om din startsida URL återställer upprepar du steg 2.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Aktivera fjärråtkomst och SharePoint med Azure AD Application Proxy](application-proxy-enable-remote-access-sharepoint.md)
-- [Aktivera Application Proxy på Azure-portalen](active-directory-application-proxy-enable.md)
+- [Aktivera fjärråtkomst tooSharePoint med Azure AD Application Proxy](application-proxy-enable-remote-access-sharepoint.md)
+- [Aktivera Application Proxy i hello Azure-portalen](active-directory-application-proxy-enable.md)

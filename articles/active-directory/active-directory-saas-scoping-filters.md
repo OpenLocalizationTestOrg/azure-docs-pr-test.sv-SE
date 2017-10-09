@@ -1,6 +1,6 @@
 ---
-title: "Etablering appar med Omfångsfilter | Microsoft Docs"
-description: "Lär dig hur du använder målgrupp filter för att förhindra att objekt i appar som stöder automatisk användaretablering från tillhandahålls faktiskt om ett objekt inte uppfyller dina affärsbehov."
+title: "aaaProvisioning appar med Omfångsfilter | Microsoft Docs"
+description: "Lär dig hur toouse scope filtrerar tooprevent objekt i appar som stöder automatisk användaretablering från tillhandahålls faktiskt om ett objekt inte uppfyller dina affärsbehov."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,51 +14,51 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 109635052e2ded33831b050eb12d50745944091b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f0299390dc3fdb70aa9d271e835069a08827d635
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attributbaserad programmet etablering med Omfångsfilter
-Syftet med det här avsnittet är som förklarar hur du använder målgrupp filter för att definiera attributbaserade regler som bestämmer vilka användare som har etablerats till programmet.
+hello syftet med det här avsnittet är tooexplain hur toouse scope filtrerar toodefine attributbaserade regler som bestämmer vilka användare som är etablerad toohello program.
 
 ## <a name="clauses-and-scope-groups"></a>Satser och grupper
 ![Omfångsfilter][1] 
 
-Målgrupp filter definieras av en eller flera **omfång grupper**, varje av som innehåller en eller flera **satser**. Visa satser för en viss scope-grupp, expandera den genom att klicka på pilen till vänster om gruppnamnet.
+Målgrupp filter definieras av en eller flera **omfång grupper**, varje av som innehåller en eller flera **satser**. toosee hello-satser för en viss scope-grupp, expandera den genom att klicka på hello pilen toohello till vänster i hello gruppnamn.
 
-En **satsen** avgör vilka användare som får passera filtret målgrupp genom utvärdering av attribut för varje användare. Du kan till exempel ha en sats som kräver att en användares 'state'-attribut är lika med New York, så att endast användare i New York tillhandahålls av programmet.
+En **satsen** avgör vilka användare som får toopass via hello Omfångsfilter genom utvärdering av attribut för varje användare. Till exempel kanske du en sats som kräver att en användare ”tillstånd” attributet lika New York, så att endast användare i New York tillhandahålls i hello program.
 
 ![Målgrupp gruppnamn][2] 
 
-Varje **omfång grupp** börjar med en obligatorisk **satsen**som visas i skärmbilden ovan. Den här satsen anger bara att användaren måste först tilldelas programmet innan det används av din målgrupp filter. Den här instruktionen kan inte tas bort eller ändras.
+Varje **omfång grupp** börjar med en obligatorisk **satsen**, som visas i hello skärmbilden ovan. Den här satsen bara säger hello användaren först tilldelas toohello programmet innan det används av din målgrupp filter. Den här instruktionen kan inte tas bort eller ändras.
 
-Du kan lägga till nya satser eller nya grupper genom att trycka på knappen. Du kan namnge varje scope-grupp genom att redigera dess **omfång gruppnamn** egenskapen.
+Du kan lägga till nya satser eller nya grupper genom att trycka på hello knapp. Du kan namnge varje scope-grupp genom att redigera dess **omfång gruppnamn** egenskapen.
 
 ## <a name="how-scoping-filters-are-evaluated"></a>Hur scope filter utvärderas
-Under etableringen, kan vi Testa varje tilldelad användare mot din målgrupp filter för att avgöra om användaren ska ha åtkomst till programmet. Du kan tänka dig varje instruktion som ett test som måste skickas för användare att undvika komma filtreras bort. 
+Under etableringen testa vi varje tilldelad användare mot din målgrupp filter toodetermine om användaren ska ha åtkomst toohello program. Du kan tänka dig varje instruktion som ett test som måste skickas för hello användaren tooavoid komma filtreras bort. 
 
-Om du har flera grupper som har definierats kan skicka varje användare minst en av dem åtkomst till programmet. I varje scope-grupp men måste användaren klara alla-satsen för att skicka gruppen specifikt omfång. 
+Om du har flera grupper som definierats måste varje användare skicka minst en av dem tooaccess hello program. I varje scope-grupp dock måste hello användaren klara alla satsen toopass gruppen specifikt omfång. 
 
-Med andra ord kan jämföras med grupper som villkor och du kan tänka dig satser i dem som och villkor. Anta till exempel att filtret målgrupp nedan:
+Med andra ord kan jämföras med grupper som villkor och du kan tänka dig hello-satser i dem som och villkor. Anta till exempel att hello Omfångsfilter nedan:
 
 ![Målgrupp gruppnamn][3]  
 
-Användarna måste uppfylla följande kriterier som ska etableras med enligt det här målgrupp filtret:
+Enligt toothis Omfångsfilter användare måste uppfylla hello följande villkor, toobe etableras:
 
-1. De måste tilldelas till programmet.
-2. De måste arbeta i avdelningen tekniker
+1. De måste tilldelas toohello program.
+2. De måste arbeta på hello tekniker avdelning
 3. De måste vara fungerar i San Francisco eller Kanada.
 
 ## <a name="related-articles"></a>Relaterade artiklar
 * [Artikelindex för programhantering i Azure Active Directory](active-directory-apps-index.md)
-* [Automatisera användaren etablering och avetablering för SaaS-program](active-directory-saas-app-provisioning.md)
+* [Automatisera Användaretablering och avetablering tooSaaS program](active-directory-saas-app-provisioning.md)
 * [Anpassa attributmappning för Användaretablering](active-directory-saas-customizing-attribute-mappings.md)
 * [Skriva uttryck för attributmappning](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Kontot etablering meddelanden](active-directory-saas-account-provisioning-notifications.md)
-* [Använda SCIM för att aktivera automatisk etablering av användare och grupper från Azure Active Directory till program](active-directory-scim-provisioning.md)
-* [Lista över självstudier om hur du integrerar SaaS-appar](active-directory-saas-tutorial-list.md)
+* [Använda SCIM tooenable Automatisk etablering av användare och grupper från Azure Active Directory tooapplications](active-directory-scim-provisioning.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar](active-directory-saas-tutorial-list.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-scoping-filters/ic782811.png

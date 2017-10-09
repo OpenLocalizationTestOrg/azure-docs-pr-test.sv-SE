@@ -1,6 +1,6 @@
 ---
-title: "Misslyckas tillbaka den virtuella VMware-datorer från Azure klassiska portal | Microsoft Docs"
-description: "Läs mer om misslyckas tillbaka till den lokala platsen efter redundans för virtuella VMware-datorer och fysiska servrar till Azure."
+title: "aaaFail tillbaka den virtuella VMware-datorer från Azure hello klassiska portal | Microsoft Docs"
+description: "Läs mer om misslyckas tillbaka toohello den lokala platsen efter redundans för virtuella VMware-datorer och fysiska servrar tooAzure."
 services: site-recovery
 documentationcenter: 
 author: ruturaj
@@ -14,13 +14,13 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
-ms.openlocfilehash: 82d5eb7fd13b1e9700a3e9bc2d30775e9c129749
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 80bc3ab2708a5df953c6532b353da19a4c44ac34
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site-classic-portal"></a>Växla tillbaka virtuella VMware-datorer och fysiska servrar till den lokala platsen (klassiska portal)
+# <a name="fail-back-vmware-virtual-machines-and-physical-servers-toohello-on-premises-site-classic-portal"></a>Växla tillbaka virtuella VMware-datorer och fysiska servrar toohello lokal plats (klassiska portal)
 > [!div class="op_single_selector"]
 > * [Azure Portal](site-recovery-failback-azure-to-vmware.md)
 > * [Klassisk Azure-portal](site-recovery-failback-azure-to-vmware-classic.md)
@@ -28,114 +28,114 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-Den här artikeln beskriver hur du växla tillbaka Azure virtuella datorer från Azure till den lokala platsen. Följ anvisningarna i den här artikeln när du är redo att misslyckas tillbaka din virtuella VMware-datorer eller Windows-/ Linux fysiska servrar när de har redundansväxlats från lokalt platsen till Azure med hjälp av det här [kursen](site-recovery-vmware-to-azure-classic.md).
+Den här artikeln beskriver hur toofail tillbaka virtuella Azure-datorer från Azure toohello lokal plats. Följ hello instruktionerna i den här artikeln när du är klar toofail tillbaka din virtuella VMware-datorer eller fysiska Windows-/ Linux-servrar när de har redundansväxlats från hello lokal plats tooAzure med den här [kursen](site-recovery-vmware-to-azure-classic.md).
 
 ## <a name="overview"></a>Översikt
-Det här diagrammet visar arkitekturen för återställning efter fel för det här scenariot.
+Det här diagrammet visar hello återställning av arkitekturen för det här scenariot.
 
-Använd den här arkitekturen när processervern är på plats och du använder en ExpressRoute.
+Använd den här arkitekturen när hello processervern är på plats och du använder en ExpressRoute.
 
 ![](./media/site-recovery-failback-azure-to-vmware-classic/architecture.png)
 
-Använd den här arkitekturen när processervern är på Azure och du har en VPN-anslutning eller en ExpressRoute-anslutning.
+Använd den här arkitekturen om hello processen servern på Azure och du har en VPN-anslutning eller en ExpressRoute-anslutning.
 
 ![](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
 
-Komplett lista över portar och återställningen architechture diagram finns i bilden nedan
+toosee hello fullständig lista över portar och hello återställning architechture diagram finns toohello bilden nedan
 
 ![](./media/site-recovery-failback-azure-to-vmware-classic/Failover-Failback.png)
 
 Här är hur återställningen fungerar:
 
-* När du har redundansväxlats till Azure växla tillbaka till den lokala platsen i några steg:
-  * **Fas 1**: du skyddar virtuella Azure-datorer så att de startar replikeras tillbaka till virtuella VMware-datorer körs i den lokala platsen. Aktivera återaktivera skydd flyttar den virtuella datorn i en skyddsgrupp för återställning efter fel som har skapats automatiskt när redundans skyddsgruppen skapades. Om du har lagt till skyddsgruppen redundans till en återställningsplan sedan skyddsgruppen återställning också automatiskt har lagts till i planen.  Under skyddar ange du hur du planerar att återställas.
-  * **Fas 2**: när din virtuella Azure-datorer replikeras till den lokala platsen, kör du en misslyckas för att växla tillbaka från Azure.
-  * **Steg 3**: efter dina data har misslyckats tillbaka, skyddar de lokala virtuella datorer som du inte tillbaka till, så att de startar replikera till Azure.
+* När du har redundansväxlats tooAzure växlar du tillbaka tooyour lokal plats i några steg:
+  * **Fas 1**: skydda igen hello virtuella Azure-datorer så att de startar replikeras tillbaka tooVMware virtuella datorer som körs på den lokala platsen. Aktivera återaktivera skydd flyttar hello VM till en skyddsgrupp för återställning efter fel som har skapats automatiskt när hello redundans skyddsgruppen skapades. Om du har lagt till redundans grupp tooa recovery skyddsplanen lades toohello plan också automatiskt i skyddsgruppen för hello återställning efter fel.  Under skyddar ange du hur tooplan toofail tillbaka.
+  * **Fas 2**: när Azure-VMs replikerar tooyour lokal plats, kör en misslyckas över toofail tillbaka från Azure.
+  * **Steg 3**: efter dina data har misslyckats tillbaka, skyddar hello lokala virtuella datorer som du inte tillbaka till, så att de startar replikerar tooAzure.
 
 
   [!VIDEO https://channel9.msdn.com/Blogs/Azure/Enhanced-VMware-to-Azure-Failback/player]
 
-### <a name="failback-to-the-original-or-alternate-location"></a>Återställning till den ursprungliga eller en annan platsen
-Om du redundansväxlade en VMware VM kan du växla tillbaka till samma VM-källa om det fortfarande finns lokalt. I det här scenariot kommer endast deltaändringar flyttas tillbaka. Tänk på följande:
+### <a name="failback-toohello-original-or-alternate-location"></a>Toohello ursprungliga eller en annan plats för återställning efter fel
+Om du redundansväxlade en VMware VM kan du växla tillbaka toohello samma datakälla VM om det fortfarande finns lokalt. I det här scenariot kommer endast deltaändringar hello flyttas tillbaka. Tänk på följande:
 
-* Om du redundansväxlade fysiska servrar sedan är återställning alltid till en ny VMware-VM.
+* Om du redundansväxlade fysiska servrar och sedan återställning är alltid tooa nya VMware VM.
   * Observera att innan tillbaka en fysisk dator
-  * Fysisk dator som skyddas kommer tillbaka som en virtuell dator när redundansväxlats tillbaka från Azure till VMware
-  * Se till att du upptäcker att minst en Huvudmålet Server tillsammans med de nödvändiga ESX/ESXi-värdar som du behöver återställning efter fel.
-* Om du växlar tillbaka till den ursprungliga virtuella datorn krävs följande:
+  * Fysisk dator som skyddas kommer tillbaka som en virtuell dator när redundansväxling tillbaka från Azure tooVMware
+  * Se till att du upptäcker att minst en Huvudmålet Server tillsammans med hello nödvändiga ESX/ESXi-värdar toowhich måste toofailback.
+* Om du växlar tillbaka krävs toohello ursprungliga VM hello följande:
 
-  * Om den virtuella datorn hanteras av en vCenter-server ska Huvudmålets ESX-värden ha åtkomst till datalagret för virtuella datorer.
-  * Om den virtuella datorn finns på en ESX-värd men inte hanteras av vCenter måste hårddisken på den virtuella datorn vara i ett datalager som är tillgänglig på Huvudmålservern värden.
-  * Om den virtuella datorn finns på en ESX-värd och inte använder vCenter bör du genomföra identifiering av ESX-värden för Huvudmålservern innan du skyddar. Detta gäller att om du växlar tillbaka fysiska servrar för.
-  * Ett annat alternativ är (om den lokala virtuella datorn finns) att ta bort det innan du gör en återställning efter fel. Sedan skapar återställning sedan en ny virtuell dator på samma värddator som huvudmålservern ESX-värd.
-* När återställning till en alternativ plats data kommer att återställas till samma datalager och samma ESX-värden som används av den lokala huvudmålservern.
+  * Om hello VM hanteras av en vCenter-server ska hello Huvudmålets ESX-värden ha åtkomst toohello VMs datalagret.
+  * Om hello VM finns på en ESX-värd men inte hanteras av vCenter sedan hello hårddisk hello VM måste vara i ett tillgängligt datalager hello Huvudmålserverns värden.
+  * Om den virtuella datorn finns på en ESX-värd och inte använder vCenter bör du genomföra identifieringen av hello ESX-värd för hello Huvudmålservern innan du skyddar. Detta gäller att om du växlar tillbaka fysiska servrar för.
+  * Ett annat alternativ (om hello lokalt VM finns) är toodelete den innan du gör en återställning efter fel. Sedan skapar återställning sedan en ny virtuell dator på hello samma värden som hello huvudmålservern ESX-värd.
+* När du återställning tooan alternativ plats hello data kommer att återställda toohello samma datalager och hello samma ESX-värden som används av hello lokala huvudmålservern.
 
 ## <a name="prerequisites"></a>Krav
-* Du behöver en VMware-miljön för att växla tillbaka virtuella VMware-datorer och fysiska servrar. Misslyckas tillbaka till en fysisk server stöds inte.
-* För att kunna återställas bör du har skapat ett Azure-nätverk när du först ställa in skydd. Återställning måste VPN eller ExpressRoute-anslutning från Azure-nätverket som virtuella Azure-datorer finns på den lokala platsen.
-* Om de virtuella datorerna som du vill växla tillbaka till hanteras av en vCenter-server måste du kontrollera att har du behörigheterna som krävs för identifiering av virtuella datorer på vCenter-servrar. [Läs mer](site-recovery-vmware-to-azure-classic.md).
-* Om det finns ögonblicksbilder på en virtuell dator misslyckas återaktivera skydd. Du kan ta bort ögonblicksbilderna eller diskarna.
-* Innan du växlar tillbaka behöver du skapa ett antal komponenter:
-  * **Skapa en processerver i Azure**. Det här är en Azure VM som du behöver skapa och fortsätta att köras under återställning efter fel. Du kan ta bort datorn när återställning har slutförts.
-  * **Skapa en huvudmålserver**: huvudmålservern skickar och tar emot data för återställning efter fel. Hanteringsservern som du skapade lokala har en huvudmålserver som installeras som standard. Beroende på mängden misslyckade tillbaka trafik kan du dock behöver skapa en separat huvudmålserver för återställning efter fel.
-  * Om du vill skapa en ytterligare huvudmålservern körs på Linux måste ställa in Linux VM innan du installerar huvudmålservern, som beskrivs nedan.
-* Konfigurationsservern är lokala när du gör en återställning efter fel. Under återställning efter fel, måste den virtuella datorn finns i server-konfigurationsdatabasen, misslyckas vilka återställning inte genomföras. Se därför till att du vidtar regelbunden schemalagd säkerhetskopiering av servern. Vid katastrofåterställning måste du återställa den med samma IP-adress så att återställningen fungerar.
+* Du behöver en VMware-miljön i ordning toofail tillbaka virtuella VMware-datorer och fysiska servrar. Misslyckas tillbaka tooa stöds inte fysisk server.
+* I ordning toofail bör tillbaka har du skapat ett Azure-nätverk när du först ställa in skydd. Återställning efter fel behöver en VPN eller ExpressRoute-anslutning från hello Azure nätverk där hello Azure virtuella datorer är placerade toohello lokal plats.
+* Om hello virtuella datorer du vill toofail tillbaka tooare hanteras av en vCenter-server behöver du toomake att du har behörighet för hello som krävs för identifiering av virtuella datorer på vCenter-servrar. [Läs mer](site-recovery-vmware-to-azure-classic.md).
+* Om det finns ögonblicksbilder på en virtuell dator misslyckas återaktivera skydd. Du kan ta bort hello ögonblicksbilder eller hello diskar.
+* Innan du växlar tillbaka behöver toocreate ett antal komponenter:
+  * **Skapa en processerver i Azure**. Det här är en Azure VM som du behöver toocreate och fortsätta att köras under återställning efter fel. Du kan ta bort hello datorn när återställning har slutförts.
+  * **Skapa en huvudmålserver**: hello huvudmålservern skickar och tar emot data för återställning efter fel. hello hanteringsservern som du skapade lokala har en huvudmålserver som installeras som standard. Beroende på hello mängden misslyckade tillbaka trafik kan du dock behöva toocreate en separat huvudmålserver för återställning efter fel.
+  * Om du vill toocreate en ytterligare huvudmålservern körs på Linux, behöver tooset upp hello Linux VM innan du installerar hello huvudmålservern, som beskrivs nedan.
+* Konfigurationsservern är lokala när du gör en återställning efter fel. Under återställning efter fel, måste hello virtuella datorn finns i hello Configuration server-databas, misslyckas vilka återställning inte genomföras. Se därför till att du vidtar regelbunden schemalagd säkerhetskopiering av servern. Om för katastrofåterställning, behöver du toorestore med hello samma IP-adress så att återställningen fungerar.
 
-## <a name="set-up-the-process-server-in-azure"></a>Ställ in processerver i Azure
-Du måste installera en processerver i Azure så att den virtuella Azure-datorer kan data skickas tillbaka till lokala huvudmålservern.
+## <a name="set-up-hello-process-server-in-azure"></a>Ställ in hello processerver i Azure
+Du behöver tooinstall en processerver i Azure så att hello Azure virtuella datorer kan skicka hello data tillbaka tooon lokala huvudmålservern.
 
-1. I Site Recovery-portalen > **Konfigurationsservrar** väljer att lägga till en ny processerver.
+1. I hello Site Recovery-portalen > **Konfigurationsservrar** Välj tooadd en ny processerver.
 
    ![](./media/site-recovery-failback-azure-to-vmware-classic/ps1.png)
-2. Ange namn på en server och ange ett namn och lösenord som du använder för att ansluta till den virtuella Azure-datorn som administratör. I **konfigurationsservern** Välj lokala management-servern och ange det Azure-nätverk där processervern ska distribueras. Detta bör vara nätverk som virtuella Azure-datorer finns. Ange en unik IP-adress från undernätet som du väljer och påbörjar distributionen.
+2. Ange namn på en server och ange ett namn och lösenord som du använder tooconnect toohello virtuella Azure-datorn som administratör. I **konfigurationsservern** Välj hello lokala management-servern och ange hello Azure nätverk i vilka hello processervern ska distribueras. Detta bör vara hello nätverk där hello Azure Virtual Machines finns. Ange en unik IP-adress från hello väljer undernät och påbörjar distributionen.
 
    ![](./media/site-recovery-failback-azure-to-vmware-classic/ps2.png)
 
-   Ett jobb för att distribuera processervern ska utlösas
+   En processerver för jobbet toodeploy hello ska utlösas
 
    ![](./media/site-recovery-failback-azure-to-vmware-classic/ps3.png)
 
-   När processervern har distribuerats i Azure kan du logga in på den med hjälp av de autentiseringsuppgifter du angav. Första gången du loggar in dialogrutan processen server körs. Skriv i IP-adressen för den lokala management-servern och dess lösenfras. Lämna standardinställningen för port 443. Du kan också lämna standard 9443 port för datareplikering såvida inte den här inställningen ändras särskilt när du konfigurerar den lokala hanteringsservern.
+   Efter hello distribueras processerver i Azure som du kan logga in på den med hjälp av hello autentiseringsuppgifter du angav. hello körs första gången du loggar in i dialogrutan för hello processen server. Ange hello IP-adress för hello lokala management-servern och dess lösenfras. Lämna hello standardinställningen port 443. Du kan också lämna hello 9443 standardporten för datareplikering såvida inte den här inställningen ändras särskilt när du ställer in hello lokala management-servern.
 
    > [!NOTE]
-   > Servern kommer inte att visas under **VM egenskaper**. Det är bara synliga under den **servrar** fliken i hanteringsservern som den har registrerats. Det kan ta om 10 – 15 minuter för processervern ska visas.
+   > visas under hello server inte **VM egenskaper**. Det är bara synliga under hello **servrar** fliken i hello management server toowhich har registrerats. Det kan ta om 10 – 15 minuter för hello processen server tooappear.
    >
    >
 
-## <a name="set-up-the-master-target-server-on-premises"></a>Ställ in den huvudmålserver server lokalt
-Huvudmålservern tar emot data för återställning efter fel. En huvudmålserver installeras automatiskt på den lokala hanteringsservern, men om du växlar tillbaka mycket data du behöva ställa in en ytterligare huvudmålservern. Gör på följande sätt:
+## <a name="set-up-hello-master-target-server-on-premises"></a>Ställ in hello huvudmålservern server lokalt
+Hej huvudmålservern tar emot hello återställning av data. En huvudmålserver installeras automatiskt på hello lokala management-servern, men om du växlar tillbaka stora mängder data måste du kanske tooset upp en ytterligare huvudmålservern. Gör på följande sätt:
 
 > [!NOTE]
-> Om du vill installera en huvudmålserver på Linux följer du anvisningarna i nästa procedur.
+> Om du vill tooinstall en huvudmålserver på Linux, följer du anvisningarna för hello i hello nästa procedur.
 >
 >
 
-1. Om du installerar huvudmålservern i Windows, öppna sidan Snabbstart från den virtuella datorn där du installerar huvudmålservern och hämta installationsfilen för enhetlig installationsprogram för Azure Site Recovery-guiden.
-2. Kör installationsprogrammet och i **innan du börjar** Välj **lägga till ytterligare servrar att skala upp distributionen**.
-3. Slutför guiden på samma sätt som du gjorde när du [konfigurera hanteringsservern](site-recovery-vmware-to-azure-classic.md). På den **Server konfigurationsinformation** anger du IP-adressen för den här huvudmålservern och en lösenfras som ska få åtkomst till den virtuella datorn.
+1. Om du installerar hello huvudmålservern i Windows, öppna hello snabbstartsidan från hello VM som du installerar hello huvudmålservern och hämta hello installationsfilen för hello Unified installationsprogram för Azure Site Recovery-guiden.
+2. Kör installationsprogrammet och i **innan du börjar** Välj **lägga till ytterligare processer servrar tooscale ut distribution**.
+3. Fullständig hello guiden i hello samma sätt som du gjorde när du [konfigurera hello server](site-recovery-vmware-to-azure-classic.md). På hello **Server konfigurationsinformation** anger hello IP-adressen för den här huvudmålservern och en lösenfras tooaccess hello VM.
 
-### <a name="set-up-a-linux-vm-as-the-master-target-server"></a>Konfigurera en Linux-VM som huvudmålservern
-För att ställa in av hanteringsservern som kör huvudmålservern som en Linux VM måste du installera Cent) S 6.6 minimalt operativsystem, hämta SCSI-ID: N för varje SCSI-hårddisk, installera vissa ytterligare paket och tillämpa vissa egna ändringar.
+### <a name="set-up-a-linux-vm-as-hello-master-target-server"></a>Konfigurera en Linux-VM som hello huvudmålservern
+tooset in hello management-server som kör hello huvudmålservern som Linux VM som du behöver tooinstall hello Cent) S 6.6 minimalt operativsystem, hämta hello SCSI-ID: N för varje SCSI-hårddisk, installera vissa ytterligare paket och tillämpa vissa egna ändringar.
 
 #### <a name="install-centos-66"></a>Installera CentOS 6.6
-1. Installera CentOS 6.6 minimalt operativsystem på VM-hanteringsservern. Behåll ISO i DVD-enheten och starta systemet. Hoppa över media testning, Välj amerikansk engelska på språk, Välj **grundläggande lagringsenheter**, kontrollera att hårddisken inte är viktiga data och klicka på **Ja**, ta bort alla data. Ange värdnamnet för hanteringsservern och Välj server nätverkskort.  I den **redigera System** dialogrutan Välj ** Anslut automatiskt ** och lägga till en statisk IP-adress, nätverk och DNS-inställningarna. Ange en tidszon och en rotlösenord för åtkomst till hanteringsservern.
-2. När du uppmanas att installationstyp du vill markera **Skapa anpassad Layout** som partition. När du klickar på **nästa** Välj **lediga** och klicka på Skapa. Skapa  **/** , **/var/krascher** och **/home partitioner** med **FS typ:** **ext4**. Skapa växlingen partion som **FS typ: växlingen**.
-3. Om befintliga enheter är en varning visas. Klicka på **Format** formatera enheten med partitionsinställningar. Klicka på **skriva ändringar till disken** ändringarna partition.
-4. Välj **installera startprogram** > **nästa** att installera startprogrammet på rotpartition.
+1. Installera hello CentOS 6.6 minimalt operativsystem på hanteringsservern för hello VM. Behåll hello ISO i ett DVD-enheten och starta hello system. Hoppa över hello media testning, Välj amerikansk engelska på hello språk, Välj **grundläggande lagringsenheter**, kontrollera att hello hårddisken inte är viktiga data och klicka på **Ja**, ta bort alla data. Ange hello värdnamnet för hello hanteringsserver och välj hello nätverkskort.  I hello **redigera System** dialogrutan Välj ** Anslut automatiskt ** och lägga till en statisk IP-adress, nätverk och DNS-inställningarna. Ange en tidszon och ett lösenord tooaccess hello rothanteringsservern.
+2. När du uppmanas att hello typ av installation som väljer **Skapa anpassad Layout** som hello partition. När du klickar på **nästa** Välj **lediga** och klicka på Skapa. Skapa  **/** , **/var/krascher** och **/home partitioner** med **FS typ:** **ext4**. Skapa hello växlingen partion som **FS typ: växlingen**.
+3. Om befintliga enheter är en varning visas. Klicka på **Format** tooformat hello enhet med hello partitionsinställningar. Klicka på **skrivåtgärder ändra toodisk** tooapply hello partition ändringar.
+4. Välj **installera startprogram** > **nästa** tooinstall hello startprogram på hello rot-partitionen.
 5. När installationen är klar klickar du på **omstart**.
 
-#### <a name="retrieve-the-scsi-ids"></a>Hämta SCSI-ID.
-1. Hämta SCSI-ID: N för varje SCSI-hårddisk på den virtuella datorn efter installationen. Högerklicka på posten VM i Egenskaper för virtuell dator i VMware för att göra den här stängs av hanteringsservern VM > **redigera inställningar för** > **alternativ**.
-2. Välj **Avancerat** > **allmän artikel** och på **konfigurationsparametrar**. Det här alternativet kommer att de-active när datorn körs. Om du vill aktivera den måste datorn att stängas.
-3. Om raden **disk. EnableUUID** finns kontrollerar du att värdet anges **SANT** (skiftlägeskänsligt). Om det redan finns kan du avbryta och testa SCSI-kommando i ett gästoperativsystem när den har startats.
-4. Om raden inte befintliga Klicka **Lägg till rad** – och Lägg till den med den **SANT** värde. Använd inte dubbla citattecken.
+#### <a name="retrieve-hello-scsi-ids"></a>Hämta hello SCSI-ID: N
+1. Hämta hello SCSI-ID: N för varje SCSI-hårddisk i hello VM efter installationen. toodo detta Stäng hello hanteringsservern VM högerklickar du i hello VM egenskaper i VMware hello VM post > **redigera inställningar för** > **alternativ**.
+2. Välj **Avancerat** > **allmän artikel** och på **konfigurationsparametrar**. Det här alternativet kommer att de-active när hello datorn körs. toomake it active hello datorn måste stängas av.
+3. Om hello rad **disk. EnableUUID** finns kontrollera hello värdet för**SANT** (skiftlägeskänsligt). Om det redan finns kan du avbryta och testa hello SCSI-kommando i ett gästoperativsystem när den har startats.
+4. Om hello raden inte befintliga Klicka **Lägg till rad** – och lägga till den med hello **SANT** värde. Använd inte dubbla citattecken.
 
 #### <a name="install-additional-packages"></a>Installera ytterligare paket
-Du måste hämta och installera vissa ytterligare paket.
+Du behöver toodownload och vissa ytterligare paket installeras.
 
-1. Kontrollera att huvudmålservern är ansluten till internet.
-2. Kör detta kommando för att hämta och installera 15 paket från databasen CentOS: **# yum installera – y xfsprogs perl lsscsi rsync wget kexec-tools**.
-3. Om källdatorer du skyddar kör Linux med Reiser eller XFS filsystem för rot- eller -enhet, och sedan hämta och installera ytterligare paket på följande sätt:
+1. Kontrollera att hello huvudmålservern är anslutna toohello internet.
+2. Kör det här kommandot toodownload och installera 15 paket från hello CentOS databasen: **# yum installera – y xfsprogs perl lsscsi rsync wget kexec-tools**.
+3. Om hello källdatorer som du skyddar kör Linux med Reiser XFS filsystem för hello roten eller starta enheten, och sedan hämta och installera ytterligare paket på följande sätt:
 
    * # <a name="cd-usrlocal"></a>CD /usr/local
    * # <a name="wget-httpelrepoorglinuxelrepoel6x8664rpmskmod-reiserfs-00-1el6elrepox8664rpmhttpelrepoorglinuxelrepoel6x8664rpmskmod-reiserfs-00-1el6elrepox8664rpm"></a>wget [http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm](http://elrepo.org/linux/elrepo/el6/x86_64/RPMS/kmod-reiserfs-0.0-1.el6.elrepo.x86_64.rpm)
@@ -145,46 +145,46 @@ Du måste hämta och installera vissa ytterligare paket.
    * # <a name="rpm-ivh-xfsprogs-311-16el6x8664rpm"></a>rpm – ivh xfsprogs-3.1.1-16.el6.x86_64.rpm
 
 #### <a name="apply-custom-changes"></a>Använd anpassade ändringar
-Gör följande för att tillämpa ändringar efter att du har instruktionerna efter installationen och installerade paket:
+Gör följande tooapply anpassade ändringar när du är klar hello efter installationen steg och installerade hello paket hello:
 
-1. Kopiera RHEL 6-64 Unified Agent binära till den virtuella datorn. Kör kommandot ska untar binärfilen: **tar – zxvf<file name>**
-2. Kör detta kommando för att ge behörighet: **# chmod 755./ApplyCustomChanges.sh**
-3. Kör skriptet: **#./ApplyCustomChanges.sh**. Du bör bara köra skriptet en gång. Starta om servern när skriptet har körts.
+1. Kopiera hello RHEL 6-64 Unified Agent binära toohello VM. Kör det här kommandot toountar hello binära: **tar – zxvf<file name>**
+2. Kör det här kommandot toogive behörigheter: **# chmod 755./ApplyCustomChanges.sh**
+3. Kör skript hello: **#./ApplyCustomChanges.sh**. Du bör bara köra hello skriptet en gång. Starta om servern för hello när hello skriptet har körts.
 
-## <a name="run-the-failback"></a>Kör den återställning efter fel
-### <a name="reprotect-the-azure-vms"></a>Skyddar Azure virtuella datorer
-1. I Site Recovery-portalen > **datorer** fliken markerar du den virtuella datorn som har växlas över och klicka på **skydda igen**.
-2. I **Huvudmålserver** och **Processervern** väljer du den lokala huvudmålservern och processervern Azure VM.
-3. Välj det konto som du har konfigurerat för att ansluta till den virtuella datorn.
-4. Välj återställning efter fel version av skyddsgruppen. För exempel om den virtuella datorn är skyddad i SG1 och du måste markera PG1_Failback.
-5. Om du vill återställa till en alternativ plats, Välj kvarhållningsenhetens och datalagret som konfigurerats för huvudmålservern. När du växlar tillbaka till den lokala platsen virtuella VMware-datorer i skyddsplan återställning använder samma datalager som huvudmålservern. Om du vill återställa repliken Azure VM till samma lokala VM sedan den lokala virtuella datorn bör redan vara i samma datalager som huvudmålservern. Om det inte finns någon VM lokal skapas en ny under återaktivera skydd.
+## <a name="run-hello-failback"></a>Kör hello återställning efter fel
+### <a name="reprotect-hello-azure-vms"></a>Skyddar virtuella hello Azure-datorer
+1. I hello Site Recovery-portalen > **datorer** väljer du fliken hello virtuell dator som har växlas över och klicka på **skydda igen**.
+2. I **Huvudmålserver** och **Processervern** Välj hello lokala huvudmålservern och hello Azure VM processervern.
+3. Välj hello-konto som du konfigurerade för att ansluta toohello VM.
+4. Välj hello återställning efter fel version av hello skyddsgruppen. Om exempelvis hello VM är skyddad i SG1 måste tooselect PG1_Failback.
+5. Om du vill toorecover tooan alternativ plats, Välj hello kvarhållningsenhetens och datalagret som konfigurerats för hello huvudmålservern. När du växlar tillbaka toohello lokal plats hello virtuella VMware-datorer i hello återställning skyddsplan använder hello samma datalagret som hello huvudmålservern. Om du vill toorecover hello replik Azure VM toohello samma lokala VM sedan hello lokala VM bör redan vara på hello samma datalagret som hello master mål server. Om det inte finns någon VM lokal skapas en ny under återaktivera skydd.
 
    ![](./media/site-recovery-failback-azure-to-vmware-classic/failback1.png)
-6. När du klickar på **OK** ska börja återaktivera skydd ett jobb börjar att replikera den virtuella datorn från Azure till den lokala platsen. Du kan följa förloppet på den **jobb** fliken.
+6. När du klickar på **OK** toobegin återaktivera skydd ett jobb börjar tooreplicate hello virtuell dator från Azure toohello lokal plats. Du kan följa förloppet för hello på hello **jobb** fliken.
 
    ![](./media/site-recovery-failback-azure-to-vmware-classic/failback2.png)
 
-### <a name="run-a-failover-to-the-on-premises-site"></a>Kör en redundansväxling till den lokala platsen
-Den virtuella datorn flyttas till återställning efter fel version av skyddsgruppen efter återaktivera skydd och läggs automatiskt till i återställningsplanen som du använde för redundans till Azure om det finns en.
+### <a name="run-a-failover-toohello-on-premises-site"></a>Kör en växling vid fel toohello lokal plats
+Efter att återaktivera skydd hello VM är flyttade toohello återställning efter fel version av skyddsgruppen och läggs till automatiskt toohello återställningsplan som du använde för hello redundans tooAzure om det finns en.
 
-1. I den **Återställningsplaner** Välj återställningsplan som innehåller gruppen återställning efter fel och klickar på **redundans** > **oplanerad växling**.
-2. I **bekräfta redundans** Kontrollera redundansriktning (för att Azure) och välj den återställningspunkt som du vill använda för redundans (senaste). Om du har aktiverat **Multi-VM** när du konfigurerade replikeringsegenskaper kan du återställa till den senaste app eller kraschkonsekvent återställningspunkt. Klicka på kryssmarkeringen för att starta redundansväxlingen.
-3. Under växling vid fel stängs Site Recovery virtuella Azure-datorer. När du har kontrollerat att återställningen har slutförts som förväntat du kan du kontrollera att den virtuella Azure-datorer har stängts av som förväntat.
+1. I hello **Återställningsplaner** sidan Välj hello återställningsplan som innehåller hello återställning gruppen och klicka på **redundans** > **oplanerad växling**.
+2. I **bekräfta redundans** Kontrollera hello redundansriktning (tooAzure) och välj hello återställningspunkt som du vill använda toouse för hello växling vid fel (senaste). Om du har aktiverat **Multi-VM** när du konfigurerade replikeringsegenskaper kan du återställa toohello senaste app eller kraschkonsekvent återställningspunkt. Klicka på hello markerat toostart hello växling vid fel.
+3. Under växling vid fel stängs hello virtuella datorer i Azure Site Recovery. När du har kontrollerat att återställningen har slutförts som förväntat du kan du kan kontrollera att hello Azure virtuella datorer har stängts av som förväntat.
 
-### <a name="reprotect-the--on-premises-site"></a>Skyddar den lokala platsen
-När återställning har slutförts blir tillbaka på den lokala platsen dina data, men skyddas inte. Så här startar du replikerar till Azure igen gör du följande:
+### <a name="reprotect-hello--on-premises-site"></a>Skapa nytt hello lokal plats
+När återställningen är klar dina data kommer att vara tillbaka hello lokal plats, men skyddas inte. toostart replikering tooAzure igen hello följande:
 
-1. I Site Recovery-portalen > **datorer** fliken väljer de virtuella datorerna som har misslyckats tillbaka och klicka på **skydda igen**.
-2. När du har kontrollerat att replikeringen till fungerar Azure som förväntat i Azure kan du ta bort den virtuella Azure-datorer (för närvarande inte körs) som har misslyckats igen.
+1. I hello Site Recovery-portalen > **datorer** väljer hello virtuella datorer som har misslyckats tillbaka och klicka på fliken **skydda igen**.
+2. När du har kontrollerat att replikering tooAzure fungerar som förväntat i Azure du kan ta bort hello Azure virtuella datorer (för närvarande inte körs) som har misslyckats igen.
 
 ### <a name="common-issues-in-failback"></a>Vanliga problem i återställning efter fel
-1. Om du utför skrivskyddade användaridentifieringen vCenter och skydda virtuella datorer det lyckas och redundans fungerar. När du skyddar, kommer inte eftersom datastores inte kan identifieras. Som ett symtom visas inte datastores som visas när skydda igen. För att lösa problemet kan du uppdatera vCenter-autentiseringsuppgifter med rätt konto som har behörighet och försök igen. [Läs mer](site-recovery-vmware-to-azure-classic.md)
-2. När återställning en Linux VM och köra den lokalt, ser du att paketet Network Manager avinstalleras från datorn. Det beror på att när den virtuella datorn återställs i Azure, Network Manager paketet tas bort.
-3. När en virtuell dator har konfigurerats med statiska IP-adress och växlas över till Azure, förvärvas IP-adress via DHCP. När du redundansväxlar tillbaka till lokala fortsätter den virtuella datorn att använda DHCP för att få IP-adress. Behöver du manuellt inloggningen till datorn och ange IP-adressen tillbaka till statisk adress om det behövs.
-4. Om du använder ESXi 5.5 gratisversion eller vSphere 6 Hypervisor gratisversion redundans lyckades, men lyckas inte återställning efter fel. Du kommer ned om du vill uppgradera till antingen Utvärderingslicens att aktivera återställning efter fel.
+1. Om du utför skrivskyddade användaridentifieringen vCenter och skydda virtuella datorer det lyckas och redundans fungerar. När hello skydda igen misslyckas det eftersom hello datastores inte kan identifieras. Som ett symtom visas inte hello datastores visas när skydda igen. tooresolve, kan du uppdatera autentiseringsuppgifterna för hello vCenter med rätt konto som har behörighet och försök hello jobb. [Läs mer](site-recovery-vmware-to-azure-classic.md)
+2. När återställning en Linux VM och köra den lokalt, visas hello Nätverkshanteraren paketet avinstalleras från hello-datorn. Det beror på att när hello VM återställs i Azure hello Nätverkshanteraren paketet tas bort.
+3. När en virtuell dator har konfigurerats med statiska IP-adress och växlas över tooAzure, förvärvas hello IP-adress via DHCP. När du redundansväxlar tillbaka tooOn lokal fortsätter hello VM toouse DHCP tooacquire hello IP-adress. Du behöver toomanually inloggningen till hello dator och ange hello IP-adress tillbaka tooStatic adressen om det behövs.
+4. Om du använder ESXi 5.5 gratisversion eller vSphere 6 Hypervisor gratisversion redundans lyckades, men lyckas inte återställning efter fel. Du kommer ned tooupgrade tooeither Utvärderingslicens tooenable återställning efter fel.
 
 ## <a name="failing-back-with-expressroute"></a>Tillbaka med ExpressRoute
-Du kan växla tillbaka via en VPN-anslutning eller Azure ExpressRoute. Om du vill använda ExpressRoute Tänk på följande:
+Du kan växla tillbaka via en VPN-anslutning eller Azure ExpressRoute. Om du vill toouse ExpressRoute Obs hello följande:
 
-* ExpressRoute ska ställas in på virtuella Azure-nätverket till vilken källa datorer misslyckas över och i vilka Azure virtuella datorer är placerade efter att växlingen sker.
-* Data replikeras till Azure storage-konto på en offentlig slutpunkt. Du bör konfigurera offentlig peering i ExpressRoute med mål-Datacenter för Site Recovery replikering ska använda ExpressRoute.
+* ExpressRoute ska ställas in på hello virtuella Azure-nätverket toowhich källa datorer misslyckas över och i som virtuella Azure-datorer finns efter hello redundansväxlingen.
+* Data som är replikerade tooan Azure storage-konto på en offentlig slutpunkt. Du bör konfigurera offentlig peering i ExpressRoute med hello mål-Datacenter för Site Recovery replikering toouse ExpressRoute.

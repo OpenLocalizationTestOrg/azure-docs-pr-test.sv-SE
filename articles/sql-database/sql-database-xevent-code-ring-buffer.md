@@ -1,6 +1,6 @@
 ---
-title: "XEvent-ringbufferten koden för SQL-databas | Microsoft Docs"
-description: "Ger en Transact-SQL-kodexempel som görs enkelt och snabbt med hjälp av ringbufferten mål, i Azure SQL Database."
+title: "aaaXEvent ringbufferten koden för SQL-databas | Microsoft Docs"
+description: "Ger en Transact-SQL-kodexempel som görs enkelt och snabbt med hjälp av hello ringbufferten mål i Azure SQL Database."
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -16,33 +16,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
-ms.openlocfilehash: 6fbefe151901ac3b15d93712422878fc4d6206f1
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 21df748d9999d6837d2b5bbe4a3f47fb351b4633
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Ring buffert mål koden för utökade händelser i SQL-databas
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Du vill använda en fullständig kodexempel för enklaste snabbt sätt att avbilda och rapportera information om en utökad händelse under ett test. Det enklaste målet för utökade händelsedata är den [ringbufferten mål](http://msdn.microsoft.com/library/ff878182.aspx).
+Du vill använda en fullständig kodexempel för hello enklaste snabbt toocapture och rapportera information om en utökad händelse under ett test. hello enklaste målet för utökade händelsedata är hello [ringbufferten mål](http://msdn.microsoft.com/library/ff878182.aspx).
 
 Det här avsnittet presenteras en Transact-SQL-kodexempel som:
 
-1. Skapar en tabell med data för att visa med.
+1. Skapar en tabell med data toodemonstrate med.
 2. Skapar en session för en befintlig utökad händelse, nämligen **sqlserver.sql_statement_starting**.
    
-   * Händelsen är begränsad till SQL-uttryck som innehåller en viss uppdatering sträng: **instruktionen som '% uppdatering tabEmployee %'**.
-   * Väljer att skicka utdata för händelsen till ett mål av typen ringbufferten, nämligen **package0.ring_buffer**.
-3. Startar händelsesessionen.
+   * hello händelsen är begränsad tooSQL instruktioner som innehåller en viss uppdatering sträng: **instruktionen som '% uppdatering tabEmployee %'**.
+   * Väljer toosend hello utdata från hello händelse tooa mål av typen ringbufferten, nämligen **package0.ring_buffer**.
+3. Startar hello händelsesessionen.
 4. Utfärdar ett par enkla UPDATE SQL-instruktioner.
-5. Utfärdar en SQL SELECT-instruktion för att hämta utdata för händelse från ringbufferten.
+5. Utfärdar en SQL SELECT-instruktionen tooretrieve händelse utdata från hello ringbufferten.
    
    * **sys.dm_xe_database_session_targets** och andra dynamiska hanteringsvyer (av DMV: er) som är anslutna.
-6. Stoppar händelsesessionen.
-7. Utelämnar ringbufferten mål, om du vill frigöra resurser.
-8. Utelämnar händelsesessionen och demo-tabellen.
+6. Stoppar hello händelsesessionen.
+7. Således hello ringbufferten mål, toorelease dess resurser.
+8. Utelämnar hello händelsesessionen och hello demo tabell.
 
 ## <a name="prerequisites"></a>Krav
 
@@ -51,14 +51,14 @@ Det här avsnittet presenteras en Transact-SQL-kodexempel som:
   
   * Alternativt kan du [skapa en **AdventureWorksLT** demonstrationsdatabas](sql-database-get-started.md) i minuter.
 * SQL Server Management Studio (ssms.exe), helst den senaste månatliga update-versionen. 
-  Du kan hämta den senaste ssms.exe från:
+  Du kan hämta hello senaste ssms.exe från:
   
   * Avsnittet [Hämta SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
-  * [En direktlänk till nedladdningen.](http://go.microsoft.com/fwlink/?linkid=616025)
+  * [En direktlänk toohello hämtning.](http://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Kodexempel
 
-Med mycket mindre ändringar, kan du köra följande kodexempel i ringbufferten på Azure SQL Database eller Microsoft SQL Server. Skillnaden är förekomsten av noden '_databas' i vissa dynamiska hanteringsvyer (av DMV: er), används i FROM-satsen i steg 5. Exempel:
+Med mycket mindre ändringar, kan hello följande kodexempel i ringbufferten köras på Azure SQL Database eller Microsoft SQL Server. hello skillnaden är hello förekomst av hello noden '_databas' i hello namnet på vissa dynamiska hanteringsvyer (av DMV: er), används i hello FROM-satsen i steg 5. Exempel:
 
 * sys.dm_xe**_databas**_session_targets
 * sys.dm_xe_session_targets
@@ -220,13 +220,13 @@ GO
 
 ## <a name="ring-buffer-contents"></a>Ring Buffer innehållet
 
-Vi använde ssms.exe för att köra kodexemplet.
+Vi använde ssms.exe toorun hello kodexempel.
 
-Om du vill visa resultatet, vi har klickat på cellen under kolumnrubriken **target_data_XML**.
+tooview hello resultat vi klickat på hello cell under hello kolumnrubriken **target_data_XML**.
 
-Sedan i resultatfönstret klickar vi på cellen under kolumnrubriken **target_data_XML**. Detta klickar du på Skapa en annan fil flik i ssms.exe där innehållet i resultatcellen visades som XML.
+Sedan i resultatfönstret hello vi klickade hello cell under hello kolumnrubriken **target_data_XML**. Detta klickar du på Skapa en annan fil flik i ssms.exe i vilka hello innehållet i hello resultatcellen visades som XML.
 
-Utdata visas i följande blocket. Det ser ut långt, men det är bara två  **<event>**  element.
+hello utdata visas i hello följande block. Det ser ut långt, men det är bara två  **<event>**  element.
 
 &nbsp;
 
@@ -320,7 +320,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 
 #### <a name="release-resources-held-by-your-ring-buffer"></a>Frigöra resurser som innehas av Ring Buffer
 
-När du är klar med Ring Buffer kan du ta bort den och släpper dess resurser som utfärdar en **ALTER** ut så här:
+När du är klar med Ring Buffer kan du ta bort den och släpper dess resurser som utfärdar en **ALTER** som hello följande:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -330,7 +330,7 @@ GO
 ```
 
 
-Definitionen för händelsesessionen uppdaterats, men inte ta bort. Du kan senare lägga till en annan instans av ringbufferten händelsesessionen:
+hello definitionen för händelsesessionen uppdaterats, men inte ta bort. Du kan senare lägga till en annan instans av hello ringbufferten tooyour händelsesessionen:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -345,11 +345,11 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 
 ## <a name="more-information"></a>Mer information
 
-Primär avsnittet för utökade händelser på Azure SQL Database är:
+hello primära avsnittet för utökade händelser på Azure SQL Database är:
 
 * [Utökad händelse överväganden i SQL-databas](sql-database-xevent-db-diff-from-svr.md), vilket står i kontrast vissa aspekter av utökade händelser som skiljer sig åt mellan Azure SQL Database jämfört med Microsoft SQL Server.
 
-Andra exempel avsnitt i koden för utökade händelser finns på följande länkar. Du måste regelbundet kontrollera varje prov för att se om exemplet riktar sig till Microsoft SQL Server jämfört med Azure SQL Database. Sedan kan du bestämma om mindre ändringar behövs för att köra exemplet.
+Andra exempel avsnitt i koden för utökade händelser finns på följande länkar hello. Du måste dock regelbundet kontrollera alla exempel toosee om hello exempel riktar sig till Microsoft SQL Server jämfört med Azure SQL Database. Sedan kan du bestämma om mindre ändringar är nödvändiga toorun hello exempel.
 
 * Kodexempel för Azure SQL Database: [händelsefilen mål koden för utökade händelser i SQL-databas](sql-database-xevent-code-event-file.md)
 
@@ -357,5 +357,5 @@ Andra exempel avsnitt i koden för utökade händelser finns på följande länk
 ('lock_acquired' event.)
 
 - Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Find hello Objects That Have hello Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->

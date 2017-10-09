@@ -1,6 +1,6 @@
 ---
-title: Samla in Linux programprestanda i OMS Log Analytics | Microsoft Docs
-description: "Den här artikeln innehåller information för att konfigurera OMS-Agent för Linux för att samla in prestandaräknare för MySQL och Apache HTTP-servern."
+title: aaaCollect Linux programprestanda i OMS Log Analytics | Microsoft Docs
+description: "Den här artikeln innehåller information för att konfigurera hello OMS-Agent för Linux toocollect prestandaräknare för MySQL och Apache HTTP-servern."
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 04ea6f728e59ec8b47e54fe45e1adc6cbbfb85ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 51105c6add5c7941a004570a76a4d94c02fc8a71
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Samla in prestandaräknare för Linux-program i logganalys 
-Den här artikeln innehåller information om hur du konfigurerar den [OMS-Agent för Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) att samla in prestandaräknare för specifika program.  Program som ingår i den här artikeln är:  
+Den här artikeln innehåller information om hur du konfigurerar hello [OMS-Agent för Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) toocollect prestandaräknare för specifika program.  hello-program som ingår i den här artikeln är:  
 
 - [MySQL](#MySQL)
 - [Apache HTTP-Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
-Om MySQL-Server eller MariaDB Server har identifierats på datorn när OMS-agenten är installerad, installeras en provider för MySQL-Server för prestandaövervakning automatiskt. Den här providern ansluter till den lokala MySQL/MariaDB servern att exponera prestandastatistik. MySQL-autentiseringsuppgifter måste konfigureras så att providern har åtkomst till MySQL-servern.
+Om MySQL-Server eller MariaDB Server identifieras på hello dator när hello OMS-agenten är installerad, installeras en provider för MySQL-Server för prestandaövervakning automatiskt. Den här providern ansluter toohello lokala MySQL/MariaDB server tooexpose prestandastatistik. MySQL-autentiseringsuppgifter måste konfigureras så att hello providern kan komma åt hello MySQL-servern.
 
 ### <a name="configure-mysql-credentials"></a>Konfigurera MySQL-autentiseringsuppgifter
-MySQL OMI-providern kräver att en förkonfigurerad MySQL-användare och installerat MySQL-klientbibliotek för att fråga efter prestanda och hälsoinformation från MySQL-instans.  Dessa autentiseringsuppgifter lagras i en fil för autentisering som är lagrad på Linux-agenten.  Autentiseringsfilen anger vilka bind-adress och port MySQL-instans lyssnar på och vilka autentiseringsuppgifter du använder för att samla in mått.  
+hello MySQL OMI-providern kräver att en förkonfigurerad MySQL-användare och installerat MySQL klientbibliotek i ordning tooquery hello prestanda och hälsoinformation från hello MySQL-instans.  Dessa autentiseringsuppgifter lagras i en fil för autentisering som är lagrad på hello Linux-agenten.  Hej autentiseringsfilen anger vilka bind-adress och port hello MySQL instans lyssnar på och vilka autentiseringsuppgifter toouse toogather mått.  
 
-Under installationen av OMS-Agent för Linux MySQL OMI providern genomsöker MySQL my.cnf configuration-filer (standardplatserna) för bind-adress och port och delvis anger MySQL OMI autentisering.
+Under installationen av hello OMS-Agent för Linux hello MySQL OMI genomsöks providern MySQL my.cnf configuration-filer (standardplatserna) för bind-adress och port och delvis set hello MySQL OMI autentiseringsfilen.
 
-MySQL-autentisering lagras på `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
+hello MySQL autentisering lagras på `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
 
 
 ### <a name="authentication-file-format"></a>Filformatet för autentisering
-Följande är formatet för filen MySQL OMI-autentisering
+Följande är hello format för hello MySQL OMI autentiseringsfilen
 
     [Port]=[Bind-Address], [username], [Base64 encoded Password]
     (Port)=(Bind-Address), (username), (Base64 encoded Password)
     (Port)=(Bind-Address), (username), (Base64 encoded Password)
     AutoUpdate=[true|false]
 
-Poster i autentiseringsfilen beskrivs i följande tabell.
+hello poster i hello autentiseringsfilen beskrivs i hello i den följande tabellen.
 
 | Egenskap | Beskrivning |
 |:--|:--|
-| Port | Representerar den aktuella porten MySQL-instans lyssnar på. Port 0 anger att egenskaperna för följande används för standardinstansen. |
+| Port | Representerar hello aktuella port hello MySQL instans lyssnar på. Port 0 anger att hello egenskaper följande används för standardinstansen. |
 | Bind-adress| Aktuell MySQL bind-adress. |
-| användarnamn| MySQL-användare som används för att använda för att övervaka MySQL-serverinstansen. |
-| Base64-kodat lösenord| Lösenordet för MySQL övervakning användaren kodad i Base64. |
-| Automatisk uppdatering| Anger om genomsökning efter ändringar i filen my.cnf och skriva över filen MySQL OMI autentisering när MySQL OMI providern uppgraderas. |
+| användarnamn| MySQL-användare används toouse toomonitor hello MySQL server-instansen. |
+| Base64-kodat lösenord| Lösenordet för hello MySQL övervakning användare kodad i Base64. |
+| Automatisk uppdatering| Anger om toorescan för ändringar i hello my.cnf fil och skriva över hello MySQL OMI autentiseringsfilen när hello MySQL OMI providern uppgraderas. |
 
 ### <a name="default-instance"></a>Standardinstansen
-Filen MySQL OMI-autentisering kan definiera en standard-instans och port kod för att hantera flera MySQL-instanser på en Linux-värd enklare.  Standardinstansen markeras med en instans med port 0. Alla ytterligare instanser ärver egenskaper som anges från standardinstansen om de ange olika värden. Till exempel om MySQL-instans som lyssnar på port '3308' läggs används standardinstansen bind-adress, användarnamn och lösenord för Base64-kodade att testa och övervaka den instans som lyssnar på 3308. Om instansen på 3308 är bunden till en annan adress och använder samma MySQL användarnamn och lösenord par behövs bara bind-adress och andra egenskaper ärvs.
+hello MySQL OMI autentiseringsfilen kan definiera en standardinstans och port number toomake hantera flera MySQL-instanser på en Linux-värd enklare.  hello standardinstansen markeras med en instans med port 0. Alla ytterligare instanser ärver egenskaper som anges från hello standardinstansen om de ange olika värden. Till exempel om MySQL-instans som lyssnar på port '3308' läggs kommer hello standardinstans bind-adress, användarnamn och lösenord för Base64-kodade att använda tootry och övervaka hello-instans som lyssnar på 3308. Om hello-instans på 3308 är bundna tooanother adress och använder hello samma MySQL-användarnamn och lösenord par endast hello bind-adress krävs hello andra egenskaper ärvs.
 
-I följande tabell har exempel instans inställningar 
+hello i den följande tabellen har exempel instans inställningar 
 
 | Beskrivning | Fil |
 |:--|:--|
@@ -67,53 +67,53 @@ I följande tabell har exempel instans inställningar
 
 
 ### <a name="mysql-omi-authentication-file-program"></a>Programmet för MySQL OMI autentisering fil
-Ingår i installationen av MySQL OMI-providern är ett MySQL OMI autentisering filen program som kan användas för att redigera filen MySQL OMI-autentisering. Programmet för autentisering-filen finns på följande plats.
+Providern är ingår i hello installation av hello MySQL OMI ett program av MySQL OMI autentisering-fil som kan vara används tooedit hello MySQL OMI autentiseringsfilen. hello autentisering filen programmet finns på följande plats hello.
 
     /opt/microsoft/mysql-cimprov/bin/mycimprovauth
 
 > [!NOTE]
-> Filen autentiseringsuppgifter måste kunna läsas av kontot omsagent. Du bör köra kommandot mycimprovauth som omsgent.
+> hello autentiseringsuppgifter fil måste läsas av hello omsagent konto. Du bör köra hello mycimprovauth kommando som omsgent.
 
-Följande tabell innehåller information om syntaxen för att använda mycimprovauth.
+hello innehåller följande tabell information om hello syntax för att använda mycimprovauth.
 
 | Åtgärd | Exempel | Beskrivning
 |:--|:--|:--|
-| automatisk uppdatering * false\|true * | mycimprovauth automatisk uppdatering false | Anger huruvida autentiseringsfilen uppdateras automatiskt på Starta om eller uppdatera. |
-| standard *användarlösenordet för bind-adress* | mycimprovauth standard 127.0.0.1 rot pwd | Anger standardinstansen i MySQL OMI autentiseringsfilen.<br>Lösenordsfältet ska anges i klartext - lösenordet i filen MySQL OMI autentisering blir Base64-kodade. |
-| ta bort * default\|portnummer * | mycimprovauth 3308 | Tar bort den angivna instansen som antingen standard eller av portnummer. |
-| Hjälp | mycimprov hjälp | Visar en lista med kommandon för att använda. |
-| Skriv ut | mycimprov utskrift | Visar en lättläst MySQL OMI autentiseringsfilen. |
-| Uppdatera portnummer *användarlösenordet för bind-adress* | mycimprov uppdatering 3307 127.0.0.1 rot pwd | Uppdaterar den angivna instansen eller lägger till instansen om det inte finns. |
+| automatisk uppdatering * false\|true * | mycimprovauth automatisk uppdatering false | Anger huruvida hello autentiseringsfilen uppdateras automatiskt på Starta om eller uppdatera. |
+| standard *användarlösenordet för bind-adress* | mycimprovauth standard 127.0.0.1 rot pwd | Anger hello standardinstansen i hello MySQL OMI autentiseringsfilen.<br>hello lösenordsfältet ska anges i klartext - hello lösenordet i hello MySQL OMI autentiseringsfilen blir Base64-kodade. |
+| ta bort * default\|portnummer * | mycimprovauth 3308 | Tar bort angivna hello-instansen som antingen standard eller av portnummer. |
+| Hjälp | mycimprov hjälp | Visar en lista med kommandon toouse. |
+| Skriv ut | mycimprov utskrift | Visar ett enkelt tooread MySQL OMI autentiseringsfilen. |
+| Uppdatera portnummer *användarlösenordet för bind-adress* | mycimprov uppdatering 3307 127.0.0.1 rot pwd | Uppdaterar hello angivna instansen eller lägger till hello instans om det inte finns. |
 
-Följande exempelkommandon definiera ett standard-användarkonto för MySQL-server på localhost.  Lösenordsfältet ska anges i klartext - lösenord i filen MySQL OMI autentisering kommer att Base64-kodade
+hello definierar följande exempelkommandon ett standard-användarkonto för hello MySQL-server på localhost.  hello lösenordsfältet ska anges i klartext - hello lösenordet i hello MySQL OMI autentiseringsfilen kommer att Base64-kodade
 
     sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
     sudo /opt/omi/bin/service_control restart
 
 ### <a name="database-permissions-required-for-mysql-performance-counters"></a>Databasbehörigheter som krävs för MySQL-prestandaräknare
-MySQL-användare behöver åtkomst till följande frågor för att samla in prestandadata för MySQL-servern. 
+hello MySQL användare kräver åtkomst toohello följande frågor toocollect MySQL prestandainformation. 
 
     SHOW GLOBAL STATUS;
     SHOW GLOBAL VARIABLES:
 
 
-MySQL-användaren kräver också väljer åtkomst till standard i tabellerna nedan.
+hello MySQL-kräver också väljer åtkomst toohello följande standardtabeller.
 
 - INFORMATION_SCHEMA
 - MySQL. 
 
-Dessa behörigheter kan tilldelas genom att köra följande kommandon för bevilja.
+Dessa behörigheter kan tilldelas genom att köra hello följande grant-kommandon.
 
-    GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
-    GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
+    GRANT SELECT ON information_schema.* too‘monuser’@’localhost’;
+    GRANT SELECT ON mysql.* too‘monuser’@’localhost’;
 
 
 > [!NOTE]
-> Om du vill ge behörighet till en MySQL måste övervakning användaren att bevilja användaren ha behörigheten ' GRANT Option, samt behörigheten beviljas.
+> toogrant behörigheter tooa MySQL övervakning användaren hello bevilja användaren måste ha hello alternativet för BEVILJA behörighet samt hello behörighet beviljas.
 
 ### <a name="define-performance-counters"></a>Definiera prestandaräknare
 
-När du konfigurerar OMS-Agent för Linux för att skicka data till logganalys, måste du konfigurera prestandaräknarna som samlar in.  Använd proceduren i [Windows och Linux prestanda datakällor i logganalys](log-analytics-data-sources-windows-events.md) med räknarna i följande tabell.
+När du konfigurerar hello OMS-Agent för Linux toosend data tooLog Analytics, måste du konfigurera hello prestandaräknare toocollect.  Använd hello procedur i [Windows och Linux prestanda datakällor i logganalys](log-analytics-data-sources-windows-events.md) med hello räknare i hello i den följande tabellen.
 
 | Objektnamn | Räknarens namn |
 |:--|:--|
@@ -137,19 +137,19 @@ När du konfigurerar OMS-Agent för Linux för att skicka data till logganalys, 
 | MySQL-Server | Tabell Lås konkurrens Pct |
 
 ## <a name="apache-http-server"></a>Apache HTTP-Server 
-Om Apache HTTP-Server har identifierats på datorn när omsagent-paket installeras, installeras en provider för Apache HTTP-Server för prestandaövervakning automatiskt. Den här providern förlitar sig på en Apache-modulen måste läsas in i Apache HTTP-Server för att komma åt prestandadata. Går att läsa in modulen med följande kommando:
+Om Apache HTTP-Server har identifierats på datorn hello när hello omsagent paket installeras, installeras en prestandaövervakning provider för Apache HTTP-servern automatiskt. Den här providern förlitar sig på en Apache-modulen måste läsas in i hello Apache HTTP-Server i ordning tooaccess prestandadata. hello modul kan läsas med hello följande kommando:
 ```
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
-Om du vill ta bort modulen Apache övervakning, kör du följande kommando:
+toounload hello Apache övervakningsmodulen, kör hello följande kommando:
 ```
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 
 ### <a name="define-performance-counters"></a>Definiera prestandaräknare
 
-När du konfigurerar OMS-Agent för Linux för att skicka data till logganalys, måste du konfigurera prestandaräknarna som samlar in.  Använd proceduren i [Windows och Linux prestanda datakällor i logganalys](log-analytics-data-sources-windows-events.md) med räknarna i följande tabell.
+När du konfigurerar hello OMS-Agent för Linux toosend data tooLog Analytics, måste du konfigurera hello prestandaräknare toocollect.  Använd hello procedur i [Windows och Linux prestanda datakällor i logganalys](log-analytics-data-sources-windows-events.md) med hello räknare i hello i den följande tabellen.
 
 | Objektnamn | Räknarens namn |
 |:--|:--|
@@ -167,4 +167,4 @@ När du konfigurerar OMS-Agent för Linux för att skicka data till logganalys, 
 
 ## <a name="next-steps"></a>Nästa steg
 * [Samla in prestandaräknare](log-analytics-data-sources-performance-counters.md) från Linux-agenter.
-* Lär dig mer om [logga sökningar](log-analytics-log-searches.md) att analysera data som samlas in från datakällor och lösningar. 
+* Lär dig mer om [logga sökningar](log-analytics-log-searches.md) tooanalyze hello data som samlas in från datakällor och lösningar. 

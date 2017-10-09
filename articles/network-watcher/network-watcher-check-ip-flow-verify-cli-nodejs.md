@@ -1,6 +1,6 @@
 ---
-title: "Kontrollera trafik med Azure Network Watcher IP flöda Kontrollera - Azure CLI | Microsoft Docs"
-description: "Den här artikeln beskrivs hur du kontrollerar om trafik till eller från en virtuell dator tillåts eller nekas med Azure CLI"
+title: "aaaVerify trafik med Azure Network Watcher IP flöda Kontrollera - Azure CLI | Microsoft Docs"
+description: "Den här artikeln beskriver hur toocheck om trafik tooor från en virtuell dator tillåts eller nekas med Azure CLI"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: c5fe6c662b3ee2a443904b0f12cbfd495d9bc85e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c6becc5c142837b04d15490b2b3bd11124434570
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Kontrollera om trafik tillåts eller nekas till eller från en virtuell dator med IP-flöda Kontrollera en komponent i Azure Nätverksbevakaren
+# <a name="check-if-traffic-is-allowed-or-denied-tooor-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Kontrollera om trafik som tillåts eller nekas tooor från en virtuell dator med IP-flöda Kontrollera en komponent i Azure Nätverksbevakaren
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
@@ -30,30 +30,30 @@ ms.lasthandoff: 07/11/2017
 > - [Azure REST-API](network-watcher-check-ip-flow-verify-rest.md)
 
 
-IP-flöda verifiera är en funktion i Nätverksbevakaren som hjälper dig att kontrollera om tillåts trafik till eller från en virtuell dator. Det här scenariot är användbart för att hämta aktuella tillstånd om en virtuell dator kan kommunicera med en extern resurs eller backend. IP-flöde Kontrollera kan användas för att kontrollera om Nätverkssäkerhetsgrupp (NSG)-regler är korrekt konfigurerade och felsöka flöden som blockeras av NSG-regler. En annan orsak till att använda IP flödet Kontrollera är att kontrollera att trafik som du vill blockerade blockeras korrekt av NSG: N.
+IP-flöda verifiera är en funktion i Nätverksbevakaren som gör att du tooverify om trafik tillåts tooor från en virtuell dator. Det här scenariot är användbart tooget aktuella tillstånd om en virtuell dator kan prata tooan extern resurs eller backend. IP-flöde verifiera går att använda tooverify om Nätverkssäkerhetsgrupp (NSG)-regler är korrekt konfigurerade och felsöka flöden som blockeras av NSG-regler. En annan orsak till att använda IP flödet Kontrollera tooensure trafik som du vill blockerade blockeras korrekt av hello NSG.
 
 Den här artikeln använder plattformsoberoende Azure CLI version 1.0, som är tillgänglig för Windows, Mac och Linux.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Det här scenariot förutsätter att du redan har följt stegen i [skapa en Nätverksbevakaren](network-watcher-create.md) att skapa en Nätverksbevakaren eller har en befintlig instans av Nätverksbevakaren. Det här scenariot förutsätter att det finns en resursgrupp med en giltig virtuell dator som ska användas.
+Det här scenariot förutsätter att du redan har följt stegen hello i [skapa en Nätverksbevakaren](network-watcher-create.md) toocreate en Nätverksbevakaren eller har en befintlig instans av Nätverksbevakaren. hello scenariot förutsätter att en resursgrupp med en giltig virtuell dator finns toobe används.
 
 ## <a name="scenario"></a>Scenario
 
-Det här scenariot använder IP-flöda Kontrollera för att verifiera om en virtuell dator kan du kontakta en känd Bing IP-adress. Om trafiken nekas returnerar säkerhetsregeln som nekar trafiken. Läs mer om IP-flöda Kontrollera [flöda Kontrollera översikt över IP](network-watcher-ip-flow-verify-overview.md)
+Det här scenariot använder IP-flöda Kontrollera tooverify om en virtuell dator kan prata tooa kända Bing IP-adress. Om hello trafik nekas returnerar hello säkerhetsregel som nekar trafiken. toolearn mer om IP-flöda Kontrollera finns [flöda Kontrollera översikt över IP](network-watcher-ip-flow-verify-overview.md)
 
 
 ## <a name="get-a-vm"></a>Hämta en virtuell dator
 
-IP-flöde verifiera tester trafik till eller från en IP-adress på en virtuell dator till eller från en extern enhet. Ett Id för en virtuell dator krävs för cmdlet. Om du redan känner till ID: T för den virtuella datorn att använda, kan du hoppa över det här steget.
+IP-flöde verifiera tester trafik tooor från en IP-adress på en virtuell dator tooor från en extern enhet. Ett Id för en virtuell dator krävs för hello cmdlet. Om du redan vet hello-ID för hello virtuella toouse kan du hoppa över det här steget.
 
 ```
 azure vm show -g resourceGroupName -n virtualMachineName
 ```
 
-## <a name="get-the-nics"></a>Hämta Nätverkskorten
+## <a name="get-hello-nics"></a>Hämta hello nätverkskort
 
-IP-adressen för ett nätverkskort på den virtuella datorn krävs i det här exemplet vi hämta nätverkskort på en virtuell dator. Om du redan känner till IP-adressen som du vill testa på den virtuella datorn, kan du hoppa över det här steget.
+hello IP-adress till ett nätverkskort på den virtuella datorn hello krävs i det här exemplet vi hämta hello nätverkskort på en virtuell dator. Om du redan vet hello IP-adress som du vill tootest på hello virtuell dator kan du hoppa över det här steget.
 
 ```
 azure network nic show -g resourceGroupName -n nicName
@@ -61,18 +61,18 @@ azure network nic show -g resourceGroupName -n nicName
 
 ## <a name="run-ip-flow-verify"></a>Kontrollera kör IP-flöde
 
-Nu när vi har information som behövs för att köra cmdlet vi kör den `network watcher ip-flow-verify` för att testa trafiken. I det här exemplet använder du den första IP-adressen på det första nätverkskortet.
+Nu när vi har hello information behövs toorun hello cmdlet vi kör hello `network watcher ip-flow-verify` cmdlet tootest hello trafik. I det här exemplet använder vi hello första IP-adressen på hello första nätverkskortet.
 
 ```
 azure network watcher ip-flow-verify -g resourceGroupName -n networkWatcherName -t targetResourceId -d directionInboundorOutbound -p protocolTCPorUDP -o localPort -m remotePort -l localIpAddr -r remoteIpAddr
 ```
 
 > [!NOTE]
-> IP-flöda Kontrollera kräver att den Virtuella datorresursen har allokerats för att köras.
+> IP-flöda Kontrollera kräver att hello Virtuella datorresursen fördelas toorun.
 
 ## <a name="review-results"></a>Granska resultaten
 
-När du har kört `network watcher ip-flow-verify` resultaten returneras, i följande exempel är resultatet har returnerats från föregående steg.
+När du har kört `network watcher ip-flow-verify` hello resultaten returneras, hello följande exempel är hello resultaten som returnerades från hello föregående steg.
 
 ```
 data:    Access                          : Deny
@@ -82,9 +82,9 @@ info:    network watcher ip-flow-verify command OK
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om trafik blockeras och får inte vara, se [hantera Nätverkssäkerhetsgrupper](../virtual-network/virtual-network-manage-nsg-arm-portal.md) att spåra de grupp och säkerhet Nätverkssäkerhetsregler som har definierats.
+Om trafik blockeras och får inte vara, se [hantera Nätverkssäkerhetsgrupper](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack hello network security grupp och säkerhet regler som har definierats.
 
-Lär dig hur du granskningsinställningar NSG genom att besöka [granskning Nätverkssäkerhetsgrupp grupper (NSG) med Nätverksbevakaren](network-watcher-nsg-auditing-powershell.md).
+Läs tooaudit NSG-inställningarna genom att besöka [granskning Nätverkssäkerhetsgrupp grupper (NSG) med Nätverksbevakaren](network-watcher-nsg-auditing-powershell.md).
 
 [1]: ./media/network-watcher-check-ip-flow-verify-portal/figure1.png
 [2]: ./media/network-watcher-check-ip-flow-verify-portal/figure2.png

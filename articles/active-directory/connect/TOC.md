@@ -53,13 +53,13 @@
 ### [Lösenordssynkronisering](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Azure AD-tjänstkonto](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [Installationsguide](active-directory-aadconnectsync-installation-wizard.md)
-### [Ändra standardkonfigurationen](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
+### [Ändra hello standardkonfigurationen](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
 ### [Konfigurera filtrering](active-directory-aadconnectsync-configure-filtering.md)
 ### [Scheduler](active-directory-aadconnectsync-feature-scheduler.md)
 ### [Katalogtillägg](active-directory-aadconnectsync-feature-directory-extensions.md)
 
-### [Ändra lösenordet för Azure AD Sync-tjänstkontot](active-directory-aadconnectsync-change-serviceacct-pass.md)
-### [Ändra AD DS-kontolösenordet](active-directory-aadconnectsync-change-addsacct-pass.md)
+### [Ändra kontolösenord hello Azure AD Sync](active-directory-aadconnectsync-change-serviceacct-pass.md)
+### [Ändra lösenordet för hello AD DS-konto](active-directory-aadconnectsync-change-addsacct-pass.md)
 ### [Aktivera AD-papperskorgen](active-directory-aadconnectsync-recycle-bin.md)
 
 ### [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md)
@@ -80,7 +80,7 @@
 ### [Objektet har inte synkroniserats](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [Lösenordssynkronisering](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
 ### [LargeObject-fel som orsakats av userCertificate](active-directory-aadconnectsync-largeobjecterror-usercertificate.md)
-### [Så här återställer du från LocalDB med en gräns på 10 GB](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
+### [Hur toorecover från LocalDB 10 GB gränsen](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 
 # Referens
 ## [Kodexempel](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
@@ -91,7 +91,7 @@
 ## [Konton och behörigheter](active-directory-aadconnect-accounts-permissions.md)
 
 ## Azure AD Connect Sync
-### [Attribut som synkroniseras till Azure Active Directory](active-directory-aadconnectsync-attributes-synchronized.md)
+### [Attribut synkroniserade tooAzure Active Directory](active-directory-aadconnectsync-attributes-synchronized.md)
 ### [Versionshistorik för anslutningsappen](active-directory-aadconnectsync-connector-version-history.md)
 ### [Referens för funktioner](active-directory-aadconnectsync-functions-reference.md)
 ### [Driftåtgärder och saker att tänka på](active-directory-aadconnectsync-operations.md)
@@ -103,7 +103,7 @@
 
 
 # Relaterat
-## [Övervaka den lokala identitetsinfrastrukturen och synkroniseringstjänster i molnet](../connect-health/active-directory-aadconnect-health.md)
+## [Övervaka din lokala identitet infrastruktur och synkroniseringstjänster i molnet hello](../connect-health/active-directory-aadconnect-health.md)
 ## [Designguide för hybrididentitet](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)
 
 

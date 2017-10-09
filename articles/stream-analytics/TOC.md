@@ -24,9 +24,9 @@
 ### [Integrera UDF:er för JavaScript](stream-analytics-javascript-user-defined-functions.md)
 ### [Integrera REST API och Machine Learning](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 ### [Skapa utdata](stream-analytics-define-outputs.md)
-### [Utdata till Azure Functions](stream-analytics-functions-redis.md)
-### [Utdata till Data Lake Store](stream-analytics-data-lake-output.md)
-### [Utdata till DocumentDB](stream-analytics-documentdb-output.md)
+### [Utdata tooAzure funktioner](stream-analytics-functions-redis.md)
+### [Utdata tooData Lake Store](stream-analytics-data-lake-output.md)
+### [Utdata tooDocumentDB](stream-analytics-documentdb-output.md)
 
 ## Övervaka och optimera
 ### [Lägg till aviseringar](stream-analytics-set-up-alerts.md)
@@ -34,7 +34,7 @@
 ### [Övervaka jobb programmässigt](stream-analytics-monitor-jobs.md)
 ### [Övervaka jobb med PowerShell](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
 ### [Optimera direktuppspelningsenheter](stream-analytics-streaming-unit-consumption.md)
-### [Skala för att öka dataflödet](stream-analytics-scale-jobs.md)
+### [Skala tooincrease genomflöde](stream-analytics-scale-jobs.md)
 ### [Skala för Machine Learning-funktioner](stream-analytics-scale-with-machine-learning-functions.md)
 
 ## Hantera
@@ -52,7 +52,7 @@
 
 ## Automatisera
 ### [Verktyg för Visual Studio](stream-analytics-tools-for-visual-studio.md)
-### [Använd Management .NET SDK](stream-analytics-dotnet-management-sdk.md)
+### [Använd hello Management .NET SDK](stream-analytics-dotnet-management-sdk.md)
 ### [PowerShell med ett klick](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # Referens

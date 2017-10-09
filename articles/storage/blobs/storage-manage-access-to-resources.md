@@ -1,6 +1,6 @@
 ---
-title: "Aktivera offentlig läsbehörighet för behållare och blobbar i Azure Blob storage | Microsoft Docs"
-description: "Lär dig hur du gör behållare och blobbar som är tillgängliga för anonym åtkomst och hur du kommer åt dem via programmering."
+title: "aaaEnable offentlig läsbehörighet för behållare och blobbar i Azure Blob storage | Microsoft Docs"
+description: "Lär dig hur toomake behållare och blobbar som är tillgängliga för anonym åtkomst och hur tooaccess dem via programmering."
 services: storage
 documentationcenter: 
 author: mmacy
@@ -14,48 +14,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: marsma
-ms.openlocfilehash: 8d4f4c7c208baf0db6155eb78a53e37c4ec1e023
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: dd8ffdb39a66aa06f65ad3cdd4315d47c117f059
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Hantera anonym läsåtkomst till behållare och blob-objekt
-Du kan aktivera anonym, offentlig läsbehörighet till en behållare och dess blobbar i Azure Blob storage. Då kan bevilja du skrivskyddad åtkomst till dessa resurser utan att dela din kontonyckel och utan att kräva en signatur för delad åtkomst (SAS).
+# <a name="manage-anonymous-read-access-toocontainers-and-blobs"></a>Hantera anonym läsbehörighet toocontainers och blobbar
+Du kan aktivera anonym, offentlig läsbehörighet tooa behållaren och dess blobbar i Azure Blob storage. Då kan bevilja du läsåtkomst toothese resurser utan att dela din kontonyckel och utan att kräva en signatur för delad åtkomst (SAS).
 
-Offentlig läsbehörighet är bäst för scenarier där du vill att vissa BLOB ska alltid vara tillgänglig för anonym läsbehörighet. Du kan skapa en signatur för delad åtkomst för mer detaljerad kontroll. Signaturer för delad åtkomst kan du ange begränsad åtkomst med olika behörigheter för en viss tidsperiod. Mer information om hur du skapar delad åtkomst till signaturer, se [använder signaturer för delad åtkomst (SAS) i Azure Storage](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Offentlig läsbehörighet är bäst för scenarier där du vill att vissa blobbar tooalways vara tillgängliga för anonym läsbehörighet. Du kan skapa en signatur för delad åtkomst för mer detaljerad kontroll. Signaturer för delad åtkomst kan du tooprovide begränsad åtkomst med olika behörigheter för en viss tidsperiod. Mer information om hur du skapar delad åtkomst till signaturer, se [använder signaturer för delad åtkomst (SAS) i Azure Storage](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>Bevilja behörighet för anonyma användare till behållare och blobbar
-Som standard kan en behållare och alla blobbar i den endast användas av ägaren till lagringskontot. Du kan ange behörigheter för behållaren att tillåta offentlig åtkomst om du vill ge anonyma användare som har läsbehörighet till en behållare och dess blobbar. Anonyma användare kan läsa blobbar i en behållare som är offentligt tillgänglig utan att autentisera begäran.
+## <a name="grant-anonymous-users-permissions-toocontainers-and-blobs"></a>Bevilja anonyma användare behörighet toocontainers och blobbar
+Som standard kan en behållare och alla blobbar i den endast användas av hello ägare hello storage-konto. Du kan ange hello behållaren behörigheter tooallow offentlig åtkomst toogive anonyma användare behörighet att läsa tooa behållaren och dess blobbar. Anonyma användare kan läsa blobbar i en behållare som är offentligt tillgänglig utan autentiseras hello-begäran.
 
-Du kan konfigurera en behållare med följande behörigheter:
+Du kan konfigurera en behållare med hello följande behörigheter:
 
-* **Ingen offentlig läsbehörighet:** behållaren och dess blobbar kan endast användas av lagringskontoägaren. Detta är standard för alla nya behållare.
-* **Offentlig läsbehörighet för blobbar endast:** Blobbar i behållaren kan läsas av anonym begäran, men behållardata är inte tillgänglig. Anonyma klienter kan inte räkna upp blobbar i behållaren.
-* **Fullständig offentlig läsbehörighet:** alla behållare och blob-data kan läsas av anonym begäran. Klienter kan räkna upp blobbar i behållaren av anonym begäran, men det går inte att räkna upp behållare i lagringskontot.
+* **Ingen offentlig läsbehörighet:** hello-behållaren och dess blobbar kan endast användas av hello lagringskontoägaren. Detta är hello standard för alla nya behållare.
+* **Offentlig läsbehörighet för blobbar endast:** Blobbar i behållaren hello kan läsas av anonym begäran, men behållardata är inte tillgänglig. Anonyma klienter kan inte räkna upp hello blobbar i behållaren hello.
+* **Fullständig offentlig läsbehörighet:** alla behållare och blob-data kan läsas av anonym begäran. Klienter kan räkna upp blobbar i behållaren hello av anonym begäran, men det går inte att räkna upp behållare i hello storage-konto.
 
-Du kan använda följande för att ange behörigheter för behållaren:
+Du kan använda hello följande tooset behållare behörigheter:
 
 * [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#how-to-manage-azure-blobs)
 * [Azure CLI 2.0](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
-* Programmässigt med någon av storage-klientbibliotek eller REST API
+* Programmässigt med någon av hello storage-klientbibliotek eller hello REST API
 
-### <a name="set-container-permissions-in-the-azure-portal"></a>Ange behörigheter för behållaren i Azure-portalen
-Ange behörigheter för behållaren den [Azure-portalen](https://portal.azure.com), gör du följande:
+### <a name="set-container-permissions-in-hello-azure-portal"></a>Ange behörigheter för behållaren i hello Azure-portalen
+tooset behållaren behörigheter i hello [Azure-portalen](https://portal.azure.com), gör du följande:
 
-1. Öppna din **lagringskonto** blad i portalen. Du kan hitta ditt lagringskonto genom att välja **lagringskonton** i bladet portal huvudmenyn.
-1. Under **BLOB-tjänsten** på bladet menyn väljer **behållare**.
-1. Högerklicka på behållaren raden eller välj på knappen Öppna behållarens **snabbmenyn**.
-1. Välj **princip** på snabbmenyn.
-1. Välj en **komma åt typen** från nedrullningsbara menyn.
+1. Öppna din **lagringskonto** bladet i hello portal. Du kan hitta ditt lagringskonto genom att välja **lagringskonton** hello portal huvudmenyn-bladet.
+1. Under **BLOB-tjänsten** på bladet för hello-menyn, Välj **behållare**.
+1. Högerklicka på hello behållaren raden eller välj hello ellips tooopen hello behållarens **snabbmenyn**.
+1. Välj **princip** hello snabbmenyn.
+1. Välj en **komma åt typen** från hello nedrullningsbara meny.
 
     ![Metadata för behållaren dialogrutan Redigera](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
 ### <a name="set-container-permissions-with-net"></a>Behörigheter för behållaren med .NET
-Om du vill ange behörigheter för en behållare med C# och Storage-klientbiblioteket för .NET, först hämta behållarens befintliga behörigheter genom att anropa den **GetPermissions** metod. Ange den **PublicAccess** -egenskapen för den **BlobContainerPermissions** objekt som returneras av den **GetPermissions** metod. Slutligen anropa den **behörighetsgruppbehörighet** metod med de uppdaterade behörigheterna.
+tooset behörigheter för en behållare med C# och hello Storage-klientbibliotek för .NET, först hämta hello behållaren befintliga behörigheter genom att anropa hello **GetPermissions** metod. Därefter uppsättning hello **PublicAccess** -egenskapen för hello **BlobContainerPermissions** objekt som returneras av hello **GetPermissions** metod. Slutligen anropa hello **behörighetsgruppbehörighet** metod med hello uppdateras behörigheter.
 
-I följande exempel anger behållarens behörigheter till fullständig offentlig läsbehörighet. Att ställa in behörigheter till offentlig läsbehörighet för blobbar endast den **PublicAccess** egenskapen **BlobContainerPublicAccessType.Blob**. Ta bort alla behörigheter för anonyma användare genom att ange egenskapen till **BlobContainerPublicAccessType.Off**.
+hello följande exempel anger hello behållaren behörigheter toofull offentlig läsbehörighet. tooset behörigheter toopublic läsbehörighet för blobbar enbart anges hello **PublicAccess** egenskapen för**BlobContainerPublicAccessType.Blob**. tooremove alla behörigheter för anonyma användare anges hello egenskapen för**BlobContainerPublicAccessType.Off**.
 
 ```csharp
 public static void SetPublicContainerPermissions(CloudBlobContainer container)
@@ -67,21 +67,21 @@ public static void SetPublicContainerPermissions(CloudBlobContainer container)
 ```
 
 ## <a name="access-containers-and-blobs-anonymously"></a>Åtkomst till behållare och blobbar anonymt
-En klient som ansluter till behållare och blobbar anonymt kan använda konstruktorer som inte kräver autentiseringsuppgifter. Följande exempel visar några olika sätt att hänvisa till resurser för Blob-tjänsten anonymt.
+En klient som ansluter till behållare och blobbar anonymt kan använda konstruktorer som inte kräver autentiseringsuppgifter. hello som följande exempel visar några olika sätt tooreference Blob-tjänstresurserna anonymt.
 
 ### <a name="create-an-anonymous-client-object"></a>Skapa en anonym klient-objekt
-Du kan skapa ett nytt objekt för tjänsten för anonym åtkomst genom att tillhandahålla Blob-tjänsteslutpunkt för kontot. Du måste dock också känna till namnet på en behållare i det konto som är tillgängliga för anonym åtkomst.
+Du kan skapa ett nytt objekt för tjänsten för anonym åtkomst genom att ange hello Blobbtjänstens slutpunkt för hello-konto. Du måste också känna hello namnet på en behållare i det konto som är tillgängliga för anonym åtkomst.
 
 ```csharp
 public static void CreateAnonymousBlobClient()
 {
-    // Create the client object using the Blob service endpoint.
+    // Create hello client object using hello Blob service endpoint.
     CloudBlobClient blobClient = new CloudBlobClient(new Uri(@"https://storagesample.blob.core.windows.net"));
 
-    // Get a reference to a container that's available for anonymous access.
+    // Get a reference tooa container that's available for anonymous access.
     CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
 
-    // Read the container's properties. Note this is only possible when the container supports full public read access.
+    // Read hello container's properties. Note this is only possible when hello container supports full public read access.
     container.FetchAttributes();
     Console.WriteLine(container.Properties.LastModified);
     Console.WriteLine(container.Properties.ETag);
@@ -89,15 +89,15 @@ public static void CreateAnonymousBlobClient()
 ```
 
 ### <a name="reference-a-container-anonymously"></a>Referera till en behållare anonymt
-Du kan använda den för att referera till behållaren direkt om du har rätt Webbadress till en behållare som är tillgänglig anonymt.
+Om du har hello URL tooa behållare som är tillgängliga anonymt, kan du använda den tooreference hello behållaren direkt.
 
 ```csharp
 public static void ListBlobsAnonymously()
 {
-    // Get a reference to a container that's available for anonymous access.
+    // Get a reference tooa container that's available for anonymous access.
     CloudBlobContainer container = new CloudBlobContainer(new Uri(@"https://storagesample.blob.core.windows.net/sample-container"));
 
-    // List blobs in the container.
+    // List blobs in hello container.
     foreach (IListBlobItem blobItem in container.ListBlobs())
     {
         Console.WriteLine(blobItem.Uri);
@@ -106,7 +106,7 @@ public static void ListBlobsAnonymously()
 ```
 
 ### <a name="reference-a-blob-anonymously"></a>Referera till en blob anonymt
-Om du har rätt Webbadress till en blobb som är tillgängliga för anonym åtkomst, kan du referera blob direkt med hjälp av denna Webbadress:
+Om du har hello URL tooa blob som är tillgängliga för anonym åtkomst, kan du referera hello blob direkt med hjälp av denna Webbadress:
 
 ```csharp
 public static void DownloadBlobAnonymously()
@@ -116,8 +116,8 @@ public static void DownloadBlobAnonymously()
 }
 ```
 
-## <a name="features-available-to-anonymous-users"></a>Funktioner som är tillgängliga för anonyma användare
-I följande tabell visas vilka åtgärder som kan anropas av anonyma användare när en behållar-ACL är inställd på att tillåta offentlig åtkomst.
+## <a name="features-available-tooanonymous-users"></a>Funktioner tillgängliga tooanonymous användare
+hello i den följande tabellen visar vilka åtgärder som kan anropas av anonyma användare när en behållar-ACL är tooallow offentlig åtkomst.
 
 | REST-åtgärd | Behörighet med fullständig offentlig läsbehörighet | Offentlig läsbehörighet för endast BLOB-behörigheten |
 | --- | --- | --- |
@@ -150,6 +150,6 @@ I följande tabell visas vilka åtgärder som kan anropas av anonyma användare 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Autentisering för Azure Storage-tjänster](https://msdn.microsoft.com/library/azure/dd179428.aspx)
+* [Autentisering för hello Azure Storage-tjänster](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * [Använda signaturer för delad åtkomst (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Delegera åtkomst med signatur för delad åtkomst](https://msdn.microsoft.com/library/azure/ee395415.aspx)

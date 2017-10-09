@@ -1,6 +1,6 @@
 ---
-title: "Komma igång med VoD med hjälp av Azure Portal | Microsoft Docs"
-description: "De här självstudierna visar dig stegen för att implementera ett grundläggande leveransprogram för Video-on-Demand-innehåll (VoD) med Azure Media Services-appen (AMS) med hjälp av Azure Portal."
+title: "aaaGet igång med att leverera VoD med hello Azure-portalen | Microsoft Docs"
+description: "Den här självstudiekursen vägleder dig genom hello stegen för att implementera en grundläggande Video-on-Demand (VoD) innehållsleverans tjänst med Azure Media Services (AMS)-program med hjälp av hello Azure-portalen."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,150 +14,150 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: a8eeeeff412837acba14b441a3c590edf7e3597a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5c1c1b1f74ec1f1301120fe8e5a5ae183fe0338f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-the-azure-portal"></a>Komma igång med att leverera innehåll på begäran med hjälp av Azure Portal
+# <a name="get-started-with-delivering-content-on-demand-using-hello-azure-portal"></a>Komma igång med att leverera innehåll på begäran med hjälp av hello Azure-portalen
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-De här självstudierna visar dig stegen för att implementera ett grundläggande leveransprogram för Video-on-Demand-innehåll (VoD) med Azure Media Services-appen (AMS) med hjälp av Azure Portal.
+Den här självstudiekursen vägleder dig genom hello stegen för att implementera en grundläggande Video-on-Demand (VoD) innehållsleverans tjänst med Azure Media Services (AMS)-program med hjälp av hello Azure-portalen.
 
 ## <a name="prerequisites"></a>Krav
-Följande krävs för att kunna genomföra vägledningen:
+hello följande är obligatoriska toocomplete hello kursen:
 
 * Ett Azure-konto. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/). 
-* Ett Media Services-konto. Information om hur du skapar ett Media Services-konto finns i [Så här skapar du ett Media Services-konto](media-services-portal-create-account.md).
+* Ett Media Services-konto. toocreate Media Services-konto finns [hur tooCreate Media Services-konto](media-services-portal-create-account.md).
 
-Vägledningen innehåller följande uppgifter:
+Den här självstudiekursen innehåller hello följande uppgifter:
 
 1. Starta slutpunkt för direktuppspelning.
 2. Överföra en videofil.
-3. Koda källfilen till en uppsättning MP4-filer med anpassningsbar bithastighet.
-4. Publicera tillgången och få URL:er för strömning och progressiv överföring.  
+3. Koda hello källfilen till en uppsättning MP4-filer med anpassningsbar bithastighet.
+4. Publicera hello tillgången och get strömning och progressiv nedladdning URL: er.  
 5. Spela upp ditt innehåll.
 
 ## <a name="start-streaming-endpoints"></a>Starta slutpunkter för direktuppspelning 
 
-När du arbetar med Azure Media Services är ett av de vanligaste scenarierna att leverera video via direktuppspelning med anpassningsbar bithastighet. Media Services tillhandahåller en dynamisk paketering som gör att du kan leverera ditt MP4-kodade innehåll med anpassningsbar bithastighet i direktuppspelningsformat som stöds av Media Services (MPEG DASH, HLS, Smooth Streaming) direkt när du så önskar, utan att du behöver lagra på förhand paketerade versioner av vart och ett av dessa direktuppspelningsformat.
+När du arbetar med Azure Media Services är en av hello vanligaste scenarierna att leverera video via strömning med anpassningsbar bithastighet. Media Services tillhandahåller en dynamisk paketering som gör att du toodeliver dina MP4-kodade innehåll i strömningsformat som stöds av Media Services (MPEG DASH, HLS, Smooth Streaming) just-in-time, utan att behöva toostore tillsammans med anpassad bithastighet versioner av var och en av dessa strömningsformat.
 
 >[!NOTE]
->När ditt AMS-konto skapas läggs en **standard**-slutpunkt för direktuppspelning till på ditt konto med tillståndet **Stoppad**. Om du vill starta direktuppspelning av innehåll och dra nytta av dynamisk paketering och dynamisk kryptering måste slutpunkten för direktuppspelning som du vill spela upp innehåll från ha tillståndet **Körs**. 
+>När AMS-kontot skapas en **standard** strömningsslutpunkt har lagts till tooyour konto i hello **stoppad** tillstånd. toostart strömning ditt innehåll och dra nytta av dynamisk paketering och dynamisk kryptering hello strömningsslutpunkt som du vill toostream innehåll har toobe i hello **kör** tillstånd. 
 
-Starta slutpunkten för direktuppspelning genom att göra följande:
+toostart Hej strömmande slutpunkten, hello följande:
 
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. I fönstret Inställningar klickar du på Slutpunkter för direktuppspelning. 
-3. Klicka på den slutpunkt för direktuppspelning som är standard. 
+1. Logga in på hello [Azure-portalen](https://portal.azure.com/).
+2. Streaming slutpunkter på hello inställningar i fönstret. 
+3. Klicka på hello standard strömmande slutpunkten. 
 
-    Fönstret INFORMATION OM DEN SLUTPUNKT FÖR DIREKTUPPSPELNING SOM ÄR STANDARD visas.
+    hello visas standard information om den STRÖMNINGSSLUTPUNKT.
 
-4. Klicka på ikonen Start.
-5. Klicka på knappen Spara för att spara ändringarna.
+4. Klicka på hello Start-ikonen.
+5. Klicka på hello spara knappen toosave ändringarna.
 
 ## <a name="upload-files"></a>Överföra filer
-För att strömma videor med Azure Media Services behöver du överföra källvideorna, koda dem till flera olika bithastigheter och publicera resultatet. I det här avsnittet beskrivs det första steget. 
+toostream videor med Azure Media Services behöver du tooupload hello källvideorna, koda dem till flera olika bithastigheter och publicera hello resultat. hello första steget beskrivs i det här avsnittet. 
 
-1. I fönstret **Inställning** klickar du på **Tillgångar**.
+1. I hello **inställningen** -fönstret klickar du på **tillgångar**.
    
     ![Överföra filer](./media/media-services-portal-vod-get-started/media-services-upload.png)
-2. Klicka på knappen **Överför**.
+2. Klicka på hello **överför** knappen.
    
-    Fönstret **Överför en videotillgång** visas.
+    Hej **överför en videotillgång** visas.
    
    > [!NOTE]
    > Det finns inga filstorleksbegränsningar.
    > 
    > 
-3. Bläddra till den önskade videon på datorn, markera den och tryck på OK.  
+3. Bläddra toohello önskade videon på datorn, markerar du den och tryck på OK.  
    
-    Överföringen startar och du kan följa förloppet under filnamnet.  
+    hello överföringen startar och du kan se hello förloppet under filnamnet hello.  
 
-När överföringen är klar visas den nya tillgången i listan **Tillgångar**. 
+När hello överföringen har slutförts visas hello nya tillgången i hello **tillgångar** fönster. 
 
 ## <a name="encode-assets"></a>Koda tillgångar
 
-När du arbetar med Azure Media Services är ett av de vanligaste scenarierna att leverera strömning med anpassad bithastighet till dina klienter. Media Services har stöd för följande strömningstekniker med anpassningsbar bithastighet: HTTP-liveuppspelning (HLS), jämn direktuppspelning, MPEG DASH. För att förbereda dina videor för strömning med anpassad bithastighet måste du koda källvideon till filer i multibithastighet. Du bör använda kodaren **Media Encoder Standard** för att koda dina videor.  
+När du arbetar med Azure Media Services är ett av hello vanligaste scenarierna att leverera med anpassningsbar bithastighet strömmande tooyour klienter. Media Services stöder följande strömningstekniker med anpassningsbar bithastighet hello: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH. tooprepare videor för anpassningsbar bithastighet strömning måste tooencode källfilerna video i flera bithastigheter filer. Du bör använda hello **Media Encoder Standard** kodare tooencode videor.  
 
-Media Services tillhandahåller också en dynamisk paketering som gör att du kan leverera dina MP4-filer med flera bithastigheter i följande strömningsformat: MPEG DASH, HLS eller jämn direktuppspelning utan att du behöver packa om till dessa strömningsformat. Med dynamisk paketering behöver du bara lagra och betala för filerna i ett enda lagringsformat, och Media Services skapar och ger lämplig respons baserat på begäranden från en klient.
+Media Services tillhandahåller också dynamisk paketering som gör att du toodeliver din multibithastighet MP4s i hello följande strömningsformat: MPEG DASH, HLS, Smooth Streaming, utan att behöva toorepackage till dessa strömningsformat. Med dynamisk paketering behöver du bara toostore och betala för hello filer i ett enda lagringsformat och Media Services bygger och fungerar hello lämplig respons baserat på begäranden från en klient.
 
-Om du vill dra nytta av dynamisk paketering måste du koda din källfil till en uppsättning MP4-filer med flera bithastigheter (kodningsstegen visas längre fram i det här avsnittet).
+tootake nytta av dynamisk paketering behöver du behöver tooencode källfilen till en uppsättning med flera bithastigheter MP4-filer (hello kodningsstegen senare i det här avsnittet).
 
-### <a name="to-use-the-portal-to-encode"></a>Använda portalen för att koda
-I det här avsnittet beskrivs de steg som du kan vidta för att koda ditt innehåll med Media Encoder Standard.
+### <a name="toouse-hello-portal-tooencode"></a>toouse hello portal tooencode
+Det här avsnittet beskrivs hello åtgärder du kan vidta tooencode ditt innehåll med Media Encoder Standard.
 
-1. I fönstret **Inställningar** väljer du **Tillgångar**.  
-2. I fönstret **Tillgångar** väljer du den tillgång som du vill koda.
-3. Tryck på knappen **Koda**.
-4. I fönstret **Koda en tillgång** väljer du processorn ”Media Encoder Standard” och en förinställning. Information om förinställningar finns i [auto-generate a bitrate ladder](media-services-autogen-bitrate-ladder-with-mes.md) (autogenerera en bithastighetsstege) och [Task Presets for MES](media-services-mes-presets-overview.md) (Uppgiftsförinställningar för MES). Om du planerar att styra vilka kodningsförinställningar, kom ihåg att det är viktigt att välja den förinställning som är mest lämplig för din indatavideo. Om du till exempel vet att din indatavideo har en upplösning på 1 920 x 1 080 bildpunkter, kan du använda förinställningen ”H264 multibithastighet 1080p”. Om du har en video med låg upplösning (640 x 360) bör du inte använda förinställningen ”H264 multibithastighet 1080p”.
+1. I hello **inställningar** väljer **tillgångar**.  
+2. I hello **tillgångar** fönster, Välj hello tillgång som du vill att tooencode.
+3. Tryck på hello **koda** knappen.
+4. I hello **koda en tillgång** fönster, Välj hello ”Media Encoder Standard” processor och en förinställning. Information om förinställningar finns i [auto-generate a bitrate ladder](media-services-autogen-bitrate-ladder-with-mes.md) (autogenerera en bithastighetsstege) och [Task Presets for MES](media-services-mes-presets-overview.md) (Uppgiftsförinställningar för MES). Om du planerar toocontrol vilka kodning förinställda används, Kom ihåg: det är viktigt tooselect hello förinställning som är mest lämpliga för din indatavideo. Till exempel om du vet att din indatavideo har en upplösning på 1 920 x 1 080 bildpunkter, du kan använda hello ”H264 Multibithastighet 1080p” förinställda. Om du har en video med låg upplösning (640 x 360) bör du inte använda förinställningen ”H264 multibithastighet 1080p”.
    
-   Du kan redigera namnet på utdatatillgången och namnet på jobbet för enklare hantering.
+   Har en möjlighet att redigera hello av hello utdatatillgången och hello namn för hello jobbet för enklare hantering.
    
    ![Koda tillgångar](./media/media-services-portal-vod-get-started/media-services-encode1.png)
 5. Tryck på **Skapa**.
 
 ### <a name="monitor-encoding-job-progress"></a>Övervaka förloppet för kodningsjobb
-Klicka på **Inställningar** (överst på sidan) för att övervaka förloppet för kodningsjobbet och välj sedan **Jobb**.
+toomonitor hello fortskrider hello kodning jobb, klicka på **inställningar** (överst hello på hello sidan) och välj sedan **jobb**.
 
 ![Jobb](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 ## <a name="publish-content"></a>Publicera innehåll
-För att ge din användare en URL som kan användas för att strömma eller hämta ditt innehåll måste du först ”publicera” din tillgång genom att skapa en lokaliserare. Lokaliserare ger åtkomst till filer som finns i tillgången. Media Services stöder två typer av lokaliserare: 
+tooprovide din användare en URL som kan använda toostream eller hämta ditt innehåll du först måste för ”publicera” din tillgång genom att skapa en positionerare. Positionerare ger åtkomst toofiles i hello tillgången. Media Services stöder två typer av lokaliserare: 
 
-* Strömningslokaliserare (OnDemandOrigin), som används för anpassad strömning (till exempel för strömning av MPEG DASH, HLS och Smooth Streaming). Om du vill skapa en strömningslokaliserare måste din tillgång innehålla en .ism-fil. 
+* Streaming (OnDemandOrigin)-positionerare som används för anpassad strömning (till exempel toostream MPEG DASH, HLS eller Smooth Streaming). toocreate en strömningslokaliserare måste din tillgång innehålla en .ism-fil. 
 * Progressiva SAS-lokaliserare, som används för leverans av video via progressiv hämtning.
 
-En strömnings-URL har följande format och du kan använda det för att spela upp Smooth Streaming-tillgångar.
+En strömmande URL har följande format hello och du kan använda den tooplay Smooth Streaming-tillgångar.
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
-Lägg till (format = m3u8 aapl) till URL:en för att skapa en HLS-strömnings-URL.
+Lägg till toobuild en HLS-strömnings-URL (format = m3u8 aapl) toohello URL.
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-Lägg till (format=mpd-time-csf) till URL:en för att skapa en MPEG DASH-strömnings-URL.
+toobuild en MPEG DASH-strömnings-URL, Lägg till (format = mpd-tid-csf) toohello URL.
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
 
-En SAS-URL har följande format.
+En SAS-URL har följande format hello.
 
     {blob container name}/{asset name}/{file name}/{SAS signature}
 
 > [!NOTE]
-> Om du har använt portalen för att skapa lokaliserare före mars 2015, skapades lokaliserare med ett utgångsdatum två år senare.  
+> Om du använde hello portal toocreate lokaliserare före mars 2015, skapades lokaliserare med ett utgångsdatum för två år.  
 > 
 > 
 
-Du uppdaterar ett utgångsdatum för en lokaliserare med [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator)- eller [.NET](http://go.microsoft.com/fwlink/?LinkID=533259)-API:er. URL:en ändras när du uppdaterar en SAS-lokaliserare.
+tooupdate ett förfallodatum för en lokaliserare, Använd [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) eller [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API: er. När du uppdaterar en SAS-lokaliserare hello utgångsdatum ändras hello URL: en.
 
-### <a name="to-use-the-portal-to-publish-an-asset"></a>Använda portalen för att publicera en tillgång
-Gör följande för att använda portalen för att publicera en tillgång:
+### <a name="toouse-hello-portal-toopublish-an-asset"></a>toouse hello portal toopublish en tillgång
+toouse hello portal toopublish en tillgång, hello följande:
 
 1. Välj **Inställningar** > **Tillgångar**.
-2. Välj den tillgång som du vill publicera.
-3. Klicka sedan på knappen **Publicera**.
-4. Välj typ av lokaliserare.
+2. Välj hello tillgång som du vill toopublish.
+3. Klicka på hello **publicera** knappen.
+4. Välj typen av hello-positionerare.
 5. Tryck på **Lägg till**.
    
     ![Publicera](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
-URL:en läggs till i listan över **publicerade URL:er**.
+hello URL läggs toohello lista över **publicerade URL: er**.
 
-## <a name="play-content-from-the-portal"></a>Spela upp innehåll från portalen
-Azure Portal har en innehållsspelare som du kan använda för att testa videon.
+## <a name="play-content-from-hello-portal"></a>Spela upp innehåll från hello-portalen
+hello Azure-portalen har en innehållsspelare som du kan använda tootest videon.
 
-Klicka på önskad video och klicka sedan på knappen **Spela upp**.
+Hello önskad video och klicka sedan på hello **spela upp** knappen.
 
 ![Publicera](./media/media-services-portal-vod-get-started/media-services-play.png)
 
 Vissa förutsättningar gäller:
 
-* Starta direktuppspelningen genom att börja köra **standard**slutpunkten för direktuppspelning.
-* Kontrollera att videon har publicerats.
-* Denna**Media Player** spelar upp från den strömningsslutpunkt som är standard. Klicka för att kopiera URL:en och använd en annan spelare om du vill spela upp från en strömningsslutpunkt som inte är standard. Till exempel [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+* toobegin direktuppspelning, starta körs hello **standard** strömmande slutpunkten.
+* Kontrollera att hello videon har publicerats.
+* Detta **Media player** spelar upp från hello standard strömmande slutpunkten. Om du vill tooplay från ett standardvärde strömmande slutpunkten, klicka på toocopy hello URL och Använd en annan spelare. Till exempel [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 ## <a name="next-steps"></a>Nästa steg
 Granska sökvägarna för Media Services-utbildning.

@@ -1,35 +1,35 @@
-## <a name="view-device-telemetry-in-the-dashboard"></a>Visa enhetstelemetri i instrumentpanelen
-Instrumentpanelen i fjärrövervakningslösningen visar den telemetri som enheterna skickar till IoT Hub.
+## <a name="view-device-telemetry-in-hello-dashboard"></a>Visa enhetstelemetrin hello instrumentpanelen
+hello instrumentpanelen i hello fjärråtkomst övervakning lösning aktiverar du tooview hello telemetri dina enheter skicka tooIoT hubb.
 
-1. Gå tillbaka till fjärrövervakningslösningens instrumentpanel i webbläsaren och klicka på **Enheter** i den vänstra panelen för att navigera till **Enhetslistan**.
-2. I **enhetslistan** bör du se att statusen för din enhet är **Körs**. Om den inte körs klickar du på **Aktivera enhet** i panelen **Enhetsinformation**.
+1. I webbläsaren returnerade toohello remote lösning instrumentpanelen för övervakning, klickar du på **enheter** i hello vänstra panelen toonavigate toohello **enhetslistan**.
+2. I hello **enhetslistan**, bör du se att hello statusen för din enhet är **kör**. Om inte, klickar du på **Aktivera enhet** i hello **enhetsinformation** panelen.
    
     ![Visa enhetsstatus][18]
-3. Klicka på **Instrumentpanel** för att gå tillbaka till instrumentpanelen och välj din enhet i listrutan **Enhet att visa** för att se dess telemetri. Telemetrin från exempelprogrammet är 50 enheter för intern temperatur, 55 enheter för extern temperatur och 50 enheter för fuktighet.
+3. Klicka på **instrumentpanelen** tooreturn toohello instrumentpanelen, Välj din enhet i hello **enhet tooView** nedrullningsbara tooview dess telemetri. hello telemetri från hello exempelprogram är 50 enheter för inre temperatur, 55 enheter för externa temperatur och 50 enheter för fuktighet.
    
     ![Visa enhetstelemetri][img-telemetry]
 
 ## <a name="invoke-a-method-on-your-device"></a>Anropa en metod på enheten
-Instrumentpanelen i fjärrövervakningslösningen låter dig anropa metoder på enheterna genom IoT Hub. Du kan till exempel anropa en metod för att simulera en omstart av en enhet i fjärrövervakningslösningen.
+hello instrumentpanelen i hello remote övervakningslösning kan tooinvoke metoder på dina enheter via IoT-hubb. Du kan till exempel anropa en metod toosimulate startas om en enhet i hello remote övervakningslösning.
 
-1. I fjärrövervakningslösningens instrumentpanel klickar du på **Enheter** i den vänstra panelen för att navigera till **Enhetslistan**.
-2. Klicka på din enhets **Enhets-ID** i **enhetslistan**.
-3. I panelen **Enhetsinformation** klickar du på **Metoder**.
+1. Hello remote lösning instrumentpanelen för övervakning, klicka på **enheter** i hello vänstra panelen toonavigate toohello **enhetslistan**.
+2. Klicka på **enhets-ID** för din enhet i hello **enhetslistan**.
+3. I hello **enhetsinformation** klickar du på **metoder**.
    
     ![Enhetsmetoder][13]
-4. I listrutan **Metod**väljer du **InitiateFirmwareUpdate** och sedan anger du en dummy-URL i **FWPACKAGEURI**. Klicka på **Anropa metod** för att anropa metoden på enheten.
+4. I hello **metoden** listrutan, Välj **InitiateFirmwareUpdate**, och klicka sedan på **FWPACKAGEURI** ange en URL för dummy. Klicka på **anropa metoden** toocall hello-metoden på hello enhet.
    
     ![Anropa en enhetsmetod][14]
    
 
-5. Du ser ett meddelande i konsolen som kör enhetskoden när enheten hanterar metoden. Resultaten av metoden läggs till i historiken i lösningsportalen:
+5. Du ser ett meddelande i hello-konsolen körs din kod för enheten när hello enheten hanterar hello-metoden. hello resultaten av hello metoden läggs toohello historik i hello lösning portal:
 
     ![Visa metodhistorik][img-method-history]
 
 ## <a name="next-steps"></a>Nästa steg
-Artikeln [Anpassning av förkonfigurerade lösningar][lnk-customize] beskriver några sätt du kan utöka det här exemplet. Möjliga tillägg kan vara att använda riktiga sensorer och att implementera ytterligare kommandon.
+hello artikel [anpassa förkonfigurerade lösningar] [ lnk-customize] beskrivs några sätt som du kan utöka det här exemplet. Möjliga tillägg kan vara att använda riktiga sensorer och att implementera ytterligare kommandon.
 
-Du kan lära dig mer om [behörigheter på webbplatsen azureiotsuite.com][lnk-permissions].
+Du kan lära dig mer om hello [behörigheter på hello azureiotsuite.com platsen][lnk-permissions].
 
 [13]: ./media/iot-suite-visualize-connecting/suite4.png
 [14]: ./media/iot-suite-visualize-connecting/suite7-1.png

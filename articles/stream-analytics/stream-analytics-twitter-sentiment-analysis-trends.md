@@ -1,6 +1,6 @@
 ---
-title: Realtid Twitter-sentiment analys med Azure Stream Analytics | Microsoft Docs
-description: "Lär dig använda Stream Analytics för analys av realtidsskyddet Twitter-sentiment. Stegvisa anvisningar från händelse genereras till data på en levande instrumentpanel."
+title: aaaReal tid Twitter sentiment analys med Azure Stream Analytics | Microsoft Docs
+description: "Lär dig hur toouse Stream Analytics för analys av realtidsskyddet Twitter-sentiment. Stegvisa anvisningar från händelsen generation toodata på en levande instrumentpanel."
 keywords: trendanalys i realtid twitter, sentiment analys, sociala media analys, trend analys exempel
 services: stream-analytics
 documentationcenter: 
@@ -15,73 +15,73 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: jeffstok
-ms.openlocfilehash: 8de6850964700f5b3f71d144b40af927f2e52d7e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 157790caa7ea6f5570dd9c9d3bd9694d437eb4c1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Realtid Twitter-sentiment analys i Azure Stream Analytics
 
-Lär dig hur du skapar en lösning för analys av sentiment för analys av sociala medier genom att ta realtid Twitter-händelser i Händelsehubbar i Azure. Du kan sedan skriva en Azure Stream Analytics-fråga för att analysera data och antingen lagra resultaten för senare använda eller använda en instrumentpanel och [Power BI](https://powerbi.com/) till ger inblick i realtid.
+Lär dig hur toobuild en sentiment analys lösning för social media analytics genom att ta realtid Twitter händelser i Händelsehubbar i Azure. Du kan sedan skriva en Azure Stream Analytics query tooanalyze hello data och antingen store hello resultat för senare användning eller använda en instrumentpanel och [Power BI](https://powerbi.com/) tooprovide insikter i realtid.
 
-Verktyg för sociala media analytics hjälper företag att förstå trender avsnitt. Trender avsnitt är ämnen och attityder som har en stor volym med inlägg i sociala medier. Sentiment analys, som också kallas *åsikt utvinningsmodellen*, använder sociala media analytics verktyg för att avgöra attityder mot en produkt, idé och så vidare. 
+Verktyg för sociala media analytics hjälper företag att förstå trender avsnitt. Trender avsnitt är ämnen och attityder som har en stor volym med inlägg i sociala medier. Sentiment analys, som också kallas *åsikt utvinningsmodellen*, använder sociala media analytics verktyg toodetermine attityder mot en produkt, idé och så vidare. 
 
-Trendanalys för realtid Twitter är ett bra exempel på ett webbanalysverktyg för eftersom hashtaggar prenumeration modellen gör det möjligt att lyssna på specifika nyckelord (hash-taggar) och utveckla sentiment analys av feeden.
+Trendanalys för realtid Twitter är ett bra exempel på ett webbanalysverktyg för eftersom hello hashtaggar prenumeration kan du toolisten toospecific nyckelord (hash-taggar) och utveckla sentiment analys av hello feed.
 
 ## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>Scenario: Sociala medier sentiment analys i realtid
 
-Ett företag som har en webbplats för Nyheter media är intresserad av att få flera fördelar jämfört med dess konkurrenter med innehåll som är direkt relevant för dess läsare. Företaget använder analys av sociala medier på ämnen som är relevanta för läsare genom att göra realtid sentiment analys av Twitter-data.
+Ett företag som har en webbplats för Nyheter media är intresserad av att få flera fördelar jämfört med dess konkurrenter med innehåll som är direkt tillämpliga tooits läsare. hello företaget använder analys av sociala medier på information som är relevanta tooreaders genom att göra realtid sentiment analys av Twitter-data.
 
-Företaget måste analys i realtid om tweet volym och sentiment för viktiga ämnen för att identifiera trender avsnitt i realtid på Twitter. Med andra ord är behovet av en sentiment analys analytics-motor som är baserad på den här sociala medier feed.
+tooidentify trender avsnitt i realtid på Twitter, hello företagets behov analys i realtid om hello tweet volym och sentiment för viktiga ämnen. Med andra ord är hello behöver en sentiment analys analytics-motor som är baserad på den här sociala medier feed.
 
 ## <a name="prerequisites"></a>Krav
-I den här kursen använder du ett klientprogram som ansluter till Twitter och söker efter tweets som har vissa hash-taggar (som du kan ange). För att köra programmet och analysera tweets med hjälp av Azure Streaming Analytics, måste du ha följande:
+I den här kursen använder du ett klientprogram som ansluter tooTwitter och söker efter tweets som har vissa hash-taggar (som du kan ange). I ordning toorun hello program och analysera hello tweets med hjälp av Azure Streaming Analytics, måste du ha hello följande:
 
 * En Azure-prenumeration
 * Ett Twitter-konto 
-* Ett Twitter-program och [OAuth-åtkomsttoken](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) för programmet. Vi ger avancerade anvisningar för hur du skapar en Twitter-programmet senare.
-* TwitterWPFClient-program som läser Twitter-flöde. För att få det här programmet kan hämta den [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) från GitHub och packa upp paketet till en mapp på datorn. Om du vill visa källan code och kör programmet i en felsökare kan du få källkod från [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). 
+* Ett Twitter-program och hello [OAuth-åtkomsttoken](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) för programmet. Vi ger avancerade anvisningar för hur toocreate Twitter programmet senare.
+* Hej TwitterWPFClient program som läser hello Twitter-feed. tooget detta program, hämta hello [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) från GitHub och sedan packa hello paketet till en mapp på datorn. Om du vill toosee hello källkoden och köra programmet hello i en felsökare, du kan hämta hello källkod från [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). 
 
 ## <a name="create-an-event-hub-for-streaming-analytics-input"></a>Skapa en händelsehubb för Streaming Analytics indata
 
-Exempelprogrammet genererar händelser och skickar dem till en Azure-händelsehubb. Azure event hubs är den bästa metoden för händelsen införandet för Stream Analytics. Mer information finns i [Händelsehubbar i Azure-dokumentationen](../event-hubs/event-hubs-what-is-event-hubs.md).
+hello exempelprogrammet genererar händelser och skickar dem tooan Azure-händelsehubb. Händelsehubbar är hello önskad metod för händelsen införandet för Stream Analytics. Mer information finns i hello [Händelsehubbar i Azure-dokumentationen](../event-hubs/event-hubs-what-is-event-hubs.md).
 
 
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>Skapa en event hub namnområde och händelsehubb
-I den här proceduren du först skapa en event hub-namnområde och sedan lägga till en händelsehubb i detta namnområde. Event hub namnområden används för att gruppera relaterade händelser-bussen instanser. 
+I den här proceduren du först skapa en event hub-namnområde och sedan lägger du till ett event hub toothat namnområde. Event hub namnområden används toologically gruppera relaterade händelser-bussen instanser. 
 
-1. Logga in på Azure portal och klicka på **ny** > **Sakernas Internet** > **Händelsehubb**. 
+1. Logga in toohello Azure-portalen och klicka på **ny** > **Sakernas Internet** > **Händelsehubb**. 
 
-2. I den **skapa namnområdet** bladet, ange ett namn för namnområdet som `<yourname>-socialtwitter-eh-ns`. Du kan använda valfritt namn för namnområdet, men namnet måste vara giltigt för en URL och det måste vara unikt i Azure. 
+2. I hello **skapa namnområdet** bladet, ange ett namn för namnområdet som `<yourname>-socialtwitter-eh-ns`. Du kan använda valfritt namn för hello namnområde, men hello-namnet måste vara giltigt för en URL och det måste vara unikt i Azure. 
     
 3. Välj en prenumeration och skapa eller välja en resursgrupp och sedan klicka på **skapa**. 
 
     ![Skapa ett namnområde för event hub](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-namespace.png)
  
-4. När namnområdet distribution har slutförts, kan du hitta event hub namnområdet i din lista över Azure-resurser. 
+4. Hitta hello event hub namnområde i din lista över Azure-resurser när distribution hello namnområde har slutförts. 
 
-5. Klicka på det nya namnområdet och i bladet namnområdet på  **+ &nbsp;Händelsehubb**. 
+5. Klicka på hello Nytt namnområde och hello namnområde bladet på  **+ &nbsp;Händelsehubb**. 
 
-    ![Knappen Lägg till Händelsehubben för att skapa en ny händelsehubb ](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
+    ![hello lägga till Event Hub-knappen för att skapa en ny händelsehubb ](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
  
-6. Namn på ny händelsehubb `socialtwitter-eh`. Du kan använda ett annat namn. Om du vill anteckna, eftersom du måste ha namnet senare. Du behöver inte ange andra alternativ för händelsehubben.
+6. Namnet hello ny händelsehubb `socialtwitter-eh`. Du kan använda ett annat namn. Om du vill anteckna, eftersom du måste ha namnet hello senare. Du behöver inte tooset andra alternativ för hello händelsehubb.
 
     ![Bladet för att skapa en ny händelsehubb](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
 7. Klicka på **Skapa**.
 
 
-### <a name="grant-access-to-the-event-hub"></a>Bevilja åtkomst till händelsehubben
+### <a name="grant-access-toohello-event-hub"></a>Bevilja åtkomst toohello händelsehubb
 
-Innan en process kan skicka data till en händelsehubb, måste händelsehubben ha en princip som tillåter åtkomstbehörighet. Åtkomstprincipen producerar en anslutningssträng som innehåller auktoriseringsinformation om.
+Innan en process kan skicka data tooan händelsehubb, måste hello händelsehubb ha en princip som tillåter åtkomstbehörighet. hello åtkomstprincip producerar en anslutningssträng som innehåller auktoriseringsinformation om.
 
-1.  I bladet händelse namnområde klickar du på **Händelsehubbar** och klicka sedan på namnet på den nya händelsehubben.
+1.  I hello händelse namnområde bladet, klickar du på **Händelsehubbar** och klicka sedan på hello namnet på din nya event hub.
 
-2.  Klicka i hubbladet händelse **principer för delad åtkomst** och klicka sedan på  **+ &nbsp;Lägg till**.
+2.  I hello event hub-blad klickar du på **principer för delad åtkomst** och klicka sedan på  **+ &nbsp;Lägg till**.
 
     >[!NOTE]
-    >Kontrollera att du arbetar med händelsehubb, inte event hub namnområde.
+    >Kontrollera att du arbetar med hello händelsehubb, inte hello event hub namnområde.
 
 3.  Lägg till en princip med namnet `socialtwitter-access` och **anspråk**väljer **hantera**.
 
@@ -89,176 +89,176 @@ Innan en process kan skicka data till en händelsehubb, måste händelsehubben h
  
 4.  Klicka på **Skapa**.
 
-5.  När principen har distribuerats, klickar du på den i listan med principer för delad åtkomst.
+5.  Efter hello principen har distribuerats, klickar du på hello lista över principer för delad åtkomst.
 
-6.  I listrutan **sträng-primära ANSLUTNINGSNYCKEL** och klicka på kopieringsknappen bredvid anslutningssträngen. 
+6.  Hitta hello rutan **sträng-primära ANSLUTNINGSNYCKEL** och klicka på hello Kopiera knappen Nästa toohello-anslutningssträng. 
     
-    ![Kopiera den primära anslutning strängnyckeln från principen för åtkomst](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-shared-access-policy-copy-connection-string.png)
+    ![Kopiera hello primära sträng anslutningsnyckel från hello åtkomstprincipen](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-shared-access-policy-copy-connection-string.png)
  
-7.  Klistra in anslutningssträngen i en textredigerare. Du behöver den här anslutningssträngen för nästa avsnitt, när du har mindre ändringar.
+7.  Klistra in hello anslutningssträngen i en textredigerare. Du behöver den här anslutningssträngen för hello nästa avsnitt, när du har gjort vissa små redigeringar tooit.
 
-    Anslutningssträngen ser ut så här:
+    hello anslutningssträngen ser ut så här:
 
         Endpoint=sb://YOURNAME-socialtwitter-eh-ns.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=;EntityPath=socialtwitter-eh
 
-    Observera att anslutningssträngen innehåller flera nyckel-värdepar, avgränsade med semikolon: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey`, och `EntityPath`.  
+    Observera att hello-anslutningssträngen innehåller flera nyckel-värdepar, avgränsade med semikolon: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey`, och `EntityPath`.  
 
     > [!NOTE]
-    > Delar av anslutningssträngen i exemplet för säkerhet, har tagits bort.
+    > Delar av hello anslutningssträngen i hello exempel för säkerhet, har tagits bort.
 
-8.  I textredigeraren kan ta bort den `EntityPath` par från anslutningssträngen (Glöm inte att ta bort semikolonet som föregår den). När du är klar anslutningssträngen ser ut så här:
+8.  Ta bort hello i hello textredigerare `EntityPath` par från hello anslutningssträng (Glöm inte tooremove hello semikolon som föregår den). När du är klar hello anslutningssträngen ser ut så här:
 
         Endpoint=sb://YOURNAME-socialtwitter-eh-ns.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=
 
 
-## <a name="configure-and-start-the-twitter-client-application"></a>Konfigurera och starta klientprogrammet Twitter
-Klientprogrammet får tweet händelser direkt från Twitter. För att göra så den behöver behörighet att anropa Twitter Streaming API: erna. Om du vill konfigurera behörigheten Skapa ett program i Twitter, vilket genererar unika autentiseringsuppgifter (t.ex en OAuth-token). Du kan sedan konfigurera klientprogrammet använder dessa autentiseringsuppgifter när den gör API-anrop. 
+## <a name="configure-and-start-hello-twitter-client-application"></a>Konfigurera och starta hello Twitter-klientprogrammet
+hello klientprogrammet hämtar tweet händelser direkt från Twitter. I order toodo så, måste behörighet toocall hello Twitter Streaming API: er. tooconfigure att behörigheten kan du skapa ett program i Twitter, vilket genererar unika autentiseringsuppgifter (t.ex en OAuth-token). Du kan sedan konfigurera hello klienten programmet toouse dessa autentiseringsuppgifter när gör det API-anrop. 
 
 ### <a name="create-a-twitter-application"></a>Skapa ett Twitter-program
 Om du inte redan har ett Twitter-program som du kan använda för den här kursen kan skapa du en. Du måste redan ha ett Twitter-konto.
 
 > [!NOTE]
-> Exakt processen i Twitter för att skapa ett program och hämta de nycklar och hemligheter token kan ändras. Om dessa instruktioner inte matchar det som visas på Twitter-plats finns i dokumentationen för Twitter-utvecklare.
+> hello exakt processen i Twitter för att skapa ett program och hämtar hello nycklar och hemligheter token kan ändras. Om dessa instruktioner inte matchar det som visas på hello Twitter plats läser du toohello Twitter utvecklardokumentation.
 
-1. Gå till den [sidan Twitter programhantering](https://apps.twitter.com/). 
+1. Gå toohello [sidan Twitter programhantering](https://apps.twitter.com/). 
 
 2. Skapa ett nytt program. 
 
-    * Ange en giltig URL för webbplats-URL. Det behöver inte vara en live-webbplats. (Du kan inte ange bara `localhost`.)
-    * Lämna fältet återanrop tomt. Klientprogrammet som du använder för den här kursen kräver inte återanrop.
+    * Ange en giltig URL för hello Webbadress. Det har inte toobe en live-webbplats. (Du kan inte ange bara `localhost`.)
+    * Lämna hello återanrop fältet tomt. hello-klientprogram som du använder för den här kursen kräver inte återanrop.
 
     ![Skapa ett program i Twitter](./media/stream-analytics-twitter-sentiment-analysis-trends/create-twitter-application.png)
 
-3. Du kan också ändra programmets behörigheter till skrivskyddat läge.
+3. Du kan ändra behörigheter för hello program bara tooread.
 
-4. Gå till när programmet har skapats kan den **nycklar och åtkomst-token** sidan.
+4. När programmet hello skapas gå toohello **nycklar och åtkomst-token** sidan.
 
-5. Klicka på knappen för att generera en åtkomst-token och åtkomst-token hemlighet.
+5. Klicka på hello knappen toogenerate en åtkomst-token och åtkomst-token hemlighet.
 
-Behåll den här informationen praktisk, eftersom du behöver i nästa procedur.
+Behåll den här informationen praktisk, eftersom du behöver i hello nästa procedur.
 
 >[!NOTE]
->Nycklar och hemligheter för programmets Twitter ger åtkomst till ditt Twitter-konto. Behandla den här informationen som känsliga på samma sätt som du gör ditt Twitter-lösenord. Till exempel Bädda inte in informationen i ett program som du ger. 
+>Ange åtkomstkonto tooyour Twitter hello nycklar och hemligheter för hello Twitter-programmet. Behandla den här informationen som känslig, hello samma som du har lösenordet Twitter. Till exempel inte att bädda in den här informationen i ett program som du ger tooothers. 
 
 
-### <a name="configure-the-client-application"></a>Konfigurera klientprogrammet
-Vi har skapat ett klientprogram som ansluter till Twitter data med hjälp av [Twitter's Streaming API: er](https://dev.twitter.com/streaming/overview) att samla in händelser för tweet om en specifik uppsättning avsnitt. Programmet använder den [Sentiment140](http://help.sentiment140.com/) öppen källkod verktyg som tilldelas varje tweet sentiment följande värde:
+### <a name="configure-hello-client-application"></a>Konfigurera hello klientprogrammet
+Vi har skapat ett klientprogram som ansluter tooTwitter data med hjälp av [Twitter's Streaming API: er](https://dev.twitter.com/streaming/overview) toocollect tweet händelser för en specifik uppsättning avsnitt. hello programmet använder hello [Sentiment140](http://help.sentiment140.com/) öppen källkod verktyg som tilldelar hello följande sentiment värdet tooeach tweet:
 
 * 0 = negativt
 * 2 = neutral
 * 4 = positivt
 
-När tweet händelser har tilldelats ett värde för sentiment, är de pushas till händelsehubben som du skapade tidigare.
+När hello tweet händelser har tilldelats ett värde för sentiment, är de pushas toohello händelsehubb som du skapade tidigare.
 
-Innan programmet körs, kräver vissa information från dig, t.ex. Twitter-nycklar och anslutningssträngen event hub. Du kan ange konfigurationsinformation på följande sätt:
+Innan hello programmet körs, kräver vissa information från dig, t.ex. hello Twitter nycklar och anslutningssträngen för hello event hub. Du kan ange hello konfigurationsinformation på följande sätt:
 
-* Kör programmet och sedan använda programmets användargränssnitt för att ange de nycklar och hemligheter anslutningssträngen. Om du gör detta konfigurationsinformationen används för den aktuella sessionen, men sparas inte.
-* Redigera programmets .config-fil och ange värden för det. Den här metoden kvarstår konfigurationsinformation, men det innebär också att potentiellt känslig information lagras i klartext på datorn.
+* Kör hello programmet och sedan använda hello programmets användargränssnitt tooenter hello nycklar hemligheter och anslutningssträngen. Om du gör detta hello konfigurationsinformation används för den aktuella sessionen, men sparas inte.
+* Redigera hello programmet .config-fil och ange hello värdena. Den här metoden kvarstår hello konfigurationsinformation, men det innebär också att potentiellt känslig information lagras i klartext på datorn.
 
-Följande procedur dokument båda metoderna. 
+hello dokument följande procedur båda metoderna. 
 
-1. Kontrollera att du har hämtat och uppackade den [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) program enligt kraven.
+1. Kontrollera att du har hämtat och uppackade hello [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) program som anges i hello krav.
 
-2. Ange värden vid körning (och endast för den aktuella sessionen) kör den `TwitterWPFClient.exe` program. När du uppmanas av programmet kan du ange följande värden:
+2. tooset hello värden vid körning (och endast för hello aktuell session), kör hello `TwitterWPFClient.exe` program. När du uppmanas av programmet hello ange hello följande värden:
 
-    * Twitter konsumentnyckel (API-nyckel).
-    * Twitter konsumenten hemligheten (hemliga API).
-    * Twitter-åtkomsttoken.
-    * Twitter åtkomst-Token hemligheten.
-    * Informationen i anslutningssträngen som du sparade tidigare. Kontrollera att du använder anslutningssträngen som du har tagit bort den `EntityPath` nyckel / värde-par från.
-    * Twitter-nyckelord som du vill fastställa sentiment för.
+    * hello Twitter konsumentnyckel (API-nyckel).
+    * hello Twitter konsumenten hemligheten (hemliga API).
+    * hello Twitter åtkomst-Token.
+    * hello Twitter åtkomst-Token hemlighet.
+    * hello informationen i anslutningssträngen som du sparade tidigare. Kontrollera att du använder hello anslutningssträngen som du tog bort hello `EntityPath` nyckel / värde-par från.
+    * hello Twitter nyckelord som du vill toodetermine sentiment för.
 
    ![TwitterWpfClient programmet körs, visar dolda inställningarna](./media/stream-analytics-twitter-sentiment-analysis-trends/wpfclientlines.png)
 
-3. Använd en textredigerare för att öppna filen TwitterWpfClient.exe.config för att ange värden för beständigt. I den `<appSettings>` element, göra detta:
+3. tooset hello värden beständigt, använda en redigerare tooopen hello TwitterWpfClient.exe.config textfil. I hello `<appSettings>` element, göra detta:
 
-    * Ange `oauth_consumer_key` till Twitter konsumentnyckel (API-nyckel). 
-    * Ange `oauth_consumer_secret` till Twitter konsumenten hemligheten (hemliga API).
-    * Ange `oauth_token` till Twitter-åtkomsttoken.
-    * Ange `oauth_token_secret` till Twitter åtkomst-Token hemlighet.
+    * Ange `oauth_consumer_key` toohello Twitter konsumentnyckel (API-nyckel). 
+    * Ange `oauth_consumer_secret` toohello Twitter konsumenten hemligheten (hemliga API).
+    * Ange `oauth_token` toohello Twitter åtkomst-Token.
+    * Ange `oauth_token_secret` toohello Twitter åtkomst-Token hemlighet.
 
-    Senare i den `<appSettings>` element, göra dessa ändringar:
+    Senare i hello `<appSettings>` element, göra dessa ändringar:
 
-    * Ange `EventHubName` till händelsehubbens namn (det vill säga till värdet för entiteten sökväg).
-    * Ange `EventHubNameConnectionString` i anslutningssträngen. Kontrollera att du använder anslutningssträngen som du har tagit bort den `EntityPath` nyckel / värde-par från.
+    * Ange `EventHubName` toohello händelsehubbens namn (det vill säga toohello värdet hello entitet sökväg).
+    * Ange `EventHubNameConnectionString` toohello anslutningssträngen. Kontrollera att du använder hello anslutningssträngen som du tog bort hello `EntityPath` nyckel / värde-par från.
 
-    Den `<appSettings>` avsnitt ser ut som följande exempel. (För tydlighetens skull och säkerhet, vi omsluten några rader och ta bort vissa tecken.)
+    Hej `<appSettings>` avsnitt ser ut som följande exempel hello. (För tydlighetens skull och säkerhet, vi omsluten några rader och ta bort vissa tecken.)
 
-    ![TwitterWpfClient programkonfigurationsfilen i en textredigerare, visar Twitter-nycklar och hemligheter och event hub informationen i anslutningssträngen](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-tiwtter-app-config.png)
+    ![TwitterWpfClient programkonfigurationsfilen i en textredigerare som visar hello Twitter nycklar och hemligheter samt information om hello event hub anslutningssträngar](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-tiwtter-app-config.png)
  
-4. Om du inte redan startar programmet kan köra TwitterWpfClient.exe. 
+4. Om du inte redan startade hello program, köra TwitterWpfClient.exe. 
 
-5. Klicka på den gröna start-knappen för att samla in sociala sentiment. Du ser Tweet händelser med den **CreatedAt**, **avsnittet**, och **SentimentScore** värden som skickas till din event hub.
+5. Klicka på hello gröna start-knappen toocollect sociala sentiment. Du ser Tweet händelser med hello **CreatedAt**, **avsnittet**, och **SentimentScore** värden som skickas till tooyour händelsehubb.
 
     ![TwitterWpfClient program som körs, visar en lista över tweets](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-app-listing.png)
 
     >[!NOTE]
-    >Om du får felmeddelanden och du inte ser en dataström med tweets som visas i den nedre delen av fönstret, kontrollera nycklar och hemligheter. Kontrollera också anslutningssträngen (se till att den inte innehåller den `EntityPath` nyckel och värde.)
+    >Om du får felmeddelanden och du inte ser en dataström med tweets som visas i hello nedre delen av hello fönster, kontrollera hello nycklar och hemligheter. Kontrollera även hello anslutningssträngen (se till att den inte innehåller hello `EntityPath` nyckel och värde.)
 
 
 ## <a name="create-a-stream-analytics-job"></a>Skapa ett Stream Analytics-jobb
 
-Nu när tweet händelser strömning i realtid från Twitter, kan du ställa in ett Stream Analytics-jobb att analysera dessa händelser i realtid.
+Nu när tweet händelser strömning i realtid från Twitter, kan du ställa in en Stream Analytics-jobbet tooanalyze dessa händelser i realtid.
 
-1. I Azure-portalen klickar du på **ny** > **Sakernas Internet** > **Stream Analytics-jobbet**.
+1. I hello Azure-portalen klickar du på **ny** > **Sakernas Internet** > **Stream Analytics-jobbet**.
 
-2. Namnge jobbet `socialtwitter-sa-job` och ange en prenumeration, resursgrupp och plats.
+2. Hello jobb `socialtwitter-sa-job` och ange en prenumeration, resursgrupp och plats.
 
-    Det är en bra idé att placera jobbet och händelsehubben i samma region för bästa prestanda och så att du inte betala för att överföra data mellan regioner.
+    Det är en bra idé tooplace hello jobbet och hello händelsehubb i hello samma region för bästa prestanda och så att du inte betalar tootransfer data mellan regioner.
 
     ![Skapar ett nytt Stream Analytics-jobb](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
 3. Klicka på **Skapa**.
 
-    Jobbet har skapats och portalen visar jobbinformation.
+    hello jobb skapas och hello portalen visar jobbinformation.
 
 
-## <a name="specify-the-job-input"></a>Ange indata för jobb
+## <a name="specify-hello-job-input"></a>Ange hello jobbet indata
 
-1. I Stream Analytics-jobbet under **jobbet topologi** mitt i jobb-bladet klickar du på **indata**. 
+1. I Stream Analytics-jobbet under **jobbet topologi** hello mitten av hello jobb-bladet, klickar du på **indata**. 
 
-2. I den **indata** bladet, klickar du på  **+ &nbsp;Lägg till** och fyll sedan i bladet med dessa värden:
+2. I hello **indata** bladet, klickar du på  **+ &nbsp;Lägg till** och fyller sedan hello bladet med dessa värden:
 
-    * **Ett inmatat alias**: Använd namnet `TwitterStream`. Om du använder ett annat namn, notera den eftersom du behöver den senare.
+    * **Ett inmatat alias**: Använd hello namn `TwitterStream`. Om du använder ett annat namn, notera den eftersom du behöver den senare.
     * **Typ av datakälla**: Välj **dataströmmen**.
     * **Källan**: Välj **händelsehubb**.
     * **Importera alternativet**: Välj **Använd händelsehubb från aktuell prenumeration**. 
-    * **Service bus-namnrymd**: Välj händelsen hubb namnområdet som du skapade tidigare (`<yourname>-socialtwitter-eh-ns`).
-    * **Händelsehubb**: Välj händelsehubben som du skapade tidigare (`socialtwitter-eh`).
-    * **Namnet på händelsehubben princip**: Välj den åtkomstprincip som du skapade tidigare (`socialtwitter-access`).
+    * **Service bus-namnrymd**: Markera hello event hub namnområde som du skapade tidigare (`<yourname>-socialtwitter-eh-ns`).
+    * **Händelsehubb**: Välj hello händelsehubb som du skapade tidigare (`socialtwitter-eh`).
+    * **Namnet på händelsehubben princip**: Välj hello åtkomstprincip som du skapade tidigare (`socialtwitter-access`).
 
     ![Skapa nya indata för Streaming Analytics-jobbet](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
 3. Klicka på **Skapa**.
 
 
-## <a name="specify-the-job-query"></a>Ange frågan som jobb
+## <a name="specify-hello-job-query"></a>Ange hello jobbfråga
 
-Stream Analytics stöder en enkel, deklarativ frågemodell som beskriver transformationer. Mer information om språk finns i [referens för Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx).  Den här kursen hjälper dig att skapa och testa flera frågor via Twitter-data.
+Stream Analytics stöder en enkel, deklarativ frågemodell som beskriver transformationer. toolearn mer om hello språk finns hello [referens för Azure Stream Analytics Query Language](https://msdn.microsoft.com/library/azure/dn834998.aspx).  Den här kursen hjälper dig att skapa och testa flera frågor via Twitter-data.
 
-Om du vill jämföra antalet nämns mellan ämnen som du kan använda en [rullande fönster](https://msdn.microsoft.com/library/azure/dn835055.aspx) att hämta antalet nämns i avsnittet var femte sekund.
+toocompare hello antalet nämns mellan ämnen, som du kan använda en [rullande fönster](https://msdn.microsoft.com/library/azure/dn835055.aspx) tooget hello antal nämns i avsnittet var femte sekund.
 
-1. Stäng den **indata** bladet om du inte redan har gjort.
+1. Stäng hello **indata** bladet om du inte redan har gjort.
 
-2. I jobb-bladet klickar du på den **frågan** rutan. Azure visar in- och utgångar som är konfigurerade för jobbet och kan du skapa en fråga som kan du omvandla Indataströmmen som skickas till utdata.
+2. Hello jobb-bladet, klickar du på hello **frågan** rutan. Azure visar hello indata och utdata som är konfigurerade för hello jobbet och kan du skapa en fråga som kan du omvandla hello Indataströmmen som toohello utdata skickas.
 
-3. Kontrollera att programmet TwitterWpfClient körs. 
+3. Kontrollera att hello TwitterWpfClient program körs. 
 
-3. I den **frågan** bladet, klickar du på punkter bredvid den `TwitterStream` indata och välj sedan **exempeldata från indata**.
+3. I hello **frågan** bladet, klickar du på hello punkter nästa toohello `TwitterStream` indata och välj sedan **exempeldata från indata**.
 
-    ![Menyn Alternativ exempeldata för posten Streaming Analytics-jobb med ”exempeldata från indata” markerad](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-sample-data-from-input.png)
+    ![Menyn Alternativ toouse exempeldata för hello Streaming Analytics-jobbet post med ”exempeldata från indata” markerad](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-sample-data-from-input.png)
 
-    Då öppnas ett blad som du kan ange hur mycket exempeldata som kan definieras enligt hur lång tid för att läsa Indataströmmen.
+    Då öppnas ett blad som du kan ange hur mycket exempel data tooget som definierats i hur länge tooread hello inkommande dataström.
 
-4. Ange **minuter** till 3 och klicka sedan på **OK**. 
+4. Ange **minuter** too3 och klicka sedan på **OK**. 
     
-    ![Alternativ för provtagning Indataströmmen, med ”3 minuter” markerad.](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-input-create-sample-data.png)
+    ![Alternativ för provtagning hello Indataströmmen, med ”3 minuter” markerad.](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-input-create-sample-data.png)
 
-    Azure exempel 3 minuter kan du se från Indataströmmen och meddelar dig när exempeldata är klar. (Detta tar en stund.) 
+    Azure exempel 3 minuter kan du se från hello Indataströmmen och meddelar dig när hello exempeldata är klar. (Detta tar en stund.) 
 
-    Exempeldata lagras tillfälligt och är tillgänglig när du har frågefönster öppnas. Om du stänger frågefönstret exempeldata ignoreras och du måste skapa en ny uppsättning exempeldata. 
+    hello exempeldata lagras tillfälligt och är tillgänglig när du har hello frågefönster öppnas. Om du stänger hello frågefönstret hello exempeldata ignoreras och du har toocreate en ny uppsättning exempeldata. 
 
-5. Ändra frågan i kodredigeraren för till följande:
+5. Ändra hello frågan i hello kod editor toohello följande:
 
     ```
     SELECT System.Timestamp as Time, Topic, COUNT(*)
@@ -266,49 +266,49 @@ Om du vill jämföra antalet nämns mellan ämnen som du kan använda en [rullan
     GROUP BY TUMBLINGWINDOW(s, 5), Topic
     ```
 
-    Om inte `TwitterStream` som alias för indata ersätta ditt alias för `TwitterStream` i frågan.  
+    Om inte `TwitterStream` som hello alias för hello indata ersätta ditt alias för `TwitterStream` i hello-frågan.  
 
-    Den här frågan använder den **TIMESTAMP BY** nyckelord för att ange något tidsstämpelsfält i nyttolasten som ska användas i den temporala beräkningen. Om det här fältet har inte angetts, utförs fönsterhantering åtgärden med hjälp av den tid som varje händelse som anlänt på händelsehubben. Läs mer i avsnittet ”ankomsttid vs programmet tid” i [referens för Stream Analytics Query](https://msdn.microsoft.com/library/azure/dn834998.aspx).
+    Den här frågan använder hello **TIMESTAMP BY** nyckelordet toospecify något tidsstämpelsfält i hello nyttolast toobe används i hello temporala beräkningar. Om det här fältet har inte angetts, utförs hello fönsterhantering åtgärden med hjälp av hello länge varje händelse som anlänt på hello händelsehubb. Läs mer i avsnittet hello ”ankomsttid vs programmet tid” i [referens för Stream Analytics Query](https://msdn.microsoft.com/library/azure/dn834998.aspx).
 
-    Den här frågan använder också en tidsstämpel för slutet av varje fönster med hjälp av den **System.Timestamp** egenskapen.
+    Den här frågan också har åtkomst till en tidstämpel för hello slutet av varje fönster med hjälp av hello **System.Timestamp** egenskapen.
 
-5. Klicka på **Test**. Frågan körs mot de data som du tog prov.
+5. Klicka på **Test**. hello frågan körs mot hello data som du tog prov.
     
-6. Klicka på **Spara**. Frågan sparas som en del av Streaming Analytics-jobbet. (Den inte spara exempeldata.)
+6. Klicka på **Spara**. Detta sparar hello frågan som en del av hello Streaming Analytics-jobbet. (Den inte spara hello exempeldata.)
 
 
-## <a name="experiment-using-different-fields-from-the-stream"></a>Experimentera med olika fält från dataströmmen 
+## <a name="experiment-using-different-fields-from-hello-stream"></a>Experimentera med olika fält från hello dataström 
 
-I följande tabell visas de fält som är en del av JSON strömmande data. Du kan experimentera i frågeredigeraren.
+hello visar följande tabell hello fält som ingår i hello JSON strömmande data. Känna sig fria tooexperiment i hello frågeredigeraren.
 
 |JSON-egenskap | Definition|
 |--- | ---|
-|CreatedAt | Den tid som tweet skapades|
-|Avsnitt | Avsnittet som matchar det angivna nyckelordet|
-|SentimentScore | Sentiment poäng från Sentiment140|
-|Skapa | Twitter-referensen som skickats av tweet|
-|Text | Själva tweet|
+|CreatedAt | hello tid att hello tweet skapades|
+|Avsnitt | hello avsnitt som matchar hello angivna nyckelordet|
+|SentimentScore | Hej sentiment poäng från Sentiment140|
+|Skapa | hello Twitter-referensen som skickas hello tweet|
+|Text | hello fullständig brödtext hello tweet|
 
 
 ## <a name="create-an-output-sink"></a>Skapa utdatamottagare
 
-Du har nu definierat en händelseström, en händelsehubb som indata för att mata in händelser och en fråga för att genomföra en omvandling över dataströmmen. Det sista steget är att definiera utdatamottagare för jobbet.  
+Du har nu definierat en händelseström, event hub inkommande tooingest händelser och en fråga tooperform en omvandling över hello dataströmmen. hello sista steget är toodefine utdatamottagare för hello jobbet.  
 
-I den här självstudiekursen skriva aggregerade tweet händelser från jobbet frågan till Azure Blob storage.  Du kan också push-resultaten till Azure SQL Database, Azure Table storage Event Hubs eller Power BI, beroende på ditt program behöver.
+I den här självstudiekursen skriva hello samman tweet händelser från hello jobbet frågan tooAzure Blob storage.  Du kan också push dina resultat tooAzure SQL-databas, Azure Table storage Event Hubs eller Power BI, beroende på ditt program behöver.
 
-## <a name="specify-the-job-output"></a>Ange jobbutdata
+## <a name="specify-hello-job-output"></a>Ange hello jobbutdata
 
-1. I den **jobbet topologi** klickar du på den **utdata** rutan. 
+1. I hello **jobbet topologi** klickar du på hello **utdata** rutan. 
 
-2. I den **utdata** bladet, klickar du på  **+ &nbsp;Lägg till** och fyll sedan i bladet med dessa värden:
+2. I hello **utdata** bladet, klickar du på  **+ &nbsp;Lägg till** och fyller sedan hello bladet med dessa värden:
 
-    * **Ett utdataalias**: Använd namnet `TwitterStream-Output`. 
+    * **Ett utdataalias**: Använd hello namn `TwitterStream-Output`. 
     * **Sink**: Välj **Blob storage**.
     * **Importalternativ**: Välj **använda blob storage från aktuell prenumeration**.
     * **Lagringskontot**. Välj **skapa ett nytt lagringskonto.**
-    * **Lagringskontot** (andra rutan). Ange `YOURNAMEsa`, där `YOURNAME` är ditt namn eller en annan unik sträng. Namnet kan använda bara gemena bokstäver och siffror, och den måste vara unikt i Azure. 
+    * **Lagringskontot** (andra rutan). Ange `YOURNAMEsa`, där `YOURNAME` är ditt namn eller en annan unik sträng. hello namn kan använda bara gemena bokstäver och siffror, och den måste vara unikt i Azure. 
     * **Behållaren**. Ange `socialtwitter`.
-    Lagringskontonamn och behållarnamn används tillsammans för att ge en URI för blobblagring, så här: 
+    Hej lagringskontonamn och behållarnamn är används tillsammans tooprovide en URI för hello blob storage, så här: 
 
     `http://YOURNAMEsa.blob.core.windows.net/socialtwitter/...`
     
@@ -316,49 +316,49 @@ I den här självstudiekursen skriva aggregerade tweet händelser från jobbet f
     
 4. Klicka på **Skapa**. 
 
-    Azure skapar lagringskontot och skapar automatiskt en nyckel. 
+    Azure skapar hello storage-konto och skapar automatiskt en nyckel. 
 
-5. Stäng den **utdata** bladet. 
+5. Stäng hello **utdata** bladet. 
 
 
-## <a name="start-the-job"></a>Starta jobbet
+## <a name="start-hello-job"></a>Starta hello jobbet
 
-Jobbet indata-, fråge- och utdata har angetts. Du är redo att börja Stream Analytics-jobbet.
+Jobbet indata-, fråge- och utdata har angetts. Är du redo toostart hello Stream Analytics-jobbet.
 
-1. Kontrollera att programmet TwitterWpfClient körs. 
+1. Kontrollera att hello TwitterWpfClient program körs. 
 
-2. I jobb-bladet klickar du på **starta**.
+2. I hello jobb-bladet, klickar du på **starta**.
 
-    ![Starta Stream Analytics-jobbet](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sa-job-start-output.png)
+    ![Starta hello Stream Analytics-jobbet](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sa-job-start-output.png)
 
-3. I den **startjobb** bladet för **jobbutdata starttid**väljer **nu** och klicka sedan på **starta**. 
+3. I hello **startjobb** bladet för **jobbutdata starttid**väljer **nu** och klicka sedan på **starta**. 
 
-    ![”Starta jobbet” bladet för Stream Analytics-jobbet](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sa-job-start-job-blade.png)
+    ![”Starta jobbet” bladet för hello Stream Analytics-jobbet](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-sa-job-start-job-blade.png)
 
-    Azure meddelar dig när jobbet har startat och i bladet jobb visas status som **kör**.
+    Azure meddelar dig när hello jobb har startat, och i hello jobb-bladet hello visas statusen **kör**.
 
     ![Köra jobb](./media/stream-analytics-twitter-sentiment-analysis-trends/jobrunning.png)
 
 ## <a name="view-output-for-sentiment-analysis"></a>Visa utdata för sentiment analys
 
-När jobbet har startats och bearbetas i realtid Twitter-dataströmmen kan visa du utdata för sentiment analys.
+När jobbet har startats och bearbetar hello realtid Twitter-dataströmmen kan visa du hello utdata för sentiment analys.
 
-Du kan använda ett verktyg som [Azure Lagringsutforskaren](https://http://storageexplorer.com/) eller [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) att visa din jobbutdata i realtid. Härifrån kan du använda [Power BI](https://powerbi.com/) att utöka ditt program att inkludera en anpassad instrumentpanel som det visas i följande skärmbild:
+Du kan använda ett verktyg som [Azure Lagringsutforskaren](https://http://storageexplorer.com/) eller [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) tooview jobbet utdata i realtid. Härifrån kan du använda [Power BI](https://powerbi.com/) tooextend ditt program tooinclude en anpassade instrumentpanel som hello som visas i följande skärmbild hello:
 
 ![Power BI](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 
 
-## <a name="create-another-query-to-identify-trending-topics"></a>Skapa en annan fråga för att identifiera trender avsnitt
+## <a name="create-another-query-tooidentify-trending-topics"></a>Skapa en annan fråga tooidentify trender avsnitt
 
-En annan fråga som du kan använda för att förstå Twitter-sentiment baseras på en [glidande fönstret](https://msdn.microsoft.com/library/azure/dn835051.aspx). För att identifiera trender avsnitt kan söka du efter avsnitt som går via ett tröskelvärde för nämns i en angiven tidsperiod.
+En annan fråga som du kan använda toounderstand Twitter-sentiment baseras på en [glidande fönstret](https://msdn.microsoft.com/library/azure/dn835051.aspx). tooidentify trender ämnen, du söka efter avsnitt som går via ett tröskelvärde för nämns i en angiven tidsperiod.
 
-Vid tillämpningen av den här kursen kan du söka efter avsnitt som nämns fler än 20 gånger i de senaste 5 sekunderna.
+Hello enligt den här kursen kan du söka efter avsnitt som nämns fler än 20 gånger i hello sista 5 sekunder.
 
-1. I jobb-bladet klickar du på **stoppa** att stoppa jobbet. 
+1. I hello jobb-bladet, klickar du på **stoppa** toostop hello jobb. 
 
-2. I den **jobbet topologi** klickar du på den **frågan** rutan. 
+2. I hello **jobbet topologi** klickar du på hello **frågan** rutan. 
 
-3. Ändra frågan till följande:
+3. Ändra hello frågan toohello följande:
 
     ```    
     SELECT System.Timestamp as Time, Topic, COUNT(*) as Mentions
@@ -369,16 +369,16 @@ Vid tillämpningen av den här kursen kan du söka efter avsnitt som nämns fler
 
 4. Klicka på **Spara**.
 
-5. Kontrollera att programmet TwitterWpfClient körs. 
+5. Kontrollera att hello TwitterWpfClient program körs. 
 
-6. Klicka på **starta** att starta om jobbet med den nya frågan.
+6. Klicka på **starta** toorestart hello jobb med hjälp av hello ny fråga.
 
 
 ## <a name="get-support"></a>Få support
 För ytterligare hjälp försök vår [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nästa steg
-* [Introduktion till Azure Stream Analytics](stream-analytics-introduction.md)
+* [Introduktion tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Komma igång med Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skala Azure Stream Analytics-jobb](stream-analytics-scale-jobs.md)
 * [Referens för Azure Stream Analytics-frågespråket](https://msdn.microsoft.com/library/azure/dn834998.aspx)

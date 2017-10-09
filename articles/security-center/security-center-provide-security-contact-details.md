@@ -1,6 +1,6 @@
 ---
-title: "Ange säkerhet kontaktinformation i Azure Security Center | Microsoft Docs"
-description: "Det här dokumentet beskrivs hur du ange säkerhet kontaktinformation i Azure Security Center."
+title: "aaaProvide säkerhet kontaktinformation i Azure Security Center | Microsoft Docs"
+description: "Det här dokumentet beskrivs hur tooprovide säkerhet kontaktinformation i Azure Security Center."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 1a6e5e915745dd3588fbc54b353daa947b1c4289
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6c378c9c84c6e4fce70b2541e4cc121018700269
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Ange säkerhet kontaktinformation i Azure Security Center
-Azure Security Center kommer rekommenderar att du förser säkerhet kontaktinformation för din Azure-prenumeration om du inte redan har gjort. Den här informationen används av Microsoft för att kontakta dig om Microsoft Security Response Center (MRSC) upptäcker att en obehörig part har kommit åt dina kunddata. MSRC utför väljer säkerhetsövervakning av Azure-nätverk och infrastruktur och tar emot hot intelligence och missbruk klagomål från tredje part.
+Azure Security Center kommer rekommenderar att du förser säkerhet kontaktinformation för din Azure-prenumeration om du inte redan har gjort. Den här informationen kommer att användas av Microsoft toocontact om hello Microsoft Security Response Center (MSRC) upptäcker att din kundinformation används redan av en olaglig eller obehörig part. MSRC utför väljer säkerhetsövervakning hello Azure-nätverk och infrastruktur och tar emot hot intelligence och missbruk klagomål från tredje part.
 
-Ett e-postmeddelande skickas på den första dagliga förekomsten av en avisering och endast för varningar med hög angelägenhetsgrad. E-postinställningar kan bara konfigureras för prenumerationsprinciper. Resursgrupper inom en prenumeration ärver inställningarna.
+Ett e-postmeddelande skickas på hello första dagliga förekomsten av en avisering och endast för varningar med hög angelägenhetsgrad. E-postinställningar kan bara konfigureras för prenumerationsprinciper. Resursgrupper inom en prenumeration ärver inställningarna.
 
 > [!NOTE]
-> I det här dokumentet beskrivs tjänsten genom en exempeldistribution.  Det är alltså inte en steg-för-steg-guide.
+> Det här dokumentet introducerar hello-tjänsten med hjälp av ett exempel på distribution.  Det är alltså inte en steg-för-steg-guide.
 >
 >
 
-## <a name="implement-the-recommendation"></a>Implementera rekommendationen
-1. I den **rekommendationer** bladet väljer **ange säkerhet kontaktinformation**.
+## <a name="implement-hello-recommendation"></a>Implementera hello rekommendation
+1. I hello **rekommendationer** bladet väljer **ange säkerhet kontaktinformation**.
    ![Ger säkerhet kontakt][1]
-2. Gör det öppnas bladet **ange säkerhet kontaktinformation**. Välj den Azure-prenumerationer anger du kontaktinformation på.
+2. Då öppnas bladet hello **ange säkerhet kontaktinformation**. Välj Azure-prenumeration hello tooprovide kontaktinformation.
    ![Ange säkerhetskontaktinformation][2]
 3. En andra **ange säkerhet kontaktinformation** blad öppnas.
 
-   * Ange säkerhet kontakta e-postadressen eller adresser som avgränsas med kommatecken. Det finns inte en gräns för antalet e-postadresser som du kan ange.
+   * Ange hello säkerhet kontakta e-postadress eller adresser som avgränsas med kommatecken. Det finns inte en begränsa toohello antalet e-postadresser som du kan ange.
    * Ange en säkerhet kontakta internationella telefonnummer.
-   * Aktivera alternativet för att ta emot e-post om varningar med hög angelägenhetsgrad **Skicka mig e-postmeddelanden om aviseringar**.
-   * I framtiden, har du möjlighet att skicka e-postmeddelanden till prenumerationen ägare. Det här alternativet är för närvarande nedtonade.
-   * Välj **OK** ska gälla säkerhet kontaktinformation för din prenumeration.
+   * tooreceive e-post om varningar med hög angelägenhetsgrad, aktivera hello **Skicka mig e-postmeddelanden om aviseringar**.
+   * I framtida hello har du hello alternativet toosend e-postaviseringar toosubscription ägare. Det här alternativet är för närvarande nedtonade.
+   * Välj **OK** tooapply hello säkerhet kontakta information tooyour prenumeration.
 
 ## <a name="see-also"></a>Se även
-I följande avsnitt kan du lära dig mer om Security Center:
+toolearn mer om Security Center finns hello följande:
 
-* [Ange säkerhetsprinciper i Azure Security Center](security-center-policies.md) – Här får du lära dig hur du ställer in säkerhetsprinciper för prenumerationer och resursgrupper i Azure.
+* [Ange säkerhetsprinciper i Azure Security Center](security-center-policies.md) – Lär dig hur tooconfigure säkerhetsprinciper för dina Azure-prenumerationer och resursgrupper.
 * [Hantera säkerhetsrekommendationer i Azure Security Center](security-center-recommendations.md) – Lär dig rekommendationer för att skydda dina Azure-resurser.
-* [Övervakning av säkerhetshälsa i Azure Security Center](security-center-monitoring.md) – Lär dig att övervaka hälsotillståndet hos dina Azure-resurser.
-* [Hantera och åtgärda säkerhetsaviseringar i Azure Security Center](security-center-managing-and-responding-alerts.md) – Här får du lära dig hur du hanterar och åtgärdar säkerhetsaviseringar.
-* [Övervaka partnerlösningar med Azure Security Center](security-center-partner-solutions.md): Här får du lära dig hur du övervakar dina partnerlösningars hälsostatus.
-* [Vanliga frågor och svar om Azure Security Center](security-center-faq.md) – Här hittar du vanliga frågor och svar om tjänsten.
-* [Azures säkerhetsblogg](http://blogs.msdn.com/b/azuresecurity/) --Azure security nyheter och information.
+* [Övervakning av säkerhetshälsa i Azure Security Center](security-center-monitoring.md) – Lär dig hur toomonitor hello Azure-resursers hälsa.
+* [Hantera och svarar toosecurity aviseringar i Azure Security Center](security-center-managing-and-responding-alerts.md) – Lär dig hur toomanage och svara toosecurity aviseringar.
+* [Övervaka partnerlösningar med Azure Security Center](security-center-partner-solutions.md) – Lär dig hur toomonitor hello dina partnerlösningars hälsostatus.
+* [Vanliga frågor om Azure Security Center](security-center-faq.md) --finns vanliga frågor om hur du använder hello-tjänsten.
+* [Azures säkerhetsblogg](http://blogs.msdn.com/b/azuresecurity/) --hello Azure security nyheter och information.
 
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png

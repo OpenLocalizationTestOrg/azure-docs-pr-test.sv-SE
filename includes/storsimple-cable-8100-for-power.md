@@ -1,12 +1,12 @@
 <!--author=alkohli last changed: 9/16/15-->
 
-#### <a name="to-cable-for-power"></a>Till power-kabel
-1. Se till att kraften växlar på varje kraften och kylning moduler (PCMs) är i INAKTIVERAT läge.
-2. Anslut strömkablar till var och en av PCMs i primära höljet.
-3. Bifoga strömkablar rack kraftfördelningsenheter (PDU) enligt följande bild. Kontrollera att två PCMs använda separata strömkällor.
+#### <a name="toocable-for-power"></a>toocable för ström
+1. Kontrollera att hello strömbrytare på varje hello ström och kylning moduler (PCMs) är i hello OFF-läge.
+2. Ansluta hello power sladdar tooeach av hello PCMs i hello primära hölje.
+3. Koppla hello power sladdar toohello rack kraftfördelningsenheter (PDU) enligt följande bild hello. Kontrollera att hello två PCMs använder separata strömkällor.
    
    > [!IMPORTANT]
-   > För att säkerställa hög tillgänglighet för ditt system, rekommenderar vi att du noggrant följer power kablar schemat visas i följande diagram. 
+   > tooensure hög tillgänglighet för ditt system, rekommenderar vi strikt följa toohello power kablar schemat visas i följande diagram hello. 
    > 
    > 
    
@@ -21,5 +21,5 @@
    | 3 |Styrenhet 0 |
    | 4 |PCM 1 |
    | 5 |PDU |
-4. Vänd power växlar på båda PCMs till på plats om du vill aktivera systemet.
+4. tooturn hello systemet Vänd hello power växlar på båda PCMs toohello ON position.
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure hanterade program DropDown gränssnittselement | Microsoft Docs"
-description: "Beskriver Microsoft.Common.DropDown UI-element för hanterade program i Azure"
+title: "aaaAzure hanterade program DropDown gränssnittselement | Microsoft Docs"
+description: "Beskriver hello Microsoft.Common.DropDown UI-element för hanterade program i Azure"
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: a769e14efbae928b811fa1f1b1c2d4fba3c7692b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1c07a48ad66b8e8b7fd8f59561776ecb1fc6224f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI-element
 En markering med en listruta. Du använder det här elementet när [att skapa ett Azure hanterade program](managed-application-publishing.md).
@@ -50,10 +50,10 @@ En markering med en listruta. Du använder det här elementet när [att skapa et
 ```
 
 ## <a name="remarks"></a>Kommentarer
-- Etikett för `constraints.allowedValues` är texten som visas för ett objekt och dess värde är värdet av elementet när du valt.
-- Om du standardvärdet måste vara en etikett som finns i `constraints.allowedValues`. Om inget anges det första objektet i `constraints.allowedValues` är markerad. Standardvärdet är **null**.
+- hello etikett för `constraints.allowedValues` är hello visningstext för ett objekt och dess värde är hello utdatavärdet för hello elementet när du valt.
+- Om anges hello standardvärdet måste vara en etikett som finns i `constraints.allowedValues`. Om inget anges hello första objektet i `constraints.allowedValues` är markerad. hello standardvärdet är **null**.
 - `constraints.allowedValues`måste innehålla minst ett objekt.
-- Det här elementet har inte stöd för den `constraints.required` egenskapen. Emuleras problemet genom att lägga till ett objekt med en etikett och värdet för `""` (tom sträng) till `constraints.allowedValues`.
+- Det här elementet har inte stöd för hello `constraints.required` egenskapen. tooemulate problemet, lägga till ett objekt med en etikett och värdet för `""` (tom sträng) för`constraints.allowedValues`.
 
 ## <a name="sample-output"></a>Exempel på utdata
 ```json
@@ -61,6 +61,6 @@ En markering med en listruta. Du använder det här elementet när [att skapa et
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-* En introduktion till hanterade program, se [översikt över Azure Managed Application](managed-application-overview.md).
-* En introduktion till att skapa UI-definitioner, se [komma igång med CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* En introduktion toomanaged program, se [översikt över Azure Managed Application](managed-application-overview.md).
+* En introduktion toocreating UI definitioner finns [komma igång med CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * En beskrivning av gemensamma egenskaper i UI-element, se [CreateUiDefinition element](managed-application-createuidefinition-elements.md).

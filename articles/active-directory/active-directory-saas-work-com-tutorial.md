@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Work.com | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Work.com."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Work.com."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,108 +14,108 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 7cfec8e9ac12d43095483696a15c0580776d3114
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dcdc51c884abd78c945b649de99f942d32373cf6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Självstudier: Azure Active Directory-integrering med Work.com
 
-I kursen får lära du att integrera Work.com med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate Work.com med Azure Active Directory (AD Azure).
 
-Integrera Work.com med Azure AD ger dig följande fördelar:
+Integrera Work.com med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till Work.com
-- Du kan aktivera användarna att automatiskt hämta loggat in på Work.com (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till tooWork.com
+- Du kan aktivera din användare tooautomatically get inloggade tooWork.com (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med Work.com, behöver du följande:
+tooconfigure Azure AD-integrering med Work.com, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En Work.com enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Lägg till Work.com från galleriet
+1. Lägg till Work.com från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="add-workcom-from-the-gallery"></a>Lägg till Work.com från galleriet
-Du måste lägga till Work.com från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Work.com i Azure AD.
+## <a name="add-workcom-from-hello-gallery"></a>Lägg till Work.com från hello-galleriet
+tooconfigure hello integrering av Work.com i Azure AD, behöver du tooadd Work.com hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till Work.com från galleriet:**
+**tooadd Work.com från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **Work.com**väljer **Work.com** från resultatrutan Klicka **Lägg till** för att lägga till programmet.
+4. Skriv i sökrutan hello **Work.com**väljer **Work.com** från resultatrutan Klicka **Lägg till** knappen tooadd hello program.
 
     ![Lägg till från galleriet](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Work.com baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till användaren i Work.com motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Work.com upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Work.com är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i Work.com toobe upprättas.
 
-I Work.com, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+I Work.com, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med Work.com, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med Work.com, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Work.com](#create-a-workcom-test-user)**  – du har en motsvarighet för Britta Simon i Work.com som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#test-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Work.com](#create-a-workcom-test-user)**  -toohave en motsvarighet för Britta Simon i Work.com som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#test-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt Work.com program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt Work.com program.
 
 >[!NOTE]
->Om du vill konfigurera enkel inloggning måste du konfigurera ett anpassat domännamn Work.com ännu. Du måste ange minst ett domännamn, testa ditt domännamn och distribuera den till hela organisationen.
+>tooconfigure enkel inloggning, måste toosetup ett anpassat domännamn Work.com ännu. Du behöver toodefine minst en domän namn, testa ditt domännamn och distribuera den tooyour hela organisationen.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med Work.com:**
+**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Work.com:**
 
-1. I Azure-portalen på den **Work.com** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **Work.com** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![SAML-baserade inloggning](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_samlbase.png)
 
-3. På den **Work.com domän och URL: er** avsnittet, utför följande:
+3. På hello **Work.com domän och URL: er** avsnittet, utföra hello följande:
 
     ![Avsnittet Work.com domän och URL: er](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_url.png)
 
-    I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`http://<companyname>.my.salesforce.com`
+    I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`http://<companyname>.my.salesforce.com`
 
     > [!NOTE] 
-    > Det här värdet är inte verkliga. Uppdatera det här värdet med det faktiska inloggnings-URL. Kontakta [Work.com klienten supportteamet](https://help.salesforce.com/articleView?id=000159855&type=3) att hämta det här värdet. 
+    > Det här värdet är inte verkliga. Uppdatera det här värdet med hello faktiska inloggnings-URL. Kontakta [Work.com klienten supportteamet](https://help.salesforce.com/articleView?id=000159855&type=3) tooget det här värdet. 
 
-4. På den **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara certifikatfilen på datorn.
+4. På hello **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara sedan hello certifikat på datorn.
 
     ![Signeringscertifikat för SAML-avsnitt](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_certificate.png) 
 
@@ -123,34 +123,34 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
 
     ![Knappen Spara](./media/active-directory-saas-work-com-tutorial/tutorial_general_400.png)
 
-6. På den **Work.com Configuration** klickar du på **konfigurera Work.com** att öppna **konfigurera inloggning** fönster. Kopiera den **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
+6. På hello **Work.com Configuration** klickar du på **konfigurera Work.com** tooopen **konfigurera inloggning** fönster. Kopiera hello **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
 
     ![Work.com konfigurationsavsnitt](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_configure.png) 
-7. Logga in på din Work.com klient som administratör.
+7. Logga in tooyour Work.com klient som administratör.
 
-8. Gå till **installationsprogrammet**.
+8. Gå för**installationsprogrammet**.
    
     ![Installationsprogrammet](./media/active-directory-saas-work-com-tutorial/ic794108.png "installationen")
 
-9. I det vänstra navigeringsfönstret i den **administrera** klickar du på **domänhantering** Expandera avsnittet relaterade och klicka sedan på **min domän** att öppna den **min domän** sidan. 
+9. Hello vänstra navigeringsfönstret i hello **administrera** klickar du på **domänhantering** tooexpand hello Närliggande avsnitt och klickar sedan på **min domän** tooopen hello  **Min domän** sidan. 
    
     ![Min domän](./media/active-directory-saas-work-com-tutorial/ic767825.png "min domän")
 
-10. Om du vill verifiera att din domän har ställts in korrekt, se till att den är i ”**steg 4 distribueras till användarna**” och granska din ”**Mina Domäninställningar**”.
+10. tooverify som din domän har angetts korrekt, kontrollera att den är i ”**steg 4 distribueras tooUsers**” och granska din ”**Mina Domäninställningar**”.
    
-    ![Domänen som distribuerats till användaren](./media/active-directory-saas-work-com-tutorial/ic784377.png "domän som har distribuerats till användaren")
+    ![Domän distribuerat tooUser](./media/active-directory-saas-work-com-tutorial/ic784377.png "domän distribueras tooUser")
 
-11. Logga in på din Work.com-klient.
+11. Logga in tooyour Work.com klient.
 
-12. Gå till **installationsprogrammet**.
+12. Gå för**installationsprogrammet**.
     
     ![Installationsprogrammet](./media/active-directory-saas-work-com-tutorial/ic794108.png "installationen")
 
-13. Expandera den **säkerhetsåtgärder** -menyn och klicka sedan på **inställningar för enkel inloggning**.
+13. Expandera hello **säkerhetsåtgärder** -menyn och klicka sedan på **inställningar för enkel inloggning**.
     
     ![Enkel inloggning inställningar](./media/active-directory-saas-work-com-tutorial/ic794113.png "enkel inloggning inställningar")
 
-14. På den **inställningar för enkel inloggning** dialogrutan utför följande steg:
+14. På hello **inställningar för enkel inloggning** dialogrutan utför hello följande steg:
     
     ![SAML aktiverat](./media/active-directory-saas-work-com-tutorial/ic781026.png "SAML aktiverad")
     
@@ -158,90 +158,90 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
     
     b. Klicka på **Ny**.
 
-15. I den **SAML enkel inloggning inställningar** avsnittet, utför följande steg:
+15. I hello **SAML enkel inloggning inställningar** avsnittet, utföra hello följande steg:
     
     ![SAML enkel inloggning inställningen](./media/active-directory-saas-work-com-tutorial/ic794114.png "SAML enkel inloggning inställningen")
     
-    a. I den **namn** textruta, ange ett namn för din konfiguration.  
+    a. I hello **namn** textruta, ange ett namn för din konfiguration.  
        
     > [!NOTE]
-    > Att tillhandahålla ett värde för **namn** automatiskt fylla i **API-namnet** textruta.
+    > Att tillhandahålla ett värde för **namn** automatiskt fylla hello **API-namnet** textruta.
     
-    b. I **utfärdaren** textruta klistra in värdet för **SAML enhets-ID** som du har kopierat från Azure-portalen.
+    b. I **utfärdaren** textruta klistra in hello värdet för **SAML enhets-ID** som du har kopierat från Azure-portalen.
     
-    c. Om du vill överföra hämtat certifikat från Azure-portalen klickar du på **Bläddra**.
+    c. tooupload hello hämtat certifikat från Azure-portalen klickar du på **Bläddra**.
     
-    d. I den **enhets-Id** textruta typen `https://salesforce-work.com`.
+    d. I hello **enhets-Id** textruta typen `https://salesforce-work.com`.
     
-    e. Som **SAML identitetstyp**väljer **Assertion innehåller Federation-ID från användarobjektet**.
+    e. Som **SAML identitetstyp**väljer **Assertion innehåller hello Federation ID från hello användarobjektet**.
     
-    f. Som **SAML identitet plats**väljer **identitet är i elementet NameIdentfier i instruktionen ämne**.
+    f. Som **SAML identitet plats**väljer **identitet är i hello NameIdentfier elementet i hello ämne instruktionen**.
     
-    g. I **identitet providern inloggnings-URL** textruta klistra in värdet för **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen.
+    g. I **identitet providern inloggnings-URL** textruta klistra in hello värdet för **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen.
 
-    h. I **identitet providern logga ut URL** textruta klistra in värdet för **Sign-Out URL** som du har kopierat från Azure-portalen.
+    h. I **identitet providern logga ut URL** textruta klistra in hello värdet för **Sign-Out URL** som du har kopierat från Azure-portalen.
     
     Jag. Som **providern initierade begära Tjänstbindning**väljer **HTTP Post**.
     
     j. Klicka på **Spara**.
 
-16. I din Work.com klassiska portalen i det vänstra navigeringsfönstret klickar du på **domänhantering** Expandera avsnittet relaterade och klicka sedan på **min domän** att öppna den **min domän** sidan. 
+16. I din Work.com klassiska portalen på hello vänstra navigationsfönstret klickar du på **domänhantering** tooexpand hello Närliggande avsnitt och klickar sedan på **min domän** tooopen hello **min domän**sidan. 
     
     ![Min domän](./media/active-directory-saas-work-com-tutorial/ic794115.png "min domän")
 
-17. På den **min domän** sidan den **inloggningen sidan anpassning** klickar du på **redigera**.
+17. På hello **min domän** i hello sidan **inloggningen sidan anpassning** klickar du på **redigera**.
     
     ![Inloggningssidan anpassning](./media/active-directory-saas-work-com-tutorial/ic767826.png "inloggningssidan anpassning")
 
-14. På den **inloggningen sidan anpassning** sidan den **Autentiseringstjänsten** avsnitt, namnet på din **SAML SSO inställningar** visas. Markera den och klicka sedan på **spara**.
+14. På hello **inloggningen sidan anpassning** i hello sidan **Autentiseringstjänsten** avsnitt, hello namnet på din **SAML SSO inställningar** visas. Markera den och klicka sedan på **spara**.
     
     ![Inloggningssidan anpassning](./media/active-directory-saas-work-com-tutorial/ic784366.png "inloggningssidan anpassning")
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-work-com-tutorial/create_aaduser_01.png) 
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
     
     ![Användare och grupper -> alla användare](./media/active-directory-saas-work-com-tutorial/create_aaduser_02.png) 
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
  
     ![Lägg till](./media/active-directory-saas-work-com-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Dialogrutan Användarsida](./media/active-directory-saas-work-com-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="create-a-workcom-test-user"></a>Skapa en testanvändare Work.com
-För Azure Active Directory-användare för att kunna logga in, måste de etableras till Work.com. När det gäller Work.com är etablering en manuell aktivitet.
+För Azure Active Directory användare toobe kan toosign i, måste de vara etablerade tooWork.com. Hello gäller Work.com är etablering en manuell aktivitet.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Utför följande steg för att konfigurera användaretablering:
-1. Logga in på webbplatsen Work.com företag som administratör.
+### <a name="tooconfigure-user-provisioning-perform-hello-following-steps"></a>tooconfigure användaretablering, utför följande steg hello:
+1. Inloggning tooyour Work.com företagets webbplats som administratör.
 
-2. Gå till **installationsprogrammet**.
+2. Gå för**installationsprogrammet**.
    
     ![Installationsprogrammet](./media/active-directory-saas-work-com-tutorial/IC794108.png "installationen")
-3. Gå till **hantera användare \> användare**.
+3. Gå för**hantera användare \> användare**.
    
     ![Hantera användare](./media/active-directory-saas-work-com-tutorial/IC784369.png "hantera användare")
 
@@ -249,48 +249,48 @@ För Azure Active Directory-användare för att kunna logga in, måste de etable
    
     ![Alla användare](./media/active-directory-saas-work-com-tutorial/IC794117.png "alla användare")
 
-5. I avsnittet användare redigera utför följande steg i attribut för ett giltigt Azure AD-kontot som du vill etablera i relaterade textrutor:
+5. Hello användare redigera avsnittet, utföra hello följa stegen i attribut för ett giltigt Azure AD-kontot som du vill använda tooprovision hello relaterade textrutor:
    
     ![Redigera användare](./media/active-directory-saas-work-com-tutorial/ic794118.png "Redigera användare")
    
-    a. I den **Förnamn** textruta typ av **Förnamn** användarens **Britta**.
+    a. I hello **Förnamn** textruta typen hello **Förnamn** för hello användare **Britta**.
     
-    b. I den **efternamn** textruta typ av **efternamn** användarens **Simon**.
+    b. I hello **efternamn** textruta typen hello **efternamn** för hello användare **Simon**.
     
-    c. I den **Alias** textruta typ av **namn** användarens **BrittaS**.
+    c. I hello **Alias** textruta typen hello **namn** för hello användare **BrittaS**.
     
-    d. I den **e-post** textruta typ av **e-postadress** för användare  **Brittasimon@contoso.com** .
+    d. I hello **e-post** textruta typen hello **e-postadress** för användare  **Brittasimon@contoso.com** .
     
-    e. I den **användarnamn** textruta, Skriv ett användarnamn för användaren som  **Brittasimon@contoso.com** .
+    e. I hello **användarnamn** textruta, Skriv ett användarnamn för användaren som  **Brittasimon@contoso.com** .
     
-    f. I den **smeknamn** textruta typ a **smeknamn** för användare **Simon**.
+    f. I hello **smeknamn** textruta typ a **smeknamn** för användare **Simon**.
     
     g. Välj **rollen**, **användarlicens**, och **profil**.
     
     h. Klicka på **Spara**.  
       
     > [!NOTE]
-    > Azure AD-kontoinnehavaren får ett e-postmeddelande med en länk för att bekräfta kontot innan den aktiveras.
+    > hello Azure AD användare får ett e-postmeddelande inklusive en länk tooconfirm hello innan den aktiveras.
     > 
     > 
 
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Work.com.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooWork.com.
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela Work.com Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooWork.com utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **Work.com**.
+2. Välj i listan med program hello **Work.com**.
 
     ![Work.com i appens lista](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -298,7 +298,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -306,14 +306,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen Work.com på åtkomstpanelen du bör få automatiskt loggat in på ditt Work.com program.
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Du bör få automatiskt inloggade tooyour Work.com programmet när du klickar på hello Work.com panelen i hello åtkomstpanelen.
+Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

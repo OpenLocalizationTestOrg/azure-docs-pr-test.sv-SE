@@ -1,8 +1,8 @@
-När du skapar ett certifikat installeras den automatiskt på den dator som du använde för att skapa den. Om du vill installera klientcertifikatet på en annan dator måste du exportera det klientcertifikat som du genererade.                              
+När du skapar ett certifikat för har den installeras automatiskt på hello-dator som du använde toogenerate den. Om du vill tooinstall hello klientcertifikat på en annan dator, måste tooexport hello klientcertifikat som du skapade.                              
 
-1. Öppna **Hantera användarcertifikat** om du vill exportera ett certifikat. De klientcertifikat som du genererade finns som standard i 'Certifikat - aktuell User\Personal\Certificates'. Högerklicka på det klientcertifikat som du vill exportera, klicka på **alla aktiviteter**, och klicka sedan på **exportera** att öppna den **guiden Exportera certifikat**.
-2. I guiden klickar du på **Nästa** och väljer **Ja, exportera den privata nyckeln**. Klicka sedan på **Nästa**.
-3. På sidan **Filformat för export** låter du standardalternativen vara markerade. Se till att **Ta med om möjligt alla certifikat i certifieringssökvägen** har valts. Om du väljer detta exporterar också information för rot-certifikat som krävs för autentisering. Klicka sedan på **Nästa**.
-4. Du måste skydda den privata nyckeln på sidan **Säkerhet**. Om du väljer att använda ett lösenord måste du vara noga med att skriva ned eller komma ihåg lösenordet som du anger för det här certifikatet. Klicka sedan på **Nästa**.
-5. På sidan **Fil som ska exporteras** **bläddrar** du till den plats som du vill exportera certifikatet till. För **Filnamn** anger du ett namn för certifikatfilen. Klicka sedan på **Nästa**.
-6. Klicka på **Slutför** för att exportera certifikatet.
+1. Öppna tooexport ett klientcertifikat **Hantera användarcertifikat**. hello-klientcertifikat som du skapade finns som standard i 'Certifikat - aktuell User\Personal\Certificates'. Högerklicka på hello klientcertifikat som du vill tooexport, klickar du på **alla aktiviteter**, och klicka sedan på **exportera** tooopen hello **guiden Exportera certifikat**.
+2. I hello guiden, klickar du på **nästa**och välj **Ja, exportera privat nyckel för hello**, och klicka sedan på **nästa**.
+3. På hello **filformat för Export** lämnar hello standardvärden som valts. Se till att **inkludera om möjligt alla certifikat i certifieringssökvägen hello** är markerad. Om du väljer detta exporterar också hello root certifikatinformation som krävs för autentisering. Klicka sedan på **Nästa**.
+4. På hello **säkerhet** sida, måste du skydda hello privat nyckel. Om du väljer toouse ett lösenord, se till att toorecord eller komma ihåg hello-lösenord som du anger för det här certifikatet. Klicka sedan på **Nästa**.
+5. På hello **filen tooExport**, **Bläddra** toohello plats toowhich du vill ha tooexport hello certifikat. För **filnamn**, namnet hello-certifikatfil. Klicka sedan på **Nästa**.
+6. Klicka på **Slutför** tooexport hello certifikat.

@@ -1,6 +1,6 @@
 ---
-title: "Översikt över grunderna i Azure Service Bus | Microsoft Docs"
-description: "En introduktion till att använda Service Bus för att ansluta Azure-appar till andra program."
+title: aaaOverview av grunderna i Azure Service Bus | Microsoft Docs
+description: En introduktion toousing Service Bus tooconnect Azure-program tooother programvara.
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -14,109 +14,109 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/15/2017
 ms.author: sethm
-ms.openlocfilehash: af8b10f0a460e695a39879718174e81f78934ef8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1abd5cf310ef06ba35e1e2489a7c0a07e1797736
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
 
-Oavsett om en app eller tjänst körs i molnet eller lokalt, måste den ofta samverka med andra program eller tjänster. Microsoft Azure tillhandahåller Service Bus för att du ska kunna göra detta på ett fritt och praktiskt sätt. I den här artikeln tar vi en titt på denna teknik och beskriver vad den är och varför du kanske vill använda den.
+Om ett program eller tjänst körs i hello molnet eller lokalt, måste den ofta toointeract med andra program eller tjänster. tooprovide ett fritt och praktiskt sätt toodo detta, erbjudanden för Microsoft Azure Service Bus. Den här artikeln beskrivs denna teknik och beskriver vad det är och varför du kanske vill toouse den.
 
 ## <a name="service-bus-fundamentals"></a>Grunderna i Service Bus
 
-Olika situationer kräver olika kommunikationsstilar. Ibland är den bästa lösningen att låta appar skicka och ta emot meddelanden via en enkel kö. I vissa situationer räcker det inte med en vanlig kö, utan det är bättre att använda en kö med en mekanism av typen publicera och prenumerera. I andra fall är allt som behövs en anslutning mellan apparna. Köer är överflödiga. Service Bus gör att du kan använda alla tre alternativ och ser till att dina appar kan interagera på flera olika sätt.
+Olika situationer kräver olika kommunikationsstilar. Ibland är att låta appar skicka och ta emot meddelanden via en enkel kö hello bästa lösningen. I vissa situationer räcker det inte med en vanlig kö, utan det är bättre att använda en kö med en mekanism av typen publicera och prenumerera. I andra fall är allt som behövs en anslutning mellan apparna. Köer är överflödiga. Service Bus innehåller alla tre alternativ att aktivera ditt program toointeract på flera olika sätt.
 
-Service Bus är en molntjänst med flera klienter, vilket innebär att tjänsten delas av flera användare. Varje användare, till exempel en programutvecklare, skapar ett *namnområde*, och sedan definierar utvecklaren de kommunikationsmekanismer som han eller hon vill använda inom det här namnområdet. Bild 1 visar hur den här arkitekturen ser ut.
+Service Bus är en tjänst i molnet för flera innehavare, vilket innebär att hello tjänsten delas av flera användare. Varje användare, till exempel en programutvecklare, skapar en *namnområde*, definierar hello kommunikationsmekanismer behövs inom det här namnområdet. Bild 1 visar hur den här arkitekturen ser ut.
 
 ![][1]
 
-**Bild 1: Service Bus erbjuder en tjänst för flera innehavare för att ansluta program via molnet.**
+**Bild 1: Service Bus innehåller en tjänst för flera innehavare för att ansluta appar via hello molnet.**
 
-Du kan använda en eller flera instanser av tre olika kommunikationsmekanismer inom namnområdet. Dessa ansluter till appar på olika sätt. Alternativen är:
+Du kan använda en eller flera instanser av tre olika kommunikationsmekanismer inom namnområdet. Dessa ansluter till appar på olika sätt. hello-alternativen är:
 
 * *Köer*, som tillåter en enkelriktad kommunikation. Varje kö fungerar som en mellanhand (kallas ibland för en *koordinator*) som sparar skickade meddelanden tills de tas emot. Varje meddelande tas emot av en enda mottagare.
-* *Ämnen*, som ger enkelriktad kommunikation med hjälp av *prenumerationer*. Ett ämne kan ha flera prenumerationer. Precis som med köerna fungerar ämnena som en koordinator (broker), men varje prenumeration kan sedan använda ett filter för att endast ta emot meddelanden som uppfyller specifika villkor.
-* *Reläer* (relays), som ger dubbelriktad kommunikation. Till skillnad från köer och ämnen lagrar inte ett relä meddelanden som redan startats. Det är alltså inte en koordinator. I stället skickar reläet bara meddelandena vidare till målprogrammet.
+* *Ämnen*, som ger enkelriktad kommunikation med hjälp av *prenumerationer*. Ett ämne kan ha flera prenumerationer. Ett ämne som fungerar som en koordinator precis som en kö, men varje prenumeration kan du använda ett filter tooreceive endast meddelanden som uppfyller specifika villkor.
+* *Reläer* (relays), som ger dubbelriktad kommunikation. Till skillnad från köer och ämnen lagrar inte ett relä meddelanden som redan startats. Det är alltså inte en koordinator. I stället Reläet bara meddelandena på toohello målprogrammet.
 
-När du skapar en kö, ett ämne eller ett relä ger du dem ett namn. Det här namnet, tillsammans med det namn som du gav namnområdet, skapar en unik identifierare för objektet. Appen kan överföra detta namn till Service Bus och sedan använda den kön, det ämnet eller det reläet i sin kommunikation med varandra. 
+När du skapar en kö, ett ämne eller ett relä ger du dem ett namn. Det här namnet skapar i kombination med det namn som du gav namnområdet, en unik identifierare för hello-objektet. Program kan ange det här namnet tooService Bus och sedan använda den kön, ämnet eller relay toocommunicate med varandra. 
 
-Windows-program kan använda Windows Communication Foundation (WCF) för att använda något av dessa objekt vid vidarebefordran. Den här tjänsten kallas [WCF Relay](../service-bus-relay/relay-what-is-it.md). För köer och ämnen kan Windows-program använda API:er för Service Bus-definierade meddelandefunktioner. Om du vill att det ska vara enklare att använda objekten från andra program som inte är från Windows, tillhandahåller Microsoft SDK:er för Java, Node.js och andra programmeringsspråk. Du kan även få åtkomst till köer och ämnen med hjälp av [REST-API:er](/rest/api/servicebus/) via HTTP. 
+toouse någon av dessa objekt i hello relay scenario, Windows-program kan använda Windows Communication Foundation (WCF). Den här tjänsten kallas [WCF Relay](../service-bus-relay/relay-what-is-it.md). För köer och ämnen kan Windows-program använda API:er för Service Bus-definierade meddelandefunktioner. toomake dessa objekt enklare toouse från Windows-program, tillhandahåller Microsoft SDK för Java, Node.js och andra språk. Du kan även få åtkomst till köer och ämnen med hjälp av [REST-API:er](/rest/api/servicebus/) via HTTP. 
 
-Det är viktigt att förstå att även om själva Service Bus körs i molnet (det vill säga i datacenter för Microsoft Azure) så kan apparna som använder den köras var som helst. Du kan använda Service Bus för att ansluta appar som körs på Azure, till exempel, eller program som körs i ditt eget datacenter. Du kan också använda Service Bus för att ansluta en app som körs på Azure eller på en annan molnplattform med ett lokalt program, eller med surfplattor och smartmobiler. Det går till och med att ansluta hushållsapparater, sensorer och andra enheter till ett centralt program eller till varandra. Service Bus är en kommunikationsmekanism i molnet och den är tillgänglig från nästan var som helst. Hur du använder den beror på vad dina appar behöver göra.
+Det är viktigt toounderstand som även om Service Bus själva körs i molnet hello (det vill säga i datacenter för Microsoft Azure), program som använder den kan köras var som helst. Du kan använda Service Bus tooconnect program som körs på Azure, till exempel eller program som körs i ditt eget datacenter. Du kan också använda den tooconnect ett program som körs på Azure eller en annan molnplattform med ett lokalt program eller med surfplattor och telefoner. Det är även möjligt tooconnect hushållsapparater, sensorer och andra enheter tooa centralt program eller tooone andra. Service Bus är en mekanism för kommunikation i hello moln som är tillgänglig från nästan var som helst. Hur du använder beror det på vilken dina program behöver toodo.
 
 ## <a name="queues"></a>Köer
 
-Anta att du bestämmer dig för att ansluta två appar med hjälp av en Service Bus-kö. Bild 2 visar den här situationen.
+Anta att du bestämmer dig för tooconnect två program med hjälp av en Service Bus-kö. Bild 2 visar den här situationen.
 
 ![][2]
 
 **Bild 2: Service Bus-köer erbjuder enkelriktade asynkrona köer.**
 
-Processen är enkel: En avsändare skickar ett meddelande till en Service Bus-kö och en mottagare hämtar meddelandet vid ett senare tillfälle. En kö kan ha bara en enkel mottagare, som bild 2 visar. Eller så kan flera program läsa från samma kö. I det senare fallet läses varje meddelande av enbart en mottagare. För en tjänst med multi-cast bör du istället använda ett ämne.
+hello-processen är enkel: en avsändare skickar ett meddelande tooa Service Bus-kö och en mottagare hämtar meddelandet vid ett senare tillfälle. En kö kan ha bara en enkel mottagare, som bild 2 visar. Eller flera program kan läsa från hello samma kö. I hello senare fallet läses varje meddelande av enbart en mottagare. För en tjänst med multi-cast bör du istället använda ett ämne.
 
-Varje meddelande består av två delar: en uppsättning egenskaper, som alla är ett nyckel-/värdepar, och en meddelandenyttolast. Nyttolasten kan vara binär, text eller till och med XML. Hur de används beror på vad en app försöker utföra. Ett exempel: Ett program som skickar ett meddelande om en nyligen genomförd försäljning kan innehålla egenskaperna **Säljare="Ava"** och **Belopp= 10000**. Meddelandetexten (brödtexten) kan innehålla en skannad bild av försäljningsavtalet, eller om det inte finns något sådant, bara vara tomt.
+Varje meddelande består av två delar: en uppsättning egenskaper, som alla är ett nyckel-/värdepar, och en meddelandenyttolast. hello nyttolasten kan vara binary, text eller även XML. Hur de används beror på vilken ett program försöker toodo. Till exempel ett program som skickar ett meddelande om en nyligen genomförd försäljning kan innehålla hello egenskaper **säljare = ”Ava”** och **belopp = 10000**. hello meddelandetexten kan innehålla en skannad bild av hello försäljningsavtalet eller om det inte finns någon, vara tomt.
 
-En mottagare kan läsa ett meddelande från en Service Bus-kö på två olika sätt. Det första alternativet, som kallas *[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, tar bort meddelandet från kön och raderar det direkt. Detta är ett enkelt alternativ men om mottagaren kraschar innan den har slutfört behandlingen av meddelandet så kommer det att gå förlorat. Eftersom det har tagits bort från kön kan inga andra mottagare komma åt det. 
+En mottagare kan läsa ett meddelande från en Service Bus-kö på två olika sätt. Hej första alternativet, som kallas  *[ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, tar bort ett meddelande från hello kön och raderar det direkt. Det här alternativet är enkla, men om hello mottagaren kraschar innan den är klar hello-meddelande, hello-meddelande förloras. Eftersom den har tagits bort från hello kön kan inga andra mottagare komma åt den. 
 
-Det andra alternativet, *[PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, är utformat för att lösa detta problem. Precis som **ReceiveAndDelete**, tar **PeekLock** bort meddelandet från kön. Men det raderar inte meddelandet. I stället låser det meddelandet, vilket gör det osynligt för andra mottagare, och sedan inväntar alternativet en av följande tre händelser:
+Hej andra alternativet  *[PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)*, är avsedd toohelp med det här problemet. Som **ReceiveAndDelete**, **PeekLock** bort meddelandet från kön hello. Hello-meddelande bort inte men. I stället låser hello-meddelande, vilket gör det osynligt tooother mottagare, och väntar på något av följande tre händelser:
 
-* Om mottagaren kan bearbeta meddelandet anropas [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) och meddelandet tas bort i kön. 
-* Om mottagaren inte kan bearbeta meddelandet på rätt sätt anropas [Abandon()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon). Kön tar bort spärren från meddelandet och gör det tillgängligt för andra mottagare.
-* Om mottagaren inte anropar något av dessa metoder inom en konfigurerbar tidsperiod (standardvärdet är 60 sekunder), förutsätter kön att mottagaren har misslyckats. I det här fallet reagerar den som om mottagaren hade anropat **Avbryt** och gör meddelandet tillgängligt för andra mottagare.
+* Om hello mottagaren processer hello meddelandet har, anropar [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete), och hello kön raderar hello-meddelande. 
+* Om hello mottagaren beslutar att den inte kan bearbeta har hello-meddelande, anropar [Abandon()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Abandon). hello kön tar bort hello lås från hello-meddelande sedan och gör den tillgänglig tooother mottagare.
+* Om hello mottagaren inte anropar något av dessa metoder inom en konfigurerbar tidsperiod (som standard 60 sekunder), förutsätter kön hello hello mottagaren har misslyckats. I det här fallet fungerar som om hello mottagaren hade anropat **Avbryt**, gör hello meddelandet tillgängliga tooother mottagare.
 
-Observera vad som kan inträffa här: samma meddelande kan levereras två gånger, kanske till två olika mottagare. Appar som använder Service Bus-köer måste förberedas för denna händelse. För att förenkla identifiering av dubbletter har varje meddelande en unik [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)-egenskap. Denna är som standard alltid densamma, oavsett hur många gånger meddelandet har lästs från en kö. 
+Observera vad som kan inträffa här: hello samma meddelande kan levereras två gånger, kanske tootwo olika mottagare. Appar som använder Service Bus-köer måste förberedas för denna händelse. toomake dubblettidentifiering enklare, varje meddelande har ett unikt [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) egenskap som standard förblir hello densamma, oavsett hur många gånger hello-meddelande läses från en kö. 
 
-Köer är användbara i ett ganska stort antal situationer. De gör att appar kan kommunicera även när båda inte körs på samma gång, något som är särskilt praktiskt med batch- och mobilappar. En kö med flera mottagare ger också automatisk belastningsbalansering eftersom skickade meddelanden sprids ut bland dessa mottagare.
+Köer är användbara i ett ganska stort antal situationer. De gör att program toocommunicate även när båda inte körs på hello samma tid, något som är särskilt praktiskt med batch- och mobilprogram. En kö med flera mottagare ger också automatisk belastningsbalansering eftersom skickade meddelanden sprids ut bland dessa mottagare.
 
 ## <a name="topics"></a>Ämnen
 
-Även om köer ofta är väldigt användbara, är de inte alltid den rätta lösningen. Ibland är det bättre att använda Service Bus-ämnen. Bild 3 ger dig en uppfattning om varför det är så.
+Användbara som de är köer är inte alltid hello rätta lösningen. Ibland är det bättre att använda Service Bus-ämnen. Bild 3 ger dig en uppfattning om varför det är så.
 
 ![][3]
 
-**Bild 3: Baserat på de filter ett prenumererande program specificerar så kan det ta emot en del eller alla meddelanden som skickats till ett Service Bus-ämne.**
+**Bild 3: Baserat på hello filter som en prenumerationsapp använder, det kan ta emot några eller alla hello-meddelanden skickas tooa Service Bus-ämne.**
 
-Ett *ämne* liknar på många sätt en kö. Avsändare skickar meddelanden till ett ämne på samma sätt som de skickar meddelanden till en kö. Och dessa meddelanden ser likadana ut som när de används i köer. Skillnaden är att ämnen gör att varje mottagande app kan skapa sin egen *prenumeration* genom att definiera ett *filter*. Prenumeranten kommer därefter endast att se de meddelanden som matchar filtret. Bild 3 visar till exempel en avsändare och ett ämne med tre prenumeranter, var och en med sitt eget filter:
+En *avsnittet* liknar på många sätt tooa kön. Avsändare skickar meddelanden tooa-avsnittet i hello samma sätt som de skickar meddelanden tooa kön och dessa meddelanden utseende hello samma precis som med köer. hello skillnaden är att ämnen gör att varje mottagande programmet toocreate sin egen *prenumeration* genom att definiera en *filter*. En prenumerant ser bara hello-meddelanden som matchar filtret. Bild 3 visar till exempel en avsändare och ett ämne med tre prenumeranter, var och en med sitt eget filter:
 
-* Prenumerant 1 får endast meddelanden som innehåller egenskapen *Säljare="Ava"*.
-* Prenumerant 2 tar emot meddelanden som innehåller egenskapen *Säljare="Ruth"* och/eller innehåller en egenskap för *belopp* vars värde är större än 100 000. Ruth kanske är försäljningschef så hon vill se både sina egna försäljningar och alla stora försäljningar, oavsett vem som gör dem.
-* Prenumerant 3 har ställt in sitt filter på *Sant*, vilket innebär att han eller hon får alla meddelanden. Den här appen kan till exempel ansvara för att bibehålla ett revisionsspår och därför behöver den visa alla meddelanden.
+* Prenumerant 1 får endast meddelanden som innehåller hello egenskapen *säljare = ”Ava”*.
+* Prenumerant 2 tar emot meddelanden som innehåller hello egenskapen *säljare = ”Ruth”* och/eller innehåller ett *belopp* egenskap vars värde är större än 100 000. Ruth kanske är hello försäljningschef så hon vill toosee både sina egna försäljningar och alla stora försäljningar, oavsett vem som gör dem..
+* Prenumerant 3 har ställt in sitt filter för*SANT*, vilket innebär att den tar emot alla meddelanden. Till exempel det här programmet kan ansvara för att bibehålla ett revisionsspår och därför måste toosee alla hälsningsmeddelande.
 
-På samma sätt som med köer kan de som prenumererar på ett ämne läsa meddelanden med antingen [ReceiveAndDelete eller PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode). Men till skillnad från köer kan ett enskilt meddelande som skickas till ett ämne tas emot av flera prenumerationer. Den här metoden, som ofta kallas *publicera och prenumerera*, (eller *pub/sub*) är användbar när flera appar är intresserade av samma meddelanden. Genom att definiera rätt typ av filter kan varje prenumerant ta del av enbart den del av meddelandeströmmen som de behöver se.
+Som med köer, prenumeranter tooa avsnittet kan läsa meddelanden med antingen [ReceiveAndDelete och PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode). Till skillnad från köer, men skickat ett enda meddelande tooa avsnittet kan tas emot av flera prenumerationer. Den här metoden anropas ofta *publicera och prenumerera* (eller *pub/sub*), är användbart när flera appar är intresserade hello samma meddelanden. Genom att definiera hello rätt filter kan prenumerant varje bara hello del av hello meddelandeströmmen måste toosee.
 
 ## <a name="relays"></a>Reläer
 
-Både köer och ämnen ger dig enkelriktad, asynkron kommunikation via en koordinator. Trafiken flödar endast i en riktning och det finns ingen direkt anslutning mellan avsändarna och mottagarna. Men vad händer om du inte vill använda denna anslutning? Anta att dina appar både måste kunna skicka och ta emot meddelanden. Eller så kanske du vill ha en direktlänk mellan dem och du har inget behov av en koordinator för att lagra meddelanden. För att kunna hantera scenarier som detta tillhandahåller Service Bus *reläer* (relays), som visas på bild 4.
+Både köer och ämnen ger dig enkelriktad, asynkron kommunikation via en koordinator. Trafiken flödar endast i en riktning och det finns ingen direkt anslutning mellan avsändarna och mottagarna. Men vad händer om du inte vill använda denna anslutning? Anta att dina program behöver tooboth skicka och ta emot meddelanden, eller kanske du vill ha en direktlänk mellan dem och du behöver inte en broker toostore meddelanden. tooaddress scenarier som detta, Service Bus innehåller *vidarebefordrar*, enligt figur 4 visar.
 
 ![][4]
 
 **Bild 4: Service Bus Relay erbjuder synkron, dubbelriktad kommunikation mellan program.**
 
-Den naturliga frågan när det gäller reläer är: varför bör jag använda ett relä? Även om jag inte behöver köer, varför göra så att appar kommunicerar via en molnbaserad tjänst i stället för att helt enkelt interagera direkt med varandra? Svaret är att det här med att prata direkt med varandra kan vara svårare än du tror.
+Hej tooask naturliga frågan när det gäller reläer är detta: Varför ska jag använda det? Även om jag inte behöver köer, varför göra program kommunicerar via en molnbaserad tjänst i stället för bara interagera direkt? hello svaret är att prata direkt kan vara svårare än du tror.
 
-Anta att du vill ansluta två lokala appar. Båda körs på företagets eget datacenter. Var och en av dessa appar ligger bakom en brandvägg och varje datacenter använder antagligen nätadressöversättning (NAT). Brandväggen blockerar inkommande data på i princip alla portar och NAT-användningen antyder att datorerna där apparna körs inte har en fast IP-adress som gör att du kan nå dem direkt från en plats utanför datacentret. Utan extra hjälp är det problematiskt att ansluta dessa appar till varandra med hjälp av en offentlig internetanslutning.
+Anta att du vill tooconnect två lokala program körs båda på företagets eget datacenter. Var och en av dessa appar ligger bakom en brandvägg och varje datacenter använder antagligen nätadressöversättning (NAT). hello brandväggen blockerar inkommande data på alla utom ett fåtal portar och NAT innebär att hello datorn varje program som körs på inte har en fast IP-adress som du kan nå direkt från utanför hello datacenter. Utan extra hjälp, ansluter programmen via hello offentliga internet är det problematiskt.
 
-Det kan hjälpa att använda ett Service Bus-relä. För att kommunicera i båda riktningarna via ett relä, upprättar varje app en utgående TCP-anslutning med Service Bus och håller den sedan öppen. All kommunikation mellan de två apparna överförs via dessa anslutningar. Eftersom varje anslutning har upprättats inifrån datacentret tillåter brandväggen inkommande trafik till varje app utan att öppna nya portar. Med hjälp av den här metoden kringgår du också problemet med NAT eftersom varje app har en konsistent slutpunkt i molnet under hela kommunikationen. Genom att utföra utbyte av data via reläet kan apparna undvika problem som annars skulle ha försvårat kommunikationen. 
+Det kan hjälpa att använda ett Service Bus-relä. toocommunicate båda riktningarna via ett relä, varje program upprättar en utgående TCP-anslutning med Service Bus och håller den öppen. All kommunikation mellan två program för hello överförs via dessa anslutningar. Eftersom varje anslutning har upprättats från i hello datacenter hello brandväggen tillåter inkommande trafik tooeach program utan att öppna nya portar. Den här metoden kringgår du också hello NAT-problem, eftersom varje App har en konsistent slutpunkt i hello molnet under hela hello-meddelande. Genom att utbyta data via hello relä undvika hello program hello problem som annars skulle ha gjort kommunikation svårt. 
 
-För att kunna använda Service Bus Relays stöder sig apparna på Windows Communication Foundation (WCF). Service Bus ger dig WCF-bindningar som gör det enkelt för Windows-program att interagera via reläer. Program som redan använder WCF behöver normalt bara ange en av dessa bindningar och sedan kan de kommunicera med varandra via ett relä. Men till skillnad från köer och ämnen kräver användningen av reläer från andra program än Windows-program en hel del programmeringsarbete, även om det går att genomföra. Det medföljer inga standardbibliotek.
+toouse Service Bus reläer, program som förlitar sig på hello Windows Communication Foundation (WCF). Service Bus innehåller WCF-bindningar som gör det enkelt för Windows-program toointeract via reläer. Program som redan använder WCF kan vanligtvis ange något av dessa bindningar och sedan kommunicera tooeach andra via ett relä. Men till skillnad från köer och ämnen kräver användningen av reläer från andra program än Windows-program en hel del programmeringsarbete, även om det går att genomföra. Det medföljer inga standardbibliotek.
 
-Till skillnad från köer och ämnen skapar apparna inga reläer rent uttryckligen. När en app som du vill ta emot meddelanden med upprättar en TCP-anslutning med Service Bus, skapas istället ett relä automatiskt. När anslutningen avbryts tas reläet bort. Om du vill aktivera en app för att hitta det relä som skapats av en viss lyssnare, innehåller Service Bus ett register som gör det möjligt för appar att söka efter ett visst relä. Sökningen görs efter namn.
+Till skillnad från köer och ämnen skapar apparna inga reläer rent uttryckligen. När ett program som du vill tooreceive meddelanden upprättar en TCP-anslutning med Service Bus, skapas istället ett relä automatiskt. Hello relay tas bort när hello anslutningen bryts. tooenable ett program toofind hello relay skapas av en viss lyssnare, Service Bus innehåller ett register som gör att program toolocate en specifik vidarebefordran efter namn.
 
-Reläer är den rätta lösningen när du behöver upprätta direkt kommunikation mellan program. Föreställ dig till exempel ett bokningssystem från ett flygbolag som körs i ett lokalt datacenter. Detta måste kunna nås från incheckningskiosker, mobila enheter och andra datorer. Program som körs på alla dessa system kan förlita sig på Service Bus Relays i molnet för att kommunicera med varandra, oavsett var de körs.
+Reläer är hello rätta lösningen när du behöver upprätta direkt kommunikation mellan program. Föreställ dig till exempel ett bokningssystem från ett flygbolag som körs i ett lokalt datacenter. Detta måste kunna nås från incheckningskiosker, mobila enheter och andra datorer. Program som körs på dessa system kan förlita sig på Service Bus relays i hello molnet toocommunicate, oavsett var de kan köras.
 
 ## <a name="summary"></a>Sammanfattning
 
-Att ansluta program har alltid varit en del av arbetet när man skapar kompletta lösningar. Mängden scenarier som dyker upp och kräver att program och tjänster ska kunna kommunicera med varandra kommer med all säkerhet att öka eftersom fler och fler program och enheter ansluts till internet. Syftet med Service Bus är att göra denna absolut nödvändiga funktion enklare att implementera och se till att tekniken blir mer tillgänglig, genom att tillhandahålla molnbaserad teknik och använda köer, ämnen och reläer.
+Ansluta program har alltid varit en del för att skapa kompletta lösningar och hello olika scenarier som kräver att program och tjänster toocommunicate med varandra anges tooincrease som flera program och enheter är anslutna toohello internet. Genom att tillhandahålla molnbaserad teknik för att uppnå kommunikation via köer, ämnen och reläer, Service Bus syftar toomake denna absolut nödvändiga funktion enklare tooimplement och mer tillgänglig.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har lärt dig grunderna om Azure Service Bus, kan du följa dessa länkar om du vill veta mer.
+Nu när du har lärt dig grunderna hello i Azure Service Bus, följa dessa länkar toolearn mer.
 
-* Använda [Service Bus-köer](service-bus-dotnet-get-started-with-queues.md)
-* Använda [Service Bus-ämnen](service-bus-dotnet-how-to-use-topics-subscriptions.md)
-* Använda [Service Bus-reläer](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md)
+* Hur toouse [Service Bus-köer](service-bus-dotnet-get-started-with-queues.md)
+* Hur toouse [Service Bus-ämnen](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+* Hur toouse [Service Bus relay](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md)
 * [Service Bus-exempel](service-bus-samples.md)
 
 [1]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_01_architecture.png

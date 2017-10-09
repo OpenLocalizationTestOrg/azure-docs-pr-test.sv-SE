@@ -1,22 +1,22 @@
 ## <a name="create-a-device-identity"></a>Skapa en enhetsidentitet
-I det här avsnittet ska du skapa en .NET-konsolapp som skapar en enhetsidentitet i identitetsregistret i IoT Hub. En enhet kan inte ansluta till IoT Hub om den inte har en post i identitetsregistret. Mer information finns i avsnittet om identitetsregistret i [utvecklarhandboken för IoT Hub][lnk-devguide-identity]. När du kör den här konsolappen genererar det ett unikt enhets-ID och en nyckel som din enhet kan använda för att identifiera sig själv när den skickar ”enhet-till-molnet”-meddelanden till IoT Hub. Enhets-ID är skiftlägeskänsliga.
+I det här avsnittet skapar du en .NET-konsolapp som skapar en enhetsidentitet i hello identitetsregistret i din IoT-hubb. En enhet kan inte ansluta tooIoT hubb om den inte har en post i registret för hello identitet. Mer information finns i avsnittet hello ”identitetsregistret” av hello [IoT-hubb Utvecklarhandbok][lnk-devguide-identity]. När du kör den här konsolen appen genereras ett unikt enhets-ID och nyckel att enheten kan använda tooidentify själva när den skickar enhet till moln meddelanden tooIoT hubb. Enhets-ID är skiftlägeskänsliga.
 
-1. I Visual Studio lägger du till ett Visual C# Classic Desktop-projekt i den nya lösningen med hjälp av projektmallen **Konsolapp (.NET Framework)**. Kontrollera att .NET Framework-versionen är 4.5.1 eller senare. Ge projektet namnet **CreateDeviceIdentity** och lösningen namnet **IoTHubGetStarted**.
+1. Lägga till en ny lösning för Visual C# klassiska skrivbordet projektet tooa i Visual Studio med hello **Konsolapp (.NET Framework)** projektmall. Se till att hello av .NET Framework 4.5.1 eller senare. Namnet hello projektet **CreateDeviceIdentity** och namnet hello lösningen **IoTHubGetStarted**.
    
     ![Nytt Visual C# Windows Classic Desktop-projekt][10]
-2. Högerklicka i Solution Explorer på projektet **CreateDeviceIdentity** och klicka sedan på **Hantera NuGet-paket**.
-3. Välj **Bläddra** i fönstret för **NuGet-pakethanteraren**, leta upp **microsoft.azure.devices**, välj **Installera** för att installera **Microsoft.Azure.Devices**-paketet och godkänn användningsvillkoren. Denna procedur hämtar, installerar och lägger till en referens för [NuGet-paketetet SDK för Azure IoT-tjänster][lnk-nuget-service-sdk] och dess beroenden.
+2. I Solution Explorer högerklickar du på hello **CreateDeviceIdentity** projektet och klicka sedan på **hantera NuGet-paket**.
+3. I hello **NuGet Package Manager** väljer **Bläddra**, söka efter **microsoft.azure.devices**väljer **installera** tooinstall Hej **Microsoft.Azure.Devices** paketet och acceptera hello villkor för användning. Den här proceduren hämtar, installerar och lägger till en referens toohello [Azure IoT service SDK] [ lnk-nuget-service-sdk] NuGet-paketet och dess beroenden.
    
     ![Fönstret för NuGet-pakethanteraren][11]
-4. Lägg till följande `using`-uttryck överst i **Program.cs**-filen:
+4. Lägg till följande hello `using` instruktioner överst hello i hello **Program.cs** fil:
    
         using Microsoft.Azure.Devices;
         using Microsoft.Azure.Devices.Common.Exceptions;
-5. Lägg till följande fält i klassen **Program**. Ersätt platshållarvärdet med IoT Hub-anslutningssträngen som du skapade i föregående avsnitt.
+5. Lägg till följande fält toohello hello **programmet** klass. Ersätt hello platshållarvärde med hello IoT-hubb anslutningssträngen för hello-hubb som du skapade i föregående avsnitt i hello.
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
-6. Lägg till följande metod i klassen **Program**:
+6. Lägg till följande metod toohello hello **programmet** klass:
    
         private static async Task AddDeviceAsync()
         {
@@ -33,20 +33,20 @@ I det här avsnittet ska du skapa en .NET-konsolapp som skapar en enhetsidentite
             Console.WriteLine("Generated device key: {0}", device.Authentication.SymmetricKey.PrimaryKey);
         }
    
-    Den här metoden skapar en enhetsidentitet med ID:t **myFirstDevice**. (Om enhets-ID:t redan finns i identitetsregistret hämtar koden bara den befintliga enhetsinformationen.) Appen visar sedan den primära nyckeln för den identiteten. Du använder den här nyckeln i den simulerade enhetsappen för att ansluta till din IoT Hub.
+    Den här metoden skapar en enhetsidentitet med ID:t **myFirstDevice**. (Om enhets-ID redan finns i hello identitetsregistret hello kod bara hämtar hello befintliga enhetsinformation.) hello app visar hello primärnyckel identitet. Du kan använda den här nyckeln i hello simulerade enheten app tooconnect tooyour IoT-hubb.
 [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-7. Slutligen lägger du till följande rader till **Main**-metoden:
+7. Slutligen lägger du till följande rader toohello hello **Main** metoden:
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
         AddDeviceAsync().Wait();
         Console.ReadLine();
-8. Kör det här programmet och notera enhetsnyckeln.
+8. Kör det här programmet och anteckna hello enhetsnyckel.
    
-    ![Enhetsnyckel som genereras av programmet][12]
+    ![Enhetsnyckel som genererats av hello program][12]
 
 > [!NOTE]
-> IoT Hub-identitetsregistret lagrar bara enhetsidentiteter för att skydda åtkomsten till IoT Hub. Registret lagrar enhets-ID:n och enhetsnycklar som ska användas som säkerhetsreferenser och en aktiverad/inaktiverad-flagga som du kan använda för att inaktivera åtkomst för en enskild enhet. Om ditt program behöver lagra andra enhetsspecifika metadata bör det använda ett programspecifikt datalager. Mer information finns i [utvecklarhandboken för IoT Hub][lnk-devguide-identity].
+> Hej IoT-hubb identitetsregistret lagrar bara enheten identiteter tooenable säker åtkomst toohello IoT-hubb. Enheten ID och nycklar toouse lagras som säkerhetsreferenser och en aktiverat/inaktiverat flagga som du kan använda toodisable åtkomst för en enskild enhet. Om ditt program måste toostore andra enhetsspecifika metadata, använder den en programspecifika butik. Mer information finns i [utvecklarhandboken för IoT Hub][lnk-devguide-identity].
 > 
 > 
 

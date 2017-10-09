@@ -1,6 +1,6 @@
 ---
-title: "Hur du använder och testar REST API:erna för Azure Search med hjälp av Fiddler | Microsoft Docs"
-description: "Använd Fiddler för att verifiera Azure Search-tillgänglighet och testa REST-API:erna utan kod."
+title: 'aaaHow toouse Fiddler tooevaluate och testa Azure Search REST API: er | Microsoft Docs'
+description: "Använd Fiddler för en kod utan metoden tooverifying Azure Search tillgänglighet och testar hello REST API: er."
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -14,13 +14,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 10/27/2016
 ms.author: heidist
-ms.openlocfilehash: c38b73fa69bee34ce2434c6274cb017c99ef3c35
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2912e1180717d7b40a1e4f7f7f00daf2cc254f0b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-fiddler-to-evaluate-and-test-azure-search-rest-apis"></a>Utvärdera och testa REST-API:erna för Azure Search med hjälp av Fiddler
+# <a name="use-fiddler-tooevaluate-and-test-azure-search-rest-apis"></a>Använd Fiddler tooevaluate och testa Azure Search REST API: er
 > [!div class="op_single_selector"]
 >
 > * [Översikt](search-query-overview.md)
@@ -31,34 +31,34 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-Den här artikeln beskriver hur du använder Fiddler, som är tillgängligt som en [kostnadsfri nedladdning från Telerik](http://www.telerik.com/fiddler), för att skicka HTTP-förfrågningar till och visa svar med hjälp av REST-API:et för Azure Search, utan att skriva någon kod. Azure Search är en fullständigt hanterad, värd- och molnbaserad söktjänst i Microsoft Azure, som enkelt kan programmeras via .NET och REST-API:er. Azure Search-tjänstens REST API:er finns dokumenterade på [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx).
+Den här artikeln förklarar hur toouse Fiddler, tillgänglig som en [av Telerik](http://www.telerik.com/fiddler), tooissue HTTP-begäranden tooand Visa svar med hello Azure Search REST-API, utan att behöva toowrite någon kod. Azure Search är en fullständigt hanterad, värd- och molnbaserad söktjänst i Microsoft Azure, som enkelt kan programmeras via .NET och REST-API:er. hello Azure Search-tjänsten REST API: er som finns dokumenterade i [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx).
 
-I följande steg ska du skapa ett index, ladda upp dokument, fråga indexet och fråga systemet efter tjänstinformation.
+I följande hello, ska du skapa ett index, ladda upp dokument, fråga hello index och sedan frågan hello system information om.
 
-För att slutföra dessa steg behöver du en Azure Search-tjänst och `api-key`. Anvisningar för hur du kommer igång finns i [Skapa en Azure Search-tjänst på portalen](search-create-service-portal.md).
+toocomplete dessa steg, behöver du en Azure Search-tjänst och `api-key`. Se [skapa en Azure Search-tjänst i hello portal](search-create-service-portal.md) anvisningar för hur tooget startas.
 
 ## <a name="create-an-index"></a>Skapa ett index
-1. Starta Fiddler. Inaktivera **Capture Traffic**på **File**-menyn för att dölja HTTP-aktivitet som inte rör den aktuella aktiviteten.
-2. På fliken **Composer** formulerar du en begäran som ser ut som i följande skärmbild.
+1. Starta Fiddler. På hello **filen** menyn inaktivera **fånga in trafik** toohide överflödig http-aktivitet som är inte relaterat toohello aktuella aktiviteten.
+2. På hello **Composer** fliken ska du formulerar en begäran som ser ut som följande skärmbild som visar hello.
 
       ![][1]
 3. Välj **PUT**.
-4. Ange en URL som anger tjänstens URL, attribut för begäran och API-versionen. Några saker att tänka på:
+4. Ange en URL som anger hello-tjänstens URL, attribut och hello api-versionen. Några pekare tookeep i åtanke:
 
-   * Använd HTTPS som prefix.
-   * Attributet för begäran är ”/indexes/hotels”. Detta beordrar Search att skapa ett index med namnet ”hotels”.
-   * API-versionen anges i gemener, i följande format: ”?api-version=2016-09-01”. API-versioner är viktiga eftersom Azure Search distribuerar uppdateringar regelbundet. I sällsynta fall kan en tjänstuppdatering implementera en viktig ändring i API:et. Av den anledningen kräver Azure Search en API-version i varje begäran så att du har full kontroll över vilken version som används.
+   * Använd HTTPS som hello prefix.
+   * Attributet för begäran är ”/indexes/hotels”. Detta talar om sökningen toocreate ett index med namnet 'hotell'.
+   * API-versionen anges i gemener, i följande format: ”?api-version=2016-09-01”. API-versioner är viktiga eftersom Azure Search distribuerar uppdateringar regelbundet. I sällsynta fall kan en tjänstuppdatering införa en ny ändring toohello API. Av den anledningen kräver Azure Search en API-version i varje begäran så att du har full kontroll över vilken version som används.
 
-     En fullständig URL ser ut som i följande exempel.
+     hello fullständig URL bör se ut ungefär toohello följande exempel.
 
              https://my-app.search.windows.net/indexes/hotels?api-version=2016-09-01
-5. Ange huvudet för begäran och ersätt värden och API-nyckeln med värdena för din tjänst.
+5. Ange hello begärandehuvudet ersätter hello värden och api-nyckel med värden som är giltiga för din tjänst.
 
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
-6. I Begärandetext klistrar du in fälten som bildar indexdefinitionen.
+6. Brödtext i begäran, klistra in i hello fält som utgör hello indexdefinitionen.
 
           {
          "name": "hotels",  
@@ -76,28 +76,28 @@ För att slutföra dessa steg behöver du en Azure Search-tjänst och `api-key`.
            {"name": "location", "type": "Edm.GeographyPoint"}
           ]
          }
-7. Klicka på **Execute**.
+7. Klicka på **Kör**.
 
-Efter några sekunder bör du se ett 201 HTTP-svar i sessionslistan som anger att indexet har skapats.
+Om några sekunder bör du se ett HTTP-201 svar i hello session listan, som anger hello indexet har skapats.
 
-Om HTTP 504 returneras kontrollerar du att HTTPS används i URL:en. Om HTTP 400 eller 404 returneras kontrollerar du att alla fält har kopierats och klistrats in korrekt i begärandetexten. HTTP 403 tyder vanligen på problem med API-nyckeln (antingen en ogiltig nyckel eller ett syntaxproblem när API-nyckeln angavs).
+Om du får HTTP 504 Kontrollera hello URL anger HTTPS. Om du ser HTTP 400 eller 404 Kontrollera hello begäran brödtext tooverify det har inga kopiera / klistra in-fel. Ett HTTP 403 tyder vanligtvis på problem med hello api-nyckel (en ogiltig nyckel eller ett syntax problem med hur hello api-nyckel har angetts).
 
 ## <a name="load-documents"></a>Läsa in dokument
-På fliken **Composer** ser din begäran om att publicera dokument ut så här: Begäran innehåller sökdata för fyra hotell.
+På hello **Composer** fliken begäran toopost dokument kommer att se ut hello följande. hello innehåller hello begäran hello sökdata för 4 hotell.
 
    ![][2]
 
 1. Välj **POST**.
-2. Ange en URL som börjar med HTTPS, följt av tjänstens URL, följt av ”/indexes/<'indexname'>/docs/index?api-version=2016-09-01”. En fullständig URL ser ut som i följande exempel.
+2. Ange en URL som börjar med HTTPS, följt av tjänstens URL, följt av ”/indexes/<'indexname'>/docs/index?api-version=2016-09-01”. hello fullständig URL bör se ut ungefär toohello följande exempel.
 
          https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
-3. Huvudet i begäran ska vara samma som tidigare. Kom ihåg att du ersatte värden och API-nyckeln med värden för din tjänst.
+3. Huvudet i begäran bör vara hello samma som tidigare. Kom ihåg att du har ersatt hello värden och api-nyckel med värden som är giltiga för din tjänst.
 
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
-4. Begärandetexten innehåller fyra dokument som ska läggas till i hotellindexet.
+4. hello brödtext i begäran innehåller fyra dokument toobe tillagda toohello hotell index.
 
          {
          "value": [
@@ -147,7 +147,7 @@ På fliken **Composer** ser din begäran om att publicera dokument ut så här: 
              "@search.action": "upload",
              "hotelId": "4",
              "baseRate": 220.00,
-             "description": "This could be the one",
+             "description": "This could be hello one",
              "hotelName": "A Hotel for Everyone",
              "category": "Basic hotel",
              "tags": ["pool", "wifi"],
@@ -159,33 +159,33 @@ På fliken **Composer** ser din begäran om att publicera dokument ut så här: 
            }
           ]
          }
-5. Klicka på **Execute**.
+5. Klicka på **Kör**.
 
-Efter några sekunder bör du se ett 200 HTTP-svar i sessionslistan. Detta anger att dokumenten har skapats. Om ett 207-svar returneras misslyckades uppladdningen av minst ett dokument. Om ett 404-svar returneras beror det på ett syntaxfel i sidhuvudet för begäran eller i begärandetexten.
+Du bör se ett 200 HTTP-svar i hello session listan efter några sekunder. Detta anger hello dokument har skapats. Om du får en 207 misslyckades tooupload minst ett dokument. Om du får ett 404 har ett syntaxfel i hello sidhuvud eller hello begäran om.
 
-## <a name="query-the-index"></a>Skicka frågor mot indexet
-Nu när ett index och dokument har lästs in kan du skicka frågor mot dem.  **GET**-kommandot på fliken **Composer**skickar frågor mot din tjänst och ser ut som i följande skärmbild.
+## <a name="query-hello-index"></a>Frågan hello index
+Nu när ett index och dokument har lästs in kan du skicka frågor mot dem.  På hello **Composer** fliken en **hämta** liknande toohello följande skärmdump ser kommandot som frågar din tjänst.
 
    ![][3]
 
 1. Välj **GET**.
-2. Ange en URL som börjar med HTTPS, följt av tjänstens URL, följt av ”/indexes/<'indexname'>/docs?”, följt av frågeparametrar. Som ett exempel kan du använda följande URL och ersätta exempelvärdnamnet med ett som är giltigt för din tjänst.
+2. Ange en URL som börjar med HTTPS, följt av tjänstens URL, följt av ”/indexes/<'indexname'>/docs?”, följt av frågeparametrar. Använd hello följande URL, ersätter hello exempel värdnamn med något som gäller för din tjänst som exempel.
 
          https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2016-09-01
 
-   Den här frågan söker efter termen ”motel” och hämtar aspektkategorier för betygsättning.
-3. Huvudet i begäran ska vara samma som tidigare. Kom ihåg att du ersatte värden och API-nyckeln med värden för din tjänst.
+   Den här frågan söker efter hello termen ”översikt” och hämtar aspekten kategorier för klassificering.
+3. Huvudet i begäran bör vara hello samma som tidigare. Kom ihåg att du har ersatt hello värden och api-nyckel med värden som är giltiga för din tjänst.
 
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
 
-Svarskoden bör vara 200 och svarsutdata bör se ut som i följande skärmbild.
+hello svarskoden bör vara 200 och hello svarsutdata bör se ut ungefär toohello följande skärmdump.
 
    ![][4]
 
-Följande exempelfråga kommer från avsnittet om [sökindexåtgärder (Azure Search-API)](http://msdn.microsoft.com/library/dn798927.aspx) på MSDN. Många av exempelfrågorna i det här avsnittet innehåller blanksteg, som inte är tillåtna i Fiddler. Ersätt varje blanksteg med ett plustecken (+) innan du klistrar in frågesträngen innan du försöker köra frågan i Fiddler.
+hello följande exempelfråga är från hello [sökindex åtgärden (Azure Search-API)](http://msdn.microsoft.com/library/dn798927.aspx) på MSDN. Många av hello exempel frågorna i det här avsnittet innehåller blanksteg, vilket inte är tillåtna i Fiddler. Ersätt varje utrymme med en + tecknet innan klistra in hello frågesträng innan du försöker hello fråga i Fiddler.
 
 **Innan blankstegen har ersatts:**
 
@@ -195,8 +195,8 @@ Följande exempelfråga kommer från avsnittet om [sökindexåtgärder (Azure Se
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2016-09-01
 
-## <a name="query-the-system"></a>Fråga systemet
-Du kan också skicka frågor i systemet för att visa antalet dokument och lagringsanvändningen. På fliken **Composer** ser din begäran ut ungefär som nedan, och svaret returnerar antalet dokument och mängden förbrukat utrymme.
+## <a name="query-hello-system"></a>frågan hello system
+Du kan också fråga hello system tooget antal och lagring dokumentanvändning. På hello **Composer** fliken din begäran kommer att se liknande toohello följande och hello svaret returnerar antalet hello antalet dokument och diskutrymme som används.
 
  ![][5]
 
@@ -204,18 +204,18 @@ Du kan också skicka frågor i systemet för att visa antalet dokument och lagri
 2. Ange en URL som innehåller tjänstens URL, följt av ”/indexes/hotels/stats?api-version=2016-09-01”:
 
          https://my-app.search.windows.net/indexes/hotels/stats?api-version=2016-09-01
-3. Ange huvudet för begäran och ersätt värden och API-nyckeln med värdena för din tjänst.
+3. Ange hello begärandehuvudet ersätter hello värden och api-nyckel med värden som är giltiga för din tjänst.
 
          User-Agent: Fiddler
          host: my-app.search.windows.net
          content-type: application/json
          api-key: 1111222233334444
-4. Lämna begärandetexten tom.
-5. Klicka på **Execute**. Du bör se en 200 HTTP-statuskod i sessionslistan. Välj posten som publicerats för ditt kommando.
-6. Klicka på fliken **Inspectors**, klicka på fliken **Headers** och välj sedan JSON-formatet. Du bör se antalet dokument och lagringsstorleken (i kB).
+4. Lämna hello begärandetexten tomt.
+5. Klicka på **Kör**. Du bör se en 200 HTTP-statuskod i hello sessionslista. Välj hello post för ditt kommando.
+6. Klicka på hello **kontrollanter** klickar du på hello **huvuden** fliken och markera sedan hello JSON-format. Du bör se hello antal och lagring storlek (i KB).
 
 ## <a name="next-steps"></a>Nästa steg
-Avsnittet [Hantera din Search-tjänst i Azure](search-manage.md) innehåller information om hur du hanterar och använder Azure Search utan att skriva någon kod.
+Se [hantera din söktjänst på Azure](search-manage.md) för en ingen kod metoden toomanaging och använda Azure Search.
 
 <!--Image References-->
 [1]: ./media/search-fiddler/AzureSearch_Fiddler1_PutIndex.png

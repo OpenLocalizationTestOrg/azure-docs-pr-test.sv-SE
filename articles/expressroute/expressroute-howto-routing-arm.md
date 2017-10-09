@@ -1,6 +1,6 @@
 ---
-title: "Konfigurera routning (peering) för en ExpressRoute-krets: hanteraren för filserverresurser: PowerShell: Azure | Microsoft Docs"
-description: "Den här artikeln vägleder dig genom stegen för att skapa och etablera privat, offentlig och Microsoft-peering av en ExpressRoute-krets. I artikeln får du även se hur man kontrollerar status, uppdaterar eller tar bort peerings för din krets."
+title: "Hur tooconfigure routning (peering) för en ExpressRoute-krets: hanteraren för filserverresurser: PowerShell: Azure | Microsoft Docs"
+description: "Den här artikeln vägleder dig genom hello steg för att skapa och etablera hello private, offentlig och Microsoft-peering i ExpressRoute-kretsen. Den här artikeln beskriver också hur toocheck hello status, uppdatera eller ta bort peerkopplingar för kretsen."
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: af68955b78239832e413e1b59e033d7d3da8d599
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: eb3ddf5c05a086ac3e22c64417e51381ef465921
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Skapa och ändra peering för en ExpressRoute-krets med hjälp av PowerShell
 
-Den här artikeln hjälper dig att skapa och hantera routningskonfiguration för en ExpressRoute-krets i Resource Manager-distributionsmodellen med hjälp av PowerShell. Du kan också kontrollera status, uppdatera eller ta bort och ta bort etableringen av peerkopplingar för en ExpressRoute-krets. Om du vill använda en annan metod för att arbeta med kretsen väljer du en artikel från följande lista:
+Den här artikeln hjälper dig att skapa och hantera routningskonfiguration för en ExpressRoute-krets i hello Resource Manager-distributionsmodellen med hjälp av PowerShell. Du kan också kontrollera hello status, uppdatera eller ta bort och ta bort etableringen av peerkopplingar för en ExpressRoute-krets. Om du vill toouse en annan metod toowork med kretsen, väljer du en artikel från hello följande lista:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
@@ -37,69 +37,69 @@ Den här artikeln hjälper dig att skapa och hantera routningskonfiguration för
 
 ## <a name="configuration-prerequisites"></a>Förutsättningar för konfiguration
 
-* Du behöver den senaste versionen av Azure Resource Manager PowerShell-cmdlets. Mer information finns i [Installera och konfigurera Azure PowerShell](/powershell/azure/overview). 
-* Kontrollera att du har granskat sidorna [Förutsättningar](expressroute-prerequisites.md), [Routningskrav](expressroute-routing.md) sidan och [Arbetsflöden](expressroute-workflows.md) sidan innan du påbörjar konfigurationen.
-* Du måste ha en aktiv ExpressRoute-krets. Följ anvisningarna för att [Skapa en ExpressRoute-krets](expressroute-howto-circuit-arm.md) och aktivera kretsen av anslutningsprovidern innan du fortsätter. ExpressRoute-kretsen måste vara i ett etablerad och aktiverade tillstånd att kunna köra cmdlets i den här artikeln.
+* Du behöver hello senaste versionen av hello Azure Resource Manager PowerShell-cmdlets. Mer information finns i [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview). 
+* Kontrollera att du har granskat hello [krav](expressroute-prerequisites.md) sidan hello [routningskrav](expressroute-routing.md) sida och hello [arbetsflöden](expressroute-workflows.md) sidan innan du börjar konfigurera.
+* Du måste ha en aktiv ExpressRoute-krets. Följ instruktionerna för hello för[skapar du en ExpressRoute-krets](expressroute-howto-circuit-arm.md) och ha hello krets aktiveras med anslutningsleverantören innan du fortsätter. Hej ExpressRoute-krets måste vara i ett etablerat och aktiverade tillstånd du toobe kan toorun hello-cmdlets i den här artikeln.
 
-Dessa anvisningar gäller endast för kretsar som skapats med tjänstleverantörer som erbjuder tjänster för Layer 2-anslutning. Om du använder en tjänstprovider som erbjuder hanterade Layer 3-tjänster (vanligtvis en IPVPN, t.ex. MPLS), anslutningsleverantören kan konfigurera och hantera routning av du.
+Dessa anvisningar gäller endast toocircuits som skapats med leverantörer som erbjuder tjänster nivå 2. Om du använder en tjänstprovider som erbjuder hanterade Layer 3-tjänster (vanligtvis en IPVPN, t.ex. MPLS), anslutningsleverantören kan konfigurera och hantera routning av du.
 
 > [!IMPORTANT]
-> Vi gör för närvarande inte reklam för peerings som konfigurerats av tjänstleverantörer via tjänsthanteringsportalen. Vi arbetar på att kunna aktivera den här funktionen snart. Kontrollera med leverantören innan du konfigurerar BGP peerkopplingar.
+> Vi annonseras för närvarande inte peerkopplingar som konfigurerats av leverantörer via hello service management portal. Vi arbetar på att kunna aktivera den här funktionen snart. Kontrollera med leverantören innan du konfigurerar BGP peerkopplingar.
 > 
 > 
 
-Du kan konfigurera en, två eller alla tre peerings (Azure privat, Azure offentlig och Microsoft) för en ExpressRoute-krets. Du kan konfigurera peerings i valfri ordning. Dock måste du se till att du slutför konfigurationen av en peering i taget. 
+Du kan konfigurera en, två eller alla tre peerings (Azure privat, Azure offentlig och Microsoft) för en ExpressRoute-krets. Du kan konfigurera peerings i valfri ordning. Du måste dock se till att du har slutfört hello konfigurationen för varje peering en i taget. 
 
 ## <a name="azure-private-peering"></a>Azures privata peering
 
-Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort Azure privat peering konfigurationen för en ExpressRoute-krets.
+Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort hello Azure privat peering-konfiguration för en ExpressRoute-krets.
 
-### <a name="to-create-azure-private-peering"></a>Så här skapar du Azures privata peering
+### <a name="toocreate-azure-private-peering"></a>toocreate privat Azure-peering
 
-1. Importera PowerShell-modulen för ExpressRoute.
+1. Importera hello PowerShell-modulen för ExpressRoute.
 
-  Du måste installera den senaste versionen av PowerShell-installeraren från [PowerShell-galleriet](http://www.powershellgallery.com/) och importera modulerna i Azure Resource Manager i PowerShell-sessionen för att kunna börja använda ExpressRoute-cmdletar. Du måste köra PowerShell som administratör.
+  Du måste installera hello senaste PowerShell installer från [PowerShell-galleriet](http://www.powershellgallery.com/) och importera hello Azure Resource Manager moduler till hello PowerShell-session i ordning toostart med hello ExpressRoute-cmdletar. Du behöver toorun PowerShell som administratör.
 
   ```powershell
   Install-Module AzureRM
   Install-AzureRM
   ```
 
-  Importera alla AzureRM.* modulerna inom intervallet semantiska versionen.
+  Importera alla hello AzureRM.* moduler i hello kända semantiska versionsintervall.
 
   ```powershell
   Import-AzureRM
   ```
 
-  Du kan också importera en väljer modul inom intervallet för semantisk versionen.
+  Du kan också importera en väljer modul i hello kända semantiska versionsintervall.
 
   ```powershell
   Import-Module AzureRM.Network 
   ```
 
-  Logga in på ditt konto.
+  Logga in tooyour konto.
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-  Välj den prenumeration som du vill skapa ExpressRoute-kretsen.
+  Välj hello-prenumeration som du vill toocreate ExpressRoute-kretsen.
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   ```
 2. Skapa en ExpressRoute-krets.
 
-  Följ anvisningarna för att skapa en [ExpressRoute-krets](expressroute-howto-circuit-arm.md) och etablera den med anslutningsprovidern.
+  Följ hello instruktioner toocreate en [ExpressRoute-krets](expressroute-howto-circuit-arm.md) och har etablerats av hello anslutning providern.
 
-  Om din anslutningsleverantör erbjuder hanteringstjänster för Layer 3, kan du begära att anslutningsleverantören aktiverar Azures privata peering åt dig. I så fall behöver du inte följa anvisningarna i nästa avsnitt. Om anslutningsleverantören inte kan hantera routning av du, när du har skapat din krets fortsätta konfigurationen med nästa steg.
-3. Kontrollera ExpressRoute-krets och kontrollera att den är etablerad och aktiverats. Använd följande exempel:
+  Om anslutningsleverantören erbjuder hanteringstjänster Layer 3, kan du begära din anslutning providern tooenable Azure privat peering åt dig. Du behöver inte i så fall toofollow instruktioner som anges i hello nästa avsnitt. Om anslutningsleverantören inte kan hantera routning av du, när du har skapat din krets fortsätta konfigurationen med hjälp av hello nästa steg.
+3. Kontrollera hello ExpressRoute-kretsen toomake är etablerad och aktiverats. Använd följande exempel hello:
 
   ```powershell
   Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
   ```
 
-  Svaret liknar följande exempel:
+  hello svaret är liknande toohello följande exempel:
 
   ```
   Name                             : ExpressRouteARMCircuit
@@ -124,15 +124,15 @@ Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort Azure p
   ServiceKey                       : **************************************
   Peerings                         : []
   ```
-4. Konfigurera Azures privata peering för kretsen. Kontrollera att du har följande objekt innan du fortsätter med nästa steg:
+4. Konfigurera privat Azure-peering för hello krets. Kontrollera att du har följande objekt innan du fortsätter med nästa steg i hello hello:
 
-  * Ett /30 undernät för den primära länken. Undernätet får inte vara en del av alla adressutrymme som är reserverade för virtuella nätverk.
-  * Ett /30 undernät för den sekundära länken. Undernätet får inte vara en del av alla adressutrymme som är reserverade för virtuella nätverk.
-  * Ett giltigt VLAN-ID att upprätta denna peering på. Se till att ingen annan peering i kretsen använder samma VLAN-ID.
+  * Ett/30-undernät för hello primära länken. hello undernät får inte vara en del av alla adressutrymme som är reserverade för virtuella nätverk.
+  * Ett/30-undernät för hello sekundära länken. hello undernät får inte vara en del av alla adressutrymme som är reserverade för virtuella nätverk.
+  * Ett giltigt VLAN-ID-tooestablish denna peering på. Kontrollera att ingen annan peering-session i kretsen hello hello använder samma VLAN-ID.
   * AS-tal för peering. Du kan använda både 2 byte och 4 byte som AS-tal. Du kan använda ett privat AS-tal för den här peeringen. Se till att du inte använder 65515.
-  * **Valfritt -** en MD5-hash om du väljer att använda en.
+  * **Valfritt -** en MD5-hash om du väljer toouse en.
 
-  Använd följande exempel för att konfigurera privat Azure-peering för kretsen:
+  Använd följande exempel tooconfigure Azure privat peering för kretsen hello:
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
@@ -140,7 +140,7 @@ Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort Azure p
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-  Om du väljer att använda en MD5-hash, Använd följande exempel:
+  Om du väljer toouse en MD5-hash, Använd följande exempel hello:
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200  -SharedKey "A1B2C3D4"
@@ -151,9 +151,9 @@ Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort Azure p
   > 
   >
 
-### <a name="to-view-azure-private-peering-details"></a>Så här visar du Azures privata peering-information
+### <a name="tooview-azure-private-peering-details"></a>tooview Azure privat peering information
 
-Du kan få konfigurationsinformation genom att använda följande exempel:
+Du kan få konfigurationsinformation genom att använda hello följande exempel:
 
 ```powershell
 $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -161,9 +161,9 @@ $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGr
 Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt
 ```
 
-### <a name="to-update-azure-private-peering-configuration"></a>Uppdatera konfigurationen av Azures privata peering
+### <a name="tooupdate-azure-private-peering-configuration"></a>tooupdate Azure privat peering-konfiguration
 
-Du kan uppdatera någon del av konfigurationen med följande exempel. I det här exemplet uppdateras VLAN-ID för kretsen från 100 till 500.
+Du kan uppdatera någon del av hello-konfigurationen med hjälp av hello följande exempel. I det här exemplet uppdateras hello VLAN-ID för hello krets från 100 too500.
 
 ```powershell
 Set-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt -PeeringType AzurePrivatePeering -PeerASN 100 -PrimaryPeerAddressPrefix "10.0.0.0/30" -SecondaryPeerAddressPrefix "10.0.0.4/30" -VlanId 200
@@ -171,12 +171,12 @@ Set-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="to-delete-azure-private-peering"></a>Så här tar du bort Azures privata peering
+### <a name="toodelete-azure-private-peering"></a>toodelete privat Azure-peering
 
-Du kan ta bort peering konfigurationen genom att köra följande exempel:
+Du kan ta bort peering konfigurationen genom att köra hello följande exempel:
 
 > [!WARNING]
-> Du måste se till att alla virtuella nätverk avlänkas från ExpressRoute-kretsen innan du kör det här exemplet. 
+> Du måste se till att alla virtuella nätverk avlänkas från hello ExpressRoute-krets innan du kör det här exemplet. 
 > 
 > 
 
@@ -188,13 +188,13 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ## <a name="azure-public-peering"></a>Azures offentliga peering
 
-Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort Azure offentlig peering konfigurationen för en ExpressRoute-krets.
+Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort hello Azure offentlig peering-konfiguration för en ExpressRoute-krets.
 
-### <a name="to-create-azure-public-peering"></a>Så här skapar du Azures offentliga peering
+### <a name="toocreate-azure-public-peering"></a>toocreate offentlig Azure-peering
 
-1. Importera PowerShell-modulen för ExpressRoute.
+1. Importera hello PowerShell-modulen för ExpressRoute.
 
-  Du måste installera den senaste versionen av PowerShell-installeraren från [PowerShell-galleriet](http://www.powershellgallery.com/) och importera modulerna i Azure Resource Manager i PowerShell-sessionen för att kunna börja använda ExpressRoute-cmdletar. Du måste köra PowerShell som administratör.
+  Du måste installera hello senaste PowerShell installer från [PowerShell-galleriet](http://www.powershellgallery.com/) och importera hello Azure Resource Manager moduler till hello PowerShell-session i ordning toostart med hello ExpressRoute-cmdletar. Du behöver toorun PowerShell som administratör.
 
   ```powershell
   Install-Module AzureRM
@@ -202,41 +202,41 @@ Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort Azure o
   Install-AzureRM
 ```
 
-  Importera alla AzureRM.* modulerna inom intervallet semantiska versionen.
+  Importera alla hello AzureRM.* moduler i hello kända semantiska versionsintervall.
 
   ```powershell
   Import-AzureRM
   ```
 
-  Du kan också importera en väljer modul inom intervallet för semantisk versionen.
+  Du kan också importera en väljer modul i hello kända semantiska versionsintervall.
 
   ```powershell
   Import-Module AzureRM.Network
 ```
 
-  Logga in på ditt konto.
+  Logga in tooyour konto.
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-  Välj den prenumeration som du vill skapa ExpressRoute-kretsen.
+  Välj hello-prenumeration som du vill toocreate ExpressRoute-kretsen.
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   ```
 2. Skapa en ExpressRoute-krets.
 
-  Följ anvisningarna för att skapa en [ExpressRoute-krets](expressroute-howto-circuit-arm.md) och etablera den med anslutningsprovidern.
+  Följ hello instruktioner toocreate en [ExpressRoute-krets](expressroute-howto-circuit-arm.md) och har etablerats av hello anslutning providern.
 
-  Om din anslutningsleverantör erbjuder hanteringstjänster för Layer 3, kan du begära att anslutningsleverantören aktiverar Azures privata peering åt dig. I så fall behöver du inte följa anvisningarna i nästa avsnitt. Om anslutningsleverantören inte kan hantera routning av du, när du har skapat din krets fortsätta konfigurationen med nästa steg.
-3. Kontrollera ExpressRoute-kretsen om du vill att den är etablerad och aktiverats. Använd följande exempel:
+  Om anslutningsleverantören erbjuder hanteringstjänster Layer 3, kan du begära din anslutning providern tooenable Azure privat peering åt dig. Du behöver inte i så fall toofollow instruktioner som anges i hello nästa avsnitt. Om anslutningsleverantören inte kan hantera routning av du, när du har skapat din krets fortsätta konfigurationen med hjälp av hello nästa steg.
+3. Kontrollera hello ExpressRoute-kretsen tooensure etablerats och aktiverats. Använd följande exempel hello:
 
   ```powershell
   Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
   ```
 
-  Svaret liknar följande exempel:
+  hello svaret är liknande toohello följande exempel:
 
   ```
   Name                             : ExpressRouteARMCircuit
@@ -261,15 +261,15 @@ Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort Azure o
   ServiceKey                       : **************************************
   Peerings                         : []
   ```
-4. Konfigurera Azures offentliga peering för kretsen. Kontrollera att du har följande information innan du ska kunna fortsätta.
+4. Konfigurera offentlig Azure-peering för hello krets. Kontrollera att du har följande information innan du fortsätter ytterligare hello.
 
-  * Ett /30 undernät för den primära länken. Detta måste vara ett giltigt offentligt IPv4-prefix.
-  * Ett /30 undernät för den sekundära länken. Detta måste vara ett giltigt offentligt IPv4-prefix.
-  * Ett giltigt VLAN-ID att upprätta denna peering på. Se till att ingen annan peering i kretsen använder samma VLAN-ID.
+  * Ett/30-undernät för hello primära länken. Detta måste vara ett giltigt offentligt IPv4-prefix.
+  * Ett/30-undernät för hello sekundära länken. Detta måste vara ett giltigt offentligt IPv4-prefix.
+  * Ett giltigt VLAN-ID-tooestablish denna peering på. Kontrollera att ingen annan peering-session i kretsen hello hello använder samma VLAN-ID.
   * AS-tal för peering. Du kan använda både 2 byte och 4 byte som AS-tal.
-  * **Valfritt -** en MD5-hash om du väljer att använda en.
+  * **Valfritt -** en MD5-hash om du väljer toouse en.
 
-  Kör följande exempel för att konfigurera offentlig Azure-peering för kretsen
+  Kör följande exempel tooconfigure Azure offentlig peering för kretsen hello
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100
@@ -277,7 +277,7 @@ Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort Azure o
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-  Om du väljer att använda en MD5-hash, Använd följande exempel:
+  Om du väljer toouse en MD5-hash, Använd följande exempel hello:
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100  -SharedKey "A1B2C3D4"
@@ -290,9 +290,9 @@ Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort Azure o
   > 
   >
 
-### <a name="to-view-azure-public-peering-details"></a>Så här visar du Azures offentliga peering-information
+### <a name="tooview-azure-public-peering-details"></a>tooview Azure offentlig peering information
 
-Du kan hämta konfigurationsinformation med följande cmdlet:
+Du kan hämta konfigurationsinformation med hello följande cmdlet:
 
 ```powershell
   $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -300,9 +300,9 @@ Du kan hämta konfigurationsinformation med följande cmdlet:
   Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
   ```
 
-### <a name="to-update-azure-public-peering-configuration"></a>Så här uppdaterar du konfigurationen av Azures offentliga peering
+### <a name="tooupdate-azure-public-peering-configuration"></a>tooupdate Azure offentlig peering-konfiguration
 
-Du kan uppdatera någon del av konfigurationen med följande exempel. I det här exemplet uppdateras VLAN-ID för kretsen från 200 till 600.
+Du kan uppdatera någon del av hello-konfigurationen med hjälp av hello följande exempel. I det här exemplet uppdateras hello VLAN-ID för hello krets från 200 too600.
 
 ```powershell
 Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600
@@ -310,9 +310,9 @@ Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -Express
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="to-delete-azure-public-peering"></a>Så här tar du bort Azures offentliga peering
+### <a name="toodelete-azure-public-peering"></a>toodelete offentlig Azure-peering
 
-Du kan ta bort peering konfigurationen genom att köra följande exempel:
+Du kan ta bort peering konfigurationen genom att köra hello följande exempel:
 
 ```powershell
 Remove-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
@@ -321,18 +321,18 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ## <a name="microsoft-peering"></a>Microsoft-peering
 
-Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort Microsoft peering konfigurationen för en ExpressRoute-krets.
+Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort hello Microsoft peering konfiguration för en ExpressRoute-krets.
 
 > [!IMPORTANT]
-> Microsoft-peering i ExpressRoute-kretsar som konfigurerades före den 1 augusti 2017 kommer att ha alla service prefix annonserade via Microsoft peering, även om filter routning inte har definierats. Microsoft-peering i ExpressRoute-kretsar som är konfigurerade på eller efter den 1 augusti 2017 har inte alla prefix annonseras förrän ett filter för flödet är kopplat till kretsen. Mer information finns i [konfigurera route filter för Microsoft-peering](how-to-routefilter-powershell.md).
+> Microsoft-peering i ExpressRoute-kretsar som har konfigurerats tidigare tooAugust 1, 2017 kommer ha alla service prefix annonserade via Microsoft hello-peering, även om filter routning inte har definierats. Microsoft-peering i ExpressRoute-kretsar som är konfigurerade på eller efter den 1 augusti 2017 har inte alla prefix annonserade tills ett flöde filter ansluts toohello krets. Mer information finns i [konfigurera route filter för Microsoft-peering](how-to-routefilter-powershell.md).
 > 
 > 
 
-### <a name="to-create-microsoft-peering"></a>Så här skapar du Microsoft-peering
+### <a name="toocreate-microsoft-peering"></a>toocreate Microsoft-peering
 
-1. Importera PowerShell-modulen för ExpressRoute.
+1. Importera hello PowerShell-modulen för ExpressRoute.
 
-  Du måste installera den senaste versionen av PowerShell-installeraren från [PowerShell-galleriet](http://www.powershellgallery.com/) och importera modulerna i Azure Resource Manager i PowerShell-sessionen för att kunna börja använda ExpressRoute-cmdletar. Du måste köra PowerShell som administratör.
+  Du måste installera hello senaste PowerShell installer från [PowerShell-galleriet](http://www.powershellgallery.com/) och importera hello Azure Resource Manager moduler till hello PowerShell-session i ordning toostart med hello ExpressRoute-cmdletar. Du behöver toorun PowerShell som administratör.
 
   ```powershell
   Install-Module AzureRM
@@ -340,41 +340,41 @@ Det här avsnittet hjälper dig att skapa, hämta, uppdatera och ta bort Microso
   Install-AzureRM
   ```
 
-  Importera alla AzureRM.* modulerna inom intervallet semantiska versionen.
+  Importera alla hello AzureRM.* moduler i hello kända semantiska versionsintervall.
 
   ```powershell
   Import-AzureRM
   ```
 
-  Du kan också importera en väljer modul inom intervallet för semantisk versionen.
+  Du kan också importera en väljer modul i hello kända semantiska versionsintervall.
 
   ```powershell
   Import-Module AzureRM.Network
   ```
 
-  Logga in på ditt konto.
+  Logga in tooyour konto.
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-  Välj den prenumeration som du vill skapa ExpressRoute-kretsen.
+  Välj hello-prenumeration som du vill toocreate ExpressRoute-kretsen.
 
   ```powershell
 Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   ```
 2. Skapa en ExpressRoute-krets.
 
-  Följ anvisningarna för att skapa en [ExpressRoute-krets](expressroute-howto-circuit-arm.md) och etablera den med anslutningsprovidern.
+  Följ hello instruktioner toocreate en [ExpressRoute-krets](expressroute-howto-circuit-arm.md) och har etablerats av hello anslutning providern.
 
-  Om din anslutningsleverantör erbjuder hanteringstjänster för Layer 3, kan du begära att anslutningsleverantören aktiverar Azures privata peering åt dig. I så fall behöver du inte följa anvisningarna i nästa avsnitt. Om anslutningsleverantören inte kan hantera routning av du, när du har skapat din krets fortsätta konfigurationen med nästa steg.
-3. Kontrollera ExpressRoute-krets och kontrollera att den är etablerad och aktiverats. Använd följande exempel:
+  Om anslutningsleverantören erbjuder hanteringstjänster Layer 3, kan du begära din anslutning providern tooenable Azure privat peering åt dig. Du behöver inte i så fall toofollow instruktioner som anges i hello nästa avsnitt. Om anslutningsleverantören inte kan hantera routning av du, när du har skapat din krets fortsätta konfigurationen med hjälp av hello nästa steg.
+3. Kontrollera hello ExpressRoute-kretsen toomake är etablerad och aktiverats. Använd följande exempel hello:
 
   ```powershell
   Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
   ```
 
-  Svaret liknar följande exempel:
+  hello svaret är liknande toohello följande exempel:
 
   ```
   Name                             : ExpressRouteARMCircuit
@@ -399,18 +399,18 @@ Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   ServiceKey                       : **************************************
   Peerings                         : []
   ```
-4. Konfigurera Microsoft-peering för kretsen. Kontrollera att du har följande information innan du fortsätter.
+4. Konfigurera Microsoft-peering för hello krets. Kontrollera att du har hello följande information innan du fortsätter.
 
-  * Ett /30 undernät för den primära länken. Detta måste vara ett giltigt offentligt IPv4-prefix som du äger och har registrerat i en RIR/IR.
-  * Ett /30 undernät för den sekundära länken. Detta måste vara ett giltigt offentligt IPv4-prefix som du äger och har registrerat i en RIR/IR.
-  * Ett giltigt VLAN-ID att upprätta denna peering på. Se till att ingen annan peering i kretsen använder samma VLAN-ID.
+  * Ett/30-undernät för hello primära länken. Detta måste vara ett giltigt offentligt IPv4-prefix som du äger och har registrerat i en RIR/IR.
+  * Ett/30-undernät för hello sekundära länken. Detta måste vara ett giltigt offentligt IPv4-prefix som du äger och har registrerat i en RIR/IR.
+  * Ett giltigt VLAN-ID-tooestablish denna peering på. Kontrollera att ingen annan peering-session i kretsen hello hello använder samma VLAN-ID.
   * AS-tal för peering. Du kan använda både 2 byte och 4 byte som AS-tal.
-  * Annonserade prefix: Du måste ange en lista över alla prefix som du planerar att annonsera i BGP-sessionen. Endast offentliga IP-adressprefix accepteras. Om du planerar att skicka en uppsättning prefix, kan du skicka en kommaavgränsad lista. Dessa prefix måste vara registrerade åt dig i ett RIR/IR.
-  * **Valfritt -** kunden ASN: Om du är reklam prefix som inte har registrerats peering som tal, kan du ange numret som de har registrerats.
-  * Routningens registernamn: Du kan ange den RIR/IR mot vilken AS-numret och prefixet är registrerade.
-  * **Valfritt -** en MD5-hash om du väljer att använda en.
+  * Annonserade prefix: du måste ange en lista över alla prefix du planerar tooadvertise över hello BGP-sessionen. Endast offentliga IP-adressprefix accepteras. Om du planerar toosend en uppsättning prefix, kan du skicka en kommaavgränsad lista. Dessa prefix måste vara registrerade tooyou i en RIR / IRR.
+  * **Valfritt -** kunden ASN: Om du är reklam prefix som inte är registrerade toohello peering som du kan ange hello som antalet toowhich som de har registrerats.
+  * Routning namn i registret: Du kan ange hello RIR / IRR mot vilken hello som antalet och prefix har registrerats.
+  * **Valfritt -** en MD5-hash om du väljer toouse en.
 
-   Använd följande exempel för att konfigurera Microsoft-peering för kretsen:
+   Använd följande exempel tooconfigure Microsoft-peering för kretsen hello:
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "123.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
@@ -418,9 +418,9 @@ Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-### <a name="to-get-microsoft-peering-details"></a>Så här hämtar du Microsofts peering-information
+### <a name="tooget-microsoft-peering-details"></a>tooget Microsoft peering information
 
-Du kan hämta konfigurationsinformation enligt följande exempel:
+Du kan hämta konfigurationsinformation med hello följande exempel:
 
 ```powershell
 $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -428,9 +428,9 @@ $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGr
 Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 ```
 
-### <a name="to-update-microsoft-peering-configuration"></a>Så här uppdaterar du Microsofts peering-konfiguration
+### <a name="tooupdate-microsoft-peering-configuration"></a>tooupdate Microsoft peering-konfiguration
 
-Du kan uppdatera någon del av konfigurationen med följande exempel:
+Du kan uppdatera någon del av hello-konfigurationen med hjälp av hello följande exempel:
 
 ```powershell
 Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "124.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
@@ -438,9 +438,9 @@ Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRo
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="to-delete-microsoft-peering"></a>Så här tar du bort Microsoft-peering
+### <a name="toodelete-microsoft-peering"></a>toodelete Microsoft-peering
 
-Du kan ta bort peering konfigurationen genom att köra följande cmdlet:
+Du kan ta bort peering konfigurationen genom att köra följande cmdlet hello:
 
 ```powershell
 Remove-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
@@ -450,7 +450,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nästa steg [Länka ett VNet till en ExpressRoute-krets](expressroute-howto-linkvnet-arm.md).
+Nästa steg [länka VNet-tooan ExpressRoute-krets](expressroute-howto-linkvnet-arm.md).
 
 * Mer information om ExpressRoute-arbetsflöden finns i [ExpressRoute-arbetsflöden](expressroute-workflows.md).
 * Mer information om krets-peering finns i [ExpressRoute-kretsar och routningsdomäner](expressroute-circuit-peerings.md).

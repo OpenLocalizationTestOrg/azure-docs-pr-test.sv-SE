@@ -1,6 +1,6 @@
 ---
-title: "Hanteraren för filserverresurser Mallfunktioner | Microsoft Docs"
-description: "Beskriver funktionerna du använder i en Azure Resource Manager-mall för att hämta värden, arbeta med strängar och siffror, och hämta information om distribution."
+title: aaaResource Manager Mallfunktioner | Microsoft Docs
+description: "Beskriver hello funktioner toouse arbeta med strängar och siffror i en Azure Resource Manager mallen tooretrieve värden och hämta information om distribution."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 1324bed07e991e9d84cb6832afe78bdb2d3348fa
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d1b2e68a33d75058f83d6972dadb33a6390d49b2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager Mallfunktioner
-Det här avsnittet beskrivs de funktioner som du kan använda i en Azure Resource Manager-mall.
+Det här avsnittet beskriver alla hello-funktioner som du kan använda i en Azure Resource Manager-mall.
 
-Du lägger till funktioner i dina mallar genom att skriva dem inom hakparenteser: `[` och `]`respektive. Uttrycket utvärderas under distributionen. Medan skrivs som en teckensträng kan resultat av utvärderingen av uttrycket vara av en annan JSON-typ, till exempel en matris, objekt eller heltal. Precis som i JavaScript-funktionsanrop som är formaterade som `functionName(arg1,arg2,arg3)`. Du kan referera egenskaper genom att använda operatorerna punkt och [index].
+Du lägger till funktioner i dina mallar genom att skriva dem inom hakparenteser: `[` och `]`respektive. hello uttrycket utvärderas under distributionen. Medan skrivs som en teckensträng kan hello resultat av utvärderingen av hello uttryck vara av en annan JSON-typ, till exempel en matris, objekt eller heltal. Precis som i JavaScript-funktionsanrop som är formaterade som `functionName(arg1,arg2,arg3)`. Du kan referera egenskaper med hjälp av hello punkt och [index] operatörer.
 
 Ett malluttryck får inte överskrida 24,576 tecken.
 
-Mallfunktioner och deras parametrar är skiftlägeskänsliga. Till exempel Resource Manager matchar **variables('var1')** och **VARIABLES('VAR1')** samma. När utvärderas om funktionen ändrar uttryckligen skiftläge (till exempel toUpper eller toLower), funktionen bevarar skiftläge. Vissa typer av resurser kan ha case krav oavsett hur funktioner utvärderas.
+Mallfunktioner och deras parametrar är skiftlägeskänsliga. Till exempel Resource Manager matchar **variables('var1')** och **VARIABLES('VAR1')** som hello samma. När utvärderas om hello funktionen ändrar uttryckligen skiftläge (till exempel toUpper eller toLower), hello funktionen behåller hello skiftläge. Vissa typer av resurser kan ha case krav oavsett hur funktioner utvärderas.
 
 <a id="array" />
 <a id="coalesce" />
@@ -87,7 +87,7 @@ Resource Manager innehåller flera funktioner för att göra jämförelser i din
 <a id="variables" />
 
 ## <a name="deployment-value-functions"></a>Funktioner för distribution av värdet
-Hanteraren för filserverresurser innehåller följande funktioner för att hämta värden från avsnitt i mallen och värden som rör distributionen:
+Resource Manager tillhandahåller hello följande funktioner för att hämta värden från delar av hello mall och värden relaterade toohello distribution:
 
 * [distribution](resource-group-template-functions-deployment.md#deployment)
 * [parametrar](resource-group-template-functions-deployment.md#parameters)
@@ -105,7 +105,7 @@ Hanteraren för filserverresurser innehåller följande funktioner för att häm
 <a id="sub" />
 
 ## <a name="logical-functions"></a>Logiska funktioner
-Hanteraren för filserverresurser innehåller följande funktioner för att arbeta med logiska villkor:
+Hanteraren för filserverresurser innehåller följande funktioner för att arbeta med logiska villkor hello:
 
 * [och](resource-group-template-functions-logical.md#and)
 * [bool](resource-group-template-functions-logical.md#bool)
@@ -114,7 +114,7 @@ Hanteraren för filserverresurser innehåller följande funktioner för att arbe
 * [eller](resource-group-template-functions-logical.md#or)
 
 ## <a name="numeric-functions"></a>Numeriska funktioner
-Hanteraren för filserverresurser innehåller följande funktioner för att arbeta med heltal:
+Hanteraren för filserverresurser innehåller följande funktioner för att arbeta med heltal hello:
 
 * [Lägg till](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
@@ -136,7 +136,7 @@ Hanteraren för filserverresurser innehåller följande funktioner för att arbe
 <a id="subscription" />
 
 ## <a name="resource-functions"></a>Resursfunktioner
-Hanteraren för filserverresurser innehåller följande funktioner för att hämta resurs värden:
+Resource Manager tillhandahåller hello följande funktioner för att hämta resurs värden:
 
 * [listKeys och lista {Value}](resource-group-template-functions-resource.md#listkeys)
 * [providers](resource-group-template-functions-resource.md#providers)
@@ -176,7 +176,7 @@ Hanteraren för filserverresurser innehåller följande funktioner för att häm
 <a id="uricomponenttostring" />
 
 ## <a name="string-functions"></a>Strängfunktioner
-Hanteraren för filserverresurser innehåller följande funktioner för att arbeta med strängar:
+Hanteraren för filserverresurser innehåller följande funktioner för att arbeta med strängar hello:
 
 * [Base64](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
@@ -210,8 +210,8 @@ Hanteraren för filserverresurser innehåller följande funktioner för att arbe
 
 
 ## <a name="next-steps"></a>Nästa steg
-* En beskrivning av avsnitt i en Azure Resource Manager-mallen finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md)
-* Om du vill slå samman flera mallar finns [använda länkade mallar med Azure Resource Manager](resource-group-linked-templates.md)
-* Iterera ett angivet antal gånger när du skapar en typ av resurs finns [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md)
-* Information om hur du distribuerar mallen som du har skapat finns [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md)
+* En beskrivning av hello avsnitt i en Azure Resource Manager-mallen finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md)
+* toomerge flera mallar finns [använda länkade mallar med Azure Resource Manager](resource-group-linked-templates.md)
+* tooiterate ett angivet antal gånger när du skapar en typ av resurs finns [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md)
+* toosee hur toodeploy hello mallen som du har skapat, finns i [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md)
 

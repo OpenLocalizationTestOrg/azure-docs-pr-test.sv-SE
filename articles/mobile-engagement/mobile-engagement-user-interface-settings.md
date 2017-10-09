@@ -1,6 +1,6 @@
 ---
-title: "Användargränssnittet för Azure Mobile Engagement - inställningar"
-description: "Lär dig att hantera de globala inställningarna för ditt program med Azure Mobile Engagement"
+title: "aaaAzure användargränssnitt för Mobile Engagement - inställningar"
+description: "Lär dig hur toomanage hello globala inställningar för din app med Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 02d4a36c591fc5e097410b7e931d1c9ce81d68d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-manage-the-global-settings-of-your-application"></a>Så här hanterar du de globala inställningarna för programmet
-Den **inställningar** menyalternativ som är tillgängliga för ett program varierar beroende på plattform och de behörigheter som du har beviljats för programmet. Inställningarna innefattar följande: information, projekt, Native Push, Push-hastigheten, Tag (appinfo) och kommersiellt tryck. Menyalternativet taggen (appinfo) i avsnittet inställningar kan hanteras av ditt program (med SDK) eller din serverdel (med hjälp av Device API). 
+# <a name="how-toomanage-hello-global-settings-of-your-application"></a>Hur toomanage hello globala inställningar för programmet
+Hej **inställningar** menyalternativ som är tillgängliga för ett program varierar beroende på plattform hello hello program och hello behörigheter som du har beviljats för programmet hello. Inställningarna omfattar följande hello: information, projekt, Native Push, Push-hastigheten, Tag (appinfo) och kommersiellt tryck. hello taggen (appinfo) menyalternativet för inställningar för hello kan hanteras av ditt program (med hello SDK) eller din serverdel (med hello Device API). 
 
 > [!NOTE]
-> Många avsnitt i den **Mobile Engagement** portal Användargränssnittet innehåller den **Visa hjälp** knappen. Tryck på knappen för att få mer information om ett avsnitt.
+> Många avsnitt av hello **Mobile Engagement** portalens användargränssnitt innehåller hello **Visa hjälp** knappen. Tryck på den här knappen tooget mer detaljerad information om ett avsnitt.
 > 
 > 
 
 ## <a name="details"></a>Information
-Kan du ändra namn och beskrivning av programmet, visa ägaren av ditt program och dina rollbehörigheter. 
+Kan du toochange hello namn och beskrivning för ditt program, visa hello ägare för ditt program och dina rollbehörigheter. 
 
-Konfiguration av kan du visa och ändra veckor starta på dagen och tiden för datakvarhållning i dag.
+Analytics-konfiguration kan du tooview eller ändra hello dag veckor starta på och hello kvarhållningstiden i dag.
 
   ![settings1][46]
 
 ## <a name="projects"></a>Projekt
-När du vill välja alla projekt som du vill att programmet ska visas i. 
+Kan du tooselect alla projekt som du vill ha application-tooappear. 
 
-Du kan också söka efter ett projekt och visa namn, beskrivning, ägare och dina rollbehörigheter för alla projekt som ditt program är en del av.
+Du kan också söka efter ett projekt och visa hello namn, beskrivning, ägare och dina rollbehörigheter för alla projekt tillämpningsprogrammet är en del av.
 
 Mer information finns: [UI-dokumentationen – Start][Link 13]
 
   ![settings3][48]
 
 ## <a name="native-push"></a>Intern Push
-Kan du registrera ett nytt certifikat eller ta bort och befintliga certifikat för användning med intern push. Intern Push aktiverar Azure Mobile Engagement att skicka till ditt program när som helst, även när den inte körs. 
+Kan du tooregister ett nytt certifikat eller ta bort och befintligt certifikat för med intern push. Intern Push aktiverar Azure Mobile Engagement toopush tooyour program när som helst, även om den inte körs. 
 
-När att tillhandahålla autentiseringsuppgifter eller certifikat för minst en Native Push-tjänst, kan du välja ”helst” när du skapar Reach-kampanjer och Använd parametern ”meddelaren” i PUSH-API.
+När att tillhandahålla autentiseringsuppgifter eller certifikat för minst en Native Push-tjänst, kan du välja ”helst” när du skapar Reach-kampanjer och Använd hello ”meddelaren”-parametern i hello PUSH-API.
 
 ### <a name="apple-push-notification-service-apns"></a>Apple Push Notification Service (APNS)
-Om du vill aktivera Native Push med Apple Push Notification Service behöver du registrera ditt certifikat. Du måste ange vilken typ av certifikat som utveckling (utveckling) eller produktion (PROD). Du kommer sedan måste överföra ditt certifikat och lösenord.
+tooenable Native Push med hello Apple Push Notification Service måste tooregister ditt certifikat. Du behöver toospecify hello typ av certifikat som utveckling (utveckling) eller produktion (PROD). Du kommer sedan måste överföra ditt certifikat och hello lösenord.
 
-Mer information finns: [- iOS - SDK-dokumentationen hur du förbereder ditt program för Apple Push-meddelanden][Link 5]
+Mer information finns: [SDK-dokumentationen – iOS – hur tooPrepare ditt program för Apple Push-meddelanden][Link 5]
 
 ![settings4][49]
 
 ### <a name="windows-push-notification-service-wpns"></a>Windows Push Notification Service (WPNS)
-Om du vill aktivera systemspecifik push-avisering med Windows Notification Service måste du tillhandahålla ditt programs autentiseringsuppgifter. Du behöver dina paket säkerhetsidentifierare (SID) och din hemliga nyckel.
+tooenable Native Push med Windows Notification Service, måste du ange autentiseringsuppgifter för ditt program. Du behöver dina paket säkerhetsidentifierare (SID) och din hemliga nyckel.
 
 ![settings5][50]
 
 ### <a name="google-cloud-messaging-for-android-gcm"></a>Google Cloud Messaging för Android (GCM)
-Om du vill aktivera Native Push med GCM måste du följer du anvisningarna från Google. Sedan måste du klistra in en server enkla API-nyckel, konfigurerats utan IP-begränsningar. Kräver integrering med SDK för Android v1.12.0 +.
+tooenable Native Push med GCM, behöver du toofollow hello anvisningarna från Google. Sedan måste du klistra in en server enkla API-nyckel, konfigurerats utan IP-begränsningar. Kräver integrering med hello SDK för Android v1.12.0 +.
 
 Mer information finns i: 
 
-* [Android för SDK-dokumentationen hur du integrerar GCM][Link 5]
+* [SDK-dokumentationen Android hur tooIntegrate GCM][Link 5]
 * [Google GCM utvecklarhandboken](http://developer.android.com/guide/google/gcm/gs.html)
 
 ### <a name="amazon-device-messaging-for-android-adm"></a>Amazon Device Messaging för Android (ADM)
-Om du vill aktivera Native Push med ADM, måste du ange Amazon <OAuth credentials> som består av en klient-ID och Klienthemlighet (kräver integrering med SDK för Android v2.1.0 +).
+tooenable intern Push med ADM, måste du ange Amazon <OAuth credentials> som består av en klient-ID och Klienthemlighet (kräver integrering med SDK för Android v2.1.0 +).
 
 Mer information finns i: 
 
-* [Android för SDK-dokumentationen hur du integrerar ADM][Link 5]
+* [SDK-dokumentationen Android hur tooIntegrate ADM][Link 5]
 * [Amazon Developer ADM-dokumentation](https://developer.amazon.com/sdk/adm/credentials.html#Getting)
 
 ![settings6][51]
 
 ## <a name="push-speed"></a>Push-hastigheten
-Visar aktuella push-hastigheten för ditt program och kan du definiera push-hastigheten för ditt program.
+Visar hello aktuella push-hastigheten för ditt program och ger dig toodefine hello push-hastigheten för ditt program.
 
   ![settings7][52]
 

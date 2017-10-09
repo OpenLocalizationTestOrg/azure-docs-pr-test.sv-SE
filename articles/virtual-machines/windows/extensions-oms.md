@@ -1,6 +1,6 @@
 ---
-title: "OMS Azure tillägg för virtuell dator för Windows | Microsoft Docs"
-description: "Distribuera OMS-agent på Windows virtuell dator med ett tillägg för virtuell dator."
+title: "aaaOMS tillägg för Azure virtuell dator för Windows | Microsoft Docs"
+description: "Distribuera hello OMS-agent på Windows virtuell dator med ett tillägg för virtuell dator."
 services: virtual-machines-windows
 documentationcenter: 
 author: neilpeterson
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: nepeters
-ms.openlocfilehash: d933f488fdda0c1d37892be65f2712cf0eb5694e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3000f66c0acdec1d1fad2125b8c6b72a92b1ec92
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="oms-virtual-machine-extension-for-windows"></a>OMS tillägg för virtuell dator för Windows
 
-Operations Management Suite (OMS) ger funktioner för övervakning, aviseringar, och reparationen i molnet och lokala resurser. Tillägget för virtuell dator OMS-Agent för Windows är publicerad och stöds av Microsoft. Tillägget OMS-agent installeras på virtuella Azure-datorer och registrerar virtuella datorer i en befintlig OMS-arbetsyta. Det här dokumentet beskriver de plattformar som stöds, konfigurationer och distributionsalternativ för OMS-tillägget för virtuell dator för Windows.
+Operations Management Suite (OMS) ger funktioner för övervakning, aviseringar, och reparationen i molnet och lokala resurser. hello OMS-Agent tillägg för virtuell dator för Windows publiceras och stöds av Microsoft. hello-tillägget hello OMS-agent installeras på virtuella Azure-datorer och registrerar virtuella datorer i en befintlig OMS-arbetsyta. Det här dokumentet information hello stöds plattformar, konfigurationer och distributionsalternativ för hello OMS-tillägg för virtuell dator för Windows.
 
 ## <a name="prerequisites"></a>Krav
 
 ### <a name="operating-system"></a>Operativsystem
-Tillägget OMS-Agent utgåvor för Windows kan köras mot Windows Server 2008 R2, 2012 och 2012 R2 2016.
+hello OMS-Agent tillägget utgåvor för Windows kan köras mot Windows Server 2008 R2, 2012 och 2012 R2 2016.
 
 ### <a name="internet-connectivity"></a>Internetanslutning
-OMS-Agent-tillägget för Windows kräver att den virtuella måldatorn är ansluten till internet. 
+hello OMS-Agent tillägget för Windows kräver att hello mål den virtuella datorn är ansluten toohello internet. 
 
 ## <a name="extension-schema"></a>Tilläggsschema
 
-Följande JSON visar schemat för tillägget OMS-Agent. Tillägget kräver arbetsytans Id och arbetsytenyckel från OMS målarbetsytan, finns dessa i OMS-portalen. Eftersom arbetsytans ska behandlas som känsliga data, bör det lagras i en Inställningskonfiguration för skyddade. Azure för VM-tillägget skyddade inställningsdata krypteras och dekrypteras endast på den virtuella måldatorn. Observera att **workspaceId** och **workspaceKey** är skiftlägeskänsliga.
+hello visar följande JSON hello schemat för hello tillägget OMS-Agent. hello tillägget kräver hello arbetsytan Id och arbetsytenyckel från hello mål OMS-arbetsyta, finns dessa i hello OMS-portalen. Eftersom hello arbetsytenyckel ska behandlas som känsliga data, bör det lagras i en Inställningskonfiguration för skyddade. Azure VM tillägget skyddade inställningsdata krypteras och dekrypteras endast på hello virtuella måldatorn. Observera att **workspaceId** och **workspaceKey** är skiftlägeskänsliga.
 
 ```json
 {
@@ -73,11 +73,11 @@ Följande JSON visar schemat för tillägget OMS-Agent. Tillägget kräver arbet
 
 ## <a name="template-deployment"></a>Malldistribution
 
-Azure VM-tillägg kan distribueras med Azure Resource Manager-mallar. JSON-schema som beskrivs i föregående avsnitt kan användas i en Azure Resource Manager-mall för att köra tillägget OMS-Agent under en Azure Resource Manager för malldistribution. En exempelmall som innehåller OMS-agenten VM-tillägget kan hittas på den [Azure Quick Start-galleriet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
+Azure VM-tillägg kan distribueras med Azure Resource Manager-mallar. hello JSON-schema som beskrivs i föregående avsnitt i hello kan användas i en Azure Resource Manager mallen toorun hello tillägget OMS-Agent under en Azure Resource Manager för malldistribution. En exempelmall som innehåller hello OMS-agenten VM-tillägget kan hittas på hello [Azure Quick Start-galleriet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
 
-JSON för ett tillägg för virtuell dator kan kapslas i den virtuella datorresursen eller placeras i roten eller översta nivån i en Resource Manager JSON-mall. Placeringen av JSON påverkar värdet av resursens namn och typen. Mer information finns i [ange namn och typ för underordnade resurser](../../azure-resource-manager/resource-manager-template-child-resource.md). 
+hello JSON för ett tillägg för virtuell dator kan kapslas i hello virtuell datorresurs, eller placeras på hello rot- eller översta nivån i en Resource Manager JSON-mall. hello placeringen av hello JSON påverkar hello värdet för hello resursnamnet och typen. Mer information finns i [ange namn och typ för underordnade resurser](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-I följande exempel förutsätter OMS-tillägget är kapslad i den virtuella datorresursen. När kapsla resursen tillägget JSON placeras i den `"resources": []` objekt av den virtuella datorn.
+hello förutsätter följande exempel hello OMS-tillägget är kapslad i hello virtuella datorresurser. När för många kapslade hello tillägget resurs, hello JSON placeras i hello `"resources": []` objekt av hello virtuell dator.
 
 
 ```json
@@ -104,7 +104,7 @@ I följande exempel förutsätter OMS-tillägget är kapslad i den virtuella dat
 }
 ```
 
-När du monterar tillägget JSON i roten på mallen resursnamnet innehåller en referens till den överordnade virtuella datorn och typen visar kapslade konfigurationen. 
+När du monterar hello tillägget JSON hello roten i hello mallen hello resursnamnet innehåller en referens toohello överordnad virtuell dator och hello typen visar hello kapslade konfiguration. 
 
 ```json
 {
@@ -132,7 +132,7 @@ När du monterar tillägget JSON i roten på mallen resursnamnet innehåller en 
 
 ## <a name="powershell-deployment"></a>PowerShell-distribution
 
-Den `Set-AzureRmVMExtension` kommando kan användas för att distribuera OMS-Agent tillägget för virtuell dator till en befintlig virtuell dator. Innan du kör kommandot måste de offentliga och privata konfigurationerna lagras i en PowerShell-hash-tabell. 
+Hej `Set-AzureRmVMExtension` kommandot kan det vara används toodeploy hello OMS-Agent virtuella tillägget tooan befintlig virtuell dator. Innan du kör kommandot hello måste hello offentliga och privata konfigurationer toobe som lagras i en PowerShell-hash-tabell. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
@@ -153,13 +153,13 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
 
 ### <a name="troubleshoot"></a>Felsöka
 
-Data om tillståndet för distributioner av tillägget kan hämtas från Azure-portalen och genom att använda Azure PowerShell-modulen. Om du vill se distributionsstatusen för tillägg för en viss virtuell dator, kör du följande kommando med hjälp av Azure PowerShell-modulen.
+Data om hello tillståndet för distributioner av tillägget kan hämtas från hello Azure-portalen och genom att använda hello Azure PowerShell-modulen. toosee hello distributionsstatusen för tillägg för en viss virtuell kör hello följande kommando använder hello Azure PowerShell-modulen.
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
-Tillägget utförande-utdatan loggas till filer som finns i följande katalog:
+Tillägget körning utdata är loggade toofiles hittades i hello följande katalog:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\
@@ -167,4 +167,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonit
 
 ### <a name="support"></a>Support
 
-Om du behöver mer hjälp när som helst i den här artikeln kan du kontakta Azure-experter på den [MSDN Azure och Stack Overflow-forum](https://azure.microsoft.com/en-us/support/forums/). Alternativt kan du lagra en incident i Azure-supporten. Gå till den [Azure supportwebbplats](https://azure.microsoft.com/en-us/support/options/) och välja Get support. Information om hur du använder Azure stöder finns i [vanliga frågor om Microsoft Azure-supporten](https://azure.microsoft.com/en-us/support/faq/).
+Om du behöver mer hjälp när som helst i den här artikeln kan du kontakta hello Azure experter på hello [MSDN Azure och Stack Overflow-forum](https://azure.microsoft.com/en-us/support/forums/). Alternativt kan du lagra en incident i Azure-supporten. Gå toohello [Azure supportwebbplats](https://azure.microsoft.com/en-us/support/options/) och välja Get support. Information om hur du använder Azure stöder läsa hello [vanliga frågor om Microsoft Azure-supporten](https://azure.microsoft.com/en-us/support/faq/).

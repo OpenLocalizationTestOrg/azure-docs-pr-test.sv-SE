@@ -1,6 +1,6 @@
 ---
-title: "Felsöka Spark med Azure HDInsight | Microsoft Docs"
-description: "Få svar på vanliga frågor om hur du arbetar med Apache Spark och Azure HDInsight."
+title: "aaaTroubleshoot Spark med hjälp av Azure HDInsight | Microsoft Docs"
+description: "Få svar toocommon frågor om hur du arbetar med Apache Spark och Azure HDInsight."
 keywords: "Azure HDInsight Spark, vanliga frågor och svar, felsökning guide, vanliga problem, konfiguration, Ambari"
 services: Azure HDInsight
 documentationcenter: na
@@ -15,79 +15,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/7/2017
 ms.author: arijitt
-ms.openlocfilehash: cfed5f0f4f703821e83e3d365810c0e5ad22f035
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c9f910daf295462238a3143ae2589db6d383097f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Felsöka Spark med Azure HDInsight
 
-Läs mer om de vanligaste problemen och sina lösningar när du arbetar med Apache Spark nyttolaster i Apache Ambari.
+Läs mer om hello de främsta problemen och sina lösningar när du arbetar med Apache Spark nyttolaster i Apache Ambari.
 
 ## <a name="how-do-i-configure-a-spark-application-by-using-ambari-on-clusters"></a>Hur konfigurerar jag ett Spark-program genom att använda Ambari på kluster
 
 ### <a name="resolution-steps"></a>Lösningssteg
 
-Tidigare konfigurationsvärden för den här proceduren har ställts in i HDInsight. För att fastställa vilka Spark måste anges och vilka värden, se [vad som orsakar en Spark OutofMemoryError undantag](#what-causes-a-spark-application-outofmemoryerror-exception). 
+tidigare hello konfigurationsvärden för den här proceduren har ställts in i HDInsight. toodetermine vilka Spark-konfigurationer måste toobe uppsättningen och toowhat värden, se [vad som orsakar en Spark OutofMemoryError undantag](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
-1. Välj i listan över kluster **Spark2**.
+1. I hello kluster väljer du **Spark2**.
 
     ![Markera klustret från listan](media/hdinsight-troubleshoot-spark/update-config-1.png)
 
-2. Välj den **konfigurationerna** fliken.
+2. Välj hello **konfigurationerna** fliken.
 
-    ![Välj fliken konfigurationer](media/hdinsight-troubleshoot-spark/update-config-2.png)
+    ![Fliken hello-konfigurationer](media/hdinsight-troubleshoot-spark/update-config-2.png)
 
-3. Välj i listan över konfigurationer, **anpassad-spark2-standarder**.
+3. Markera i hello lista över konfigurationer, **anpassad-spark2-standarder**.
 
     ![Ange standardinställningar för anpassad spark](media/hdinsight-troubleshoot-spark/update-config-3.png)
 
-4. Leta efter inställningen värdet som du måste justera som **spark.executor.memory**. I det här fallet är värdet för **4608m** är för hög.
+4. Leta efter hello-värdet som du behöver tooadjust, som **spark.executor.memory**. I det här fallet hello värdet för **4608m** är för hög.
 
-    ![Markera fältet spark.executor.memory](media/hdinsight-troubleshoot-spark/update-config-4.png)
+    ![Markera hello spark.executor.memory fält](media/hdinsight-troubleshoot-spark/update-config-4.png)
 
-5. Ange värdet till den rekommenderade inställningen. Värdet **2 048 m** rekommenderas för den här inställningen.
+5. Ange hello värdet toohello rekommenderad inställning. Hej värdet **2 048 m** rekommenderas för den här inställningen.
 
-    ![Ändra värdet till 2 048 m](media/hdinsight-troubleshoot-spark/update-config-5.png)
+    ![Ändra värdet too2048m](media/hdinsight-troubleshoot-spark/update-config-5.png)
 
-6. Spara värdet och spara sedan konfigurationen. I verktygsfältet väljer **spara**.
+6. Spara hello värde och spara hello konfiguration. Välj hello verktygsfältet **spara**.
 
-    ![Spara inställningen och konfiguration](media/hdinsight-troubleshoot-spark/update-config-6a.png)
+    ![Spara inställningen hello och konfiguration](media/hdinsight-troubleshoot-spark/update-config-6a.png)
 
-    Du meddelas om några konfigurationer behöver åtgärdas. Observera objekt och välj sedan **fortsätta ändå**. 
+    Du meddelas om några konfigurationer behöver åtgärdas. Observera hello objekt och välj sedan **fortsätta ändå**. 
 
     ![Välj fortsätter ändå](media/hdinsight-troubleshoot-spark/update-config-6b.png)
 
-    Skriv en anteckning om ändringar i konfigurationen och välj sedan **spara**.
+    Skriv en anteckning om hello konfigurationsändringar och välj sedan **spara**.
 
-    ![Ange en notering om de ändringar du gjort](media/hdinsight-troubleshoot-spark/update-config-6c.png)
+    ![Ange en notering om hello ändringar](media/hdinsight-troubleshoot-spark/update-config-6c.png)
 
-7. När en konfiguration sparas, uppmanas du att starta om tjänsten. Välj **starta om**.
+7. När en konfiguration sparas uppmanas du toorestart hello-tjänsten. Välj **starta om**.
 
     ![Välj omstart](media/hdinsight-troubleshoot-spark/update-config-7a.png)
 
-    Bekräfta omstarten.
+    Bekräfta hello omstart.
 
     ![Välj bekräfta starta om alla](media/hdinsight-troubleshoot-spark/update-config-7b.png)
 
-    Du kan granska de processer som körs.
+    Du kan granska hello processer som körs.
 
     ![Granska processer som körs](media/hdinsight-troubleshoot-spark/update-config-7c.png)
 
-8. Du kan lägga till konfigurationer. Välj i listan över konfigurationer, **anpassad-spark2-standarder**, och välj sedan **lägga till egenskapen**.
+8. Du kan lägga till konfigurationer. Markera i hello lista över konfigurationer, **anpassad-spark2-standarder**, och välj sedan **Lägg till egenskap**.
 
     ![Välj Lägg till egenskap](media/hdinsight-troubleshoot-spark/update-config-8.png)
 
-9. Definiera en ny egenskap. Du kan definiera en egenskap med hjälp av en dialogruta för specifika inställningar, till exempel datatypen. Eller så du kan definiera flera egenskaper med hjälp av en definition av per rad. 
+9. Definiera en ny egenskap. Du kan definiera en egenskap med hjälp av en dialogruta för specifika inställningar, till exempel hello-datatypen. Eller så du kan definiera flera egenskaper med hjälp av en definition av per rad. 
 
-    I det här exemplet i **spark.driver.memory** egenskapen har definierats med värdet **4g**.
+    I det här exemplet hello **spark.driver.memory** egenskapen har definierats med värdet **4g**.
 
     ![Definiera nya egenskap](media/hdinsight-troubleshoot-spark/update-config-9.png)
 
-10. Spara konfigurationen och sedan starta om tjänsten enligt beskrivningen i steg 6 och 7.
+10. Spara hello konfigurationen och starta om tjänsten hello enligt beskrivningen i steg 6 och 7.
 
-De här ändringarna kan åsidosättas när du har skickat jobbet Spark är klustret.
+Dessa ändringar är hela klustret, men kan åsidosättas när du skickar hello Spark jobb.
 
 ### <a name="additional-reading"></a>Ytterligare resurser
 
@@ -98,9 +98,9 @@ De här ändringarna kan åsidosättas när du har skickat jobbet Spark är klus
 
 ### <a name="resolution-steps"></a>Lösningssteg
 
-1. För att fastställa vilka Spark måste anges och vilka värden, se [vad som orsakar en Spark OutofMemoryError undantag](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. toodetermine vilka Spark-konfigurationer måste toobe uppsättningen och toowhat värden, se [vad som orsakar en Spark OutofMemoryError undantag](#what-causes-a-spark-application-outofmemoryerror-exception).
 
-2. I den första cellen i Jupyter-anteckningsbok när den **%% konfigurera** direktiv, ange Spark-konfigurationer i ett giltigt JSON-format. Ändra värden efter behov:
+2. I hello första cellen i hello Jupyter notebook efter hello **%% konfigurera** direktiv, ange hello Spark konfigurationer i ett giltigt JSON-format. Ändra hello faktiska värden efter behov:
 
     ![Lägga till en konfiguration](media/hdinsight-troubleshoot-spark/add-configuration-cell.png)
 
@@ -113,9 +113,9 @@ De här ändringarna kan åsidosättas när du har skickat jobbet Spark är klus
 
 ### <a name="resolution-steps"></a>Lösningssteg
 
-1. För att fastställa vilka Spark måste anges och vilka värden, se [vad som orsakar en Spark OutofMemoryError undantag](#what-causes-a-spark-application-outofmemoryerror-exception). 
+1. toodetermine vilka Spark-konfigurationer måste toobe uppsättningen och toowhat värden, se [vad som orsakar en Spark OutofMemoryError undantag](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
-2. Skicka Spark-program till Livius med hjälp av REST-klient som cURL. Använda ett kommando som liknar följande. Ändra värden efter behov:
+2. Skicka hello Spark programmet tooLivy med hjälp av REST-klient som cURL. Använda en liknande toohello följande i kommandot. Ändra hello faktiska värden efter behov:
 
     ```apache
     curl -k --user 'username:password' -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://container@storageaccountname.blob.core.windows.net/example/jars/sparkapplication.jar", "className":"com.microsoft.spark.application", "numExecutors":4, "executorMemory":"4g", "executorCores":2, "driverMemory":"8g", "driverCores":4}'  
@@ -130,9 +130,9 @@ De här ändringarna kan åsidosättas när du har skickat jobbet Spark är klus
 
 ### <a name="resolution-steps"></a>Lösningssteg
 
-1. För att fastställa vilka Spark måste anges och vilka värden, se [vad som orsakar en Spark OutofMemoryError undantag](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. toodetermine vilka Spark-konfigurationer måste toobe uppsättningen och toowhat värden, se [vad som orsakar en Spark OutofMemoryError undantag](#what-causes-a-spark-application-outofmemoryerror-exception).
 
-2. Starta spark-gränssnittet med ett kommando som liknar följande. Ändra det faktiska värdet för konfigurationerna som behövs: 
+2. Starta spark-shell med hjälp av ett kommando liknande toohello som följer. Ändra hello faktiska värdet för hello konfigurationer efter behov: 
 
     ```apache
     spark-submit --master yarn-cluster --class com.microsoft.spark.application --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4 /home/user/spark/sparkapplication.jar
@@ -147,7 +147,7 @@ De här ändringarna kan åsidosättas när du har skickat jobbet Spark är klus
 
 ### <a name="detailed-description"></a>Detaljerad beskrivning
 
-Spark-programmet misslyckas med följande typer av undantagsfel utan felhantering:
+hello Spark programmet misslyckas med följande typer av undantagsfel utan felhantering hello:
 
 ```apache
 ERROR Executor: Exception in task 7.0 in stage 6.0 (TID 439) 
@@ -191,15 +191,15 @@ java.lang.OutOfMemoryError
 
 ### <a name="probable-cause"></a>Möjlig orsak
 
-Den mest troliga orsaken till det här undantaget är att det finns inte tillräckligt med minne för heap tilldelas Java virtuella datorer (JVMs). Dessa JVMs startas som executors eller drivrutiner som en del av Spark-program. 
+hello troligaste orsaken till det här undantaget är att det finns inte tillräckligt med minne för heap fördelas toohello Java virtuella datorer (JVMs). Dessa JVMs startas som executors eller drivrutiner som en del av hello Spark-program. 
 
 ### <a name="resolution-steps"></a>Lösningssteg
 
-1. Avgöra den maximala storleken på data i Spark programmet hanterar. Du kan göra en gissning baserat på den maximala storleken för indata, mellanliggande data som produceras av omvandla indata och utdata som skapas när programmet ytterligare förändrar mellanliggande data. Den här processen kan vara en iterativ om du inte göra en första formella gissning. 
+1. Fastställa hello maxstorleken för hello data hello Spark-program hanterar. Du kan göra en gissning baserat på hello maxstorleken för hello indata, hello mellanliggande data som produceras av omvandla hello indata och utdata för hello som skapas när programmet hello ytterligare förändrar hello mellanliggande data. Den här processen kan vara en iterativ om du inte göra en första formella gissning. 
 
-2. Se till att HDInsight-klustret som du ska använda har tillräckligt med resurser när det gäller minne och kärnor för Spark-program. Du kan bestämma det genom att visa avsnittet kluster mått i YARN-Användargränssnittet för värden på **minne används** vs. **Minne totalt**, och **VCores används** vs. **Totalt antal VCores**.
+2. Se till att du ska toouse har tillräckligt med resurser när det gäller minne och kärnor tooaccommodate hello Spark programmet hello HDInsight klustret. Du kan bestämma det genom att visa hello klustret mått avsnitt i hello YARN-Användargränssnittet för hello värden av **minne används** vs. **Minne totalt**, och **VCores används** vs. **Totalt antal VCores**.
 
-3. Ange följande Spark konfigurationer till lämpliga värden som inte får överstiga 90% av det tillgängliga minnet och kärnor. Värdena bör vara bra i minneskrav för Spark-program: 
+3. Ange följande Spark hello konfigurationer tooappropriate värden som inte får överstiga 90% av hello tillgängligt minne och kärnor. hello-värden ska vara bra i hello minneskrav för hello Spark-program: 
 
     ```apache
     spark.executor.instances (Example: 8 for 8 executor count) 
@@ -211,12 +211,12 @@ Den mest troliga orsaken till det här undantaget är att det finns inte tillrä
     spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
     ```
 
-    För att få den totala mängden minne som används av alla executors, kör du följande kommando: 
+    tooget hello totalt minne som används av alla executors, kör hello följande kommando: 
     
     ```apache
     spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
     ```
-    För att få den totala mängden minne som används av drivrutinen, kör du följande kommando:
+    tooget hello totalt minne som används av hello drivrutin, kör hello följande kommando:
     
     ```apache
     spark.driver.memory + spark.yarn.driver.memoryOverhead

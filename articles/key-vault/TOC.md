@@ -13,7 +13,7 @@
 ### [Utvecklarguide för Key Vault](key-vault-developers-guide.md)
 ### [Tjänstbegränsningar](key-vault-service-limits.md)
 ### [HSM-skyddade nycklar](key-vault-hsm-protected-keys.md)
-### [Migrera till .NET 2.0](key-vault-dotnet2api-release-notes.md)
+### [Migrera too.NET 2.0](key-vault-dotnet2api-release-notes.md)
 ### Översikter
 #### [Säkerhetsvärldar](key-vault-ovw-security-worlds.md)
 #### [Mjuk borttagning](key-vault-ovw-soft-delete.md)
@@ -26,9 +26,9 @@
 ### [Tillgänglighet och redundans](key-vault-disaster-recovery-guidance.md)
 ### [Ändra klientorganisations-ID](key-vault-subscription-move-fix.md)
 ### [Skapa och hantera med CLI 2.0](key-vault-manage-with-cli2.md)
-### [Så här använder du Key Vault mjuk borttagning med CLI](key-vault-soft-delete-cli.md)
-### [Så här använder du Key Vault mjuk borttagning med PowerShell](key-vault-soft-delete-powershell.md)
-### [Använd grupper för att bevilja åtkomst](key-vault-group-permissions-for-apps.md)
+### [Hur toouse Key Vault mjuk borttagning med CLI](key-vault-soft-delete-cli.md)
+### [Hur toouse Key Vault mjuk borttagning med PowerShell](key-vault-soft-delete-powershell.md)
+### [Använd grupper toogrant åtkomst](key-vault-group-permissions-for-apps.md)
 ### [Säkra ditt nyckelvalv](key-vault-secure-your-key-vault.md)
 
 ## Automatisera

@@ -1,5 +1,5 @@
 ---
-title: "Starta strömning jobb i Stream Analytics | Microsoft Docs"
+title: aaaHow toostart direktuppspelningsjobb i Stream Analytics | Microsoft Docs
 description: "Hur kör ett direktuppspelningsjobb i Azure Stream Analytics | Learning sökvägssegment."
 keywords: direktuppspelningsjobb
 documentationcenter: 
@@ -15,30 +15,30 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.openlocfilehash: 9a3ff37a893b0f29a2ac2eda6cd50687ee779ead
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 67aa14860c38cbd0535d0ec4f23729445d0185c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-run-a-streaming-job-in-azure-stream-analytics"></a>Hur du kör ett direktuppspelningsjobb i Azure Stream Analytics
-När ett jobb som indata, fråga och utdata har alla angetts du kan starta Stream Analytics-jobbet.
+# <a name="how-toorun-a-streaming-job-in-azure-stream-analytics"></a>Hur toorun en streaming job i Azure Stream Analytics
+När ett jobb indata, har fråga och utdata alla angetts du kan starta hello Stream Analytics-jobbet.
 
-Att starta jobbet:
+toostart ditt jobb:
 
-1. I den klassiska Azure-portalen från jobbet-instrumentpanelen klickar du på **starta** längst ned på sidan.
+1. I hello Azure klassiska portal från hello jobbet instrumentpanelen, klickar du på **starta** på hello hello sidans nederkant.
    
    ![Starta jobbet knappen](./media/stream-analytics-run-a-job/1-stream-analytics-run-a-job.png)  
    
-   I Azure-portalen klickar du på **starta** överst på sidan jobb.
+   I hello Azure-portalen klickar du på **starta** hello överst på sidan jobb.
    
    ![Azure portal startjobb knappen](./media/stream-analytics-run-a-job/4-stream-analytics-run-a-job.png)  
-2. Ange en **starta utdata** värde för att bestämma när jobbet startar utdata. Standardinställningen för jobb som tidigare inte har startats är **jobbet starttid**, vilket innebär att starta jobbet direkt databearbetning. Du kan också ange en **anpassad** tid i förflutna (för förbrukning av historiska data) eller framtida (för att fördröja behandlingen tills en framtida tid). I fall när ett jobb har tidigare startas och stoppas, alternativet **stoppats senast** är tillgänglig för att återuppta jobbet från den senaste tid för utdata och undvika dataförlust.  
+2. Ange en **starta utdata** värdet toodetermine när jobbet startas utdata. hello standardinställningen för jobb som tidigare inte har startats är **jobbet starttid**, vilket innebär att jobbet hello omedelbart startar av bearbetningsdata. Du kan också ange en **anpassad** tid i hello tidigare (för förbrukning av historiska data) eller hello framtida (toodelay bearbetning förrän en framtida tid). För fall när ett jobb har tidigare startas och stoppas, hello alternativet **stoppats senast** finns i ordning tooresume hello jobbet från hello senast utdata och undvika dataförlust.  
    
    ![Starta strömning jobbet tid](./media/stream-analytics-run-a-job/2-stream-analytics-run-a-job.png)  
    
    ![Azure portal starta direktuppspelningsjobbet tid](./media/stream-analytics-run-a-job/5-stream-analytics-run-a-job.png)  
-3. Bekräfta dina val. Jobbet har statusen ändras till *Start* och kommer snart att flytta till *kör* när jobbet har startats. Du kan övervaka förloppet för den **starta** åtgärden i den **Meddelandehubben**:
+3. Bekräfta dina val. hello jobbets status ändras för*Start* och kommer inom kort för att flytta*kör* när hello jobbet har startats. Du kan övervaka hello hello **starta** åtgärd i hello **Meddelandehubben**:
    
    ![jobbet pågår för strömning](./media/stream-analytics-run-a-job/3-stream-analytics-run-a-job.png)  
    
@@ -48,7 +48,7 @@ Att starta jobbet:
 Om du behöver mer hjälp kan du besöka vårt [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nästa steg
-* [Introduktion till Azure Stream Analytics](stream-analytics-introduction.md)
+* [Introduktion tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Komma igång med Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skala Azure Stream Analytics-jobb](stream-analytics-scale-jobs.md)
 * [Referens för Azure Stream Analytics-frågespråket](https://msdn.microsoft.com/library/azure/dn834998.aspx)

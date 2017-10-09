@@ -1,26 +1,26 @@
-## <a name="using-vault-credentials-to-authenticate-with-the-azure-backup-service"></a>Med hjälp av autentiseringsuppgifter för valv för att autentisera med Azure Backup-tjänsten
-Lokal server (Windows-klient eller server för Windows Server eller Data Protection Manager) måste autentiseras med ett säkerhetskopieringsvalv innan den kan säkerhetskopiera data till Azure. Autentisering uppnås med hjälp av ”valvet autentiseringsuppgifter”. Begreppet valvautentiseringsuppgifter liknar begreppet ”Publiceringsinställningar” fil som används i Azure PowerShell.
+## <a name="using-vault-credentials-tooauthenticate-with-hello-azure-backup-service"></a>Med valvet autentiseringsuppgifter tooauthenticate med hello Azure Backup-tjänsten
+hello lokal server (Windows-klient eller server för Windows Server eller Data Protection Manager) måste autentiseras med ett säkerhetskopieringsvalv innan den kan säkerhetskopiera data tooAzure toobe. hello autentisering uppnås med hjälp av ”valvet autentiseringsuppgifter”. hello begreppet valvautentiseringsuppgifter är liknande toohello begreppet ”Publiceringsinställningar” fil som används i Azure PowerShell.
 
-### <a name="what-is-the-vault-credential-file"></a>Vad är valvautentiseringsfilen?
-Valvautentiseringsfilen är ett certifikat som genereras av portalen för varje säkerhetskopieringsvalv. Portalen överför sedan den offentliga nyckeln till Access Control Service (ACS). Den privata nyckeln för certifikatet görs tillgänglig för användaren som en del av arbetsflödet som angetts som indata i arbetsflöde för registrering av datorn. Detta autentiserar datorn för att skicka säkerhetskopierade data till ett identifierade valv i Azure Backup-tjänsten.
+### <a name="what-is-hello-vault-credential-file"></a>Vad är hello valvautentiseringsfilen?
+Hej valvautentiseringsfilen är ett certifikat som genereras av hello portal för varje säkerhetskopieringsvalvet. hello portal sedan överför hello offentliga nyckel toohello Access Control Service (ACS). hello privata nyckeln för certifikatet för hello görs tillgängliga toohello användaren som en del av hello arbetsflöde som angetts som indata i hello arbetsflöde för registrering av datorn. Detta autentiserar hello datorn toosend säkerhetskopieringsdata tooan identifieras valvet i hello Azure Backup-tjänsten.
 
-Valvautentiseringen används endast under registreringsarbetsflödet. Det är användarens ansvar att se till att valvautentiseringsfilen inte äventyras. Om den hamnar i händerna på en obehörig användare kan valvautentiseringsfilen användas för att registrera andra datorer mot samma valv. Men eftersom den säkerhetskopiera informationen krypteras med en lösenfras som hör till kunden, kan inte befintlig säkerhetskopierad data vara hotad. Valvautentiseringsuppgifter är inställda att gälla inom 48hrs för att minska risken för detta. Du kan ladda ned valvautentiseringsuppgifter av ett säkerhetskopieringsvalv valfritt antal gånger – men endast det senaste valvautentiseringsfilen gäller under registreringen av arbetsflödet.
+Hej valvautentiseringen används endast under hello arbetsflöde för registrering. Det är hello användarens ansvar tooensure som hello valvautentiseringsuppgifter filen inte har komprometterats. Om den hamnar i hello händer en obehörig användare hello valvautentiseringsfilen kan vara används tooregister andra datorer mot hello samma valvet. Dock som hello säkerhetskopierade data krypteras med en lösenfras som tillhör toohello kunden, kan inte befintlig säkerhetskopierad data vara hotad. toomitigate problem, valvautentiseringsuppgifter ställs tooexpire i 48hrs. Du kan hämta hello valvet autentiseringsuppgifterna för ett säkerhetskopieringsvalv valfritt antal gånger – men endast hello senaste valvautentiseringsfilen gäller under hello arbetsflöde för registrering.
 
-### <a name="download-the-vault-credential-file"></a>Hämta valvautentiseringsfilen
-Valvautentiseringsfilen hämtas via en säker kanal från Azure-portalen. Azure Backup-tjänsten inte känner till den privata nyckeln för certifikatet och den privata nyckeln beständig inte i portalen eller tjänsten. Använd följande steg för att hämta valvautentiseringsfilen till en lokal dator.
+### <a name="download-hello-vault-credential-file"></a>Hämta valvautentiseringsfilen hello
+Hej valvautentiseringsfilen hämtas via en säker kanal från hello Azure-portalen. hello Azure Backup-tjänsten inte känner till hello privat nyckel för hello certifikat och hello privata nyckeln beständig inte i hello-portalen eller hello-tjänsten. Använd hello följande steg toodownload hello valvet autentiseringsuppgifter filen tooa lokal dator.
 
-1. Logga in på den [hanteringsportalen](https://manage.windowsazure.com/)
-2. Klicka på **återställningstjänster** i det vänstra navigeringsfönstret och välj det säkerhetskopieringsvalv som du har skapat. Klicka på ikonen molnet till vyn Snabbstart i säkerhetskopieringsvalvet.
+1. Logga in toohello [hanteringsportalen](https://manage.windowsazure.com/)
+2. Klicka på **återställningstjänster** i hello vänstra navigeringsfönstret och välj hello säkerhetskopieringsvalv som du har skapat. Klicka på hello molnet ikonen tooget toohello Snabbstart vy över hello säkerhetskopieringsvalvet.
    
    ![Snabb överblick](./media/backup-download-credentials/quickview.png)
-3. På sidan Snabbstart **ladda ned valvautentiseringsuppgifter**. Portalen genererar valvautentiseringsfilen som görs tillgänglig för hämtning.
+3. På hello Snabbstart klickar du på **ladda ned valvautentiseringsuppgifter**. hello portal genererar hello valvautentiseringsfilen, vilket görs tillgänglig för hämtning.
    
    ![Ladda ned](./media/backup-download-credentials/downloadvc.png)
-4. Portalen kommer att generera en valvautentiseringen med hjälp av en kombination av valvnamnet och det aktuella datumet. Klicka på **spara** att hämta autentiseringsuppgifter för valv till det lokala kontot hämtningsmapp eller välj Spara som Spara-menyn för att ange en plats för autentiseringsuppgifter för valv.
+4. hello portal kommer att generera en valvautentiseringen med hjälp av en kombination av hello valvnamnet och hello aktuellt datum. Klicka på **spara** toodownload hello valvet autentiseringsuppgifter toohello lokala kontots hämtar mappen eller välj Spara som från hello spara menyn toospecify en plats för hello valvautentiseringsuppgifter.
 
 ### <a name="note"></a>Obs!
-* Se till att valvautentiseringsuppgifter som sparas på en plats som kan nås från datorn. Om den är lagrad i en fil resursen/SMB Kontrollera åtkomstbehörigheten.
-* Valvautentiseringsfilen används endast under registreringen av arbetsflödet.
-* Valvautentiseringsfilen upphör att gälla efter 48hrs och kan hämtas från portalen.
-* Referera till Azure Backup [vanliga frågor om](../articles/backup/backup-azure-backup-faq.md) för eventuella frågor om arbetsflödet.
+* Se till att hello valvautentiseringsuppgifter sparas på en plats som kan nås från datorn. Om den är lagrad i en fil resursen/SMB Kontrollera hello åtkomstbehörighet.
+* Hej valvautentiseringsfilen används endast under hello arbetsflöde för registrering.
+* Hej valvautentiseringsfilen upphör att gälla efter 48hrs och kan hämtas från hello-portalen.
+* Se toohello Azure Backup [vanliga frågor och svar](../articles/backup/backup-azure-backup-faq.md) för frågor i hello arbetsflödet.
 

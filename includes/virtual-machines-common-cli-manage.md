@@ -1,9 +1,9 @@
-Azure CLI 2.0 kan du skapa och hantera Azure-resurser på macOS, Linux och Windows. Den här artikeln beskrivs några av de vanligaste kommandon för att skapa och hantera virtuella maskiner (VMs).
+hello Azure CLI 2.0 kan du toocreate och hantera Azure-resurser på macOS, Linux och Windows. Den här artikeln beskrivs några av hello vanligaste kommandon toocreate och hantera virtuella maskiner (VMs).
 
-Den här artikeln kräver Azure CLI version 2.0.4 eller senare. Kör `az --version` för att hitta versionen. Om du behöver uppgradera kan du läsa [Installera Azure CLI 2.0](/cli/azure/install-azure-cli). Du kan också använda [moln Shell](/azure/cloud-shell/quickstart) från din webbläsare.
+Den här artikeln kräver hello Azure CLI version 2.0.4 eller senare. Kör `az --version` toofind hello version. Om du behöver tooupgrade finns [installera Azure CLI 2.0](/cli/azure/install-azure-cli). Du kan också använda [moln Shell](/azure/cloud-shell/quickstart) från din webbläsare.
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Grundläggande Azure Resource Manager-kommandon i Azure CLI
-Mer detaljerad hjälp med specifika kommandoradsväxlar och alternativ du kan använda alternativ och online-kommandot hjälp genom att skriva `az <command> <subcommand> --help`.
+Mer detaljerad hjälp med specifika kommandoradsväxlar och alternativ du kan använda hello online-kommandot Hjälp och alternativ genom att skriva `az <command> <subcommand> --help`.
 
 ### <a name="create-vms"></a>Skapa VM:ar
 | Aktivitet | Azure CLI-kommandon |
@@ -33,7 +33,7 @@ Mer detaljerad hjälp med specifika kommandoradsväxlar och alternativ du kan an
 ## <a name="disks-and-images"></a>Diskar och bilder
 | Aktivitet | Azure CLI-kommandon |
 | --- | --- |
-| Lägg till en datadisk i en virtuell dator | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new ` |
+| Lägg till en data disk tooa VM | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new ` |
 | Ta bort en datadisk från en virtuell dator | `az vm disk detach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk` |
 | Ändra storlek på en disk | `az disk update --resource-group myResourceGroup --name myDataDisk --size-gb 256` |
 | Ögonblicksbild av en disk | `az snapshot create --resource-group myResourceGroup --name mySnapshot --source myDataDisk` |
@@ -42,5 +42,5 @@ Mer detaljerad hjälp med specifika kommandoradsväxlar och alternativ du kan an
 
 
 ## <a name="next-steps"></a>Nästa steg
-Ytterligare exempel på CLI-kommandon finns i [skapa och hantera virtuella Linux-datorer med Azure CLI](../articles/virtual-machines/linux/tutorial-manage-vm.md) kursen.
+Ytterligare exempel på hello CLI-kommandon finns hello [skapa och hantera virtuella Linux-datorer med hello Azure CLI](../articles/virtual-machines/linux/tutorial-manage-vm.md) kursen.
 

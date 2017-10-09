@@ -13,7 +13,7 @@
 ## [Arbetsflöden](expressroute-workflows.md)
 ## [Routningskrav](expressroute-routing.md)
 ## [QoS-krav](expressroute-qos.md)
-## [Om att flytta kretsar från klassisk till Resource Manager](expressroute-move.md)
+## [Om hur du flyttar kretsar från klassiska tooResource Manager](expressroute-move.md)
 
 # Gör så här för att
 ## Skapa och ändra en krets
@@ -24,7 +24,7 @@
 ### [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-routing-arm.md)
 ### [Azure CLI](howto-routing-cli.md)
-## Länka ett virtuellt nätverk till en ExpressRoute-krets
+## Länka ett virtuellt nätverk tooan ExpressRoute-krets
 ### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-linkvnet-arm.md)
 ### [Azure CLI](howto-linkvnet-cli.md)
@@ -35,8 +35,8 @@
 ## Konfigurera routningsfilter för Microsoft-peering
 ### [Azure Portal](how-to-routefilter-portal.md)
 ### [PowerShell](how-to-routefilter-powershell.md)
-## [Flytta en krets från klassisk till Resource Manager](expressroute-howto-move-arm.md)
-## [Migrera associerade virtuella nätverk från klassisk till Resource Manager](expressroute-migration-classic-resource-manager.md)
+## [Flytta en krets från klassiska tooResource Manager](expressroute-howto-move-arm.md)
+## [Migrera tillhörande virtuella nätverk från klassiska tooResource Manager](expressroute-migration-classic-resource-manager.md)
 ## Konfigurera en router för ExpressRoute
 ### [Konfigurera en router](expressroute-config-samples-routing.md)
 ### [Exempel på routerkonfigurationer för NAT](expressroute-config-samples-nat.md)
@@ -75,12 +75,12 @@
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [Prenumerations- och tjänstbegränsningar](../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json)
 ## [Videoklipp](https://azure.microsoft.com/documentation/videos/index/?services=expressroute)
-### [Anslut en virtuell nätverksgateway till en krets](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
+### [Ansluta ett virtuellt nätverk gateway tooa krets](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
 ### [Skapa ett virtuellt nätverk för ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)
 ### [Skapa en virtuell nätverksgateway för ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network/)
 ### [Skapa en ExpressRoute-krets](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit/)
 ### [Utveckla anslutningarna i nätverksinfrastrukturen](https://go.microsoft.com/fwlink/p/?LinkId=615124)
-### [Så här konfigurerar du privat peering för din krets](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
+### [Hur tooset in privat Peering för kretsen](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
 ### [Hybridpartners: Aktivera scenarier lokalt](https://go.microsoft.com/fwlink/p/?LinkId=615125)
 ### [Konfigurera Microsoft-peering för din krets](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/)
 ### [Konfigurera offentlig peering för din krets](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)

@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2 JS SPA interaktiv installation - Använd | Microsoft Docs"
+title: "aaaAzure AD v2 JS SPA interaktiv installation - Använd | Microsoft Docs"
 description: "Hur JavaScript SPA program anropar en API som kräver åtkomst-token i Azure Active Directory v2 slutpunkten"
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/01/2017
 ms.author: andret
-ms.openlocfilehash: f52157df298ddfc1c1b29a18dc9a54aae59b52a3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4f7f824ed787d998dc4aea3dc21c95d7dfe70ae0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Använd Microsoft Authentication Library (MSAL) för att logga in användaren
+## <a name="use-hello-microsoft-authentication-library-msal-toosign-in-hello-user"></a>Använd hello Microsoft Authentication Library (MSAL) toosign i hello användare
 
-1.  Skapa en fil med namnet `app.js`. Om du använder Visual Studio, Välj projekt (rotmapp projekt), högerklicka och välj: `Add`  >  `New Item`  >  `JavaScript File`:
-2.  Lägg till följande kod i din `app.js` fil:
+1.  Skapa en fil med namnet `app.js`. Om du använder Visual Studio, Välj hello projekt (projektets rotmapp), högerklicka och välj: `Add`  >  `New Item`  >  `JavaScript File`:
+2.  Lägg till följande kod tooyour hello `app.js` fil:
 
 ```javascript
-// Graph API endpoint to show user profile
+// Graph API endpoint tooshow user profile
 var graphApiEndpoint = "https://graph.microsoft.com/v1.0/me";
 
-// Graph API scope used to obtain the access token to read user profile
+// Graph API scope used tooobtain hello access token tooread user profile
 var graphAPIScopes = ["https://graph.microsoft.com/user.read"];
 
 // Initialize application
@@ -42,7 +42,7 @@ if (userAgentApplication.redirectUri) {
 }
 
 window.onload = function () {
-    // If page is refreshed, continue to display user info
+    // If page is refreshed, continue toodisplay user info
     if (!userAgentApplication.isCallback(window.location.hash) && window.parent === window && !window.opener) {
         var user = userAgentApplication.getUser();
         if (user) {
@@ -52,21 +52,21 @@ window.onload = function () {
 }
 
 /**
- * Call the Microsoft Graph API and display the results on the page. Sign the user in if necessary
+ * Call hello Microsoft Graph API and display hello results on hello page. Sign hello user in if necessary
  */
 function callGraphApi() {
     var user = userAgentApplication.getUser();
     if (!user) {
-        // If user is not signed in, then prompt user to sign in via loginRedirect.
-        // This will redirect user to the Azure Active Directory v2 Endpoint
+        // If user is not signed in, then prompt user toosign in via loginRedirect.
+        // This will redirect user toohello Azure Active Directory v2 Endpoint
         userAgentApplication.loginRedirect(graphAPIScopes);
-        // The call to loginRedirect above frontloads the consent to query Graph API during the sign-in.
-        // If you want to use dynamic consent, just remove the graphAPIScopes from loginRedirect call.
-        // As such, user will be prompted to give consent when requested access to a resource that 
-        // he/she hasn't consented before. In the case of this application - 
-        // the first time the Graph API call to obtain user's profile is executed.
+        // hello call toologinRedirect above frontloads hello consent tooquery Graph API during hello sign-in.
+        // If you want toouse dynamic consent, just remove hello graphAPIScopes from loginRedirect call.
+        // As such, user will be prompted toogive consent when requested access tooa resource that 
+        // he/she hasn't consented before. In hello case of this application - 
+        // hello first time hello Graph API call tooobtain user's profile is executed.
     } else {
-        // If user is already signed in, display the user info
+        // If user is already signed in, display hello user info
         var userInfoElement = document.getElementById("userInfo");
         userInfoElement.parentElement.classList.remove("hidden");
         userInfoElement.innerHTML = JSON.stringify(user, null, 4);
@@ -74,24 +74,24 @@ function callGraphApi() {
         // Show Sign-Out button
         document.getElementById("signOutButton").classList.remove("hidden");
 
-        // Now Call Graph API to show the user profile information:
+        // Now Call Graph API tooshow hello user profile information:
         var graphCallResponseElement = document.getElementById("graphResponse");
         graphCallResponseElement.parentElement.classList.remove("hidden");
         graphCallResponseElement.innerText = "Calling Graph ...";
 
-        // In order to call the Graph API, an access token needs to be acquired.
-        // Try to acquire the token used to query Graph API silently first:
+        // In order toocall hello Graph API, an access token needs toobe acquired.
+        // Try tooacquire hello token used tooquery Graph API silently first:
         userAgentApplication.acquireTokenSilent(graphAPIScopes)
             .then(function (token) {
-                //After the access token is acquired, call the Web API, sending the acquired token
+                //After hello access token is acquired, call hello Web API, sending hello acquired token
                 callWebApiWithToken(graphApiEndpoint, token, graphCallResponseElement, document.getElementById("accessToken"));
 
             }, function (error) {
-                // If the acquireTokenSilent() method fails, then acquire the token interactively via acquireTokenRedirect().
-                // In this case, the browser will redirect user back to the Azure Active Directory v2 Endpoint so the user 
-                // can reenter the current username/ password and/ or give consent to new permissions your application is requesting.
+                // If hello acquireTokenSilent() method fails, then acquire hello token interactively via acquireTokenRedirect().
+                // In this case, hello browser will redirect user back toohello Azure Active Directory v2 Endpoint so hello user 
+                // can reenter hello current username/ password and/ or give consent toonew permissions your application is requesting.
                 // After authentication/ authorization completes, this page will be reloaded again and callGraphApi() will be executed on page load.
-                // Then, acquireTokenSilent will then get the token silently, the Graph API call results will be made and results will be displayed in the page.
+                // Then, acquireTokenSilent will then get hello token silently, hello Graph API call results will be made and results will be displayed in hello page.
                 if (error) {
                     userAgentApplication.acquireTokenRedirect(graphAPIScopes);
                 }
@@ -101,11 +101,11 @@ function callGraphApi() {
 }
 
 /**
- * Callback method from sign-in: if no errors, call callGraphApi() to show results.
- * @param {string} errorDesc - If error occur, the error message
- * @param {object} token - The token received from login
- * @param {object} error - The error string
- * @param {string} tokenType - the token type: usually id_token
+ * Callback method from sign-in: if no errors, call callGraphApi() tooshow results.
+ * @param {string} errorDesc - If error occur, hello error message
+ * @param {object} token - hello token received from login
+ * @param {object} error - hello error string
+ * @param {string} tokenType - hello token type: usually id_token
  */
 function loginCallback(errorDesc, token, error, tokenType) {
     if (errorDesc) {
@@ -116,8 +116,8 @@ function loginCallback(errorDesc, token, error, tokenType) {
 }
 
 /**
- * Show an error message in the page
- * @param {string} endpoint - the endpoint used for the error message
+ * Show an error message in hello page
+ * @param {string} endpoint - hello endpoint used for hello error message
  * @param {string} error - Error string
  * @param {string} errorDesc - Error description
  */
@@ -135,40 +135,40 @@ function showError(endpoint, error, errorDesc) {
 <!--start-collapse-->
 ### <a name="more-information"></a>Mer information
 
-När en användare klickar på den *'anropa Microsoft Graph API-* knappen för första gången `callGraphApi` metodanrop `loginRedirect` att logga in användaren. Den här metoden innebär att omdirigera användare till den *Microsoft Azure Active Directory v2 endpoint* till Kommandotolken och verifiera användarens autentiseringsuppgifter. På grund av en lyckad inloggning, omdirigeras användaren till ursprungligt *index.html* sidan och en token tas emot ska bearbetas av `msal.js` och den information som finns i token cachelagras. Denna token kallas den *ID token* och innehåller grundläggande information om användare, till exempel användarens visningsnamn. Om du planerar att använda några data som tillhandahålls av denna token för andra syften måste du kontrollera att denna token har verifierats av backend-servern för att garantera att token har utfärdats till en giltig användare för ditt program.
+När en användare klickar på hello *'anropa Microsoft Graph API-* knapp för hello första gången `callGraphApi` metodanrop `loginRedirect` toosign i hello användaren. Den här metoden innebär att omdirigera hello användaren toohello *Microsoft Azure Active Directory v2 endpoint* tooprompt och validera hello användarens autentiseringsuppgifter. På grund av en lyckad inloggning, hello användaren är omdirigerade tillbaka toohello ursprungliga *index.html* sidan och en token tas emot ska bearbetas av `msal.js` och hello informationen i hello token cachelagras. Denna token kallas hello *ID token* och innehåller grundläggande information om hello användare, till exempel hello användarens visningsnamn. Om du planerar toouse utfärdades alla data som anges av den här variabeln för andra syften måste toomake till denna token har verifierats av dina backend-servern tooguarantee som hello token tooa giltig användare för programmet.
 
-SPA som genererats av den här guiden gör inte användas direkt av ID-token – i stället anropas `acquireTokenSilent` och/eller `acquireTokenRedirect` att erhålla ett *åtkomsttoken* frågar Microsoft Graph API. Om du behöver ett exempel som validerar ID-token kan ta en titt på [detta](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Github active-directory-javascript-singlepageapp-dotnet-webapi-v2 exempel") exempelprogrammet i GitHub-exemplet använder en ASP .NET web API för token verifiering.
+hello SPA som genererats av den här guiden gör inte använda direkt hello-ID-token – i stället anropas `acquireTokenSilent` och/eller `acquireTokenRedirect` tooacquire en *åtkomsttoken* används tooquery hello Microsoft Graph API. Om du behöver ett exempel som validerar hello-ID-token kan ta en titt på [detta](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Github active-directory-javascript-singlepageapp-dotnet-webapi-v2 exempel") exempelprogrammet i GitHub – hello används en ASP.NET Web API för token verifiering.
 
 #### <a name="getting-a-user-token-interactively"></a>Hämta token för en användare interaktivt
 
-Efter den första inloggningen, du inte vill be användare att autentiseras varje gång de behöver för att begära en token för att komma åt en resurs – så *acquireTokenSilent* ska användas för de flesta fall för att hämta token. Det finns situationer men som behövs för att tvinga användare interagerar med Azure Active Directory v2 slutpunkt – några exempel:
--   Användare kan behöva ange sina autentiseringsuppgifter på eftersom lösenordet har upphört att gälla
--   Ditt program begär åtkomst till en resurs som användaren behöver samtycker till att
+Efter hello ursprunglig logga in, vill du inte hello be användare tooreauthenticate varje gång de behöver toorequest en token tooaccess en resurs – så *acquireTokenSilent* ska vara används för de flesta av hello tid tooacquire token. Det finns situationer men du behöver tooforce användarna samverkar med Azure Active Directory v2 endpoint – några exempel:
+-   Användare kan behöva tooreenter sina autentiseringsuppgifter eftersom hello lösenord har upphört att gälla
+-   Ditt program begär åtkomst tooa resurs som hello användaren måste tooconsent till
 -   Tvåfaktorsautentisering krävs
 
-Anropar den *acquireTokenRedirect(scope)* resultera i att omdirigera användare till Azure Active Directory v2 slutpunkten (eller *acquireTokenPopup(scope)* resultatet i ett popup-fönster) när användare behöver interagera med genom att antingen bekräfta sina autentiseringsuppgifter, ge medgivande till den begärda resursen eller Slutför tvåfaktorsautentisering de två.
+Anropar hello *acquireTokenRedirect(scope)* resultera i att omdirigera användare toohello Azure Active Directory-v2-slutpunkt (eller *acquireTokenPopup(scope)* resultatet i ett popup-fönster) där användarna måste toointeract med genom att antingen bekräfta sina autentiseringsuppgifter, som ger hello medgivande toohello krävs resurs eller Slutför hello två Multi-Factor authentication.
 
 #### <a name="getting-a-user-token-silently"></a>Hämta token för en användare tyst
-Den ` acquireTokenSilent` metoden hanterar token förvärv av organisationer och förnyelse utan någon användarinteraktion. Efter `loginRedirect` (eller `loginPopup`) körs för första gången `acquireTokenSilent` är den metod som används ofta för att hämta token som används för att komma åt skyddade resurser för efterföljande anrop - eftersom anrop till begära eller förnya token görs tyst.
-`acquireTokenSilent`misslyckas i vissa fall – till exempel användarens lösenord har upphört att gälla. Programmet kan hantera det här undantaget på två sätt:
+Hej ` acquireTokenSilent` metoden hanterar token förvärv av organisationer och förnyelse utan någon användarinteraktion. Efter `loginRedirect` (eller `loginPopup`) för hello körs första gången `acquireTokenSilent` hello metod som används ofta tooobtain tokens som används för tooaccess skyddade resurser för efterföljande anrop - som anropar toorequest eller förnya token görs tyst.
+`acquireTokenSilent`kan misslyckas i vissa fall – till exempel hello användarens lösenord har upphört att gälla. Programmet kan hantera det här undantaget på två sätt:
 
-1.  Gör ett anrop till `acquireTokenRedirect` direkt, vilket innebär att användaren uppmanas att logga in. Det här mönstret är vanligt i Onlineprogram där det finns inget oautentiserade innehåll i programmet tillgängligt för användaren. Genereras av den här interaktiv installation används det här mönstret.
+1.  Gör ett anrop för`acquireTokenRedirect` omedelbart, vilket resulterar i att fråga hello användaren toosign i. Det här mönstret är vanligt i Onlineprogram där det finns inget oautentiserade innehåll i hello tillgängliga toohello programanvändare. hello används genereras av den här interaktiv installation det här mönstret.
 
-2. Program kan också göra en indikering för användaren som en interaktiv inloggning krävs, så att användaren kan välja att logga in rätt tidpunkt eller programmet kan försöka `acquireTokenSilent` vid ett senare tillfälle. Detta används vanligtvis när användaren kan använda andra funktioner i programmet utan att något stör – t.ex, det finns oautentiserade innehåll i programmet. I det här fallet kan användaren välja när de vill logga in till den skydda resursen eller uppdatera inaktuell information.
+2. Program kan också göra en indikering toohello användare som en interaktiv inloggning krävs, så hello användaren kan välja hello rätt tidpunkt toosign i eller hello program kan försöka `acquireTokenSilent` vid ett senare tillfälle. Detta används vanligtvis när hello användare kan använda andra funktioner i programmet hello utan något stör – t.ex, det finns oautentiserade innehåll i programmet hello. I det här fallet kan hello användare bestämma när de vill toosign i tooaccess hello skyddade resurser eller toorefresh hello gammal information.
 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Anropa använder token som du precis har köpt Microsoft Graph API
+## <a name="call-hello-microsoft-graph-api-using-hello-token-you-just-obtained"></a>Anropa hello Microsoft Graph API använder du bara fick hello-token
 
-Lägg till följande kod i din `app.js` fil:
+Lägg till följande kod tooyour hello `app.js` fil:
 
 ```javascript
 /**
  * Call a Web API using an access token.
  * @param {any} endpoint - Web API endpoint
  * @param {any} token - Access token
- * @param {object} responseElement - HTML element used to display the results
- * @param {object} showTokenElement = HTML element used to display the RAW access token
+ * @param {object} responseElement - HTML element used toodisplay hello results
+ * @param {object} showTokenElement = HTML element used toodisplay hello RAW access token
  */
 function callWebApiWithToken(endpoint, token, responseElement, showTokenElement) {
     var headers = new Headers();
@@ -185,7 +185,7 @@ function callWebApiWithToken(endpoint, token, responseElement, showTokenElement)
             if (response.status === 200 && contentType && contentType.indexOf("application/json") !== -1) {
                 response.json()
                     .then(function (data) {
-                        // Display response in the page
+                        // Display response in hello page
                         console.log(data);
                         responseElement.innerHTML = JSON.stringify(data, null, 4);
                         if (showTokenElement) {
@@ -199,7 +199,7 @@ function callWebApiWithToken(endpoint, token, responseElement, showTokenElement)
             } else {
                 response.json()
                     .then(function (data) {
-                        // Display response as error in the page
+                        // Display response as error in hello page
                         showError(endpoint, data);
                     })
                     .catch(function (error) {
@@ -216,17 +216,17 @@ function callWebApiWithToken(endpoint, token, responseElement, showTokenElement)
 
 ### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Mer information om hur du skapar ett REST-anrop mot ett skyddade API
 
-I det exempelprogram som skapats av den här guiden, den `callWebApiWithToken()` metoden används för att en HTTP `GET` begäran mot en skyddad resurs som kräver ett token och returnera innehållet till anroparen. Den här metoden lägger till anskaffats token i den *HTTP Authorization-huvud*. För det exempelprogram som skapats av den här guiden, resursen är Microsoft Graph API *mig* slutpunkt – som visar information om användarens profil.
+I hello exempelprogram som skapats av den här guiden, hello `callWebApiWithToken()` metod är att använda toomake HTTP `GET` begäran mot en skyddad resurs som kräver en token och sedan returnera hello innehåll toohello anropare. Den här metoden lägger till hello hämta token i hello *HTTP Authorization-huvud*. Hello-exempelprogram som skapats av den här guiden, hello resursen är hello Microsoft Graph API *mig* slutpunkt – som visar hello användarens profilinformation.
 
 <!--end-collapse-->
 
-## <a name="add-a-method-to-sign-out-the-user"></a>Lägg till en metod för att logga ut användaren
+## <a name="add-a-method-toosign-out-hello-user"></a>Lägg till en metod toosign ut hello användare
 
-Lägg till följande kod i din `app.js` fil:
+Lägg till följande kod tooyour hello `app.js` fil:
 
 ```javascript
 /**
- * Sign-out the user
+ * Sign-out hello user
  */
 function signOut() {
     userAgentApplication.logout();

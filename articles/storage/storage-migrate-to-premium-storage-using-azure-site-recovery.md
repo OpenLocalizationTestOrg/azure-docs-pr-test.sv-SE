@@ -1,6 +1,6 @@
 ---
-title: "Migrera till Azure Premium-lagring med hjälp av Azure Site Recovery | Microsoft Docs"
-description: "Migrera dina befintliga virtuella datorer till Azure Premium-lagring med Site Recovery. Premium-lagring ger stöd för I/O-intensiva arbetsbelastningar som körs på Azure Virtual Machines diskar med hög prestanda, låg latens."
+title: "aaaMigrating tooAzure Premium-lagring med hjälp av Azure Site Recovery | Microsoft Docs"
+description: "Migrera dina befintliga virtuella datorer tooAzure Premium-lagring med Site Recovery. Premium-lagring ger stöd för I/O-intensiva arbetsbelastningar som körs på Azure Virtual Machines diskar med hög prestanda, låg latens."
 services: storage
 cloud: Azure
 documentationcenter: na
@@ -14,148 +14,148 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2017
 ms.author: luywang
-ms.openlocfilehash: cc364bdae49068a50ec86c537c3b878670b8b8b7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: cb71c06e4a1a73d484e226a573d1ade48c87664d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrating-to-premium-storage-using-azure-site-recovery"></a>Migrera till Premium Storage med Azure Site Recovery
+# <a name="migrating-toopremium-storage-using-azure-site-recovery"></a>Migrera tooPremium lagring med hjälp av Azure Site Recovery
 
-[Azure Premium-lagring](storage-premium-storage.md) ger stöd för virtuella datorer (VM) som körs I/O-intensiva arbetsbelastningar diskar med hög prestanda, låg latens. Syftet med den här guiden är att hjälpa användare att migrera de Virtuella diskarna från ett standardlagringskonto till ett premiumlagringskonto med hjälp av [Azure Site Recovery](../site-recovery/site-recovery-overview.md).
+[Azure Premium-lagring](storage-premium-storage.md) ger stöd för virtuella datorer (VM) som körs I/O-intensiva arbetsbelastningar diskar med hög prestanda, låg latens. hello syftet med den här guiden är toohelp användare migrera de Virtuella diskarna från en standardlagring konto tooa premiumlagringskonto med [Azure Site Recovery](../site-recovery/site-recovery-overview.md).
 
-Site Recovery är en Azure-tjänst som bidrar till din disaster recovery strategi för affärskontinuitet och genom att samordna replikeringen av lokala fysiska servrar och virtuella datorer till molnet (Azure) eller till ett sekundärt datacenter. Vid driftstopp på den primära platsen växlar du över till den sekundära platsen så att program och arbetsbelastningar som är tillgängliga. Du växlar tillbaka till den primära platsen när den återgår till normal drift. Site Recovery tillhandahåller redundanstestning så att den stöder haveriberedskap utan att påverka produktionsmiljöer. Du kan köra redundansväxlingar med minimal dataförlust (beroende på replikeringsfrekvens) för oväntade haverier. I scenariot för att migrera till Premium-lagring kan du använda den [redundans i Site Recovery](../site-recovery/site-recovery-failover.md) i Azure Site Recovery för att migrera måldiskarna till ett premiumlagringskonto.
+Site Recovery är en Azure-tjänst som stödjer tooyour affärskontinuitet och haveriberedskap genom att samordna hello replikeringen av lokala fysiska servrar och virtuella datorer toohello molnet (Azure) eller tooa sekundärt datacenter. Vid driftstopp på den primära platsen växlar du över toohello sekundär plats tookeep program och arbetsbelastningar som är tillgängliga. Du växlar tillbaka tooyour primära platsen när den returnerar toonormal igen. Site Recovery tillhandahåller redundanstestning toosupport haveriberedskap utan att påverka produktionsmiljöer. Du kan köra redundansväxlingar med minimal dataförlust (beroende på replikeringsfrekvens) för oväntade haverier. I scenariot hello av migrerar tooPremium lagring, kan du använda hello [redundans i Site Recovery](../site-recovery/site-recovery-failover.md) i Azure Site Recovery toomigrate mål diskar tooa premiumlagringskonto.
 
-Vi rekommenderar att du migrerar till Premium-lagring med hjälp av Site Recovery eftersom det här alternativet ger minimal avbrottstid och undviker manuell körningen av kopierar diskar och skapa nya virtuella datorer. Site Recovery kommer systematiskt kopiera diskarna och skapa nya virtuella datorer under växling vid fel. Site Recovery stöder ett antal typer av redundansväxlingar med minimal eller ingen avbrottstid. För att planera din driftstopp och beräkna dataförlust, finns det [typer av redundans](../site-recovery/site-recovery-failover.md) tabellen i Site Recovery. Om du [förbereda för att ansluta till virtuella Azure-datorer efter redundans](../site-recovery/site-recovery-vmware-to-azure.md), du ska kunna ansluta till den virtuella Azure-datorn med RDP efter en växling vid fel.
+Vi rekommenderar migrering tooPremium lagring med hjälp av Site Recovery eftersom det här alternativet ger minimal avbrottstid och undviker hello manuell körning av kopierar diskar och skapa nya virtuella datorer. Site Recovery kommer systematiskt kopiera diskarna och skapa nya virtuella datorer under växling vid fel. Site Recovery stöder ett antal typer av redundansväxlingar med minimal eller ingen avbrottstid. tooplan din driftstopp och uppskattning dataförlust, se hello [typer av redundans](../site-recovery/site-recovery-failover.md) tabellen i Site Recovery. Om du [förbereda tooconnect tooAzure virtuella datorer efter redundans](../site-recovery/site-recovery-vmware-to-azure.md), bör du kunna tooconnect toohello virtuella Azure-datorn med RDP efter en växling vid fel.
 
 ![][1]
 
 ## <a name="azure-site-recovery-components"></a>Azure Site Recovery-komponenter
 
-Dessa är Site Recovery-komponenter som är relevanta för den här Migreringsscenario.
+Dessa är hello Site Recovery-komponenter som är relevanta toothis Migreringsscenario.
 
-* **Konfigurationsservern** är en Azure VM som samordnar kommunikationen och hanterar processer för replikering och återställning av data. På den här virtuella datorn körs en enda installationsfil för att installera konfigurationsservern och en ytterligare komponent som kallas en processerver som en gateway för replikering. Läs mer om [server konfigurationskrav](../site-recovery/site-recovery-vmware-to-azure.md). Konfigurationsservern endast måste konfigureras en gång och kan användas för alla migreringar till samma region.
+* **Konfigurationsservern** är en Azure VM som samordnar kommunikationen och hanterar processer för replikering och återställning av data. På den här virtuella datorn körs en enda installationsprogrammet tooinstall hello configuration filserver och en ytterligare komponent som kallas en processerver som en gateway för replikering. Läs mer om [server konfigurationskrav](../site-recovery/site-recovery-vmware-to-azure.md). Konfigurationsservern endast måste toobe som konfigurerats på en gång och kan användas för alla migreringar toohello samma region.
 
-* **Processervern** är en replikerings-gateway som tar emot replikeringsdata från virtuella källdatorer optimerar data med cachelagring, komprimering och kryptering och skickar det till ett lagringskonto. Den hanterar push-installation av mobilitetstjänsten till källdatorn virtuella datorer och utför automatisk identifiering av virtuella källdatorer. Standard-process-servern är installerad på konfigurationsservern. Du kan distribuera ytterligare fristående servrar för att skala din distribution. Läs mer om [Metodtips för distribution av processerver](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/) och [distribution av ytterligare servrar](../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers). Processervern endast måste konfigureras en gång och kan användas för alla migreringar till samma region.
+* **Processervern** är en replikerings-gateway som tar emot replikeringsdata från virtuella källdatorer optimerar hello data med cachelagring, komprimering och kryptering och skickar den tooa storage-konto. Den hanterar push-installation av hello mobility service toosource virtuella datorer och utför automatisk identifiering av virtuella källdatorer. hello standard processen server är installerad på hello konfigurationsservern. Du kan distribuera ytterligare fristående process servrar tooscale din distribution. Läs mer om [Metodtips för distribution av processerver](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/) och [distribution av ytterligare servrar](../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers). Processervern endast måste toobe som konfigurerats på en gång och kan användas för alla migreringar toohello samma region.
 
-* **Mobilitetstjänsten** är en komponent som distribueras på varje standard VM som du vill replikera. Den samlar in dataskrivningar på standard virtuella datorn och vidarebefordrar dem till processervern. Läs mer om [replikeras förutsättningar dator](../site-recovery/site-recovery-vmware-to-azure.md).
+* **Mobilitetstjänsten** är en komponent som har distribuerats på varje standard virtuell dator som du vill tooreplicate. Den samlar in dataskrivningar på hello standard VM och vidarebefordrar dem toohello processervern. Läs mer om [replikeras förutsättningar dator](../site-recovery/site-recovery-vmware-to-azure.md).
 
 Den här bilden illustrerar hur dessa komponenter.
 
 ![][15]
 
 > [!NOTE]
-> Site Recovery har inte stöd för migrering av lagringsutrymmen-diskarna.
+> Site Recovery stöder inte hello migrering av lagringsutrymmen-diskarna.
 
-Ytterligare komponenter för andra scenarier, referera till [scenariots arkitektur](../site-recovery/site-recovery-vmware-to-azure.md).
+Ytterligare komponenter för andra scenarier finns för[scenariots arkitektur](../site-recovery/site-recovery-vmware-to-azure.md).
 
 ## <a name="azure-essentials"></a>Azure essentials
 
-Dessa är Azure kraven för den här Migreringsscenario.
+Dessa hello Azure kraven för den här Migreringsscenario.
 
 * En Azure-prenumeration
-* Ett Azure Premium storage-konto för att lagra replikerade data
-* Virtuellt Azure-nätverk (VNet) virtuella datorer ansluter till när de skapas under växling vid fel. Azure-VNet måste vara i samma region som Site Recovery körs
-* Ett Standard till Azure storage-konto att lagra replikeringsloggar. Detta kan vara samma lagringskonto som de Virtuella diskar migreras
+* Ett Azure Premium storage-konto toostore replikerade data
+* Ett virtuellt Azure-nätverk (VNet) toowhich virtuella datorer ansluter när de skapas under växling vid fel. hello Azure VNet måste vara i hello samma region som hello något i vilka hello Site Recovery körs
+* Ett Standard till Azure storage-konto i vilka toostore replikeringsloggar. Detta kan vara hello samma lagringskonto som hello Virtuella diskar migreras
 
 ## <a name="prerequisites"></a>Krav
 
-* Förstå komponenterna i relevanta migrering scenariot i föregående avsnitt
-* Planera din driftstopp genom att lära dig mer om den [redundans i Site Recovery](../site-recovery/site-recovery-failover.md)
+* Förstå hello relevanta migrering scenariot komponenterna i föregående avsnitt hello
+* Planera din driftstopp genom att lära dig om hello [redundans i Site Recovery](../site-recovery/site-recovery-failover.md)
 
 ## <a name="setup-and-migration-steps"></a>Installation och migrering av steg
 
-Du kan använda Site Recovery för att migrera Azure IaaS-VM mellan regioner eller i samma region. Följande instruktioner har anpassats för det här scenariot för migrering från artikeln [replikera virtuella VMware-datorer eller fysiska servrar till Azure](../site-recovery/site-recovery-vmware-to-azure.md). Följ länkarna detaljerade steg i ytterligare instruktioner i den här artikeln.
+Du kan använda Site Recovery toomigrate Azure IaaS-VM mellan regioner eller i samma region. hello följande instruktioner har anpassats för det här scenariot för migrering från hello artikel [replikera virtuella VMware-datorer eller fysiska servrar tooAzure](../site-recovery/site-recovery-vmware-to-azure.md). Följ länkarna hello detaljerade anvisningar i ytterligare toohello anvisningarna i den här artikeln.
 
-1. **Skapa ett Recovery Services-valv**. Skapa och hantera Site Recovery-valvet via den [Azure-portalen](https://portal.azure.com). Klicka på **nya** > **Management** > **säkerhetskopiering** och **Site Recovery (OMS)**. Du kan också klicka på **Bläddra** > **Återställningstjänstvalvet** > **Lägg till**. Virtuella datorer kommer att replikeras till den region som du anger i det här steget. Välj den region där din virtuella källdatorer och källa storage-konton är för migrering i samma region. Observera att migrering till Premium-lagringskonton stöds endast i den [Azure-portalen](https://portal.azure.com), inte den [klassiska portalen](https://manage.windowsazure.com).
+1. **Skapa ett Recovery Services-valv**. Skapa och hantera hello Site Recovery-valvet via hello [Azure-portalen](https://portal.azure.com). Klicka på **nya** > **Management** > **säkerhetskopiering** och **Site Recovery (OMS)**. Du kan också klicka på **Bläddra** > **Återställningstjänstvalvet** > **Lägg till**. Virtuella datorer kommer att replikeras toohello region som du anger i det här steget. För migrering i hello hello samma region, Välj hello region där din virtuella källdatorer och källa storage-konton är. Observera att migreringen tooPremium storage-konton stöds endast i hello [Azure-portalen](https://portal.azure.com), inte hello [klassiska portalen](https://manage.windowsazure.com).
 
-2. Följande steg hjälper dig **välja skyddsmål**.
+2. hello följande steg när du **välja skyddsmål**.
 
-    2a. På den virtuella datorn där du vill installera konfigurationsservern, öppna den [Azure-portalen](https://portal.azure.com). Gå till **Recovery Services-valv** > **inställningar**. Under **inställningar**väljer **Site Recovery**. Under **Site Recovery**väljer **steg 1: Förbered infrastrukturen**. Under **Förbered infrastruktur**väljer **skyddsmål**.
+    2a. Öppna hello på hello VM där du vill att tooinstall hello konfigurationsservern [Azure-portalen](https://portal.azure.com). Gå för**Recovery Services-valv** > **inställningar**. Under **inställningar**väljer **Site Recovery**. Under **Site Recovery**väljer **steg 1: Förbered infrastrukturen**. Under **Förbered infrastruktur**väljer **skyddsmål**.
 
     ![][2]
 
-    2b. Under **skyddsmål**, Välj i listan listruta **till Azure**. Välj i den andra listrutan **inte virtualiserade / andra**, och klicka sedan på **OK**.
+    2b. Under **skyddsmål**, i hello första nedrullningsbara listan, Välj **tooAzure**. Hello andra nedrullningsbara listan, Välj **inte virtualiserade / andra**, och klicka sedan på **OK**.
 
     ![][3]
 
-3. Följande steg hjälper dig **konfigurera källmiljön (konfigurationsserver)**.
+3. hello följande steg när du **konfigurera hello källmiljön (konfigurationsserver)**.
 
-    3a. Hämta den **Unified installationsprogram för Azure Site Recovery** och **valvregistreringsnyckel** genom att gå till den **Förbered infrastruktur**  >   **Förbered källa** > **Lägg till Server** bladet. Du behöver valvregistreringsnyckeln för att köra enhetlig installationen. Nyckeln är giltig i fem dagar efter genereringen.
+    3a. Hämta hello **Unified installationsprogram för Azure Site Recovery** och hello **valvregistreringsnyckel** genom att gå toohello **Förbered infrastruktur**  >  **Förbered källa** > **Lägg till Server** bladet. Du behöver hello valvet Registreringsinställningar viktiga toorun hello enhetlig. hello nyckeln är giltig i fem dagar efter genereringen.
 
     ![][4]
 
-    3B. Lägg till konfigurationsservern i den **Lägg till Server** bladet.
+    3B. Lägg till konfigurationsservern i hello **Lägg till Server** bladet.
 
     ![][5]
 
-    3c. På den virtuella datorn använder du som konfigurationsservern och installera enhetlig för att installera konfigurationsservern och processervern. Du kan gå igenom skärmbilderna [här](../site-recovery/site-recovery-vmware-to-azure.md) att slutföra installationen. Du kan referera till följande skärmbilder för steg som angetts för den här Migreringsscenario.
+    3c. Kör installationsprogrammet för enhetlig tooinstall hello konfigurationsservern och processervern hello på hello VM som du använder som hello konfigurationsservern. Du kan gå igenom hello skärmbilder [här](../site-recovery/site-recovery-vmware-to-azure.md) toocomplete hello installation. Du kan se toohello följande skärmbilder för steg som angetts för den här Migreringsscenario.
 
-    I **Before you begin** (Innan du börjar) väljer du **Install the configuration server and process server** (Installera konfigurationsservern och processervern).
+    I **innan du börjar**väljer **installera hello konfigurationsservern och processervern**.
 
     ![][6]
 
-    3D. I **registrering**, bläddra och välj den certifikatnyckel som du hämtade från valvet.
+    3D. I **registrering**, bläddra och välj hello registreringsnyckel som du hämtade från hello-valvet.
 
     ![][7]
 
-    3e. I **Miljöinformation** väljer du om du ska replikera virtuella VMwares-datorer. Den här Migreringsscenario väljer **nr**.
+    3e. I **miljö information**väljer du om du ska tooreplicate virtuella VMware-datorer. Den här Migreringsscenario väljer **nr**.
 
     ![][8]
 
-    3F. När installationen är klar visas den **Microsoft Azure Site Recovery Configuration Server** fönster. Använd den **hantera konton** att skapa kontot som Site Recovery kan använda för automatisk identifiering. (Konfigurera kontot är inte relevant i scenario om hur du skyddar fysiska datorer men du behöver minst ett konto för att aktivera någon av följande steg. I det här fallet, kan du kalla kontot och lösenordet som helst.) Använd den **valvet registrering** att ladda upp valvautentiseringsfilen.
+    3F. När hello installationen är klar visas hello **Microsoft Azure Site Recovery Configuration Server** fönster. Använd hello **hantera konton** fliken toocreate hello konto som Site Recovery kan användas för automatisk identifiering. (I hello scenario om hur du skyddar fysiska datorer, konfigurerar hello konto är irrelevant, men du behöver minst ett konto tooenable något av följande hello. I det här fallet, kan du kalla hello konto och lösenord som helst.) Använd hello **valvet registrering** fliken tooupload hello valvautentiseringsfilen.
 
     ![][9]
 
-4. **Konfigurera målmiljön**. Klicka på **Förbered infrastruktur** > **mål**, och ange den distributionsmodell som du vill använda för virtuella datorer efter redundans. Du kan välja **klassiska** eller **Resource Manager**, beroende på ditt scenario.
+4. **Ställ in hello målmiljön**. Klicka på **Förbered infrastruktur** > **mål**, och ange hello distributionsmodell som du vill ha toouse för virtuella datorer efter redundans. Du kan välja **klassiska** eller **Resource Manager**, beroende på ditt scenario.
 
     ![][10]
 
-    Site Recovery kontrollerar att du har ett eller flera kompatibla Azure-lagringskonton och Azure-nätverk. Observera att du måste konfigurera en ytterligare ett standardlagringskonto för att lagra replikeringsloggar om du använder ett Premium-lagringskonto för replikerade data.
+    Site Recovery kontrollerar att du har ett eller flera kompatibla Azure-lagringskonton och Azure-nätverk. Observera att om du använder ett Premium-lagringskonto för replikerade data kan du tooset upp en ytterligare standardlagring konto toostore replikering loggar.
 
-5. **Konfigurera replikeringsinställningar**. Följ [konfigurera replikeringsinställningar](../site-recovery/site-recovery-vmware-to-azure.md) att kontrollera att serverns konfiguration har kopplats till replikeringsprincipen som du skapar.
+5. **Konfigurera replikeringsinställningar**. Följ [konfigurera replikeringsinställningar](../site-recovery/site-recovery-vmware-to-azure.md) tooverify som din konfigurationsservern är har associerat med hello replikeringsprincip som du skapar.
 
-6. **Kapacitetsplanering**. Använd den [kapacitetsplaneringsverktyg](../site-recovery/site-recovery-capacity-planner.md) för att beräkna bandbredd, lagring och andra krav för att uppfylla dina replikering behov. När du är klar väljer du **Ja** i **har du planerat kapaciteten?**.
+6. **Kapacitetsplanering**. Använd hello [kapacitetsplaneringsverktyg](../site-recovery/site-recovery-capacity-planner.md) tooaccurately uppskattning nätverkets bandbredd, lagring och andra krav toomeet måste din replikering. När du är klar väljer du **Ja** i **har du planerat kapaciteten?**.
 
     ![][11]
 
-7. Följande steg hjälper dig **installera mobilitetstjänsten och aktivera replikering**.
+7. hello följande steg när du **installera mobilitetstjänsten och aktivera replikering**.
 
-    7 a. Du kan välja att [push-installation](../site-recovery/site-recovery-vmware-to-azure.md) till dina virtuella källdatorer eller till [manuellt installera mobilitetstjänsten](../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md) på dina virtuella källdatorer. Du kan hitta krav för push-överföring installation och sökvägen till manuell installationsprogrammet i länken. Om du gör en manuell installation kan du behöva använda en intern IP-adress för att hitta konfigurationsservern.
+    7 a. Du kan välja för[push-installation](../site-recovery/site-recovery-vmware-to-azure.md) tooyour källa virtuella datorer eller för[manuellt installera mobilitetstjänsten](../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md) på dina virtuella källdatorer. Du hittar hello kravet på Skicka installationen och hello sökväg hello manuell installer i hello-länken. Om du göra en manuell installation kan behöva du toouse en intern IP-adress toofind hello configuration-server.
 
     ![][12]
 
-    Kunde inte över VM har två tillfälliga diskar: en från den primära virtuella datorn och den andra skapades under etableringen för den virtuella datorn i området för återställning. Uteslut tillfälliga disken före replikering genom att installera mobilitetstjänsten innan du aktiverar replikering. Mer information om hur du utesluter den temporära disken avser [Exkludera diskar från replikeringen](../site-recovery/site-recovery-vmware-to-azure.md).
+    hello misslyckades över VM har två tillfälliga diskar: en från hello primära virtuella datorn och hello andra skapades under hello etableringen för den virtuella datorn i hello recovery region. tooexclude hello diskutrymme före replikering, installera hello mobilitetstjänsten innan du aktiverar replikering. toolearn mer information om hur tooexclude hello temporär disk finns för[Exkludera diskar från replikeringen](../site-recovery/site-recovery-vmware-to-azure.md).
 
     7b. Aktivera replikering på följande sätt:
-      * Klicka på **replikera program** > **källa**. När du har aktiverat replikering för första gången, klicka på + replikera i valvet för att aktivera replikering för ytterligare datorer.
+      * Klicka på **replikera program** > **källa**. När du har aktiverat replikering för hello första gången, klicka på + replikera hello valvet tooenable replikering för ytterligare datorer.
       * I steg 1, som källa processervern.
-      * Ange distributionsmodell efter en redundansväxling, ett premiumlagringskonto att migrera till ett standardlagringskonto för att spara loggar och ett virtuellt nätverk att växla till i steg 2.
-      * Lägga till skyddade virtuella datorer efter IP-adress (du kanske behöver en intern IP-adress du hittar dem) i steg 3.
-      * Konfigurera egenskaper för i steg 4, genom att välja de konton som du ställer in tidigare på processervern.
-      * Välj replikeringsprincip som du skapade tidigare, konfigurera replikeringsinställningar i steg 5.
+      * Ange hello postredundans distributionsmodell, Premium storage-konto toomigrate till, en standardlagring konto toosave loggar och ett virtuellt nätverk toofail till i steg 2.
+      * I steg 3, lägga till skyddade virtuella datorerna med IP-adress (du kanske behöver en intern IP-adress toofind dem).
+      * Konfigurera hello egenskaper genom att välja hello-konton som du ställer in tidigare på hello processervern i steg 4.
+      * Välj hello replikeringsprincip som du skapade tidigare, konfigurera replikeringsinställningar i steg 5.
       Klicka på **OK** och aktivera replikering.
 
     > [!NOTE]
-    > När en Azure VM är frigjord och startas igen, finns det ingen garanti för att den får samma IP-adress. Ändrar IP-adressen för server-processen konfigurationsservern eller skyddade virtuella Azure-datorer, kanske replikering i det här scenariot inte fungerar korrekt.
+    > När en Azure VM är frigjord och startas igen, det är inte säkert som ska hämtas hello samma IP-adress. Om hello eller IP-adress hello server-processen konfigurationsservern hello skyddad Azure virtuella datorer ändra kan hello replikering i det här scenariot inte fungerar korrekt.
 
     ![][13]
 
-    När du utformar din Azure Storage-miljö, rekommenderar vi att du använder separata storage-konton för varje virtuell dator i en tillgänglighetsuppsättning. Vi rekommenderar att du följer bästa praxis i lagringsskikt till [använder flera lagringskonton för varje tillgänglighetsuppsättning](../virtual-machines/windows/manage-availability.md). Distribuera Virtuella diskar med flera lagringskonton hjälper oss för att förbättra lagerutrymme och distribuerar läsning/skrivning i Azure storage-infrastruktur. Om din virtuella dator finns i en tillgänglighetsuppsättning, istället för att replikera diskar för alla virtuella datorer i ett lagringskonto, rekommenderar vi Migrera flera virtuella datorer på flera gånger, så att de virtuella datorerna i samma tillgänglighetsuppsättning inte delar ett enda storage-konto. Använd den **Aktivera replikering** bladet för att ställa in en destinationslagringskontot för varje virtuell dator i taget. Du kan välja en postredundans distributionsmodell enligt dina behov. Om du väljer Resource Manager (RM) som din postredundans distributionsmodell, kan du växla över en RM virtuell dator till en virtuell dator i RM eller kan du växla över en klassisk virtuell dator till en virtuell dator i RM.
+    När du utformar din Azure Storage-miljö, rekommenderar vi att du använder separata storage-konton för varje virtuell dator i en tillgänglighetsuppsättning. Vi rekommenderar att du följer hello bästa praxis i hello lagringsskikt för[använder flera lagringskonton för varje tillgänglighetsuppsättning](../virtual-machines/windows/manage-availability.md). Distribuera Virtuella diskar toomultiple storage-konton hjälper tooimprove lagerutrymme och distribuerar hello-i/o mellan hello Azure lagringsinfrastruktur. Om din virtuella dator finns i en tillgänglighetsuppsättning, istället för att replikera diskar för alla virtuella datorer i ett lagringskonto, rekommenderar vi Migrera flera virtuella datorer på flera gånger, så att hello virtuella datorer i hello samma tillgänglighetsuppsättning inte delar ett enda storage-konto. Använd hello **Aktivera replikering** bladet tooset upp en destinationslagringskontot för varje virtuell dator i taget. Du kan välja en postredundans distributionsmodell enligt tooyour behov. Om du väljer Resource Manager (RM) som din postredundans distributionsmodell, kan du växla över RM VM-tooan RM VM eller kan du växla över en klassiska Virtuella tooan RM VM.
 
-8. **Köra ett redundanstest**. Om du vill kontrollera om din replikeringen är klar klickar du på Site Recovery och klicka sedan på **inställningar** > **replikerade objekt**. Du ser statusen och procentandelen din replikeringen. Efter den första replikeringen har slutförts kör du testa redundans för att verifiera din replikeringsstrategi för. Detaljerade anvisningar för att testa redundans finns i [köra ett redundanstest i Site Recovery](../site-recovery/site-recovery-vmware-to-azure.md). Du kan se status för testning av redundans i **inställningar** > **jobb** > **YOUR_FAILOVER_PLAN_NAME**. På bladet visas en sammanställning av steg och lyckade/misslyckade resultat. Om du testar redundansen misslyckas när som helst, klickar du på det här steget för att kontrollera felmeddelande. Kontrollera att dina virtuella datorer och replikeringsstrategi uppfyller kraven innan du kör en redundansväxling. Läs [testa redundans till Azure i Site Recovery](../site-recovery/site-recovery-test-failover-to-azure.md) för mer information och anvisningar testningen.
+8. **Köra ett redundanstest**. toocheck om din replikeringen är klar, Site Recovery och klicka sedan på **inställningar** > **replikerade objekt**. Hello statusen och procentandelen din replikeringen visas. Efter den första replikeringen är slutförd, kör Redundanstestet toovalidate din replikeringsstrategi för. Detaljerade anvisningar för att testa redundans finns för[köra ett redundanstest i Site Recovery](../site-recovery/site-recovery-vmware-to-azure.md). Du kan se status för hello testningen i **inställningar** > **jobb** > **YOUR_FAILOVER_PLAN_NAME**. På bladet hello visas en sammanställning av hello steg och lyckade/misslyckade resultat. Klicka på hello steg toocheck hello felmeddelande om hello testa redundans misslyckas när som helst. Kontrollera att dina virtuella datorer och replikeringsstrategi uppfyller hello krav innan du kör en redundansväxling. Läs [Redundanstestning tooAzure i Site Recovery](../site-recovery/site-recovery-test-failover-to-azure.md) för mer information och anvisningar testningen.
 
-9. **Kör en redundansväxling**. När testet har växling vid fel slutförts, kör en redundansväxling för att migrera diskarna till Premium-lagring och replikera VM-instanser. Följ de detaljerade anvisningarna i [kör en redundansväxling](../site-recovery/site-recovery-failover.md#run-a-failover). Kontrollera att du väljer **Stäng virtuella datorer och synkronisera senaste data** att ange att Site Recovery ska försöka stänga av de skyddade virtuella datorerna och synkronisera data så att den senaste versionen av data kommer att redundansväxlas. Om du inte väljer det här alternativet eller försöket inte lyckas blir växling vid fel från den senaste tillgängliga återställningspunkten för den virtuella datorn. Site Recovery skapar en VM-instans vars typ är samma som eller liknande till en Premium-lagring – kompatibla virtuell dator. Du kan kontrollera prestanda och priset för olika VM-instanser genom att gå till [prissättning för Windows Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) eller [priser för Linux virtuella datorer](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+9. **Kör en redundansväxling**. När hello redundanstestet har slutförts och kör en växling vid fel toomigrate din diskar tooPremium lagring och replikera hello VM-instanser. Följ hello beskrivs stegen i [kör en redundansväxling](../site-recovery/site-recovery-failover.md#run-a-failover). Kontrollera att du väljer **Stäng virtuella datorer och synkronisera senaste data för hello** toospecify att Site Recovery ska försöka tooshut ned hello skyddade virtuella datorer och synkronisera hello data så att hello senaste versionen av hello data kommer att redundansväxlas. Om du inte väljer det här alternativet eller hello försök inte lyckas blir hello växling vid fel från hello senaste tillgängliga återställningspunkten för hello VM. Site Recovery skapar en VM-instans vars typ är hello samma som eller liknande tooa Premium Storage-kompatibla VM. Du kan kontrollera hello prestanda och pris för olika VM-instanser genom att gå för[prissättning för Windows Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) eller [priser för Linux virtuella datorer](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 ## <a name="post-migration-steps"></a>Eftermigreringen
 
-1. **Konfigurera replikerade virtuella datorerna till tillgänglighetsuppsättning om tillämpligt**. Site Recovery stöder inte migrera virtuella datorer tillsammans med tillgänglighetsuppsättningen. Beroende på distribution av den replikerade virtuella datorn, gör du något av följande:
-  * För en virtuell dator som skapats med hjälp av den klassiska distributionsmodellen: lägga till den virtuella datorn till tillgänglighetsuppsättning i Azure-portalen. Detaljerade anvisningar finns i [lägga till en befintlig virtuell dator i en tillgänglighetsuppsättning](../virtual-machines/windows/classic/configure-availability.md#addmachine).
-  * För Resource Manager-distributionsmodellen: spara konfigurationen av den virtuella datorn och ta sedan bort och återskapa de virtuella datorerna i tillgänglighetsuppsättningen. Gör du genom att använda skript på [ange Azure Resource Manager VM Tillgänglighetsuppsättning](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Kontrollera begränsning av det här skriptet och planera driftstopp innan du kör skriptet.
+1. **Konfigurera replikerade virtuella datorer toohello tillgänglighetsuppsättning om tillämpligt**. Site Recovery stöder inte migrera virtuella datorer tillsammans med hello tillgänglighetsuppsättning. Beroende på hello distribution av den replikerade virtuella datorn, gör du något av följande hello:
+  * För en virtuell dator som skapats med hjälp av hello klassiska distributionsmodellen: Lägg till hello VM toohello tillgänglighetsuppsättning i hello Azure-portalen. Detaljerade anvisningar finns för[lägga till en befintlig virtuell dator tooan tillgänglighetsuppsättning](../virtual-machines/windows/classic/configure-availability.md#addmachine).
+  * För hello Resource Manager-distributionsmodellen: spara din konfiguration av hello VM och ta sedan bort och återskapa hello virtuella datorer i tillgänglighetsuppsättningen hello. toodo så Använd hello skript på [ange Azure Resource Manager VM Tillgänglighetsuppsättning](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). Kontrollera hello begränsning av det här skriptet och planera driftstopp innan du kör hello skript.
 
-2. **Ta bort gamla virtuella datorer och diskar**. Kontrollera att diskarna Premium är konsekventa med källdiskarna och nya virtuella datorer som utför samma funktion som källa för virtuella datorer innan du tar bort dessa. Ta bort den virtuella datorn och ta bort diskar från källan storage-konton i Azure-portalen i distributionsmodell Resource Manager (RM). I den klassiska distributionsmodellen kan du ta bort den virtuella datorn och diskarna i den klassiska portalen eller Azure-portalen. Om det finns ett problem där disken inte tas bort även om du har tagit bort den virtuella datorn kan du läsa avsnittet [Felsöka när du tar bort virtuella hårddiskar](storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
+2. **Ta bort gamla virtuella datorer och diskar**. Kontrollera att hello premiumdiskar är konsekventa med källan diskar och hello nya virtuella datorer utföra hello samma fungerar som källa för hello virtuella datorer innan du tar bort dessa. Ta bort hello VM i distributionsmodell för hello Resource Manager (RM) och ta bort hello diskar från källan storage-konton i hello Azure-portalen. Du kan ta bort hello VM och diskarna i hello klassiska portalen eller Azure-portalen i hello klassiska distributionsmodellen. Om det finns ett problem i vilka hello disk inte tas bort även om du har tagit bort hello VM kan du läsa avsnittet [Felsöka när du tar bort virtuella hårddiskar](storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
 
-3. **Rensa Azure Site Recovery-infrastruktur**. Om Site Recovery inte längre behövs tar Rensa du sin infrastruktur genom att ta bort replikerade objekt, konfigurationsservern och återställningsprincipen och sedan ta bort Azure Site Recovery-valvet.
+3. **Rensa hello Azure Site Recovery-infrastruktur**. Om Site Recovery inte längre behövs tar Rensa du sin infrastruktur genom att ta bort replikerade objekt, hello konfigurationsservern och hello återställningsprincipen och sedan ta bort hello Azure Site Recovery-valvet.
 
 ## <a name="troubleshooting"></a>Felsökning
 
@@ -164,14 +164,14 @@ Du kan använda Site Recovery för att migrera Azure IaaS-VM mellan regioner ell
 
 ## <a name="next-steps"></a>Nästa steg
 
-Se följande resurser för specifika scenarier för att migrera virtuella datorer:
+Se hello följande resurser för specifika scenarier för att migrera virtuella datorer:
 
 * [Migrera Azure virtuella datorer mellan Storage-konton](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Skapa och ladda upp en Windows Server VHD till Azure.](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [Skapa och ladda upp en virtuell hårddisk som innehåller Linux-operativsystem](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Migrering av virtuella datorer från Amazon AWS till Microsoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+* [Skapa och ladda upp en Windows Server VHD-tooAzure.](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Skapa och ladda upp en virtuell hårddisk som innehåller hello Linux-operativsystem](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Migrering av virtuella datorer från Amazon AWS tooMicrosoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
-Se även följande resurser för att du lär dig mer om Azure Storage- och virtuella datorer i Azure:
+Se även hello följande resurser toolearn mer om Azure Storage- och virtuella datorer i Azure:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Virtuella Azure-datorer](https://azure.microsoft.com/documentation/services/virtual-machines/)

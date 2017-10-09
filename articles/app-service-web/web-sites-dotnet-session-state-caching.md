@@ -1,6 +1,6 @@
 ---
-title: "Sessionstillstånd med Azure Redis-cache i Azure App Service"
-description: "Lär dig hur du använder Azure Cache-tjänsten till att hantera cachelagring av ASP.NET-sessionstillstånd."
+title: "aaaSession tillstånd med Azure Redis-cache i Azure App Service"
+description: "Lär dig hur toouse hello Azure Cache-tjänst toosupport ASP.NET session cachelagring."
 services: app-service\web
 documentationcenter: .net
 author: Rick-Anderson
@@ -14,36 +14,36 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 06/27/2016
 ms.author: riande
-ms.openlocfilehash: 64fa909daf92b2b1f0cf4c7b334edba807fe7228
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f689b6754ea072aa195f822ab6482f4bf2748375
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="session-state-with-azure-redis-cache-in-azure-app-service"></a>Sessionstillstånd med Azure Redis-cache i Azure App Service
-I det här avsnittet får du veta hur du använder tjänsten Azure Redis-cache för sessionstillstånd.
+Det här avsnittet beskrivs hur toouse hello Azure Redis-Cache-tjänst för sessionstillstånd.
 
-Om din ASP.NET-webbapp använder sessionstillstånd måste du konfigurera en extern sessionstillståndsprovider (tjänsten Redis-cache eller en sessionstillståndsprovider för SQL Server). Om du använder sessionstillstånd och inte använder en extern provider begränsas du till en instans av webbappen. Tjänsten Redis-cache är den som det går snabbast och enklast att aktivera.
+Om din ASP.NET-webbapp använder sessionstillstånd, behöver du tooconfigure en extern sessionstillståndsprovider (hello Redis Cache-tjänst eller en sessionstillståndsprovider för SQL Server). Om du använder sessionstillstånd och inte använder en extern leverantör, kommer du att begränsad tooone instans av webbappen. Hej Redis Cache-tjänst är hello snabbast och enklast tooenable.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a id="createcache"></a>Skapa cachen
-Skapa cachen genom att följa [de här anvisningarna](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-cache).
+## <a id="createcache"></a>Skapa hello Cache
+Följ [de här anvisningarna](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-cache) toocreate hello cache.
 
-## <a id="configureproject"></a>Lägga till NuGet-paketet RedisSessionStateProvider till webbappen
-Installera NuGet-paketet `RedisSessionStateProvider`.  Installera från pakethanterarkonsolen med hjälp av följande kommando (**Tools** > **NuGet Package Manager** > **Package Manager Console**) (Verktyg, NuGet-pakethanteraren, Pakethanterarkonsol):
+## <a id="configureproject"></a>Lägg till hello RedisSessionStateProvider NuGet-paketet tooyour webbprogram
+Installera hello NuGet `RedisSessionStateProvider` paketet.  Använd hello följande kommando tooinstall från hello package manager-konsolen (**verktyg** > **NuGet Package Manager** > **Pakethanterarkonsolen**):
 
   `PM> Install-Package Microsoft.Web.RedisSessionStateProvider`
 
-Om du vill installera från **Tools** > **NuGet Package Manager** > **Manage NugGet Packages for Solution** (Verktyg, NuGet-pakethanteraren, Hantera NuGet-paket för lösning) söker du efter `RedisSessionStateProvider`.
+tooinstall från **verktyg** > **NuGet Package Manager** > **NugGet hantera paket för lösningen**, söka efter `RedisSessionStateProvider`.
 
-Mer information finns i [NuGet RedisSessionStateProvider-sidan](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/) och [Konfigurera cacheklienten](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#NuGet).
+Mer information finns i hello [NuGet RedisSessionStateProvider-sidan](http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/) och [konfigurera hello cacheklienten](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#NuGet).
 
-## <a id="configurewebconfig"></a>Ändra filen web.config
-Med NuGet-paketet skapas inte bara sammansättningsreferenser för cachen, med det läggs också stub-poster till i filen *web.config*. 
+## <a id="configurewebconfig"></a>Ändra hello Web.Config-filen
+Dessutom toomaking sammansättningen refererar till för Cache, hello NuGet-paketet lägger till stub-poster i hello *web.config* fil. 
 
-1. Öppna *web.config* och leta reda på elementet **sessionState**.
-2. Ange värden för `host`, `accessKey` och `port` (SSL-porten ska vara 6380), och ange `SSL` till `true`. Du kan hämta de här värdena från bladet för [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) för cacheinstansen. Mer information finns i [Ansluta till cacheminnet](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache). Observera att icke-SSL-porten är inaktiverad som standard för nya cacheminnen. Mer information om hur du aktiverar icke-SSL-porten finns i avsnittet [Åtkomstportar](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts) i artikeln [Konfigurera en cache i Azure Redis-cache](https://msdn.microsoft.com/library/azure/dn793612.aspx). Följande markering visar ändringarna i den *web.config* -fil, särskilt ändringarna av *port*, *värden*, accessKey * och *ssl* .
+1. Öppna hello *web.config* och hitta hello hello **sessionState** element.
+2. Ange hello värden för `host`, `accessKey`, `port` (hello SSL-porten ska vara 6380), och ange `SSL` för`true`. Dessa värden kan hämtas från hello [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) bladet för din cache-instans. Mer information finns i [ansluta toohello cache](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-cache). Observera att hello icke-SSL-porten är inaktiverad som standard för nya cacheminnen. Mer information om hur du aktiverar hello icke-SSL-porten finns hello [Åtkomstportar](https://msdn.microsoft.com/library/azure/dn793612.aspx#AccessPorts) avsnitt i hello [konfigurera en cache i Azure Redis-Cache](https://msdn.microsoft.com/library/azure/dn793612.aspx) avsnittet. hello följande markering visar hello ändringar toohello *web.config* -fil, särskilt hello ändringar för*port*, *värden*, accessKey * och *ssl*.
    
           <system.web>;
             <customErrors mode="Off" />;
@@ -73,32 +73,32 @@ Med NuGet-paketet skapas inte bara sammansättningsreferenser för cachen, med d
             </sessionState>;
           </system.web>;
 
-## <a id="usesessionobject"></a>Använda sessionsobjektet i kod
-Det sista steget är att börja använda sessionsobjektet i ASP.NET-koden. Du lägger till objekt till sessionstillstånd med hjälp av metoden **Session.Add**. I den här metoden används nyckel/värde-par till att lagra objekt i sessionstillståndscachen.
+## <a id="usesessionobject"></a>Använda hello sessionsobjektet i kod
+hello sista steget är toobegin med hello sessionsobjektet i ASP.NET-koden. Du lägger till objekt toosession tillstånd med hello **Session.Add** metod. Den här metoden används nyckel / värde-par toostore objekt i sessionstillståndscachen hello.
 
     string strValue = "yourvalue";
     Session.Add("yourkey", strValue);
 
-Följande kod hämtar värdet från sessionstillstånd.
+hello följande kod hämtar värdet från sessionstillstånd.
 
     object objValue = Session["yourkey"];
     if (objValue != null)
        strValue = (string)objValue;    
 
-Du kan också använda Redis-cache för cacheobjekt i webbappen. Mer information finns i [MVC-filmapp med Azure Redis-cache på 15 minuter](https://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/).
-Mer information om hur du använder ASP.NET-sessionstillståndet finns i [ASP.NET Session State Overview][ASP.NET Session State Overview] (Översikt över ASP.NET-sessionstillståndet).
+Du kan också använda hello Redis-Cache toocache objekt i ditt webbprogram. Mer information finns i [MVC-filmapp med Azure Redis-cache på 15 minuter](https://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/).
+Mer information om hur toouse ASP.NET session state finns [översikt över sessionstillståndet ASP.NET][ASP.NET Session State Overview].
 
 > [!NOTE]
-> Om du vill komma igång med Azure Apptjänst innan du registrerar dig för ett Azure-konto kan du gå till [Prova Apptjänst](https://azure.microsoft.com/try/app-service/). Där kan du direkt skapa en tillfällig startwebbapp i Apptjänst. Inget kreditkort krävs, och du gör inga åtaganden.
+> Om du vill tooget igång med Azure App Service innan du registrerar dig för ett Azure-konto går för[prova App Service](https://azure.microsoft.com/try/app-service/), där kan du direkt skapa en tillfällig startwebbapp i App Service. Inget kreditkort krävs, och du gör inga åtaganden.
 > 
 > 
 
 ## <a name="whats-changed"></a>Nyheter
-* En guide till övergången från Webbplatser till App Service finns i: [Azure App Service och dess påverkan på befintliga Azure-tjänster](http://go.microsoft.com/fwlink/?LinkId=529714)
+* En guide toohello övergången från webbplatser tooApp tjänsten finns: [Azure App Service och dess påverkan på befintliga Azure-tjänster](http://go.microsoft.com/fwlink/?LinkId=529714)
   
   *Av [Rick Anderson](https://twitter.com/RickAndMSFT)*
 
-[installed the latest]: http://www.windowsazure.com/downloads/?sdk=net  
+[installed hello latest]: http://www.windowsazure.com/downloads/?sdk=net  
 [ASP.NET Session State Overview]: http://msdn.microsoft.com/library/ms178581.aspx
 
 [NewIcon]: ./media/web-sites-dotnet-session-state-caching/CacheScreenshot_NewButton.png

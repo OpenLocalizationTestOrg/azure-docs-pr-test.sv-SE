@@ -1,6 +1,6 @@
 ---
-title: "Cloud App Discovery säkerhets- och överväganden för sekretess | Microsoft Docs"
-description: "Det här avsnittet beskriver säkerhet och sekretess överväganden som rör Cloud App Discovery."
+title: "aaaCloud App Discovery säkerhets- och överväganden för sekretess | Microsoft Docs"
+description: "Det här avsnittet beskriver hello säkerhet och sekretess överväganden relaterade tooCloud App Discovery."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,68 +14,68 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 1510b7a91d7eea4d16d781299bc9948da4324c51
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 33659e85bd2cf4294e443512e69a85401f7c53f8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cloud-app-discovery-security-and-privacy-considerations"></a>Cloud App Discovery säkerhets- och överväganden för sekretess
-Microsoft strävar efter att skydda din integritet och skydda dina data, samtidigt som de levererar programvaror och tjänster som hjälper dig att hantera säkerheten för din organisation.  
-Vi känner igen som när du ge dina data till andra att förtroende kräver omfattande säkerhet tekniska investeringar och expertis för att säkerhetskopiera den.
-Microsoft följer strikta efterlevnad och riktlinjer för säkerhet från säkra software development livscykel metoder för att driva en tjänst.  
+Microsoft allokerat tooprotecting din integritet och skydda dina data, samtidigt som de levererar programvaror och tjänster som hjälper dig att hantera hello säkerheten för din organisation.  
+Vi förstår att när du ge dina data tooothers förtroendet kräver omfattande säkerhet tekniska investeringar och kunskaper tooback den.
+Microsoft följer toostrict efterlevnad och riktlinjer för säkerhet från säkra software development lifecycle praxis toooperating en tjänst.  
 Säkra och skydda data är högsta prioritet på Microsoft.
 
 Det här avsnittet beskrivs hur data samlas in, bearbetas och skyddas i Azure Active Directory Cloud App Discovery
 
 ## <a name="overview"></a>Översikt
 Cloud App Discovery ingår i Azure AD och finns i Microsoft Azure.  
-Cloud App Discovery endpoint agent används för att samla in identifieringsdata för programmet från IT hanterade datorer.  
-Insamlade data skickas på ett säkert sätt via en krypterad kanal till Azure AD Cloud App Discovery-tjänsten.  
-Cloud App Discovery-data för en organisation visas sedan i Azure-portalen. 
+hello Cloud App Discovery endpoint agent är används toocollect programmet identifieringsdata från IT hanterade datorer.  
+hello skickas insamlade data på ett säkert sätt via en krypterad kanal toohello Azure AD Cloud App Discovery-tjänsten.  
+hello Cloud App Discovery-data för en organisation visas sedan i hello Azure-portalen. 
 
 ![Så här fungerar Cloud App Discovery](./media/active-directory-cloudappdiscovery-security-and-privacy-considerations/cad01.png) 
 
-Nedan följer flödet av information och beskriver hur den skyddas som flyttas från din organisation till Cloud App Discovery-tjänsten och i slutändan till Cloud App Discovery-portalen.
+hello avsnitten följer hello flödet av information och beskriver hur den skyddas som flyttas från din organisation toohello Cloud App Discovery-tjänsten och slutligen toohello Cloud App Discovery-portalen.
 
 ## <a name="collecting-data-from-your-organization"></a>Samla in data från din organisation
-Du måste först distribuera Azure AD Cloud App Discovery endpoint agent till datorerna i din organisation för att kunna använda funktionen för identifiering av Azure Active Directory Molnappen få insikter om de program som används av anställda i din organisation.
+I ordning toouse Azure Active Directorys Cloud App discovery funktionen tooget insikter om hello-program som används av anställda i din organisation, behöver du toofirst distribuera hello Azure AD Cloud App Discovery endpoint agent toomachines i din organisation.
 
-Administratörer av Azure Active Directory-klient (eller ombud) kan hämta installationspaketet för agenten från Azure-portalen. Agenten kan vara manuellt installerats eller installeras på flera datorer i organisationen med hjälp av SCCM eller en Grupprincip.
+Administratörer av hello Azure Active Directory-klient (eller ombud) kan hämta installationspaketet för hello agent från hello Azure-portalen. hello-agenten kan antingen manuellt installerats eller installeras på flera datorer i hello organisationen med hjälp av SCCM eller en Grupprincip.
 
 Mer information om distributionsalternativ finns [Cloud App Discovery grupp princip Deployment Guide](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx).
 
 
-### <a name="data-collected-by-the-agent"></a>Data som samlas in av agenten
-Informationen som beskrivs i listan nedan samlas in av agenten när upprättas en anslutning till ett webbprogram. Informationen samlas endast för program som administratören har konfigurerat för identifiering.  
-Du kan redigera listan över molnappar som agenten övervakar via Cloud App Discovery-bladet i Microsoft [Azure-portalen](https://portal.azure.com/)under **inställningar**->**datainsamling**->**App Samlingslista**. Mer information finns i [komma igång med Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
+### <a name="data-collected-by-hello-agent"></a>Data som samlas in av hello-agenten
+hello samlas beskrivs i nedanstående lista hello in av hello agent när en anslutning görs tooa webbprogram. hello information samlas endast in för dessa program att hello-administratör har konfigurerat för identifiering.  
+Du kan redigera hello lista över molnappar som hello agenten övervakar via hello Cloud App Discovery-bladet i hello Microsoft [Azure-portalen](https://portal.azure.com/)under **inställningar**->**Data Samlingen**->**App Samlingslista**. Mer information finns i [komma igång med Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
 
 
 **Information kategori**: användarinformation  
 **Beskrivning**:  
-Windows-användarnamn för processen som gjorde en begäran till mål-webbprogram (t.ex.: DOMÄN\användarnamn) samt de Windows säkerhetsidentifierare (SID) för användaren.
+hello Windows processens användarnamn hello som gjorde begäran toohello target webbprogram (t.ex.: DOMÄN\användarnamn) samt hello Windows säkerhetsidentifierare (SID) för hello användare.
 
 **Information kategori**: processinformation  
 **Beskrivning**:  
-Namnet på processen som gjorde begäran till mål-webbprogram (t.ex.: ”iexplore.exe”)
+hello namnet på hello process som gjorts hello begäran toohello målwebbprogram (t.ex.: ”iexplore.exe”)
 
 **Information kategori**: datorn information  
 **Beskrivning**:  
-NetBIOS-namnet på den dator där agenten är installerad.
+hello maskinens NetBIOS-namn på vilka hello-agenten är installerad.
 
 **Information kategori**: App trafikinformation  
 **Beskrivning**: 
 
-Följande anslutningsinformation:
+följande anslutningsinformationen hello:
 
-* Källa (lokal dator) och mål-IP-adresser och portnummer
-* Offentliga IP-adressen för den organisation som begäran går ut.
-* Tid för begäran
-* Mängden trafik som skickas och tas emot
-* IP-version (4 eller 6)
-* För TLS-anslutningar: målvärddator från Servernamnsindikation tillägget eller servercertifikatet.
+* hello källa (lokal dator) och mål-IP-adresser och portnummer
+* hello offentliga IP-adress hello organisation genom vilken hello begäran går ut.
+* hello tid för hello begäran
+* hello mängden trafik som skickas och tas emot
+* hello IP-version (4 eller 6)
+* För TLS-anslutningar: hello målvärddator från hello Servernamnsindikation tillägg eller hello servercertifikat.
 
-Följande HTTP-information:
+Hej efter HTTP-information:
 
 * Metod (GET, POST, etc.)
 * Protokoll (HTTP/1.1, etc.)
@@ -86,77 +86,77 @@ Följande HTTP-information:
 * Referent URL-information (exklusive frågesträngen)
 
 > [!NOTE]
-> HTTP-informationen ovan samlas in för alla icke-krypterade anslutningar.
-> För TLS-anslutningar fångas endast den här informationen när inställningen 'Djupinspektion' är aktiverat i portalen. Inställningen är ”ON” som standard.
+> hello HTTP ovanstående information samlas in för alla icke-krypterade anslutningar.
+> För TLS-anslutningar fångas endast den här informationen när hello 'djupinspektion-inställningen är aktiverad i hello portal. hello standardinställningen är ”ON”.
 > Mer information finns nedan, och [komma igång med Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
 > 
 > 
 
-Förutom de data som agenten samlar in om nätverksaktivitet den samlar även in anonym information om programvara och maskinvarukonfiguration, felrapporter och information om hur agenten används.
+Dessutom toohello hello agenten samlar in data om hello nätverksaktivitet, samlar även in anonym information om hello konfiguration av programvara och maskinvara, felrapporter och information om hur hello agent används.
 
 
-### <a name="how-the-agent-works"></a>Så här fungerar agenten
-Agentinstallationen innehåller två komponenter:
+### <a name="how-hello-agent-works"></a>Så här fungerar hello-agent
+hello agentinstallation innehåller två komponenter:
 
 * En komponent i användarläge
 * En komponent som drivrutinen kernel-läge (Windows Filtering Platform drivrutin)
 
-När agenten installeras lagrar ett betrott certifikat datorspecifik på datorn som sedan används för att upprätta en säker anslutning med Cloud App Discovery-tjänsten.  
-Agenten hämtar regelbundet principkonfigurationen från Cloud App Discovery-tjänsten via den här säker anslutning.  
-Principen innehåller information om vilka molnprogram att övervaka och om automatisk uppdatering måste vara aktiverad, bland annat.
+När hello agent installeras första gången ett betrott certifikat datorspecifik lagras på hello datorn som den använder sedan tooestablish en säker anslutning med hello Cloud App Discovery-tjänsten.  
+hello hämtar regelbundet agenten principkonfigurationen från hello Cloud App Discovery-tjänsten via den här säker anslutning.  
+hello-policy inkluderar information om vilka program toomonitor för molnet och om automatisk uppdatering måste vara aktiverad, bland annat.
 
-Eftersom Internet-trafik skickas och tas emot på datorn från Internet Explorer och Chrome, Cloud App Discovery-agenten analyserar trafiken och extraherar relevanta metadata (finns i **Data som samlas in av agenten** ovan).  
-Varje minut överför agenten insamlade metadata till Cloud App Discovery-tjänsten via en krypterad kanal.
+Internet-trafik skickas och tas emot på hello datorn från Internet Explorer och Chrome, hello Cloud App Discovery-agenten analyserar hello trafik och extrakt hello relevanta metadata (se hello **Data som samlas in av hello agenten** avsnitt ovan).  
+Varje minut filöverföringar hello agent hello insamlade metadata toohello Cloud App Discovery-tjänsten via en krypterad kanal.
 
-Komponenten drivrutinen fångar upp krypterad trafik och infogas i krypterade dataströmmen. Mer information finns i den **fånga upp data från krypterade anslutningar (djupinspektion)** nedan.
+hello drivrutinen komponenten fångar upp hello krypterad trafik och infogas i hello krypterad dataström. Mer information finns i hello **fånga upp data från krypterade anslutningar (djupinspektion)** nedan.
 
 ### <a name="respecting-user-privacy"></a>Respektera användarnas integritet
-Vårt mål är att ge administratörer verktyg för att ange balansen mellan detaljerad optik till programmet användnings- och sekretess för organisationen. Som tillhandahåller vi följande rattar på inställningssidan i portalen:
+Vårt mål är tooprovide administratörer hello verktyg tooset hello balans mellan detaljerad optik till programmet användnings- och sekretess för organisationen. toothat end vi tillhandahåller hello följande rattar i hello inställningssidan i hello Portal:
 
-* **Datainsamling**: Administratörer kan välja att ange vilka program eller programkategorier som de vill ha identifieringsdata på.
-* **Djupinspektion**: Administratörer kan välja att ange om agenten samlar in HTTP-trafik för SSL/TLS-anslutningar (aka **'Djupinspektion'**). Mer om detta i nästa avsnitt.
-* **Medgivande alternativ**: Administratörer kan använda Cloud App Discovery-portal för att välja om du vill meddela användare för datainsamling av agenten och om du vill kräva att användare godkännande innan agenten startar att samla in användardata.
+* **Datainsamling**: Administratörer kan välja toospecify vilka program eller programkategorier som de vill tooget identifieringsdata på.
+* **Djupinspektion**: Administratörer kan välja toospecify om hello agenten samlar in HTTP-trafik för SSL/TLS-anslutningar (aka **'Djupinspektion'**). Mer om detta i nästa avsnitt om hello.
+* **Medgivande alternativ**: Administratörer kan använda hello Cloud App Discovery portal toochoose om toonotify användare av hello insamling av hello-agenten och huruvida toorequire användaren godkänna hello agenten börjar samla in användardata.
 
-Cloud App Discovery endpoint agent samlar endast in de uppgifter som beskrivs i den **Data som samlas in av agenten** ovan.
+hello Cloud App Discovery endpoint agent samlar endast in hello informationen som beskrivs i hello **Data som samlas in av hello agenten** ovan.
 
 ### <a name="intercepting-data-from-encrypted-connections-deep-inspection"></a>Fånga upp data från krypterade anslutningar (djupinspektion)
-Administratörer kan konfigurera agenten för övervakning av data från krypterade anslutningar (djup kontroll) som vi nämnt tidigare. TLS ([Transport Layer Security](https://msdn.microsoft.com/library/windows/desktop/aa380516%28v=vs.85%29.aspx)) är en av de vanligaste protokollen används på Internet idag. Genom att kryptera kommunikationen med TLS, kan en klient upprättar en säker och privat kommunikationskanal med en webbserver. TLS innehåller grundläggande skydd för att skicka autentiseringsuppgifter och förhindra avslöjande av känslig information.
+Administratörer kan konfigurera hello agent toomonitor data från krypterade anslutningar (djup kontroll) som vi nämnt tidigare. TLS ([Transport Layer Security](https://msdn.microsoft.com/library/windows/desktop/aa380516%28v=vs.85%29.aspx)) är en av hello vanligaste protokollen används på hello Internet idag. Genom att kryptera kommunikationen med TLS, kan en klient upprättar en säker och privat kommunikationskanal med en webbserver. TLS innehåller grundläggande skydd för att skicka autentiseringsuppgifter och förhindra hello avslöjande av känslig information.
 
-Den slutpunkt till slutpunkt säker krypterad kanal som tillhandahålls av TLS kan viktiga säkerhet och sekretess, missbrukat protokollet ofta för skadliga eller nefarious ändamål. Så mycket så faktum är kallas att TLS ofta ”universal-kringgående för brandväggar protokoll”. Roten till problemet är att de flesta brandväggar det går inte att inspektera TLS kommunikation eftersom programnivå data krypteras med SSL. Den här kunskapen kan använda angripare ofta TLS för att leverera skadliga nyttolaster till en användare som är säker på att även de mest intelligent programnivå brandväggarna är helt syn i TLS och måste bara vidarebefordra TLS kommunikation mellan värdar. Slutanvändare utnyttja ofta TLS för att kringgå åtkomstkontroller tvingas av deras företag brandväggar och proxyservrar, använder den för att ansluta till offentliga proxyservrar och för icke-TLS-tunnelprotokoll genom brandväggen som annars kan blockeras av en princip.
+Hello slutpunkt till slutpunkt säker krypterad kanal som tillhandahålls av TLS kan viktiga säkerhet och sekretess, missbrukat hello protokollet ofta för skadliga eller nefarious ändamål. Faktum är kallas att TLS är ofta så mycket så tooas hello ”universal-kringgående för brandväggar protokoll”. hello rot hello problemet är att de flesta brandväggar tooinspect TLS kommunikation eftersom hello programnivå data krypteras med SSL. Den här kunskapen kan använda angripare ofta TLS toodeliver skadliga nyttolaster tooa användaren säker på att även hello mest intelligent programnivå brandväggar är helt hemlig tooTLS och måste bara vidarebefordra TLS kommunikation mellan värdar. Slutanvändare utnyttja ofta TLS toobypass åtkomstkontroller tillämpas av deras företagets brandväggar och proxyservrar, använder den tooconnect toopublic proxyservrar och för icke-TLS-tunnelprotokoll hello-brandväggen som annars kan blockeras av en princip.
 
-Djupinspektion tillåter agenten att fungera som en betrodd man-in-the-middle Cloud App Discovery. När en klientbegäran görs att få åtkomst till en resurs för HTTPS skyddade drivrutinens Endpoint Agent spärras anslutningen och upprättar en ny anslutning till målservern för att hämta dess SSL-certifikat för klientens räkning. Agenten kontrollerar sedan att certifikatet kan vara betrott (genom att kontrollera att den inte har återkallats och utföra andra kontroller för certifikat), och om dessa pass Endpoint Agent sedan kopieras informationen från servercertifikatet och skapar ett eget servercertifikat--kallas en avlyssning certifikat--med hjälp av informationen. Avlyssning certifikatet är signerade på direkt av agenten slutpunkt med ett rotcertifikat som är installerat i det betrodda certifikatarkivet för Windows. Den här självsignerade rotcertifikat markeras inte kan exporteras och ACL hade till administratörer. Avsikten är att aldrig lämna den dator som har skapats. När den slutanvändarens klientprogrammet får avlyssning certifikatet, den litar på den eftersom det har kan validera certifikatkedjan ända till rotcertifikatet. Den här processen är främst transparent från en slutanvändares synsätt med några varningar som beskrivs nedan.
+Djupinspektion tillåter hello Cloud App Discovery-agenten tooact som en betrodd man-in-the-middle. När en klientbegäran görs tooaccess en HTTPS-skyddad resurs, hello Endpoint Agent drivrutinen fångar upp hello anslutning och upprättar en ny anslutning toohello mål server tooretrieves dess SSL-certifikat för hello-klient. hello agent verifierar sedan att hello certifikatet kan vara betrott (genom att kontrollera att den inte har återkallats och utföra andra kontroller för certifikat) och om dessa klarar hello Endpoint Agent och sedan kopieras hello informationen från hello servercertifikat och skapar en egen servercertifikat – kallas även en avlyssning certifikat--med hjälp av informationen. hello avlyssning certifikatet är signerade på direkt av hello endpoint agent med ett rotcertifikat som är installerat i hello Windows betrodda certifikatarkivet. Den här självsignerade rotcertifikat markeras inte kan exporteras och är ACL hade tooadministrators. Den är avsedd toonever lämna hello dator har skapats. När klientprogrammet hello slutanvändarens får hello avlyssning certifikatet, den litar på den eftersom det kan har Validera hello certifikatkedja alla hello sätt toohello rotcertifikat. Den här processen är främst transparent från en slutanvändares synsätt med några varningar som beskrivs nedan.
 
-Genom att aktivera djupinspektion Cloud App Discovery Endpoint Agent dekryptera och inspektera TLS krypterad kommunikation, vilket gör att tjänsten för att minska bruset och få insikter om användningen av de krypterade molnapparna.
+Genom att aktivera djupinspektion hello Cloud App Discovery Endpoint Agent dekryptera och inspektera TLS krypterad kommunikation, så att hello service tooreduce brus och ger inblick i hello användning av hello krypterade molnappar.
 
 #### <a name="a-word-of-caution"></a>En liten varning
-Innan du aktiverar på djupinspektion, vi rekommenderar att du kommunicera din avsikt att din juridiska och HR avdelningar och få sitt samtycke. Kontrollera slutanvändarens privata krypterad kommunikation kan vara känslig ämne, uppenbara. Innan en produktion lansering av djupinspektion, kontrollera att din företagets säkerhetsprinciper och principer för godkänd användning har uppdaterats för att ange att krypterad kommunikation ska kontrolleras. Användarmeddelande och undantag för webbplatser som anses vara känsliga (t.ex. banker och medicinska webbplatser) kan också vara nödvändigt om du konfigurerar Cloud App Discovery för att övervaka dem. Som nämnts ovan är kan administratörer använda Cloud App Discovery-portal för att välja om du vill meddela användare för datainsamling av agenten och om du vill kräva användarens medgivande innan agenten börjar samla in användardata.
+Innan du aktiverar på djupinspektion, vi rekommenderar att du meddela dina avsikter tooyour juridiska och HR avdelningar och få sitt samtycke. Kontrollera slutanvändarens privata krypterad kommunikation kan vara känslig ämne, uppenbara. Innan en produktion lansering av djupinspektion, kontrollera att din företagets säkerhetsprinciper och principer för godkänd användning har uppdaterats ska tooindicate som krypterad kommunikation kontrolleras. Användarmeddelande och undantag för webbplatser som anses vara känsliga (t.ex. banker och medicinska webbplatser) kan också vara nödvändigt om du konfigurerar Cloud App Discovery toomonitor dem. Som nämnts ovan är administratörer kan använda hello Cloud App Discovery portal toochoose om toonotify användare av hello insamling av hello-agenten och huruvida toorequire användaren godkänna hello agenten börjar samla in användardata.
 
 ### <a name="known-issues-and-drawbacks"></a>Kända problem och nackdelar
-Det finns några fall där TLS avlyssning kan påverka slutanvändarens upplevelse:
+Det finns några fall där TLS avlyssning kan påverka hello slutanvändarupplevelse:
 
-* Certifikat för utökad (Validation) återge adressfältet i webbläsaren grön ska fungera som en ledtråd att du besöker en webbplats som betrodd. TLS-kontroll kan inte duplicera EV i certifikat som utfärdas till klienten, så att webbplatser som använder EV-certifikat fungerar normalt men adressfältet visas inte grönt.  
-* Offentlig nyckel fästning (även kallat certifikat fästning) är utformade för att skydda användare från man-in-the-middle-attacker och obehöriga certifikatutfärdare. När rotcertifikatet för en fast plats inte matchar något känt fungerande CA: ns, avvisar anslutning med ett fel i webbläsaren. Eftersom TLS avlyssning är faktiskt en man-in-the-middle, dessa anslutningar kommer att misslyckas.
-* Om användare klickar på låsikonen i webbläsaren adress fältet webbläsaren att inspektera platsinformationen, visas inte en kedja som slutar på den certifikatutfärdare som används för att signera webbplatscertifikat, men i stället en certifikatkedja som slutar med Windows betrodda certifikatarkiv.
+* Certifikat för utökad (Validation) återge hello adressfält hello web webbläsare grön tooact som se att du besöker en webbplats som betrodd. TLS-kontroll kan inte duplicera EV i hello certifikat den utfärdar toohello klienten, så att webbplatser som använder EV-certifikat fungerar normalt men hello adressfältet visas inte grönt.  
+* Offentlig nyckel fästning (även kallat certifikat fästning) är utformade toohelp skyddar användare från man-in-the-middle-attacker och obehöriga certifikatutfärdare. När hello rotcertifikatet för en fast plats inte matchar någon av hello kända fungerande Certifikatutfärdare, avvisar hello webbläsare hello anslutning med ett fel. Eftersom TLS avlyssning är faktiskt en man-in-the-middle, dessa anslutningar kommer att misslyckas.
+* Om användare klickar på hello låsikonen i hello webbläsare adress fältet webbläsare tooinspect hello platsinformation kan se de inte en kedja som slutar på hello certifikatutfärdare används toosign hello webbplatscertifikat, men i stället en certifikatkedja som slutar med hello Windows betrodda certifikatarkivet.
 
-Om du vill minska antalet förekomster av de här problemen, vi håller reda på molntjänster och klientprogram använder utökad validering eller offentliga nyckel fästning och instruera Endpoint Agent känna till att undvika att avlyssna berörda anslutningar. Även i dessa fall kan dock får du ändå rapporter om användningen av dessa molnappar och mängden data som överförs men eftersom de inte djupgående kontrolleras ingen information om hur apparna användes blir tillgängliga.
+tooreduce hello förekomster av de här problemen, vi håller reda på molntjänster och klientprogram kända toouse utökad validering eller offentliga nyckel fästning och instruera hello Endpoint Agent tooavoid avlyssna berörda anslutningar. Även i dessa fall kan dock får du ändå rapporter om hello användning av dessa molnappar och hello mängden data som överförs men eftersom de inte djupgående kontrolleras ingen information om hur hello appar användes blir tillgängliga.
 
-## <a name="sending-data-to-cloud-app-discovery"></a>Skicka data till Cloud App Discovery
-När metadata har samlats in av agenten, cachelagras på datorn för upp till en minut eller tills cachelagrade data når en storlek på 5MB. Den sedan komprimeras och skickas via en säker anslutning till Cloud App Discovery-tjänsten.
+## <a name="sending-data-toocloud-app-discovery"></a>Skicka data tooCloud App Discovery
+När metadata har samlats in av hello-agenten, cachelagras på hello datorn upp tooone minut eller tills hello cachelagrade data når en storlek på 5MB. Den sedan komprimeras och skickas via en säker anslutning toohello Cloud App Discovery-tjänsten.
 
-Om agenten inte kan kommunicera med Cloud App Discovery-tjänsten av någon anledning, lagras den insamlade metadata i en lokal fil-cache som bara kan användas av Privilegierade användare på datorn (till exempel gruppen Administratörer).  
-Agenten försöker automatiskt att skicka cachelagrade metadata förrän den har tagits emot av Cloud App Discovery-tjänsten.
+Om hello-agenten är toocommunicate med hello Cloud App Discovery-tjänsten av någon anledning, lagras hello insamlade metadata i en lokal fil-cache som bara kan användas av Privilegierade användare på hello datorn (till exempel hello administratörsgruppen).  
+hello agent automatiskt försök tooresend hello cachelagrade metadata förrän den har tagits emot av hello Cloud App Discovery-tjänsten.
 
-## <a name="receiving-the-data-at-the-service-end"></a>Mottagning av data i tjänsten slutet
-Agenterna autentisera till Cloud App Discovery-tjänsten använder datorn specifika certifikatet för klientautentisering anges ovan och vidarebefordrar data via en krypterad kanal.  
-Pipeline för realtidsanalyser av Cloud App Discovery-tjänsten bearbetar metadata för varje kund separat med logiskt resurspartitionering den alla led i pipeline för realtidsanalyser.
-Analyserade metadata styr olika rapporter på portalen.
+## <a name="receiving-hello-data-at-hello-service-end"></a>Ta emot hello data hello service slutet
+hello agenter autentisera toohello Cloud App Discovery-tjänsten använder hello datorn specifika certifikat för klientautentisering anges ovan och vidarebefordrar data via en krypterad kanal.  
+hello Cloud App Discovery service analytics försäljningsförlopp processer metadata för varje kund separat per logiskt resurspartitionering den alla led i hello analytics pipeline.
+hello analyseras metadata enheter hello olika rapporter i hello-portalen.
 
-Obearbetat metadata och analyserade metadata lagras i upp till 180 dagar. Kunder kan också välja att hämta analyserade metadata i ett Azure blob storage-konto de önskar.
-Detta är användbart för offlineanalys av metadata samt längre kvarhållning av data.
+Hej obearbetat metadata och hello analyseras metadata lagras för in too180 dagar. Kunder kan dessutom välja toocapture hello analyseras metadata i ett Azure blob storage-konto de önskar.
+Detta är användbart för offlineanalys av metadata samt längre kvarhållning av hello data.
 
-## <a name="accessing-the-data-using-the-azure-portal"></a>Åtkomst till data med Azure-portalen
-I syfte att skydda de metadata som samlas in, som standard har endast globala administratörer för klienten åtkomst till Cloud App Discovery-funktionen i Azure-portalen.  
-Administratörer kan du delegera åtkomst till andra användare eller grupper.
+## <a name="accessing-hello-data-using-hello-azure-portal"></a>Komma åt hello data med hello Azure-portalen
+I en ansträngning tookeep hello metadata som samlas in säker, som standard endast globala administratörer hello-klient har åtkomst toohello Cloud App Discovery-funktionen i hello Azure-portalen.  
+Administratörer kan dock välja toodelegate denna åtkomst tooother användare eller grupper.
 
 > [!NOTE]
 > Mer information finns i [komma igång med Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
@@ -164,7 +164,7 @@ Administratörer kan du delegera åtkomst till andra användare eller grupper.
 > 
 
 
-Alla användare åtkomst till data i portalen måste licensieras med en Azure AD Premium-licens.
+Åtkomst till hello användardata i hello-portalen måste licensieras med en Azure AD Premium-licens.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 * [Hur kan identifiera ej sanktionerade molnappar som används inom organisationen](active-directory-cloudappdiscovery-whatis.md)

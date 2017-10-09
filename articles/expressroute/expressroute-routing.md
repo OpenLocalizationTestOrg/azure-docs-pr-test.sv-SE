@@ -1,5 +1,5 @@
 ---
-title: "Routningskrav för Azure ExpressRoute | Microsoft Docs"
+title: "aaaRouting krav för Azure ExpressRoute | Microsoft Docs"
 description: "Den här sidan innehåller detaljerade krav för att konfigurera och hantera routning för ExpressRoute-kretsar."
 documentationcenter: na
 services: expressroute
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: osamam
-ms.openlocfilehash: e6e2009717430a692528cd3ec3a2c6e46a12fe03
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dd50009974ae1a7156c52d4f714d8d97075f13ff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-routningskrav
-För att kunna ansluta till Microsofts molntjänster med ExpressRoute måste du konfigurera och hantera routning. Vissa anslutningsleverantörer erbjuder konfigurering och hantering av routning som en hanterad tjänst. Fråga din anslutningsleverantör om de erbjuder denna tjänst. Om inte måste du uppfylla följande krav:
+tooconnect tooMicrosoft molntjänster med hjälp av ExpressRoute, du behöver tooset in och hantera routning. Vissa anslutningsleverantörer erbjuder konfigurering och hantering av routning som en hanterad tjänst. Kontrollera med din anslutning providern toosee om de erbjuder den här tjänsten. Om de inte måste du följa toohello följande krav:
 
-Referera till artikeln [Kretsar och routningsdomäner](expressroute-circuit-peerings.md) för en beskrivning av de routningssessioner som behöver ställas in för att förenkla anslutningen.
+Se toohello [kretsar och routningsdomäner](expressroute-circuit-peerings.md) artikel en beskrivning av hello routning sessioner som behöver toobe som angetts i toofacilitate anslutning.
 
 > [!NOTE]
 > Microsoft stöder inte några protokoll för routerredundans (t.ex., HSRP, VRRP) för konfigurationer med hög tillgänglighet. Vi förlitar oss på ett redundant par med BGP-sessioner per peering för hög tillgänglighet.
@@ -31,51 +31,51 @@ Referera till artikeln [Kretsar och routningsdomäner](expressroute-circuit-peer
 > 
 
 ## <a name="ip-addresses-used-for-peerings"></a>IP-adresser som används för peerings
-Du behöver reservera några IP-adressblock för att kunna konfigurera routning mellan ditt nätverk och Microsofts Enterprise-gränsroutrar (MSEE). Det här avsnittet innehåller en lista med krav och en beskrivning av reglerna för hur dessa IP-adresser måste hämtas och användas.
+Du behöver tooreserve några block av IP-adresser tooconfigure routning mellan ditt nätverk och Microsofts Enterprise routrar i utkanten (MSEEs). Det här avsnittet innehåller en lista över kraven och beskriver hello regler för hur IP-adresserna måste förvärvas och används.
 
 ### <a name="ip-addresses-used-for-azure-private-peering"></a>IP-adresser för Azures privata peering
-Du kan antingen använda privata IP-adresser eller offentliga IP-adresser för att konfigurera peerings. Adressintervallet som används för att konfigurera routning får inte överlappa de adressintervall som användes för att skapa virtuella nätverk i Azure. 
+Du kan använda privata IP-adresser eller offentliga IP-adresser tooconfigure hello peerkopplingar. hello-adressintervall som används för att konfigurera flöden får inte överlappa med adressen adressintervall som används toocreate virtuella nätverk i Azure. 
 
 * Du måste reservera ett /29-undernät eller två /30-undernät för routningsgränssnitten.
-* Undernät som används för routning kan vara antingen privata IP-adresser eller offentliga IP-adresser.
-* Undernäten får inte stå i konflikt med det intervall som reserverats av kunden för användning i Microsoft-molnet.
+* hello-undernät som används för routning kan antingen vara privata IP-adresser eller offentliga IP-adresser.
+* hello undernät inte vara i konflikt med hello-intervall som reserverats av hello kunden för användning i hello Microsoft cloud.
 * Om ett /29-undernät används delas det upp i två /30-undernät. 
-  * Det första /30-undernätet används för den primära länken och det andra/30-undernätet används för den sekundära länken.
-  * För båda /30-undernäten gäller att du måste använda den första IP-adressen för /30-undernätet på routern. Microsoft använder den andra IP-adressen för /30-undernätet för att konfigurera en BGP-session.
-  * Du måste konfigurera båda BGP-sessionerna för att vårt [tillgänglighets-SLA](https://azure.microsoft.com/support/legal/sla/) ska vara giltigt.  
+  * Hej först/30-undernät som används för hello primära länken och hello andra /30 undernät används för hello sekundära länken.
+  * För varje hello /30 undernät, måste du använda hello första IP-adressen för hello /30 undernät på routern. Microsoft använder hello andra IP-adressen för hello /30 undernät tooset in BGP-sessionen.
+  * Du måste ställa in både BGP-sessioner för våra [tillgänglighets-SLA](https://azure.microsoft.com/support/legal/sla/) toobe som är giltig.  
 
 #### <a name="example-for-private-peering"></a>Exempel på privat peering
-Om du väljer att använda a.b.c.d/29 för att konfigurera peeringen delas den upp i två /30-undernät. Exemplet nedan beskriver hur a.b.c.d/29-undernätet används. 
+Om du väljer toouse a.b.c.d/29 tooset in hello peering delas den upp i två /30 undernät. I hello exemplet nedan titta vi på hur hello a.b.c.d/29 undernät används. 
 
-a.b.c.d/29 kommer att delas upp till a.b.c.d/30 och a.b.c.d+4/30 samt skickas till Microsoft via etablerings-API: er. Du kommer att använda a.b.c.d+1 som VRF IP för din primära PE och Microsoft kommer att använda a.b.c.d+2 som VRF IP för den primära MSEE:n. Du kommer att använda a.b.c.d+5 som VRF IP för din sekundära PE och Microsoft kommer att använda a.b.c.d+6 som VRF IP för den sekundära MSEE:n.
+a.b.c.d/29 kommer att dela tooa.b.c.d/30 och a.b.c.d+4/30 och gått ned tooMicrosoft via hello etablering API: er. Du använder a.b.c.d+1 som hello VRF IP för hello primära PE och Microsoft kommer att använda a.b.c.d+2 som hello VRF IP för hello primära MSEE. Du använder a.b.c.d+5 som hello VRF IP för hello sekundära PE och Microsoft kommer att använda a.b.c.d+6 som hello VRF IP för hello sekundära MSEE.
 
-Tänk dig ett fall där du väljer 192.168.100.128/29 för att konfigurera privat peering. 192.168.100.128/29 innehåller adresser från 192.168.100.128 till 192.168.100.135, däribland:
+Överväg att fall där du väljer 192.168.100.128/29 tooset in privat peering. 192.168.100.128/29 innehåller adresser från 192.168.100.128 too192.168.100.135, däribland:
 
-* 192.168.100.128/30 som tilldelas till link1, där leverantören använder 192.168.100.129 och Microsoft använder 192.168.100.130.
-* 192.168.100.132/30 tilldelas till link2, där leverantören använder 192.168.100.133 och Microsoft använder 192.168.100.134.
+* 192.168.100.128/30 kommer att tilldelas toolink1, med hjälp av 192.168.100.129 och Microsoft med hjälp av 192.168.100.130-providern.
+* 192.168.100.132/30 kommer att tilldelas toolink2, med hjälp av 192.168.100.133 och Microsoft med hjälp av 192.168.100.134-providern.
 
 ### <a name="ip-addresses-used-for-azure-public-and-microsoft-peering"></a>IP-adresser för Azure offentlig och Microsoft peering
-Du måste använda offentliga IP-adresser som du äger när du konfigurerar BGP-sessionerna. Microsoft måste kunna verifiera ditt ägarskap till IP-adresserna via RIR (Routing Internet Registries) och IIR (Internet Routing Registries). 
+Du måste använda offentliga IP-adresser som du äger för att ställa in hello BGP-sessioner. Microsoft måste vara kan tooverify hello ägarskap för hello IP-adresser via Routning Internet-register- och Internet-routning register. 
 
-* Du måste använda ett unikt /29-undernät eller två /30-undernät till att konfigurera BGP-peeringen för varje peering per ExpressRoute-krets (om du har fler än en). 
+* Du måste använda ett unikt/29 undernät eller två /30 undernät tooset in hello BGP-peering för varje peering per ExpressRoute-krets (om du har fler än en). 
 * Om ett /29-undernät används delas det upp i två /30-undernät. 
-  * Det första /30-undernätet används för den primära länken och det andra/30-undernätet används för den sekundära länken.
-  * För båda /30-undernäten gäller att du måste använda den första IP-adressen för /30-undernätet på routern. Microsoft använder den andra IP-adressen för /30-undernätet för att konfigurera en BGP-session.
-  * Du måste konfigurera båda BGP-sessionerna för att vårt [tillgänglighets-SLA](https://azure.microsoft.com/support/legal/sla/) ska vara giltigt.
+  * Hej först/30-undernät som ska användas för hello primära länken och hello andra /30 undernät används för hello sekundära länken.
+  * För varje hello /30 undernät, måste du använda hello första IP-adressen för hello /30 undernät på routern. Microsoft använder hello andra IP-adressen för hello /30 undernät tooset in BGP-sessionen.
+  * Du måste ställa in både BGP-sessioner för våra [tillgänglighets-SLA](https://azure.microsoft.com/support/legal/sla/) toobe som är giltig.
 
 ## <a name="public-ip-address-requirement"></a>Krav för offentliga IP-adress
 
 ### <a name="private-peering"></a>Privat peering
-Du kan välja att använda offentliga eller privata IPv4-adresser för privat peering. Vi erbjuder isolering av din trafik från slutpunkt till slutpunkt, vilket innebär att adressöverlappning med andra kunder inte är möjligt med privat peering. De här adresserna annonseras inte till Internet. 
+Du kan välja toouse offentligt eller privat IPv4-adresser för privat peering. Vi erbjuder isolering av din trafik från slutpunkt till slutpunkt, vilket innebär att adressöverlappning med andra kunder inte är möjligt med privat peering. Dessa adresser är inte annonserade tooInternet. 
 
 
 ### <a name="public-peering"></a>Offentlig peering
-Med Azures offentliga peeringsökväg kan du ansluta till alla tjänster som finns i Azure med deras offentliga IP-adresser. Det inkluderar tjänster som finns i listan [Vanliga frågor och svar om ExpressRoute](expressroute-faqs.md) och tjänster med ISV:er i Microsoft Azure. Anslutningen till Microsoft Azure-tjänster vid offentlig peering initieras alltid från ditt nätverk till Microsoft-nätverket. Du måste använda offentliga IP-adresser för trafik till Microsoft-nätverk.
+hello Azure offentlig peering sökvägen kan du tooconnect tooall tjänster i Azure via sina offentliga IP-adresser. Dessa inkluderar tjänsterna i hello [ExpessRoute vanliga frågor och svar](expressroute-faqs.md) och tjänster ISV: er på Microsoft Azure som värd. Anslutningen tooMicrosoft Azure services på offentlig peering alltid initieras från nätverket till hello Microsoft-nätverk. Du måste använda offentliga IP-adresser för hello trafik är avsedda tooMicrosoft nätverket.
 
 ### <a name="microsoft-peering"></a>Microsoft-peering
-Med Microsofts peeringsökväg kan du ansluta till Microsofts molntjänster som inte stöds via Azures offentliga peeringsökväg. Listan med tjänster innefattar Office 365-tjänster, till exempel Exchange Online, SharePoint Online, Skype för företag och Dynamics 365. Microsoft stöder dubbelriktade anslutningar för Microsoft-peering. Trafik till Microsofts molntjänster måste använda giltiga offentliga IPv4-adresser innan de kommer in i Microsoft-nätverket.
+hello Microsoft peering sökvägen kan du ansluta tooMicrosoft molntjänster som inte stöds via hello Azure offentlig peering sökväg. hello lista över tjänster inkluderar Office 365-tjänster, till exempel Exchange Online, SharePoint Online, Skype för företag och Dynamics 365. Microsoft stöder dubbelriktad anslutning på hello Microsoft-peering. Trafik tooMicrosoft molntjänster måste använda giltiga offentliga IPv4-adresser innan de kan ange hello Microsoft-nätverk.
 
-Kontrollera att din IP-adress och ditt AS-nummer är registrerade på dig i något av följande register:
+Kontrollera att din IP-adress och som number följer registrerade tooyou i något av hello register:
 
 * [ARIN](https://www.arin.net/)
 * [APNIC](https://www.apnic.net/)
@@ -86,49 +86,49 @@ Kontrollera att din IP-adress och ditt AS-nummer är registrerade på dig i någ
 * [ALTDB](http://altdb.net/)
 
 > [!IMPORTANT]
-> Offentliga IP-adresser som skickas till Microsoft via ExpressRoute, får inte annonseras till Internet. Det kan bryta anslutningen till andra Microsoft-tjänster. Offentliga IP-adresser som används av servrar i ditt nätverk som kommunicerar med O365 slutpunkter inom Microsoft kan dock annonseras över ExpressRoute. 
+> Offentlig IP adresser annonserade tooMicrosoft via ExpressRoute inte får vara annonserade toohello Internet. Detta kan bryta anslutningen tooother Microsoft-tjänster. Offentliga IP-adresser som används av servrar i ditt nätverk som kommunicerar med O365 slutpunkter inom Microsoft kan dock annonseras över ExpressRoute. 
 > 
 > 
 
 ## <a name="dynamic-route-exchange"></a>Dynamiskt routningsutbyte
-Routningsutbytet kommer att ske via EBGP-protokollet. EBGP-sessioner upprättas mellan MSEE:erna och dina routrar. Autentisering av BGP-sessioner är inte något krav. Om det behövs kan en MD5-hash konfigureras. Se [Konfigurera routning](expressroute-howto-routing-classic.md) och [Kretsetablering av arbetsflöden och kretsstatus](expressroute-workflows.md) för information om att konfigurera BGP-sessioner.
+Routningsutbytet kommer att ske via EBGP-protokollet. EBGP sessioner upprättas mellan hello MSEEs och dina routrar. Autentisering av BGP-sessioner är inte något krav. Om det behövs kan en MD5-hash konfigureras. Se hello [konfigurera routning](expressroute-howto-routing-classic.md) och [krets etablering arbetsflöden och krets tillstånd](expressroute-workflows.md) för information om att konfigurera BGP-sessioner.
 
 ## <a name="autonomous-system-numbers"></a>Autonoma systemnummer
-Microsoft använder AS 12076 för Azures offentliga, Azures privata och Microsofts peering. Vi har reserverat ASN:er från 65515 till 65520 för intern användning. Både 16- och 32-bitars AS-nummer stöds.
+Microsoft använder AS 12076 för Azures offentliga, Azures privata och Microsofts peering. Vi har reserverats ASN: er från 65515 too65520 för intern användning. Både 16- och 32-bitars AS-nummer stöds.
 
-Det finns inga krav på symmetri vid dataöverföring. Sökvägar vid vidarebefordran och retur kan passera olika routerpar. Identiska vägar måste annonseras från någon av sidorna över flera kretspar som du äger. Vägmåtten behöver inte vara identiska.
+Det finns inga krav på symmetri vid dataöverföring. hello framåtriktade och returnera sökvägar kan bläddra i olika router-par. Identiska vägar måste annonseras från någon av sidorna över flera kretspar som du äger. Vägens mått är inte obligatoriska toobe som är identiska.
 
 ## <a name="route-aggregation-and-prefix-limits"></a>Vägsammanställning och begränsningar för prefix
-Vi stöder upp till 4 000 prefix som annonseras till oss via Azures privata peering. Detta kan utökas upp till 10 000 prefix om ExpressRoute-premiumtillägget är aktiverat. Vi kan acceptera upp till 200 prefix per BGP-session för Azures offentliga och Microsofts peering. 
+Vi stöder in too4000 prefix annonserade toous via hello privat Azure-peering. Detta kan du öka upp too10 000 prefix om hello ExpressRoute premium tillägget är aktiverat. Vi emot too200 prefix per BGP-sessionen för offentlig Azure och Microsoft-peering. 
 
-BGP-sessionen kommer att tas bort om antalet prefix överskrider gränsen. Vi kommer endast att acceptera standardvägar på den privata peeringlänken. Leverantören måste filtrera ut standardvägen och privata IP-adresser (RFC 1918) från Azures offentliga och Microsofts peeringsökvägar. 
+hello BGP-sessionen kommer att tas bort om hello antalet prefix överskrider hello gränsen. Vi ska ta emot standardvägar på hello privat peering länk endast. Providern måste filtrera bort standardvägen, privata IP-adresser (RFC 1918) från hello Azure offentliga och Microsoft peering sökvägar. 
 
 ## <a name="transit-routing-and-cross-region-routing"></a>Överföringsroutning och routning mellan regioner
-ExpressRoute kan inte konfigureras som överföringsroutrar. Du måste förlita dig på din anslutningsleverantör vid överföring av routningstjänster.
+ExpressRoute kan inte konfigureras som överföringsroutrar. Du har toorely på anslutningsleverantören för transit routning tjänster.
 
 ## <a name="advertising-default-routes"></a>Annonsering av standardvägar
-Standardvägar tillåts bara i Azures privata peeringsessioner. I dessa fall kommer vi dirigera all trafik från associerade virtuella nätverk till ditt nätverk. Annonsering av standardvägar till privat peering resulterar i att Internetvägen från Azure blockeras. Du måste använda på ditt företags gräns till att dirigera trafik från och till Internet för tjänster som finns i Azure. 
+Standardvägar tillåts bara i Azures privata peeringsessioner. I så fall, kommer vi Vidarebefordra all trafik från hello tillhörande virtuella nätverk tooyour nätverk. Reklam standardvägar i privat peering leder hello internet sökvägen från Azure blockeras. Du måste förlita sig på företagets edge tooroute trafiken från och toohello internet för tjänster som finns i Azure. 
 
- Om du vill aktivera anslutningar till andra Azure-tjänster och infrastrukturtjänster, måste något av följande objekt finnas på plats:
+ tooenable anslutning tooother Azure-tjänster och infrastrukturtjänster, måste du se till något av följande objekt hello är på plats:
 
-* Azures offentliga peering ska vara aktiverad för att dirigera trafiken till offentliga slutpunkter
-* Du använder användardefinierad routning för att tillåta anslutning till Internet för varje undernät som kräver Internetanslutning.
+* Offentlig Azure-peering är aktiverat tooroute trafik toopublic slutpunkter
+* Du använder användardefinierade routning tooallow internet-anslutning för varje undernät som kräver Internet-anslutning.
 
 > [!NOTE]
-> Annonsering av standardvägar bryter Windows- och andra VM-licensaktiveringar. Följ anvisningarna [här](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) för kringgå detta.
+> Annonsering av standardvägar bryter Windows- och andra VM-licensaktiveringar. Följ anvisningarna [här](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) toowork runt problemet.
 > 
 > 
 
 ## <a name="bgp"></a>Stöd för BGP-communities
-Det här avsnittet innehåller en översikt över hur BGP-communities kommer att användas med ExpressRoute. Microsoft kommer att annonsera vägar i offentliga och Microsofts peeringsökvägar med vägar som är taggade med lämpliga community-värden. Anledningen till att man gör detta samt information om community-värden beskrivs nedan. Microsoft använder dock inte några community-värden som är taggade på vägar som annonserats till Microsoft.
+Det här avsnittet innehåller en översikt över hur BGP-communities kommer att användas med ExpressRoute. Microsoft kommer att meddela vägar i hello offentliga och Microsoft peering sökvägar med vägar som är märkta med lämpliga community-värden. Hej motiveringen för att göra det och hello information om community värdena beskrivs nedan. Microsoft, men inte följer någon värden taggade tooroutes annonserade tooMicrosoft.
 
-Om du ansluter till Microsoft via ExpressRoute på valfri peeringplats i en geopolitisk region, får du åtkomst till alla Microsoft-molntjänster i alla regioner inom den geopolitiska gränsen. 
+Om du ansluter tooMicrosoft via ExpressRoute på alla en peering plats i en geopolitiska region, har du åtkomst tooall Microsoft-molntjänster över alla regioner inom hello geopolitiska. 
 
-Om du exempelvis har anslutit till Microsoft i Amsterdam via ExpressRoute, kommer du ha åtkomst till alla Microsoft-molntjänster som finns i norra Europa och västra Europa. 
+Om du har anslutit tooMicrosoft i Amsterdam via ExpressRoute kommer du till exempel har åtkomst tooall Microsoft molntjänster i Norra Europa och västra Europa. 
 
-Se sidan [ExpressRoute-partners och peeringplatser](expressroute-locations.md) för en detaljerad lista med geopolitiska regioner, associerade Azure-regioner och motsvarande ExpressRoute-peeringplatser.
+Se toohello [ExpressRoute partners och peering platser](expressroute-locations.md) sida för en detaljerad lista över geopolitiska regioner, tillhörande Azure-regioner och motsvarande ExpressRoute-peering platser.
 
-Du kan köpa mer än en ExpressRoute-krets per geopolitisk region. Att ha flera anslutningar ger dig betydande fördelar med hög tillgänglighet tack vare den geografiska redundansen. I de fall där du har flera ExpressRoute-kretsar, får du samma uppsättning prefix annonserade från Microsoft för den offentliga peeringen och för Microsofts peeringsökvägar. Det innebär att du har flera sökvägar från ditt nätverk till Microsoft. Detta kan eventuellt medföra att icke-optimala beslut om routning tas i nätverket. Därmed kan du få icke-optimala anslutningsupplevelser till andra tjänster. Du kan använda community-värden för att fatta rätt beslut om routning och erbjuda [optimal routning till användare](expressroute-optimize-routing.md).
+Du kan köpa mer än en ExpressRoute-krets per geopolitisk region. Med flera anslutningar erbjuder betydande fördelar för hög tillgänglighet på grund av toogeo-redundans. I fall där du har flera ExpressRoute-kretsar får du hello samma uppsättning prefix annonserade från Microsoft på hello offentlig peering och Microsoft peering sökvägar. Det innebär att du har flera sökvägar från ditt nätverk till Microsoft. Detta kan medföra optimalt routning beslut toobe som gjorts i nätverket. Därför kan du få bästa möjliga upplevelse toodifferent tjänster. Du kan utgå ifrån hello community värden toomake lämplig routning beslut toooffer [optimala routning toousers](expressroute-optimize-routing.md).
 
 | **Microsoft Azure-region** | **BGP-community värde** |
 | --- | --- |
@@ -167,14 +167,14 @@ Du kan köpa mer än en ExpressRoute-krets per geopolitisk region. Att ha flera 
 | Sydkorea |12076:51028 |
 | Centrala Korea |12076:51029 |
 
-Alla vägar som annonseras från Microsoft taggas med lämpligt community-värde. 
+Alla vägar som annonserats från Microsoft märks med hello lämpliga community-värde. 
 
 > [!IMPORTANT]
 > Globala prefix taggas med ett lämpligt community-värde och annonseras endast när ExpressRoute-premiumtillägget är aktiverat.
 > 
 > 
 
-Förutom ovanstående taggar Microsoft också prefix baserat på vilken tjänst de tillhör. Detta gäller endast för Microsoft-peering. Tabellen nedan innehåller en mappning av tjänsten till community-värden för BGP.
+Dessutom toohello ovan, Microsoft kommer också tagga prefix baserat på hello-tjänsten som de tillhör. Detta gäller endast toohello Microsoft-peering. hello tabellen nedan ger en mappning av tjänsten tooBGP gemenskapens.
 
 | **Tjänst** | **BGP-community värde** |
 | --- | --- |
@@ -185,7 +185,7 @@ Förutom ovanstående taggar Microsoft också prefix baserat på vilken tjänst 
 | Andra Office 365 Online-tjänster |12076:5100 |
 
 > [!NOTE]
-> Microsoft använder inte några community-värden för BGP som du har angett för vägar som annonseras till Microsoft.
+> BGP community värden som du angett för hello vägar annonserade tooMicrosoft följdes inte av Microsoft.
 > 
 > 
 
@@ -214,7 +214,7 @@ Förutom ovanstående taggar Microsoft också prefix baserat på vilken tjänst 
 ## <a name="next-steps"></a>Nästa steg
 * Konfigurera ExpressRoute-anslutningen.
   
-  * [Skapa en ExpressRoute-krets för den klassiska distributionsmodellen](expressroute-howto-circuit-classic.md) eller [Skapa och ändra en ExpressRoute-krets med Azure Resource Manager](expressroute-howto-circuit-arm.md)
-  * [Konfigurera routning för den klassiska distributionsmodellen](expressroute-howto-routing-classic.md) eller [Konfigurera routning för Resource Manager-distributionsmodellen](expressroute-howto-routing-arm.md)
-  * [Länka ett klassiskt VNet till en ExpressRoute-krets](expressroute-howto-linkvnet-classic.md) eller [Länka ett Resource Manager-VNet till en ExpressRoute-krets](expressroute-howto-linkvnet-arm.md)
+  * [Skapa en ExpressRoute-krets för hello klassiska distributionsmodellen](expressroute-howto-circuit-classic.md) eller [skapa och ändra en ExpressRoute-krets med Azure Resource Manager](expressroute-howto-circuit-arm.md)
+  * [Konfigurera routning för hello klassiska distributionsmodellen](expressroute-howto-routing-classic.md) eller [konfigurera routning för hello Resource Manager-distributionsmodellen](expressroute-howto-routing-arm.md)
+  * [Länka en klassiska VNet tooan ExpressRoute-krets](expressroute-howto-linkvnet-classic.md) eller [länka en Resource Manager VNet tooan ExpressRoute-krets](expressroute-howto-linkvnet-arm.md)
 

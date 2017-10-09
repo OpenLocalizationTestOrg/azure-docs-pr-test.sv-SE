@@ -1,5 +1,5 @@
 ---
-title: Nyheter i Azure RemoteApp | Microsoft Docs
+title: aaaWhat kommer i Azure RemoteApp | Microsoft Docs
 description: "Lär dig när nya funktioner för Azure RemoteApp är tillgängliga"
 services: remoteapp
 documentationcenter: 
@@ -13,24 +13,24 @@ ms.devlang: NA
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 1b1b0a4ed45b995fa626f79935397ad56192e5e4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ad5f713de362ce1a00eee596b9aa4ddc8a4467f4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="whats-coming-in-azure-remoteapp"></a>Nyheter i Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs [meddelandet](https://go.microsoft.com/fwlink/?linkid=821148) för mer information.
+> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs hello [meddelande](https://go.microsoft.com/fwlink/?linkid=821148) mer information.
 > 
 > 
 
-**Alla objekt för förhandsversionen och översikt över har avbrutits och avslutas på grund av aviserade tillbakadragning av Azure RemoteApp.**
+**Alla objekt för förhandsversionen och översikt över har avbrutits och avslutades på grund av toohello meddelats tillbakadragning av Azure RemoteApp.**
 
 | Funktion | Status |
 | --- | --- | --- |
-| Azure Remote App i både den [klassiska Azure-portalen](http://manage.windowsazure.com) och [Azure-portalen](https://portal.azure.com) -privat förhandsgranskning |**Avbröts** |
-| Möjligheten att publicera enskilda program till specifika användare - privat förhandsversion ([feedback](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec/)) |**Avbröts** |
+| Azure Remote App i båda hello [klassiska Azure-portalen](http://manage.windowsazure.com) och [Azure-portalen](https://portal.azure.com) -privat förhandsgranskning |**Avbröts** |
+| Möjlighet toopublish enskilda program toospecific användare – privat förhandsversion ([feedback](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec/)) |**Avbröts** |
 | Windows client redistributable MSI-paket ([feedback](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo/))-privat förhandsgranskning |**Avbröts** |
 | Stöd för Azure Resource Manager (ARM) |**Avbröts** |
 | Stöd för Azure v2-resurs |**Avbröts** |
@@ -42,12 +42,12 @@ Andra förbättringar som lagts till tidigare i år:
 
 * HTML5-baserad klient för Azure RemoteApp
 * Windows 10 Universal-program med produktserier för Azure RemoteApp - förhandsgranskning
-* Distribuera till ett virtuellt nätverk utan att ansluta till en domän (moln samling anslutningen till den virtuella Azure-datorer)
+* Distribuera tooa virtuella nätverk utan att ansluta till en domän (moln samling anslutning toohello virtuella Azure-datorer)
 * Återanvända ett befintligt virtuellt nätverk för RemoteApp-hybridsamlingen (även aktiverar ExpressRoute)
 * ExpressRoute
 * RemoteApp PowerShell-cmdlets och SDK för distribution och hantering
 * Skapa och ladda upp en bild från en Azure VM
-* Överför branschspecifika (LOB)-program till en molnsamling, såväl som en hybridsamling
+* Överför line-of-business (LOB) program tooa molnsamling, samt som en hybridsamling
 * Stöd för Windows Phone
 * Instrumentpanelen för användning mått
 * Etablera ett stort antal användare med hjälp av en CSV-fil

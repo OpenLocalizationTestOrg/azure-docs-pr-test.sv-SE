@@ -1,5 +1,5 @@
 ---
-title: "Azure CLI-skript Sample - skapa en virtuell dator från en ögonblicksbild | Microsoft Docs"
+title: "aaaAzure CLI skriptexempel - skapa en virtuell dator från en ögonblicksbild | Microsoft Docs"
 description: "Azure CLI-skript Sample - skapa en virtuell dator från en ögonblicksbild"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 6e47c3baebd5b68ec29d55c43dc00ae7665c81f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ddc95289dcb8a0ca7c7854d969983f96b8f4613f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>Skapa en virtuell dator från en ögonblicksbild med CLI
 
@@ -32,11 +32,11 @@ Det här skriptet skapar en virtuell dator från en ögonblicksbild av en OS-dis
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-azurecli-interactive[huvudsakliga](../../../cli_scripts/virtual-machine/create-vm-from-snapshot/create-vm-from-snapshot.sh "Skapa virtuell dator från en ögonblicksbild")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-from-snapshot/create-vm-from-snapshot.sh "Create VM from snapshot")]
 
 ## <a name="clean-up-deployment"></a>Rensa distribution 
 
-Kör följande kommando för att ta bort resursgruppen, virtuell dator och alla relaterade resurser.
+Kör följande kommando tooremove hello resursgrupp, VM och alla relaterade resurser hello.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -44,16 +44,16 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon för att skapa en hanterad disk, den virtuella datorn och alla relaterade resurser. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder hello följande kommandon toocreate hanterade diskar, virtuell dator, och alla relaterade resurser. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
-| [AZ ögonblicksbild visa](https://docs.microsoft.com/cli/azure/snapshot#show) | Hämtar ögonblicksbild med namnet på ögonblicksbilder och resursgruppens namn. ID-egenskapen för det returnerade objektet används för att skapa en hanterad disk.  |
+| [AZ ögonblicksbild visa](https://docs.microsoft.com/cli/azure/snapshot#show) | Hämtar ögonblicksbild med namnet på ögonblicksbilder och resursgruppens namn. ID-egenskapen för hello returnerade objekt är används toocreate hanterade diskar.  |
 | [Skapa AZ disk](https://docs.microsoft.com/cli/azure/disk#create) | Skapar hanterade diskar från en ögonblicksbild med hjälp av ögonblicksbilder Id, namn på disk, lagringstyp och storlek  |
 | [Skapa AZ vm](https://docs.microsoft.com/cli/azure/vm#create) | Skapar en virtuell dator med hjälp av en hanterad OS-disk |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
+Mer information om hello Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
 
-Ytterligare virtuella CLI skriptexempel finns i den [virtuella Azure Linux-datorn dokumentationen](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ytterligare virtuella CLI skriptexempel finns i hello [virtuella Azure Linux-datorn dokumentationen](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

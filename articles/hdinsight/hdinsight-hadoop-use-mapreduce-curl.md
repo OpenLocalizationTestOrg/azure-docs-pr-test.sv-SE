@@ -1,6 +1,6 @@
 ---
-title: "Använd MapReduce och Curl med Hadoop i HDInsight - Azure | Microsoft Docs"
-description: "Lär dig hur du Fjärrkör MapReduce-jobb med Hadoop i HDInsight med Curl."
+title: aaaUse MapReduce och Curl med Hadoop i HDInsight - Azure | Microsoft Docs
+description: "Lär dig hur tooremotely kör MapReduce-jobb med Hadoop på HDInsight med Curl."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,18 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.openlocfilehash: 8238bb829df95dcb8c99c0b7fff53c627a56f47c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 16920205bacf9699f88090568099e0508a172b3b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>Kör jobb för MapReduce med Hadoop i HDInsight med hjälp av REST
 
-Lär dig hur du använder WebHCat REST API för att köra MapReduce-jobb på en Hadoop på HDInsight-kluster. CURL används för att demonstrera hur du kan interagera med HDInsight med hjälp av rådata HTTP-begäranden för att köra MapReduce-jobb.
+Lär dig hur toouse hello WebHCat REST API toorun MapReduce-jobb på en Hadoop på HDInsight-kluster. CURL är används toodemonstrate hur du kan interagera med HDInsight med hjälp av rådata HTTP-begäranden toorun MapReduce-jobb.
 
 > [!NOTE]
-> Om du redan är bekant med Linux-baserade Hadoop-servrar, men du är nybörjare på HDInsight, finns det [vad du behöver veta om Linux-baserade Hadoop på HDInsight](hdinsight-hadoop-linux-information.md) dokumentet.
+> Om du redan är bekant med Linux-baserade Hadoop-servrar, men du är ny tooHDInsight, se hello [vad du behöver tooknow om Linux-baserade Hadoop på HDInsight](hdinsight-hadoop-linux-information.md) dokumentet.
 
 
 ## <a id="prereq"></a>Förhandskrav
@@ -39,64 +39,64 @@ Lär dig hur du använder WebHCat REST API för att köra MapReduce-jobb på en 
 ## <a id="curl"></a>Kör MapReduce-jobb med Curl
 
 > [!NOTE]
-> När du använder Curl eller annan REST-kommunikation med WebHCat, måste du autentisera begärandena genom att ange administratörsanvändarnamn för HDInsight-kluster och lösenord. Du måste använda klustrets namn som en del av den URI som används för att skicka begäranden till servern.
+> När du använder Curl eller annan REST-kommunikation med WebHCat, måste du autentisera hello begäranden genom att tillhandahålla hello HDInsight-kluster administratörsanvändarnamn och lösenord. Som en del av hello URI som används toosend hello begäranden toohello server måste du använda hello klusternamnet.
 >
-> Kommandona i det här avsnittet, ersätter **användarnamn** med användaren för att autentisera för klustret och **lösenord** med lösenordet för användarkontot. Ersätt **CLUSTERNAME** med namnet på klustret.
+> Hello kommandon i det här avsnittet, ersätter **användarnamn** med hello användaren tooauthenticate toohello kluster och **lösenord** med hello lösenordet för användarkontot för hello. Ersätt **KLUSTERNAMN** med hello namnet på klustret.
 >
-> REST API skyddas med hjälp av [grundläggande autentisering](http://en.wikipedia.org/wiki/Basic_access_authentication). Du bör alltid göra begäranden genom att använda HTTPS för att se till att dina autentiseringsuppgifter skickas på ett säkert sätt till servern.
+> hello REST API skyddas med hjälp av [grundläggande autentisering](http://en.wikipedia.org/wiki/Basic_access_authentication). Du bör alltid göra begäranden genom att använda HTTPS tooensure att dina autentiseringsuppgifter skickas toohello server på ett säkert sätt.
 
 
-1. Använd följande kommando från en kommandorad för att verifiera att du kan ansluta till ditt HDInsight-kluster:
+1. Använd hello efter kommandot tooverify att du kan ansluta tooyour HDInsight-kluster från en kommandorad:
 
     ```bash
     curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
     ```
 
-    Du bör få ett svar som liknar följande JSON:
+    Du bör få ett svar liknande toohello följande JSON:
 
         {"status":"ok","version":"v1"}
 
-    De parametrar som används i det här kommandot är följande:
+    hello-parametrar som används i det här kommandot är följande:
 
-   * **-u**: anger användarnamn och lösenord som används för att autentisera begäran
+   * **-u**: Anger hello användarnamn och lösenord används tooauthenticate hello begäran
    * **-G**: Anger att den här åtgärden är en GET-begäran
 
-     I början av URI, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, är samma för alla begäranden.
+     Hej i början av hello URI, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, hello samma för alla begäranden.
 
-2. För att skicka ett MapReduce-jobb, använder du följande kommando:
+2. toosubmit ett MapReduce-jobb, Använd hello följande kommando:
 
     ```bash
     curl -u USERNAME:PASSWORD -d user.name=USERNAME -d jar=/example/jars/hadoop-mapreduce-examples.jar -d class=wordcount -d arg=/example/data/gutenberg/davinci.txt -d arg=/example/data/CurlOut https://CLUSTERNAME.azurehdinsight.net/templeton/v1/mapreduce/jar
     ```
 
-    I slutet av URI: N (/ mapreduce/jar) anger WebHCat att denna begäran startar ett MapReduce-jobb från en klass i jar-filen. De parametrar som används i det här kommandot är följande:
+    hello slutet av hello URI (/ mapreduce/jar) anger WebHCat att denna begäran startar ett MapReduce-jobb från en klass i jar-filen. hello-parametrar som används i det här kommandot är följande:
 
-   * **-d**: `-G` används inte, så begäran som standard POST-metoden. `-d`Anger datavärdena som skickas med begäran.
-    * **User.name**: användare som kör kommandot
-    * **JAR**: platsen för jar-filen som innehåller klassen kördes
-    * **klassen**: klass som innehåller logiken som MapReduce
-    * **%d{arg/**: argument som ska skickas till MapReduce-jobb. I det här fallet, inkommande textfilen och katalogen som används för utdata
+   * **-d**: `-G` inte används så hello begäran standardvärden toohello POST-metoden. `-d`Anger hello datavärden som skickas med hello-begäran.
+    * **User.name**: hello-användaren som kör hello kommando
+    * **JAR**: hello platsen för hello jar-filen som innehåller klassen toobe kördes
+    * **klassen**: hello klass som innehåller hello MapReduce-logik
+    * **%d{arg/**: hello argument toobe skickades toohello MapReduce-jobb. I det här fallet indata hello text fil- och hello katalog som används för hello-utdata
 
-     Det här kommandot ska returnera ett jobb-ID som kan användas för att kontrollera status för jobbet:
+     Det här kommandot ska returnera ett jobb-ID som kan använda toocheck hello status för hello jobb:
 
        {”id”: ”job_1415651640909_0026”}
 
-3. Om du vill kontrollera status för jobbet, använder du följande kommando:
+3. toocheck hello hello jobbets status, Använd hello följande kommando:
 
     ```bash
     curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
     ```
 
-    Ersätt den **JOBID** med värdet som returneras i föregående steg. Om exempelvis returvärde `{"id":"job_1415651640909_0026"}`, jobb-ID skulle vara `job_1415651640909_0026`.
+    Ersätt hello **JOBID** med hello-värde som returneras i hello föregående steg. Till exempel om hello returnera värdet var `{"id":"job_1415651640909_0026"}`, sedan hello JOBID skulle vara `job_1415651640909_0026`.
 
-    Om jobbet är klart, tillståndet returneras är `SUCCEEDED`.
+    Om hello jobbet är klart hello tillstånd returnerade är `SUCCEEDED`.
 
    > [!NOTE]
-   > Den här Curl-begäran returnerar ett JSON-dokument med information om jobbet. Jq används för att hämta tillståndet värdet.
+   > Den här Curl-begäran returnerar ett JSON-dokument med information om hello jobb. Jq används tooretrieve hello endast värdet state.
 
-4. När status för jobbet har ändrats till `SUCCEEDED`, kan du hämta resultatet av jobbet från Azure Blob storage. Den `statusdir` parameter som skickas med frågan innehåller platsen för utdatafilen. I det här exemplet platsen är `/example/curl`. Den här adressen lagrar resultatet av jobbet i kluster standardlagring på `/example/curl`.
+4. När hello tillståndet för hello jobbet har ändrats för`SUCCEEDED`, du kan hämta hello resultatet av hello jobbet från Azure Blob storage. Hej `statusdir` parameter som skickas med hello frågan innehåller hello plats hello utdatafilen. I det här exemplet hello platsen är `/example/curl`. Den här adressen lagrar hello utdata för hello jobb i hello kluster standardlagring på `/example/curl`.
 
-Du kan visa och ladda ned dessa filer med hjälp av den [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Mer information om hur du arbetar med blobbar från Azure CLI finns i [använder Azure CLI 2.0 med Azure Storage](../storage/common/storage-azure-cli.md#create-and-manage-blobs) dokumentet.
+Du kan visa och ladda ned dessa filer med hjälp av hello [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Mer information om hur du arbetar med blobbar från hello Azure CLI finns hello [Using hello Azure CLI 2.0 med Azure Storage](../storage/common/storage-azure-cli.md#create-and-manage-blobs) dokumentet.
 
 ## <a id="nextsteps"></a>Nästa steg
 
@@ -109,4 +109,4 @@ Information om andra sätt kan du arbeta med Hadoop i HDInsight:
 * [Använda Hive med Hadoop i HDInsight](hdinsight-use-hive.md)
 * [Använda Pig med Hadoop i HDInsight](hdinsight-use-pig.md)
 
-Mer information om REST-gränssnitt som används i den här artikeln finns det [WebHCat referens](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
+Mer information om hello REST-gränssnitt som används i den här artikeln finns hello [WebHCat referens](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).

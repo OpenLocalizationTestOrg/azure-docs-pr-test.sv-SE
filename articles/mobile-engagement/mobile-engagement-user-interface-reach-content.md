@@ -1,6 +1,6 @@
 ---
-title: "Användargränssnittet för Azure Mobile Engagement - Reach-innehåll"
-description: "Lär dig att hantera unika innehållet i de olika typerna av kampanjer för push-meddelanden i Azure Mobile Engagement"
+title: "aaaAzure användargränssnitt för Mobile Engagement - nå innehåll"
+description: "Lär dig hur toomanage hello unikt innehåll hello olika typer av push-meddelande kampanjer i Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: de389eb4368d986ef00135036c26e26a2464663e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>Så här hanterar du unikt innehållet i de olika typerna av kampanjer för push-meddelande
-Du kan använda avsnittet innehåll för en ny kampanj räckvidden för att ändra innehållet i dina meddelanden, avsökningar, Data-push både och paneler (endast Windows Phone). Push-kampanjer innehåll inställningen är specifik för typ av kampanj. 
+# <a name="how-toomanage-hello-unique-content-of-hello-different-types-of-push-notification-campaigns"></a>Hur toomanage hello unikt innehåll hello olika typer av kampanjer för push-meddelande
+Du kan använda hello avsnitt med ett nytt reach kampanj toomodify hello innehåll i dina meddelanden, avsökningar, Data-push både och paneler (endast Windows Phone). hello innehåll inställningen för Push-kampanjer är särskilda toohello kampanj. 
 
 ### <a name="content-types"></a>Typer av innehåll:
 * Meddelanden
@@ -32,26 +32,26 @@ Du kan använda avsnittet innehåll för en ny kampanj räckvidden för att änd
 ## <a name="content-of-announcements"></a>Innehållet i meddelanden
  ![Reach-Content1][30] 
 
-### <a name="choose-the-type-of-your-announcement"></a>Välj typ av ditt meddelande:
-* Endast meddelande: det är ett enkelt standard meddelande. Vilket innebär att om en användare klickar på den, ingen extra vy visas, men endast den åtgärd som är kopplade till den sker.
-* SMS-meddelande: det är ett meddelande som snabbt tillkallar användaren måste ha en titt på textvyn.
-* Web meddelande: det är ett meddelande som snabbt tillkallar användaren att titta på en webbvy.
+### <a name="choose-hello-type-of-your-announcement"></a>Välj hello typ av ditt meddelande:
+* Endast meddelande: det är ett enkelt standard meddelande. Vilket innebär att om en användare klickar på den, ingen extra vy visas, men endast hello åtgärd som är associerade tooit sker.
+* SMS-meddelande: det är ett meddelande som snabbt tillkallar hello användaren toohave en titt på textvyn.
+* Web meddelande: det är ett meddelande som snabbt tillkallar hello användaren toohave en titt på en webbvy.
 
 ### <a name="see-also"></a>Se även
 * [Nå - hur Tos - meddelanden][Link 3] 
 
 ### <a name="about-web-view-announcements"></a>Om Webbvyaviseringar:
-Förekomster av mönstret ”{deviceid}” i HTML-kod eller JavaScript-kod som du anger här ersätts automatiskt av ID: t för den enhet som visar ett meddelande. Detta är ett enkelt sätt att hämta Azure Mobile Engagement enhetsidentifierare i en extern webbtjänst som ditt BackOffice är värd.
-Om du vill skapa en webbvy i helskärm (utan de standardknappar för Åtgärd och Avsluta som vi tillhandahåller) kan du använda följande funktioner från din webbvyaviserings JavaScript-kod: 
+Förekomster av mönstret hello ”{deviceid}” i hello HTML eller JavaScript-kod du anger här ersätts automatiskt av hello identifierare för hello-enhet som visar hello-meddelande. Det här är ett enkelt sätt tooretrieve Azure Mobile Engagement enhetsidentifierare i en extern webbtjänst som finns på ditt BackOffice är värd.
+Om du vill toocreate hela skärmen webbvy (utan hello åtgärd och avsluta standardknappar vi tillhandahåller) kan du använda hello följande funktioner från din webbvyaviserings JavaScript-kod: 
 
-* genomför Meddelandeåtgärden: ReachContent.actionContent()
-* Avsluta från meddelandet: ReachContent.exitContent()
+* utföra hello Meddelandeåtgärden: ReachContent.actionContent()
+* Avsluta hello-meddelande: ReachContent.exitContent()
 
 ### <a name="choose-your-action"></a>Välj åtgärden:
 ### <a name="about-action-urls"></a>Om åtgärden webbadresser:
 Varje URL som kan tolkas av en målenhets operativsystem kan användas som en åtgärds-URL.
-Varje dedikerad URL som ditt program eventuellt stöder (t.ex. för att få användarna att går direkt till en viss skärm) kan också användas som en åtgärds-URL.
-Varje förekomst av {deviceid}-mönstret ersätts automatiskt av ID: t för den enhet som genomför åtgärden. Detta kan användas för att lätt kunna hämta Azure Mobile Engagement enhetsidentifierare via en extern webbtjänst som ditt BackOffice är värd.
+Varje dedikerad URL som ditt program kan support (t.ex. toomake användare flytta tooa viss skärm) kan också användas som en åtgärds-URL.
+Varje förekomst av hello {deviceid} mönstret ersätts automatiskt av hello identifierare för hello enheten hello åtgärden utförs. Detta kan vara används tooeasily hämta Azure Mobile Engagement-enhetsidentifierare via en extern webbtjänst som ditt BackOffice är värd.
 
 * **Android och iOS åtgärder**
   * Öppna en webbsida
@@ -67,14 +67,14 @@ Varje förekomst av {deviceid}-mönstret ersätts automatiskt av ID: t för den 
   * Tel:\[-telefonnummer\] 
   * Exempel: tel:2125551212
 * **Android endast åtgärder**
-  * Hämta ett program på Play Store
+  * Hämta ett program på hello Play Store
   * market://details?ID=\[app-paket\] 
   * Exempel: market://details?id=com.microsoft.office.word
   * Starta en geolokaliserad sökning
   * GEO:0 0? q =\[sökfråga\] 
   * Exempel: geo:0, 0? q = starbucks paris
 * **endast åtgärder för iOS**
-  * Hämta ett program på App Store
+  * Hämta ett program på hello App Store
   * http://iTunes.Apple.com/ [Land] /app/ [programnamn] /id [app-id]? huvudmålservern = 8 
   * Exempel: http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
   * Windows-åtgärder
@@ -90,7 +90,7 @@ Varje förekomst av {deviceid}-mönstret ersätts automatiskt av ID: t för den 
   * Ring upp ett telefonnummer (Skype Store App krävs)
   * Tel:\[-telefonnummer\] 
   * Exempel: tel:2125551212
-  * Hämta ett program på Play Store
+  * Hämta ett program på hello Play Store
   * MS-windows-store: PDP? PFN =\[app paket-ID\] 
   * Exempel: ms-windows-store: PDP? PFN = 4d91298a-07cb-40fb-aecc-4cb5615d53c1
   * Starta en bingkartssökning
@@ -104,10 +104,10 @@ Varje förekomst av {deviceid}-mönstret ersätts automatiskt av ID: t för den 
   * Example:myfolderdata.txt
 
 ### <a name="build-a-tracking-url"></a>Skapa en spårning-URL:
-* Se avsnittet ”inställningar” i den <UI Documentation> för instruktioner om hur du skapar en spårning URL som gör att användarna kan ladda ned en av dina andra program.
+* Se hello ”inställningar”-delen av hello <UI Documentation> för instruktioner om hur du skapar en spårning URL som tillåter användare toodownload en av dina andra program.
 
-### <a name="define-the-texts-of-your-announcement"></a>Definiera texterna för ditt meddelande
-Fyll i rubrik, innehåll och knappen texterna för ditt meddelande. Du kan rikta en målgrupp framtida kampanjens på reach-feedback på hur användare svarat på kampanjen. Målgrupper kan baseras på feedback på om den här kampanjen har precis pushas, besvarade, hanterats eller stängts.
+### <a name="define-hello-texts-of-your-announcement"></a>Definiera hello texterna för ditt meddelande
+Fyll i hello rubrik, innehåll och knappen texterna för ditt meddelande. Du kan rikta en målgrupp framtida kampanjens på hello reach feedback på hur användare svarade toothis kampanj. Målgrupper kan baseras på hello feedback på om den här kampanjen har precis pushas, besvarade, hanterats eller stängts.
 
 ### <a name="see-also"></a>Se även
 * [UI-dokumentationen – Reach - nytt Push kriterium][Link 28]
@@ -115,8 +115,8 @@ Fyll i rubrik, innehåll och knappen texterna för ditt meddelande. Du kan rikta
 ## <a name="content-of-polls"></a>Innehållet i avsökningar
 ![Reach-Content2][31] 
 
-Fyll i rubrik, beskrivning och knappen texterna för ditt meddelande. Lägg sedan till frågor och alternativ för svar på dina frågor.
-Du kan rikta en målgrupp framtida kampanjens på reach-feedback på hur användare svarat på kampanjen. Målgrupper kan baseras på om den här kampanjen har precis pushas, besvarade, hanterats eller stängts. Målgrupper kan även baseras på avsökning besvara feedback, där fråga och svar val användas som kriterier.
+Fyll i hello rubrik, beskrivning och knappen texterna för ditt meddelande. Lägg sedan till frågor och alternativ för hello svar tooyour frågor.
+Du kan rikta en målgrupp framtida kampanjens på hello reach feedback på hur användare svarade toothis kampanj. Målgrupper kan baseras på om den här kampanjen har precis pushas, besvarade, hanterats eller stängts. Målgrupper kan även baseras på avsökning besvara feedback, där hello fråga och svar val användas som kriterier.
 
 ### <a name="see-also"></a>Se även
 * [UI-dokumentationen – Reach - nytt Push kriterium][Link 28]
@@ -124,15 +124,15 @@ Du kan rikta en målgrupp framtida kampanjens på reach-feedback på hur använd
 ## <a name="content-of-data-pushes"></a>Innehållet i Data push-meddelanden
 ![Reach-Content3][32] 
 
-### <a name="choose-the-type-of-your-data"></a>Välj typ av data:
+### <a name="choose-hello-type-of-your-data"></a>Välj hello typ av data:
 * Text
 * Binära data
 * Base64-data
 
-### <a name="define-the-content-of-your-data"></a>Definiera dina datas innehåll
-* Om du valde för att skicka textdata, kopiera och klistra in texten i rutan ”innehåll”.
-* Om du har valt för att skicka eller binary base64-data kan du använda knappen ”ladda upp filen” för att överföra din fil.
-* Du kan rikta en målgrupp framtida kampanjens på reach-feedback på hur användare svarat på kampanjen. Målgrupper kan baseras på om den här kampanjen har precis pushas, besvarade, hanterats eller stängts.
+### <a name="define-hello-content-of-your-data"></a>Definiera hello innehållet i dina data
+* Om du har valt toopush textdata kopiera och klistra in hello text i hello ”innehåll”.
+* Om du har valt toopush eller binary base64-data, Använd hello ”överför filen” knappen tooupload din fil.
+* Du kan rikta en målgrupp framtida kampanjens på hello reach feedback på hur användare svarade toothis kampanj. Målgrupper kan baseras på om den här kampanjen har precis pushas, besvarade, hanterats eller stängts.
 
 ### <a name="see-also"></a>Se även
 * [UI-dokumentationen – Reach - nytt Push kriterium][Link 28]
@@ -140,9 +140,9 @@ Du kan rikta en målgrupp framtida kampanjens på reach-feedback på hur använd
 ## <a name="content-of-tiles-windows-phone-only"></a>Innehållet i paneler (endast Windows Phone)
 ![Reach-Content4][33]
 
-### <a name="define-the-content-of-your-tile"></a>Definiera din panels innehåll
-Nyttolasten i panelen är text som ska visas i panelen för din app på Windows Phone-enheter.
-En sida vid sida-push är Microsoft Push Notification Service (MPNS) version av en intern push för Windows Phone. Panelen push-typen är den enda push-typ som inte har ett svar och så målgruppen för framtida kampanjer inte kan byggas på resultatet av en panel push-kampanj. 
+### <a name="define-hello-content-of-your-tile"></a>Definiera din Panels hello innehåll
+hello panelen nyttolasten är hello text toobe visas i hello panelen för din app på Windows Phone-enheter.
+En sida vid sida-push är hello Microsoft Push Notification Service (MPNS) version av en intern push för Windows Phone. hello panelen push typ är hello endast push-typ som inte har ett svar så hello målgruppen för framtida kampanjer inte kan byggas på hello resultaten av en panel push-kampanj. 
 
 ### <a name="see-also"></a>Se även
 * [API-dokumentationen - Reach-API - interna Push][Link 4]

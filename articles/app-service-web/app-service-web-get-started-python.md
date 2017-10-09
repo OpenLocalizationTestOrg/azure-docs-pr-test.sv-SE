@@ -1,5 +1,5 @@
 ---
-title: Skapa en Python-webbapp i Azure | Microsoft Docs
+title: aaaCreate en Python-webbapp i Azure | Microsoft Docs
 description: "Distribuera din första Hello World-app med Python i Azure App Service Web Apps på bara några minuter."
 services: app-service\web
 documentationcenter: 
@@ -15,22 +15,22 @@ ms.topic: quickstart
 ms.date: 03/17/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 119f9770097c010cc360e0e204d06a307a268814
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 42178d490d8aa8eaf93710667aad598794c62c8f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-python-web-app-in-azure"></a>Skapa en Python-webbapp i Azure
 
-Med [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) får du en mycket skalbar och automatiskt uppdaterad webbvärdtjänst.  Den här snabbstarten visar hur du utvecklar en Python-app och distribuerar den till Azure Web Apps. Du skapar webbappen med [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) och använder Git för att distribuera Python-exempelkoden till webbappen.
+Med [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) får du en mycket skalbar och automatiskt uppdaterad webbvärdtjänst.  Denna Snabbstart går igenom hur toodevelop och distribuera en Python app tooAzure Web Apps. Du skapar hello webbapp med hello [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), och du kan använda Git toodeploy Python-kod toohello exempelwebbapp.
 
 ![Exempelapp som körs i Azure](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-Du kan följa stegen nedan på en Mac-, Windows- eller Linux-dator. Det tar cirka fem minuter att slutföra självstudiekursen när de nödvändiga komponenterna har installerats.
+Du kan följa hello stegen nedan använder en Mac, Windows eller Linux-dator. När hello nödvändiga komponenter har installerats, tar cirka fem minuter toocomplete hello steg.
 ## <a name="prerequisites"></a>Krav
 
-För att slutföra den här kursen behöver du:
+toocomplete den här kursen:
 
 1. [Installera Git](https://git-scm.com/)
 1. [Installera Python](https://www.python.org/downloads/)
@@ -39,47 +39,47 @@ För att slutföra den här kursen behöver du:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kräver i det här avsnittet att du kör hello Azure CLI version 2.0 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
-## <a name="download-the-sample"></a>Hämta exemplet
+## <a name="download-hello-sample"></a>Hämta hello-exempel
 
-Kör följande kommando i ett terminalfönster för att klona databasen för exempelappen till den lokala datorn.
+Kör hello efter kommandot tooclone hello exempel app databasen tooyour lokala datorn i ett terminalfönster.
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
 
-Du använder det här terminalfönstret för att köra alla kommandon i den här snabbstarten.
+Du använder den här terminalfönster toorun alla hello-kommandon i denna Snabbstart.
 
-Ändra till den katalog som innehåller exempelkoden.
+Ändra toohello katalog som innehåller hello exempelkod.
 
 ```bash
 cd Python-docs-hello-world
 ```
 
-## <a name="run-the-app-locally"></a>Köra appen lokalt
+## <a name="run-hello-app-locally"></a>Kör hello appen lokalt
 
-Installera de paket som behövs med hjälp av `pip`.
+Installera hello krävs paket med hjälp av `pip`.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Kör programmet lokalt genom att öppna ett terminalfönster och använda kommandot `Python` för att starta den inbyggda Python-webbservern.
+Kör programmet hello lokalt genom att öppna ett terminalfönster och hello `Python` kommandot toolaunch hello inbyggda Python webbservern.
 
 ```bash
 python main.py
 ```
 
-Öppna en webbläsare och navigera till exempelappen på http://localhost:5000.
+Öppna en webbläsare och gå toohello exempelapp på http://localhost:5000.
 
-Nu kan du se **Hello World**-meddelandet från exempelappen på sidan.
+Du kan se hello **Hello World** meddelande från hello sample-appen visas i hello-sidan.
 
 ![Exempelapp som körs lokalt](media/app-service-web-get-started-python/localhost-hello-world-in-browser.png)
 
-Tryck på **Ctrl+C** i terminalfönstret för att avsluta webbservern.
+Tryck på i ditt terminalfönster **Ctrl + C** tooexit hello-webbserver.
 
-[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
+[!INCLUDE [Log in tooAzure](../../includes/login-to-azure.md)] 
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
@@ -93,24 +93,24 @@ Tryck på **Ctrl+C** i terminalfönstret för att avsluta webbservern.
 
 Nu har du skapat en ny tom webbapp på Azure.
 
-## <a name="configure-to-use-python"></a>Konfiguration för användning av Python
+## <a name="configure-toouse-python"></a>Konfigurera toouse Python
 
-Använd kommandot [az webapp config set](/cli/azure/webapp/config#set) och konfigurera webbappen för att använda Python version `3.4`.
+Använd hello [az webapp konfigurationsuppsättning](/cli/azure/webapp/config#set) kommandot tooconfigure hello app toouse Python webbversionen `3.4`.
 
 ```azurecli-interactive
 az webapp config set --python-version 3.4 --name <app_name> --resource-group myResourceGroup
 ```
 
 
-När du anger Python-versionen på det här sättet används en standardbehållare som tillhandahålls av plattformen. Om du vill använda en egen behållare kan läsa CLI-referensen för kommandot [az webapp config container set](/cli/azure/webapp/config/container#set).
+Ange hello Python-versionen sätt använder en standardbehållare som tillhandahålls av hello-plattformen. toouse egna behållaren finns hello CLI-referens för hello [az webapp konfigurationsuppsättning behållaren](/cli/azure/webapp/config/container#set) kommando.
 
 [!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+[!INCLUDE [Push tooAzure](../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 18, done.
-Delta compression using up to 4 threads.
+Delta compression using up too4 threads.
 Compressing objects: 100% (16/16), done.
 Writing objects: 100% (18/18), 4.31 KiB | 0 bytes/s, done.
 Total 18 (delta 4), reused 0 (delta 0)
@@ -146,56 +146,56 @@ remote:         1 file(s) copied.
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+toohttps://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-## <a name="browse-to-the-app"></a>Bläddra till appen
+## <a name="browse-toohello-app"></a>Bläddra toohello app
 
-Bläddra till den distribuerade appen via webbläsaren.
+Bläddra toohello distribuerat program med hjälp av webbläsaren.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Python-exempelkoden körs i en Azure App Service-webbapp.
+hello Python exempelkod körs i en webbapp i Azure App Service.
 
 ![Exempelapp som körs i Azure](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-**Grattis!** Du har distribuerat din första Python-app till App Service.
+**Grattis!** Du har distribuerat din första Python app tooApp Service.
 
-## <a name="update-and-redeploy-the-code"></a>Uppdatera och distribuera om koden
+## <a name="update-and-redeploy-hello-code"></a>Uppdatera och distribuera hello kod
 
-Öppna filen `main.py` i Python-appen med ett lokalt textredigeringsprogram och gör små ändringar i texten i strängen bredvid `return`-instruktionen:
+Med en lokal textredigerare öppna hello `main.py` filen i hello Python-appen och göra en mindre ändring toohello text nästa toohello `return` instruktionen:
 
 ```python
 return 'Hello, Azure!'
 ```
 
-Spara ändringarna på Git och skicka sedan kodändringarna till Azure.
+Genomför ändringarna i Git och skicka sedan hello kod ändringar tooAzure.
 
 ```bash
 git commit -am "updated output"
 git push azure master
 ```
 
-När distributionen är klar går du tillbaka till webbläsarfönstret som öppnades när du skulle [söka efter appen](#browse-to-the-app) och klickar på knappen för att uppdatera sidan.
+När distributionen är klar, kan du växla tillbaka toohello webbläsarfönster som öppnas i hello [Bläddra toohello app](#browse-to-the-app) steg och uppdatera hello sidan.
 
 ![Uppdaterad exempelapp som körs i Azure](media/app-service-web-get-started-python/hello-azure-in-browser.png)
 
 ## <a name="manage-your-new-azure-web-app"></a>Hantera din nya Azure-webbapp
 
-Gå till <a href="https://portal.azure.com" target="_blank">Azure Portal</a> för att hantera den webbapp som du skapade.
+Gå toohello <a href="https://portal.azure.com" target="_blank">Azure-portalen</a> toomanage hello webbprogram som du skapade.
 
-Klicka på **Apptjänster** i menyn till vänster och sedan på namnet på din Azure-webbapp.
+Hello vänstra menyn klickar du på **Apptjänster**, och klicka sedan på hello namnet på din Azure webbapp.
 
-![Navigera till webbappen på Azure Portal](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
+![Portalen navigering tooAzure webbprogram](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
 Nu visas sidan Översikt för din webbapp. Här kan du utföra grundläggande hanteringsåtgärder som att bläddra, stoppa, starta, starta om och ta bort. 
 
 ![App Service-blad på Azure Portal](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
 
-Menyn till vänster innehåller olika sidor för att konfigurera appen. 
+hello vänstra menyn innehåller olika sidor för att konfigurera din app. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

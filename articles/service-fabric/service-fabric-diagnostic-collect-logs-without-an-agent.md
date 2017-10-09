@@ -1,6 +1,6 @@
 ---
-title: "Samla in loggar direkt från en tjänsten Azure Service Fabric-process | Microsoft Azure"
-description: "Beskriver Service Fabric-program kan skicka loggarna direkt till en central plats som Azure Application Insights eller Elasticsearch, utan agent för Azure-diagnostik."
+title: "aaaCollect loggarna direkt från en Azure Service Fabric-tjänsten process | Microsoft Azure"
+description: "Beskriver Service Fabric-program kan skicka loggarna direkt tooa central plats som Azure Application Insights eller Elasticsearch, utan agent för Azure-diagnostik."
 services: service-fabric
 documentationcenter: .net
 author: karolz-ms
@@ -15,63 +15,63 @@ ms.workload: NA
 ms.date: 01/18/2017
 ms.author: karolz
 redirect_url: /azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow
-ms.openlocfilehash: b7d2541928f4248750417a77d99033c8b4354dcc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d0681a2a6aaa76028d7cb469c31c006f24bbe954
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="collect-logs-directly-from-an-azure-service-fabric-service-process"></a>Samla in loggar direkt från en tjänsten Azure Service Fabric-process
 ## <a name="in-process-log-collection"></a>Processen Logginsamling
-Samla in program loggar med [Azure Diagnostics tillägget](service-fabric-diagnostics-how-to-setup-wad.md) är ett bra alternativ för **Azure Service Fabric** tjänster om loggen källor och mål är liten, inte ändras ofta och det finns en enkel mappning mellan källorna och sina mål. Om inte ett alternativ är att tjänster för skicka loggar med deras direkt till en central plats. Den här processen kallas **processen Logginsamling** och har flera potentiella fördelar:
+Samla in program loggar med [Azure Diagnostics tillägget](service-fabric-diagnostics-how-to-setup-wad.md) är ett bra alternativ för **Azure Service Fabric** tjänster om hello uppsättning loggen källor och mål är litet, inte ändras ofta och det är ett enkelt mappning mellan hello källor och sina mål. Om inte ett alternativ är toohave services skicka loggar med deras direkt tooa central plats. Den här processen kallas **processen Logginsamling** och har flera potentiella fördelar:
 
 * *Enkel konfiguration och distribution*
 
-    * Konfigurationen av diagnostikdata samlingen har bara en del av konfigurationen för tjänsten. Det är lätt att alltid synkronisera den ”” med resten av programmet.
+    * hello konfigurationen av diagnostikdata samlingen har bara en del av hello tjänstkonfigurationen. Det är enkelt tooalways behålla det ”synkroniserad” med hello resten av programmet hello.
     * Programspecifika eller per service configuration kan enkelt uppnås.
-        * Agent-baserade Logginsamling kräver vanligtvis en separat distributionen och konfigurationen av diagnostiska agenten som är en extra administrativa uppgifter och en tänkbar orsak till fel. Det är ofta endast en instans av agenten tillåts per virtuell dator (nod) och konfigurationen av delas med alla program och tjänster som körs på noden. 
+        * Agent-baserade Logginsamling kräver vanligtvis en separat distributionen och konfigurationen av hello diagnostikagenten som är en extra administrativa uppgifter och en tänkbar orsak till fel. Det är ofta endast en instans av hello agenten tillåts per virtuell dator (nod) och hello agentkonfiguration delas med alla program och tjänster som körs på noden. 
 
 * *Flexibilitet*
    
-    * Programmet kan skicka data oavsett var den ska, så länge det finns ett klientbiblioteket som stöder måldata lagringssystemet. Nya mål kan läggas till på önskat sätt.
+    * hello-program kan skicka hello data oavsett var den måste toogo, så länge det finns ett klientbiblioteket som stöder hello riktade Datalagringssystemet. Nya mål kan läggas till på önskat sätt.
     * Komplexa capture, filtrering och Datasammanställning regler kan implementeras.
-    * Agent-baserade Logginsamling begränsas ofta av data sänkor som har stöd för agenten. Vissa agenter är extensible.
+    * Agent-baserade Logginsamling begränsas ofta av hello data sänkor som hello har stöd för agenten. Vissa agenter är extensible.
 
-* *Åtkomst till interna programdata och kontext*
+* *Åtkomst toointernal programdata och kontext*
    
-    * Undersystemet diagnostik körs i processen för program/tjänst kan enkelt utöka spårningar med relevant information.
-    * Med agent-baserade Logginsamling måste data skickas till en agent via någon mekanism för kommunikation mellan processer, till exempel händelsespårning för Windows. Den här mekanismen kan införa ytterligare begränsningar.
+    * hello diagnostiska undersystemet körs i processen för hello-program/tjänst kan enkelt utöka hello spårningar med relevant information.
+    * Med agent-baserade Logginsamling måste hello data skickas tooan agent via någon mekanism för kommunikation mellan processer, till exempel händelsespårning för Windows. Den här mekanismen kan införa ytterligare begränsningar.
 
-Det är möjligt att kombinera och dra nytta av båda metoderna för samlingen. Faktiskt kan det vara den bästa lösningen för många program. Agent-baserade samling är en fysisk lösning för att samla in loggar som är relaterade till hela klustret och enskilda klusternoder. Det är mycket mer tillförlitligt sätt än i processen Logginsamling att diagnostisera problem med tjänsten startades och kraschar. Med många tjänster som körs i ett Service Fabric-kluster är det dessutom varje tjänst som gör en egen pågående Logginsamling som resulterar i ett stort antal utgående anslutningar från klustret. Stort antal utgående anslutningar beskatta både för det nätverk och för mål-loggen. En agent som [ **Azure Diagnostics** ](../cloud-services/cloud-services-dotnet-diagnostics.md) kan samla in data från flera tjänster och skicka alla data via några anslutningar, förbättra genomflöde. 
+Det är möjligt toocombine och utnyttja båda metoderna för samlingen. Faktiskt kanske hello bästa lösningen för många program. Agent-baserade samling är en fysisk lösning för att samla in loggar relaterade toohello hela klustret och enskilda klusternoder. Det är mycket mer tillförlitligt sätt än i processen Logginsamling, toodiagnose service startproblem och krascher. Med många tjänster som körs i ett Service Fabric-kluster är det också varje tjänst som gör en egen pågående Logginsamling som resulterar i ett stort antal utgående anslutningar från hello kluster. Stort antal utgående anslutningar beskatta både för hello nätverkets undersystem och hello loggmålet. En agent som [ **Azure Diagnostics** ](../cloud-services/cloud-services-dotnet-diagnostics.md) kan samla in data från flera tjänster och skicka alla data via några anslutningar, förbättra genomflöde. 
 
-I den här artikeln visar vi hur du ställer in en logg i processen samlingen med [ **EventFlow öppen källkod biblioteket**](https://github.com/Azure/diagnostics-eventflow). Andra bibliotek som kan användas för samma ändamål, men EventFlow har fördelen att har utformats speciellt för pågående Logginsamling och för att stödja Service Fabric-tjänster. Vi använder [ **Azure Application Insights** ](https://azure.microsoft.com/services/application-insights/) som mål för loggen. Andra mål som [ **Händelsehubbar** ](https://azure.microsoft.com/services/event-hubs/) eller [ **Elasticsearch** ](https://www.elastic.co/products/elasticsearch) stöds också. Det är bara en fråga av installerar lämpligt NuGet-paket och konfigurerar målet i konfigurationsfilen EventFlow. Läs mer på loggen mål än Application Insights [EventFlow dokumentationen](https://github.com/Azure/diagnostics-eventflow).
+I den här artikeln visar vi hur tooset upp en pågående logga samlingen med [ **EventFlow öppen källkod biblioteket**](https://github.com/Azure/diagnostics-eventflow). Andra bibliotek som kan användas för hello samma syfte, men EventFlow har hello fördelen med har utformats speciellt för pågående loggen samlingen och toosupport Service Fabric-tjänster. Vi använder [ **Azure Application Insights** ](https://azure.microsoft.com/services/application-insights/) som hello loggmålet. Andra mål som [ **Händelsehubbar** ](https://azure.microsoft.com/services/event-hubs/) eller [ **Elasticsearch** ](https://www.elastic.co/products/elasticsearch) stöds också. Det är bara en fråga av installerar lämpligt NuGet-paket och konfigurerar hello mål i konfigurationsfilen för hello EventFlow. Läs mer på loggen mål än Application Insights [EventFlow dokumentationen](https://github.com/Azure/diagnostics-eventflow).
 
-## <a name="adding-eventflow-library-to-a-service-fabric-service-project"></a>Lägger till EventFlow bibliotek i ett projekt för Service Fabric-tjänsten
-EventFlow binärfiler är tillgängliga som en uppsättning NuGet-paket. Om du vill lägga till EventFlow till ett Service Fabric service-projekt, högerklicka på projektet i Solution Explorer och välj ”Hantera NuGet-paket”. Gå till fliken ”Bläddra” och Sök efter ”`Diagnostics.EventFlow`”:
+## <a name="adding-eventflow-library-tooa-service-fabric-service-project"></a>Lägga till EventFlow biblioteket tooa Service Fabric service-projekt
+EventFlow binärfiler är tillgängliga som en uppsättning NuGet-paket. tooadd EventFlow tooa Service Fabric service-projekt, högerklicka på hello-projekt i hello Solution Explorer och välj ”Hantera NuGet-paket”. Växla toohello ”Bläddra” fliken och Sök efter ”`Diagnostics.EventFlow`”:
 
 ![EventFlow NuGet-paket i Visual Studio-NuGet-Pakethanteraren UI][1]
 
-Tjänsten värd för EventFlow bör inkludera paket beroende på käll- och mål för programloggarna. Lägg till följande paket: 
+hello-tjänst som är värd EventFlow bör inkludera paket beroende på hello källa och mål för hello programloggar. Lägg till hello följande paket: 
 
 * `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` 
-    * (att samla in data från EventSource tjänstklass och standard EventSources som *Microsoft ServiceFabric Services* och *Microsoft-ServiceFabric-aktörer*)
+    * (toocapture data från hello-EventSource tjänstklassen och standard EventSources som *Microsoft ServiceFabric Services* och *Microsoft-ServiceFabric-aktörer*)
 * `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` 
-    * (vi ska skicka loggar till en Azure Application Insights-resurs)  
+    * (vi toosend hello loggar tooan Azure Application Insights-resurs)  
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric` 
-    * (gör det möjligt för initiering av EventFlow pipeline från Service Fabric tjänstkonfiguration och rapporterar eventuella problem med att skicka diagnostikdata som Service Fabric hälsorapporter)
+    * (aktiverar initieringen av hello EventFlow pipeline från Service Fabric tjänstkonfiguration och rapporterar eventuella problem med att skicka diagnostikdata som Service Fabric hälsorapporter)
 
 > [!NOTE]
-> `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`paketet kräver service-projekt att rikta .NET Framework 4.6 eller senare. Kontrollera att du anger rätt Målversionen av framework i projektegenskaperna innan du installerar det här paketet. 
+> `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`paketet kräver hello service-projekt tootarget .NET Framework 4.6 eller senare. Se till att ange hello lämpliga Målversionen av framework i projektegenskaperna innan du installerar det här paketet. 
 
-När alla paket som är installerade, är nästa steg att konfigurera och aktivera EventFlow i tjänsten.
+När alla hello paket som är installerade, hello nästa steg är tooconfigure och aktivera EventFlow i hello-tjänsten.
 
 ## <a name="configuring-and-enabling-log-collection"></a>Konfigurerar och aktiverar Logginsamling
-EventFlow pipeline, ansvarar för att skicka loggar, skapas från en specifikation som lagras i en konfigurationsfil. `Microsoft.Diagnostics.EventFlow.ServiceFabric`paketet installerar en första EventFlow konfigurationsfil under `PackageRoot\Config` lösningsmapp. Filnamnet är `eventFlowConfig.json`. Den här konfigurationsfilen måste ändras för att samla in data från standardtjänsten `EventSource` klassen och skicka data till Application Insights-tjänsten.
+EventFlow pipeline, ansvarar för att skicka hello loggar har skapats från en specifikation som lagras i en konfigurationsfil. `Microsoft.Diagnostics.EventFlow.ServiceFabric`paketet installerar en första EventFlow konfigurationsfil under `PackageRoot\Config` lösningsmapp. hello-filnamnet är `eventFlowConfig.json`. Den här konfigurationsfilen måste toobe ändrade toocapture data från hello standardtjänsten `EventSource` klassen och skicka data tooApplication Insights-tjänsten.
 
 > [!NOTE]
-> Vi förutsätter att du är bekant med **Azure Application Insights** tjänsten och att du har en Application Insights-resurs som du planerar att använda för att övervaka Service Fabric-tjänsten. Om du behöver mer information, se [skapa Application Insights-resurs](../application-insights/app-insights-create-new-resource.md).
+> Vi förutsätter att du är bekant med **Azure Application Insights** tjänsten och att du har en Application Insights-resurs som du planerar toouse toomonitor Service Fabric-tjänsten. Om du behöver mer information, se [skapa Application Insights-resurs](../application-insights/app-insights-create-new-resource.md).
 
-Öppna den `eventFlowConfig.json` filen i redigeraren och ändra dess innehåll som visas nedan. Se till att ersätta ServiceEventSource namnet och Application Insights instrumentation nyckeln enligt kommentarer. 
+Öppna hello `eventFlowConfig.json` filen i hello-redigeraren och ändra dess innehåll som visas nedan. Se till att tooreplace hello ServiceEventSource namn och Application Insights instrumentation nyckel enligt toocomments. 
 
 ```json
 {
@@ -81,7 +81,7 @@ EventFlow pipeline, ansvarar för att skicka loggar, skapas från en specifikati
       "sources": [
         { "providerName": "Microsoft-ServiceFabric-Services" },
         { "providerName": "Microsoft-ServiceFabric-Actors" },
-        // (replace the following value with your service's ServiceEventSource name)
+        // (replace hello following value with your service's ServiceEventSource name)
         { "providerName": "your-service-EventSource-name" }
       ]
     }
@@ -95,7 +95,7 @@ EventFlow pipeline, ansvarar för att skicka loggar, skapas från en specifikati
   "outputs": [
     {
       "type": "ApplicationInsights",
-      // (replace the following value with your AI resource's instrumentation key)
+      // (replace hello following value with your AI resource's instrumentation key)
       "instrumentationKey": "00000000-0000-0000-0000-000000000000"
     }
   ],
@@ -104,7 +104,7 @@ EventFlow pipeline, ansvarar för att skicka loggar, skapas från en specifikati
 ```
 
 > [!NOTE]
-> Namnet på tjänstens ServiceEventSource är värdet för egenskapen Name för den `EventSourceAttribute` tillämpas på ServiceEventSource-klass. Det har angetts i den `ServiceEventSource.cs` fil som är en del av kod. Till exempel i följande kodavsnitt i ServiceEventSource heter *mitt företag-Application1-Stateless1*:
+> hello tjänstens ServiceEventSource heter hello värdet för hello namnegenskapen i hello `EventSourceAttribute` tillämpas toohello ServiceEventSource klass. Det har angetts i hello `ServiceEventSource.cs` fil som är en del av hello service-kod. Till exempel i hello följande kodfragment hello hello ServiceEventSource heter *mitt företag-Application1-Stateless1*:
 > ```csharp
 > [EventSource(Name = "MyCompany-Application1-Stateless1")]
 > internal sealed class ServiceEventSource : EventSource
@@ -113,9 +113,9 @@ EventFlow pipeline, ansvarar för att skicka loggar, skapas från en specifikati
 >} 
 > ```
 
-Observera att `eventFlowConfig.json` filen är en del av tjänsten konfigurationspaket. Ändringar i den här filen kan ingå i fullständig eller configuration-endast uppgraderingar av tjänsten, omfattas Service Fabric-uppgradera hälsokontroller och automatisk återställning om uppgraderingen skulle misslyckas. Mer information finns i [uppgradering av Service Fabric-programmet](service-fabric-application-upgrade.md).
+Observera att `eventFlowConfig.json` filen är en del av tjänsten konfigurationspaket. Ändringar toothis filen kan ingå i fullständig eller configuration-endast uppgraderingar av hello service, ämne tooService Fabric uppgradera hälsokontroller och automatisk återställning om uppgraderingen skulle misslyckas. Mer information finns i [uppgradering av Service Fabric-programmet](service-fabric-application-upgrade.md).
 
-Det sista steget är att skapa en instans av EventFlow pipeline i din tjänst startkoden finns i `Program.cs` fil. I följande exempel EventFlow-relaterade tillägg markeras med kommentarer som börjar med `****`:
+hello sista steget är tooinstantiate EventFlow pipeline i din tjänst startkoden finns i `Program.cs` fil. Följande exempel EventFlow-relaterade tillägg markeras med kommentarer från och med i hello `****`:
 
 ```csharp
 using System;
@@ -132,7 +132,7 @@ namespace Stateless1
     internal static class Program
     {
         /// <summary>
-        /// This is the entry point of the service host process.
+        /// This is hello entry point of hello service host process.
         /// </summary>
         private static void Main()
         {
@@ -161,10 +161,10 @@ namespace Stateless1
 }
 ```
 
-Namnet som angavs som parameter för den `CreatePipeline` metod för den `ServiceFabricDiagnosticsPipelineFactory` är namnet på den *hälsa entiteten* som representerar EventFlow loggen samling pipeline. Det här namnet används om EventFlow påträffar och felmeddelandet och rapporter via undersystemet health Service Fabric.
+hello namn angavs som parameter. hello av hello `CreatePipeline` metod för hello `ServiceFabricDiagnosticsPipelineFactory` är hello namnet på hello *hälsa entiteten* som representerar hello EventFlow loggen samling pipeline. Det här namnet används om EventFlow påträffar och felmeddelandet och rapporter via hello Service Fabric hälsa undersystemet.
 
 ## <a name="verification"></a>Verifieringen
-Starta tjänsten och notera att felsöka utdatafönstret i Visual Studio. När tjänsten har startats borde du se bevis att din tjänst skickar ”Application Insights Telemetry” poster. Öppna en webbläsare och gå gå till Application Insights-resurs. Öppna fliken ”Sök” (överst på standardbladet ”Overview”). Efter en kort fördröjning borde du se dina spår i Application Insights-portalen:
+Starta tjänsten och notera hello Debug utdatafönstret i Visual Studio. När hello-tjänsten har startats borde du se bevis att din tjänst skickar ”Application Insights Telemetry” poster. Öppna en webbläsare och gå gå tooyour Application Insights-resurs. Öppna fliken ”Sök” (överst hello i hello standardbladet ”Overview”). Efter en kort fördröjning borde du se dina spår i hello Application Insights-portalen:
 
 ![Application Insights-portalen visar loggar från ett Service Fabric-program][2]
 

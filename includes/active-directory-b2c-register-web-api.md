@@ -1,21 +1,21 @@
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 
-Du registrerar ditt webb-API med hjälp av inställningarna i tabellen.
+tooregister ditt webb-API, Använd hello inställningarna i hello tabell.
 
 ![Exempel på registreringsinställningar för nytt webb-api](./media/active-directory-b2c-register-web-api/b2c-new-web-api-settings.png)
 
 | Inställning      | Exempelvärde  | Beskrivning                                        |
 | ------------ | ------- | -------------------------------------------------- |
-| **Namn** | Contoso B2C-API | Ange ett **namn** som beskriver API:t för konsumenterna. | 
+| **Namn** | Contoso B2C-API | Ange en **namn** för hello-programmet som beskriver ditt API-tooconsumers. | 
 | **Ta med webbapp/webb-API** | Ja | Välj **Ja** om det är ett webb-API. |
 | **Tillåt implicit flöde** | Ja | Välj **Ja** om [OpenID Connect-inloggning](../articles/active-directory-b2c/active-directory-b2c-reference-oidc.md) används för programmet |
 | **Svarswebbadress** | `https://localhost:44316/` | Svarswebbadresser är slutpunkter där Azure AD B2C returnerar de token som programmet begär. Ange [en korrekt](../articles/active-directory-b2c/active-directory-b2c-app-registration.md#choosing-a-web-app-or-api-reply-url) **svarswebbadress**. I det här exemplet är ditt webb-API lokalt och lyssnar på port 44316. |
-| **URI för app-id** | api | URI för app-id är identifieraren som används för ditt webb-API. Den fullständiga URI-identifieraren inklusive domänen skapas åt dig. |
+| **URI för app-id** | api | hello App-ID URI är hello-identifierare som används för ditt webb-API. Hej fullständiga identifieraren URI inklusive hello domän genereras. |
 
-Klicka på **Skapa** för att registrera ditt program.
+Klicka på **skapa** tooregister ditt program.
 
-Ditt nyligen registrerade program visas i programlistan för B2C-klientorganisationen. Välj webb-API i listan. API:ets egenskapsruta visas.
+Nyligen registrerade programmet visas i listan med program hello för hello B2C-klient. Välj ditt webb-API hello-listan. hello API: er visas egenskapen.
 
 ![Egenskaper för webb-API](./media/active-directory-b2c-register-web-api/b2c-web-api-properties.png)
 
-Anteckna det globala unika id:t **Programklients-id**. Använd det här id:t i programkoden.
+Anteckna hello globalt unik **klient-ID för programmet**. Du kan använda hello-ID i din programkod.

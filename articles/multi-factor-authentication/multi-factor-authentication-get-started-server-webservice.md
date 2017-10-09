@@ -1,6 +1,6 @@
 ---
-title: "Azure MFA Server-mobilappwebbtjänst | Microsoft Docs"
-description: "Microsoft Authenticator-appen erbjuder ytterligare ett autentiseringsalternativ utanför IP-nätverket.  Med det här alternativet kan MFA-servern skicka push-meddelanden till användarna."
+title: "aaaAzure MFA-Server-Mobilappwebbtjänsten | Microsoft Docs"
+description: "hello Microsoft Authenticator-appen finns ett alternativ för ytterligare out-of-band-autentisering.  Det gör hello MFA server toouse push-meddelanden toousers."
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
@@ -15,90 +15,90 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: alexwe
 ms.custom: it-pro
-ms.openlocfilehash: bf758d1241f2a56eba4d5c92ace713d6e563df65
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4175b68fcbf85ec3fd53d8edf4e07306c75a4c71
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>Aktivera mobilappautentisering och Azure Multi-Factor Authentication Server
 
-Microsoft Authenticator-appen erbjuder ytterligare ett verifieringsalternativ utanför IP-nätverket. I stället för att ringa ett automatiserat telefonsamtal eller skicka ett SMS till användaren vid inloggningen skickar Azure Multi-Factor Authentication ett meddelande till Microsoft Authentication-appen på användarens smartphone eller surfplatta. Användaren trycker bara på **Autentisera** (eller anger en PIN-kod och trycker på ”Autentisera”) i appen för att slutföra deras inloggning.
+hello Microsoft Authenticator-appen finns ett alternativ för ytterligare out-of-band-verifiering. I stället för att placera en automatiserad telefonsamtal eller SMS toohello användare under inloggningen skickar Azure Multi-Factor Authentication en avisering toohello Microsoft Authenticator-appen på hello användarens smartphone eller surfplatta. hello användaren klickar helt enkelt **Kontrollera** (eller anger en PIN-kod och klickar på ”verifiera”) i hello app toocomplete sina inloggning.
 
-Att använda en mobilapp för tvåstegsverifiering rekommenderas när mobilmottagningen är opålitlig. Om du använder appen som en OATH-tokengenerator behövs ingen nätverks- eller internetanslutning.
+Att använda en mobilapp för tvåstegsverifiering rekommenderas när mobilmottagningen är opålitlig. Om du använder hello appen som en OATH-token generator behöver inte alla nätverk eller internet-anslutning.
 
-Beroende på din miljö kan du distribuera mobilappwebbtjänsten på samma server som Azure Multi-Factor Authentication-servern eller på en annan Internet-ansluten server.
+Beroende på din miljö kan du vill toodeploy hello mobilappwebbtjänsten på hello samma server som Azure Multi-Factor Authentication-servern eller på en annan mot internet-server.
 
 ## <a name="requirements"></a>Krav
 
-För att du ska kunna använda Microsoft Authenticator-appen krävs följande så att appen kan kommunicera med mobilappwebbtjänsten:
+toouse hello Microsoft Authenticator-appen hello följande krävs så att hello app kan kommunicera med Mobilappwebbtjänsten:
 
 * Azure Multi-Factor Authentication Server version 6.0 eller senare
 * Installera mobilappwebbtjänsten på en Internetuppkopplad webbserver som kör Microsoft® [Internet Information Services (IIS) IIS 7.x eller senare](http://www.iis.net/)
-* ASP.NET v4.0.30319 har installerats, registrerats och är inställt på Tillåts
+* ASP.NET v4.0.30319 är installerat, registrerats och ange tooAllowed
 * Rolltjänsterna ASP.NET och IIS 6 Metabase-kompatibilitet krävs.
 * Mobilappwebbtjänsten kan nås via en offentlig URL
 * Mobilappwebbtjänsten skyddas av ett SSL-certifikat.
-* Installera webbtjänst-SDK för Azure Multi-Factor Authentication på IIS 7.x eller senare på **samma server som Azure Multi-Factor Authentication-servern** är installerad på
-* Webbtjänst-SDK för Azure Multi-Factor Authentication skyddas med ett SSL-certifikat.
-* Mobilappwebbtjänsten kan ansluta till webbtjänst-SDK för Azure Multi-Factor Authentication via SSL
-* Mobilappwebbtjänsten kan autentisera till webbtjänst-SDK för Azure MFA med autentiseringsuppgifterna för ett tjänstkonto som är medlem i säkerhetsgruppen ”PhoneFactor Admins”. Tjänstkontot och gruppen finns i Active Directory om Azure Multi-Factor Authentication-servern finns på en domänansluten server. Det här tjänstkontot och gruppen finns lokalt på Azure Multi-Factor Authentication-servern om den inte är ansluten till en domän.
+* Installera hello Azure Multi-Factor Authentication webbtjänst-SDK på IIS 7.x eller senare på hello **samma server som hello Azure Multi-Factor Authentication-servern**
+* hello Azure Multi-Factor Authentication webbtjänst-SDK är skyddad med ett SSL-certifikat.
+* Mobilappwebbtjänsten kan ansluta toohello Azure Multi-Factor Authentication webbtjänst-SDK via SSL
+* Mobilappwebbtjänsten kan autentisera toohello Azure MFA webbtjänst-SDK med hjälp av hello autentiseringsuppgifterna för ett konto som är medlem i säkerhetsgruppen för hello ”PhoneFactor Admins”. Det här kontot och gruppen finns i Active Directory om hello Azure Multi-Factor Authentication-servern finns på en domänansluten server. Det här kontot och gruppen finns lokalt på hello Azure Multi-Factor Authentication-servern om den inte är domänansluten tooa domän.
 
-## <a name="install-the-mobile-app-web-service"></a>Installera webbtjänsten Mobile App
+## <a name="install-hello-mobile-app-web-service"></a>Installera hello mobilappwebbtjänsten
 
-Tänk på följande uppgifter innan du installerar mobilappwebbtjänsten:
+Innan du installerar hello mobilappwebbtjänsten bör du vara medveten om hello följande information:
 
-* Du behöver ett tjänstkonto som är en del av gruppen "PhoneFactor Admins". Kontot kan vara detsamma som det du använde för att installera användarportalen.
-* Det kan vara bra att öppna en webbläsare på den Internetuppkopplade webbservern och gå till URL:en för webbtjänst-SDK som har angetts i web.config-filen. Om webbläsaren kan ansluta till webbtjänsten bör du uppmanas att ange dina autentiseringsuppgifter. Ange användarnamnet och lösenordet som har angetts i web.config-filen exakt som de visas i filen. Se till att inga certifikatvarningar eller fel visas.
-* Om det finns en omvänd proxy eller brandvägg framför webbservern för mobilappwebbtjänsten som utför SSL-avlastning kan du redigera filen web.config för mobilappwebbtjänsten så att mobilappwebbtjänsten kan använda http i stället för https. SSL krävs fortfarande från Mobile App till brandväggen/den omvända proxyn. Lägg till följande nyckel i avsnittet \<appSettings\>:
+* Du behöver ett tjänstkonto som är en del av gruppen "PhoneFactor Admins". Det här kontot kan vara samma som hello en användas för installationen av hello Användarportalen hello.
+* Det är bra tooopen en webbläsare på webbservern för hello mot Internet och navigera toohello URL för hello webbtjänst-SDK som angavs i hello web.config-filen. Om hello webbläsare kan få toohello webbtjänsten, fråga den du efter autentiseringsuppgifter. Ange hello användarnamn och lösenord som har infogats i hello web.config-filen exakt som det visas i hello-filen. Se till att inga certifikatvarningar eller fel visas.
+* Om en omvänd proxy eller brandvägg är placerad framför hello Mobilappwebbtjänsten webbservern och utför SSL-avlastning, kan du redigera hello Mobilappwebbtjänsten web.config-filen så att hello Mobilappwebbtjänsten kan använda http i stället för https. SSL krävs fortfarande från hello Mobilapp toohello brandvägg/omvänd proxy. Lägg till följande nyckel toohello hello \<appSettings\> avsnitt:
 
         <add key="SSL_REQUIRED" value="false"/>
 
-### <a name="install-the-web-service-sdk"></a>Installera webbtjänst-SDK
+### <a name="install-hello-web-service-sdk"></a>Installera webbtjänsten för hello SDK
 
-Om webbtjänst-SDK för Azure Multi-Factor Authentication **inte** redan är installerat på Azure Multi-Factor Authentication-servern (MFA) slutför du stegen nedan för båda scenarierna.
+I båda fallen om hello är Azure Multi-Factor Authentication webbtjänst-SDK **inte** redan installerat på hello Azure Multi-Factor Authentication (MFA)-Server är klar hello steg som följer.
 
-1. Öppna Multi-Factor Authentication-serverkonsolen.
-2. Gå till **Webbtjänst-SDK** och välj **Installera Webbtjänst-SDK:n**.
-3. Slutför installationen med hjälp av standardinställningarna om du inte behöver ändra dem av någon anledning.
-4. Binda ett SSL-certifikat till webbplatsen i IIS.
+1. Öppna konsolen för hello Multi-Factor Authentication-servern.
+2. Gå toohello **webbtjänst-SDK** och välj **installera webbtjänst-SDK**.
+3. Fullständig hello installera hello standardvärden om du inte behöver toochange dem av någon anledning.
+4. Binda ett SSL-certifikat toohello webbplats i IIS.
 
-Om du har frågor om att konfigurera ett SSL-certifikat på en IIS-server kan du läsa artikeln [How to Set Up SSL on IIS](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Konfigurera SSL på IIS).
+Om du har frågor om hur du konfigurerar ett SSL-certifikat på en IIS-server finns i artikeln hello [hur tooSet in SSL på IIS](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
-Webbtjänst-SDK måste skyddas med ett SSL-certifikat. Ett självsignerat certifikat är lämpligt för detta ändamål. Importera certifikatet till arkivet ”Betrodda rotcertifikatutfärdare” för det lokala datorkontot på webbservern för användarportalen så att certifikatet blir betrott när SSL-anslutningen initieras.
+hello webbtjänst-SDK måste skyddas med ett SSL-certifikat. Ett självsignerat certifikat är lämpligt för detta ändamål. Importera hello certifikat till hello ”betrodda rotcertifikatutfärdare” Arkiv för hello lokalt datorkonto på hello Användarportalen webbserver så att den litar på certifikatet när du initierar hello SSL-anslutning.
 
 ![MFA-serverkonfiguration för webbtjänst-SDK](./media/multi-factor-authentication-get-started-server-webservice/sdk.png)
 
-### <a name="install-the-service"></a>Installera tjänsten
+### <a name="install-hello-service"></a>Installera hello-tjänsten
 
-1. **På MFA-servern** bläddrar du till installationssökvägen.
-2. Gå till mappen där Azure MFA-servern är installerad, vilket brukar vara **C:\Program\Azure Multi-Factor Authentication**.
-3. Leta upp installationsfilen **MultiFactorAuthenticationMobileAppWebServiceSetup64**. Om servern **inte** är Internet-ansluten kopierar du installationsfilen till den Internetuppkopplade servern.
-4. Om MFA-servern **inte** är Internet-ansluten byter du till den **Internet-anslutna servern**.
-5. Kör installationsfilen **MultiFactorAuthenticationMobileAppWebServiceSetup64** som administratör, ändra platsen om du vill och ändra namnet på den virtuella katalogen till ett kort namn om du så önskar.
-6. När installationen har slutförts bläddrar du till **C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService** (eller relevant katalog beroende på namnet på den virtuella katalogen) och redigerarWeb.Config-filen.
+1. **På hello MFA-Server**, bläddra toohello installationssökväg.
+2. Navigera toohello mappen där hello Azure MFA-Server är installerat hello standard är **Files\Azure C:\Program Multifaktorautentisering**.
+3. Hitta installationsfilen hello **MultiFactorAuthenticationMobileAppWebServiceSetup64**. Om servern hello **inte** mot Internet, kopiera hello installation toohello mot Internet filserver.
+4. Om hello MFA-servern är **inte** mot internet-växeln toohello **internet-riktade servern**.
+5. Kör hello **MultiFactorAuthenticationMobileAppWebServiceSetup64** installera filen som en administratör, ändra hello plats om du vill och ändra hello virtuella katalogen tooa kort namn om du vill ha.
+6. Efter färdigställa hello installation bläddrar för**C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService** (eller lämplig directory baserat på hello katalognamnet) och redigera hello Web.Config-filen.
 
-   * Leta rätt på nycklarna **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** och ändra **värde=""** till **värde="DOMAIN\User"** där DOMAIN\User är ett tjänstkonto som är en del av gruppen "PhoneFactor Admins".
-   * Leta reda på nyckeln **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** och ändra **värde=""** till **värde="Password"** där Password är lösenordet för tjänstkontot som angavs på föregående rad.
-   * Leta reda på inställningen **pfMobile App Web Service_pfwssdk_PfWsSdk** och ändra värdet från **http://localhost:4898/PfWsSdk.asmx** till webbtjänstens SDK-URL (exempel: https://mfa.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx).
-   * Spara filen Web.Config och stäng Anteckningar.
+   * Hitta hello nyckel **”WEB_SERVICE_SDK_AUTHENTICATION_USERNAME”** och ändra **värde = ””** för**värde = ”domän\användare”** där domän\användare är ett konto som är en del av Gruppen ”PhoneFactor Admins”.
+   * Hitta hello nyckel **”WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD”** och ändra **värde = ””** för**värde = ”Password”** där lösenordet är hello lösenord för hello Service Kontot som angetts i hello föregående rad.
+   * Hitta hello **pfMobile App Web Service_pfwssdk_PfWsSdk** inställningen och ändra hello-värde från **http://localhost:4898/PfWsSdk.asmx** toohello webbtjänst-SDK URL (exempel: https://mfa.contoso.com/ MultiFactorAuthWebServiceSdk/PfWsSdk.asmx).
+   * Spara hello Web.Config-filen och stäng Anteckningar.
 
    > [!NOTE]
-   > Eftersom SSL används för den här anslutningen måste du referera till webbtjänst-SDK:n med **ett fullständigt kvalificerat domännamn (FQDN)** och **inte IP-adressen**. SSL-certifikatet skulle ha utfärdats för det fullständiga domännamnen och den URL som används måste matcha namnet på certifikatet.
+   > Eftersom SSL används för den här anslutningen måste du referera hello webbtjänst-SDK med **fullständigt kvalificerade domännamnet (FQDN)** och **inte IP-adress**. hello SSL-certifikatet skulle ha utfärdats hello FQDN och hello URL som används måste matcha hello namnet på hello certifikatet.
 
-7. Om webbplatsen som mobilappwebbtjänsten installerades under inte redan har knutits till ett offentligt signerat certifikat installerar du certifikatet på servern, öppnar IIS-hanteraren och knyter certifikatet till webbplatsen.
-8. Öppna en webbläsare från en dator och gå till URL:en där mobilappswebbtjänsten installerades (t.ex. https://mfa.contoso.com/MultiFactorAuthMobileAppWebService). Se till att inga certifikatvarningar eller fel visas.
+7. Om hello-webbplats som Mobilappwebbtjänsten installerades under inte har redan bundits med ett offentligt signerat certifikat, installera hello certifikat på hello servern, öppna IIS-hanteraren och binda hello certifikat toohello webbplats.
+8. Öppna en webbläsare från valfri dator och navigera toohello URL där Mobilappwebbtjänsten har installerats (exempel: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService). Se till att inga certifikatvarningar eller fel visas.
 
-## <a name="configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>Konfigurera Mobile App-inställningarna i Azure Multi-Factor Authentication Server
+## <a name="configure-hello-mobile-app-settings-in-hello-azure-multi-factor-authentication-server"></a>Konfigurera inställningarna för hello mobilappar i hello Azure Multi-Factor Authentication-servern
 
-Nu när Mobile App-webbtjänsten är installerad måste du konfigurera Azure Multi-Factor Authentication Server så att den fungerar med portalen.
+Nu när hello mobilappwebbtjänsten installeras, måste tooconfigure hello Azure Multi-Factor Authentication-servern toowork med hello-portalen.
 
-1. I Multi-Factor Authentication-servern klickar du på ikonen Användarportal. Om användarna ska kunna styra sina autentiseringsmetoder markerar du **Mobilapp** under **Tillåt användare att välja metod** på fliken Inställningar. Om den här funktionen inte är aktiverad måste slutanvändarna kontakta din supportavdelning för att slutföra aktiveringen av mobilappen.
-2. Markera kryssrutan **Tillåt användare att aktivera mobilapp**.
-3. Markera kryssrutan **Tillåt användarregistrering**.
-4. Klicka på ikonen för **Mobilapp**.
-5. Ange URL:en som används med den virtuella katalog som skapades när MultiFactorAuthenticationMobileAppWebServiceSetup64 installerades (exempel: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService/) i fältet **URL för mobilappwebbtjänsten:**.
-6. Fyll i fältet **Kontonamn** med företagets eller organisationens namn som ska visas i kontots mobilapp.
+1. Hello Multi-Factor Authentication-konsolen, klicka på ikonen för hello Användarportalen. Om användare tillåts toocontrol sina autentiseringsmetoder, kontrollera **Mobilapp** på fliken Inställningar hello under **användarna tooselect metoden**. Utan den här funktionen är aktiverad slutanvändarna är obligatoriska toocontact supportavdelningen toocomplete aktiveringen för hello Mobilapp.
+2. Kontrollera hello **Tillåt användare tooactivate Mobilapp** rutan.
+3. Kontrollera hello **Tillåt användarregistrering** rutan.
+4. Klicka på hello **Mobilapp** ikon.
+5. Ange hello-URL som används med hello virtuell katalog som skapades när du installerar MultiFactorAuthenticationMobileAppWebServiceSetup64 (exempel: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService/) i fältet hello  **Mobila URL för Mobilappwebbtjänsten:**.
+6. Fylla hello **kontonamn** med toodisplay för hello-företaget eller organisationen namn i hello mobila program för det här kontot.
    ![MFA-serverkonfiguration för mobilappinställningar](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)
 
 ## <a name="next-steps"></a>Nästa steg

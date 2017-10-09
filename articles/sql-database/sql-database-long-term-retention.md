@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL Database säkerhetskopieringar för upp till 10 år | Microsoft Docs"
-description: "Lär dig hur Azure SQL Database stöder lagra säkerhetskopior för upp till 10 år."
+title: "aaaStore Azure SQL Database säkerhetskopieringar för too10 år | Microsoft Docs"
+description: "Lär dig hur Azure SQL Database stöder lagra säkerhetskopior för too10 år."
 keywords: 
 services: sql-database
 documentationcenter: 
@@ -16,119 +16,119 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/22/2016
 ms.author: sashan
-ms.openlocfilehash: 25e651203f804fbf32d632b5f83145a3f3f72a7f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5825ebd4e3bd66b59b13aea603d377ef814a1df3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL Database säkerhetskopieringar för upp till 10 år
-Många program har regelverk, kompatibilitet eller andra företag syfte som kräver att du behåller databassäkerhetskopieringar utöver de 7-35 dagar som tillhandahålls av Azure SQL Database [automatiska säkerhetskopieringar](sql-database-automated-backups.md). Med hjälp av funktionen för långsiktig lagring av säkerhetskopior kan du lagra säkerhetskopiorna SQL-databasen i ett Azure Recovery Services-valv i upp till 10 år. Du kan lagra upp till 1 000 databaser per valvet. Du kan sedan välja någon säkerhetskopia i valvet för att återställa den som en ny databas.
+# <a name="store-azure-sql-database-backups-for-up-too10-years"></a>Säkerhetskopieringar Azure SQL Database för too10 år
+Många program har regelverk, kompatibilitet eller andra företag syfte som kräver att du tooretain databassäkerhetskopieringar utöver hello 7-35 dagar som tillhandahålls av Azure SQL Database [automatiska säkerhetskopieringar](sql-database-automated-backups.md). Med funktionen hello långsiktig lagring av säkerhetskopior kan lagra du säkerhetskopiorna SQL-databasen i ett Azure Recovery Services-valv för too10 år. Du kan lagra upp too1 000 databaser per valvet. Du kan sedan välja någon säkerhetskopia i hello valvet toorestore den som en ny databas.
 
 > [!IMPORTANT]
-> Långsiktig lagring av säkerhetskopior är för närvarande under förhandsgranskning och tillgänglig inom följande områden: östra, Australien, sydost, södra, centrala USA, östra Asien, östra USA, östra USA 2, centrala Indien, södra Indien, östra, västra Japan, norra centrala USA, Nordeuropa, södra centrala USA, Sydostasien, västra Europa, och västra USA.
+> Långsiktig lagring av säkerhetskopior är för närvarande under förhandsgranskning och finns tillgänglig i hello följande områden: Östra Australien, sydost, södra, centrala USA, östra Asien, östra USA, östra USA 2, centrala Indien, södra Indien, östra, västra Japan, norra centrala USA, Nord Europa, södra centrala USA, Sydostasien, västra Europa och västra USA.
 >
 
 > [!NOTE]
-> Du kan aktivera upp till 200 databaser per valvet under en 24-timmarsperiod. Vi rekommenderar att du använder ett separat valv för varje server för att minimera effekten av den här gränsen. 
+> Du kan aktivera in too200 databaser per valvet under en 24-timmarsperiod. Vi rekommenderar att du använder ett separat valv för varje server toominimize hello effekten av den här gränsen. 
 > 
 
 ## <a name="how-sql-database-long-term-backup-retention-works"></a>Så här fungerar SQL Database långsiktig lagring av säkerhetskopior.
 
 Du kan associera en SQL-databasserver med långsiktig säkerhetskopiering kvarhållning med Azure Recovery Services-valvet. 
 
-* Du måste skapa valvet i samma Azure-prenumerationen som skapats av SQLServer och i samma geografiska region och resursgruppen. 
-* Sedan kan du konfigurera en bevarandeprincip för alla databaser. Principen gör veckovisa fullständiga databassäkerhetskopieringar som ska kopieras till Recovery Services-valvet och bevaras under den angivna bevarandeperioden (upp till 10 år). 
-* Du kan sedan återställa databasen från någon av dessa säkerhetskopieringar till en ny databas i någon server i prenumerationen. Azure storage skapar en kopia av befintliga säkerhetskopior och kopian påverkar inte prestanda på den befintliga databasen.
+* Måste du skapa hello valvet i hello samma Azure-prenumeration som skapade hello SQLServer och hello i samma geografiska region och resurs-grupp. 
+* Sedan kan du konfigurera en bevarandeprincip för alla databaser. hello princip orsaker hello veckovisa fullständiga databasen säkerhetskopieringar toobe kopieras toohello Recovery Services-valvet och bevaras under hello angivna kvarhållningsperiod (upp too10 år). 
+* Du kan sedan återställa hello databasen från någon av dessa säkerhetskopieringar tooa ny databas i någon server i hello prenumeration. Azure storage skapar en kopia av befintliga säkerhetskopior och hello kopiera påverkar inte prestanda hello befintlig databas.
 
 > [!TIP]
-> Instruktioner, se [konfigurera och återställning från Azure SQL Database långsiktig lagring av säkerhetskopior](sql-database-long-term-backup-retention-configure.md).
+> En hur tooguide finns [konfigurera och återställning från Azure SQL Database långsiktig lagring av säkerhetskopior](sql-database-long-term-backup-retention-configure.md).
 
 ## <a name="enable-long-term-backup-retention"></a>Aktivera långsiktig lagring av säkerhetskopior.
 
-Konfigurera långsiktig lagring av säkerhetskopior för en databas:
+tooconfigure långsiktig lagring av säkerhetskopior för en databas:
 
-1. Skapa ett Azure Recovery Services-valv som din SQL database-server i samma region, prenumeration och resursgrupp. 
-2. Registrera servern i valvet.
+1. Skapa ett Azure Recovery Services-valv i hello samma region, prenumeration och resurs grupp som SQL-databasservern. 
+2. Registrera hello server toohello valvet.
 3. Skapa en princip för Azure Recovery Services-skydd.
-4. Gäller protection-principen för de databaser som kräver långsiktig säkerhetskopiering kvarhållning.
+4. Tillämpa hello skydd princip toohello databaser som kräver långsiktig säkerhetskopiering kvarhållning.
 
-Om du vill konfigurera, hantera och återställa en databas från långsiktig säkerhetskopiering kvarhållning av automatiska säkerhetskopieringar i ett Azure Recovery Services-valv, gör du något av följande:
+tooconfigure, hantera, och återställa en databas från långsiktig säkerhetskopiering kvarhållning av automatiska säkerhetskopieringar i ett Azure Recovery Services-valv, gör du något av följande hello:
 
-* Med hjälp av Azure portal: Klicka på **långsiktig lagring av säkerhetskopior**, väljer du en databas och klicka sedan på **konfigurera**. 
+* Med hjälp av hello Azure-portalen: Klicka på **långsiktig lagring av säkerhetskopior**, väljer du en databas och klicka sedan på **konfigurera**. 
 
    ![Välj en databas för långsiktig lagring av säkerhetskopior.](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
 
-* Med hjälp av PowerShell: Gå till [konfigurera och återställning från Azure SQL Database långsiktig lagring av säkerhetskopior](sql-database-long-term-backup-retention-configure.md).
+* Med hjälp av PowerShell: Gå för[konfigurera och återställning från Azure SQL Database långsiktig lagring av säkerhetskopior](sql-database-long-term-backup-retention-configure.md).
 
-## <a name="restore-a-database-thats-stored-with-the-long-term-backup-retention-feature"></a>Återställa en databas som lagras med funktionen för långsiktig lagring av säkerhetskopior.
+## <a name="restore-a-database-thats-stored-with-hello-long-term-backup-retention-feature"></a>Återställa en databas som lagras med hello funktionen för långsiktig lagring av säkerhetskopior.
 
-För att återställa från en säkerhetskopia för långsiktig lagring av säkerhetskopior.:
+toorecover från en säkerhetskopia för långsiktig lagring av säkerhetskopior.:
 
-1. Lista över valvet där säkerhetskopian lagras.
-2. Lista över behållare som är mappad till din logiska server.
-3. Lista över datakälla i valvet som är mappad till din databas.
-4. Lista över de återställningspunkter som är tillgängliga för återställning.
-5. Återställ databasen från återställningspunkten till servern i din prenumeration.
+1. Lista hello valvet där hello säkerhetskopian lagras.
+2. Lista hello behållare som är mappade tooyour logiska server.
+3. Lista hello datakälla inom hello valvet som är mappade tooyour databas.
+4. Lista hello Återställningspunkter som är tillgängliga toorestore.
+5. Återställa hello databas från återställning hello punkt toohello målservern i din prenumeration.
 
-Om du vill konfigurera, hantera och återställa en databas från långsiktig säkerhetskopiering kvarhållning av automatiska säkerhetskopieringar i ett Azure Recovery Services-valv, gör du något av följande:
+tooconfigure, hantera, och återställa en databas från långsiktig säkerhetskopiering kvarhållning av automatiska säkerhetskopieringar i ett Azure Recovery Services-valv, gör du något av följande hello:
 
-* Med hjälp av Azure portal: Gå till [hantera långsiktig lagring av säkerhetskopior med Azure-portalen](sql-database-long-term-backup-retention-configure.md). 
+* Med hjälp av hello Azure-portalen: gå för[hantera långsiktig lagring av säkerhetskopior med hello Azure-portalen](sql-database-long-term-backup-retention-configure.md). 
 
-* Med hjälp av PowerShell: Gå till [hantera långsiktig lagring av säkerhetskopior med hjälp av PowerShell](sql-database-long-term-backup-retention-configure.md).
+* Med hjälp av PowerShell: Gå för[hantera långsiktig lagring av säkerhetskopior med hjälp av PowerShell](sql-database-long-term-backup-retention-configure.md).
 
 ## <a name="get-pricing-for-long-term-backup-retention"></a>Hämta priser för långsiktig lagring av säkerhetskopior.
 
-Långsiktig säkerhetskopiering kvarhållning av en SQL-databas debiteras enligt den [Azure-säkerhetskopiering tjänster priser priser](https://azure.microsoft.com/pricing/details/backup/).
+Långsiktig säkerhetskopiering kvarhållning av en SQL-databas debiteras enligt toohello [Azure-säkerhetskopiering tjänster priser priser](https://azure.microsoft.com/pricing/details/backup/).
 
-När SQL-databasservern är registrerad för valvet, debiteras du för det totala lagringsutrymmet som används av de veckovisa säkerhetskopiorna som lagras i valvet.
+När hello SQL database-server är registrerad toohello valvet, debiteras du för hello totalt lagringsutrymme som används av hello veckovisa säkerhetskopior lagras i hello-valvet.
 
 ## <a name="view-available-backups-that-are-stored-in-long-term-backup-retention"></a>Visa tillgängliga säkerhetskopior som lagras i långsiktig lagring av säkerhetskopior.
 
-Om du vill konfigurera, hantera och återställa en databas från långsiktig säkerhetskopiering kvarhållning av automatiska säkerhetskopieringar i ett Azure Recovery Services-valv med hjälp av Azure portal, gör du något av följande:
+tooconfigure, hantera, och återställa en databas från långsiktig säkerhetskopiering kvarhållning av automatisk säkerhetskopiering i Azure Recovery Services-valvet via hello Azure-portalen, gör du något av följande hello:
 
-* Med hjälp av Azure portal: Gå till [hantera långsiktig lagring av säkerhetskopior med Azure-portalen](sql-database-long-term-backup-retention-configure.md). 
+* Med hjälp av hello Azure-portalen: gå för[hantera långsiktig lagring av säkerhetskopior med hello Azure-portalen](sql-database-long-term-backup-retention-configure.md). 
 
-* Med hjälp av PowerShell: Gå till [hantera långsiktig lagring av säkerhetskopior med hjälp av PowerShell](sql-database-long-term-backup-retention-configure.md).
+* Med hjälp av PowerShell: Gå för[hantera långsiktig lagring av säkerhetskopior med hjälp av PowerShell](sql-database-long-term-backup-retention-configure.md).
 
 ## <a name="disable-long-term-retention"></a>Inaktivera långsiktig kvarhållning
 
-Tjänsten recovery hanterar automatiskt rensning av säkerhetskopior baserat på den angivna bevarandeprincipen. 
+hello återställningstjänsten hanterar automatiskt hello rensning av säkerhetskopieringar utifrån hello tillhandahålls bevarandeprincip. 
 
-Ta bort bevarandeprincip för den här databasen om du vill sluta skicka säkerhetskopieringar för en viss databas till valvet.
+toostop skicka hello säkerhetskopieringar för en viss databas toohello valvet, ta bort hello bevarandeprincip för den här databasen.
   
 ```
 Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName 'RG1' -ServerName 'Server1' -DatabaseName 'DB1' -State 'Disabled' -ResourceId $policy.Id
 ```
 
 > [!NOTE]
-> Säkerhetskopieringar som redan finns i valvet påverkas inte. De tas bort automatiskt av återställningstjänsten när deras kvarhållningsperiod upphör att gälla.
+> hello säkerhetskopieringar som redan finns i hello valvet påverkas inte. De tas bort automatiskt av hello recovery-tjänsten när deras kvarhållningsperiod upphör att gälla.
 
 ## <a name="long-term-backup-retention-faq"></a>Långsiktig lagring av säkerhetskopior vanliga frågor och svar
 
-**Kan jag manuellt ta bort specifika säkerhetskopior i valvet?**
+**Kan jag manuellt ta bort specifika säkerhetskopior i hello valvet?**
 
-För närvarande inte. Valvet rensas automatiskt säkerhetskopior när kvarhållningsperioden har gått ut.
+För närvarande inte. hello valvet rensas automatiskt säkerhetskopior när hello kvarhållningsperiod har upphört att gälla.
 
-**Kan jag registrera Min server för att lagra säkerhetskopior till flera valv?**
+**Kan jag registrera Min server toostore säkerhetskopieringar toomore än en valvet?**
 
-Nej, du kan för närvarande säkerhetskopieringar till endast en valvet i taget.
+Nej, kan du för närvarande lagra säkerhetskopior tooonly ett valv i taget.
 
 **Kan jag ha ett valv och server för olika prenumerationer?**
 
-Nej, för närvarande på valvet och servern måste vara i samma prenumeration och resursgrupp.
+Nej, för närvarande hello valvet och servern måste inneha hello samma prenumeration och resurs-grupp.
 
 **Kan jag använda ett valv som skapats i en region som skiljer sig från Min server region?**
 
-Nej, valvet och servern måste vara i samma region för att minimera kopiera tid och undvika avgifterna för trafiken.
+Nej, hello valvet och servern måste vara i hello samma region toominimize kopiera tid och undvika trafik debiteringar.
 
 **Hur många databaser kan lagra i ett valv?**
 
-Vi stöder för närvarande upp till 1 000 databaser per valvet. 
+Vi stöder för närvarande in too1 000 databaser per valvet. 
 
 **Hur många valv kan skapa per prenumeration?**
 
-Du kan skapa upp till 25 valv per prenumeration.
+Du kan skapa upp too25 valv per prenumeration.
 
 **Hur många databaser kan konfigurera per dag per valvet?**
 
@@ -136,33 +136,33 @@ Du kan ställa in 200 databaser per dag per valvet.
 
 **Fungerar långsiktig lagring av säkerhetskopior med elastiska pooler?**
 
-Ja. Alla databaser i poolen kan konfigureras med bevarandeprincipen.
+Ja. Alla databaser i poolen hello kan konfigureras med hello bevarandeprincip.
 
-**Kan jag välja den tid då säkerhetskopian skapades?**
+**Kan jag välja hello tid då hello säkerhetskopian?**
 
-Nej, SQL-databas kontrollerar schemat för säkerhetskopiering för att minimera påverkan på prestandan för dina databaser.
+Nej, SQL-databas kontrollerar hello Säkerhetskopieringsschemat toominimize hello inverkan på prestanda på dina databaser.
 
-**Jag har transparent datakryptering är aktiverat för databasen. Kan jag använda den med valvet?** 
+**Jag har transparent datakryptering är aktiverat för databasen. Kan jag använda den med hello valvet?** 
 
-Ja, transparent datakryptering stöds. Du kan återställa databasen från valvet, även om den ursprungliga databasen finns inte längre.
+Ja, transparent datakryptering stöds. Du kan återställa hello databasen från hello valvet även om hello ursprungliga databasen finns inte längre.
 
-**Vad händer med säkerhetskopieringar i valvet om min prenumeration har inaktiverats?** 
+**Vad händer med hello säkerhetskopieringar i hello valvet om min prenumeration har inaktiverats?** 
 
-Om din prenumeration har inaktiverats behålla det befintliga databaser och säkerhetskopieringar. Nya säkerhetskopior kopieras inte till valvet. När du återaktivera prenumerationen återupptas tjänsten kopiera säkerhetskopiering till valvet. Ditt valv blir tillgänglig för återställningsåtgärder med hjälp av säkerhetskopior som har kopierats det innan prenumerationen pausades. 
+Om din prenumeration har inaktiverats behålla vi hello befintliga databaser och säkerhetskopieringar. Nya säkerhetskopior är inte kopierade toohello valvet. När du återaktivera hello prenumeration återupptas hello service kopiera säkerhetskopieringar toohello valvet. Ditt valv blir tillgänglig toohello återställningsåtgärder med hjälp av hello säkerhetskopior som har kopierats det innan hello prenumeration pausades. 
 
-**Kan jag få åtkomst till SQL-databasfilerna säkerhetskopiering så att jag kan hämta eller återställa dem till SQLServer?**
+**Kan jag få åtkomst till toohello SQL-databasens säkerhetskopierade filer så att jag kan hämta eller återställa dem toohello SQLServer?**
 
 Nej, inte för närvarande.
 
-**Är det möjligt att ha flera scheman (varje dag, vecka, månad, varje år) i en SQL-bevarandeprincip.**
+**Är det möjligt toohave flera schemalägger (varje dag, varje vecka, månad, varje år) i en SQL-bevarandeprincip.**
 
 Ingen, flera scheman är endast tillgänglig för säkerhetskopiering för virtuella datorer.
 
 **Vad händer om vi konfigurerar långsiktig lagring av säkerhetskopior för en databas som är en databasdagar för sekundär aktiv geo-replikering?**
 
-Eftersom vi inte göra säkerhetskopior på repliker, finns det inget alternativ för långsiktig lagring av säkerhetskopior på sekundära databaser. Det är dock viktigt för användare att ställa in långsiktig lagring av säkerhetskopior på en databasdagar för sekundär aktiv geo-replikering av följande skäl:
-* När en växling sker och databasen blir en primär databas, tar vi en fullständig säkerhetskopiering, som har överförts till valvet.
-* Det kostar ingenting extra till kunden för att ställa in långsiktig lagring av säkerhetskopior på en sekundär databas.
+Eftersom vi inte göra säkerhetskopior på repliker, finns det inget alternativ för långsiktig lagring av säkerhetskopior på sekundära databaser. Men är det viktigt för användare tooset upp långsiktig lagring av säkerhetskopior på en databasdagar för sekundär aktiv geo-replikering för följande:
+* När en växling sker och hello databasen blir en primär databas, tar vi en fullständig säkerhetskopiering, vilket är överförda toovault.
+* Det finns inga extra kostnad toohello kund för att ställa in långsiktig lagring av säkerhetskopior på en sekundär databas.
 
 ## <a name="next-steps"></a>Nästa steg
-Eftersom databassäkerhetskopieringar skydda data från oavsiktliga skador eller tas bort, är de en viktig del av alla affärskontinuitet och haveriberedskap. Mer information om de andra SQL-databas kontinuitet för företag-lösningarna, se [översikt över verksamhetskontinuitet](sql-database-business-continuity.md).
+Eftersom databassäkerhetskopieringar skydda data från oavsiktliga skador eller tas bort, är de en viktig del av alla affärskontinuitet och haveriberedskap. toolearn om Hej andra SQL-databas kontinuitet för företag-lösningar, se [översikt över verksamhetskontinuitet](sql-database-business-continuity.md).

@@ -1,6 +1,6 @@
 ---
-title: "StorSimple lokalt fästa volymer vanliga frågor och svar | Microsoft Docs"
-description: "Innehåller svar på vanliga frågor om lokalt Fäst StorSimple-volymer."
+title: "aaaStorSimple lokalt fästa volymer vanliga frågor och svar | Microsoft Docs"
+description: "Ger svar toofrequently och frågor om StorSimple lokalt fästa volymer."
 services: storsimple
 documentationcenter: NA
 author: manuaery
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/11/2017
 ms.author: manuaery
-ms.openlocfilehash: 22eb95bf0e3a20893acbb860ad10cfe6a3bcf088
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6a0c742acea836c2b960cb604e4010bcb08c3169
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple lokalt fästa volymer: vanliga frågor (FAQ)
 ## <a name="overview"></a>Översikt
-Följande är frågor och svar som kan uppstå när du skapar en StorSimple lokalt Fäst volym, konvertera en nivåindelad volym till en lokalt Fäst volym (och vice versa), eller säkerhetskopiera och återställa en lokalt Fäst volym.
+hello följande är frågor och svar som kan uppstå när du skapar en StorSimple lokalt Fäst volym, konvertera en nivåindelad volym tooa lokalt Fäst volym (och vice versa), eller säkerhetskopiera och återställa en lokalt Fäst volym.
 
-Frågor och svar ordnas i följande kategorier
+Frågor och svar är ordnade i följande kategorier hello
 
 * Skapa en lokalt Fäst volym
 * Säkerhetskopiera en lokalt Fäst
-* Konvertera en nivåindelad volym till en lokalt Fäst volym
+* Konverterar en nivåindelad volym tooa lokalt Fäst volym
 * Återställa en lokalt Fäst volym
 * En lokalt Fäst volym inte körs
 
 ## <a name="questions-about-creating-a-locally-pinned-volume"></a>Frågor om hur du skapar en lokalt Fäst volym
-**F.** Vad är den maximala storleken för en lokalt Fäst volym som jag kan skapa på 8000-serien enheter?
+**F.** Vad är hello maximal storlek för en lokalt Fäst volym som jag kan skapa på hello 8000-serien enheter?
 
-**En** på enheter som kör StorSimple 8000 Series uppdatering 3.0 kan du etablera lokalt fästa volymer upp till 8.5 TB, eller nivåindelade volymer upp till 200 TB på 8100-enheten. På den större 8600-enheten kan du etablera lokalt fästa volymer upp till 22,5 TB, eller nivåindelade volymer upp till 500 TB.    
-På enheter som kör StorSimple 8000 uppdatering 2.x kan du etablera lokalt fästa volymer upp till 8 TB, eller nivåindelade volymer upp till 200 TB på 8100-enheten. På den större 8600-enheten, kan du etablera lokalt fästa volymer upp till 20 TB, eller nivåindelade volymer på upp till 500 TB.   
+**En** på enheter som kör StorSimple 8000 Series uppdatering 3.0 kan du etablera lokalt fästa volymer upp too8.5 TB, eller nivåindelade volymer upp too200 TB på 8100 hello-enhet. Du kan etablera lokalt fästa volymer upp too22.5 TB, eller nivåindelade volymer upp too500 TB på hello större 8600-enheten.    
+På enheter som kör StorSimple 8000 uppdatering 2.x kan du etablera lokalt fästa volymer upp too8 TB, eller nivåindelade volymer upp too200 TB på hello 8100-enhet. Du kan etablera lokalt fästa volymer upp too20 TB, eller nivåindelade volymer upp too500 TB på hello större 8600-enheten.   
 
-**F.** Jag har nyligen uppgraderat 8100-enhet till Update 2.0 och när jag försöker skapa en lokalt Fäst volym tillgängliga maxstorleken är endast 6 TB och inte 8 TB. Varför kan jag skapa en volym på 8 TB?
+**F.** Jag har nyligen uppgraderat min 8100-enhet tooUpdate 2.0 och när jag försöker toocreate en lokalt Fäst volym hello tillgängliga maxstorleken är endast 6 TB och inte 8 TB. Varför kan jag skapa en volym på 8 TB?
 
-**En** om enheten kör uppdatering 2.0, kan du etablera lokalt fästa volymer upp till 8 TB, eller nivåindelade volymer upp till 200 TB på 8100-enheten. Om enheten redan har nivåindelade volymer och diskutrymme för att skapa att en lokalt Fäst volym proportionerligt lägre än den här maxgränsen. Till exempel om 100 TB nivåindelade volymer har redan etablerats på din 8100-enhet (som är hälften av nivåindelade kapacitet), reduceras sedan den maximala storleken för en lokal volym som du kan skapa på 8100-enhet på motsvarande sätt till 4 TB (ungefär hälften av maxi MUM lokalt Fäst volymkapacitet).
+**En** om enheten kör uppdatering 2.0, du kan etablera lokalt fästa volymer upp too8 TB eller nivåindelade volymer upp too200 TB på hello 8100-enhet. Om enheten redan har nivåindelade volymer att hello diskutrymme för att skapa en lokalt Fäst volym vara proportionerligt lägre än den här maxgränsen. Om exempelvis 100 TB nivåindelade volymer har redan etablerats på din 8100-enhet (vilket är hälften av hello skikt kapacitet), och sedan hello maximal storlek för en lokal volym som du kan skapa på hello 8100-enhet kommer att motsvarande förminskad too4 TB (ungefär hälften av hello maximalt lokalt Fäst volymkapacitet).
 
-Eftersom vissa lokalt utrymme på enheten för att hålla arbetsuppsättningen med nivåindelade volymer kan reduceras det tillgängliga utrymmet för att skapa en lokalt Fäst volym om enheten har nivåindelade volymer. Däremot minskar skapa en lokalt Fäst volym proportionerligt det tillgängliga utrymmet för nivåindelade volymer. Följande tabeller sammanfattar nivåindelade tillgänglig kapacitet på 8100 och 8600-enheter när lokalt fästa volymer skapas.
+Eftersom vissa lokalt utrymme på enheten hello används toohost hello arbetsminne nivåindelade volymer, minskas hello tillgängligt utrymme för att skapa en lokalt Fäst volym om hello enheten har nivåindelade volymer. Däremot minskar skapa en lokalt Fäst volym proportionerligt hello tillgängligt utrymme för nivåindelade volymer. hello följande tabeller sammanfattar hello tillgänglig nivåindelade kapacitet på hello 8100 och 8600-enheter när lokalt fästa volymer skapas.
 
 ####<a name="update-30"></a>Uppdatera 3.0 
-| Lokalt fästa volymer etablerad kapacitet | Tillgänglig kapacitet som ska etableras för nivåindelade volymer - 8100 | Tillgänglig kapacitet som ska etableras för nivåindelade volymer - 8600 |
+| Lokalt fästa volymer etablerad kapacitet | Tillgänglig kapacitet toobe försetts nivåindelade volymer - 8100 | Tillgänglig kapacitet toobe försetts nivåindelade volymer - 8600 |
 | --- | --- | --- |
 | 0 |200 TB |500 TB |
 | 1 TB |176.5 TB |477.8 TB |
@@ -56,7 +56,7 @@ Eftersom vissa lokalt utrymme på enheten för att hålla arbetsuppsättningen m
 | 22,5 TB |Ej tillämpligt |0 TB |
 
 ####<a name="update-2x"></a>Uppdatera 2.x  
- | Lokalt fästa volymer etablerad kapacitet | Tillgänglig kapacitet som ska etableras för nivåindelade volymer - 8100 | Tillgänglig kapacitet som ska etableras för nivåindelade volymer - 8600 |  
+ | Lokalt fästa volymer etablerad kapacitet | Tillgänglig kapacitet toobe försetts nivåindelade volymer - 8100 | Tillgänglig kapacitet toobe försetts nivåindelade volymer - 8600 |  
  | --- | --- | --- |  
  | 0 |200 TB |500 TB |  
  | 1 TB |25 TB |475 TB |  
@@ -68,150 +68,150 @@ Eftersom vissa lokalt utrymme på enheten för att hålla arbetsuppsättningen m
 
 **F.** Varför är lokalt Fäst volym skapas en långvarig åtgärd? 
 
-**S.** Lokalt fästa volymer etableras tjockt, vilket. För att skapa utrymme på de lokala nivåerna för enheten, kan vissa data från befintliga nivåindelade volymer flyttas till molnet under etableringen. Och eftersom detta beror på storleken på den volym som håller på att etableras, befintliga data på enheten och den tillgängliga bandbredden till molnet och den tid det tar att skapa en lokal volym vara flera timmar.
+**S.** Lokalt fästa volymer etableras tjockt, vilket. toocreate utrymme på Hej lokala nivåerna för hello enhet, vissa data från befintliga nivåindelade volymer kan pushas toohello molnet under hello etableringsprocessen. Och eftersom detta beror på hello volym håller på att etableras, hello befintliga data på enheten och hello bandbredd toohello molnet hello storlek, hello åtgången toocreate en lokal volym kanske flera timmar.
 
-**F.** Hur lång tid tar det för att skapa en lokalt Fäst volym?
+**F.** Hur lång tid tar det toocreate en lokalt Fäst volym?
 
-**S.** Eftersom lokalt fästa volymer etableras tjockt, vilket, kan vissa befintliga data från nivåindelade volymer pushas till molnet under etableringen. Den tid det tar att skapa en lokalt Fäst volym är därför beroende av flera faktorer, bland annat paketets storlek på volymen, data på enheten och den tillgängliga bandbredden. Tid för att skapa en lokalt Fäst volym är cirka 10 minuter per terabyte data på en nyligen installerade enhet som har inga volymer. Dock kan lokala volymer ta flera timmar beroende på faktorer som beskrivs ovan på en enhet som används.
+**S.** Eftersom lokalt fästa volymer etableras tjockt, vilket, att vissa befintliga data från nivåindelade volymer pushas toohello molnet under hello etableringsprocessen. Därför hello tidsåtgång toocreate en lokalt Fäst volym beror på flera faktorer, bland annat hello storlek hello volym hello data på enheten och hello tillgänglig bandbredd. Hello tid toocreate en lokalt Fäst volym är cirka 10 minuter per terabyte data på en nyligen installerade enhet som har inga volymer. Dock kan lokala volymer ta flera timmar beroende på hello faktorer som beskrivs ovan på en enhet som används.
 
-**F.** Jag vill skapa en lokalt Fäst volym. Finns det några metodtips som jag behöver vara medveten om?
+**F.** Jag vill toocreate en lokalt Fäst volym. Finns det några metodtips som jag behöver toobe medveten om?
 
-**S.** Lokalt fästa volymer är lämpliga för arbetsbelastningar som kräver lokala garantier data vid alla tidpunkter och är känsligt för molnet svarstiderna. När du överväger användning av lokala volymer för någon av dina arbetsbelastningar, Tänk på följande:
+**S.** Lokalt fästa volymer är lämpliga för arbetsbelastningar som kräver lokala garantier data hela tiden och är känsliga toocloud svarstider. När du överväger användning av lokala volymer för någon av dina arbetsbelastningar, Tänk på följande hello:
 
-* Lokalt fästa volymer etableras tjockt, vilket och skapa lokala volymer påverkar det tillgängliga utrymmet för nivåindelade volymer. Därför kan rekommenderar vi att du börjar med mindre volymer och skala upp när din lagring krav ökar.
-* Etablering av lokala volymer är en tidskrävande process som kan handla om push-överföring av befintliga data från nivåindelade volymer till molnet. Därför kan det uppstå nedsatt prestanda på volymerna.
-* Etablering av lokala volymer är en tidskrävande åtgärd. Den faktiska tiden som är beroende av flera faktorer: storleken på volymen som håller på att etableras, data på din enhet och tillgänglig bandbredd. Om du inte har säkerhetskopierat dina befintliga volymer till molnet är volymer skapas långsammare. Vi rekommenderar att du skapa molnögonblicksbilder av din befintliga volymer innan du etablerar en lokal volym.
-* Du kan konvertera befintliga nivåindelade volymer till lokalt fästa volymer och konverteringen innefattar etablering av utrymme på enheten för den resulterande lokalt Fäst volymen (förutom att stänga av nivåindelade data [eventuella] från molnet). Igen, det här är en tidskrävande process som beror på faktorer som vi nämnt ovan. Vi rekommenderar att du säkerhetskopierar dina befintliga volymer innan konvertering som processen kommer att även långsammare om befintliga volymer inte som säkerhetskopieras. Enheten kan även uppstå nedsatt prestanda under den här processen.
+* Lokalt fästa volymer etableras tjockt, vilket och skapa lokala volymer påverkar hello tillgängligt utrymme för nivåindelade volymer. Därför kan rekommenderar vi att du börjar med mindre volymer och skala upp när din lagring krav ökar.
+* Etablering av lokala volymer är en tidskrävande åtgärd som kan handla om push-överföring av befintliga data från nivåindelade volymer toohello molnet. Därför kan det uppstå nedsatt prestanda på volymerna.
+* Etablering av lokala volymer är en tidskrävande åtgärd. hello faktiska tiden som är beroende av flera faktorer: hello storleken på hello volym håller på att etableras, data på din enhet och tillgänglig bandbredd. Om du inte har säkerhetskopierat dina befintliga volymer toohello molnet är volymer skapas långsammare. Vi rekommenderar att du skapa molnögonblicksbilder av din befintliga volymer innan du etablerar en lokal volym.
+* Du kan konvertera befintliga nivåindelade volymer toolocally Fäst volymer och konverteringen innefattar etablering av utrymme på hello enhet för hello resulterande lokalt Fäst volym (i tillägg toobringing nivåindelade data [eventuella] från hello moln). Igen, det här är en tidskrävande process som beror på faktorer som vi nämnt ovan. Vi rekommenderar att du säkerhetskopierar din befintliga volymer tidigare tooconversion som hello processen kommer att även långsammare om befintliga volymer inte som säkerhetskopieras. Enheten kan även uppstå nedsatt prestanda under den här processen.
 
-Mer information om hur du [skapar en lokalt Fäst volym](storsimple-manage-volumes-u2.md#add-a-volume)
+Mer information om hur för[skapar en lokalt Fäst volym](storsimple-manage-volumes-u2.md#add-a-volume)
 
-**F.** Kan jag skapa flera lokalt fästa volymer på samma gång?
+**F.** Kan jag skapa flera lokalt fästa volymer på hello samtidigt?
 
 **S.** Ja, men alla lokalt Fäst volym skapande och utvidgning jobb tur och ordning.
 
-Lokalt fästa volymer etableras tjockt, vilket vilket kräver skapandet av lokalt utrymme på enheten (vilket kan resultera i befintliga data från nivåindelade volymer att flyttas till molnet under etableringen). Därför om en Etableringsjobbet pågår andra jobb för skapande av lokal volym placeras i kö tills jobbet har slutförts.
+Lokalt fästa volymer etableras tjockt, vilket vilket kräver skapandet av lokalt utrymme på hello-enhet (vilket kan resultera i befintliga data från nivåindelade volymer toobe pushas toohello molnet under etableringsprocessen hello). Därför om en Etableringsjobbet pågår andra jobb för skapande av lokal volym placeras i kö tills jobbet har slutförts.
 
-På liknande sätt, om en befintlig lokal volym utökas eller en nivåindelad volym konverteras till en lokalt Fäst volym, sedan att skapa en ny lokalt Fäst volym placeras i kö tills det tidigare jobbet har slutförts. Utöka storleken på en lokalt Fäst volym omfattar ökning av det befintliga lokala utrymmet för den volymen. Konverteringen från en skiktad lokalt Fäst volym omfattar också skapandet av lokalt utrymme för det resulterande lokalt Fäst volym. I båda dessa åtgärder, skapas eller expandering av lokalt utrymme lång körs jobbet.
+På liknande sätt, om en befintlig lokal volym utökas eller en nivåindelad volym konverteras tooa lokalt Fäst volym och hello skapandet av en ny lokalt Fäst volym är i kö tills hello tidigare jobbet har slutförts. Expandera hello storleken på en lokalt Fäst volym omfattar hello expansion hello befintliga lokala utrymme för den volymen. Konverteringen från en skiktad toolocally Fäst volym omfattar också hello skapandet av lokalt utrymme för hello resulterande lokalt Fäst volym. I båda dessa åtgärder, skapas eller expandering av lokalt utrymme lång körs jobbet.
 
-Du kan visa dessa jobb i den **jobb** sidan i Azure StorSimple Manager-tjänsten. Jobb som bearbetas aktivt uppdateras kontinuerligt förloppet för etablering av utrymme. De återstående lokalt Fäst volym jobb är markerad som körs, men framstegen har stoppats och de plockats i den ordning som de har ställts i kö.
+Du kan visa dessa jobb i hello **jobb** sidan hello Azure StorSimple Manager-tjänsten. hello jobbet som bearbetas aktivt är kontinuerligt uppdateras tooreflect hello förloppet för etablering av utrymme. hello återstående lokalt Fäst volym jobb är markerad som körs, men framstegen har stoppats och de plockats i hello ordning som de har ställts i kö.
 
-**F.** Jag har tagit bort en lokalt Fäst volym. Varför ser jag återvunnet utrymme som visas i det tillgängliga utrymmet när jag försöker skapa en ny volym? 
+**F.** Jag har tagit bort en lokalt Fäst volym. Varför ser jag hello frigöras utrymme återspeglas i hello tillgängligt utrymme när jag försöker toocreate en ny volym? 
 
-**S.** Om du tar bort en lokalt Fäst volym kan det tillgängliga utrymmet för nya volymer inte uppdateras omedelbart. StorSimple Manager-tjänsten uppdaterar lokalt tillgängligt utrymme cirka varje timme. Vi rekommenderar att du väntar en timme innan du försöker skapa den nya volymen.
+**S.** Om du tar bort en lokalt Fäst volym uppdateras hello diskutrymme för nya volymer inte omedelbart. Hej StorSimple Manager-tjänsten uppdaterar hello lokalt tillgängligt utrymme cirka varje timme. Vi rekommenderar att du väntar en timme innan du försöker toocreate hello ny volym.
 
-**F.** Stöds lokalt fästa volymer på molnet-enhet?
+**F.** Stöds lokalt fästa volymer på hello moln-enhet?
 
-**S.** Lokalt fästa volymer stöds inte på molnet-enhet (8010 och 8020 enheter samlingsnamnet virtuell StorSimple-enhet).
+**S.** Lokalt fästa volymer stöds inte på hello moln-enhet (8010 och 8020 enheter tidigare hänvisade tooas hello virtuell StorSimple-enhet).
 
-**F.** Kan jag använda Azure PowerShell-cmdlets för att skapa och hantera lokalt fästa volymer? 
+**F.** Kan jag använda hello Azure PowerShell-cmdlets toocreate och hantera lokalt fästa volymer? 
 
-**S.** Nej, du kan inte skapa lokalt fästa volymer via Azure PowerShell-cmdlets (alla volymer som du skapar via Azure PowerShell skikt). Vi rekommenderar också att du inte använder Azure PowerShell-cmdlets för att ändra några egenskaper för en lokalt Fäst volym, eftersom det skulle ha områdena leda till att volymtypen till nivåindelade.
+**S.** Nej, du kan inte skapa lokalt fästa volymer via Azure PowerShell-cmdlets (alla volymer som du skapar via Azure PowerShell skikt). Även föreslår vi att du inte använder hello Azure PowerShell-cmdlets toomodify alla egenskaper för en lokalt Fäst volym när den har hello områdena leda till att hello volym typen tootiered.
 
 ## <a name="questions-about-backing-up-a-locally-pinned-volume"></a>Frågor om hur du säkerhetskopierar en lokalt Fäst volym
 **F.** Finns lokala ögonblicksbilder av lokalt fästa volymer stöds?
 
-**S.** Ja, kan du skapa lokala ögonblicksbilder av din lokalt fästa volymer. Men rekommenderar vi starkt att du regelbundet säkerhetskopierar din lokalt fästa volymer med molnögonblicksbilder så att dina data skyddas i fall av en katastrofåterställning.
+**S.** Ja, kan du skapa lokala ögonblicksbilder av din lokalt fästa volymer. Men rekommenderar vi starkt att du regelbundet säkerhetskopierar din lokalt fästa volymer med molnet ögonblicksbilder tooensure som dina data skyddas i hello situation för en katastrofåterställning.
 
 **F.** Finns det några riktlinjer för att hantera lokala ögonblicksbilder för lokalt fästa volymer?
 
-**S.** Ofta lokala ögonblicksbilder tillsammans med en hög andel dataomsättningen i lokalt Fäst volym kan orsaka lokalt utrymme på enheten för att förbrukas snabbt och resultera i att data från nivåindelade volymer som läggs till molnet. Vi rekommenderar därför att du minimerar antalet lokala ögonblicksbilder.
+**S.** Frekventa lokala ögonblicksbilder tillsammans med en hög andel dataomsättningen i hello lokalt Fäst volym kan orsaka lokalt utrymme på hello enheten toobe förbrukas snabbt och resultera i att data från nivåindelade volymer som pushas toohello moln. Vi rekommenderar därför att du minimera hello antal lokala ögonblicksbilder.
 
 **F.** Jag har fått en varning om att min lokala ögonblicksbilder av lokalt fästa volymer kan vara ogiltiga. När kan detta inträffa?
 
-**S.** Ofta lokala ögonblicksbilder tillsammans med en hög andel dataomsättningen i lokalt Fäst volym kan orsaka lokalt utrymme på enheten som ska konsumeras snabbt. Om de lokala nivåerna på enheten används kraftigt utökat molnet avbrott leda till enheten blir fulla och inkommande skrivning till volymen kan resultera i ogiltigförklarade ögonblicksbilder (eftersom det finns inget utrymme för att uppdatera ögonblicksbilder att referera till de äldre datablock som har skrivits över). I en sådan situation skrivning till volymen kommer att fortsätta hanteras, men de lokala ögonblicksbilderna kan vara ogiltig. Det finns ingen inverkan på din befintliga molnögonblicksbilder.
+**S.** Frekventa lokala ögonblicksbilder tillsammans med en hög andel dataomsättningen i hello lokalt Fäst volym orsaka lokalt utrymme på hello enheten toobe förbrukas snabbt. Om kraftigt hello lokala nivåerna för hello enheten används ett avbrott för utökade molnet kan resultera i hello enheten blir fulla och inkommande skrivningar toohello volymen kan resultera i ogiltigförklaring av hello ögonblicksbilder (eftersom inget utrymme finns tooupdate hello ögonblicksbilder toorefer toohello äldre datablock som har skrivits över). I sådana en situation hello fortsätter skrivningar toohello volym toobe hanteras, men hello lokala ögonblicksbilder kan vara ogiltig. Det finns ingen inverkan tooyour befintliga molnögonblicksbilder.
 
-Varning varning är att meddela dig om att en sådan situation kan uppstå och kontrollerar du adress som är samma inom rimlig tid genom att granska din lokala ögonblicksbilder scheman för att ta mindre ofta lokala ögonblicksbilder eller ta bort äldre lokala ögonblicksbilder som inte längre behövs.
+hello varning varning är toonotify du att en sådan situation kan uppstå och se till att du lösa hello samma inom rimlig tid genom att granska din lokala ögonblicksbilder schemalägger tootake mindre ofta lokala ögonblicksbilder eller ta bort äldre lokala ögonblicksbilder som inte längre krävs.
 
-Om lokala ögonblicksbilder är ogiltiga får du en avisering för information som får ett meddelande om att de lokala ögonblicksbilderna för den specifika säkerhetskopieringsprincipen har ogiltigförklarats tillsammans med listan över tidsstämplar lokala ögonblicksbilder upphävdes. Dessa ögonblicksbilder tas automatiskt bort och du kommer inte längre att kunna se dem i den **säkerhetskopiering kataloger** sida i den klassiska Azure-portalen.
+Om hello lokala ögonblicksbilder är ogiltiga får du en avisering för information som får ett meddelande om att hello lokala ögonblicksbilder för hello specifika säkerhetskopieringsprincip har ogiltigförklarats tillsammans med hello lista över tidsstämplar hello lokala ögonblicksbilder upphävdes. Dessa ögonblicksbilder tas automatiskt bort och du kommer inte längre att kunna tooview dem i hello **säkerhetskopiering kataloger** sida i hello klassiska Azure-portalen.
 
-## <a name="questions-about-converting-a-tiered-volume-to-a-locally-pinned-volume"></a>Frågor om hur du konverterar en nivåindelad volym till en lokalt Fäst volym
-**F.** Jag sett vissa långsamt arbete på enheten vid konvertering av en nivåindelad volym till en lokalt Fäst volym. Varför är det fortfarande händer? 
+## <a name="questions-about-converting-a-tiered-volume-tooa-locally-pinned-volume"></a>Frågor om hur du konverterar en nivåindelad volym tooa lokalt Fäst volym
+**F.** Jag sett vissa långsamt arbete på hello enhet vid konvertering av en nivåindelad volym tooa lokalt Fäst volym. Varför är det fortfarande händer? 
 
-**S.** Processen består av två steg: 
+**S.** hello konverteringsprocessen omfattar två steg: 
 
-1. Etablering av utrymme på enheten för den snart-till--konverteras lokalt Fäst volym.
-2. Hämtar alla nivåindelade data från molnet så lokala garanterar.
+1. Etablering av utrymme på hello enhet för hello Fäst snart-till--konverteras lokalt volym.
+2. Hämtar alla nivåindelade data från hello molnet tooensure lokala garanterar.
 
-Båda stegen är långa kör åtgärder som är beroende på storleken på volymen som konverteras data på enheten och tillgänglig bandbredd. Eftersom vissa data från befintliga nivåindelade volymer kan läcker över till molnet som en del av etableringen, kan enheten uppleva nedsatt prestanda under denna tid. Dessutom kan processen kan ta längre tid om:
+Båda stegen är långa kör åtgärder som är beroende av hello storleken på hello volym som konverteras data på enheten hello och tillgänglig bandbredd. Eftersom vissa data från befintliga nivåindelade volymer kan läcker över toohello moln som en del av hello etableringsprocessen, enheten kan det uppstå nedsatt prestanda under denna tid. Dessutom hello processen kan ta längre tid om:
 
-* Befintliga volymer har inte säkerhetskopierats till moln; så vi rekommenderar att du säkerhetskopierar dina volymer innan du påbörjar en konvertering.
-* Bandbredd bandbreddsbegränsning principer har tillämpats, vilket kan begränsa den tillgängliga bandbredden till molnet; Vi rekommenderar därför att du har en dedikerad 40 Mbit/s eller mer anslutning till molnet.
-* Processen kan ta flera timmar beror på flera faktorer som beskrivs ovan. Vi rekommenderar därför att du utför den här åtgärden under icke toppar gånger eller på en helg att undvika effekten på slutet konsumenter.
+* Befintliga volymer har inte säkerhetskopierats toohello moln; så vi rekommenderar att säkerhetskopierar du dina volymer tidigare tooinitiating en konvertering.
+* Bandbredd bandbreddsbegränsning principer har tillämpats, vilket kan begränsa hello bandbredd toohello moln; Vi rekommenderar därför att du har en dedikerad 40 Mbit/s eller mer anslutning toohello moln.
+* hello processen kan ta flera timmar på grund av toohello flera faktorer som beskrivs ovan. Därför föreslår vi att du utför den här åtgärden under icke toppar gånger eller på en helgens tooavoid hello inverkan på slutet konsumenter.
 
-Mer information om hur du [konvertera en nivåindelad volym till en lokalt Fäst volym](storsimple-manage-volumes-u2.md#change-the-volume-type)
+Mer information om hur för[konvertera en nivåindelad volym tooa lokalt Fäst volym](storsimple-manage-volumes-u2.md#change-the-volume-type)
 
-**F.** Kan jag avbryta konvertering volymen?
+**F.** Kan jag avbryta hello volym konvertering?
 
-**S.** Nej, du kan inte Avbryt konvertering initierade en gång. Enligt beskrivningen i föregående fråga Tänk potentiella prestandaproblem som du kan stöta på under processen och följ rekommenderade metoder när du planerar din konvertering i listan ovan.
+**S.** Nej, det går inte att du hello Avbryt hello konvertering initierade en gång. Som beskrivs i hello föregående fråga kan du vara medveten om hello sämre prestanda som du kan stöta på under hello processen och följ hello bästa praxis som anges ovan när du planerar din konvertering.
 
-**F.** Vad händer med min volym om konvertering misslyckas?
+**F.** Vad händer toomy volym om hello konvertering misslyckas?
 
-**S.** Volymen konverteringen kan misslyckas på grund av anslutningsproblem för molnet. Enheten kan slutligen sluta konverteringen efter ett antal misslyckade försök att sätta nivåindelade data från molnet. I ett sådant scenario volymtyp fortsätter att vara volym källtypen innan konverteringen och:
+**S.** Volymen konverteringen kan misslyckas på grund av problem med nätverksanslutningen toocloud. hello enheten slutar slutligen hello konverteringen efter ett antal misslyckade försök toobring nivåindelade data från hello molnet. I ett sådant scenario hello volymtyp fortsätter toobe hello källa volym typen tidigare tooconversion, och:
 
-* En kritisk varning aktiveras för att meddela dig om Konverteringsfel volym. Mer information om [aviseringar relaterade till lokalt fästa volymer](storsimple-manage-alerts.md#locally-pinned-volume-alerts)
-* Om du konverterar en skiktad till en lokalt Fäst volym, fortsätter volymen kan visa egenskaperna för en nivåindelad volym som data kan fortfarande finnas i molnet. Vi rekommenderar att du löser problem med nätverksanslutningen och försök sedan konvertering.
-* Om konvertering från en lokalt Fäst till en nivåindelad volym misslyckas, även om volymen kommer att markeras som en lokalt Fäst volym, fungerar det på samma sätt som en nivåindelad volym (eftersom data kan ha hamnat i molnet). Den fortsätter dock tar upp diskutrymme på de lokala nivåerna för enheten. Här är inte tillgänglig för andra lokalt fästa volymer. Vi rekommenderar att du försöka igen för att säkerställa att volymen konverteringen är klar och kan vara frigöras lokalt utrymme på enheten.
+* En kritisk varning kommer att upphöjt toonotify du hello Konverteringsfel för volymen. Mer information om [aviseringar relaterade toolocally Fäst volymer](storsimple-manage-alerts.md#locally-pinned-volume-alerts)
+* Om du konverterar en skiktad tooa lokalt Fäst volym, fortsätter tooexhibit egenskaperna för en nivåindelad volym hello volymen som data kan fortfarande finnas på hello molnet. Vi rekommenderar att du löser problem med nätverksanslutningen hello och försök sedan hello konvertering.
+* Vid konvertering från en lokalt Fäst tooa nivåer volymen misslyckas, även om hello volymen kommer att markeras som en lokalt Fäst volym, fungerar det på samma sätt som en nivåindelad volym (eftersom data kan ha hamnat toohello moln). Den fortsätter dock toooccupy utrymme på hello lokala nivåerna för hello enhet. Här är inte tillgänglig för andra lokalt fästa volymer. Vi rekommenderar att du gör om den här åtgärden tooensure att hello volym konverteringen har slutförts och hello lokalt utrymme på hello enhet kan vara frigöras.
 
 ## <a name="questions-about-restoring-a-locally-pinned-volume"></a>Frågor om hur du återställer en lokalt Fäst volym
 **F.** Är lokalt fästa volymer återställs direkt?
 
-**S.** Ja, lokalt fästa volymer återställs omedelbart. Så snart som en del av återställningen hämtas metadata-information för volymen från molnet, volymen är online och kan nås av värden. Dock nedsatt lokala garantier för volymen data visas inte förrän alla data som har hämtats från molnet och kan uppstå prestanda på dessa volymer under återställningen.
+**S.** Ja, lokalt fästa volymer återställs omedelbart. Så snart hello metadatainformation för hello volym hämtas från hello moln som en del av återställningen hello, hello volymen är online och kan nås av hello-värden. Dock nedsatt lokala garantier för hello volym data visas inte förrän alla hello data har hämtats från hello molnet och kan uppstå prestanda på dessa volymer för hello varaktighet hello återställning.
 
-**F.** Hur lång tid tar det för att återställa en lokalt Fäst volym?
+**F.** Hur lång tid tar det toorestore en lokalt Fäst volym?
 
-**S.** Lokalt fästa volymer återställs omedelbart och anslutas så snart volyminformation för metadata har hämtats från molnet, medan volymens data fortsätter att hämtas i bakgrunden. Den här senare delen av återställningen--hämta lokala garantier för volymdata--är en tidskrävande åtgärd och kan ta flera timmar för alla data görs lokala igen. Den tid det tar att slutföra samma beror på flera faktorer, till exempel storleken på volymen som återställs och tillgänglig bandbredd. Om den ursprungliga volymen som återställs har tagits bort, tas extra tid att skapa lokala utrymme på enheten som en del av återställningen.
+**S.** Lokalt fästa volymer återställs omedelbart och anslutas så snart hello volyminformation metadata hämtas från hello molnet, medan hello volymdata fortsätter toobe hämtas i bakgrunden för hello. Den här senare delen av hello återställningen--hämta hello lokala garantier för hello volymdata--är en tidskrävande åtgärd och kan ta flera timmar för alla hello data toobe gjorde lokala igen. hello tidsåtgång toocomplete hello samma beror på flera faktorer, till exempel hello storleken på hello volym återställs och hello tillgänglig bandbredd. Om hello ursprungliga volymen återställs har tagits bort, tas extra tid toocreate hello lokalt utrymme på hello enhet som en del av hello återställningen igen.
 
-**F.** Jag behöver återställa mitt befintliga lokalt Fäst volym till en tidigare ögonblicksbild (tas när volymen har nivåer). Volymen återställs som nivåer i det här fallet?
+**F.** Jag behöver toorestore Mina befintliga lokalt Fäst volym tooan äldre ögonblicksbild (tas när hello volymen har nivåer). Hello volym återställs som nivåer i det här fallet?
 
-**S.** Nej, återställs volymen som en lokalt Fäst volym. Även om ögonblicksbild datum med tiden när volymen har nivåer, när befintliga volymer, StorSimple använder alltid typ av volym på disken eftersom den finns för närvarande.
+**S.** Nej, återställs hello volymen som en lokalt Fäst volym. Även om hello ögonblicksbild datum toohello tid när hello volymen har nivåer när befintliga volymer använder StorSimple alltid hello typ av volymen på hello disken eftersom den finns för närvarande.
 
-**F.** Det utökade min lokalt Fäst volym nyligen, men jag nu måste du återställa data till en tid när volymen var mindre storlek. Återställ storleken den aktuella volymen och behöver jag utöka storleken på volymen när återställningen har slutförts?
+**F.** Det utökade min lokalt Fäst volym nyligen, men jag behöver nu toorestore hello data tooa tid när hello var mindre storlek. Återställ storleken hello volym och jag behöver tooextend hello storleken på hello volym när hello återställning har slutförts?
 
-**S.** Ja, återställningen ändrar storlek på volymen och du behöver utöka storleken på volymen när återställningen har slutförts.
+**S.** Ja, hello återställning ändrar storlek hello volym och behöver tooextend hello storleken på hello volym när hello återställning har slutförts.
 
-**F.** Kan jag ändra typen av en volym under återställning?
+**F.** Kan jag ändra hello typ av en volym under återställning?
 
-**A.**Nej, du kan inte ändra volymtypen under återställning.
+**A.**Nej, du kan inte ändra hello volymtyp under återställning.
 
-* Volymer som har tagits bort återställs som lagras i ögonblicksbilden.
-* Befintliga volymer återställs baserat på aktuell typ, oavsett vilken typ som lagras i ögonblicksbilden (se föregående två frågor).
+* Volymer som har tagits bort återställs som hello-typ som lagras i hello ögonblicksbild.
+* Befintliga volymer återställs baserat på aktuell typ, oavsett hello typen lagras i hello ögonblicksbild (se toohello föregående två frågor).
 
-**F.** Jag måste du återställa mitt lokalt Fäst volym, men jag importerade en felaktig punkt i ögonblicksbilder. Kan jag avbryta återställningen?
+**F.** Jag behöver toorestore min lokalt Fäst volym, men jag importerade en felaktig punkt i ögonblicksbilder. Kan jag avbryta hello återställningen?
 
-**S.** Ja, du kan avbryta en pågående återställning. Status för volymen kommer att återställas till tillståndet i början av återställningen. Dock försvinner alla skrivningar som har gjorts till volymen medan återställningen pågår.
+**S.** Ja, du kan avbryta en pågående återställning. hello status för hello volym återställs toohello tillstånd hello början av hello återställning. Dock försvinner alla skrivningar som har gjorts toohello volym när hello återställning pågick.
 
 **F.** Jag startade en återställning på en av min lokalt fästa volymer och nu visas en ögonblicksbild i min eftersläpning katalogen som jag inte recollect skapar. Vad är detta används för?
 
-**S.** Det här är den tillfälliga ögonblicksbilden som skapades före återställningen och används för återställning om återställningen avbryts eller misslyckas. Ta inte bort den här ögonblicksbilden; det tas automatiskt bort när återställningen är slutförd. Detta kan inträffa om din Återställningsjobbet har bara lokalt Fäst volymer eller en blandning av lokalt Fäst och nivåindelade volymer. Om återställningsjobbet innehåller endast nivåindelade volymer, sker inte det här beteendet.
+**S.** Detta är hello tillfälliga ögonblicksbild som har skapats tidigare toohello återställningen och används för återställning om hello återställa avbryts eller misslyckas. Ta inte bort den här ögonblicksbilden; det tas automatiskt bort när hello återställningen är slutförd. Detta kan inträffa om din Återställningsjobbet har bara lokalt Fäst volymer eller en blandning av lokalt Fäst och nivåindelade volymer. Om hello återställningsjobbet innehåller endast nivåindelade volymer, sker inte det här beteendet.
 
 **F.** Kan jag klona en lokalt Fäst volym?
 
-**S.** Ja, du kan. Dock kommer lokalt Fäst volym att klonas när en nivåindelad volym som standard. Mer information om hur du [klona en lokalt Fäst volym](storsimple-clone-volume-u2.md)
+**S.** Ja, du kan. Dock kommer hello lokalt Fäst volym att klonas när en nivåindelad volym som standard. Mer information om hur för[klona en lokalt Fäst volym](storsimple-clone-volume-u2.md)
 
 ## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>Frågor om inte körs en lokalt Fäst volym
-**F.** Jag behöver växla över min enhet till en annan fysisk enhet. Kommer min lokalt fästa volymer att växlas över som lokalt Fäst eller nivåer?
+**F.** Jag behöver toofail över min enhet tooanother fysisk enhet. Kommer min lokalt fästa volymer att växlas över som lokalt Fäst eller nivåer?
 
-**S.** Beroende på vilken programvaruversion av målenheten kommer du att redundansväxlas lokalt fästa volymer som:
+**S.** Beroende på hello programvaruversion hello målenhet, kommer du att redundansväxlas lokalt fästa volymer som:
 
-* Lokalt Fäst om målenheten kör StorSimple 8000 uppdatering series 2
-* Nivåer om målenheten kör StorSimple uppdatering 8000 series 1.x
-* Nivåer om målenheten är moln-enhet (programuppdateringen version 2 eller uppdatera 1.x)
+* Lokalt Fäst om hello målenhet kör StorSimple 8000 uppdatering series 2
+* Nivåer om hello målenhet kör StorSimple uppdatering 8000 series 1.x
+* Nivåer om hello målenheten är hello molnet installation (programuppdateringen version 2 eller uppdatera 1.x)
 
 Mer information om [redundans och Katastrofåterställning för lokalt fästa volymer mellan olika versioner](storsimple-device-failover-disaster-recovery.md#device-failover-across-software-versions)
 
 **F.** Återställs lokalt fästa volymer direkt vid katastrofåterställning (DR)?
 
-**S.** Ja, återställs lokalt fästa volymer direkt under växling vid fel. Så snart som en del av Redundansåtgärden hämtas metadata-information för volymen från molnet, volymen tas online på målenheten och kan nås av värden. Under tiden volymens data kommer att fortsätta att ladda ned i bakgrunden och nedsatt prestanda på volymerna under växling vid fel kan uppstå.
+**S.** Ja, återställs lokalt fästa volymer direkt under växling vid fel. Så snart hello metadatainformation för hello volym hämtas från hello molnet som en del av hello Redundansåtgärden hello volymen är online på hello målenhet och kan nås av hello-värden. Under tiden hello volymdata toodownload fortsätter i bakgrunden hello och nedsatt prestanda på dessa volymer för hello varaktighet hello växling vid fel kan uppstå.
 
-**F.** Visas failover-jobbet har slutförts, hur kan jag spåra förloppet för lokalt Fäst volym återställs på målenheten?
+**F.** Visas hello redundans jobbet är slutfört, hur kan jag spåra hello förloppet för lokalt Fäst volym återställs på hello målenhet?
 
-**S.** Under en redundansväxling har beställningsjobbet markerats som slutförd när alla volymer i uppsättningen av redundans har återställts och tas online på målenheten omedelbart. Det inkluderar alla lokalt fästa volymer som kanske har växlats över; lokala garantier data kommer dock bara är tillgänglig när alla data på volymen har hämtats. Du kan följa den här förloppet för varje lokalt Fäst volym som gick över övervakning motsvarande återställningsjobb som skapats som en del av växling vid fel. Dessa enskilda jobb skapas endast för lokalt fästa volymer.
+**S.** Under en redundansväxling markeras hello beställningsjobbet som slutförd när alla hello volymer i hello redundans uppsättning har återställts och tas online på hello målenhet omedelbart. Det inkluderar alla lokalt fästa volymer som kanske har växlats över; lokala garantier hello data kommer dock bara är tillgänglig när alla hello data för hello volymen har hämtats. Du kan följa den här förloppet för varje lokalt Fäst volym som gick över övervakning hello motsvarande jobb som skapats som en del av hello växling vid fel. Dessa enskilda jobb skapas endast för lokalt fästa volymer.
 
-**F.** Kan jag ändra typen av en volym under växling vid fel?
+**F.** Kan jag ändra hello typ av en volym under växling vid fel?
 
-**S.** Nej, du kan inte ändra volymtypen under en växling vid fel. Om du misslyckas över till en annan fysisk enhet som kör StorSimple 8000 series uppdatering-2, volymerna kommer att redundansväxlas baserat på den volymtyp som lagras i ögonblicksbilden. När växling till annan enhet-version, referera till frågan ovan på volymtypen efter en redundansväxling.
+**S.** Nej, du kan inte ändra hello volymtyp under en växling vid fel. Om du misslyckas över tooanother fysisk kommer enhet som kör StorSimple 8000 uppdatering 2, hello volymer att redundansväxlas baserat på hello volymtyp som lagras i hello ögonblicksbild. När redundansväxlingen tooany annan enhet version finns toohello frågan ovan på hello volymtyp efter en redundansväxling.
 
-**F.** Kan jag växla över en volymbehållare med lokalt fästa volymer till molnet enhet?
+**F.** Kan jag växla över en volymbehållare med lokalt fästa volymer toohello moln-enhet?
 
-**S.** Ja, du kan. Lokalt fästa volymer kommer att redundansväxlas som nivåindelade volymer. Mer information om [redundans och Katastrofåterställning för lokalt fästa volymer mellan olika versioner](storsimple-device-failover-disaster-recovery.md#considerations-for-device-failover)
+**S.** Ja, du kan. hello lokalt fästa volymer kommer att redundansväxlas som nivåindelade volymer. Mer information om [redundans och Katastrofåterställning för lokalt fästa volymer mellan olika versioner](storsimple-device-failover-disaster-recovery.md#considerations-for-device-failover)
 

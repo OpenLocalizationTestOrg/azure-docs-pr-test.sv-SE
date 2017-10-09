@@ -1,6 +1,6 @@
 ---
-title: "Ta bort en användare eller grupp från en enterprise-app i Azure Active Directory | Microsoft Docs"
-description: "Hur du tar bort tilldelningen åtkomst av en användare eller grupp från en enterprise-app i Azure Active Directory"
+title: "aaaRemove en tilldelning av användare eller grupp från en enterprise-app i Azure Active Directory | Microsoft Docs"
+description: "Hur tooremove hello åt tilldelning av en användare eller grupp från en enterprise-app i Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: 02f122acfb53c2107e2b0af66c6195aa127a2c77
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c067ecf59b4dedfe8f848357ca8bd545bdc610eb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Ta bort en användare eller grupp från en enterprise-app i Azure Active Directory
-Det är enkelt att ta bort en användare eller grupp tilldelas åtkomst till en enterprise-program i Azure Active Directory (AD Azure). Du måste ha behörighet att hantera enterprise-appen och du måste vara global administratör för katalogen.
+Det är enkelt tooremove en användare eller en grupp som tilldelas åtkomst tooone enterprise program i Azure Active Directory (AD Azure). Du måste ha en hello behörighet toomanage hello och du måste vara global administratör för hello-katalogen.
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment"></a>Hur tar jag bort en användare eller grupptilldelning?
-1. Logga in på den [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för katalogen.
-2. Välj **fler tjänster**, ange **Azure Active Directory** i textrutan och välj sedan **RETUR**.
-3. På den **Azure Active Directory - *directoryname***  bladet (det vill säga Azure AD bladet för den katalog som du hanterar), Välj **företagsprogram**.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för hello-katalogen.
+2. Välj **fler tjänster**, ange **Azure Active Directory** i hello textruta och välj sedan **RETUR**.
+3. På hello **Azure Active Directory - *directoryname***  bladet (det vill säga hello Azure AD bladet för hello-katalog som du hanterar) Välj **företagsprogram**.
 
     ![Öppna företagsappar](./media/active-directory-coreapps-remove-assignment-user-azure-portal/open-enterprise-apps.png)
-4. På den **företagsprogram** bladet väljer **alla program**. Visas en lista över appar som du kan hantera.
-5. På den **företagsprogram - alla program** bladet väljer du en app.
-6. På den ***appname*** bladet (det vill säga bladet med namnet på den valda appen i namnet), Välj **användare och grupper**.
+4. På hello **företagsprogram** bladet väljer **alla program**. Visas en lista över hello-appar som du kan hantera.
+5. På hello **företagsprogram - alla program** bladet väljer du en app.
+6. På hello ***appname*** bladet (det vill säga hello bladet med hello namn för valda hello-appen i hello rubrik) Välj **användare och grupper**.
 
     ![Att välja användare eller grupper](./media/active-directory-coreapps-remove-assignment-user-azure-portal/remove-app-users.png)
-7. På den ***appname*** **-användaren & grupptilldelning** bladet Välj en av flera användare eller grupper och välj sedan den **ta bort** kommando. Bekräfta beslutet i Kommandotolken.
+7. På hello ***appname*** **-användaren & grupptilldelning** bladet Välj en av flera användare eller grupper och välj sedan hello **ta bort** kommando. Bekräfta beslutet hello i Kommandotolken.
 
-    ![Att välja kommandot Ta bort](./media/active-directory-coreapps-remove-assignment-user-azure-portal/remove-users.png)
+    ![Välja hello ta borttagningskommando](./media/active-directory-coreapps-remove-assignment-user-azure-portal/remove-users.png)
 
 ## <a name="next-steps"></a>Nästa steg
 * [Visa alla mina grupper](active-directory-groups-view-azure-portal.md)
-* [Tilldela en användare eller grupp till en enterprise-app](active-directory-coreapps-assign-user-azure-portal.md)
+* [Tilldela en användare eller grupp tooan enterprise app](active-directory-coreapps-assign-user-azure-portal.md)
 * [Inaktivera användarinloggningar för en enterprise-app](active-directory-coreapps-disable-app-azure-portal.md)
-* [Ändra namnet eller logotypen av en enterprise-app](active-directory-coreapps-change-app-logo-user-azure-portal.md)
+* [Ändra hello namn eller logotyp av en enterprise-app](active-directory-coreapps-change-app-logo-user-azure-portal.md)

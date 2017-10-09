@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs diagnostikloggar | Microsoft Docs
-description: "Lär dig hur du ställer in diagnostikloggar för händelsehubbar i Azure."
+title: "aaaAzure Händelsehubbar diagnostikloggar | Microsoft Docs"
+description: "Lär dig hur tooset in diagnostikloggar för händelsehubbar i Azure."
 keywords: 
 documentationcenter: 
 services: event-hubs
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
 ms.author: sethm;babanisa
-ms.openlocfilehash: 09bc62f4918635419d74ef3ae400a41d4ce58b5a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d2054e2e444e715e5077fe2608fe1e009e6c1d84
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-hubs-diagnostic-logs"></a>Event Hubs diagnostikloggar
 
 Du kan visa två typer av loggar för Händelsehubbar i Azure:
-* **[Aktivitetsloggar](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Dessa loggar har information om åtgärder som utförs på ett annat jobb. Loggarna är alltid aktiverat.
-* **[Diagnostikloggar](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Du kan konfigurera diagnostikloggar för en heltäckande vy av allt som händer med ett jobb. Diagnostikloggar omfattar aktiviteter från den tidpunkt då jobbet skapades tills jobbet tas bort, inklusive uppdateringar och aktiviteter som inträffar när jobbet körs.
+* **[Aktivitetsloggar](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Dessa loggar har information om åtgärder som utförs på ett annat jobb. hello loggar är alltid aktiverat.
+* **[Diagnostikloggar](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Du kan konfigurera diagnostikloggar för en heltäckande vy av allt som händer med ett jobb. Diagnostikloggar omfattar aktiviteter från hello att hello jobb skapas tills hello jobbet tas bort, inklusive uppdateringar och aktiviteter som sker när hello jobbet körs.
 
 ## <a name="turn-on-diagnostic-logs"></a>Aktivera diagnostikloggar
-Diagnostik loggar är inaktiverade som standard. Aktivera diagnostikloggar:
+Diagnostik loggar är inaktiverade som standard. tooenable diagnostikloggar:
 
-1.  I den [Azure-portalen](https://portal.azure.com)under **övervakning + Management**, klickar du på **diagnostik loggar**.
+1.  I hello [Azure-portalen](https://portal.azure.com)under **övervakning + Management**, klickar du på **diagnostik loggar**.
 
-    ![Bladet navigering till diagnostikloggar](./media/event-hubs-diagnostic-logs/image1.png)
+    ![bladet navigering toodiagnostic loggar](./media/event-hubs-diagnostic-logs/image1.png)
 
-2.  Klicka på resursen som du vill övervaka.
+2.  Klicka på hello resursen toomonitor.
 
 3.  Klicka på **aktivera diagnostiken**.
 
@@ -42,32 +42,32 @@ Diagnostik loggar är inaktiverade som standard. Aktivera diagnostikloggar:
 
 4.  För **Status**, klickar du på **på**.
 
-    ![Ändra status för diagnostikloggar](./media/event-hubs-diagnostic-logs/image3.png)
+    ![Ändra hello status för diagnostikloggar](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  Ange Arkiv-mål som du vill. ett lagringskonto, en händelsehubb eller Azure logganalys.
+5.  Ange hello Arkiv mål som du vill; ett lagringskonto, en händelsehubb eller Azure logganalys.
 
-6.  Spara de nya diagnostikinställningarna för.
+6.  Spara hello nya diagnostikinställningar.
 
-Nya inställningar börjar gälla i cirka 10 minuter. Efter det loggarna visas i det konfigurerade arkivering målet på den **diagnostik loggar** bladet.
+Nya inställningar börjar gälla i cirka 10 minuter. Efter det loggar visas i hello konfigurerats arkivering mål på hello **diagnostik loggar** bladet.
 
-Mer information om hur du konfigurerar diagnostik finns i [översikt över Azure diagnostikloggar](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Mer information om hur du konfigurerar diagnostik finns hello [översikt över Azure diagnostikloggar](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
 ## <a name="diagnostic-logs-categories"></a>Diagnostikloggar kategorier
 Händelsehubbar samlar in diagnostikloggar två kategorier:
 
-* **ArchiveLogs**: relaterade till Händelsehubbar Arkiv specifikt, relaterade till Arkivera fel.
-* **OperationalLogs**: information om vad som händer under Händelsehubbar åtgärder, särskilt åtgärden skriver, inklusive event hub skapas, resurser som används och status för åtgärden.
+* **ArchiveLogs**: loggar relaterade tooEvent hubbar Arkiv specifikt loggar relaterade tooarchive fel.
+* **OperationalLogs**: information om vad som händer under Händelsehubbar åtgärder, särskilt hello åtgärdstyp, inklusive event hub skapas, resurser som används, och hello status för hello-åtgärd.
 
 ## <a name="diagnostic-logs-schema"></a>Diagnostikloggar schema
-Alla loggar lagras i JavaScript Object Notation (JSON)-format. Varje post innehåller strängfält som använder det format som beskrivs i följande avsnitt.
+Alla loggar lagras i JavaScript Object Notation (JSON)-format. Varje post innehåller strängfält som använder hello-format som beskrivs i följande avsnitt hello.
 
 ### <a name="archive-logs-schema"></a>Arkivera loggar schema
 
-Archive log JSON strängar innehålla element som visas i följande tabell:
+Arkivera loggen JSON strängar innehålla element som anges i följande tabell hello:
 
 Namn | Beskrivning
 ------- | -------
-Aktivitetsnamn | Beskrivning av uppgiften som misslyckades.
+Aktivitetsnamn | Beskrivning av hello-aktivitet som misslyckades.
 ActivityId | Internt ID som används för spårning.
 trackingId | Internt ID som används för spårning.
 resourceId | Azure Resource Manager-resurs-ID.
@@ -80,7 +80,7 @@ durationInSeconds | Varaktighet för felet.
 Meddelande | Felmeddelande.
 category | ArchiveLogs
 
-Följande kod är ett exempel på en arkivera loggen JSON-sträng:
+hello är följande kod ett exempel på en arkivera loggen JSON-sträng:
 
 ```json
 {
@@ -94,18 +94,18 @@ Följande kod är ett exempel på en arkivera loggen JSON-sträng:
      "startTime": "9/22/2016 5:11:21 AM",
      "failures": 3,
      "durationInSeconds": 360,
-     "message": "Microsoft.WindowsAzure.Storage.StorageException: The remote server returned an error: (404) Not Found. ---> System.Net.WebException: The remote server returned an error: (404) Not Found.\r\n   at Microsoft.WindowsAzure.Storage.Shared.Protocol.HttpResponseParsers.ProcessExpectedStatusCodeNoException[T](HttpStatusCode expectedStatusCode, HttpStatusCode actualStatusCode, T retVal, StorageCommandBase`1 cmd, Exception ex)\r\n   at Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.<PutBlockImpl>b__3e(RESTCommand`1 cmd, HttpWebResponse resp, Exception ex, OperationContext ctx)\r\n   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndGetResponse[T](IAsyncResult getResponseResult)\r\n   --- End of inner exception stack trace ---\r\n   at Microsoft.WindowsAzure.Storage.Core.Util.StorageAsyncResult`1.End()\r\n   at Microsoft.WindowsAzure.Storage.Core.Util.AsyncExtensions.<>c__DisplayClass4.<CreateCallbackVoid>b__3(IAsyncResult ar)\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.",
+     "message": "Microsoft.WindowsAzure.Storage.StorageException: hello remote server returned an error: (404) Not Found. ---> System.Net.WebException: hello remote server returned an error: (404) Not Found.\r\n   at Microsoft.WindowsAzure.Storage.Shared.Protocol.HttpResponseParsers.ProcessExpectedStatusCodeNoException[T](HttpStatusCode expectedStatusCode, HttpStatusCode actualStatusCode, T retVal, StorageCommandBase`1 cmd, Exception ex)\r\n   at Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.<PutBlockImpl>b__3e(RESTCommand`1 cmd, HttpWebResponse resp, Exception ex, OperationContext ctx)\r\n   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndGetResponse[T](IAsyncResult getResponseResult)\r\n   --- End of inner exception stack trace ---\r\n   at Microsoft.WindowsAzure.Storage.Core.Util.StorageAsyncResult`1.End()\r\n   at Microsoft.WindowsAzure.Storage.Core.Util.AsyncExtensions.<>c__DisplayClass4.<CreateCallbackVoid>b__3(IAsyncResult ar)\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.",
      "category": "ArchiveLogs"
 }
 ```
 
 ### <a name="operational-logs-schema"></a>Operativa loggar schema
 
-Arbetsloggen JSON strängar innehålla element som visas i följande tabell:
+Arbetsloggen JSON strängar innehålla element som anges i följande tabell hello:
 
 Namn | Beskrivning
 ------- | -------
-ActivityId | Internt ID som används för att spåra syfte.
+ActivityId | Internt ID används tootrack syfte.
 EventName | Åtgärdsnamnet.  
 resourceId | Azure Resource Manager-resurs-ID.
 SubscriptionId | Prenumerations-ID.
@@ -115,7 +115,7 @@ Status | Åtgärdsstatus för.
 Anropare | Anroparen av åtgärden (Azure portal eller management-klienten).
 category | OperationalLogs
 
-Följande kod är ett exempel på en arbetsloggen JSON-sträng:
+hello är följande kod ett exempel på en arbetsloggen JSON-sträng:
 
 ```json
 Example:
@@ -133,6 +133,6 @@ Example:
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-* [Introduktion till Händelsehubbar](event-hubs-what-is-event-hubs.md)
+* [Introduktion tooEvent hubbar](event-hubs-what-is-event-hubs.md)
 * [Event Hubs API-översikt](event-hubs-api-overview.md)
 * [Kom igång med Event Hubs](event-hubs-csharp-ephcs-getstarted.md)

@@ -1,6 +1,6 @@
-### <a name="noconnection"></a>Ändra IP-adressprefix för nätverksgateway – ingen gatewayanslutning
+### <a name="noconnection"></a>toomodify lokala nätverket gateway IP-adressprefix - ingen gateway-anslutningen
 
-Så här lägger du till ytterligare adressprefix:
+tooadd ytterligare adressprefix:
 
 ```powershell
 $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
@@ -8,8 +8,8 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
 -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
 ```
 
-Så här tar du bort adressprefix:<br>
-Utelämna de prefix som du inte längre behöver. I det här exemplet behöver vi inte längre prefixet 20.0.0.0/24 (från föregående exempel), så vi uppdaterar den lokala nätverksgatewayen och tar bort det prefixet.
+tooremove adressprefix:<br>
+Lämna ut hello-prefix som du inte längre behöver. I det här exemplet vi inte längre prefixet 20.0.0.0/24 (från hello föregående exempel), så vi uppdatera hello lokal nätverksgateway utan att prefix.
 
 ```powershell
 $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
@@ -17,39 +17,39 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
 -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
 ```
 
-### <a name="withconnection"></a>Ändra IP-adressprefix för nätverksgateway – existerande gatewayanslutning
+### <a name="withconnection"></a>toomodify lokala nätverket gateway IP-adressprefix - befintlig gateway-anslutningen
 
-Om du har en gatewayanslutning och vill lägga till eller ta bort IP-adressprefixet som ingår i din lokala nätverksgateway, behöver du genomföra följande steg i turordning. Det medför en del avbrott för din VPN-anslutning. När du ändrar IP-adressprefix behöver du inte ta bort VPN-gatewayen. Du måste bara ta bort anslutningen.
+Om du har en gateway-anslutning och vill tooadd eller ta bort hello IP-adressprefixet som ingår i din lokala nätverksgateway, behöver toodo hello följa stegen i ordning. Det medför en del avbrott för din VPN-anslutning. När du ändrar IP-adressprefix, behöver du inte toodelete hello VPN-gateway. Du behöver bara tooremove hello anslutning.
 
 
-1. Ta bort anslutningen.
+1. Ta bort hello anslutningen.
 
   ```powershell
   Remove-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName -ResourceGroupName MyRGName
   ```
-2. Ändra IP-adressprefixen för din lokala nätverksgateway.
+2. Ändra hello adressprefix för din lokala nätverksgateway.
    
-  Ställ in variabeln för LocalNetworkGateway.
+  Ange hello variabel för hello LocalNetworkGateway.
 
   ```powershell
   $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName
   ```
    
-  Ändra prefixen.
+  Ändra hello prefix.
    
   ```powershell
   Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
   -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
   ```
-3. Skapa anslutningen. I det här exemplet konfigurerar vi en IPsec-anslutningstyp. När du återskapar anslutningen kan du använda den anslutningstyp som har angetts för din konfiguration. Ytterligare anslutningar finns på sidan [PowerShell-cmdlet](https://msdn.microsoft.com/library/mt603611.aspx).
+3. Skapa hello-anslutning. I det här exemplet konfigurerar vi en IPsec-anslutningstyp. När du återskapa din anslutning Använd hello anslutningstyp som har angetts för din konfiguration. Ytterligare anslutningstyper finns hello [PowerShell-cmdleten](https://msdn.microsoft.com/library/mt603611.aspx) sidan.
    
-  Ställ in variabeln för VirtualNetworkGateway.
+  Ange hello variabel för hello VirtualNetworkGateway.
 
   ```powershell
   $gateway1 = Get-AzureRmVirtualNetworkGateway -Name RMGateway  -ResourceGroupName MyRGName
   ```
    
-  Skapa anslutningen. I det här exemplet används variabeln $local som du angav i steg 2.
+  Skapa hello-anslutning. Det här exemplet använder hello variabeln $local som du angav i steg 2.
 
   ```powershell
   New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `

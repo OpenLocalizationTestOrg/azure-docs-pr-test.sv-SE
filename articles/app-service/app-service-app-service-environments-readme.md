@@ -1,6 +1,6 @@
 ---
-title: "Apptjänst-miljö | Microsoft Docs"
-description: "Vad är en Azure Apptjänst-miljö? En introduktion till Apptjänst-miljö."
+title: "aaaApp miljö | Microsoft Docs"
+description: "Vad är en Azure Apptjänst-miljö? En introduktion tooApp-miljö."
 keywords: "Azure apptjänst-miljön, virtuella nätverk, säkra nätverk"
 services: app-service
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: stefsch
-ms.openlocfilehash: 1de3f2c513f4f5ce6fd2ab2b57514122955a9a98
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1b59fed4e5a72d4c4805e1dca203747e07e77103
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="app-service-environment-documentation"></a>Dokumentation för Apptjänst-miljö
 En Apptjänst-miljö är en [Premium] [ PremiumTier] service plan alternativet för Azure App Service som tillhandahåller en helt isolerad och dedikerad miljö för Azure App Service-program som körs på ett säkert sätt i hög skala inklusive [Web Apps][WebApps], [Mobilappar][MobileApps], och [API Apps] [ APIApps].  
@@ -31,9 +31,9 @@ Apptjänstmiljöer är perfekt för programarbetsbelastningar som kräver:
 
 Kunder kan skapa flera Apptjänstmiljöer inom en enda Azure region, samt över flera Azure-regioner.  Detta gör Apptjänstmiljöer idealiskt för vågrätt skalning statuslösa programnivåerna stöd för hög RPS arbetsbelastningar.
 
-Apptjänstmiljöer är isolerad för att endast en enskild kund program som körs och alltid har distribuerats till ett virtuellt nätverk.  Kunder har detaljerad kontroll över både inkommande och utgående trafik med [nätverkssäkerhetsgrupper][NetworkSecurityGroups].  Program kan också etablera snabb säkra anslutningar över virtuella nätverk till lokala företagsresurser.
+Apptjänstmiljöer finns isolerade toorunning endast en enskild kund program och alltid har distribuerats till ett virtuellt nätverk.  Kunder har detaljerad kontroll över både inkommande och utgående trafik med [nätverkssäkerhetsgrupper][NetworkSecurityGroups].  Program kan också etablera snabb säkra anslutningar över virtuella nätverk tooon lokala företagets resurser.
 
-Appar behöver ofta åtkomst till företagets resurser, till exempel interna databaser och webbtjänster.  Appar som körs på Apptjänstmiljöer kan komma åt resurser som nås via [plats-till-plats] [ SiteToSite] VPN och [Azure ExpressRoute] [ ExpressRoute] anslutningar.
+Appar måste ofta tooaccess företagets resurser, till exempel interna databaser och webbtjänster.  Appar som körs på Apptjänstmiljöer kan komma åt resurser som nås via [plats-till-plats] [ SiteToSite] VPN och [Azure ExpressRoute] [ ExpressRoute] anslutningar.
 
 * [Vad är en App Service-miljö (ASE)?](../app-service-web/app-service-app-service-environment-intro.md)
 * [Skapa en App Service-miljö](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)

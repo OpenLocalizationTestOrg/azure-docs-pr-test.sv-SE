@@ -1,6 +1,6 @@
 ---
-title: Azure Mobile Engagement Web SDK uppgraderingsprocesser | Microsoft Docs
-description: "De senaste uppdateringarna och procedurer för webbtjänst-SDK för Azure Mobile Engagement"
+title: aaaAzure Mobile Engagement Web SDK uppgraderingsprocesser | Microsoft Docs
+description: "Hej senaste uppdateringarna och procedurer för hello Web SDK för Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,40 +14,40 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: afa8037dcb7a53042fa606e2c4014b442d4be326
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a2df65904c6b56584ce6588ed26a9b79f3aa27ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-mobile-engagement-web-sdk-upgrade-procedures"></a>Azure Mobile Engagement Web SDK uppgraderingsprocesser
-Om du redan har integrerat en tidigare version av Azure Mobile Engagement Web SDK i ditt webbprogram som du behöver Tänk på följande när du uppgraderar SDK.
+Om du redan har integrerat en tidigare version av hello Azure Mobile Engagement Web SDK i ditt webbprogram måste tooconsider hello följande punkter när du uppgraderar hello SDK.
 
-Om du hoppade över flera versioner av Mobile Engagement Web SDK, kanske du måste utföra flera procedurer under uppgraderingen. Till exempel om du migrerar från 1.4.0 till 1.6.0 först följer du procedurerna för att uppgradera från 1.4.0 till 1.5.0. Följ procedurerna för att uppgradera från 1.5.0 till 1.6.0.
+Om du hoppade över flera versioner av hello Mobile Engagement Web SDK, kanske du måste toocomplete flera procedurer hello uppgraderingsprocessen. Till exempel om du migrerar från 1.4.0 too1.6.0 första Följ hello procedurer tooupgrade från 1.4.0 too1.5.0. Följ sedan hello procedurer tooupgrade 1.5.0 too1.6.0.
 
-Oavsett vilken version som du uppgraderar från, ersätta en tidigare version av filen azure-engagement.js med den senaste versionen av filen.
+Oavsett vilken version som du uppgraderar från, ersätta en tidigare version av hello filen azure-engagement.js med hello senaste versionen av hello-fil.
 
-## <a name="upgrade-from-121-to-200"></a>Uppgradera från 1.2.1 till 2.0.0
-Det här avsnittet beskrivs hur du migrerar en Mobile Engagement Web SDK-integration från tjänsten Capptain som erbjuds av Capptain SAS för en Azure Mobile Engagement-app. Om du migrerar från en tidigare version, kontakta webbplatsen Capptain om du vill migrera först till 1.2.1 och tillämpa sedan följande procedurer.
+## <a name="upgrade-from-121-too200"></a>Uppgradera från 1.2.1 too2.0.0
+Det här avsnittet beskrivs hur toomigrate en Mobile Engagement Web SDK-integration från hello Capptain tjänsten erbjuds av Capptain SAS, tooan Azure Mobile Engagement-app. Om du migrerar från en tidigare version du finns hello Capptain webbplats toofirst migrera too1.2.1 och tillämpa sedan hello följande procedurer.
 
-Den här versionen av Mobile Engagement Web SDK stöder inte Samsung Smart TV, Opera TV, webOS eller Reach-funktionen.
+Den här versionen av hello Mobile Engagement Web SDK stöder inte Samsung Smart TV, Opera TV, webOS eller hello Reach-funktionen.
 
 > [!IMPORTANT]
-> Capptain och Azure Mobile Engagement är inte samma tjänst. Följande procedur visar endast hur du migrerar klientappen. Migrera Mobile Engagement Web SDK i appen kommer inte migrera dina data från en Capptain server till en Mobile Engagement-server.
+> Capptain och Azure Mobile Engagement är inte hello samma tjänst. hello följande procedur visar hur endast toomigrate hello-klientappen. Migrera hello Mobile Engagement Web SDK i hello app kommer inte att migrera dina data från en Capptain tooa Mobile Engagement-server.
 > 
 > 
 
 ### <a name="javascript-files"></a>JavaScript-filer
-Ersätt filen capptain-sdk.js med filen azure-engagement.js och uppdatera din skript importerar på samma sätt.
+Ersätt hello filen capptain-sdk.js med hello filen azure engagement.js och uppdatera din skript importerar på samma sätt.
 
 ### <a name="remove-capptain-reach"></a>Ta bort Capptain Reach
-Den här versionen av Mobile Engagement Web SDK stöder inte Reach-funktionen. Om du har integrerat Capptain Reach i ditt program måste du ta bort den.
+Den här versionen av hello Mobile Engagement Web SDK stöder inte hello Reach-funktionen. Om du har integrerat Capptain Reach i ditt program måste tooremove den.
 
-Ta bort nå CSS-import från din sida och ta bort relaterade CSS-filen (capptain-reach.css, som standard).
+Ta bort hello nå CSS import från din sida och ta bort hello relaterade CSS-filen (capptain-reach.css, som standard).
 
-Ta bort följande Reach-resurser: Stäng avbildningen (capptain-close.png, som standard) och ikonen varumärken (capptain-meddelande-ikonen, som standard).
+Ta bort hello följer räckvidden resurser: hello hello varumärkesikon (capptain-meddelande-ikonen, som standard) och Stäng bild (capptain-close.png, som standard).
 
-Ta bort nå Gränssnittet för aviseringar via appen. Standard ser ut så här:
+Ta bort hello nå Användargränssnittet för aviseringar via appen. hello standardlayout ser ut så här:
 
     <!-- capptain notification -->
     <div id="capptain_notification_area" class="capptain_category_default">
@@ -64,7 +64,7 @@ Ta bort nå Gränssnittet för aviseringar via appen. Standard ser ut så här:
       </div>
     </div>
 
-Ta bort nå Gränssnittet för text och web meddelanden och avsökningar. Standard ser ut så här:
+Ta bort hello nå Användargränssnittet för text- och meddelanden och avsökningar. hello standardlayout ser ut så här:
 
     <div id="capptain_overlay" class="capptain_category_default">
       <button id="capptain_overlay_close">x</button>
@@ -77,7 +77,7 @@ Ta bort nå Gränssnittet för text och web meddelanden och avsökningar. Standa
       </div>
     </div>
 
-Ta bort den `reach` objekt från konfigurationen, om den finns. Det ser ut så här:
+Ta bort hello `reach` objekt från konfigurationen, om den finns. Det ser ut så här:
 
     window.capptain = {
       [...]
@@ -89,16 +89,16 @@ Ta bort den `reach` objekt från konfigurationen, om den finns. Det ser ut så h
 Ta bort alla andra Reach anpassning, till exempel.
 
 ### <a name="remove-deprecated-apis"></a>Ta bort föråldrade API: er
-Vissa API: er från Capptain är föråldrade i Mobile Engagement Web SDK.
+Vissa API: er från Capptain är föråldrade i hello Mobile Engagement Web SDK.
 
-Ta bort alla anrop till följande API: er: `agent.connect`, `agent.disconnect`, `agent.pause`, och `agent.sendMessageToDevice`.
+Ta bort alla anrop toohello följande API: er: `agent.connect`, `agent.disconnect`, `agent.pause`, och `agent.sendMessageToDevice`.
 
-Ta bort alla instanser av följande återanrop från konfigurationen Capptain: `onConnected`, `onDisconnected`, `onDeviceMessageReceived`, och `onPushMessageReceived`.
+Ta bort alla instanser av följande återanrop från konfigurationen Capptain hello: `onConnected`, `onDisconnected`, `onDeviceMessageReceived`, och `onPushMessageReceived`.
 
 ### <a name="configuration"></a>Konfiguration
-Mobile Engagement använder en anslutningssträng för att konfigurera SDK identifierare, t.ex, program-ID.
+Mobile Engagement använder en anslutning tooconfigure SDK strängidentifierare, till exempel hello identifierare.
 
-Ersätt det program-ID med anslutningssträngen. Observera att det globala objektet för SDK-konfiguration ändras från `capptain` till `azureEngagement`.
+Ersätt hello program-ID med anslutningssträngen. Observera att globala hello-objekt för hello SDK konfiguration ändras från `capptain` för`azureEngagement`.
 
 Före migrering:
 
@@ -114,10 +114,10 @@ Efter migreringen:
       [...]
     };
 
-Anslutningssträngen för ditt program visas i Azure Portal.
+hello anslutningssträngen för ditt program visas i hello Azure-portalen.
 
 ### <a name="javascript-apis"></a>JavaScript API: er
-Objektet global JavaScript `window.capptain` har bytt `window.azureEngagement` men du kan använda den `window.engagement` alias för API-anrop. Du kan inte använda aliaset för att definiera SDK-konfiguration.
+hello globala JavaScript-objekt `window.capptain` har bytt `window.azureEngagement` men du kan använda hello `window.engagement` alias för API-anrop. Du kan inte använda hello-alias toodefine hello SDK konfiguration.
 
 Till exempel `capptain.deviceId` blir `engagement.deviceId`, `capptain.agent.startActivity` blir `engagement.agent.startActivity`och så vidare.
 

@@ -1,6 +1,6 @@
 ---
-title: "Skapa din första funktion i Azure med Visual Studio | Microsoft Docs"
-description: "Skapa och publicera en enkel HTTP-utlöst funktion till Azure med Azure Functions Tools för Visual Studio."
+title: "aaaCreate din första funktion i Azure med hjälp av Visual Studio | Microsoft Docs"
+description: "Skapa och publicera en enkel HTTP aktiveras funktionen tooAzure med hjälp av Azure Functions verktyg för Visual Studio."
 services: functions
 documentationcenter: na
 author: rachelappel
@@ -17,94 +17,94 @@ ms.workload: na
 ms.date: 07/05/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 04370558725d76ffe83d8aaf5d16c88fd2803ba9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 851e5b98dcc2da00334620896a0ea31f566589f7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Skapa din första funktion med Visual Studio
 
-Med Azure Functions kan du köra kod i en serverfri miljö utan att först behöva skapa en virtuell dator eller publicera en webbapp.
+Azure Functions kan du köra din kod i en miljö med serverlösa utan toofirst skapa en virtuell dator eller publicera ett webbprogram.
 
-Lär dig hur du använder 2017 för Visual Studio tools för Azure Functions för att skapa och testa en ”hello world”-funktionen lokalt i det här avsnittet. Du publicerar sedan funktionskoden till Azure. De här verktygen är tillgängliga som en del av arbetsbelastningen Azure Development i Visual Studio 2017 version 15.3, eller en senare version.
+I det här avsnittet dig du hur toouse hello 2017 för Visual Studio tools för Azure Functions toocreate och testa en ”hello world”-funktionen lokalt. Du sedan publicerar hello funktionen koden tooAzure. Dessa verktyg är tillgängliga som en del av hello Azure-utveckling arbetsbelastningen i Visual Studio 2017 version 15,3 eller en senare version.
 
 ![Azure Functions-kod i ett Visual Studio-projekt](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
 
 ## <a name="prerequisites"></a>Krav
 
-För att slutföra den här självstudien installerar du:
+toocomplete självstudier, installationen:
 
-* [Visual Studio 2017 version 15.3](https://www.visualstudio.com/vs/preview/), inklusive arbetsbelastningen **Azure Development**.
+* [Visual Studio 2017 version 15,3](https://www.visualstudio.com/vs/preview/), inklusive hello **Azure-utveckling** arbetsbelastning.
 
-    ![Installera Visual Studio 2017 med arbetsbelastningen Azure Development](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+    ![Installera Visual Studio 2017 med hello Azure-utveckling arbetsbelastning](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
     
     >[!NOTE]  
-    När du installerar eller uppgraderar till Visual Studio 2017 version 15,3 kan också behöva uppdatera 2017 för Visual Studio-verktygen för Azure Functions manuellt. Du kan uppdatera verktyg från den **verktyg** menyn under **tillägg och uppdateringar...**   >  **Uppdateringar** > **Visual Studio Marketplace** > **Azure Functions och Web jobb verktyg**  >  **Uppdatering**. 
+    När du installerar eller uppgraderar tooVisual Studio 2017 version 15,3 kanske du också toomanually uppdatering hello 2017 för Visual Studio tools för Azure Functions. Du kan uppdatera hello verktyg från hello **verktyg** menyn under **tillägg och uppdateringar...**   >  **Uppdateringar** > **Visual Studio Marketplace** > **Azure Functions och Web jobb verktyg**  >  **Uppdatering**. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
 ## <a name="create-an-azure-functions-project-in-visual-studio"></a>Skapa ett Azure Functions-projekt i Visual Studio
 
-[!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
+[!INCLUDE [Create a project using hello Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Nu när du har skapat projektet kan du skapa din första funktion.
+Nu när du har skapat hello-projekt kan skapa du din första funktion.
 
-## <a name="create-the-function"></a>Skapa funktionen
+## <a name="create-hello-function"></a>Skapa hello-funktion
 
 1. I **Solution Explorer** högerklickar du på projektnoden och väljer **Lägg till** > **Nytt objekt**. Välj **Azure Function** och klicka på **Lägg till**.
 
-2. Välj **HttpTrigger**, ange ett **Funktionsnamn**, välj **Anonym** för **Åtkomsträttigheter** och klicka på **Skapa**. Funktionen som skapas kan nås av en HTTP-begäran från alla klienter. 
+2. Välj **HttpTrigger**, ange ett **Funktionsnamn**, välj **Anonym** för **Åtkomsträttigheter** och klicka på **Skapa**. hello-funktion skapas används av en HTTP-begäran från klienter. 
 
     ![Skapa en ny Azure Function](./media/functions-create-your-first-function-visual-studio/functions-vstools-add-new-function-2.png)
 
-    En kodfil läggs till ditt projekt som innehåller en klass som implementerar din funktionskoden. Den här koden är baserad på en mall, som tar emot ett namnvärde och ta bort eko tillbaka. Den **FunctionName** attributet anger namnet på funktionen. Den **HttpTrigger** attributet anger meddelandet som utlöser funktionen. 
+    En kodfil läggs tooyour projekt som innehåller en klass som implementerar din funktionskoden. Den här koden är baserad på en mall, som tar emot ett namnvärde och ta bort eko tillbaka. Hej **FunctionName** attribut anger hello namnet på funktionen. Hej **HttpTrigger** attributet anger hello-meddelande som utlöser hello-funktionen. 
 
     ![Funktionen kodfilen](./media/functions-create-your-first-function-visual-studio/functions-code-page.png)
 
 Nu när du har skapat en HTTP-utlöst funktion kan du testa den på en lokal dator.
 
-## <a name="test-the-function-locally"></a>Testa funktionen lokalt
+## <a name="test-hello-function-locally"></a>Testa hello funktionen lokalt
 
-Med Azure Functions Core Tools kan du köra Azure Functions-projekt på din lokala utvecklingsdator. Du uppmanas att installera de här verktygen första gången du startar en funktion från Visual Studio.  
+Med Azure Functions Core Tools kan du köra Azure Functions-projekt på din lokala utvecklingsdator. Du kan ange tooinstall verktygen hello första gången du startar en funktion från Visual Studio.  
 
-1. Tryck på F5 för att testa funktionen. Acceptera begäran från Visual Studio för att ladda ned och installera Azure Functions Core (CLI)-verktyg.  Du kan även behöva skapa ett brandväggsundantag så att verktygen kan hantera HTTP-förfrågningar.
+1. tootest din funktion, tryck på F5. Om du uppmanas acceptera hello begäran från Visual Studio toodownload och installera verktyg för Azure Functions kärnor (CLI).  Du kanske också måste tooenable ett undantag i brandväggen så att hello verktyg kan hantera HTTP-begäranden.
 
-2. Kopiera URL:en för funktionen från dina Azure Functions-utdata.  
+2. Kopiera hello URL för din funktion från hello Azure Functions-runtime utdata.  
 
     ![Lokal Azure-körningsmiljö](./media/functions-create-your-first-function-visual-studio/functions-vstools-f5.png)
 
-3. Klistra in webbadressen för HTTP-begäran i webbläsarens adressfält. Lägg till frågesträngen `&name=<yourname>` i webbadressen och kör din begäran. Nedan visas svaret på den lokala GET-begäran som returnerades av funktionen i webbläsaren: 
+3. Klistra in hello URL för hello HTTP-begäran i webbläsarens adressfält. Lägg till hello frågesträngen `&name=<yourname>` toothis URL och utföra hello-begäran. hello följande visar hello svar i hello webbläsare toohello lokala GET-begäran returneras av hello: 
 
-    ![Svar för funktion-localhost i webbläsaren](./media/functions-create-your-first-function-visual-studio/functions-test-local-browser.png)
+    ![Funktionen localhost svar i hello webbläsare](./media/functions-create-your-first-function-visual-studio/functions-test-local-browser.png)
 
-4. För att stoppa felsökningen klickar du på knappen **Stopp** i Visual Studio-verktygsfältet.
+4. toostop felsökning, klicka på hello **stoppa** i verktygsfältet hello Visual Studio.
 
-När du har kontrollerat att funktionen körs korrekt på den lokala datorn är det dags att publicera projektet på Azure.
+När du har kontrollerat att hello-funktionen fungerar korrekt på den lokala datorn, är den tid toopublish hello projekt tooAzure.
 
-## <a name="publish-the-project-to-azure"></a>Publicera projektet på Azure
+## <a name="publish-hello-project-tooazure"></a>Publicera hello projekt tooAzure
 
 Du måste ha en funktionsapp i din Azure-prenumeration innan du kan publicera projektet. Du kan skapa en funktionsapp direkt från Visual Studio.
 
-[!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
+[!INCLUDE [Publish hello project tooAzure](../../includes/functions-vstools-publish.md)]
 
 ## <a name="test-your-function-in-azure"></a>Testa din funktion i Azure
 
-1. Kopiera den grundläggande URL:en för funktionsappen från sidan Publicera profil. Ersätt `localhost:port`-delen av URL:en som du använde när du testade funktionen lokalt med den nya bas-URL:en. Lägg till frågesträngen `&name=<yourname>` i URL:en som tidigare och kör din begäran.
+1. Kopiera hello bas-URL för hello funktionsapp från hello publicera profilsida. Ersätt hello `localhost:port` del av hello-URL som du använde när du testar hello funktionen lokalt med hello ny bas-URL. Som tidigare gör att tooappend hello frågesträngen `&name=<yourname>` toothis URL och utföra hello-begäran.
 
-    Den URL som anropar den HTTP-utlösta funktionen ser ut så här:
+    hello-URL som anropar HTTP aktiveras funktionen ser ut så här:
 
         http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
 
-2. Klistra in den nya URL:en för HTTP-begäran i webbläsarens adressfält. Nedan visas svaret på fjärr-GET-begäran som returnerades av funktionen i webbläsaren: 
+2. Klistra in den här nya URL: en för hello HTTP-begäran i webbläsarens adressfält. hello följande visar hello svar i hello webbläsare toohello GET fjärrbegäran returneras av hello: 
 
-    ![Funktionssvar i webbläsaren](./media/functions-create-your-first-function-visual-studio/functions-test-remote-browser.png)
+    ![Funktionen svar i hello webbläsare](./media/functions-create-your-first-function-visual-studio/functions-test-remote-browser.png)
  
 ## <a name="next-steps"></a>Nästa steg
 
-Du har nu använt Visual Studio för att skapa en C#-funktionsapp med en enkel HTTP-utlöst funktion. 
+Du har använt funktionsapp för Visual Studio toocreate C# med en enkel HTTP utlöses-funktion. 
 
-+ Information om hur du konfigurerar ditt projekt för att ge stöd för andra typer av utlösare och bindningar finns i [Configure the project for local development](functions-develop-vs.md#configure-the-project-for-local-development) (Konfigurera projektet för lokal utveckling) i avsnittet [Azure Functions Tools for Visual Studio](functions-develop-vs.md) (Azure Functions Tools för Visual Studio).
-+ Läs mer om lokal testning och felsökning med hjälp av Azure Functions Core Tools i [Code and test Azure Functions locally](functions-run-local.md) (Koda och testa Azure Functions lokalt). 
-+ Mer information om hur du utvecklar fungerar som .NET-klassbibliotek finns i [Using .NET class libraries with Azure Functions](functions-dotnet-class-library.md) (Använda .NET-klassbibliotek med Azure Functions). 
++ toolearn hur tooconfigure projekt-toosupport andra typer av utlösare och bindningar finns hello [konfigurera hello projekt för lokal utveckling](functions-develop-vs.md#configure-the-project-for-local-development) i avsnittet [Azure Functions Tools för Visual Studio](functions-develop-vs.md).
++ toolearn mer om lokala testning och felsökning med hjälp av hello Azure Functions Core verktyg finns [kod och testa Azure Functions lokalt](functions-run-local.md). 
++ toolearn mer information om hur du utvecklar fungerar som .NET-klassbibliotek finns [med hjälp av .NET-klassbibliotek med Azure Functions](functions-dotnet-class-library.md). 
 

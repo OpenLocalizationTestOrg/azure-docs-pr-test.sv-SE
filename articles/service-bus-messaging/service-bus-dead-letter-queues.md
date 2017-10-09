@@ -1,5 +1,5 @@
 ---
-title: "Service Bus-köer för obeställbara | Microsoft Docs"
+title: "aaaService Bus obeställbara köer | Microsoft Docs"
 description: "Översikt över Azure Service Bus-köer för obeställbara"
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,71 +14,71 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/17/2017
 ms.author: clemensv;sethm
-ms.openlocfilehash: c16bcf30ab96f79e59404a41852e4cd227e28b08
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1638272085b8a3a59e8814f6f943caee35a2bfdc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Översikt över Service Bus-köer för obeställbara
 
-Service Bus-köer och ämnesprenumerationer ger en sekundär plats kö kallas en *kö med olevererade brev* (DQL). Kö för obeställbara meddelanden behöver inte uttryckligen skapas och kan inte tas bort eller annars hanteras oberoende av de huvudsakliga entitet.
+Service Bus-köer och ämnesprenumerationer ger en sekundär plats kö kallas en *kö med olevererade brev* (DQL). hello obeställbara meddelanden behöver inte toobe explicit skapas och kan inte tagits bort eller på annat sätt hanterade oberoende av hello huvudsakliga entitet.
 
-Den här artikeln beskrivs köer i Azure Service Bus. Mycket av diskussionen visas den [köer exempel](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/DeadletterQueue) på GitHub.
+Den här artikeln beskrivs köer i Azure Service Bus. Mycket av hello diskussion illustreras med hello [köer exempel](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/DeadletterQueue) på GitHub.
  
-## <a name="the-dead-letter-queue"></a>Kö för obeställbara meddelanden
+## <a name="hello-dead-letter-queue"></a>hello obeställbara meddelanden
 
-Syftet med obeställbara meddelanden är att lagra meddelanden som inte levereras till alla mottagare eller meddelanden som inte kunde bearbetas. Meddelanden kan sedan tas bort från DQL och kontrolleras. Ett program kan med hjälp av en operatör korrigera problem och skicka meddelandet, logga in till att det uppstod ett fel och vidta åtgärder. 
+hello syftar hello obeställbara meddelanden toohold meddelanden som inte kunde levereras tooany mottagaren eller meddelanden som inte kunde bearbetas. Meddelanden kan sedan tas bort från hello DQL och kontrolleras. Ett program kan, med hjälp av en operatör korrigera problem och skicka hello-meddelande, logga hello faktum att det uppstod ett fel och vidta åtgärder. 
 
-Ur ett API och protokoll är i DQL främst liknar en kö, förutom att meddelanden kan endast skickas via förlorade gest i den överordnade entiteten. Dessutom time to live inte observeras, och det går inte att ett meddelande från en DQL för obeställbara. Kö för obeställbara meddelanden har fullständigt stöd för leverans av titt Lås och transaktionell åtgärder.
+Ur ett API och protokoll hello DQL är främst liknande tooany andra kö, förutom att meddelanden kan endast skickas via hello förlorade gest i hello överordnade entiteten. Dessutom time to live inte observeras, och det går inte att ett meddelande från en DQL för obeställbara. hello obeställbara meddelanden har fullständigt stöd för leverans av titt Lås och transaktionell åtgärder.
 
-Observera att det finns ingen automatisk rensning av DQL. Meddelanden ligger kvar i DQL tills du uttryckligen hämta dem från DQL och anropet [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CompleteAsync) för obeställbara meddelande.
+Observera att det finns ingen automatisk rensning av hello DQL. Meddelanden ligger kvar i hello DQL tills du uttryckligen hämta dem från hello DQL och anropet [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CompleteAsync) på förlorade hello-meddelande.
 
-## <a name="moving-messages-to-the-dlq"></a>Flytta meddelanden till DQL
+## <a name="moving-messages-toohello-dlq"></a>Flytta meddelanden toohello DQL
 
-Det finns flera aktiviteter i Service Bus som medför att meddelanden flyttas till DQL från inom meddelanden motorn sig själv. Ett program kan också explicit flytta meddelanden till DQL. 
+Det finns flera aktiviteter i Service Bus som orsakar meddelanden tooget pushas toohello DQL från inom hello messaging motorn sig själv. Ett program kan också explicit flytta meddelanden toohello DQL. 
 
-När meddelandet har flyttats av Service broker, två egenskaper läggs till i meddelandet eftersom Service broker anropar sin interna version av den [Systemkön](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeadLetter_System_String_System_String_) metod på meddelandet: `DeadLetterReason` och `DeadLetterErrorDescription`.
+Allteftersom hello-meddelande har flyttats av hello broker, två egenskaper läggs toohello meddelande som hello broker anropar sin interna version av hello [Systemkön](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeadLetter_System_String_System_String_) metod på hello-meddelande: `DeadLetterReason` och `DeadLetterErrorDescription`.
 
-Program kan definiera egna koder för den `DeadLetterReason` egenskap, men systemet anger du följande värden.
+Program kan definiera egna koder för hello `DeadLetterReason` egenskapen men hello system anger hello följande värden.
 
 | Villkor | DeadLetterReason | DeadLetterErrorDescription |
 | --- | --- | --- |
-| Alltid |HeaderSizeExceeded |Storlekskvoten för dataströmmen har överskridits. |
+| Alltid |HeaderSizeExceeded |Hej storlekskvoten för dataströmmen har överskridits. |
 | ! TopicDescription.<br />EnableFilteringMessagesBeforePublishing och SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |ett undantag. GetType(). Namn |ett undantag. Meddelande |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Meddelandet har upphört att gälla och har döda lettered. |
+| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |hello-meddelande gått ut och var döda lettered. |
 | SubscriptionDescription.RequiresSession |Sessions-id är null. |Sessionen aktiverat entitet kan inte meddelandet vars sessions-ID är null. |
 | ! kö med olevererade brev |MaxTransferHopCountExceeded |Null |
 | Programmet explicit döda oljekategori |Anges av programmet |Anges av programmet |
 
 ## <a name="exceeding-maxdeliverycount"></a>Överstiger MaxDeliveryCount
-Köer och -prenumerationer har en [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) och [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_MaxDeliveryCount) egenskap standardvärdet är 10. När ett meddelande som har levererats under ett lås ([ReceiveMode.PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)), men har antingen explicit avbrutna eller låset har upphört att gälla, meddelandets [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) ökas. När [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) överskrider [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount), flyttas meddelandet till DQL, ange den `MaxDeliveryCountExceeded` orsakskod.
+Köer och -prenumerationer har en [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) och [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_MaxDeliveryCount) egenskapen respektive; hello standardvärdet är 10. När ett meddelande som har levererats under ett lås ([ReceiveMode.PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)), men har antingen explicit avbrutna eller hello låset har upphört att gälla, hello-meddelande [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) är stegvis. När [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) överskrider [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount), hello-meddelande har flyttats toohello DQL, att ange hello `MaxDeliveryCountExceeded` orsakskod.
 
-Det här problemet kan inte inaktiveras, men du kan ange [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) till ett mycket stort antal.
+Det här problemet kan inte inaktiveras, men du kan ange [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) tooa mycket stora tal.
 
 ## <a name="exceeding-timetolive"></a>Mer än TimeToLive
-När den [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) eller [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnMessageExpiration) egenskap är inställd på **SANT** (standardvärdet är **FALSKT**), alla utgående meddelanden flyttas till DQL, ange den `TTLExpiredException` orsakskod.
+När hello [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) eller [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnMessageExpiration) egenskapen för**true** (hello standardvärdet är **FALSKT**), alla utgående meddelanden är flyttade toohello DQL, att ange hello `TTLExpiredException` orsakskod.
 
-Observera att inaktuella meddelanden är endast rensas och därför flyttas till DQL när det finns minst en aktiv mottagaren dra på huvudkön eller prenumeration; Detta är avsiktligt.
+Observera att inaktuella meddelanden rensas bara och därför flyttas toohello DQL när det finns minst en aktiv mottagaren dra på hello huvudkön eller prenumeration; Detta är avsiktligt.
 
 ## <a name="errors-while-processing-subscription-rules"></a>Fel vid bearbetning av prenumerationsregler
-När den [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnFilterEvaluationExceptions) egenskapen är aktiverad för en prenumeration, eventuella fel som inträffar när en prenumeration SQL filterregeln kör fångas i DQL tillsammans med felaktiga meddelandet.
+När hello [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnFilterEvaluationExceptions) egenskapen är aktiverad för en prenumeration, eventuella fel som inträffar när en prenumeration SQL filterregeln kör fångas i hello DQL tillsammans med hello felaktig meddelandet.
 
 ## <a name="application-level-dead-lettering"></a>Programnivå dead-lettering
-Förutom funktionerna systembaserade dead-lettering kan program använda DQL uttryckligen avvisa oacceptabel meddelanden. Detta kan inkludera meddelanden som inte kan behandlas korrekt på grund av någon form av systemet, meddelanden som har felaktiga nyttolaster eller meddelanden som avbryts autentiseringen när vissa meddelandenivå säkerhetsprogram används.
+Program kan använda DQL tooexplicitly avvisa oacceptabel hälsningsmeddelande i tillägg toohello systembaserade dead-lettering funktioner. Detta kan inkludera meddelanden som inte kan behandlas korrekt på grund av tooany slags systemproblem, meddelanden som har felaktiga nyttolaster eller meddelanden som avbryts autentiseringen när vissa meddelandenivå säkerhetsprogram används.
 
 ## <a name="dead-lettering-in-forwardto-or-sendvia-scenarios"></a>Dead-lettering i ForwardTo eller SendVia scenarier
 
-Meddelanden skickas till obeställbara överföringen under följande förhållanden:
+Meddelanden kommer att skickas toohello överföring obeställbara meddelanden under hello följande villkor:
 
 - Ett meddelande som passerar genom mer än 3 köer och ämnen som [sammankopplade](service-bus-auto-forwarding.md).
-- Målkön eller avsnittet är inaktiverad eller borttagen.
-- Målkön eller avsnittet överskrider den maximala entity-storleken.
+- hello målkön eller avsnittet är inaktiverad eller borttagen.
+- hello målkön eller avsnittet överskrider hello entitet maximala storlek.
 
-Om du vill hämta dessa lettered förlorade meddelanden, kan du skapa en mottagare med hjälp av den [FormatTransferDeadletterPath](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_FormatTransferDeadLetterPath_System_String_) verktyget metod.
+tooretrieve lettered förlorade meddelanden, kan du skapa en mottagare med hello [FormatTransferDeadletterPath](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_FormatTransferDeadLetterPath_System_String_) verktyget metod.
 
 ## <a name="example"></a>Exempel
-Följande kodavsnitt skapar en mottagare för meddelandet. I receive-slinga för huvudkön koden hämtar meddelandet med [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_Receive_System_TimeSpan_), där du tillfrågas broker omedelbart returnera alla meddelanden som är tillgänglig, eller så återgår med inget resultat. Om koden får ett meddelande visas den omedelbart avbryts det, vilka steg i `DeliveryCount`. När systemet flyttas meddelandet till DQL, huvudkön är tom och slingan avslutas som [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_ReceiveAsync_System_TimeSpan_) returnerar **null**.
+följande kodstycke hello skapar en mottagare för meddelandet. I hello meddelandemottagning för hello huvudkön, hello koden hämtar hello-meddelande med [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_Receive_System_TimeSpan_), där du tillfrågas hello broker tooinstantly returnerade ett meddelande som är tillgänglig eller tooreturn med inget resultat. Om hello-koden får ett meddelande visas den omedelbart avbryts, vilket ökar hello `DeliveryCount`. När hello flyttas hello meddelandet toohello DQL, hello huvudkön är tom och hello loop utgångar som [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_ReceiveAsync_System_TimeSpan_) returnerar **null**.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);
@@ -98,7 +98,7 @@ while(true)
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Se följande artiklar för mer information om Service Bus-köer:
+Se följande artiklar för mer information om Service Bus-köer hello:
 
 * [Komma igång med Service Bus-köer](service-bus-dotnet-get-started-with-queues.md)
 * [Azure-köer och Service Bus-köer jämfört med](service-bus-azure-and-service-bus-queues-compared-contrasted.md)

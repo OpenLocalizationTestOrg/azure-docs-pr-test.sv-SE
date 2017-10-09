@@ -1,28 +1,28 @@
 
-### <a name="to-sign-up-for-a-blitline-account"></a>Registrera dig för ett konto för Blitline
-1. Logga in på den [Azure-hanteringsportalen](https://manage.windowsazure.com/).
-2. I rutan längst ned i hanteringsportalen klickar du på **ny**.
+### <a name="toosign-up-for-a-blitline-account"></a>toosign för ett Blitline konto
+1. Logga in toohello [Azure-hanteringsportalen](https://manage.windowsazure.com/).
+2. Klicka i hello nedre rutan hello-hanteringsportalen, **ny**.
    
     ![command-bar-new][command-bar-new]
 3. Klicka på **Store**.
    
     ![blitline store][blitline-store]
-4. I den **välja ett tillägg** markerar **Blitline** och klicka på högerpilen.
-5. I den **anpassa tillägg** dialogrutan Välj den **Blitline** plan som du vill registrera dig för.
-6. Ange ett namn som identifierar din **Blitline** -tjänsten i din Azure-inställningar, eller använd standardvärdet **Blitline**. Namnet måste vara mellan 1 och 100 tecken långt och får bara innehålla alfanumeriska tecken, bindestreck, punkter och understreck. Namnet måste vara unikt i listan med de objekt du prenumererar på i Azure Store.
+4. I hello **välja ett tillägg** markerar **Blitline** och klicka på högerpilen för hello.
+5. I hello **anpassa tillägg** dialogrutan Välj hello **Blitline** plan som du vill toosign dig för.
+6. Ange ett namn tooidentify din **Blitline** tjänst i Azure-inställningarna eller använda hello standardvärdet **Blitline**. Namnet måste vara mellan 1 och 100 tecken långt och får bara innehålla alfanumeriska tecken, bindestreck, punkter och understreck. hello-namnet måste vara unikt i din lista över objekt de prenumererar på Azure Store.
    
     ![store-skärmen-1][store-screen-1]
-7. Välj ett värde för regionen. till exempel USA, västra. 
-8. Klicka på pilen till höger.
-9. På den **granska inköp** fliken granskar planen och information om priser och granska de juridiska villkoren. Klicka på bockmarkeringen om du samtycker till villkoren. När du klickar på kryssmarkeringen börjar kontot Blitline etableringsprocessen. 
+7. Välj ett värde för hello region. till exempel USA, västra. 
+8. Klicka på högerpilen för hello.
+9. På hello **granska inköp** fliken granskar hello planerings- och information om priser och granska hello juridiska villkor. Om du godkänner toohello villkor, klicka på kryssmarkeringen för hello. När du klickar på Markera hello börjar kontot Blitline hello etableringsprocessen. 
 
-Om du vill använda Blitline måste du ha ditt program-ID.
+toouse Blitline måste toohave ditt program-ID.
 
-### <a name="to-find-your-blitline-application-id"></a>Hitta din Blitline program-ID
+### <a name="toofind-your-blitline-application-id"></a>toofind Blitline program-ID: T
 1. Klicka på **anslutningsinformation**.
    
     ![blitline-anslutning-info-knappen][blitline-connection-info-button]
-2. I den *anslutningsinformation* dialogrutan kan du se program-ID
+2. I hello *anslutningsinformation* dialogrutan kan du se program-ID
    
     ![blitline anslutningsinformation][blitline-connection-info]
 

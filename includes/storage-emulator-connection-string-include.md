@@ -1,4 +1,4 @@
-Storage-emulatorn stöder ett fast konto och en välkänd autentiseringsnyckel för autentisering med delad nyckel. Det här kontot och nyckeln är endast delad nyckel autentiseringsuppgifterna som tillåts för användning med storage-emulatorn. De är:
+hello storage-emulatorn stöder ett fast konto och en välkänd autentiseringsnyckel för autentisering med delad nyckel. Det här kontot och nyckeln är hello endast delad nyckel autentiseringsuppgifter som tillåts för användning med hello storage-emulatorn. De är:
 
 ```
 Account name: devstoreaccount1
@@ -6,13 +6,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> Autentiseringsnyckeln stöds av storage-emulatorn är endast avsett för testning funktionerna i din klientkod för autentisering. Den har inte något syfte säkerhet. Du kan inte använda ditt lagringskonto för produktion och en nyckel med storage-emulatorn. Du bör inte använda kontot för utveckling med produktionsdata.
+> hello autentiseringsnyckel som stöds av hello storage-emulatorn är endast avsett för testning hello-funktionerna i din klientkod för autentisering. Den har inte något syfte säkerhet. Du kan inte använda ditt lagringskonto för produktion och en nyckel med hello storage-emulatorn. Du bör inte använda hello development konto med produktionsdata.
 > 
-> Storage-emulatorn stöder endast anslutningar via HTTP. HTTPS är dock rekommenderade protokollet för att komma åt resurser i en Azure storage-konto.
+> hello storage-emulatorn stöder endast anslutningar via HTTP. HTTPS är dock hello rekommenderas protokoll för att komma åt resurser i en Azure storage-konto.
 > 
 
-#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Anslut till emulatorn-konto med hjälp av en genväg
-Det enklaste sättet att ansluta till storage-emulatorn från ditt program är att konfigurera en anslutningssträng i programmets konfigurationsfil som refererar till en genväg till `UseDevelopmentStorage=true`. Här är ett exempel på en anslutningssträng till storage-emulatorn i en *app.config* fil: 
+#### <a name="connect-toohello-emulator-account-using-a-shortcut"></a>Ansluta toohello emulatorn konto med hjälp av en genväg
+hello enklaste sättet tooconnect toohello storage-emulatorn från ditt program är tooconfigure en anslutningssträng i programmets konfigurationsfil som refererar till hello genvägen `UseDevelopmentStorage=true`. Här är ett exempel på en anslutning sträng toohello storage-emulatorn i en *app.config* fil: 
 
 ```xml
 <appSettings>
@@ -20,8 +20,8 @@ Det enklaste sättet att ansluta till storage-emulatorn från ditt program är a
 </appSettings>
 ```
 
-#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>Anslut till emulatorn-konto med hjälp av det välkända kontonamnet och nyckeln
-Om du vill skapa en anslutningssträng som refererar till emulatorn kontonamnet och nyckeln måste du ange slutpunkterna för var och en av de tjänster som du vill använda från emulatorn i anslutningssträngen. Detta är nödvändigt så att anslutningssträngen refererar emulatorn slutpunkter, vilket skiljer sig från de för ett lagringskonto för produktion. Värdet för anslutningssträngen ska se ut så här:
+#### <a name="connect-toohello-emulator-account-using-hello-well-known-account-name-and-key"></a>Ansluta toohello emulatorn konto med hjälp av hello välkända kontonamnet och nyckeln
+toocreate en anslutningssträng att referenser hello emulatorn kontonamnet och nyckeln, måste du ange hello slutpunkter för var och en av hello tjänster du vill toouse från hello emulatorn i hello anslutningssträngen. Detta är nödvändigt så att hello anslutningssträngen refererar hello emulatorn slutpunkter som är annorlunda än för ett lagringskonto för produktion. Hello-värdet för anslutningssträngen ska se ut så här:
 
 ```
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
@@ -31,10 +31,10 @@ TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
-Det här värdet är identisk med en genväg som visas ovan, `UseDevelopmentStorage=true`.
+Det här värdet är identiska toohello genväg som visas ovan, `UseDevelopmentStorage=true`.
 
 #### <a name="specify-an-http-proxy"></a>Ange en HTTP-proxy
-Du kan också ange en HTTP-proxy ska användas när du testar din tjänst mot storage-emulatorn. Detta kan vara användbart för sett HTTP-begäranden och -svar när du felsöker åtgärder mot storage-tjänster. Ange en proxy genom att lägga till den `DevelopmentStorageProxyUri` alternativet i anslutningssträngen och ange värdet till proxy-URI. Här är till exempel en anslutningssträng som pekar på storage-emulatorn och konfigurerar en HTTP-proxy:
+Du kan även ange en HTTP-proxy toouse när du testar din tjänst mot hello storage-emulatorn. Detta kan vara användbart för sett HTTP-begäranden och -svar när du felsöker åtgärder mot hello lagringstjänster. toospecify en proxy, lägga till hello `DevelopmentStorageProxyUri` alternativet toohello anslutningssträngen och ange dess värde toohello proxy-URI. Här är till exempel en anslutningssträng som pekar toohello storage-emulatorn och konfigurerar en HTTP-proxy:
 
 ```
 UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri

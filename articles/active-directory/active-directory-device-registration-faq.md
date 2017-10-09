@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory automatisk enhetsregistrering vanliga frågor och svar | Microsoft Docs"
+title: "aaaAzure Active Directory automatisk enhetsregistrering vanliga frågor och svar | Microsoft Docs"
 description: "Automatisk enhetsregistrering med Azure Active Directory vanliga frågor och svar."
 services: active-directory
 documentationcenter: 
@@ -14,20 +14,20 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 29751239ae2a26cd7b07ddd0d8a8e706d4056b68
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ba7f113fd3bc310def001a1f44d938b0be71dba8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-automatic-device-registration-faq"></a>Vanliga frågor och svar om automatisk enhetsregistrering i Azure Active Directory
 
-**F: jag registrerade nyligen enheten. Varför ser inte enheten under Mina användarinformation i Azure portal?**
+**F: jag registrerade nyligen hello enhet. Varför ser inte hello enhet under Mina användarinformation i hello Azure-portalen?**
 
-**S:** Windows 10-enheter som är ansluten till domänen med automatisk enhetsregistrering visas inte under användarinformation.
-Du måste använda PowerShell för att se alla enheter. 
+**S:** Windows 10-enheter som är ansluten till domänen med automatisk enhetsregistrering visas inte under hello användarinformation.
+Toouse PowerShell toosee måste alla enheter. 
 
-Följande enheter visas under informationen som användaren:
+Endast visas hello följande enheter under hello användarinformation:
 
 - Alla personliga enheter som inte är ansluten enterprise 
 - Alla icke - Windows 10 / Windows Server 2016 
@@ -35,38 +35,38 @@ Följande enheter visas under informationen som användaren:
 
 ---
 
-**F: Varför kan jag inte se alla enheter som har registrerats i Azure Active Directory i Azure portal?** 
+**F: Varför kan jag inte se alla hello-enheter som registrerats i Azure Active Directory i hello Azure-portalen?** 
 
-**S:** för närvarande, det går inte att visa alla registrerade enheter i Azure-portalen. Du kan använda Azure PowerShell för att hitta alla enheter. Mer information finns i [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet.
+**S:** för närvarande finns ingen sätt toosee alla registrerade enheter i hello Azure-portalen. Du kan använda Azure PowerShell toofind alla enheter. Mer information finns i hello [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet.
 
 --- 
 
-**F: hur vet jag Enhetsstatus för registrering av klienten är?**
+**F: hur vet jag vilka hello enheten registreringstillstånd klientens hello är?**
 
-**S:** registreringstillstånd enhet beror på:
+**S:** registreringstillstånd för hello enhet beror på:
 
-- Vad enheten är
+- Vilka hello-enheten är
 - Hur den har registrerats 
-- Alla information som rör den. 
+- Information om eventuella relaterade tooit. 
  
 
 ---
 
-**F: Varför är en enhet som jag har tagits bort i Azure-portalen eller med Windows PowerShell fortfarande listad som har registrerats?**
+**F: Varför är en enhet som jag har tagit bort hello Azure-portalen eller med Windows PowerShell fortfarande visas som har registrerats?**
 
-**S:** detta är avsiktligt. Enheten har inte åtkomst till resurser i molnet. Om du vill ta bort enheten och registrera igen måste vara en manuell åtgärd som ska vidtas på enheten. 
+**S:** detta är avsiktligt. hello enheten har inte åtkomst tooresources i hello molnet. Om du vill tooremove hello enhet och registrera igen, måste en manuell åtgärd vara toobe som vidtagits hello enhet. 
 
 För Windows 10 och Windows Server 2016 som är lokala AD-domänansluten:
 
-1.  Öppna Kommandotolken som administratör.
+1.  Öppna hello kommandotolk som administratör.
 
 2.  Typ`dsregcmd.exe /debug /leave`
 
-3.  Logga ut och logga in att utlösa den schemalagda aktiviteten som registrerar enheten igen. 
+3.  Logga ut och logga in tootrigger hello schemalagd aktivitet som registrerar hello enheten igen. 
 
 För andra Windows-plattformar som är lokala AD-domänansluten:
 
-1.  Öppna Kommandotolken som administratör.
+1.  Öppna hello kommandotolk som administratör.
 2.  Skriv `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
 3.  Skriv `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`.
 
@@ -76,78 +76,78 @@ För andra Windows-plattformar som är lokala AD-domänansluten:
 
 **S:**
 
--   För Windows 10 och Windows Server 2016, om de är upprepade försök att koppla från och ansluta igen samma enhet, kan det finnas dubbla poster. 
+-   För Windows 10 och Windows Server 2016, om de upprepade försök toounjoin och ansluta igen hello samma enhet, kan det finnas dubbla poster. 
 
--   Om du har använt Lägg till arbets- eller Skolkonto, skapas en ny enhetspost med samma enhetsnamn varje windowsanvändare som använder Lägg till arbets- eller Skolkonto.
+-   Om du har använt Lägg till arbets- eller Skolkonto, de windowsanvändare som använder Lägg till arbets- eller Skolkonto skapar en ny enhetspost med hello samma enhetsnamn.
 
--   Andra Windows-plattformar som är lokala AD som ingår i domänen med hjälp av automatisk registrering skapar en ny enhetspost med samma enhetsnamn för varje domänanvändare som loggar in på enheten. 
+-   Andra Windows-plattformar som är lokala AD som ingår i domänen med hjälp av automatisk registrering skapar en ny enhetspost med hello samma enhetsnamn för varje domänanvändare som loggar in hello enhet. 
 
--   En AADJ-dator som har rensats, installeras igen och ansluten igen med samma namn kommer att visas som en annan post med samma enhetsnamn.
+-   En AADJ-dator som har rensats kan installeras igen och nytt ansluts till hello samma namn, visas som en ny post med hello samma enhetsnamn.
 
 ---
 
-**F: Varför kan en användare fortfarande komma åt resurser från en enhet som jag har inaktiverats i Azure portal?**
+**F: Varför kan en användare fortfarande komma åt resurser från en enhet som jag har inaktiverats i hello Azure-portalen?**
 
-**S:** det kan ta upp till en timme innan en återkalla som ska användas.
+**S:** kan det ta upp tooan timmen för en återkalla toobe tillämpas.
 
 >[!Note] 
->För förlorade enheter rekommenderar vi att rensa enheten så att användare inte tillgång till enheten. Mer information finns i [registrera enheter för hantering i Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+>För förlorade enheter rekommenderar vi att rensa hello enheten tooensure att användare inte kan komma åt hello enhet. Mer information finns i [registrera enheter för hantering i Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
 
 
 ---
 
 **F: Varför Mina användare ser inte ”du kan hämta det här”?**
 
-**S:** om du har konfigurerat vissa regler för villkorlig åtkomst för att kräva tillstånd för en specifik enhet och enheten inte uppfyller kriterierna som användare blockeras och detta meddelande. Utvärdera reglerna och se till att enheten kan uppfyller kriterierna för att undvika det här meddelandet.
+**S:** om du har konfigurerat vissa villkorlig åtkomst regler toorequire tillstånd för en specifik enhet och hello enheten uppfyller inte kraven för hello kan användare blockeras och finns i det här meddelandet. Kontrollera utvärdera hello regler och se till att hello-enheten är kan toomeet hello kriterier tooavoid det här meddelandet.
 
 ---
 
 
-**F: jag finns enheten under användarinformation i Azure-portalen och kan se status som har registrerats på klienten. Kan jag in korrekt för att använda villkorlig åtkomst?**
+**F: jag finns hello enhetspost under hello användarinformation i hello Azure-portalen och kan se hello tillstånd som har registrerats på hello-klienten. Kan jag in korrekt för att använda villkorlig åtkomst?**
 
-**S:** enhetspost (deviceID) och tillståndet på Azure-portalen måste matcha klienten och utvärdering kriterier för villkorlig åtkomst. Mer information finns i [Kom igång med Azure Active Directory Device Registration](active-directory-device-registration.md).
+**S:** hello enhetspost (deviceID) och tillstånd på hello Azure-portalen måste matcha hello klienten och utvärdering kriterier för villkorlig åtkomst. Mer information finns i [Kom igång med Azure Active Directory Device Registration](active-directory-device-registration.md).
 
 ---
 
-**F: Varför visas meddelandet ”användarnamnet eller lösenordet är felaktigt” för en enhet som jag bara har anslutit till Azure AD?**
+**F: Varför visas meddelandet ”användarnamnet eller lösenordet är felaktigt” för en enhet har jag bara ansluten tooAzure AD?**
 
 **S:** vanliga orsaker till det här scenariot är:
 
 - Användarens autentiseringsuppgifter är inte längre giltig.
 
-- Datorn kan inte kommunicera med Azure Active Directory. Sök efter eventuella problem med nätverksanslutningen.
+- Datorn är toocommunicate med Azure Active Directory. Sök efter eventuella problem med nätverksanslutningen.
 
-- Azure AD Join kraven har inte uppfyllts. Se till att du har följt stegen för att [utöka molnfunktioner till Windows 10-enheter via Azure Active Directory Join](active-directory-azureadjoin-overview.md).  
+- hello Azure AD Join förutsättningar har inte uppfyllts. Se till att du har följt hello steg för [utöka molnet funktioner tooWindows 10-enheter via Azure Active Directory Join](active-directory-azureadjoin-overview.md).  
 
-- Federerad inloggningar kräver federationsservern för att stödja en aktiv WS-Trust-slutpunkt. 
+- Federerad inloggning kräver din federation server toosupport en aktiv WS-Trust-slutpunkt. 
 
 ---
 
-**F: Varför visas den ”Oops... Det uppstod ett fel”! dialogrutan när jag försöker Anslut min dator?**
+**F: Varför visas hello ”Oops... Det uppstod ett fel”! dialogrutan när jag försöker Anslut min dator?**
 
 **S:** detta beror på hur du konfigurerar Azure Active Directory-registrering med Intune. Mer information finns i [konfigurera enhetshantering för Windows](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
 
 ---
 
-**F: varför min försök att ansluta en dator inte även om jag inte får någon information om fel?**
+**F: Varför har min försök toojoin en dator misslyckas även om jag inte får någon information om fel?**
 
-**S:** en trolig orsak är att användaren är inloggad på enheten med det inbyggda administratörskontot. Skapa ett annat lokalt konto innan du använder Azure Active Directory Join för att slutföra installationen. 
-
----
-
-**F: var kan jag hitta instruktioner för installationen av automatisk enhetsregistrering?**
-
-**S:** detaljerade instruktioner finns [hur du konfigurerar automatisk registrering av Windows-domänanslutna enheter med Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md)
+**S:** en trolig orsak är att hello användaren är inloggad toohello enhet med hjälp av hello inbyggda administratörskontot. Skapa ett annat lokalt konto innan du använder Azure Active Directory Join toocomplete hello-installationen. 
 
 ---
 
-**F: var kan jag hitta felsökning information om automatisk enhetsregistrering?**
+**F: var kan jag hitta instruktioner för hello installationsprogrammet för automatisk enhetsregistrering?**
+
+**S:** detaljerade instruktioner finns [hur tooconfigure automatisk registrering av Windows-domänanslutna enheter med Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md)
+
+---
+
+**F: var kan jag hitta felsökning information om automatisk enhetsregistrering för hello?**
 
 **S:** information om felsökning, se:
 
-- [Felsökning av automatisk registrering av domän domänanslutna datorer till Azure AD – Windows 10 och Windows Server 2016](active-directory-device-registration-troubleshoot-windows.md)
+- [Felsökning av automatisk registrering av domän domänanslutna datorer tooAzure AD – Windows 10 och Windows Server 2016](active-directory-device-registration-troubleshoot-windows.md)
 
-- [Felsökning av automatisk registrering av domän domänanslutna datorer till Azure AD för äldre Windows-klienter](active-directory-device-registration-troubleshoot-windows-legacy.md)
+- [Felsökning av automatisk registrering av domän anslutna datorer tooAzure AD för äldre Windows-klienter](active-directory-device-registration-troubleshoot-windows-legacy.md)
  
 ---
 

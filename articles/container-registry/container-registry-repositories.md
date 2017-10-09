@@ -1,6 +1,6 @@
 ---
-title: "Azure-behållaren registret databaser | Microsoft Docs"
-description: "Hur du använder Azure-behållare registret databaser för Docker bilder"
+title: "aaaAzure behållaren registret databaser | Microsoft Docs"
+description: "Hur toouse Azure Container registret databaser för Docker bilder"
 services: container-registry
 documentationcenter: 
 author: cristy
@@ -13,43 +13,43 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2017
 ms.author: cristyg
-ms.openlocfilehash: 06b809c31cecef1714f60d04657eb74c611be8cb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 108622c565e41777fbb1fc9da9a01168abc7a7fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-container-registry-repositories"></a>Azure-behållaren registret databaser
 
-Azure-behållaren registret kan du lagra avbildningar för behållare i databaser. Du kan ha grupper med bilder (eller version av avbildningar) i isolerade miljöer genom att lagra avbildningar i databaser. Du kan ange dessa databaser när du trycker på bilder i registret.
+Azure-behållaren registret kan toostore behållare bilder i databaser. Du kan ha grupper med bilder (eller version av avbildningar) i isolerade miljöer genom att lagra avbildningar i databaser. Du kan ange dessa databaser när du trycker på bilder tooyour registret.
 
 
 ## <a name="prerequisites"></a>Krav
-* **Azure-behållarregister** – Skapa ett behållarregister i din Azure-prenumeration. Använd till exempel [Azure-portalen](container-registry-get-started-portal.md) eller [Azure CLI 2.0](container-registry-get-started-azure-cli.md).
-* **Docker CLI** – Om du vill konfigurera den lokala datorn som en Docker-värd och komma åt Docker CLI-kommandona installerar du [Docker-motorn](https://docs.docker.com/engine/installation/).
-* **Hämtar en bild** - dra en bild från offentliga Docker hubb registret tagga den och push i registret. Anvisningar om hur push och pull-avbildningar, se [Push Docker avbildningen till Azure privata registret](container-registry-get-started-docker-cli.md).
+* **Azure-behållarregister** – Skapa ett behållarregister i din Azure-prenumeration. Till exempel använda hello [Azure-portalen](container-registry-get-started-portal.md) eller hello [Azure CLI 2.0](container-registry-get-started-azure-cli.md).
+* **Docker CLI** -tooset din lokala dator som en Docker-värden och åtkomst hello Docker CLI-kommandon, installera [Docker-motorn](https://docs.docker.com/engine/installation/).
+* **Hämtar en bild** – hämta en bild från hello offentliga Docker hubb registret tagga den och push-installera den tooyour registret. Anvisningar om hur push och pull-avbildningar, se [Push Docker bild tooAzure privata registret](container-registry-get-started-docker-cli.md).
 
 
-## <a name="viewing-repositories-in-the-portal"></a>Visa databaser i portalen
+## <a name="viewing-repositories-in-hello-portal"></a>Visa databaser i hello Portal
 
-När du har pushas avbildningar till behållaren registret, kan du se en lista över databaser som är värd för avbildningar i Azure-portalen.
+När du har pushas bilder tooyour behållare registret, kan du se en lista över hello databaser som är värd för hello bilder i hello Azure-portalen.
 
-Om du har följt stegen i den [Push Docker avbildningen till Azure privata registret](container-registry-get-started-docker-cli.md) artikeln du bör nu ha en Nginx-avbildning i behållaren-registret. Som en del av instruktionerna, bör du har angett ett namnområde för avbildningen. I exemplet nedan skickar kommandot NGinx-avbildningen till databasen ”exempel”:
+Om du har följt stegen hello i hello [Push Docker bild tooAzure privata registret](container-registry-get-started-docker-cli.md) artikeln du bör nu ha en Nginx-avbildning i behållaren-registret. Som en del av hello instruktioner, bör du har angett ett namnområde för hello avbildningen. Hello kommandot skickar hello NGinx toohello ”exempel”-avbildningslagringsplatsen i hello exemplet nedan:
 
 ```
 docker push myregistry.azurecr.io/samples/nginx
 ```
- Azure Container Registry har stöd för namnområden för lagringsplatser på flera nivåer. Den här funktionen gör att du kan gruppera samlingar med avbildningar relaterade till en viss app, eller en samling appar för specifika utvecklingsgrupper eller operativa team. Du kan läsa mer om databaserna i behållaren register finns [privata Docker behållare register i Azure](container-registry-intro.md).
+ Azure Container Registry har stöd för namnområden för lagringsplatser på flera nivåer. Den här funktionen kan du toogroup samlingar med bilder relaterade tooa viss app eller en uppsättning appar toospecific utveckling eller operativa team. tooread mer om databaserna i behållaren register finns [privata Docker behållare register i Azure](container-registry-intro.md).
 
-Visa behållaren registret databaser:
+tooview hello behållaren registret databaser:
 
-1. Logga in på Azure Portal
-2. På den **Azure Container registret** bladet Välj registret som du vill granska
-3. I registret-bladet klickar du på **databaser** att se en lista över alla databaser och deras bilder
-4. (Valfritt) Välj en viss bild att se taggar
+1. Logga in toohello Azure-portalen
+2. På hello **Azure Container registret** bladet, Välj hello register som du vill tooinspect
+3. I hello registret bladet, klickar du på **databaser** toosee en lista över alla hello-databaser och deras bilder
+4. (Valfritt) Välj en viss bild toosee taggar
 
-![Databaserna i portalen](./media/container-registry-repositories/container-registry-repositories.png)
+![Databaserna i hello-portalen](./media/container-registry-repositories/container-registry-repositories.png)
 
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du känner till grunderna är du redo att börja använda registret! Du kan till exempel börja distribuera behållaravbildningar till ett [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/)-kluster.
+Nu när du vet hello grunderna är klar toostart med hjälp av registret! Till exempel börja distribuera behållaren bilder tooan [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/) klustret.

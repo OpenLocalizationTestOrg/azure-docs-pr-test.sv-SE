@@ -1,6 +1,6 @@
 ---
-title: "Övervaka Hadoop-kluster i HDInsight med Ambari API - Azure | Microsoft Docs"
-description: "Använd Apache Ambari APIs för att skapa, hantera och övervaka Hadoop-kluster. Döljer komplexiteten hos Hadoop intuitiva operatorn verktyg och API: er."
+title: aaaMonitor Hadoop-kluster i HDInsight med hello Ambari API - Azure | Microsoft Docs
+description: "Använd hello Apache Ambari APIs för att skapa, hantera och övervaka Hadoop-kluster. Dölj hello komplexiteten hos Hadoop intuitiva operatorn verktyg och API: er."
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
@@ -16,53 +16,53 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: b6fc2098027690eb76b69b1427f0e9541b8a7a69
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d61a8aae5ddfcd7d44f2e4cc899e0a4da5e5fdcc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Övervaka Hadoop-kluster i HDInsight Ambari API
-Lär dig hur du övervakar HDInsight-kluster med Ambari APIs.
+# <a name="monitor-hadoop-clusters-in-hdinsight-using-hello-ambari-api"></a>Övervaka Hadoop-kluster i HDInsight med hello Ambari API
+Lär dig hur toomonitor HDInsight-kluster med Ambari APIs.
 
 > [!NOTE]
-> Informationen i den här artikeln är främst för Windows-baserade HDInsight-kluster som innehåller en skrivskyddad version av Ambari REST API. Linux-baserade kluster, se [hantera Hadoop-kluster med Ambari](hdinsight-hadoop-manage-ambari.md).
+> hello informationen i den här artikeln är främst för Windows-baserade HDInsight-kluster som innehåller en skrivskyddad version av hello Ambari REST API. Linux-baserade kluster, se [hantera Hadoop-kluster med Ambari](hdinsight-hadoop-manage-ambari.md).
 > 
 > 
 
 ## <a name="what-is-ambari"></a>Vad är Ambari?
-[Apache Ambari] [ ambari-home] används för etablering, hantering och övervakning av Apache Hadoop-kluster. Det innehåller en intuitiv samling operatörsverktyg och en stabil uppsättning API:er som döljer komplexiteten hos Hadoop och förenklar klusteranvändningen. Mer information om API: erna finns [Ambari API-referens][ambari-api-reference]. 
+[Apache Ambari] [ ambari-home] används för etablering, hantering och övervakning av Apache Hadoop-kluster. Det innehåller en intuitiv samling operatörsverktyg och en stabil uppsättning API: er som döljer hello komplexiteten hos Hadoop och förenklar hello åtgärden kluster. Mer information om hello API: er finns [Ambari API-referens][ambari-api-reference]. 
 
-HDInsight stöder för närvarande endast övervakningsfunktion Ambari. Ambari API 1.0 stöds av version 3.0 och 2.1 HDInsight-kluster. Den här artikeln täcker inte att komma åt Ambari APIs på HDInsight version 3.1 och 2.1-kluster. Den viktigaste skillnaden mellan två är att vissa av komponenterna har ändrats av nya funktioner (t.ex historik jobbserver). 
+HDInsight stöder för närvarande endast hello Ambari övervakningsfunktion. Ambari API 1.0 stöds av version 3.0 och 2.1 HDInsight-kluster. Den här artikeln täcker inte att komma åt Ambari APIs på HDInsight version 3.1 och 2.1-kluster. hello viktiga skillnaden mellan hello två är att vissa av hello komponenterna har ändrats med hello införandet av nya funktioner (till exempel hello jobbserver historik). 
 
 **Förutsättningar**
 
-Innan du börjar den här självstudiekursen behöver du följande:
+Innan du påbörjar den här självstudien måste du ha hello följande objekt:
 
 * **En arbetsstation med Azure PowerShell**.
-* (Valfritt) [cURL][curl]. Om du vill installera den [cURL versioner och hämtningsbara filer][curl-download].
+* (Valfritt) [cURL][curl]. tooinstall, se [cURL versioner och hämtningsbara filer][curl-download].
   
   > [!NOTE]
-  > När du använder cURL-kommando i Windows, Använd dubbla citattecken i stället för citattecken för alternativvärden.
+  > När du använder hello cURL-kommando i Windows, Använd dubbla citattecken i stället för citattecken för hello alternativvärden.
   > 
   > 
-* **Ett Azure HDInsight-kluster**. Instruktioner om hur klusteretablering finns [komma igång med HDInsight] [ hdinsight-get-started] eller [etablera HDInsight-kluster][hdinsight-provision]. Du behöver följande data gå igenom kursen:
+* **Ett Azure HDInsight-kluster**. Instruktioner om hur klusteretablering finns [komma igång med HDInsight] [ hdinsight-get-started] eller [etablera HDInsight-kluster][hdinsight-provision]. Du behöver följande data toogo igenom kursen hello hello:
   
   | Kluster-egenskap | Variabelnamn för Azure PowerShell | Värde | Beskrivning |
   | --- | --- | --- | --- |
-  |   HDInsight-klustrets namn |$clusterName | |Namnet på ditt HDInsight-kluster. |
-  |   Användarnamn för kluster |$clusterUsername | |Användaren klusternamnet anges när klustret skapades. |
+  |   HDInsight-klustrets namn |$clusterName | |hello namnet på ditt HDInsight-kluster. |
+  |   Användarnamn för kluster |$clusterUsername | |Användaren klusternamnet anges när hello klustret har skapats. |
   |   Kluster-lösenord |$clusterPassword | |Användarlösenordet för klustret. |
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 
 ## <a name="jump-start"></a>Komma igång
-Det finns flera sätt att använda Ambari och övervaka HDInsight-kluster.
+Det finns flera sätt toouse Ambari toomonitor HDInsight-kluster.
 
 **Använda Azure PowerShell**
 
-Följande Azure PowerShell-skript hämtar MapReduce spåraren jobbinformation *i ett kluster i HDInsight 3.5.*  Den viktigaste skillnaden är att vi hämtar informationen från den YARN-tjänsten (i stället MapReduce).
+hello följande Azure PowerShell-skript hämtar hello MapReduce jobbinformation spåraren *i ett kluster i HDInsight 3.5.*  hello viktigaste skillnaden är att vi hämtar informationen från hello YARN-tjänsten (i stället för MapReduce).
 
     $clusterName = "<HDInsightClusterName>"
     $clusterUsername = "<HDInsightClusterUsername>"
@@ -78,7 +78,7 @@ Följande Azure PowerShell-skript hämtar MapReduce spåraren jobbinformation *i
 
     $response.metrics.'yarn.queueMetrics'
 
-Följande PowerShell-skript hämtar MapReduce spåraren jobbinformation *i ett kluster i HDInsight 2.1*:
+hello följande PowerShell-skript hämtar hello MapReduce jobbinformation spåraren *i ett kluster i HDInsight 2.1*:
 
     $clusterName = "<HDInsightClusterName>"
     $clusterUsername = "<HDInsightClusterUsername>"
@@ -94,17 +94,17 @@ Följande PowerShell-skript hämtar MapReduce spåraren jobbinformation *i ett k
 
     $response.metrics.'mapred.JobTracker'
 
-Utdata är:
+hello-utdata är:
 
 ![Jobtracker utdata][img-jobtracker-output]
 
 **Använda cURL**
 
-I följande exempel hämtar information om klustret med hjälp av cURL:
+hello hämtar följande exempel information om klustret med hjälp av cURL:
 
     curl -u <username>:<password> -k https://<ClusterName>.azurehdinsight.net:443/ambari/api/v1/clusters/<ClusterName>.azurehdinsight.net
 
-Utdata är:
+hello-utdata är:
 
     {"href":"https://hdi0211v2.azurehdinsight.net/ambari/api/v1/clusters/hdi0211v2.azurehdinsight.net/",
      "Clusters":{"cluster_name":"hdi0211v2.azurehdinsight.net","version":"2.1.3.0.432823"},
@@ -121,12 +121,12 @@ Utdata är:
         "Hosts":{"cluster_name":"hdi0211v2.azurehdinsight.net",
                  "host_name":"headnode0.{ClusterDNS}.azurehdinsight.net"}}]}
 
-**2014-10-8-versionen**:
+**Hello 2014-10-8 versionen**:
 
-När du använder Ambari-slutpunkten ”https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}” den *värddatornamn* field returnerar det fullständigt kvalificerade domännamnet (FQDN) för noden i stället för värdnamnet. Före version 2014-10-8, det här exemplet returneras bara ”**headnode0**”. Efter 2014-10-8-version du hämta det fullständiga Domännamnet ”**headnode0. { ClusterDNS}. azurehdinsight.NET .net**”, som visas i föregående exempel. Den här ändringen krävdes för att underlätta scenarier där flera klustertyper (till exempel HBase och Hadoop) kan distribueras i ett virtuellt nätverk (VNET). Detta inträffar exempelvis när du använder HBase som en backend-plattform för Hadoop.
+När med hello Ambari slutpunkt, ”https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}” Hej *värddatornamn* fält Returnerar hello fullständigt kvalificerade domännamnet (FQDN) för hello nod i stället för hello värdnamn. Innan hello 2014-10-8 versionen kan det här exemplet returneras bara ”**headnode0**”. Efter hello 2014-10-8-versionen kan du hämta hello FQDN ”**headnode0. { ClusterDNS}. azurehdinsight.NET .net**”, enligt hello föregående exempel. Den här ändringen har nödvändiga toofacilitate scenarier där flera klustertyper (till exempel HBase och Hadoop) kan distribueras i ett virtuellt nätverk (VNET). Detta inträffar exempelvis när du använder HBase som en backend-plattform för Hadoop.
 
 ## <a name="ambari-monitoring-apis"></a>Ambari övervakning API: er
-I följande tabell visas några av de vanligaste Ambari övervakning API-anrop. Mer information om API finns [Ambari API-referens][ambari-api-reference].
+hello följande tabell visas några av hello vanligaste Ambari övervakning API-anrop. Mer information om hello API finns [Ambari API-referens][ambari-api-reference].
 
 | Övervakare för API-anrop | URI: N | Beskrivning |
 | --- | --- | --- |
@@ -144,9 +144,9 @@ I följande tabell visas några av de vanligaste Ambari övervakning API-anrop. 
 | Hämta konfigurationsinformation. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>` |Config-typer: core-plats, hdfs-plats, mapred-plats, hive-plats |
 
 ## <a name="next-steps"></a>Nästa steg
-Nu har du lärt dig hur du använder Ambari övervakning API-anrop. Du kan läsa mer här:
+Nu har du fått veta hur toouse Ambari övervakning API-anrop. Det finns fler toolearn:
 
-* [Hantera HDInsight-kluster med Azure-portalen][hdinsight-admin-portal]
+* [Hantera HDInsight-kluster med hello Azure-portalen][hdinsight-admin-portal]
 * [Hantera HDInsight-kluster med Azure PowerShell][hdinsight-admin-powershell]
 * [Hantera HDInsight-kluster med hjälp av kommandoradsgränssnittet][hdinsight-admin-cli]
 * [HDInsight-dokumentation][hdinsight-documentation]

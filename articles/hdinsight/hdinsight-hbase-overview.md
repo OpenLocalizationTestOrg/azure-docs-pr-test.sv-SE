@@ -1,6 +1,6 @@
 ---
-title: "Vad är HBase i Azure HDInsight? | Microsoft Docs"
-description: "En introduktion till Apache HBase i HDInsight en NoSQL-databas som bygger på Hadoop. Läs mer om användningsfall och jämför HBase med andra Hadoop-kluster."
+title: "aaaWhat är HBase i Azure HDInsight? | Microsoft Docs"
+description: "En introduktion tooApache HBase i HDInsight en NoSQL-databas som bygger på Hadoop. Läs mer om användningsfall och jämför HBase tooother Hadoop-kluster."
 keywords: bigtable,nosql,what is hbase,apache hbase,hbase,habase overview,
 services: hdinsight
 documentationcenter: 
@@ -17,38 +17,38 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: jgao
-ms.openlocfilehash: 6823633bfdb07ce649083804ba211709519cb6da
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0d28378d07b1a168e38748548578be11310d2228
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-is-hbase-in-hdinsight-a-nosql-database-that-provides-bigtable-like-capabilities-for-hadoop"></a>Vad är HBase i HDInsight: En NoSQL-databas som tillhandahåller BigTable-liknande kapacitet för Hadoop
 Apache HBase är en NoSQL-databas med öppen källkod som har skapats på Hadoop och modellerats efter Google BigTable. HBase ger direktåtkomst och stark konsekvens för stora mängder ostrukturerade och halvstrukturerade data i en schemalös databas sorterad per kolumnfamiljer.
 
-Data lagras i tabellens rader och data i raderna grupperas per kolumnfamilj. HBase är en schemalös databas i den mening att varken kolumner eller den typ av data som lagras i dem måste definieras innan du använder dem. Den öppna källkoden skalas linjärt för att hantera petabyte med data på tusentals noder. Den kan utgå ifrån dataredundans, batchbearbetning och andra funktioner som tillhandahålls av distribuerade program i Hadoop-miljön.
+Data lagras i hello rader i en tabell och data i raderna grupperas per kolumnfamilj. HBase är en schemalös databas i hello mening att varken hello kolumner eller hello typ av data som lagras i dem behöver toobe definierats innan du använder dem. hello öppna källkoden skalas linjärt toohandle petabyte data på tusentals noder. Den kan utgå ifrån dataredundans, batchbearbetning och andra funktioner som tillhandahålls av distribuerade program i hello Hadoop-ekosystemet.
 
 ## <a name="how-is-hbase-implemented-in-azure-hdinsight"></a>Hur är HBase implementerat i Azure HDInsight?
-HDInsight HBase erbjuds som ett hanterat kluster som är integrerat i Azure-miljön. Klustren har konfigurerats för att lagra data direkt i [Azure Storage](./hdinsight-hadoop-use-blob-storage.md) eller [Azure Data Lake Store](./hdinsight-hadoop-use-data-lake-store.md). Det ger mindre fördröjning och större flexibilitet när det gäller alternativ för prestanda och kostnader. Det gör att kunderna kan bygga interaktiva webbplatser som fungerar med stora datauppsättningar och skapa tjänster som lagrar sensor- och telemetridata från miljontals slutpunkter och analysera dessa data med Hadoop-jobb. HBase och Hadoop är bra startpunkter för stordataprojekt i Azure som gör att realtidsprogram kan arbeta med stora datauppsättningar.
+HDInsight HBase erbjuds som ett hanterat kluster som är integrerat i hello Azure-miljön. hello-kluster är konfigurerade toostore data direkt i [Azure Storage](./hdinsight-hadoop-use-blob-storage.md) eller [Azure Data Lake Store](./hdinsight-hadoop-use-data-lake-store.md), som ger mindre fördröjning och större flexibilitet när alternativ för prestanda och kostnad. Detta gör att kunder toobuild interaktiva webbplatser som fungerar med stora datauppsättningar, toobuild tjänster som lagrar sensor- och telemetridata data från miljontals slutpunkter och tooanalyze dessa data med Hadoop-jobb. HBase och Hadoop är bra startpunkter för stordataprojekt i Azure i synnerhet kan de aktivera realtidsprogram toowork med stora datauppsättningar.
 
-HDInsight-implementeringen utnyttjar HBase skalbara arkitektur för att tillhandahålla automatisk delning av tabeller, stor konsekvens för läsning och skrivning och automatisk redundans. Prestanda utökas av cachelagring i minnet för läsning och snabb strömning för skrivning. HBase-kluster kan skapas i virtuella nätverk. Mer information finns i [Create HDInsight clusters on Azure Virtual Network][hbase-provision-vnet] (Skapa HDInsight-kluster i Azure Virtual Network).
+Hej HDInsight-implementeringen utnyttjar hello skalbar arkitektur för HBase tooprovide automatisk delning av tabeller, stor konsekvens för läsning och skrivning och automatisk redundans. Prestanda utökas av cachelagring i minnet för läsning och snabb strömning för skrivning. HBase-kluster kan skapas i virtuella nätverk. Mer information finns i [Create HDInsight clusters on Azure Virtual Network][hbase-provision-vnet] (Skapa HDInsight-kluster i Azure Virtual Network).
 
 ## <a name="how-is-data-managed-in-hdinsight-hbase"></a>Hur hanteras data i HDInsight HBase?
-Data kan hanteras i HBase med hjälp av kommandona `create`, `get`, `put` och `scan` i HBase-gränssnittet. Data skrivs till databasen med hjälp av `put` och läses med hjälp av `get`. Kommandot `scan` används till att hämta data från flera rader i en tabell. Data kan också hanteras med HBase C#-API. Det ger ett klientbibliotek utöver HBase REST-API. En HBase-databas kan också efterfrågas med hjälp av Hive. En introduktion till dessa programmeringsmodeller finns i [Komma igång med Hadoop i HDInsight HBase][hbase-get-started]. Det finns också coprocessorer för databehandling i de noder som är värdar för databasen.
+Data kan hanteras i HBase med hjälp av hello `create`, `get`, `put`, och `scan` kommandon från hello HBase-gränssnittet. Data skrivs toohello databasen med hjälp av `put` och läsa med hjälp av `get`. Hej `scan` kommandot är används tooobtain data från flera rader i en tabell. Data kan också hanteras med hello HBase C#-API, vilket ger ett klientbibliotek utöver hello HBase REST-API. En HBase-databas kan också efterfrågas med hjälp av Hive. En introduktion toothese programmeringsmodeller, se [komma igång med HBase med Hadoop i HDInsight][hbase-get-started]. Samtidigt processorer är också tillgängliga, som tillåter databehandling i hello noder värden hello databasen.
 
 > [!NOTE]
 > Thrift stöds inte av HBase i HDInsight.
 >
 
 ## <a name="scenarios-use-cases-for-hbase"></a>Scenarier: Användningsfall för HBase
-BigTable (och HBase via tillägg) skapades framförallt för webbsökning. Sökmotorer skapar index som mappar termer till de webbsidor som innehåller dem. Men HBase passar också för många andra användningsområden och du hittar många av dem i det här avsnittet.
+hello kanoniska användningsfall för BigTable (och HBase via tillägg) skapades var webbsökning. Sökmotorer skapar index som mappar termer toohello webbsidor som innehåller dem. Men HBase passar också för många andra användningsområden och du hittar många av dem i det här avsnittet.
 
 * Nyckelvärdeslagring
   
-    HBase kan användas som ett nyckelvärdeslager och passar för hantering av meddelandesystem. HBase är perfekt för lagring och hantering av internetkommunikation och används till exempel av Facebook för meddelandesystemen. WebTable använder HBase till att söka efter och hantera tabeller som extraheras från webbsidor.
+    HBase kan användas som ett nyckelvärdeslager och passar för hantering av meddelandesystem. HBase är perfekt för lagring och hantering av internetkommunikation och används till exempel av Facebook för meddelandesystemen. WebTable använder HBase toosearch för och hantera tabeller som extraheras från webbsidor.
 * Sensordata
   
-    HBase är användbart för insamling av data som samlas in inkrementellt från olika källor. Det omfattar sociala analyser, tidsserier, hålla interaktiva instrumentpaneler uppdaterade med trender och räknare och hantera system för granskningsloggar. Några exempel är Bloomberg trader terminal och Open Time Series Database (OpenTSDB), som lagrar och ger åtkomst till mätvärden som samlats in om hälsostatus för serversystem.
+    HBase är användbart för insamling av data som samlas in inkrementellt från olika källor. Det omfattar sociala analyser, tidsserier, hålla interaktiva instrumentpaneler uppdaterade med trender och räknare och hantera system för granskningsloggar. Exempel är Bloomberg trader terminal och hello Open Time Series Database (OpenTSDB), som lagrar och ger åtkomst toometrics som samlats in om hello hälsostatus för serversystem.
 * Realtidsfråga
   
     [Phoenix](http://phoenix.apache.org/) är en SQL-frågemotor för Apache HBase. Den används som en JDBC-drivrutin, och gör att du kan ställa frågor och hantera HBase-tabeller med SQL.
@@ -61,7 +61,7 @@ BigTable (och HBase via tillägg) skapades framförallt för webbsökning. Sökm
 * [Create HDInsight clusters on Azure Virtual Network][hbase-provision-vnet] (Skapa HDInsight-kluster i Azure Virtual Network)
 * [Konfigurera HBase-replikering i HDInsight](hdinsight-hbase-replication.md)
 * [Analyze Twitter sentiment with HBase in HDInsight][hbase-twitter-sentiment] (Analysera Twitter-sentiment med HBase i HDInsight)
-* [Use Maven to build Java applications that use HBase with HDInsight (Hadoop)][hbase-build-java-maven] (Använda Maven för att skapa Java-program som använder HBase med HDInsight (Hadoop))
+* [Använd Maven toobuild Java-program som använder HBase med HDInsight (Hadoop)][hbase-build-java-maven]
 
 ## <a name="see-also"></a>Se även
 * [Apache HBase](https://hbase.apache.org/)

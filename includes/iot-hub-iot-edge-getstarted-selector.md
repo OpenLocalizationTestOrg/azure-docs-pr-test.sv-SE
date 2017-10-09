@@ -4,34 +4,34 @@
 > 
 > 
 
-Den här artikeln innehåller en detaljerad genomgång av [Hello World-exempelkoden][lnk-helloworld-sample] och illustrerar grundläggande komponenter i [Azure IoT Edge][lnk-iot-edge]-arkitekturen. I exemplet används Azure IoT Edge för att skapa en enkel gateway som loggar ett meddelande med ”hello world” i en fil var femte sekund.
+Den här artikeln innehåller en detaljerad genomgång av hello [Hello World exempelkod] [ lnk-helloworld-sample] tooillustrate hello grundläggande komponenter i hello [Azure IoT kant] [ lnk-iot-edge] arkitektur. hello används hello Azure IoT kant toobuild en enkel gateway som loggar tooa för ”hello world” meddelandefilen var femte sekund.
 
 Den här genomgången omfattar:
 
-* **Hello World exempelarkitektur**: Beskriver hur [Azure IoT kant arkitektur begrepp] [ lnk-edge-concepts] gäller Hello World-exempel och hur komponenterna fungerar ihop.
-* **Hur du skapar exemplet**: De steg som krävs för att skapa exemplet.
-* **Hur du kör exemplet**: De steg som krävs för att köra exemplet. 
-* **Vanliga utdata**: Ett exempel på utdata du kan förvänta dig när du kör exemplet.
-* **Kodfragment**: en samling med kodstycken att visa hur Hello World-exempel implementerar gateway nyckelkomponenterna IoT kant.
+* **Hello World exempelarkitektur**: Beskriver hur [Azure IoT kant arkitektur begrepp] [ lnk-edge-concepts] tillämpa toohello Hello World-exempel och hur hello komponenter fungerar ihop.
+* **Hur toobuild hello exempel**: hello steg krävs toobuild hello exempel.
+* **Hur toorun hello exempel**: hello steg krävs toorun hello exempel. 
+* **Vanliga utdata**: ett exempel på hello utdata tooexpect när du kör hello exempel.
+* **Kodfragment**: en samling av koden kodavsnitt tooshow hur hello Hello World-exempel implementerar nyckeln IoT Edge gateway komponenter.
 
 
 ## <a name="hello-world-sample-architecture"></a>Arkitektur för Hello World-exempel
-Hello World-exemplet illustrerar de begrepp som beskrivs i föregående avsnitt. Hello World-exempel implementerar en IoT-gräns-gatewayen som har en pipeline som består av två IoT kant moduler:
+hello Hello World-exempel illustrerar hello begrepp som beskrivs i föregående avsnitt i hello. hello Hello World-exempel implementerar en IoT-gräns-gatewayen som har en pipeline som består av två IoT kant moduler:
 
-* Modulen *hello world* skapar ett meddelande var femte sekund och skickar det till loggningsmodulen.
-* Modulen *loggning* skriver de meddelanden den tar emot till en fil.
+* Hej *hello world* modulen och skapar ett meddelande var femte sekund och skickar den toohello loggaren modulen.
+* Hej *loggaren* modulen skrivningar hello meddelanden som tas emot tooa fil.
 
 ![Arkitekturen i Hello World-exemplet som skapats med Azure IoT Edge][4]
 
-Enligt beskrivningen i föregående avsnitt, skickar modulen Hello World inte meddelanden direkt till loggningsmodueln var femte sekund. I stället publicerar den ett meddelande till den asynkrona meddelandekön var femte sekund.
+Enligt beskrivningen i föregående avsnitt i hello meddelanden hello Hello World modulen inte klarar direkt toohello loggaren modulen var femte sekund. I stället publicerar den förhandlare toohello meddelande var femte sekund.
 
-Loggningsmodulen får meddelandet från den asynkrona meddelandekön och agerar på meddelandet genom att skriva meddelandets innehåll till en fil.
+hello loggaren modulen tar emot hello-meddelande från hello broker och agerar på, skriver hello innehållet i hello meddelandefilen tooa.
 
-Loggningsmodulen förbrukar endast meddelanden från den asynkrona meddelandekön, den publicerar aldrig nya meddelanden till den asynkrona meddelandekön.
+hello loggaren modulen förbrukar endast meddelanden från hello broker, den publicerar aldrig nya meddelanden toohello broker.
 
-![Hur agenten dirigerar meddelanden mellan moduler i Azure IoT Edge][5]
+![Hur hello broker skickar meddelanden mellan moduler i Azure IoT kant][5]
 
-Bilden ovan illustrerar arkitekturen i Hello World-exemplet och de relativa sökvägarna till källfilerna som implementerar olika delar av exemplet på [lagringsplatsen][lnk-iot-edge]. Utforska koden på egen hand eller använd kodfragmenten nedan som vägledning.
+hello ovanstående bild visar hello och arkitekturen för hello Hello World-exempel hello relativa sökvägar toohello källfiler som implementerar olika delar av hello exemplet i hello [databasen][lnk-iot-edge]. Utforska hello koden på egen hand eller Använd hello kodavsnitten nedan som vägledning.
 
 <!-- Images -->
 [4]: media/iot-hub-iot-edge-getstarted-selector/high_level_architecture.png

@@ -1,6 +1,6 @@
 ---
-title: Exportera en Azure SQL database till en BACPAC fil | Microsoft Docs
-description: "Exportera en Azure SQL database till en BACPAC-fil med hjälp av Azure-portalen"
+title: aaaExport en Azure SQL database tooa BACPAC fil | Microsoft Docs
+description: Exportera en Azure SQL database tooa BACPAC-fil med hello Azure-portalen
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,65 +15,65 @@ ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.openlocfilehash: faa567ec615a07da8633629fc98e3454c84a8f5f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: cb3b4227318e0fd2114529c86c9792615fe7fd1f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportera en Azure SQL database till en BACPAC-fil
+# <a name="export-an-azure-sql-database-tooa-bacpac-file"></a>Exportera en Azure SQL database tooa BACPAC fil
 
-När du vill exportera en databas för arkivering eller för att flytta till en annan plattform du kan exportera databasschemat och data till en [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) fil. En BACPAC-fil är en ZIP-fil med filnamnstillägget BACPAC som innehåller metadata och data från en SQL Server-databas. En BACPAC-fil kan lagras i Azure blob storage eller i lokal lagring på en lokal plats och senare importeras tillbaka till Azure SQL Database eller till en lokal SQL Server-installation. 
+När du behöver tooexport en databas för arkivering eller för glidande tooanother plattform, kan du exportera hello databasen schema- och tooa [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) fil. En BACPAC-fil är en ZIP-fil med filnamnstillägget BACPAC som innehåller hello metadata och data från en SQL Server-databas. En BACPAC-fil kan lagras i Azure blob storage eller i lokal lagring på en lokal plats och senare importeras tillbaka till Azure SQL Database eller till en lokal SQL Server-installation. 
 
 > [!IMPORTANT] 
 > Azure SQL Database automatiserad Export har avslutats på 1 mars 2017. Du kan använda [långsiktig lagring av säkerhetskopior](sql-database-long-term-retention.md
-) eller [Azure Automation](https://github.com/Microsoft/azure-docs-pr/blob/2461f706f8fc1150e69312098640c0676206a531/articles/automation/automation-intro.md) regelbundet Arkivera SQL-databaser med hjälp av PowerShell enligt ett schema som du väljer. Ett exempel kan du hämta den [exempel PowerShell-skript](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) från Github.
+) eller [Azure Automation](https://github.com/Microsoft/azure-docs-pr/blob/2461f706f8fc1150e69312098640c0676206a531/articles/automation/automation-intro.md) tooperiodically Arkiv SQL-databaser med hjälp av PowerShell enligt tooa schema du väljer. Hämta en exempelfil hello [exempel PowerShell-skript](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) från Github.
 >
 
 ## <a name="considerations-when-exporting-an-azure-sql-database"></a>Att tänka på när du exporterar en Azure SQL database
 
-* För en export transaktionellt konsekvent, måste du kontrollera antingen att inga skrivåtgärder aktivitet pågår under exporten eller som du exporterar från en [transaktionellt konsekvent kopiera](sql-database-copy.md) för din Azure SQL-databas.
-* Om du exporterar till blob storage är den maximala storleken för en BACPAC fil 200 GB. Om du vill arkivera en större BACPAC fil att exportera till lokal lagring.
-* Exportera en BACPAC-fil till Azure premium-lagring med hjälp av metoderna som beskrivs i den här artikeln stöds inte.
-* Om exporten från Azure SQL Database överskrider 20 timmar, kan den avbrytas. Om du vill öka prestandan under exporten kan du:
+* För en export toobe transaktionellt konsekvent, måste du kontrollera antingen att ingen skrivning aktivitet sker under exporten hello eller att du exporterar från en [transaktionellt konsekvent kopiera](sql-database-copy.md) för din Azure SQL-databas.
+* Om du exporterar tooblob lagring är hello maximal storlek för en BACPAC-fil 200 GB. tooarchive en större BACPAC fil exportera toolocal lagring.
+* Exportera en BACPAC filen tooAzure premium-lagring med hjälp av hello metoderna som beskrivs i den här artikeln stöds inte.
+* Om hello exportåtgärden från Azure SQL Database överskrider 20 timmar, kan den avbrytas. tooincrease prestanda under export, kan du:
   * Tillfälligt öka din servicenivå.
-  * Upphör alla läsa och skriva aktiviteten under exporten.
-  * Använd en [grupperat index](https://msdn.microsoft.com/library/ms190457.aspx) med icke-null-värden för alla stora tabeller. Utan grupperade index, kan en export misslyckas om det tar längre tid än 6 – 12 timmar. Det beror på att tjänsten export måste utföra en tabellgenomsökning om du vill exportera hela tabellen. Ett bra sätt att bestämma om dina tabeller är optimerade för export är att köra **DBCC SHOW_STATISTICS** och se till att den *RANGE_HI_KEY* inte är null och dess värde har bra distribution. Mer information finns i [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
+  * Upphör alla läsa och skriva aktiviteten under hello exporten.
+  * Använd en [grupperat index](https://msdn.microsoft.com/library/ms190457.aspx) med icke-null-värden för alla stora tabeller. Utan grupperade index, kan en export misslyckas om det tar längre tid än 6 – 12 timmar. Det beror på att hello export service måste toocomplete en genomsökningen tootry tooexport hela tabellen. Ett bra sätt toodetermine om dina tabeller som är optimerade för export är toorun **DBCC SHOW_STATISTICS** och se till att hello *RANGE_HI_KEY* inte är null och dess värde har bra distribution. Mer information finns i [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
 
 > [!NOTE]
-> BACPACs är inte avsedda att användas för säkerhetskopiering och återställning. Azure SQL Database skapar automatiskt säkerhetskopior för varje databas. Mer information finns i [översikt över verksamhetskontinuitet](sql-database-business-continuity.md) och [SQL databassäkerhetskopieringar](sql-database-automated-backups.md).  
+> BACPACs är inte avsedda toobe som används för säkerhetskopiering och återställning. Azure SQL Database skapar automatiskt säkerhetskopior för varje databas. Mer information finns i [översikt över verksamhetskontinuitet](sql-database-business-continuity.md) och [SQL databassäkerhetskopieringar](sql-database-automated-backups.md).  
 > 
 
-## <a name="export-to-a-bacpac-file-using-the-azure-portal"></a>Exportera till en BACPAC-fil med hjälp av Azure portal
+## <a name="export-tooa-bacpac-file-using-hello-azure-portal"></a>Exportera tooa BACPAC-fil med hello Azure-portalen
 
-Så här exporterar du en databas med hjälp av den [Azure-portalen](https://portal.azure.com), öppna sidan för din databas och klickar på **exportera** i verktygsfältet. Ange filnamnet BACPAC, ange Azure storage-konto och behållare för export och ange autentiseringsuppgifter för att ansluta till källdatabasen.  
+en databas med hjälp av tooexport hello [Azure-portalen](https://portal.azure.com), öppna hello-sida för din databas och klickar på **exportera** hello i verktygsfältet. Ange hello BACPAC filnamn Anger hello Azure storage-konto och en behållare för hello export och ange hello autentiseringsuppgifter tooconnect toohello källdatabas.  
 
 ![Databasexport](./media/sql-database-export/database-export.png)
 
-Öppna sidan för den logiska servern som innehåller den databas som exporteras för att övervaka förloppet för exporten. Rulla ned till **Operations** och klicka sedan på **Import/Export** historik.
+toomonitor hello fortskrider hello exportåtgärden, öppna hello sidan för hello logisk server som innehåller hello databas som exporteras. Rulla nedåt för**Operations** och klicka sedan på **Import/Export** historik.
 
 ![Exportera tidigare](./media/sql-database-export/export-history.png)
 ![exportstatus historik](./media/sql-database-export/export-history2.png)
 
-## <a name="export-to-a-bacpac-file-using-the-sqlpackage-utility"></a>Exportera till en BACPAC-fil med hjälp av verktyget SQLPackage
+## <a name="export-tooa-bacpac-file-using-hello-sqlpackage-utility"></a>Exportera tooa BACPAC fil med hello SQLPackage-verktyget
 
-Så här exporterar du en SQL-databas med den [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) kommandoradsverktyget finns [exportera parametrar och egenskaper](https://msdn.microsoft.com/library/hh550080.aspx#Export Parameters and Properties). Verktyget SQLPackage levereras med de senaste versionerna av [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) och [SQL Server Data Tools för Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx), eller så kan du hämta den senaste versionen av [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) direkt från Microsoft download center.
+tooexport en SQL-databas med hjälp av hello [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) kommandoradsverktyget finns [exportera parametrar och egenskaper](https://msdn.microsoft.com/library/hh550080.aspx#Export Parameters and Properties). Hej SQLPackage verktyget som levereras med hello senaste versionerna av [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) och [SQL Server Data Tools för Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx), eller så kan du hämta hello senaste versionen av [ SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) direkt från hello Microsoft hämtningssidan.
 
-Vi rekommenderar användning av verktyget SQLPackage för skalning och prestanda i de flesta produktionsmiljöer. En SQL Server Customer Advisory Team-blogg om migrering med BACPAC-filer finns i [Migrera från SQL Server till Azure SQL Database med BACPAC-filer](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) (på engelska).
+Vi rekommenderar hello användningen av hello SQLPackage verktyg för skalning och prestanda i de flesta produktionsmiljöer. Bloggen om att migrera med BACPAC filer finns i en SQL Server Customer Advisory Team [migrera från SQL Server-tooAzure SQL-databas med hjälp av BACPAC filer](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
-Det här exemplet visar hur du exporterar en databas med hjälp av SqlPackage.exe med Active Directory Universal autentisering:
+Det här exemplet illustrerar hur tooexport en databas med hjälp av SqlPackage.exe med Active Directory Universal autentisering:
 
 ```cmd
 SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=apptestserver.database.windows.net;Initial Catalog=MyDB;" /ua:True /tid:"apptest.onmicrosoft.com"
 ```
 
-## <a name="export-to-a-bacpac-file-using-sql-server-management-studio-ssms"></a>Exportera till en BACPAC-fil med hjälp av SQL Server Management Studio (SSMS)
+## <a name="export-tooa-bacpac-file-using-sql-server-management-studio-ssms"></a>Exportera tooa BACPAC-fil med SQL Server Management Studio (SSMS)
 
-De senaste versionerna av SQL Server Management Studio ger också en guide för att exportera en Azure SQL Database till en BACPAC-fil. Finns det [exportera en Dataskiktsprogrammet](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application).
+hello senaste versioner av SQL Server Management Studio ger också en guiden tooexport en Azure SQL Database tooa BACPAC-fil. Se hello [exportera en Dataskiktsprogrammet](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application).
 
-## <a name="export-to-a-bacpac-file-using-powershell"></a>Exportera till en BACPAC-fil med hjälp av PowerShell
+## <a name="export-tooa-bacpac-file-using-powershell"></a>Tooa BACPAC exportfilen med hjälp av PowerShell
 
-Använd den [ny AzureRmSqlDatabaseExport](/powershell/module/azurerm.sql/new-azurermsqldatabaseexport) för att skicka en begäran om export av databas till Azure SQL Database-tjänsten. Exportåtgärden kan ta lite tid att slutföra beroende på storleken på databasen.
+Använd hello [ny AzureRmSqlDatabaseExport](/powershell/module/azurerm.sql/new-azurermsqldatabaseexport) cmdlet toosubmit en export databasen begäran toohello Azure SQL Database-tjänsten. Hello exportåtgärden kan ta viss tid toocomplete beroende på hello storleken på databasen.
 
  ```powershell
  $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $ResourceGroupName -ServerName $ServerName `
@@ -81,7 +81,7 @@ Använd den [ny AzureRmSqlDatabaseExport](/powershell/module/azurerm.sql/new-azu
    -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
  ```
 
-Om du vill kontrollera status för begäran för export av [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) cmdlet. Kör detta omedelbart efter begäran vanligtvis returnerar **Status: InProgress**. När du ser **Status: lyckades** exporten har slutförts.
+toocheck hello status för hello begäran export använder hello [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) cmdlet. Kör detta omedelbart efter hello begära vanligtvis returnerar **Status: InProgress**. När du ser **Status: lyckades** hello exporten har slutförts.
 
 ```powershell
 $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
@@ -98,8 +98,8 @@ $exportStatus
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om långsiktig säkerhetskopiering kvarhållning av en Azure SQL database-säkerhetskopia som ett alternativ till att exportera en databas för finns [långsiktig lagring av säkerhetskopior](sql-database-long-term-retention.md).
-- En SQL Server Customer Advisory Team-blogg om migrering med BACPAC-filer finns i [Migrera från SQL Server till Azure SQL Database med BACPAC-filer](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) (på engelska).
-* Läs om hur du importerar en BACPAC till en SQL Server-databas i [importera en BACPCAC till en SQL Server-databas](https://msdn.microsoft.com/library/hh710052.aspx).
-* Läs om hur du exporterar en BACPAC från en SQL Server-databas i [exportera en Dataskiktsprogrammet](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) och [migrera din första databas](sql-database-migrate-your-sql-server-database.md).
-* Om du exporterar från SQL Server som en prelude för migrering till Azure SQL Database, se [migrera en SQL Server-databas till Azure SQL Database](sql-database-cloud-migrate.md).
+* toolearn om långsiktig säkerhetskopiering kvarhållning av en Azure SQL databassäkerhetskopia som ett alternativt tooexported en databas för arkivering, se [långsiktig lagring av säkerhetskopior](sql-database-long-term-retention.md).
+- Bloggen om att migrera med BACPAC filer finns i en SQL Server Customer Advisory Team [migrera från SQL Server-tooAzure SQL-databas med hjälp av BACPAC filer](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+* toolearn om hur du importerar en BACPAC tooa SQL Server-databas finns [Importera SQL Server-databasen BACPCAC tooa](https://msdn.microsoft.com/library/hh710052.aspx).
+* toolearn exportera en BACPAC från en SQL Server-databas finns [exportera en Dataskiktsprogrammet](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) och [migrera din första databas](sql-database-migrate-your-sql-server-database.md).
+* Om du exporterar från SQL Server som en SQL-databas med prelude toomigration tooAzure [migrera en SQL-databas med SQL Server-databasen tooAzure](sql-database-cloud-migrate.md).

@@ -1,6 +1,6 @@
 ---
-title: "Arbeta med Apptjänst Mobilappar hanterade klientbiblioteket (Windows | Microsoft Docs"
-description: "Lär dig hur du använder en .NET-klient för Azure Apptjänst Mobilappar med Windows och Xamarin-appar."
+title: "aaaWorking med hello Apptjänst Mobilappar hanteras klientbiblioteket (Windows | Microsoft Docs"
+description: "Lär dig hur toouse en .NET-klient för Azure Apptjänst Mobilappar med Windows och Xamarin-appar."
 services: app-service\mobile
 documentationcenter: 
 author: ggailey777
@@ -14,24 +14,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: glenga
-ms.openlocfilehash: 5f4cc3e97ba7adde2aaac471951a3130d79910f6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b056e606b19406398f5b6faabb0931ad651125e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Så här använder du den hanterade klienten för Azure Mobile Apps
+# <a name="how-toouse-hello-managed-client-for-azure-mobile-apps"></a>Hur toouse hello hanterade klienten för Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 ## <a name="overview"></a>Översikt
-Den här guiden visar hur du utför vanliga scenarier med hjälp av hanterade klientbiblioteket för Azure App Service mobila appar för Windows och Xamarin-appar. Om du är nybörjare på Mobile Apps bör du först slutföra den [Azure Mobile Apps quickstart] [ 1] kursen. I den här guiden fokuserar på klientsidan hanterade SDK. Mer information om SDK: er för serversidan för Mobilappar, finns i dokumentationen för den [SDK för .NET Server] [ 2] eller [SDK för Node.js Server] [ 3].
+Den här guiden visar hur tooperform vanliga scenarier med hjälp av hello hanteras klientbiblioteket för Azure App Service mobila appar för Windows och Xamarin-appar. Om du är den nya tooMobile appar, bör du först slutför hello [Azure Mobile Apps quickstart] [ 1] kursen. I den här guiden fokuserar vi på hello klientsidan hanteras SDK. toolearn mer om Hej serversidan SDK: er för Mobile Apps, hello i dokumentationen för hello [SDK för .NET Server] [ 2] eller [SDK för Node.js Server] [ 3].
 
 ## <a name="reference-documentation"></a>Referensdokumentation
-I referensdokumentationen för klient-SDK finns här: [Azure Mobile Apps .NET klienten referens][4].
-Du kan också hitta flera klienten exempel i den [Azure-exempel GitHub-lagringsplatsen][5].
+hello referensdokumentationen för hello klient-SDK finns här: [Azure Mobile Apps .NET klienten referens][4].
+Du kan också hitta flera klienten prover i hello [Azure-exempel GitHub-lagringsplatsen][5].
 
 ## <a name="supported-platforms"></a>Plattformar som stöds
-.NET-plattformen har stöd för följande plattformar:
+hello .NET-plattformen stöder hello följande plattformar:
 
 * Xamarin Android-versioner för API-19 till 24 (KitKat via Nougat)
 * Xamarin iOS-versioner för iOS version 8.0 och senare
@@ -39,12 +39,12 @@ Du kan också hitta flera klienten exempel i den [Azure-exempel GitHub-lagringsp
 * Windows Phone 8.1
 * Windows Phone 8.0 förutom Silverlight-program
 
-”Server flöde” autentisering använder en webbvy för presenterades Användargränssnittet.  Om enheten inte är kunna presentera en WebView UI behövs andra metoder för autentisering.  Detta SDK lämpar sig därför inte för titta på typen eller begränsade enheter på samma sätt.
+Hej ”server flöde” autentisering använder en webbvy för hello som visas i Användargränssnittet.  Om hello enheten inte är kan toopresent en WebView UI behövs andra metoder för autentisering.  Detta SDK lämpar sig därför inte för titta på typen eller begränsade enheter på samma sätt.
 
 ## <a name="setup"></a>Installationen och förutsättningar
-Vi förutsätter att du redan har skapat och publicerat serverdelsprojektet Mobilapp som innehåller minst en tabell.  I den kod som används i det här avsnittet tabellen med namnet `TodoItem` och har följande kolumner: `Id`, `Text`, och `Complete`. Den här tabellen är i samma tabell som skapas när du har slutfört den [Azure Mobile Apps quickstart][1].
+Vi förutsätter att du redan har skapat och publicerat serverdelsprojektet Mobilapp som innehåller minst en tabell.  I hello-koden i det här avsnittet, hello tabellen med namnet `TodoItem` och har hello följande kolumner: `Id`, `Text`, och `Complete`. Den här tabellen är hello samma tabell skapas när du har slutfört den [Azure Mobile Apps quickstart][1].
 
-Motsvarande skrivna klientsidan typ i C# är följande:
+hello är motsvarande skrivna på klientsidan i C# hello följande klass:
 
 ```
 public class TodoItem
@@ -59,36 +59,36 @@ public class TodoItem
 }
 ```
 
-Den [JsonPropertyAttribute] [ 6] används för att definiera den *PropertyName* mappning mellan fälten klienten och tabellen.
+Hej [JsonPropertyAttribute] [ 6] är används toodefine hello *PropertyName* mappning mellan hello klienten och fältet hello tabell.
 
-Information om hur du skapar tabeller i Mobile Apps-serverdel finns i [SDK för .NET Server avsnittet] [ 7] eller [SDK för Node.js Server avsnittet][8]. Om du har skapat din mobilappsserverdel i Azure portal med Snabbstart, kan du också använda den **enkelt tabeller** i den [Azure-portalen].
+toolearn hur toocreate tabeller i Mobile Apps-serverdel finns hello [SDK för .NET Server avsnittet] [ 7] eller hello [SDK för Node.js Server avsnittet] [ 8] . Om du har skapat din mobilappsserverdel i hello Azure portal med Hej Snabbstart, du kan också använda hello **enkelt tabeller** i hello [Azure-portalen].
 
-### <a name="how-to-install-the-managed-client-sdk-package"></a>Så här: Installera hanterad klient-SDK-paketet
-Använd någon av följande metoder för att installera hanterad klient-SDK-paketet för Mobile Apps från [NuGet][9]:
+### <a name="how-to-install-hello-managed-client-sdk-package"></a>Så här: Installera hello hanterade klient-SDK-paketet
+Använd en av följande metoder tooinstall hello hello hanterad klient-SDK-paketet för Mobile Apps från [NuGet][9]:
 
-* **Visual Studio** Högerklicka på ditt projekt, klickar du på **hantera NuGet-paket**, söka efter den `Microsoft.Azure.Mobile.Client` paketet och klicka sedan på **installera**.
-* **Xamarin Studio** Högerklicka på ditt projekt, klickar du på **Lägg till** > **Lägg till NuGet-paket**, söka efter den `Microsoft.Azure.Mobile.Client `paketet och klickar sedan på **Lägg till Paketet**.
+* **Visual Studio** Högerklicka på ditt projekt, klickar du på **hantera NuGet-paket**, Sök efter hello `Microsoft.Azure.Mobile.Client` paketet och klicka sedan på **installera**.
+* **Xamarin Studio** Högerklicka på ditt projekt, klickar du på **Lägg till** > **Lägg till NuGet-paket**, Sök efter hello `Microsoft.Azure.Mobile.Client `paketet och klickar sedan på **Lägg till Paketet**.
 
-Kom ihåg att lägga till följande i filen huvudaktiviteten **med** instruktionen:
+Kom ihåg tooadd hello följande i filen huvudaktiviteten **med** instruktionen:
 
 ```
 using Microsoft.WindowsAzure.MobileServices;
 ```
 
 ### <a name="symbolsource"></a>Så här: arbeta med symboler för felsökning i Visual Studio
-Symboler för Microsoft.Azure.Mobile namnområdet är tillgängliga på [SymbolSource][10].  Referera till den [SymbolSource instruktioner] [ 11] att integrera SymbolSource med Visual Studio.
+hello symboler för hello Microsoft.Azure.Mobile namnområdet är tillgängliga på [SymbolSource][10].  Se toothe [SymbolSource instruktioner] [ 11] toointegrate SymbolSource med Visual Studio.
 
-## <a name="create-client"></a>Skapa Mobile Apps-klient
-Följande kod skapar den [MobileServiceClient] [ 12] objekt som används för åtkomst till din mobilappsserverdel.
+## <a name="create-client"></a>Skapa hello Mobile Apps-klient
+hello följande kod skapar hello [MobileServiceClient] [ 12] objekt som används tooaccess din mobilappsserverdel.
 
 ```
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-I föregående kod ersätter `MOBILE_APP_URL` med URL: en för serverdelen för Mobilappen som hittas i bladet för din mobilappsserverdel i den [Azure-portalen]. MobileServiceClient-objektet ska vara en singleton.
+Ersätt i hello föregående kod, `MOBILE_APP_URL` med hello URL hello mobilappsserverdel, som finns i bladet för din mobilappsserverdel i hello [Azure-portalen]. Hej MobileServiceClient objektet ska vara en singleton.
 
 ## <a name="work-with-tables"></a>Arbeta med tabeller
-Följande avsnitt beskriver hur du söka efter och hämta poster och ändra data i tabellen.  I följande avsnitt beskrivs:
+Hej följande avsnittet beskriver hur toosearch och hämta poster och ändra hello data inom hello tabell.  hello följande avsnitt beskrivs:
 
 * [Skapa en tabellreferens](#instantiating)
 * [Fråga efter data](#querying)
@@ -102,27 +102,27 @@ Följande avsnitt beskriver hur du söka efter och hämta poster och ändra data
 * [Uppdatera data](#updating)
 * [Ta bort data](#deleting)
 * [Konfliktlösning och Optimistisk samtidighet](#optimisticconcurrency)
-* [Bindning till en Windows-gränssnittet](#binding)
-* [Ändrar storlek på sidan](#pagesize)
+* [Bindningen tooa Windows-gränssnittet](#binding)
+* [Ändra hello sidstorlek](#pagesize)
 
 ### <a name="instantiating"></a>Så här: skapa en tabellreferens
-Den kod som har åtkomst till eller ändrar data i en backend-tabell anropar funktioner på den `MobileServiceTable` objekt. Hämta en referens till tabellen genom att anropa den [GetTable] metoden på följande sätt:
+Alla hello-kod som har åtkomst till eller ändrar data i en backend-tabell anropar funktioner på hello `MobileServiceTable` objekt. Skaffa en referenstabell toohello genom att anropa hello [GetTable] metoden på följande sätt:
 
 ```
 IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
 ```
 
-Det returnerade objektet använder skrivna serialisering modellen. En modell för ej typbestämd serialisering stöds också. I följande exempel [skapar en referens till en ej typbestämd tabell]:
+hello returnerade objektet använder hello skrivna serialisering modellen. En modell för ej typbestämd serialisering stöds också. I följande exempel [skapar en tooan ej typbestämd referenstabell]:
 
 ```
 // Get an untyped table reference
 IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");
 ```
 
-Du måste ange den underliggande OData-frågesträngen i ej typbestämd frågor.
+Du måste ange hello underliggande OData-frågesträng i ej typbestämd frågor.
 
 ### <a name="querying"></a>Så här: fråga efter data från din Mobilapp
-Det här avsnittet beskrivs hur du utfärda frågor till serverdelen för Mobilappen som innehåller följande funktioner:
+Det här avsnittet beskrivs hur tooissue frågar toohello mobilappsserverdel, vilket innefattar hello följande funktioner:
 
 * [Filtret returnerade data](#filtering)
 * [Sortera returnerade data](#sorting)
@@ -131,10 +131,10 @@ Det här avsnittet beskrivs hur du utfärda frågor till serverdelen för Mobila
 * [Leta upp data-ID: t](#lookingup)
 
 > [!NOTE]
-> En server-driven sidstorlek tillämpas för att förhindra att alla rader som returneras.  Sidindelning håller standard begäranden för stora datamängder från negativt påverka tjänsten.  Om du vill returnera fler än 50 rader, Använd den `Skip` och `Take` metod, enligt beskrivningen i [returnerar data på sidor](#paging).
+> En server-driven storlek är tvingande tooprevent alla rader från att returneras.  Sidindelning håller standard begäranden för stora datamängder från negativt påverka hello-tjänsten.  tooreturn mer än 50 rader använder hello `Skip` och `Take` metod, enligt beskrivningen i [returnerar data på sidor](#paging).
 
 ### <a name="filtering"></a>Så här: filtret returnerade data
-Följande kod visar hur du kan filtrera data genom att inkludera en `Where` -satsen i en fråga. Returnerar alla objekt från `todoTable` vars `Complete` -egenskapen är lika med `false`. Den [där] funktion gäller en rad filtrering predikat i frågan mot tabellen.
+hello följande kod visar hur toofilter data genom att inkludera en `Where` -satsen i en fråga. Returnerar alla objekt från `todoTable` vars `Complete` -egenskapen har värdet för`false`. Hej [där] funktion gäller en rad filtrering predikat hello frågan mot hello tabell.
 
 ```
 // This query filters out completed TodoItems and items without a timestamp.
@@ -143,13 +143,13 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-Du kan visa URI för begäran som skickades till serverdelen med hjälp av meddelandet inspektion programvara, till exempel webbläsare utvecklingsverktyg eller [Fiddler]. Om du tittar på URI-begäran att märka att frågesträngen ändras:
+Du kan visa hello hello begäran som skickades toohello backend-URI med meddelandet inspektion programvara, till exempel webbläsare utvecklingsverktyg eller [Fiddler]. Om du tittar på hello URI-begäran Lägg märke till att hello frågesträngen ändras:
 
 ```
 GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
 ```
 
-Denna OData-begäran översätts till en SQL-fråga av Server-SDK:
+Denna OData-begäran översätts till en SQL-fråga genom hello-serverns SDK:
 
 ```
 SELECT *
@@ -157,7 +157,7 @@ SELECT *
     WHERE ISNULL(complete, 0) = 0
 ```
 
-Funktionen som skickas till den `Where` metoden kan ha ett godtyckligt antal villkor.
+Hej funktion som har överförts toohello `Where` metod kan ha ett godtyckligt antal villkor.
 
 ```
 // This query filters out completed TodoItems where Text isn't null
@@ -166,7 +166,7 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-Det här exemplet kan översättas till en SQL-fråga av Server-SDK:
+Det här exemplet kan översättas till en SQL-fråga genom hello-serverns SDK:
 
 ```
 SELECT *
@@ -184,9 +184,9 @@ List<TodoItem> items = await todoTable
     .ToListAsync();
 ```
 
-De två metoderna är likvärdiga och utbytbara.  Alternativet tidigare&mdash;sammanfoga flera predikat i en fråga&mdash;blir mer kompakt och rekommenderade.
+hello två metoder är likvärdiga och utbytbara.  Hej förstnämnda alternativet&mdash;sammanfoga flera predikat i en fråga&mdash;blir mer kompakt och rekommenderade.
 
-Den `Where` -satsen stöder åtgärder som kan översättas till OData-delmängden. Åtgärder är:
+Hej `Where` satsen stöder åtgärder som kan översättas till hello OData delmängd. Åtgärder är:
 
 * Relationsoperatorer (==,! =, <, < =, >, > =),
 * Aritmetiska operatorer (+, -, /, *, %),
@@ -196,10 +196,10 @@ Den `Where` -satsen stöder åtgärder som kan översättas till OData-delmängd
 * Komma åt egenskaper för ett objekt, och
 * Uttryck kombinera någon av dessa åtgärder.
 
-När du överväger Server SDK stöder, kan du den [OData v3 dokumentationen].
+Om utifrån vad hello Server SDK kan användas, kan du hello [OData v3 dokumentationen].
 
 ### <a name="sorting"></a>Så här: sortera returnerade data
-Följande kod visar hur du kan sortera data genom att inkludera en [OrderBy] eller [OrderByDescending] funktion i frågan. Returnerar objekten från `todoTable` Sortera stigande efter den `Text` fältet.
+hello följande kod visar hur toosort data genom att inkludera en [OrderBy] eller [OrderByDescending] i hello fråga. Returnerar objekten från `todoTable` Sortera stigande efter hello `Text` fältet.
 
 ```
 // Sort items in ascending order by Text field
@@ -214,41 +214,41 @@ List<TodoItem> items = await query.ToListAsync();
 ```
 
 ### <a name="paging"></a>Så här: returnerar data på sidor
-Som standard returnerar endast de första 50 raderna i serverdelen. Du kan öka antalet rader som returneras genom att anropa den [ta] metod. Använd `Take` tillsammans med den [hoppa över] metod för att begära en specifik ”page” på den totala datamängden som returneras av frågan. Följande fråga när den exekveras, returnerar de översta tre objekten i tabellen.
+Som standard returnerar hello backend endast hello första 50 rader. Du kan öka hello antal returnerade rader genom att anropa hello [ta] metod. Använd `Take` tillsammans med hello [hoppa över] metoden toorequest en viss ”sida” i hello totala dataset returneras av hello frågan. hello returnerar följande fråga när den exekveras, hello de tre översta objekt i hello tabell.
 
 ```
-// Define a filtered query that returns the top 3 items.
+// Define a filtered query that returns hello top 3 items.
 MobileServiceTableQuery<TodoItem> query = todoTable.Take(3);
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-Följande reviderade fråga hoppar över de tre första resultaten och returnerar följande tre resultaten. Den här frågan ger andra ”sidan” data, där sidstorleken är tre objekt.
+hello följande reviderade frågan hoppar över hello först tre resultaten och returnerar hello följande tre resultat. Den här frågan genererar hello andra ”sidan” data, där hello sidstorleken är tre objekt.
 
 ```
-// Define a filtered query that skips the top 3 items and returns the next 3 items.
+// Define a filtered query that skips hello top 3 items and returns hello next 3 items.
 MobileServiceTableQuery<TodoItem> query = todoTable.Skip(3).Take(3);
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-Den [IncludeTotalCount] metoden begär det totala antalet för *alla* poster som har returnerats, ignoreras eventuella sidindelning/gräns-sats har angetts:
+Hej [IncludeTotalCount] metoden begär hello Totalt antal för *alla* hello poster som har returnerats, ignoreras eventuella sidindelning/gräns-sats har angetts:
 
 ```
 query = query.IncludeTotalCount();
 ```
 
-I verkligheten app, kan du använda frågor liknar föregående exempel med en personsökare kontroll eller jämförbar UI för att navigera mellan sidor.
+Du kan använda frågor liknande toohello föregående exempel med en personsökare kontroll eller jämförbar UI för att navigera mellan sidor i ett verkligt-app.
 
 > [!NOTE]
-> Om du vill åsidosätta 50-rad-gränsen i en mobilappsserverdel, måste du också använda den [EnableQueryAttribute] för allmänheten GET-metod och ange beteendet sidindelning. När det används metoden, anger följande den maximala returnerade rader till 1000:
+> toooverride hello 50 rad-gränsen i en mobilappsserverdel, måste du också använda hello [EnableQueryAttribute] toohello offentlig GET-metod och ange hello sidindelning beteende. När tillämpade toohello metoden, hello följande anger max antal returnerade rader too1000:
 >
 > `[EnableQuery(MaxTop=1000)]`
 
 
 ### <a name="selecting"></a>Så här: Markera specifika kolumner
-Du kan ange vilken uppsättning egenskaper som ska inkluderas i resultaten genom att lägga till en [Välj] sats i frågan. Följande kod visar till exempel hur du väljer ett enda fält och markera och formatera flera fält:
+Du kan ange vilken uppsättning egenskaper tooinclude i hello resultat genom att lägga till en [Välj] satsen tooyour frågan. Till exempel hello följande kod visar hur tooselect ett enda fält och även hur tooselect och formatera flera fält:
 
 ```
-// Select one field -- just the Text
+// Select one field -- just hello Text
 MobileServiceTableQuery<TodoItem> query = todoTable
                 .Select(todoItem => todoItem.Text);
 List<string> items = await query.ToListAsync();
@@ -261,7 +261,7 @@ MobileServiceTableQuery<TodoItem> query = todoTable
 List<string> items = await query.ToListAsync();
 ```
 
-Alla funktioner som beskrivs hittills är tillsatsen, så vi kan hålla länkning dem. Varje länkad anrop påverkar flera av frågan. Ytterligare ett exempel:
+Alla hello funktioner beskrivs hittills är additiva, så vi kan hålla länkning dem. Varje länkad anrop påverkar flera hello frågan. Ytterligare ett exempel:
 
 ```
 MobileServiceTableQuery<TodoItem> query = todoTable
@@ -273,34 +273,34 @@ List<string> items = await query.ToListAsync();
 ```
 
 ### <a name="lookingup"></a>Så här: Leta upp data-ID: t
-Den [LookupAsync] funktionen kan användas för att söka efter objekt från databasen med en viss-ID.
+Hej [LookupAsync] funktionen kan vara används toolook in objekt från hello-databas med ett visst-ID.
 
 ```
-// This query filters out the item with the ID of 37BBF396-11F0-4B39-85C8-B319C729AF6D
+// This query filters out hello item with hello ID of 37BBF396-11F0-4B39-85C8-B319C729AF6D
 TodoItem item = await todoTable.LookupAsync("37BBF396-11F0-4B39-85C8-B319C729AF6D");
 ```
 
 ### <a name="untypedqueries"></a>Så här: köra någon frågor
-När du kör en fråga med ett argument tabellobjekt, måste du uttryckligen ange frågesträngen OData genom att anropa [ReadAsync], som i följande exempel:
+När du kör en fråga med ett argument tabellobjekt, måste du uttryckligen ange hello OData-frågesträng genom att anropa [ReadAsync], som i följande exempel hello:
 
 ```
 // Lookup untyped data using OData
 JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
 ```
 
-Åter JSON-värden som du kan använda som en egenskapsuppsättning. Mer information om JToken och Newtonsoft Json.NET finns i [Json.NET] plats.
+Åter JSON-värden som du kan använda som en egenskapsuppsättning. Mer information om JToken och Newtonsoft Json.NET finns hello [Json.NET] plats.
 
 ### <a name="inserting"></a>Så här: Infoga data i en mobilappsserverdel
-Alla klienttyper av måste innehålla en medlem med namnet **Id**, vilket är som standard en sträng. Detta **Id** krävs för att utföra CRUD-åtgärder och för offlinesynkronisering. Följande kod visar hur du använder den [InsertAsync] metod för att infoga nya rader i en tabell. Parametern innehåller data som ska läggas till som ett .NET-objekt.
+Alla klienttyper av måste innehålla en medlem med namnet **Id**, vilket är som standard en sträng. Detta **Id** krävs för att utföra CRUD-åtgärder och offline-synkronisering. hello följande kod visar hur toouse hello [InsertAsync] metoden tooinsert nya rader i en tabell. hello parametern innehåller hello data toobe läggas till som ett .NET-objekt.
 
 ```
 await todoTable.InsertAsync(todoItem);
 ```
 
-Om ett unikt värde för anpassad ID inte ingår i den `todoItem` under en insert-, ett GUID som genereras av servern.
-Du kan hämta den genererade Id genom att inspektera objektet när anropet returnerar.
+Om ett unikt värde för anpassad ID inte ingår i hello `todoItem` under en insert-, ett GUID som genereras av hello-server.
+Du kan hämta hello genereras Id genom att inspektera hello objekt när hello anropet returnerar.
 
-Om du vill infoga någon data, kan du dra nytta av Json.NET:
+tooinsert utan angiven data, kan du dra nytta av Json.NET:
 
 ```
 JObject jo = new JObject();
@@ -320,13 +320,13 @@ var inserted = await table.InsertAsync(jo);
 ```
 
 ### <a name="working-with-id-values"></a>Arbeta med ID-värden
-Mobile Apps stöder unika anpassade strängvärden för tabellens **id** kolumn. Ett strängvärde som gör att program kan använda anpassade värden, till exempel e-postadresser eller användarnamn för-ID.  Sträng-ID: N ge följande fördelar:
+Mobile Apps stöder unika anpassade strängvärden för hello tabellen **id** kolumn. Ett strängvärde som gör att program toouse anpassade värden, till exempel e-postadresser eller användarnamn för hello-ID.  Sträng-ID: N ge hello följande fördelar:
 
-* ID: N skapas utan att göra onödig kommunikation till databasen.
-* Poster är enklare att koppla från olika tabeller eller databaser.
+* ID: N skapas utan att göra en onödig kommunikation toohello databas.
+* Posterna är enklare toomerge från olika tabeller eller databaser.
 * ID-värden kan integrera bättre med en programlogik.
 
-När ett strängvärde ID inte har angetts på en infogad post genererar serverdelen för Mobilappen ett unikt värde för-ID. Du kan använda den [Guid.NewGuid] metod för att generera en egen ID-värden på klienten eller i serverdelen.
+När ett strängvärde ID inte har angetts på en infogad post genererar hello mobilappsserverdel ett unikt värde för-ID. Du kan använda hello [Guid.NewGuid] metoden toogenerate egna ID värden på hello-klienten eller i hello backend.
 
 ```
 JObject jo = new JObject();
@@ -334,13 +334,13 @@ jo.Add("id", Guid.NewGuid().ToString("N"));
 ```
 
 ### <a name="modifying"></a>Så här: ändra data i en mobilappsserverdel
-Följande kod visar hur du använder den [UpdateAsync] metod för att uppdatera en befintlig post med samma ID med ny information. Parametern innehåller data som ska uppdateras som ett .NET-objekt.
+hello följande kod visar hur toouse hello [UpdateAsync] metoden tooupdate en befintlig post med hello med samma ID med ny information. hello parametern innehåller hello data toobe som ett .NET-objekt har uppdaterats.
 
 ```
 await todoTable.UpdateAsync(todoItem);
 ```
 
-Om du vill uppdatera ej typbestämd data, kan du dra nytta av [Json.NET] på följande sätt:
+tooupdate utan angiven data, kan du dra nytta av [Json.NET] på följande sätt:
 
 ```
 JObject jo = new JObject();
@@ -350,16 +350,16 @@ jo.Add("Complete", false);
 var inserted = await table.UpdateAsync(jo);
 ```
 
-En `id` fält måste anges när du gör en uppdatering. Serverdelen använder den `id` fältet för att identifiera vilken rad att uppdatera. Den `id` fältet kan hämtas från resultatet av den `InsertAsync` anropa. En `ArgumentException` uppstår om du försöker uppdatera ett objekt utan att ange den `id` värde.
+En `id` fält måste anges när du gör en uppdatering. hello backend använder hello `id` fältet tooidentify som rad tooupdate. Hej `id` fältet kan hämtas från hello resultatet av hello `InsertAsync` anropa. En `ArgumentException` uppstår om du försöker tooupdate ett objekt utan att ange hello `id` värde.
 
 ### <a name="deleting"></a>Så här: ta bort data i en mobilappsserverdel
-Följande kod visar hur du använder den [DeleteAsync] metod för att ta bort en befintlig instans. Instansen identifieras av den `id` fältet set på den `todoItem`.
+hello följande kod visar hur toouse hello [DeleteAsync] metoden toodelete en befintlig instans. hello-instans kan identifieras genom hello `id` angivet på hello `todoItem`.
 
 ```
 await todoTable.DeleteAsync(todoItem);
 ```
 
-Om du vill ta bort ej typbestämd data, kan du dra nytta av Json.NET på följande sätt:
+toodelete utan angiven data, kan du dra nytta av Json.NET på följande sätt:
 
 ```
 JObject jo = new JObject();
@@ -367,14 +367,14 @@ jo.Add("id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
 await table.DeleteAsync(jo);
 ```
 
-När du gör en begäran om borttagning måste ett ID anges. Andra egenskaper skickas inte till tjänsten eller ignoreras i tjänsten. Resultatet av en `DeleteAsync` anropet är vanligtvis `null`. Det ID: T för att skicka in kan hämtas från resultatet av den `InsertAsync` anropa. En `MobileServiceInvalidOperationException` när du försöker ta bort ett objekt utan att ange den `id` fältet.
+När du gör en begäran om borttagning måste ett ID anges. Andra egenskaper har inte skickats toohello service eller ignoreras vid hello-tjänsten. Hej resultatet av en `DeleteAsync` anropet är vanligtvis `null`. hello ID toopass i kan hämtas från hello resultatet av hello `InsertAsync` anropa. En `MobileServiceInvalidOperationException` genereras när du försöker toodelete ett objekt utan att ange hello `id` fältet.
 
 ### <a name="optimisticconcurrency"></a>Så här: använda Optimistisk samtidighet för konfliktlösning
-Två eller flera klienter kan skriva ändringar till samma objekt samtidigt. Utan konfliktidentifiering, skulle den senaste skrivningen skriva över eventuella tidigare uppdateringar. **Optimistisk samtidighetskontroll** förutsätter att varje transaktion kan genomföra och därför använder inte någon resurslåsning.  Innan du genomför en transaktion verifierar optimistisk samtidighetskontroll att ingen annan transaktion har ändrat data. Om data har ändrats, återställs committing transaktionen.
+Två eller flera klienter kan skriva ändringar toohello samma objekt vid hello samma tid. Utan konfliktidentifiering, skulle hello senaste skriva över eventuella tidigare uppdateringar. **Optimistisk samtidighetskontroll** förutsätter att varje transaktion kan genomföra och därför använder inte någon resurslåsning.  Innan du genomför en transaktion verifierar optimistisk samtidighetskontroll att ingen annan transaktion har ändrats hello data. Hello inleder transaktion återställs om hello data har ändrats.
 
-Mobile Apps stöder optimistisk samtidighetskontroll genom att spåra ändringar av varje objekt med hjälp av den `version` system egenskapskolumn som har definierats för varje tabell i din mobilappsserverdel. Varje gång en post uppdateras Mobile Apps anger den `version` -egenskapen för posten till ett nytt värde. Under varje begäran om uppdatering av `version` egenskapen på den post som ingår i begäran jämförs med samma egenskap för posten på servern. Om versionen har skickats med förfrågan matchar inte serverdelen och sedan klientbiblioteket genererar en `MobileServicePreconditionFailedException<T>` undantag. Den typ som anges med undantaget är post från serverdel som innehåller servrar version av posten. Programmet kan sedan använda den här informationen för att bestämma om du vill köra begäran om uppdatering igen med rätt `version` värde från backend att genomföra ändringarna.
+Mobile Apps stöder optimistisk samtidighetskontroll genom att spåra ändringar tooeach objekt som använder hello `version` system egenskapskolumn som har definierats för varje tabell i din mobilappsserverdel. Varje gång en post uppdateras Mobile Apps anger hello `version` egenskapen för att registrera tooa nytt värde. Under varje uppdateringsbegäran hello `version` egenskapen hello postens medföljer hello-begäran är toohello jämfört med samma egenskap för hello-post på hello-servern. Om versionen som har skickats med hello förfrågan matchar inte hello backend sedan hello klientbiblioteket genererar en `MobileServicePreconditionFailedException<T>` undantag. hello-typen som ingår i hello undantag är hello post från hello serverdel som innehåller hello servrar version av hello-post. hello program kan sedan använda denna information toodecide om begäran om uppdatering av tooexecute hello igen med rätt hello `version` värde från hello backend toocommit ändringar.
 
-Definiera en kolumn i tabellen-klass för de `version` Systemegenskapen att aktivera Optimistisk samtidighet. Exempel:
+Definiera en kolumn i hello tabellen klass för hello `version` system egenskapen tooenable Optimistisk samtidighet. Exempel:
 
 ```
 public class TodoItem
@@ -393,14 +393,14 @@ public class TodoItem
 }
 ```
 
-Program med hjälp av någon tabeller aktivera Optimistisk samtidighet genom att ange den `Version` flaggan på den `SystemProperties` i tabellen på följande sätt.
+Program med hjälp av någon tabeller aktivera Optimistisk samtidighet genom att ange hello `Version` flaggan på den `SystemProperties` av hello tabell på följande sätt.
 
 ```
 //Enable optimistic concurrency by retrieving version
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 ```
 
-Utöver att möjliggöra Optimistisk samtidighet, måste du också fånga den `MobileServicePreconditionFailedException<T>` undantag i koden när du anropar [UpdateAsync].  Lös konflikten genom att använda rätt `version` uppdaterade posten och anropet [UpdateAsync] med löst posten. Följande kod visar hur du löser en Skriv-konflikt upptäcktes när:
+I tillägg tooenabling Optimistisk samtidighet, måste du också fånga hello `MobileServicePreconditionFailedException<T>` undantag i koden när du anropar [UpdateAsync].  Lösa hello konflikten genom att använda rätt hello `version` toothe uppdaterat post och anropet [UpdateAsync] med hello löst post. hello följande kod visar hur tooresolve en Skriv-konflikt när upptäcktes:
 
 ```
 private async void UpdateToDoItem(TodoItem item)
@@ -409,7 +409,7 @@ private async void UpdateToDoItem(TodoItem item)
 
     try
     {
-        //update at the remote table
+        //update at hello remote table
         await todoTable.UpdateAsync(item);
     }
     catch (MobileServicePreconditionFailedException<TodoItem> writeException)
@@ -419,8 +419,8 @@ private async void UpdateToDoItem(TodoItem item)
 
     if (exception != null)
     {
-        // Conflict detected, the item has changed since the last query
-        // Resolve the conflict between the local and server item
+        // Conflict detected, hello item has changed since hello last query
+        // Resolve hello conflict between hello local and server item
         await ResolveConflict(item, exception.Item);
     }
 }
@@ -428,7 +428,7 @@ private async void UpdateToDoItem(TodoItem item)
 
 private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 {
-    //Ask user to choose the resoltion between versions
+    //Ask user toochoose hello resoltion between versions
     MessageDialog msgDialog = new MessageDialog(
         String.Format("Server Text: \"{0}\" \nLocal Text: \"{1}\"\n",
         serverItem.Text, localItem.Text),
@@ -441,11 +441,11 @@ private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 
     localBtn.Invoked = async (IUICommand command) =>
     {
-        // To resolve the conflict, update the version of the item being committed. Otherwise, you will keep
+        // tooresolve hello conflict, update hello version of hello item being committed. Otherwise, you will keep
         // catching a MobileServicePreConditionFailedException.
         localItem.Version = serverItem.Version;
 
-        // Updating recursively here just in case another change happened while the user was making a decision
+        // Updating recursively here just in case another change happened while hello user was making a decision
         UpdateToDoItem(localItem);
     };
 
@@ -458,10 +458,10 @@ private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 }
 ```
 
-Mer information finns i [Offline datasynkronisering i Azure Mobile Apps] avsnittet.
+Mer information finns i hello [Offline datasynkronisering i Azure Mobile Apps] avsnittet.
 
-### <a name="binding"></a>Så här: Bind Mobile Apps data till en Windows-gränssnittet
-Det här avsnittet visar hur du visar returnerade dataobjekt med hjälp av UI-element i en Windows-app.  Följande exempelkod Binder till källan för listan med en fråga om ofullständiga objekt. Den [MobileServiceCollection] skapar en Mobile Apps-medvetna bindning-samling.
+### <a name="binding"></a>Så här: Bind Mobile Apps data tooa Windows-gränssnittet
+Det här avsnittet visar hur toodisplay returnerade dataobjekt med hjälp av UI-element i en Windows-app.  Följande exempelkod Binder toohello källan för hello lista med en fråga om ofullständiga objekt. Den [MobileServiceCollection] skapar en Mobile Apps-medvetna bindning-samling.
 
 ```
 // This query filters out completed TodoItems.
@@ -469,15 +469,15 @@ MobileServiceCollection<TodoItem, TodoItem> items = await todoTable
     .Where(todoItem => todoItem.Complete == false)
     .ToCollectionAsync();
 
-// itemsControl is an IEnumerable that could be bound to a UI list control
+// itemsControl is an IEnumerable that could be bound tooa UI list control
 IEnumerable itemsControl  = items;
 
-// Bind this to a ListBox
+// Bind this tooa ListBox
 ListBox lb = new ListBox();
 lb.ItemsSource = items;
 ```
 
-Vissa kontroller i hanterade körningsmiljön stöd för ett gränssnitt som kallas [ISupportIncrementalLoading]. Du kan använda kontroller för att begära extra data när användaren rullar i gränssnittet. Det finns inbyggt stöd för det här gränssnittet för universella Windows-appar via [MobileServiceIncrementalLoadingCollection], som automatiskt hanterar anrop från kontroller. Använd `MobileServiceIncrementalLoadingCollection` i Windows-appar på följande sätt:
+Vissa kontroller i hello hanteras runtime stöd för ett gränssnitt kallas [ISupportIncrementalLoading]. Det här gränssnittet gör kontroller toorequest extra data när hello användare rullar. Det finns inbyggt stöd för det här gränssnittet för universella Windows-appar via [MobileServiceIncrementalLoadingCollection], som automatiskt hanterar anrop från hello kontroller. Använd `MobileServiceIncrementalLoadingCollection` i Windows-appar på följande sätt:
 
 ```
 MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
@@ -487,19 +487,19 @@ ListBox lb = new ListBox();
 lb.ItemsSource = items;
 ```
 
-Om du vill använda den nya samlingen på Windows Phone 8 och ”Silverlight” den `ToCollection` tilläggsmetoder på `IMobileServiceTableQuery<T>` och `IMobileServiceTable<T>`. Om du vill läsa in data, anropa `LoadMoreItemsAsync()`.
+toouse hello ny samling i Windows Phone 8 och ”Silverlight”, Använd hello `ToCollection` tilläggsmetoder på `IMobileServiceTableQuery<T>` och `IMobileServiceTable<T>`. tooload data, anropa `LoadMoreItemsAsync()`.
 
 ```
 MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection();
 await items.LoadMoreItemsAsync();
 ```
 
-När du använder den samling som skapats genom att anropa `ToCollectionAsync` eller `ToCollection`, du får en samling som kan bindas till UI-kontroller.  Den här samlingen är medveten om sidindelning.  Eftersom samlingen är läser in data från nätverket, misslyckas inläsning ibland. Om du vill hantera dessa fel, åsidosätta den `OnException` metod på `MobileServiceIncrementalLoadingCollection` att hantera undantag som uppstår till följd av anrop till `LoadMoreItemsAsync`.
+När du använder hello-samling som skapats genom att anropa `ToCollectionAsync` eller `ToCollection`, du får en samling som kan vara bundna tooUI kontroller.  Den här samlingen är medveten om sidindelning.  Eftersom hello samling läser in data från nätverket, misslyckas inläsning ibland. toohandle dessa fel, åsidosätta hello `OnException` metod på `MobileServiceIncrementalLoadingCollection` toohandle undantag som uppstår till följd av anrop för`LoadMoreItemsAsync`.
 
-Överväg om tabellen innehåller många fält men du bara vill visa en del av dem i kontrollen. Du kan använda riktlinjerna i föregående avsnitt ”[markera specifika kolumner](#selecting)” att markera specifika kolumner ska visas i Användargränssnittet.
+Överväg om tabellen innehåller många fält men du bara vill toodisplay några av dem i kontrollen. Du kan använda hello vägledning i föregående avsnitt hello ”[markera specifika kolumner](#selecting)” tooselect specifika kolumner toodisplay i hello Användargränssnittet.
 
-### <a name="pagesize"></a>Ändra sidstorleken
-Azure Mobile Apps returnerar maximalt 50 objekt per begäran som standard.  Du kan ändra växlingsfilens storlek genom att öka den maximala sidstorleken på både klienten och servern.  För att öka storleken på begärt ange `PullOptions` när du använder `PullAsync()`:
+### <a name="pagesize"></a>Ändra hello sidstorlek
+Azure Mobile Apps returnerar maximalt 50 objekt per begäran som standard.  Du kan ändra hello växlingsfilens storlek genom att öka hello maximala sidstorleken på både hello klient och server.  tooincrease Hej begärda sidstorlek, ange `PullOptions` när du använder `PullAsync()`:
 
 ```
 PullOptions pullOptions = new PullOptions
@@ -508,45 +508,45 @@ PullOptions pullOptions = new PullOptions
     };
 ```
 
-Under förutsättning att du har gjort det `PageSize` lika med eller större än 100 inom server, en begäran returnerar upp till 100 poster.
+Under förutsättning att du har gjort hello `PageSize` lika tooor som är större än 100 inom hello-server, en begäran returnerar upp till 100 poster.
 
 ## <a name="#offlinesync"></a>Arbeta med Offline tabeller
-Offline tabeller använder en lokal SQLite att lagra data för användning offline.  Alla tabellen operations görs mot lokalt SQLite lagra i stället för arkivet för fjärrservern.  Om du vill skapa en tabell som är offline, förbereder du projektet:
+Offline tabeller använder en lokal SQLite lagra toostore data för användning offline.  Alla tabellen operations görs mot hello lokala SQLite lagra i stället för hello fjärrservern store.  toocreate en offline-tabell förbereda projektet:
 
-1. Högerklicka på lösningen i Visual Studio > **hantera NuGet-paket för lösningen...** , och Sök efter och installera den **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet-paket för alla projekt i lösningen.
-2. (Valfritt) Installera en av följande SQLite runtime paket för att stödja Windows-enheter:
+1. Högerklicka på hello lösningen i Visual Studio > **hantera NuGet-paket för lösningen...** , och Sök efter och installera den **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet-paket för alla projekt i hello-lösning.
+2. (Valfritt) toosupport Windows-enheter, installera en av följande SQLite runtime paket hello:
 
    * **Windows 8.1 Runtime:** installera [SQLite för Windows 8.1][3].
    * **Windows Phone 8.1:** installera [SQLite för Windows Phone 8.1][4].
-   * **Universella Windows-plattformen** installera [SQLite för universella Windows][5].
-3. (Valfritt). Windows-enheter klickar du på **referenser** > **Lägg till referens...** , expandera den **Windows** mappen > **tillägg**, aktivera rätt **SQLite för Windows** SDK tillsammans med **Visual C++ 2013 Runtime för Windows** SDK.
-    SQLite SDK namnen varierar något med varje Windows-plattformen.
+   * **Uwp** installera [SQLite för hello universell Windows][5].
+3. (Valfritt). Windows-enheter klickar du på **referenser** > **Lägg till referens...** , expandera hello **Windows** mappen > **tillägg**, aktivera hello lämpliga **SQLite för Windows** SDK tillsammans med hello  **Visual C++ 2013 Runtime för Windows** SDK.
+    Hej varierar SQLite SDK namn något med varje Windows-plattformen.
 
-Innan en tabellreferens kan skapas, måste du förbereda det lokala arkivet:
+Innan en tabellreferens kan skapas, måste du förbereda hello lokalt Arkiv:
 
 ```
 var store = new MobileServiceSQLiteStore(Constants.OfflineDbPath);
 store.DefineTable<TodoItem>();
 
-//Initializes the SyncContext using the default IMobileServiceSyncHandler.
+//Initializes hello SyncContext using hello default IMobileServiceSyncHandler.
 await this.client.SyncContext.InitializeAsync(store);
 ```
 
-Initiering av certifikatarkiv görs normalt omedelbart efter att klienten har skapats.  Den **OfflineDbPath** bör vara ett filnamn som är lämplig för användning på alla plattformar som du stöder.  Om sökvägen är en fullständigt kvalificerad sökväg (d.v.s. den börjar med ett snedstreck), och sedan används.  Om sökvägen inte är fullständigt kvalificerad, placera filen i en plattformsspecifik plats.
+Initiering av certifikatarkiv görs normalt omedelbart efter hello klient skapas.  Hej **OfflineDbPath** bör vara ett filnamn som är lämplig för användning på alla plattformar som du stöder.  Om hello sökväg är en fullständigt kvalificerad sökväg (d.v.s. den börjar med ett snedstreck), och sedan används.  Om hello sökväg inte är fullständigt kvalificerad placeras hello filen i en plattformsspecifik plats.
 
-* Standardsökvägen är mappen ”personliga filer” för iOS och Android-enheter.
-* Standardsökvägen är mappen programspecifika ”AppData” för Windows-enheter.
+* För iOS och Android-enheter är hello standardsökvägen hello ”personlig”-mappen.
+* För Windows-enheter är hello standardsökvägen hello programspecifika ”AppData” mapp.
 
-En tabellreferens kan erhållas med hjälp av den `GetSyncTable<>` metoden:
+En tabellreferens kan erhållas med hjälp av hello `GetSyncTable<>` metoden:
 
 ```
 var table = client.GetSyncTable<TodoItem>();
 ```
 
-Du behöver inte autentisera om du vill använda en offline-tabell.  Du behöver bara autentisera när du kommunicerar med serverdelstjänsten.
+Du behöver inte tooauthenticate toouse en offline-tabell.  Du behöver bara tooauthenticate när du kommunicerar med hello serverdelstjänst.
 
 ### <a name="syncoffline"></a>Synkroniserar en Offline-tabell
-Offline tabeller är inte synkroniserade med serverdelen som standard.  Synkronisering är uppdelat i två delar.  Du kan skicka ändringar separat hämtar nya objekt.  Här är en typisk synkroniseringsmetod:
+Offline tabeller är inte synkroniserade med hello backend som standard.  Synkronisering är uppdelat i två delar.  Du kan skicka ändringar separat hämtar nya objekt.  Här är en typisk synkroniseringsmetod:
 
 ```
 public async Task SyncAsync()
@@ -558,7 +558,7 @@ public async Task SyncAsync()
         await this.client.SyncContext.PushAsync();
 
         await this.todoTable.PullAsync(
-            //The first parameter is a query name that is used internally by the client SDK to implement incremental sync.
+            //hello first parameter is a query name that is used internally by hello client SDK tooimplement incremental sync.
             //Use a different query name for each unique query in your program
             "allTodoItems",
             this.todoTable.CreateQuery());
@@ -571,15 +571,15 @@ public async Task SyncAsync()
         }
     }
 
-    // Simple error/conflict handling. A real application would handle the various errors like network conditions,
-    // server conflicts and others via the IMobileServiceSyncHandler.
+    // Simple error/conflict handling. A real application would handle hello various errors like network conditions,
+    // server conflicts and others via hello IMobileServiceSyncHandler.
     if (syncErrors != null)
     {
         foreach (var error in syncErrors)
         {
             if (error.OperationKind == MobileServiceTableOperationKind.Update && error.Result != null)
             {
-                //Update failed, reverting to server's copy.
+                //Update failed, reverting tooserver's copy.
                 await error.CancelAndUpdateItemAsync(error.Result);
             }
             else
@@ -594,69 +594,69 @@ public async Task SyncAsync()
 }
 ```
 
-Om det första argumentet för `PullAsync` är null, och sedan inte används för inkrementell synkronisering.  Varje synkroniseringsåtgärd hämtar alla poster.
+Om hello första argumentet för`PullAsync` är null, och sedan inte används för inkrementell synkronisering.  Varje synkroniseringsåtgärd hämtar alla poster.
 
-SDK utför en implicit `PushAsync()` innan dra poster.
+hello SDK utför en implicit `PushAsync()` innan dra poster.
 
-Konflikt hantering sker på en `PullAsync()` metod.  Du kan hantera konflikter på samma sätt som online-tabeller.  Konflikten skapas när `PullAsync()` anropas i stället för under insert-, update- eller delete. Om flera sådana konflikter uppstår ingår de i en enda MobileServicePushFailedException.  Hantera varje fel separat.
+Konflikt hantering sker på en `PullAsync()` metod.  Du kan åtgärda konflikter i hello samma sätt som online-tabeller.  hello konflikt skapas när `PullAsync()` anropas i stället för under hello insert-, update- eller delete. Om flera sådana konflikter uppstår ingår de i en enda MobileServicePushFailedException.  Hantera varje fel separat.
 
 ## <a name="#customapi"></a>Arbeta med en anpassad API
-En anpassad API kan du definiera anpassade slutpunkter som exponerar serverfunktioner som inte mappas till en infoga, uppdatera, ta bort eller Läsåtgärd. Genom att använda en anpassad API kan ha du mer kontroll över meddelanden, inklusive läsning och ange HTTP-meddelandehuvuden och definiera ett body-meddelandeformat än JSON.
+En anpassad API kan du toodefine anpassade slutpunkter som exponerar serverfunktioner som inte mappa tooan infoga, uppdatera, ta bort eller Läsåtgärd. Genom att använda en anpassad API kan ha du mer kontroll över meddelanden, inklusive läsning och ange HTTP-meddelandehuvuden och definiera ett body-meddelandeformat än JSON.
 
-Du kan anropa en anpassad API genom att anropa en av de [InvokeApiAsync] metoder på klienten. Till exempel följande kodrad skickar en POST-begäran till den **completeAll** API på serverdelen:
+Du kan anropa en anpassad API genom att anropa en hello [InvokeApiAsync] metoder på hello-klienten. Till exempel hello följande kodrad skickar en POST-begäran toohello **completeAll** API på hello serverdel:
 
 ```
 var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Net.Http.HttpMethod.Post, null);
 ```
 
-Det här formuläret är skrivna metodanrop och kräver att den **MarkAllResult** returnera typen är definierad. Både skrivna och ej typbestämd metoder stöds.
+Det här formuläret är skrivna metodanrop och kräver att hello **MarkAllResult** returnera typen är definierad. Både skrivna och ej typbestämd metoder stöds.
 
-Metoden InvokeApiAsync() läggs/api /'-API: et som du vill anropa om API: et som börjar med en '/'.
+Hej InvokeApiAsync() metoden läggs/api/toohello API som du vill toocall om hello API som börjar med en '/'.
 Exempel:
 
-* `InvokeApiAsync("completeAll",...)`anropar /api/completeAll på serverdelen
-* `InvokeApiAsync("/.auth/me",...)`anropar /.auth/me på serverdelen
+* `InvokeApiAsync("completeAll",...)`anropar /api/completeAll på hello serverdel
+* `InvokeApiAsync("/.auth/me",...)`anropar /.auth/me på hello serverdel
 
-Du kan använda InvokeApiAsync för att anropa alla WebAPI, inklusive de WebAPIs som inte har definierats med Azure Mobile Apps.  När du använder InvokeApiAsync() skickas lämplig sidhuvud, inklusive autentiseringshuvuden med begäran.
+Du kan använda InvokeApiAsync toocall alla WebAPI, inklusive de WebAPIs som inte har definierats med Azure Mobile Apps.  När du använder InvokeApiAsync() skickas hello lämpliga sidhuvud, inklusive autentiseringshuvuden med hello-begäran.
 
 ## <a name="authentication"></a>Autentisera användare
-Mobile Apps stöder autentisering och auktorisering av appanvändare som använder olika externa identitetsleverantörer: Facebook, Google, Account, Twitter och Azure Active Directory. Du kan ange behörigheter på tabeller för att begränsa åtkomsten för specifika åtgärder endast autentiserade användare. Du kan också använda identiteten för autentiserade användare för att implementera auktoriseringsregler i server-skript. Mer information finns i självstudierna [Lägg till autentisering till din app].
+Mobile Apps stöder autentisering och auktorisering av appanvändare som använder olika externa identitetsleverantörer: Facebook, Google, Account, Twitter och Azure Active Directory. Du kan ange behörigheter för tabeller toorestrict åtkomst för specifika åtgärder tooonly autentiserade användare. Du kan också använda hello identiteten för autentiserade användare tooimplement auktoriseringsregler i server-skript. Mer information finns i självstudiekursen hello [Lägg till autentisering tooyour app].
 
-Två autentisering flöden stöds: *klienten hanteras* och *server-hanterade* flöde. Server-hanterade flödet ger enklaste autentiseringsupplevelse, eftersom det är beroende av leverantörens Webbgränssnitt för autentisering. Klient-hanterade flödet tillåter djupare integrering med specifika funktioner som använder den provider-specifik enhetsspecifika SDK.
+Två autentisering flöden stöds: *klienten hanteras* och *server-hanterade* flöde. Hej server-hanterade flödet ger hello enklaste autentiseringsupplevelse som använder hello providern Webbgränssnitt för autentisering. hello klienten hanteras flödet tillåter djupare integrering med specifika funktioner som använder den provider-specifik enhetsspecifika SDK.
 
 > [!NOTE]
 > Du bör använda ett klient-hanterade flöde i dina appar i produktion.
 
-Om du vill konfigurera autentisering måste du registrera din app med en eller flera identitetsleverantörer.  Identitetsleverantören som genererar ett klient-ID och en klienthemlighet för din app.  Dessa värden anges sedan i din serverdel för att aktivera autentisering/auktorisering i Azure App Service.  Mer information följer detaljerade instruktioner i självstudiekursen [Lägg till autentisering till din app].
+tooset konfigurerar autentisering måste du registrera din app med en eller flera identitetsleverantörer.  hello identitetsleverantör genererar ett klient-ID och en klienthemlighet för din app.  Dessa värden anges sedan i din serverdel tooenable autentisering/auktorisering i Azure App Service.  Mer information hello detaljerade instruktioner i självstudiekursen [Lägg till autentisering tooyour app].
 
-I följande avsnitt beskrivs i det här avsnittet:
+hello följande avsnitt beskrivs i det här avsnittet:
 
 * [Klienten hanteras autentisering](#clientflow)
 * [Hanterad Server-autentisering](#serverflow)
-* [Cachelagring autentiseringstoken](#caching)
+* [Cachelagring hello autentiseringstoken](#caching)
 
 ### <a name="clientflow"></a>Klienten hanteras autentisering
-Din app kan oberoende kontakta identitetsleverantören och ange sedan det returnerade token under inloggningen med din serverdel. Detta klient-flöde kan du tillhandahålla en enkel inloggning för användare eller hämta ytterligare användardata från identitetsleverantören. Flöde för klientautentisering är att föredra med ett server-flöde som identitetsleverantören SDK tillhandahåller en mer ursprungligt UX känslan och gör för ytterligare anpassning.
+Din app kan kontakta oberoende hello identitetsleverantör och ange sedan hello returnerade token under inloggningen med din serverdel. Det här flödet kan tooprovide en enkel inloggning för användare eller tooretrieve ytterligare användardata från hello identitetsleverantören. Flöde för klientautentisering är prioriterade toousing flödet för en server som hello identitetsleverantör SDK tillhandahåller en mer ursprungligt UX känslan och gör för ytterligare anpassning.
 
-Exempel har angetts för följande-flödet autentisering mönster:
+Exempel har angetts för hello efter klient-flöde autentisering mönster:
 
 * [Active Directory Authentication Library](#adal)
 * [Facebook eller Google](#client-facebook)
 * [Live SDK](#client-livesdk)
 
-#### <a name="adal"></a>Autentisera användarna med Active Directory Authentication Library
-Du kan använda Active Directory Authentication Library (ADAL) för att initiera användarautentisering från klienten med hjälp av Azure Active Directory-autentisering.
+#### <a name="adal"></a>Autentisera användare med hello Active Directory Authentication Library
+Du kan använda Active Directory Authentication Library (ADAL) hello tooinitiate användarautentisering hello-klient som använder Azure Active Directory-autentisering.
 
-1. Konfigurera mobilappsserverdelen för inloggning AAD genom att följa den [konfigurera App Service för Active Directory-inloggningen] kursen. Se till att slutföra det valfria steget med att registrera en native client-program.
-2. Öppna projektet i Visual Studio eller Xamarin Studio och lägga till en referens till den `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet-paketet. När du söker kan innehålla förhandsversioner.
-3. Lägg till följande kod i ditt program, beroende på plattform som du använder. I varje, gör du följande ersättningar:
+1. Konfigurera mobilappsserverdelen för AAD-inloggning med följande hello [hur tooconfigure App Service för Active Directory-inloggningen] kursen. Se till att toocomplete hello valfritt steg för att registrera en native client-program.
+2. Öppna projektet i Visual Studio eller Xamarin Studio och lägga till en referens toothe `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet-paketet. När du söker kan innehålla förhandsversioner.
+3. Lägg till hello följande kod tooyour program, enligt toohello plattform som du använder. I varje, gör du följande ersättningar hello:
 
-   * Ersätt **INSERT-UTFÄRDARE-här** med namnet på klienten som du har etablerat ditt program. Formatet som ska vara https://login.microsoftonline.com/contoso.onmicrosoft.com. Det här värdet kan kopieras från fliken domän i Azure Active Directory i den [klassiska Azure-portalen].
-   * Ersätt **INSERT-resurs-ID-här** med klient-ID för din mobilappsserverdel. Du kan hämta klient-ID från den **Avancerat** fliken **inställningarna för Azure Active Directory** i portalen.
-   * Ersätt **INSERT-klient-ID-här** med klient-ID som du kopierade från native client-program.
-   * Ersätt **INSERT-OMDIRIGERINGS-URI-här** med webbplatsens */.auth/login/done* slutpunkten, med hjälp av HTTPS-schema. Det här värdet ska vara liknar *https://contoso.azurewebsites.net/.auth/login/done*.
+   * Ersätt **INSERT-UTFÄRDARE-här** med hello namnet hello-klient som du har etablerat ditt program. Formatet som ska vara https://login.microsoftonline.com/contoso.onmicrosoft.com. Det här värdet kan kopieras från hello domän-fliken i Azure Active Directory i hello [klassiska Azure-portalen].
+   * Ersätt **INSERT-resurs-ID-här** med hello klient-ID för din mobilappsserverdel. Du kan hämta hello klient-ID från hello **Avancerat** fliken **inställningarna för Azure Active Directory** hello-portalen.
+   * Ersätt **INSERT-klient-ID-här** med hello klient-ID som du kopierade från hello native client-program.
+   * Ersätt **INSERT-OMDIRIGERINGS-URI-här** med webbplatsens */.auth/login/done* slutpunkten, med hjälp av hello HTTPS-schema. Det här värdet bör vara densamma för*https://contoso.azurewebsites.net/.auth/login/done*.
 
-     Den kod som behövs för varje plattform som följer:
+     hello-kod som behövs för varje plattform som följer:
 
      **Windows:**
 
@@ -760,12 +760,12 @@ Du kan använda Active Directory Authentication Library (ADAL) för att initiera
     ```
 
 #### <a name="client-facebook"></a>Enkel inloggning med hjälp av en token från Facebook eller Google
-Du kan använda flödet som visas i den här fragment för Facebook eller Google.
+Du kan använda hello flödet som visas i den här fragment för Facebook eller Google.
 
 ```
 var token = new JObject();
 // Replace access_token_value with actual value of your access token obtained
-// using the Facebook or Google SDK.
+// using hello Facebook or Google SDK.
 token.Add("access_token", "access_token_value");
 
 private MobileServiceUser user;
@@ -777,7 +777,7 @@ private async Task AuthenticateAsync()
         try
         {
             // Change MobileServiceAuthenticationProvider.Facebook
-            // to MobileServiceAuthenticationProvider.Google if using Google auth.
+            // tooMobileServiceAuthenticationProvider.Google if using Google auth.
             user = await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
             message = string.Format("You are now logged in - {0}", user.UserId);
         }
@@ -793,10 +793,10 @@ private async Task AuthenticateAsync()
 }
 ```
 
-#### <a name="client-livesdk"></a>Enkel inloggning med Live SDK Account
-För att autentisera användare, måste du registrera din app på Microsoft-konto Developer Center. Konfigurera registreringsinformation på din mobilappsserverdel. Skapa ett Microsoft-Kontoregistrering och ansluta till din mobilappsserverdel genom att slutföra stegen i [registrera din app om du vill använda en Microsoft-kontoinloggning]. Om du har både Windows Store och Windows Phone 8/Silverlight-versionerna av din app kan du registrera Windows Store-versionen först.
+#### <a name="client-livesdk"></a>Enkel inloggning med Account hello Live SDK
+tooauthenticate användare, måste du registrera din app på hello Microsoft-konto Developer Center. Konfigurera registreringsinformation på din mobilappsserverdel. toocreate Microsoft kontot har registrerats och ansluta den tooyour mobilappsserverdel måste fullständig hello stegen i [registrera din app toouse för inloggning till en Microsoft-konto]. Om du har både Windows Store och Windows Phone 8/Silverlight-versionerna av din app kan du registrera hello Windows Store-versionen först.
 
-Följande kod autentiserar med hjälp av Live SDK och använder den returnerade token för att logga in på din mobilappsserverdel.
+hello följande kod autentiserar med hjälp av Live SDK och hello returnerade token toosign i tooyour mobilappsserverdel.
 
 ```
 private LiveConnectSession session;
@@ -804,28 +804,28 @@ private LiveConnectSession session;
 private async System.Threading.Tasks.Task AuthenticateAsync()
 {
 
-    // Get the URL the Mobile App backend.
+    // Get hello URL hello Mobile App backend.
     var serviceUrl = App.MobileService.ApplicationUri.AbsoluteUri;
 
-    // Create the authentication client for Windows Store using the service URL.
+    // Create hello authentication client for Windows Store using hello service URL.
     LiveAuthClient liveIdClient = new LiveAuthClient(serviceUrl);
-    //// Create the authentication client for Windows Phone using the client ID of the registration.
+    //// Create hello authentication client for Windows Phone using hello client ID of hello registration.
     //LiveAuthClient liveIdClient = new LiveAuthClient(clientId);
 
     while (session == null)
     {
-        // Request the authentication token from the Live authentication service.
-        // The wl.basic scope should always be requested.  Other scopes can be added
+        // Request hello authentication token from hello Live authentication service.
+        // hello wl.basic scope should always be requested.  Other scopes can be added
         LiveLoginResult result = await liveIdClient.LoginAsync(new string[] { "wl.basic" });
         if (result.Status == LiveConnectSessionStatus.Connected)
         {
             session = result.Session;
 
-            // Get information about the logged-in user.
+            // Get information about hello logged-in user.
             LiveConnectClient client = new LiveConnectClient(session);
             LiveOperationResult meResult = await client.GetAsync("me");
 
-            // Use the Microsoft account auth token to sign in to App Service.
+            // Use hello Microsoft account auth token toosign in tooApp Service.
             MobileServiceUser loginResult = await App.MobileService
                 .LoginWithMicrosoftAccountAsync(result.Session.AuthenticationToken);
 
@@ -847,10 +847,10 @@ private async System.Threading.Tasks.Task AuthenticateAsync()
 }
 ```
 
-Mer information finns i [Windows Live SDK] dokumentation.
+Mer information finns i hello [Windows Live SDK] dokumentation.
 
 ### <a name="serverflow"></a>Hanterad Server-autentisering
-När du har registrerat din identitetsleverantör anropa den [LoginAsync] metod på [MobileServiceClient] med den [MobileServiceAuthenticationProvider] värdet för leverantören. Till exempel initierar följande kod en server flödet inloggning med Facebook.
+När du har registrerat din identitetsleverantör anropa hello [LoginAsync] metod på hello [MobileServiceClient] med hello [MobileServiceAuthenticationProvider] värdet för leverantören. Till exempel initierar hello följande kod en server flödet inloggning med Facebook.
 
 ```
 private MobileServiceUser user;
@@ -878,12 +878,12 @@ private async System.Threading.Tasks.Task Authenticate()
 }
 ```
 
-Om du använder en identitetsleverantör än Facebook, ändrar du värdet för [MobileServiceAuthenticationProvider] med värdet för leverantören.
+Om du använder en identitetsleverantör än Facebook, ändra hello värdet på [MobileServiceAuthenticationProvider] toohello värde för leverantören.
 
-I ett server-flöde hanterar Azure App Service flödet för OAuth-autentisering genom att visa inloggningssidan för vald leverantör.  När identitet providern returnerar Azure App Service genererar en Apptjänst-token för autentisering. Den [LoginAsync] metoden returnerar en [MobileServiceUser], som innehåller både den [UserId] på den autentiserade användaren och [ MobileServiceAuthenticationToken], som JSON web token (JWT). Den här token kan cachelagras och återanvändas tills den upphör att gälla. Mer information finns i [cachelagring autentiseringstoken](#caching).
+I ett server-flöde hanterar Azure App Service hello flödet för OAuth-autentisering genom att visa hello-inloggningssida för hello markerade providern.  Hello identitet providern returnerar Azure App Service genererar när en Apptjänst-token för autentisering. Hej [LoginAsync] metoden returnerar en [MobileServiceUser], som innehåller både hello [UserId] av hello autentiserade användare och hello [ MobileServiceAuthenticationToken], som JSON web token (JWT). Den här token kan cachelagras och återanvändas tills den upphör att gälla. Mer information finns i [cachelagring hello autentiseringstoken](#caching).
 
-### <a name="caching"></a>Cachelagring autentiseringstoken
-I vissa fall undvikas anrop till metoden inloggningen efter den första autentiseringen genom att lagra autentiseringstoken från leverantören.  Windows Store och UWP-appar kan använda [PasswordVault] till cachen aktuella autentiseringstoken efter en lyckad inloggning, enligt följande:
+### <a name="caching"></a>Cachelagring hello autentiseringstoken
+I vissa fall undvikas hello anropsmetod toohello inloggningen efter hello första autentiseringen genom att lagra hello autentiseringstoken från hello-providern.  Windows Store och UWP-appar kan använda [PasswordVault] toocache aktuella autentiseringen token efter en lyckad inloggning, enligt följande:
 
 ```
 await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
@@ -893,53 +893,53 @@ vault.Add(new PasswordCredential("Facebook", client.currentUser.UserId,
     client.currentUser.MobileServiceAuthenticationToken));
 ```
 
-Användar-ID-värdet lagras som användarnamnet för autentiseringsuppgifter och token som är lagrade som lösenord. I efterföljande nystartade företag, kan du kontrollera den **PasswordVault** för cachelagrade autentiseringsuppgifter. I följande exempel används cachelagrade autentiseringsuppgifter när de hittas och annars försöker autentisera igen med serverdelen:
+hello UserId värdet lagras som hello användarnamn hello autentiseringsuppgifter och hello token är hello lagras som hello lösenord. I efterföljande nystartade företag, kan du kontrollera hello **PasswordVault** för cachelagrade autentiseringsuppgifter. hello följande exempel används cachelagrade autentiseringsuppgifter när de hittas och annars försöker tooauthenticate igen med hello backend:
 
 ```
-// Try to retrieve stored credentials.
+// Try tooretrieve stored credentials.
 var creds = vault.FindAllByResource("Facebook").FirstOrDefault();
 if (creds != null)
 {
-    // Create the current user from the stored credentials.
+    // Create hello current user from hello stored credentials.
     client.currentUser = new MobileServiceUser(creds.UserName);
     client.currentUser.MobileServiceAuthenticationToken =
         vault.Retrieve("Facebook", creds.UserName).Password;
 }
 else
 {
-    // Regular login flow and cache the token as shown above.
+    // Regular login flow and cache hello token as shown above.
 }
 ```
 
-När du loggar ut en användare måste du också bort lagrade autentiseringsuppgifter på följande sätt:
+När du loggar ut en användare måste du också bort hello lagrade autentiseringsuppgifter på följande sätt:
 
 ```
 client.Logout();
 vault.Remove(vault.Retrieve("Facebook", client.currentUser.UserId));
 ```
 
-Xamarin-appar används i [Xamarin.Auth] -API: er på ett säkert sätt lagra autentiseringsuppgifter i en **konto** objekt. Ett exempel på hur du använder dessa API: er finns i [AuthStore.cs] kodfilen i den [ContosoMoments foto delning exempel](https://github.com/azure-appservice-samples/ContosoMoments).
+Xamarin-appar använda hello [Xamarin.Auth] API: er toosecurely store autentiseringsuppgifter i en **konto** objekt. Ett exempel på hur du använder dessa API: er finns i hello [AuthStore.cs] kodfilen i hello [ContosoMoments foto delning exempel](https://github.com/azure-appservice-samples/ContosoMoments).
 
-När du använder klienten hanteras autentisering, kan du Cachelagra den åtkomst-token som hämtades från leverantören, till exempel Facebook och Twitter. Denna token kan anges för att begära en ny autentiseringstoken från serverdelen, enligt följande:
+När du använder klienten hanteras autentisering kan du också cachelagra hello åtkomst-token som erhölls från leverantören som Facebook eller Twitter. Denna token kan vara angivna toorequest en ny autentiseringstoken från hello serverdel på följande sätt:
 
 ```
 var token = new JObject();
 // Replace <your_access_token_value> with actual value of your access token
 token.Add("access_token", "<your_access_token_value>");
 
-// Authenticate using the access token.
+// Authenticate using hello access token.
 await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 ```
 
 ## <a name="pushnotifications"></a>Push-meddelanden
-I följande avsnitt beskrivs Push-meddelanden:
+hello beskrivs följande avsnitt Push-meddelanden:
 
 * [Registrera dig för Push-meddelanden](#register-for-push)
 * [Skaffa en Windows Store paket-SID](#package-sid)
 * [Registrera med plattformsoberoende mallar](#register-xplat)
 
 ### <a name="register-for-push"></a>Så här: registrera dig för Push-meddelanden
-Mobile Apps-klienten kan du registrera dig för push-meddelanden med Azure Notification Hubs. När du registrerar dig, kan du hämta en referens som du har fått från plattformsspecifika Push Notification Service (PNS). Du kan sedan ange värdet tillsammans med alla taggar när du skapar registreringen. Följande kod registrerar din Windows-app för push-meddelanden med Windows Notification Service (WNS):
+hello Mobile Apps-klienten kan tooregister för push-meddelanden med Azure Notification Hubs. När du registrerat kan du erhålla en referens som hämtas från hello plattformsspecifika Push Notification Service (PNS). Du anger sedan det här värdet tillsammans med alla taggar när du skapar hello registrering. hello registrerar följande kod din Windows-app för push-meddelanden med hello Windows Notification Service (WNS):
 
 ```
 private async void InitNotificationsAsync()
@@ -947,43 +947,43 @@ private async void InitNotificationsAsync()
     // Request a push notification channel.
     var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
-    // Register for notifications using the new channel.
+    // Register for notifications using hello new channel.
     await MobileService.GetPush().RegisterNativeAsync(channel.Uri, null);
 }
 ```
 
-Om du sänder till WNS och sedan måste du [hämtar Windows Store-paketet SID](#package-sid).  Mer information om Windows-appar, inklusive hur du registrerar dig för mallen registreringar finns [Lägg till push-meddelanden i appen].
+Om du sänder tooWNS, så du måste [hämtar Windows Store-paketet SID](#package-sid).  Mer information om Windows-appar, inklusive hur tooregister för mallen registreringar Se [Lägg till push-meddelanden tooyour app].
 
-Begär taggar från klienten stöds inte.  Taggen begäranden släpps tyst från registreringen.
-Om du vill registrera din enhet med taggar kan du skapa en anpassad API som använder API: et för Notification Hubs för att utföra registreringen för din räkning.  [Anropa anpassade API](#customapi) i stället för den `RegisterNativeAsync()` metoden.
+Begär taggar från klientens hello stöds inte.  Taggen begäranden släpps tyst från registreringen.
+Om du vill tooregister enheten med taggar kan skapa en anpassad API som använder hello Notification Hubs API tooperform hello registrering för din räkning.  [Anropa hello anpassade API](#customapi) i stället för hello `RegisterNativeAsync()` metod.
 
 ### <a name="package-sid"></a>Så här: hämta en Windows Store paket-SID
-Paket-SID krävs för att aktivera push-meddelanden i Windows Store-appar.  Registrera ditt program med Windows Store för att ta emot paket-SID.
+Paket-SID krävs för att aktivera push-meddelanden i Windows Store-appar.  tooreceive paket-SID, registrera programmet med hello Windows Store.
 
-Du kan hämta det här värdet:
+tooobtain det här värdet:
 
-1. Högerklicka på Windows Store-app-projekt i Visual Studio Solution Explorer, klickar du på **Store** > **associera App med Store...** .
-2. I guiden klickar du på **nästa**, logga in med ditt Microsoft-konto, Skriv ett namn för din app i **reservera ett nytt namn för appen**, klicka på **reservera**.
-3. När registreringen app har skapats, Välj namnet på appen, klicka på **nästa**, och klicka sedan på **associera**.
-4. Logga in på den [Windows Dev Center] med ditt Microsoft-Account. Under **Mina appar**, klicka på appen registreringen som du skapade.
-5. Klicka på **apphantering** > **App identitet**, och rulla sedan hitta din **paket-SID**.
+1. I Visual Studio Solution Explorer, högerklicka på hello Windows Store-app-projekt, klickar du på **Store** > **associera appen med hello Store...** .
+2. Hello i guiden klickar du på **nästa**, logga in med ditt Microsoft-konto, Skriv ett namn för din app i **reservera ett nytt namn för appen**, klicka på **reservera**.
+3. När hello appen registreras har skapats, Välj hello programnamn, klickar du på **nästa**, och klicka sedan på **associera**.
+4. Logga in toohello [Windows Dev Center] med ditt Microsoft-Account. Under **Mina appar**, klicka på hello appregistrering som du skapade.
+5. Klicka på **apphantering** > **App identitet**, och bläddrar sedan nedåt toofind din **paket-SID**.
 
-Många användningsområden för paket-SID behandla det som en URI i så fall måste du använda *ms-app: / /* som schema. Anteckna versionen av ditt paket-SID som bildas genom att det här värdet som ett prefix.
+Många användningsområden för hello paket-SID behandla det som en URI, i vilket fall du behöver toouse *ms-app: / /* som hello schema. Anteckna hello version av ditt paket-SID som bildas genom att det här värdet som ett prefix.
 
-Xamarin-appar kräver ytterligare kod för att kunna registrera en app som körs på iOS eller Android-plattformar. Mer information finns i avsnittet för din plattform:
+Xamarin-appar kräver vissa ytterligare kod toobe kan tooregister en app som körs på hello iOS eller Android-plattformar. Mer information finns i avsnittet hello för din plattform:
 
 * [Xamarin.Android](app-service-mobile-xamarin-android-get-started-push.md#add-push)
 * [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started-push.md#add-push-notifications-to-your-app)
 
-### <a name="register-xplat"></a>Så här: registrera push-mallar för att skicka plattformsoberoende meddelanden
-Registrera mallar genom att använda den `RegisterAsync()` metod med mallarna på följande sätt:
+### <a name="register-xplat"></a>Så här: registrera push-mallar toosend plattformsoberoende meddelanden
+tooregister mallar använder hello `RegisterAsync()` metod med hello mallar, på följande sätt:
 
 ```
 JObject templates = myTemplates();
 MobileService.GetPush().RegisterAsync(channel.Uri, templates);
 ```
 
-Dina mallar ska vara `JObject` datatyper och kan innehålla flera mallar i följande JSON-format:
+Dina mallar ska vara `JObject` datatyper och kan innehålla flera mallar i hello följande JSON-format:
 
 ```
 public JObject myTemplates()
@@ -1008,25 +1008,25 @@ public JObject myTemplates()
 }
 ```
 
-Metoden **RegisterAsync()** sekundära paneler kan också användas:
+Hej metoden **RegisterAsync()** sekundära paneler kan också användas:
 
 ```
 MobileService.GetPush().RegisterAsync(string channelUri, JObject templates, JObject secondaryTiles);
 ```
 
-Alla taggar tas bort direkt under registreringen för säkerhet. Om du vill lägga till taggar i installationer eller mallar inom installationer finns i [arbeta med serverdelen .NET SDK för Azure Mobile Apps].
+Alla taggar tas bort direkt under registreringen för säkerhet. tooadd taggar tooinstallations eller mallar inom installationer finns i avsnittet [fungerar med serverdelen för hello .NET SDK för Azure Mobile Apps].
 
-Om du vill skicka meddelanden genom att använda mallarna registrerade, referera till den [Notification Hubs API: er].
+toosend meddelanden genom att använda mallarna registrerade finns toohello [Notification Hubs API: er].
 
 ## <a name="misc"></a>Diverse avsnitt
 ### <a name="errors"></a>Så här: hantera fel
-När ett fel uppstår i serverdelen kan klienten SDK genererar en `MobileServiceInvalidOperationException`.  I följande exempel visas hur du hanterar ett undantag som returneras av serverdelen:
+När ett fel uppstår i hello backend hello klienten SDK genererar en `MobileServiceInvalidOperationException`.  Följande exempel visar hur toohandle ett undantag som returneras av hello backend:
 
 ```
 private async void InsertTodoItem(TodoItem todoItem)
 {
-    // This code inserts a new TodoItem into the database. When the operation completes
-    // and App Service has assigned an Id, the item is added to the CollectionView
+    // This code inserts a new TodoItem into hello database. When hello operation completes
+    // and App Service has assigned an Id, hello item is added toohello CollectionView
     try
     {
         await todoTable.InsertAsync(todoItem);
@@ -1039,10 +1039,10 @@ private async void InsertTodoItem(TodoItem todoItem)
 }
 ```
 
-Ett annat exempel för att behandla felvillkor kan hittas i den [Mobile Apps filer exempel]. Den [LoggingHandler] exempel ger en loggning ombud hanterare för att logga begäranden som görs till serverdelen.
+Ett annat exempel för att behandla felvillkor kan hittas i hello [Mobile Apps filer exempel]. Den [LoggingHandler] exempel ger en delegat loggning hanteraren toolog hello begäranden som gjorts toohello backend.
 
 ### <a name="headers"></a>Så här: anpassa begärandehuvuden
-För att stödja specifika app-scenariot, kan du behöva anpassa kommunikationen med serverdelen för Mobilappen. Du kanske vill lägga till en anpassad rubrik i varje utgående begäran eller även ändra svar statuskoder. Du kan använda en anpassad [DelegatingHandler], som i följande exempel:
+toosupport specifik app scenario kan du behöva toocustomize kommunikation med hello mobilappsserverdel. Du kan till exempel vill tooadd en anpassad rubrik tooevery utgående begäran eller även ändra svar statuskoder. Du kan använda en anpassad [DelegatingHandler], som i följande exempel hello:
 
 ```
 public async Task CallClientWithHandler()
@@ -1058,15 +1058,15 @@ public class MyHandler : DelegatingHandler
     protected override async Task<HttpResponseMessage>
         SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
-        // Change the request-side here based on the HttpRequestMessage
+        // Change hello request-side here based on hello HttpRequestMessage
         request.Headers.Add("x-my-header", "my value");
 
-        // Do the request
+        // Do hello request
         var response = await base.SendAsync(request, cancellationToken);
 
-        // Change the response-side here based on the HttpResponseMessage
+        // Change hello response-side here based on hello HttpResponseMessage
 
-        // Return the modified response
+        // Return hello modified response
         return response;
     }
 }
@@ -1092,11 +1092,11 @@ public class MyHandler : DelegatingHandler
 [11]: http://www.symbolsource.org/Public/Wiki/Using
 [12]: https://msdn.microsoft.com/en-us/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
-[Lägg till autentisering till din app]: app-service-mobile-windows-store-dotnet-get-started-users.md
+[Lägg till autentisering tooyour app]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [Offline datasynkronisering i Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
-[Lägg till push-meddelanden i appen]: app-service-mobile-windows-store-dotnet-get-started-push.md
-[registrera din app om du vill använda en Microsoft-kontoinloggning]: app-service-mobile-how-to-configure-microsoft-authentication.md
-[konfigurera App Service för Active Directory-inloggningen]: app-service-mobile-how-to-configure-active-directory-authentication.md
+[Lägg till push-meddelanden tooyour app]: app-service-mobile-windows-store-dotnet-get-started-push.md
+[registrera din app toouse för inloggning till en Microsoft-konto]: app-service-mobile-how-to-configure-microsoft-authentication.md
+[hur tooconfigure App Service för Active Directory-inloggningen]: app-service-mobile-how-to-configure-active-directory-authentication.md
 
 <!-- Microsoft URLs. -->
 [MobileServiceCollection]: https://msdn.microsoft.com/en-us/library/azure/dn250636(v=azure.10).aspx
@@ -1105,7 +1105,7 @@ public class MyHandler : DelegatingHandler
 [MobileServiceUser]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser(v=azure.10).aspx
 [ MobileServiceAuthenticationToken]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken(v=azure.10).aspx
 [GetTable]: https://msdn.microsoft.com/en-us/library/azure/jj554275(v=azure.10).aspx
-[skapar en referens till en ej typbestämd tabell]: https://msdn.microsoft.com/en-us/library/azure/jj554278(v=azure.10).aspx
+[skapar en tooan ej typbestämd referenstabell]: https://msdn.microsoft.com/en-us/library/azure/jj554278(v=azure.10).aspx
 [DeleteAsync]: https://msdn.microsoft.com/en-us/library/azure/dn296407(v=azure.10).aspx
 [IncludeTotalCount]: https://msdn.microsoft.com/en-us/library/azure/dn250560(v=azure.10).aspx
 [InsertAsync]: https://msdn.microsoft.com/en-us/library/azure/dn296400(v=azure.10).aspx

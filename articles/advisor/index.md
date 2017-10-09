@@ -1,5 +1,5 @@
 ---
-title: "Dokumentation om Azure Advisor – Självstudier | Microsoft Docs"
+title: "aaaAzure Advisor-dokumentation – självstudier | Microsoft Docs"
 description: 
 services: advisor
 author: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: ce00af5e7382a3d6e80903711bac86ca88191cff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1a1f8280c89b4e38af8c9cb2f5e55486a78186d3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-advisor-documentation"></a>Dokumentation om Azure Advisor
 
-Azure Advisor är en anpassad molnkonsult som hjälper dig att följa bästa praxis för att optimera dina Azure-distributioner. Den analyserar din resurskonfiguration och användningstelemetri. Den rekommenderar sedan lösningar för att förbättra prestanda, säkerhet och hög tillgänglighet för dina resurser samtidigt som den söker efter möjligheter att minska de totala Azure-kostnaderna.
+Azure Advisor är personliga molnet konsult som hjälper dig att följa bästa praxis toooptimize Azure-distributioner. Den analyserar din resurskonfiguration och användningstelemetri. Sedan rekommenderar lösningar toohelp förbättra hello prestanda, säkerhet, och hög tillgänglighet för dina resurser vid sökning efter affärsmöjligheter tooreduce din övergripande Azure tillbringar.
 
 <ul class="panelContent cardsFTitle">
     <li>

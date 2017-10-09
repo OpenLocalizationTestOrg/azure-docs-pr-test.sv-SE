@@ -1,6 +1,6 @@
 ---
-title: Implementera fasetterad navigering i Azure Search | Microsoft Docs
-description: "Lägga till fasetterad navigering i program som integreras med Azure Search molnbaserade search-tjänsten på Microsoft Azure."
+title: aaaHow tooimplement fasetterad navigering i Azure Search | Microsoft Docs
+description: "Lägg till fasetterad navigering tooapplications som integreras med Azure Search molnbaserade search-tjänsten på Microsoft Azure."
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -14,108 +14,108 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: 413f498eeb0bbc9a971c7a65200ed2fd8caa9aaf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c1e6bf9dc55d0044525db79e37d35a50ded5a736
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Implementera aspektbaserad navigering i Azure Search
-Fasetterad navigering är en filtreringsmekanism som ger automatisk dirigerad nedbrytning navigering i sökprogram. Termen ”fasetterad navigering' kanske inte känner, men du förmodligen har använt det förut. I följande exempel visas är fasetterad navigering inget annat än de kategorier som används för att filtrera resultat.
+# <a name="how-tooimplement-faceted-navigation-in-azure-search"></a>Hur tooimplement fasetterad navigering i Azure Search
+Fasetterad navigering är en filtreringsmekanism som ger automatisk dirigerad nedbrytning navigering i sökprogram. hello termen ”fasetterad navigering' kanske inte känner, men du förmodligen har använt det förut. Följande exempel visar hello, är fasetterad navigering inget annat än hello kategorier som används för toofilter resultat.
 
  ![Azure Search-jobbet Portal Demo][1]
 
-Fasetterad navigering är en annan startpunkt att söka. Det är ett praktiskt alternativ till att skriva komplicerade sökuttryck manuellt. Facets kan hjälpa dig att hitta det du söker efter, samtidigt som du säkerställer att du inte blir noll. Som en utvecklare kan du exponera mest användbara sökkriterierna för att navigera din sökning Kristi facets. I online retail-program bygger ofta fasetterad navigering via varumärken, avdelningar (barnens situation), storlek, pris, popularitet och klassificeringar. 
+Fasetterad navigering är en alternativ post punkt toosearch. Den erbjuder ett enkelt alternativ tootyping komplexa sökuttryck manuellt. Facets kan hjälpa dig att hitta det du söker efter, samtidigt som du säkerställer att du inte blir noll. Som en utvecklare kan du exponera hello mest användbara sökkriterierna för att navigera din sökning Kristi facets. I online retail-program bygger ofta fasetterad navigering via varumärken, avdelningar (barnens situation), storlek, pris, popularitet och klassificeringar. 
 
 Implementera fasetterad navigering skiljer sig åt mellan Sök tekniker. I Azure Search skapas fasetterad navigering när databasfrågan, med fält som du tidigare attributet i schemat.
 
--   I de frågor som programmet skapar en fråga måste skicka *aspekten frågeparametrar* att hämta tillgängliga aspekten värden för detta dokument.
+-   I hello frågor som programmet skapar en fråga måste skicka *aspekten frågeparametrar* tooget hello tillgängliga aspekten filtervärden för dokumentet resultatuppsättning.
 
--   Att ta bort dokumentet resultatet faktiskt inställd och programmet måste också använda en `$filter` uttryck.
+-   tooactually trim hello dokumentet resultatmängden, hello programmet måste också använda en `$filter` uttryck.
 
-I din programutveckling skriva kod som skapar frågor som utgör den största delen av arbetet. Många av de programfunktioner som du förväntar dig från fasetterad navigering tillhandahålls av tjänsten, inklusive inbyggt stöd för att definiera intervall och hämtar antal för aspekten resultat. Tjänsten innehåller sensible standardvärden som hjälper dig också undvika svårhanterliga navigeringsstrukturer. 
+I din programutveckling utgör skriva kod som skapar frågor hello bulk hello arbete. Många av hello programfunktioner som du förväntar dig från fasetterad navigering tillhandahålls av hello-tjänsten, inklusive inbyggt stöd för att definiera intervall och hämtar antal för aspekten resultat. hello tjänsten omfattar också sensible standardvärden som hjälper dig undvika svårhanterliga navigeringsstrukturer. 
 
 ## <a name="sample-code-and-demo"></a>Exempelkod och demo
-Den här artikeln används en jobbet sökportal som exempel. Exemplet implementeras som en ASP.NET MVC-program.
+Den här artikeln används en jobbet sökportal som exempel. hello exempel implementeras som en ASP.NET MVC-program.
 
--   Se och testa den fungerande demon online på [Azure Search-jobbet Portal Demo](http://azjobsdemo.azurewebsites.net/).
+-   Se och testa hello fungerande demo online på [Azure Search-jobbet Portal Demo](http://azjobsdemo.azurewebsites.net/).
 
--   Hämta koden från den [lagringsplatsen för Azure-exempel på GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
+-   Hämta hello koden från hello [lagringsplatsen för Azure-exempel på GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
 ## <a name="get-started"></a>Kom igång
-Om du har använt Sök utveckling, är det bästa sättet att tänka på fasetterad navigering att den visar möjligheterna för automatisk dirigerad sökning. Det är en typ av nedåt sökinställningar, baserat på fördefinierade filter som används för att begränsa snabbt ned sökresultat via plats och klicka på åtgärder. 
+Om du är ny toosearch utveckling är hello toothink på bästa sätt fasetterad navigering att den visar hello möjligheter för automatisk dirigerad sökning. Det är en typ av nedåt sökinställningar, baserat på fördefinierade filter som används för att begränsa snabbt ned sökresultat via plats och klicka på åtgärder. 
 
 ### <a name="interaction-model"></a>Interaktion modellen
 
-Sökinställningar för fasetterad navigering är iterativ, så vi först förstå som en sekvens av frågor som skapas som svar på åtgärder från användaren.
+hello sökinställningar för fasetterad navigering är iterativ, så vi först förstå som en sekvens av frågor som skapas i toouser responsåtgärder.
 
-Startpunkten är en sida för program som ger fasetterad navigering, normalt placeras Infästningspunkten. Fasetterad navigering är ofta en trädstruktur med kryssrutorna för varje värde eller en klickbar text. 
+hello startpunkt är program som ger fasetterad navigering, vanligtvis placerad hello omkrets. Fasetterad navigering är ofta en trädstruktur med kryssrutorna för varje värde eller en klickbar text. 
 
-1. En fråga skickas till Azure Search anger navigeringsstrukturen fasetterad via en eller flera aspekten Frågeparametrar. Till exempel frågan kan innehålla `facet=Rating`, kanske med en `:values` eller `:sort` alternativet för att förfina presentationen.
-2. Presentation lagret återger en sida som innehåller fasetterad navigering, med aspekterna som har angetts i begäran.
-3. En fasetterad navigeringsstruktur som innehåller klassificering får du klickar på ”4” som anger att endast produkter med en klassificering på 4 eller senare ska visas. 
-4. Svar skickar programmet en fråga som innehåller`$filter=Rating ge 4` 
-5. Presentation lagret uppdaterar sidan visar en minskad resultatmängd som innehåller bara de objekt som uppfyller de nya kriterierna (i det här fallet produkter klassificerade 4 och senare).
+1. En fråga skickas tooAzure Sök anger hello fasetterad navigeringsstruktur via en eller flera aspekten Frågeparametrar. Till exempel hello fråga kan innehålla `facet=Rating`, kanske med en `:values` eller `:sort` alternativet toofurther förfina hello presentation.
+2. hello presentation layer återger en sida som innehåller fasetterad navigering, med hjälp av hello aspekterna som har angetts på hello-begäran.
+3. En fasetterad navigeringsstruktur som innehåller klassificering får du klickar på ”4” tooindicate som ska visas endast produkter med en klassificering på 4 eller senare. 
+4. Svar skickar hello en fråga som innehåller`$filter=Rating ge 4` 
+5. hello presentation layer hello sidan visar en minskad resultatmängd som innehåller bara de objekt som uppfyller hello villkor (i det här fallet produkter klassificerade 4 och senare).
 
-En begränsningsaspekt är en frågeparameter men Blanda inte ihop med frågan indata. Den används aldrig som urvalskriterier i en fråga. Se i stället aspekten frågeparametrar som indata till navigeringsstrukturen som kommer tillbaka i svaret. För varje aspekten frågeparameter som du anger, utvärderar Azure Search är hur många dokumenten i partiella resultaten för varje aspektvärdet.
+En begränsningsaspekt är en frågeparameter men Blanda inte ihop med frågan indata. Den används aldrig som urvalskriterier i en fråga. Se i stället aspekten frågeparametrar som indata toohello navigeringsstruktur som kommer tillbaka hello svar. För varje aspekten frågeparameter som du anger, utvärderar Azure Search är hur många dokumenten i hello ofullständiga resultat för varje aspektvärdet.
 
-Observera den `$filter` i steg 4. Filtret är en viktig del av fasetterad navigeringen. Även om facets och filter är oberoende API: et, måste båda att leverera den erfarenhet som du avser. 
+Meddelande hello `$filter` i steg 4. hello-filter är en viktig del av fasetterad navigeringen. Även om facets och filter är oberoende hello API, måste båda toodeliver hello upplevelse som du avser. 
 
 ### <a name="app-design-pattern"></a>Designmönstret för App
 
-I programkoden är mönstret att använda aspekten frågeparametrar för att returnera fasetterad navigeringsstrukturen tillsammans med aspekten resultat, plus ett $filter uttryck.  Filteruttrycket hanterar klickningshändelsen på aspektvärdet. Se den `$filter` uttryck som koden bakom faktiska Trimning av sökresultat returneras i lagret med presentation. Klicka på röd färg ges en färger-begränsningsaspekt implementeras via en `$filter` som väljer endast de objekt som har en röd färg. 
+I programkoden är hello mönstret toouse aspekten frågans parametrar tooreturn hello fasetterad navigeringsstruktur tillsammans med aspekten resultat, plus ett $filter uttryck.  hello filter uttryck handtag hello klickar du på händelsen i hello aspektvärdet. Se hello `$filter` uttryck som hello koden bakom hello faktiska Trimning av sökresultaten returnerade toohello presentation lager. Få en färger-begränsningsaspekt klickar du på röd färg i hello implementeras via en `$filter` som väljer endast de objekt som har en röd färg. 
 
 ### <a name="query-basics"></a>Grunderna i frågan
 
-En begäran har angetts via en eller flera frågeparametrar i Azure Search (se [Sök dokument](http://msdn.microsoft.com/library/azure/dn798927.aspx) en beskrivning av var och en). Ingen av frågeparametrarna krävs, men du måste ha minst en för en fråga ska vara giltigt.
+En begäran har angetts via en eller flera frågeparametrar i Azure Search (se [Sök dokument](http://msdn.microsoft.com/library/azure/dn798927.aspx) en beskrivning av var och en). Ingen frågeparametrar Hej är nödvändig, men du måste ha minst en för att en giltig fråga toobe.
 
-Precision, tolkas som möjlighet att filtrera bort irrelevanta träffar uppnås genom en eller båda av dessa uttryck.
+Precision, tolkas som hello möjlighet toofilter ut irrelevanta träffar uppnås genom en eller båda av dessa uttryck.
 
 -   **Sök =**  
-    Värdet för den här parametern utgör sökuttryck. Det kan vara en enda typ av text eller en komplex sökning-uttryck som innehåller flera villkor och operatörer. Ett sökuttryck används på servern för textsökning frågar sökbara fält i indexet för matchning av villkor, returnerar resultat i rank ordning. Om du ställer in `search` null frågan är körningen över hela index (det vill säga `search=*`). I det här fallet, andra delar av frågan som en `$filter` eller bedömningen profil, är de primära faktorer som påverkar vilka dokument som returneras `($filter`) och i vilken ordning (`scoringProfile` eller `$orderby`).
+    hello värdet på parametern utgör hello sökuttryck. Det kan vara en enda typ av text eller en komplex sökning-uttryck som innehåller flera villkor och operatörer. Ett sökuttryck används för textsökning frågar sökbara fält i hello index för matchar villkoren som returnerar resultat i rank ordning på hello-servern. Om du ställer in `search` toonull, köra frågor är över hello hela indexet (det vill säga `search=*`). In this Case, andra element för hello fråga, exempelvis en `$filter` eller bedömningen profil hello primära faktorer som påverkar vilka dokument som returneras `($filter`) och i vilken ordning (`scoringProfile` eller `$orderby`).
 
 -   **$filter =**  
-    Ett filter är en kraftfull mekanism för att begränsa storleken på sökresultatet baserat på värdena i specifika dokumentattribut. En `$filter` är utvärderas först, följt av faceting logik som genererar tillgängliga värden och motsvarande räknare för varje värde
+    Ett filter är en kraftfull mekanism för att begränsa hello storleken på sökresultat som baseras på hello värden för specifika dokumentattribut. En `$filter` utvärderas först, följt av faceting logik som genererar hello tillgängliga värden och motsvarande räknare för varje värde
 
-Komplexa sökuttryck försämra prestandan för frågan. Om möjligt använda väl avvägt filteruttryck för att öka precision och förbättra frågeprestanda.
+Komplexa sökuttryck minska hello prestanda för hello frågan. När det är möjligt använda väl avvägt filter uttryck tooincrease precision och förbättra frågeprestanda.
 
-För att bättre förstå hur ett filter lägger till mer exakta, jämför en komplex sökuttryck till ett som innehåller ett filteruttryck:
+toobetter förstå hur ett filter lägger till mer exakta, jämför en komplex sökning uttryck tooone som innehåller ett filteruttryck:
 
 -   `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
 -   `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
 
-Båda frågorna är giltig men andra är högre om du letar efter icke motell med parkering i Seattle.
--   Den första frågan är beroende av dessa specifika ord som nämns eller inte anges i strängfält som namn, beskrivning och ett annat fält som innehåller sökbara data.
--   Den andra frågan söker efter exakt matchar på strukturerade data och kan förväntas vara mycket mer exakt.
+Båda frågorna är giltig, men hello andra är högre om du letar efter icke motell med parkering i Seattle.
+-   hello första frågan är beroende av dessa specifika ord som nämns eller inte anges i strängfält som namn, beskrivning och ett annat fält som innehåller sökbara data.
+-   hello andra frågan söker efter exakt matchar på strukturerade data och är sannolikt toobe mycket mer exakt.
 
-Kontrollera att varje användaråtgärd via en fasetterad navigeringsstruktur åtföljs av en begränsa sökresultaten i program som innehåller fasetterad navigering. Använd ett filteruttryck för att begränsa resultaten.
+Kontrollera att varje användaråtgärd via en fasetterad navigeringsstruktur åtföljs av en begränsa sökresultaten i program som innehåller fasetterad navigering. toonarrow resultat kan du använda ett filteruttryck.
 
 <a name="howtobuildit"></a>
 
 ## <a name="build-a-faceted-navigation-app"></a>Skapa en app fasetterad navigering
-Du kan implementera fasetterad navigering med Azure Search i din programkod som bygger sökbegäran. Fasetterad navigeringen är beroende av element i din schema som du definierade tidigare.
+Du kan implementera fasetterad navigering med Azure Search i din programkod som bygger hello sökbegäran. hello fasetterad navigering är beroende av element i din schema som du definierade tidigare.
 
-Fördefinierade i sökningen index är den `Facetable [true|false]` index attributuppsättningen på markerade fälten för att aktivera eller inaktivera deras användning i en fasetterad navigeringsstruktur. Utan `"Facetable" = true`, ett fält kan inte användas i aspekten navigering.
+Fördefinierade i din sökindex är hello `Facetable [true|false]` indexera attribut, ange på markerade fälten tooenable eller inaktivera deras användning i en fasetterad navigeringsstruktur. Utan `"Facetable" = true`, ett fält kan inte användas i aspekten navigering.
 
-Presentation lager i koden innehåller användarupplevelsen. Den bör innehålla beståndsdelar av fasetterad navigering, till exempel etiketten, värden, kryssrutorna och antalet. Azure Search REST API är plattformsoberoende, så Använd oavsett språk och plattformar som du vill. Viktigt är att inkludera UI-element som stöder inkrementell uppdatering med uppdaterade gränssnittstillstånd eftersom varje ytterligare aspekten har valts. 
+hello presentation lager i koden får hello användarupplevelse. Den bör innehålla hello beståndsdelar av hello fasetterad navigering, till exempel hello etikett, värden, kryssrutorna och hello antal. hello Azure Search REST API är plattformsoberoende, så Använd oavsett språk och plattformar som du vill. hello viktiga är tooinclude UI-element som stöder inkrementell med uppdaterade gränssnittstillstånd uppdatera eftersom varje ytterligare aspekten har valts. 
 
-Frågan samtidigt programkoden skapar en begäran som innehåller `facet=[string]`, en begäranparameter för som innehåller fältet till aspekten av. En fråga kan ha flera aspekter som `&facet=color&facet=category&facet=rating`, var och en avgränsade med ett et-tecken (&).
+Frågan samtidigt programkoden skapar en begäran som innehåller `facet=[string]`, en begäranparameter som ger hello fältet toofacet av. En fråga kan ha flera aspekter som `&facet=color&facet=category&facet=rating`, var och en avgränsade med ett et-tecken (&).
 
-Programkod måste också skapa ett `$filter` uttryck för att hantera klickar du på händelser i fasetterad navigeringsfältet. En `$filter` minskar sökresultaten med aspektvärdet som filtervillkor.
+Programkod måste också skapa ett `$filter` uttryck toohandle hello på händelser i fasetterad navigeringsfältet. En `$filter` minskar hello sökresultat med hello aspektvärdet som filtervillkor.
 
-Azure Search returnerar sökresultat, baserat på en eller flera villkor som du anger, tillsammans med uppdateringar till fasetterad navigeringsstrukturen. I Azure Search fasetterad navigering är en nivå-konstruktion med aspekten värden och räknar hur många resultat hittades för var och en.
+Azure Search returnerar hello sökresultat, baserat på en eller flera villkor som du anger, och uppdateringar toohello fasetterad navigeringsstruktur. I Azure Search fasetterad navigering är en nivå-konstruktion med aspekten värden och räknar hur många resultat hittades för var och en.
 
-I följande avsnitt ta vi en närmare titt på hur du skapar varje del.
+I följande avsnitt hello, vi ta en närmare titt på hur toobuild varje del.
 
 <a name="buildindex"></a>
 
-## <a name="build-the-index"></a>Skapa index
-Faceting är aktiverat för fältet av fält i index via det här attributet index: `"Facetable": true`.  
-Alla typer av fält som eventuellt kan användas i fasetterad navigering `Facetable` som standard. Dessa typer av fältet `Edm.String`, `Edm.DateTimeOffset`, och alla typer av numeriskt fält (i princip alla fälttyp är facetable utom `Edm.GeographyPoint`, som inte kan användas i fasetterad navigeringsfältet). 
+## <a name="build-hello-index"></a>Skapa hello index
+Faceting är aktiverat för fältet av fält i hello index via det här attributet index: `"Facetable": true`.  
+Alla typer av fält som eventuellt kan användas i fasetterad navigering `Facetable` som standard. Dessa typer av fältet `Edm.String`, `Edm.DateTimeOffset`, och alla hello numeriskt fälttyper (i princip alla fälttyp är facetable utom `Edm.GeographyPoint`, som inte kan användas i fasetterad navigeringsfältet). 
 
-När du skapar ett index är bästa praxis för fasetterad navigering uttryckligen inaktivera faceting för fält som ska aldrig användas som en säkerhetsåtgärd.  I synnerhet strängfält för singleton-värden, till exempel ett ID eller produkt-namn ska anges till `"Facetable": false` för att förhindra användningen oavsiktliga (och ineffektiv) i fasetterad navigeringsfältet. Aktivera faceting av där du inte behöver det hjälper till att storleken på indexet liten och vanligtvis förbättrar prestandan.
+När du skapar ett index är bästa praxis för fasetterad navigering tooexplicitly Stäng faceting inaktiverat för fält som ska aldrig användas som en säkerhetsåtgärd.  I synnerhet strängfält för singleton-värden, till exempel ett ID eller produkt-namn ska anges för`"Facetable": false` tooprevent sina oavsiktliga (och ineffektiv) används i fasetterad navigeringsfältet. Aktivera faceting av där du inte behöver det hjälper dig att skydda hello storlek på hello index små och vanligtvis förbättrar prestandan.
 
-Följande är en del av schemat för exempelappen jobb Portal Demo trimmade av vissa attribut för att minska storlek:
+Följande är en del av hello schemat för hello jobbet Portal Demo sample-appen, trimmade av vissa attribut tooreduce hello storlek:
 
 ```json
 {
@@ -143,37 +143,37 @@ Följande är en del av schemat för exempelappen jobb Portal Demo trimmade av v
 }
 ```
 
-Som du ser i exemplet-schemat `Facetable` är inaktiverat för strängfält som inte får användas som facets, t.ex ID-värden. Aktivera faceting av där du inte behöver det hjälper till att storleken på indexet liten och vanligtvis förbättrar prestandan.
+Som du ser i hello exempel schemat `Facetable` är inaktiverat för strängfält som inte får användas som facets, t.ex ID-värden. Aktivera faceting av där du inte behöver det hjälper dig att skydda hello storlek på hello index små och vanligtvis förbättrar prestandan.
 
 > [!TIP]
-> Som bästa praxis, innehåller en fullständig uppsättning indexattribut för varje fält. Även om `Facetable` är aktiverad som standard för nästan alla fält, ange ändamålsenligt varje attribut kan hjälpa dig att tänka igenom konsekvenserna av att varje beslut om schemat. 
+> Som bästa praxis, bland annat hello fullständig index attribut för varje fält. Även om `Facetable` är aktiverad som standard för nästan alla fält, ange ändamålsenligt varje attribut kan hjälpa dig att tänka igenom hello följderna av att varje beslut om schemat. 
 
 <a name="checkdata"></a>
 
-## <a name="check-the-data"></a>Kontrollera data
-Kvaliteten på dina data har en direkt inverkan på om navigeringsstrukturen fasetterad materialiseras som förväntat. Det påverkar också enkelt skapa filter för att reducera resultatuppsättningen.
+## <a name="check-hello-data"></a>Kontrollera hello data
+hello kvaliteten på dina data har en direkt inverkan på om hello fasetterad navigeringsstruktur materialiseras som förväntat. Det påverkar också hello enkel konstruera filtren tooreduce hello resultatmängden.
 
-Om du vill aspekten av varumärken eller pris varje dokument som ska innehålla värden för *BrandName* och *ProductPrice* som är giltig, konsekvent och produktiva som ett filter.
+Om du vill toofacet av varumärken eller pris, varje dokument som ska innehålla värden för *BrandName* och *ProductPrice* som är giltig, konsekvent och produktiva som ett filter.
 
-Här följer några påminnelser om vad som Skrubba för:
+Här följer några påminnelser för vilka tooscrub för:
 
-* För varje fält som du vill aspekten av fundera över om den innehåller värden som är lämpliga som filter i själva dirigerad sökning. Värdena bör vara korta och beskrivande tillräckligt särskiljande att avmarkera välja mellan konkurrerande alternativ.
-* Stavfel eller nästan matchande värden. Om aspekten färg och fältvärden omfatta Orange och Ornage (felstavat), en begränsningsaspekt baserat på fältet färg skulle hämta båda.
+* För varje fält som du vill toofacet genom att fråga dig själv om den innehåller värden som är lämpliga som filter i själva dirigerad sökning. hello värdena bör vara korta och beskrivande tillräckligt särskiljande toooffer Rensa välja mellan konkurrerande alternativ.
+* Stavfel eller nästan matchande värden. Om aspekten färg och fältvärden omfatta Orange och Ornage (felstavat), en begränsningsaspekt baserat på hello färgfältet skulle hämta båda.
 * Blandad case text kan också orsaka oreda i fasetterad navigering med orange och Orange visas som två olika värden. 
-* Enkel och pluralis versioner av samma värde kan resultera i en separat begränsningsaspekt för varje.
+* Enkel och pluralis versioner av hello samma värde som kan resultera i en separat begränsningsaspekt för varje.
 
-Du kan föreställa dig är omsorg med förbereder data en viktig aspekt av effektiva fasetterad navigering.
+Du kan föreställa dig är omsorg med förbereder hello data en viktig aspekt av effektiva fasetterad navigering.
 
 <a name="presentationlayer"></a>
 
-## <a name="build-the-ui"></a>Skapa användargränssnittet
-Arbeta från lagret med presentation hjälper dig att upptäcka krav som kan missas annars och förstå vilka funktioner är mycket viktigt att personer.
+## <a name="build-hello-ui"></a>Skapa hello UI
+Arbeta tillbaka från hello presentation lager kan du upptäcka krav som kan missas annars och förstå vilka funktioner är viktiga toohello hjälp söka upplevelse.
 
-Vad gäller fasetterad navigering webb- eller sidan visar navigeringsstrukturen fasetterad, identifierar användarindata på sidan och infogar ändrade element. 
+Vad gäller fasetterad navigering webb- eller sidan visar hello fasetterad navigeringsstruktur, identifierar användarindata för hello sidan och infogar hello ändras element. 
 
-För webbprogram används AJAX ofta i lagret med presentation eftersom du kan uppdatera stegvisa ändringar. Du kan också använda ASP.NET MVC eller andra visualiseringen plattform som kan ansluta till en Azure Search-tjänsten via HTTP. Exempelprogrammet hänvisas till i den här artikeln – den **Azure Search-jobbet Portal Demo** – råkar finnas ett ASP.NET MVC-program.
+För webbprogram används ofta AJAX i hello presentation lager eftersom du toorefresh stegvisa ändringar. Du kan också använda ASP.NET MVC eller andra visualiseringen plattform som kan ansluta tooan Azure Search-tjänsten via HTTP. hello exempelprogrammet hänvisas till i den här artikeln – hello **Azure Search-jobbet Portal Demo** – händer toobe ASP.NET MVC-program.
 
-I det här exemplet bygger fasetterad navigering till sökresultatsidan. I följande exempel hämtas från den `index.cshtml` resultatsida-filen för det här exempelprogrammet visar statiska HTML-strukturen för att visa fasetterad navigering för sökningen. Listan över facets inbyggda eller byggas dynamiskt om du skickar en sökterm eller markera eller avmarkera en begränsningsaspekt.
+I exemplet hello är fasetterad navigering inbyggd i hello sökresultatsidan. Hej följande exempel hämtas från hello `index.cshtml` -filen för hello exempelprogrammet visar hello statiska HTML-strukturen för att visa fasetterad navigering på hello search resultatsida. hello lista över facets inbyggda eller byggas dynamiskt om du skickar en sökterm eller markera eller avmarkera en begränsningsaspekt.
 
 ```html
 <div class="widget sidebar-widget jobs-filter-widget">
@@ -200,7 +200,7 @@ I det här exemplet bygger fasetterad navigering till sökresultatsidan. I följ
 </div>
 ```
 
-Följande kodavsnitt från den `index.cshtml` sidan dynamiskt skapa HTML-koden för att visa den första aspekten befattning. Liknande funktioner att dynamiskt skapa HTML för andra facets. Varje aspekten har en etikett och ett antal som visar hur många objekt hittades för aspekten resultatmängden.
+Hej följande kodavsnitt från hello `index.cshtml` sidan dynamiskt skapa hello HTML toodisplay hello första aspekten, befattning. Liknande funktioner skapa dynamiskt hello HTML för hello andra facets. Varje aspekten har en etikett och ett antal som visar hello antal objekt hittades för aspekten resultatmängden.
 
 ```js
 function UpdateBusinessTitleFacets(data) {
@@ -214,16 +214,16 @@ function UpdateBusinessTitleFacets(data) {
 ```
 
 > [!TIP]
-> Kom ihåg att lägga till en mekanism för att rensa facets när du utformar sökresultatsidan. Om du lägger till kryssrutor kan du enkelt se Rensa filter. För andra layouter behöva spåret mönster eller en annan kreativa metod. Till exempel i exempelprogrammet jobbet Sök portalen kan du klicka på `[X]` efter en valda begränsningsaspekt att rensa aspekten.
+> Kom ihåg tooadd en mekanism för att rensa facets när du utformar hello sökresultatsidan. Om du lägger till kryssrutorna kan du enkelt se hur tooclear hello filtrerar. För andra layouter behöva spåret mönster eller en annan kreativa metod. I hello jobbet sökportal exempelprogrammet, kan du till exempel klicka hello `[X]` efter en valda aspekten tooclear hello-begränsningsaspekt.
 
 <a name="buildquery"></a>
 
-## <a name="build-the-query"></a>Skapa frågan
-Den kod som du skriver för att skapa frågor ska ange alla delar av en giltig fråga, inklusive sökuttryck, facets, filter, bedömningen profiler – allt används för att formulera en begäran. I det här avsnittet förklarar vi där facets passar in i en fråga och hur filter som används av aspekter för att leverera en minskad resultatmängd.
+## <a name="build-hello-query"></a>Skapa hello-fråga
+hello-kod som du skriver för att skapa frågor ska ange alla delar av en giltig fråga, inklusive sökuttryck, facets, filter, bedömningen profiler – allt används tooformulate en begäran. I det här avsnittet utforska där facets passar in i en fråga och hur filter används med facets toodeliver sänkt resultatuppsättning.
 
-Observera att facets är integrerad i det här exempelprogrammet. Sökinställningar i jobbet Portal Demo är designad runt fasetterad navigering och filter. Framträdande placeringen av fasetterad navigering på sidan visar dess prioritet. 
+Observera att facets är integrerad i det här exempelprogrammet. hello sökinställningar i hello jobbet Portal Demo är designad runt fasetterad navigering och filter. hello framträdande placering av fasetterad navigering på hello sidan visar dess prioritet. 
 
-Ett exempel är ofta en bra plats att börja. I följande exempel hämtas från den `JobsSearch.cs` -fil, en begäran som skapar aspekten navigering baserat på befattning, plats, bokföring och minsta lön versioner. 
+Ett exempel är ofta en bra toobegin. Hej följande exempel hämtas från hello `JobsSearch.cs` fil, en begäran som skapar aspekten navigering baserat på befattning, plats, bokföring och minsta lön versioner. 
 
 ```cs
 SearchParameters sp = new SearchParameters()
@@ -234,11 +234,11 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Begränsningsaspekten frågeparameter har angetts till ett fält och beroende på datatyp, kan ytterligare parameteriseras via kommaavgränsad lista med `count:<integer>`, `sort:<>`, `interval:<integer>`, och `values:<list>`. En värdelista som stöds för numeriska data när du ställer in intervall. Se [Sök dokument (Azure Search-API)](http://msdn.microsoft.com/library/azure/dn798927.aspx) för användningsinformation.
+Begränsningsaspekten frågeparameter anges tooa fältet och beroende på hello-datatypen, kan ytterligare parameteriseras via kommaavgränsad lista med `count:<integer>`, `sort:<>`, `interval:<integer>`, och `values:<list>`. En värdelista som stöds för numeriska data när du ställer in intervall. Se [Sök dokument (Azure Search-API)](http://msdn.microsoft.com/library/azure/dn798927.aspx) för användningsinformation.
 
-Tillsammans med facets, ska begäran formulerade av programmet även skapa filter som begränsar uppsättningen kandidatdokument baserat på en markering för aspekten värdet. För en cykel store fasetterad navigering innehåller ledtrådar till frågor som *vilka färger, tillverkare och typer av cyklar är tillgängliga?*. Filtrering svar på frågor som *vilka exakt cyklar är röda mountain cyklar i det här pris av intervallet?*. När du klickar på ”Red” för att indikera att endast Red produkter ska visas i nästa fråga som programmet skickar innehåller `$filter=Color eq ‘Red’`.
+Tillsammans med facets, bör hello begäran om hjälp från ditt program också bygga filter toonarrow ned hello uppsättning kandidatdokument baserat på en markering för aspekten värde. För en cykel store fasetterad navigering innehåller ledtrådar tooquestions som *vilka färger, tillverkare och typer av cyklar är tillgängliga?*. Filtrering svar på frågor som *vilka exakt cyklar är röda mountain cyklar i det här pris av intervallet?*. När du klickar på ”Red” tooindicate som ska visas endast röda produkter, hello nästa fråga hello skickar innehåller `$filter=Color eq ‘Red’`.
 
-Följande kodavsnitt från den `JobsSearch.cs` sidan lägger till den valda befattning till filtret om du väljer ett värde från befattning-begränsningsaspekt.
+Hej följande kodavsnitt från hello `JobsSearch.cs` sidan lägger till hello valt befattning toohello filter om du väljer ett värde från hello befattning-begränsningsaspekt.
 
 ```cs
 if (businessTitleFacet != "")
@@ -252,169 +252,169 @@ if (businessTitleFacet != "")
 ### <a name="indexing-tips"></a>Indexering tips
 **Förbättra effektiviteten för index om du inte använder en kryssruta**
 
-Om programmet använder fasetterad navigering exklusivt (d.v.s. inga sökrutan) kan du markera fältet som `searchable=false`, `facetable=true` att producera ett komprimerat index. Dessutom kan uppstår indexera bara på hela aspekten värden med ingen word radbrytning eller indexering av delarna av en flera ords-värde.
+Om programmet använder fasetterad navigering exklusivt (d.v.s. inga sökrutan) kan du markera hello fält som `searchable=false`, `facetable=true` tooproduce ett komprimerat index. Dessutom kan uppstår indexera bara på hela aspekten värden med ingen word radbrytning eller indexering av hello delar av en flera ords-värde.
 
 **Ange vilka fält som kan användas som facets**
 
-Kom ihåg att schemat för indexet avgör vilka fält som kan användas som en säkerhetsåtgärd. Under förutsättning att ett fält är facetable anger frågan vilka fält som ska aspekten av. Fältet som du är faceting innehåller de värden som visas under etiketten. 
+Återkalla den hello schemat hello indexet avgör vilka fält som är tillgängliga toouse som en säkerhetsåtgärd. Under förutsättning att ett fält är facetable anger hello frågan vilka fält toofacet av. hello fält som du är faceting ger hello värden som visas under hello etiketten. 
 
-De värden som visas under varje etikett hämtas från indexet. Om fältet aspekten är till exempel *färg*, värden som är tillgängliga för ytterligare filtrering är värdena för fältet - röd, svart och så vidare.
+hello-värden som visas under varje etikett hämtas från hello index. Till exempel om hello aspekten är fältet *färg*, hello-värden som är tillgängliga för ytterligare filtrering är hello värdena för fältet - röd, svart och så vidare.
 
-För numeriska och DateTime-värden endast, kan du ange värden på fältet för aspekten (till exempel `facet=Rating,values:1|2|3|4|5`). En värdelista som tillåts för dessa fält att förenkla avgränsning av aspekten resultat i sammanhängande intervall (antingen intervall baserat på numeriska värden eller tidsperioder). 
+För numeriska och DateTime-värden endast, kan du ange värden på hello aspekten fält (till exempel `facet=Rating,values:1|2|3|4|5`). En värdelista som tillåts för dessa fält typer toosimplify hello avgränsning av aspekten resultat i sammanhängande intervall (antingen intervall baserat på numeriska värden eller tidsperioder). 
 
 **Som standard kan du bara ha en nivå med fasetterad navigering** 
 
-Som nämndes, finns det inget direkt stöd för många kapslade facets i en hierarki. Som standard stöder fasetterad navigering i Azure Search endast en nivå med filter. Dock finns lösningar. Du kan koda en hierarkisk aspekten struktur i en `Collection(Edm.String)` peka per hierarki med en post. Den här lösningen är utanför omfattningen för den här artikeln. 
+Som nämndes, finns det inget direkt stöd för många kapslade facets i en hierarki. Som standard stöder fasetterad navigering i Azure Search endast en nivå med filter. Dock finns lösningar. Du kan koda en hierarkisk aspekten struktur i en `Collection(Edm.String)` peka per hierarki med en post. Den här lösningen ligger utanför hello i den här artikeln. 
 
 ### <a name="querying-tips"></a>Frågar tips
 **Validera fält**
 
-Om du skapar listan över facets dynamiskt baserat på ej betrodda användarindata du validera att namnen på fälten fasetterad är giltiga. Eller undanta namn när du skapar URL: er med hjälp av antingen `Uri.EscapeDataString()` i .NET, eller motsvarande på din plattform föredrar.
+Om du bygger hello lista över facets dynamiskt baserat på ej betrodda användarindata kan verifiera att hello fältnamn hello fasetterad är giltiga. Eller undanta hello namn när du skapar URL: er med hjälp av antingen `Uri.EscapeDataString()` i .NET eller hello motsvarande i din plattform föredrar.
 
 ### <a name="filtering-tips"></a>Tips för filtrering
 **Öka Sök precision med filter**
 
-Använda filter. Om du använder bara sökuttryck som är enbart härrör kan orsaka ett dokument ska returneras som inte har det exakta aspektvärdet i något av dess fält.
+Använda filter. Om du förlita dig på returneras bara sökuttryck som är enbart härrör kan orsaka en toobe dokument som inte har något av dess fält hello exakt aspektvärdet.
 
 **Öka sökningsprestanda med filter**
 
-Filter begränsa uppsättning kandidatdokument för sökning och utesluta rangordning. Om du har ett stort utbud av dokument får med en selektiv begränsningsaspekt nedåt ofta du bättre prestanda.
+Filter begränsa hello uppsättning kandidatdokument för sökning och utesluta rangordning. Om du har ett stort utbud av dokument får med en selektiv begränsningsaspekt nedåt ofta du bättre prestanda.
   
-**Filtrera fasetterad fälten**
+**Filtrera endast hello fasetterad fält**
 
-I fasetterad nedåt vanligtvis vill du inkludera endast dokument som innehåller aspektvärdet i ett visst (fasetterad) fält inte någonstans i alla sökbara fält. Lägger till ett filter förstärker målfältet genom att styra tjänsten för att söka i fasetterad fält för ett motsvarande värde.
+I fasetterad nedåt, vill du förmodligen tooonly Inkludera dokument som innehåller hello aspektvärdet i ett visst (fasetterad) fält inte någonstans i alla sökbara fält. Lägger till ett filter förstärker hello målfält genom att styra hello service toosearch i hello fasetterad fält för ett motsvarande värde.
 
 **Trim aspekten resultat med flera filter**
 
-Begränsningsaspekten resultat är dokument hittades i sökresultaten som matchar en term som aspekten. I följande exempel visas i sökresultaten för *molntjänster*, 254 objekt har också *interna specifikationen* som en innehållstyp. Objekt är inte nödvändigtvis ömsesidigt uteslutande. Om ett objekt uppfyller ett villkor för båda filtren, räknas den i var och en. Duplicering är möjligt när faceting på `Collection(Edm.String)` fält som ofta används för att implementera dokumentet Taggning.
+Begränsningsaspekten resultat är dokument hittades i hello sökresultat som matchar en term som aspekten. I hello som följande exempel i sökresultat för *molntjänster*, 254 objekt har också *interna specifikationen* som en innehållstyp. Objekt är inte nödvändigtvis ömsesidigt uteslutande. Om ett objekt uppfyller hello villkor för båda filtren, räknas den i var och en. Duplicering är möjligt när faceting på `Collection(Edm.String)` fält, som ofta används tooimplement dokumentet Taggning.
 
         Search term: "cloud computing"
         Content type
            Internal specification (254)
            Video (10) 
 
-I allmänhet om du upptäcker att aspekten resultat konsekvent är för stor, rekommenderar vi att du lägga till fler filter om du vill ge användare fler alternativ för att begränsa sökningen.
+I allmänhet om du upptäcker att aspekten resultat konsekvent är för stor, rekommenderar vi att du lägger till fler filter toogive användare fler alternativ för att begränsa hello sökning.
 
 ### <a name="tips-about-result-count"></a>Tips om resultatantal
 
-**Begränsa antalet objekt i aspekten navigering**
+**Begränsa hello antalet objekt i hello aspekten navigering**
 
-Det finns en standardgräns med 10 värden för varje fasetterad fält i navigeringsträdet. Den här standardinställningen är meningsfullt för navigeringsstrukturer eftersom den bevarar värdelistan till en hanterbar storlek. Du kan åsidosätta standardinställningen genom att tilldela ett värde som ska räknas.
+För varje fasetterad fält i navigeringsträdet hello finns en standardgräns med 10 värden. Den här standardinställningen är meningsfullt för navigeringsstrukturer eftersom den bevarar hello värden listan tooa hanterbar storlek. Du kan åsidosätta hello standard genom att tilldela ett värde toocount.
 
-* `&facet=city,count:5`Anger att de första fem orter hittades i det övre rangordnas resultat returneras som ett resultat av aspekten. Överväg att en exempelfråga med en sökterm ”flygplats” och 32 matchar. Om frågan anger `&facet=city,count:5`, de fem första unika orter med flest dokument i sökresultatet ingår i aspekten resultaten.
+* `&facet=city,count:5`Anger att endast hello första fem städer hittades i hello övre rangordnas resultat returneras som ett resultat av aspekten. Överväg att en exempelfråga med en sökterm ”flygplats” och 32 matchar. Om hello-frågan anger `&facet=city,count:5`, men endast hello första fem unika orter med hello de flesta dokument i sökresultaten hello ingår i hello aspekten resultat.
 
-Observera skillnaden mellan aspekten resultat och sökresultat. Sökresultaten är alla dokument som matchar frågan. Begränsningsaspekten resultat är matchningarna för varje aspektvärdet. Sökresultaten innehåller stadsnamn som inte finns med i listan över klassificering aspekten (5 i vårt exempel) i det här exemplet. Resultat som har filtrerats ut via fasetterad navigering visas när du tar bort facets eller välja andra facets förutom stad. 
+Meddelande hello åtskillnad mellan aspekten resultat och sökresultat. Sökresultaten är alla hello-dokument som matchar hello fråga. Begränsningsaspekten resultat är hello matchar för varje aspektvärdet. Sökresultaten innehåller i hello exempel City-namn som inte är i hello aspekten klassificering lista (5 i vårt exempel). Resultat som har filtrerats ut via fasetterad navigering visas när du tar bort facets eller välja andra facets förutom stad. 
 
 > [!NOTE]
-> Diskutera `count` när det finns fler än en typ kan vara förvirrande. Följande tabell ger en kort sammanfattning av hur termen används i Azure Search-API, exempelkod och dokumentation. 
+> Diskutera `count` när det finns fler än en typ kan vara förvirrande. hello ger följande tabell en kort sammanfattning av hur hello termen används i Azure Search-API, exempelkod och dokumentation. 
 
 * `@colorFacet.count`<br/>
-  Du bör se antalet parameter på aspekten, används för att visa antalet aspekten resultat i presentation kod. I aspekten resultat anger antalet antal dokument som matchar det aspekten ord eller ett intervall.
+  Du bör se antalet parameter på hello aspekten, används toodisplay hello antalet aspekten resultat i presentation kod. Begränsningsaspekten sökresultat anger antal hello antal dokument som matchar på hello aspekten termen eller intervall.
 * `&facet=City,count:12`<br/>
-  Du kan ange antal till ett värde i en aspekten-fråga.  Standardvärdet är 10, men du kan ange den högre eller lägre. Ange `count:12` hämtar upp 12 matchar i aspekten resultaten av dokumentantal.
+  Du kan ange värdet för antal tooa i en aspekten-fråga.  hello standardvärdet är 10, men du kan ange den högre eller lägre. Ange `count:12` hämtar hello översta 12 matchningar i aspekten resultaten av dokumentantal.
 * "`@odata.count`"<br/>
-  Det här värdet anger hur många matchningar i sökresultaten i svaret på frågan. I genomsnitt den är större än summan av alla aspekten resultat i kombination, på grund av förekomsten av objekt som matchar söktermen, men har ingen aspekten matchar.
+  Det här värdet anger hello antalet matchande objekt i hello sökresultat i hello frågesvar. I genomsnitt den är större än hello summan av alla aspekten resultat i kombination, på grund av toohello förekomsten av objekt som matchar söktermen hello, men har ingen aspekten matchar.
 
 **Få fram i aspekten resultat**
 
-När du lägger till ett filter fasetterad frågan kanske du vill behålla instruktionen aspekten (till exempel `facet=Rating&$filter=Rating ge 4`). Tekniskt sett aspekten = klassificering inte krävs, men håller den returnerar antalet aspekten värden för klassificeringar 4 och senare. Om du klickar på ”4” och frågan som innehåller ett filter för större eller lika med ”4”, är till exempel räknar returneras för varje klassificering är 4 och senare.  
+När du lägger till en tooa fasetterad filterfråga du kanske vill tooretain hello aspekten instruktionen (till exempel `facet=Rating&$filter=Rating ge 4`). Tekniskt sett aspekten = klassificering inte krävs, men håller den returnerar hello antal aspekten värden för klassificeringar 4 och senare. Om du klickar på ”4” och hello frågan innehåller exempelvis ett filter för större eller lika för ”4”, antal returneras för varje klassificering som är 4 och senare.  
 
 **Kontrollera att du få fram exakta aspekten**
 
-I vissa fall kanske du upptäcker att aspekten räknas inte matchar resultatmängder (se [fasetterad navigering i Azure Search (foruminlägg)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
+I vissa fall kanske du upptäcker att aspekten räknas inte matchar hello resultatmängder (se [fasetterad navigering i Azure Search (foruminlägg)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
 
-Begränsningsaspekten antalet kan vara felaktig på grund av arkitekturen för horisontell partitionering. Varje sökindex har flera delar och varje Fragmentera rapporterar övre N aspekter av dokumentantal som sedan kombineras till ett enskilt resultat. Om vissa delar har många matchande värden, medan andra har färre hända att vissa aspekten värden saknas eller är under-inventerat i resultaten.
+Begränsningsaspekten antal kan vara felaktig på grund av toohello horisontell partitionering arkitektur. Varje sökindex har flera delar, och varje Fragmentera rapporterar hello främsta aspekter av dokumentantal som sedan kombineras till ett enskilt resultat. Om vissa delar har många matchande värden, medan andra har färre hända att vissa aspekten värden saknas eller är under-inventerat i hello resultat.
 
-Men det här beteendet kan ändra när som helst om du stöter på problemet idag, du kan undvika det genom inflating artificiellt antalet:<number> till ett stort antal att framtvinga fullständig reporting från varje Fragmentera. Om värdet för antal: är större än eller lika med antalet unika värden i fältet, är det garanterat korrekta resultat. Men när dokumentantal är hög, det finns en prestandaförsämring, så Använd det här alternativet omdöme.
+Men det här beteendet kan ändra när som helst om du stöter på problemet idag, du kan undvika det genom artificiellt lufttryck hello antal:<number> tooa stora antalet tooenforce fullständig från varje Fragmentera-rapportering. Om hello värdet för antal: är större än eller lika toohello tal med unika värden i fältet hello du garanterat korrekta resultat. Men när dokumentantal är hög, det finns en prestandaförsämring, så Använd det här alternativet omdöme.
 
 ### <a name="user-interface-tips"></a>Användaren gränssnittet tips
 **Lägga till etiketter för varje fält i aspekten navigering**
 
-Etiketter definieras vanligen i formuläret eller HTML (`index.cshtml` i exempelprogrammet). Det finns inga API i Azure Search för aspekten navigering etiketter eller andra metadata.
+Etiketter definieras vanligen i hello HTML eller formulär (`index.cshtml` i hello exempelprogram). Det finns inga API i Azure Search för aspekten navigering etiketter eller andra metadata.
 
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Filtrera baserat på ett intervall
 Faceting över intervall med värden är en gemensam programkrav för sökning. Adressintervall stöds för numeriska data och DateTime-värden. Du kan läsa mer om varje metod i [Sök dokument (Azure Search-API)](http://msdn.microsoft.com/library/azure/dn798927.aspx).
 
-Azure Search förenklar intervallet konstruktionen genom att tillhandahålla två metoder för att beräkna ett intervall. Azure Search skapar lämpliga områden angivna indata som du har angett för båda metoderna. Till exempel om du anger intervallvärden 10 | 20 | 30, skapas automatiskt intervall på 0-10, 20 10, 20 – 30. Programmet kan du ta bort alla intervall som är tomma. 
+Azure Search förenklar intervallet konstruktionen genom att tillhandahålla två metoder för att beräkna ett intervall. För båda metoderna skapar Azure Search hello lämpliga områden anges hello indata som du har angett. Till exempel om du anger intervallvärden 10 | 20 | 30, skapas automatiskt intervall på 0-10, 20 10, 20 – 30. Programmet kan du ta bort alla intervall som är tomma. 
 
-**Metod 1: Använd parametern intervall**  
-Om du vill ange pris facets i $10 steg, anger du:`&facet=price,interval:10`
+**Metod 1: Använd hello intervall parametern**  
+tooset pris facets i $10 steg, anger du:`&facet=price,interval:10`
 
 **Metod 2: Använda en värdelista med**  
-Du kan använda en värdelista för numeriska data.  Överväg att aspekten intervall för en `listPrice` -fält ska renderas på följande sätt:
+Du kan använda en värdelista för numeriska data.  Överväg att hello aspekten intervall för en `listPrice` -fält ska renderas på följande sätt:
 
   ![Exempel värdelistan][5]
 
-Använd en värdelista om du vill ange ett intervall för aspekten som det i föregående skärmbild:
+toospecify ett aspekten intervall som hello i föregående skärmbild som visar hello använda en lista över värden:
 
     facet=listPrice,values:10|25|100|500|1000|2500
 
-Varje område bygger använder 0 som en startpunkt, ett värde från listan som en slutpunkt och beskärs sedan tidigare intervallets skapa diskreta intervall. Azure Search gör dessa saker som en del av fasetterad navigeringen. Du behöver inte skriva kod för att strukturera varje intervall.
+Varje område bygger använder 0 som en startpunkt, ett värde hello listan som en slutpunkt och beskärs sedan hello tidigare intervall toocreate diskreta intervall. Azure Search gör dessa saker som en del av fasetterad navigeringen. Du har inte toowrite koden för att strukturera varje intervall.
 
 ### <a name="build-a-filter-for-a-range"></a>Skapa ett filter för ett intervall
-Du kan använda för att filtrera dokument baserat på ett intervall som du väljer den `"ge"` och `"lt"` filtrera operatorer i ett tvådelat uttryck som definierar slutpunkter för intervallet. Om du väljer intervallet 10-25 för till exempel en `listPrice` fältet filtret skulle bli `$filter=listPrice ge 10 and listPrice lt 25`. I exempelkoden, filteruttrycket använder **priceFrom** och **priceTo** parametrar för att konfigurera slutpunkter. 
+toofilter dokument baserat på ett intervall som du väljer, kan du använda hello `"ge"` och `"lt"` filtrera operatorer i ett tvådelat uttryck som definierar hello slutpunkter för hello intervall. Till exempel om du väljer hello intervallet 10-25 för en `listPrice` fältet hello filtret skulle bli `$filter=listPrice ge 10 and listPrice lt 25`. Hello exempelkod hello filteruttrycket använder **priceFrom** och **priceTo** parametrar tooset hello slutpunkter. 
 
   ![Frågan för ett intervall med värden][6]
 
 <a name="geofacets"></a> 
 
 ## <a name="filter-based-on-distance"></a>Filtrera baserat på avstånd
-Vanliga för att se filtrerar som hjälper du väljer en butik, restaurang eller mål baserat på dess närhet till din aktuella plats. Den här typen av filter kan se ut så fasetterad navigering, men det är bara ett filter. Vi anges det här gäller de av er som specifikt söker efter implementering råd om det specifika design problemet.
+Vanliga toosee filtrerar som hjälper du väljer en butik, restaurang eller baserat på dess aktuella plats närhet tooyour mål. Den här typen av filter kan se ut så fasetterad navigering, men det är bara ett filter. Vi anges det här gäller de av er som specifikt söker efter implementering råd om det specifika design problemet.
 
 Det finns två geospatiala funktioner i Azure Search **geo.distance** och **geo.intersects**.
 
-* Den **geo.distance** funktionen returnerar avståndet i kilometer, mellan två punkter. En punkt är ett fält och andra är en konstant skickas som en del av filtret. 
-* Den **geo.intersects** funktionen returnerar true om en viss punkten befinner sig inom en viss polygon. Det är ett fält och från en polygon har angetts som en konstant lista över koordinater som skickas som en del av filtret.
+* Hej **geo.distance** returnerar funktionen hello avståndet i kilometer, mellan två punkter. En punkt är ett fält och andra är en konstant skickas som en del av hello filter. 
+* Hej **geo.intersects** funktionen returnerar true om en viss punkten befinner sig inom en viss polygon. hello är ett fält och hello polygon har angetts som en konstant lista över koordinater som skickas som en del av hello filter.
 
 Du kan hitta filter exemplen i [syntaxen för OData-uttryck (Azure Search)](http://msdn.microsoft.com/library/azure/dn798921.aspx).
 
 <a name="tryitout"></a>
 
-## <a name="try-the-demo"></a>Prova demonstrationen
-Azure Search-jobbet Portal Demo innehåller exempel som refereras till i den här artikeln.
+## <a name="try-hello-demo"></a>Prova hello demonstrationer
+hello Azure Search-jobbet Portal Demo innehåller hello exempel i den här artikeln.
 
--   Se och testa den fungerande demon online på [Azure Search-jobbet Portal Demo](http://azjobsdemo.azurewebsites.net/).
+-   Se och testa hello fungerande demo online på [Azure Search-jobbet Portal Demo](http://azjobsdemo.azurewebsites.net/).
 
--   Hämta koden från den [lagringsplatsen för Azure-exempel på GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
+-   Hämta hello koden från hello [lagringsplatsen för Azure-exempel på GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
-Titta på URL: en för ändringar i Frågekonstruktionen när du arbetar med sökresultaten. Det här programmet sker att lägga till facets till URI: N som var och en.
+Titta på hello URL: en för ändringar i Frågekonstruktionen när du arbetar med sökresultaten. Det här programmet sker tooappend facets toohello URI som var och en.
 
-1. Om du vill använda funktionen mappning av demoappen få en Bing Maps-nyckel från den [Bing Maps Dev Center](https://www.bingmapsportal.com/). Klistra in den över den befintliga nyckeln i den `index.cshtml` sidan. Den `BingApiKey` i den `Web.config` filen inte används. 
+1. toouse hello mappning funktionerna i hello demoappen få en Bing Maps-nyckel från hello [Bing Maps Dev Center](https://www.bingmapsportal.com/). Klistra in den över hello befintlig nyckel i hello `index.cshtml` sidan. Hej `BingApiKey` i hello `Web.config` filen inte används. 
 
-2. Kör appen. Valfritt rundtur eller stänga dialogrutan.
+2. Kör hello program. Rundtur hello valfria eller stänga hello-dialogrutan.
    
-3. Ange en sökterm, till exempel ”analytiker”, och klicka på sökikonen. Frågan körs snabbt.
+3. Ange en sökterm, till exempel ”analytiker”, och klicka på sökikonen hello. hello fråga körs snabbt.
    
-   En fasetterad navigeringsstruktur returneras också med sökresultaten. I sökresultatsidan inkluderar fasetterad navigeringsstrukturen för varje aspekten resultat. Inga facets är markerad, så alla matchande resultat returneras.
+   En fasetterad navigeringsstruktur returneras även med hello sökresultat. I hello sökresultatsidan innehåller hello fasetterad navigeringsstrukturen för varje aspekten resultat. Inga facets är markerad, så alla matchande resultat returneras.
    
    ![Sökresultat innan du väljer facets][11]
 
-4. Klicka på en befattning, plats eller minsta lön. Facets var null för den första sökningen, men som de får på värden där objekt som matchar inte längre bort sökresultaten.
+4. Klicka på en befattning, plats eller minsta lön. Facets var null hello inledande sökning, men som de får på värden där objekt som matchar inte längre bort hello sökresultat.
    
    ![Sökresultat när du har valt facets][12]
 
-5. Om du vill ta bort fasetterad frågan så att du kan prova olika frågan beteenden, klickar du på den `[X]` efter de valda aspekter att rensa fasetterna.
+5. tooclear hello fasetterad frågan så att du kan försöka annan fråga funktioner, klickar du på hello `[X]` när hello valt facets tooclear hello facets.
    
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>Läs mer
-Titta på [Azure Search ingående](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). Vid 45:25 finns det en demonstration på hur du implementerar facets.
+Titta på [Azure Search ingående](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). Vid 45:25, det finns en demonstration på hur tooimplement facets.
 
-För mer information om principer för fasetterad navigering rekommenderar vi följande länkar:
+För mer information om principer för fasetterad navigering rekommenderar vi hello följande länkar:
 
 * [Utformning för fasetterad sökning](http://www.uie.com/articles/faceted_search/)
 * [Designmönster: Fasetterad navigering](http://alistapart.com/article/design-patterns-faceted-navigation)
 
 
 <!--Anchors-->
-[How to build it]: #howtobuildit
-[Build the presentation layer]: #presentationlayer
-[Build the index]: #buildindex
+[How toobuild it]: #howtobuildit
+[Build hello presentation layer]: #presentationlayer
+[Build hello index]: #buildindex
 [Check for data quality]: #checkdata
-[Build the query]: #buildquery
-[Tips on how to control faceted navigation]: #tips
+[Build hello query]: #buildquery
+[Tips on how toocontrol faceted navigation]: #tips
 [Faceted navigation based on range values]: #rangefacets
 [Faceted navigation based on GeoPoints]: #geofacets
 [Try it out]: #tryitout

@@ -1,6 +1,6 @@
 ---
-title: "Skicka händelser till Azure Event Hubs med .NET Framework| Microsoft Docs"
-description: "Komma igång med att skicka händelser till Event Hubs med .NET Framework"
+title: "aaaSend händelser tooAzure Händelsehubbar med hjälp av hello .NET Framework | Microsoft Docs"
+description: "Komma igång med att skicka händelser tooEvent Hub genom att använda hello .NET Framework"
 services: event-hubs
 documentationcenter: 
 author: sethmanheim
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/12/2017
 ms.author: sethm
-ms.openlocfilehash: 4eb0e7bcc14722010121c2a5945509d6ed736f4f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 05514546a6094096e4a3c800db058190076de80a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>Skicka händelser till Azure Event Hubs med .NET Framework
+# <a name="send-events-tooazure-event-hubs-using-hello-net-framework"></a>Skicka händelser tooAzure Händelsehubbar med hello .NET Framework
 
 ## <a name="introduction"></a>Introduktion
 
-Händelsehubbar är en tjänst som bearbetar stora mängder händelsedata (telemetri) från anslutna enheter och program. När du har samlat in data i händelsehubbar kan du lagra dem med ett lagringskluster eller omvandla dem med hjälp av en leverantör av realtidsanalys. Den här storskaliga händelseinsamlingen och bearbetningsfunktionen är en viktig komponent inom moderna programarkitekturer som t.ex. sakernas internet.
+Händelsehubbar är en tjänst som bearbetar stora mängder händelsedata (telemetri) från anslutna enheter och program. När du samlar in data i Händelsehubbar kan du lagra hello data med ett lagringskluster eller omvandla dem med hjälp av en leverantör av realtidsanalys. Den här storskaliga händelse och bearbetningsfunktionen är en viktig komponent inom moderna programarkitekturer inklusive hello Sakernas Internet (IoT).
 
-I den här kursen får du lära dig att skapa en händelsehubb i [Azure Portal](https://portal.azure.com). Du får också lära dig att skicka händelser till en händelsehubb med ett konsolprogram som skrivits i C# med .NET Framework. För att ta emot händelser med .NET Framework kan du läsa artikeln [Receive events using the .NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md) (Ta emot händelser med .NET Framework) eller klicka på ditt mottagarspråk till vänster i innehållsförteckningen.
+Den här kursen visar hur toouse hello [Azure-portalen](https://portal.azure.com) toocreate en händelsehubb. Den visar även hur hello toosend händelser tooan händelsehubb med hjälp av ett konsolprogram som skrivits i C# med hjälp av .NET Framework. tooreceive händelser med hjälp av hello .NET Framework finns hello [ta emot händelser med hjälp av hello .NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md) artikel, eller klicka på hello mottagande språket i hello vänstra innehållsförteckning.
 
-För att slutföra den här självstudien, finns följande förhandskrav:
+toocomplete den här kursen behöver du hello följande krav:
 
-* [Microsoft Visual Studio 2015 eller senare](http://visualstudio.com). För skärmdumparna i de här självstudierna används Visual Studio 2017.
+* [Microsoft Visual Studio 2015 eller senare](http://visualstudio.com). hello skärmdumpar i den här självstudiekursen använder Visual Studio 2017.
 * Ett aktivt Azure-konto. Om du inte har något konto kan du skapa ett utan kostnad på ett par minuter. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Skapa ett namnområde för Event Hubs och en händelsehubb
 
-Det första steget är att använda [Azure Portal](https://portal.azure.com) till att skapa ett namnområde av typen Event Hubs och hämta de autentiseringsuppgifter för hantering som programmet behöver för att kommunicera med händelsehubben. Om du vill skapa ett namnområde och en händelsehubb följer du anvisningarna i [den här artikeln](event-hubs-create.md) och fortsätter sedan enligt följande steg i den här självstudien.
+hello första steget är toouse hello [Azure-portalen](https://portal.azure.com) toocreate en namnrymd Skriv Händelsehubbar och hämta hello management-autentiseringsuppgifter som programmet behöver toocommunicate med hello händelsehubb. toocreate ett namnområde och händelsehubb, följer du proceduren hello i [i den här artikeln](event-hubs-create.md), fortsätt sedan med hello följa stegen i den här självstudiekursen.
 
 ## <a name="create-a-sender-console-application"></a>Skapa ett avsändarkonsolprogram
 
-I det här avsnittet skriver du en Windows-konsolapp som skickar händelser till din händelsehubb.
+I det här avsnittet skriver du en Windows-konsolapp som skickar händelser tooyour händelsehubb.
 
-1. I Visual Studio skapar du ett nytt Visual C#-skrivbordsapprojekt med hjälp av projektmallen **Konsolprogram**. Namnge projektet **Avsändare**.
+1. I Visual Studio skapar du ett nytt Visual C#-Skrivbordsapprojekt-projekt med hello **konsolprogram** projektmall. Namnet hello projektet **avsändaren**.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
-2. Högerklicka på projektet **Avsändare** i Solution Explorer och klicka sedan på **Hantera NuGet-paket för lösningen**. 
-3. Klicka på **Bläddra**-fliken och sök sedan efter `Microsoft Azure Service Bus`. Klicka på **Installera** och godkänn användningsvillkoren. 
+2. I Solution Explorer högerklickar du på hello **avsändaren** projektet och klicka sedan på **hantera NuGet-paket för lösningen**. 
+3. Klicka på hello **Bläddra** fliken, och sök sedan efter `Microsoft Azure Service Bus`. Klicka på **installera**, och Godkänn hello villkor för användning. 
    
     ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
-    Visual Studio laddar ned, installerar och lägger till en referens till [Azure Service Bus-bibliotekets NuGet-paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus).
-4. Lägg till följande `using`-uttryck överst i **Program.cs**-filen:
+    Visual Studio hämtar, installerar och lägger till en referens toohello [Azure Service Bus-bibliotekets NuGet-paket](https://www.nuget.org/packages/WindowsAzure.ServiceBus).
+4. Lägg till följande hello `using` instruktioner överst hello i hello **Program.cs** fil:
    
   ```csharp
   using System.Threading;
   using Microsoft.ServiceBus.Messaging;
   ```
-5. Lägg till följande fält i klassen **Program**, och ersätt platshållarvärdena med namnet på den händelsehubb du skapade i föregående avsnitt samt anslutningssträngen på namnområdesnivå som du sparat tidigare.
+5. Lägg till följande fält toohello hello **programmet** klass, ersätter hello platshållarvärdena med namnet hello hello event hub du skapat i föregående avsnitt i hello och hello namnområdesnivå anslutningssträngen du sparat tidigare.
    
   ```csharp
   static string eventHubName = "{Event Hub name}";
   static string connectionString = "{send connection string}";
   ```
-6. Lägg till följande metod i klassen **Program**:
+6. Lägg till följande metod toohello hello **programmet** klass:
    
   ```csharp
   static void SendingRandomMessages()
@@ -88,23 +88,23 @@ I det här avsnittet skriver du en Windows-konsolapp som skickar händelser till
   }
   ```
    
-  Med den här metoden skickas kontinuerligt händelser till din händelsehubb med en fördröjning på 200 ms.
-7. Slutligen lägger du till följande rader till **Main**-metoden:
+  Den här metoden skickar kontinuerligt händelser tooyour event hub med en fördröjning på 200 ms.
+7. Slutligen lägger du till följande rader toohello hello **Main** metoden:
    
   ```csharp
-  Console.WriteLine("Press Ctrl-C to stop the sender process");
-  Console.WriteLine("Press Enter to start now");
+  Console.WriteLine("Press Ctrl-C toostop hello sender process");
+  Console.WriteLine("Press Enter toostart now");
   Console.ReadLine();
   SendingRandomMessages();
   ```
-8. Kör programmet och kontrollera att det inte finns några fel.
+8. Kör programmet hello och kontrollera att det inte finns några fel.
   
-Grattis! Du har nu skickat meddelanden till en händelsehubb.
+Grattis! Du har nu skickar meddelanden tooan händelsehubb.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har skapat ett fungerande program som skapar en händelsehubb och skickar data kan du gå vidare till följande scenarier:
+Nu när du har skapat ett fungerande program som skapar en händelsehubb och skickar data, kan du gå vidare toohello följande scenarier:
 
-* [Ta emot händelser med hjälp av värd för händelsebearbetning](event-hubs-dotnet-framework-getstarted-receive-eph.md)
+* [Ta emot händelser med hjälp av hello värd för händelsebearbetning](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 * [Referens för händelsebearbetningsvärd](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 * [Event Hubs-översikt](event-hubs-what-is-event-hubs.md)
 

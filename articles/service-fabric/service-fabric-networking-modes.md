@@ -1,6 +1,6 @@
 ---
-title: "Konfigurera nätverk lägen för Azure Service Fabric-behållartjänster | Microsoft Docs"
-description: "Lär dig hur du ställer in de olika lägena för nätverk som har stöd för Azure Service Fabric."
+title: "aaaConfigure nätverk lägen för Azure Service Fabric-behållartjänster | Microsoft Docs"
+description: "Lär dig hur toosetup hello olika nätverk lägen som Azure Service Fabric stöder."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: f792f9604a5d6e62551ed92c1049d6e2b4216417
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5c5dd4c590c7698a947503cbe8ef66ff7d6b503a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric-behållaren nätverk lägen
 
-Nätverk läge erbjuds i Service Fabric-klustret för behållartjänster som standard används den `nat` nätverk läge. Med den `nat` nätverk läge, med mer än en behållare tjänsten lyssnar på samma port resultat i distributionsfel. För att lyssna på samma port med flera tjänster, Service Fabric stöder den `open` nätverk läge (version 5.7 eller högre). Med den `open` nätverk läge varje behållartjänst hämtar en dynamiskt tilldelad IP-adress som internt så att flera tjänster att lyssna på samma port.   
+hello standardläget för nätverk som erbjuds i hello Service Fabric-klustret för behållartjänster är hello `nat` nätverk läge. Med hello `nat` nätverk läge, med mer än en behållare tjänsten lyssnar toohello samma port resulterar i distributionsfel. För att köra flera tjänster som lyssnar på samma port, Service Fabric stöder hello hello `open` nätverk läge (version 5.7 eller högre). Med hello `open` nätverk läge varje behållartjänst hämtar en dynamiskt tilldelad IP-adress som internt så att flera tjänster toolisten toohello samma port.   
 
-Därför med en enda typ med en statisk slutpunkt som definierats i service manifest nya tjänster kan skapas och tas bort utan distributionsfel med hjälp av den `open` nätverk läge. På liknande sätt kan använda samma `docker-compose.yml` fil med statisk portmappningar för att skapa flera tjänster.
+Därför med en enda typ med en statisk slutpunkt som definierats i hello tjänstmanifestet nya tjänster kan skapas och tas bort utan distributionsfel med hello `open` nätverk läge. På liknande sätt kan använda hello samma `docker-compose.yml` fil med statisk portmappningar för att skapa flera tjänster.
 
-Med dynamiskt tilldelade IP-Adressen för att identifiera tjänster inte rekommenderas eftersom IP-adress ändras när tjänsten startas om eller flyttas till en annan nod. Använd bara den **namngivningstjänst för Service Fabric** eller **DNS-tjänsten** för identifiering av tjänst. 
+Med hjälp av hello dynamiskt tilldelade IP-toodiscover tjänster rekommenderas inte eftersom hello IP-adress ändras när hello-tjänsten startas om eller flyttas tooanother nod. Använd bara hello **namngivningstjänst för Service Fabric** eller hello **DNS-tjänsten** för identifiering av tjänst. 
 
 
 > [!WARNING]
-> Endast totalt 4096 IP-adresser tillåts per virtuellt nätverk i Azure. Därför summan av antalet noder och antalet behållare tjänstinstanser (med `open` nätverk) får inte överstiga 4096 inom ett vNET. Dessa scenarier med hög densitet i `nat` nätverk läge rekommenderas.
+> Endast totalt 4096 IP-adresser tillåts per virtuellt nätverk i Azure. Därför hello summan av hello antalet noder och hello antal behållare tjänstinstanser (med `open` nätverk) får inte överstiga 4096 inom ett vNET. Dessa scenarier med hög densitet hello `nat` nätverk läge rekommenderas.
 >
 
 ## <a name="setting-up-open-networking-mode"></a>Konfigurera nätverk öppningsläge
 
-1. Konfigurera Azure Resource Manager-mallen genom att aktivera DNS-tjänsten och IP-providern under `fabricSettings`. 
+1. Ställ in hello Azure Resource Manager-mall genom att aktivera DNS-tjänsten och hello IP-providern under `fabricSettings`. 
 
     ```json
     "fabricSettings": [
@@ -78,7 +78,7 @@ Med dynamiskt tilldelade IP-Adressen för att identifiera tjänster inte rekomme
             ],
     ```
 
-2. Konfigurera avsnittet network profilen så att flera IP-adresser som ska konfigureras på varje nod i klustret. I följande exempel ställer in fem IP-adresser per nod (du kan därför ha fem instanser av tjänsten lyssnar på porten på varje nod) för ett Windows Service Fabric-kluster.
+2. Ställ in hello nätverket profil avsnittet tooallow flera IP-adresser toobe som konfigurerats på varje nod i klustret hello. hello följande exempel ställer in fem IP-adresser per nod (du kan därför ha fem tjänstinstanser lyssningsport toohello på varje nod) för ett Windows Service Fabric-kluster.
 
     ```json
     "variables": {
@@ -175,7 +175,7 @@ Med dynamiskt tilldelade IP-Adressen för att identifiera tjänster inte rekomme
               }
     ```
 
-    För Linux-kluster läggs en extra offentliga IP-konfiguration som tillåter utgående anslutningar. Följande kodavsnitt ställer in fem IP-adresser per nod för ett Linux-kluster:
+    För Linux-kluster är en extra offentliga IP-konfiguration till tooallow utgående anslutning. hello ställer följande kodavsnitt in fem IP-adresser per nod för ett Linux-kluster:
 
     ```json
     "networkProfile": {
@@ -292,14 +292,14 @@ Med dynamiskt tilldelade IP-Adressen för att identifiera tjänster inte rekomme
               }
     ```
 
-3. För Windows-kluster, ställa in en NSG regel öppna port UDP/53 för vNET med följande värden:
+3. Windows-kluster kan konfigurera en NSG regel i öppna port UDP/53 för hello vNET med hello följande värden:
 
    | Prioritet |    Namn    |    Källa      |  Mål   |   Tjänst    | Åtgärd |
    |:--------:|:----------:|:--------------:|:--------------:|:------------:|:------:|
    |     2000 | Custom_Dns | VirtualNetwork | VirtualNetwork | DNS (UDP/53) | Tillåt  |
 
 
-4. Ange det nätverk läget i appmanifestet för varje tjänst `<NetworkConfig NetworkType="open">`.  Läget `open` resulterar i tjänsten hämtar en dedicerad IP-adress. Om ett läge inte anges används som standard grundläggande `nat` läge. Därför i manifestet exemplet `NodeContainerServicePackage1` och `NodeContainerServicePackage2` kan varje lyssna på samma port (båda tjänsterna lyssnar på `Endpoint1`).
+4. Ange hello nätverk läge i hello appmanifestet för varje tjänst `<NetworkConfig NetworkType="open">`.  hello läge `open` resulterar i hello tjänst hämtar en dedicerad IP-adress. Om ett läge inte anges används som standard toohello grundläggande `nat` läge. Därför i hello följande manifestet exempelvis `NodeContainerServicePackage1` och `NodeContainerServicePackage2` kan varje lyssna toohello samma port (båda tjänsterna lyssnar på `Endpoint1`).
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -329,7 +329,7 @@ Med dynamiskt tilldelade IP-Adressen för att identifiera tjänster inte rekomme
       </ServiceManifestImport>
     </ApplicationManifest>
     ```
-Du kan blanda och matcha olika lägen för nätverk för tjänster i ett program för Windows-kluster. Du kan därför ha vissa tjänster på `open` läge och vissa på `nat` nätverk läge. När en tjänst har konfigurerats med `nat`, den lyssnar på porten måste vara unika. Blanda nätverk lägen för olika tjänster stöds inte på Linux-kluster. 
+Du kan blanda och matcha olika lägen för nätverk för tjänster i ett program för Windows-kluster. Du kan därför ha vissa tjänster på `open` läge och vissa på `nat` nätverk läge. När en tjänst har konfigurerats med `nat`, hello port är det lyssnande toomust vara unika. Blanda nätverk lägen för olika tjänster stöds inte på Linux-kluster. 
 
 
 ## <a name="next-steps"></a>Nästa steg
@@ -337,5 +337,5 @@ I den här artikeln har du lärt dig om networking lägen som erbjuds av Service
 
 * [Service Fabric programmodell](service-fabric-application-model.md)
 * [Service Fabric service manifest resurser](service-fabric-application-model.md)
-* [Distribuera en Windows-behållare till Service Fabric på Windows Server 2016](service-fabric-get-started-containers.md)
-* [Distribuera en dockerbehållare till Service Fabric på Linux](service-fabric-get-started-containers-linux.md)
+* [Distribuera en Windows-behållaren tooService Fabric på Windows Server 2016](service-fabric-get-started-containers.md)
+* [Distribuera en Docker-behållare tooService Fabric på Linux](service-fabric-get-started-containers-linux.md)

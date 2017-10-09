@@ -1,6 +1,6 @@
 ---
-title: Etablera webbprogram med Redis-Cache
-description: "Använd Azure Resource Manager-mall för att distribuera webbprogram med Redis-Cache."
+title: aaaProvision webbprogram med Redis-Cache
+description: "Använd Azure Resource Manager-mall toodeploy webbprogram med Redis-Cache."
 services: app-service
 documentationcenter: 
 author: steved0x
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: sdanie
-ms.openlocfilehash: 810c1cedd4fe0bd6ecdf9bd32dfb241f5f345300
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b95b5e230dc40c1157940c2017cba836975b6930
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-web-app-plus-redis-cache-using-a-template"></a>Skapa en Webbapp plus Redis-Cache med hjälp av en mall
-I det här avsnittet får du lära dig hur du skapar en Azure Resource Manager-mall som distribuerar en Azure-Webbapp med Redis-cache. Du kommer lära dig hur du definierar vilka resurser har distribuerats och hur du definierar parametrar som anges när distributionen körs. Du kan använda den här mallen för dina egna distributioner eller anpassa den så att den uppfyller dina krav.
+I det här avsnittet får du lära dig hur toocreate en Azure Resource Manager-mall som distribuerar en Azure-Webbapp med Redis-cache. Du får lära dig hur toodefine vilka resurser har distribuerats och hur toodefine parametrar som anges när hello distributionen körs. Du kan använda den här mallen för din egen distribution eller anpassa den toomeet dina krav.
 
 Mer information om hur du skapar mallar finns [redigera Azure Resource Manager-mallar](../azure-resource-manager/resource-group-authoring-templates.md).
 
-Den fullständiga mallen finns [webbprogram med Redis-Cache mallen](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
+Hello fullständig mall, se [webbprogram med Redis-Cache mallen](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 
 ## <a name="what-you-will-deploy"></a>Vad du ska distribuera
 I den här mallen kan du distribuera:
@@ -33,17 +33,17 @@ I den här mallen kan du distribuera:
 * Azure-webbapp
 * Azure Redis-Cache.
 
-Klicka på följande knapp för att köra distributionen automatiskt:
+toorun Hej distributionen automatiskt, klickar du på följande knapp hello:
 
-[![Distribuera till Azure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
+[![Distribuera tooAzure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
 
-## <a name="parameters-to-specify"></a>Parametrar för att ange
+## <a name="parameters-toospecify"></a>Parametrarna toospecify
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>Variabler för namn
-Den här mallen använder variabler för att skapa namn för resurser. Den använder den [uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) funktion för att konstruera ett värde baserat på resurs-id för gruppen.
+Den här mallen använder variabler tooconstruct namn för hello resurser. Den använder hello [uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) fungerar tooconstruct ett värde baserat på resurs-id för gruppen.
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -52,13 +52,13 @@ Den här mallen använder variabler för att skapa namn för resurser. Den anvä
     },
 
 
-## <a name="resources-to-deploy"></a>Resurser som ska distribueras
+## <a name="resources-toodeploy"></a>Resurser toodeploy
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
 ### <a name="redis-cache"></a>Redis Cache
-Skapar Azure Redis-Cache som används med webbprogrammet. Namn på cache har angetts i den **cacheName** variabeln.
+Skapar hello Azure Redis-Cache som används med hello webbprogrammet. hello namn hello-cache har angetts i hello **cacheName** variabeln.
 
-Cachen skapas på samma plats som resursgruppen.
+hello mallen skapar hello-cache i hello samma plats som hello resursgrupp.
 
     {
       "name": "[variables('cacheName')]",
@@ -80,9 +80,9 @@ Cachen skapas på samma plats som resursgruppen.
 
 
 ### <a name="web-app"></a>Webbapp
-Skapar webbprogrammet med namnet som angetts i den **webSiteName** variabeln.
+Skapar hello webbprogrammet med namnet som angetts i hello **webSiteName** variabeln.
 
-Observera att webbappen har konfigurerats med egenskaper för appen som möjliggör arbete med Redis-Cache. Den här appen inställningar skapas dynamiskt baserat på värden som anges under distributionen.
+Observera att hello webbprogram har konfigurerats med appen och ange egenskaper som möjliggör toowork med hello Redis-Cache. Den här appen inställningar skapas dynamiskt baserat på värden som anges under distributionen.
 
     {
       "apiVersion": "2015-08-01",
@@ -117,7 +117,7 @@ Observera att webbappen har konfigurerats med egenskaper för appen som möjligg
       ]
     }
 
-## <a name="commands-to-run-deployment"></a>Kommandon för att köra distributionen
+## <a name="commands-toorun-deployment"></a>Kommandon toorun distribution
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell

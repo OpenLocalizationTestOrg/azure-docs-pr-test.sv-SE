@@ -1,6 +1,6 @@
 ---
-title: Anpassa inloggningssidan i Azure Active Directory | Microsoft Docs
-description: "Lär dig hur du lägger till en företagsanpassning till Azure inloggningssidan"
+title: din inloggning sidan i hello Azure Active Directory aaaCustomize | Microsoft Docs
+description: "Lär dig hur tooadd en företagets företagsanpassning toohello Azure inloggning sida"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,70 +14,70 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: 27590c018ea55e9793246c7a4cab10f934ea502b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 151521e3b9cbc6a438a589735058fbff78443cf8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-company-branding-to-your-sign-in-page-in-the-azure-active-directory"></a>Lägga till företagsanpassning till inloggningssidan i Azure Active Directory
-För att undvika förvirring vill många företag använda ett enhetligt utseende på alla webbplatser och tjänster som de hanterar. Azure Active Directory erbjuder den här funktionen genom att låta dig anpassa utseendet på inloggningssidan med företagets logotyp och egna färgscheman. På inloggningssidan är den sida som visas när du loggar in på Office 365 eller andra webbaserade program som använder Azure AD som identitetsprovider. Du kan interagera med den här sidan om du vill ange dina autentiseringsuppgifter.
+# <a name="add-company-branding-tooyour-sign-in-page-in-hello-azure-active-directory"></a>Lägga till företagsanpassning tooyour inloggningssidan i hello Azure Active Directory
+tooavoid förvirring vill många företag tooapply ett konsekvent utseende på alla hello webbplatser och tjänster som de hanterar. Azure Active Directory erbjuder den här funktionen genom att låta dig toocustomize hello utseendet på hello-inloggningssida med företagets logotyp och egna färgscheman. hello-inloggningssida är hello sida som visas när du loggar in tooOffice 365 eller andra webbaserade program som använder Azure AD som identitetsprovider. Du interagera med den här sidan tooenter dina autentiseringsuppgifter.
 
-Om du vill att ditt företags varumärke, färger och andra anpassningsbara element ska återges på den här sidan tittar du på följande bilder som visar skillnaden mellan de båda upplevelserna.
+Om du vill tooshow ditt företags varumärke, färger och andra anpassningsbara element på den här sidan, finns i följande bilder toounderstand hello skillnaden mellan två hello-upplevelser hello.
 
-Följande skärmbild visar ett exempel på Office 365-inloggningssidan på en stationär dator **före** en anpassning:
+Hej följande skärmbild visar och exempel för hello Office 365-inloggningssidan på en stationär dator **innan** en anpassning:
 
 ![Office 365-inloggningssida före anpassning](./media/active-directory-branding-custom-signon-azure-portal/sign-in-page-before-customization.png)
 
-Följande skärmbild visar ett exempel på Office 365-inloggningssidan på en stationär dator **efter** en anpassning:
+Hej följande skärmbild visar och exempel för hello Office 365-inloggningssidan på en stationär dator **när** en anpassning:
 
 ![Office 365-inloggningssida efter anpassning](./media/active-directory-branding-custom-signon-azure-portal/sign-in-page-after-customization.png)
 
-## <a name="customizing-the-sign-in-page"></a>Anpassa inloggningssidan
-Du använder vanligtvis inloggningssidan om du behöver webbläsarbaserad åtkomst till molnappar och tjänster som din organisation prenumererar på.
+## <a name="customizing-hello-sign-in-page"></a>Anpassa hello-inloggningssida
+Om du behöver webbläsarbaserad åtkomst tooyour molnappar och tjänster som din organisation prenumererar på, använder du normalt hello-inloggningssida.
 
-Om du har gjort ändringar på inloggningssidan kan det ta upp till en timme innan ändringarna visas.
+Om du har tillämpat ändringar tooyour inloggningssidan kan ta det upp tooan timme för hello ändringar tooappear.
 
 En företagsanpassad inloggningssida visas bara när du besöker en tjänst med en URL som är specifik för en klientorganisation, till exempel https://outlook.com/**contoso**.com eller https://mail.**contoso**.com.
 
 När du besöker en tjänst med en URL som inte är specifik för en klientorganisation (t.ex. https://mail.office365.com) visas en icke företagsanpassad inloggningssida. I så fall visas din anpassning först när du har angett ditt användar-ID eller då du har valt en användarikon.
 
 > [!NOTE]
-> * Domännamnet måste visas som ”aktiv” i den **domäner** del av Azure-portalen där du har konfigurerat anpassningen. Mer information finns i [lägga till anpassade domännamn](active-directory-domains-add-azure-portal.md).
-> * Anpassningen av inloggningssidan överförs inte till Microsofts konsumentinloggningssida. Om du loggar in med ett Microsoft-konto kan du se en företagsanpassad lista över användarikoner som återges av Azure AD, men anpassning av din organisation inte gäller för Microsoft-konto-inloggningssidan.
+> * Domännamnet måste visas som ”aktiv” i hello **domäner** del av hello Azure-portalen där du har konfigurerat anpassningen. Mer information finns i [lägga till anpassade domännamn](active-directory-domains-add-azure-portal.md).
+> * Inloggningssidan företagsanpassning överföra inte toohello konsumenten inloggningssidan för Microsoft. Om du loggar in med ett Microsoft-konto kan du se en företagsanpassad lista över användarikoner som återges av Azure AD, men hello anpassning av din organisation gäller inte toohello Microsoft inloggningssidan.
 >
 >
 
-På inloggningssidan gör kryssrutan **Håll mig inloggad** att användaren kan förbli inloggad när de stänger och öppnar webblösaren.
+På sidan logga in hello **Håll mig inloggad** checkbox tillåter en användare tooremain inloggad när de stänga och öppna webbläsaren igen.
 
    ![Håll mig inloggad](./media/active-directory-branding-custom-signon-azure-portal/01.png)
 
-Den påverkar inte sessionens längd. Du kan dölja kryssrutan på inloggningssidan för Azure Active Directory.
-Om kryssrutan visas beror på inställningen för **Håll mig inloggad inaktiverats**.
+Den påverkar inte sessionens längd. Du kan dölja hello kryssruta på hello Azure Active Directory-inloggningssida.
+Om kryssrutan hello visas beror på hello-inställningen **Håll mig inloggad inaktiverats**.
 
    ![Håll mig inloggad](./media/active-directory-branding-custom-signon-azure-portal/02.png)
 
-Konfigurera den här inställningen om du vill dölja kryssrutan **Ja**.
+toohide Hej kryssrutan, konfigurera den här inställningen för**Ja**.
 
 > [!NOTE]
-> För vissa funktioner i SharePoint Online och Office 2010 måste användarna kunna markera den här kryssrutan. Om du konfigurerar den här inställningen som dold kan eventuellt ytterligare och oväntade uppmaningar att logga in visas för dina användare.
+> Vissa funktioner i SharePoint Online och Office 2010 är beroende av användare kan toocheck den här rutan. Om du konfigurerar den här inställningen toohidden kan användarna se ytterligare och oväntat prompter toosign i.
 >
 >
 
-**Lägga till företagsanpassning till din katalog:**
+**tooadd företagets företagsanpassning tooyour katalog:**
 
-1. Logga in på den [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för katalogen.
-2. Välj **fler tjänster**, ange **användare och grupper** i textrutan och välj sedan **RETUR**.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för hello-katalogen.
+2. Välj **fler tjänster**, ange **användare och grupper** i hello textruta och välj sedan **RETUR**.
 
    ![Öppna användarhantering](./media/active-directory-branding-custom-signon-azure-portal/user-management.png)
-3. På den **användare och grupper** bladet väljer **företagets företagsanpassning**.
-4. På den **användare och grupper – företagets anpassning** bladet väljer den **redigera** kommando.
+3. På hello **användare och grupper** bladet väljer **företagets företagsanpassning**.
+4. På hello **användare och grupper – företagets anpassning** bladet, Välj hello **redigera** kommando.
 
     ![Redigera anpassning](./media/active-directory-branding-custom-signon-azure-portal/edit-branding.png)
-5. Ändra de element som du vill anpassa. Alla element är valfria.
+5. Ändra hello-element som du vill toocustomize. Alla element är valfria.
 6. Klicka på **Spara**.
 
-Det kan ta upp till en timme innan ändringarna inloggningssidan företagsanpassning ska visas.
+Det kan ta upp tooan timme för alla ändringar du gjort toohello inloggning sidan företagsanpassning tooappear.
 
 ## <a name="next-steps"></a>Nästa steg
 [Lägga till språkspecifik företagsanpassning](active-directory-branding-localize-azure-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: "Azure AD v2.0 .NET web app inloggning komma igång | Microsoft Docs"
-description: "Hur du skapar en .NET MVC-Webbapp som loggar användarna in med både personliga Account och arbets-eller skolkonton."
+title: "aaaAzure AD v2.0 .NET web app inloggning komma igång | Microsoft Docs"
+description: "Hur toobuild en .NET MVC-Webbapp som loggar användarna in med både personliga Account och arbets-eller skolkonton."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,45 +15,45 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: ba5bdf7daba6086b70aec54ebe25d4445fa708c3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 241e9c90bd752fbecc3696ce4f1bed3f9772189d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-sign-in-to-an-net-mvc-web-app"></a>Lägga till inloggning till en .NET MVC-webbapp
-Du kan snabbt lägga till autentisering till dina webbappar med stöd för både personliga Microsoft-konton och arbets-eller skolkonton med v2.0-slutpunkten.  I ASP.NET-webbprogram, kan du göra detta med hjälp av Microsofts OWIN mellanprogram som ingår i .NET Framework 4.5.
+# <a name="add-sign-in-tooan-net-mvc-web-app"></a>Lägga till inloggning tooan .NET MVC-webbapp
+Hello v2.0-slutpunkten kan du snabbt lägga till autentisering tooyour web apps med stöd för både personliga Microsoft-konton och arbets-eller skolkonton.  I ASP.NET-webbprogram, kan du göra detta med hjälp av Microsofts OWIN mellanprogram som ingår i .NET Framework 4.5.
 
 > [!NOTE]
-> Inte alla Azure Active Directory-scenarier och funktioner som stöds av v2.0-slutpunkten.  Läs mer om för att avgöra om du ska använda v2.0-slutpunkten [v2.0 begränsningar](active-directory-v2-limitations.md).
+> Inte alla Azure Active Directory-scenarier och funktioner som stöds av hello v2.0-slutpunkten.  toodetermine om du ska använda hello v2.0-slutpunkten Läs om [v2.0 begränsningar](active-directory-v2-limitations.md).
 >
 >
 
- Här ska vi skapa en webbapp som använder OWIN för att logga in användaren, visa viss information om användaren och logga ut från appen användaren.
+ Här vi ska skapa en webbapp som använder OWIN toosign hello användaren i Visa viss information om hello användaren och logga hello användare utanför hello appen.
 
 ## <a name="download"></a>Ladda ned
-Koden för den här självstudiekursen [finns på GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet).  Om du vill följa med kan du [ladda ned appens stomme som en .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) eller klona stommen:
+hello-koden för den här självstudiekursen upprätthålls [på GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet).  toofollow längs kan du [hämta hello appens stomme som en .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) eller klona hello stommen:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
 
-Den färdiga appen finns i slutet av den här kursen samt.
+hello slutförts app tillhandahålls hello slutet av den här kursen samt.
 
 ## <a name="register-an-app"></a>Registrera en app
 Skapa en ny app på [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), eller följa dessa [detaljerade steg](active-directory-v2-app-registration.md).  Se till att:
 
-* Kopiera den **program-Id** tilldelats din app måste den snart.
-* Lägg till den **Web** plattform för din app.
-* Ange rätt **omdirigerings-URI**. Omdirigerings-uri anger till Azure AD där autentisering svar som ska dirigeras - standarden för den här kursen är `https://localhost:44326/`.
+* Kopiera hello **program-Id** tilldelade tooyour app måste den snart.
+* Lägg till hello **Web** plattform för din app.
+* Ange rätt hello **omdirigerings-URI**. hello omdirigerings-uri anger tooAzure AD där autentisering svar som ska dirigeras - hello standard för den här kursen är `https://localhost:44326/`.
 
 ## <a name="install--configure-owin-authentication"></a>Installera och konfigurera OWIN-autentisering
-Här kan konfigurerar vi OWIN-mellanprogrammet att använda autentiseringsprotokollet OpenID Connect.  OWIN används för att utfärda inloggnings- och utloggningsförfrågningar, hantera användarens session och få information om användare, bland annat.
+Här kan konfigurerar vi hello OWIN mellanprogram toouse hello autentiseringsprotokollet OpenID Connect.  OWIN kommer att använda tooissue inloggning och utloggningsförfrågningar, hantera hello användarens session och få information om hello användare, bland annat.
 
-1. Öppna först den `web.config` filen i roten av projektet och ange din Apps konfigurationsvärden i den `<appSettings>` avsnitt.
+1. toobegin, öppna hello `web.config` filen i hello roten av projektet hello och ange din Apps konfigurationsvärden i hello `<appSettings>` avsnitt.
 
-  * Den `ida:ClientId` är den **program-Id** tilldelats din app i portalen för registrering.
-  * Den `ida:RedirectUri` är den **omdirigerings-Uri** du angav på portalen.
+  * Hej `ida:ClientId` är hello **program-Id** tilldelade tooyour app i portalen för registrering av hello.
+  * Hej `ida:RedirectUri` är hello **omdirigerings-Uri** du angav i hello-portalen.
 
-2. Lägg sedan till OWIN mellanprogram NuGet-paket i projektet med hjälp av Package Manager-konsolen.
+2. Lägg till hello OWIN mellanprogram NuGet paket toohello projektet med hello Package Manager-konsolen.
 
         ```
         PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -61,8 +61,8 @@ Här kan konfigurerar vi OWIN-mellanprogrammet att använda autentiseringsprotok
         PM> Install-Package Microsoft.Owin.Host.SystemWeb
         ```  
 
-3. Lägg till en ”OWIN-startklass” projektet kallas `Startup.cs` höger klickar du på projektet--> **Lägg till** --> **nytt objekt** --> Sök efter ”OWIN”.  OWIN-mellanprogrammet anropar `Configuration(...)`-metoden när appen startas.
-4. Ändra klassdeklarationen till `public partial class Startup` -vi har implementerat en del av den här klassen som du redan i en annan fil.  I den `Configuration(...)` metod, gör ett anrop till ConfigureAuth(...) du konfigurerar autentisering för ditt webbprogram  
+3. Lägg till ett ”OWIN-startklass” toohello projekt kallas `Startup.cs` höger Klicka på hello projektet--> **Lägg till** --> **nytt objekt** --> Sök efter ”OWIN”.  Hej OWIN mellanprogram ska anropa hello `Configuration(...)` metod när appen startar.
+4. Ändra hello klassdeklarationen för`public partial class Startup` -vi har implementerat en del av den här klassen som du redan i en annan fil.  I hello `Configuration(...)` metod, gör ett anrop tooConfigureAuth(...) tooset in verifiering för ditt webbprogram  
 
         ```C#
         [assembly: OwinStartup(typeof(Startup))]
@@ -79,7 +79,7 @@ Här kan konfigurerar vi OWIN-mellanprogrammet att använda autentiseringsprotok
         }
         ```
 
-5. Öppna filen `App_Start\Startup.Auth.cs` och genomföra den `ConfigureAuth(...)` metoden.  De parametrar som du anger i `OpenIdConnectAuthenticationOptions` fungerar som koordinater för din app för att kommunicera med Azure AD.  Du måste också konfigurera Cookie-autentisering - mellanprogram OpenID Connect använder cookies djupare.
+5. Öppna hello filen `App_Start\Startup.Auth.cs` och implementera hello `ConfigureAuth(...)` metod.  Hej parametrar som du anger i `OpenIdConnectAuthenticationOptions` fungerar som koordinater för din app toocommunicate med Azure AD.  Du måste också tooset in Cookie-autentisering - hello OpenID Connect mellanprogram använder cookies under hello omfattar.
 
         ```C#
         public void ConfigureAuth(IAppBuilder app)
@@ -91,9 +91,9 @@ Här kan konfigurerar vi OWIN-mellanprogrammet att använda autentiseringsprotok
                              app.UseOpenIdConnectAuthentication(
                                      new OpenIdConnectAuthenticationOptions
                                      {
-                                             // The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
-                                             // The `Scope` describes the permissions that your app will need.  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
-                                             // In a real application you could use issuer validation for additional checks, like making sure the user's organization has signed up for your app, for instance.
+                                             // hello `Authority` represents hello v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
+                                             // hello `Scope` describes hello permissions that your app will need.  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
+                                             // In a real application you could use issuer validation for additional checks, like making sure hello user's organization has signed up for your app, for instance.
         
                                              ClientId = clientId,
                                              Authority = String.Format(CultureInfo.InvariantCulture, aadInstance, "common", "/v2.0"),
@@ -114,9 +114,9 @@ Här kan konfigurerar vi OWIN-mellanprogrammet att använda autentiseringsprotok
         ```
 
 ## <a name="send-authentication-requests"></a>Skicka autentiseringsbegäranden
-Appen har nu konfigurerats korrekt för att kommunicera med v2.0-slutpunkten med hjälp av autentiseringsprotokollet OpenID Connect.  OWIN har tagit hand om alla ugly detaljer utforma autentiseringsmeddelanden, verifiera token från Azure AD och upprätthålla användarsessioner.  Allt som återstår är att ge användarna ett sätt att logga in och logga ut.
+Appen är nu korrekt konfigurerade toocommunicate med hello v2.0-slutpunkten med hjälp av autentiseringsprotokollet för hello OpenID Connect.  OWIN har tagit hand om alla hello ugly information om utforma autentiseringsmeddelanden, verifiera token från Azure AD och upprätthålla användarsessioner.  Allt som fortfarande är toogive användarna ett sätt toosign i och logga ut.
 
-- Du kan använda auktorisera taggar i dina domänkontrollanter kräver att användaren loggar in innan du använder en viss sida.  Öppna `Controllers\HomeController.cs`, och Lägg till den `[Authorize]` tagg om domänkontrollanten.
+- Du kan använda auktorisera taggar i dina domänkontrollanter toorequire som användaren loggar in innan du använder en viss sida.  Öppna `Controllers\HomeController.cs`, och Lägg till hello `[Authorize]` tagga toohello om styrenhet.
         
         ```C#
         [Authorize]
@@ -125,7 +125,7 @@ Appen har nu konfigurerats korrekt för att kommunicera med v2.0-slutpunkten med
           ...
         ```
 
-- Du kan också använda OWIN för att skicka autentiseringsbegäranden från direkt i din kod.  Öppna `Controllers\AccountController.cs`.  I SignIn() och SignOut() åtgärder, utfärda du OpenID Connect challenge respektive utloggning begäranden.
+- Du kan också använda OWIN toodirectly problemet autentiseringsbegäranden från inom din kod.  Öppna `Controllers\AccountController.cs`.  I hello SignIn() och SignOut() åtgärder kan du utfärda OpenID Connect utmaning och utloggning begäranden respektive.
 
         ```C#
         public void SignIn()
@@ -137,7 +137,7 @@ Appen har nu konfigurerats korrekt för att kommunicera med v2.0-slutpunkten med
             }
         }
         
-        // BUGBUG: Ending a session with the v2.0 endpoint is not yet supported.  Here, we just end the session with the web app.  
+        // BUGBUG: Ending a session with hello v2.0 endpoint is not yet supported.  Here, we just end hello session with hello web app.  
         public void SignOut()
         {
             // Send an OpenID Connect sign-out request.
@@ -146,7 +146,7 @@ Appen har nu konfigurerats korrekt för att kommunicera med v2.0-slutpunkten med
         }
         ```
 
-- Öppna nu `Views\Shared\_LoginPartial.cshtml`.  Detta är där du visar användaren appens inloggning och utloggning länkar och skriva ut användarens namn i en vy.
+- Öppna nu `Views\Shared\_LoginPartial.cshtml`.  Detta är där du visar hello användaren appens inloggning och utloggning länkar och skriva ut hello användarens namn i en vy.
 
         ```HTML
         @if (Request.IsAuthenticated)
@@ -155,7 +155,7 @@ Appen har nu konfigurerats korrekt för att kommunicera med v2.0-slutpunkten med
                 <ul class="nav navbar-nav navbar-right">
                     <li class="navbar-text">
         
-                        @*The 'preferred_username' claim can be used for showing the user's primary way of identifying themselves.*@
+                        @*hello 'preferred_username' claim can be used for showing hello user's primary way of identifying themselves.*@
         
                         Hello, @(System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username").Value)!
                     </li>
@@ -174,9 +174,9 @@ Appen har nu konfigurerats korrekt för att kommunicera med v2.0-slutpunkten med
         ```
 
 ## <a name="display-user-information"></a>Visa användarinformation
-När du autentiserar användare med OpenID Connect returnerar ett id_token till appen som innehåller anspråk eller intyg om användaren v2.0-slutpunkten.  Du kan använda dessa anspråk för att anpassa din app:
+När du autentiserar användare med OpenID Connect returnerar en id_token toohello app som innehåller anspråk eller intyg om hello användaren hello v2.0-slutpunkten.  Du kan använda dessa anspråk toopersonalize din app:
 
-- Öppna filen `Controllers\HomeController.cs`.  Du kan komma åt användarens anspråk i din domänkontrollanter via den `ClaimsPrincipal.Current` säkerhetsobjekt.
+- Öppna hello `Controllers\HomeController.cs` fil.  Du kan komma åt hello användaranspråk i dina domänkontrollanter via hello `ClaimsPrincipal.Current` säkerhetsobjekt.
 
         ```C#
         [Authorize]
@@ -184,14 +184,14 @@ När du autentiserar användare med OpenID Connect returnerar ett id_token till 
         {
             ViewBag.Name = ClaimsPrincipal.Current.FindFirst("name").Value;
         
-            // The object ID claim will only be emitted for work or school accounts at this time.
+            // hello object ID claim will only be emitted for work or school accounts at this time.
             Claim oid = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier");
             ViewBag.ObjectId = oid == null ? string.Empty : oid.Value;
         
-            // The 'preferred_username' claim can be used for showing the user's primary way of identifying themselves
+            // hello 'preferred_username' claim can be used for showing hello user's primary way of identifying themselves
             ViewBag.Username = ClaimsPrincipal.Current.FindFirst("preferred_username").Value;
         
-            // The subject or nameidentifier claim can be used to uniquely identify the user
+            // hello subject or nameidentifier claim can be used toouniquely identify hello user
             ViewBag.Subject = ClaimsPrincipal.Current.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
         
             return View();
@@ -199,21 +199,21 @@ När du autentiserar användare med OpenID Connect returnerar ett id_token till 
         ```
 
 ## <a name="run"></a>Kör
-Slutligen skapar och kör appen!   Logga in med ett personligt Microsoft-Account eller ett arbets- eller skolkonto konto och hur användarens identitet visas i det övre navigeringsfältet.  Nu har du en webbapp som kan skyddas med standardprotokollen som kan autentisera användare med både sina personliga och arbete/skola konton.
+Slutligen skapar och kör appen!   Logga in med ett personligt Microsoft-Account eller ett arbets- eller skolkonto konto och Observera hur hello användaridentitet avspeglas i hello övre navigeringsfältet.  Nu har du en webbapp som kan skyddas med standardprotokollen som kan autentisera användare med både sina personliga och arbete/skola konton.
 
-För referens anger det slutförda exemplet (utan dina konfigurationsvärden) [har angetts som en .zip här](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/complete.zip), eller kan du klona den från GitHub:
+För referens anger hello slutförts exemplet (utan dina konfigurationsvärden) [har angetts som en .zip här](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/complete.zip), eller kan du klona den från GitHub:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
 
 ## <a name="next-steps"></a>Nästa steg
-Du kan nu gå vidare till mer avancerade avsnitt.  Du kanske vill prova:
+Du kan nu gå vidare till mer avancerade avsnitt.  Du kanske vill tootry:
 
-[Skydda ett webb-API med den v2.0-slutpunkten >>](active-directory-devquickstarts-webapi-dotnet.md)
+[Skydda ett webb-API med hello hello v2.0-slutpunkten >>](active-directory-devquickstarts-webapi-dotnet.md)
 
 För ytterligare resurser, kolla:
 
-* [Utvecklarhandbok v2.0 >>](active-directory-appmodel-v2-overview.md)
+* [Utvecklarhandbok för hello v2.0 >>](active-directory-appmodel-v2-overview.md)
 * [StackOverflow ”azure-active-directory” taggen >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="get-security-updates-for-our-products"></a>Hämta säkerhetsuppdateringar för våra produkter
-Vi rekommenderar att du aktiverar aviseringar om säkerhetsincidenter genom att gå till [den här sidan](https://technet.microsoft.com/security/dd252948) och prenumerera på Microsoft Security Advisory-aviseringar.
+Vi rekommenderar att du tooget meddelanden om när säkerhetsincidenter genom att besöka [den här sidan](https://technet.microsoft.com/security/dd252948) och prenumerera tooSecurity Advisory-aviseringar.

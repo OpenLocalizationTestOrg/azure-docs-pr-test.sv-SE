@@ -1,6 +1,6 @@
 ---
-title: "Använda Azure AD Connect Health med AD DS | Microsoft Docs"
-description: "Den här sidan om Azure AD Connect Health innehåller information om hur du övervakar AD DS."
+title: aaaUsing Azure AD Connect Health med AD DS | Microsoft Docs
+description: "Det här är hello Azure AD Connect Health sida som innehåller information om hur toomonitor AD DS."
 services: active-directory
 documentationcenter: 
 author: arluca
@@ -14,44 +14,44 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 9e5b45d71b978c383932409f0037a4f6f32d0cb3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e2fb6be65407d02c214dcab385b85d6cb54f48de
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Använda Azure AD Connect Health med AD DS
-Följande dokumentation är specifik för övervakning av Active Directory Domain Services med Azure AD Connect Health. Följande AD DS-versioner stöds: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 och Windows Server 2016.
+hello följande dokumentation är specifik toomonitoring Active Directory Domain Services med Azure AD Connect Health. hello stöds versioner av AD DS: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 och Windows Server 2016.
 
 Mer information om övervakning av AD FS med Azure AD Connect Health finns i [ Använda Azure AD Connect Health med AD FS](active-directory-aadconnect-health-adfs.md). Mer information om övervakning av Azure AD Connect (Sync) med Azure AD Connect Health finns i [Använda Azure AD Connect Health för synkronisering](active-directory-aadconnect-health-sync.md).
 
 ![Azure AD Connect Health för AD DS](./media/active-directory-aadconnect-health/aadconnect-health-adds-entry.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-ad-ds"></a>Aviseringar för Azure AD Connect Health för AD DS
-Avsnittet Aviseringar i Azure AD Connect Health för AD DS innehåller en lista över aktiva och lösta aviseringar relaterade till dina domänkontrollanter. När du väljer en aktiv eller löst avisering öppnas ett nytt blad med ytterligare information. Det innehåller lösningssteg och länkar till stöddokumentation. Varje typ av avisering kan ha en eller flera instanser som motsvarar var och en av de domänkontrollanter som berörs av den specifika aviseringen. Du kan dubbelklicka på en domänkontrollant längst ner på aviseringsbladet om du vill öppna ytterligare ett blad med mer information om aviseringen.
+Hej aviseringar avsnitt i Azure AD Connect Health för AD DS, ger dig en lista över aktiva och lösta aviseringar relaterade tooyour domänkontrollanter. Om du väljer en aktiv eller åtgärdad avisering öppnas ett nytt blad med ytterligare information, tillsammans med Lösningssteg, och länkar toosupporting dokumentation. Varje typ av avisering kan ha en eller flera instanser som tooeach hello domänkontrollanter som berörs av den specifika aviseringen. Du kan dubbelklicka på en berörda domain controller tooopen ett ytterligare blad med mer information om aviseringen instansen hello nedre delen av aviseringen hello-bladet.
 
-På det här bladet kan du aktivera e-postmeddelanden för aviseringar och ändra tidsintervallet för vyn. Om du utökar tidsintervallet kan du se tidigare lösta aviseringar.
+I det här bladet kan du aktivera e-postmeddelanden för aviseringar och ändra hello tidsintervall i vyn. Expandera hello tidsintervallet kan du toosee tidigare lösta aviseringar.
 
 ![Azure AD Connect-synkroniseringsfel](./media/active-directory-aadconnect-health/aadconnect-health-adds-alerts.png)
 
 ## <a name="domain-controllers-dashboard"></a>Instrumentpanel för domänkontrollanter
-Den här instrumentpanelen innehåller en topologisk vy över din miljö, tillsammans med operativa nyckelvärden och hälsostatus för var och en av dina övervakade domänkontrollanter. De presenterade mätvärdena hjälper dig att snabbt identifiera domänkontrollanter som kan kräva ytterligare undersökning. Som standard visas endast en delmängd av kolumnerna. Du kan hitta samtliga tillgängliga kolumner genom att dubbelklicka på kommandot kolumner. Genom att markera de kolumner du är intresserad av omvandlas intrumentpanelen till en enkel, smidig plats där du kan övervaka AD DS-miljöns hälsa.
+Den här instrumentpanelen innehåller en topologisk vy över din miljö, tillsammans med operativa nyckelvärden och hälsostatus för var och en av dina övervakade domänkontrollanter. hello presenteras mått hjälp tooquickly identifiera, domänkontrollanter som kan kräva ytterligare undersökning. Som standard visas bara en delmängd av hello kolumner. Dock kan du hitta hello hela uppsättningen med tillgängliga kolumner genom att dubbelklicka på hello kolumner kommando. Att välja hello kolumner som mest intresserar dig, aktiverar den här instrumentpanelen till en enda och enkelt placera tooview hello hälsotillståndet för AD DS-miljön.
 
 ![Domänkontrollanter](./media/active-directory-aadconnect-health/aadconnect-health-adds-domainsandsites-dashboard.png)
 
-Domänkontrollanter kan grupperas efter deras respektive domän eller plats, vilket är användbart för att förstå miljöns topologi. Slutligen, om du dubbelklickar på bladhuvudet maximeras instrumentpanelen så att du kan använda hela skärmens utrymme. Den här större vyn är användbar när flera kolumner visas.
+Domänkontrollanter kan grupperas efter deras respektive domän eller plats, vilket är användbart för att förstå hello miljö topologi. Om du dubbelklickar på hello bladet sidhuvud slutligen maximerar tooutilize hello tillgängliga skärmen-fastigheter hello instrumentpanelen. Den här större vyn är användbar när flera kolumner visas.
 
 ## <a name="replication-status-dashboard"></a>Instrumentpanelen Replikeringsstatus
-Den här instrumentpanelen innehåller en vy över replikeringsstatusen och replikeringstopologin för de övervakade domänkontrollanterna. Statusen för det senaste replikeringsförsöket anges tillsammans med användbar dokumentation för eventuella fel som hittas. Du kan dubbelklicka på en domänkontrollant med ett fel för att öppna ett nytt blad med information, såsom: information om felet, rekommenderade lösningssteg och länkar till felsökningsdokumentation.
+Den här instrumentpanelen innehåller en vy över hello status och replikering replikeringstopologin övervakade domänkontrollanter. Hej senaste replikeringsförsöket hello status visas tillsammans med bra dokumentationen för eventuella fel som hittas. Du kan dubbelklicka på en domänkontrollant med ett fel tooopen ett nytt blad med information som: information om hello fel, rekommenderas Lösningssteg, och länkar tootroubleshooting dokumentation.
 
 ![Replikeringsstatus](./media/active-directory-aadconnect-health/aadconnect-health-adds-replication.png)
 
 ## <a name="monitoring"></a>Övervakning
-Den här funktionen visar grafiska trender hos olika prestandaräknare som samlas in kontinuerligt från varje övervakad domänkontrollant. En domänkontrollants prestanda kan enkelt jämföras med alla övriga övervakade domänkontrollanter i skogen. Dessutom visas olika prestandaräknare sida vid sida, vilket är användbart när du felsöker problem i din miljö.
+Denna funktion tillhandahåller grafiska trender olika prestandaräknare som kontinuerligt samlas in från varje hello övervakade domänkontrollanter. En domänkontrollants prestanda kan enkelt jämföras med alla övriga övervakade domänkontrollanter i skogen. Dessutom visas olika prestandaräknare sida vid sida, vilket är användbart när du felsöker problem i din miljö.
 
 ![Övervakning](./media/active-directory-aadconnect-health/aadconnect-health-adds-monitoring.png)
 
-Som standard har vi förvalt fyra prestandaräknare. Du kan dock inkludera andra genom att klicka på filterkommandot och markera eller avmarkera alla önskade prestandaräknare. Dessutom kan du dubbelklicka på ett diagram för en prestandaräknare för att öppna ett nytt blad som innehåller datapunkter för alla övervakade domänkontrollanter.
+Som standard har vi förvald fyra prestandaräknare; Du kan dock innehålla andra genom att klicka på kommandot för hello filter och att markera eller avmarkera alla prestandaräknare som önskade. Du kan dessutom Dubbelklicka på en prestandaräknaren diagram tooopen ett nytt blad som innehåller datapunkter för varje hello övervakade domänkontrollanter.
 
 ## <a name="related-links"></a>Relaterade länkar
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

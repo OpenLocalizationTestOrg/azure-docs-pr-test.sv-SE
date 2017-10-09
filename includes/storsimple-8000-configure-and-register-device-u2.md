@@ -1,24 +1,24 @@
 <!--author=alkohli last changed: 01/18/2017-->
 
 
-#### <a name="to-configure-and-register-the-device"></a>Konfigurera och registrera enheten
+#### <a name="tooconfigure-and-register-hello-device"></a>tooconfigure och registrera hello-enhet
 
-1. Gå in i Windows PowerShell-gränssnittet på din StorSimple-enhets seriekonsol. Mer instruktioner finns i [Använd PuTTY för att ansluta till enhetens seriekonsol](#use-putty-to-connect-to-the-device-serial-console). **Se till att följa proceduren exakt för att du ska få åtkomst till konsolen.**
+1. Komma åt hello Windows PowerShell-gränssnittet på din StorSimple enhetens seriekonsol. Se [använda PuTTY tooconnect toohello enhetens seriekonsol](#use-putty-to-connect-to-the-device-serial-console) anvisningar. **Vara säker på att toofollow hello proceduren exakt eller du inte kan tooaccess hello-konsolen.**
 
-2. Öppna en kommandotolk genom att trycka på **Retur** i sessionen som öppnas.
+2. Hello-sessionen som öppnas, trycker du på **RETUR** en gång tooget en kommandotolk.
 
-3. Du kommer att uppmanas att välja det språk som du vill ställa in för din enhet. Ange språket och tryck på **Retur**.
+3. Du kommer att tillfrågas toochoose hello språk som du vill att tooset för din enhet. Ange hello språk och tryck sedan på **RETUR**.
 
-4. I seriemenyn för konsolen som visas väljer du alternativ 1 för att **logga in med fullständig åtkomst**.
-     Slutför steg 5–12 för att konfigurera de minsta nödvändiga nätverksinställningarna för din enhet. **De här konfigurationsstegen behöver genomföras på den aktiva styrenheten för enheten.** Menyn för seriekonsolen indikerar status för styrenheten i banderollmeddelandet. Om du inte är ansluten till den aktiva styrenheten, kopplar du från och ansluter till den aktiva styrenheten.
+4. Hej seriekonsolen menyn som visas väljer du alternativ 1 för**logga in med fullständig åtkomst**.
+     Slutför steg 5 – 12 tooconfigure hello minsta nödvändiga nätverksinställningarna för enheten. **De här stegen måste toobe utförs på hello aktiva styrenheten för hello enhet.** hello menyn för seriekonsolen indikerar status för hello styrenheten i Banderollmeddelandet hello. Om du inte är ansluten toohello aktiva styrenheten, kopplar du från och Anslut toohello aktiva styrenhet.
 
-5. Ange ditt lösenord i kommandotolken. Enheten standardlösenord är **Password1**.
+5. Skriv in lösenordet i hello kommandotolk. hello enheten standardlösenord är **Password1**.
 
-6. Ange följande kommando: `Invoke-HcsSetupWizard`.
+6. Typen hello följande kommando: `Invoke-HcsSetupWizard`.
 
-7. En installationsguide kommer visas och hjälpa dig att konfigurera nätverksinställningarna för enheten. Ange följande information:
+7. En installationsguide kommer visas toohelp som du konfigurerar hello nätverksinställningar för hello enhet. Ange hello hello följande information:
    
-   * IP-adress för DATA 0-nätverksgränssnittet
+   * IP-adress för hello DATA 0-nätverksgränssnittet
    * Nätmask
    * Gateway
    * IP-adress för primär DNS-server
@@ -31,14 +31,14 @@
         Name: 8100-SHX0991003G44MT
         Software Version: 6.3.9600.17759
         Copyright (C) 2014 Microsoft Corporation. All rights reserved.
-        You are connected to Controller0 - Active
+        You are connected tooController0 - Active
         ---------------------------------------------------------------
 
-        Your device needs to be registered with the Microsoft Azure StorSimple Manager service. Please run 'Invoke-HcsSetupWizard' to set up your device.
+        Your device needs toobe registered with hello Microsoft Azure StorSimple Manager service. Please run 'Invoke-HcsSetupWizard' tooset up your device.
 
         Controller0>Invoke-HcsSetupWizard
 
-        Which IP address family would you like to configure on interface Data0?
+        Which IP address family would you like tooconfigure on interface Data0?
         [4] IPv4 [6] IPv6 [B] Both (Default is "4"): 4
 
         Data0 IPv4 address:10.111.111.00
@@ -49,62 +49,62 @@
     ```
 
     <br>
-    I föregående exempelutdata ser du att nätverksinställningarna verifieras efter varje steg i processen.
+    I föregående exempel på utdata hello, ser du att hello systemet validerar nätverksinställningarna efter varje steg i processen för hello.
 
      > [!NOTE]
-     > Du kan behöva vänta några minuter för att nätmask- och DNS-inställningarna ska appliceras. Om du får ett felmeddelande om att "kontrollera nätverksanslutningen till Data 0", kontrollera den fysiska nätverksanslutningen på DATA 0-nätverksgränssnittet för din aktiva styrenhet.
+     > Du kan ha toowait några minuter för hello nätmask och hello DNS-inställningar toobe tillämpas. Om du får ett meddelande om ”Kontrollera hello network connectivity tooData 0” Kontrollera hello fysiska nätverksanslutningen på hello DATA 0-nätverksgränssnittet för din aktiva styrenhet.
 
-8. (Valfritt) konfigurera din webbproxyserver. Även om webbproxykonfigurationen är valfri, **var medveten om att om du använder en webbproxy så kan du bara konfigurera den här**. Mer information finns i [Konfigurera en webbproxy för din enhet](../articles/storsimple/storsimple-8000-configure-web-proxy.md).
-9. Konfigurera en primär NTP-server för din enhet. NTP-servrar krävs, eftersom din enhet måste synkronisera tiden så att den kan autentisera med molntjänstleverantören. Kontrollera att ditt nätverk tillåter att NTP-trafik skickas från ditt datacenter till Internet. Om det inte är möjligt anger du en intern NTP-server.
+8. (Valfritt) konfigurera din webbproxyserver. Även om webbproxykonfigurationen är valfri, **var medveten om att om du använder en webbproxy så kan du bara konfigurera den här**. Mer information finns för[konfigurera webbproxy för din enhet](../articles/storsimple/storsimple-8000-configure-web-proxy.md).
+9. Konfigurera en primär NTP-server för din enhet. NTP-servrar krävs, eftersom din enhet måste synkronisera tiden så att den kan autentisera med molntjänstleverantören. Se till att ditt nätverk tillåter att NTP-trafik toopass från ditt datacenter toohello Internet. Om det inte är möjligt anger du en intern NTP-server.
 
     Ett exempel på utdata visas nedan.
 
     ```
-        Would you like to configure a web proxy?
+        Would you like tooconfigure a web proxy?
         [Y] Yes [N] No (Default is "N"):N
 
         Primary NTP server [time.windows.com]:time.windows.com
 
     ```
 
-10. Av säkerhetsskäl upphör enhetens administratörslösenord att gälla efter den första sessionen. Du måste ändra lösenordet nu. Ange ett administratörslösenord för enheten när du ombes göra det. Ett giltigt enhetsadministratörslösenord för enheten måste vara mellan 8 och 15 tecken. Lösenordet måste innehålla tre av följande: gemener, versaler, siffror och specialtecken.
+10. Av säkerhetsskäl hello enhetens administratörslösenord upphör att gälla efter hello första sessionen och du måste toochange it nu. Ange ett administratörslösenord för enheten när du ombes göra det. Ett giltigt enhetsadministratörslösenord för enheten måste vara mellan 8 och 15 tecken. hello lösenordet måste innehålla tre hello följande: gemener, versaler, siffror och särskilda tecken.
 
     ```
-        The device administrator password must be between 8 and 15 characters. The password must contain a combination of uppercase letters, lowercase letters, numbers and special characters.
+        hello device administrator password must be between 8 and 15 characters. hello password must contain a combination of uppercase letters, lowercase letters, numbers and special characters.
         Administrator Password:********
         Confirm Administrator Password:********
     ```
-11. I det sista steget i installationsguiden registreras din enhet med StorSimple Device Manager-tjänsten. För det här behöver du tjänstens registreringsnyckel som du fick i steg 2. Efter att du angett registreringsnyckeln kan du behöva vänta 2-3 minuter innan enheten är registrerad.
+11. hello sista steget i installationsguiden för hello registrerar enheten med hello StorSimple enheten Manager-tjänsten. För att göra detta måste hello tjänstens registreringsnyckel som du hämtade i steg 2. När du har angett hello registreringsnyckel behöva toowait 2-3 minuter innan hello enheten är registrerad.
     
     > [!NOTE]
-    > Du kan trycka på Ctrl + C när som helst för att avsluta installationsguiden. Om du har angett alla nätverksinställningar (IP-adress för Data 0, nätmask och Gateway), kommer informationen att sparas.
+    > Du kan trycka på Ctrl + C på alla tid tooexit hello-installationsguiden. Om du har angett alla hello nätverksinställningar (IP-adress för Data 0, nätmask och Gateway) kommer posterna att sparas.
     
     Ett exempel på utdata visas nedan.
 
     ```
-        The service registration key is available in the StorSimple Manager service.
+        hello service registration key is available in hello StorSimple Manager service.
         Enter service registration key:**************************************
         Device registration is in progress. Please wait.
 
     ```
 
-12. När enheten är registrerad visas en krypteringsnyckel för tjänstdata. Kopiera den här nyckeln och spara den på säker plats. **Den här nyckeln krävs tillsammans med tjänstregistreringsnyckeln för att registrera ytterligare enheter med StorSimple Device Manager-tjänsten.** Referera till [StorSimple-säkerhet](../articles/storsimple/storsimple-security.md) för ytterligare information om den här nyckeln.
+12. När hello enheten är registrerad visas en krypteringsnyckel. Kopiera den här nyckeln och spara den på säker plats. **Den här nyckeln kommer att krävas med hello service registrering viktiga tooregister ytterligare enheter med hello StorSimple enheten Manager-tjänsten.** Se för[StorSimple-säkerhet](../articles/storsimple/storsimple-security.md) mer information om den här nyckeln.
     
     ![StorSimple registrera enhet 7](./media/storsimple-8000-configure-and-register-device-u2/step3pssetup1.png)
     
     > [!NOTE]
-    > Om du vill kopiera text från seriekonsolfönstret, markerar du bara texten. Sedan ska du kunna klistra in den i urklipp eller valfri textredigerare. ANVÄND INTE Ctrl + C för att kopiera krypteringsnyckeln för tjänstdata. Ctrl + C avslutar installationsguiden. Som ett resultat, kommer enhetens administratörslösenord inte att ändras och enheten kommer återgå till standardlösenordet.
+    > toocopy hello text från seriekonsolfönstret med hello, bara markera hello text. Sedan ska du kunna toopaste i hello Urklipp eller valfri textredigerare. Använd inte Ctrl + C toocopy hello krypteringsnyckel för tjänstdata. Med Ctrl + C kommer du tooexit hello installationsguiden. Därför kommer inte att ändra hello enhetens administratörslösenord och hello enheten kommer återgå toohello standardlösenordet.
     
-13. Avsluta seriekonsolen.
-14. Gå tillbaka till Azure Portal och utför följande steg:
+13. Avsluta hello seriekonsol.
+14. Returnera toohello Azure-portalen och slutför hello följande steg:
     
-    1. Gå till StorSimple Device Manager-tjänsten.
+    1. Gå tooyour StorSimple enheten Manager-tjänsten.
     2. Klicka på **Enheter**.
-    3. I listan med enheter kontrollerar du att enheten har anslutit till tjänsten genom att leta upp dess status. Enhetens status bör vara **Redo för installation**.
+    3. Kontrollera i hello tabular lista över enheter, hello enheten har lyckats ansluta toohello tjänsten genom att leta upp hello status. hello enhetens status ska vara **klar tooset in**.
        
         ![StorSimple-enhetssidan](./media/storsimple-8000-configure-and-register-device-u2/step3pssetup2.png)
        
-        Du kan behöva vänta några minuter innan enhetens status ändras till **Redo för installation**.
+        Du kan behöva toowait för ett par minuter för hello enhetens status toochange för**klar tooset in**.
        
-        Om enheten inte visas i listan kontrollerar du att ditt brandväggsnätverk är konfigurerat enligt [nätverkskraven för din StorSimple-enhet](../articles/storsimple/storsimple-8000-system-requirements.md). Kontrollera att port 9354 är öppen för utgående kommunikation eftersom den används av Service Bus för kommunikation mellan StorSimple Device Manager-tjänsten och enheten.
+        Om hello enheten inte visas i listan, måste du till att ditt brandväggsnätverk har konfigurerats enligt beskrivningen i toomake [nätverkskraven för din StorSimple-enhet](../articles/storsimple/storsimple-8000-system-requirements.md). Kontrollera att port 9354 är öppen för utgående kommunikation eftersom den används i hello service bus för kommunikation för StorSimple Device Manager-tjänsten till enheten.
 

@@ -1,6 +1,6 @@
 ---
-title: Hantera datorkraft i Azure SQL Data Warehouse (Azure portal) | Microsoft Docs
-description: "Azure portal uppgifter för hantering av beräkningskraft. Skala beräkningsresurser genom att justera dwu: er. Eller, pausa och återuppta beräkningsresurser för att spara kostnader."
+title: "aaaManage beräkningskraft i Azure SQL Data Warehouse (Azure portal) | Microsoft Docs"
+description: "Azure portal uppgifter toomanage beräkningskraft. Skala beräkningsresurser genom att justera dwu: er. Eller, pausa och återuppta beräkning resurser toosave kostnader."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 63888d5dd103b585cf18e4787d3e779810163e3d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b2e84b3763e97ce88c190eecfb64b2d06f727229
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-azure-portal"></a>Hantera datorkraft i Azure SQL Data Warehouse (Azure portal)
 > [!div class="op_single_selector"]
@@ -35,15 +35,15 @@ ms.lasthandoff: 07/11/2017
 ## <a name="scale-compute-power"></a>Skala datorkraft
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-Ändra beräkningsresurser:
+toochange beräkningsresurser:
 
-1. Öppna den [Azure-portalen][Azure portal], öppna databasen och på **skala**.
+1. Öppna hello [Azure-portalen][Azure portal], öppna databasen och på **skala**.
 
     ![Klicka på skalan][1]
-2. Flytta skjutreglaget åt vänster eller höger för att ändra DWU-inställningen i bladet skala.
+2. Dra reglaget hello åt vänster eller höger toochange hello DWU-inställningar i hello skala bladet.
 
     ![Flytta skjutreglaget][2]
-3. Klicka på **Spara**. Ett meddelande visas. Klicka på **Ja** att bekräfta eller **inga** att avbryta.
+3. Klicka på **Spara**. Ett meddelande visas. Klicka på **Ja** tooconfirm eller **inga** toocancel.
 
     ![Klicka på Spara][3]
 
@@ -52,16 +52,16 @@ ms.lasthandoff: 07/11/2017
 ## <a name="pause-compute"></a>Pausa beräkning
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-Så här pausar en-databas:
+toopause en-databas:
 
-1. Öppna den [Azure-portalen] [ Azure portal] och öppna databasen. Observera att statusen är **Online**.
+1. Öppna hello [Azure-portalen] [ Azure portal] och öppna databasen. Observera att hello Status är **Online**.
 
     ![Onlinestatus][6]
-2. Om du vill pausa beräknings-och minnesresurser klickar du på **paus**, och sedan visas ett bekräftelsemeddelande. Klicka på **Ja** att bekräfta eller **inga** att avbryta.
+2. toosuspend beräknings- och resurser, klickar du på **paus**, och sedan visas ett bekräftelsemeddelande. Klicka på **Ja** tooconfirm eller **inga** toocancel.
 
     ![Bekräfta paus][7]
-3. Medan SQL Data Warehouse startar databasen status är **pausa**.
-4. När statusen är **pausad**, pausa åtgärden är klar och du inte längre att debiteras för dwu: er.
+3. Medan SQL Data Warehouse startar hello databasen hello status är **pausa**.
+4. När hello status är **pausad**hello paus åtgärden är klar och du inte längre att debiteras för dwu: er.
 
     ![Pausa status][4]
 
@@ -70,16 +70,16 @@ Så här pausar en-databas:
 ## <a name="resume-compute"></a>Återuppta beräkning
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-Så här återupptar en-databas:
+tooresume en-databas:
 
-1. Öppna den [Azure-portalen] [ Azure portal] och öppna databasen. Observera att statusen är **pausad**.
+1. Öppna hello [Azure-portalen] [ Azure portal] och öppna databasen. Observera att hello Status är **pausad**.
 
     ![Pausa databas][4]
-2. Att återuppta databasen Klicka **starta**, och sedan visas ett bekräftelsemeddelande. Klicka på **Ja** att bekräfta eller **inga** att avbryta.
+2. tooresume hello databasen klickar du på **starta**, och sedan visas ett bekräftelsemeddelande. Klicka på **Ja** tooconfirm eller **inga** toocancel.
 
     ![Bekräfta återuppta][5]
-3. Medan SQL Data Warehouse startar databasen är status inställd på ”återupptar”.
-4. När statusen är **online**, databasen är klar.
+3. Medan SQL Data Warehouse startar hello databasen är hello status inställd på ”återupptar”.
+4. När hello status är **online**, hello-databasen är klar.
 
     ![Onlinestatus][6]
 

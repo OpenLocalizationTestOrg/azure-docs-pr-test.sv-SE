@@ -1,6 +1,6 @@
 ---
-title: "Kör Hadoop MapReduce exempel på HDInsight - Azure | Microsoft Docs"
-description: "Komma igång med MapReduce-exempel i jar-filer som ingår i HDInsight. Använda SSH för att ansluta till klustret och sedan använda Hadoop-kommando för att köra exemplet jobb."
+title: "aaaRun Hadoop MapReduce exempel på HDInsight - Azure | Microsoft Docs"
+description: "Komma igång med MapReduce-exempel i jar-filer som ingår i HDInsight. Använd SSH tooconnect toohello kluster och sedan använda hello Hadoop kommandot toorun exempeljobb."
 keywords: hadoop exempel jar, hadoop exempel jar, hadoop mapreduce exempel, mapreduce-exempel
 services: hdinsight
 documentationcenter: 
@@ -17,120 +17,120 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 447c07f869ff9a2a2a00089248be98e6729d6dc4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 7a16bbd51eb17570fcaa3b1e0f5990fa889c106a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Kör MapReduce-exempel som ingår i HDInsight
+# <a name="run-hello-mapreduce-examples-included-in-hdinsight"></a>Kör hello MapReduce exempel ingår i HDInsight
 
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Lär dig hur du kör MapReduce-exempel som ingår i Hadoop i HDInsight.
+Lär dig hur toorun hello MapReduce exempel ingår i Hadoop i HDInsight.
 
 ## <a name="prerequisites"></a>Krav
 
 * **Ett HDInsight-kluster**: finns [komma igång med Hadoop med Hive i HDInsight på Linux](hdinsight-hadoop-linux-tutorial-get-started.md)
 
     > [!IMPORTANT]
-    > Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+    > Linux är hello endast operativsystem på HDInsight version 3.4 eller senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **En SSH-klient**: Mer information finns i [använda SSH med HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="the-mapreduce-examples"></a>MapReduce-exempel
+## <a name="hello-mapreduce-examples"></a>Hej MapReduce-exempel
 
-**Plats**: exemplen finns på HDInsight-kluster på `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
+**Plats**: hello-exempel finns på hello HDInsight-kluster på `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
 
-**Innehållet**: I följande exempel finns i det här arkivet:
+**Innehållet**: hello följande exempel finns i det här arkivet:
 
-* `aggregatewordcount`: En aggregering baserat mapreduce-program som räknas orden i indatafilerna.
-* `aggregatewordhist`: En aggregering baserat mapreduce-program som beräknar histogram ord i indatafilerna.
-* `bbp`: Ett mapreduce-program som använder Bailey-Borwein-Plouffe för att beräkna exakta siffror pi.
-* `dbcount`: Ett exempel jobb som räknar pageview loggfilerna lagras i en databas.
-* `distbbp`: Ett mapreduce-program som använder en BBP-type-formel för att beräkna exakt bits pi.
-* `grep`: Ett mapreduce-program som räknar matchningar av en regex i indata.
+* `aggregatewordcount`: En aggregering baserat mapreduce-program som räknar hello ord i hello indatafiler.
+* `aggregatewordhist`: En aggregering baserat mapreduce-program som beräknar hello histogram hello ord i hello indatafiler.
+* `bbp`: Ett mapreduce-program som använder Bailey-Borwein-Plouffe toocompute exakta siffror pi.
+* `dbcount`: Ett exempel jobb som räknar hello pageview loggar lagras i en databas.
+* `distbbp`: Ett mapreduce-program som använder en typ av BBP formeln toocompute exakt bits pi.
+* `grep`: Ett mapreduce-program som räknar hello matchar av en regex i hello indata.
 * `join`: Ett jobb som utför en koppling över sorteras, lika partitionerad datauppsättningar.
 * `multifilewc`: Ett jobb som räknar ord från flera filer.
-* `pentomino`: Ett mapreduce sida vid sida om program för att hitta lösningar på problem med pentomino.
+* `pentomino`: En mapreduce sida vid sida om programmet toofind lösningar toopentomino problem.
 * `pi`: Ett mapreduce-program som beräknar Pi med hjälp av en kvasi Monte Carlo-metoden.
 * `randomtextwriter`: Ett mapreduce-program som skriver 10 GB av slumpmässiga textdata per nod.
 * `randomwriter`: Ett mapreduce-program som skriver 10 GB slumpmässiga data per nod.
-* `secondarysort`: Ett exempel som definierar en sekundär sortering till minska fasen.
-* `sort`: Ett mapreduce-program som sorterar data som skrivs av slumpmässiga writer.
+* `secondarysort`: Ett exempel som definierar en sekundär sortera toohello minska fasen.
+* `sort`: Ett mapreduce-program som sorterar hello data som skrivs av slumpmässiga hello-skrivaren.
 * `sudoku`: En sudoku solver.
-* `teragen`: Skapa data för terasort.
-* `terasort`: Kör terasort.
+* `teragen`: Skapa data för hello terasort.
+* `terasort`: Kör hello terasort.
 * `teravalidate`: Kontrollera resultatet av terasort.
-* `wordcount`: Ett mapreduce-program som räknas orden i indatafilerna.
-* `wordmean`: Ett mapreduce-program som räknar den genomsnittliga längden på texten i de inkommande filerna.
-* `wordmedian`: Ett mapreduce-program som räknar ord i indatafilerna median längd.
-* `wordstandarddeviation`: Ett mapreduce-program som räknar standardavvikelsen för längden på texten i de inkommande filerna.
+* `wordcount`: Ett mapreduce-program som räknar hello ord i hello indatafiler.
+* `wordmean`: Ett mapreduce-program som räknar hello genomsnittliga längden på hello ord i hello indatafiler.
+* `wordmedian`: Ett mapreduce-program som räknar hello median längd hello ord i hello indatafiler.
+* `wordstandarddeviation`: Ett mapreduce-program som räknar hello standardavvikelsen för hello längd hello ord i hello indatafiler.
 
-**Källkoden**: källkoden för exemplen ingår i HDInsight-kluster på `/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
+**Källkoden**: källkoden för exemplen ingår i HDInsight-kluster på hello `/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
 
 > [!NOTE]
-> Den `2.2.4.9-1` i sökvägen är versionen av Hortonworks Data Platform för HDInsight-kluster och kan vara olika för klustret.
+> Hej `2.2.4.9-1` i hello sökväg är hello version av hello Hortonworks Data Platform för hello HDInsight-kluster och kan vara olika för klustret.
 
-## <a name="run-the-wordcount-example"></a>Köra wordcount-exemplet
+## <a name="run-hello-wordcount-example"></a>Kör hello wordcount-exemplet
 
-1. Anslut till HDInsight med hjälp av SSH. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
+1. Ansluta tooHDInsight via SSH. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
 
-2. Från den `username@#######:~$` uppmanar, använder du följande kommando för att lista exemplen:
+2. Från hello `username@#######:~$` uppmanar, Använd följande kommandoexempel toolist hello hello:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
     ```
 
-    Det här kommandot skapar listan med exempel från föregående avsnitt i det här dokumentet.
+    Det här kommandot genererar hello lista med exempel från hello föregående avsnitt i det här dokumentet.
 
-3. Använd kommandot om du vill ha hjälp med ett specifikt exempel. I det här fallet den **wordcount** exempel:
+3. Använd hello följande kommando tooget hjälp med ett specifikt exempel. I det här fallet hello **wordcount** exempel:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount
     ```
 
-    Följande meddelande:
+    Hello följande meddelande visas:
 
         Usage: wordcount <in> [<in>...] <out>
 
-    Det här meddelandet innebär att du kan ange flera indatasökvägarna för källdokument. Den slutliga sökvägen är där utdata (antal ord i källdokument) lagras.
+    Det här meddelandet innebär att du kan ange flera indatasökvägarna för hello källdokument. hello slutliga sökvägen är där hello utdata (antal ord i hello källdokument) lagras.
 
-4. Använd följande för att räkna alla orden i den bärbara datorer för Leonardo Da Vinci, som tillhandahålls som exempeldata med ditt kluster:
+4. Använd följande toocount hello alla ord i hello anteckningsböcker av Leonardo Da Vinci, som tillhandahålls som exempeldata med ditt kluster:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
     ```
 
-    Indata för det här jobbet har lästs från `/example/data/gutenberg/davinci.txt`. Utdata för det här exemplet är lagrad i `/example/data/davinciwordcount`. Både sökvägar finns på standardlagring för klustret, inte det lokala filsystemet.
+    Indata för det här jobbet har lästs från `/example/data/gutenberg/davinci.txt`. Utdata för det här exemplet är lagrad i `/example/data/davinciwordcount`. Både sökvägar finns på standardlagring för hello kluster inte hello som lokala filsystem.
 
    > [!NOTE]
-   > Som anges i hjälpen för wordcount-exemplet, kan du också ange flera indatafiler. Till exempel `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` räknas orden i både davinci.txt och ulysses.txt.
+   > Enligt beskrivningen i hello hjälp för hello wordcount-exemplet, kan du också ange flera indatafiler. Till exempel `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` räknas orden i både davinci.txt och ulysses.txt.
 
-5. När jobbet har slutförts använder du följande kommando du visar utdata:
+5. När hello jobbet är slutfört, använder du följande kommandoutdata tooview hello hello:
 
     ```bash
     hdfs dfs -cat /example/data/davinciwordcount/*
     ```
 
-    Det här kommandot sammanfogar alla utdatafiler som produceras av jobbet. Den visar utdata till konsolen. De utdata som genereras liknar följande text:
+    Det här kommandot sammanfogar alla hello utdatafiler som produceras av hello jobb. Den visar hello utdata toohello konsolen. hello utdata är liknande toohello följande text:
 
         zum     1
         zur     1
         zwanzig 1
         zweite  1
 
-    Varje rad utgör ett ord och hur många gånger som det har uppstått i indata.
+    Varje rad utgör ett ord och hur många gånger som det har uppstått i hello indata.
 
-## <a name="the-sudoku-example"></a>Sudoku-exempel
+## <a name="hello-sudoku-example"></a>Hej Sudoku exempel
 
-[Sudoku](https://en.wikipedia.org/wiki/Sudoku) är logik avgöra består av nio 3 x 3 rutnät. Vissa celler i rutnätet har tal, medan andra är tomt och målet är att lösa för tomma celler. Föregående länk har mer information om problem, men det här exemplet syftar till att lösa för tomma celler. Så ska våra indata vara en fil som finns i följande format:
+[Sudoku](https://en.wikipedia.org/wiki/Sudoku) är logik avgöra består av nio 3 x 3 rutnät. Vissa celler i rutnätet hello har tal, medan andra är tomt och hello målet är toosolve för hello tomma celler. hello föregående länk har mer information om hello problem, men hello syftet med det här exemplet är toosolve för hello tomma celler. Så våra indata ska vara en fil som finns i hello följande format:
 
 * Nio rader nio kolumner
 * Varje kolumn kan innehålla antingen ett tal eller `?` (som anger en tom cell)
 * Celler avgränsat med ett blanksteg
 
-Det finns ett visst sätt att konstruera Sudoku kanske; Du kan upprepa ett tal i en kolumn eller rad. Det finns ett exempel på HDInsight-klustret har skapats korrekt. Det finns i `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` och innehåller följande text:
+Det finns ett visst sätt tooconstruct Sudoku kanske; Du kan upprepa ett tal i en kolumn eller rad. Det finns ett exempel på hello HDInsight-kluster som är angett på rätt sätt. Det finns i `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` och innehåller hello följande text:
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -142,13 +142,13 @@ Det finns ett visst sätt att konstruera Sudoku kanske; Du kan upprepa ett tal i
     ? ? ? ? ? ? 2 ? ?
     ? ? ? ? 4 5 ? 7 8
 
-Om du vill köra det här exemplet problemet genom Sudoku exempel, använder du följande kommando:
+toorun problemet exempel via hello Sudoku exempelvis använda hello följande kommando:
 
 ```bash
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar sudoku /usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta
 ```
 
-Resultatet liknar följande:
+hello sökresultaten liknande toohello följande text:
 
     8 5 1 3 9 2 6 4 7
     4 3 2 6 7 8 1 9 5
@@ -162,53 +162,53 @@ Resultatet liknar följande:
 
 ## <a name="pi--example"></a>Exempel PI (π)
 
-Pi används en statistisk (kvasi Monte Carlo) metod för att uppskatta värdet för pi. Punkter placeras slumpmässigt i en ruta för enheten. Kvadraten innehåller också en cirkel. Sannolikheten att pekar faller inom cirkeln är lika med området cirkel-pi/4. Värdet för pi beräknas från värdet för 4R. R är förhållandet mellan antalet punkter som finns inuti cirkeln till det totala antalet punkter som ligger inom kvadraten. Ju större det här exemplet används punkter bättre uppskattning är.
+hello pi används en statistisk (kvasi Monte Carlo) metoden tooestimate hello värdet för pi. Punkter placeras slumpmässigt i en ruta för enheten. hello fyrkant innehåller också en cirkel. hello sannolikheten att hello punkter faller inom hello cirkel är lika toohello område i hello cirkel pi/4. hello-värdet för pi beräknas från 4R hello värdet. R är hello förhållandet mellan hello antalet punkter som finns inuti hello cirkel toohello totala antalet punkter som ligger inom hello ruta. hello större hello prov punkter används hello bättre hello uppskattning är.
 
-Använd följande kommando för att köra det här exemplet. Detta kommando använder 16 maps med 10 000 000 prover för att beräkna värdet för pi:
+Använd följande kommando toorun hello det här exemplet. Detta kommando använder 16 maps med 10 000 000 prover tooestimate hello värdet för pi:
 
 ```bash
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar pi 16 10000000
 ```
 
-Värdet som returneras av kommandot liknar **3.14159155000000000000**. Referenser är de första 10 decimalerna pi 3.1415926535.
+hello värdet som returneras av kommandot är liknande för**3.14159155000000000000**. Referenser är hello första 10 decimaler pi 3.1415926535.
 
 ## <a name="10-gb-greysort-example"></a>10 GB Greysort exempel
 
-GraySort är en benchmark-sortering. Måttet är sortera (TB per minut) som uppnås vid sortering av stora mängder data, vanligtvis en 100 TB minsta.
+GraySort är en benchmark-sortering. hello mått är hello sortera hastighet (TB per minut) som uppnås vid sortering av stora mängder data, vanligtvis en 100 TB minsta.
 
-Det här exemplet använder en liten 10 GB data så att den kan köras relativt snabbt. MapReduce-program som utvecklats av Owen O'Malley och Arun Murthy används. Dessa program vann årliga allmänna (”daytona”) terabyte sortera prestandamått i 2009 med en andel 0.578 TB per minut (100 TB 173 minuter). Mer information om den här och andra sorterings prestandamått finns i [Sortbenchmark](http://sortbenchmark.org/) plats.
+Det här exemplet använder en liten 10 GB data så att den kan köras relativt snabbt. Hej MapReduce program som utvecklats av Owen O'Malley och Arun Murthy används. Dessa program vann hello årliga allmänna (”daytona”) terabyte sortera prestandamått i 2009 med en andel 0.578 TB per minut (100 TB 173 minuter). Mer information om den här och andra sorterings prestandamått finns hello [Sortbenchmark](http://sortbenchmark.org/) plats.
 
 Det här exemplet använder tre olika MapReduce-program:
 
-* **TeraGen**: A MapReduce-program som skapar rader för sortering
+* **TeraGen**: A MapReduce-program som skapar rader med data toosort
 
-* **TeraSort**: exempel på indata och använder MapReduce för att sortera data i en total order
+* **TeraSort**: exempel hello indata och använder MapReduce toosort hello data i en total order
 
-    TeraSort är en standard MapReduce-sortering, förutom en anpassad partitioneraren. Partitioneraren som använder en sorterad lista över N-1 provtagning nycklar som definierar nyckeln intervallet för varje minska. I synnerhet alla nycklar sådana som exempel [i-1] < = nyckel < exempel [i] skickas till minska i. Den här partitioneraren garanterar att utdata för minskar i är mindre än utdata från minska i + 1.
+    TeraSort är en standard MapReduce-sortering, förutom en anpassad partitioneraren. Hej partitioneraren använder en sorterad lista över N-1 provtagning nycklar som definierar hello viktiga intervallet för varje minska. I synnerhet alla nycklar sådana som exempel [i-1] < = nyckel < exempel [i] skickas tooreduce jag. Den här partitioneraren garanterar att hello utdata för minskar i är mindre än hello utdata från minska i + 1.
 
-* **TeraValidate**: A MapReduce-program som verifierar att resultatet sorteras globalt
+* **TeraValidate**: A MapReduce-program som verifierar att hello utdata sorteras globalt
 
-    Det skapar en mappning per fil i den angivna katalogen och varje mappning garanterar att varje nyckel är mindre än eller lika med det tidigare. Funktionen kartan genererar poster för de första och sista nycklarna för varje fil. Funktionen minska garanterar att den första nyckeln för filen i är större än den senaste nyckeln i filen i-1. Eventuella problem rapporteras som utdata för fasen minska med nycklar som är i fel ordning.
+    Det skapar en mappning per fil i hello utdatakatalogen och varje mappning säkerställer att varje nyckel är mindre än eller lika toohello föregående. hello kartan funktionen genererar poster av hello först och senaste nycklarna för varje fil. hello reducera garanterar att hello första nyckeln för filen i är större än hello senaste nyckel i filen i-1. Eventuella problem rapporteras som utdata för hello minska fasen med hello nycklar som är i fel ordning.
 
-Använd följande steg för att generera data, sortera och sedan Validera utdata:
+Använd hello följande steg toogenerate data, sortera och sedan Validera hello utdata:
 
-1. Generera en 10 GB data som lagras i HDInsight-klustret standardlagring på `/example/data/10GB-sort-input`:
+1. Generera en 10 GB data som är lagrade toohello HDInsight klustret standardlagring på `/example/data/10GB-sort-input`:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
     ```
 
-    Den `-Dmapred.map.tasks` talar om Hadoop hur många kartan uppgifter för det här jobbet. De två sista parametrarna instruera jobbet att skapa 10 GB data och spara den på `/example/data/10GB-sort-input`.
+    Hej `-Dmapred.map.tasks` talar om Hadoop hur många kartan uppgifter toouse för det här jobbet. hello sista två parametrar instruera hello jobbet toocreate 10 GB data och toostore den på `/example/data/10GB-sort-input`.
 
-2. Använd följande kommando för att sortera data:
+2. Använd följande kommando toosort hello data hello:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-input /example/data/10GB-sort-output
     ```
 
-    Den `-Dmapred.reduce.tasks` talar om Hadoop hur många minska uppgifter som ska användas för jobbet. De sista två parametrarna är bara inkommande och utgående platserna för data.
+    Hej `-Dmapred.reduce.tasks` talar om Hadoop hur många minska uppgifter toouse för hello jobbet. hello sista två parametrar bara hello indata och utdata platser för data.
 
-3. Använd följande för att validera data som genereras av sorteringen:
+3. Använd följande toovalidate hello data som genereras av hello sortera hello:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
@@ -216,7 +216,7 @@ Använd följande steg för att generera data, sortera och sedan Validera utdata
 
 ## <a name="next-steps"></a>Nästa steg
 
-Från den här artikeln beskrivs hur du kör ingår i Linux-baserade HDInsight-kluster. Självstudier om hur du använder Pig, Hive och MapReduce med HDInsight finns i följande avsnitt:
+Från den här artikeln får du lära dig hur toorun hello exempel medföljer hello Linux-baserade HDInsight-kluster. Självstudier om hur du använder Pig, finns Hive och MapReduce med HDInsight i hello följande avsnitt:
 
 * [Använda Pig med Hadoop i HDInsight][hdinsight-use-pig]
 * [Använda Hive med Hadoop i HDInsight][hdinsight-use-hive]

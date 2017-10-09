@@ -1,6 +1,6 @@
 ---
-title: Skapa en Jupyter/IPython anteckningsbok | Microsoft Docs
-description: "Lär dig hur du distribuerar Jupyter/IPython anteckningsbok på en Linux-dator som skapats med resource manager-distributionsmodellen i Azure."
+title: "aaaCreate bärbar dator med en Jupyter/IPython | Microsoft Docs"
+description: "Lär dig hur du skapar toodeploy hello Jupyter/IPython bärbar dator på en virtuell Linux-dator med hello resource manager-distributionsmodellen i Azure."
 services: virtual-machines-linux
 documentationcenter: python
 author: crwilcox
@@ -16,42 +16,42 @@ ms.topic: article
 ms.date: 11/10/2015
 ms.author: crwilcox
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5940190822cd5c5b78ea0e8f5c8695608d351d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d7f2e45a8ba95163ebfb0f10babc91a2b3fd9390
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-an-azure-vm-installing-jupyter-and-running-a-jupyter-notebook-on-azure"></a>Skapa en Azure VM, installera Jupyter och kör en Jupyter-anteckningsbok på Azure
-Den [Jupyter projekt](http://jupyter.org), tidigare i [IPython projekt](http://ipython.org), tillhandahåller en samling med verktyg för vetenskapliga datoranvändning med kraftfulla interaktiva tankar som kombinerar kodkörning med skapandet av en live beräkningar dokument. De här filerna kan innehålla godtycklig text, matematiska formler, inkommande kod, resultat, bilder, videor och andra typer av media som en modern webbläsare kan visa. Om du inte har absolut använt Python och vill veta i en miljö med roliga, interaktiva eller göra vissa allvarliga parallell-tekniska computing är Jupyter-anteckningsbok ett bra alternativ.
+Hej [Jupyter-projektet](http://jupyter.org), tidigare hello [IPython projekt](http://ipython.org), tillhandahåller en samling med verktyg för vetenskapliga datoranvändning med kraftfulla interaktiva tankar som kombinerar kodkörning med hello skapandet av en levande beräkningar dokument. De här filerna kan innehålla godtycklig text, matematiska formler, inkommande kod, resultat, bilder, videor och andra typer av media som en modern webbläsare kan visa. Om du är helt nya tooPython och vill toolearn den i en roliga, interaktiv miljö eller gör vissa allvarliga parallell-tekniska datoranvändning, hello Jupyter-anteckningsbok är ett bra alternativ.
 
-![Skärmbild](./media/jupyter-notebook/ipy-notebook-spectral.png) med SciPy och Matplotlib paket att analysera strukturen för en inspelning av ljud.
+![Skärmbild](./media/jupyter-notebook/ipy-notebook-spectral.png) med SciPy och Matplotlib paket tooanalyze hello strukturen i en inspelning av ljud.
 
 ## <a name="jupyter-two-ways-azure-notebooks-or-custom-deployment"></a>Jupyter två sätt: Azure-datorer eller anpassad distribution
-Azure tillhandahåller en tjänst som du kan använda för att [snabbt kommer igång med Jupyter ](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx).  Genom att använda tjänsten Azure bärbar dator kan få du enkelt tillgång till Jupyters webben gränssnitt för skalbara resurser med alla kraften i Python och dess många bibliotek.  Eftersom installationen hanteras av tjänsten kan användare komma åt dessa resurser utan att behöva administration och konfiguration av användaren.
+Azure tillhandahåller en tjänst som du kan använda för[snabbt kommer igång med Jupyter ](http://blogs.technet.com/b/machinelearning/archive/2015/07/24/introducing-jupyter-notebooks-in-azure-ml-studio.aspx).  Genom att använda hello Azure anteckningsboken Service kan du enkelt få åtkomst tooJupyter webben gränssnittet till skalbara resurser med alla hello ström av Python och dess många bibliotek.  Eftersom hello installation hanteras av hello-tjänsten kan användare komma åt dessa resurser utan hello behovet av administration och konfiguration av hello användare.
 
-Om tjänsten anteckningsboken inte fungerar för ditt scenario fortsätter du till den här artikeln som kommer visar hur du distribuerar Jupyter Notebook i Microsoft Azure med hjälp av virtuella Linux-datorer (VM).
+Om hello anteckningsboken tjänsten inte fungerar för ditt scenario Fortsätt tooread den här artikeln som ska visas hur toodeploy hello Jupyter Notebook i Microsoft Azure med hjälp av virtuella Linux-datorer (VM).
 
 [!INCLUDE [create-account-and-vms-note](../../../includes/create-account-and-vms-note.md)]
 
 ## <a name="create-and-configure-a-vm-on-azure"></a>Skapa och konfigurera en virtuell dator på Azure
-Det första steget är att skapa en virtuell dator (VM) som körs på Azure.
-Den här virtuella datorn är en hela operativsystemet i molnet och används för att köra Jupyter-anteckningsboken. Azure kan både Linux och Windows-datorer som körs och tar vi upp installationen av Jupyter på båda typer av virtuella datorer.
+hello första steget är toocreate en virtuell dator (VM) som körs på Azure.
+Den här virtuella datorn är en hela operativsystemet i hello molnet och används för att köra hello Jupyter-anteckningsbok. Azure kan både Linux och Windows-datorer som körs och tar vi upp hello installationen av Jupyter på båda typer av virtuella datorer.
 
 ### <a name="create-a-linux-vm-and-open-a-port-for-jupyter"></a>Skapa en Linux VM och öppnar en port för Jupyter
-Följ instruktionerna [här] [ portal-vm-linux] att skapa en virtuell dator av den *Ubuntu* distribution. Den här kursen använder Ubuntu Server 14.04 LTS. Användarnamnet antar vi *azureuser*.
+Följ instruktionerna för hello [här] [ portal-vm-linux] toocreate en virtuell dator för hello *Ubuntu* distribution. Den här kursen använder Ubuntu Server 14.04 LTS. Hello användarnamn antar vi *azureuser*.
 
-När du distribuerar den virtuella datorn som vi behöver öppna en säkerhetsregel på nätverkssäkerhetsgruppen.  Från Azure-portalen går du till **Nätverkssäkerhetsgrupper** och öppna fliken för säkerhetsgruppen som motsvarar den virtuella datorn. Du måste lägga till en regel för inkommande säkerhet med följande inställningar: **TCP** för protokollet  **\***  för källport (offentlig) och **9999** för den Målport (privat).
+När hello virtuell dator distribuerar måste vi tooopen upp en säkerhetsregel på hello nätverkssäkerhetsgruppen.  Hello Azure-portalen, gå för**Nätverkssäkerhetsgrupper** och öppna hello fliken för hello säkerhetsgrupp motsvarande tooyour VM. Du behöver tooadd en regel för inkommande säkerhet med hello följande inställningar: **TCP** för hello protokollet  **\***  för hello-källport (offentlig) och **9999** för hello-målport (privat).
 
 ![Skärmbild](./media/jupyter-notebook/azure-add-endpoint.png)
 
-I din Nätverkssäkerhetsgruppen klickar du på **nätverksgränssnitt** och notera den **offentliga IP-adressen** eftersom det krävs för att ansluta till den virtuella datorn i nästa steg.
+I din Nätverkssäkerhetsgruppen klickar du på **nätverksgränssnitt** och Observera hello **offentliga IP-adressen** eftersom den nödvändiga tooconnect tooyour VM i hello nästa steg.
 
-## <a name="install-required-software-on-the-vm"></a>Installera nödvändiga program på den virtuella datorn
-Om du vill köra Jupyter-anteckningsbok på vår VM installera vi först Jupyter och dess beroenden. Anslut till din linux vm med ssh och det användarnamn/lösenordet koppla du valde när du skapade den virtuella datorn. I den här självstudiekursen kommer vi använda PuTTY och ansluta från Windows.
+## <a name="install-required-software-on-hello-vm"></a>Installera nödvändig programvara på hello VM
+toorun Hej Jupyter-anteckningsbok på vår VM, vi måste först installera Jupyter och dess beroenden. Anslut tooyour virtuell linux-dator med hjälp av ssh och hello användarnamn/lösenord par som du valde när du skapade hello vm. I den här självstudiekursen kommer vi använda PuTTY och ansluta från Windows.
 
 ### <a name="installing-jupyter-on-ubuntu"></a>Installera Jupyter på Ubuntu
-Installera Anaconda, en populär datavetenskap python-distribution, med hjälp av en av länkarna från [produktserier Analytics](https://www.continuum.io/downloads).  Från och med skrivning av det här dokumentet på länkarna nedan om du är mest datum versioner.
+Installera Anaconda, en populär datavetenskap python-distribution, med någon av hello länkarna från [produktserier Analytics](https://www.continuum.io/downloads).  Från och med hello skrivning av det här dokumentet är hello länkarna nedan hello mest upp toodate versioner.
 
 #### <a name="anaconda-installs-for-linux"></a>Anaconda installerar för Linux
 <table>
@@ -90,7 +90,7 @@ Detta är hur du kan installera Anaconda på Ubuntu kan t.ex.
     cd ..
     rm -rf anaconda/
 
-    # Update Jupyter to the latest install and generate its config file
+    # Update Jupyter toohello latest install and generate its config file
     sudo /anaconda3/bin/conda install jupyter -y
     /anaconda3/bin/jupyter-notebook --generate-config
 
@@ -98,35 +98,35 @@ Detta är hur du kan installera Anaconda på Ubuntu kan t.ex.
 ![Skärmbild](./media/jupyter-notebook/anaconda-install.png)
 
 ### <a name="configuring-jupyter-and-using-ssl"></a>Konfigurera Jupyter och använda SSL
-Vi behöver ta en stund att konfigurera konfigurationsfilerna för Jupyter när du har installerat. Om det uppstår troubles med att konfigurera Jupyter kan det vara bra att titta på den [Jupyter-dokumentation för att köra en bärbar dator Server](http://jupyter-notebook.readthedocs.org/en/latest/public_server.html).
+När du har installerat behöver vi tootake ett ögonblick toosetup hello konfigurationsfiler för Jupyter. Om du upplever troubles med att konfigurera Jupyter kan det vara bra toolook på hello [Jupyter-dokumentation för att köra en bärbar dator Server](http://jupyter-notebook.readthedocs.org/en/latest/public_server.html).
 
-Nästa vi `cd` till profilkatalogen för att skapa våra SSL-certifikat och redigera konfigurationsfilen profiler.
+Nästa vi `cd` toohello profilen directory toocreate våra SSL-certifikat och redigera konfigurationsfilen för hello profiler.
 
-Använd följande kommando på Linux.
+Använd följande kommando hello på Linux.
 
     cd ~/.jupyter
 
-Använd följande kommando för att skapa SSL-certifikatet (Linux och Windows).
+Använd hello efter kommandot toocreate hello SSL-certifikat (Linux och Windows).
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
-Observera att eftersom vi skapar ett självsignerat SSL-certifikat när du ansluter till den bärbara datorn webbläsaren ger dig en säkerhetsvarning.  För långsiktig produktion ska du vill använda ett felaktigt signerade certifikat som är associerade med din organisation.  Eftersom certifikathantering är utanför omfattningen för den här demon, kommer vi använda ett självsignerat certifikat för tillfället.
+Observera att eftersom vi skapar ett självsignerat SSL-certifikat när du ansluter toohello anteckningsboken webbläsaren ger dig en säkerhetsvarning.  För långsiktig produktion ska toouse ett felaktigt signerade certifikat som är associerade med din organisation.  Eftersom certifikathantering ligger utanför den här demon hello, kommer vi behålla tooa självsignerat certifikat för tillfället.
 
-Förutom att använda ett certifikat kan ange du också ett lösenord för att skydda din bärbara dator mot obehörig användning.  Av säkerhetsskäl använder Jupyter krypterade lösenord i dess konfigurationsfil, så du behöver att kryptera lösenordet först.  IPython ger ett verktyg för att göra det. Kör följande kommando i Kommandotolken.
+Dessutom toousing ett certifikat, måste du även ange ett lösenord tooprotect anteckningsboken från obehörig användning.  Av säkerhetsskäl Jupyter använder krypterade lösenord i dess konfigurationsfil, så du behöver tooencrypt lösenordet först.  IPython ger en verktyget toodo. Kör hello följande kommando i Kommandotolken.
 
     /anaconda3/bin/python -c "import IPython;print(IPython.lib.passwd())"
 
-Detta uppmanas du att ett lösenord och bekräfta och skriver sedan ut lösenordet. Observera att detta för följande steg.
+Detta kommer att fråga efter en lösenordet och bekräftelsen och skriver sedan ut hello lösenord. Observera att detta för hello följande steg.
 
     Enter password:
     Verify password:
-    sha1:b86e933199ad:a02e9592e59723da722.. (elided the rest for security)
+    sha1:b86e933199ad:a02e9592e59723da722.. (elided hello rest for security)
 
-Därefter kommer vi att redigera konfigurationsfilen för den profil som är den `jupyter_notebook_config.py` filen i katalogen i.  Observera att den här filen inte finns--bara skapa om så är fallet.  Den här filen har ett antal fält och som standard alla är kommenterade.  Du kan öppna den här filen med en textredigerare för dina önskemål och bör du kontrollera att den har minst följande innehåll. **Se till att ersätta c.NotebookApp.password i konfigurationen med sha1 från föregående steg**.
+Sedan redigerar vi hello profil konfigurationsfil, vilket är den `jupyter_notebook_config.py` fil i hello du befinner dig i.  Observera att den här filen inte finns--bara skapa om så är fallet hello.  Den här filen har ett antal fält och som standard alla är kommenterade.  Du kan öppna den här filen med en textredigerare för dina önskemål och bör du kontrollera att den har minst hello följande innehåll. **Vara säker på att tooreplace hello c.NotebookApp.password i hello config med hello sha1 hello föregående steg**.
 
     c = get_config()
 
-    # You must give the path to the certificate file.
+    # You must give hello path toohello certificate file.
     c.NotebookApp.certfile = u'/home/azureuser/.jupyter/mycert.pem'
 
     # Create your own password as indicated above
@@ -138,50 +138,50 @@ Därefter kommer vi att redigera konfigurationsfilen för den profil som är den
     c.NotebookApp.port = 9999
     c.NotebookApp.open_browser = False
 
-### <a name="run-the-jupyter-notebook"></a>Kör Jupyter-anteckningsbok
-Vi är nu redo att börja Jupyter-anteckningsboken. Gör detta genom att gå till den katalog som du vill lagra notebooks i och starta om servern för Jupyter-anteckningsbok med följande kommando.
+### <a name="run-hello-jupyter-notebook"></a>Kör hello Jupyter-anteckningsbok
+Vi är nu redo toostart hello Jupyter-anteckningsbok. toodo detta, navigera toohello directory du vill använda toostore anteckningsböcker och börja hello Jupyter-anteckningsbok server med hello följande kommando.
 
     /anaconda3/bin/jupyter-notebook
 
-Du ska nu kunna åtkomst till Jupyter-anteckningsbok på adressen `https://[PUBLIC-IP-ADDRESS]:9999`.
+Du bör nu vara kan tooaccess Jupyter-anteckningsbok på hello adressen `https://[PUBLIC-IP-ADDRESS]:9999`.
 
-När du först åtkomst till din bärbara dator frågar inloggningssidan för ditt lösenord. Och när du loggar in ser ”Jupyter-anteckningsbok instrumentpanel”, vilket är roll center för alla åtgärder för bärbar dator.  Du kan skapa nya bärbara datorer och öppna befintliga från den här sidan.
+När du först åtkomst till din bärbara dator frågar hello inloggningssidan för ditt lösenord. Och när du loggar in ser hello ”Jupyter-anteckningsbok instrumentpanel”, vilket är roll center för alla åtgärder för bärbar dator.  Du kan skapa nya bärbara datorer och öppna befintliga från den här sidan.
 
 ![Skärmbild](./media/jupyter-notebook/jupyter-tree-view.png)
 
-### <a name="using-the-jupyter-notebook"></a>Med Jupyter-anteckningsbok
-Om du klickar på den **ny** knappen, visas följande öppningssidan.
+### <a name="using-hello-jupyter-notebook"></a>Med hjälp av hello Jupyter-anteckningsbok
+Om du klickar på hello **ny** knappen, visas hello följande öppningssidan.
 
 ![Skärmbild](./media/jupyter-notebook/jupyter-untitled-notebook.png)
 
-Området som markerats med en `In []:` är området inkommande fråga här kan du ange en giltig Python-kod och den kommer att köras när du klickar på `Shift-Enter` eller klicka på ikonen ”Play” (den pekar åt höger triangeln i verktygsfältet).
+hello område som markerats med en `In []:` är fråga hello inkommande område, och här kan du ange en giltig Python-kod och den kommer att köras när du klickar på `Shift-Enter` eller klicka på ikonen för hello ”spela upp” (hello pekar åt höger triangel i hello verktygsfältet).
 
 ## <a name="a-powerful-paradigm-live-computational-documents-with-rich-media"></a>En kraftfull paradigmet: live beräkningar dokument med omfattande media
-Anteckningsboken själva bör dig mycket snabbt för alla som har använt Python och ett ordbehandlingsprogram eftersom det på vissa sätt är en blandning av båda: du kan köra kodblock Python, men du kan också hålla anteckningar och annan text genom att ändra formatet för en cell från ”kod” till ”Markdo ned ”med hjälp av den nedrullningsbara menyn i verktygsfältet.
+hello anteckningsboken själva bör känna sig mycket fysiska tooanyone som har använt Python och ett ordbehandlingsprogram eftersom det på vissa sätt är en blandning av båda: du kan köra kodblock Python, men du kan också hålla anteckningar och annan text genom att ändra hello formatet för en cell från ”kod” för ”Ma rkdown ”använda hello nedrullningsbara menyn i verktygsfältet.
 
 Jupyter är mycket mer än ett ordbehandlingsprogram som tillåter blandning av beräkningar och omfattande media (text, bilder, video och praktiken vad en modern webbläsare kan visa). Du kan blanda, text, kod, videor och mer!
 
 ![Skärmbild](./media/jupyter-notebook/jupyter-editing-experience.png)
 
-Och med kraften i Pythons många utmärkt bibliotek för vetenskapliga och tekniska datorsammanhang i följande skärmbild en enkel beräkning kan utföras med det är lika enkelt som en analys för komplexa nätverk i en miljö.
+Och med hello kraften i Pythons många utmärkt bibliotek för vetenskapliga och tekniska databehandling i hello följande skärmbild, en enkel beräkning kan utföras med hello samma underlättar som en komplexa nätverk analys, allt i en miljö.
 
-Den här paradigmet blanda kraften i moderna webben med levande beräkning erbjuder många möjligheter och är idealisk för molnet; Du kan använda den bärbara datorn:
+Den här paradigmet blanda hello kraften hos hello moderna web med levande beräkning erbjuder många möjligheter och är idealisk för hello molnet; hello anteckningsboken kan användas:
 
-* Som en beräkningar anteckningsblocket att registrera undersökande fungera på ett problem.
-* Om du vill dela resultatet med kollegor i ”live” beräkningar formulär eller i papperskopia format (HTML PDF).
-* För att distribuera och presentera live lärare material som rör beräkning, så studenter kan omedelbart experimentera med den verkliga kod, ändra den och kör det igen interaktivt.
-* För att tillhandahålla ”körbara papper” som visar resultaten av forskning på ett sätt som kan vara omedelbart reproduceras, verifieras och utökas med andra.
-* Som en plattform för samarbetsfunktioner datoranvändning: flera användare kan logga in på samma server bärbara datorer att dela en beräkningar session.
+* Som en undersökande beräkningar anteckningsblocket toorecord fungera på ett problem.
+* tooshare resulterar med kollegor i ”live” beräkningar formulär eller i papperskopia format (HTML-, PDF).
+* toodistribute och finns live lärare material som rör beräkning, så studenter kan omedelbart experimentera med hello verkliga kod, ändra den och kör det igen interaktivt.
+* tooprovide ”körbara papper” som presenterar hello resultaten av forskning på ett sätt som kan återges omedelbart, verifiera och utökas med andra.
+* Som en plattform för samarbetsfunktioner datoranvändning: flera användare kan logga in toothe samma anteckningsboken server tooshare en levande beräkningar session.
 
-Om du går till källkoden IPython [databasen][repository], hittar du en hel katalog med exempel på bärbara datorer som du kan hämta och sedan experimentera med på din egen Azure Jupyter-VM.  Hämta bara de `.ipynb` filerna från webbplatsen och överför dem till instrumentpanelen för din Virtuella Azure-dator (eller hämta dem direkt i den virtuella datorn).
+Om du går källkoden för toohello IPython [databasen][repository], hittar du en hel katalog med exempel på bärbara datorer som du kan hämta och sedan experimentera med på din egen Azure Jupyter-VM.  Bara hämta hello `.ipynb` filer från hello plats och överför dem till hello instrumentpanelen i anteckningsboken Azure VM (eller hämta dem direkt i hello VM).
 
 ## <a name="conclusion"></a>Slutsats
-Jupyter-anteckningsbok erbjuder ett kraftfullt gränssnitt för att komma åt interaktivt kraften i Python-ekosystemet i Azure.  Den omfattar en mängd olika användning fall inklusive enkel undersökning och Python, dataanalys och visualisering, simulering och parallell datorbearbetning. De resulterande anteckningsboken dokument innehåller en fullständig post för beräkningar som utförs och kan delas med andra Jupyter-användare.  Jupyter-anteckningsbok kan användas som ett lokalt program, men den är idealisk för molndistributioner på Azure
+Hej Jupyter-anteckningsbok erbjuder ett kraftfullt gränssnitt för att komma åt interaktivt hello kraften hos hello Python-ekosystemet i Azure.  Den omfattar en mängd olika användning fall inklusive enkel undersökning och Python, dataanalys och visualisering, simulering och parallell datorbearbetning. hello resulterande anteckningsboken dokument innehåller en fullständig hello beräkningar som utförs och kan delas med andra användare i Jupyter-post.  Hej Jupyter-anteckningsbok kan användas som ett lokalt program, men den är idealisk för molndistributioner på Azure
 
-Kärnfunktioner Jupyter finns också tillgängliga i Visual Studio via den [Python Tools för Visual Studio] [ Python Tools for Visual Studio] (PTVS). PTVS är ett kostnadsfritt och integrering på plugin-program från Microsoft som blir en avancerad Python-utvecklingsmiljö som innehåller en redigeraren med IntelliSense, felsökning, Visual Studio profilering och parallella för öppen källkod.
+hello kärnfunktioner Jupyter finns också tillgängliga i Visual Studio via den [Python Tools för Visual Studio] [ Python Tools for Visual Studio] (PTVS). PTVS är ett kostnadsfritt och integrering på plugin-program från Microsoft som blir en avancerad Python-utvecklingsmiljö som innehåller en redigeraren med IntelliSense, felsökning, Visual Studio profilering och parallella för öppen källkod.
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information finns i [Python Developer Center](/develop/python/).
+Mer information finns i hello [Python Developer Center](/develop/python/).
 
 [portal-vm-linux]: https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-tutorial-portal-rm/
 [repository]: https://github.com/ipython/ipython

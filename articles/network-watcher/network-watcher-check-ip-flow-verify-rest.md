@@ -1,6 +1,6 @@
 ---
-title: Kontrollera trafik med Azure Network Watcher IP verifiera - REST | Microsoft Docs
-description: "Den här artikeln beskrivs hur du kontrollerar om trafik till eller från en virtuell dator tillåts eller nekas"
+title: Kontrollera aaaVerify trafik med Azure Network Watcher IP - REST | Microsoft Docs
+description: "Den här artikeln beskriver hur toocheck om trafik tooor från en virtuell dator tillåts eller nekas"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 6d3ce00a7d4f9c0cd57fa8815625a1065b03b5b5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 956db0d326db597c6c402a9e8d4a5522c47c02d6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="check-if-traffic-is-allowed-or-denied-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Kontrollera om trafik tillåts eller nekas med IP-flöde verifiera en komponent i Azure Nätverksbevakaren
 
@@ -30,17 +30,17 @@ ms.lasthandoff: 07/11/2017
 > - [Azure REST-API](network-watcher-check-ip-flow-verify-rest.md)
 
 
-IP-flöde verifiera är en funktion i Nätverksbevakaren som hjälper dig att kontrollera om tillåts trafik till eller från en virtuell dator. Verifieringen kan köras för inkommande eller utgående trafik. Det här scenariot är användbart för att hämta aktuella tillstånd om en virtuell dator kan kommunicera med en extern resurs eller backend. IP-flöde Kontrollera kan användas för att kontrollera om Nätverkssäkerhetsgrupp (NSG)-regler är korrekt konfigurerade och felsöka flöden som blockeras av NSG-regler. En annan orsak till att använda IP flödet Kontrollera är att kontrollera att trafik som du vill blockerade blockeras korrekt av NSG: N.
+IP-flöde verifiera är en funktion i Nätverksbevakaren som gör att du tooverify om trafik tillåts tooor från en virtuell dator. hello verifiering kan köras för inkommande eller utgående trafik. Det här scenariot är användbart tooget aktuella tillstånd om en virtuell dator kan prata tooan extern resurs eller backend. IP-flöde verifiera går att använda tooverify om Nätverkssäkerhetsgrupp (NSG)-regler är korrekt konfigurerade och felsöka flöden som blockeras av NSG-regler. En annan orsak till att använda IP flödet Kontrollera tooensure trafik som du vill blockerade blockeras korrekt av hello NSG.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-ARMclient används för att anropa REST-API med hjälp av PowerShell. ARMClient hittas på chocolatey på [ARMClient på Chocolatey](https://chocolatey.org/packages/ARMClient)
+ARMclient är används toocall hello REST-API med hjälp av PowerShell. ARMClient hittas på chocolatey på [ARMClient på Chocolatey](https://chocolatey.org/packages/ARMClient)
 
-Det här scenariot förutsätter att du redan har följt stegen i [skapa en Nätverksbevakaren](network-watcher-create.md) att skapa en Nätverksbevakaren.
+Det här scenariot förutsätter att du redan har följt stegen hello i [skapa en Nätverksbevakaren](network-watcher-create.md) toocreate en Nätverksbevakaren.
 
 ## <a name="scenario"></a>Scenario
 
-Det här scenariot använder IP-flöde Kontrollera för att verifiera om en virtuell dator kan du kontakta en annan dator via port 443. Om trafiken nekas returnerar säkerhetsregeln som nekar trafiken. Läs mer om IP-flöde Kontrollera [IP-flöde Kontrollera översikt](network-watcher-ip-flow-verify-overview.md)
+Det här scenariot använder IP-flöde Kontrollera tooverify om en virtuell dator kan prata tooanother datorn via port 443. Om hello trafik nekas returnerar hello säkerhetsregel som nekar trafiken. toolearn mer om IP-flöde kontrollera, besök [IP-flöde Kontrollera översikt](network-watcher-ip-flow-verify-overview.md)
 
 I det här scenariot kan du:
 
@@ -56,10 +56,10 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Hämta en virtuell dator
 
-Kör följande skript för att returnera en virtuell dator. Följande kod måste värdena för variabler:
+Kör följande skript tooreturn hello en virtuell dator. hello följande kod måste ha värden för hello variabler:
 
-* **subscriptionId** -prenumerations-Id ska användas.
-* **resourceGroupName** -namnet på en resursgrupp som innehåller virtuella datorer.
+* **subscriptionId** -hello prenumerations-Id toouse.
+* **resourceGroupName** - hello namn på en resursgrupp som innehåller virtuella datorer.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -68,7 +68,7 @@ $resourceGroupName = "<resource group name>"
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Den information som behövs är id under typen `Microsoft.Compute/virtualMachines`. Resultatet bör likna följande kodexempel:
+hello information som behövs är hello-id under hello typ `Microsoft.Compute/virtualMachines`. hello resultaten ska vara liknande toohello följande kodexempel:
 
 ```json
 ...,
@@ -100,15 +100,15 @@ pute/virtualMachines/ContosoVM/extensions/CustomScriptExtension"
 
 ## <a name="call-ip-flow-verify"></a>Anropa IP-flöde Kontrollera
 
-I följande exempel skapas en begäran om att kontrollera trafik för en angiven virtuell dator. Svaret returnerar om trafiken tillåts eller nekas trafiken. Om trafik nekas den returnerar även vilken regel som blockerar trafiken.
+hello skapas följande exempel en begäran tooverify hello-trafik för en angiven virtuell dator. hello svar returnerar om hello trafik tillåts eller nekas hello trafik. Om trafik nekas den returnerar även vilka regeln block hello trafik.
 
 > [!NOTE]
-> IP-flöde Kontrollera kräver att den Virtuella datorresursen allokeras.
+> IP-flöde Kontrollera kräver att hello Virtuella datorresursen allokeras.
 
-Skriptet kräver resursens Id för en virtuell dator och ett nätverkskort på den virtuella datorn. Dessa värden tillhandahålls av föregående utdata.
+hello skriptet kräver hello resursens Id för en virtuell dator och ett nätverkskort på hello virtuella datorn. Dessa värden tillhandahålls av hello föregående utdata.
 
 > [!Important]
-> För alla nätverk Watcher REST-anrop är det som innehåller Nätverksbevakaren-instans, inte de resurser som du utför de diagnostiska åtgärderna på resursgruppens namn i URI-begäran.
+> För alla nätverk Watcher REST-anrop hello resursgruppens namn i hello Begärd URI är hello en som innehåller hello Nätverksbevakaren instansen inte hello resurser som du utför hello diagnostiska åtgärder på.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -141,9 +141,9 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/ipFlowVerify?api-version=2016-12-01" $requestBody -verbose
 ```
 
-## <a name="understanding-the-results"></a>Förstå resultaten
+## <a name="understanding-hello-results"></a>Förstå hello resultat
 
-Svaret åter anger om trafik tillåts eller nekas. Svaret ser ut som följande exempel:
+hello svar åter berättar om hello trafik tillåts eller nekas. Det ser ut som något av följande exempel hello hello svar:
 
 **Tillåtna**
 
@@ -165,7 +165,7 @@ Svaret åter anger om trafik tillåts eller nekas. Svaret ser ut som följande e
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om trafik blockeras och får inte vara, se [hantera Nätverkssäkerhetsgrupper](../virtual-network/virtual-network-manage-nsg-arm-portal.md) lära dig mer om Nätverkssäkerhetsgrupper.
+Om trafik blockeras och får inte vara, se [hantera Nätverkssäkerhetsgrupper](../virtual-network/virtual-network-manage-nsg-arm-portal.md) toolearn mer om Nätverkssäkerhetsgrupper.
 
 
 

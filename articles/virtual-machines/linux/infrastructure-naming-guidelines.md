@@ -1,6 +1,6 @@
 ---
-title: Azure-infrastrukturen naming riktlinjer - Linux | Microsoft Docs
-description: "Läs mer om viktiga design och implementeringslösning riktlinjer för namngivning av i Azure infrastrukturtjänster."
+title: aaaAzure infrastruktur naming riktlinjer - Linux | Microsoft Docs
+description: "Läs mer om hello viktiga design och implementeringslösning riktlinjer för namngivning i Azure infrastrukturtjänster."
 documentationcenter: 
 services: virtual-machines-linux
 author: iainfoulds
@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b086f0972c02d569a7219820a3d596960b6014b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 333146e7b2071e43527a5d7dc2ec02ebfb316eb6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-infrastructure-naming-guidelines-for-linux-vms"></a>Azure-infrastrukturen namngivningen riktlinjer för virtuella Linux-datorer 
 
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
-Den här artikeln fokuserar på att förstå hur du hanterar namnkonventionerna för alla olika Azure-resurser att skapa en logisk och lätt att identifiera uppsättning resurser i din miljö.
+Den här artikeln fokuserar på att förstå hur tooapproach namnkonventionerna för alla dina olika Azure-resurser toobuild en logisk och lätt att identifiera en uppsättning resurser i din miljö.
 
 ## <a name="implementation-guidelines-for-naming-conventions"></a>Implementeringsriktlinjer för namngivningskonventioner
 Beslut:
@@ -35,45 +35,45 @@ Beslut:
 
 Aktiviteter:
 
-* Definiera affix att använda i dina resurser för att upprätthålla enhetliga.
-* Definiera lagringskontonamn angivna krav att vara globalt unika.
-* Dokumentera namngivningskonvention ska användas och distribueras till alla de parter som ingår för att garantera konsekvens över distributioner.
+* Definiera hello affix toouse över dina resurser toomaintain konsekvenskontroll.
+* Definiera namn tilldelat hello krav för dem toobe globalt unik storage-konto.
+* Dokumentet hello naming convention toobe används och distribuera tooall parter ingår tooensure konsekvens mellan distributioner.
 
 ## <a name="naming-conventions"></a>Namngivningskonventioner
-Du bör ha en god namngivningskonvention på plats innan du skapar något i Azure. En namngivningskonvention garanterar att alla resurser som har en förutsägbar namn, som hjälper dig att minska det administrativa arbetet hantering av dessa resurser.
+Du bör ha en god namngivningskonvention på plats innan du skapar något i Azure. En namngivningskonvention garanterar att alla hello resurser har en förutsägbar namn, vilket gör det lägre hello-administrativa belastningen hantering av dessa resurser.
 
-Du kan välja att följa en specifik uppsättning namnkonventioner som definierats för hela organisationen eller för en viss Azure-prenumeration eller ett konto. Även om det är enkelt för enskilda användare i organisationer att fastställa implicit regler när du arbetar med Azure-resurser som du behöver kunna skala för grupper som arbetar i Azure.
+Du kan välja toofollow en specifik uppsättning namnkonventioner som definierats för hela organisationen eller för en viss Azure-prenumeration eller ett konto. Men det är enkelt för enskilda användare i organisationer tooestablish implicit regler när du arbetar med Azure-resurser, behöver du toobe kan tooscale för grupper som arbetar i Azure.
 
 Komma överens om en uppsättning namnkonventioner direkt. Det finns några överväganden om namngivningskonventioner som täcker som anger regler.
 
 ## <a name="affixes"></a>Utför
-När du visar om du vill definiera en namngivningskonvention är ett beslut om Affixet är på:
+När du visar toodefine en namngivningskonvention är ett beslut om hello affix är på:
 
-* I början av namn (prefix)
-* I slutet av namn (suffix)
+* hello namn börjar på hello (prefix)
+* hello slutet av hello namn (suffix)
 
-Här är till exempel två möjliga namn för en resursgrupp med hjälp av den `rg` fästa:
+Här är till exempel två möjliga namn för en resursgrupp med hello `rg` fästa:
 
 * Rg WebApp (prefix)
 * WebApp-Rg (suffix)
 
-Affix kan referera till olika aspekter som beskriver resurserna. I följande tabell visas några exempel som vanligtvis används.
+Affix kan hänvisa toodifferent aspekter som beskriver hello resurser. hello visas nedan några exempel som vanligtvis används.
 
 | Aspekt | Exempel | Anteckningar |
 |:--- |:--- |:--- |
-| Miljö |Dev-, stg, prod |Beroende på syftet med och namnet på varje miljö. |
-| Plats |usw (USA, västra), Använd (östra USA 2) |Beroende på region i datacenter eller region för organisationen. |
-| Azure-komponent, tjänst eller produkt |Rg för resursgrupp, virtuella nätverk för virtuella nätverk |Beroende på den produkt som resursen ger stöd. |
-| Roll |DB-app, web |Beroende på vilken roll för den virtuella datorn. |
+| Miljö |Dev-, stg, prod |Beroende på hello ändamål och namnet på varje miljö. |
+| Plats |usw (USA, västra), Använd (östra USA 2) |Beroende på hello region för hello datacenter eller hello region hello organisation. |
+| Azure-komponent, tjänst eller produkt |Rg för resursgrupp, virtuella nätverk för virtuella nätverk |Beroende på hello produkt för vilka hello resursen stöder. |
+| Roll |DB-app, web |Beroende på hello roll för hello virtuell dator. |
 | Instans |01, 02, 03, osv. |Resurser som har mer än en instans. Till exempel belastningsutjämnade servrar i en molntjänst. |
 
-När din namngivningskonventioner, kontrollera att de klart vilka affix ska användas för varje typ av resursen och vilken plats (prefix vs suffix).
+När din namngivningskonventioner, se till att de klart som utför toouse för varje typ av resurs och i vilket läge (prefix vs suffix).
 
 ## <a name="dates"></a>datum
-Ofta är det viktigt att fastställa skapandedatum från namnet på en resurs. Vi rekommenderar ÅÅÅÅMMDD datumformat. Detta format garanterar som är inte bara hela datumet registreras, men också att två resurser vars namn skiljer sig bara sorteras alfabetiskt och kronologiskt.
+Det är ofta viktiga toodetermine hello datum av hello namn skapas av en resurs. Vi rekommenderar hello ÅÅÅÅMMDD datumformat. Det här formatet blir inte bara hello fullständig datumet registreras, men också att två resurser vars namn skiljer sig bara på hello datum sorteras alfabetiskt och kronologiskt.
 
 ## <a name="naming-resources"></a>Namngivning av resurser
-Definiera varje typ av resurs i namngivningskonvention som ska ha regler som definierar hur du tilldelar namn till varje resurs som har skapats. Dessa regler tillämpas för alla typer av resurser, till exempel:
+Definiera varje typ av resurs i hello namngivningskonvention, som bör ha regler som definierar hur tooassign namn tooeach resurs som har skapats. Dessa regler tillämpas tooall typer av resurser, till exempel:
 
 * Prenumerationer
 * Konton
@@ -87,17 +87,17 @@ Definiera varje typ av resurs i namngivningskonvention som ska ha regler som def
 * Nätverkssäkerhetsgrupper
 * Roller
 
-Ger tillräckligt med information för att avgöra vilken resurs som det refererar bör du använda beskrivande namn för att se till att namnet.
+tooensure som hello namn innehåller tillräckligt med information toodetermine toowhich resurs som det refererar bör du använda deskriptiva namn.
 
 ## <a name="computer-names"></a>Datornamn
-När du skapar en virtuell dator (VM), kräver Azure ett VM-namn med upp till 64 tecken som ska användas för resursnamnet. Azure använder samma namn för operativsystemet installerat på den virtuella datorn. Men kan dessa namn inte alltid densamma.
+När du skapar en virtuell dator (VM), kräver Azure en VM namnet på upp too64 tecken som används för hello resursnamnet. Azure använder hello samma namn för hello operativsystem i hello VM. Men kan dessa namn inte alltid vara hello samma.
 
-Om en virtuell dator skapas från en avbildning VHD-fil som innehåller redan ett operativsystem på det Virtuella datornamnet i Azure kan skilja sig från datornamnet för den Virtuella datorns operativsystem. Den här situationen kan lägga till en viss svårt att VM-hantering som därför inte rekommenderas. Tilldela den Virtuella Azure-resursen med samma namn som datornamnet som du tilldelar till operativsystemet på den virtuella datorn.
+Om en virtuell dator skapas från en avbildning VHD-fil som innehåller ett operativsystem redan hello namn på virtuell dator i Azure kan skilja sig från hello datornamn för Virtuella datorer med operativsystemet. Den här situationen kan lägga till en viss svårt tooVM management som därför inte rekommenderas. Tilldela hello Azure VM resurs hello samma namn som hello datornamn som du tilldelar toohello operativsystemet på den virtuella datorn.
 
-Vi rekommenderar att Azure VM-namn är samma som det underliggande operativsystemet datornamnet.
+Vi rekommenderar att hello Azure VM-namn är hello samma som hello underliggande operativsystemet datornamn.
 
 ## <a name="storage-account-names"></a>Lagringskontonamn
-Det här avsnittet gäller inte för [Azure hanterade diskar](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)eftersom du inte skapar ett separat lagringskonto. Storage-konton har särskilda regler för deras namn för ohanterade diskar. Du kan endast använda gemena bokstäver och siffror. Mer information finns i [skapa ett lagringskonto](../../storage/storage-create-storage-account.md#create-a-storage-account). Lagringskontonamnet med core.windows.net, bör dessutom vara ett giltigt GUID, unikt DNS-namn. Exempelvis om lagringskontot anropas mittlagringskonto, måste följande resulterande DNS-namn vara unika:
+Det här avsnittet gäller inte för[Azure hanterade diskar](../../storage/storage-managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)eftersom du inte skapar ett separat lagringskonto. Storage-konton har särskilda regler för deras namn för ohanterade diskar. Du kan endast använda gemena bokstäver och siffror. Mer information finns i [skapa ett lagringskonto](../../storage/storage-create-storage-account.md#create-a-storage-account). Hej lagringskontonamn, med core.windows.net, bör dessutom vara ett giltigt GUID, unikt DNS-namn. Till exempel om hello lagringskonto anropas mittlagringskonto, hello följande resulterande DNS-namn måste vara unika:
 
 * mystorageaccount.BLOB.Core.Windows.NET
 * mystorageaccount.Table.Core.Windows.NET

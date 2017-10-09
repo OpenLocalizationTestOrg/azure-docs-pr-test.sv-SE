@@ -1,6 +1,6 @@
 ---
-title: "Azure Event Hubs avbilda genomgången | Microsoft Docs"
-description: "Exempel som använder Azure Python SDK för att demonstrera funktionen Event Hubs avbilda."
+title: "aaaAzure Event Hubs avbilda genomgången | Microsoft Docs"
+description: "Exempel som använder hello Azure Python SDK toodemonstrate funktionen hello Event Hubs avbilda."
 services: event-hubs
 documentationcenter: 
 author: djrosanova
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: darosa;sethm
-ms.openlocfilehash: a764a116755c20f60e92e553bd7c896425272b85
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1737dcca283711d863aa970db0e80ae71814e666
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs avbilda genomgång: Python
 
-Event Hubs avbilda är en funktion i Händelsehubbar som gör att du kan automatiskt leverera strömmande data i din händelsehubb till ett Azure Blob storage-konto valfritt. Den här funktionen gör det enkelt att utföra batchbearbetning strömning av data i realtid. Den här artikeln beskriver hur du använder Event Hubs avbilda med Python. Mer information om händelsen hubbar avbilda finns i [översiktsartikel](event-hubs-archive-overview.md).
+Event Hubs avbilda är en funktion i Händelsehubbar som gör att du tooautomatically leverera hello strömmande data i din event hub tooan Azure Blob storage-konto valfritt. Den här funktionen gör det enkelt tooperform batchbearbetning strömning av data i realtid. Den här artikeln beskriver hur toouse Händelsehubbar avbilda med Python. Mer information om händelsen hubbar avbilda finns hello [översiktsartikel](event-hubs-archive-overview.md).
 
-Det här exemplet använder den [Azure Python SDK](https://azure.microsoft.com/develop/python/) att demonstrera funktionen avbildning. Sender.py skickas simulerad miljö telemetri till Händelsehubbar i JSON-format. Händelsehubben är konfigurerad för att använda funktionen avbilda dataskrivning att blob-lagring i batchar. Appen capturereader.py sedan läser dessa blobbar och skapar en append-fil per enhet och sedan skriver data till CSV-filer.
+Det här exemplet använder hello [Azure Python SDK](https://azure.microsoft.com/develop/python/) toodemonstrate hello avbilda funktionen. Hej skickas sender.py simulerad miljö telemetri tooEvent hubbar i JSON-format. Hej händelsehubben har konfigurerats toouse hello avbilda funktion toowrite denna tooblob lagring av data i batchar. Hej capturereader.py app sedan läser dessa blobbar och skapar en append-fil per enhet och sedan skriver hello data till CSV-filer.
 
 ## <a name="what-will-be-accomplished"></a>Detta kommer att utföras
 
-1. Skapa ett Azure Blob Storage-konto och en blob-behållare i den, som använder Azure portal.
-2. Skapa ett namnområde som Event Hub med Azure-portalen.
-3. Skapa en händelsehubb med funktionen avbilda aktiverad, med hjälp av Azure portal.
-4. Skicka data till händelsehubben med Python-skriptet.
-5. Läsa filerna från avbildningen och bearbeta dem med en annan Python-skriptet.
+1. Skapa ett Azure Blob Storage-konto och en blob-behållare i denna med hello Azure-portalen.
+2. Skapa ett namnområde som Event Hub med hello Azure-portalen.
+3. Skapa en händelsehubb hello avbilda funktionen är aktiverad, med hjälp av hello Azure-portalen.
+4. Skicka data toohello event hub med Python-skriptet.
+5. Läs hello filer från hello avbilda och bearbeta dem med en annan Python-skriptet.
 
 ## <a name="prerequisites"></a>Krav
 
@@ -43,18 +43,18 @@ Det här exemplet använder den [Azure Python SDK](https://azure.microsoft.com/d
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## <a name="create-an-azure-storage-account"></a>Skapa ett Azure Storage-konto
-1. Logga in på [Azure portal][Azure portal].
-2. I det vänstra navigeringsfönstret i portalen klickar du på **ny**, klicka på **lagring**, och klicka sedan på **Lagringskonto**.
-3. Fyll i fälten i bladet storage-konto och klicka sedan på **skapa**.
+1. Logga in toohello [Azure-portalen][Azure portal].
+2. Hello vänstra navigeringsfönstret hello-portalen, klicka på **ny**, klicka på **lagring**, och klicka sedan på **Lagringskonto**.
+3. Slutför hello fälten i hello lagring-bladet för kontot och klicka sedan på **skapa**.
    
    ![][1]
-4. Efter att du ser den **distributioner lyckades** klickar du på namnet på det nya lagringskontot och i den **Essentials** bladet, klickar du på **Blobbar**. När den **Blob-tjänst** blad öppnas, klickar du på **+ behållare** längst upp. Namnet på behållaren **avbilda**sedan Stäng den **Blob-tjänst** bladet.
-5. Klicka på **åtkomstnycklar** i den vänstra bladet och kopiera namnet på lagringskontot och värdet för **key1**. Spara dessa värden i anteckningar eller en tillfällig plats.
+4. Efter att du ser hello **distributioner lyckades** klickar du på hello namnet på hello nytt lagringskonto och i hello **Essentials** bladet, klickar du på **Blobbar**. När hello **Blob-tjänst** blad öppnas, klickar du på **+ behållare** hello överst. Namnet hello behållaren **avbilda**sedan Stäng hello **Blob-tjänst** bladet.
+5. Klicka på **åtkomstnycklar** i hello vänstra bladet och kopiera hello namn hello storage-konto och hello värdet av **key1**. Spara dessa värden tooNotepad eller en tillfällig plats.
 
-## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>Skapa en Python-skript för att skicka händelser till din event hub
+## <a name="create-a-python-script-toosend-events-tooyour-event-hub"></a>Skapa en Python-skriptet toosend händelser tooyour händelsehubb
 1. Öppna din favorit Python-redigerare, till exempel [Visual Studio Code][Visual Studio Code].
-2. Skapa ett skript som heter **sender.py**. Det här skriptet skickar 200 händelser till din event hub. De är enkla miljön avläsningar skickas i JSON.
-3. Klistra in följande kod i sender.py:
+2. Skapa ett skript som heter **sender.py**. Det här skriptet skickar 200 händelser tooyour händelsehubb. De är enkla miljön avläsningar skickas i JSON.
+3. Klistra in följande kod i sender.py hello:
    
   ```python
   import uuid
@@ -75,13 +75,13 @@ Det här exemplet använder den [Azure Python SDK](https://azure.microsoft.com/d
           sbs.send_event('INSERT YOUR EVENT HUB NAME', s)
       print y
   ```
-4. Uppdatera föregående kod för att använda din namnområdesnamnet och värdet för nyckeln händelsehubbens namn som du fick när du skapade namnområdet Händelsehubbar.
+4. Uppdatera hello föregående kod toouse din namnområdesnamnet och värdet för nyckeln händelsehubbens namn som du fick när du skapade hello Händelsehubbar namnområde.
 
-## <a name="create-a-python-script-to-read-your-capture-files"></a>Skapa en Python-skript för att läsa Capture-filer
+## <a name="create-a-python-script-tooread-your-capture-files"></a>Skapa en Python-skriptet tooread avbilda filer
 
-1. Fyll i bladet och klicka på **skapa**.
-2. Skapa ett skript som heter **capturereader.py**. Det här skriptet läser insamlade filer och skapar en fil per enhet för att skriva data endast för enheten.
-3. Klistra in följande kod i capturereader.py:
+1. Fyll i hello bladet och klicka på **skapa**.
+2. Skapa ett skript som heter **capturereader.py**. Det här skriptet läser hello avbildas filer och skapar en fil per enhet toowrite hello data endast för enheten.
+3. Klistra in följande kod i capturereader.py hello:
    
   ```python
   import os
@@ -125,10 +125,10 @@ Det här exemplet använder den [Azure Python SDK](https://azure.microsoft.com/d
           block_blob_service.delete_blob(container, blob.name)
   startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
   ```
-4. Se till att klistra in lämpliga värden för lagringskontonamn och nyckel i anropet till `startProcessing`.
+4. Vara säker på att toopaste hello lämpliga värden för din lagringskontonamn och nyckel i hello anrop för`startProcessing`.
 
-## <a name="run-the-scripts"></a>Kör skripten
-1. Öppna en kommandotolk med Python i dess sökväg och kör sedan följande kommandon för att installera nödvändiga Python-paket:
+## <a name="run-hello-scripts"></a>Köra hello skript
+1. Öppna en kommandotolk med Python i dess sökväg och kör sedan följande kommandon nödvändiga tooinstall Python-paket:
    
   ```
   pip install azure-storage
@@ -136,35 +136,35 @@ Det här exemplet använder den [Azure Python SDK](https://azure.microsoft.com/d
   pip install avro
   ```
    
-  Om du har en tidigare version av azure storage eller azure, kan du behöva använda de **--uppgradera** alternativet
+  Om du har en tidigare version av azure storage eller azure kan du behöva toouse hello **--uppgradera** alternativet
    
-  Du kan också behöva kör du följande (inte behövs på de flesta datorer):
+  Du kan även behöva toorun hello följande (inte behövs på de flesta datorer):
    
   ```
   pip install cryptography
   ```
-2. Ändra katalogen till överallt där du sparade sender.py och capturereader.py och kör det här kommandot:
+2. Ändra din katalog toowherever som du sparade sender.py och capturereader.py och kör det här kommandot:
    
   ```
   start python sender.py
   ```
    
-  Detta kommando startar en ny Python-process för att köra avsändaren.
-3. Nu ska du vänta några minuter för avbildningen som ska köras. Skriv följande kommando i din ursprungliga kommandofönster:
+  Detta kommando startar en ny Python processen toorun hello-avsändare.
+3. Nu ska du vänta några minuter för hello avbilda toorun. Skriv följande kommando i din ursprungliga kommandofönstret hello:
    
    ```
    python capturereader.py
    ```
 
-   Den här avbildningen processorn använder den lokala katalogen för att hämta alla blobbar från kontot/lagringsbehållaren. Bearbetar någon som inte är tomma och skriver resultatet som CSV-filer till den lokala katalogen.
+   Den här avbildningen processorn använder hello lokal katalog toodownload alla hello BLOB från hello konto/lagringsbehållaren. Bearbetar någon som inte är tomma och skriver hello resultat som CSV-filer till hello lokal katalog.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du kan lära dig mer om Event Hubs genom att gå till följande länkar:
+Mer information om Händelsehubbar genom att besöka hello följande länkar:
 
 * [Översikt av Händelsehubbar avbilda][Overview of Event Hubs Capture]
 * Ett komplett [exempelprogram som använder händelsehubbar][sample application that uses Event Hubs].
-* Exemplet [Skala ut händelsebearbetning med händelsehubbar][Scale out Event Processing with Event Hubs].
+* Hej [skala ut händelsebearbetning med Händelsehubbar] [ Scale out Event Processing with Event Hubs] exempel.
 * [Översikt av händelsehubbar][Event Hubs overview]
 
 [Azure portal]: https://portal.azure.com/

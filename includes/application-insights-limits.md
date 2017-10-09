@@ -1,10 +1,10 @@
-Det finns vissa begränsningar för antalet mätvärden och händelser per program (det vill säga per instrumentationsnyckel). Gränserna beror på vilken [prisplan](https://azure.microsoft.com/pricing/details/application-insights/) du väljer.
+Det finns vissa begränsningar för hello antalet mått och händelser per program (det vill säga per instrumentation nyckel). Beror på hello [priser plan](https://azure.microsoft.com/pricing/details/application-insights/) som du väljer.
 
 | **Resurs** | **Standardgräns** | **Obs!**
 | --- | --- | --- |
 | Totala data per dag | 500 GB | Du kan minska datamängden genom att ange ett tak. Om du behöver mer skickar du ett e-postmeddelande till AIDataCap@microsoft.com.
 | Kostnadsfria data per månad<br/> (Basic-prisplan) | 1 GB | Ytterligare data debiteras per gigabyte.
-| Begränsning | 32 K händelser/sek | Gränser är mätt under en minut.
+| Begränsning | 32 K händelser/sek | hello gränsen mäts över en minut.
 | Datakvarhållning | 90 dagar | Den här resursen är för [Search](../articles/application-insights/app-insights-diagnostic-search.md), [Analytics](../articles/application-insights/app-insights-analytics.md) och [Metrics Explorer](../articles/application-insights/app-insights-metrics-explorer.md).
 | [Flerstegstest för tillgänglighet](../articles/application-insights/app-insights-monitor-web-app-availability.md#multi-step-web-tests) (kvarhållning av detaljerade resultat) | 90 dagar | Den här resursen innehåller detaljerade resultat för varje steg.
 | Maximal storlek | 64 KB | 

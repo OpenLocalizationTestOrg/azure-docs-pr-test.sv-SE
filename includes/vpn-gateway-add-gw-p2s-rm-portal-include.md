@@ -1,0 +1,18 @@
+1. I hello portal hello vänster, klickar du på  **+**  och Skriv virtuell nätverksgateway i sökningen. Leta upp **virtuell nätverksgateway** i hello sökningen gå tillbaka och klicka hello-post. På hello **virtuell nätverksgateway** klickar du på **skapa** längst hello hello sidan tooopen hello **Skapa virtuell nätverksgateway** sidan.
+2. På hello **Skapa virtuell nätverksgateway** kan fylla i hello värden för din virtuella nätverksgateway.
+
+  ![Fält på sidan Skapa en virtuell nätverksgateway](./media/vpn-gateway-add-gw-p2s-rm-portal-include/p2sgw.png "Fält på sidan Skapa en virtuell nätverksgateway")
+3. **Namn**: namnge din gateway. Namnge ett gateway är inte hello samma som att namnge ett gateway-undernät. Det är hello namnet på hello gateway-objekt som du skapar.
+4. **Gatewaytyp**: välj **VPN**. VPN-gatewayer Använd hello virtuellt nätverkstypen **VPN**.
+5. **VPN-typ**: Välj hello VPN-typ som har angetts för din konfiguration. De flesta konfigurationer kräver en ruttbaserad VPN-typ.
+6. **SKU**: Välj hello gateway SKU hello listrutan. hello SKU: er som anges i hello dropdown är beroende av hello VPN-typ du väljer.
+7. **Plats**: justera hello **plats** fältet toopoint toohello plats där det virtuella nätverket finns. Om hello plats inte pekar toohello region där det virtuella nätverket finns, visas inte hello virtuellt nätverk i hello ”Välj ett virtuellt nätverk” listrutan.
+8. Välj hello virtuellt nätverk toowhich du vill tooadd en gateway. Klicka på **för virtuella nätverk** tooopen hello **Välj ett virtuellt nätverk** sidan. Välj hello virtuella nätverk. Om du inte ser ditt VNet, se till att hello **plats** fältet pekar toohello region som det virtuella nätverket finns.
+9. **Offentliga IP-adressen**: skapa en offentlig IP-adress objektet toowhich offentliga IP-adressen tilldelas dynamiskt. Klicka på **offentliga IP-adressen** tooopen hello **Välj offentlig IP-adress** sidan. Klicka på **+ skapa nya** tooopen hello **sidan för skapa offentlig IP-adress**. Ange ett namn för din offentliga IP-adress. Klicka på **OK** toosave ändringarna. hello IP-adressen tilldelas dynamiskt när hello VPN-gateway har skapats. VPN-gateway stöder för närvarande endast *dynamisk* offentlig IP-adressallokering. Dock betyder det att hello IP-adressen ändras när den har tilldelats tooyour VPN-gateway. hello endast tid hello offentliga IP-adressändringarna är när hello gateway bort och återskapas. Den ändras inte vid storleksändring, återställning eller annat internt underhåll/uppgraderingar av din VPN-gateway.
+10. **Prenumerationen**: Kontrollera att korrekt prenumeration har valts hello.
+11. **Resursgruppen**: den här inställningen bestäms av hello virtuella nätverk som du väljer.
+12. Justera inte hello **plats** när du har angett hello tidigare inställningar.
+13. Verifiera inställningarna för hello. Om du vill att din gateway tooappear på hello instrumentpanelen kan du välja **PIN-kod toodashboard** på hello hello sidans nederkant.
+14. Klicka på **skapa** toobegin skapar hello gateway. hello inställningarna verifieras och distribuerar hello gateway. Skapa en gateway kan ta upp too45 minuter.
+
+När hello gateway har skapats kan visa du hello IP-adress som har tilldelats tooit genom att visa hello virtuellt nätverk. hello gateway visas som en ansluten enhet. Du kan klicka på hello anslutna enheten (din virtuella nätverksgateway) tooview mer information.

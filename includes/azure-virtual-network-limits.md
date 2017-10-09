@@ -1,4 +1,4 @@
-<a name="virtual-networking-limits-classic"></a>Följande begränsningar gäller endast för nätverksresurser som hanteras via den klassiska distributionsmodellen per prenumeration.
+<a name="virtual-networking-limits-classic"></a>hello följande begränsningar gäller endast för nätverksresurser som hanteras via hello klassiska distributionsmodellen per prenumeration.
 
 | Resurs | Standardgräns | Övre gräns |
 | --- | --- | --- |
@@ -18,7 +18,7 @@
 | Åtkomstkontrollistor (ACL:er) för slutpunkt |50 |50 |
 
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>Nätverksgränser – Azure Resource Manager
-Följande begränsningar gäller endast för nätverksresurser som hanteras via Azure Resource Manager per region per prenumeration.
+hello följande begränsningar gäller endast för nätverksresurser som hanteras via Azure Resource Manager per region per prenumeration.
 
 | Resurs | Standardgräns | Övre gräns |
 | --- | --- | --- |
@@ -44,5 +44,5 @@ Följande begränsningar gäller endast för nätverksresurser som hanteras via 
 | Punkt-till-plats-rotcertifikat per VPN-gateway |20 |20 |
 | Sekundära IP-konfigurationer per virtuellt nätverk |1000 |kontakta supporten |
 
-[Kontakta supporten](../articles/azure-supportability/resource-manager-core-quotas-request.md ) om du måste öka gränserna från standardvärdet.
+[Kontakta supporten](../articles/azure-supportability/resource-manager-core-quotas-request.md ) om du behöver tooincrease gränser från standard.
 

@@ -1,6 +1,6 @@
 ---
-title: "Hur du använder Service Bus-köer med PHP | Microsoft Docs"
-description: "Lär dig hur du använder Service Bus-köer i Azure. Kodexempel som skrivits i PHP."
+title: "aaaHow toouse Service Bus-köer med PHP | Microsoft Docs"
+description: "Lär dig hur toouse Service Bus köer i Azure. Kodexempel som skrivits i PHP."
 services: service-bus-messaging
 documentationcenter: php
 author: sethmanheim
@@ -14,42 +14,42 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: 3514812f7f087582035dad5d9a4d620652aa4da9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8cf233176029b679d172eaf713632087beca5e4e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-service-bus-queues-with-php"></a>Hur du använder Service Bus-köer med PHP
+# <a name="how-toouse-service-bus-queues-with-php"></a>Hur toouse Service Bus köer med PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Den här guiden visar hur du använder Service Bus-köer. Exemplen är skrivna i PHP och Använd den [Azure SDK för PHP](../php-download-sdk.md). Scenarier som tas upp inkluderar **skapa köer**, **skicka och ta emot meddelanden**, och **tar bort köer**.
+Den här guiden visar hur toouse Service Bus-köer. hello exemplen är skrivna i PHP och använder hello [Azure SDK för PHP](../php-download-sdk.md). hello beskrivs scenarier där **skapa köer**, **skicka och ta emot meddelanden**, och **tar bort köer**.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 ## <a name="create-a-php-application"></a>Skapa en PHP-program
-Det enda kravet för att skapa en PHP-program som har åtkomst till Azure Blob-tjänsten är refererar till klasserna i den [Azure SDK för PHP](../php-download-sdk.md) från inom din kod. Du kan använda alla utvecklingsverktyg för att skapa program, eller anteckningar.
+Hej krav för att skapa en PHP-program som ansluter till hello Azure Blob-tjänsten är hello refererar till klasser i hello [Azure SDK för PHP](../php-download-sdk.md) från inom din kod. Du kan använda alla development tools toocreate programmet eller anteckningar.
 
 > [!NOTE]
-> PHP-installation måste också ha den [OpenSSL tillägget](http://php.net/openssl) installerat och aktiverat.
+> PHP-installation måste också ha hello [OpenSSL tillägget](http://php.net/openssl) installerat och aktiverat.
 > 
 > 
 
 I den här guiden använder du tjänstens funktioner som kan anropas från ett PHP-program lokalt eller i koden körs i en Azure-webbroll, en arbetsroll eller en webbplats.
 
-## <a name="get-the-azure-client-libraries"></a>Hämta Azure klienten bibliotek
+## <a name="get-hello-azure-client-libraries"></a>Hämta hello Azure klientbibliotek
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-## <a name="configure-your-application-to-use-service-bus"></a>Konfigurera ditt program att använda Service Bus
-Om du vill använda Service Bus-kö API: er, gör du följande:
+## <a name="configure-your-application-toouse-service-bus"></a>Konfigurera ditt program toouse Service Bus
+toouse hello Service Bus-kö API: er, hello följande:
 
-1. Referera till den automatiska bandladdaren filen med hjälp av den [require_once] [ require_once] instruktionen.
+1. Referens hello bandladdaren fil med hello [require_once] [ require_once] instruktionen.
 2. Referera till alla klasser som du kan använda.
 
-I följande exempel visas hur du lägger till den automatiska bandladdaren fil- och referens av `ServicesBuilder` klass.
+hello följande exempel visas hur tooinclude hello bandladdaren fil- och hello `ServicesBuilder` klass.
 
 > [!NOTE]
-> Det här exemplet (och andra exempel i den här artikeln) förutsätter att du har installerat PHP-klientbibliotek för Azure via Composer. Om du har installerat biblioteken manuellt eller som ett PÄRONTRÄD paket måste du referera till den **WindowsAzure.php** bandladdaren filen.
+> Det här exemplet (och andra exempel i den här artikeln) förutsätter att du har installerat hello PHP-klientbibliotek för Azure via Composer. Om du har installerat hello bibliotek manuellt eller som ett PÄRONTRÄD paket måste du referera hello **WindowsAzure.php** bandladdaren filen.
 > 
 > 
 
@@ -58,25 +58,25 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-I exemplen nedan, den `require_once` instruktionen visas alltid, men endast klasserna som krävs för att köra refereras.
+I hello exemplen nedan hello `require_once` instruktionen visas alltid, men bara hello klasser krävs för hello exempel tooexecute refererar till.
 
 ## <a name="set-up-a-service-bus-connection"></a>Konfigurera en Service Bus-anslutning
-Om du vill skapa en instans av en Service Bus-klient, måste du ha en giltig anslutningssträng i det här formatet:
+tooinstantiate en Service Bus-klient, måste du först ha en giltig anslutningssträng i det här formatet:
 
 ```
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Där `Endpoint` är vanligtvis i formatet `[yourNamespace].servicebus.windows.net`.
+Där `Endpoint` är vanligtvis av hello format `[yourNamespace].servicebus.windows.net`.
 
-Så här skapar du en Azure-tjänsten måste du använda den `ServicesBuilder` klass. Du kan:
+toocreate alla Azure-tjänst-klienter måste du använda hello `ServicesBuilder` klass. Du kan:
 
-* Skicka anslutningssträngen till den.
-* Använd den **CloudConfigurationManager (CCM)** till flera externa källor för anslutningssträngen:
+* Skicka hello anslutning direkt string tooit.
+* Använd hello **CloudConfigurationManager (CCM)** toocheck flera externa datakällor för hello anslutningssträngen:
   * Som standard levereras med stöd för en extern källa - miljövariabler
-  * Du kan lägga till nya källor genom att utöka den `ConnectionStringSource` klass
+  * Du kan lägga till nya källor genom att utöka hello `ConnectionStringSource` klass
 
-Exempel som beskrivs här skickas anslutningssträngen direkt.
+Hello-exempel som beskrivs här skickas hello anslutningssträngen direkt.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -89,9 +89,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-queue"></a>Skapa en kö
-Du kan utföra hanteringsåtgärder för Service Bus-köer via den `ServiceBusRestProxy` klass. En `ServiceBusRestProxy` objektet har skapats den `ServicesBuilder::createServiceBusService` fabriksmetoden med en lämplig anslutningssträng som innehåller behörigheterna som är token för att hantera den.
+Du kan utföra hanteringsåtgärder för Service Bus-köer via hello `ServiceBusRestProxy` klass. En `ServiceBusRestProxy` objektet har skapats via hello `ServicesBuilder::createServiceBusService` fabriksmetoden med en lämplig anslutningssträngen som kapslar in hello token behörigheter toomanage den.
 
-I följande exempel visas hur du kan skapa en instans av en `ServiceBusRestProxy` och anropa `ServiceBusRestProxy->createQueue` du skapar en kö med namnet `myqueue` inom en `MySBNamespace` namnområde för tjänsten:
+följande exempel visar hur hello tooinstantiate en `ServiceBusRestProxy` och anropa `ServiceBusRestProxy->createQueue` toocreate en kö med namnet `myqueue` inom en `MySBNamespace` namnområde för tjänsten:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -120,12 +120,12 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Du kan använda den `listQueues` metod på `ServiceBusRestProxy` objekt för att kontrollera om det redan finns en kö med ett angivet namn i ett namnområde.
+> Du kan använda hello `listQueues` metod på `ServiceBusRestProxy` objekt toocheck om en kö med ett angivet namn finns redan i ett namnområde.
 > 
 > 
 
-## <a name="send-messages-to-a-queue"></a>Skicka meddelanden till en kö
-Att skicka ett meddelande till en Service Bus-kö, program-anrop i `ServiceBusRestProxy->sendQueueMessage` metod. Följande kod visar hur du skickar ett meddelande till den `myqueue` kö som tidigare har skapat i den `MySBNamespace` namnområde för tjänsten.
+## <a name="send-messages-tooa-queue"></a>Skicka meddelanden tooa kön
+toosend en meddelandekö tooa Service Bus programmet anropar hello `ServiceBusRestProxy->sendQueueMessage` metod. Hej följande kod visar hur toosend ett meddelande toohello `myqueue` kö som tidigare har skapat i den `MySBNamespace` namnområde för tjänsten.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -155,19 +155,19 @@ catch(ServiceException $e){
 }
 ```
 
-Meddelanden skickas till (och mottagna från) Service Bus-köer är instanser av den [BrokeredMessage] [ BrokeredMessage] klass. [BrokeredMessage] [ BrokeredMessage] objekt har en uppsättning standard metoder och egenskaper som används för att lagra anpassade programspecifika egenskaper och en brödtext med godtyckliga programdata.
+Meddelanden som skickats för (och tagits emot från) Service Bus-köer är instanser av hello [BrokeredMessage] [ BrokeredMessage] klass. [BrokeredMessage] [ BrokeredMessage] objekt har en uppsättning standard metoder och egenskaper som används toohold anpassade programspecifika egenskaper och en brödtext med godtyckliga programdata.
 
-Service Bus-köerna stöder en maximal meddelandestorlek på 256 kB på [standardnivån](service-bus-premium-messaging.md) och 1 MB på [premiumnivån](service-bus-premium-messaging.md). Rubriken, som inkluderar standardprogramegenskaperna och de anpassade programegenskaperna, kan ha en maximal storlek på 64 kB. Det finns ingen gräns för antalet meddelanden som kan finnas i en kö men det finns ett tak för den totala storleken för de meddelanden som ligger i en kö. Den här övre gräns för storleken är 5 GB.
+Service Bus-köer stöder en maximal meddelandestorlek på 256 KB i hello [standardnivån](service-bus-premium-messaging.md) och 1 MB på hello [premiumnivån](service-bus-premium-messaging.md). hello-huvudet som innehåller hello standard- och anpassade programegenskaperna, kan ha en maximal storlek på 64 KB. Det finns ingen gräns hello antalet meddelanden som finns i en kö men det finns ett tak på hello totala storleken på hälsningsmeddelande som innehas av en kö. Den här övre gräns för storleken är 5 GB.
 
 ## <a name="receive-messages-from-a-queue"></a>Ta emot meddelanden från en kö
 
-Det bästa sättet att ta emot meddelanden från en kö är att använda en `ServiceBusRestProxy->receiveQueueMessage` metod. Meddelanden kan tas emot i två olika lägen: [ *ReceiveAndDelete* ](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) och [ *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock). **PeekLock** är standard.
+hello bästa sätt tooreceive meddelanden från en kö är toouse en `ServiceBusRestProxy->receiveQueueMessage` metod. Meddelanden kan tas emot i två olika lägen: [ *ReceiveAndDelete* ](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) och [ *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock). **PeekLock** är hello som standard.
 
-När du använder [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) läge får är en engångsåtgärd, det vill säga när Service Bus tar emot en läsbegäran för ett meddelande i en kö, den markerar meddelandet som Förbrukat och skickar tillbaka det till programmet. Läget [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) är den enklaste modellen och fungerar bäst för scenarier där ett program kan tolerera icke-bearbetning av ett meddelande om ett fel inträffar. För att förstå detta kan du föreställa dig ett scenario där konsumenten utfärdar en receive-begäran och sedan kraschar innan den kan bearbeta denna begäran. Eftersom Service Bus kommer att ha markerat meddelandet som Förbrukat, och sedan när programmet startas om och börjar förbruka meddelanden igen, att ha missat meddelandet som förbrukades innan kraschen.
+När du använder [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) läge får är en engångsåtgärd, det vill säga när Service Bus tar emot en läsbegäran för ett meddelande i en kö, den markerar hello meddelandet som Förbrukat och returnerar det toohello program. [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) läge är hello enklaste modellen och fungerar bäst för scenarier där ett program kan tolerera icke-bearbetning av ett meddelande i hello händelse av fel. toounderstand, Föreställ i vilka hello konsumenten problem hello mottagning av begäran och sedan kraschar innan bearbetningen. Eftersom Service Bus kommer att ha markerat hello meddelandet som Förbrukat, sedan när hello programmet startas om och börjar förbruka meddelanden igen, att ha missat hello-meddelande som har förbrukats tidigare toohello krascher.
 
-I standard [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock) läge, ett meddelande blir en åtgärd i två steg, vilket gör det möjligt att stödprogram som inte tolererar att ett meddelande saknas. När Service Bus tar emot en begäran, den söker efter nästa meddelande som ska förbrukas, låser det för att förhindra att andra användare tar emot det och skickar sedan tillbaka det till programmet. När programmet har avslutat bearbetningen av meddelandet (eller lagrar det på ett tillförlitligt sätt för framtida bearbetning), den är klar det andra steget i processen genom att skicka det mottagna meddelandet till `ServiceBusRestProxy->deleteMessage`. När Service Bus ser den `deleteMessage` -anrop som den markera meddelandet som Förbrukat och tas bort från kön.
+I hello standard [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock) läge, ett meddelande blir en åtgärd i två steg, vilket gör det möjligt toosupport program som inte tolererar att ett meddelande saknas. När Service Bus tar emot en begäran, den hittar hello nästa meddelande toobe förbrukas, låser det tooprevent andra användare tar emot den, och returnerar sedan toohello program. När hello programmet har avslutat bearbetningen hello-meddelande (eller lagrar det på ett tillförlitligt sätt för framtida bearbetning), Slutför hello andra steget i hello får processen genom att skicka emot hälsningsmeddelande för`ServiceBusRestProxy->deleteMessage`. När Service Bus ser hello `deleteMessage` anropet, den Markera hello meddelandet som Förbrukat och ta bort den från hello kön.
 
-I följande exempel visas hur du tar emot och bearbeta ett meddelande med hjälp av [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock) läge (standardläget).
+följande exempel visar hur hello tooreceive och bearbeta ett meddelande med hjälp av [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock) läge (hello standardläget).
 
 ```php
 require_once 'vendor/autoload.php';
@@ -180,7 +180,7 @@ use WindowsAzure\ServiceBus\Models\ReceiveMessageOptions;
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
 try    {
-    // Set the receive mode to PeekLock (default is ReceiveAndDelete).
+    // Set hello receive mode tooPeekLock (default is ReceiveAndDelete).
     $options = new ReceiveMessageOptions();
     $options->setPeekLock();
 
@@ -207,18 +207,18 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Hantera programkrascher och oläsbara meddelanden
+## <a name="how-toohandle-application-crashes-and-unreadable-messages"></a>Hur toohandle programmet kraschar och oläsbara meddelanden
 
-Service Bus innehåller funktioner som hjälper dig att återställa fel i programmet eller lösa problem med bearbetning av meddelanden på ett snyggt sätt. Om ett mottagarprogram går inte att bearbeta meddelandet av någon anledning, så kan det anropa den `unlockMessage` metod för det mottagna meddelandet (i stället för den `deleteMessage` metod). Detta gör att Service Bus låser upp meddelandet i kön och gör det tillgängligt att tas emot igen, antingen genom samma användningsprogram eller ett annat användningsprogram.
+Service Bus innehåller funktioner toohelp du att återställa fel i programmet eller problem med bearbetning av ett meddelande. Om ett mottagarprogram inte kan tooprocess hello meddelande av någon anledning, så kan det anropa hello `unlockMessage` metod för hello tog emot meddelande (i stället för hello `deleteMessage` metod). Detta orsakar Service Bus toounlock hello-meddelande i kön för hello och göra den tillgänglig toobe tas emot igen, antingen hello av samma förbrukning av ett program eller ett annat användningsprogram.
 
-Det finns också en tidsgräns som är associerad med ett meddelande som ligger låst i kön och om programmet misslyckas med att bearbeta meddelandet innan timeout för lås går ut (till exempel om programmet kraschar), kommer Service Bus att låsa upp meddelandet automatiskt och gör den tillgängligt att tas emot igen.
+Det finns också en tidsgräns som är associerad med ett meddelande i kön hello och om hello program inte tooprocess hello-meddelande innan timeout för lås hello går ut (till exempel om hello programmet kraschar), kommer Service Bus att låsa upp hello-meddelande automatiskt och gör den tillgänglig toobe tas emot igen.
 
-I händelse av att programmet kraschar efter att meddelandet har bearbetats men innan det `deleteMessage` begäran utfärdas och sedan meddelandet att levereras till programmet när den startas om. Det här kallas ofta *minst när* bearbetningen, det vill säga, varje meddelande bearbetas minst en gång men i vissa situationer kan samma meddelande levereras. Om scenariot inte tolererar duplicerad bearbetning, bör sedan lägga till ytterligare logik i program för att hantera duplicerad meddelandeleverans. Detta uppnås ofta med hjälp av den `getMessageId` -metoden i meddelandet som förblir konstant under alla leveransförsök.
+Hello händelse som hello programmet kraschar efter hello meddelandet har bearbetats men innan hello `deleteMessage` begäran utfärdas och sedan hello-meddelande kommer att levereras på nytt toohello program när den startas om. Det här kallas ofta *minst när* bearbetning, det vill säga varje meddelande bearbetas minst en gång men i vissa situationer hello samma meddelande levereras. Om hello scenariot inte tolererar duplicerad bearbetning och sedan lägga till ytterligare rekommenderas logik tooapplications toohandle duplicerad meddelandeleverans. Detta uppnås ofta med hjälp av hello `getMessageId` metod i hello-meddelande, förblir konstant under alla leveransförsök.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har lärt dig grunderna om Service Bus-köer, se [köer, ämnen och prenumerationer] [ Queues, topics, and subscriptions] för mer information.
+Nu när du har lärt dig grunderna hello i Service Bus-köer, se [köer, ämnen och prenumerationer] [ Queues, topics, and subscriptions] för mer information.
 
-Mer information finns också finns den [PHP Developer Center](https://azure.microsoft.com/develop/php/).
+Mer information finns också hello [PHP Developer Center](https://azure.microsoft.com/develop/php/).
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md

@@ -1,6 +1,6 @@
 ---
-title: "Azure AD och program: tilldela användare till ett program | Microsoft Docs"
-description: "Hur du implementerar Användartilldelning för Azure-program."
+title: "Azure AD och program: tilldela användare tooan program | Microsoft Docs"
+description: "Hur tooimplement Användartilldelning för Azure-program."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: kgremban
 robots: noindex
-ms.openlocfilehash: 29d63bd5781dc7ef9e84840dd4b1b70222cf6892
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e9374cbd106d1bcb302645828a061fe184f9956b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-and-applications-assigning-users-to-an-application"></a>Azure AD och program: tilldela användare till ett program
-Innan du kan tilldela användare och grupper till ett program, måste du begära Användartilldelning.  Information om hur du kräver Användartilldelning finns i [kräver Användartilldelning](active-directory-applications-guiding-developers-requiring-user-assignment.md) artikel.
+# <a name="azure-ad-and-applications-assigning-users-tooan-application"></a>Azure AD och program: tilldela användare tooan program
+Innan du kan tilldela användare och grupper tooan program, måste du begära Användartilldelning.  toolearn hur toorequire Användartilldelning finns hello [kräver Användartilldelning](active-directory-applications-guiding-developers-requiring-user-assignment.md) artikel.
 
-## <a name="assigning-users-to-an-application"></a>Tilldela användare till ett program
-1. Logga in på Azure-portalen med ett administratörskonto.
-2. Klicka på den **alla objekt** objekt på huvudmenyn.
-3. Välj det bibliotek som du använder för programmet.
-4. Klicka på den **program** fliken.
-5. Markera programmet i listan över program som är associerade med den här katalogen.
-6. Klicka på den **användare och grupper** fliken.
-7. Markera de användare som du vill tilldela till programmet.
+## <a name="assigning-users-tooan-application"></a>Tilldela användare tooan program
+1. Logga in toohello Azure-portalen med ett administratörskonto.
+2. Klicka på hello **alla objekt** objekt i hello huvudmenyn.
+3. Välja hello-katalog som du använder för hello program.
+4. Klicka på hello **program** fliken.
+5. Välj hello programmet hello listan över program som är associerade med den här katalogen.
+6. Klicka på hello **användare och grupper** fliken.
+7. Välj hello användare om du vill att tooassign toohello.
 8. Klicka på **TILLDELA**.
 9. Klicka på **Ja** när du tillfrågas.
 

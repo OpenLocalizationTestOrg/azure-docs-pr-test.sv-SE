@@ -1,6 +1,6 @@
 ---
-title: Azure API Management autentiseringsprinciper | Microsoft Docs
-description: "Läs mer om autentiseringsprinciper som är tillgängliga för användning i Azure API Management."
+title: aaaAzure API Management autentiseringsprinciper | Microsoft Docs
+description: "Läs mer om hello autentiseringsprinciper kan användas i Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 63ef20a56ab7721f9ecc7025d05963cc4b0c27a0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ce93cced66cb67520e97c7c15f3685bffb08e1f5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-authentication-policies"></a>Principer för autentisering av API-hantering
-Det här avsnittet innehåller en referens för följande API Management-principer. Mer information om att lägga till och konfigurera principer finns [principer i API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Det här avsnittet innehåller en referens för hello följande API Management-principer. Mer information om att lägga till och konfigurera principer finns [principer i API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="AuthenticationPolicies"></a>Principer för autentisering  
   
@@ -30,7 +30,7 @@ Det här avsnittet innehåller en referens för följande API Management-princip
 -   [Autentisera med klientcertifikatet](api-management-authentication-policies.md#ClientCertificate) -autentisering med en serverdelstjänst som använder klientcertifikat.  
   
 ##  <a name="Basic"></a>Autentisera med Basic  
- Använd den `authentication-basic` princip för att autentisera med en serverdelstjänst som använder grundläggande autentisering. Den här principen anger effektivt HTTP Authorization-huvud till värdet som motsvarar de autentiseringsuppgifter som anges i principen.  
+ Använd hello `authentication-basic` princip tooauthenticate med en serverdelstjänst som använder grundläggande autentisering. Den här principen anger effektivt hello auktorisering för HTTP-huvudet toohello värde motsvarande toohello autentiseringsuppgifterna i hello princip.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -54,18 +54,18 @@ Det här avsnittet innehåller en referens för följande API Management-princip
   
 |Namn|Beskrivning|Krävs|Standard|  
 |----------|-----------------|--------------|-------------|  
-|användarnamn|Anger användarnamnet för grundläggande autentiseringsuppgifter.|Ja|Saknas|  
-|lösenord|Anger lösenordet för autentiseringsuppgifterna för grundläggande.|Ja|Saknas|  
+|användarnamn|Anger hello användarnamnet för grundläggande hello-autentiseringsuppgifter.|Ja|Saknas|  
+|lösenord|Anger hello lösenord grundläggande hello-autentiseringsuppgifter.|Ja|Saknas|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande  
   
 -   **Princip för scope:** API  
   
 ##  <a name="ClientCertificate"></a>Autentisera med klientcertifikatet  
- Använd den `authentication-certificate` princip för att autentisera med en serverdelstjänst som använder klientcertifikat. Certifikatet måste vara [installerats i API Management](http://go.microsoft.com/fwlink/?LinkID=511599) första och identifieras av dess tumavtryck.  
+ Använd hello `authentication-certificate` princip tooauthenticate med en serverdelstjänst som använder klientcertifikat. hello certifikat måste toobe [installerats i API Management](http://go.microsoft.com/fwlink/?LinkID=511599) första och identifieras av dess tumavtryck.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -89,10 +89,10 @@ Det här avsnittet innehåller en referens för följande API Management-princip
   
 |Namn|Beskrivning|Krävs|Standard|  
 |----------|-----------------|--------------|-------------|  
-|tumavtrycket|Tumavtryck för klientcertifikatet.|Ja|Saknas|  
+|tumavtrycket|hello tumavtryck för hello klientcertifikatet.|Ja|Saknas|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande  
   

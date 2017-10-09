@@ -1,43 +1,43 @@
 <!--author=alkohli last changed: 07/19/2017-->
 
-#### <a name="to-create-a-volume"></a>Skapa en volym
-1. Välj din enhet i tabellistan med enheter på bladet **Enheter**. Klicka på **+ Lägg till volymen**.
+#### <a name="toocreate-a-volume"></a>toocreate en volym
+1. Från hello tabular lista över hello enheter i hello **enheter** bladet Välj din enhet. Klicka på **+ Lägg till volymen**.
 
     ![Lägg till en ny volym](./media/storsimple-8000-create-volume-u2/step5createvol1.png)
 
-2. På bladet **Lägg till en volym**:
+2. I hello **lägga till en volym** bladet:
    
-   1. Fältet **Välj enhet** fylls i automatiskt med din aktuella enhet.
+   1. Hej **Välj enhet** fältet fylls i automatiskt med din aktuella enhet.
 
-   2. I listrutan väljer du den volymbehållare som du vill lägga till en volym i. 
+   2. Hello listrutan, Välj hello volymbehållare där du behöver tooadd en volym. 
 
-   3.  Anger du ett **namn** för volymen. Du kan byta namn på en volym när den har skapats.
+   3.  Anger du ett **namn** för volymen. Du kan byta namn på en volym när hello volymen har skapats.
 
-   4. Välj **Typ** för volymen i listrutan. För arbetsbelastningar som kräver lokala garantier, låg latens och hög prestanda, väljer du en **lokalt fäst** volym. För all övrig data, väljer du en **nivåindelad** volym. Om du använder volymen för arkiveringsdata, markerar du **Använd volymen för arkiveringsdata med låg åtkomstfrekvens**.
+   4. Välj hello på hello nedrullningsbara listan **typen** för volymen. För arbetsbelastningar som kräver lokala garantier, låg latens och hög prestanda, väljer du en **lokalt fäst** volym. För all övrig data, väljer du en **nivåindelad** volym. Om du använder volymen för arkiveringsdata, markerar du **Använd volymen för arkiveringsdata med låg åtkomstfrekvens**.
       
-       En nivåindelad volym är tunt etablerad och kan skapas snabbt. Om du väljer **Använd volymen för arkiveringsdata med låg åtkomstfrekvens** för nivåindelad volym avsedd för arkivdata så ändras segmentstorleken för deduplicering för din volym till 512 KB. Om fältet inte är markerat använder den motsvarande nivåindelade volymen en segmentstorlek på 64 kB. En större segmentstorlek för deduplicering låter enheten snabba på överföring av segmentstorleken tillåter enheten att påskynda överföringen av stora mängder arkiveringsdata till molnet.
+       En nivåindelad volym är tunt etablerad och kan skapas snabbt. Att välja **Använd volymen för mindre ofta använda arkiveringsdata** för nivåindelade volymen för arkiveringsdata ändringar hello deduplicering segmentstorleken för volymen too512 KB. Om det här fältet inte är markerad använder hello motsvarande nivåindelade volymen en segmentstorlek på 64 KB. En större segmentstorlek för deduplicering kan hello enheten tooexpedite hello överföringen av stora mängder arkiveringsdata toohello moln.
        
-       En lokalt fäst volym etableras tjockt, vilket försäkrar att primärdata på volymen är lokalt belägen för enheten och inte läcker över till molnet.  Om du skapar en lokalt fäst volym letar enheten efter ledigt utrymme på de lokala nivåerna för att etablera volymen med önskad storlek. Att skapa en lokalt fäst volym kan innebära att läcka befintlig data från enheten till molnet och volymen kan ta lång tid att skapa. Den totala tiden beror på den etablerade volymens storlek, tillgänglig nätverksbandbredd och den data som finns på din enhet.
+       En lokalt Fäst volym etableras tjockt, vilket och säkerställer att hello primära data på hello volymen förblir lokala toohello enhet och inte läcker över toohello moln.  Om du skapar en lokalt Fäst volym hello enhet söker efter tillgängligt utrymme på hello lokala nivåerna tooprovision hello mängden hello begärda storlek. hello-åtgärden för att skapa en lokalt Fäst volym kan innebära att läcka befintlig data från hello enhet toohello moln och hello tidsåtgång toocreate hello volymen kanske är långt. hello totala tiden beror på hello storleken på hello etableras volym och tillgänglig nätverksbandbredd hello data på enheten.
 
-   5. Ange **etableringskapacitet** för volymen. Anteckna kapaciteten som finns tillgänglig baserat på den volymtyp som valts. Den angivna volymstorleken får inte överskrida det tillgängliga utrymmet.
+   5. Ange hello **Etableringskapacitet** för volymen. Anteckna hello-kapaciteten som finns tillgänglig baserat på hello volymtyp som valts. hello angivna volymstorleken inte får överstiga hello tillgängligt utrymme.
       
-       Du kan etablera lokalt fästa volymer upp till 8,5 TB, eller nivåindelade volymer upp till 200 TB på 8100-enheten. På den större 8600-enheten kan du etablera lokalt fästa volymer upp till 22,5 TB, eller nivåindelade volymer upp till 500 TB. Eftersom det krävs lokalt utrymme på enheten för att hålla arbetsuppsättningen med nivåindelade volymer påverkar skapandet av fästa volymer mängden utrymme som finns tillgängligt för att etablera nivåindelade volymer. Därför minskar utrymmet som är tillgängligt för att skapa nivåindelade volymer om du skapar en lokalt fixerad volym. Likaså om du skapar en nivåindelad volym minskar det tillgängliga utrymmet för att skapa en lokalt fäst volym.
+       Du kan etablera lokalt fästa volymer upp too8.5 TB, eller nivåindelade volymer upp too200 TB på 8100 hello-enhet. Du kan etablera lokalt fästa volymer upp too22.5 TB, eller nivåindelade volymer upp too500 TB på hello större 8600-enheten. Eftersom lokalt utrymme på enheten hello krävs toohost hello arbetsminne nivåindelade volymer påverkar skapandet av fästa volymer hello diskutrymme för att etablera nivåindelade volymer. Därför minskar utrymmet som är tillgängligt för att skapa nivåindelade volymer om du skapar en lokalt fixerad volym. Om en nivåindelad volym skapas reduceras på samma sätt hello tillgängligt utrymme för att skapa en lokalt Fäst volym.
       
-       Om du etablerar en lokalt fäst volym på 8,5 TB (största tillåtna storleken) på din 8100-enhet har du använt upp allt lokalt tillgängligt utrymme för enheten. I så fall kan du inte skapa fler nivåindelade volymer eftersom det inte finns något lokalt utrymme ledigt på enheten för att lagra arbetsuppsättningen för den nivåindelade volymen. Befintliga nivåindelade volymer påverkar också tillgängligt utrymme. Om du exempelvis har en 8100-enhet som redan har nivåindelade volymer på 106 TB finns det bara 4 TB utrymme tillgängligt för lokalt fästa volymer.
+       Om du etablerar en lokalt Fäst volym på 8.5 TB (största tillåtna storleken) på din 8100-enhet har du uttömt alla hello lokalt tillgängligt utrymme på hello enhet. Du kan inte skapa någon nivåindelad volym från den tidpunkten och framåt eftersom det inte finns något lokalt utrymme ledigt på hello enheten toohost hello arbetsminne hello nivåer volym. Befintliga nivåindelade volymer påverkar också hello tillgängligt utrymme. Om du exempelvis har en 8100-enhet som redan har nivåindelade volymer på 106 TB finns det bara 4 TB utrymme tillgängligt för lokalt fästa volymer.
 
-    6. Klicka på pilen i fältet **Anslutna värdar**. 
+    6. I hello **anslutna värdar** klickar hello pilen. 
 
         ![Anslutna värdar](./media/storsimple-8000-create-volume-u2/step5createvol2.png)
 
-    7. På bladet **Anslutna värdar** väljer du en befintlig ACR eller lägger till en ny ACR genom att utföra följande steg:
+    7. I hello **anslutna värdar** bladet Välj en befintlig ACR eller lägga till en ny ACR genom att utföra följande steg hello:
 
        1. Ange ett **namn** för din ACR.
-       2. Som **iSCSI-initierarnamn**, anger du det iSCSI-kvalificerade namnet (IQN) för din Windows-värd. Om du inte har en IQN, går du till [Hämta IQN för en Windows Server-värd](#get-the-iqn-of-a-windows-server-host).
+       2. Under **iSCSI-Initierarnamn**, ange hello iSCSI kvalificerade namn (IQN) för Windows-värd. Om du inte har hello IQN, går för[Get hello IQN för en Windows Server-värd](#get-the-iqn-of-a-windows-server-host).
 
-    9. Klicka på **Skapa**. En volym skapas med de angivna inställningarna.
+    9. Klicka på **Skapa**. En volym skapas med hello angivna inställningar.
 
         ![Klicka på Skapa](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 
         > [!NOTE]
-        > Tänk på att volymen som du har skapat här inte är skyddad. Du måste skapa och associera principer för säkerhetskopiering med den här volymen för att skapa schemalagda säkerhetskopieringar. 
+        > Tänk på att hello volymen som du har skapat här inte skyddas. Du behöver toocreate och säkerhetskopieringsprinciper som associeras med den här volymen tootake schemalagda säkerhetskopieringar. 
 

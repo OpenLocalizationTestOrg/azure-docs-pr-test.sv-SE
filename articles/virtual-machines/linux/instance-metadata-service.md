@@ -1,6 +1,6 @@
 ---
-title: "Tjänsten för Azure-instans Metadata för virtuella Linux-datorer | Microsoft Docs"
-description: "RESTful-gränssnitt att få information om Linux VM beräkning, nätverk och kommande underhållshändelser."
+title: "aaaAzure instanstjänsten Metadata för virtuella Linux-datorer | Microsoft Docs"
+description: "RESTful-gränssnitt tooget information om Linux VM beräkning, nätverk och kommande underhållshändelser."
 services: virtual-machines-linux
 documentationcenter: 
 author: harijay
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/11/2017
 ms.author: harijay
-ms.openlocfilehash: a61acbe0532ece3a6a26ceb366c12c69db4c304c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 138822addea322c6e565b39a1b2002d7305f5fc7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-instance-metadata-service-for-linux-vms"></a>Azure-instans Metadata-tjänsten för virtuella Linux-datorer
 
 
-Tjänsten Azure instans Metadata innehåller information om virtuella instanser som kan användas för att hantera och konfigurera dina virtuella datorer som körs.
+hello Azure instans Metadata Service innehåller information om kör instanser för virtuella datorer som kan använda toomanage och konfigurera de virtuella datorerna.
 Detta omfattar information som SKU, nätverkskonfigurationen och kommande underhållshändelser. Mer information om vilken typ av information är tillgänglig finns [metadatakategorier](#instance-metadata-data-categories).
 
-Azures instans Metadata Service är en REST-slutpunkt som är tillgängliga för alla IaaS-VM som skapats via den [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). Slutpunkten är tillgänglig på en välkänd icke-dirigerbara IP-adress (`169.254.169.254`) som kan nås från den virtuella datorn.
+Azures instans Metadata Service är en REST-slutpunkt tillgänglig tooall IaaS-VM som skapats via hello [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). hello-slutpunkten är tillgänglig på en välkänd icke-dirigerbara IP-adress (`169.254.169.254`) som kan nås från inom hello VM.
 
 > [!IMPORTANT]
-> Den här tjänsten är **allmänt tillgänglig** i globala Azure-regioner. Det är i Public preview för myndigheter, Kina och tyska Azure-molnet. Den tar emot uppdateringar för att exponera ny information om virtuell datorinstans regelbundet. Den här sidan visar den uppdaterade [datakategorier](#instance-metadata-data-categories) tillgängliga.
+> Den här tjänsten är **allmänt tillgänglig** i globala Azure-regioner. Det är i Public preview för myndigheter, Kina och tyska Azure-molnet. Den tar emot uppdateringar tooexpose ny information om virtuell datorinstans regelbundet. Den här sidan visar hello uppdaterade [datakategorier](#instance-metadata-data-categories) tillgängliga.
 
 ## <a name="service-availability"></a>Tjänsttillgänglighet
-Tjänsten är tillgänglig i alla allmänt tillgänglig Global Azure-regioner. Tjänsten är tillgänglig som förhandsversion i Government, Kina eller Tyskland regioner.
+hello-tjänsten är tillgänglig i alla allmänt tillgänglig Global Azure-regioner. hello-tjänsten är tillgänglig som förhandsversion i hello myndigheter, Kina eller Tyskland regioner.
 
 Regioner                                        | Tillgänglighet?
 -----------------------------------------------|-----------------------------------------------
@@ -41,26 +41,26 @@ Regioner                                        | Tillgänglighet?
 [Azure Kina](https://www.azure.cn/)                                                           | I förhandsversionen
 [Azure Tyskland](https://azure.microsoft.com/overview/clouds/germany/)                    | I förhandsversionen
 
-Den här tabellen uppdateras när tjänsten blir tillgänglig i andra Azure-moln.
+Den här tabellen uppdateras när hello tjänsten blir tillgänglig i andra Azure-moln.
 
-Om du vill testa tjänsten instans Metadata, skapa en virtuell dator från [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) eller [Azure-portalen](http://portal.azure.com) i ovanstående områden och följ exemplen nedan.
+tootry ut hello instans Metadata tjänsten, skapa en virtuell dator från [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) eller hello [Azure-portalen](http://portal.azure.com) i hello över regioner och följ hello exemplen nedan.
 
 ## <a name="usage"></a>Användning
 
 ### <a name="versioning"></a>Versionshantering
-Tjänsten instans Metadata är en ny version. Versioner är obligatoriska och den aktuella versionen är `2017-04-02`.
+hello instans Metadata Service är en ny version. Versioner är obligatoriska och hello aktuella versionen är `2017-04-02`.
 
 > [!NOTE] 
-> Tidigare förhandsvisningarna av schemalagda händelser stöds {senaste} som den api-versionen. Det här formatet stöds inte längre och kommer att inaktualiseras i framtiden.
+> Tidigare förhandsvisningarna av schemalagda händelser stöds {senaste} som hello api-versionen. Det här formatet stöds inte längre och kommer att inaktualiseras i hello framtida.
 
-När vi lägger till nya versioner kan äldre versioner fortfarande användas för kompatibilitet om skripten har beroenden på specifika dataformat. Observera dock att den aktuella preview version(2017-03-01) inte kanske tillgänglig när tjänsten är allmänt tillgänglig.
+När vi lägger till nya versioner kan äldre versioner fortfarande användas för kompatibilitet om skripten har beroenden på specifika dataformat. Observera dock att hello aktuella preview version(2017-03-01) inte kanske tillgänglig när hello-tjänsten är allmänt tillgänglig.
 
 ### <a name="using-headers"></a>Med hjälp av rubriker
-När du frågar instans Metadata tjänsten måste du ange rubriken `Metadata: true` så begäran inte omdirigerades oavsiktligt.
+När du frågar hello instans Metadata tjänsten måste du ange hello huvud `Metadata: true` tooensure hello begäran omdirigerades inte oavsiktligt.
 
 ### <a name="retrieving-metadata"></a>Hämta metadata
 
-Metadata för instansen är tillgängliga för att köra virtuella datorer skapas/hanteras med hjälp av [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). Komma åt alla datakategorier för en virtuell dator-instans med följande begäran:
+Metadata för instansen är tillgängliga för att köra virtuella datorer skapas/hanteras med hjälp av [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). Komma åt alla datakategorier för en virtuell dator-instans med hello på begäran:
 
 ```
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02"
@@ -70,34 +70,34 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > Alla metadatafrågor för instansen är skiftlägeskänsliga.
 
 ### <a name="data-output"></a>Utdata
-Som standard tjänsten instans Metadata returnerar data i JSON-format (`Content-Type: application/json`). Dock kan olika API: er returnera data i olika format om begärt.
-I följande tabell är en referens för andra dataformat stöder API: er.
+Som standard hello instans Metadata tjänsten returnerar data i JSON-format (`Content-Type: application/json`). Dock kan olika API: er returnera data i olika format om begärt.
+hello är följande tabell en referens för andra dataformat stöder API: er.
 
 API | Standardformatet för Data | Andra format
 --------|---------------------|--------------
 /Instance | JSON | Text
 /scheduledevents | JSON | Ingen
 
-Ange det begärda formatet som en querystring-parameter i begäran för att komma åt en icke-förvalt svarsformat. Exempel:
+tooaccess ett svarsformat som inte är standard, ange hello begärda formatet som en querystring-parameter i hello-begäran. Exempel:
 
 ```
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02&format=text"
 ```
 
 ### <a name="security"></a>Säkerhet
-Instansen Metadata tjänstslutpunkten är enbart tillgänglig från den virtuella datorn-instansen som körs på en icke-dirigerbara IP-adress. Dessutom begäran med en `X-Forwarded-For` huvud avvisas av tjänsten.
-Vi behöver också begäranden som innehåller en `Metadata: true` sidhuvud så att den faktiska begäranden var direkt avsedda och inte en del av oavsiktlig omdirigering. 
+hello instans Metadata tjänstslutpunkten är enbart tillgänglig från hello som kör virtuella instans på en icke-dirigerbara IP-adress. Dessutom begäran med en `X-Forwarded-For` huvud avvisas av hello-tjänsten.
+Vi behöver också begäranden toocontain en `Metadata: true` huvud tooensure som hello faktiska begäran var direkt avsedda och inte en del av oavsiktlig omdirigering. 
 
 ### <a name="error"></a>Fel
-Om det finns en dataelement som inte hittades eller en felaktig begäran, returnerar tjänsten instans Metadata standard HTTP-fel. Exempel:
+Om det finns en dataelement som inte hittades eller en felaktig begäran, returnerar hello instans Metadata Service standard HTTP-fel. Exempel:
 
 HTTP-statuskod | Orsak
 ----------------|-------
 200 OK |
 400 Felaktig förfrågan | Saknas `Metadata: true` sidhuvud
-404 Hittades inte | Begärt element does't finns 
+404 Hittades inte | Hej does't begärt element finns 
 405 Metoden tillåts inte | Endast `GET` och `POST` stöds
-429 för många begäranden | API: et stöder för närvarande högst 5 frågor per sekund
+429 för många begäranden | hello API stöder för närvarande högst 5 frågor per sekund
 500 tjänstfel     | Försök igen efter en stund
 
 ### <a name="examples"></a>Exempel
@@ -116,7 +116,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 **Svar**
 
 > [!NOTE] 
-> Svaret är en JSON-sträng. Följande exempel svaret är pretty ut för läsbarhet.
+> hello svaret är en JSON-sträng. följande exempelsvar hello är pretty ut för läsbarhet.
 
 ```
 {
@@ -163,7 +163,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 **Svar**
 
 > [!NOTE] 
-> Svaret är en JSON-sträng. Följande exempel svaret är pretty ut för läsbarhet.
+> hello svaret är en JSON-sträng. följande exempelsvar hello är pretty ut för läsbarhet.
 
 ```
 {
@@ -211,13 +211,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 
 **Förfrågan**
 
-Instansen metadata kan hämtas i Windows via PowerShell-verktyget `curl`: 
+Instansen metadata kan hämtas i Windows via hello PowerShell verktyget `curl`: 
 
 ```
 curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2017-04-02 | select -ExpandProperty Content
 ```
 
-Eller via den `Invoke-RestMethod` cmdlet:
+Eller via hello `Invoke-RestMethod` cmdlet:
     
 ```
 Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-04-02 -Method get 
@@ -226,7 +226,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 **Svar**
 
 > [!NOTE] 
-> Svaret är en JSON-sträng. Följande exempel svaret är pretty ut för läsbarhet.
+> hello svaret är en JSON-sträng. följande exempelsvar hello är pretty ut för läsbarhet.
 
 ```
 {
@@ -273,26 +273,26 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ```
 
 ## <a name="instance-metadata-data-categories"></a>Instansen metadata datakategorier
-Följande datakategorier är tillgängliga via tjänsten instans Metadata:
+hello följande datakategorier finns tillgängliga hello instans Metadata tjänsten:
 
 Data | Beskrivning
 -----|------------
-location | Azure-regionen för den virtuella datorn körs i
-namn | Namnet på den virtuella datorn 
-Erbjudande | Tillhandahåller information för VM-avbildning. Det här värdet finns bara för avbildningar som distribueras från Azure-avbildning gallery.
-Publisher | Utgivaren av VM-avbildning
-SKU | Specifika SKU för VM-avbildning  
-Version | Version av VM-avbildning 
+location | Azure Region hello virtuell dator som körs
+namn | Namnet på hello VM 
+Erbjudande | Ger information om hello VM-avbildning. Det här värdet finns bara för avbildningar som distribueras från Azure-avbildning gallery.
+Publisher | Utgivaren av hello VM-avbildning
+SKU | Specifika SKU för hello VM-avbildning  
+Version | Version av hello VM-avbildning 
 osType | Linux- eller Windows 
-platformUpdateDomain |  [Uppdateringsdomän](manage-availability.md) den virtuella datorn körs
-platformFaultDomain | [Feldomänen](manage-availability.md) den virtuella datorn körs
-vmId | [Unik identifierare](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) för den virtuella datorn
+platformUpdateDomain |  [Uppdateringsdomän](manage-availability.md) hello VM körs i
+platformFaultDomain | [Feldomänen](manage-availability.md) hello VM körs i
+vmId | [Unik identifierare](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) för hello VM
 vmSize | [VM-storlek](sizes.md)
-IPv4/privateIpAddress | Lokala IPv4-adressen för den virtuella datorn 
-IPv4/publicIpAddress | Offentliga IPv4-adressen för den virtuella datorn
-undernätet och/eller adress | Undernätsadress av den virtuella datorn
+IPv4/privateIpAddress | Lokala IPv4-adressen för hello VM 
+IPv4/publicIpAddress | Offentliga IPv4-adressen för hello VM
+undernätet och/eller adress | Undernätsadress av hello VM
 undernätsprefixet / | Undernätets prefix, exempel 24
-IPv6/IP-adress | Den lokala IPv6-adressen för den virtuella datorn
+IPv6/IP-adress | Den lokala IPv6-adressen för hello VM
 MAC-adress | VM mac-adress 
 scheduledevents | För närvarande finns i Public Preview finns [scheduledevents](scheduled-events.md)
 
@@ -300,7 +300,7 @@ scheduledevents | För närvarande finns i Public Preview finns [scheduledevents
 
 ### <a name="tracking-vm-running-on-azure"></a>Spårning av virtuell dator som kör på Azure
 
-Du kan behöva hålla reda på antalet virtuella datorer som kör programvaran eller att agenter som behöver spåra unikhet för den virtuella datorn som en tjänsteleverantör. Om du vill kunna hämta ett unikt ID för en virtuell dator använder den `vmId` från Metadata-tjänsten för instansen.
+Du kan behöva tootrack hello antalet virtuella datorer som kör programvaran eller agenter som behöver tootrack unika hello VM som en tjänstprovider. toobe kan tooget ett unikt ID för en virtuell dator, Använd hello `vmId` från Metadata-tjänsten för instansen.
 
 **Förfrågan**
 
@@ -316,8 +316,8 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 
 ### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Placering av behållare, partitioner data baserat fel/uppdatera domän 
 
-För vissa scenarier, placering av olika repliker är av yttersta vikt. Till exempel [HDFS replik placering](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) eller placering av behållare via en [orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) kanske du behöver känna till den `platformFaultDomain` och `platformUpdateDomain` den virtuella datorn körs på.
-Du kan fråga data direkt via tjänsten instans Metadata.
+För vissa scenarier, placering av olika repliker är av yttersta vikt. Till exempel [HDFS replik placering](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) eller placering av behållare via en [orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) kan du kräva tooknow hello `platformFaultDomain` och `platformUpdateDomain` hello virtuella datorn körs på.
+Du kan fråga data direkt via hello instans Metadata-tjänsten.
 
 **Förfrågan**
 
@@ -331,9 +331,9 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 0
 ```
 
-### <a name="getting-more-information-about-the-vm-during-support-case"></a>Mer information om den virtuella datorn under supportärende 
+### <a name="getting-more-information-about-hello-vm-during-support-case"></a>Mer information om hello VM under supportärende 
 
-Som en leverantör får du ett supportsamtal där du vill veta mer om den virtuella datorn. Be kunden att dela beräknings-metadata kan ge grundläggande information för supportpersonal känna till om vilken typ av virtuell dator på Azure. 
+Som en leverantör får du ett supportsamtal där du vill ha tooknow mer information om hello VM. Frågar hello kunden tooshare innehåller hello beräkning metadata grundläggande information för hello support professional tooknow hello typ av VM på Azure. 
 
 **Förfrågan**
 
@@ -344,7 +344,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 **Svar**
 
 > [!NOTE] 
-> Svaret är en JSON-sträng. Följande exempel svaret är pretty ut för läsbarhet.
+> hello svaret är en JSON-sträng. följande exempelsvar hello är pretty ut för läsbarhet.
 
 ```
 {
@@ -364,7 +364,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 }
 ```
 
-### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Exempel på hur metadatatjänsten som använder olika språk inuti den virtuella datorn 
+### <a name="examples-of-calling-metadata-service-using-different-languages-inside-hello-vm"></a>Exempel på hur metadatatjänsten som använder olika språk i hello VM 
 
 Språk | Exempel 
 ---------|----------------
@@ -379,23 +379,23 @@ Bash       | https://github.com/Microsoft/azureimds/BLOB/Master/IMDSSample.SH
     
 
 ## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
-1. Jag får felet `400 Bad Request, Required metadata header not specified`. Vad innebär det?
-   * Instansen Metadata tjänsten kräver huvudet `Metadata: true` som används i begäran. Skicka det här sidhuvudet i REST-anrop tillåter åtkomst till tjänsten instans Metadata. 
+1. Jag får hello fel `400 Bad Request, Required metadata header not specified`. Vad innebär det?
+   * hello instans Metadata tjänsten kräver hello huvud `Metadata: true` toobe skickades hello-begäran. Skicka det här sidhuvudet i hello REST-anrop kan åtkomst toohello instans Metadata-tjänsten. 
 2. Varför inte inträffar beräknings-information för den virtuella datorn?
-   * Tjänsten instans Metadata stöder för närvarande bara instanser som skapats med Azure Resource Manager. I framtiden, kan vi lägga till stöd för virtuella datorer för molnet tjänsten.
+   * Hello instans Metadata tjänsten stöder för närvarande bara instanser som skapats med Azure Resource Manager. Hello framtida, kan vi lägga till stöd för virtuella datorer för molnet tjänsten.
 3. Jag har skapat Min virtuella dator via Azure Resource Manager en tid sedan. Varför kan jag inte se compute metadatainformation?
-   * För alla virtuella datorer som skapats efter Sep 2016, lägga till en [taggen](../../azure-resource-manager/resource-group-using-tags.md) att starta ser compute metadata. För äldre virtuella datorer (som skapats före Sep 2016), Lägg till/ta bort tillägg eller data diskar till den virtuella datorn för att uppdatera metadata.
-4. Varför får felet `500 Internal Server Error`?
-   * Försök att utföra din begäran utifrån exponentiell tillbaka av systemet. Kontakta Azure-supporten om problemet kvarstår.
+   * För alla virtuella datorer som skapats efter Sep 2016, lägga till en [taggen](../../azure-resource-manager/resource-group-using-tags.md) toostart Se beräkning metadata. För äldre virtuella datorer (som skapats före Sep 2016), Lägg till/ta bort tillägg eller data diskar toohello VM toorefresh metadata.
+4. Varför får hello fel `500 Internal Server Error`?
+   * Försök att utföra din begäran utifrån exponentiell tillbaka av systemet. Kontakta Azure-supporten om hello problemet kvarstår.
 5. Där delar ytterligare frågor/kommentarer?
    * Skicka kommentarer om http://feedback.azure.com.
 7. Fungerar detta för Virtual Machine Scale ange instansen?
    * Ja är Metadata-tjänsten tillgänglig för skala ange instanser. 
-6. Hur får jag support för tjänsten?
-   * Om du vill få support för tjänsten, skapa ett supportproblem i Azure-portalen för den virtuella datorn där du inte kan hämta metadata svar efter lång försök 
+6. Hur får jag support för hello tjänsten?
+   * tooget stöd för hello-tjänsten, skapa ett supportproblem i Azure portal för hello VM där du inte är kan tooget metadata svar efter lång försök 
 
    ![Stöd för instans-Metadata](./media/instance-metadata-service/InstanceMetadata-support.png)
     
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om den [schemalagda händelser](scheduled-events.md) API **som förhandsversion** som tillhandahålls av tjänsten för instansen Metadata.
+- Mer information om hello [schemalagda händelser](scheduled-events.md) API **som förhandsversion** tillhandahålls av hello instans Metadata-tjänsten.

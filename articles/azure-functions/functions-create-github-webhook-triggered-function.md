@@ -1,6 +1,6 @@
 ---
-title: "Skapa en funktion i Azure som utlöses av en GitHub-webhook | Microsoft Docs"
-description: "Använd Azure Functions för att skapa en funktion utan server som startas av en GitHub-webhook."
+title: "aaaCreate en funktion i Azure som utlöses av en GitHub-webhook | Microsoft Docs"
+description: "Använd Azure Functions toocreate en serverlösa funktion som anropas av en GitHub-webhook."
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 038bb4cf0a9278416261c05ddaa0ee97d83b63c5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8ffcde82c9310d749159ed53eab113658e38a030
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>Skapa en funktion som utlöses av en GitHub-webhook
 
-Lär dig hur du skapar en funktion som utlöses av en HTTP-webhookbegäran med en GitHub-specifik nyttolast.
+Lär dig hur toocreate en funktion som utlöses av en HTTP-begäran för webhook med en GitHub-specifika nyttolast.
 
-![Github-webhookutlöst funktion i Azure Portal](./media/functions-create-github-webhook-triggered-function/function-app-in-portal-editor.png)
+![Github-Webhook aktiveras funktionen i hello Azure-portalen](./media/functions-create-github-webhook-triggered-function/function-app-in-portal-editor.png)
 
 ## <a name="prerequisites"></a>Krav
 
@@ -41,61 +41,61 @@ Lär dig hur du skapar en funktion som utlöses av en HTTP-webhookbegäran med e
 
 ![Funktionsappen skapades.](./media/functions-create-first-azure-function/function-app-create-success.png)
 
-Därefter skapar du en funktion i den nya funktionsappen.
+Därefter skapar du en funktion i hello ny funktionsapp.
 
 <a name="create-function"></a>
 
 ## <a name="create-a-github-webhook-triggered-function"></a>Skapa en webhook-utlöst GitHub-funktion
 
-1. Expandera funktionsappen och klicka på knappen **+** bredvid **Funktioner**. Om det är den första funktionen i din funktionsapp väljer du **Anpassad funktion**. Detta visar en fullständig uppsättning med funktionsmallar.
+1. Expandera funktionen appen och klicka på hello  **+**  knappen för nästa**funktioner**. Om det är första hello-funktion i din funktionsapp **anpassad funktionen**. Detta visar hello fullständig uppsättning funktionen mallar.
 
-    ![Sidan snabbstart för funktioner i Azure Portal](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
+    ![Funktioner quickstart sida i hello Azure-portalen](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
 
-2. Välj den **GitHub-WebHook** mall för språket. **Namnge funktionen** och klicka på **Skapa**.
+2. Välj hello **GitHub-WebHook** mall för språket. **Namnge funktionen** och klicka på **Skapa**.
 
-     ![Skapa en funktion som utlöses med en GitHub-webhook i Azure Portal](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+     ![Skapa en funktion för GitHub-webhook utlöses i hello Azure-portalen](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
 
-3. Klicka på **</> Hämta funktionswebbadress** och kopiera och spara värdena. Gör samma sak för **</> Hämta GitHub-hemlighet**. Du behöver dessa värden när du konfigurerar webhooken i GitHub.
+3. Klicka på den nya funktionen **<> / Get funktions-URL**, kopiera och spara hello värden. Hello samma sak för **<> / hämta GitHub hemlighet**. Du kan använda dessa värden tooconfigure hello webhook i GitHub.
 
-    ![Granska funktionskoden](./media/functions-create-github-webhook-triggered-function/functions-copy-function-url-github-secret.png)
+    ![Granska hello Funktionskoden](./media/functions-create-github-webhook-triggered-function/functions-copy-function-url-github-secret.png)
 
 Skapa sedan en webhook i GitHub-lagringsplatsen.
 
-## <a name="configure-the-webhook"></a>Konfigurera webhooken
+## <a name="configure-hello-webhook"></a>Konfigurera hello-webhook
 
-1. Navigera till en lagringsplats du äger i GitHub. Du kan också använda en lagringsplats du har förgrenat. Om du behöver förgrena en lagringsplats använder du <https://github.com/Azure-Samples/functions-quickstart>.
+1. Navigera tooa databasen som du äger i GitHub. Du kan också använda en lagringsplats du har förgrenat. Om du behöver toofork en databas kan använda <https://github.com/Azure-Samples/functions-quickstart>.
 
 1. Klicka på **Inställningar**, klicka på **Webhooks** och klicka sedan på **Lägg till webhook**.
 
     ![Lägga till en GitHub-webhook](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-2.png)
 
-1. Använd inställningarna i tabellen och klicka på **Lägg till webhook**.
+1. Använda inställningar som anges i hello tabell och klicka sedan på **lägga till webhook**.
 
-    ![Ställa in webhooksadressen och hemligheten](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-3.png)
+    ![Ange hello Webhooksadressen och hemlighet](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-3.png)
 
 | Inställning | Föreslaget värde | Beskrivning |
 |---|---|---|
-| **Payload URL** (Webbadress för nyttolast) | Kopierat värde | Använd värdet som returnerades med **</> Hämta funktionswebbadress**. |
-| **Hemlighet**   | Kopierat värde | Använd värdet som returnerades med **</> Hämta GitHub-hemlighet**. |
-| **Innehållstyp** | application/json | Funktionen förväntar sig en JSON-nyttolast. |
-| Händelseutlösare | Låt mig välja enskilda händelser | Vi vill bara utlösa för händelser med ärendekommentarer.  |
+| **Payload URL** (Webbadress för nyttolast) | Kopierat värde | Använd hello-värdet som returneras av **<> / Get funktions-URL**. |
+| **Hemlighet**   | Kopierat värde | Använd hello-värdet som returneras av **<> / hämta GitHub hemlighet**. |
+| **Innehållstyp** | application/json | hello förväntar sig en JSON-nyttolast. |
+| Händelseutlösare | Låt mig välja enskilda händelser | Vi vill bara tootrigger på problemet kommentar händelser.  |
 | | Ärendekommentar |  |
 
-Nu har webhooken konfigurerats för att utlösa din funktion när en ny ärendekommentar läggs till.
+Nu hello webhook är konfigurerade tootrigger din funktion när en ny problemet kommentar läggs.
 
-## <a name="test-the-function"></a>Testa funktionen
+## <a name="test-hello-function"></a>Testa hello-funktionen
 
-1. I din GitHub-lagringsplats öppnar du fliken **Ärenden** i ett nytt webbläsarfönster.
+1. Öppna i GitHub-lagringsplatsen hello **problem** fliken i ett nytt webbläsarfönster.
 
-1. I det nya fönstret klickar du på **Nytt ärende**, skriver en titel och klickar på **Submit new issue** (Skicka nytt ärende).
+1. I hello nya fönstret, klickar du på **nytt ärende**, Skriv ett namn och klicka sedan på **skicka nya**.
 
-1. Skriv en kommentar i ärendet och klicka på **Kommentar**.
+1. Skriv en kommentar i hello problemet, och klicka på **kommentar**.
 
     ![Lägg till en GitHub-ärendekommentar.](./media/functions-create-github-webhook-triggered-function/functions-github-webhook-add-comment.png)
 
-1. Gå tillbaka till portalen och öppna loggarna. Du bör se en spårningspost med den nya kommentartexten.
+1. Gå tillbaka toohello portal och visa hello loggar. Du bör se en spårningspost med hello ny Kommentartext.
 
-     ![Se kommentartexten i loggarna.](./media/functions-create-github-webhook-triggered-function/function-app-view-logs.png)
+     ![Visa hello Kommentartext i hello loggar.](./media/functions-create-github-webhook-triggered-function/function-app-view-logs.png)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

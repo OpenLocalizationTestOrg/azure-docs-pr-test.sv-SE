@@ -1,6 +1,6 @@
 ---
-title: "Läs in data från SQL Server till Azure SQL Data Warehouse (bcp) | Microsoft Docs"
-description: "För små datastorlekar, använder du bcp för att exportera data från SQL Server till flat-filer som sedan importeras direkt till Azure SQL Data Warehouse."
+title: "aaaLoad data från SQL Server till Azure SQL Data Warehouse (bcp) | Microsoft Docs"
+description: "För små datastorlekar, använder du bcp tooexport data från SQL Server tooflat filer och importera hello data direkt i Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: dae7b5f7456f4ec0daf60d55f9c38b780896ff83
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a03b5403d123e8814ae73a7cce8e6851c8b264a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-flat-files"></a>Läs in data från SQL Server till Azure SQL Data Warehouse (flat-filer)
 > [!div class="op_single_selector"]
@@ -29,37 +29,37 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-För små datauppsättningar, kan du använda kommandoradsverktyget bcp för att exportera data från SQL Server och läsa in den direkt i Azure SQL Data Warehouse.
+Du kan använda hello bcp kommandoradsverktyget tooexport data från SQL Server och läsa in den direkt tooAzure SQL Data Warehouse för små datauppsättningar.
 
 I de här självstudierna kommer du att använda bcp för att:
 
-* Exportera en tabell från SQL Server med hjälp av bcp out-kommandot (eller genom att skapa en enkel exempelfil)
-* Importera tabellen från en flat-fil till SQL Data Warehouse.
-* Skapa statistik på inlästa data.
+* Exportera en tabell från från SQL Server med hjälp av hello bcp out-kommandot (eller skapa en enkel exempelfil)
+* Importera hello tabell från en flat fil tooSQL Data Warehouse.
+* Skapa statistik på hello läsa in data.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
 > 
 > 
 
 ## <a name="before-you-begin"></a>Innan du börjar
-### <a name="prerequisites"></a>Förutsättningar
-För att gå igenom de här självstudierna, behöver du:
+### <a name="prerequisites"></a>Krav
+toostep igenom den här kursen behöver du:
 
 * En SQL Data Warehouse-databas
-* Kommandoradsverktyget bcp installerat
-* Kommandoradsverktyget sqlcmd installerat
+* hello kommandoradsverktyget BCP installerat
+* hello kommandoradsverktyget sqlcmd installerat
 
-Du kan hämta verktygen bcp och sqlcmd från [Microsoft Download Center][Microsoft Download Center].
+Du kan hämta verktygen bcp och sqlcmd för hello från hello [Microsoft Download Center][Microsoft Download Center].
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>Data i ASCII- eller UTF-16-format
-Om du använder egna data i självstudierna, måste de använda sig av ASCII- eller UTF-16-kodning eftersom bcp inte stöder UTF-8. 
+Om du provar den här självstudiekursen med dina egna data behöver data toouse hello ASCII- eller UTF-16-kodning eftersom bcp inte stöder UTF-8. 
 
-PolyBase stöder UTF-8 men har inte än stöd för UTF-16. Observera att om du vill kombinera bcp med PolyBase, behöver du transformera dina data till UTF-8 efter att de exporterats från SQL Server. 
+PolyBase stöder UTF-8 men har inte än stöd för UTF-16. Observera att om du vill toocombine bcp med PolyBase måste tootransform hello data tooUTF-8 efter att de exporterats från SQL Server. 
 
 ## <a name="1-create-a-destination-table"></a>1. Skapa en måltabell
-Definiera en tabell i SQL Data Warehouse som kommer att vara måltabell för inläsningen. Kolumnerna i tabellen måste motsvara data i varje rad i din datafil.
+Definiera en tabell i SQL Data Warehouse som kommer att hello måltabell för hello belastningen. hello kolumner i tabellen hello måste överensstämma med toohello data i varje rad i datafilen.
 
-För att skapa en tabell, öppnar du en kommandotolk och använder sqlcmd.exe för att köra följande kommando:
+toocreate en tabell, öppna en kommandotolk och använder sqlcmd.exe toorun hello följande kommando:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -79,7 +79,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 
 ## <a name="2-create-a-source-data-file"></a>2. Skapa en källdatafil
-Öppna Anteckningar och kopiera följande datarader till en ny textfil. Spara sedan filen till din lokala temp-katalog, C:\Temp\DimDate2.txt. Den här datan är i ASCII-format.
+Öppna Anteckningar och kopiera hello följande rader med data i en ny textfil och sedan spara den här filen tooyour lokala temp-katalog, C:\Temp\DimDate2.txt. Den här datan är i ASCII-format.
 
 ```
 20150301,1,3
@@ -96,7 +96,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 20150101,1,3
 ```
 
-(Valfritt) Om du vill exportera dina egna data från en SQL Server-databas, öppnar du en kommandotolk och kör följande kommando. Ersätt TableName, ServerName, DatabaseName, Username och Password med din egen information.
+(Valfritt) tooexport dina egna data från en SQL Server-databas, öppna en kommandotolk och kör följande kommando hello. Ersätt TableName, ServerName, DatabaseName, Username och Password med din egen information.
 
 ```sql
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t ','
@@ -104,20 +104,20 @@ bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName
 
 
 
-## <a name="3-load-the-data"></a>3. Läs in data
-För att läsa in data, öppnar du en kommandotolk och kör följande kommando, där du ersätter värdena för servernamn, databasnamn, användarnamn och lösenord med din egen information.
+## <a name="3-load-hello-data"></a>3. Läs in hello data
+tooload hello data, öppna en kommandotolk och kör hello följande kommando, ersätter hello värdena för servernamn, databasen namn, användarnamn och lösenord med din egen information.
 
 ```sql
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ','
 ```
 
-Använd det här kommandot för att verifiera att data har lästs in korrekt
+Använd det här kommandot tooverify hello data har lästs in korrekt
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-Resultatet borde se ut så här:
+hello resultat bör se ut så här:
 
 | DateId | CalendarQuarter | FiscalQuarter |
 | --- | --- | --- |
@@ -135,9 +135,9 @@ Resultatet borde se ut så här:
 | 20151201 |4 |2 |
 
 ## <a name="4-create-statistics"></a>4. Skapa statistik
-SQL Data Warehouse stöder inte automatiskt skapande eller uppdatering av statistik ännu. För att få bästa möjliga prestanda från dina frågor, är det viktigt att skapa statistik på alla kolumner i alla tabeller efter den första inläsningen eller vid betydande dataändringar. En detaljerad förklaring av statistik finns [statistik][Statistics]. 
+SQL Data Warehouse stöder inte automatiskt skapande eller uppdatering av statistik ännu. tooget hello bästa frågeprestanda, det är viktigt toocreate statistik på alla kolumner i alla tabeller efter hello första inläsningen eller vid betydande dataändringar i hello data. En detaljerad förklaring av statistik finns [statistik][Statistics]. 
 
-Kör följande kommando för att skapa statistik på din nya inlästa tabell.
+Kör följande kommando toocreate statistik på din nya inlästa tabell hello.
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -148,17 +148,17 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 ## <a name="5-export-data-from-sql-data-warehouse"></a>5. Exportera data från SQL Data Warehouse
-För skojs skull kan du exportera de data du just läste in, tillbaks ut ur SQL Data Warehouse.  Kommandot för att exportera är exakt detsamma som för att exportera från SQL Server.
+För skojs skull kan du exportera hello data som du just läste in, tillbaks ut ur SQL Data Warehouse.  hello kommandot tooexport är exakt hello samma som för att exportera från SQLServer.
 
-Resultatet är dock något annorlunda. Eftersom data lagras på distribuerade platser inom SQL Data Warehouse så skriver varje Compute-nod sina data till utdatafilen när du exporterar data. Dataordningen i utdatafilen skiljer sig med stor sannolikhet åt från dataordningen i indatafilen.
+Det är dock något annorlunda hello resultat. Eftersom hello data lagras på distribuerade platser inom SQL Data Warehouse när du exporterar data skriver varje Compute-nod den data toohello utdatafilen. hello är hello data i hello utdatafil sannolikt toobe annat än hello hello data i hello indatafilen.
 
 ### <a name="export-a-table-and-compare-exported-results"></a>Exportera en tabell och jämför exporterade resultat
-Om du vill se exporterade data öppnar du en kommandotolk och kör det här kommandot med dina egna parametrar. ServerName är namnet på din logiska Azure SQL Server.
+toosee hello exporterade data, öppna en kommandotolk och kör det här kommandot med dina egna parametrar. ServerName är hello namnet på din logiska Azure SQL Server.
 
 ```sql
 bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t ','
 ```
-Du kan verifiera att data exporterats korrekt genom att öppna den nya filen. Data i filen bör matcha texten nedan, men kommer antagligen vara sorterad i en annan ordning:
+Du kan kontrollera hello data exporterats korrekt genom att öppna nya hello-filen. hello data i hello filen bör matcha hello texten nedan, men kommer antagligen vara sorterad i en annan ordning:
 
 ```
 20150301,1,3
@@ -175,8 +175,8 @@ Du kan verifiera att data exporterats korrekt genom att öppna den nya filen. Da
 20150101,1,3
 ```
 
-### <a name="export-the-results-of-a-query"></a>Exportera resultatet av en fråga
-Du kan använda bcp-funktionen **queryout** för att exportera resultaten av en fråga istället för att exportera hela tabellen. 
+### <a name="export-hello-results-of-a-query"></a>Exportera hello resultatet av en fråga
+Du kan använda hello **queryout** funktionen i bcp tooexport hello resultatet av en fråga istället för att exportera hello hela tabellen. 
 
 ## <a name="next-steps"></a>Nästa steg
 Se [Läs in data till SQL Data Warehouse][Load data into SQL Data Warehouse] för en översikt över inläsning.

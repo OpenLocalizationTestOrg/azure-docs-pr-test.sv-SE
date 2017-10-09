@@ -1,5 +1,5 @@
 ---
-title: Visualisera SQL Data Warehouse-data med Power BI Microsoft Azure
+title: aaaVisualize SQL Data Warehouse-data med Power BI Microsoft Azure
 description: Visualisera SQL Data Warehouse-data med Power BI
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
-ms.openlocfilehash: a41393730143b14e91318a61858d989fff3786c1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0425cf5abe7bc001b2a41df4d09bf5f2e42527e0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="visualize-data-with-power-bi"></a>Visualisera data med Power BI
 > [!div class="op_single_selector"]
@@ -31,66 +31,66 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-De här självstudierna visar hur du använder Power BI för att ansluta till SQL Data Warehouse och skapa några grundläggande visualiseringar.
+De här självstudierna visar hur toouse Power BI tooconnect tooSQL Data Warehouse och skapa några grundläggande visualiseringar.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Data-Warehouse-Sample-Data-and-PowerBI/player]
 > 
 > 
 
 ## <a name="prerequisites"></a>Krav
-För att gå igenom de här självstudierna, behöver du:
+toostep igenom den här kursen behöver du:
 
-* En SQL Data Warehouse förinstallerad med AdventureWorksDW-databasen. Om du vill distribuera detta läser du [Skapa ett SQL Data Warehouse][Create a SQL Data Warehouse] och väljer att läsa in exempeldata. Om du redan har ett Data Warehouse men inte har exempeldata kan du [läsa in exempeldata manuellt][load sample data manually].
+* Ett SQL Data Warehouse förinstallerad med hello AdventureWorksDW-databasen. tooprovision detta, se [skapa ett SQL Data Warehouse] [ Create a SQL Data Warehouse] och välj tooload hello exempeldata. Om du redan har ett Data Warehouse men inte har exempeldata kan du [läsa in exempeldata manuellt][load sample data manually].
 
-## <a name="1-connect-to-your-database"></a>1. Ansluta till databasen
-Om du vill öppna Power BI och ansluta till databasen AdventureWorksDW:
+## <a name="1-connect-tooyour-database"></a>1. Ansluta tooyour databas
+tooopen Power BI och ansluta tooyour AdventureWorksDW-databasen:
 
-1. Logga in på [Azure Portal][Azure portal].
+1. Logga in på hello [Azure-portalen][Azure portal].
 2. Klicka på **SQL-databaser** och välj din AdventureWorks SQL Data Warehouse-databas.
    
     ![Hitta din databas][1]
-3. Klicka på knappen Öppna i Power BI.
+3. Klicka på hello ”öppna i Power BI-knappen.
    
     ![Power BI-knappen][2]
-4. Du bör nu se SQL Data Warehouse-anslutningssidan som visar webbadressen för databasen. Klicka på Nästa.
+4. Du bör nu se hello SQL Data Warehouse anslutningssidan som visar webbadressen för databasen. Klicka på Nästa.
    
     ![Power BI-anslutning][3]
-5. Ange ditt användarnamn och lösenord för Azure SQL-servern så kommer du att anslutas fullständigt till SQL Data Warehouse-databasen.
+5. Ange din Azure SQL server-användarnamn och lösenord och du blir fullt ansluten tooyour SQL Data Warehouse-databas.
    
     ![Power BI-inloggning][4]
-6. Klicka på AdventureWorksDW-datauppsättningen på det vänstra bladet när du har loggat in på Power BI. Databasen öppnas.
+6. Klicka på hello AdventureWorksDW-datauppsättningen på hello vänstra bladet när du har loggat in på Power BI. Hello databasen öppnas.
    
     ![Power BI öppna AdventureWorksDW][5]
 
 ## <a name="2-create-a-report"></a>2. Skapa en rapport
-Du är nu redo att använda Power BI för att analysera dina AdventureWorksDW-exempeldata. För att utföra analysen har AdventureWorksDW en vy som heter AggregateSales. Vyn innehåller några nyckelvärden för att analysera företagets försäljning.
+Du är nu redo toouse Power BI tooanalyze AdventureWorksDW-exempeldata. tooperform hello analysen har AdventureWorksDW en vy som heter AggregateSales. Den här vyn innehåller några hello viktiga mått för att analysera hello försäljningen av hello företag.
 
-1. Klicka på vyn AggregateSales i högra fältet för att expandera den och skapa en karta över försäljningsbelopp enligt postnummer. Klicka på kolumnerna PostalCode och SalesAmount för att markera dem.
+1. toocreate en karta över försäljningsbelopp enligt toopostal kod i hello högra rutan, klicka på hello AggregateSales visa tooexpand den. Klicka på hello PostalCode och SalesAmount kolumner tooselect dem.
    
     ![Power BI välj AggregateSales][6]
    
     Power BI identifierar automatiskt dessa geografiska data och placerar dem på en karta för dig.
    
     ![Power BI-karta][7]
-2. Det här steget skapar ett stapeldiagram som visar försäljningsintäkter efter kund. För att skapa detta går du till den expanderade AggregateSales-vyn. Klicka på fältet SalesAmount. Dra fältet Customer Income till vänster och släpp det i axeln.
+2. Det här steget skapar ett stapeldiagram som visar försäljningsintäkter efter kund. toocreate denna gå toohello expanderas AggregateSales-vyn. Klicka på hello SalesAmount fält. Dra hello Customer Income fältet toohello vänster och släpp det i axeln.
    
     ![Power BI välj axel][8]
    
-    Vi har flyttat över stapeldiagrammet till vänster.
+    Vi har flyttat hello liggande diagram över hello vänster.
    
     ![Power BI-stapel][9]
-3. Det här steget skapar ett linjediagram som visar försäljning per beställningsdatum. För att skapa detta går du till den expanderade AggregateSales-vyn. Klicka på SalesAmount och OrderDate. I kolumnen Visualiseringar klickar du på Linjediagram-ikonen. Den första ikonen i den andra raden under visualiseringar.
+3. Det här steget skapar ett linjediagram som visar försäljning per beställningsdatum. toocreate denna gå toohello expanderas AggregateSales-vyn. Klicka på SalesAmount och OrderDate. Klicka i hello visualiseringar kolumnen hello linjediagram-ikonen. Detta är hello första ikonen i hello andra raden under visualiseringar.
    
     ![Power BI välj linjediagram][10]
    
-    Nu har du en rapport som visar tre olika datavisualiseringar.
+    Nu har du en rapport som visar tre olika datavisualiseringar hello data.
    
     ![Power BI-linje][11]
 
 Du kan spara ditt arbete när som helst genom att klicka på **Arkiv** och välja **Spara**.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har värmt upp med exempeldata, kan du se mer information om att [utveckla][develop], [läsa in][load] eller [migrera][migrate]. Eller ta en titt på [Power BI-webbplatsen][Power BI website].
+Nu när vi har gett dig vissa tid toowarm med exempeldata hello, se hur för[utveckla][develop], [ladda][load], eller [ Migrera][migrate]. Eller titta på hello [Power BI-webbplatsen][Power BI website].
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
@@ -111,7 +111,7 @@ Nu när du har värmt upp med exempeldata, kan du se mer information om att [utv
 [develop]: sql-data-warehouse-overview-develop.md
 [load]: sql-data-warehouse-overview-load.md
 [load sample data manually]: sql-data-warehouse-load-sample-databases.md
-[connecting to SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
+[connecting tooSQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
 [Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
 
 <!--Other-->

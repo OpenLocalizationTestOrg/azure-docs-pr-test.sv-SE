@@ -3,43 +3,43 @@
 
 ## <a name="c-program-example"></a>C#-program-exempel
 
-I nästa avsnitt i den här artikeln finns ett C#-program som använder ADO.NET för att skicka Transact-SQL-uttryck till SQL-databasen. C# utförs följande åtgärder:
+hello nästa avsnitt i den här artikeln finns ett C#-program som använder ADO.NET toosend Transact-SQL-instruktioner toohello SQL-databas. hello C# utförs hello följande åtgärder:
 
-1. [Ansluter till vår SQL-databas med hjälp av ADO.NET](#cs_1_connect).
+1. [Ansluter tooour SQL-databas med hjälp av ADO.NET](#cs_1_connect).
 2. [Skapar tabeller](#cs_2_createtables).
-3. [Fyller tabeller med data, genom att utfärda T-SQL INSERT-instruktioner](#cs_3_insert).
+3. [Fyller hello tabeller med data, genom att utfärda T-SQL INSERT-instruktioner](#cs_3_insert).
 4. [Uppdaterar data med hjälp av en koppling](#cs_4_updatejoin).
 5. [Tar bort data med hjälp av en koppling](#cs_5_deletejoin).
 6. [Väljer datarader med hjälp av en koppling](#cs_6_selectrows).
-7. Stänger anslutningen (som utelämnar eventuella temporära tabeller från tempdb).
+7. Stänger hello-anslutningen (som utelämnar eventuella temporära tabeller från tempdb).
 
-C#-programmet innehåller:
+hello C#-program innehåller:
 
-- C#-kod för att ansluta till databasen.
-- Metoder som returnerar T-SQL-källkoden.
-- Två metoder som skickar T-SQL i databasen.
+- C#-kod tooconnect toohello databas.
+- Metoder som returnerar hello T-SQL-källkoden.
+- Två metoder som skickar hello T-SQL toohello databas.
 
-#### <a name="to-compile-and-run"></a>Att kompilera och köra
+#### <a name="toocompile-and-run"></a>toocompile och kör
 
-Den här C#-program är logiskt en .cs fil. Men det här programmet fysiskt är uppdelad i flera kodblock att göra det lättare att förstå och varje block. För att kompilera och köra det här programmet måste göra följande:
+Den här C#-program är logiskt en .cs fil. Men här hello programmet fysiskt är uppdelad i flera kodblock, toomake enklare toosee där varje block och förstå. toocompile och kör det här programmet, hello följande:
 
 1. Skapa ett C#-projekt i Visual Studio.
-    - Projekttypen ska vara en *konsolen* program från något som liknar följande hierarki: **mallar** > **Visual C#** >  **Klassiska Windows-skrivbordet** > **konsolen App (.NET Framework)**.
-3. I filen **Program.cs**, radera små starter rader med kod.
-3. I Program.cs, kopiera och klistra in var och en av de följande blocken i samma ordning som de visas här.
-4. I Program.cs redigera följande värden i den **Main** metoden:
+    - hello projekttypen ska vara en *konsolen* program från något som liknar följande hierarki hello: **mallar** > **Visual C#** > **Klassiska Windows-skrivbordet** > **konsolen App (.NET Framework)**.
+3. I filen hello **Program.cs**, radera hello små starter rader med kod.
+3. I Program.cs, kopiera och klistra in varje av hello efter block i hello samma ordning som de visas här.
+4. I Program.cs redigera hello följande värden i hello **Main** metoden:
 
    - **CB. DataSource**
    - **CD: n. Användar-ID**
    - **CB. Lösenord**
    - **InitialCatalog**
 
-5. Kontrollera att sammansättningen **System.Data.dll** refererar till. Om du vill kontrollera, expandera den **referenser** nod i den **Solution Explorer** fönstret.
-6. Om du vill bygga program i Visual Studio klickar du på den **skapa** menyn.
-7. Om du vill köra programmet från Visual Studio klickar du på den **starta** knappen. Rapportutdata visas i ett fönster för cmd.exe.
+5. Kontrollera att sammansättningen hello **System.Data.dll** refererar till. tooverify, expandera hello **referenser** nod i hello **Solution Explorer** fönstret.
+6. toobuild hello program i Visual Studio klickar du på hello **skapa** menyn.
+7. toorun hello programmet från Visual Studio klickar du på hello **starta** knappen. hello rapportutdata visas i ett fönster för cmd.exe.
 
 > [!NOTE]
-> Du har möjlighet att redigera T-SQL för att lägga till en inledande  **#**  tabellnamnen, vilket skapar dem som temporära tabeller i **tempdb**. Detta kan vara användbart i demonstrationssyfte, när ingen testdatabasen är tillgänglig. Temporära tabeller tas bort automatiskt när anslutningen stängs. Alla referenser till sekundärnycklar tillämpas inte för temporära tabeller.
+> Du har hello möjlighet att redigera hello T-SQL tooadd inledande  **#**  toohello tabellnamn som skapar dem som temporära tabeller i **tempdb**. Detta kan vara användbart i demonstrationssyfte, när ingen testdatabasen är tillgänglig. Temporära tabeller tas bort automatiskt när hello anslutningen stängs. Alla referenser till sekundärnycklar tillämpas inte för temporära tabeller.
 >
 
 <a name="cs_1_connect"/>
@@ -92,14 +92,14 @@ namespace csharp_db_test
          {
             Console.WriteLine(e.ToString());
          }
-         Console.WriteLine("View the report output here, then press any key to end the program...");
+         Console.WriteLine("View hello report output here, then press any key tooend hello program...");
          Console.ReadKey();
       }
 ```
 
 
 <a name="cs_2_createtables"/>
-### <a name="c-block-2-t-sql-to-create-tables"></a>C# block 2: T-SQL för att skapa tabeller
+### <a name="c-block-2-t-sql-toocreate-tables"></a>C# block 2: T-SQL toocreate tabeller
 
 - [Tidigare](#cs_1_connect) &nbsp;  /  &nbsp; [nästa](#cs_3_insert)
 
@@ -133,15 +133,15 @@ CREATE TABLE tabEmployee
 
 #### <a name="entity-relationship-diagram-erd"></a>Diagram för entiteten relation (ERD)
 
-Föregående CREATE TABLE-instruktioner omfattar den **referenser** nyckelord för att skapa en *sekundärnyckeln* (FK) relation mellan två tabeller.  Om du använder tempdb kommentera ut den `--REFERENCES` nyckelordet med ett par med inledande streck.
+hello föregående CREATE TABLE-instruktioner omfattar hello **referenser** nyckelordet toocreate en *sekundärnyckeln* (FK) relation mellan två tabeller.  Om du använder tempdb kommentera ut hello `--REFERENCES` nyckelordet med ett par med inledande streck.
 
-Nästa är en Reparationsdiskett som visar relationen mellan två tabeller. Värdena i #tabEmployee.DepartmentCode *underordnade* kolumnen är begränsade till värdena som finns i #tabDepartment.Department *överordnade* kolumn.
+Nästa är en Reparationsdiskett som visar hello relation mellan hello två tabeller. Hej värden i hello #tabEmployee.DepartmentCode *underordnade* kolumnen är begränsad toohello värden finns i hello #tabDepartment.Department *överordnade* kolumn.
 
 ![ERD visar sekundärnyckeln](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 
 <a name="cs_3_insert"/>
-### <a name="c-block-3-t-sql-to-insert-data"></a>C# block 3: T-SQL infoga data
+### <a name="c-block-3-t-sql-tooinsert-data"></a>C# block 3: T-SQL tooinsert data
 
 - [Tidigare](#cs_2_createtables) &nbsp;  /  &nbsp; [nästa](#cs_4_updatejoin)
 
@@ -150,7 +150,7 @@ Nästa är en Reparationsdiskett som visar relationen mellan två tabeller. Vär
       static string Build_3_Tsql_Inserts()
       {
          return @"
--- The company has these departments.
+-- hello company has these departments.
 INSERT INTO tabDepartment
    (DepartmentCode, DepartmentName)
       VALUES
@@ -158,7 +158,7 @@ INSERT INTO tabDepartment
    ('hres', 'Human Resources'),
    ('legl', 'Legal');
 
--- The company has these employees, each in one department.
+-- hello company has these employees, each in one department.
 INSERT INTO tabEmployee
    (EmployeeName, EmployeeLevel, DepartmentCode)
       VALUES
@@ -173,7 +173,7 @@ INSERT INTO tabEmployee
 
 
 <a name="cs_4_updatejoin"/>
-### <a name="c-block-4-t-sql-to-update-join"></a>C# block 4: T-SQL för update-kopplingen
+### <a name="c-block-4-t-sql-tooupdate-join"></a>C# block 4: T-SQL tooupdate-koppling
 
 - [Tidigare](#cs_3_insert) &nbsp;  /  &nbsp; [nästa](#cs_5_deletejoin)
 
@@ -201,7 +201,7 @@ UPDATE empl
 
 
 <a name="cs_5_deletejoin"/>
-### <a name="c-block-5-t-sql-to-delete-join"></a>C# block 5: T-SQL för att ta bort koppling
+### <a name="c-block-5-t-sql-toodelete-join"></a>C# block 5: T-SQL toodelete-koppling
 
 - [Tidigare](#cs_4_updatejoin) &nbsp;  /  &nbsp; [nästa](#cs_6_selectrows)
 
@@ -214,7 +214,7 @@ DECLARE @DName2  nvarchar(128);
 SET @DName2 = @csharpParmDepartmentName;  --'Legal';
 
 
--- Right size the Legal department.
+-- Right size hello Legal department.
 DELETE empl
    FROM
       tabEmployee   as empl
@@ -223,7 +223,7 @@ DELETE empl
    WHERE
       dept.DepartmentName = @DName2
 
--- Disband the Legal department.
+-- Disband hello Legal department.
 DELETE tabDepartment
    WHERE DepartmentName = @DName2;
 ";
@@ -233,7 +233,7 @@ DELETE tabDepartment
 
 
 <a name="cs_6_selectrows"/>
-### <a name="c-block-6-t-sql-to-select-rows"></a>C# block 6: T-SQL för att markera rader
+### <a name="c-block-6-t-sql-tooselect-rows"></a>C# block 6: T-SQL tooselect rader
 
 - [Tidigare](#cs_5_deletejoin) &nbsp;  /  &nbsp; [nästa](#cs_6b_datareader)
 
@@ -242,7 +242,7 @@ DELETE tabDepartment
       static string Build_6_Tsql_SelectEmployees()
       {
          return @"
--- Look at all the final Employees.
+-- Look at all hello final Employees.
 SELECT
       empl.EmployeeGuid,
       empl.EmployeeName,
@@ -265,7 +265,7 @@ SELECT
 
 - [Tidigare](#cs_6_selectrows) &nbsp;  /  &nbsp; [nästa](#cs_7_executenonquery)
 
-Den här metoden är utformat för att köra T-SQL SELECT-uttrycket som skapats av den **Build_6_Tsql_SelectEmployees** metod.
+Den här metoden är utformad toorun hello T-SQL SELECT-instruktion som skapas genom hello **Build_6_Tsql_SelectEmployees** metod.
 
 
 ```csharp
@@ -301,7 +301,7 @@ Den här metoden är utformat för att köra T-SQL SELECT-uttrycket som skapats 
 
 - [Tidigare](#cs_6b_datareader) &nbsp;  /  &nbsp; [nästa](#cs_8_output)
 
-Den här metoden anropas för åtgärder som ändrar datainnehållet i tabeller utan att returnera alla rader med data.
+Den här metoden anropas för åtgärder som ändrar hello datainnehållet tabeller utan att returnera alla rader med data.
 
 
 ```csharp
@@ -315,7 +315,7 @@ Den här metoden anropas för åtgärder som ändrar datainnehållet i tabeller 
       {
          Console.WriteLine();
          Console.WriteLine("=================================");
-         Console.WriteLine("T-SQL to {0}...", tsqlPurpose);
+         Console.WriteLine("T-SQL too{0}...", tsqlPurpose);
 
          using (var command = new SqlCommand(tsqlSourceCode, connection))
          {
@@ -335,11 +335,11 @@ Den här metoden anropas för åtgärder som ändrar datainnehållet i tabeller 
 
 
 <a name="cs_8_output"/>
-### <a name="c-block-8-actual-test-output-to-the-console"></a>C# block 8: faktiska testet av utdata till konsolen
+### <a name="c-block-8-actual-test-output-toohello-console"></a>C# block 8: faktiska test utdata toohello konsolen
 
 - [Tidigare](#cs_7_executenonquery)
 
-Det här avsnittet innehåller de utdata som skickades till konsolen. Endast guid-värdena variera mellan testkörningar.
+Det här avsnittet innehåller hello utdata som hello program som skickas toohello-konsolen. Endast hello guid värdena variera mellan testkörningar.
 
 
 ```text

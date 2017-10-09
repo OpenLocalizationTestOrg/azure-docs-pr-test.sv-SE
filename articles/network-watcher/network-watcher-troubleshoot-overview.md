@@ -1,6 +1,6 @@
 ---
-title: "Introduktion till resursen felsökning i Azure-Nätverksbevakaren | Microsoft Docs"
-description: "Den här sidan innehåller en översikt över funktioner för felsökning av Nätverksbevakaren resurs"
+title: "aaaIntroduction tooresource felsökning i Azure-Nätverksbevakaren | Microsoft Docs"
+description: "Den här sidan innehåller en översikt över funktioner för hello Nätverksbevakaren resurs felsökning"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 0d5091b682d1b25c47b224394bcc2c46366eeb2a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ccbe4c1c2364473aba06e709460d67c773cf25ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Introduktion till felsökning i Azure Nätverksbevakaren resurs
+# <a name="introduction-tooresource-troubleshooting-in-azure-network-watcher"></a>Introduktion tooresource felsökning i Azure Nätverksbevakaren
 
-Virtuella Nätverksgatewayer anslutningsbarhet mellan lokala resurser och andra virtuella nätverk i Azure. Övervakning av dessa gateways och deras anslutningar är avgörande för att säkerställa kommunikationen är inte skadad. Nätverksbevakaren ger möjlighet att felsöka virtuella Nätverksgatewayer och anslutningar. Det kan anropas via portalen, PowerShell, CLI eller REST API. När den anropas, Nätverksbevakaren diagnostiserar hälsotillståndet för den virtuella nätverksgatewayen eller anslutning och rätt resultat returneras. Denna begäran är en tidskrävande transaktion, returneras resultaten när diagnosen är klar.
+Virtuella Nätverksgatewayer anslutningsbarhet mellan lokala resurser och andra virtuella nätverk i Azure. Övervaka dessa gateways och deras anslutningar är kritiska tooensuring kommunikation är inte skadad. Nätverksbevakaren ger hello kapaciteten tootroubleshoot virtuella Nätverksgatewayer och anslutningar. Det kan anropas via hello portal, PowerShell, CLI eller REST API. När den anropas, diagnostiserar Nätverksbevakaren hello hälsotillståndet för hello virtuell nätverksgateway eller anslutningen och returnerar hello rätt resultat. Denna begäran är en tidskrävande transaktion, returneras hello resultat när hello diagnos är klar.
 
 ![portal][2]
 
 ## <a name="results"></a>Resultat
 
-Preliminär resultaten ger en övergripande bild av hälsotillståndet för resursen. Mer detaljerad information kan anges för resurser som visas i följande avsnitt:
+hello preliminära resultat returneras ger en övergripande bild av hello hälsotillstånd hello resurs. Mer detaljerad information kan anges för resurser som visas i följande avsnitt hello:
 
-Följande lista innehåller de värden som returneras med felsökning API:
+hello följande lista finns hello-värden som returneras med hello felsöka API:
 
-* **startTime** -värdet är felsöka API-anropet startades.
-* **endTime** -värdet är den tid då felsökning avslutades.
+* **startTime** -värdet är hello tid hello felsöka API-anrop som är igång.
+* **endTime** -värdet är hello tidpunkt då hello felsökning avslutades.
 * **koden** -värdet är ohälsosamma, om det finns ett enda diagnos-fel.
-* **resultaten** -resultat är en samling av resultaten på anslutningen eller den virtuella nätverksgatewayen.
-    * **ID** -värdet är feltypen.
-    * **Översikt över** -värdet är en sammanfattning av felet.
-    * **detaljerad** -värdet ger en detaljerad beskrivning av felet.
-    * **recommendedActions** -den här egenskapen är en uppsättning rekommenderade åtgärder som ska vidtas.
-      * **actionText** -värdet innehåller den text som beskriver åtgärd att vidta.
-      * **actionUri** -värdet innehåller URI-dokumentationen om hur fungerar.
-      * **actionUriText** -det här värdet är en kort beskrivning av åtgärden text.
+* **resultaten** -resultat är en samling av resultaten på hello anslutning eller hello virtuell nätverksgateway.
+    * **ID** -värdet är hello feltypen.
+    * **Översikt över** -värdet är en sammanfattning av hello-fel.
+    * **detaljerad** -värdet ger en detaljerad beskrivning av hello-fel.
+    * **recommendedActions** -den här egenskapen är en uppsättning rekommenderade åtgärder tootake.
+      * **actionText** -värdet innehåller hello text som beskriver vilka åtgärden tootake.
+      * **actionUri** -värdet innehåller hello URI toodocumentation tooact.
+      * **actionUriText** -det här värdet är en kort beskrivning av hello åtgärd text.
 
-Följande tabeller visar vilka typer av olika fel (id under resultat från föregående lista) som är tillgängliga och om felet skapar loggar.
+hello följande tabeller visar hello olika fel typer (id under resultat från hello föregående lista) som är tillgängliga och om hello fel skapar loggar.
 
 ### <a name="gateway"></a>Gateway
 
@@ -54,12 +54,12 @@ Följande tabeller visar vilka typer av olika fel (id under resultat från före
 | GatewayNotFound | Det går inte att hitta Gateway eller Gateway inte har etablerats. |Nej|
 | PlannedMaintenance |  Gateway-instans är under underhåll.  |Nej|
 | UserDrivenUpdate | När en användare uppdatering pågår. Detta kan vara en åtgärd för storleksändring. | Nej |
-| VipUnResponsive | Det går inte att nå den primära instansen av Gateway. Detta händer när hälsoavsökningen misslyckas. | Nej |
-| PlatformInActive | Det finns ett problem med plattformen. | Nej|
-| ServiceNotRunning | Den underliggande tjänsten körs inte. | Nej|
-| NoConnectionsFoundForGateway | Det finns inga anslutningar på gateway. Detta är endast en varning.| Nej|
+| VipUnResponsive | Det går inte att nå hello primära instansen av hello Gateway. Detta händer när hello hälsoavsökningen misslyckas. | Nej |
+| PlatformInActive | Det finns ett problem med hello-plattformen. | Nej|
+| ServiceNotRunning | hello underliggande tjänst körs inte. | Nej|
+| NoConnectionsFoundForGateway | Det finns inga anslutningar på hello gateway. Detta är endast en varning.| Nej|
 | ConnectionsNotConnected | Anslutningar är inte ansluten. Detta är endast en varning.| Ja|
-| GatewayCPUUsageExceeded | Den aktuella Gateway CPU-användningen är > 95%. | Ja |
+| GatewayCPUUsageExceeded | hello Gateway processorkraft är > 95%. | Ja |
 
 ### <a name="connection"></a>Anslutning
 
@@ -69,19 +69,19 @@ Följande tabeller visar vilka typer av olika fel (id under resultat från före
 | GatewayNotFound | Det går inte att hitta Gateway eller Gateway inte har etablerats. |Nej|
 | PlannedMaintenance | Gateway-instans är under underhåll.  |Nej|
 | UserDrivenUpdate | När en användare uppdatering pågår. Detta kan vara en åtgärd för storleksändring.  | Nej |
-| VipUnResponsive | Det går inte att nå den primära instansen av Gateway. Det händer när hälsoavsökningen misslyckas. | Nej |
+| VipUnResponsive | Det går inte att nå hello primära instansen av hello Gateway. Det händer när hello hälsoavsökningen misslyckas. | Nej |
 | ConnectionEntityNotFound | Konfigurationen för anslutningen saknas. | Nej |
-| ConnectionIsMarkedDisconnected | Anslutningen har markerats ”frånkopplad”. |Nej|
-| ConnectionNotConfiguredOnGateway | Den underliggande tjänsten har inte konfigurerats anslutningen. | Ja |
-| ConnectionMarkedStandy | Den underliggande tjänsten har markerats som vänteläge.| Ja|
+| ConnectionIsMarkedDisconnected | hello anslutning markeras ”frånkopplad”. |Nej|
+| ConnectionNotConfiguredOnGateway | hello underliggande tjänsten har inte hello anslutning konfigureras. | Ja |
+| ConnectionMarkedStandy | hello underliggande tjänsten har markerats som vänteläge.| Ja|
 | Autentisering | I förväg delad nyckel matchar inte. | Ja|
-| PeerReachability | Peer-gateway kan inte nås. | Ja|
-| IkePolicyMismatch | Peer-gateway har IKE-principer som inte stöds av Azure. | Ja|
-| WfpParse fel | Ett fel uppstod vid parsning WFP-loggen. |Ja|
+| PeerReachability | hello peer-gateway kan inte nås. | Ja|
+| IkePolicyMismatch | hello peer-gateway har IKE-principer som inte stöds av Azure. | Ja|
+| WfpParse fel | Ett fel uppstod tolkning hello WFP-loggen. |Ja|
 
 ## <a name="supported-gateway-types"></a>Gateway-typer som stöds
 
-I följande lista visas stödet visar vilka gateways och anslutningar stöds med Nätverksbevakaren felsökning.
+hello följande lista visar hello stöd visar vilka gateways och anslutningar stöds med Nätverksbevakaren felsökning.
 |  |  |
 |---------|---------|
 |**Gateway-typer**   |         |
@@ -100,23 +100,23 @@ I följande lista visas stödet visar vilka gateways och anslutningar stöds med
 
 ## <a name="log-files"></a>Loggfiler
 
-Resursen felsökning loggfilerna lagras i ett lagringskonto efter resurs felsökning har slutförts. Följande bild visar exempel innehållet i ett anrop som resulterade i ett fel.
+hello resurs felsökning loggfilerna lagras i ett lagringskonto efter resurs felsökning har slutförts. hello visar följande bild hello exempel innehållet i ett anrop som resulterade i ett fel.
 
 ![ZIP-filen][1]
 
 > [!NOTE]
-> I vissa fall skrivs endast en delmängd av loggfiler till lagring.
+> I vissa fall kan skrivs endast en delmängd av hello loggfiler toostorage.
 
-Anvisningar för att hämta filer från azure storage-konton, referera till [komma igång med Azure Blob storage med hjälp av .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ett annat verktyg som kan användas är Lagringsutforskaren. Mer information om Lagringsutforskaren hittar du här på följande länk: [Lagringsutforskaren](http://storageexplorer.com/)
+Anvisningar för hämtning av filer från azure storage-konton finns för[komma igång med Azure Blob storage med hjälp av .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ett annat verktyg som kan användas är Lagringsutforskaren. Mer information om Lagringsutforskaren hittar du här på hello följande länk: [Lagringsutforskaren](http://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
-Den **ConnectionStats.txt** filen innehåller övergripande statistik för anslutningen, inklusive ingående och utgående byte, anslutningsstatus och den tid som anslutningen har upprättats.
+Hej **ConnectionStats.txt** filen innehåller övergripande statistik för hello anslutningen, inklusive ingående och utgående byte och anslutningsstatus hello tid hello anslutning har upprättats.
 
 > [!NOTE]
-> Om anropet till felsökning API returnerar felfri, det enda som returneras i zip-filen är en **ConnectionStats.txt** fil.
+> Om hello anropet toohello felsökning API returnerar felfri hello enda returneras i hello zip-filen är en **ConnectionStats.txt** fil.
 
-Innehållet i den här filen liknar följande exempel:
+hello innehållet i den här filen är liknande toohello följande exempel:
 
 ```
 Connectivity State : Connected
@@ -128,7 +128,7 @@ Connected Since : 2/1/2017 8:22:06 PM
 
 ### <a name="cpustatstxt"></a>CPUStats.txt
 
-Den **CPUStats.txt** filen innehåller CPU-användning och minne vid tidpunkten för testning.  Innehållet i den här filen liknar följande exempel:
+Hej **CPUStats.txt** filen innehåller CPU-användning och minne för närvarande hello tester.  hello innehållet i den här filen är liknande toohello följande exempel:
 
 ```
 Current CPU Usage : 0 % Current Memory Available : 641 MBs
@@ -136,9 +136,9 @@ Current CPU Usage : 0 % Current Memory Available : 641 MBs
 
 ### <a name="ikeerrorstxt"></a>IKEErrors.txt
 
-Den **IKEErrors.txt** filen innehåller några IKE-fel som identifierades under övervakning.
+Hej **IKEErrors.txt** filen innehåller några IKE-fel som identifierades under övervakning.
 
-I följande exempel visar innehållet i en IKEErrors.txt-fil. Felen kan vara olika beroende på problemet.
+hello visar följande exempel hello innehållet i en IKEErrors.txt-fil. Felen kan vara olika beroende på hello problemet.
 
 ```
 Error: Authentication failed. Check shared key. Check crypto. Check lifetimes. 
@@ -149,13 +149,13 @@ Error: On-prem device sent invalid payload.
 
 ### <a name="scrubbed-wfpdiagtxt"></a>Befordras wfpdiag.txt
 
-Den **Scrubbed wfpdiag.txt** loggfilen innehåller wfp-loggen. Den här loggfilen innehåller loggning av paketet släpp och IKE/AuthIP fel.
+Hej **Scrubbed wfpdiag.txt** loggfilen innehåller hello wfp-loggen. Den här loggfilen innehåller loggning av paketet släpp och IKE/AuthIP fel.
 
-I följande exempel visar innehållet i filen Scrubbed wfpdiag.txt. I det här exemplet var den delade nyckeln för en anslutning inte på rätt sätt kan ses från 3: e raden längst ned. I följande exempel är bara ett fragment av hela loggen eftersom loggen kan vara tidskrävande beroende på problemet.
+hello visar följande exempel hello innehållet i hello Scrubbed wfpdiag.txt fil. I det här exemplet hello delade nyckeln för en anslutning inte på rätt sätt kan ses från hello 3: e raden från hello längst ned. hello följande exempel är bara ett fragment för hello hela loggen, eftersom hello loggen kan vara tidskrävande beroende på hello problemet.
 
 ```
 ...
-[0]0368.03A4::02/02/2017-17:36:01.496 [ikeext] 3038|52.161.24.36|Deleted ICookie from the high priority thread pool list
+[0]0368.03A4::02/02/2017-17:36:01.496 [ikeext] 3038|52.161.24.36|Deleted ICookie from hello high priority thread pool list
 [0]0368.03A4::02/02/2017-17:36:01.496 [ikeext] 3038|52.161.24.36|IKE diagnostic event:
 [0]0368.03A4::02/02/2017-17:36:01.496 [ikeext] 3038|52.161.24.36|Event Header:
 [0]0368.03A4::02/02/2017-17:36:01.496 [ikeext] 3038|52.161.24.36|  Timestamp: 1601-01-01T00:00:00.000Z
@@ -182,9 +182,9 @@ I följande exempel visar innehållet i filen Scrubbed wfpdiag.txt. I det här e
 
 ### <a name="wfpdiagtxtsum"></a>wfpdiag.txt.SUM
 
-Den **wfpdiag.txt.sum** filen är en logg som innehåller buffertar och händelser som har bearbetats.
+Hej **wfpdiag.txt.sum** filen är en logg som visar hello buffertar och händelser som har bearbetats.
 
-I följande exempel är innehållet i en wfpdiag.txt.sum-fil.
+hello är följande exempel hello innehållet i en wfpdiag.txt.sum-fil.
 ```
 Files Processed:
     C:\Resources\directory\924336c47dd045d5a246c349b8ae57f2.GatewayTenantWorker.DiagnosticsStorage\2017-02-02T17-34-23\wfpdiag.etl
@@ -212,7 +212,7 @@ Elapsed Time            330 sec
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig att diagnostisera VPN-gatewayer och anslutningar via portalen genom att besöka [Gateway felsökning – Azure-portalen](network-watcher-troubleshoot-manage-portal.md).
+Lär dig hur toodiagnose VPN-gatewayer och anslutningar via hello portal genom att besöka [Gateway felsökning – Azure-portalen](network-watcher-troubleshoot-manage-portal.md).
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png

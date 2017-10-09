@@ -1,5 +1,5 @@
 ---
-title: "Konfigurera aviseringar för frågor i Stream Analytics | Microsoft Docs"
+title: "aaaSet in aviseringar för frågor i Stream Analytics | Microsoft Docs"
 description: "Förstå Stream Analytics aviseringar"
 keywords: Konfigurera aviseringar
 services: stream-analytics
@@ -15,45 +15,45 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/26/2017
 ms.author: jeffstok
-ms.openlocfilehash: 75b1b256eea7295f5a464996e2f34ae301c715fd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7b1d90d1468311186567c8518e0283ea6b88c3f3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Konfigurera aviseringar för Azure Stream Analytics-jobb
 ## <a name="introduction-monitor-page"></a>: Övervakaren introduktionssida
-Du kan konfigurera aviseringar för att utlösa en avisering när ett mått når ett villkor som du anger. Du kan till exempel skapa en avisering om ett villkor som liknar följande:
+Du kan ställa in aviseringar tootrigger en avisering när ett mått når ett villkor som du anger. Du kan till exempel skapa en avisering om ett villkor som hello nedan:
 
-`If there are zero input events in the last 5 minutes, send email notification to sa-admin@example.com`
+`If there are zero input events in hello last 5 minutes, send email notification toosa-admin@example.com`
 
-Regler kan ställas in på mätvärden via portalen eller kan konfigureras [programmässigt](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) över Åtgärdsloggar data.
+Regler kan ställas in på mätvärden via hello-portalen eller kan konfigureras [programmässigt](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) över Åtgärdsloggar data.
 
-## <a name="set-up-alerts-in-the-azure-portal"></a>Konfigurera aviseringar i Azure-portalen
-1. Öppna Stream Analytics-jobbet som du vill skapa en avisering för i Azure-portalen. 
+## <a name="set-up-alerts-in-hello-azure-portal"></a>Konfigurera aviseringar i hello Azure-portalen
+1. Öppna en avisering om du vill toocreate hello Stream Analytics-jobbet i hello Azure-portalen. 
 
-2. I den **jobbet** bladet, klickar du på den **övervakning** avsnitt.  
+2. I hello **jobbet** bladet, klickar du på hello **övervakning** avsnitt.  
 
-3. I den **mått** bladet, klickar du på den **Lägg till avisering** kommando.
+3. I hello **mått** bladet, klickar du på hello **Lägg till avisering** kommando.
 
       ![Konfigurationen av Azure portal](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
 
 4. Ange ett namn och en beskrivning.
 
-5. Använd väljare för att definiera de villkor under vilka aviseringen ska skickas.
+5. Använda hello väljare toodefine hello villkor under vilka hello avisering ska skickas.
 
-6. Ange information om aviseringen ska var.
+6. Ange information om där hello aviseringen ska gå.
 
       ![Ställa in en avisering för ett Azure Streaming Analytics-jobb](./media/stream-analytics-set-up-alerts/stream-analytics-add-alert.png)  
 
-Mer information om hur du konfigurerar aviseringar i Azure portal finns [få aviseringar](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
+Mer information om hur du konfigurerar aviseringar i hello Azure-portalen finns [få aviseringar](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
 
 
 ## <a name="get-help"></a>Få hjälp
 Om du behöver mer hjälp kan du besöka vårt [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Nästa steg
-* [Introduktion till Azure Stream Analytics](stream-analytics-introduction.md)
+* [Introduktion tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Komma igång med Azure Stream Analytics](stream-analytics-get-started.md)
 * [Skala Azure Stream Analytics-jobb](stream-analytics-scale-jobs.md)
 * [Referens för Azure Stream Analytics-frågespråket](https://msdn.microsoft.com/library/azure/dn834998.aspx)

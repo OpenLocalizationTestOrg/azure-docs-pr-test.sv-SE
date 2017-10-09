@@ -1,0 +1,2 @@
+När du har skapat hello tillgänglighetsgruppens lyssnare kan det vara nödvändigt tooadjust hello RegisterAllProvidersIP och HostRecordTTL klusterparametrar för hello lyssnare resurs. De här parametrarna kan minska tiden för återanslutning efter en redundansväxling, vilket kan medföra att timeout. Mer information om dessa parametrar, samt exempelkod finns [skapa eller konfigurera en tillgänglighetsgruppslyssnare](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover).
+

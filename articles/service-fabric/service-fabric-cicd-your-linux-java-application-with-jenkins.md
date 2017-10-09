@@ -1,5 +1,5 @@
 ---
-title: "Skapa och integrera kontinuerligt för ditt Azure Service Fabric Java-program för Linux med hjälp av Jenkins | Microsoft Docs"
+title: "aaaContinuous bygg- och -integrering för Azure Service Fabric Linux Java-programmet med hjälp av Jenkins | Microsoft Docs"
 description: "Skapa och integrera kontinuerligt för ditt Java-program för Linux med hjälp av Jenkins"
 services: service-fabric
 documentationcenter: java
@@ -14,75 +14,75 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: saysa
-ms.openlocfilehash: d9372407540d903acca5b1639a2d9ceb0bf3c571
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 15da2cb8c759233219369ea889550da93748129f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-jenkins-to-build-and-deploy-your-linux-java-application"></a>Skapa och distribuera ditt Java-program för Linux med hjälp av Jenkins
-Jenkins är ett populärt verktyg för kontinuerlig integrering och distribution av appar. Så här skapar och distribuerar du ett Azure Service Fabric-program med Jenkins.
+# <a name="use-jenkins-toobuild-and-deploy-your-linux-java-application"></a>Använda Jenkins toobuild och distribuera Linux Java-programmet
+Jenkins är ett populärt verktyg för kontinuerlig integrering och distribution av appar. Här är hur toobuild och distribuera Azure Service Fabric-program med hjälp av Jenkins.
 
 ## <a name="general-prerequisites"></a>Allmänna krav
-- Du måste ha Git installerat lokalt. På [nedladdningssidan för Git](https://git-scm.com/downloads) kan du installera lämplig Git-version för ditt operativsystem. Om du är nybörjare på Git kan du läsa mer i [Git-dokumentationen](https://git-scm.com/docs).
-- Du måste ha plugin-programmet Service Fabric Jenkins till hands. Du kan ladda ned det från [Service Fabric-nedladdningar](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi).
+- Du måste ha Git installerat lokalt. Du kan installera hello lämplig Git-version från [hello Git hämtar sidan](https://git-scm.com/downloads), baserat på ditt operativsystem. Om du är ny tooGit mer information om den från hello [Git dokumentationen](https://git-scm.com/docs).
+- Har hello Service Fabric-Jenkins plugin praktiska. Du kan ladda ned det från [Service Fabric-nedladdningar](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi).
 
 ## <a name="set-up-jenkins-inside-a-service-fabric-cluster"></a>Konfigurera Jenkins i ett Service Fabric-kluster
 
-Du kan konfigurera Jenkins i eller utanför ett Service Fabric-kluster. Följande avsnitt visar hur du konfigurerar det i ett kluster när ett Azure storage-konto för att spara tillståndet för behållaren-instans.
+Du kan konfigurera Jenkins i eller utanför ett Service Fabric-kluster. hello de följande avsnitten visar hur tooset den i ett kluster när du använder ett Azure storage kontot toosave hello tillstånd hello behållaren instans.
 
 ### <a name="prerequisites"></a>Krav
-1. Ha ett Service Fabric Linux-kluster redo. Docker finns redan installerat i Service Fabric-kluster som skapas via Azure Portal. Om du kör klustret lokalt kan du kontrollera om Docker är installerat med hjälp av kommandot ``docker info``. Om Docker inte är installerat kan du installera det med följande kommandon:
+1. Ha ett Service Fabric Linux-kluster redo. En Service Fabric-klustret redan skapat från hello Azure-portalen har Docker installerad. Om du kör hello kluster lokalt, kontrollera om Docker är installerat med kommandot hello ``docker info``. Om den inte är installerad kan du installera den i enlighet med detta med hjälp av hello följande kommandon:
 
   ```sh
   sudo apt-get install wget
   wget -qO- https://get.docker.io/ | sh
   ```
-2. Distribuera Service Fabric-behållarprogrammet till klustret enligt stegen nedan:
+2. Har hello Service Fabric-behållarprogram distribueras på hello klustret med hjälp av hello följande steg:
 
   ```sh
 git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
 cd service-fabric-java-getting-started/Services/JenkinsDocker/
 ```
 
-3. Du måste alternativet Anslut information om Azure storage-filresursen där du vill spara tillståndet för Jenkins behållare instans. Om du använder Microsoft Azure-portalen för samma du följer du stegen – skapa ett Azure storage-konto säg ``sfjenkinsstorage1``. Skapa en **filresurs** under detta lagringskonto säger ``sfjenkins``. Klicka på **Anslut** för filresurser och Observera värdena visas **ansluter från Linux**, säg detta skulle se ut så här -
+3. Du behöver hello ansluta alternativet information om hello Azure storage-filresurs, där du vill att toopersist hello tillstånd hello Jenkins behållare instans. Om du använder hello Microsoft Azure-portalen för hello detsamma, kontrollera gör hello - skapa ett Azure storage-konto säg ``sfjenkinsstorage1``. Skapa en **filresurs** under detta lagringskonto säger ``sfjenkins``. Klicka på **Anslut** för hello-filresursen och Observera hello värden den visas under **ansluter från Linux**, säg detta skulle se ut så här -
 ```sh
 sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
 ```
 
-4. Uppdatera platshållarvärdena i den ```setupentrypoint.sh``` skriptet med detaljer om motsvarande azure-lagring.
+4. Uppdatera hello platshållare för värden i hello ```setupentrypoint.sh``` skriptet med detaljer om motsvarande azure-lagring.
 ```sh
 vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
 ```
-Ersätt ``[REMOTE_FILE_SHARE_LOCATION]`` med värdet ``//sfjenkinsstorage1.file.core.windows.net/sfjenkins`` från utdata från connect i punkt 3 ovan.
-Ersätt ``[FILE_SHARE_CONNECT_OPTIONS_STRING]`` med värdet ``vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777`` från punkt 3 ovan.
+Ersätt ``[REMOTE_FILE_SHARE_LOCATION]`` med hello värdet ``//sfjenkinsstorage1.file.core.windows.net/sfjenkins`` hello utdata från hello ansluta i punkt 3 ovan.
+Ersätt ``[FILE_SHARE_CONNECT_OPTIONS_STRING]`` med hello värdet ``vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777`` från punkt 3 ovan.
 
-5. Anslut till klustret och installera behållarprogrammet.
+5. Anslut toohello kluster och installera programmet hello.
 ```azurecli
 sfctl cluster select --endpoint http://PublicIPorFQDN:19080   # cluster connect command
 bash Scripts/install.sh
 ```
-Detta installerar en Jenkins-behållare på klustret och kan övervakas med Service Fabric Explorer.
+Detta installerar en Jenkins behållare på hello klustret och kan övervakas med hjälp av hello Service Fabric Explorer.
 
 ### <a name="steps"></a>Steg
-1. Gå till ``http://PublicIPorFQDN:8081`` i webbläsaren. På sidan visas sökvägen till det ursprungliga administratörslösenordet som krävs för att logga in. Du kan fortsätta att använda Jenkins som administratörsanvändare. Eller så kan du skapa en ny användare och byta till den när du har loggat in med det ursprungliga administratörskontot.
+1. Från din webbläsare går för``http://PublicIPorFQDN:8081``. Det ger hello hello inledande admin lösenord toosign i sökvägen. Du kan fortsätta toouse Jenkins som administratörsanvändare. Eller du kan skapa och ändra hello användare när du har loggat in med hello inledande administratörskonto.
 
    > [!NOTE]
-   > Se till att port 8081 anges som programmets slutpunktsport när du skapar klustret.
+   > Kontrollera att hello 8081 port har angetts som hello programmet endpoint port när du skapar hello klustret.
    >
 
-2. Hämta behållarens instans-ID med ``docker ps -a``.
-3. Logga in med SSH-inloggning (Secure Shell ) till behållaren och klistra in sökvägen som visades i Jenkins-portalen. Om exempelvis sökvägen `PATH_TO_INITIAL_ADMIN_PASSWORD` visas i portalen kan du köra följande:
+2. Hämta hello behållaren instans-ID genom att använda ``docker ps -a``.
+3. Secure Shell (SSH) inloggning toohello behållare och klistra in hello sökväg som visades i hello Jenkins portal. Om exempelvis i hello portal visas hello sökvägen `PATH_TO_INITIAL_ADMIN_PASSWORD`, kör hello följande:
 
   ```sh
   docker exec -t -i [first-four-digits-of-container-ID] /bin/bash   # This takes you inside Docker shell
   cat PATH_TO_INITIAL_ADMIN_PASSWORD
   ```
 
-4. Konfigurera GitHub för Jenkins genom att utföra åtgärderna som nämns i [Generating a new SSH key and adding it to the SSH agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/) (Generera en ny SSH-nyckel och lägga till den i SSH-agenten).
-    * Använd instruktionerna från GitHub för att skapa SSH-nyckeln och lägg till SSH-nyckeln på det GitHub-konto som är (blir) värd för databasen.
-    * Kör de kommandon som nämns i länken ovan i Jenkins Docker-gränssnittet (och inte på värden).
-    * Om du vill logga in till Jenkins-gränssnittet från värden ska du använda följande kommando:
+4. Konfigurera GitHub toowork med Jenkins, med hjälp av hello anvisningarna i [Generera en ny SSH-nyckel och lägga till den toohello SSH-agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).
+    * Använd hello instruktioner från GitHub toogenerate hello SSH-nyckel och tooadd hello SSH key toohello GitHub-konto som är värd för databasen.
+    * Kör hello-kommandon som nämns i hello föregående länk i hello Jenkins Docker shell (och inte på din värd).
+    * toosign i toohello Jenkins shell från värden, Använd hello följande kommando:
 
   ```sh
   docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
@@ -90,82 +90,82 @@ Detta installerar en Jenkins-behållare på klustret och kan övervakas med Serv
 
 ## <a name="set-up-jenkins-outside-a-service-fabric-cluster"></a>Konfigurera Jenkins utanför ett Service Fabric-kluster
 
-Du kan konfigurera Jenkins i eller utanför ett Service Fabric-kluster. I följande avsnitt visas hur du konfigurerar Jenkins utanför ett kluster.
+Du kan konfigurera Jenkins i eller utanför ett Service Fabric-kluster. Hej följande avsnitt visas hur tooset den utanför ett kluster.
 
 ### <a name="prerequisites"></a>Krav
-Du måste ha Docker installerat. Följande kommandon kan användas för att installera Docker från terminalen:
+Du måste toohave Docker installerad. hello följande kommandon kan vara används tooinstall Docker från hello terminal:
 
   ```sh
   sudo apt-get install wget
   wget -qO- https://get.docker.io/ | sh
   ```
 
-När du kör ``docker info`` på terminalen visar utdata nu att Docker-tjänsten körs.
+Nu när du kör ``docker info`` i hello terminal, bör visas i hello utdata som hello Docker-tjänsten körs.
 
 ### <a name="steps"></a>Steg
-  1. Kör behållaren Service Fabric Jenkins, avbildning: ``docker pull raunakpandya/jenkins:v1``
-  2. Kör behållaravbildningen: ``docker run -itd -p 8080:8080 raunakpandya/jenkins:v1``
-  3. Hämta ID:t för behållaravbildningsinstansen. Du kan visa en lista med alla Docker-behållare med hjälp av kommandot ``docker ps –a``
-  4. Logga in på Jenkins-portalen med följande steg:
+  1. Hämta hello Service Fabric Jenkins behållare avbildningen:``docker pull raunakpandya/jenkins:v1``
+  2. Kör hello behållaren avbildningen:``docker run -itd -p 8080:8080 raunakpandya/jenkins:v1``
+  3. Hämta hello-ID för hello behållaren image-instansen. Du kan visa alla hello Docker-behållare med hello kommando``docker ps –a``
+  4. Logga in på toohello Jenkins portal med hello följande steg:
 
     * ```sh
     docker exec [first-four-digits-of-container-ID] cat /var/jenkins_home/secrets/initialAdminPassword
     ```
     Om behållar-ID:t är 2d24a73b5964 ska du använda 2d24.
-    * Det här lösenordet krävs för att logga in på Jenkins-instrumentpanelen från portalen som är ``http://<HOST-IP>:8080``
-    * När du har loggat in för första gången kan du skapa ett eget användarkonto och använda det för senare behov, eller så kan du fortsätta att använda administratörskontot. När du har skapat en användare måste du fortsätta med den användaren.
-  5. Konfigurera GitHub för Jenkins genom att utföra åtgärderna som nämns i [Generating a new SSH key and adding it to the SSH agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/) (Generera en ny SSH-nyckel och lägga till den i SSH-agenten).
-        * Följ instruktionerna från GitHub för att skapa SSH-nyckeln och lägga till SSH-nyckeln på det GitHub-konto som är (blir) värd för databasen.
-        * Kör de kommandon som nämns i länken ovan i Jenkins Docker-gränssnittet (och inte på värden).
-      * Om du vill logga in till Jenkins-gränssnittet från värden ska du använda följande kommandon:
+    * Den här lösenord krävs för att logga in toohello Jenkins instrumentpanelen från portalen, vilket är``http://<HOST-IP>:8080``
+    * När du loggar in för hello första gången, du kan skapa ditt eget konto och använda det för framtida eller du kan fortsätta toouse hello-administratörskonto. När du skapar en användare måste toocontinue med.
+  5. Konfigurera GitHub toowork med Jenkins, med hjälp av hello anvisningarna i [Generera en ny SSH-nyckel och lägga till den toohello SSH-agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/).
+        * Använd hello instruktioner från GitHub toogenerate hello SSH-nyckel och tooadd hello SSH key toohello GitHub-konto som är värd för hello-databasen.
+        * Kör hello-kommandon som nämns i hello föregående länk i hello Jenkins Docker shell (och inte på din värd).
+      * toosign i toohello Jenkins shell från värden, Använd hello följande kommandon:
 
       ```sh
       docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
       ```
 
-Kontrollera att klustret eller datorn där Jenkins-behållaravbildningen finns har en offentlig IP-adress. Detta gör att Jenkins-instansen kan ta emot meddelanden från GitHub.
+Se till att hello kluster eller en dator där hello Jenkins behållare bilden finns har en offentlig IP-adress. Detta gör att hello Jenkins instans tooreceive meddelanden från GitHub.
 
-## <a name="install-the-service-fabric-jenkins-plug-in-from-the-portal"></a>Installera plugin-programmet till Service Fabric Jenkins från portalen
+## <a name="install-hello-service-fabric-jenkins-plug-in-from-hello-portal"></a>Installera hello Service Fabric-Jenkins plugin från hello-portalen
 
-1. Gå till ``http://PublicIPorFQDN:8081``
-2. Från Jenkins-instrumentpanelen väljer du **Manage Jenkins (Hantera Jenkins)** > **Manage Plugins (Hantera plugin-program)** > **Avancerat**.
-Här kan du ladda upp ett plugin-program. Välj alternativet **Välj fil** och välj sedan den **serviceFabric.hpi**-fil som du har hämtat under Krav. När du väljer alternativet för att **ladda upp** installerar Jenkins automatiskt plugin-programmet åt dig. Tillåt en omstart om det begärs.
+1. Gå för``http://PublicIPorFQDN:8081``
+2. Hej Jenkins instrumentpanelen, Välj **hantera Jenkins** > **hantera plugin-program** > **Avancerat**.
+Här kan du ladda upp ett plugin-program. Välj **Välj fil**, och välj sedan hello **serviceFabric.hpi** fil som du hämtade under krav. När du väljer **överför**, Jenkins installeras automatiskt hello plugin-programmet. Tillåt en omstart om det begärs.
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Skapa och konfigurera ett Jenkins-jobb
 
 1. Skapa en **ny post** från instrumentpanelen.
 2. Ange ett namn (till exempel **MyJob**). Välj **free-style project** (freestyle-projekt) och klicka på **OK**.
-3. Gå till jobbsidan och klicka sedan på **Konfigurera**.
+3. Gå hello jobbet sidan och klicka på **konfigurera**.
 
-   a. Ange URL:en för GitHub-projektet under **GitHub-projekt** i det allmänna avsnittet. Den här URL:en är värd för det Service Fabric Java-program som du vill integrera med Jenkins CI/CD-flödet (t.ex. ``https://github.com/sayantancs/SFJenkins``).
+   a. Under hello Allmänt under **GitHub projekt**, ange URL för GitHub. Den här URL-värdar hello Service Fabric Java-program som du vill toointegrate med hello Jenkins kontinuerlig integration, kontinuerlig distribution (CI/CD) flöda (till exempel ``https://github.com/sayantancs/SFJenkins``).
 
-   b. I avsnittet **Source Code Management** (Källkodshantering) väljer du **Git**. Ange URL för databasen som är värd för det Service Fabric Java-program som du vill integrera med Jenkins CI/CD-flödet (t.ex. ``https://github.com/sayantancs/SFJenkins.git``). Du kan också ange här vilken gren som ska byggas (t.ex. ***/master**).
-4. Konfigurera din *GitHub* (som är värd för databasen) så att den kan kommunicera med Jenkins. Använd följande steg:
+   b. Under hello **källa kod Management** väljer **Git**. Ange hello databasen URL som är värd för hello Service Fabric Java-program som du vill toointegrate med hello Jenkins CI/CD-flöde (till exempel ``https://github.com/sayantancs/SFJenkins.git``). Dessutom kan du ange vilka gren toobuild (till exempel **/master-**).
+4. Konfigurera din *GitHub* (som är värd hello databasen) så att den kan tootalk tooJenkins. Använd hello följande steg:
 
-   a. Gå till GitHub-lagringsplatssidan. Gå till **Inställningar** > **Integrations and Services** (Integreringar och tjänster).
+   a. Gå tooyour GitHub-lagringsplatsen sidan. Gå för**inställningar** > **integreringar och tjänster**.
 
-   b. Välj **Lägg till tjänst**, skriv **Jenkins** och välj **Jenkins GitHub-plugin-programmet**.
+   b. Välj **lägga till tjänsten**, typen **Jenkins**, och välj hello **Jenkins GitHub-plugin-programmet**.
 
    c. Ange din Jenkins-webhooksadress (som standard ska den vara ``http://<PublicIPorFQDN>:8081/github-webhook/``). Klicka på **Lägg till/Uppdatera tjänsten**.
 
-   d. En testhändelse skickas till Jenkins-instansen. Du bör se en grön bock vid webhooken i GitHub och projektet skapas.
+   d. En test-händelse skickas tooyour Jenkins instans. Du bör se en grön bock av hello webhook i GitHub och skapar ditt projekt.
 
-   e. I avsnittet om **build-utlösare** väljer du önskat alternativ. I det här exemplet vill du utlösa en build när något skickas till databasen. Därför väljer du **GitHub hook trigger for GITScm polling** (GitHub-hookutlösare för GITScm-avsökning). (Tidigare hette det här alternativet **Build when a change is pushed to GitHub**) (Bygg när en ändring skickas till GitHub).
+   e. Under hello **Skapa utlösare** väljer som skapa alternativ. I det här exemplet vill tootrigger en version när vissa push toohello databasen sker. Därför väljer du **GitHub hook trigger for GITScm polling** (GitHub-hookutlösare för GITScm-avsökning). (Tidigare det här alternativet anropades **bygga när en ändring pushas tooGitHub**.)
 
-   f. Under avsnittet **Build** (Bygg) i listrutan **Add build step** (Lägg till byggsteg) väljer du alternativet **Invoke Gradle Script** (Anropa Gradle-skript). I widgeten som visas anger du sökvägen till **rotbuildskript** för ditt program. Då hämtas build.gradle från den angivna sökvägen och fungerar på motsvarande sätt. Om du skapar ett projekt med namnet ``MyActor`` (med Eclipse-plugin-programmet eller Yeoman-generatorn), ska rotbuildskriptet innehålla ``${WORKSPACE}/MyActor``. Följande skärmbild visar ett exempel på hur det kan se ut:
+   f. Under hello **Skapa avsnittet**, hello listrutan **Lägg till build steg**, Välj alternativet för hello **anropa Gradle skript**. I hello widget som medföljer, ange hello sökväg för**rot skapa skriptet** för ditt program. Den hämtar build.gradle från hello-sökvägen och fungerar därför. Om du skapar ett projekt med namnet ``MyActor`` (med hello Eclipse plugin-program eller Yeoman generator) ska innehålla hello rot build skriptet ``${WORKSPACE}/MyActor``. Se följande skärmbild ett exempel på hur det ser ut hello:
 
     ![Service Fabric Jenkins Build-åtgärd][build-step]
 
-   g. I listrutan **Post-Build Actions** (Åtgärder efter skapandet) väljer du **Deploy Service Fabric Project** (Distribuera Service Fabric-projekt). Här måste du ange klusterinformation där Jenkins-kompilerade Service Fabric-programmet skulle distribueras. Du kan även ange ytterligare information som används för att distribuera programmet. Följande skärmbild visar ett exempel på hur det kan se ut:
+   g. Från hello **efter Build åtgärder** listrutan, Välj **distribuera Service Fabric-projekt**. Här behöver du tooprovide klustret information där hello Jenkins kompileras Service Fabric-programmet distribueras. Du kan också ange ytterligare programinformation används toodeploy hello program. Se följande skärmbild ett exempel på hur det ser ut hello:
 
     ![Service Fabric Jenkins Build-åtgärd][post-build-step]
 
    > [!NOTE]
-   > Det här klustret kan vara detsamma som det kluster som är värd för Jenkins-behållarprogrammet om du använder Service Fabric för att distribuera Jenkins-behållaravbildningen.
+   > här hello-klustret kan vara detsamma som hello en värd hello Jenkins program, om du använder Service Fabric toodeploy hello Jenkins behållare.
    >
 
 ## <a name="next-steps"></a>Nästa steg
-GitHub och Jenkins har nu konfigurerats. Fundera över om du vill göra ändringar i ditt ``MyActor``-projekt i databasexemplet på https://github.com/sayantancs/SFJenkins. Skicka dina ändringar till en ``master``-fjärrgren (eller valfri gren som du använder i ditt projekt). Detta utlöser Jenkins-jobbet (``MyJob``) som du konfigurerade. Jobbet hämtar ändringarna från GitHub, bygger dem och distribuerar programmet till den klusterslutpunkt som du angav i åtgärderna efter byggprocessen.  
+GitHub och Jenkins har nu konfigurerats. Överväg att göra vissa exempel ändras i din ``MyActor`` projekt i hello databasen exempelvis https://github.com/sayantancs/SFJenkins. Push-ändringar-tooa remote ``master`` gren (eller valfri gren som du har konfigurerat toowork med). Detta utlöser hello Jenkins jobbet ``MyJob``, som du har konfigurerat. Hämtar hello ändringar från GitHub, skapar dem och distribuerar hello programmet toohello klusterslutpunkten du angav i efter build-åtgärder.  
 
   <!-- Images -->
   [build-step]: ./media/service-fabric-cicd-your-linux-java-application-with-jenkins/build-step.png

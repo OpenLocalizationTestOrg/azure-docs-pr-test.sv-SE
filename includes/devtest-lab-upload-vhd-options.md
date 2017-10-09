@@ -1,6 +1,6 @@
 ## <a name="prerequisites"></a>Krav 
-Du måste ha en VHD-fil har överförts till storage-konto som är associerade med labbet där du skapar den anpassade avbildningen för den här kursen. Välj något av följande länkar för att ladda upp en VHD-fil:
+toocomplete den här självstudiekursen kommer du måste ha en VHD-filen har överförts toohello storage-konto som är associerade med hello labb som du skapar hello anpassad avbildning. Välj något av följande länkar tooupload hello en VHD-fil:
 
-- [Ladda upp med hjälp av kommandoradsverktyget azcopy](../articles/devtest-lab/devtest-lab-upload-vhd-using-azcopy.md)
-- [Överför med Lagringsutforskaren för Microsoft Azure](../articles/devtest-lab/devtest-lab-upload-vhd-using-storage-explorer.md)
-- [Ladda upp med hjälp av PowerShell-konsolen](../articles/devtest-lab/devtest-lab-upload-vhd-using-powershell.md)
+- [Ladda upp med hjälp av kommandoradsverktyget azcopy hello](../articles/devtest-lab/devtest-lab-upload-vhd-using-azcopy.md)
+- [Överför med hello Microsoft Azure Lagringsutforskaren](../articles/devtest-lab/devtest-lab-upload-vhd-using-storage-explorer.md)
+- [Överför med hello PowerShell-konsolen](../articles/devtest-lab/devtest-lab-upload-vhd-using-powershell.md)

@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-skript exempel – ansluta en webbapp till ett lagringskonto | Microsoft Docs"
-description: "Azure PowerShell-skript exempel – ansluta en webbapp till ett lagringskonto"
+title: "aaaAzure PowerShell skriptexempel - ansluta ett lagringskonto för web app tooa | Microsoft Docs"
+description: Azure PowerShell-skript Sample - Anslut en web app tooa storage-konto
 services: app-service\web
 documentationcenter: 
 author: syntaxc4
@@ -16,25 +16,25 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 481f3efdb1cbbeba328183da7e320c7e5b819b3a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 07693366d32fbaefe92c18df67ded81661e1a2df
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-a-web-app-to-a-storage-account"></a>Ansluta en webbapp till ett lagringskonto
+# <a name="connect-a-web-app-tooa-storage-account"></a>Ansluta en web app tooa storage-konto
 
-I det här scenariot du lära dig hur du skapar ett Azure storage-konto och ett Azure-webbapp. Sedan kommer du länka storage-konto till det webbprogram som använder app-inställningar.
+I det här scenariot du lära dig hur toocreate ett Azure storage-konto och ett Azure web app. Du kan länka hello storage-konto toohello webbapp med app-inställningar.
 
-Om det behövs installerar du Azure PowerShell med hjälp av anvisningarna i den [Azure PowerShell guiden](/powershell/azure/overview), och kör sedan `Login-AzureRmAccount` att skapa en anslutning med Azure.
+Om det behövs installerar du Azure PowerShell med hjälp av hello-instruktion finns i hello hello [Azure PowerShell guiden](/powershell/azure/overview), och kör sedan `Login-AzureRmAccount` toocreate en anslutning till Azure.
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-powershell[huvudsakliga](../../../powershell_scripts/app-service/connect-to-storage/connect-to-storage.ps1 "ansluta en webbapp till ett lagringskonto")]
+[!code-powershell[main](../../../powershell_scripts/app-service/connect-to-storage/connect-to-storage.ps1 "Connect a web app tooa storage account")]
 
 ## <a name="clean-up-deployment"></a>Rensa distribution 
 
-Följande kommando kan användas för att ta bort resursgruppen, webbprogram och alla relaterade resurser efter skriptexempel har körts.
+Efter hello skriptexempel har körts, kan det vara hello följande kommando används tooremove hello resursgrupp, webbprogram och alla relaterade resurser.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -42,7 +42,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder hello följande kommandon. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
@@ -50,11 +50,11 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 | [Ny AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Skapar en App Service-plan. |
 | [Ny AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Skapar ett webbprogram. |
 | [Ny AzureRMStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) | Skapar ett lagringskonto. |
-| [Get-AzureRMStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) | Hämtar åtkomstnycklarna för ett Azure Storage-konto. |
+| [Get-AzureRMStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) | Hämtar hello snabbtangenter för ett Azure Storage-konto. |
 | [Ange AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | Ändrar någon konfiguration för ett webbprogram. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure PowerShell-modulen finns [Azure PowerShell dokumentationen](/powershell/azure/overview).
+Mer information om hello Azure PowerShell-modulen finns [Azure PowerShell dokumentationen](/powershell/azure/overview).
 
-Ytterligare Azure Powershell-exempel för Azure App Service Web Apps finns i den [Azure PowerShell-exempel](../app-service-powershell-samples.md).
+Ytterligare Azure Powershell-exempel för Azure App Service Web Apps finns i hello [Azure PowerShell-exempel](../app-service-powershell-samples.md).

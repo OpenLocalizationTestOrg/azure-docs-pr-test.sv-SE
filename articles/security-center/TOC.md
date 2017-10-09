@@ -4,7 +4,7 @@
 ## [Datasäkerhet](security-center-data-security.md)
 ## Scenarier
 ### [Incidenthantering](security-center-incident-response.md)
-### [Använd rekommendationer för att förbättra säkerheten](security-center-using-recommendations.md)
+### [Använda rekommendationer tooenhance säkerhet](security-center-using-recommendations.md)
 ## [Plattformsmigrering](security-center-platform-migration.md)
 ### [Vanliga frågor och svar om plattformsmigrering](security-center-platform-migration-faq.md)
 

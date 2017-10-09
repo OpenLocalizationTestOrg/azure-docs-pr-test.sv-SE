@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med eDigitalResearch | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och eDigitalResearch."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och eDigitalResearch."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,192 +14,192 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: f877a1dd844c40c913f3121e5288952653c312cd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6dd3cafb25ef8ede3a4c16902ed8da69cb7b715f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Självstudier: Azure Active Directory-integrering med eDigitalResearch
 
-I kursen får lära du att integrera eDigitalResearch med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate eDigitalResearch med Azure Active Directory (AD Azure).
 
-Integrera eDigitalResearch med Azure AD ger dig följande fördelar:
+Integrera eDigitalResearch med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till eDigitalResearch.
-- Du kan aktivera användarna att automatiskt hämta loggat in på eDigitalResearch (Single Sign-On) med sina Azure AD-konton.
-- Du kan hantera dina konton i en central plats - Azure-portalen.
+- Du kan styra i Azure AD som har åtkomst till tooeDigitalResearch.
+- Du kan låta dina användare tooautomatically get inloggade tooeDigitalResearch (Single Sign-On) med sina Azure AD-konton.
+- Du kan hantera dina konton i en central plats - hello Azure-portalen.
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med eDigitalResearch, behöver du följande:
+tooconfigure Azure AD-integrering med eDigitalResearch, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En eDigitalResearch enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till eDigitalResearch från galleriet
+1. Att lägga till eDigitalResearch från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-edigitalresearch-from-the-gallery"></a>Att lägga till eDigitalResearch från galleriet
-Du måste lägga till eDigitalResearch från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av eDigitalResearch i Azure AD.
+## <a name="adding-edigitalresearch-from-hello-gallery"></a>Att lägga till eDigitalResearch från hello-galleriet
+tooconfigure hello integrering av eDigitalResearch i Azure AD, behöver du tooadd eDigitalResearch hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till eDigitalResearch från galleriet:**
+**tooadd eDigitalResearch från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
-    ![Azure Active Directory-knappen][1]
+    ![hello Azure Active Directory-knappen][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
-    ![Bladet Enterprise program][2]
+    ![hello Enterprise program bladet][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
-    ![Knappen Nytt program][3]
+    ![hello-knappen för nytt program][3]
 
-4. I sökrutan skriver **eDigitalResearch**väljer **eDigitalResearch** resultatet-panelen klickar **Lägg till** för att lägga till programmet.
+4. Skriv i sökrutan hello **eDigitalResearch**väljer **eDigitalResearch** resultatet-panelen klickar **Lägg till** knappen tooadd hello program.
 
-    ![eDigitalResearch i resultatlistan](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_addfromgallery.png)
+    ![eDigitalResearch i hello resultatlistan](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med eDigitalResearch baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till användaren i eDigitalResearch motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i eDigitalResearch upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i eDigitalResearch är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i eDigitalResearch toobe upprättas.
 
-I eDigitalResearch, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+I eDigitalResearch, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med eDigitalResearch, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med eDigitalResearch, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare eDigitalResearch](#create-a-edigitalresearch-test-user)**  – du har en motsvarighet för Britta Simon i eDigitalResearch som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#test-single-sign-on)**  att kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare eDigitalResearch](#create-a-edigitalresearch-test-user)**  -toohave en motsvarighet för Britta Simon i eDigitalResearch som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#test-single-sign-on)**  tooverify hello om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt eDigitalResearch program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt eDigitalResearch program.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med eDigitalResearch:**
+**Utför följande steg hello tooconfigure Azure AD enkel inloggning med eDigitalResearch:**
 
-1. I Azure-portalen på den **eDigitalResearch** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **eDigitalResearch** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning länk][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Enkel inloggning dialogrutan](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_samlbase.png)
 
-3. På den **eDigitalResearch domän och URL: er** avsnittet, utför följande steg:
+3. På hello **eDigitalResearch domän och URL: er** avsnittet, utföra hello följande steg:
 
     ![eDigitalResearch domän URL: er och enkel inloggning information](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_url.png)
 
-    a. I den **identifierare** textruta Skriv en URL med följande mönster:`https://<company-name>.edigitalresearch.com`
+    a. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<company-name>.edigitalresearch.com`
 
-    b. I den **Reply URL** textruta Skriv en URL med följande mönster:`https://<company-name>.edigitalresearch.com/login/consume`
+    b. I hello **Reply URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<company-name>.edigitalresearch.com/login/consume`
 
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifierare och Reply-URL. Kontakta [eDigitalResearch supportteamet](http://www.maruedr.com/contact) att hämta dessa värden.
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska identifierare och svars-URL. Kontakta [eDigitalResearch supportteamet](http://www.maruedr.com/contact) tooget dessa värden.
  
 
 
-4. På den **SAML-signeringscertifikat** klickar du på **certifikat Base(64)** och spara certifikatfilen på datorn.
+4. På hello **SAML-signeringscertifikat** klickar du på **certifikat Base(64)** och spara sedan hello certifikat på datorn.
 
-    !![Länken hämta certifikatet](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_certificate.png) 
+    !![länk för hämtning av hello-certifikat](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_certificate.png) 
 
 5. Klicka på **spara** knappen.
 
     ![Konfigurera enkel inloggning spara](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_general_400.png)
 
-6. På den **eDigitalResearch Configuration** klickar du på **konfigurera eDigitalResearch** att öppna **konfigurera inloggning** fönster. Kopiera den **Sign-Out URL, SAML enhets-ID** från den **Snabbreferens avsnitt.**
+6. På hello **eDigitalResearch Configuration** klickar du på **konfigurera eDigitalResearch** tooopen **konfigurera inloggning** fönster. Kopiera hello **Sign-Out URL, SAML enhets-ID** från hello **Snabbreferens avsnitt.**
 
     ![eDigitalResearch konfiguration](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_configure.png) 
 
-7. Konfigurera enkel inloggning på **eDigitalResearch** sida, måste du skicka den hämtade **certifikatfil (Base64)**, **SAML enhets-ID**, och **utloggning URL: en** till [eDigitalResearch supportteamet](http://www.maruedr.com/contact). De kan ange den här inställningen att ha SAML SSO anslutningen korrekt på båda sidor.
+7. tooconfigure enkel inloggning på **eDigitalResearch** sida, behöver du toosend hello hämtas **certifikatfil (Base64)**, **SAML enhets-ID**, och  **URL för utloggning** för[eDigitalResearch supportteamet](http://www.maruedr.com/contact). De kan ange den här inställningen toohave hello SAML SSO anslutningen korrekt på båda sidor.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
 
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
    ![Skapa en testanvändare i Azure AD][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I Azure-portalen i den vänstra rutan klickar du på den **Azure Active Directory** knappen.
+1. Klicka på hello i hello Azure-portalen hello vänster **Azure Active Directory** knappen.
 
-    ![Azure Active Directory-knappen](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_01.png)
+    ![hello Azure Active Directory-knappen](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_01.png)
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper**, och klicka sedan på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper**, och klicka sedan på **alla användare**.
 
-    ![”Användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_02.png)
+    ![Hej ”användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_02.png)
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i den **alla användare** dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** hello överst i hello **alla användare** dialogrutan.
 
-    ![Knappen Lägg till](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_03.png)
+    ![hello webbinställningar](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_03.png)
 
-4. I den **användaren** dialogrutan utför följande steg:
+4. I hello **användaren** dialogrutan utför hello följande steg:
 
-    ![Dialogrutan användare](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_04.png)
+    ![hello användardialogrutan](./media/active-directory-saas-edigitalresearch-tutorial/create_aaduser_04.png)
 
-    a. I den **namn** skriver **BrittaSimon**.
+    a. I hello **namn** skriver **BrittaSimon**.
 
-    b. I den **användarnamn** Skriv användarens Britta Simon e-postadress.
+    b. I hello **användarnamn** rutan typen hello användarens e-postadress Britta Simon.
 
-    c. Välj den **visa lösenordet** kryssrutan och sedan skriva ned det värde som visas i den **lösenord** rutan.
+    c. Välj hello **visa lösenordet** kryssrutan och sedan skriva ned hello-värde som visas i hello **lösenord** rutan.
 
     d. Klicka på **Skapa**.
   
 ### <a name="create-a-edigitalresearch-test-user"></a>Skapa en testanvändare eDigitalResearch
 
-Syftet med det här avsnittet är att skapa en användare som kallas Britta Simon i eDigitalResearch. 
+hello syftet med det här avsnittet är toocreate en användare som kallas Britta Simon i eDigitalResearch. 
 
-Arbeta med den [eDigitalResearch supportteamet](http://www.maruedr.com/contact) att hämta användare som skapas.     
+Arbeta med hello [eDigitalResearch supportteamet](http://www.maruedr.com/contact) tooget användare som har skapats.       
     
  > [!NOTE]
- > Azure Active Directory kontoinnehavaren får ett e-postmeddelande och följer en länk för att bekräfta sina konton innan den aktiveras.
+ > hello Azure Active Directory användare får ett e-postmeddelande och följer en länk tooconfirm sitt konto innan den aktiveras.
 
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till eDigitalResearch.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooeDigitalResearch.
 
-![Tilldela rollen][200] 
+![Tilldela hello användarroll][200] 
 
-**Om du vill tilldela eDigitalResearch Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooeDigitalResearch utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **eDigitalResearch**.
+2. Välj i listan med program hello **eDigitalResearch**.
 
-    ![Länken eDigitalResearch i listan med program](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_app.png)  
+    ![Hej eDigitalResearch länken i listan med program hello](./media/active-directory-saas-edigitalresearch-tutorial/tutorial_edigitalresearch_app.png)  
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
-    ![Länken ”användare och grupper”][202]
+    ![Hej ”användare och grupper” länk][202]
 
 4. Klicka på **Lägg till** knappen. Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.
 
-    ![Fönstret Lägg till tilldelning][203]
+    ![hello Lägg uppdrag fönstret][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -207,14 +207,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen eDigitalResearch på åtkomstpanelen du bör få automatiskt loggat in på ditt eDigitalResearch program.
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
+Du bör få automatiskt inloggade tooyour eDigitalResearch programmet när du klickar på hello eDigitalResearch panelen i hello åtkomstpanelen.
+Läs mer om åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

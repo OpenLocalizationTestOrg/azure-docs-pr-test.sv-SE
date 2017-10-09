@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect-synkronisering: ändra standardkonfigurationen | Microsoft Docs"
-description: "Innehåller metodtips för att ändra standardkonfigurationen av Azure AD Connect-synkronisering."
+title: "Azure AD Connect-synkronisering: ändra standardkonfigurationen för hello | Microsoft Docs"
+description: "Innehåller metodtips för att ändra hello standardkonfigurationen av Azure AD Connect-synkronisering."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -14,56 +14,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: b723ad800ccc0f3040eb480bb72960943b1fdb16
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: aa05e935edd02c49c3c3fdc198b854f50327847c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect-synkronisering: bästa praxis för att ändra standardkonfigurationen
-Syftet med det här avsnittet är att beskriva som stöds respektive ändringar av Azure AD Connect-synkronisering.
+# <a name="azure-ad-connect-sync-best-practices-for-changing-hello-default-configuration"></a>Azure AD Connect-synkronisering: bästa praxis för att ändra hello standardkonfigurationen
+hello syftet med det här avsnittet är toodescribe som stöds och som inte stöds ändringar tooAzure AD Connect-synkronisering.
 
-Den konfiguration som skapats av Azure AD Connect fungerar ”i befintligt skick” för de flesta miljöer används för att synkroniserar lokala Active Directory med Azure AD. I vissa fall kan är det dock nödvändigt att tillämpa ändringar på en konfiguration som ska uppfylla ett speciellt behov eller krav.
+hello-konfiguration som skapats av Azure AD Connect fungerar ”i befintligt skick” för de flesta miljöer används för att synkroniserar lokala Active Directory med Azure AD. I vissa fall är dock nödvändigt tooapply måste vissa ändringar tooa configuration toosatisfy en viss eller krav.
 
-## <a name="changes-to-the-service-account"></a>Ändringar av kontot
-Azure AD Connect-synkronisering körs under ett tjänstkonto som skapats av installationsguiden. Tjänstkontot innehåller krypteringsnycklarna på den databas som används av synkronisering. Den har skapats med ett långt lösenord 127 tecken och lösenordet upphör att gälla inte.
+## <a name="changes-toohello-service-account"></a>Ändringar toohello-tjänstkontot
+Azure AD Connect-synkronisering körs under ett tjänstkonto som skapats av hello installationsguiden. Tjänstkontot innehåller hello kryptering nycklar toohello databas som används av synkronisering. Den har skapats med ett långt lösenord 127 tecken och hello lösenordet anges toonot går ut.
 
-* Det är **stöds inte** att ändra eller återställa lösenordet för tjänstkontot. Gör det förstör krypteringsnycklarna och tjänsten kan inte få åtkomst till databasen och går inte att starta.
+* Det är **stöds inte** toochange eller återställa hello-lösenord för hello-tjänstkontot. Gör det förstör hello krypteringsnycklar och hello-tjänsten är inte kan tooaccess hello databasen och inte kan toostart.
 
-## <a name="changes-to-the-scheduler"></a>Ändringar i Schemaläggaren
-Från och med versioner från version 1.1 (februari 2016) som du kan konfigurera den [scheduler](active-directory-aadconnectsync-feature-scheduler.md) har en annan synkronisering cykel än standardvärdet 30 minuter.
+## <a name="changes-toohello-scheduler"></a>Ändringar toohello Schemaläggaren
+Från och med hello versioner från version 1.1 (februari 2016) kan du konfigurera hello [scheduler](active-directory-aadconnectsync-feature-scheduler.md) toohave en annan synkronisering växla än hello som standard 30 minuter.
 
-## <a name="changes-to-synchronization-rules"></a>Ändringar av Synkroniseringsregler
-Guiden tillhandahåller en konfiguration som ska fungera för de vanligaste scenarierna. Om du behöver göra ändringar i konfigurationen, måste du följa dessa regler så att den fortfarande har en konfiguration som stöds.
+## <a name="changes-toosynchronization-rules"></a>Ändringar tooSynchronization regler
+hello installationsguiden innehåller en konfiguration som ska toowork för hello vanligaste scenarierna. Om du behöver toomake ändringar toohello konfiguration måste du följa de här reglerna toostill har en konfiguration som stöds.
 
-* Du kan [ändra attributflöden](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes) om de direkta attributflöden standard inte är lämpliga för din organisation.
-* Om du vill [inte flöda attributet](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) och ta bort alla befintliga attribut värden i Azure AD, måste du skapa en regel för det här scenariot.
+* Du kan [ändra attributflöden](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes) om hello standard direkt attributflöden inte är lämpliga för din organisation.
+* Om du vill använda för[inte flöda attributet](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) och ta bort alla befintliga attribut som värden i Azure AD måste toocreate en regel för det här scenariot.
 * [Inaktivera en oönskade Synkroniseringsregel](#disable-an-unwanted-sync-rule) i stället för att ta bort den. Borttagna regeln återskapas under en uppgradering.
-* Att [ändra en regel för out-of-box](#change-an-out-of-box-rule), bör du göra en kopia av den ursprungliga regeln och inaktiverar regeln för out-of-box. Synkronisera Rule Editor uppmanar och hjälper dig.
-* Exportera anpassade Synkroniseringsregler med hjälp av Redigeraren för regler för synkronisering. Redigeraren för ger dig ett PowerShell-skript som du kan använda för att enkelt återskapa dem i en katastrofåterställning.
+* för[ändra en regel för out-of-box](#change-an-out-of-box-rule), bör du se en kopia av hello ursprungliga regeln och inaktiverar hello out-of-box regeln. hello Sync Rule Editor uppmanar och hjälper dig.
+* Exportera anpassade Synkroniseringsregler med hjälp av hello Synchronization regler Editor. hello editor ger dig med ett PowerShell-skript som du kan använda tooeasily återskapa dem i en katastrofåterställning.
 
 > [!WARNING]
-> Out-of-box sync-regler har ett tumavtryck. Om du ändrar de här reglerna matchar inte längre tumavtrycket. Du kan få problem i framtiden när du försöker installera en ny version av Azure AD Connect. Endast ändra det sätt som det beskrivs i den här artikeln.
+> hello out-of-box sync regler har ett tumavtryck. Om du ändrar toothese regler, matchar inte längre hello tumavtryck. Du kan få problem i hello framtida när du försöker tooapply en ny version av Azure AD Connect. Bara göra ändringar hello sätt som det beskrivs i den här artikeln.
 
 ### <a name="disable-an-unwanted-sync-rule"></a>Inaktivera en oönskade Synkroniseringsregel
 Ta inte bort en synkroniseringsregel för av out-of-box. Den återskapas under nästa uppgraderingen.
 
-I vissa fall har installationsguiden resulterade i en konfiguration som inte fungerar för din topologi. Till exempel om du har ett konto-resurs skogstopologi men du har utökat schemat i skogen med Exchange-schemat, skapas regler för Exchange för kontoskogen och resursskogen. I det här fallet måste du inaktivera synkronisering regeln för Exchange.
+I vissa fall har hello installationsguiden resulterade i en konfiguration som inte fungerar för din topologi. Till exempel om du har ett konto-resurs skogstopologi men du har utökat hello schema i hello kontoskog med hello Exchange-schemat, skapas regler för Exchange för hello kontoskog och hello resursskogen. I det här fallet behöver du toodisable hello Synkroniseringsregel för Exchange.
 
 ![Inaktiverade synkroniseringsregel](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/exchangedisabledrule.png)
 
-Installationsguiden har hittat ett gamla Exchange 2003-schema i skogen i bilden ovan. Det här schemat har lagts till innan resursskogen infördes i Fabrikams miljö. Om du vill se till att inga attribut från den gamla Exchange-implementeringen är synkroniserade bör sync regeln inaktiveras enligt.
+Hello bilden ovan hittade hello installationsguiden ett gamla Exchange 2003-schema i hello kontoskog. Det här schemat har lagts till innan hello resursskogen infördes i Fabrikams miljö. tooensure inga attribut från hello gamla Exchange-implementeringen är synkroniserade, hello synkroniseringsregel ska inaktiveras som visas.
 
 ### <a name="change-an-out-of-box-rule"></a>Ändra en out-of-box-regel
-Den enda gången som du bör ändra en out-of-box-regel är när du behöver ändra join-regel. Om du behöver ändra ett attributflöde bör du skapa en synkroniseringsregel med högre prioritet än reglerna out-of-box. Den enda regeln praktiskt taget måste du klona är regeln **i från AD - användare ansluta**. Du kan åsidosätta alla regler med en regel på högre prioritet.
+hello endast tid bör du ändra en out-of-box-regel är när du behöver toochange hello anslutning till regeln. Om du behöver toochange ett attributflöde bör du skapa en synkroniseringsregel med högre prioritet än hello out-of-box-regler. Hej endast regeln som du behöver praktiskt taget tooclone är hello regeln **i från AD - användare ansluta**. Du kan åsidosätta alla regler med en regel på högre prioritet.
 
-Om du behöver göra ändringar i en out-of-box-regel bör du göra en kopia av out-of-box-regeln och inaktiverar den ursprungliga regeln. Sedan gör ändringar i den klonade regeln. Synkronisera Rule Editor hjälper dig med de här stegen. När du öppnar en out-of-box-regel kan visas med den här dialogrutan:  
+Om du behöver toomake ändringar tooan out-of-box regel bör du göra en kopia av hello out-of-box regeln och inaktiverar hello ursprungliga regeln. Gör hello ändringar toohello klonade regeln. hello Sync Rule Editor hjälper dig med de här stegen. När du öppnar en out-of-box-regel kan visas med den här dialogrutan:  
 ![Varning out-of-box-regel](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
-Välj **Ja** att skapa en kopia av regeln. Klonade regeln sedan öppnas.  
+Välj **Ja** toocreate en kopia av hello regeln. hello klonade regeln sedan öppnas.  
 ![Klonade regel](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/clonedrule.png)
 
-Genomför nödvändiga ändringar på regeln klonade omfång, koppling och transformationer.
+Gör alla nödvändiga ändringar tooscope och koppling omformningar på regeln klonade.
 
 ## <a name="next-steps"></a>Nästa steg
 **Översiktsavsnitt**

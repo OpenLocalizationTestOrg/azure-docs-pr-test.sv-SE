@@ -1,5 +1,5 @@
 ---
-title: "Azure Behållarinstanser tutorial – distribuera appen | Microsoft Docs"
+title: "aaaAzure Behållarinstanser tutorial – distribuera appen | Microsoft Docs"
 description: "Azure Behållarinstanser tutorial – distribuera appen"
 services: container-instances
 documentationcenter: 
@@ -17,24 +17,24 @@ ms.workload: na
 ms.date: 08/04/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 54151a5c1850ab7120fe666a46dc5dc99c0f5157
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b9fb098d9491e1073f0be4b14a0b9b1a18f16095
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-container-to-azure-container-instances"></a>Distribuera en behållare till Behållarinstanser som Azure
+# <a name="deploy-a-container-tooazure-container-instances"></a>Distribuera en behållare tooAzure Behållarinstanser
 
-Det här är sist av tre delar självstudiekursen. I föregående avsnitt [en behållare avbildningen skapades](container-instances-tutorial-prepare-app.md) och [pushas till ett Azure Container registret](container-instances-tutorial-prepare-acr.md). Det här avsnittet Slutför kursen genom att distribuera behållaren till Azure-Behållarinstanser. Slutfört stegen innefattar:
+Detta är hello senaste i tre delar självstudiekursen. I föregående avsnitt [en behållare avbildningen skapades](container-instances-tutorial-prepare-app.md) och [pushas tooan Azure Container registret](container-instances-tutorial-prepare-acr.md). Det här avsnittet är klar hello kursen genom att distribuera hello behållaren tooAzure Behållarinstanser. Slutfört stegen innefattar:
 
 > [!div class="checklist"]
 > * Ange en behållare grupp med en Azure Resource Manager-mall
-> * Distribuera behållargruppen med hjälp av Azure CLI
+> * Distribuera hello behållargruppen med hello Azure CLI
 > * Visa behållaren loggar
 
-## <a name="deploy-the-container-using-the-azure-cli"></a>Distribuera behållare med hjälp av Azure CLI
+## <a name="deploy-hello-container-using-hello-azure-cli"></a>Distribuera hello behållare med hello Azure CLI
 
-Azure CLI gör det möjligt för distribution av en behållare till Azure-Behållarinstanser i ett enda kommando. Eftersom bilden behållaren finns i registret för privat Azure-behållare, måste du inkludera de autentiseringsuppgifter som krävs för att komma åt den. Om det behövs kan du fråga dem enligt nedan.
+hello Azure CLI gör det möjligt för distribution av en behållare tooAzure Behållarinstanser i ett enda kommando. Eftersom hello behållaren bilden finns i Hej registret för privat Azure-behållare, måste du inkludera hello autentiseringsuppgifter krävs tooaccess den. Om det behövs kan du fråga dem enligt nedan.
 
 Behållaren registret inloggningsserver (uppdatera ditt namn i registret):
 
@@ -48,23 +48,23 @@ Behållaren registret lösenord:
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-För att distribuera avbildningen behållare från behållaren registret med en resursbegäran av 1 processorkärna och 1GB minne, kör du följande kommando:
+toodeploy behållaren avbildningen från hello behållaren registret med en resurs begär 1 processorkärna och 1GB minne, kör följande kommando hello:
 
 ```azurecli-interactive
 az container create --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public -g myResourceGroup
 ```
 
-Inom några sekunder får du ett första svar från Azure Resource Manager. Om du vill visa status för distributionen, använder du:
+Inom några sekunder får du ett första svar från Azure Resource Manager. tooview hello tillstånd för hello distribution, Använd:
 
 ```azurecli-interactive
 az container show --name aci-tutorial-app --resource-group myResourceGroup --query state
 ```
 
-Vi kan fortsätta att köra det här kommandot förrän tillståndet ändras från *väntande* till *kör*. Vi kan sedan fortsätta.
+Vi kan fortsätta att köra det här kommandot förrän hello tillstånd ändras från *väntande* för*kör*. Vi kan sedan fortsätta.
 
-## <a name="view-the-application-and-container-logs"></a>Kontrollera händelseloggarna för programmet och en behållare
+## <a name="view-hello-application-and-container-logs"></a>Visa hello program- och loggfiler
 
-När distributionen lyckas, öppna webbläsaren till IP-adressen som visas i utdata från kommandot:
+När hello distribution lyckas, öppna din webbläsare toohello IP-adress som visas i hello utdata från hello följande kommando:
 
 ```bash
 az container show --name aci-tutorial-app --resource-group myResourceGroup --query ipAddress.ip
@@ -74,9 +74,9 @@ az container show --name aci-tutorial-app --resource-group myResourceGroup --que
 "13.88.176.27"
 ```
 
-![Hello world-app i webbläsaren][aci-app-browser]
+![Hello world-app i hello webbläsare][aci-app-browser]
 
-Du kan också visa loggutdata på behållaren:
+Du kan också visa hello loggutdata för hello behållare:
 
 ```azurecli-interactive
 az container logs --name aci-tutorial-app -g myResourceGroup
@@ -92,12 +92,12 @@ listening on port 80
 
 ## <a name="next-steps"></a>Nästa steg
 
-I kursen får slutfört du processen för att distribuera din behållare till Behållarinstanser som Azure. Följande steg har slutförts:
+I kursen får slutfört du hello processen för att distribuera din behållare tooAzure Behållarinstanser. hello följande steg har slutförts:
 
 > [!div class="checklist"]
-> * Distribuera behållare från Azure-behållare registret med hjälp av Azure CLI
-> * Visar programmet i webbläsaren
-> * Visa loggar för behållaren
+> * Distribuera hello behållare från hello Azure Container registret med hjälp av hello Azure CLI
+> * Visar hello program i hello webbläsare
+> * Visa hello behållaren loggar
 
 <!-- LINKS -->
 [prepare-app]: ./container-instances-tutorial-prepare-app.md

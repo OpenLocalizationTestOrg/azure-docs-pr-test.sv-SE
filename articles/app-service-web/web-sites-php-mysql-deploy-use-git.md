@@ -1,6 +1,6 @@
 ---
-title: Skapa en PHP-MySQL-webbapp i Azure App Service och distribuera med Git
-description: "En genomgång som visar hur du skapar en PHP-webbapp som lagrar data i MySQL och använda Git-distribution till Azure."
+title: aaaCreate PHP-MySQL webbapp i Azure App Service och distribuera med Git
+description: "En genomgång som visar hur toocreate en PHP webbapp som lagrar data i MySQL och använda tooAzure för Git-distribution."
 services: app-service\web
 documentationcenter: php
 author: rmcmurray
@@ -15,36 +15,36 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: aa845eb474dbd42ae2c31880690d4ced059eb448
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9c22946777598cc973cd9dfc8d2a258bd08cc39a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-php-mysql-web-app-in-azure-app-service-and-deploy-using-git"></a>Skapa en PHP-MySQL-webbapp i Azure App Service och distribuera med Git
-Den här kursen visar hur du skapar ett webbprogram för PHP-MySQL och hur du distribuerar det till [Apptjänst](http://go.microsoft.com/fwlink/?LinkId=529714) med Git. Du kommer att använda [PHP][install-php], MySQL-kommandoradsverktyget (en del av [MySQL][install-mysql]), och [Git] [ install-git] installerat på datorn. Anvisningarna i den här kursen kan tillämpas på alla operativsystem, inklusive Windows, Mac- och Linux. När du slutför den här guiden kommer du har ett webbprogram för PHP/MySQL som körs i Azure.
+Den här kursen visar hur toocreate PHP-MySQL web app och toodeploy den för[Apptjänst](http://go.microsoft.com/fwlink/?LinkId=529714) med Git. Du kommer att använda [PHP][install-php], hello MySQL-kommandoradsverktyget (en del av [MySQL][install-mysql]), och [Git] [ install-git] installerat på datorn. hello anvisningarna i den här kursen kan tillämpas på alla operativsystem, inklusive Windows, Mac- och Linux. När du slutför den här guiden kommer du har ett webbprogram för PHP/MySQL som körs i Azure.
 
 Du kommer att lära dig:
 
-* Hur du skapar ett webbprogram och en MySQL-databas med den [Azure Portal][management-portal]. Eftersom PHP är aktiverat i [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) som standard inget särskilt krävs för att köra din PHP-kod.
-* Hur man publicerar och publicera programmet till Azure med Git.
-* Så här aktiverar du tillägget Composer att automatisera Composer uppgifter vid varje `git push`.
+* Hur toocreate ett webbprogram och en MySQL-databas med hjälp av hello [Azure Portal][management-portal]. Eftersom PHP är aktiverat i [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) inget särskilt är som standard krävs toorun PHP-kod.
+* Hur toopublish och publicera dina program tooAzure med Git.
+* Hur tooenable hello Composer tillägget tooautomate Composer uppgifter vid varje `git push`.
 
-Genom att följa den här självstudiekursen skapar du en enkel registrering webbapp i PHP. Programmet ska finnas i Web Apps. En skärmbild av det färdiga programmet understiger:
+Genom att följa den här självstudiekursen skapar du en enkel registrering webbapp i PHP. hello program ska finnas i Web Apps. En skärmbild av programmet hello slutförts understiger:
 
 ![Azure PHP-webbplats][running-app]
 
-## <a name="set-up-the-development-environment"></a>Konfigurera utvecklingsmiljön
-Den här kursen förutsätter att du har [PHP][install-php], MySQL-kommandoradsverktyget (en del av [MySQL][install-mysql]), och [Git] [ install-git] installerat på datorn.
+## <a name="set-up-hello-development-environment"></a>Ställa in hello utvecklingsmiljö
+Den här kursen förutsätter att du har [PHP][install-php], hello MySQL-kommandoradsverktyget (en del av [MySQL][install-mysql]), och [Git] [ install-git] installerat på datorn.
 
 <a id="create-web-site-and-set-up-git"></a>
 
 ## <a name="create-a-web-app-and-set-up-git-publishing"></a>Skapa en webbapp och konfigurera Git-publicering
-Följ dessa steg för att skapa en webbapp och en MySQL-databas:
+Följ dessa steg toocreate ett webbprogram och en MySQL-databas:
 
-1. Logga in på den [Azure-portalen][management-portal].
-2. Klicka på den **ny** ikon.
-3. Klicka på **finns alla** bredvid **Marketplace**. 
+1. Inloggningen toohello [Azure Portal][management-portal].
+2. Klicka på hello **ny** ikon.
+3. Klicka på **finns alla** nästa för**Marketplace**. 
 4. Klicka på **webb + mobilt**, sedan **Webbapp + MySQL**. Klicka på **Skapa**.
 5. Ange ett giltigt namn för resursgruppen.
    
@@ -52,53 +52,53 @@ Följ dessa steg för att skapa en webbapp och en MySQL-databas:
 6. Ange värden för din nya webbapp.
    
     ![Skapa webbapp][new-web-app]
-7. Ange värden för den nya databasen, inklusive godkänner du de juridiska villkoren.
+7. Ange värden för den nya databasen, inklusive godkänner toohello juridiska villkor.
    
     ![Skapa ny MySQL-databas][new-mysql-db]
-8. När webbappen har skapats visas bladet ny webbapp.
+8. När hello webbprogrammet har skapats visas hello nytt web app blad.
 9. I **inställningar** klickar du på **kontinuerlig distribution**, klickar du på *konfigurera nödvändiga inställningar*.
    
     ![Konfigurera Git-publicering][setup-publishing]
-10. Välj **lokal Git-lagringsplats** för datakällan.
+10. Välj **lokal Git-lagringsplats** för hello källa.
     
      ![Konfigurera Git-lagringsplats][setup-repository]
-11. Du måste ange ett användarnamn och lösenord om du vill aktivera Git-publicering. Anteckna användarnamnet och lösenordet som du skapar. (Om du har ställt in en Git-lagringsplats innan det här steget hoppas över.)
+11. tooenable Git publicering, måste du ange ett användarnamn och lösenord. Anteckna hello användarnamn och lösenord som du skapar. (Om du har ställt in en Git-lagringsplats innan det här steget hoppas över.)
     
      ![Skapa autentiseringsuppgifter för publicering][credentials]
 
 ## <a name="get-remote-mysql-connection-information"></a>Hämta anslutningsinformation för MySQL
-Att ansluta till MySQL-databas som körs i Web Apps din kommer måste anslutningsinformationen. Följ dessa steg för att få information om MySQL anslutning:
+tooconnect toohello MySQL-databas som körs i Web Apps din kommer måste hello anslutningsinformationen. tooget MySQL anslutningsinformationen så här:
 
-1. Klicka på databasen från din resursgrupp:
+1. Klicka på hello databas från din resursgrupp:
    
     ![Välj databas][select-database]
-2. Från databasen **inställningar**väljer **egenskaper**.
+2. Från hello databasen **inställningar**väljer **egenskaper**.
    
     ![Välj egenskaper][select-properties]
-3. Anteckna värdena för `Database`, `Host`, `User Id`, och `Password`.
+3. Anteckna hello värden för `Database`, `Host`, `User Id`, och `Password`.
    
     ![Obs egenskaper][note-properties]
 
 ## <a name="build-and-test-your-app-locally"></a>Skapa och testa appen lokalt
 Nu när du har skapat ett webbprogram, kan du utveckla ditt program lokalt och sedan distribuera efter testning.
 
-Registreringen programmet är ett enkelt PHP-program som gör att du kan registrera dig för en händelse genom att tillhandahålla ditt namn och e-postadress. Information om föregående månaderna visas i en tabell. Registreringsinformation lagras i en MySQL-databas. Programmet består av en fil (kopiera och klistra in koden finns nedan):
+hello registreringen programmet är ett enkelt PHP-program som du kan använda tooregister för en händelse genom att tillhandahålla ditt namn och e-postadress. Information om föregående månaderna visas i en tabell. Registreringsinformation lagras i en MySQL-databas. hello program består av en fil (kopiera och klistra in koden finns nedan):
 
 * **index.php**: Visar ett formulär för registrering och en tabell som innehåller registrant information.
 
-Följ stegen nedan om du vill skapa och köra programmet lokalt. Observera att de här stegen förutsätter att du har PHP och MySQL kommandoradsverktyget (del av MySQL) på den lokala datorn och att du har aktiverat den [PDO-tillägget för MySQL][pdo-mysql].
+toobuild och kör hello programmet lokalt, följer du hello stegen nedan. Observera att de här stegen förutsätter att du har hello PHP och MySQL kommandoradsverktyget (del av MySQL) på den lokala datorn och att du har aktiverat hello [PDO-tillägget för MySQL][pdo-mysql].
 
-1. Ansluta till fjärrservern i MySQL med hjälp av värdet för `Data Source`, `User Id`, `Password`, och `Database` som du hämtade tidigare:
+1. Ansluta toohello MySQL fjärrserver, genom att använda hello värde för `Data Source`, `User Id`, `Password`, och `Database` som du hämtade tidigare:
    
         mysql -h{Data Source] -u[User Id] -p[Password] -D[Database]
-2. MySQL-kommandotolken visas:
+2. hello MySQL kommandotolken visas:
    
         mysql>
-3. Klistra in följande `CREATE TABLE` kommando för att skapa den `registration_tbl` tabell i databasen:
+3. Klistra in följande hello `CREATE TABLE` kommandot toocreate hello `registration_tbl` tabell i databasen:
    
         CREATE TABLE registration_tbl(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), name VARCHAR(30), email VARCHAR(30), date DATE);
-4. Skapa i roten av den lokala programmappen **index.php** fil.
-5. Öppna den **index.php** filen i en textredigerare eller IDE och Lägg till följande kod och slutföra de nödvändiga ändringarna som markerats med `//TODO:` kommentarer.
+4. Skapa i hello roten för lokala programmappen **index.php** fil.
+5. Öppna hello **index.php** filen i en textredigerare eller IDE och Lägg till hello följande kod och fullständig hello nödvändiga ändringar som har markerats med `//TODO:` kommentarer.
 
         <html>
         <head>
@@ -119,7 +119,7 @@ Följ stegen nedan om du vill skapa och köra programmet lokalt. Observera att d
         </head>
         <body>
         <h1>Register here!</h1>
-        <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
+        <p>Fill in your name and email address, then click <strong>Submit</strong> tooregister.</p>
         <form method="post" action="index.php" enctype="multipart/form-data" >
               Name  <input type="text" name="name" id="name"/></br>
               Email <input type="text" name="email" id="email"/></br>
@@ -127,13 +127,13 @@ Följ stegen nedan om du vill skapa och köra programmet lokalt. Observera att d
         </form>
         <?php
             // DB connection info
-            //TODO: Update the values for $host, $user, $pwd, and $db
-            //using the values you retrieved earlier from the Azure Portal.
+            //TODO: Update hello values for $host, $user, $pwd, and $db
+            //using hello values you retrieved earlier from hello Azure Portal.
             $host = "value of Data Source";
             $user = "value of User Id";
             $pwd = "value of Password";
             $db = "value of Database";
-            // Connect to database.
+            // Connect toodatabase.
             try {
                 $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
                 $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -184,22 +184,22 @@ Följ stegen nedan om du vill skapa och köra programmet lokalt. Observera att d
         </body>
         </html>
 
-1. Gå till programmappen i en terminal och Skriv följande kommando:
+1. I en terminal gå tooyour program-mappen och Skriv hello följande kommando:
    
        php -S localhost:8000
 
-Du kan nu bläddra till **http://localhost: 8000 /** för att testa programmet.
+Du kan nu Bläddra för**http://localhost: 8000 /** tootest hello program.
 
-## <a name="publish-your-app"></a>Publicera din app
-När du har testat appen lokalt kan publicera du den till Webbappar med Git. Du initiera lokal Git-lagringsplats och publicera programmet.
+## <a name="publish-your-app"></a>Publicera appen
+När du har testat appen lokalt kan publicera du den tooWeb appar med Git. Du initiera lokal Git-lagringsplats och publicera programmet hello.
 
 > [!NOTE]
-> Det här är samma steg som visas i Azure-portalen i slutet av den skapa en webbapp och uppsättningen in Git Publishing ovan.
+> Dessa är hello samma steg som visas i hello Azure Portal hello slutet av hello skapa en webbapp och ange in Git Publishing ovan.
 > 
 > 
 
-1. (Valfritt)  Om du har glömt eller tappas bort Git remote repostitory URL: en, navigera till egenskaperna web app på Azure Portal.
-2. Öppna GitBash (eller en terminal om Git i din `PATH`), ändrar sökvägen till rotkatalogen för programmet och kör följande kommandon:
+1. (Valfritt)  Om du har glömt eller tappas bort Git remote repostitory URL: en, navigera toohello web appegenskaper för hello Azure-portalen.
+2. Öppna GitBash (eller en terminal om Git i din `PATH`), ändra kataloger toohello rotkatalogen för programmet och kör följande kommandon hello:
    
         git init
         git add .
@@ -207,58 +207,58 @@ När du har testat appen lokalt kan publicera du den till Webbappar med Git. Du 
         git remote add azure [URL for remote repository]
         git push azure master
    
-    Du uppmanas att lösenordet du skapade tidigare.
+    Du uppmanas att hello-lösenord som du skapade tidigare.
    
-    ![Inledande Push till Azure via Git][git-initial-push]
-3. Bläddra till **http://[site name].azurewebsites.net/index.php** kan börja använda programmet (den här informationen lagras på instrumentpanelen konto):
+    ![Den inledande Push tooAzure via Git][git-initial-push]
+3. Bläddra för**http://[site name].azurewebsites.net/index.php** toobegin med hjälp av hello (den här informationen lagras på instrumentpanelen konto):
    
     ![Azure PHP-webbplats][running-app]
 
-När du har publicerat din app kan du använda Git för att publicera dem börjar att göra ändringar.
+När du har publicerat din app, kan du göra ändringar tooit och använda Git toopublish dem.
 
-## <a name="publish-changes-to-your-app"></a>Publicera ändringar i din app
-Följ dessa steg om du vill publicera ändringar i appen:
+## <a name="publish-changes-tooyour-app"></a>Publicera ändringar tooyour app
+toopublish ändringar tooyour appen, gör du följande:
 
-1. Göra ändringar i din app lokalt.
-2. Öppna GitBash (eller en terminal it Git finns i din `PATH`), ändrar sökvägen till rotkatalogen för din app och kör följande kommandon:
+1. Göra ändringar tooyour appen lokalt.
+2. Öppna GitBash (eller en terminal it Git finns i din `PATH`), ändra kataloger toohello rotkatalogen för din app och kör följande kommandon hello:
    
         git add .
         git commit -m "comment describing changes"
         git push azure master
    
-    Du uppmanas att lösenordet du skapade tidigare.
+    Du uppmanas att hello-lösenord som du skapade tidigare.
    
-    ![Skicka ändringar till Azure via Git][git-change-push]
-3. Bläddra till **http://[site name].azurewebsites.net/index.php** att se din app och eventuella ändringar som du har gjort:
+    ![Skicka ändringar av platsen tooAzure via Git][git-change-push]
+3. Bläddra för**http://[site name].azurewebsites.net/index.php** toosee din app och eventuella ändringar som du har gjort:
    
     ![Azure PHP-webbplats][running-app]
 
 > [!NOTE]
-> Om du vill komma igång med Azure Apptjänst innan du registrerar dig för ett Azure-konto kan du gå till [Prova Apptjänst](https://azure.microsoft.com/try/app-service/). Där kan du direkt skapa en tillfällig startwebbapp i Apptjänst. Inget kreditkort krävs, och du gör inga åtaganden.
+> Om du vill tooget igång med Azure App Service innan du registrerar dig för ett Azure-konto går för[prova App Service](https://azure.microsoft.com/try/app-service/), där kan du direkt skapa en tillfällig startwebbapp i App Service. Inget kreditkort krävs, och du gör inga åtaganden.
 > 
 > 
 
 <a name="composer"></a>
 
-## <a name="enable-composer-automation-with-the-composer-extension"></a>Aktivera Composer automatisering med tillägget Composer
-Som standard göra git-Distributionsprocess i App Service inte något med composer.json, om du har en i PHP-projektet. Du kan aktivera composer.json bearbetning under `git push` genom att aktivera tillägget Composer.
+## <a name="enable-composer-automation-with-hello-composer-extension"></a>Aktivera Composer automatisering med hello tillägget Composer
+Som standard göra hello git-Distributionsprocess i App Service inte något med composer.json, om du har en i PHP-projektet. Du kan aktivera composer.json bearbetning under `git push` genom att aktivera hello Composer tillägg.
 
-1. I din PHP web appens blad i den [Azure-portalen][management-portal], klickar du på **verktyg** > **tillägg**.
+1. I din PHP web Apps bladet i hello [Azure-portalen][management-portal], klickar du på **verktyg** > **tillägg**.
    
     ![Composer tilläggsinställningar][composer-extension-settings]
 2. Klicka på **Lägg till**, klicka på **Composer**.
    
     ![Lägg till tillägget Composer][composer-extension-add]
-3. Klicka på **OK** att acceptera villkoren. Klicka på **OK** igen för att lägga till filnamnstillägget.
+3. Klicka på **OK** tooaccept juridiska villkor. Klicka på **OK** igen tooadd hello-tillägget.
    
-    Den **installerat tillägg** bladet visas nu tillägget Composer.  
+    Hej **installerat tillägg** bladet visas nu hello Composer tillägg.  
     ![Composer tillägg View][composer-extension-view]
-4. Nu kan utföra `git add`, `git commit`, och `git push` precis som i föregående avsnitt. Du ser nu att installeras Composer beroenden som definierats i composer.json.
+4. Nu kan utföra `git add`, `git commit`, och `git push` precis som i hello föregående avsnitt. Du ser nu att installeras Composer beroenden som definierats i composer.json.
    
     ![Composer tillägget lyckades][composer-extension-success]
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information finns i [PHP Developer Center](/develop/php/).
+Mer information finns i hello [PHP Developer Center](/develop/php/).
 
 <!-- URL List -->
 

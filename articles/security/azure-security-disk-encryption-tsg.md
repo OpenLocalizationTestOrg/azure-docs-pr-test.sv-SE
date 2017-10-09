@@ -1,5 +1,5 @@
 ---
-title: "Azure Disk Encryption felsökning | Microsoft Docs"
+title: "Felsökning av Disk Encryption aaaAzure | Microsoft Docs"
 description: "Den här artikeln innehåller felsökningstips för Microsoft Azure Disk Encryption för Windows och Linux virtuella IaaS-datorer."
 services: security
 documentationcenter: na
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: devtiw
-ms.openlocfilehash: 5f482a92b8fcd71a1b767fcc5741bc57605997ea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2ecb8df1fb869e3bf8f3be4be4494e6485e75695
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Felsökningsguide för Azure Disk Encryption
 
-Den här guiden är för arbetet för IT-proffs, information security analytiker och molnet administratörer vars organisationer som använder Azure disk encryption och måste vägledning för att felsöka diskkryptering relaterade problem.
+Den här guiden är för arbetet för IT-proffs, information säkerhetsanalytiker och problem som rör molnet administratörer vars organisationer som använder Azure disk encryption och måste vägledning tootroubleshoot-diskkryptering.
 
 ## <a name="troubleshooting-linux-os-disk-encryption"></a>Felsökning av Linux OS-diskkryptering
 
-Linux OS-diskkryptering måste demontera OS-enheten innan du kör med fullständig disk krypteringsprocessen.   Om inte ett felmeddelande för ”det gick inte att demontera efter...” Felmeddelandet är sannolikt att.
+Linux OS-diskkryptering måste demontera hello OS enheten tidigare toorunning det via hello fullständig krypteringsprocessen.   Om inte ett felmeddelande för ”kunde inte toounmount efter...” Felmeddelandet är sannolikt toooccur.
 
-Detta är troligen när OS-diskkryptering görs på en målmiljön VM som har ändrats eller har ändrats från dess stöds lager galleriet avbildning.  Exempel på avvikelser från stöds avbildningen, som kan störa tilläggets möjlighet att demontera OS-enhet:
+Detta är troligen när OS-diskkryptering görs på en målmiljön VM som har ändrats eller har ändrats från dess stöds lager galleriet avbildning.  Exempel på avvikelser från hello stöds avbildningen, som kan störa hello tillägget möjlighet toounmount hello OS enhet:
 - Anpassade avbildningar som matchar inte längre ett filsystem som stöds och/eller partitioneringsschema.
-- Anpassade avbildningar med program, till exempel antivirusprogram, Docker, SAP, MongoDB eller Apache Cassandra körs i OS före kryptering.  Dessa program är svåra att avsluta och när de behåller öppna filreferenser på OS-enhet på enheten kan inte omonterade orsakar fel.
-- Anpassade skript som körs i Stäng tid närhet till steget kryptering kan påverka och orsaka det här felet. Detta kan inträffa när en Resource Manager-mall definierar flera tillägg för att köra samtidigt, eller när tillägget för anpassat skript eller annan åtgärd som körs samtidigt för diskkryptering.   Serialisering och isolera sådana åtgärder kan lösa problemet.
-- När SELinux inte har inaktiverats innan du aktiverar kryptering, misslyckas koppla från steget.  SELinux kan aktiveras igen efter kryptering har slutförts.
-- När OS-disken använder ett LVM schema (även om det finns stöd för diskar begränsad LVM data LVM OS-disken är inte)
+- Anpassade avbildningar med program, till exempel antivirusprogram, Docker, SAP, MongoDB eller Apache Cassandra körs i hello OS tidigare tooencryption.  Dessa program är svåra tooterminate och när de behåller öppna handtag toohello OS enhet hello enheten kan inte omonterade orsakar fel.
+- Anpassade skript som körs i Stäng tid närhet toohello kryptering steg kan påverka och orsaka det här felet. Detta kan inträffa när en Resource Manager-mall definierar flera tillägg tooexecute samtidigt, eller när tillägget för anpassat skript eller annan åtgärd körs samtidigt toodisk kryptering.   Serialisering och isolera sådana åtgärder kan lösa problemet med hello.
+- När SELinux inte har inaktiverat tidigare tooenabling kryptering, demontera hello steget misslyckas.  SELinux kan aktiveras igen efter kryptering har slutförts.
+- När hello OS-disken använder ett LVM schema (även om det finns stöd för diskar begränsad LVM data LVM OS-disken är inte)
 - När minimikraven på minne är inte uppfyllda (7GB rekommenderas för OS-diskkryptering)
 - När dataenheter har rekursivt monteras under /mnt/ katalog eller varandra (till exempel /mnt/data1, /mnt/data2, /data3 + /data3/data4 osv.)
 - När andra Azure Disk Encryption [krav](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) för Linux är inte uppfyllda
 
-## <a name="unable-to-encrypt"></a>Det gick inte att kryptera
+## <a name="unable-tooencrypt"></a>Det går inte tooencrypt
 
-I vissa fall har Linux diskkryptering verkar ha fastnat i ”OS-disken kryptering igång” och SSH inaktiverats. Den här processen kan ta mellan 3-16 timmar att slutföra en bild lager galleriet.  Om flera TB datadiskar läggs kan processen ta dagar. Linux-Operativsystemdatorn disk encryption sekvensen demonterar enhetens OS tillfälligt och utför block för block kryptering av hela OS-disken innan ommontering i det kryptera tillståndet.   Till skillnad från Azure Disk Encryption i Windows tillåter Linux-diskkryptering inte samtidig användning av den virtuella datorn medan kryptering pågår.  Prestandaegenskaperna för den virtuella datorn, inklusive storleken på disken och om lagringskontot backas upp av standard- eller premium (SSD) lagring kan avsevärt påverka den tid som krävs till fullständig kryptering.
+I vissa fall visas hello Linux-diskkryptering toobe fastnat på ”OS diskkryptering igång” och SSH är inaktiverat. Den här processen kan ta mellan toocomplete 3-16 timmar på en bild för lager galleriet.  Om flera TB datadiskar läggs kan hello ta dagar. hello Linux OS-disk kryptering sekvens demonterar hello OS enhet tillfälligt och utför block för block kryptering av hello hela OS-disk innan ommontering i det kryptera tillståndet.   Till skillnad från Azure Disk Encryption i Windows tillåter Linux-diskkryptering inte samtidig användning av hello VM medan hello kryptering pågår.  hello prestandaegenskaper för hello VM, bland annat hello storlek hello disken och om hello lagringskonto backas upp av standard- eller premium (SSD) lagring kan avsevärt påverka hello tid som krävs för toocomplete kryptering.
 
-Om du vill kontrollera status för fältet ProgressMessage som returnerades från den [Get-AzureRmVmDiskEncryptionStatus](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) kommando kan användas.   När OS-enheten krypteras den virtuella datorn försätts i tillståndet underhåll och SSH också inaktiveras för att förhindra eventuella avbrott i den pågående processen.  EncryptionInProgress rapporteras för flesta av tiden medan kryptering pågår, följt av flera timmar senare med en VMRestartPending meddelande där uppmanas att starta om den virtuella datorn.  Exempel:
+status för toocheck hello ProgressMessage fält som returneras från hello [Get-AzureRmVmDiskEncryptionStatus](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) kommando kan användas.   Medan hello OS enheten krypteras hello VM försätts i tillståndet underhåll och SSH är också inaktiverade tooprevent avbrott toohello pågående processer.  EncryptionInProgress rapporteras för hello merparten av hello tid medan kryptering pågår, följt av flera timmar senare med ett VMRestartPending-meddelande om att toorestart hello VM.  Exempel:
 
 
 ```
@@ -56,30 +56,30 @@ PS > Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VM
 OsVolumeEncrypted          : VMRestartPending
 DataVolumesEncrypted       : Encrypted
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
-ProgressMessage            : OS disk successfully encrypted, please reboot the VM
+ProgressMessage            : OS disk successfully encrypted, please reboot hello VM
 ```
 
-När du uppmanas att starta om den virtuella datorn efter att starta om den virtuella datorn och ger 2 – 3 minuter för datorn startats och sista stegen utförs på måldatorn, visar statusmeddelandet att kryptering slutligen har slutförts.   När det här meddelandet är tillgänglig, förväntas den krypterade enheten OS vara redo för användning och för den virtuella datorn att användas igen.
+Du uppmanas när tooreboot hello VM och efter omstart hello VM, och ger 2 – 3 minuter för hello omstart och sista stegen toobe utförs på hello mål, hello statusmeddelande visar att kryptering slutligen har slutförts.   När det här meddelandet är tillgänglig, hello krypterade OS-enheten är förväntade toobe redo för användning och hello VM toobe kan användas igen.
 
-I fall där den här sekvensen inte påträffades, eller om boot information, pågående meddelande eller andra felindikatorer rapportera att OS-kryptering misslyckades mitt i den här processen (till exempel om du ser felet ”Det gick inte att demontera” som beskrivs i den här guiden), rekommenderas att återställa den virtuella datorn till ögonblicksbild eller säkerhetskopior som gjorts omedelbart före kryptering.  Innan nästa försök rekommenderas att omvärdera egenskaperna för den virtuella datorn och se till att alla krav är uppfyllda.
+I fall där den här sekvensen inte påträffades, eller om boot information, pågående meddelande eller andra felindikatorer rapportera att OS-kryptering misslyckades hello mitten av den här processen (till exempel om du ser hello ”misslyckades toounmount” fel som beskrivs i den här guiden) Det rekommenderas toorestore hello VM tillbaka toohello ögonblicksbild eller säkerhetskopior som gjorts omedelbart före tooencryption.  Tidigare toohello nästa försök, är det föreslagna toore-utvärdera hello VM hello egenskaper och se till att alla krav är uppfyllda.
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Felsöka Azure Disk Encryption bakom en brandvägg
-När anslutningen är begränsad av en brandvägg, proxy krav eller grupp (NSG) för nätverkssäkerhet, kan möjligheten att utföra uppgifter som krävs av tillägget avbrytas.   Detta kan resultera i statusmeddelanden, till exempel ”tillståndets status är inte tillgänglig på den virtuella datorn” och i förväntade scenarier som inte kan slutföras.  Avsnitten som följer har några vanliga brandväggsproblem som du kan undersöka.
+När anslutningen begränsas av en brandvägg, proxy krav eller grupp (NSG) för nätverkssäkerhet, hello möjligheten för hello tillägget tooperform behövs uppgifter kan avbrytas.   Detta kan resultera i statusmeddelanden, till exempel ”tillståndets status är inte tillgänglig på hello VM” och i förväntade scenarier misslyckas toofinish.  hello avsnitten som följer har några vanliga brandväggsproblem som du kan undersöka.
 
 ### <a name="network-security-groups"></a>Nätverkssäkerhetsgrupper
-En grupp för nätverkssäkerhet tillämpas fortfarande måste tillåta slutpunkten att uppfylla dokumenterade nätverkskonfigurationen [krav](https://docs.microsoft.com/azure/security/azure-security-disk-encryption#prerequisites) för diskkryptering.
+Nätverket grupp säkerhetsinställningar tillämpas fortfarande måste tillåta hello toomeet hello dokumenterade nätverket slutpunktskonfiguration [krav](https://docs.microsoft.com/azure/security/azure-security-disk-encryption#prerequisites) för diskkryptering.
 
 ### <a name="azure-keyvault-behind-firewall"></a>Azure Keyvault bakom brandväggen
-Den virtuella datorn måste kunna komma åt nyckelvalvet. Referera till hjälp med åtkomst till viktiga fel finns bakom en brandvägg som underhålls av den [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall) team.
+hello VM måste vara kan tooaccess nyckelvalvet. Se tooguidance på åtkomst tookey fel finns bakom en brandvägg som underhålls av hello [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall) team.
 
 ### <a name="linux-package-management-behind-firewall"></a>Linux-paketet management bakom brandväggen
-Azure Disk Encryption för Linux bygger på mål-distribution systemet för pakethantering att installera nödvändiga komponenter innan du aktiverar kryptering vid körning.  Brandväggsinställningar förhindrar att den virtuella datorn från att kunna ladda ned och installera komponenterna, förväntas efterföljande försök.    Hur du konfigurerar detta kan variera av distribution.  På Red Hat säkerställer att prenumerationen manager och yum har ställts in korrekt det är viktigt att när en proxyserver krävs.  Se [detta](https://access.redhat.com/solutions/189533) Red Hat support-artikeln om det här avsnittet.  
+Azure Disk Encryption för Linux beroende hello mål distribution paketet management system tooinstall behövs nödvändiga komponenter tidigare tooenabling kryptering vid körning.  Om brandväggsinställningar förhindra hello VM kan toodownload och installera komponenterna, förväntas efterföljande försök.    hello steg tooconfigure detta kan variera efter distributionen.  På Red Hat säkerställer att prenumerationen manager och yum har ställts in korrekt det är viktigt att när en proxyserver krävs.  Se [detta](https://access.redhat.com/solutions/189533) Red Hat support-artikeln om det här avsnittet.  
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Felsöka Windows Server 2016 Server Core
 
-Bdehdcfg-komponenten är inte tillgängligt som standard på Windows Server 2016 Server Core. Den här komponenten krävs av Azure Disk Encryption.
+Hej bdehdcfg komponenten är inte tillgängligt som standard på Windows Server 2016 Server Core. Den här komponenten krävs av Azure Disk Encryption.
 
-För att lösa problemet, kopiera följande 4 filer från en Windows Server 2016 Data Center VM till mappen c:\windows\system32 för Server Core-avbildningen:
+tooworkaround problemet genom att kopiera hello följande 4 filer från en Windows Server 2016 Data Center VM toohello c:\windows\system32 mapp för hello Server Core bild:
 
 ```
 bdehdcfg.exe
@@ -88,13 +88,13 @@ bdehdcfglib.dll.mui
 bdehdcfg.exe.mui
 ```
 
-Kör sedan följande kommando:
+Kör följande kommando hello:
 
 ```
 bdehdcfg.exe -target default
 ```
 
-Detta skapar en partition 550MB och sedan efter en omstart, du kan använda Diskpart Kontrollera volymerna och fortsätta.  
+Detta skapar en partition 550MB och sedan efter en omstart, du kan använda Diskpart toocheck hello volymer och fortsätta.  
 
 Exempel:
 
@@ -108,7 +108,7 @@ DISKPART> list vol
   Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
 ```
 ## <a name="see-also"></a>Se även
-I det här dokumentet du lära dig mer om några vanliga problem i Azure disk encryption och hur du felsöker. Mer information om den här tjänsten och dess funktioner:
+I det här dokumentet du lära dig mer om några vanliga problem i Azure disk encryption och hur tootroubleshoot. Mer information om den här tjänsten och dess funktioner:
 
 - [Tillämpa diskkryptering i Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
 - [Kryptera en virtuell Azure-dator](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption)

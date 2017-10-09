@@ -1,6 +1,6 @@
 ---
-title: Principer i Azure API Management | Microsoft Docs
-description: "Lär dig mer om att skapa, redigera och konfigurera principer i API-hantering."
+title: aaaPolicies i Azure API Management | Microsoft Docs
+description: "Lär dig hur toocreate, redigera och konfigurera principer i API-hantering."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 7c1f235343074ec11c635097f2b094a10f3fe781
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9ab0f884a655004cb10c05085034df1795f512e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="policies-in-azure-api-management"></a>Principer i Azure API Management
-I Azure API Management är-principer en kraftfull funktion för systemet som tillåter utgivaren för att ändra funktionssättet för API: et genom konfigurationen. Principer är en samling av instruktioner som utförs i tur och ordning på begäran eller svar på en API. Populära instruktioner med Formatkonvertering från XML till JSON och anropa hastighet begränsa om du vill begränsa mängden inkommande samtal från en utvecklare. Många fler principer är tillgängliga direkt.
+I Azure API Management är-principer en kraftfull funktion hello system som tillåter hello publisher toochange hello funktionssätt hello API via konfiguration. Principer är en samling av instruktioner som utförs i tur och ordning på hello begäran eller svar på en API. Populära instruktioner med Formatkonvertering från XML-tooJSON och anropa hastighet begränsa toorestrict hello mängden inkommande samtal från en utvecklare. Det finns många fler principer out of box hello.
 
-Finns det [principreferens] [ Policy Reference] för en fullständig lista över principrapporter och deras inställningar.
+Se hello [principreferens] [ Policy Reference] för en fullständig lista över principrapporter och deras inställningar.
 
-Principerna tillämpas i gatewayen som placeras mellan API-klienten och hanterade API. Gatewayen tar emot alla förfrågningar och vanligtvis vidarebefordrar dem utan ändringar underliggande API: et. En princip kan dock använda ändringar till både inkommande begäran och utgående svar.
+Principerna tillämpas i hello-gateway som placeras mellan hello API konsumenten och hello hanterade API. hello gateway tar emot alla förfrågningar och vanligtvis vidarebefordrar dem utan ändringar toohello underliggande API. En princip kan dock använda ändringar tooboth hello inkommande begäran och utgående svar.
 
-Principuttryck kan användas som attributvärden eller textvärden i API Management-principer, under förutsättning att principen tillåter det. Vissa principer som den [Åtkomstkontrollflödet] [ Control flow] och [ange variabel] [ Set variable] principer är baserade på principuttrycken. Mer information finns i [avancerade principer] [ Advanced policies] och [principuttrycken][Policy expressions].
+Principen uttryck kan användas som attributvärden eller textvärden i någon av hello API Management-principer, såvida inte hello principen anger annars. Vissa principer, till exempel hello [Åtkomstkontrollflödet] [ Control flow] och [ange variabel] [ Set variable] principer är baserade på principuttrycken. Mer information finns i [avancerade principer] [ Advanced policies] och [principuttrycken][Policy expressions].
 
-## <a name="scopes"></a>Hur du konfigurerar principer
-Principer kan konfigureras globalt eller i omfånget för en [produkten][Product], [API] [ API] eller [åtgärden] [Operation]. Om du vill konfigurera en princip, navigerar du till redigeraren principer i publisher-portalen.
+## <a name="scopes"></a>Hur tooconfigure principer
+Principer kan konfigureras globalt eller hello omfånget för en [produkten][Product], [API] [ API] eller [åtgärden] [Operation]. tooconfigure en princip, navigera toohello principer redigeraren i hello publisher-portalen.
 
 ![Principer-menyn][policies-menu]
 
-Redigeraren principer består av tre huvudavsnitt: principområdet (överst), principdefinitionen instruktionerna lista över (höger) och där principer redigeras (vänster):
+Redigeraren för hello-principer består av tre huvudavsnitt: hello princip omfång (överst) hello principdefinitionen hello instruktioner lista över (höger) och där principer redigeras (vänster):
 
 ![Redigeraren för principer][policies-editor]
 
-Du måste välja vilka principen ska gälla för att börja konfigurera en princip. På skärmbilden nedan i **Starter** produkt har valts. Observera att kvadratisk symbolen bredvid namnet på principen anger att en princip används redan på den här nivån.
+toobegin konfigurerar en princip måste du först välja hello scope på vilka hello principen ska gälla. I hello skärmbilden nedan hello **Starter** produkt har valts. Observera att hello kvadratisk symbolen nästa toohello principnamn anger princip används redan på den här nivån.
 
 ![Omfång][policies-scope]
 
-Eftersom en princip har redan tillämpats, visas konfigurationen i vyn definition.
+Eftersom en princip har redan tillämpats, visas hello-konfiguration i hello definition vyn.
 
 ![Konfigurera][policies-configure]
 
-Principen visas skrivskyddad först. För att kunna redigera definition Klicka på **konfigurera principen för** åtgärd.
+hello principen visas skrivskyddad först. I ordning tooedit hello definition klickar du på hello **konfigurera principen för** åtgärd.
 
 ![Redigera][policies-edit]
 
-Principdefinitionen är ett enkelt XML-dokument som beskriver en sekvens av inkommande och utgående rapporter. XML-filen kan redigeras direkt i definitionsfönstret. En lista över uttryck har angetts till höger och instruktioner gäller för den aktuella omfattningen är aktiverad och markerat; som framgår av de **gränsen anropa hastighet** instruktionen i skärmbilden ovan.
+hello principdefinitionen är ett enkelt XML-dokument som beskriver en sekvens av inkommande och utgående rapporter. hello XML kan redigeras direkt i hello definition fönster. En lista över rapporter som är direkt toohello och instruktioner gäller toohello aktuella omfattningen är aktiverat markerat; som framgår av hello **gränsen anropa hastighet** instruktionen i hello skärmbilden ovan.
 
-Klicka på en aktiverad instruktion lägger till rätt XML vid för markören i vyn definition. 
+Klicka på en aktiverad instruktion läggs hello lämplig XML som hello platsen för hello markören i hello definition vy. 
 
 > [!NOTE]
-> Se till att du är i rätt omfattning för principen om den princip som du vill lägga till inte är aktiverad. Varje Principframställning är avsedd för användning i vissa scope och principen avsnitt. Om du vill granska princip avsnitt och scope för en princip, kontrollera den **användning** avsnittet för grupprincipobjekt i den [principreferens][Policy Reference].
+> Om hello som du vill tooadd inte är aktiverad, kan du kontrollera att du är i hello rätt omfattning för grupprincipobjekt. Varje Principframställning är avsedd för användning i vissa scope och principen avsnitt. tooreview hello princip avsnitt och scope för en princip, kontrollera hello **användning** avsnitt av principen i hello [principreferens][Policy Reference].
 > 
 > 
 
-En fullständig lista över principrapporter och deras inställningar är tillgängliga i den [principreferens][Policy Reference].
+En fullständig lista över principrapporter och deras inställningar är tillgängliga i hello [principreferens][Policy Reference].
 
-Till exempel för att lägga till en ny rapport för att begränsa inkommande begäranden till den angivna IP-adresser för markören innanför innehållet i den `inbound` XML-elementet och klicka på den **begränsa anroparen IP-adresser** instruktionen.
+Till exempel tooadd en ny instruktionen toorestrict inkommande begäranden toospecified IP-adresser, markören hello innanför hello innehållet i hello `inbound` XML-elementet och klicka på hello **begränsa anroparen IP-adresser** instruktionen.
 
 ![Principer för begränsning av][policies-restrict]
 
-Detta lägger till en XML-fragment till den `inbound` element som innehåller information om hur du konfigurerar instruktionen.
+Detta lägger till en XML-fragment toohello `inbound` element som innehåller information om hur tooconfigure hello instruktionen.
 
 ```xml
 <ip-filter action="allow | forbid">
@@ -74,7 +74,7 @@ Detta lägger till en XML-fragment till den `inbound` element som innehåller in
 </ip-filter>
 ```
 
-Begränsa inkommande begäranden och godkänner endast de från IP-adressen 1.2.3.4 ändra XML-filen på följande sätt:
+toolimit inkommande begäranden och accepterar endast de från IP-adressen 1.2.3.4 ändra hello XML på följande sätt:
 
 ```xml
 <ip-filter action="allow">
@@ -84,43 +84,43 @@ Begränsa inkommande begäranden och godkänner endast de från IP-adressen 1.2.
 
 ![Spara][policies-save]
 
-När du är klar konfigurerar instruktioner för principen, klickar du på **spara** och ändringarna sprids till API Management gateway omedelbart.
+När du är färdig konfigurera hello instruktioner för hello principen klickar du på **spara** och hello ändringar kommer att spridda toohello API Management gateway omedelbart.
 
 ## <a name="sections"></a>Förstå principkonfiguration
-En princip är en serie som utförs för en begäran och ett svar. Konfigurationen är korrekt indelat i `inbound`, `backend`, `outbound`, och `on-error` avsnitten som visas i följande konfiguration.
+En princip är en serie som utförs för en begäran och ett svar. hello-konfigurationen är korrekt indelat i `inbound`, `backend`, `outbound`, och `on-error` avsnitten enligt hello efter konfiguration.
 
 ```xml
 <policies>
   <inbound>
-    <!-- statements to be applied to the request go here -->
+    <!-- statements toobe applied toohello request go here -->
   </inbound>
   <backend>
-    <!-- statements to be applied before the request is forwarded to 
-         the backend service go here -->
+    <!-- statements toobe applied before hello request is forwarded too
+         hello backend service go here -->
   </backend>
   <outbound>
-    <!-- statements to be applied to the response go here -->
+    <!-- statements toobe applied toohello response go here -->
   </outbound>
   <on-error>
-    <!-- statements to be applied if there is an error condition go here -->
+    <!-- statements toobe applied if there is an error condition go here -->
   </on-error>
 </policies> 
 ```
 
-Om det finns ett fel under bearbetningen av en begäran, alla eventuella resterande steg i den `inbound`, `backend`, eller `outbound` avsnitt hoppas över och körning som leder till instruktionerna i den `on-error` avsnitt. Genom att placera principrapporter i den `on-error` avsnitt som du kan granska felet med hjälp av den `context.LastError` egenskapen inspektera och anpassa den fel svar med hjälp av den `set-body` principen, och konfigurera vad händer om ett fel inträffar. Det finns felkoder för inbyggda steg och fel som kan uppstå under bearbetning av principrapporter. Mer information finns i [felhantering i API Management-principer](https://msdn.microsoft.com/library/azure/mt629506.aspx).
+Om det finns ett fel under hello bearbetningen av en begäran, alla eventuella resterande steg i hello `inbound`, `backend`, eller `outbound` avsnitt hoppas över och körningen hoppar toohello instruktioner i hello `on-error` avsnitt. Placera principrapporter i hello `on-error` avsnitt som du kan granska hello fel med hjälp av hello `context.LastError` egenskapen inspektera och anpassa hello felsvar med hello `set-body` princip, och konfigurera vad händer om ett fel inträffar. Det finns felkoder för inbyggda steg och fel som kan uppstå under hello behandling av princip för instruktioner. Mer information finns i [felhantering i API Management-principer](https://msdn.microsoft.com/library/azure/mt629506.aspx).
 
-Eftersom principer kan anges på olika nivåer (global, produkt, api och åtgärden) kan konfigurationen du ange vilken ordning som de principdefinitionen instruktioner köra med avseende på den överordnade principen. 
+Eftersom principer kan anges på olika nivåer (global, produkt, api och åtgärden) kan hello konfiguration du toospecify hello ordning där uttryck hello principdefinition köra med avseende toohello överordnade principen. 
 
-Princip för scope utvärderas i följande ordning.
+Princip för scope utvärderas i ordning hello.
 
 1. Globalt scope
 2. Produkten omfång
 3. API-scope
 4. Åtgärden omfång
 
-Instruktionerna i dem utvärderas enligt placeringen av den `base` element, om den finns. Globala principen har ingen överordnad princip och använder den `<base>` element i den har ingen effekt.
+hello instruktioner i dem utvärderas enligt toohello placering av hello `base` element, om den finns. Globala principen har ingen överordnad och använder hello `<base>` element i den har ingen effekt.
 
-Till exempel om du har en princip på global nivå och en princip som konfigurerats för ett API som tillämpas sedan varje gång det specifika API används båda principerna. API Management gör deterministiska sorteringen av kombinerade hanteringsprinciper via baselementet. 
+Till exempel om du har en princip på global nivå i hello och en princip som konfigurerats för ett API som tillämpas sedan varje gång det specifika API används båda principerna. API Management gör deterministiska sorteringen av kombinerade hanteringsprinciper via hello baselementet. 
 
 ```xml
 <policies>
@@ -132,9 +132,9 @@ Till exempel om du har en princip på global nivå och en princip som konfigurer
 </policies>
 ```
 
-I ovanstående exempel principdefinitionen den `cross-domain` instruktionen skulle köras innan de högre principer som i sin tur följas av den `find-and-replace` princip. 
+I hello exempel principdefinitionen ovan, hello `cross-domain` instruktionen skulle köras innan de högre principer som i sin tur följas av hello `find-and-replace` princip. 
 
-Klicka för att visa principer i det aktuella omfånget i Redigeraren för grupprinciper **beräkna om princip för valda omfång**.
+toosee hello principer i hello aktuella omfattning i hello Redigeraren för grupprincipobjekt, klickar du på **beräkna om princip för valda omfång**.
 
 ## <a name="next-steps"></a>Nästa steg
 Gå igenom följande video på principuttrycken.

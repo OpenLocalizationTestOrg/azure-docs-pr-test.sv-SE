@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Power BI Embedded – Självstudier, API-referens | Microsoft Docs"
-description: "Lär dig mer om att bädda in Power BI-datavisualiseringar och interaktiva rapporter i appar. Självstudier, API-referenser och annan dokumentation."
+title: "aaaAzure Power BI Embedded-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur tooembed Power BI datavisualiseringar och interaktiva rapporter i appar. Självstudier, API-referenser och annan dokumentation."
 services: power-bi-embedded
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: c1e12dc71ce823425971beeb9db1cc5abd2aa12b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e01a812ccc3b8daeb0569df90bad87f12c649db5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded-dokumentation
 
-Lär dig hur du lägger till datavisualiseringar och interaktiva rapporter i appar med hjälp av Power BI Embedded. Självstudier, API-referenser och annan dokumentation som visar hur du sömlöst kan bädda in Power BI-rapporter och instrumentpaneler i appar.
+Lär dig hur tooadd datavisualiseringar och interaktiva rapporter tooapplications med Power BI Embedded. Självstudier, API-referenserna och andra dokumentationen visar hur tooseamlessly bädda in Power BI-rapporter och instrumentpaneler i appar.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -88,7 +88,7 @@ Lär dig hur du lägger till datavisualiseringar och interaktiva rapporter i app
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med Power BI-rapporter med exempelgalleriet</h3>
+                        <h3>Komma igång med Power BI-rapporter med hello exempel gallery</h3>
                     </div>
                 </div>
             </div>

@@ -1,27 +1,27 @@
-## <a name="install-the-prerequisites"></a>Installera nödvändiga komponenter
+## <a name="install-hello-prerequisites"></a>Installera hello förutsättningar
 
-Stegen i den här kursen förutsätter att du kör Ubuntu Linux.
+hello stegen i den här självstudiekursen förutsätter att du kör Ubuntu Linux.
 
-Öppna ett gränssnitt och kör följande kommandon för att installera de nödvändiga paketen:
+Öppna ett gränssnitt och kör följande kommandon tooinstall hello nödvändiga paketen hello:
 
 ```bash
 sudo apt-get update
 sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-dev uuid-dev valgrind libglib2.0-dev libtool autoconf
 ```
 
-Shell, kör du följande kommando för att klona Azure IoT kant GitHub-lagringsplatsen till den lokala datorn:
+Hello shell, kör hello efter kommandot tooclone hello Azure IoT kant GitHub-lagringsplatsen tooyour lokal dator:
 
 ```bash
 git clone https://github.com/Azure/iot-edge.git
 ```
 
-## <a name="how-to-build-the-sample"></a>Hur du skapar provet
+## <a name="how-toobuild-hello-sample"></a>Hur toobuild hello exempel
 
-Du kan nu skapa IoT-Edge runtime och exempel på den lokala datorn:
+Du kan nu skapa hello IoT kant runtime och exempel på den lokala datorn:
 
 1. Öppna ett gränssnitt.
 
-1. Navigera till rotmappen i den lokala kopian av databasen **iot-edge**.
+1. Navigera toohello rotmappen i den lokala kopian av hello **iot-edge** databasen.
 
 1. Kör skriptet bygga på följande sätt:
 
@@ -29,7 +29,7 @@ Du kan nu skapa IoT-Edge runtime och exempel på den lokala datorn:
     tools/build.sh --disable-native-remote-modules
     ```
 
-Det här skriptet använder verktyget **cmake** för att skapa en mapp som kallas **build** i rotmappen på den lokala kopian av databasen **iot-edge** och generera en make-fil. Skriptet bygger sedan lösningen och hoppar över enhetstester och slutpunkt till slutpunkt-tester. Om du vill skapa och köra testerna enhet, lägga till den `--run-unittests` parameter. Om du vill skapa och köra testerna slutpunkt till slutpunkt, lägga till den `--run-e2e-tests`.
+Det här skriptet använder den **cmake** verktyget toocreate en mapp som kallas **skapa** i hello rotmappen på den lokala kopian av den **iot-edge** databasen och generera en make-filen. hello skript och skapar sedan hello-lösning, hoppar över kontroller och end tooend test. Om du vill toobuild och köra hello kontroller, lägger du till hello `--run-unittests` parameter. Om du vill toobuild och köra hello slutet tooend tester, lägger du till hello `--run-e2e-tests`.
 
 > [!NOTE]
-> Varje gång du kör skriptet **build.sh** tar det bort och återskapar sedan mappen **build** i rotmappen på den lokala kopian av databasen **iot-edge**.
+> Varje gång du kör hello **build.sh** skript, tas bort och återskapar hello **skapa** mapp i hello rotmappen på den lokala kopian av hello **iot-edge** databasen.

@@ -1,6 +1,6 @@
 ---
-title: "Kör bakgrundsuppgifter med WebJobs"
-description: "Lär dig mer om att köra bakgrundsaktiviteter i Azure web apps."
+title: aaaRun bakgrundsaktiviteter med WebJobs
+description: "Lär dig hur toorun bakgrundsaktiviteter i Azure-webbappar."
 services: app-service
 documentationcenter: 
 author: ggailey777
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2016
 ms.author: glenga
-ms.openlocfilehash: 3f8ae748e3d9c6b4e342536926a52b4e8f37ee51
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 96a3d977a806e7192207f0f4da79dfd248694336
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-background-tasks-with-webjobs"></a>Kör bakgrundsuppgifter med WebJobs
 ## <a name="overview"></a>Översikt
-Du kan köra program eller skript i WebJobs i din [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) webbprogrammet på tre sätt: på begäran, kontinuerligt, eller enligt ett schema. Det finns utan extra kostnad för att använda WebJobs.
+Du kan köra program eller skript i WebJobs i din [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) webbprogrammet på tre sätt: på begäran, kontinuerligt, eller enligt ett schema. Det finns inga extra kostnad toouse WebJobs.
 
 [!INCLUDE [app-service-web-webjobs-corenote](../../includes/app-service-web-webjobs-corenote.md)]
 
-Den här artikeln visar hur du distribuerar WebJobs med hjälp av den [Azure Portal](https://portal.azure.com). Information om hur du distribuerar med hjälp av Visual Studio eller en kontinuerlig leveransprocess finns [hur du distribuerar Azure WebJobs webbappar](websites-dotnet-deploy-webjobs.md).
+Den här artikeln visar hur toodeploy WebJobs med hjälp av hello [Azure Portal](https://portal.azure.com). Information om hur toodeploy med hjälp av Visual Studio eller en kontinuerlig distributionsprocessen finns [hur tooDeploy Azure WebJobs tooWeb appar](websites-dotnet-deploy-webjobs.md).
 
-Azure WebJobs SDK förenklar många WebJobs programmeringsuppgifter. Mer information finns i [vad är WebJobs SDK](websites-dotnet-webjobs-sdk.md).
+hello Azure WebJobs SDK förenklar många WebJobs-programmeringsuppgifter. Mer information finns i [vad är hello WebJobs SDK](websites-dotnet-webjobs-sdk.md).
 
- Azure Functions erbjuder ett annat sätt att köra program och skript från en serverlösa miljö eller från en Apptjänst-app. Mer information finns i [översikt över Azure Functions](../azure-functions/functions-overview.md).
+ Azure Functions erbjuder ett annat sätt toorun program och skript från en serverlösa miljö eller från en Apptjänst-app. Mer information finns i [översikt över Azure Functions](../azure-functions/functions-overview.md).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="acceptablefiles"></a>Filtyper för skript eller program
-Följande filtyper accepteras:
+följande filtyper hello accepteras:
 
 * .cmd, .bat, .exe (med windows cmd)
 * .ps1 (med powershell)
@@ -45,42 +45,42 @@ Följande filtyper accepteras:
 * .js (med nod)
 * .JAR (med java)
 
-## <a name="CreateOnDemand"></a>Skapa en på begäran Webbjobb i portalen
-1. I den **Webbapp** bladet för den [Azure-portalen](https://portal.azure.com), klickar du på **alla inställningar > WebJobs** att visa den **WebJobs** bladet.
+## <a name="CreateOnDemand"></a>Skapa en på begäran Webbjobb hello-portalen
+1. I hello **Webbapp** bladet för hello [Azure Portal](https://portal.azure.com), klickar du på **alla inställningar > WebJobs** tooshow hello **WebJobs** bladet.
    
     ![Webbjobbet bladet](./media/web-sites-create-web-jobs/wjblade.png)
-2. Klicka på **Lägg till**. Den **lägger till Webbjobb** visas.
+2. Klicka på **Lägg till**. Hej **lägger till Webbjobb** visas.
    
     ![Webbjobbet bladet Lägg till](./media/web-sites-create-web-jobs/addwjblade.png)
-3. Under **namn**, ange ett namn för Webbjobbet. Namnet måste börja med en bokstav eller en siffra och får inte innehålla specialtecken än ”-” och ”_”.
-4. I den **hur du kör** väljer **körs på begäran**.
-5. I den **filöverföring** rutan, klicka på mappikonen och bläddra till zip-filen som innehåller skriptet. Zip-filen ska innehålla den körbara filen (.exe .cmd .bat .sh .php .py .js) samt alla stödfiler som behövs för att köra program eller skript.
-6. Kontrollera **skapa** att överföra skriptet till ditt webbprogram. 
+3. Under **namn**, ange ett namn för hello Webbjobb. hello-namnet måste börja med en bokstav eller en siffra och får inte innehålla specialtecken än ”-” och ”_”.
+4. I hello **hur tooRun** väljer **körs på begäran**.
+5. I hello **filöverföring** rutan och klicka på ikonen för hello mapp Bläddra toohello zip-fil som innehåller skriptet. hello zip-filen ska innehålla den körbara filen (.exe .cmd .bat .sh .php .py .js) samt alla stödfiler behövs toorun hello program eller skript.
+6. Kontrollera **skapa** tooupload hello skriptet tooyour webbprogram. 
    
-    Namnet du angav för WebJob som visas i listan på den **WebJobs** bladet.
-7. Om du vill köra Webbjobbet högerklickar du på namnet i listan och klickar på **kör**.
+    hello namn du angav för hello Webbjobbet visas i listan hello på hello **WebJobs** bladet.
+7. toorun hello Webbjobb, högerklickar du på namnet i hello listan och klicka på **kör**.
    
     ![Köra Webbjobbet](./media/web-sites-create-web-jobs/runondemand.png)
 
 ## <a name="CreateContinuous"></a>Skapa ett körs kontinuerligt Webbjobb
-1. Om du vill skapa ett Webbjobb som körs kontinuerligt, följer du samma steg för att skapa ett Webbjobb som körs en gång, men i den **hur du kör** väljer **kontinuerlig**.
-2. För att starta eller stoppa ett kontinuerligt Webbjobb, högerklicka på Webbjobb i listan och klicka på **starta** eller **stoppa**.
+1. toocreate ett Webbjobb som körs kontinuerligt följa samma steg för att skapa ett Webbjobb som körs en gång, men i hello hello **hur tooRun** väljer **kontinuerlig**.
+2. Högerklicka på hello Webbjobb i hello listan och klicka på toostart eller stoppa ett kontinuerligt Webbjobb **starta** eller **stoppa**.
 
 > [!NOTE]
 > Om ditt webbprogram som körs på mer än en instans, ska ett körs kontinuerligt Webbjobb köras på alla dina instanser. Vid behov och schemalagda Webbjobb körs på en enda instans som valts för belastningsutjämning med Microsoft Azure.
 > 
-> Aktivera för kontinuerliga Webbjobb ska köras på ett tillförlitligt sätt och på alla instanser av Always On * konfigurationsinställning för webbprogrammet annars de kan stoppas när SCM värdplatsen har varit inaktiv för länge.
+> För kontinuerliga Webbjobb toorun tillförlitligt och på alla instanser aktivera hello alltid på * konfigurationsinställning för hello webbprogrammet annars de kan stoppas när hello SCM värdplatsen har varit inaktiv för länge.
 > 
 > 
 
 ## <a name="CreateScheduledCRON"></a>Skapa ett schemalagda Webbjobb med ett CRON-uttryck
-Den här tekniken är tillgängliga för webbprogram som körs i Basic, Standard och Premium-läge och kräver den **alltid på** inställningen är aktiverad i appen.
+Den här tekniken är tillgängliga tooWeb appar som körs i Basic, Standard och Premium-läge och kräver hello **alltid på** inställningen toobe aktiverad på hello app.
 
-Om du vill aktivera en på begäran Webbjobb till ett schemalagda Webbjobb bara innehålla en `settings.job` filen i roten på din Webbjobb zip-filen. Den här JSON-filen ska innehålla en `schedule` egenskap med ett [CRON-uttryck](https://en.wikipedia.org/wiki/Cron), per exemplet nedan.
+tooturn en på begäran Webbjobb till ett schemalagda Webbjobb bara innehålla en `settings.job` filen hello roten i din Webbjobb zip-filen. Den här JSON-filen ska innehålla en `schedule` egenskap med ett [CRON-uttryck](https://en.wikipedia.org/wiki/Cron), per exemplet nedan.
 
-CRON-uttryck består av 6 fält: `{second} {minute} {hour} {day} {month} {day of the week}`.
+hello CRON-uttryck består av 6 fält: `{second} {minute} {hour} {day} {month} {day of hello week}`.
 
-Till exempel för att utlösa din Webbjobb var 15: e minut din `settings.job` skulle ha:
+Till exempel tootrigger din Webbjobb var 15: e minut din `settings.job` skulle ha:
 
 ```json
 {
@@ -90,90 +90,90 @@ Till exempel för att utlösa din Webbjobb var 15: e minut din `settings.job` sk
 
 Andra CRON schema-exempel:
 
-* Varje timme (dvs. när antalet minuter är 0):`0 0 * * * *` 
-* Varje timme från 9: 00 och 17: 00:`0 0 9-17 * * *` 
+* Varje timme (d.v.s. när hello antal minuter är 0):`0 0 * * * *` 
+* Varje timme från too5 9: 00 PM:`0 0 9-17 * * *` 
 * På 9:30:00 varje dag:`0 30 9 * * *`
 * På 9:30:00 varje veckodag:`0 30 9 * * 1-5`
 
-**Obs**: när du distribuerar ett Webbjobb från Visual Studio kan du se till att markera din `settings.job` filegenskaper som Kopiera om nyare.
+**Obs**: när du distribuerar ett Webbjobb från Visual Studio, se till att toomark din `settings.job` filegenskaper som Kopiera om nyare.
 
-## <a name="CreateScheduled"></a>Skapa ett schemalagda Webbjobb med hjälp av Schemaläggaren i Azure
-Följande alternativ metod är användning av Schemaläggaren i Azure. I det här fallet saknar din Webbjobb kännedom direkt för schemat. I stället hämtar Azure Schemaläggaren har konfigurerats för att utlösa din Webbjobb enligt ett schema. 
+## <a name="CreateScheduled"></a>Skapa ett schemalagda Webbjobb med hello Azure Schemaläggaren
+Hej följande alternativa metoden använder hello Azure Schemaläggaren. I det här fallet saknar din Webbjobb kännedom direkt av hello schema. Hello Azure Scheduler hämtar i stället konfigurerade tootrigger din Webbjobb enligt ett schema. 
 
-Azure Portal ännu inte har möjlighet att skapa ett schemalagda Webbjobb men tills funktionen läggs du kan göra det med hjälp av den [klassiska portalen](http://manage.windowsazure.com).
+hello Azure Portal ännu inte har hello möjlighet toocreate schemalagda Webbjobb men tills funktionen läggs du kan göra det med hjälp av hello [klassiska portalen](http://manage.windowsazure.com).
 
-1. I den [klassiska portalen](http://manage.windowsazure.com) går du till Webbjobbet och klickar på **Lägg till**.
-2. I den **hur du kör** väljer **körs enligt ett schema**.
+1. I hello [klassiska portalen](http://manage.windowsazure.com) gå toohello Webbjobb sidan och klicka på **Lägg till**.
+2. I hello **hur tooRun** väljer **körs enligt ett schema**.
    
     ![Nytt schemalagt jobb][NewScheduledJob]
-3. Välj den **Scheduler Region** för jobbet, och sedan klicka på pilen längst ned till höger i dialogrutan för att gå vidare till nästa sida.
-4. I den **skapa jobbet** dialogrutan Välj typ av **återkommande** du vill: **gång jobbet** eller **återkommande jobb**.
+3. Välj hello **Scheduler Region** för jobbet, och klicka sedan på pilen hello hello nedre högra hello dialogrutan tooproceed toohello nästa skärm.
+4. I hello **skapa jobbet** dialogrutan Välj hello typ av **återkommande** önskade: **gång jobbet** eller **återkommande jobb**.
    
     ![Schemalägg återkommande][SchdRecurrence]
 5. Också välja en **Start** tid: **nu** eller **vid en viss tid**.
    
     ![Starttiden för schemat][SchdStart]
-6. Om du vill starta vid en viss tid väljer du din första tidsvärden under **startar på**.
+6. Om du vill toostart vid en viss tid, väljer du din första tidsvärden under **startar på**.
    
     ![Schemat Start vid en viss tid][SchdStartOn]
-7. Om du väljer ett återkommande jobb, som du har den **utför varje** alternativet för att ange hur ofta förekomst och **slutar på** alternativet för att ange en sluttid.
+7. Om du väljer ett återkommande projekt måste du ha hello **utför varje** alternativet toospecify hello ofta förekomst och hello **slutar på** alternativet toospecify en sluttid.
    
     ![Schemalägg återkommande][SchdRecurEvery]
-8. Om du väljer **veckor**, kan du välja den **på ett visst schema** och anger veckodagarna som du vill att jobbet ska köras.
+8. Om du väljer **veckor**, kan du välja hello **på ett visst schema** och ange hello veckodagar hello som du vill hello jobbet toorun.
    
-    ![Schemat dagar i veckan][SchdWeeksOnParticular]
-9. Om du väljer **månader** och välj den **på ett visst schema** kan du ange jobbet ska köras på visst numrerat **dagar** i månaden. 
+    ![Schemat dagarnas hello vecka][SchdWeeksOnParticular]
+9. Om du väljer **månader** och välj hello **på ett visst schema** kan du ange hello jobbet toorun på visst numrerat **dagar** hello månad. 
    
-    ![Schemat för särskilda datum i månaden][SchdMonthsOnPartDays]
-10. Om du väljer **veckodagar**, du kan välja eller vilka dagar i veckan i månaden som du vill att jobbet ska köras på.
+    ![Schemalägga särskilda datum i hello månad][SchdMonthsOnPartDays]
+10. Om du väljer **veckodagar**, du kan välja vilken dag eller hello veckodagar i hello månad hello jobbet toorun på.
     
      ![Schemalägga viss vecka dagar i månaden][SchdMonthsOnPartWeekDays]
-11. Slutligen kan du kan också använda den **förekomster** möjlighet att välja vilken vecka i månaden (första, andra, tredje o.s.v.) du vill att jobbet ska köras på veckodagar som du angav.
+11. Slutligen kan du också använda hello **förekomster** alternativet toochoose vilken vecka i månaden hello (första, andra, tredje o.s.v.) du vill hello jobbet toorun på hello veckodagar som du angav.
     
     ![Schemalägga viss veckodagar på viss veckor i månaden][SchdMonthsOnPartWeekDaysOccurences]
-12. När du har skapat ett eller flera jobb visas namnen på fliken WebJobs med deras status, typ och annan information. Historisk information för de senaste 30 WebJobs bevaras.
+12. När du har skapat ett eller flera jobb visas namnen på hello WebJobs flik med deras status, typ och annan information. Historisk information bevaras för hello senaste 30 WebJobs.
     
     ![Lista över jobb][WebJobsListWithSeveralJobs]
 
 ### <a name="Scheduler"></a>Schemalagda jobb och Azure Schemaläggaren
-Schemalagda jobb kan ytterligare konfigureras i Azure Scheduler-sidor i den [klassiska portalen](http://manage.windowsazure.com).
+Schemalagda jobb kan ytterligare konfigureras i hello Azure Scheduler sidor i hello [klassiska portalen](http://manage.windowsazure.com).
 
-1. Jobbets på sidan WebJobs **schema** länken för att gå till sidan Schemaläggaren i Azure portal. 
+1. Hej WebJobs-sidan, klicka på hello jobbet **schema** länk toonavigate toohello Azure Scheduler Portalsida. 
    
-   ![Länk till Azure Schemaläggaren][LinkToScheduler]
-2. På sidan Schemaläggaren, klickar du på jobbet.
+   ![Länka tooAzure Schemaläggaren][LinkToScheduler]
+2. Klicka på hello jobb hello Schemaläggaren på sidan.
    
-    ![Jobb på portalsidan Schemaläggaren][SchedulerPortal]
-3. Den **Jobbåtgärd** öppnas, där du kan konfigurera jobbet ytterligare. 
+    ![Jobb på hello Portalsida för Schemaläggaren][SchedulerPortal]
+3. Hej **Jobbåtgärd** öppnas, där du kan konfigurera hello jobbet ytterligare. 
    
     ![Jobbåtgärden PageInScheduler][JobActionPageInScheduler]
 
-## <a name="ViewJobHistory"></a>Visa jobbets historik
-1. Om du vill visa historiken för körning av ett jobb, inklusive jobb som skapats med WebJobs-SDK klickar du på motsvarande länk under den **loggar** kolumn i bladet WebJobs. (Du kan använda ikonen Urklipp Kopiera Webbadressen till sidan log file till Urklipp om du vill.)
+## <a name="ViewJobHistory"></a>Visa hello jobbhistorik
+1. tooview hello körningstiden för ett jobb, inklusive jobb som skapats med hello WebJobs SDK, klickar du på motsvarande länk under hello **loggar** kolumn av hello WebJobs-bladet. (Du kan använda hello Urklipp ikonen toocopy hello URL för hello log file sidan toohello Urklipp om du vill.)
    
     ![Loggar länk](./media/web-sites-create-web-jobs/wjbladelogslink.png)
-2. Klicka på länken öppnar informationssidan för Webbjobbet. Den här sidan visar namnet på kommandot Kör den senaste tidpunkten för den kördes och dess lyckats eller misslyckats. Under **senaste jobbet körs**, klicka på en gång för att se ytterligare information.
+2. Klicka på hello länken öppnar hello informationssidan för hello Webbjobb. Den här sidan visar hello av namnet på hello kommandot Kör hello senaste tidpunkten för den kördes och dess lyckats eller misslyckats. Under **senaste jobbet körs**, klicka på en gång toosee mer information.
    
     ![WebJobDetails][WebJobDetails]
-3. Den **Webbjobb kör information** visas. Klicka på **växla utdata** att se texten i logginnehållet. Logg för utdata är i textformat. 
+3. Hej **Webbjobb kör information** visas. Klicka på **växla utdata** toosee hello text hello logga innehåll. hello utdataloggen är i textformat. 
    
     ![Web-jobbet körs information][WebJobRunDetails]
-4. Klicka för att visa den resulterande texten i ett nytt webbläsarfönster i **hämta** länk. Högerklicka på länken för att hämta själva texten, och Använd webbläsaren för att spara filinnehållet.
+4. toosee hello utdatatext i ett nytt webbläsarfönster klickar du på hello **hämta** länk. toodownload hello själva texten, högerklicka på hello länk och använda din webbläsare alternativ toosave hello-filens innehåll.
    
     ![Hämta utdata][DownloadLogOutput]
-5. Den **WebJobs** längst upp på sidan är ett bekvämt sätt att komma till en lista över WebJobs på instrumentpanelen historik.
+5. Hej **WebJobs** länk hello överst på hello sidan innehåller en praktiskt sätt tooget tooa lista över WebJobs på hello historik instrumentpanel.
    
-    ![Länka till WebJobs-lista][WebJobsLinkToDashboardList]
+    ![Länken tooWebJobs lista][WebJobsLinkToDashboardList]
    
     ![Lista över WebJobs i instrumentpanelen för historik][WebJobsListInJobsDashboard]
    
-    Klicka på någon av dessa länkar går du till sidan Webbjobb information för jobbet som du har valt.
+    Klicka på någon av dessa länkar tar dig toohello Webbjobb informationssidan för hello jobb som du har valt.
 
 ## <a name="WHPNotes"></a>Anteckningar
-* Webbprogram i ledigt läge kan timeout efter 20 minuter om det finns inga förfrågningar till webbplatsen scm (distribution) och webbappens portalen inte är öppen i Azure. Begäranden till den faktiska platsen kommer inte att återställa det här.
-* Koden för en kontinuerlig jobbet måste skrivas ska köras i en oändlig loop.
-* Kontinuerlig jobben körs alltid endast när webbappen är igång.
-* Basic och Standard lägen erbjudande den alltid på Funktion, som när aktiverad förhindrar web apps får viloläge.
+* Webbprogram i ledigt läge kan timeout efter 20 minuter om det finns ingen webbplats med begäranden toohello scm (distribution) och portalen hello webbapp inte är öppen i Azure. Begäranden toohello faktiska webbplatsen kommer inte att återställa det här.
+* Koden för en kontinuerlig jobbet måste toobe skrivs toorun i en oändlig loop.
+* Kontinuerlig jobb körs alltid endast när hello webbprogram som är igång.
+* Basic och Standard lägen erbjudande hello alltid på funktion som, när aktiverad förhindrar web apps får viloläge.
 * Du kan bara felsöka Webbjobb som körs kontinuerligt. Schemalagd eller på begäran WebJobs-Felsökning stöds inte.
 
 ## <a name="NextSteps"></a>Nästa steg

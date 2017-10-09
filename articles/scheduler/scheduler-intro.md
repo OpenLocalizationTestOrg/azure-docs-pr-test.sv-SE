@@ -1,6 +1,6 @@
 ---
-title: "Vad är Azure Scheduler? | Microsoft Docs"
-description: "Med Azure Scheduler kan du deklarativt beskriva åtgärder som ska köras i molnet. Tjänsten schemalägger och kör sedan dessa åtgärder automatiskt."
+title: "aaaWhat är Azure Schemaläggaren? | Microsoft Docs"
+description: "Azure Schemaläggaren kan du toodeclaratively beskrivs åtgärder toorun i hello molnet. Tjänsten schemalägger och kör sedan dessa åtgärder automatiskt."
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
@@ -14,34 +14,34 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: a3bf1aacd6978499d7ef77cbcb451a06b857ac38
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 062e25ae473510264dc0038198c05e7ac1e86210
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-is-azure-scheduler"></a>Vad är Azure Scheduler?
-Med Azure Scheduler kan du deklarativt beskriva åtgärder som ska köras i molnet. Tjänsten schemalägger och kör sedan dessa åtgärder automatiskt.  Scheduler gör detta med hjälp av [Azure-portalen](scheduler-get-started-portal.md), kod, [REST-API:et](https://msdn.microsoft.com/library/mt629143.aspx) eller Azure PowerShell.
+Azure Schemaläggaren kan du toodeclaratively beskrivs åtgärder toorun i hello molnet. Tjänsten schemalägger och kör sedan dessa åtgärder automatiskt.  Schemaläggaren gör detta med hjälp av [hello Azure-portalen](scheduler-get-started-portal.md), kod, [REST API](https://msdn.microsoft.com/library/mt629143.aspx), eller Azure PowerShell.
 
 Scheduler skapar, underhåller och anropar schemalagt arbete.  Scheduler är inte värd för några arbetsbelastningar och kör ingen kod. Tjänsten *anropar* bara kod som finns på en annan plats – i Azure, lokalt eller med en annan provider. Den anropar via HTTP, HTTPS, en lagringskö, en Service Bus-kö eller ett Service Bus-ämne.
 
-Scheduler schemalägger [jobb](scheduler-concepts-terms.md), sparar en historik över resultaten från jobbkörningar som du kan granska och schemalägger arbetsbelastningar som ska köras deterministiskt och med hög tillförlitlighet. Azure WebJobs (del av Web Apps-funktionen i Azure App Service) och andra schemaläggningsfunktioner i Azure använder Scheduler i bakgrunden. [REST-API:et för Scheduler](https://msdn.microsoft.com/library/mt629143.aspx) hjälper till att hantera kommunikationen för dessa åtgärder. Scheduler har stöd för [komplexa scheman och avancerad upprepning](scheduler-advanced-complexity.md).
+Schemaläggaren scheman [jobb](scheduler-concepts-terms.md), sparar en historik över jobb Körningsresultat att någon kan granska och deterministiskt och tillförlitligt scheman arbetsbelastningar toobe kör. Använda Schemaläggaren i bakgrunden hello Azure WebJobs (del av funktionen för hello Web Apps i Azure App Service) och andra funktioner i Azure schemaläggning. Hej [Scheduler REST API](https://msdn.microsoft.com/library/mt629143.aspx) hjälper dig att hantera hello kommunikation för dessa åtgärder. Scheduler har stöd för [komplexa scheman och avancerad upprepning](scheduler-advanced-complexity.md).
 
-Scheduler är användbart i många olika scenarier. Exempel:
+Det finns flera scenarier som lämpar sig toohello användning av Schemaläggaren. Exempel:
 
 * *Åtgärder för återkommande program:* Samla in data från Twitter till en feed med jämna mellanrum.
-* *Dagligt underhåll:* Daglig loggrensning, säkerhetskopiering och andra underhållsåtgärder. En administratör kan exempelvis välja att säkerhetskopiera databasen klockan 01:00 varje dag under de kommande nio månaderna.
+* *Dagligt underhåll:* Daglig loggrensning, säkerhetskopiering och andra underhållsåtgärder. En administratör kan till exempel välja tooback hello databasen klockan 1:00 varje dag för hello nästa nio månader.
 
-Med Scheduler kan du skapa, uppdatera, ta bort, visa och hantera jobb och [jobbsamlingar](scheduler-concepts-terms.md) via programmering med hjälp av skript och på portalen.
+Schemaläggaren kan du toocreate, uppdatera, ta bort, visa och hantera jobb och [jobbet samlingar](scheduler-concepts-terms.md) programmässigt med hjälp av skript och hello-portalen.
 
 ## <a name="see-also"></a>Se även
  [Begrepp, terminologi och entitetshierarki relaterade till Azure Scheduler](scheduler-concepts-terms.md)
 
- [Komma igång med Scheduler på Azure-portalen](scheduler-get-started-portal.md)
+ [Komma igång med Schemaläggaren i hello Azure-portalen](scheduler-get-started-portal.md)
 
  [Prenumerationer och fakturering i Azure Scheduler](scheduler-plans-billing.md)
 
- [Skapa komplexa scheman och avancerad upprepning med Azure Scheduler](scheduler-advanced-complexity.md)
+ [Hur toobuild komplex schemaläggs och avancerade upprepning med Azure Schemaläggaren](scheduler-advanced-complexity.md)
 
  [Referens för REST-API:et för Azure Scheduler](https://msdn.microsoft.com/library/mt629143)
 

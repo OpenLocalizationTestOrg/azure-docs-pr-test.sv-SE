@@ -1,5 +1,5 @@
 ---
-title: "Utformning för Skalningsuppsättningar i virtuella Azure-datorn | Microsoft Docs"
+title: "aaaDesign överväganden för Azure Virtual Machine-Skalningsuppsättningar | Microsoft Docs"
 description: "Lär dig mer om designöverväganden för din Azure Virtual Machine-Skalningsuppsättningar"
 keywords: Anger om Linux-dator, virtuella datorn
 services: virtual-machine-scale-sets
@@ -16,64 +16,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: 6dbd4f22e3e949e19565030f5a10f545b89a0a3c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f8644d36fe5903bd4b74df26dca5dc3211ee3516
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="design-considerations-for-scale-sets"></a>Designöverväganden för Skalningsuppsättningar
-Det här avsnittet beskrivs överväganden vid utformning för Skalningsuppsättningar i virtuella datorer. Information om vilka virtuella datorer är avser [översikt över virtuella datorer skala anger](virtual-machine-scale-sets-overview.md).
+Det här avsnittet beskrivs överväganden vid utformning för Skalningsuppsättningar i virtuella datorer. Information om vilka virtuella datorer är finns för[översikt över virtuella datorer skala anger](virtual-machine-scale-sets-overview.md).
 
-## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>När du ska använda skala anger i stället för virtuella datorer?
-I allmänhet är skaluppsättningar användbara för att distribuera hög tillgänglighet infrastruktur där en uppsättning datorer har liknande konfiguration. Vissa funktioner är dock endast tillgängliga i skalningsuppsättningar medan andra funktioner är bara tillgängliga i virtuella datorer. Vi borde ta en titt på några av de vanligaste funktionerna som är tillgängliga i skalningsuppsättningar men inte virtuella datorer för att kunna fatta ett välgrundat beslut om när du ska använda de olika teknikerna:
+## <a name="when-toouse-scale-sets-instead-of-virtual-machines"></a>När toouse skalningsuppsättningarna i stället för virtuella datorer?
+I allmänhet är skaluppsättningar användbara för att distribuera hög tillgänglighet infrastruktur där en uppsättning datorer har liknande konfiguration. Vissa funktioner är dock endast tillgängliga i skalningsuppsättningar medan andra funktioner är bara tillgängliga i virtuella datorer. Ordna toomake ett välgrundat beslut om när toouse varje teknik vi måste först ta en titt på några av hello vanligaste funktionerna som är tillgängliga i skalningsuppsättningar men inte virtuella datorer:
 
 ### <a name="scale-set-specific-features"></a>Scale set-specifika funktioner
 
-- När du anger skaluppsättning konfiguration, kan du uppdatera egenskapen ”kapacitet” för att distribuera flera virtuella datorer parallellt. Detta är mycket enklare än att skriva ett skript för att dirigera distribuera många enskilda virtuella datorer parallellt.
-- Du kan [använda Azure Autoskala för att skala automatiskt en skalningsuppsättning](./virtual-machine-scale-sets-autoscale-overview.md) men inte enskilda virtuella datorer.
+- När du anger hello skala ange konfiguration, kan du uppdatera hello ”kapacitet” egenskapen toodeploy flera virtuella datorer parallellt. Detta är mycket enklare än att skriva ett skript tooorchestrate distribuera många enskilda virtuella datorer parallellt.
+- Du kan [Använd Azure Autoskala tooautomatically skala en skalningsuppsättning](./virtual-machine-scale-sets-autoscale-overview.md) men inte enskilda virtuella datorer.
 - Du kan [avbildningsåterställning skaluppsättning för virtuella datorer](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-a-vm) men [inte enskilda virtuella datorer](https://docs.microsoft.com/rest/api/compute/virtualmachines).
-- Du kan [overprovision](./virtual-machine-scale-sets-design-overview.md) skaluppsättning för virtuella datorer för ökad tillförlitlighet och snabbare distributionstider. Du kan göra detta med enskilda virtuella datorer om du skriver anpassade kod för att göra detta.
-- Du kan ange en [uppgradera princip](./virtual-machine-scale-sets-upgrade-scale-set.md) att göra det lättare att distribuera uppgraderingar över virtuella datorer i en skaluppsättning. Med enskilda virtuella datorer, måste du samordnar uppdateringar själv.
+- Du kan [overprovision](./virtual-machine-scale-sets-design-overview.md) skaluppsättning för virtuella datorer för ökad tillförlitlighet och snabbare distributionstider. Du kan göra detta med enskilda virtuella datorer om du skriver anpassade kod toodo.
+- Du kan ange en [uppgradera princip](./virtual-machine-scale-sets-upgrade-scale-set.md) toomake den enkelt tooroll ut uppgraderingar över virtuella datorer i en skaluppsättning. Med enskilda virtuella datorer, måste du samordnar uppdateringar själv.
 
 ### <a name="vm-specific-features"></a>VM-specifika funktioner
 
-Å andra sidan vissa funktioner är endast tillgängliga i virtuella datorer (minst för närvarande):
+Hej på andra sidan, vissa funktioner är endast tillgängliga i virtuella datorer (minst för närvarande för hello):
 
-- Du kan koppla datadiskar till specifika enskilda virtuella datorer, men bifogade datadiskar konfigureras för alla virtuella datorer i en skaluppsättning.
-- Du kan koppla icke-tom datadiskar till enskilda virtuella datorer men inte virtuella datorer i en skaluppsättning.
+- Du kan bifoga data diskar toospecific enskilda virtuella datorer, men bifogade datadiskar har konfigurerats för alla virtuella datorer i en skaluppsättning.
+- Du kan koppla icke-tom data diskar tooindividual virtuella datorer men inte virtuella datorer i en skaluppsättning.
 - Du kan ögonblicksbilder för en enskild VM men inte en virtuell dator i en skaluppsättning.
 - Du kan göra en avbildning från en enskild VM men inte från en virtuell dator i en skaluppsättning.
-- Du kan migrera en enskild VM från interna diskar till hanterade diskar, men du kan inte göra detta för virtuella datorer i en skaluppsättning.
-- Du kan tilldela enskilda VM-nätverkskort IPv6 offentliga IP-adresser men inte för virtuella datorer i en skaluppsättning. Observera att du kan tilldela IPv6 offentliga IP-adresser till belastningsutjämnare framför antingen enskilda virtuella datorer eller skaluppsättning för virtuella datorer.
+- Du kan migrera en enskild VM från interna diskar toomanaged diskar, men du kan inte göra detta för virtuella datorer i en skaluppsättning.
+- Du kan tilldela IPv6 offentliga IP-adresser tooindividual Virtuella nätverkskort, men inte för virtuella datorer i en skaluppsättning. Observera att du kan tilldela IPv6 offentliga IP-adresser tooload belastningsutjämnare framför antingen enskilda virtuella datorer eller skaluppsättning för virtuella datorer.
 
 ## <a name="storage"></a>Lagring
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Med Azure hanterade diskar
-Skaluppsättningar kan skapas med [Azure hanterade diskar](../virtual-machines/windows/managed-disks-overview.md) i stället för traditionella Azure storage-konton. Hanterade diskar ger följande fördelar:
-- Du behöver inte skapa en uppsättning Azure storage-konton för skalan som virtuella datorer.
-- Du kan definiera [anslutna datadiskar](virtual-machine-scale-sets-attached-disks.md) för de virtuella datorerna i din skala.
-- Skaluppsättningar kan konfigureras för [stöder upp till 1 000 virtuella datorer i en mängd](virtual-machine-scale-sets-placement-groups.md). 
+Skaluppsättningar kan skapas med [Azure hanterade diskar](../virtual-machines/windows/managed-disks-overview.md) i stället för traditionella Azure storage-konton. Hanterade diskar har hello följande fördelar:
+- Du har inte toopre-skapa en uppsättning Azure storage-konton för hello skaluppsättning för virtuella datorer.
+- Du kan definiera [anslutna datadiskar](virtual-machine-scale-sets-attached-disks.md) hello virtuella datorer i din skala anges.
+- Skaluppsättningar kan konfigureras för[stöder in too1 000 virtuella datorer i en mängd](virtual-machine-scale-sets-placement-groups.md). 
 
-Om du har en befintlig mall kan du också [uppdatera mallen så att den använder hanterade diskar](virtual-machine-scale-sets-convert-template-to-md.md).
+Om du har en befintlig mall kan du också [uppdatera hello mallen toouse hanterade diskar](virtual-machine-scale-sets-convert-template-to-md.md).
 
 ### <a name="user-managed-storage"></a>Användarhanterat lagring
-En skalningsuppsättning som inte är definierad med Azure hanterade diskar är beroende av användarskapade storage-konton för att lagra OS-diskar på de virtuella datorerna i uppsättningen. Förhållandet 20 virtuella datorer per lagringskonto eller mindre rekommenderas att uppnå högsta i/o och också dra nytta av _överetablering_ (se nedan). Det rekommenderas också att du sprids början tecknen i lagringskontonamn alfabetet. Om du gör det hjälper till att sprida belastningen över olika interna system. 
+En skalningsuppsättning som inte är definierad med Azure hanterade diskar är beroende av användarskapade konton toostore hello OS diskar med lagringsutrymme för virtuella datorer hello i hello set. Förhållandet 20 virtuella datorer per lagringskonto eller mindre rekommenderas tooachieve maximala i/o och dra nytta av _överetablering_ (se nedan). Vi rekommenderar också att du sprids hello början tecknen i hello lagringskontonamn hello alfabetet. Om du gör det hjälper till att sprida belastningen över olika interna system. 
 
 
 ## <a name="overprovisioning"></a>Överetablering
-Skalningsuppsättningarna för närvarande standard ”överetablering” virtuella datorer. Med överetablering aktiverat skalan ange faktiskt varv upp flera virtuella datorer än du uppge och tar bort de extra virtuella datorerna när det begärda antalet virtuella datorer har etablerats. Överetablering förbättrar etablering slutförandefrekvenser och minskar distributionstiden för. Du debiteras inte för de extra virtuella datorerna och de räknas inte in i din kvotgränser.
+Skalningsuppsättningarna för närvarande standard för ”överetablering” virtuella datorer. Med överetablering aktiverat hello skala ange faktiskt varv upp flera virtuella datorer än du uppge och tar bort hello extra VM: ar när hello begärt antal virtuella datorer har etablerats. Överetablering förbättrar etablering slutförandefrekvenser och minskar distributionstiden för. Du debiteras inte för hello extra VM: ar, och de inte räknas in i din kvotgränser.
 
-Överetablering förbättra etablering slutförandefrekvenser, kan orsaka förvirrande beteendet för ett program som inte är avsedda att hantera extra VM: ar som visas och sedan försvinner. Om du vill aktivera överetablering av, se till att du har följande sträng i mallen: `"overprovision": "false"`. Mer information finns i den [skala ange REST API-dokumentation](/rest/api/virtualmachinescalesets/create-or-update-a-set).
+Överetablering förbättra etablering slutförandefrekvenser, kan orsaka förvirrande beteendet för ett program som är inte utformad toohandle extra VM: ar som visas och sedan försvinner. tooturn överetablering, kontrollera att du har hello efter strängen i mallen: `"overprovision": "false"`. Mer information finns i hello [skala ange REST API-dokumentation](/rest/api/virtualmachinescalesets/create-or-update-a-set).
 
-Om du inaktiverar överetablering din skaluppsättning använder användarhanterat lagring, du kan ha fler än 20 virtuella datorer per lagringskonto, men det rekommenderas inte över 40 på grund av i/o-prestanda. 
+Om du inaktiverar överetablering din skaluppsättning använder användarhanterat lagring, du kan ha fler än 20 virtuella datorer per lagringskonto, men toogo ovan 40 IO av prestandaskäl rekommenderas inte. 
 
 ## <a name="limits"></a>Begränsningar
-En skalningsuppsättning bygger på Marketplace-avbildning (även kallat en plattformsavbildning) och konfigurerat för att använda Azure hanterade diskar stöder en kapacitet på upp till 1 000 virtuella datorer. Om du konfigurerar din skaluppsättningen som stöd för fler än 100 virtuella datorer fungerar på samma sätt (till exempel belastningsutjämning) i alla scenarier. Mer information finns i [arbeta med stora virtuella datorer](virtual-machine-scale-sets-placement-groups.md). 
+En skalningsuppsättning bygger på Marketplace-avbildning (även kallat en plattformsavbildning) och konfigurerat toouse Azure hanterade diskar stöder en kapacitet på upp too1 000 virtuella datorer. Om du konfigurerar din scale set toosupport fler än 100 virtuella datorer, hello samma i alla scenarier arbete (till exempel belastningsutjämning). Mer information finns i [arbeta med stora virtuella datorer](virtual-machine-scale-sets-placement-groups.md). 
 
-En skaluppsättningen som är konfigurerad med användarhanterat storage-konton är för närvarande begränsad till 100 virtuella datorer (och rekommenderas för skalans 5 storage-konton).
+En skaluppsättningen som är konfigurerad med användarhanterat storage-konton är för närvarande begränsad too100 virtuella datorer (och rekommenderas för skalans 5 storage-konton).
 
-En skalningsuppsättning som bygger på en anpassad avbildning (en som skapats av du) kan ha en kapacitet på upp till 100 virtuella datorer vid konfigurerats med Azure hanterade diskar. Om skaluppsättning är konfigurerad med användarhanterat storage-konton, måste det skapa alla OS-disk VHD i ett lagringskonto. Därför kan högsta rekommenderade antalet virtuella datorer i en skaluppsättning som bygger på en anpassad avbildning och användarhanterat lagring är 20. Om du inaktiverar överetablering går du upp till 40.
+En skalningsuppsättning som bygger på en anpassad avbildning (en som skapats av du) kan ha en kapacitet på upp too100 virtuella datorer när konfigurerats med Azure hanterade diskar. Om hello skaluppsättning är konfigurerad med användarhanterat storage-konton, måste det skapa alla OS-disk VHD i ett lagringskonto. Därför hello maximalt bör antalet virtuella datorer i en skaluppsättning som bygger på en anpassad avbildning och Användarhanterad lagring är 20. Om du inaktiverar överetablering går du in too40.
 
-För flera virtuella datorer än dessa gränser tillåter du behöver distribuera flera skaluppsättningar enligt [mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
+För flera virtuella datorer än dessa gränser tillåter du behöver toodeploy flera skalningsuppsättningarna enligt [mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
 

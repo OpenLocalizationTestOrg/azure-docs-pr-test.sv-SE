@@ -1,6 +1,6 @@
 ---
-title: "Installera uppdatering 5 på StorSimple 8000-serieenhet | Microsoft Docs"
-description: "Beskriver hur du installerar StorSimple 8000 Series uppdatering 4 på enheten StorSimple 8000-serien."
+title: "aaaInstall uppdatering 5 på StorSimple 8000-serieenhet | Microsoft Docs"
+description: "Förklarar hur tooinstall StorSimple 8000 Series uppdatering 4 på enheten StorSimple 8000-serien."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/22/2017
 ms.author: alkohli
-ms.openlocfilehash: 84056daaada94875af3d969847ead41c003a1606
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a832f9953e8e39408efeeed375e3afe8eee8d0e5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Installera uppdatering 5 på din StorSimple-enhet
 
 ## <a name="overview"></a>Översikt
 
-Den här självstudiekursen beskriver hur du installerar uppdatering 5 på en StorSimple-enhet som kör en tidigare programvaruversion via Azure portal och använder metoden snabbkorrigering. Metoden snabbkorrigeringen används när en gateway har konfigurerats på ett nätverksgränssnitt än DATA 0 av StorSimple-enhet och du försöker uppdatera från före uppdateringen 1 programvaruversionen.
+Den här självstudiekursen beskrivs hur tooinstall uppdatering 5 på en StorSimple-enhet som kör en tidigare programvaruversion via hello Azure-portalen och använder hello snabbkorrigeringen-metoden. hello snabbkorrigeringen metoden används när en gateway har konfigurerats på ett nätverksgränssnitt än DATA 0 av hello StorSimple-enhet och du försöker tooupdate från före uppdateringen 1 programvaruversionen.
 
-Uppdatering 5 innehåller enhetsprogrammet Storport och Spaceport, OS säkerhetsuppdateringar och OS-uppdateringar och uppdateringar av inbyggd disk.  Enhetsprogrammet, Spaceport, Storport, säkerhet och andra uppdateringar av OS uppdateras utan avbrott. Utan avbrott eller regelbundna uppdateringar kan tillämpas via Azure-portalen eller via metoden snabbkorrigering. Programvara disk störande uppdateras och tillämpas när enheten är i underhållsläge via metoden snabbkorrigeringen med hjälp av Windows PowerShell-gränssnittet för enheten.
+Uppdatering 5 innehåller enhetsprogrammet Storport och Spaceport, OS säkerhetsuppdateringar och OS-uppdateringar och uppdateringar av inbyggd disk.  hello enhetsprogrammet, Spaceport, Storport, säkerhet och andra uppdateringar av OS uppdateras utan avbrott. hello utan avbrott eller regelbundna uppdateringar kan tillämpas via hello Azure-portalen eller via hello snabbkorrigeringen metod. uppdateringar av hello disk inbyggd störande uppdateras och tillämpas när hello enheten är i underhållsläge via hello snabbkorrigeringen metoden hello Windows PowerShell-gränssnittet för hello enhet.
 
 > [!IMPORTANT]
-> * En uppsättning manuella och automatiska före kontroller är klar innan du installera fastställa hälsotillståndet för enheten vad gäller maskinvara tillstånd och nätverksanslutningen. Kontrollerna före utförs endast om du installerar uppdateringarna från Azure-portalen.
-> * Vi rekommenderar att du installerar programmet och andra regelbundna uppdateringar via Azure portal. Du bör bara gå till Windows PowerShell-gränssnittet för enheten (för att installera uppdateringar) om den före uppdateringen gateway inte i portalen. Beroende på vilken version som du uppdaterar från uppdateringarna kan ta 4 timmar (eller senare) att installera. Underhåll läge uppdateringar måste installeras via Windows PowerShell-gränssnittet för enheten. Eftersom Underhåll läge uppdateringar är störande uppdateringar, medföra dessa nertid för din enhet.
-> * Se till att du har uppgraderat din Snapshot Manager version till uppdatering 5 innan du uppdaterar enheten om kör valfria StorSimple Snapshot Manager.
+> * En uppsättning manuella och automatiska före kontroller är klar tidigare toohello installera toodetermine hello enhetens hälsotillstånd vad gäller maskinvara tillstånd och nätverksanslutningen. Kontrollerna före utförs endast om du använder hello uppdateringar från hello Azure-portalen.
+> * Vi rekommenderar att du installerar hello programvara och andra regelbundna uppdateringar via hello Azure-portalen. Du bör bara gå toohello Windows PowerShell-gränssnittet för hello enhet (tooinstall uppdateringar) om hello före uppdateringen gateway kontrollen misslyckas i hello-portalen. Beroende på hello-version som du uppdaterar från hello uppdateringarna kan ta 4 timmar (eller högre) tooinstall. hello Underhåll läge uppdateringar måste installeras via hello Windows PowerShell-gränssnittet för hello enhet. Eftersom Underhåll läge uppdateringar är störande uppdateringar, medföra dessa nertid för din enhet.
+> * Om körs hello valfria StorSimple Snapshot Manager, kontrollerar du att du har uppgraderat Snapshot Manager version tooUpdate 5 tidigare tooupdating hello enheten.
 
 
 [!INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
-## <a name="install-update-5-via-the-azure-portal"></a>Installera uppdatering 5 via Azure portal
-Utför följande steg om du vill uppdatera enheten till [uppdatera 5](storsimple-update5-release-notes.md).
+## <a name="install-update-5-via-hello-azure-portal"></a>Installera uppdatering 5 via hello Azure-portalen
+Utför följande steg tooupdate hello enheten för[uppdatering 5](storsimple-update5-release-notes.md).
 
 > [!NOTE]
-> Microsoft hämtar ytterligare diagnostikinformation från enheten. Därför när våra driftteamet identifierar enheter som har problem, är vi bättre utrustad för att samla in information från enheten och diagnostisera problem.
+> Microsoft hämtar ytterligare diagnostikinformation från hello enhet. Därför när våra driftteamet identifierar enheter som har problem, vi är bättre utrustade toocollect information från hello enhet och diagnostisera problem.
 
 [!INCLUDE [storsimple-8000-install-update4-via-portal](../../includes/storsimple-8000-install-update5-via-portal.md)]
 
-Kontrollera att enheten kör **StorSimple 8000 Series uppdatering 5 (6.3.9600.17845)**. Den **senast uppdaterad datum** ska ändras.
+Kontrollera att enheten kör **StorSimple 8000 Series uppdatering 5 (6.3.9600.17845)**. Hej **senast uppdaterad datum** ska ändras.
 
-* Du ser nu att Underhåll läge uppdateringar är tillgängliga (det här meddelandet kan fortsätta att visas för upp till 24 timmar efter installation av uppdateringar). Underhåll läge uppdateringar är störande uppdateringar som leda till enheten driftstopp och kan endast användas via Windows PowerShell-gränssnittet på enheten.
+* Du ser nu att hello Underhåll läge uppdateringar är tillgängliga (det här meddelandet kan fortsätta toobe som visas för dig too24 hello timmar efter installation av uppdateringar). Underhåll läge uppdateringar är störande uppdateringar som leda till enheten driftstopp och kan endast användas via hello Windows PowerShell-gränssnittet på enheten.
 
-* Hämta uppdateringar för underhåll-läge med hjälp av stegen i [att hämta snabbkorrigeringar](#to-download-hotfixes) att söka efter och hämta KB4011837, vilka installerar disk firmware-uppdateringar (andra uppdateringar ska vara installerad nu). Följ stegen i [installera och underhåll läge snabbkorrigeringar](#to-install-and-verify-maintenance-mode-hotfixes) för att installera underhållsläge uppdateringar.
+* Hämta hello Underhåll läge uppdateringar med hjälp av stegen i hello [toodownload snabbkorrigeringar](#to-download-hotfixes) toosearch för och hämta KB4011837 som installerar uppdateringar av inbyggd disk (hello andra uppdateringar ska vara installerad nu). Följ stegen i hello [installera och underhåll läge snabbkorrigeringar](#to-install-and-verify-maintenance-mode-hotfixes) tooinstall hello Underhåll läge uppdateringar.
 
 ## <a name="install-update-5-as-a-hotfix"></a>Installera uppdatering 5 som en snabbkorrigering
 
 
-Programvaruversioner som kan uppgraderas med metoden snabbkorrigeringen är:
+hello programvaruversioner som kan uppgraderas med hello snabbkorrigeringen metoden är:
 
 * Uppdatera 0.1, 0,2, 0,3
 * Uppdatera 1, 1.1, 1.2
@@ -62,29 +62,29 @@ Programvaruversioner som kan uppgraderas med metoden snabbkorrigeringen är:
 * Uppdatering 4
 
 > [!NOTE] 
-> Den rekommenderade metoden för att installera uppdatering 5 är via Azure portal. Använd följande procedur om du inte gateway-kontroll vid försök att installera uppdateringar via Azure-portalen. Kontrollen misslyckas när du har en gateway som tilldelats till en icke-DATA 0-nätverksgränssnittet och din enhet kör en programvaruversion tidigare än uppdatering 1.
+> hello bör metoden tooinstall uppdatering 5 är via hello Azure-portalen. Använd följande procedur om du inte hello gateway kontroll när du försöker tooinstall hello uppdateringar via hello Azure-portalen. hello misslyckas när du har en gateway som tilldelats tooa utan DATA 0-nätverksgränssnittet och enheten körs en programvaruversion tidigare än uppdatering 1.
 
-Metoden snabbkorrigeringen omfattar följande tre steg:
+hello snabbkorrigeringen metoden innebär hello följande tre steg:
 
-1. Hämta snabbkorrigeringar från Microsoft Update-katalogen.
-2. Installera och kontrollera standardläget snabbkorrigeringar.
-3. Installera och kontrollera Underhåll läge snabbkorrigeringen.
+1. Hämta hello snabbkorrigeringar från hello Microsoft Update-katalogen.
+2. Installera och kontrollera hello standardläget snabbkorrigeringar.
+3. Installera och kontrollera hello Underhåll läge snabbkorrigering.
 
 #### <a name="download-updates-for-your-device"></a>Hämta uppdateringar för din enhet
 
-Du måste hämta och installera följande snabbkorrigeringar i föreskrivna ordning och de föreslagna mapparna:
+Du måste hämta och installera hello följande snabbkorrigeringar i hello föreskrivs ordning och hello föreslagna mappar:
 
 | Ordning | kB | Beskrivning | Typ av uppdatering | Installationstid |Installera i mappen|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4037264 |Programuppdatering<br> Ladda ned båda _HcsSfotwareUpdate.exe_ och _CisMSDAgent.exe_ |Vanliga <br></br>Icke-störande |~ 25 minuter |FirstOrderUpdate|
 
-Om uppdatering från en enhet som kör uppdatering 4, behöver du bara installera OS kumulativa uppdateringar som andra uppdateringar.
+Om du uppdaterar från en enhet som kör uppdatering 4, behöver du bara tooinstall hello OS kumulativa uppdateringar som andra uppdateringar.
 
 | Ordning | kB | Beskrivning | Typ av uppdatering | Installationstid |Installera i mappen|
 | --- | --- | --- | --- | --- | --- |
 | 2A. |KB4025336 |OS kumulativa uppdateringar paketet <br> Versionen av Windows Server 2012 R2 |Vanliga <br></br>Icke-störande |- |SecondOrderUpdate|
 
-Om du installerar från en enhet som kör uppdatering 3 eller tidigare, kan du installera följande förutom kumulativa uppdateringar.
+Om du installerar från en enhet som kör uppdatering 3 eller tidigare, installera hello dessutom följande toohello kumulativa uppdateringar.
 
 | Ordning | kB | Beskrivning | Typ av uppdatering | Installationstid |Installera i mappen|
 | --- | --- | --- | --- | --- | --- |
@@ -93,7 +93,7 @@ Om du installerar från en enhet som kör uppdatering 3 eller tidigare, kan du i
 | 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Paketet för OS-uppdateringar <br> Versionen av Windows Server 2012 R2 |Vanliga <br></br>Icke-störande |- |SecondOrderUpdate|
 
 
-Du kan också behöva installera uppdateringar av inbyggd disk ovanpå alla uppdateringar som visas i föregående tabeller. Du kan kontrollera om du behöver disk firmware-uppdateringar genom att köra den `Get-HcsFirmwareVersion` cmdlet. Om du kör dessa versioner av inbyggd: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N003`, `0107`, behöver du inte installera uppdateringarna.
+Du kanske också måste tooinstall disk programvara på alla hello uppdateringar visas i hello föregående tabellerna. Du kan kontrollera om du behöver hello uppdateringar av inbyggd disk genom att köra hello `Get-HcsFirmwareVersion` cmdlet. Om du kör dessa versioner av inbyggd: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N003`, `0107`, och du inte behöver tooinstall uppdateringarna.
 
 | Ordning | kB | Beskrivning | Typ av uppdatering | Installationstid | Installera i mappen|
 | --- | --- | --- | --- | --- | --- |
@@ -102,15 +102,15 @@ Du kan också behöva installera uppdateringar av inbyggd disk ovanpå alla uppd
 <br></br>
 
 > [!IMPORTANT]
-> * Om uppdatering från uppdatering 4, är den totala installationstid nära 4 timmar.
-> * Innan du använder den här proceduren för att installera uppdateringen kan du kontrollera att både styrenheterna är online och alla maskinvarukomponenter är felfria.
+> * Om du uppdaterar från uppdatering 4, är hello totala installationstid Stäng too4 timmar.
+> * Innan du använder den här proceduren tooapply hello uppdatering, kontrollera att båda hello-styrenheter är online och alla hello maskinvarukomponenter är felfria.
 
-Utför följande steg för att ladda ned och installera snabbkorrigeringar.
+Utför följande steg toodownload hello och installera hello snabbkorrigeringar.
 
 [!INCLUDE [storsimple-install-update5-hotfix](../../includes/storsimple-install-update5-hotfix.md)]
 
 [!INCLUDE [storsimple-install-troubleshooting](../../includes/storsimple-install-troubleshooting.md)]
 
 ## <a name="next-steps"></a>Nästa steg
-Lär dig mer om den [uppdatering 5 versionen](storsimple-update5-release-notes.md).
+Mer information om hello [uppdatering 5 versionen](storsimple-update5-release-notes.md).
 

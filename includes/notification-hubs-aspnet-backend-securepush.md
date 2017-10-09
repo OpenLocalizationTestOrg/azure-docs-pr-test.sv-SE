@@ -1,6 +1,6 @@
 ## <a name="webapi-project"></a>WebAPI-projekt
-1. Öppna i Visual Studio den **AppBackend** projekt som du skapade i den **meddela användare** kursen.
-2. Ersätt hela i Notifications.cs, **meddelanden** klassen med följande kod. Se till att ersätta platshållarna med anslutningssträngen (med fullständig åtkomst) för meddelandehubben och hubbnamnet. Du kan hämta dessa värden från den [klassiska Azure-portalen](http://manage.windowsazure.com). Den här modulen representerar nu olika säkra meddelanden som skickas. En fullständig implementering ska meddelanden sparas i en databas. för enkelhetens skull lagrar i det här fallet vi dem i minnet.
+1. Öppna i Visual Studio hello **AppBackend** projekt som du skapade i hello **meddela användare** kursen.
+2. I Notifications.cs, Ersätt hello hela **meddelanden** klassen med följande kod hello. Vara säker på att tooreplace hello-platshållare med anslutningssträngen (med fullständig åtkomst) för meddelandehubben och hello hubbnamn. Du kan få värdena från hello [klassiska Azure-portalen](http://manage.windowsazure.com). Den här modulen representerar nu hello olika säkra meddelanden som skickas. En fullständig implementering ska hello meddelanden sparas i en databas. för enkelhetens skull lagrar i det här fallet vi dem i minnet.
    
         public class Notification
         {
@@ -40,7 +40,7 @@
             }
         }
 
-1. I NotificationsController.cs, Ersätt Koden i den **NotificationsController** klassen med följande kod. Den här komponenten implementerar ett sätt för enheten för att hämta meddelandet på ett säkert sätt och ger också ett sätt (för den här självstudiekursen) för att utlösa en säker push till dina enheter. Observera att när du skickar meddelandet till meddelandehubben vi bara skicka en rå med ID meddelandet (och inga faktiska meddelanden):
+1. Ersätt hello kod inuti hello i NotificationsController.cs, **NotificationsController** klassen definition med hello följande kod. Den här komponenten implementerar ett sätt för hello enheten tooretrieve hello-meddelande på ett säkert sätt och ger ett sätt (som hello i den här kursen) tootrigger även en säker push tooyour enheter. Observera att när du skickar hello meddelandehubben toohello meddelande vi bara skicka en raw med hello ID hello meddelande (och inga faktiska meddelanden):
    
        public NotificationsController()
        {
@@ -75,8 +75,8 @@
         }
 
 
-Observera att den `Post` metoden nu skickar ett popup-meddelande. Skickar den ett raw meddelande som innehåller endast meddelande-ID och inte något känsligt innehåll. Kontrollera också att kommentera send-åtgärden för plattformar som du inte har autentiseringsuppgifter som har konfigurerats på din meddelandehubb som de orsakar fel.
+Observera att hello `Post` metoden nu skickar ett popup-meddelande. Skickar den ett raw meddelande som innehåller endast hello meddelande-ID och inte något känsligt innehåll. Se också till att toocomment hello skicka-åtgärden för hello plattformar som du inte har autentiseringsuppgifter som har konfigurerats på din meddelandehubb som de orsakar fel.
 
-1. Vi ska nu omdistribuera den här appen till en Azure-webbplats för att göra den tillgänglig från alla enheter. Högerklicka på **AppBackend**-projektet och välj **Publicera**.
-2. Välj Azure-webbplatsen som publicera-mål. Logga in med ditt Azure-konto och markera en befintlig eller ny webbplats och anteckna den **Måladress** egenskap i den **anslutning** fliken. Vi ska referera till den här URL:en som *serverdelens slutpunkt* senare i den här självstudiekursen. Klicka på **Publicera**.
+1. Nu kommer vi distribuera den här appen tooan Azure-webbplats i ordning toomake den tillgänglig från alla enheter. Högerklicka på hello **AppBackend** projektet och välj **publicera**.
+2. Välj Azure-webbplatsen som publicera-mål. Logga in med ditt Azure-konto och markera en befintlig eller ny webbplats och anteckna hello **Måladress** egenskap i hello **anslutning** fliken. Vi kommer att referera toothis URL: en som din *backend endpoint* senare i den här kursen. Klicka på **Publicera**.
 

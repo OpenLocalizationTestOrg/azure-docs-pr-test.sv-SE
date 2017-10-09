@@ -1,5 +1,5 @@
 ---
-title: "Autoskala Windows virtuella Skalningsuppsättningarna | Microsoft Docs"
+title: "aaaAutoscale Windows Virtual Machine-Skalningsuppsättningar | Microsoft Docs"
 description: "Ställa in autoskalning för en Windows Skalningsuppsättning virtuell dator med hjälp av Azure PowerShell"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
-ms.openlocfilehash: 91f731bec46c005221f4e66e95822994070d4c26
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 67cf1c5063ceba4fc076dc270090defdbddbcfe0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="automatically-scale-machines-in-a-virtual-machine-scale-set"></a>Skala automatiskt datorer i en skaluppsättning för virtuell dator
-Skaluppsättningar för den virtuella datorn gör det enkelt att distribuera och hantera identiska virtuella datorer som en uppsättning. Skaluppsättningar ger en skalbar och anpassningsbara beräkningslager för storskaliga program och stöd för avbildningar för Windows-plattformen, Linux-plattformen bilder, anpassade avbildningar och tillägg. Läs mer om skaluppsättningar [Skalningsuppsättningarna för virtuella](virtual-machine-scale-sets-overview.md).
+Skaluppsättningar för den virtuella datorn gör det lättare för dig toodeploy och hantera identiska virtuella datorer som en uppsättning. Skaluppsättningar ger en skalbar och anpassningsbara beräkningslager för storskaliga program och stöd för avbildningar för Windows-plattformen, Linux-plattformen bilder, anpassade avbildningar och tillägg. Läs mer om skaluppsättningar [Skalningsuppsättningarna för virtuella](virtual-machine-scale-sets-overview.md).
 
-Den här kursen visar hur du skapar en skaluppsättning för Windows-datorer och skala automatiskt på datorer i uppsättningen. Du kan skapa skala och skalning genom att skapa en Azure Resource Manager-mall och distribuera den med hjälp av Azure PowerShell. Mer information om mallar finns i [Redigera Azure Resource Manager-mallar](../azure-resource-manager/resource-group-authoring-templates.md). Läs mer om automatisk skalning av skalningsuppsättningar i [automatisk skalning och Skalningsuppsättningarna för virtuella](virtual-machine-scale-sets-autoscale-overview.md).
+Den här kursen visar hur toocreate en skaluppsättning för virtuella Windows-datorer och automatiskt skala hello datorer i hello anges. Du kan skapa hello skala och skalning genom att skapa en Azure Resource Manager-mall och distribuera den med hjälp av Azure PowerShell. Mer information om mallar finns i [Redigera Azure Resource Manager-mallar](../azure-resource-manager/resource-group-authoring-templates.md). toolearn mer om automatisk skalning av skalningsuppsättningar, se [automatisk skalning och Skalningsuppsättningarna för virtuella](virtual-machine-scale-sets-autoscale-overview.md).
 
-I den här artikeln får distribuera du följande resurser och tillägg:
+I den här artikeln får du distribuera hello följande resurser och tillägg:
 
 * Microsoft.Storage/storageAccounts
 * Microsoft.Network/virtualNetworks
@@ -41,16 +41,16 @@ I den här artikeln får distribuera du följande resurser och tillägg:
 Mer information om Resource Manager-resurser finns [Azure Resource Manager och klassisk distribution](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ## <a name="step-1-install-azure-powershell"></a>Steg 1: Installera Azure PowerShell
-Se [hur du installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview) information om hur du installerar den senaste versionen av Azure PowerShell, markerar du din prenumeration och loggar in på Azure.
+Se [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview) information om installation hello senaste versionen av Azure PowerShell, väljer din prenumeration och loggar in tooAzure.
 
 ## <a name="step-2-create-a-resource-group-and-a-storage-account"></a>Steg 2: Skapa en resursgrupp och ett lagringskonto
-1. **Skapa en resursgrupp** – alla resurser måste distribueras till en resursgrupp. Använd [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx) att skapa en resursgrupp med namnet **vmsstestrg1**.
-2. **Skapa ett lagringskonto** – det här lagringskontot sparas om mallen. Använd [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) att skapa ett lagringskonto med namnet **vmsstestsa**.
+1. **Skapa en resursgrupp** – alla resurser måste vara distribuerad tooa resursgruppen. Använd [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx) toocreate en resursgrupp med namnet **vmsstestrg1**.
+2. **Skapa ett lagringskonto** – det här lagringskontot sparas om hello mallen. Använd [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) toocreate ett lagringskonto med namnet **vmsstestsa**.
 
-## <a name="step-3-create-the-template"></a>Steg 3: Skapa mallen
-En mall för Azure Resource Manager gör det möjligt för dig att distribuera och hantera Azure-resurser tillsammans med hjälp av en JSON-beskrivning av resurser och associerade distributionen parametrar.
+## <a name="step-3-create-hello-template"></a>Steg 3: Skapa hello mall
+En mall för Azure Resource Manager gör det möjligt för du toodeploy och hantera Azure-resurser tillsammans med hjälp av en JSON-beskrivning av hello resurser och associerade distributionen parametrar.
 
-1. Skapa filen C:\VMSSTemplate.json i din favorit-redigeraren och Lägg till den ursprungliga JSON-strukturen för att stödja mallen.
+1. Skapa hello fil C:\VMSSTemplate.json i din favorit-redigeraren och lägga till hello inledande JSON strukturen toosupport hello mallen.
 
     ```json
     {
@@ -65,7 +65,7 @@ En mall för Azure Resource Manager gör det möjligt för dig att distribuera o
     }
     ```
 
-2. Parametrar krävs inte alltid, men de ger ett sätt att ange värden när mallen distribueras. Lägg till de här parametrarna under det överordnade elementet parametrar som du lagt till mallen.
+2. Parametrar krävs inte alltid, men de ger ett sätt tooinput som värden när hello mallen distribueras. Lägg till de här parametrarna under hello parametrar överordnade element som du lagt till toohello mall.
 
     ```json   
     "vmName": { "type": "string" },
@@ -76,13 +76,13 @@ En mall för Azure Resource Manager gör det möjligt för dig att distribuera o
     "resourcePrefix": { "type": "string" }
     ```
    
-    * Ange ett namn för den separata virtuella dator som används för att få åtkomst till datorer i skalan.
-    * Namnet på det lagringskonto där mallen ska lagras.
-    * Ange antalet virtuella datorer för att skapa först i skalan.
-    * Namn och lösenord för administratörskontot på de virtuella datorerna.
-    * Ange ett namnprefix för de resurser som skapas för att stödja skalningen.
+    * Ange ett namn för hello separat virtuell dator som används tooaccess hello datorer i hello skala.
+    * hello namnet på hello lagringskonto där hello mall ska lagras.
+    * hello antalet virtuella datorer tooinitially skapa i hello skaluppsättning.
+    * hello namnet och lösenordet för administratörskontot för hello på hello virtuella datorer.
+    * Ange ett namnprefix för hello-resurser som har skapats toosupport hello skala.
 
-3. Variabler kan användas i en mall för att ange värden som ändras ofta eller värden som måste skapas från en kombination av parametervärden. Lägg till dessa variabler under det överordnade elementet för variabler som du lagt till mallen.
+3. Variabler kan användas i en mall toospecify värden som ändras ofta eller värden som behöver toobe som skapats från en kombination av parametervärden. Lägg till dessa variabler under hello variabler överordnade element som du lagt till toohello mall.
 
     ```json
     "dnsName1": "[concat(parameters('resourcePrefix'),'dn1')]",
@@ -104,14 +104,14 @@ En mall för Azure Resource Manager gör det möjligt för dig att distribuera o
     "wadcfgxend": "[concat('\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
     ```
    
-    * DNS-namn som används av nätverksgränssnitt.
+    * DNS-namn som används av hello nätverksgränssnitt.
 
-        * IP-adressnamn och prefix för virtuellt nätverk och undernät.
-        * Namn och identifierare för det virtuella nätverket att läsa in belastningsutjämning och nätverksgränssnitt.
-        * Ange lagringskontonamn för konton som är kopplade till datorer i skalan.
-        * Inställningar för diagnostik-tillägg som är installerad på de virtuella datorerna. Läs mer om diagnostik [skapa en Windows virtuell dator med övervakning och diagnostik med Azure Resource Manager-mall](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+        * hello IP-adressnamn och prefix för hello virtuella nätverk och undernät.
+        * hello namn och identifierare för hello virtuellt nätverk, läsa in belastningsutjämning och nätverksgränssnitt.
+        * Lagringskontonamn för hello konton som är associerade med hello datorer i hello skaluppsättning.
+        * Inställningar för hello diagnostik-tillägg som är installerad på hello virtuella datorer. Läs mer om hello diagnostik tillägget [skapa en Windows virtuell dator med övervakning och diagnostik med Azure Resource Manager-mall](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-4. Lägg till konto lagringsresurs under det överordnade elementet för resurser som du lagt till mallen. Den här mallen använder en loop för att skapa de rekommenderade fem storage-kontona där operativsystemet diskar och diagnostiska data lagras. Denna uppsättning konton stöder upp till 100 virtuella datorer i en skaluppsättning, vilket är största. Varje lagringskonto heter med en bokstav enhetsbeteckning som definierades i variablerna i kombination med det prefix du anger i parametrarna för mallen.
+4. Lägg till hello konto lagringsresurs under hello resurser överordnade element som du lagt till toohello mall. Den här mallen använder en loop toocreate hello rekommenderas fem storage-konton där hello operativsystemet diskar och diagnostiska data lagras. Denna uppsättning konton kan stödja av too100 virtuella datorer i en skaluppsättning hello aktuella högsta. Varje lagringskonto heter med en bokstav enhetsbeteckning som definierades i hello variabler i kombination med hello prefix du anger i hello parametrar för hello mall.
 
     ```json
     {
@@ -127,7 +127,7 @@ En mall för Azure Resource Manager gör det möjligt för dig att distribuera o
     },
     ```
 
-5. Lägg till resursen virtuellt nätverk. Mer information finns i [Nätverksresursprovidern](../virtual-network/resource-groups-networking.md).
+5. Lägg till resurs för hello virtuellt nätverk. Mer information finns i [Nätverksresursprovidern](../virtual-network/resource-groups-networking.md).
 
     ```json
     {
@@ -147,7 +147,7 @@ En mall för Azure Resource Manager gör det möjligt för dig att distribuera o
     },
     ```
 
-6. Lägg till de offentliga IP-adress-resurser som används av belastningsutjämnare och nätverksgränssnittet.
+6. Lägg till hello offentliga IP-adress-resurser som används av hello läsa in belastningsutjämning och nätverksgränssnittet.
 
     ```json
     {
@@ -176,7 +176,7 @@ En mall för Azure Resource Manager gör det möjligt för dig att distribuera o
     },
     ```
 
-7. Lägg till belastningsutjämningsresurs som används av skaluppsättning. Mer information finns i [Azure Resource Manager-stöd för belastningsutjämnaren](../load-balancer/load-balancer-arm.md).
+7. Lägg till hello belastningsutjämningsresurs som används av hello skaluppsättning. Mer information finns i [Azure Resource Manager-stöd för belastningsutjämnaren](../load-balancer/load-balancer-arm.md).
 
     ```json   
     {
@@ -217,7 +217,7 @@ En mall för Azure Resource Manager gör det möjligt för dig att distribuera o
     },
     ```
 
-8. Lägg till gränssnittet nätverksresurs som används av en separat virtuell dator. Eftersom datorer i en skaluppsättning inte är tillgängligt via en offentlig IP-adress, skapas en separat virtuell dator i samma virtuella nätverk via fjärranslutning åtkomst på datorer.
+8. Lägg till hello gränssnittet nätverksresurs som används av hello separat virtuell dator. Eftersom datorer i en skaluppsättning inte är tillgängligt via en offentlig IP-adress, en separat virtuell dator skapas i hello samma virtuella nätverk tooremotely åtkomst hello datorer.
 
     ```json  
     {
@@ -248,7 +248,7 @@ En mall för Azure Resource Manager gör det möjligt för dig att distribuera o
     },
     ```
 
-9. Lägg till en separat virtuell dator i samma nätverk som skaluppsättning.
+9. Lägg till hello separat virtuell dator i samma nätverk som hello skaluppsättning hello.
 
     ```json
     {
@@ -294,7 +294,7 @@ En mall för Azure Resource Manager gör det möjligt för dig att distribuera o
     },
     ```
 
-10. Lägga till virtuella datorns skaluppsättning resurs och ange diagnostik-tillägget som är installerad på alla virtuella datorer i skaluppsättning. Många av inställningarna för den här resursen är liknande med den virtuella datorresursen. De viktigaste skillnaderna är kapacitet elementet som anger hur många virtuella datorer i skalningsuppsättningen och upgradePolicy som anger hur uppdateringar görs i virtuella datorer. Skaluppsättning skapas inte förrän alla lagringskonton skapas som anges med dependsOn-element.
+10. Lägga till hello virtuella skala resursen och ange hello diagnostik tillägg som är installerad på alla virtuella datorer i hello skaluppsättning. Många av hello inställningar för den här resursen är liknande med hello virtuella datorresurser. hello viktigaste skillnaderna är hello kapacitet element som anger hello antalet virtuella datorer i hello skaluppsättning och upgradePolicy som anger hur uppdateringar görs toovirtual datorer. hello skaluppsättning inte skapas förrän alla hello storage-konton skapas som anges med hello dependsOn-element.
 
     ```json
     {
@@ -399,7 +399,7 @@ En mall för Azure Resource Manager gör det möjligt för dig att distribuera o
     },
     ```
 
-11. Lägg till resursen autoscaleSettings som definierar hur skaluppsättning justerar baserat på processoranvändning på datorer på skaluppsättning.
+11. Lägga till hello autoscaleSettings resurs som definierar hur hello skaluppsättning justerar baserat på hello processoranvändning på hello datorer i hello skaluppsättning.
 
     ```json
     {
@@ -452,73 +452,73 @@ En mall för Azure Resource Manager gör det möjligt för dig att distribuera o
     Dessa värden är viktiga för den här självstudiekursen:
     
     * **metricName**  
-    Det här värdet är samma som de prestandaräknare som vi har definierat i variabeln wadperfcounter. Med hjälp av variabeln, samlar in diagnostik-tillägget i **Processor(_Total)\% processortid** räknaren.
+    Det här värdet är hello samma som hello prestandaräknare som vi har definierat i hello wadperfcounter variabeln. Använda den variabeln hello diagnostik tillägget samlar in hello **Processor(_Total)\% processortid** räknaren.
     
     * **metricResourceUri**  
-    Det här värdet är resursidentifieraren för virtuella datorns skaluppsättning.
+    Det här värdet är hello resursidentifieraren för hello skaluppsättning för virtuell dator.
     
     * **Tidskorn**  
-    Det här värdet är Granulariteten för de mätvärden som samlats in. I den här mallen är den inställd på en minut.
+    Det här värdet är hello Granulariteten för hello mått som har samlats in. I den här mallen anges tooone minut.
     
     * **statistik**  
-    Det här värdet avgör hur mätvärdena kombineras för automatisk skalning åtgärd. Möjliga värden är: medel, Min, Max. Genomsnittlig totala CPU-användningen av virtuella datorer samlas in i den här mallen.
+    Det här värdet avgör hur hello är kombinerade tooaccommodate hello autoskalning åtgärd. hello möjliga värden är: medel, Min, Max. Hello genomsnittlig total CPU-användning av hello virtuella datorer samlas in i den här mallen.
     
     * **värdet timeWindow**  
-    Det här värdet är tidsintervallet där instansens data samlas in. Det måste vara mellan 5 minuter och 12 timmar.
+    Det här värdet är hello tidsintervall som samlas in instansdata. Det måste vara mellan 5 minuter och 12 timmar.
     
     * **timeAggregation**  
-    hans värdet avgör hur data som samlas in ska kombineras med tiden. Standardvärdet är medelvärde. Möjliga värden är:, lägsta, högsta, senaste, totalt antal, räknas.
+    hans värdet avgör hur hello data som samlas in ska kombineras med tiden. hello standardvärdet är medelvärdet. hello möjliga värden är:, lägsta, högsta, senaste, totalt antal, räknas.
     
     * **operatorn**  
-    Det här värdet är den operator som används för att jämföra måttinformationen och tröskelvärdet. Möjliga värden är: är lika med, NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual.
+    Det här värdet är hello operator som används toocompare hello mått data och hello tröskelvärdet. hello möjliga värden är: är lika med, NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual.
     
     * **Tröskelvärde**  
-    Det här värdet är värdet som utlöser skalningsåtgärden. I den här mallen läggs datorer till skaluppsättningen när den genomsnittliga processoranvändningen mellan datorer i uppsättningen är över 50%.
+    Det här värdet är hello-värde som utlöser hello skalningsåtgärd. I den här mallen läggs datorer toohello skaluppsättningen när hello genomsnittliga processoranvändningen mellan datorer i hello uppsättningen är över 50%.
     
     * **riktning**  
-    Det här värdet anger den åtgärd som utförs när ett tröskelvärde uppnås. Möjliga värden är ökning eller minskning. I den här mallen ökar antalet virtuella datorer i skaluppsättning om tröskelvärdet för över 50% under den definierade tidsperioden.
+    Det här värdet fastställer hello vad som händer när hello tröskelvärde uppnås. hello möjliga värden är ökning eller minskning. I den här mallen ökas hello antalet virtuella datorer i hello skaluppsättning om hello tröskelvärdet över 50% under hello definierade tidsperioden.
     
     * **typ**  
-    Det här värdet är typ av åtgärd som ska ske och måste anges till ChangeCount.
+    Det här värdet är hello typ av åtgärd som ska ske och tooChangeCount måste anges.
     
     * **värdet**  
-    Det här värdet är antalet virtuella datorer som läggs till eller tas bort från skaluppsättning. Det här värdet måste vara 1 eller högre. Standardvärdet är 1. I den här mallen ange antalet datorer i skalan ökar med 1 när tröskelvärdet är uppfyllda.
+    Det här värdet är hello antalet virtuella datorer som läggs till eller tas bort från hello skaluppsättning. Det här värdet måste vara 1 eller högre. hello standardvärdet är 1. I den här mallen hello antalet datorer i hello skala in ökar med 1 när hello tröskelvärdet har uppnåtts.
     
     * **cooldown**  
-    Det här värdet är hur lång tid att vänta sedan den senaste skalning åtgärden innan nästa åtgärd inträffar. Det här värdet måste vara mellan en minut och en vecka.
+    Det här värdet är hello mängden tid toowait sedan hello senaste skalning åtgärd innan hello nästa åtgärd sker. Det här värdet måste vara mellan en minut och en vecka.
 
-12. Spara filen med mallen.    
+12. Spara filen med hello mallen.    
 
-## <a name="step-4-upload-the-template-to-storage"></a>Steg 4: Överför mallen till lagring
-Mallen kan överföras så länge som du känner till namn och en primär nyckel för lagringskontot som du skapade i steg 1.
+## <a name="step-4-upload-hello-template-toostorage"></a>Steg 4: Överför hello mall toostorage
+hello mall kan överföras så länge som du känner hello namn och primärnyckel för hello storage-konto som du skapade i steg 1.
 
-1. Ange en variabel som anger namnet på lagringskontot som du skapade i steg 1 i Microsoft Azure PowerShell-fönster.
+1. Ange en variabel som anger hello namn hello storage-konto som du skapade i steg 1 i hello Microsoft Azure PowerShell-fönster.
    
     ```powershell
     $storageAccountName = "vmstestsa"
     ```
 
-2. Ange en variabel som anger den primära nyckeln för lagringskontot.
+2. Ange en variabel som anger hello primärnyckel hello storage-konto.
    
     ```powershell
     $storageAccountKey = "<primary-account-key>"
     ```
    
-   Du kan hämta den här nyckeln genom att klicka på nyckelikonen när du visar konto lagringsresurs i Azure-portalen.
-3. Skapa storage-konto context-objektet som används för att validera åtgärder med storage-konto.
+   Du kan hämta den här nyckeln genom att klicka på nyckelikonen hello när du visar hello konto lagringsresurs i hello Azure-portalen.
+3. Skapa hello storage-konto context-objektet som används toovalidate åtgärder med hello storage-konto.
    
     ```powershell
     $ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
     ```
 
-4. Skapa behållare för lagring av mallen.
+4. Skapa hello behållare för att lagra hello mall.
 
     ```powershell
     $containerName = "templates"
     New-AzureStorageContainer -Name $containerName -Context $ctx  -Permission Blob
     ```
 
-5. Överför mallfilen till den nya behållaren.
+5. Överför hello mallen filen toohello ny behållare.
 
     ```powershell   
     $blobName = "VMSSTemplate.json"
@@ -526,14 +526,14 @@ Mallen kan överföras så länge som du känner till namn och en primär nyckel
     Set-AzureStorageBlobContent -File $fileName -Container $containerName -Blob  $blobName -Context $ctx
     ```
 
-## <a name="step-5-deploy-the-template"></a>Steg 5: Distribuera mallen
-Nu när du har skapat mallen kan du börja distribuera resurserna. Använd följande kommando för att starta processen:
+## <a name="step-5-deploy-hello-template"></a>Steg 5: Distribuera hello mall
+Nu när du har skapat hello mallen börja du distribuera hello resurser. Använd den här processen med kommandot toostart hello:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "vmsstestdp1" -ResourceGroupName "vmsstestrg1" -TemplateUri "https://vmsstestsa.blob.core.windows.net/templates/VMSSTemplate.json"
 ```
 
-När du trycker på Ange, du uppmanas att ange värden för variabler som du tilldelat. Ange dessa värden:
+När du trycker på Ange är du tillfrågas tooprovide värden för hello variabler som du tilldelat. Ange dessa värden:
 
 ```powershell
 vmName: vmsstestvm1
@@ -544,22 +544,22 @@ vmName: vmsstestvm1
   resourcePrefix: vmsstest
 ```
 
-Det bör ta ungefär 15 minuter för alla resurser som har ska distribueras.
+Det bör ta ungefär 15 minuter för alla hello resurser toosuccessfully distribueras.
 
 > [!NOTE]
-> Du kan också använda portalens möjlighet för att distribuera resurserna. Använd den här länken ”: https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>”
+> Du kan också använda hello portal möjlighet toodeploy hello resurser. Använd den här länken ”: https://portal.azure.com/#create/Microsoft.Template/uri/<link tooVM Scale Set JSON template>”
 > 
 > 
 
 ## <a name="step-6-monitor-resources"></a>Steg 6: Övervaka resurser
 Du kan få information om skalningsuppsättningar i virtuella datorer på följande sätt:
 
-* Azure portal – du får för närvarande en begränsad mängd information med hjälp av portalen.
-* Den [resursutforskaren Azure](https://resources.azure.com/) – det här verktyget är bäst för att utforska det aktuella tillståndet för din skaluppsättning. Följ den här sökvägen och du bör se Instansvy för skaluppsättning som du skapade:
+* hello Azure-portalen – du får för närvarande en begränsad mängd information med hjälp av hello-portalen.
+* Hej [resursutforskaren Azure](https://resources.azure.com/) -verktyget är hello bästa för att utforska hello aktuell status för din skaluppsättning. Följ den här sökvägen och du bör se hello instansvyn för hello skala ange som du skapade:
   
     prenumerationer > {din prenumeration} > resursgrupper > vmsstestrg1 > providers > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
 
-* Azure PowerShell - Använd detta kommando för att hämta viss information:
+* Azure PowerShell - och använda det här kommandot tooget viss information:
 
   ```powershell
   Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
@@ -571,28 +571,28 @@ Du kan få information om skalningsuppsättningar i virtuella datorer på följa
   Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceView
   ```
 
-* Ansluta till den separata virtuella datorn precis som du skulle någon annan dator och sedan kan du fjärransluta till de virtuella datorerna i skaluppsättningen att övervaka enskilda processer.
+* Ansluta toohello separat virtuella datorn precis som du skulle någon annan dator och sedan kan du fjärransluta till hello virtuella datorer i hello scale set toomonitor enskilda processer.
 
 > [!NOTE]
 > En fullständig REST-API för att få information om skaluppsättningar finns i [Skalningsuppsättningarna för virtuella datorer](https://msdn.microsoft.com/library/mt589023.aspx)
 
-## <a name="step-7-remove-the-resources"></a>Steg 7: Ta bort resurserna
-Eftersom du debiteras för de resurser som används i Azure, men det är alltid en bra idé att ta bort resurser som inte längre behövs. Du behöver inte ta bort varje resurs separat från en resursgrupp. Du kan ta bort resursgruppen och alla dess resurser tas bort automatiskt.
+## <a name="step-7-remove-hello-resources"></a>Steg 7: Ta bort hello resurser
+Eftersom du debiteras för de resurser som används i Azure, men det är alltid en bra idé toodelete resurser som inte längre behövs. Du behöver inte toodelete varje resurs separat från en resursgrupp. Du kan ta bort hello resursgruppen och alla dess resurser tas bort automatiskt.
 
   ```powershell
   Remove-AzureRmResourceGroup -Name vmsstestrg1
   ```
 
-Om du vill behålla din resursgrupp kan du ta bort skaluppsättningen endast.
+Om du vill tookeep resursgruppen kan du ta bort hello skala endast.
 
   ```powershell
   Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name"
   ```
 
 ## <a name="next-steps"></a>Nästa steg
-* Hantera skaluppsättning som du just har skapat med hjälp av informationen i [hantera virtuella datorer i en virtuell dator Skaluppsättning](virtual-machine-scale-sets-windows-manage.md).
+* Hantera hello skaluppsättning som du precis skapat med hjälp av hello informationen i [hantera virtuella datorer i en virtuell dator Skaluppsättning](virtual-machine-scale-sets-windows-manage.md).
 * Läs mer om vertikal skalning i [Vertikal automatisk skalning med skaluppsättningar för virtuella datorer](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 * Hitta exempel på Azure-Monitor övervakningsfunktionerna i [Azure-Monitor PowerShell snabb start prover](../monitoring-and-diagnostics/insights-powershell-samples.md)
-* Lär dig mer om meddelandefunktioner i [använda automatiska åtgärder för att skicka e-post och webhook aviseringar i Azure-Monitor](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
-* Lär dig hur du [Använd granskningsloggarna för att skicka e-post och webhook aviseringar i Azure-Monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
+* Lär dig mer om meddelandefunktioner i [använda automatiska åtgärder toosend e-post och webhook aviseringar i Azure-Monitor](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
+* Lär dig hur för[Använd granskningsloggar toosend e-post och webhook aviseringar i Azure-Monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
 

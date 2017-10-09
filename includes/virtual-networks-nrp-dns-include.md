@@ -3,7 +3,7 @@ Azure DNS är värdtjänsten för DNS-domäner som tillhandahåller namnmatchnin
 
 | Egenskap | Beskrivning | Exempelvärde |
 | --- | --- | --- |
-| **DNSzones** |Information om zonen till DNS-värdposter i en viss domän |/ subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com ” |
+| **DNSzones** |Domän zonen information toohost DNS-posterna för en viss domän |/ subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com ” |
 
 ### <a name="dns-record-sets"></a>DNS-postuppsättningar
 DNS-zoner ha ett underordnat objekt med namnet postuppsättningen. Postuppsättningar är en samling värdposter efter typ för en DNS-zon. Posttyper är A, AAAA, CNAME, MX, NS, SOA, SRV och TXT.
@@ -31,14 +31,14 @@ Exempel på DNS-zonen i Json-format:
         "newZoneName": {
           "type": "String",
           "metadata": {
-              "description": "The name of the DNS zone to be created."
+              "description": "hello name of hello DNS zone toobe created."
           }
         },
         "newRecordName": {
           "type": "String",
           "defaultValue": "www",
           "metadata": {
-              "description": "The name of the DNS record to be created.  The name is relative to the zone, not the FQDN."
+              "description": "hello name of hello DNS record toobe created.  hello name is relative toohello zone, not hello FQDN."
           }
         }
       },
@@ -78,7 +78,7 @@ Exempel på DNS-zonen i Json-format:
     }
 
 ## <a name="additional-resources"></a>Ytterligare resurser
-Läs den [REST API-dokumentation för DNS-zoner ](https://msdn.microsoft.com/library/azure/mt130626.aspx) för mer information.
+Läs hello [REST API-dokumentation för DNS-zoner ](https://msdn.microsoft.com/library/azure/mt130626.aspx) för mer information.
 
-Läs den [REST API-dokumentation för DNS-postuppsättningar](https://msdn.microsoft.com/library/azure/mt130627.aspx) för mer information.
+Läs hello [REST API-dokumentation för DNS-postuppsättningar](https://msdn.microsoft.com/library/azure/mt130627.aspx) för mer information.
 

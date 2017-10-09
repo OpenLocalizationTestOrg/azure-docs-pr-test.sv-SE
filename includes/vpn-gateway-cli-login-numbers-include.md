@@ -1,14 +1,14 @@
-1. Logga in på Azure-prenumerationen med kommandot [az login](/cli/azure/#login) och följ anvisningarna på skärmen. Mer information om att logga in finns i [Kom igång med Azure CLI 2.0](/cli/azure/get-started-with-azure-cli).
+1. Logga in tooyour Azure-prenumeration med hello [az inloggningen](/cli/azure/#login) kommando och följ hello på skärmen riktningar. Mer information om att logga in finns i [Kom igång med Azure CLI 2.0](/cli/azure/get-started-with-azure-cli).
 
   ```azurecli
   az login
   ```
-2. Om du har fler än en Azure-prenumeration anger du prenumerationerna för kontot.
+2. Om du har mer än en Azure-prenumeration, lista hello prenumerationer för hello-kontot.
 
   ```azurecli
   az account list --all
   ```
-3. Ange den prenumeration som du vill använda.
+3. Ange hello prenumeration som du vill toouse.
 
   ```azurecli
   az account set --subscription <replace_with_your_subscription_id>

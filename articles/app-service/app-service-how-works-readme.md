@@ -1,5 +1,5 @@
 ---
-title: "Så här fungerar Azure App Service"
+title: "aaaHow Azure Apptjänst fungerar"
 description: "Lär dig hur App Service fungerar"
 keywords: app service, azure app service, scale, scalable, app service plan, app service cost
 services: app-service
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/23/2017
 ms.author: yochayk
-ms.openlocfilehash: 2d830963d3d2adba71a6ca99f79eac0fc8cbfb12
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b20733ec8844773d063e2b6918605c4a48db1f5c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="how-app-service-works"></a>Så här fungerar App Service
-Azure App Service är en molntjänst som har utformats för att lösa de praktiska problem som tekniker möter idag.
-App Service fokuserar på att erbjuda överlägsen utvecklarproduktivitet utan att ge avkall på behovet att leverera program i molnskala. 
+Azure Apptjänst är en molnbaserad tjänst som är utformad toosolve hello praktiska problem som tekniker möter idag.
+Apptjänst fokuserar på att erbjuda överlägsen utvecklarproduktivitet utan att kompromissa med hello måste toodeliver program i molnskala. 
 
-App Service innehåller även de funktioner och ramverk som behövs när du ska skapa de företagsprogram du behöver i verksamheten. Med App Service kan du utveckla appar i de vanligaste utvecklingsspråken som Java, PHP, Node.js, Python och Microsoft .NET. Med App Service kan du:
+Apptjänst innehåller också hello funktioner och ramverk som behövs för att skapa enterprise line-of-business-program. Med Apptjänst kan du utveckla appar i de flesta populära utvecklingsspråken, inklusive Java, PHP, Node.js, Python och hello Microsoft .NET-språk. Med App Service kan du:
 
 * Skapa i hög grad skalbara Web Apps.
 * Snabbt bygga Mobile App-servrar med en uppsättning lättanvända mobila funktioner, till exempel dataservrar, användarautentisering och push-meddelanden.
@@ -36,23 +36,23 @@ App Service innehåller även de funktioner och ramverk som behövs när du ska 
 > 
 > 
 
-Alla apptyper baseras på den skalbara och flexibla webbapp-plattformen som ger utvecklare en optimerad upplevelse av hela livscykeln från appdesign till appunderhåll. Livscykelfunktionerna möjliggör följande:
+Alla apptyper baseras på hello skalbara och flexibla Web Apps plattform, vilket gör att utvecklare toohave en optimerad hela livscykeln upplevelse som påminner om appen design tooapp underhåll. Hej livscykelfunktionerna aktivera hello följande:
 
-* **Snabbt appskapande**. Börja från början eller välj ett OSS-paket (operational support system) från Azure Marketplace.
+* **Snabbt appskapande**. Börja från början eller välj ett operational stödsystem (OSS)-paket från hello Azure Marketplace.
 * **Kontinuerlig distribution**. Distribuera automatiskt ny kod från populära lösningar för källkontroll, till exempel TFS, GitHub och Bitbucket, och synkronisera innehåll från webblagringstjänster, till exempel OneDrive och Dropbox.
-* **Testa i produktion**. Skapa förproduktionsmiljöer smidigt och hantera den mängd trafik som går till dem. Felsök i molnet när det behövs och återställ när du har identifierat problemet.
+* **Testa i produktion**. Smidigt att skapa förproduktionsmiljöer och hantera hello mängden trafik som går toothem. Felsöka i hello molnet vid behov och rulla tillbaka när problem identifieras.
 * **Kör asynkrona åtgärder och batchjobb**. Kör kod i bakgrunden eller aktivera din kod baserat på händelser (till exempel meddelanden som hamnar i en kö för Azure-lagring) och schemalagda tider (CRON).
-* **Skala appen**. Använd ett av många alternativ för att automatiskt skala din tjänst vågrätt och lodrätt baserat på trafik och resursanvändning. Konfigurera privata miljöer som är dedikerade till dina appar.   
-* **Underhåll appen**. Utnyttja många av funktionerna för felsökning och diagnostik för att undvika problem och effektivt lösa dem antingen i realtid (med funktioner som automatisk återställning och live-felsökning) eller efteråt genom att analysera loggar och minnesdumpar.
+* **Skalning hello app**. Använd en av många alternativ tooautomatically skala din tjänst vågrätt och lodrätt baserat på trafik och Resursanvändning. Konfigurera privata miljöer som är dedikerad tooyour appar.   
+* **Underhålla hello app**. Använda många av hello felsökning och diagnostik funktioner toostay i problem och tooefficiently lösa dem antingen i realtid (med funktioner som automatisk återställning och live-felsökning) eller efter hello fakta genom att analysera loggar och Dumpar.
 
-Sammantaget så gör App Service-funktionerna att utvecklare kan fokusera på koden och snabbt nå ett stabilt och mycket skalbart produktionstillstånd. Tack vare funktionerna API Apps och Logic Apps kan utvecklare skapa verkliga företagsprogram som överbygger barriärer mellan affärslösningar och för integrering lokalt till molnet. 
+Hela Apptjänst-funktionerna för att aktivera utvecklare toofocus på koden och nå snabbt ett stabilt och mycket skalbart produktionstillstånd. Med hello API Apps och funktioner i Logic Apps kan utvecklare skapa verkliga företagsprogram som överbrygga barriärer mellan affärslösningar och lokal toocloud integrering. 
 
 ## <a name="videos"></a>Videoklipp
 * [Azure App Service-arkitektur](https://azure.microsoft.com/documentation/videos/why-azure-web-sites-plus-architecture/)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om App Service i följande ämnen:
+Läs mer om Apptjänst på något av följande avsnitt hello:
 
 * [Vad är Azure App Service?](app-service-value-prop-what-is.md)
   * [Webbapp](../app-service-web/app-service-web-overview.md)
@@ -61,7 +61,7 @@ Läs mer om App Service i följande ämnen:
 * [Azure App Service-arkitektur (presentation)](http://www.slideshare.net/maartenba/windows-azure-web-sites-things-they-dont-teach-kids-in-school-comunity-day-2013)
 * [Jämförelse mellan Azure App Service, Azure Cloud Services och Azure Virtual Machines](../app-service-web/choose-web-site-cloud-service-vm.md)
 * [Så här fungerar App Service-planer](azure-web-sites-web-hosting-plans-in-depth-overview.md)
-* [Introduktion till App Service-miljöer](../app-service-web/app-service-app-service-environment-intro.md)
+* [Introduktion tooApp-miljö](../app-service-web/app-service-app-service-environment-intro.md)
   * [Övning: Skapa en App Service-miljö](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)
 * [Azure App Service-stöd för utvecklingsstackar](https://azure.microsoft.com/blog/windows-azure-websites-development-stacks-support/)
 

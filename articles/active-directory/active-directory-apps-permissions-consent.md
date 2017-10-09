@@ -1,7 +1,7 @@
 ---
 title: "Appar, behörigheter och godkännande i Azure Active Directory.| Microsoft Docs"
-description: "Azure AD Connect integrerar dina lokala kataloger med Azure Active Directory. På så sätt kan du tillhandahålla en gemensam identitet för Office 365-, Azure- och SaaS-program som är integrerade med Azure AD."
-keywords: introduction to Azure AD, apps, what is Azure AD Connect, install active directory
+description: "Azure AD Connect integrerar dina lokala kataloger med Azure Active Directory. Detta gör att du tooprovide en gemensam identitet för Office 365 och Azure SaaS-program som är integrerade med Azure AD."
+keywords: "Introduktion tooAzure AD, appar, vad är Azure AD Connect, installera active directory"
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -17,96 +17,96 @@ ms.date: 07/31/2017
 ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 6f6baf5e1538fb280a899065c64ca5688473c04a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: af0c2669199736fdb41e85876a7e3a7064e80770
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Appar, behörigheter och godkännande i Azure Active Directory
-I Azure Active Directory kan du lägga till program i din katalog.  Programmen kan variera beroende på typen av program.  Om du vill visa program på den klassiska portalen markerar du en katalog och väljer program.
+Du kan lägga till program tooyour katalog i Azure Active Directory.  hello program kan variera beroende på hello typ av program.  tooview program i hello klassiska portal, väljer du en katalog och Välj program.
 
 ![](media/active-directory-apps-permissions-consent/apps1.png)
 
 > [!IMPORTANT]
-> Microsoft rekommenderar att du hanterar Azure AD via [Azure AD administratörscenter](https://aad.portal.azure.com) på Azure Portal istället för via den klassiska Azure-portalen som nämns i den här artikeln.
+> Microsoft rekommenderar att du hanterar Azure AD med hjälp av hello [administrationscentret för Azure AD](https://aad.portal.azure.com) i hello Azure-portalen istället för att använda hello klassiska Azure-portalen som hänvisas till i den här artikeln.
 
 ## <a name="types-of-apps"></a>Typer av appar
 
 1. **Appar för en enda klient** </br>
-    - **Appar för en enda klient** – Kallas ofta för verksamhetsspecifika appar (LOB, Line-Of-Business). Det här är fallet när någon i din organisation utvecklar sin egen app och vill att användare i organisationen ska kunna logga in i appen.
+    - **Stöd för en innehavare appar** -ofta kallas tooas branschspecifika (LOB)-appar. Detta gäller hello där någon inom din organisation utvecklar egna app och vill att användarna i hello organisation toobe kan toosign i toohello app.
     ![](media/active-directory-apps-permissions-consent/apps2.png)
-    - **App Proxy-appar** – När du exponerar ett lokalt program med Azure AD App Proxy registreras en app för en enda klient i din klientorganisation (förutom App Proxy-tjänsten). Den här appen är det som representerar ditt lokala program i alla molninteraktioner (till exempel autentisering). (App Proxy kräver Azure AD Basic eller högre.)
+    - **Appen Proxy appar** – när du exponera ett lokalt program med Azure AD App Proxy en enskild klient app har registrerats i din klient (i tillägget toohello tjänsten App Proxy). Den här appen är det som representerar ditt lokala program i alla molninteraktioner (till exempel autentisering). (App Proxy kräver Azure AD Basic eller högre.)
 
 
 2. **Appar för flera klienter**
-    - **Appar för flera klienter som andra kan godkänna** – Påminner om ”appar för en enda klient som din organisation utvecklar”. Den största skillnaden (förutom logiken i själva appen) är att användare från andra klientorganisationer också kan godkänna och logga in i appen.</br>
+    - **Flera innehavare appar som andra kan godkänna** - liknande för ”stöd för en innehavare appar som din organisation utvecklar”. hello största skillnaden (förutom hello logiken i själva hello appen) är att användare från andra klienter också kan godkänna tooand inloggning toohello app.</br>
     ![](media/active-directory-apps-permissions-consent/apps4.png)
-    - **Appar för flera klienter som andra utvecklar, som Contoso kan godkänna**. (Eller bara ”godkända appar”.) Det här är den andra sidan av ”appar för flera klienter som din organisation utvecklar”. När en annan organisation utvecklar en app för flera klienter kan användarna i din organisation godkänna appen och logga in i den.
-    - **Första parts Microsoft-appar** – Appar som representerar Microsoft-tjänster. Du godkänner tjänsten genom att registrera dig för den. Ibland finns det särskilda användargränssnitt och logik för vissa förstapartsappar som ofta används när appåtkomstprinciper etableras.</br>
+    - **Appar för flera klienter som andra utvecklar, som Contoso kan godkänna**. (Eller bara ”godkända appar”.) Detta är hello Vänd sida av ”flera innehavare appar som din organisation utvecklar”. När en annan organisation utvecklar en app för flera innehavare, användare av din organisation medgivande toohello appen och logga in tooit.
+    - **Första parts Microsoft-appar** – Appar som representerar Microsoft-tjänster. Medgivande drivs av hello fakta som du registrerar dig för hello-tjänsten. Det finns ibland särskilda UX och logik för vissa appar från första part som används ofta när principer runt åtkomst toohello app.</br>
     ![](media/active-directory-apps-permissions-consent/apps3.png)
-    - **Förintegrerade appar** – Appar som är tillgängliga i Azure AD App-galleriet, som du kan lägga till i din katalog för att tillhandahålla enkel inloggning (och i vissa fall etablering) i populära SaaS-appar.
-    - **Enkel inloggning i Azure AD**: ”Verklig” enkel inloggning för appar som kan integreras med Azure AD via ett inloggningsprotokoll som stöds, t.ex. SAML 2.0 eller OpenID Connect. Guiden vägleder dig genom konfigurationen.
-    - **Lösenord för enkel inloggning**: Azure AD lagrar säkert användarens autentiseringsuppgifter för appen, och autentiseringsuppgifterna matas in i inloggningsformuläret av webbläsartillägget Azure AD App Access. Kallas även för ”lösenordsvalv”.
+    - **Appar förintegrerade** -appar som är tillgängliga i hello Azure AD App-galleri som du kan lägga till tooyour directory tooprovide enkel inloggning (och i vissa fall kan etablera) toopopular SaaS-appar.
+    - **Enkel inloggning i Azure AD**: ”Verklig” enkel inloggning för appar som kan integreras med Azure AD via ett inloggningsprotokoll som stöds, t.ex. SAML 2.0 eller OpenID Connect. hello guiden vägleder dig genom att ställa in.
+    - **Lösenord för enkel inloggning**: Azure AD lagras på ett säkert sätt hello användarens autentiseringsuppgifter för hello app och hello autentiseringsuppgifter är ”matas in” i hello inloggning form av hello webbläsartillägget för Azure AD App-åtkomst. Kallas även för ”lösenordsvalv”.
 
 ## <a name="permissions"></a>Behörigheter
 
-När en app registreras definierar användaren som utför registreringen (dvs. utvecklaren) vilka behörigheter appen behöver åtkomst till, och vilka resurser. (Själva resurserna definieras som andra appar.) Någon som till exempel bygger en app för e-postläsning anger att appen behöver behörigheten ”Access mailboxes as the signed-in user” (Komma åt postlådor som den inloggade användaren) i resursen ”Office 365 Exchange Online”:
+När en app har registrerats definierar hello-användaren som utför hello appregistrering (det vill säga hello developer) vilka behörigheter hello program behöver tillgång till och vilka resurser. (hello resurser är själva, definierad som andra appar.) Någon skapar en e-post reader-appen skulle till exempel tillstånd att appen kräver hello ”komma åt postlådor som hello inloggade användare” behörighet i hello ”Office 365 Exchange Online” resurs:
     
 ![](media/active-directory-apps-permissions-consent/apps6.png)
 
-För att en app (klienten) ska kunna begära en viss behörighet från en annan app (resurs) definierar resursappens utvecklaren de behörigheter som är tillgängliga. I vårt exempel har Microsoft, ägaren av resursappen ”Office 365 Exchange Online”, definierat en behörighet med namnet ”Access mailboxes as the signed-in user” (Komma åt postlådor som den inloggade användaren).
+För att en app (hello klient) toorequest vissa behörigheter från en annan app (hello resurs) definierar hello utvecklare av hello resurs app hello behörigheter som finns. I vårt exempel Microsoft hello ägare hello ”Office 365 Exchange Online” resurs app har definierat en behörighetsgrupp med namnet ”komma åt postlådor som hello inloggade användare”.
 
-När behörigheterna definieras måste apputvecklaren ange om användaren kan godkänna behörigheten, eller om administratörens godkännande krävs. På så sätt kan utvecklaren tillåta att användarna själva godkänner appar som bara kräver låg behörighet, men kräva att administratörer godkänner känsligare behörigheter. Till exempel har resursappen ”Azure Active Directory” definierats så att användarna kan godkänna appar, men med begränsad läsbehörighet.  För fullständig läsbehörighet och skrivbehörighet krävs administratörens godkännande.
+När du definierar behörigheter måste hello apputvecklaren definiera om hello behörighet kan vara godkänt för, eller om det krävs admin medgivande. Detta gör att utvecklare tooallow användare tooconsent på sina egna tooapps begär endast Låg känslighet behörigheter, men kräver administratörer tooconsent toomore känsliga behörigheter. Till exempel Hej ”Azure Active Directory” resurs app, har definierats, så att användarna kan godkänna tooapps, begär begränsad läsbehörighet.  För fullständig läsbehörighet och skrivbehörighet krävs administratörens godkännande.
 
-Eftersom interna klienter inte autentiseras kan en app som definierats som en intern klientapp endast begära delegerade behörigheter. Det innebär att det alltid måste finnas en verklig användare när en token begärs. Webbappar och webb-API:er (konfidentiella klienter) måste alltid autentisera med Azure AD när en åtkomsttoken begärs. Det innebär att de också har möjlighet att begära appspecifika behörigheter. Om en backend-tjänst till exempel måste autentisera till en annan backend-tjänst. Program som begär appspecifika behörigheter kräver alltid administratörens godkännande.
+Eftersom interna klienter inte autentiseras kan en app som definierats som en intern klientapp endast begära delegerade behörigheter. Det innebär att det alltid måste finnas en verklig användare när en token begärs. Webbappar och webb-API:er (konfidentiella klienter) måste alltid autentisera med Azure AD när en åtkomsttoken begärs. Vilket innebär att de har också hello möjlighet att begära appen endast behörigheter. Om till exempel en backend-tjänst måste tooauthenticate tooanother backend-tjänst. Program som begär appspecifika behörigheter kräver alltid administratörens godkännande.
 
 Sammanfattningsvis:
 
 
 
-- En app (klient) anger de behörigheter som den behöver för andra appar (resurser).
-- En app (resurs) anger vilka behörigheter som exponeras för andra appar (klienter).
+- En app (klient) anger hello behörigheter för andra appar (resurser).
+- En app (resurs) anger vilka behörigheter som är exponerade tooother appar (klienter).
 - En behörighet kan vara en appspecifik behörighet, eller en delegerad behörighet.
 - En delegerad behörighet kan märkas som ”tillåter användargodkännande” eller ”kräver administratörsgodkännande”.
-- En app kan fungera som en klient (genom att deklarera att den behöver behörigheter till en resurs), som en resurs (genom att deklarera vilka behörigheter som den exponerar) eller som båda.
+- En app kan fungera som en klient (genom att fastställa att den behöver behörigheter tooa resurs), som en resurs (genom att fastställa vilka behörigheter som den exponerar) eller båda.
 
 ## <a name="controls"></a>Kontroller
 
-Följande är en lista över de olika administratörskontroller som är tillgängliga för detta beteende. Administratörskontrollerna kan användas på den klassiska portalen från Konfigurera under katalogen.
+hello följer en lista över hello olika admin-kontroller som är tillgängliga för det här problemet. Hej administratör kontroller kan användas i hello klassiska portalen från konfigurera hello-katalogen.
 
 ![](media/active-directory-apps-permissions-consent/apps7.png)
 
-På Azure Portal, under **Hantera**, **Användarinställningar**.
+I hello Azure portal under **hantera**, **användarinställningar**.
 
 ![](media/active-directory-apps-permissions-consent/apps11.png)
 
 
 
-- Du kan styra om användare kan godkänna appar eller inte:
+- Du kan styra om användare kan godkänna tooapps:
 
-På den klassiska portalen väljer du **Users may give applications permissions to access their data (Användare kan ge program behörighet att komma åt deras data).**
+I hello klassiska portal, väljer **användare kan ge program behörigheter tooaccess sina data.**
 ![](media/active-directory-apps-permissions-consent/apps8.png)
 
-På Azure Portal väljer du **Användare kan bevilja appar åtkomst till sina data**.
+Välj i hello Azure-portalen, **användare kan låta appar tooaccess sina data**.
 ![](media/active-directory-apps-permissions-consent/apps12.png)
 
 
 
-- Du kan styra om användare kan registrera sina egna LOB-appar för en enda klient: På den klassiska portalen väljer du **Users may add integrated applications (Användare kan lägga till integrerade program).**
+- Du kan styra om användare kan registrera sina egna LOB-appar med stöd för en innehavare: hello klassiska portal Välj **användare kan lägga till integrerade program.**
 ![](media/active-directory-apps-permissions-consent/apps9.png)
 
-På Azure Portal väljer du **Användare kan bevilja appar åtkomst till sina data**.
+Välj i hello Azure-portalen, **användare kan låta appar tooaccess sina data**.
 ![](media/active-directory-apps-permissions-consent/apps13.png)
 
 >[!NOTE]
->Även om du tillåter att användare registrerar LOB-appar för en enda klient finns det gränser för vad som kan registreras.  
+>Även om du tillåter användare tooregister stöd för en innehavare LOB-appar, finns gränser toowhat kan registreras.  
 >Ett exempel är utvecklare som inte är katalogadministratörer.
 >
 >- Användare kan inte göra en app för en enda klient till en app för flera klienter.
->- När användare registrerar LOB-appar för en enda klient kan de inte begära appspecifika behörigheter till andra appar.
->- När användare registrerar LOB-appar för en enda klient kan de inte begära delegerade behörigheter till andra appar om dessa behörigheter kräver administratörens godkännande.
->- Användare kan inte göra ändringar i appar som de inte äger.
+>- När du registrerar en klient LOB-appar kan användarna begära behörigheter endast appen tooother appar.
+>- När du registrerar en klient LOB-appar kan användarna begära delegerade behörigheter tooother appar om de behörigheterna som kräver godkännande av administratören.
+>- Användare kan inte göra ändringar tooapps som de inte är ägare till.
 
 
 
@@ -114,24 +114,24 @@ På Azure Portal väljer du **Användare kan bevilja appar åtkomst till sina da
 
 
 
-- Du kan styra när program kan nås, så kallad ”villkorlig åtkomst”. Tänk på att detta gäller både klientappen och resursappen. Anta till exempel att du skapar en princip för villkorlig åtkomst som anger att appen ”Office 365 Exchange Online” endast kan nås från datorer som följer standard.  Den här principen tillämpas också när en användare försöker använda en klientapp som begär behörighet till Exchange Online.
+- Du kan styra när program kan nås, så kallad ”villkorlig åtkomst”. Tänk på detta gäller både toohello klientappen och toohello resurs app. Så att du ställer in en princip för villkorlig åtkomst som säger hello ”Office 365 Exchange Online” appen endast kan nås från datorer som är kompatibla.  Den här principen startar också när en användare försöker toouse ett klientprogram som begär behörighet tooExchange Online.
 
 
 
-- Du kan se vilka appar som har godkänts och vilka som används.
+- Du har insyn i vilka appar har tilllåten tooand vilka som används.
 
-1.  När en användare godkänner en app skapas ett ServicePrincipal-objekt i klientorganisationen. Genereringen av ServicePrincipal-objektet visas i granskningsrapporten.
-2.  I rapporterna över användarnas inloggningsaktivitet kan du se vilken app som användaren är inloggad i. 
+1.  När en användare godkänner tooan app, har en ServicePrincipal-objektet skapats i hello-klient. Skapa en ServicePrincipal ingår i hello kontrollrapport.
+2.  Inloggningsaktivitet Användarrapporter berätta vilken app hello användare loggar in på. 
 
 ## <a name="example"></a>Exempel
 
-Anta till exempel att du har lagt märke till att användare i din klientorganisation loggar in i appen ”FabrikamMail för Office 365”. ”FabrikamMail” är en e-postapp för Android, som publicerats av ”Fabrikam, Inc.”. Appen hör till kategorin ”appar för flera klienter som andra utvecklar, som Contoso kan godkänna”.
+Exempelvis ta hello ”FabrikamMail för Office 365” app som du har lagt märke till användare i din klient loggar in på. ”FabrikamMail” är en e-postapp för Android, som publicerats av ”Fabrikam, Inc.”. Detta hamnar i hello ”flera innehavare appar andra utveckla som Contoso kan samtycker till att”.
 
-Om användare har tillåtelse att godkänna appen uppmanas de att godkänna den första gången de loggar in: ![](media/active-directory-apps-permissions-consent/apps14.png)
+Om användare tillåts tooconsent kan få de en fråga hello medgivande första gången de loggar in:![](media/active-directory-apps-permissions-consent/apps14.png)
 
-”Access your mailboxes” (Åtkomst till dina postlådor) är en sträng som ber om användarens godkännande för behörigheten ”Access mailboxes as the signed-in user” (Åtkomst till postlådor som den inloggade användaren) som exponeras av ”Office 365 Exchange Online” (dvs. Exchange).
+”Åtkomst till dina postlådor” är hello användarinriktad medgivande sträng för hello ”komma åt postlådor som hello inloggade användare” behörighet som exponeras av ”Office 365 Exchange Online” (det vill säga Exchange).
 
-Du kan se behörigheterna genom att leta upp ServicePrincipal-objektet för Exchange (resursen), som lades till när du registrerade dig för Office 365. Tänk dig ServicePrincipal-objektet som en ”instans” av appen i din klientorganisation, som används för att registrera olika alternativ och konfigurationer.  Du kan visa detta med hjälp av `Get-AzureADServicePrincipal` i PowerShell.
+Du kan se hello behörigheter genom att leta upp hello ServicePrincipal-objekt för Exchange (hello resurs) som har lagts till när du registrerade dig för Office 365. Du kan se hello ServicePrincipal objekt av en ”instans” hello-appen i din klient som används för att registrera olika alternativ och konfigurationer.  Du kan se detta med hjälp av hello `Get-AzureADServicePrincipal` i PowerShell.
 
     PS C:\> Get-AzureADServicePrincipal -ObjectId 383f7b97-6754-4d3d-9474-3908ebcba1c6 | fl *
     
@@ -151,12 +151,12 @@ Du kan se behörigheterna genom att leta upp ServicePrincipal-objektet för Exch
     LogoutUrl                 : 
     Oauth2Permissions         : {...
                                 , class OAuth2Permission {
-                                  AdminConsentDescription : Allows the app to have the same access to mailboxes as the signed-in user via Exchange Web Services.
-                                  AdminConsentDisplayName : Access mailboxes as the signed-in user via Exchange Web Services
+                                  AdminConsentDescription : Allows hello app toohave hello same access toomailboxes as hello signed-in user via Exchange Web Services.
+                                  AdminConsentDisplayName : Access mailboxes as hello signed-in user via Exchange Web Services
                                   Id                      : 3b5f3d61-589b-4a3c-a359-5dd4b5ee5bd5
                                   IsEnabled               : True
                                   Type                    : User
-                                  UserConsentDescription  : Allows the app full access to your mailboxes on your behalf.
+                                  UserConsentDescription  : Allows hello app full access tooyour mailboxes on your behalf.
                                   UserConsentDisplayName  : Access your mailboxes
                                   Value                   : full_access_as_user
                                 },
@@ -169,7 +169,7 @@ Du kan se behörigheterna genom att leta upp ServicePrincipal-objektet för Exch
                                 00000002-0000-0ff1-ce00-000000000000/*.outlook.com...}
     Tags                      : {}
 
-Godkännandet initieras när användaren klickar på ”Acceptera”. Först skapas ett ServicePrincipal-objekt för ”FabrikamMail for Office 365” i klientorganisationen. ServicePrincipal-objektet ser ut ungefär så här:
+Medgivande initieras när hello användaren klickar på ”Acceptera”. Först skapas en ServicePrincipal-objekt för ”FabrikamMail för Office 365” i hello-klient. Hej ServicePrincipal ser ut ungefär så här:
 
     PS C:\> Get-AzureADServicePrincipal -SearchString "FabrikamMail for Office 365" | fl *
     
@@ -195,14 +195,14 @@ Godkännandet initieras när användaren klickar på ”Acceptera”. Först ska
     ServicePrincipalNames     : {aba7c072-2267-4031-8960-e7a2db6e0590}
     Tags                      : {WindowsAzureActiveDirectoryIntegratedApp}
 
-När en app godkänns skapas en Oauth2PermissionGrant-länk mellan följande:
+Principer tooan app skapar en Oauth2PermissionGrant länk mellan hello följande:
   
-- användarobjektet
-- klientapparnas ServicePrincipalName (SPN)
-- resursapparnas ServicePrincipalName (SPN)
-- behörigheter i resursappen.  
+- hello användarobjekt
+- Hej klientappar ServicePrincipalName (SPN)
+- hello resurs appar ServicePrincipalName (SPN)
+- behörigheter i hello resurs app.  
 
-I exemplet med FabrikamMail ser det ut ungefär så här:
+Hello gäller FabrikamMail, ser ut ungefär så här:
 
     PS C:\> Get-AzureADUserOAuth2PermissionGrant -ObjectId ddiggle@aadpremiumlab.onmicrosoft.com | fl *
     
@@ -215,7 +215,7 @@ I exemplet med FabrikamMail ser det ut ungefär så här:
     Scope       : full_access_as_user
     StartTime   : 01/01/0001 12:00:00 AM
 
-(**ClientId** är ID:t för FabrikamMails ServicePrincipal-objekt (det som precis skapades), **PrincipalId** är ID:t för användarobjektet (för användaren som godkänt) och **ResourceId** är ID:t för Exchanges ServicePrincipal-objekt (Scope är behörigheten i Exchange som godkänts).
+(**ClientId** är Fabrikammail's service principal objekt-ID (hello som du just har skapat), **PrincipalId** är hello användaren objekt-ID (för hello användare som godkänt), **ResourceId**är Exchange's service principal objekt-ID, Scope är hello behörighet i Exchange som har godkänt för).
 
-Om användarna inte har tillåtelse att ge sitt godkännande visas en skärm som anger att behörighet krävs.
+Om användarna inte får tooconsent, visas en skärm som säger behörigheten krävs.
 

@@ -1,6 +1,6 @@
 ---
-title: "Tillgänglighetsuppsättningar självstudier för virtuella Windows-datorer i Azure | Microsoft Docs"
-description: "Läs mer om Tillgänglighetsuppsättningarna för virtuella Windows-datorer i Azure."
+title: "aaaAvailability anger självstudier för virtuella Windows-datorer i Azure | Microsoft Docs"
+description: "Läs mer om hello tillgänglighet uppsättningar för virtuella Windows-datorer i Azure."
 documentationcenter: 
 services: virtual-machines-windows
 author: cynthn
@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 05/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d918362106ef93cf47620e0018d363cd510884b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 853775c5f126dd815c1933f9d71d2274a75ea661
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-availability-sets"></a>Hur du använder tillgänglighetsuppsättningar
+# <a name="how-toouse-availability-sets"></a>Hur toouse tillgänglighetsuppsättningar
 
-I kursen får lära du dig att öka tillgängligheten och tillförlitligheten hos dina virtuella lösningar på Azure med hjälp av en funktion som kallas Tillgänglighetsuppsättningar. Tillgänglighetsuppsättningar se till att de virtuella datorerna som du distribuerar i Azure är fördelade på flera isolerade maskinvara kluster. Detta säkerställer att om ett maskinvaru- eller fel i Azure inträffar, underordnade uppsättning dina virtuella datorer som påverkas och som din lösning ska vara tillgängliga och fungerar för dina kunder som använder den. 
+I kursen får du lära dig hur tooincrease hello tillgänglighet och tillförlitlighet för dina lösningar för virtuell dator på Azure med hjälp av en funktion kallad Tillgänglighetsuppsättningar. Tillgänglighetsuppsättningar se till att hello virtuella datorer som du distribuerar i Azure är fördelade på flera isolerade maskinvara kluster. Detta säkerställer att om ett maskinvaru- eller fel i Azure inträffar, underordnade uppsättning dina virtuella datorer som påverkas och som din lösning ska vara tillgängliga och fungerar ur hello av dina kunder som använder den. 
 
 I den här guiden får du lära dig hur man:
 
@@ -33,19 +33,19 @@ I den här guiden får du lära dig hur man:
 > * Skapa en virtuell dator i en tillgänglighetsuppsättning
 > * Kontrollera tillgängliga storlekar på VM
 
-Den här självstudien kräver Azure PowerShell-modul version 3.6 eller senare. Kör ` Get-Module -ListAvailable AzureRM` för att hitta versionen. Om du behöver uppgradera [installera Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps).
+Den här kursen kräver hello Azure PowerShell module 3,6 eller senare. Kör ` Get-Module -ListAvailable AzureRM` toofind hello version. Om du behöver tooupgrade finns [installera Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps).
 
 ## <a name="availability-set-overview"></a>Översikt över tillgänglighetsuppsättning
 
-En Tillgänglighetsuppsättning är en logisk gruppering funktion som du kan använda i Azure för att säkerställa att VM-resurser som du placerar i den isolerade från varandra när de distribueras i ett Azure-datacenter. Azure säkerställer att de virtuella datorerna som du placerar i en Tillgänglighetsuppsättning körs över flera fysiska servrar, beräkna rack, lagringsenheter och nätverksväxlar. Detta säkerställer att om ett maskinvaru- eller Azure programvarufel påverkas endast en delmängd av dina virtuella datorer, och tillämpningsprogrammet övergripande förblir upp och fortsätter att vara tillgängliga för kunderna. Med hjälp av Tillgänglighetsuppsättningar är en viktig funktion att använda när du vill skapa tillförlitliga molnlösningar.
+En Tillgänglighetsuppsättning är en logisk gruppering funktion som du kan använda i Azure tooensure att hello VM resurser som du placerar i den isoleras från varandra när de distribueras i ett Azure-datacenter. Azure garanterar att hello virtuella datorer du placera inom en Tillgänglighetsuppsättning körs över flera fysiska servrar, beräkna rack, lagringsenheter och nätverksväxlar. Detta säkerställer att hello för händelsen maskinvaru- eller programvarufel Azure, påverkas endast en delmängd av dina virtuella datorer, och tillämpningsprogrammet övergripande förblir upp och fortsätta toobe tillgängliga tooyour kunder. Med hjälp av Tillgänglighetsuppsättningar är en viktig funktion tooleverage om du vill toobuild tillförlitliga molnlösningar.
 
-Nu ska vi titta en typisk VM-baserad lösning där du kan ha 4 frontend-webbservrar och använda 2 backend-VMs som värd för en databas. Med Azure, skulle du vill definiera två tillgänglighetsuppsättningar innan du distribuerar dina virtuella datorer: en tillgänglighetsuppsättning för skiktet ”web” och en tillgänglighetsuppsättning för skiktet ”databas”. När du skapar en ny virtuell dator kan du ange tillgänglighetsuppsättningen som en parameter till den virtuella datorn az skapar kommando och Azure automatiskt säkerställer att de virtuella datorerna som du skapar i uppsättningen med tillgängliga isoleras över flera fysiska maskinvaruresurser. Det innebär att om den fysiska maskinvara som din webbserver eller databasen Server virtuella datorer körs på ett problem har uppstått, vet du att andra instanser av webbservern och databasen virtuella datorer fortsätter att köras bra eftersom de finns på olika typer av maskinvara.
+Nu ska vi titta en typisk VM-baserad lösning där du kan ha 4 frontend-webbservrar och använda 2 backend-VMs som värd för en databas. Med Azure, du kan toodefine två tillgänglighetsuppsättningar innan du distribuerar dina virtuella datorer: en tillgänglighetsuppsättning för hello ”web”-nivå och en tillgänglighetsuppsättning för hello ”databas” nivå. När du skapar en ny virtuell dator kan du ange hello tillgänglighet som en parameter toohello az virtuell dator skapar kommando och Azure automatiskt garanterar att hello virtuella datorer som du skapar inom hello tillgänglig separat uppsättning över flera fysiska maskinvaruresurser. Det innebär att du vet att hello om hello fysiska maskinvara som din webbserver eller databasen Server virtuella datorer körs på ett problem har uppstått, andra instanser av webbservern och databasen virtuella datorer fortsätter att köras bra eftersom de finns på olika typer av maskinvara.
 
-Du bör alltid använda Tillgänglighetsuppsättningar när du vill distribuera tillförlitliga VM baserade lösningar i Azure.
+Du bör alltid använda Tillgänglighetsuppsättningar när du vill toodeploy tillförlitliga VM baserade lösningar i Azure.
 
 ## <a name="create-an-availability-set"></a>Skapa en tillgänglighetsuppsättning
 
-Du kan skapa en tillgänglighetsuppsättning med [ny AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset). I detta exempel vi in både antalet domäner för uppdatering och fel på *2* för tillgänglighetsuppsättning namngivna *myAvailabilitySet* i den *myResourceGroupAvailability* resursgruppen.
+Du kan skapa en tillgänglighetsuppsättning med [ny AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset). I det här exemplet vi ange båda hello antalet domäner för uppdatering och fel på *2* för hello tillgänglighetsuppsättning namngivna *myAvailabilitySet* i hello *myResourceGroupAvailability*resursgruppen.
 
 Skapa en resursgrupp.
 
@@ -66,20 +66,20 @@ New-AzureRmAvailabilitySet `
 
 ## <a name="create-vms-inside-an-availability-set"></a>Skapa virtuella datorer i en tillgänglighetsuppsättning
 
-Virtuella datorer måste skapas inom tillgänglighetsuppsättning för att kontrollera att de distribueras på rätt sätt i maskinvaran. Du kan inte lägga till en befintlig virtuell dator till en tillgänglighetsuppsättning när den har skapats. 
+Virtuella datorer måste toobe skapas i hello tillgänglighet set toomake till korrekt distribueras de över hello maskinvara. Du kan inte lägga till en befintlig virtuell dator tooan tillgänglighetsuppsättning när den har skapats. 
 
-Maskinvaran på en plats är uppdelat i flera domäner för uppdatering och feldomäner. En **uppdateringsdomän** är en grupp virtuella datorer och underliggande fysiska maskinvara som kan startas på samma gång. Virtuella datorer i samma **feldomän** delar vanliga storage samt en gemensam käll- och strömbrytare. 
+hello maskinvara på en plats är uppdelat i toomultiple uppdatering domäner och feldomäner. En **uppdateringsdomän** är en grupp virtuella datorer och underliggande fysiska maskinvara som kan startas på hello samtidigt. Virtuella datorer i hello samma **feldomän** delar vanliga storage samt en gemensam käll- och strömbrytare. 
 
-När du skapar en virtuell dator med hjälp av konfiguration av [ny AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) du ange tillgänglighetsuppsättning med hjälp av den `-AvailabilitySetId` parametern för att ange ID för tillgänglighetsuppsättningen.
+När du skapar en virtuell dator med hjälp av konfiguration av [ny AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) du ange hello tillgänglighet anges med hello `-AvailabilitySetId` parametern toospecify hello-ID för hello tillgänglighetsuppsättning.
 
-Skapa 2 virtuella datorer med [ny AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) i tillgänglighetsuppsättningen.
+Skapa 2 virtuella datorer med [ny AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) i hello tillgänglighetsuppsättningen.
 
 ```powershell
 $availabilitySet = Get-AzureRmAvailabilitySet `
     -ResourceGroupName myResourceGroupAvailability `
     -Name myAvailabilitySet
 
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+$cred = Get-Credential -Message "Enter a username and password for hello virtual machine."
 
 $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
     -Name mySubnet `
@@ -125,7 +125,7 @@ for ($i=1; $i -le 2; $i++)
         -PublicIpAddressId $pip.Id `
         -NetworkSecurityGroupId $nsg.Id
 
-   # Here is where we specify the availability set
+   # Here is where we specify hello availability set
    $vm = New-AzureRmVMConfig `
         -VMName myVM$i `
         -VMSize Standard_D1 `
@@ -158,11 +158,11 @@ for ($i=1; $i -le 2; $i++)
 
 ```
 
-Det tar några minuter att skapa och konfigurera både virtuella datorer. När du är klar måste 2 virtuella datorer distribuerade i den underliggande maskinvaran. 
+Det tar några minuter toocreate och konfigurera både virtuella datorer. När du är klar måste 2 virtuella datorer distribuerade i hello underliggande maskinvara. 
 
 ## <a name="check-for-available-vm-sizes"></a>Sök efter tillgängliga storlekar på VM 
 
-Du kan lägga till flera virtuella datorer tillgänglighetsuppsättning senare, men du behöver veta vilka VM-storlekar är tillgängliga på maskinvaran. Använd [Get-AzureRMVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) att lista alla tillgängliga storlekar på maskinvaran kluster för tillgänglighetsuppsättningen.
+Du kan lägga till flera virtuella datorer toohello tillgänglighetsuppsättning senare, men du måste tooknow vilka VM-storlekar är tillgängliga på hello maskinvara. Använd [Get-AzureRMVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) toolist alla hello tillgängliga storlekar på hello maskinvara kluster för hello tillgänglighetsuppsättning.
 
 ```powershell
 Get-AzureRmVMSize `
@@ -179,7 +179,7 @@ I den här självstudiekursen lärde du dig att:
 > * Skapa en virtuell dator i en tillgänglighetsuppsättning
 > * Kontrollera tillgängliga storlekar på VM
 
-Gå vidare till nästa kurs vill veta mer om virtuella datorer.
+Avancera toohello nästa självstudiekurs toolearn om skalningsuppsättningar i virtuella datorer.
 
 > [!div class="nextstepaction"]
 > [Skapa en VM-skalningsuppsättning](tutorial-create-vmss.md)

@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric-mönster och scenarier | Microsoft Docs"
-description: "Lär dig bästa praxis och beprövade återanvändbara mönster för att utforma, utveckla och hantera din mikrotjänster på Service Fabric."
+title: "aaaAzure Service Fabric mönster och scenarier | Microsoft Docs"
+description: "Lär dig bästa praxis och beprövade återanvändbara mönster toodesign utveckla och hantera din mikrotjänster på Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2017
 ms.author: ryanwi
-ms.openlocfilehash: fb2fa495758433e357722427b1c162420935955d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3811420eb53d9a49e490dd2e2e5319d8dea5629c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Service Fabric-mönster och scenarier
-Om du tittar på bygga storskaliga mikrotjänster med hjälp av Azure Service Fabric, lär du dig av experter som designas och skapas den här plattformen som en tjänst (PaaS). Kom igång med rätt arkitektur och lär dig hur du optimerar resurserna för ditt program. Den [Service Fabric Patterns and Practices](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344) kursen svarar på frågor som ofta och av verkliga kunder svar om Service Fabric-scenarier och moduler.
+Om du tittar på bygga storskaliga mikrotjänster med hjälp av Azure Service Fabric, lär du dig från hello-experter som designas och skapas den här plattformen som en tjänst (PaaS). Kom igång med rätt arkitektur och lär dig hur toooptimize resurser för ditt program. Hej [Service Fabric Patterns and Practices](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344) kursen svar hello frågor oftast av verkliga kunder om Service Fabric-scenarier och moduler.
  
-Lär dig hur du utformar, utvecklar och kör dina mikrotjänster på Service Fabric på det bästa sättet med beprövade och återanvändbara mönster. Få en översikt över Service Fabric och sedan sätta igång djupare i avsnitten som innehåller klustret optimering och säkerhet, migrera äldre appar IoT i skala, värd för spel motorer och mycket mer. Titta på kontinuerlig leverans för olika arbetsbelastningar och även få information om Linux-support och behållare. 
+Ta reda på hur toodesign, utveckla och hantera din mikrotjänster på Service Fabric med bästa praxis och beprövade, återanvändbara mönster. Få en översikt över Service Fabric och sedan sätta igång djupare i avsnitten som innehåller klustret optimering och säkerhet, migrera äldre appar IoT i skala, värd för spel motorer och mycket mer. Titta på kontinuerlig leverans för olika arbetsbelastningar och även få hello information om Linux-support och behållare. 
 
 ## <a name="introduction"></a>Introduktion
-Utforska metodtips och lär dig mer om hur du väljer plattform som en tjänst (PaaS) över infrastruktur som en tjänst (IaaS). Hämta information på följande program beprövad design principer.
+Utforska metodtips och lär dig mer om hur du väljer plattform som en tjänst (PaaS) över infrastruktur som en tjänst (IaaS). Hämta hello information på följande program beprövad design principer.
 
 <table><tr><th>Video</th><th>PowerPoint däcket</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=N2KwbbSGD_6405167344">
 <img src="./media/service-fabric-patterns-and-scenarios/intro.png" WIDTH="360" HEIGHT="244">
-</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344">Introduktion till Service Fabric</a></td></tr>
+</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344">Introduktion tooService Fabric</a></td></tr>
 </table>
 
 ## <a name="cluster-planning-and-management"></a>Planera kluster och hantering
@@ -53,7 +53,7 @@ Granska begreppen runt storskaliga Internet, till exempel tillgänglighet och ti
 </table>
 
 ## <a name="iot"></a>IoT
-Utforska Sakernas Internet (IoT) i samband med Azure Service Fabric, inklusive Azure IoT-pipeline, multitenans och IoT i större skala.
+Utforska hello Sakernas Internet (IoT) i Azure Service Fabric, inklusive hello Azure IoT pipeline, multitenans och IoT i skala hello kontext.
 
 <table><tr><th>Video</th><th>PowerPoint däcket</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=naFUVeSGD_1505167344">
@@ -80,7 +80,7 @@ Utforska begrepp, inklusive kontinuerlig integration/kontinuerlig leverans med V
 </table>
 
 ## <a name="migration"></a>Migrering
-Lär dig mer om hur du migrerar från en molnbaserad tjänst, förutom migrering av äldre appar.
+Lär dig mer om hur du migrerar från en molnbaserad tjänst bör dessutom toomigration för äldre appar.
 
 <table><tr><th>Video</th><th>PowerPoint däcket</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=hd1cMgSGD_5605167344">
@@ -89,7 +89,7 @@ Lär dig mer om hur du migrerar från en molnbaserad tjänst, förutom migrering
 </table>
 
 ## <a name="containers-and-linux-support"></a>Behållare och Linux-support
-Få svar på frågan ”varför behållare”? Lär dig mer om förhandsversionen för Windows-behållare, har stöd för Linux- och Linux behållare orchestration. Dessutom kan ta reda på hur du migrerar .NET Core appar till Linux.
+Hämta hello för toohello fråga ”varför behållare”? Läs mer om hello förhandsgranskning för Windows-behållare, har stöd för Linux- och Linux behållare orchestration. Dessutom kan du ta reda på hur toomigrate .NET Core appar tooLinux.
 
 <table><tr><th>Video</th><th>PowerPoint däcket</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=V1ERJhSGD_305167344">
@@ -98,4 +98,4 @@ Få svar på frågan ”varför behållare”? Lär dig mer om förhandsversione
 </table>
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har lärt dig om Service Fabric-mönster och scenarier, Läs mer om hur du [skapa och hantera kluster](service-fabric-deploy-anywhere.md), [migrera molntjänster appar till Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md), [ställa in kontinuerlig leverans](service-fabric-set-up-continuous-integration.md), och [distribuera behållare](service-fabric-containers-overview.md).
+Nu när du har lärt dig om Service Fabric-mönster och scenarier, Läs mer om hur för[skapa och hantera kluster](service-fabric-deploy-anywhere.md), [migrera molntjänster appar tooService Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md), [ställa in kontinuerlig leverans](service-fabric-set-up-continuous-integration.md), och [distribuera behållare](service-fabric-containers-overview.md).

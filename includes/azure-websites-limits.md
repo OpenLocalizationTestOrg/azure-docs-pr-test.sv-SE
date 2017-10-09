@@ -28,13 +28,13 @@
 | SLA | |<p> |99,9 % |99.95%<sup>10</sup> |99.95%<sup>10</sup> |
 
 <sup>1</sup>appar och lagringskvoter är per App Service-plan om inte annat anges.  
-<sup>2</sup>det faktiska antalet appar som du kan vara värd för på dessa datorer beroende aktivitet appar, storleken på datorinstanserna och motsvarande resursutnyttjandet.  
+<sup>2</sup>hello faktiska antalet appar som du kan vara värd för på dessa datorer beror på hello aktivitet hello appar, hello storleken på hello datorinstanser och hello motsvarande resursutnyttjande.  
 <sup>3</sup>dedikerade instanser kan vara av olika storlekar. Se [priser för Apptjänst](https://azure.microsoft.com/pricing/details/data-transfers/pricing/details/app-service/) för mer information.  
-<sup>4</sup>premiumnivån kan upp till 50 beräknar instanser (beroende på tillgänglighet) och 500 GB diskutrymme när du använder Apptjänstmiljöer och 20 compute-instanser och 250 GB lagring på annat sätt.  
-<sup>5</sup>lagringsgränsen är den totala storleken för innehåll över alla appar i samma App Service-plan. Flera lagringsalternativ finns i [Apptjänstmiljö](../articles/app-service-web/app-service-web-configure-an-app-service-environment.md#storage)  
-<sup>6</sup>resurserna är begränsad av fysiska resurser för dedikerade instanser (instansstorleken och antalet instanser).  
-<sup>7</sup>om du skalar en app i den grundläggande nivån till två instanser, har du 350 samtidiga anslutningar för var och en av två instanser.  
-<sup>8</sup>premiumnivån kan säkerhetskopieringsintervall ned upp till var femte minut när du använder Apptjänstmiljöer och 50 gånger per dag på annat sätt.  
-<sup>9</sup>köra anpassade körbara filer eller skript på begäran, enligt ett schema eller kontinuerligt som en bakgrundsaktivitet i App Service-instans. ”Alltid på” krävs för kontinuerlig körning av WebJobs. Azure Scheduler Kostnadsfri eller Standard krävs för schemalagda WebJobs. Det finns ingen fördefinierad gräns för antalet WebJobs som kan köras i en App Service-instans, men det finns praktiska gränserna som beror på vad programkoden försöker utföra.   
+<sup>4</sup>premiumnivån låter dig too50 beräknar instanser (ämne tooavailability) och 500 GB diskutrymme när du använder Apptjänstmiljöer och 20 compute-instanser och 250 GB lagring på annat sätt.  
+<sup>5</sup>hello lagringsgränsen är hello total storlek över alla appar i samma App Service-plan. Flera lagringsalternativ finns i [Apptjänstmiljö](../articles/app-service-web/app-service-web-configure-an-app-service-environment.md#storage)  
+<sup>6</sup>resurserna är begränsad av fysiska resurser på hello dedikerad instanser (hello instansstorleken och hello antal instanser för).  
+<sup>7</sup>om du skalar en app i hello grundläggande nivån tootwo instanser, har du 350 samtidiga anslutningar för varje hello två instanser.  
+<sup>8</sup>premiumnivån kan säkerhetskopieringsintervall ned in tooevery 5 minuter när du använder Apptjänstmiljöer och 50 gånger per dag på annat sätt.  
+<sup>9</sup>köra anpassade körbara filer eller skript på begäran, enligt ett schema eller kontinuerligt som en bakgrundsaktivitet i App Service-instans. ”Alltid på” krävs för kontinuerlig körning av WebJobs. Azure Scheduler Kostnadsfri eller Standard krävs för schemalagda WebJobs. Det finns ingen fördefinierad gräns för hello antalet WebJobs som kan köras i en App Service-instans, men det finns praktiska gränserna som beror på vilken hello programkod försöker toodo.   
 <sup>10</sup>SLA på 99,95% för distributioner som använder flera instanser med Azure Traffic Manager som konfigurerats för redundans.  
 

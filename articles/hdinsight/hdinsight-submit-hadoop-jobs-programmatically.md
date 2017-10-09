@@ -1,6 +1,6 @@
 ---
-title: Skicka Hadoop-jobb i HDInsight | Microsoft Docs
-description: "Lär dig mer om att skicka Hadoop-jobb på Azure HDInsight Hadoop."
+title: aaaSubmit Hadoop-jobb i HDInsight | Microsoft Docs
+description: "Lär dig hur toosubmit Hadoop-jobb tooAzure HDInsight Hadoop."
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: 6829ff82afc7fcea9e027ad14ec7ed0c8015a5fe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6c3acde744e8e384088a6cd56e4273c001c0c9fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="submit-hadoop-jobs-in-hdinsight"></a>Skicka Hadoop-jobb i HDInsight
 
@@ -30,7 +30,7 @@ Du kan skicka Hadoop-jobb med hjälp av .NET SDK och Curl Azure PowerShell:
 
   - [Skapa icke-interaktiv autentisering .NET-program](hdinsight-create-non-interactive-authentication-dotnet-applications.md)
   - [Köra Hive-frågor med HDInsight .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md)
-  - [Köra Pig-jobb med hjälp av .NET SDK för Hadoop i HDInsight](hdinsight-hadoop-use-pig-dotnet-sdk.md)
+  - [Köra Pig-jobb med hjälp av hello .NET SDK för Hadoop i HDInsight](hdinsight-hadoop-use-pig-dotnet-sdk.md)
   - [Kör Sqoop jobb med hjälp av .NET SDK för Hadoop i HDInsight](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
   - [Kör jobb för MapReduce med HDInsight .NET SDK](hdinsight-hadoop-use-mapreduce-dotnet-sdk.md)
 

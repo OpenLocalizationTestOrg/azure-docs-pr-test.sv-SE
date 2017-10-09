@@ -1,6 +1,6 @@
 ---
-title: "Azure AD v2.0 OAuth2.0 på-flöde | Microsoft Docs"
-description: "Den här artikeln beskriver hur du använder HTTP-meddelanden för att implementera tjänster autentisering med hjälp av OAuth2.0 på-flöde."
+title: "aaaAzure AD v2.0 OAuth2.0 på-flöde | Microsoft Docs"
+description: "Den här artikeln beskriver hur toouse HTTP meddelanden tooimplement tooservice tjänstautentisering med hjälp av hello OAuth2.0 på-flöde."
 services: active-directory
 documentationcenter: 
 author: navyasric
@@ -15,61 +15,61 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 356083fbaabfcd2ec7581adf319fa22b810df0d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6063869d07c2544000094db8deea7dce19f14f67
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # Azure Active Directory v2.0 och flödet för OAuth 2.0 On-Behalf-Of
-OAuth 2.0-On-Behalf-Of flöde fungerar användningsfall där ett program anropar ett service/webb-API, som i sin tur behöver anropa en annan tjänst/webb-API. Tanken är att sprida delegerad användarens identitet och behörigheter via alla begäranden har gjorts. För tjänsten mellannivå så att autentiserade begäranden till den underordnade tjänsten behöver skydda en åtkomst-token från Azure Active Directory (Azure AD) för användarens räkning.
+hello flödet för OAuth 2.0 On-Behalf-Of fungerar hello användningsfall där ett program anropar ett service/webb-API, som i sin tur måste toocall en annan tjänst/webb-API. hello idé är toopropagate hello delegerad användarens identitet och behörigheter via hello begäranden har gjorts. För hello mellannivå toomake autentiserade begäranden toohello underordnade tjänsten måste den toosecure en åtkomst-token från Azure Active Directory (Azure AD) för hello användares räkning.
 
 > [!NOTE]
-> V2.0-slutpunkten stöder inte alla Azure Active Directory-scenarier och funktioner. Läs mer om för att avgöra om du ska använda v2.0-slutpunkten [v2.0 begränsningar](active-directory-v2-limitations.md).
+> hello v2.0-slutpunkten stöder inte alla Azure Active Directory-scenarier och funktioner. toodetermine om du ska använda hello v2.0-slutpunkten Läs om [v2.0 begränsningar](active-directory-v2-limitations.md).
 >
 >
 
 ## Protokollet diagram
-Anta att användaren har autentiserats på ett program som använder den [OAuth 2.0 flöde beviljat med auktoriseringskod](active-directory-v2-protocols-oauth-code.md). Programmet har nu en åtkomst-token (token A) med användarens anspråk och medgivande till mellannivå webb-API (API-A). Nu måste API A att begära en autentiserad underordnat webb-API (API-B).
+Anta att hello-användaren har autentiserats på ett program med hello [OAuth 2.0 flöde beviljat med auktoriseringskod](active-directory-v2-protocols-oauth-code.md). Hello-programmet har nu en åtkomst-token (token A) med hello användarens anspråk och medgivande tooaccess hello mellannivå webb-API (API-A). Nu måste API A toomake en begäran från en autentiserad toohello underordnat webb-API (API-B).
 
-De steg som följer utgöra On-Behalf-Of-flöde och förklaras med hjälp av följande diagram.
+hello steg som följer utgöra hello på-flöde och förklaras med hello hello följande diagram.
 
 ![OAuth2.0 på-flöde](media/active-directory-protocols-oauth-on-behalf-of/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 
-1. Klientprogrammet begär till API-A med token A.
-2. API-A autentiserar till Azure AD utfärdande slutpunkten och begär en token för åtkomst till API B.
-3. Azure AD utfärdande slutpunkten validerar API A autentiseringsuppgifter med ett token och skickar åtkomsttoken för API-B (token B).
-4. Token B har angetts i auktoriseringshuvudet för en begäran om att API B.
-5. Data från den skyddade resursen returneras av API B.
+1. hello klientprogram gör en begäran tooAPI A med hello token A.
+2. API-A autentiserar toohello Azure AD utfärdande slutpunkt och begär en token tooaccess API B.
+3. hello Azure AD utfärdande endpoint validerar API A autentiseringsuppgifter med ett token och problem hello åtkomsttoken för API-B (token B).
+4. hello token B har angetts i hello authorization-huvud för hello begäran tooAPI B.
+5. Data från en skyddad resurs hello returneras av API B.
 
 > [!NOTE]
-> I det här scenariot har mellannivå-tjänsten inga användaråtgärder för att hämta användarens medgivande åtkomst till underordnade API. Därför visas kan bevilja åtkomst till underordnade API gång som en del av samtycke steg under autentiseringen.
+> I det här scenariot har hello mellannivå tjänsten ingen användare interaktion tooobtain hello användarens medgivande tooaccess hello underordnade API. Därför hello alternativet toogrant åtkomst toohello underordnade API exponeras direkt som en del av hello medgivande steg under autentiseringen.
 >
 
-## Tjänsten token tjänstbegäran för åtkomst
-Om du vill begära en åtkomst-token kan du göra en HTTP POST för klient-specifika Azure AD v2.0-slutpunkten med följande parametrar.
+## Tooservice åtkomst-token tjänstbegäran
+toorequest ett åtkomsttoken, se en HTTP POST toohello klient-specifika Azure AD v2.0-slutpunkten med hello följande parametrar.
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 ```
 
-Det finns två fall beroende på om klientprogrammet väljer att skyddas av en delad hemlighet, eller ett certifikat.
+Det finns två fall beroende på om hello klientprogrammet väljer toobe som skyddas av en delad hemlighet eller ett certifikat.
 
 ### Först fall: token åtkomst-begäran med en delad hemlighet
-När du använder en delad hemlighet, innehåller en tjänst-till-tjänst åtkomst tokenbegäran följande parametrar:
+När du använder en delad hemlighet, innehåller en tjänst-till-tjänst åtkomst tokenbegäran hello följande parametrar:
 
 | Parameter |  | Beskrivning |
 | --- | --- | --- |
-| grant_type |Krävs | Typ av tokenbegäran. Värdet måste vara en begäran som använder en JWT **urn: ietf:params:oauth:grant-typ: jwt-ägar**. |
-| client_id |Krävs | Programmet ID som den [Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) tilldelats din app. |
-| client_secret |Krävs | Den hemlighet som programmet som du skapade för din app i portalen för registrering av programmet. |
-| kontrollen |Krävs | Värdet för den token som används i begäran. |
-| Omfång |Krävs | Ett utrymme avgränsade lista över scope för tokenbegäran. Mer information finns i [scope](active-directory-v2-scopes.md).|
-| requested_token_use |Krävs | Anger hur begäran ska bearbetas. Värdet måste vara i On-Behalf-Of-flöde **on_behalf_of**. |
+| grant_type |Krävs | hello typ av begäran om hello-token. För en begäran som använder en JWT hello-värdet måste vara **urn: ietf:params:oauth:grant-typ: jwt-ägar**. |
+| client_id |Krävs | hello program-ID som hello [Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) tilldelade tooyour app. |
+| client_secret |Krävs | Hej programhemlighet som du skapade för din app i hello Programregistreringsportalen. |
+| kontrollen |Krävs | hello-värdet för hello-token som används i hello-begäran. |
+| Omfång |Krävs | Ett utrymme avgränsade lista över scope för hello tokenbegäran. Mer information finns i [scope](active-directory-v2-scopes.md).|
+| requested_token_use |Krävs | Anger hur hello begäran ska bearbetas. I hello på-flöde hello-värdet måste vara **on_behalf_of**. |
 
 #### Exempel
-Följande HTTP POST-begäran som en åtkomst-token med `user.read` omfång för https://graph.microsoft.com webb-API.
+hello följande HTTP POST-begäran som en åtkomst-token med `user.read` omfång för hello https://graph.microsoft.com webb-API.
 
 ```
 //line breaks for legibility only
@@ -87,22 +87,22 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 ```
 
 ### Andra fall: token åtkomst-begäran med ett certifikat
-En token-tjänster åtkomst-begäran med ett certifikat innehåller följande parametrar:
+En token-tjänster åtkomst-begäran med ett certifikat innehåller hello följande parametrar:
 
 | Parameter |  | Beskrivning |
 | --- | --- | --- |
-| grant_type |Krävs | Typ av tokenbegäran. Värdet måste vara en begäran som använder en JWT **urn: ietf:params:oauth:grant-typ: jwt-ägar**. |
-| client_id |Krävs | Programmet ID som den [Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) tilldelats din app. |
-| client_assertion_type |Krävs |Värdet måste vara`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Krävs | Ett intyg (en JSON Web Token) som du behöver för att skapa och registrera med certifikatet du registrerad som autentiseringsuppgifter för ditt program.  Läs mer om [certifikat autentiseringsuppgifter](active-directory-certificate-credentials.md) att lära dig att registrera ditt certifikat och format för kontrollen.|
-| kontrollen |Krävs | Värdet för den token som används i begäran. |
-| requested_token_use |Krävs | Anger hur begäran ska bearbetas. Värdet måste vara i On-Behalf-Of-flöde **on_behalf_of**. |
-| Omfång |Krävs | Ett utrymme avgränsade lista över scope för tokenbegäran. Mer information finns i [scope](active-directory-v2-scopes.md).|
+| grant_type |Krävs | hello typ av begäran om hello-token. För en begäran som använder en JWT hello-värdet måste vara **urn: ietf:params:oauth:grant-typ: jwt-ägar**. |
+| client_id |Krävs | hello program-ID som hello [Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) tilldelade tooyour app. |
+| client_assertion_type |Krävs |hello-värdet måste vara`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |Krävs | Ett intyg (en JSON Web Token) att du behöver toocreate och logga in med hello certifikat du registrerad som autentiseringsuppgifterna för ditt program.  Läs mer om [certifikat autentiseringsuppgifter](active-directory-certificate-credentials.md) toolearn hur tooregister ditt certifikat och hello formatering av hello-kontrollen.|
+| kontrollen |Krävs | hello-värdet för hello-token som används i hello-begäran. |
+| requested_token_use |Krävs | Anger hur hello begäran ska bearbetas. I hello på-flöde hello-värdet måste vara **on_behalf_of**. |
+| Omfång |Krävs | Ett utrymme avgränsade lista över scope för hello tokenbegäran. Mer information finns i [scope](active-directory-v2-scopes.md).|
 
-Observera att parametrarna är nästan desamma som i fallet med begäran från delad hemlighet förutom att client_secret-parameter har ersatts av två parametrar: en client_assertion_type och client_assertion.
+Observera att hello parametrar är nästan hello samma som hello fallet med hello begäran av delad hemlighet förutom att hello client_secret parameter har ersatts av två parametrar: en client_assertion_type och client_assertion.
 
 #### Exempel
-Följande HTTP POST-begäran som en åtkomst-token med `user.read` omfång för https://graph.microsoft.com webb-API med ett certifikat.
+hello följande HTTP POST-begäran som en åtkomst-token med `user.read` omfång för hello https://graph.microsoft.com webb-API med ett certifikat.
 
 ```
 // line breaks for legibility only
@@ -120,19 +120,19 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read
 ```
 
-## Tjänsten för att tjänsten åtkomst-token svar
-Ett lyckat svar är ett JSON OAuth 2.0-svar med följande parametrar.
+## Tjänsten tooservice åtkomst-token svar
+Ett lyckat svar är ett JSON OAuth 2.0-svar med hello följande parametrar.
 
 | Parameter | Beskrivning |
 | --- | --- |
-| token_type |Anger värdet för token-typer. Den enda typen som har stöd för Azure AD är **ägar**. Läs mer om ägar-token i [OAuth 2.0 auktorisering Framework: ägar-Token användning (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt). |
-| Omfång |Omfattningen av åtkomst som beviljas i token. |
-| expires_in |Hur lång tid den åtkomst-token är giltig (i sekunder). |
-| access_token |Den begärda åtkomst-token. Anropa tjänsten kan använda denna token för att autentisera till den mottagande tjänsten. |
-| refresh_token |Uppdateringstoken för den begärda åtkomst-token. Anropa tjänsten kan använda denna token för att begära en annan åtkomsttoken när den aktuella åtkomst-token upphör att gälla. |
+| token_type |Anger hello tokentypen värdet. Hej typ som har stöd för Azure AD är **ägar**. Mer information om ägar-token finns hello [OAuth 2.0 auktorisering Framework: ägar-Token användning (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt). |
+| Omfång |hello omfattningen av åtkomst som beviljas i hello-token. |
+| expires_in |hello lång tid hello åtkomst-token är giltig (i sekunder). |
+| access_token |hello begärda åtkomst-token. hello anropar tjänsten kan använda den här token tooauthenticate toohello mottagande tjänsten. |
+| refresh_token |Hej uppdateringstoken för hello begärt åtkomst-token. hello anropar tjänsten kan använda den här token toorequest en annan åtkomsttoken när hello aktuella åtkomst-token upphör att gälla. |
 
 ### Lyckade svar-exempel
-I följande exempel visas ett lyckat svar på en begäran om en åtkomsttoken för https://graph.microsoft.com webb-API.
+hello visar följande exempel en lyckad svar tooa begäran om en åtkomsttoken för hello https://graph.microsoft.com webb-API.
 
 ```
 {
@@ -146,12 +146,12 @@ I följande exempel visas ett lyckat svar på en begäran om en åtkomsttoken f�
 ```
 
 ### Fel svar-exempel
-Ett felsvar som returneras av Azure AD-token för slutpunkt när du försöker hämta en åtkomst-token för den underordnade API om underordnade API: et har en princip för villkorlig åtkomst, till exempel multifaktorautentisering som angetts för den. Tjänsten mellannivå bör ansluta det här felet till klientprogrammet så att klientprogrammet kan användaren för att uppfylla principen för villkorlig åtkomst.
+Ett felsvar returneras av Azure AD-token för slutpunkt vid tooacquire en åtkomst-token för hello underordnade API, om hello underordnade API: et har en princip för villkorlig åtkomst, till exempel multifaktorautentisering som angetts för den. hello mellannivå tjänsten ska ansluta det här felet toohello klientprogrammet så att klientprogrammet hello kan hello användaren interaktion toosatisfy hello villkorliga åtkomstprincipen.
 
 ```
 {
     "error":"interaction_required",
-    "error_description":"AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access 'bf8d80f9-9098-4972-b203-500f535113b1'.\r\nTrace ID: b72a68c3-0926-4b8e-bc35-3150069c2800\r\nCorrelation ID: 73d656cf-54b1-4eb2-b429-26d8165a52d7\r\nTimestamp: 2017-05-01 22:43:20Z",
+    "error_description":"AADSTS50079: Due tooa configuration change made by your administrator, or because you moved tooa new location, you must enroll in multi-factor authentication tooaccess 'bf8d80f9-9098-4972-b203-500f535113b1'.\r\nTrace ID: b72a68c3-0926-4b8e-bc35-3150069c2800\r\nCorrelation ID: 73d656cf-54b1-4eb2-b429-26d8165a52d7\r\nTimestamp: 2017-05-01 22:43:20Z",
     "error_codes":[50079],
     "timestamp":"2017-05-01 22:43:20Z",
     "trace_id":"b72a68c3-0926-4b8e-bc35-3150069c2800",
@@ -160,8 +160,8 @@ Ett felsvar som returneras av Azure AD-token för slutpunkt när du försöker h
 }
 ```
 
-## Använd åtkomst-token för att komma åt den skyddade resursen
-Tjänsten mellannivå kan nu använda token förvärvade ovan för att göra autentiserade begäranden för den underordnade webben-API, genom att ange token i den `Authorization` rubrik.
+## Använd hello åtkomst-token tooaccess hello skyddad resurs
+Hello mellannivå service kan nu använda hello token anskaffats ovan toomake autentiserade begäranden toohello nedströms webb-API, genom att ange hello token i hello `Authorization` huvud.
 
 ### Exempel
 ```
@@ -171,6 +171,6 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 ```
 
 ## Nästa steg
-Läs mer om OAuth 2.0-protokollet och ett annat sätt att utföra tjänster auth med klientens autentiseringsuppgifter.
+Läs mer om hello OAuth 2.0-protokollet och ett annat sätt tooperform service tooservice autentisering med autentiseringsuppgifter för klienten.
 * [OAuth 2.0 klientens autentiseringsuppgifter bevilja i Azure AD v2.0](active-directory-v2-protocols-oauth-client-creds.md)
 * [OAuth 2.0 i Azure AD v2.0](active-directory-v2-protocols-oauth-code.md)

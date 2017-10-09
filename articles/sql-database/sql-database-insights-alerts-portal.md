@@ -1,6 +1,6 @@
 ---
-title: "Använd Azure-portalen för att skapa SQL-databas aviseringar | Microsoft Docs"
-description: "Använd Azure-portalen för att skapa SQL-databas aviseringar som kan utlösa meddelanden eller automation när angivna villkor uppfylls."
+title: aaaUse Azure portal toocreate SQL-databas aviseringar | Microsoft Docs
+description: "Använd hello Azure portal toocreate SQL-databas aviseringar som kan utlösa meddelanden eller automation när hello villkor är uppfyllda."
 author: aamalvea
 manager: jhubbard
 editor: 
@@ -15,26 +15,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: aamalvea
-ms.openlocfilehash: bfbaa71dc5716fbbc23d04bbd62210193c990e8e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4e494b130a26c4cdf42445cb49648fce9bf4d300
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Använd Azure-portalen för att skapa aviseringar för Azure SQL Database och datalagret
+# <a name="use-azure-portal-toocreate-alerts-for-azure-sql-database-and-data-warehouse"></a>Använda Azure portal toocreate aviseringar för Azure SQL Database och datalagret
 
 ## <a name="overview"></a>Översikt
-Den här artikeln visar hur du ställer in Azure SQL Database och datalagret aviseringar med Azure-portalen. Den här artikeln innehåller även rekommendationer för att Avisera punkter.    
+Den här artikeln visar hur tooset in Azure SQL Database och datalagret aviseringar med hello Azure-portalen. Den här artikeln innehåller även rekommendationer för att Avisera punkter.    
 
 Du kan ta emot en avisering baserat på övervakning mätvärden för eller händelser på Azure-tjänster.
 
-* **Måttvärden** -aviseringen utlöses när värdet för ett visst mått överskrider ett tröskelvärde som du tilldelar i båda riktningarna. Det vill säga den utlöser både när villkoret uppfylls först och sedan efteråt när villkor som inte längre är uppfyllt.    
+* **Måttvärden** - hello meddela utlösare när hello-värdet för ett visst mått överskrider ett tröskelvärde som du tilldelar i båda riktningarna. Det vill säga den utlöser både när hello villkor uppfylls först och sedan efteråt när villkor som inte längre är uppfyllt.    
 * **Aktiviteten logghändelser** -utlösa en avisering på *varje* händelse eller endast när ett visst antal händelser inträffar.
 
-Du kan konfigurera en avisering när den utlöser gör du följande:
+Du kan konfigurera en varning toodo hello efter när den utlöser:
 
-* Skicka e-postmeddelanden till tjänstadministratören och medadministratörer
-* Skicka e-post till ytterligare e-postmeddelanden som du anger.
+* Skicka e-postaviseringar toohello tjänstadministratören och medadministratörer
+* Skicka e-post tooadditional e-postmeddelanden som du anger.
 * anropa en webhook
 
 Du kan konfigurera och få information om aviseringen regler med hjälp av
@@ -44,36 +44,36 @@ Du kan konfigurera och få information om aviseringen regler med hjälp av
 * [kommandoradsgränssnittet (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
 * [Azure-Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Skapa en aviseringsregel på ett mått med Azure-portalen
-1. I den [portal](https://portal.azure.com/), leta upp den resurs som du är intresserad av övervakning och markera den.
+## <a name="create-an-alert-rule-on-a-metric-with-hello-azure-portal"></a>Skapa en aviseringsregel på ett mått med hello Azure-portalen
+1. I hello [portal](https://portal.azure.com/)letar du upp hello-resurs som du är intresserad av övervakning och markera den.
 2. Det här steget är olika för SQL-databas och elastiska pooler jämfört med SQL DW: 
 
-   - **SQL DB & endast elastiska pooler**: Välj **aviseringar** eller **Varna regler** under avsnittet övervakning. Text och ikon kan variera något mellan olika resurser.  
+   - **SQL DB & endast elastiska pooler**: Välj **aviseringar** eller **Varna regler** under hello övervakning avsnitt. hello text och ikon kan variera något mellan olika resurser.  
    
      ![Övervakning](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButton.png)
   
-   - **ENDAST SQL DW**: Välj **övervakning** under avsnittet vanliga uppgifter. Klicka på den **DWU användning** diagram.
+   - **ENDAST SQL DW**: Välj **övervakning** under hello avsnittet med vanliga uppgifter. Klicka på hello **DWU användning** diagram.
 
      ![VANLIGA AKTIVITETER](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButtonDW.png)
 
-3. Välj den **Lägg till avisering** kommando och Fyll i fälten.
+3. Välj hello **Lägg till avisering** kommandot och hello fält fylls i.
    
     ![Lägg till avisering](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPage.png)
 4. **Namnet** aviseringen regel och väljer en **beskrivning**, som visar även i e-postmeddelanden.
-5. Välj den **mått** du vill övervaka och väljer sedan en **villkoret** och **tröskelvärdet** värdet för måttet. Valde också den **Period** som mått regeln måste uppfyllas innan aviseringen utlösare. Om du använder period ”PT5M” och aviseringen söker efter CPU över 80 procent, startar exempelvis aviseringen när Processorn har konsekvent ovan 80% i 5 minuter. När den första utlösaren infaller utlöses igen när Processorn är mindre än 80% i 5 minuter. CPU-mätning inträffar var 1 minut.   
-6. Kontrollera **e-ägare...**  om du vill att administratörer och medadministratörer kan skickas när aviseringen utlöses.
-7. Om du vill att ytterligare e-postmeddelanden ett meddelande när aviseringen utlöses, lägga till dem i den **ytterligare administratören email(s)** fältet. Avgränsa flera e-postmeddelanden med semikolon -  *email@contoso.com;email2@contoso.com*
-8. Placera i en giltig URI i den **Webhook** om du vill att den anropas när aviseringen utlöses.
-9. Välj **OK** när du är klar för att skapa aviseringen.   
+5. Välj hello **mått** du vill toomonitor och välj sedan en **villkoret** och **tröskelvärdet** värde för hello mått. Valde också hello **Period** som hello mått regeln måste uppfyllas innan hello avisering utlösare. Om du använder hello period ”PT5M” och aviseringen söker efter CPU över 80 procent, startar exempelvis hello avisering när hello CPU har konsekvent ovan 80% i 5 minuter. När hello första utlösaren infaller utlöses igen när hello CPU är mindre än 80% i 5 minuter. hello CPU mätning inträffar var 1 minut.   
+6. Kontrollera **e-ägare...**  om du vill att administratörer och medadministratörer toobe e-post när hello avisering utlöses.
+7. Om du vill veta e-postmeddelanden tooreceive ett meddelande när hello varning utlöses, lägga till dem i hello **ytterligare administratören email(s)** fältet. Avgränsa flera e-postmeddelanden med semikolon -  *email@contoso.com;email2@contoso.com*
+8. Placera i en giltig URI i hello **Webhook** fält om du vill anropa när hello avisering utlöses.
+9. Välj **OK** när klart toocreate hello avisering.   
 
-Inom några minuter aviseringen är aktiv och utlöser som beskrivits tidigare.
+Inom några minuter hello aviseringen är aktiv och utlöser som beskrivits tidigare.
 
 ## <a name="managing-your-alerts"></a>Hantera aviseringar
 När du har skapat en avisering, kan du välja den och:
 
-* Visa ett diagram som visar mått tröskelvärdet och faktiska värden från föregående dag.
+* Visa ett diagram som visar hello mått tröskelvärde och hello faktiska värden från hello föregående dag.
 * Redigera eller ta bort den.
-* **Inaktivera** eller **aktivera** den om du vill att tillfälligt stoppa eller återuppta tar emot meddelanden om den här aviseringen.
+* **Inaktivera** eller **aktivera** den om du vill stoppa tootemporarily eller återuppta tar emot meddelanden om den här aviseringen.
 
 
 ## <a name="sql-database-alert-values"></a>Aviseringen värden för SQL-databas
@@ -113,7 +113,7 @@ När du har skapat en avisering, kan du välja den och:
 | SQL data warehouse | connection_successful | Lyckade anslutningar | Totalt | 10 minuter |
 | SQL data warehouse | connection_failed | Misslyckade anslutningar | Totalt | 10 minuter |
 | SQL data warehouse | blocked_by_firewall | Blockeras av brandvägg | Totalt | 10 minuter |
-| SQL data warehouse | service_level_objective | Servicenivåmålet för databasen | Totalt | 10 minuter |
+| SQL data warehouse | service_level_objective | Servicenivåmål av hello-databas | Totalt | 10 minuter |
 | SQL data warehouse | dwu_limit | dwu gräns | Maximalt | 10 minuter |
 | SQL data warehouse | dwu_consumption_percent | DWU-procent | Genomsnittlig | 10 minuter |
 | SQL data warehouse | dwu_used | DWU används | Genomsnittlig | 10 minuter |
@@ -121,7 +121,7 @@ När du har skapat en avisering, kan du välja den och:
 
 
 ## <a name="next-steps"></a>Nästa steg
-* [Få en översikt över Azure övervakning](../monitoring-and-diagnostics/monitoring-overview.md) inklusive typerna av information som du kan samla in och övervaka.
+* [Få en översikt över Azure övervakning](../monitoring-and-diagnostics/monitoring-overview.md) inklusive hello typer av information som du kan samla in och övervaka.
 * Lär dig mer om [hur du konfigurerar webhooks i aviseringar](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 * Hämta en [översikt över diagnostikloggar](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) och samla in detaljerade hög frekvens mått på din tjänst.
-* Hämta en [översikt över mått samling](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) att kontrollera att tjänsten är tillgänglig och svarstid.
+* Hämta en [översikt över mått samling](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) toomake att tjänsten är tillgänglig och svarstid.

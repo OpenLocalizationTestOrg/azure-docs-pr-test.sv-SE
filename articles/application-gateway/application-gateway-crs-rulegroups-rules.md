@@ -1,5 +1,5 @@
 ---
-title: "Azure Application Gateway Brandvägg för webbaserade program CR regel grupper och regler | Microsoft Docs"
+title: "aaaAzure Programgateway web application CR brandväggsregeln grupper och regler | Microsoft Docs"
 description: "Den här sidan innehåller information om web brandväggen CR regeln programgrupper och regler."
 documentationcenter: na
 services: application-gateway
@@ -15,17 +15,17 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-ms.openlocfilehash: 9f4445b7ceb5b39c7907b1ca4c7bf0ad52ba8212
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6be139847392baeb235bc48b079335c1e0d8287b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Lista med web brandväggen CR regeln programgrupper och regler
 
-Brandvägg för programmet Gateway webbaserade program (Brandvägg) skyddar webbprogram från vanliga säkerhetsrisker och trojaner. Detta görs via regler som har definierats baserat på OWASP core regeluppsättningarna 2.2.9 eller 3.0. De här reglerna kan inaktiveras på grundval av regeln av regeln. Den här artikeln innehåller aktuella regler och regeluppsättningar som erbjuds.
+Brandvägg för programmet Gateway webbaserade program (Brandvägg) skyddar webbprogram från vanliga säkerhetsrisker och trojaner. Detta görs via regler som har definierats utifrån hello OWASP core uppsättningar 2.2.9 eller 3.0. De här reglerna kan inaktiveras på grundval av regeln av regeln. Den här artikeln innehåller hello aktuella regler och regeluppsättningar som erbjuds.
 
-Följande tabeller är regelgrupper och regler som är tillgängliga när du använder Application Gateway med Brandvägg för webbaserade program.  Varje tabell representerar de regler som finns i en grupp för en viss CR-version.
+hello följande tabeller är hello regelgrupper och regler som är tillgängliga när du använder Application Gateway med Brandvägg för webbaserade program.  Varje tabell representerar hello regler i en grupp för en viss CR-version.
 
 ##<a name="owasp30"></a>OWASP_3.0
 
@@ -110,7 +110,7 @@ Följande tabeller är regelgrupper och regler som är tillgängliga när du anv
 |920011|Regeln 920011|
 |920012|Regeln 920012|
 |920100|Ogiltig HTTP-begäran rad|
-|920130|Det gick inte att tolka brödtexten i begäran.|
+|920130|Det gick inte tooparse begärandetexten.|
 |920140|Multipart begäran brödtext kunde inte verifiera strikt = PE %@{REQBODY_PROCESSOR_ERROR} BQ %@{MULTIPART_BOUNDARY_QUOTED} BW %@{MULTIPART_BOUNDARY_WHITESPACE} DB %@{MULTIPART_DATA_BEFORE} DA %@{MULTIPART_DATA_AFTER} HF %@{MULTIPART_HEADER_FOLDING} LF % @ {MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING} IQ %@{MULTIPART_INVALID_QUOTING} IH %@{MULTIPART_INVALID_HEADER_FOLDING} FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
 |920160|Content-Length-HTTP-huvudet är inte numerisk.|
 |920170|GET eller HEAD begäran med Brödtextinnehåll.|
@@ -342,7 +342,7 @@ Följande tabeller är regelgrupper och regler som är tillgängliga när du anv
 |---|---|
 |960911|Ogiltig HTTP-begäran rad|
 |981227|Apache fel = ogiltig URI i begäran.|
-|960912|Det gick inte att tolka brödtexten i begäran.|
+|960912|Det gick inte tooparse begärandetexten.|
 |960914|Multipart begäran brödtext kunde inte verifiera strikt = PE %@{REQBODY_PROCESSOR_ERROR} BQ %@{MULTIPART_BOUNDARY_QUOTED} BW %@{MULTIPART_BOUNDARY_WHITESPACE} DB %@{MULTIPART_DATA_BEFORE} DA %@{MULTIPART_DATA_AFTER} HF %@{MULTIPART_HEADER_FOLDING} LF % @ {MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING} IQ %@{MULTIPART_INVALID_QUOTING} IH %@{MULTIPART_INVALID_HEADER_FOLDING} FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
 |960915|Multipart-parsern upptäckte en möjliga omatchade gräns.|
 |960016|Content-Length-HTTP-huvudet är inte numerisk.|
@@ -400,9 +400,9 @@ Följande tabeller är regelgrupper och regler som är tillgängliga när du anv
 
 |ruleId|Beskrivning|
 |---|---|
-|990002|Begäran anger en Säkerhetsskannern genomsöks platsen|
-|990901|Begäran anger en Säkerhetsskannern genomsöks platsen|
-|990902|Begäran anger en Säkerhetsskannern genomsöks platsen|
+|990002|Begäran anger säkerhet skannern skannade hello plats|
+|990901|Begäran anger säkerhet skannern skannade hello plats|
+|990902|Begäran anger säkerhet skannern skannade hello plats|
 |990012|Falsk webbplats crawler|
 
 ### <a name="crs40"></a>crs_40_generic_attacks
@@ -592,6 +592,6 @@ Följande tabeller är regelgrupper och regler som är tillgängliga när du anv
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du inaktiverar Brandvägg regler genom att besöka: [anpassa Brandvägg regler](application-gateway-customize-waf-rules-portal.md)
+Lär dig hur toodisable Brandvägg regler genom att besöka: [anpassa Brandvägg regler](application-gateway-customize-waf-rules-portal.md)
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png

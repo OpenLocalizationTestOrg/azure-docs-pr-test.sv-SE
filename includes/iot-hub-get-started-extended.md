@@ -1,19 +1,19 @@
 ## <a name="extended-iot-scenarios"></a>Utökade IoT-scenarier
 
-Använd andra Azure-tjänster och -verktyg. När du har anslutit din enhet till IoT Hub kan du utforska ytterligare scenarier som använder andra Azure-verktyg och Azure-tjänster:
+Använd andra Azure-tjänster och -verktyg. När du har anslutit din enhet tooIoT hubb kan utforska du ytterligare scenarier som använder andra Azure-verktyg och tjänster:
 
 | Scenario                                                   | Azure-tjänst eller -verktyg              |
 |----------------------------------------------------------- |------------------------------------|
 | [Hantera IoT Hub-meddelanden][Mg_IoT_Hub_Msg]                  | Verktyget iothub-explorer               |
 | [Hantera din IoT-enhet][Mg_IoT_Dv]                        | Verktyget iothub-explorer               |
-| [Spara IoT Hub-meddelanden till Azure-lagring][Sv_IoT_Msg_Stor]  | Azure Table Storage                |
+| [Spara IoT-hubb meddelanden tooAzure lagring][Sv_IoT_Msg_Stor]  | Azure Table Storage                |
 | [Visualisera sensordata][Vis_Data]                          | Microsoft Power BI, Azure Web Apps |
 | [Ta fram väderprognoser med sensordata][Weather_Forecast]      | Azure Machine Learning             |
 | [Automatisk identifiering och automatiska åtgärder i samband med avvikelser][Anomaly_Detect] | Azure Logic Apps                   |
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har slutfört dessa självstudiekurser kan du fortsätta att utforska funktionerna i IoT Hub i [utvecklarhandboken][lnk-dev-guide]. Du hittar fler självstudier i avsnittet med [instruktionsartiklar][lnk-how-to].
+När du har slutfört de här kurserna kan du ytterligare utforska hello funktionerna i IoT-hubb i hello [Utvecklarhandbok][lnk-dev-guide]. Du hittar ytterligare självstudier i hello [hur man] [ lnk-how-to] avsnitt.
 
 
 [Mg_IoT_Hub_Msg]: ../articles/iot-hub/iot-hub-explorer-cloud-device-messaging.md

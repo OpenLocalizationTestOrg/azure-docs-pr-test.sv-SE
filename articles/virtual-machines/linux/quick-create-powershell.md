@@ -1,6 +1,6 @@
 ---
-title: "Azure snabbstart – skapa virtuell dator med PowerShell | Microsoft Docs"
-description: "Lär dig att snabbt skapa en virtuell Linux-dator med PowerShell"
+title: aaaAzure Snabbstart - skapa VM PowerShell | Microsoft Docs
+description: "Lär dig snabbt toocreate en Linux virtuella datorer med PowerShell"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -16,25 +16,25 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: adcf492d4c2d935c880167675a1ed97566156ec7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f05ea7fedafe4fda660dc6084ae57ebf9dced473
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-linux-virtual-machine-with-powershell"></a>Skapa en virtuell Linux-dator med PowerShell
 
-Azure PowerShell-modulen används för att skapa och hantera Azure-resurser från PowerShell-kommandoraden eller i skript. Den här guiden beskriver hur man använder Azure PowerShell-modul för att distribuera en virtuell dator som kör Ubuntu-servern. När servern har distribuerats skapas en SSH-anslutning och en NGINX-webbserver installeras.
+hello Azure PowerShell-modulen är används toocreate och hantera Azure-resurser från hello PowerShell-Kommandotolken eller i skript. Den här guiden information med hjälp av hello Azure PowerShell-modulen toodeploy en virtuell dator som kör Ubuntu server. När hello server har distribuerats, en SSH-anslutning skapas och en NGINX-webbserver är installerad.
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-Den här snabbstarten kräver Azure PowerShell-modul version 3.6 eller senare. Kör ` Get-Module -ListAvailable AzureRM` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-azurerm-ps) (Installera Azure PowerShell-modul).
+Denna Snabbstart kräver hello Azure PowerShell module 3,6 eller senare. Kör ` Get-Module -ListAvailable AzureRM` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps).
 
-Slutligen måste du ha en offentlig SSH-nyckel med namnet *id_rsa.pub* i katalogen *.ssh* i din Windows-användarprofil. Mer detaljerad information om hur du skapar SSH-nycklar för Azure finns i [Create SSH keys for Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Skapa SSH-nycklar för Azure).
+Slutligen en offentlig SSH-nyckel med namnet hello *id_rsa.pub* måste lagras i hello toobe *.ssh* på din Windows-användarprofil. Mer detaljerad information om hur du skapar SSH-nycklar för Azure finns i [Create SSH keys for Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Skapa SSH-nycklar för Azure).
 
-## <a name="log-in-to-azure"></a>Logga in på Azure
+## <a name="log-in-tooazure"></a>Logga in tooAzure
 
-Logga in på Azure-prenumerationen med kommandot `Login-AzureRmAccount` och följ anvisningarna på skärmen.
+Logga in tooyour Azure-prenumeration med hello `Login-AzureRmAccount` kommando och följ hello på skärmen riktningar.
 
 ```powershell
 Login-AzureRmAccount
@@ -50,7 +50,7 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location eastus
 
 ## <a name="create-networking-resources"></a>Skapa nätverksresurser
 
-Skapa ett virtuellt nätverk, undernät och offentlig IP-adress. Dessa resurser används för att skapa nätverksanslutning till den virtuella datorn och ansluta den till internet.
+Skapa ett virtuellt nätverk, undernät och offentlig IP-adress. Dessa resurser är används tooprovide network connectivity toohello virtuell dator och koppla den toohello internet.
 
 ```powershell
 # Create a subnet configuration
@@ -65,7 +65,7 @@ $pip = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup -Location e
 -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)"
 ```
 
-Skapa en nätverkssäkerhetsgrupp och en regel för nätverkssäkerhetsgrupp. Nätverkssäkerhetsgruppen skyddar den virtuella datorn med hjälp av regler för inkommande och utgående trafik. I detta fall skapas en regel för inkommande trafik för port 22, som tillåter inkommande SSH-anslutningar. Vi vill också skapa en regel för inkommande trafik för port 80, som tillåter inkommande webbtrafik.
+Skapa en nätverkssäkerhetsgrupp och en regel för nätverkssäkerhetsgrupp. Hej nätverkssäkerhetsgruppen säkrar hello virtuell dator med regler för inkommande och utgående. I detta fall skapas en regel för inkommande trafik för port 22, som tillåter inkommande SSH-anslutningar. Vi vill även toocreate en regel för inkommande trafik för port 80, vilket gör att inkommande webbtrafik.
 
 ```powershell
 # Create an inbound network security group rule for port 22
@@ -83,7 +83,7 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName myResourceGroup -Locat
 -Name myNetworkSecurityGroup -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-Skapa ett nätverkskort med [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) för den virtuella datorn. Nätverkskortet ansluter den virtuella datorn till ett undernät, en nätverkssäkerhetsgrupp och offentlig IP-adress.
+Skapa ett nätverkskort med [ny AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) för hello virtuella datorn. hello nätverkskortet ansluter hello virtuella tooa undernät, nätverkssäkerhetsgrupp och offentliga IP-adressen.
 
 ```powershell
 # Create a virtual network card and associate with public IP address and NSG
@@ -93,7 +93,7 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName myResourceGrou
 
 ## <a name="create-virtual-machine"></a>Skapa en virtuell dator
 
-Skapa en virtuell datorkonfiguration. Den här konfigurationen innehåller de inställningar som används vid distribution av den virtuella datorn, t.ex. den virtuella datorns avbildning, storlek och konfiguration för verifiering.
+Skapa en virtuell datorkonfiguration. Den här konfigurationen innehåller hello-inställningar som används när du distribuerar hello virtuell dator till exempel en bild, storlek och autentisering konfiguration av virtuell dator.
 
 ```powershell
 # Define a credential object
@@ -111,34 +111,34 @@ $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
 Add-AzureRmVMSshPublicKey -VM $vmconfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
-Skapa den virtuella datorn med [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
+Skapa hello virtuell dator med [ny AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
 
 ```powershell
 New-AzureRmVM -ResourceGroupName myResourceGroup -Location eastus -VM $vmConfig
 ```
 
-## <a name="connect-to-virtual-machine"></a>Ansluta till den virtuella datorn
+## <a name="connect-toovirtual-machine"></a>Ansluta toovirtual datorn
 
-När distributionen har slutförts kan du skapa en SSH-anslutning med den virtuella datorn.
+Skapa en SSH-anslutning med hello virtuella datorn när hello distributionen har slutförts.
 
-Använd kommandot [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) för att returnera den offentliga IP-adressen för den virtuella datorn.
+Använd hello [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) kommandot tooreturn hello offentliga IP-adressen för hello virtuell dator.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-Från en dator med SSH installerat använder du följande kommando för att ansluta till den virtuella datorn. Om du arbetar med Windows kan du skapa anslutningen med hjälp av [Putty](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-ssh-from-windows?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-private-key-for-putty). 
+Använda hello följande kommando från ett system med SSH installerat tooconnect toohello virtuella datorn. Om du arbetar med Windows, [Putty](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-ssh-from-windows?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-private-key-for-putty) kan vara används toocreate hello anslutning. 
 
 ```bash 
 ssh <Public IP Address>
 ```
 
-När du får en uppmaning är *azureuser* användarnamnet för inloggningen. Om du angav en lösenfras när du skapade SSH-nycklar måste du även ange den.
+När du uppmanas hello användarnamn är *azureuser*. Om en lösenfras angavs när du skapar SSH-nycklar måste det här samt tooenter.
 
 
 ## <a name="install-nginx"></a>Installera NGINX
 
-Använd följande bash-skript för att uppdatera paketkällor och installera det senaste NGINX-paketet. 
+Använd hello följande bash skriptet tooupdate paketet källor och installera hello senaste NGINX-paketet. 
 
 ```bash 
 #!/bin/bash
@@ -150,15 +150,15 @@ apt-get -y update
 apt-get -y install nginx
 ```
 
-## <a name="view-the-ngix-welcome-page"></a>Visa NGIX-välkomstsidan
+## <a name="view-hello-ngix-welcome-page"></a>Visa hello NGIX välkomstsidan
 
-Du kan använda en webbläsare som du väljer för att visa välkomstsidan till NGINX när NGINX är installerat och port 80 nu är öppen på en virtuell dator från Internet. Se till att använda den offentliga IP-adress som du har dokumenterat ovan för att besöka standardsidan. 
+Du kan använda en webbläsare för dina val tooview hello NGINX välkomstsidan med NGINX installerat och port 80 som nu är öppet på den virtuella datorn från hello Internet. Vara säker på att toouse hello offentliga IP-adressen du dokumenterade över toovisit hello standardsida. 
 
 ![NGINX-standardwebbplats](./media/quick-create-cli/nginx.png) 
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När den inte längre behövs du använda kommandot [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) för att ta bort resursgruppen, den virtuella datorn och alla relaterade resurser.
+När du inte längre behövs kan du använda hello [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) kommandot tooremove hello resursgrupp, virtuell dator och alla relaterade resurser.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -166,7 +166,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabbstarten har du distribuerat en virtuell dator och en regel för nätverkssäkerhetsgrupp samt installerat en webbserver. Om du vill veta mer om virtuella Azure-datorer fortsätter du till självstudien för virtuella Linux-datorer.
+I den här snabbstarten har du distribuerat en virtuell dator och en regel för nätverkssäkerhetsgrupp samt installerat en webbserver. toolearn mer om Azure-datorer, fortsätta toohello självstudier för Linux virtuella datorer.
 
 > [!div class="nextstepaction"]
 > [Självstudier om virtuella Azure Linux-datorer](./tutorial-manage-vm.md)

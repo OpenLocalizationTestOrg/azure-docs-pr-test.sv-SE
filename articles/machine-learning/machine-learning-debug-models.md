@@ -1,6 +1,6 @@
 ---
-title: "Felsöka din modell i Azure Machine Learning | Microsoft Docs"
-description: "Så här felsöker du fel som genereras av modulerna Träningsmodell och Poängmodell i Azure Machine Learning."
+title: aaaDebug modellen i Azure Machine Learning | Microsoft Docs
+description: "Hur toodebug fel genereras av Träningsmodell och Poängmodell moduler i Azure Machine Learning."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: d4cc94a6395ea45bccf65d9a9f3118ec98cb258d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ee38ca8ce38d4fc7add5ba70c80ab9bb2ceaf1d4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="debug-your-model-in-azure-machine-learning"></a>Felsöka din modell i Azure Machine Learning
 
-Den här artikeln beskrivs möjliga orsaker till något av följande två fel kan uppstå när du kör en modell:
+Den här artikeln förklarar hello varför antingen hello efter två fel kan uppstå när du kör en modell för orsaker:
 
-* den [Träningsmodell] [ train-model] modulen genererar ett fel 
-* den [Poängmodell] [ score-model] modulen ger felaktiga resultat 
+* Hej [Träningsmodell] [ train-model] modulen genererar ett fel 
+* Hej [Poängmodell] [ score-model] modulen ger felaktiga resultat 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
@@ -33,41 +33,41 @@ Den här artikeln beskrivs möjliga orsaker till något av följande två fel ka
 
 ![image1](./media/machine-learning-debug-models/train_model-1.png)
 
-Den [Träningsmodell] [ train-model] modulen förväntar två indata:
+Hej [Träningsmodell] [ train-model] modulen förväntar två indata:
 
-1. Typ av maskininlärningsmodell för insamling av modeller som tillhandahålls av Azure Machine Learning.
-2. Utbildning data med en angiven etikett-kolumn som anger variabeln för att förutsäga (de andra kolumnerna antas vara funktioner).
+1. hello typ av maskininlärningsmodell från hello samling av modeller som tillhandahålls av Azure Machine Learning.
+2. hello utbildningsdata med en angiven etikett-kolumn som anger hello variabeln toopredict (hello andra kolumner antas toobe funktioner).
 
-Den här modulen kan producera ett fel i följande fall:
+Den här modulen kan producera ett fel i hello följande fall:
 
-1. Kolumnen etikett har angetts felaktigt. Detta kan inträffa om mer än en kolumn har markerats som etikett eller en felaktig kolumnindex är markerad. Det andra fallet skulle till exempel gälla om ett index på 30 används med en inkommande datamängd som har bara 25 kolumner.
+1. hello etikett kolumn har angetts felaktigt. Detta kan inträffa om mer än en kolumn har markerats som hello etikett eller en felaktig kolumnindex är markerad. Till exempel skulle hello andra fall tillämpas om ett index på 30 används med en inkommande datamängd som har bara 25 kolumner.
 
-2. Dataset innehåller inte några kolumner i funktionen. Till exempel om den inkommande datamängden har endast en kolumn som har markerats som kolumnen etikett, är det inga funktioner som att skapa modellen. I det här fallet den [Träningsmodell] [ train-model] modulen genererar ett fel.
+2. hello dataset innehåller inte några kolumner i funktionen. Till exempel om hello inkommande datamängden har endast en kolumn som har markerats som hello etikett kolumn vore det inga funktioner med vilken toobuild hello-modell. I det här fallet hello [Träningsmodell] [ train-model] modulen genererar ett fel.
 
-3. Inkommande datauppsättningen (funktioner eller etikett) innehåller oändligt som ett-värde.
+3. hello inkommande datauppsättningen (funktioner eller etikett) innehåller oändligt som ett-värde.
 
 ## <a name="score-model-module-produces-incorrect-results"></a>Modulen poängsätta modell ger felaktiga resultat
 
 ![image2](./media/machine-learning-debug-models/train_test-2.png)
 
-I en typisk utbildning/testning experiment för övervakad inlärning av [dela Data] [ split] modulen delas den ursprungliga datauppsättningen i två delar: en del används för att träna modellen och en del används för att poängsätta hur väl utför den tränade modellen. Den tränade modellen används sedan för att samla in testdata, efter vilken resultaten utvärderas för att fastställa korrektheten i modellen.
+I en typisk utbildning/testning experimentet för övervakad inlärning hello [dela Data] [ split] modulen delas hello ursprungliga datauppsättningen i två delar: en del används tootrain hello modell och en del används tooscore hur väl hello tränade modellen utför. hello tränad modell är och sedan använda tooscore hello testdata, efter vilken hello resultatet är utvärderade toodetermine hello riktighet hello modellen.
 
-Den [Poängmodell] [ score-model] modulen kräver två indata:
+Hej [Poängmodell] [ score-model] modulen kräver två indata:
 
-1. En tränad modell utdata från den [Träningsmodell] [ train-model] modul.
-2. En bedömningsprofil datamängd som skiljer sig från den datamängd som används för att träna modellen.
+1. En tränad modell utdata från hello [Träningsmodell] [ train-model] modul.
+2. En bedömningsprofil datamängd som skiljer sig från hello dataset används tootrain hello modellen.
 
-Det är möjligt att även om försöket lyckas den [Poängmodell] [ score-model] modulen ger felaktiga resultat. Flera scenarier kan orsaka detta ske:
+Det är möjligt att även om hello försöket lyckas hello [Poängmodell] [ score-model] modulen ger felaktiga resultat. Flera scenarier kan orsaka det här toohappen:
 
-1. Om den angivna etiketten är kategoriska och en regressionsmodell tränats på data, felaktig utdata skulle genereras av den [Poängmodell] [ score-model] modul. Det beror på att regression kräver en kontinuerlig svar-variabel. I så fall skulle vara mer lämpligt att använda en modell för klassificering. 
+1. Om hello angivna etikett kategoriska och en regressionsmodell tränats på hello data, felaktig utdata skulle genereras av hello [Poängmodell] [ score-model] modul. Det beror på att regression kräver en kontinuerlig svar-variabel. Det vore i det här fallet lämpligare toouse en modell för klassificering. 
 
-2. På samma sätt kan kan en klassificering modell tränas på en datamängd med flyttal i kolumnen etikett, det ge oönskade resultat. Det beror på att klassificering kräver en diskret svar-variabel som endast tillåter att värden intervallet över en begränsad och vanligtvis något liten uppsättning klasser.
+2. På samma sätt kan kan en klassificering modell tränas på en datamängd med flyttal i hello etikett kolumn, det ge oönskade resultat. Det beror på att klassificering kräver en diskret svar-variabel som endast tillåter att värden intervallet över en begränsad och vanligtvis något liten uppsättning klasser.
 
-3. Om bedömningsprofil datamängden inte innehåller alla funktioner som används för att träna modellen, den [Poängmodell] [ score-model] genererar ett fel.
+3. Om inte hello bedömningen dataset saknar modellen hello tootrain för funktioner som används för alla hello hello [Poängmodell] [ score-model] genererar ett fel.
 
-4. Om en rad i bedömningsprofil datamängden innehåller ett saknat värde eller ett oändligt värde för någon av dess funktioner i [Poängmodell] [ score-model] kommer inte producerar några utdata som motsvarar den raden.
+4. Om en rad i hello bedömningen datamängden innehåller ett saknat värde eller ett oändligt värde för någon av dess funktioner, hello [Poängmodell] [ score-model] kommer inte att generera utdata motsvarande toothat rader.
 
-5. Den [Poängmodell] [ score-model] kan ge identiska utdata för alla rader i dataset bedömningsprofil. Detta kan exempelvis inträffa när försök klassificering med beslut skogar om det minsta antalet prov per lövnod väljs vara fler än antalet utbildning exempel tillgängliga.
+5. Hej [Poängmodell] [ score-model] kan ge identiska utdata för alla rader i hello bedömningen dataset. Detta kan exempelvis inträffa när försök klassificering med beslut skogar om hello minsta antalet prov per lövnod väljs toobe mer än hello antalet utbildning exempel tillgängliga.
 
 <!-- Module References -->
 [score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/

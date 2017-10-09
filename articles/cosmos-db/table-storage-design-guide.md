@@ -1,5 +1,5 @@
 ---
-title: "Designguide för Azure Storage-tabellen | Microsoft Docs"
+title: "aaaAzure designguiden för lagring tabellen | Microsoft Docs"
 description: Design skalbar och Performant tabeller i Azure-tabellagring
 services: cosmos-db
 documentationcenter: na
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 02/28/2017
 ms.author: mimig
-ms.openlocfilehash: fd34fb135c76eed4041c29e00e98dde330dfe3f3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 059f05a1d20e4d9537034b7ca133c5334bbefa04
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Designguide för Azure Storage-tabellen: Utforma skalbar och Performant tabeller
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Design skalbar och performant tabeller måste du tänka på ett antal faktorer, till exempel prestanda, skalbarhet och kostnader. Om du har tidigare designat scheman för relationsdatabaser, dessa överväganden känna till dig, men det finns vissa likheter mellan Azure Table storage modell och relationella modeller, men det finns också många viktiga skillnader. Dessa skillnader vanligtvis leda till väldigt annorlunda design som kan se krånglig eller felaktig till någon bekant med relationsdatabaser, men som gör bra uppfattning om du designar för en NoSQL nyckel/värde-arkivet, t.ex Azure Table-tjänsten. Många av din design skillnader motsvarar det faktum att tabelltjänsten är utformad för att stödja skalbar molnlagring program som kan innehålla miljarder entiteter (rader i en relationsdatabas terminologi) av data eller för datauppsättningar som måste ha stöd för hög transaktionsvolymer: därför måste du tänka på olika sätt på hur du lagrar data och förstå hur tabelltjänsten fungerar. En väl utformad NoSQL-databas kan aktivera din lösning för att skala mycket mer (och till en lägre kostnad) än en lösning som använder en relationsdatabas. Den här guiden hjälper dig med dessa frågor.  
+toodesign skalbar och performant tabeller måste du tänka på ett antal faktorer, till exempel prestanda, skalbarhet och kostnader. Om du har tidigare designat scheman för relationsdatabaser, dessa överväganden blir bekant tooyou, men det finns vissa likheter mellan hello Azure Table storage modell och relationella modeller, det finns också flera viktiga skillnader. Dessa skillnader leda vanligtvis toovery olika konstruktionerna som kan se bekant med relationsdatabaser toosomeone krånglig eller fel, men som gör bra uppfattning om du designar för en NoSQL nyckel/värde-butiken, till exempel hello Azure Table-tjänsten. Många av din design skillnader visar hello faktum att hello tabelltjänsten är utformad toosupport molnskala program som kan innehålla miljarder enheter (rader i en relationsdatabas terminologi) av data eller för datauppsättningar som måste ha stöd för hög transaktionsvolymer: därför du behöver toothink annorlunda om hur du lagrar data och förstå hur hello tabelltjänsten fungerar. En väl utformad NoSQL-databas kan aktivera din lösning tooscale mycket mer (och till en lägre kostnad) än en lösning som använder en relationsdatabas. Den här guiden hjälper dig med dessa frågor.  
 
-## <a name="about-the-azure-table-service"></a>Om tjänsten Azure Table
-Det här avsnittet beskrivs några av de viktigaste funktionerna i tabelltjänsten som är särskilt relevanta till utformning för prestanda och skalbarhet. Om du har använt Azure Storage- och tabelltjänsten, läser du först [introduktion till Microsoft Azure Storage](../storage/common/storage-introduction.md) och [Kom igång med Azure Table Storage med hjälp av .NET](table-storage-how-to-use-dotnet.md) innan du läser resten av den här artikeln . Även om den här guiden fokuserar på tabelltjänsten, innehåller en beskrivning av Azure Queue och Blob-tjänster och hur du kan använda dem tillsammans med tjänsten tabellen i en lösning.  
+## <a name="about-hello-azure-table-service"></a>Om hello Azure Table-tjänsten
+Det här avsnittet beskrivs några av hello viktiga funktioner i hello tabelltjänsten som är särskilt relevanta toodesigning för prestanda och skalbarhet. Om du är ny tooAzure lagring och hello tabelltjänsten först läsa [introduktion tooMicrosoft Azure Storage](../storage/common/storage-introduction.md) och [Kom igång med Azure Table Storage med hjälp av .NET](table-storage-how-to-use-dotnet.md) innan du läser hello resten av det här artikel. Även om hello av den här guiden fokuserar på hello tabelltjänsten, innehåller en beskrivning av hello Azure Queue och Blob-tjänster och hur du kan använda dem tillsammans med hello tabelltjänsten i en lösning.  
 
-Vad är tabelltjänsten? Som du kan förvänta sig från namnet använder tabelltjänsten tabellformat för att lagra data. Varje rad i tabellen representerar en entitet i standard terminologi och kolumnerna lagra olika egenskaper för enheten. Varje entitet har ett par nycklar för att identifiera den och en tidsstämpelkolumn som tabelltjänsten använder för att spåra när entiteten senast uppdaterade (detta sker automatiskt och du kan inte skriva över tidsstämpeln manuellt med ett godtyckligt värde). Tabelltjänsten använder den här last-modified-tidsstämpel (LMT) för att hantera Optimistisk samtidighet.  
+Vad är tabelltjänsten hello? Som du kan förvänta sig från hello namn använder hello tabelltjänsten ett tabellformat toostore data. Varje rad i tabellen hello representerar en entitet i hello standard terminologi och hello kolumner store hello olika egenskaper för enheten. Varje entitet har två nycklar toouniquely identifiera den och en tidsstämpelkolumn som hello tabelltjänsten använder tootrack när hello entiteten senast uppdaterades (detta sker automatiskt och du kan inte skriva över hello tidsstämpel manuellt med ett godtyckligt värde). Hej tabelltjänsten använder den här last-modified tidsstämpel (LMT) toomanage Optimistisk samtidighet.  
 
 > [!NOTE]
-> REST API för tabellen tjänståtgärderna också returnera en **ETag** värde som den härleds från last-modified-tidsstämpeln (LMT). I det här dokumentet ska vi använda villkoren ETag och LMT synonymt eftersom de refererar till samma underliggande data.  
+> hello tabell REST API tjänståtgärder också returnera en **ETag** värde som den härleds från hello last-modified tidsstämpel (LMT). I det här dokumentet använder vi hello termer ETag och LMT synonymt eftersom de refererar toohello samma underliggande data.  
 > 
 > 
 
-I följande exempel visas ett enkelt tabelldesign att lagra medarbetare och avdelning entiteter. Många av exemplen senare i den här handboken är baserade på den här enkla designen.  
+hello följande exempel visar en enkel tabell design toostore medarbetare och avdelning entiteter. Många av hello exemplen senare i den här handboken är baserade på den här enkla designen.  
 
 <table>
 <tr>
@@ -125,82 +125,82 @@ I följande exempel visas ett enkelt tabelldesign att lagra medarbetare och avde
 </table>
 
 
-Hittills har liknar detta en tabell i en relationsdatabas med de viktigaste skillnaderna är de obligatoriska kolumnerna och möjlighet att lagra flera typer av enheter i samma tabell. Dessutom var och en av de användardefinierade egenskaperna som **Förnamn** eller **ålder** har en datatyp som heltal eller en sträng, precis som en kolumn i en relationsdatabas. Men till skillnad från i en relationsdatabas tabelltjänsten schemat mindre uppbyggnad innebär att en egenskap måste ha samma datatyp för varje entitet. Om du vill lagra komplexa datatyper i en enskild egenskap, måste du använda ett serialiserat format, till exempel JSON eller XML. Mer information om datatyper i tabellen service som stöds, stöds datumintervall, namngivningsregler och storlek restriktioner finns [förstå den tabelltjänst-datamodellen](http://msdn.microsoft.com/library/azure/dd179338.aspx).
+Hittills har detta ser ut ungefär tooa tabellen i en relationsdatabas med hello viktiga skillnader som hello obligatoriska kolumnerna och hello möjlighet toostore flera entitet typer i hello samma tabell. Dessutom kan varje hello användardefinierade egenskaper som **Förnamn** eller **ålder** har en datatyp som heltal eller en sträng, precis som en kolumn i en relationsdatabas. Men till skillnad från i en relationsdatabas hello schemat mindre uppbyggnad hello tabellen service innebär att en egenskap måste ha hello samma datatyp för varje entitet. toostore komplexa datatyper i en enskild egenskap, måste du använda ett serialiserat format, till exempel JSON eller XML. Mer information om datatyper för hello tabellen service som stöds, stöds datumintervall, namngivningsregler och storlek restriktioner finns [hello förstå tabelltjänst-datamodellen](http://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-Eftersom du kommer att se ditt val av **PartitionKey** och **RowKey** är grundläggande för bra tabelldesign. Varje entitet som lagras i en tabell måste ha en unik kombination av **PartitionKey** och **RowKey**. Precis som med nycklar i en relationsdatabas tabell den **PartitionKey** och **RowKey** värden indexeras om du vill skapa ett grupperat index som möjliggör snabb look-ups; men tabelltjänsten skapar inte någon sekundärindex så att de bara två indexerade egenskaper (vissa av de mönster som beskrivs senare visar hur du kan undvika den här tydligt begränsningen).  
+Eftersom du kommer att se ditt val av **PartitionKey** och **RowKey** är grundläggande toogood tabelldesign. Varje entitet som lagras i en tabell måste ha en unik kombination av **PartitionKey** och **RowKey**. Precis som med nycklar i en relationsdatabas tabell hello **PartitionKey** och **RowKey** värden är indexerad toocreate ett grupperat index som möjliggör snabb look-ups; dock hello tabelltjänsten skapar inte någon sekundärindex så att de hello endast två indexerade egenskaper (del av hello mönster som beskrivs senare visar hur du kan undvika den här tydligt begränsningen).  
 
-En tabell består av en eller flera partitioner och som du kommer att se många designbeslut som du kommer att runt att välja en lämplig **PartitionKey** och **RowKey** att optimera din lösning. En lösning kan bestå av bara en enda tabell som innehåller alla entiteter indelade i partitioner, men vanligtvis en lösning har flera tabeller. Tabeller hjälper dig att ordna dina enheter, hjälper dig att hantera åtkomst till data med åtkomstkontrollistor logiskt och du kan släppa en hel tabell med hjälp av en enda lagring-åtgärd.  
+En tabell består av en eller flera partitioner och som du kommer att se många hello utforma beslut blir runt att välja en lämplig **PartitionKey** och **RowKey** toooptimize din lösning. En lösning kan bestå av bara en enda tabell som innehåller alla entiteter indelade i partitioner, men vanligtvis en lösning har flera tabeller. Tabeller hjälper dig toologically ordna dina enheter, hjälper dig att hantera toohello data med hjälp av åtkomstkontrollistor och du kan släppa en hel tabell med hjälp av en enda lagring-åtgärd.  
 
 ### <a name="table-partitions"></a>Tabellpartitioner
-Kontonamn, tabellnamnet och **PartitionKey** identifierar tillsammans partitionen i lagringstjänsten där tabelltjänsten lagrar entiteten. Samt som en del av adresseringsschema för entiteter partitioner för att definiera ett omfång för transaktioner (se [entitet gruppera transaktioner](#entity-group-transactions) nedan), och utgör grunden för hur tabelltjänsten skalas. Läs mer på partitioner [Azure Storage skalbarhets- och prestandamål](../storage/common/storage-scalability-targets.md).  
+hello kontonamn, tabellnamnet och **PartitionKey** identifierar tillsammans hello partition inom hello lagringstjänsten där hello tabelltjänsten lagrar hello entitet. Samt som en del av hello adresseringsschemat för entiteter partitioner för att definiera ett omfång för transaktioner (se [entitet gruppera transaktioner](#entity-group-transactions) nedan), och formuläret hello grunden för hur hello tabelltjänsten skalas. Läs mer på partitioner [Azure Storage skalbarhets- och prestandamål](../storage/common/storage-scalability-targets.md).  
 
-I tabellen service är en enskild nod tjänsterna eller mer Slutför partitioner och tjänsten skalar av dynamiskt nätverksbelastning partitioner mellan noder. Om en nod under belastning kan tabelltjänsten *dela* antal partitioner som underhålls av noden på olika noder; när trafik subsides tjänsten kan *merge* partition intervall från tyst noder tillbaka till en enda nod.  
+I hello tabelltjänsten, en enskild nod services en eller flera slutföra partitioner och hello service skalor av dynamiskt nätverksbelastning partitioner mellan noder. Om en nod under belastning hello tabelltjänsten kan *dela* hello antal partitioner som underhålls av noden på olika noder; när trafik subsides hello-tjänsten kan *merge* hello partition intervall från tyst noder tillbaka till en enda nod.  
 
-Mer information om internt information för tabelltjänsten, särskilt hur tjänsten hanterar partitioner, finns i dokumentet [Microsoft Azure Storage: A hög Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Mer information om hello interna detaljer om hello tabelltjänst och hur hello tjänsten hanterar partitioner, finns i synnerhet hello papper [Microsoft Azure Storage: A hög Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ### <a name="entity-group-transactions"></a>Entiteten gruppera transaktioner
-I tjänsten tabell är entitet grupptransaktioner (EGTs) den inbyggda mekanismen för att utföra atomiska uppdateringar över flera enheter. EGTs också kallas *batch transaktioner* i viss dokumentation. EGTs fungerar bara med entiteter som lagras i samma partition (dela samma partitionsnyckel i en given tabell), så vilja ha atomiska transaktionella beteende över flera enheter måste du se till att dessa enheter finns i samma partition. Det här är ofta en orsak till att ha flera typer av enheter i samma tabell (och partition) och inte använder flera tabeller för olika enhetstyper. En enda EGT kan tillämpas på högst 100 entiteter.  Om du skickar flera samtidiga EGTs för bearbetning är det viktigt att se till att dessa EGTs inte fungerar på enheter som är gemensamma mellan EGTs som annars bearbetning kan vara fördröjd.
+Entiteten gruppera transaktioner (EGTs) finns i hello tabelltjänsten hello inbyggda mekanism för att utföra atomiska uppdateringar över flera enheter. EGTs är också enligt tooas *batch transaktioner* i viss dokumentation. EGTs fungerar bara med entiteter som lagras i hello samma partition (resursen hello samma partitionsnyckel i en given tabell), vilja ha atomiska transaktionella beteende över flera enheter måste du tooensure som dessa enheter finns i hello samma partition. Det här är ofta en orsak till att ha flera enhetstyper i hello samma tabell (och partition) och inte använder flera tabeller för olika enhetstyper. En enda EGT kan tillämpas på högst 100 entiteter.  Om du skickar flera samtidiga EGTs för bearbetning av det är viktigt tooensure fungerar inte dessa EGTs på enheter som är gemensamma mellan EGTs som annars bearbetning kan vara fördröjd.
 
-EGTs också introducera en potentiell kompromiss där du kan utvärdera i din design: använda fler partitioner ökar skalbarheten för ditt program eftersom Azure har flera möjligheter för belastningsutjämning begäranden mellan noder, men detta kan begränsa möjligheten för ditt program att utföra atomiska transaktioner och underhålla stark konsekvens för dina data. Dessutom finns specifika skalbarhetsmål på nivån för en partition som kan begränsa genomflödet av transaktioner som du kan förvänta dig för en enskild nod: Läs mer om skalbarhetsmål för Azure storage-konton och tabelltjänsten [Azure Storage skalbarhets- och prestandamål](../storage/common/storage-scalability-targets.md). Senare avsnitt i den här handboken beskrivs olika design strategier som kan hjälpa dig att hantera avvägningarna som den här och diskutera hur du bäst för att välja din partitionsnyckel baserat på de särskilda kraven i ditt klientprogram.  
+EGTs också introducera en potentiell kompromiss för tooevaluate i din design: använda fler partitioner ökar hello skalbarhet eftersom Azure har flera möjligheter för belastningsutjämning begäranden mellan noder, men detta kan begränsa hello möjligheten för dina program tooperform atomiska transaktioner och underhålla stark konsekvens för dina data. Det finns också skalbarhetsmål för specifika på hello nivå för en partition som kan begränsa hello genomströmning av transaktioner som du kan förvänta dig för en enskild nod: Mer information om hello skalbarhetsmål för Azure storage-konton och hello tabell tjänsten, se [Azure Storage skalbarhets- och prestandamål](../storage/common/storage-scalability-targets.md). Senare avsnitt i den här handboken beskrivs olika design strategier som kan hjälpa dig att hantera avvägningarna, till exempel den här och diskutera hur du bäst toochoose din partitionsnyckel baserat på hello särskilda krav på ditt klientprogram.  
 
 ### <a name="capacity-considerations"></a>Överväganden för kapacitetsplanering
-Följande tabell innehåller några nyckelvärden för att vara medveten om när du designar en lösning för tabell:  
+hello innehåller följande tabell några av hello nyckelvärden toobe medveten om när du designar en lösning för tabell:  
 
 | Total kapacitet för ett Azure storage-konto | 500 TB |
 | --- | --- |
-| Antalet tabeller i ett Azure storage-konto |Begränsas bara av kapaciteten för lagringskontot |
-| Antalet partitioner i en tabell |Begränsas bara av kapaciteten för lagringskontot |
-| Antal entiteter i en partition |Begränsas bara av kapaciteten för lagringskontot |
-| Storleken på en enskild entitet |Upp till 1 MB med högst 255 egenskaper (inklusive den **PartitionKey**, **RowKey**, och **tidsstämpel**) |
-| Storleken på den **PartitionKey** |En sträng i storlek på upp till 1 KB |
-| Storleken på den **RowKey** |En sträng i storlek på upp till 1 KB |
-| Storleken på en entitet grupp-transaktion |En transaktion får innehålla högst 100 entiteter och nyttolasten måste vara mindre än 4 MB i storlek. En entitet kan bara uppdatera en gång i en EGT. |
+| Antalet tabeller i ett Azure storage-konto |Begränsas bara av hello kapacitet hello storage-konto |
+| Antalet partitioner i en tabell |Begränsas bara av hello kapacitet hello storage-konto |
+| Antal entiteter i en partition |Begränsas bara av hello kapacitet hello storage-konto |
+| Storleken på en enskild entitet |Upp too1 MB med högst 255 egenskaper (inklusive hello **PartitionKey**, **RowKey**, och **tidsstämpel**) |
+| Storleken på hello **PartitionKey** |En sträng in storlek too1 KB |
+| Storleken på hello **RowKey** |En sträng in storlek too1 KB |
+| Storleken på en entitet grupp-transaktion |En transaktion får innehålla högst 100 entiteter och hello nyttolasten måste vara mindre än 4 MB i storlek. En entitet kan bara uppdatera en gång i en EGT. |
 
-Mer information finns i [förstå den tabelltjänst-datamodellen](http://msdn.microsoft.com/library/azure/dd179338.aspx).  
+Mer information finns i [hello förstå tabelltjänst-datamodellen](http://msdn.microsoft.com/library/azure/dd179338.aspx).  
 
 ### <a name="cost-considerations"></a>Kostnad överväganden
-Table storage är relativt billig, men du bör innehålla kostnaderna för både kapacitetsförbrukning och antalet transaktioner som en del av din utvärderingsversion av någon lösning som använder tabelltjänsten. I många scenarier för datalagring Avnormaliserade eller dubbletter för att förbättra är prestanda och skalbarhet för din lösning dock en giltig metod för att vidta. Mer information om priser finns [priser för Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
+Table storage är relativt billig, men du bör innehålla kostnaderna för båda kapacitet användnings- och hello antal transaktioner som en del av din utvärderingsversion av någon lösning som använder hello tabelltjänsten. I många scenarier för att lagra data för Avnormaliserade eller dubbletter i ordning tooimprove hello är prestanda och skalbarhet för din lösning dock en giltig metod tootake. Mer information om priser finns [priser för Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
 
 ## <a name="guidelines-for-table-design"></a>Riktlinjer för tabelldesign
-De här listorna sammanfattas några av de viktiga riktlinjer som du bör tänka på när du utformar dina tabeller och den här guiden att behandla dem i detalj senare i. Dessa riktlinjer är bland annat de riktlinjer som du vanligtvis utför för relationsdatabas design.  
+Listorna sammanfattas några av hello viktiga riktlinjer som du bör tänka på när du utformar dina tabeller och den här guiden att behandla dem i detalj senare i. Dessa riktlinjer är bland annat hello riktlinjer som du vanligtvis utför för relationsdatabas design.  
 
-Utforma din lösning för tabellen ska *läsa* effektivt:
+Designa din tabell service lösning toobe *läsa* effektivt:
 
-* ***Design för frågor i Läs-aktiverat program.*** När du utformar dina tabeller tänka frågor (särskilt svarstid känsliga de) som du ska köra innan du tycker om hur du ska uppdatera-enheterna. Detta ger vanligtvis en effektiv och performant lösning.  
-* ***Ange både PartitionKey och RowKey i dina frågor.*** *Peka frågor* som dessa är de mest effektiva tabellen service frågorna.  
-* ***Överväg att lagra dubbletter av enheter.*** Table storage är billiga så du överväga att spara samma entitet flera gånger (med olika nycklar) om du vill aktivera effektivare frågor.  
-* ***Överväg att denormalizing dina data.*** Table storage är billiga så Överväg denormalizing dina data. Lagra exempelvis sammanfattning enheter så att frågor för att samla in data bara behöver åtkomst till en enda entitet.  
-* ***Använd sammansatt nyckelvärden.*** Är bara nycklar som du har **PartitionKey** och **RowKey**. Till exempel använda sammansatta nyckelvärden för att aktivera alternativ nycklad åtkomst sökvägar till enheter.  
-* ***Använd fråga projektion.*** Du kan minska mängden data som du överför via nätverket med hjälp av frågor som väljer de fält du behöver.  
+* ***Design för frågor i Läs-aktiverat program.*** När du utformar dina tabeller tänka hello-frågor (särskilt hello svarstid känsliga de) som du ska köra innan du tycker om hur du ska uppdatera-enheterna. Detta ger vanligtvis en effektiv och performant lösning.  
+* ***Ange både PartitionKey och RowKey i dina frågor.*** *Peka frågor* som dessa är hello effektivaste tabellen service frågor.  
+* ***Överväg att lagra dubbletter av enheter.*** Table storage är billiga så Överväg lagra hello samma entitet flera gånger (med olika nycklar) tooenable effektivare frågor.  
+* ***Överväg att denormalizing dina data.*** Table storage är billiga så Överväg denormalizing dina data. Lagra exempelvis sammanfattning enheter så att frågor för att samla in data behöver bara tooaccess en enda entitet.  
+* ***Använd sammansatt nyckelvärden.*** hello endast nycklar som du har är **PartitionKey** och **RowKey**. Till exempel använda sammansatta nyckelvärden tooenable alternativ nycklad åtkomst sökvägar tooentities.  
+* ***Använd fråga projektion.*** Du kan minska hello mängden data som du överför hello nätverket med hjälp av frågor som väljer bara hello fält som du behöver.  
 
-Utforma din lösning för tabellen ska *skriva* effektivt:  
+Designa din tabell service lösning toobe *skriva* effektivt:  
 
-* ***Skapa inte varm partitioner.*** Välj nycklar att sprida dina begäranden över flera partitioner vid någon tidpunkt.  
-* ***Undvika toppar i trafiken.*** Utjämna trafiken över en rimlig tid och undvika toppar i trafiken.
-* ***Inte nödvändigtvis att skapa en separat tabell för varje typ av enhet.*** När du behöver atomiska transaktioner över typer av enheter kan lagra du dessa flera typer av enheter i samma partition i samma tabell.
-* ***Överväg att maximalt dataflöde du måste uppnå.*** Du måste vara medveten om skalbarhetsmål för tabelltjänsten och se till att designen inte ska orsaka du överskrida dem.  
+* ***Skapa inte varm partitioner.*** Välj tangenter som gör att du toospread dina begäranden mellan flera partitioner vid någon tidpunkt.  
+* ***Undvika toppar i trafiken.*** Utjämna hello trafik under en rimlig tid och undvika toppar i trafiken.
+* ***Inte nödvändigtvis att skapa en separat tabell för varje typ av enhet.*** När du behöver atomiska transaktioner över typer av enheter du kan lagra dessa flera typer av enheter i samma partition i hello hello samma tabell.
+* ***Överväg att hello maximalt dataflöde du måste uppnå.*** Du måste vara medveten om hello skalbarhetsmål för hello tabelltjänsten och se till att designen inte ska orsaka du tooexceed dem.  
 
 När du läser handboken visas exempel placera alla dessa principer i praktiken.  
 
 ## <a name="design-for-querying"></a>Design för frågor
-Tabell tjänstelösningar får läsas intensiva, Skriv intensiva eller en blandning av båda. Det här avsnittet handlar om saker att ha i åtanke när du utformar din tabell-tjänsten för att stödja läsåtgärder effektivt. Vanligtvis är en design som stöder läsåtgärder effektivt också effektivt för skrivåtgärder. Men det finns ytterligare överväganden att ha i åtanke när du skapar för att stödja skrivåtgärder som beskrivs i nästa avsnitt, [Design för dataändring](#design-for-data-modification).
+Tabell tjänstelösningar får läsas intensiva, Skriv intensiva eller en blandning av hello två. Det här avsnittet fokuserar på hello saker toobear i åtanke när du utformar din tabell service toosupport läsåtgärder effektivt. Vanligtvis är en design som stöder läsåtgärder effektivt också effektivt för skrivåtgärder. Men det finns ytterligare överväganden toobear i åtanke när designa toosupport skrivåtgärder, beskrivs i nästa avsnitt hello [Design för dataändring](#design-for-data-modification).
 
-En bra utgångspunkt för att utforma din lösning för tabell så att du kan läsa data på ett effektivt sätt är att be ”vilka frågor mitt program måste köras för att hämta data som behövs från tabelltjänsten”?  
+En bra utgångspunkt för att utforma din tabell service lösning tooenable tooread data effektivt är tooask ”vilka frågor kommer Mina program behöver tooexecute tooretrieve hello data måste från hello tabelltjänsten”?  
 
 > [!NOTE]
-> Det är viktigt att hämta designen rätt direkt eftersom det är svåra och dyra att ändra dem senare med tabell-tjänsten. Till exempel i en relationsdatabas är det ofta går att åtgärda problem med prestanda genom att lägga till index i en befintlig databas: Detta är inte ett alternativ med tabelltjänsten.  
+> Hello tabelltjänsten, är det viktigt tooget hello design rätt direkt eftersom det är svåra och dyra toochange senare. Till exempel indexerar möjliga tooaddress prestandaproblem genom att lägga till i en relationsdatabas är det ofta tooan befintlig databas: Detta är inte ett alternativ med hello tabelltjänsten.  
 > 
 > 
 
-Det här avsnittet fokuserar på viktiga problem som du måste ta när du designar tabeller för frågor. I det här avsnittet behandlar:
+Det här avsnittet fokuserar på hello viktiga problem som du måste ta när du designar tabeller för frågor. hello behandlar i det här avsnittet:
 
 * [Hur du väljer PartitionKey och RowKey påverkar prestanda för frågor](#how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance)
 * [Att välja en lämplig PartitionKey](#choosing-an-appropriate-partitionkey)
-* [Optimera frågor för tabelltjänsten](#optimizing-queries-for-the-table-service)
-* [Sortera data i tabelltjänsten](#sorting-data-in-the-table-service)
+* [Optimera frågor för hello tabelltjänst](#optimizing-queries-for-the-table-service)
+* [Sortera data i hello tabelltjänst](#sorting-data-in-the-table-service)
 
 ### <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>Hur du väljer PartitionKey och RowKey påverkar prestanda för frågor
-Följande exempel förutsätter tabelltjänsten lagrar medarbetare entiteter med följande struktur (de flesta av exempel utelämna den **tidsstämpel** egenskapen för tydlighetens skull):  
+hello följande exempel förutsätter hello tabelltjänsten lagrar medarbetare entiteter med följande struktur hello (de flesta av hello exempel utelämna hello **tidsstämpel** egenskapen för tydlighetens skull):  
 
 | *Kolumnnamn* | *Datatyp* |
 | --- | --- |
@@ -211,123 +211,123 @@ Följande exempel förutsätter tabelltjänsten lagrar medarbetare entiteter med
 | **Ålder** |Integer |
 | **E-postadress** |Sträng |
 
-Avsnittet tidigare [översikt över Azure Table](#overview) beskrivs några av de viktigaste funktionerna i Azure Table-tjänsten som har en direkt inverkan på utformning för frågan. Dessa resultera i följande allmänna riktlinjer för att utforma tabellen service frågor. Observera att filtersyntaxen som används i exemplen nedan är från tabelltjänsten REST API för mer information finns i [fråga entiteter](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Hej tidigare avsnittet [översikt över Azure Table](#overview) beskrivs några av hello viktiga funktioner i hello Azure Table-tjänsten som har en direkt inverkan på utformning för frågan. Dessa resultera i hello följande allmänna riktlinjer för att utforma tabellen service frågor. Observera att hello filtersyntaxen används i hello exemplen nedan är från hello tabelltjänsten REST API för mer information finns i [fråga entiteter](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
-* En ***punkt frågan*** är den mest effektiva sökningen att använda och rekommenderas som ska användas för stora volymer sökningar eller sökningar som kräver lägsta svarstid. Sådan fråga kan använda index för att hitta en enskild entitet mycket effektivt genom att ange både den **PartitionKey** och **RowKey** värden. Till exempel: $filter = (PartitionKey eq 'Sales') och (RowKey eq '2')  
-* Andra bäst är en ***intervallet frågan*** som använder den **PartitionKey** och filter på en mängd **RowKey** värden för att returnera mer än en entitet. Den **PartitionKey** värdet identifierar en specifik partition och **RowKey** identifierar en delmängd av entiteter i partitionen. Till exempel: $filter = PartitionKey eq 'Försäljning och RowKey ge' och RowKey lt t '  
-* Tredje bästa är en ***Partition skanna*** som använder den **PartitionKey** och filter på en annan icke-nyckelegenskapen och som kan returnera flera enheter. Den **PartitionKey** värdet identifierar en specifik partition och egenskapen värden väljer för en delmängd av entiteter i partitionen. Till exempel: $filter = PartitionKey eq 'Försäljning' och efternamn eq ”Smith”  
-* En ***tabell skanna*** innehåller inte den **PartitionKey** och är mycket ineffektiv eftersom den söker igenom alla partitioner som utgör din tabell i sin tur för alla matchande entiteter. Utför en tabellgenomsökning oavsett om huruvida filtret använder den **RowKey**. Till exempel: $filter = efternamn eq 'Karlsson'  
-* Frågor som returnerar flera entiteter tillbaka dem i **PartitionKey** och **RowKey** ordning. För att undvika sortera entiteter i klienten kan välja en **RowKey** som definierar de vanligaste sorteringsordning.  
+* En ***punkt frågan*** är hello effektivaste sökning toouse och rekommenderas toobe som används för omfattande sökningar eller sökningar som kräver lägsta svarstid. Sådan fråga kan använda hello index toolocate en enskild entitet mycket effektivt genom att ange både hello **PartitionKey** och **RowKey** värden. Till exempel: $filter = (PartitionKey eq 'Sales') och (RowKey eq '2')  
+* Andra bäst är en ***intervallet frågan*** som använder hello **PartitionKey** och filter på en mängd **RowKey** värden tooreturn mer än en entitet. Hej **PartitionKey** värdet identifierar en specifik partition och hello **RowKey** identifierar en delmängd av hello entiteter i partitionen. Till exempel: $filter = PartitionKey eq 'Försäljning och RowKey ge' och RowKey lt t '  
+* Tredje bästa är en ***Partition skanna*** som använder hello **PartitionKey** och filter på en annan icke-nyckelegenskapen och som kan returnera flera enheter. Hej **PartitionKey** värdet identifierar en specifik partition och hello egenskapen värden väljer för en delmängd av hello entiteter i partitionen. Till exempel: $filter = PartitionKey eq 'Försäljning' och efternamn eq ”Smith”  
+* En ***tabell skanna*** inkluderar inte hello **PartitionKey** och är mycket ineffektiv eftersom den söker igenom alla hello partitioner som utgör din tabell i sin tur för alla matchande entiteter. Utför en tabellgenomsökning oavsett om huruvida filtret använder hello **RowKey**. Till exempel: $filter = efternamn eq 'Karlsson'  
+* Frågor som returnerar flera entiteter tillbaka dem i **PartitionKey** och **RowKey** ordning. tooavoid sortera hello enheterna hello-klienten väljer en **RowKey** som definierar hello vanligaste sorteringsordning.  
 
-Observera att använda en ”**eller**” att ange ett filter baserat på **RowKey** värden resulterar i en partition genomsökning och inte behandlas som en fråga för intervallet. Därför bör du undvika frågor som använder filter exempelvis: $filter = PartitionKey eq 'Sales' och (RowKey eq '121' eller RowKey eq '322')  
+Observera att använda en ”**eller**” toospecify ett filter baserat på **RowKey** värden resulterar i en partition genomsökning och inte behandlas som en fråga för intervallet. Därför bör du undvika frågor som använder filter exempelvis: $filter = PartitionKey eq 'Sales' och (RowKey eq '121' eller RowKey eq '322')  
 
-Exempel på klientsidan kod som använder Storage-klientbiblioteket för att köra effektiva frågor finns:  
+Exempel på klientsidan kod som använder hello Storage-klientbibliotek tooexecute effektiva frågor finns:  
 
-* [Köra en punkt-fråga med Storage-klientbibliotek](#executing-a-point-query-using-the-storage-client-library)
+* [Köra en punkt-fråga med hello Storage-klientbibliotek](#executing-a-point-query-using-the-storage-client-library)
 * [Hämtning av flera enheter med hjälp av LINQ](#retrieving-multiple-entities-using-linq)
 * [Projektion av serversidan](#server-side-projection)  
 
-För exempel på klientsidan kod som kan hantera flera enhetstyper lagras i samma tabell, se:  
+Exempel på klientsidan kod som kan hantera flera entitet typer lagras i hello samma tabell, se:  
 
 * [Arbeta med heterogena entitetstyper](#working-with-heterogeneous-entity-types)  
 
 ### <a name="choosing-an-appropriate-partitionkey"></a>Att välja en lämplig PartitionKey
-Ditt val av **PartitionKey** ska utjämna behöver kan du använda EGTs (för att säkerställa konsekvens) mot kravet att distribuera din entiteter över flera partitioner (för att säkerställa en skalbar lösning).  
+Ditt val av **PartitionKey** ska utjämna hello måste tooenables hello användning av EGTs (tooensure konsekvenskontroll) mot hello krav toodistribute entiteterna mot flera partitioner (tooensure en skalbar lösning).  
 
-Vid en extreme kan du lagra alla entiteter i en enda partition, men detta kan begränsa skalbarhet i din lösning och tabelltjänsten skulle förhindra att kunna belastningsutjämna förfrågningar. På det andra extremt kan du lagra en entitet per partition, vilket är mycket skalbart och som gör att tabelltjänsten för att belastningsutjämna förfrågningar, men som skulle kunna hindra att du använder enheten grupptransaktioner.  
+Vid en extreme kan du lagra alla entiteter i en enda partition, men detta kan begränsa hello skalbarhet för din lösning och hello tabelltjänsten skulle förhindra att kan tooload-begäranden. Vid hello andra extreme kan du lagra en entitet per partition, vilket är mycket skalbart och som kan hello tabell tjänstbegäranden tooload saldo, men som skulle kunna hindra att du använder enheten grupptransaktioner.  
 
-Perfekt **PartitionKey** är en som gör att du kan använda effektiva frågor och som har tillräcklig partitioner för att se till att din lösning är skalbart. Du hittar normalt att-enheterna kommer att ha en lämplig egenskap som distribuerar entiteter i tillräcklig partitioner.
+Perfekt **PartitionKey** är en som du kan använda toouse effektiva frågor och som har tillräcklig partitioner tooensure din lösning är skalbart. Du hittar normalt att-enheterna kommer att ha en lämplig egenskap som distribuerar entiteter i tillräcklig partitioner.
 
 > [!NOTE]
-> I ett system som lagrar information om användare eller anställda kanske användar-ID för en bra PartitionKey. Du kan ha flera enheter som använder en viss användar-ID som partitionsnyckel. Varje entitet som lagrar data om en användare är grupperade i en enda partition och så dessa enheter är tillgängliga via entitet grupptransaktioner, samtidigt som de skalbara.
+> I ett system som lagrar information om användare eller anställda kanske användar-ID för en bra PartitionKey. Du kan ha flera enheter som använder en viss användar-ID som hello partitionsnyckel. Varje entitet som lagrar data om en användare är grupperade i en enda partition och så dessa enheter är tillgängliga via entitet grupptransaktioner, samtidigt som de skalbara.
 > 
 > 
 
-Det finns fler överväganden i valfri **PartitionKey** som relaterar till hur du ska infoga, uppdatera och ta bort entiteter: finns i avsnittet [Design för dataändring](#design-for-data-modification) nedan.  
+Det finns fler överväganden i valfri **PartitionKey** som relaterar toohow ska du infoga, uppdatera och ta bort entiteter: hello i avsnittet [Design för dataändring](#design-for-data-modification) nedan.  
 
-### <a name="optimizing-queries-for-the-table-service"></a>Optimera frågor för tabelltjänsten
-Tabelltjänsten indexerar automatiskt dina enheter med hjälp av den **PartitionKey** och **RowKey** värden i ett enda grupperat index, därför orsaken till att peka frågor är det mest effektiva sättet att använda. Det finns dock ingen index än det som i det grupperade indexet på den **PartitionKey** och **RowKey**.
+### <a name="optimizing-queries-for-hello-table-service"></a>Optimera frågor för hello tabelltjänst
+Hej tabelltjänsten indexerar automatiskt dina enheter med hjälp av hello **PartitionKey** och **RowKey** värden i ett enda grupperat index därför hello orsak att punkt frågor är hello effektivaste toouse . Det finns dock några index än det som på hello grupperade indexet för hello **PartitionKey** och **RowKey**.
 
-Många-Designer måste uppfylla kraven för att aktivera sökning efter enheter baserat på flera villkor. Hitta medarbetare enheter baserat på e-post, till exempel anställnings-id eller efternamn. Följande mönster i avsnittet [tabell designmönster](#table-design-patterns) dessa typer av krav och beskriver fungerar runt det faktum att tabelltjänsten inte ger sekundärindex på olika sätt:  
+Många-Designer måste uppfylla kraven tooenable sökning efter enheter baserat på flera villkor. Hitta medarbetare enheter baserat på e-post, till exempel anställnings-id eller efternamn. hello följande mönster i hello avsnittet [tabell designmönster](#table-design-patterns) dessa typer av krav och beskriver fungerar runt hello faktum att hello tabelltjänsten inte ger sekundärindex på olika sätt:  
 
-* [Intra-partition sekundärt index mönster](#intra-partition-secondary-index-pattern) -lagra flera kopior av varje enhet med hjälp av olika **RowKey** värden (i samma partition) för att aktivera snabb och effektiv sökningar och alternativa sorteringsordningen genom att använda olika **RowKey** värden.  
-* [Mellan sekundära Partitionsindex mönster](#inter-partition-secondary-index-pattern) – lagra flera kopior av varje entitet som använder olika RowKey värden i olika partitioner eller i separata tabeller för att aktivera snabb och effektiv sökningar och alternativa sorteringen sorterar med hjälp av olika **RowKey** värden.  
-* [Index entiteter mönster](#index-entities-pattern) -Underhåll index enheter om du vill aktivera effektiva sökningar som returnerar en lista över enheter.  
+* [Intra-partition sekundärt index mönster](#intra-partition-secondary-index-pattern) -lagra flera kopior av varje enhet med hjälp av olika **RowKey** värden (i hello samma partition) tooenable snabba och effektiva sökningar och alternativa sorteringen sorterar med hjälp av olika **RowKey** värden.  
+* [Mellan sekundära Partitionsindex mönster](#inter-partition-secondary-index-pattern) – lagra flera kopior av varje entitet med olika RowKey värden i olika partitioner eller i separata tabeller tooenable snabb och effektiv sökningar och alternativa sorteringen sorterar med hjälp av olika **RowKey** värden.  
+* [Index entiteter mönster](#index-entities-pattern) -Underhåll entiteter tooenable effektiva sökningar som returnerar en lista över enheter.  
 
-### <a name="sorting-data-in-the-table-service"></a>Sortera data i tabelltjänsten
-Tabelltjänsten returnerar entiteter sorterade i stigande ordning utifrån **PartitionKey** och sedan efter **RowKey**. Nycklarna är strängvärden och för att säkerställa att numeriska värden sorteras korrekt, bör du konvertera dem till en fast längd och Fyll ut dem med nollor. Om medarbetaren ID-värde som du använder som till exempel den **RowKey** är ett heltal, bör du konvertera anställnings-id **123** till **00000123**.  
+### <a name="sorting-data-in-hello-table-service"></a>Sortera data i hello tabelltjänst
+Hej tabelltjänsten returnerar entiteter sorterade i stigande ordning utifrån **PartitionKey** och sedan efter **RowKey**. Nycklarna är strängvärden och tooensure numeriska värden sorteras korrekt, bör du konvertera dem tooa fast längd och Fyll ut dem med nollor. Till exempel, om hello medarbetare ID-värde du använda hello **RowKey** är ett heltal, bör du konvertera anställnings-id **123** för**00000123**.  
 
-Många program har krav för att använda data sorteras i olika ordning: till exempel sortera anställda efter namn eller ansluta till datum. Följande mönster i avsnittet [tabell designmönster](#table-design-patterns) adress så alternativa sorteringsordningar för dina enheter:  
+Många program har krav toouse data sorteras i olika ordning: till exempel sortera anställda efter namn eller ansluta till datum. hello följande mönster i hello avsnittet [tabell designmönster](#table-design-patterns) adressen hur tooalternate sorteringsordningar för dina enheter:  
 
-* [Intra-partition sekundärt index mönster](#intra-partition-secondary-index-pattern) – lagra flera kopior av varje entitet som använder olika RowKey värden (i samma partition) för att aktivera snabb och effektiv sökningar och alternativa sorteringen sorterar med hjälp av olika RowKey värden.  
-* [Mellan sekundära Partitionsindex mönster](#inter-partition-secondary-index-pattern) – lagra flera kopior av varje entitet med olika RowKey värden för olika partitioner i separata tabeller för att aktivera snabb och effektiv sökningar och alternativa sorteringen sorterar med hjälp av olika RowKey värden .
-* [Loggen pilslut mönster](#log-tail-pattern) -hämta den  *n*  entiteter som senast lades till en partition med hjälp av en **RowKey** värde som sorterar i omvänd datum och tid ordning.  
+* [Intra-partition sekundärt index mönster](#intra-partition-secondary-index-pattern) -lagra flera kopior av varje entitet med olika värden för RowKey (i hello samma partition) tooenable snabba och effektiva sökningar och alternativa sorteringen sorterar med hjälp av olika RowKey värden.  
+* [Mellan sekundära Partitionsindex mönster](#inter-partition-secondary-index-pattern) – lagra flera kopior av varje entitet med olika RowKey värden i separata partitioner i separata tabeller tooenable snabb och effektiv sökningar och alternativa sorteringen sorterar med hjälp av olika RowKey värden.
+* [Loggen pilslut mönster](#log-tail-pattern) -hämta hello  *n*  entiteter senast lades tooa partition med hjälp av en **RowKey** värde som sorterar i omvänd datum och tid ordning.  
 
 ## <a name="design-for-data-modification"></a>Design för dataändring
-Det här avsnittet fokuserar på designöverväganden för att optimera infogningar, uppdateringar, och tar bort. I vissa fall behöver du utvärdera kompromissen mellan Designer optimerar för frågor mot Designer optimerar för dataändring precis som i Designer för relationsdatabaser (även om metoder för att hantera design avvägningarna är olika i en relationsdatabas). Avsnittet [tabell designmönster](#table-design-patterns) beskriver vissa detaljerad designmönster för tabelltjänsten och beskrivs några dessa avvägningarna. Du hittar många Designer som optimerats för att fråga entiteter också fungerar bra för att ändra entiteter i praktiken.  
+Det här avsnittet fokuserar på hello designöverväganden för att optimera infogningar, uppdateringar, och tar bort. I vissa fall måste tooevaluate hello säkerhetsaspekten Designer optimerar för frågor mot Designer optimerar för dataändring precis som i Designer för relationsdatabaser (även om hello tekniker för att hantera hello design avvägningarna är olika i en relationsdatabas). Hej avsnittet [tabell designmönster](#table-design-patterns) beskriver vissa detaljerad designmönster för hello tabelltjänsten och beskrivs några dessa avvägningarna. Du hittar många Designer som optimerats för att fråga entiteter också fungerar bra för att ändra entiteter i praktiken.  
 
-### <a name="optimizing-the-performance-of-insert-update-and-delete-operations"></a>Optimera prestanda för insert-, update och delete-åtgärder
-Om du vill uppdatera eller ta bort en entitet, du måste kunna identifieras med hjälp av den **PartitionKey** och **RowKey** värden. I detta avseende valet av **PartitionKey** och **RowKey** för ändra entiteter bör följa liknande kriterier till ditt val att stödja punkt frågor eftersom du vill identifiera enheter som effektiv som möjligt. Du inte vill använda en ineffektiv partition eller tabell sökning för att hitta en enhet för att identifiera den **PartitionKey** och **RowKey** värden som du behöver uppdatera eller ta bort den.  
+### <a name="optimizing-hello-performance-of-insert-update-and-delete-operations"></a>Optimera hello prestanda för insert-, uppdatera och ta bort
+tooupdate eller ta bort en enhet, måste du vara kan tooidentify den med hjälp av hello **PartitionKey** och **RowKey** värden. I detta avseende valet av **PartitionKey** och **RowKey** för ändra entiteter bör följa liknande villkor tooyour val toosupport peka frågor eftersom du vill tooidentify entiteter som effektiv som möjligt. Du inte vill toouse en ineffektiv partition eller tabell genomsökning toolocate en entitet i ordning toodiscover hello **PartitionKey** och **RowKey** värden som du behöver tooupdate eller ta bort den.  
 
-Följande mönster i avsnittet [tabell designmönster](#table-design-patterns) adress optimera prestanda eller din insert, update och delete-åtgärder:  
+Hej följande mönster i hello avsnittet [tabell designmönster](#table-design-patterns) adress optimera prestanda för hello eller din insert, update och delete-åtgärder:  
 
-* [Hög volym ta bort mönster](#high-volume-delete-pattern) -Aktivera borttagning av ett stort antal enheter genom att lagra alla entiteter för samtidiga borttagning i sina egna separata tabeller; ta bort entiteterna genom att ta bort tabellen.  
-* [Serien datamönster](#data-series-pattern) -Store fullständig dataserier i en enda enhet för att minimera antalet begäranden som du gör.  
-* [Wide entiteter mönster](#wide-entities-pattern) -använda flera fysiska enheter för att lagra logiska entiteter med mer än 252 egenskaper.  
-* [Mönster för stora entiteter](#large-entities-pattern) -använda blob storage för att lagra stora egenskapsvärden.  
+* [Hög volym ta bort mönster](#high-volume-delete-pattern) -aktivera hello borttagningen av ett stort antal enheter genom att lagra alla hello entiteter för samtidiga borttagning i sina egna separata tabeller; du ta bort hello enheter genom att ta bort hello tabell.  
+* [Serien datamönster](#data-series-pattern) -Store fullständig dataserien i en enda entitet toominimize hello antal begäranden som du gör.  
+* [Wide entiteter mönster](#wide-entities-pattern) -använder flera logiska enheter som fysiska entiteter toostore med mer än 252 egenskaper.  
+* [Mönster för stora entiteter](#large-entities-pattern) -Använd blob storage toostore stora värden.  
 
 ### <a name="ensuring-consistency-in-your-stored-entities"></a>Säkerställa konsekvens i lagrade entiteter
-Den viktiga faktor som påverkar ditt val av nycklar för att optimera dataändringar är att säkerställa konsekvens med hjälp av atomiska transaktioner. Du kan bara använda en EGT ska fungera på entiteter som lagras i samma partition.  
+Hej andra viktiga faktorer som påverkar ditt val av nycklar för optimera dataändringar är hur tooensure konsekvens med hjälp av atomiska transaktioner. Du kan bara använda en EGT toooperate på entiteter som lagras i hello samma partition.  
 
-Följande mönster i avsnittet [tabell designmönster](#table-design-patterns) adress hantera konsekvens:  
+Hej följande mönster i hello avsnittet [tabell designmönster](#table-design-patterns) adress hantera konsekvens:  
 
-* [Intra-partition sekundärt index mönster](#intra-partition-secondary-index-pattern) -lagra flera kopior av varje enhet med hjälp av olika **RowKey** värden (i samma partition) för att aktivera snabb och effektiv sökningar och alternativa sorteringsordningen genom att använda olika **RowKey** värden.  
-* [Mellan sekundära Partitionsindex mönster](#inter-partition-secondary-index-pattern) – lagra flera kopior av varje entitet som använder olika RowKey värden i olika partitioner eller i separata tabeller för att aktivera snabb och effektiv sökningar och alternativa sorteringen sorterar med hjälp av olika **RowKey** värden.  
+* [Intra-partition sekundärt index mönster](#intra-partition-secondary-index-pattern) -lagra flera kopior av varje enhet med hjälp av olika **RowKey** värden (i hello samma partition) tooenable snabba och effektiva sökningar och alternativa sorteringen sorterar med hjälp av olika **RowKey** värden.  
+* [Mellan sekundära Partitionsindex mönster](#inter-partition-secondary-index-pattern) – lagra flera kopior av varje entitet med olika RowKey värden i olika partitioner eller i separata tabeller tooenable snabb och effektiv sökningar och alternativa sorteringen sorterar med hjälp av olika **RowKey** värden.  
 * [Överensstämmelse transaktioner mönster](#eventually-consistent-transactions-pattern) -aktivera överensstämmelse beteende mellan partitionsgränser eller lagring system gränser med hjälp av Azure köer.
-* [Index entiteter mönster](#index-entities-pattern) -Underhåll index enheter om du vill aktivera effektiva sökningar som returnerar en lista över enheter.  
-* [Denormalization mönster](#denormalization-pattern) -kombinera relaterade data tillsammans i en enda enhet så att du kan hämta alla data som du behöver med en enda fråga.  
-* [Serien datamönster](#data-series-pattern) -Store fullständig dataserier i en enda enhet för att minimera antalet begäranden som du gör.  
+* [Index entiteter mönster](#index-entities-pattern) -Underhåll entiteter tooenable effektiva sökningar som returnerar en lista över enheter.  
+* [Denormalization mönster](#denormalization-pattern) -kombinera relaterade data tillsammans i en enda entitet tooenable tooretrieve alla hello data som du behöver med en enda fråga.  
+* [Serien datamönster](#data-series-pattern) -Store fullständig dataserien i en enda entitet toominimize hello antal begäranden som du gör.  
 
-Information om entiteten grupptransaktioner finns i avsnittet [entitet gruppera transaktioner](#entity-group-transactions).  
+Information om entiteten grupptransaktioner i avsnittet hello [entitet gruppera transaktioner](#entity-group-transactions).  
 
 ### <a name="ensuring-your-design-for-efficient-modifications-facilitates-efficient-queries"></a>Säkerställa en design för effektiv ändringar underlättar effektiv frågor
-I många fall bör alltid en design för effektiva frågor ger effektiv ändringar, men du utvärdera om så är fallet för din situation. Några av mönster i avsnittet [tabell designmönster](#table-design-patterns) explicit utvärdera avvägningarna mellan fråga och ändra entiteter och du bör alltid beakta numret för varje typ av åtgärd.  
+I många fall bör alltid en design för effektiva frågor ger effektiv ändringar, men du utvärdera om så är fallet hello för din situation. Del av hello mönster i hello avsnittet [tabell designmönster](#table-design-patterns) explicit utvärdera avvägningarna mellan fråga och ändra entiteter och du bör alltid hänsyn hello kontonummer för varje typ av åtgärd.  
 
-Följande mönster i avsnittet [tabell designmönster](#table-design-patterns) adressen avvägningarna mellan utformning för effektiva frågor och designar för effektiv dataändring:  
+Hej följande mönster i hello avsnittet [tabell designmönster](#table-design-patterns) adressen avvägningarna mellan utformning för effektiva frågor och designar för effektiv dataändring:  
 
-* [Sammansatt nyckel mönster](#compound-key-pattern) -Använd sammansatta **RowKey** värden att aktivera en klient att söka efter relaterade data med en enda fråga.  
-* [Loggen pilslut mönster](#log-tail-pattern) -hämta den  *n*  entiteter som senast lades till en partition med hjälp av en **RowKey** värde som sorterar i omvänd datum och tid ordning.  
+* [Sammansatt nyckel mönster](#compound-key-pattern) -Använd sammansatta **RowKey** värden tooenable en klient toolookup relaterade data med en enda fråga.  
+* [Loggen pilslut mönster](#log-tail-pattern) -hämta hello  *n*  entiteter senast lades tooa partition med hjälp av en **RowKey** värde som sorterar i omvänd datum och tid ordning.  
 
 ## <a name="encrypting-table-data"></a>Kryptera tabelldata
-.NET Azure Storage-klientbibliotek har stöd för kryptering av strängen Entitetsegenskaper för insert och ersätt-åtgärder. Krypterade strängar lagras på tjänsten som binära egenskaper och de konverteras till strängar efter dekrypteringen.    
+Hej .NET Azure Storage-klientbibliotek har stöd för kryptering av strängen Entitetsegenskaper för insert och ersätt-åtgärder. hello krypterade strängar lagras på hello-tjänsten som binära egenskaper och de konverteras tillbaka toostrings efter dekrypteringen.    
 
-För tabeller, förutom krypteringsprincipen, måste användare ange egenskaper som ska krypteras. Detta kan göras genom att antingen att ange attributet [EncryptProperty] (för POCO entiteter som är härledda från TableEntity) eller en kryptering matcharen begäran alternativ. En kryptering Konfliktlösaren är en delegat som tar en partitionsnyckel, radnyckel och egenskapsnamn och returnerar ett booleskt värde som anger om egenskapen ska krypteras. Under krypteringen använder klientbiblioteket den här informationen för att avgöra om en egenskap ska krypteras vid skrivning till kabeln. Delegaten ger också möjlighet att logik runt hur egenskaperna är krypterade. (Till exempel om X, sedan kryptera egenskapen A; annars kryptera egenskaper A och b) Observera att det inte nödvändigt att ange den här informationen vid läsning eller fråga entiteter.
+För tabeller, dessutom toohello krypteringsprincipen användare måste ange hello egenskaper toobe krypteras. Detta kan göras genom att antingen att ange attributet [EncryptProperty] (för POCO entiteter som är härledda från TableEntity) eller en kryptering matcharen begäran alternativ. En kryptering Konfliktlösaren är en delegat som tar en partitionsnyckel, radnyckel och egenskapsnamn och returnerar ett booleskt värde som anger om egenskapen ska krypteras. Under krypteringen använder hello klientbiblioteket denna information toodecide om en egenskap som ska krypteras vid skrivning till toohello överföring. Det ger också hello ombud hello möjlighet till logik runt hur egenskaperna är krypterade. (Till exempel om X, sedan kryptera egenskapen A; annars kryptera egenskaper A och b) Observera att det är inte nödvändigt tooprovide denna information vid läsning eller fråga entiteter.
 
-Observera att koppling inte stöds för närvarande. Eftersom en delmängd av egenskaper kan har krypterats tidigare med hjälp av en annan nyckel leder bara sammanslagning nya egenskaper och uppdaterar metadata till dataförlust. Sammanslagning av antingen kräver extra service-anrop för att läsa den befintliga enheten från tjänsten eller med en ny nyckel för varje egenskap som lämpar sig inte av prestandaskäl.     
+Observera att koppling inte stöds för närvarande. Eftersom en delmängd av egenskaper kan har krypterats tidigare med hjälp av en annan nyckel leder bara sammanslagning hello nya egenskaper och uppdaterar hello metadata till dataförlust. Sammanslagning av antingen kräver att göra extra service anropar tooread hello befintlig entitet från hello-tjänsten eller med en ny nyckel för varje egenskap som lämpar sig inte av prestandaskäl.     
 
 Information om hur du krypterar tabelldata finns [kryptering på klientsidan och Azure Key Vault för Microsoft Azure Storage](../storage/common/storage-client-side-encryption.md).  
 
 ## <a name="modelling-relationships"></a>Modellering relationer
-Skapa domänmodeller är ett viktigt steg i utformningen av komplexa system. Normalt använder du modellering processen för att identifiera enheter och relationer mellan dem som ett sätt att förstå business-domänen och informera designen av systemet. Det här avsnittet fokuserar på hur du kan översätta några av de vanliga relation hittades i domänmodeller för Designer för tabelltjänsten. Processen för mappning från en logisk datamodell till en fysisk NoSQL baserad-datamodell är väldigt annorlunda än den som används när du skapar en relationsdatabas. Relationsdatabaser design förutsätter vanligtvis en process för normalisering som har optimerats för att minimera redundans – och en deklarativ frågar funktion som avlägsnar hur implementeringen av hur databasen fungerar.  
+Skapa domänmodeller är ett viktigt steg i hello design av komplexa system. Normalt använder du hello modellering processen tooidentify entiteter och hello relationer mellan dem som ett sätt toounderstand hello business domän och informera hello utformning av systemet. Det här avsnittet fokuserar på hur du kan översätta vissa hello vanliga relationstyper hittades i domänen modeller toodesigns för hello tabelltjänsten. hello är mappning från en logisk datamodell tooa fysiska baserat NoSQL-datamodell väldigt annorlunda än den som används när du skapar en relationsdatabas. Relationsdatabaser design förutsätter vanligtvis en process för normalisering som har optimerats för att minimera redundans – och en deklarativ frågar funktion som sammanfattningar hello hur implementeringen av hur hello databasen fungerar.  
 
 ### <a name="one-to-many-relationships"></a>En-till-många-relationer
-En-till-många-relationer mellan företag domänobjekt inträffa ofta: till exempel en avdelning har många anställda. Det finns flera sätt att implementera en-till-många-relationer i tabelltjänsten varje med för- och nackdelar som är relevanta för ett visst scenario.  
+En-till-många-relationer mellan företag domänobjekt inträffa ofta: till exempel en avdelning har många anställda. Det finns flera sätt tooimplement en-till-många-relationer i hello tabelltjänsten varje med för- och nackdelar som kan vara relevanta toohello visst scenario.  
 
-Studera exemplet i flera nationella stora företag med tusentals avdelningar och medarbetare enheter där varje avdelning har många anställda och varje medarbetare som tillhör en viss avdelning. En metod är att lagra separat avdelning och medarbetare entiteter som dessa:  
+Överväg att hello exempel på flera nationella stora företag med tusentals avdelningar och medarbetare enheter där varje avdelning har många anställda och varje medarbetare som tillhör en viss avdelning. En metod som är toostore separat avdelning och medarbetare entiteter som dessa:  
 
 ![][1]
 
-Det här exemplet illustrerar en implicit en-till-många-relation mellan de typer som är baserat på den **PartitionKey** värde. Varje avdelning kan ha många anställda.  
+Det här exemplet illustrerar en implicit en-till-många-relation mellan hello typer baserat på hello **PartitionKey** värde. Varje avdelning kan ha många anställda.  
 
-Det här exemplet visar också en avdelning entiteten och dess relaterade medarbetare entiteter i samma partition. Du kan välja att använda olika partitioner, tabeller och även lagringskonton för olika enhetstyper.  
+Det här exemplet visar också en avdelning entitet och dess relaterade medarbetare entiteter i hello samma partition. Du kan välja toouse olika partitioner, tabeller och även storage-konton för hello olika enhetstyper.  
 
-En annan metod är att denormalize dina data och lagrar bara medarbetare entiteter med Avnormaliserade avdelningsdata som visas i följande exempel. I det här scenariot kanske kan då Avnormaliserade inte bäst om du har ett krav för att kunna ändra information om en hanterare för avdelning eftersom om du vill göra detta måste du uppdatera alla medarbetare i avdelningen.  
+En annan metod är toodenormalize dina data och store endast anställda entiteter med Avnormaliserade information som visas i följande exempel hello. I det här scenariot kan då Avnormaliserade kanske inte hello bäst om du har ett krav toobe kan toochange hello information för en avdelningschef eftersom toodo detta behöver du tooupdate alla medarbetare i hello-avdelningen.  
 
 ![][2]
 
-Mer information finns i [Denormalization mönster](#denormalization-pattern) senare i den här guiden.  
+Mer information finns i hello [Denormalization mönster](#denormalization-pattern) senare i den här guiden.  
 
-I följande tabell sammanfattas för- och nackdelarna med vart och ett av de metoder som beskrivs ovan för att lagra medarbetare och avdelningen enheter som har en en-till-många-relation. Det bör också övervägas hur ofta du förväntar dig att utföra olika åtgärder: kan det vara acceptabelt att ha en design som innehåller en kostsam åtgärd om åtgärden endast inträffar sällan.  
+hello följande tabell sammanfattas hello- och nackdelar med varje hello-metoder som beskrivs ovan för att lagra medarbetare och avdelningen enheter som har en en-till-många-relation. Det bör också övervägas hur ofta du förväntar dig tooperform olika åtgärder: Det kan vara godtagbar toohave en design som innehåller en kostsam åtgärd om åtgärden endast inträffar sällan.  
 
 <table>
 <tr>
@@ -340,14 +340,14 @@ I följande tabell sammanfattas för- och nackdelarna med vart och ett av de met
 <td>
 <ul>
 <li>Du kan uppdatera en avdelning entitet med en enda åtgärd.</li>
-<li>Du kan använda en EGT för att upprätthålla enhetliga om du har ett krav för att ändra en avdelning enhet när du uppdatering/insert/ta bort en medarbetare entitet. Till exempel om du har ett antal avdelningens anställda för varje avdelning.</li>
+<li>Du kan använda en EGT toomaintain konsekvenskontroll om du har ett krav toomodify en avdelning enhet när du uppdatering/insert/ta bort en medarbetare entitet. Till exempel om du har ett antal avdelningens anställda för varje avdelning.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Du kan behöva hämta både anställda och en avdelning entitet för vissa aktiviteter för klienten.</li>
-<li>Storage-åtgärder sker i samma partition. Vid höga transaktionsvolymer kan detta resultera i en hotspot.</li>
-<li>Du kan inte flytta en medarbetare till en ny avdelning med hjälp av en EGT.</li>
+<li>Du kan behöva tooretrieve både anställda och en avdelning entitet för vissa aktiviteter för klienten.</li>
+<li>Storage-åtgärder sker i hello samma partition. Vid höga transaktionsvolymer kan detta resultera i en hotspot.</li>
+<li>Du kan inte flytta en medarbetare tooa nya avdelning med hjälp av en EGT.</li>
 </ul>
 </td>
 </tr>
@@ -356,14 +356,14 @@ I följande tabell sammanfattas för- och nackdelarna med vart och ett av de met
 <td>
 <ul>
 <li>Du kan uppdatera en avdelning entitet eller medarbetare enhet med en enda åtgärd.</li>
-<li>Vid höga transaktionsvolymer att detta sprida belastningen över flera partitioner.</li>
+<li>Detta kan hjälpa med höga transaktionsvolymer spridning hello belastningen över flera partitioner.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Du kan behöva hämta både anställda och en avdelning entitet för vissa aktiviteter för klienten.</li>
-<li>Du kan inte använda EGTs för att underhålla konsekvensen när du uppdatering/insert/ta bort en medarbetare och uppdatera en avdelning. Till exempel uppdaterar ett antal anställda i en avdelning entitet.</li>
-<li>Du kan inte flytta en medarbetare till en ny avdelning med hjälp av en EGT.</li>
+<li>Du kan behöva tooretrieve både anställda och en avdelning entitet för vissa aktiviteter för klienten.</li>
+<li>Du kan inte använda EGTs toomaintain konsekvenskontroll när du uppdatering/insert/ta bort en medarbetare och uppdatera en avdelning. Till exempel uppdaterar ett antal anställda i en avdelning entitet.</li>
+<li>Du kan inte flytta en medarbetare tooa nya avdelning med hjälp av en EGT.</li>
 </ul>
 </td>
 </tr>
@@ -371,96 +371,96 @@ I följande tabell sammanfattas för- och nackdelarna med vart och ett av de met
 <td>Denormalize till samma enhetstyp</td>
 <td>
 <ul>
-<li>Du kan hämta all information du behöver med en enskild begäran.</li>
+<li>Du kan hämta alla hello information du behöver med en enskild begäran.</li>
 </ul>
 </td>
 <td>
 <ul>
-<li>Det kan vara dyra att upprätthålla enhetliga om du behöver uppdatera avdelning information (det här kräver du uppdatera alla anställda i en avdelning).</li>
+<li>Det kan vara dyra toomaintain konsekvenskontroll om du behöver tooupdate avdelning information (det här kräver du tooupdate alla hello anställda på en avdelning).</li>
 </ul>
 </td>
 </tr>
 </table>
 
-Hur du väljer mellan dessa alternativ och vilka av för- och nackdelar som är störst, beror på dina specifika Programscenarier. Till exempel hur ofta du ändrar avdelning entiteter; behöver alla medarbetare frågor kan ytterligare information som avdelningsnivå; hur nära kommer du skalbarhetsgränser på partitioner eller storage-konto?  
+Hur kan du välja mellan alternativen och vilka hello-tekniker och nackdelar som är störst, beror på dina specifika Programscenarier. Till exempel hur ofta du ändrar avdelning entiteter; behöver alla medarbetare frågor hello avdelningsnivå tilläggsinformation; hur nära är du toohello skalbarhetsgränser på partitioner eller storage-konto?  
 
 ### <a name="one-to-one-relationships"></a>1: 1-relationer
-Domänmodeller kan innehålla 1: 1-relationer mellan entiteter. Om du behöver implementera en-till-en relation i tabelltjänsten måste du också välja hur du länkar två relaterade entiteter när du behöver hämta dem båda. Den här länken kan vara implicit, baserat på en konvention i nyckelvärdena eller explicit genom att lagra en länk i form av **PartitionKey** och **RowKey** värdena i varje entitet till dess relaterade entitet. Mer information om huruvida du bör lagra relaterade entiteter i samma partition, finns i avsnittet [en-till-många-relationer](#one-to-many-relationships).  
+Domänmodeller kan innehålla 1: 1-relationer mellan entiteter. Om du behöver tooimplement en-till-en relation i hello tabelltjänsten, måste du också välja hur toolink hello två relaterade entiteter när du behöver tooretrieve båda. Den här länken kan vara implicit, baserat på en konvention i hello nyckelvärden eller explicit genom att lagra en länk i hello form av **PartitionKey** och **RowKey** värdena i varje entitet tooits relaterade entiteten. Mer information om huruvida du bör lagra hello relaterade entiteter i Hej samma partition, hello i avsnittet [en-till-många-relationer](#one-to-many-relationships).  
 
-Observera att det finns också implementering som kan leda dig att implementera 1: 1-relationer i tabelltjänsten:  
+Observera att det finns också implementering som kan leda du tooimplement 1: 1-relationer i hello tabelltjänsten:  
 
 * Hantering av stora entiteter (Mer information finns i [stora entiteter mönster](#large-entities-pattern)).  
 * Implementera åtkomstkontroller (Mer information finns i [Kontrollera åtkomst med signaturer för delad åtkomst](#controlling-access-with-shared-access-signatures)).  
 
-### <a name="join-in-the-client"></a>Delta i klient
-Även om det finns olika sätt att modellen relationer i tabelltjänsten, ska du inte glömma att två huvudsakliga skälen för att använda tabelltjänsten finns skalbarhet och prestanda. Om du hittar du modellering många relationer som kan påverka prestanda och skalbarhet i lösningen, bör du fråga dig själv om det är nödvändigt att skapa alla relationer som data i tabelldesign. Du kan förenkla designen och förbättra skalbarhet och prestanda i lösningen om du låta ditt klientprogram som utför alla nödvändiga kopplingar.  
+### <a name="join-in-hello-client"></a>Delta i hello-klienten
+Även om det finns olika sätt toomodel relationer i hello tabelltjänsten, ska du inte glömma att hello två huvudsakliga skäl till att använda hello tabelltjänsten finns skalbarhet och prestanda. Om du hittar du modellering många relationer som angripa hello prestanda och skalbarhet i lösningen, bör du fråga dig själv om det är nödvändigt toobuild alla hello data relationer i tabelldesign. Du kan kan toosimplify hello design och förbättra hello skalbarhet och prestanda för din lösning om du låta ditt klientprogram som utför alla nödvändiga kopplingar.  
 
-Till exempel om du har liten tabeller som innehåller data som inte ändras ofta kan sedan du hämta dessa data en gång och cachelagras på klienten. Detta kan undvika upprepade görs för att hämta samma data. I exemplen som vi har tittat på i den här handboken sannolikt uppsättning avdelningar i en liten organisation att små och ändra sällan att göra det en bra kandidat för data som klientprogram kan ladda ned en gång och cache som slå upp data.  
+Till exempel om du har liten tabeller som innehåller data som inte ändras ofta kan sedan du hämta dessa data en gång och cachelagras på klienten hello. Detta kan undvika upprepade görs tooretrieve hello samma data. I hello exempel vi har tittat på i den här handboken är hello avdelningar i en liten organisation sannolikt toobe små och ändrar sällan att göra det en bra kandidat för data som klientprogram kan ladda ned en gång och cache som slå upp data.  
 
 ### <a name="inheritance-relationships"></a>Arvsrelationer
-Om klientprogrammet använder en uppsättning klasser som ingår i en arvsrelation för att representera affärsobjekt, kan du enkelt kvarstår dessa enheter i tabelltjänsten. Du kan till exempel ha följande uppsättning klasser som definieras i ditt klientprogram där **Person** är en abstrakt klass.
+Om klientprogrammet använder en uppsättning klasser som utgör en del av ett affärsobjekt arv relationen toorepresent, kan du enkelt sparas dessa enheter i hello tabelltjänsten. Du kan till exempel ha följande uppsättning klasser som definieras i ditt klientprogram hello där **Person** är en abstrakt klass.
 
 ![][3]
 
-Du kan spara instanser av två konkreta klasser i tjänsten tabellen med hjälp av en enskild Person tabell med entiteter i den ser ut så här:  
+Du kan spara instanser av hello två konkreta klasser i hello tabelltjänsten med hjälp av en enskild Person tabell med entiteter i den ser ut så här:  
 
 ![][4]
 
-Mer information om hur du arbetar med flera typer av enheter i samma tabell i klientkod finns i avsnittet [arbeta med heterogena entitetstyper](#working-with-heterogeneous-entity-types) senare i den här guiden. Detta ger exempel på hur du identifierar entitetstypen i klientkod.  
+Mer information om hur du arbetar med flera typer av enheter i samma tabell i klientkod hello avsnittet hello [arbeta med heterogena entitetstyper](#working-with-heterogeneous-entity-types) senare i den här guiden. Detta ger exempel på hur toorecognize hello entitetstypen i klientkod.  
 
 ## <a name="table-design-patterns"></a>Designmönster för tabellen
-Du har sett detaljerad diskussioner om hur du optimerar dina tabelldesign för både hämtades entitetsdata med hjälp av frågor och infoga, uppdatera och ta bort entitetsdata i föregående avsnitt. Det här avsnittet beskrivs vissa mönster som är lämpliga för användning med tjänstelösningar för tabellen. Dessutom visas hur du praktiskt taget kan lösa vissa problem och avvägningarna aktiveras tidigare i den här guiden. I följande diagram visas relationerna mellan de olika mönster:  
+Du har sett vissa detaljerad information om hur toooptimize tabellen-design för både hämtades entitetsdata med hjälp av frågor och infoga, uppdatera och ta bort entitetsdata i föregående avsnitt. Det här avsnittet beskrivs vissa mönster som är lämpliga för användning med tjänstelösningar för tabellen. Dessutom visas hur du praktiskt taget kan lösa vissa problem med hello och avvägningarna aktiveras tidigare i den här guiden. hello visas följande diagram hello relationer mellan hello olika mönster:  
 
 ![][5]
 
-Mönstret kartan ovan visar relationer mellan mönster (blå) och ett mönster (orange) som finns dokumenterade i handboken. Det är naturligtvis många mönster som är värda att ta hänsyn till. Till exempel ett viktiga scenarier för Tabelltjänsten är att använda den [Materialiserade vyn mönster](https://msdn.microsoft.com/library/azure/dn589782.aspx) från den [kommandot frågan ansvar ansvarsfördelning (CQRS)](https://msdn.microsoft.com/library/azure/jj554200.aspx) mönster.  
+hello mönster kartan ovan visar relationer mellan mönster (blå) och ett mönster (orange) som finns dokumenterade i handboken. Det är naturligtvis många mönster som är värda att ta hänsyn till. Till exempel en av hello viktiga scenarier för Tabelltjänsten är toouse hello [Materialiserade vyn mönster](https://msdn.microsoft.com/library/azure/dn589782.aspx) från hello [kommandot frågan ansvar ansvarsfördelning (CQRS)](https://msdn.microsoft.com/library/azure/jj554200.aspx) mönster.  
 
 ### <a name="intra-partition-secondary-index-pattern"></a>Intra-partition sekundärt index mönster
-Lagra flera kopior av varje enhet med hjälp av olika **RowKey** värden (i samma partition) att aktivera snabb och effektiv sökningar och alternativa sorteringsordningen genom att använda olika **RowKey** värden. Uppdateringar mellan kopior kan vara konsekvent med EGT'S.  
+Lagra flera kopior av varje enhet med hjälp av olika **RowKey** värden (i hello samma partition) tooenable snabba och effektiva sökningar och alternativa sorteringen sorterar med hjälp av olika **RowKey** värden. Uppdateringar mellan kopior kan vara konsekvent med EGT'S.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-Tabelltjänsten indexerar automatiskt enheter med hjälp av den **PartitionKey** och **RowKey** värden. Detta gör att ett klientprogram att hämta en entitet som effektivt använder dessa värden. Till exempel använder tabellstrukturen som visas nedan, ett klientprogram kan använda en punkt-fråga för att hämta en enskild medarbetare entitet med id och ett avdelningsnamn (den **PartitionKey** och **RowKey**  värden). En klient kan också hämta entiteter sorterade efter anställnings-id inom varje avdelning.
+Hej tabelltjänsten indexerar automatiskt enheter med hjälp av hello **PartitionKey** och **RowKey** värden. Detta gör att en klient programmet tooretrieve en entitet som effektivt använder dessa värden. Till exempel använder hello tabellstrukturen som visas nedan, ett klientprogram kan använda en punkt frågan tooretrieve en enskild medarbetare entitet med hjälp av hello avdelningsnamn och hello anställnings-id (hello **PartitionKey** och  **RowKey** värden). En klient kan också hämta entiteter sorterade efter anställnings-id inom varje avdelning.
 
 ![][6]
 
-Om du vill kunna hitta en medarbetare entitet baserat på värdet för en annan egenskap, t.ex e-postadress, måste du använda en mindre effektiv partition sökning för att hitta en matchande. Det beror på att tabelltjänsten inte ger sekundärindex. Dessutom kan det går inte att begära en lista över anställda sorterade i en annan ordning än **RowKey** ordning.  
+Om du även vill toobe kan toofind en medarbetare entitet baserat på hello-värdet för en annan egenskap, t.ex e-postadress, måste du använda en mindre effektiv partition genomsökning toofind en matchning. Det beror på att hello tabelltjänsten inte ger sekundärindex. Dessutom finns inga alternativ toorequest en lista över anställda sorterade i en annan ordning än **RowKey** ordning.  
 
 #### <a name="solution"></a>Lösning
-Undvik bristande sekundärindex, kan du lagra flera kopior av varje entitet med varje kopia med ett annat **RowKey** värde. Om du sparar en entitet med strukturer som visas nedan, kan du effektivt hämta medarbetare enheter baserat på e-postadress eller medarbetare id. Prefixet värden för den **RowKey**, ”empid_” och ”email_” kan du fråga efter en medarbetare eller ett intervall med anställda med hjälp av en mängd e-postadresser eller medarbetare-ID: n.  
+toowork runt hello bristande sekundärindex kan du lagra flera kopior av varje entitet med varje kopia med ett annat **RowKey** värde. Om du sparar en entitet med hello-strukturer som visas nedan, kan du effektivt hämta medarbetare enheter baserat på e-postadress eller medarbetare id. Hej prefixvärden för hello **RowKey**, ”empid_” och ”email_” kan du tooquery för en medarbetare eller ett intervall med anställda med hjälp av en mängd e-postadresser eller medarbetare-ID: n.  
 
 ![][7]
 
-Följande två filtervillkoren (en slå upp av anställnings-id och en sökning efter av e-postadress) ange både punkt frågor:  
+hello följande två filtervillkor (en slå upp av anställnings-id och en sökning efter av e-postadress) ange både punkt frågor:  
 
 * $filter = (PartitionKey eq 'Sales') och (RowKey eq 'empid_000223')  
 * $filter = (PartitionKey eq 'Sales') och (RowKey eq 'email_jonesj@contoso.com')  
 
-Om du frågar efter ett intervall med anställdas enheter du kan ange ett intervall i medarbetare id ordning eller ett intervall som är sorterad i e-postadress ordning genom att fråga om entiteter med ett prefix i den **RowKey**.  
+Om du frågar efter ett intervall med anställdas enheter du kan ange ett intervall i medarbetare id ordning eller ett intervall som är sorterad i e-postadress ordning genom att fråga om entiteter med hello rätt prefix i hello **RowKey**.  
 
-* Hitta alla anställda på försäljningsavdelningen med medarbetare id i intervallet 000100 000199 användning: $filter = (PartitionKey eq 'Sales') och (RowKey ge 'empid_000100') och (RowKey le 'empid_000199')  
-* Hitta alla anställda på försäljningsavdelningen med en e-postadress som börjar med bokstaven ”a” Använd: $filter = (PartitionKey eq 'Sales') och (RowKey ge 'email_a') och (RowKey lt 'email_b')  
+* toofind alla hello anställda på försäljningsavdelningen hello med medarbetare id i hello intervallet 000100 too000199 använder: $filter = (PartitionKey eq 'Sales') och (RowKey ge 'empid_000100') och (RowKey le 'empid_000199')  
+* toofind alla hello anställda på försäljningsavdelningen hello med en e-postadress som börjar med hello bokstaven ”a” Använd: $filter = (PartitionKey eq 'Sales') och (RowKey ge 'email_a') och (RowKey lt 'email_b')  
   
-  Observera att filtersyntaxen som används i exemplen ovan är från tabelltjänsten REST API för mer information finns i [fråga entiteter](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Observera att hello filtersyntaxen används i hello exemplen ovan är från hello tabelltjänsten REST API för mer information finns i [fråga entiteter](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du implementerar det här mönstret:  
+Överväg att hello följande punkter när du bestämmer hur tooimplement detta mönster:  
 
-* Table storage är relativt billig använder så overhead kostnaden för lagring av duplicerade data inte får vara ett större problem. Du bör dock alltid utvärdera kostnaden för din design utifrån din förväntade lagringsbehov och bara lägga till dubbla entiteter för att stödja frågorna client-program körs.  
-* Eftersom entiteterna sekundärt index lagras i samma partition som de ursprungliga enheterna, bör du kontrollera att du inte överskrider skalbarhetsmål för en enskild partition.  
-* Du kan behålla-dubbla enheterna överensstämmer med varandra med hjälp av EGTs att automatiskt uppdatera två kopior av entiteten. Detta innebär att du bör lagra alla kopior av en entitet i samma partition. Mer information finns i avsnittet [med hjälp av entiteten gruppera transaktioner](#entity-group-transactions).  
-* Det värde som används för den **RowKey** måste vara unikt för varje entitet. Överväg att använda sammansatta nyckelvärden.  
-* Utfyllnad numeriska värden i den **RowKey** (exempelvis anställnings-id 000223), aktiverar korrigera sortera och filtrera baserat på övre och nedre gränser.  
-* Du behöver inte nödvändigtvis att kopiera alla egenskaper för entiteten. Till exempel om frågorna som sökning entiteter med den e-posten-adressen i den **RowKey** behöver aldrig medarbetarens ålder, dessa enheter kan ha följande struktur:
+* Table storage är relativt billig toouse så hello kostnad arbetet med att lagra dubblettdata inte får vara ett större problem. Du bör dock alltid utvärdera hello kostnaden av din design utifrån din förväntade lagringsbehov och bara lägga till dubbla entiteter toosupport hello frågor client-program körs.  
+* Eftersom hello sekundärt index entiteter lagras i hello samma partition som hello ursprungliga enheter, bör du kontrollera att du inte överskrider hello skalbarhetsmål för en enskild partition.  
+* Du kan behålla-dubbla enheterna överensstämmer med varandra med hjälp av EGTs tooupdate hello två kopior av hello enheten automatiskt. Detta innebär att du bör lagra alla kopior av en entitet i hello samma partition. Mer information finns i avsnittet hello [med hjälp av entiteten gruppera transaktioner](#entity-group-transactions).  
+* hello-värde som används för hello **RowKey** måste vara unikt för varje entitet. Överväg att använda sammansatta nyckelvärden.  
+* Utfyllnad numeriska värden i hello **RowKey** (exempelvis hello anställnings-id 000223), aktiverar korrigera sortera och filtrera baserat på övre och nedre gränser.  
+* Du behöver inte nödvändigtvis tooduplicate alla hello egenskaperna för entiteten. Till exempel om hello frågor som hello uppslagsentiteter med hello e-post-adressen i hello **RowKey** behöver aldrig hello medarbetarens ålder, dessa enheter kan ha hello följande struktur:
 
 ![][8]
 
-* Det är vanligtvis bättre att lagra duplicerade data och se till att du kan hämta alla data som du behöver med en enskild fråga än att använda en fråga för att hitta en enhet och en annan för att söka efter data som krävs.  
+* Det är vanligtvis bättre toostore duplicerade data och se till att du kan hämta alla hello data som du behöver med en enda fråga, än toouse en fråga toolocate en entitet och en annan toolookup hello obligatoriska uppgifter.  
 
-#### <a name="when-to-use-this-pattern"></a>När du ska använda det här mönstret
-Använd det här mönstret när klientprogrammet måste hämta entiteter med olika nycklar olika när klienten behöver hämta entiteter i olika sorteringsordningar, och där du kan identifiera varje entitet med olika unika värden. Dock bör du se till att du inte överskrider skalbarhetsgränser partition när du utför entitet sökningar med hjälp av de olika **RowKey** värden.  
+#### <a name="when-toouse-this-pattern"></a>När toouse det här mönstret
+Använd det här mönstret när klientprogrammet måste tooretrieve enheter med hjälp av en mängd olika nycklar när klienten måste tooretrieve entiteter i olika sorteringsordningar, och där du kan identifiera varje entitet med olika unika värden. Dock bör du se till att du inte överskrider hello partition skalbarhetsgränser när du utför entitet sökningar med olika hello **RowKey** värden.  
 
 #### <a name="related-patterns-and-guidance"></a>Vägledning och relaterade mönster
-Följande mönster och guider kan även vara relevanta när du implementerar det här mönstret:  
+hello kan följande mönster och guider även vara relevanta när du implementerar det här mönstret:  
 
 * [Mellan sekundära Partitionsindex mönster](#inter-partition-secondary-index-pattern)
 * [Sammansatt nyckel mönster](#compound-key-pattern)
@@ -468,51 +468,51 @@ Följande mönster och guider kan även vara relevanta när du implementerar det
 * [Arbeta med heterogena entitetstyper](#working-with-heterogeneous-entity-types)
 
 ### <a name="inter-partition-secondary-index-pattern"></a>Mellan sekundära Partitionsindex mönster
-Lagra flera kopior av varje enhet med hjälp av olika **RowKey** värden i separata partitioner eller i separata tabeller för att aktivera snabb och effektiv sökningar och alternativa sorteringsordningen genom att använda olika **RowKey**värden.  
+Lagra flera kopior av varje enhet med hjälp av olika **RowKey** värden i olika partitioner eller i separata tabeller tooenable snabba och effektiva sökningar och alternativa sorteringsordningen genom att använda olika **RowKey**värden.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-Tabelltjänsten indexerar automatiskt enheter med hjälp av den **PartitionKey** och **RowKey** värden. Detta gör att ett klientprogram att hämta en entitet som effektivt använder dessa värden. Till exempel använder tabellstrukturen som visas nedan, ett klientprogram kan använda en punkt-fråga för att hämta en enskild medarbetare entitet med id och ett avdelningsnamn (den **PartitionKey** och **RowKey**  värden). En klient kan också hämta entiteter sorterade efter anställnings-id inom varje avdelning.  
+Hej tabelltjänsten indexerar automatiskt enheter med hjälp av hello **PartitionKey** och **RowKey** värden. Detta gör att en klient programmet tooretrieve en entitet som effektivt använder dessa värden. Till exempel använder hello tabellstrukturen som visas nedan, ett klientprogram kan använda en punkt frågan tooretrieve en enskild medarbetare entitet med hjälp av hello avdelningsnamn och hello anställnings-id (hello **PartitionKey** och  **RowKey** värden). En klient kan också hämta entiteter sorterade efter anställnings-id inom varje avdelning.  
 
 ![][9]
 
-Om du vill kunna hitta en medarbetare entitet baserat på värdet för en annan egenskap, t.ex e-postadress, måste du använda en mindre effektiv partition sökning för att hitta en matchande. Det beror på att tabelltjänsten inte ger sekundärindex. Dessutom kan det går inte att begära en lista över anställda sorterade i en annan ordning än **RowKey** ordning.  
+Om du även vill toobe kan toofind en medarbetare entitet baserat på hello-värdet för en annan egenskap, t.ex e-postadress, måste du använda en mindre effektiv partition genomsökning toofind en matchning. Det beror på att hello tabelltjänsten inte ger sekundärindex. Dessutom finns inga alternativ toorequest en lista över anställda sorterade i en annan ordning än **RowKey** ordning.  
 
-Du förutse en mycket stor volym med transaktioner mot dessa enheter och vill minska risken för tabelltjänsten begränsning av klienten.  
+Du förutse en mycket stor volym med transaktioner mot dessa enheter och vill toominimize hello risken för hello tabelltjänsten begränsning av klienten.  
 
 #### <a name="solution"></a>Lösning
-Undvik bristande sekundärindex, kan du lagra flera kopior av varje entitet med varje kopia med hjälp av olika **PartitionKey** och **RowKey** värden. Om du sparar en entitet med strukturer som visas nedan, kan du effektivt hämta medarbetare enheter baserat på e-postadress eller medarbetare id. Prefixet värden för den **PartitionKey**, ”empid_” och ”email_” kan du identifiera vilka index som du vill använda för en fråga.  
+toowork runt hello bristande sekundärindex kan du lagra flera kopior av varje entitet med varje kopia med hjälp av olika **PartitionKey** och **RowKey** värden. Om du sparar en entitet med hello-strukturer som visas nedan, kan du effektivt hämta medarbetare enheter baserat på e-postadress eller medarbetare id. Hej prefixvärden för hello **PartitionKey**, ”empid_” och ”email_” kan du tooidentify som index som du vill använda toouse för en fråga.  
 
 ![][10]
 
-Följande två filtervillkoren (en slå upp av anställnings-id och en sökning efter av e-postadress) ange både punkt frågor:  
+hello följande två filtervillkor (en slå upp av anställnings-id och en sökning efter av e-postadress) ange både punkt frågor:  
 
 * $filter = (PartitionKey eq ' empid_Sales') och (RowKey eq '000223')
 * $filter = (PartitionKey eq ' email_Sales') och (RowKey eq 'jonesj@contoso.com')  
 
-Om du frågar efter ett intervall med anställdas enheter du kan ange ett intervall i medarbetare id ordning eller ett intervall som är sorterad i e-postadress ordning genom att fråga om entiteter med ett prefix i den **RowKey**.  
+Om du frågar efter ett intervall med anställdas enheter du kan ange ett intervall i medarbetare id ordning eller ett intervall som är sorterad i e-postadress ordning genom att fråga om entiteter med hello rätt prefix i hello **RowKey**.  
 
-* Hitta alla anställda på försäljningsavdelningen med medarbetare id i intervallet **000100** till **000199** sorteras medarbetare id ordning används: $filter = (PartitionKey eq ' empid_Sales') och (RowKey ge '000100') och (RowKey le '000199')  
-* Hitta alla anställda på försäljningsavdelningen med en e-postadress som börjar med ”a” i e-postadress ordning användning: $filter = (PartitionKey eq ' email_Sales') och (RowKey ge ”a”) och (RowKey lt ”b”)  
+* toofind alla hello anställda på hello försäljningsavdelningen med medarbetare id i hello intervallet **000100** för**000199** sorteras medarbetare id ordning används: $filter = (PartitionKey eq ' empid_Sales') och (RowKey ge ' 000100') och (RowKey le '000199')  
+* toofind alla hello medarbetare i hello försäljningsavdelningen med en e-postadress som börjar med ”a” i e-postadress ordning används: $filter = (PartitionKey eq ' email_Sales') och (RowKey ge ”a”) och (RowKey lt ”b”)  
 
-Observera att filtersyntaxen som används i exemplen ovan är från tabelltjänsten REST API för mer information finns i [fråga entiteter](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Observera att hello filtersyntaxen används i hello exemplen ovan är från hello tabelltjänsten REST API för mer information finns i [fråga entiteter](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du implementerar det här mönstret:  
+Överväg att hello följande punkter när du bestämmer hur tooimplement detta mönster:  
 
-* Du kan behålla din dubbla entiteter överensstämmelse med varandra med hjälp av den [överensstämmelse transaktioner mönster](#eventually-consistent-transactions-pattern) att underhålla de primära och sekundära index entiteterna.  
-* Table storage är relativt billig använder så overhead kostnaden för lagring av duplicerade data inte får vara ett större problem. Du bör dock alltid utvärdera kostnaden för din design utifrån din förväntade lagringsbehov och bara lägga till dubbla entiteter för att stödja frågorna client-program körs.  
-* Det värde som används för den **RowKey** måste vara unikt för varje entitet. Överväg att använda sammansatta nyckelvärden.  
-* Utfyllnad numeriska värden i den **RowKey** (exempelvis anställnings-id 000223), aktiverar korrigera sortera och filtrera baserat på övre och nedre gränser.  
-* Du behöver inte nödvändigtvis att kopiera alla egenskaper för entiteten. Till exempel om frågorna som sökning entiteter med den e-posten-adressen i den **RowKey** behöver aldrig medarbetarens ålder, dessa enheter kan ha följande struktur:
+* Du kan behålla din dubbla entiteter överensstämmelse med varandra med hjälp av hello [överensstämmelse transaktioner mönster](#eventually-consistent-transactions-pattern) toomaintain hello primära och sekundära index entiteter.  
+* Table storage är relativt billig toouse så hello kostnad arbetet med att lagra dubblettdata inte får vara ett större problem. Du bör dock alltid utvärdera hello kostnaden av din design utifrån din förväntade lagringsbehov och bara lägga till dubbla entiteter toosupport hello frågor client-program körs.  
+* hello-värde som används för hello **RowKey** måste vara unikt för varje entitet. Överväg att använda sammansatta nyckelvärden.  
+* Utfyllnad numeriska värden i hello **RowKey** (exempelvis hello anställnings-id 000223), aktiverar korrigera sortera och filtrera baserat på övre och nedre gränser.  
+* Du behöver inte nödvändigtvis tooduplicate alla hello egenskaperna för entiteten. Till exempel om hello frågor som hello uppslagsentiteter med hello e-post-adressen i hello **RowKey** behöver aldrig hello medarbetarens ålder, dessa enheter kan ha hello följande struktur:
   
   ![][11]
-* Det är vanligtvis bättre att lagra duplicerade data och se till att du kan hämta alla data som du behöver med en enskild fråga att använda en fråga för att hitta en entitet med sekundärt index och en annan att söka efter data som krävs i det primära indexet än.  
+* Det är vanligtvis bättre toostore duplicerade data och se till att du kan hämta alla hello-data som du behöver med en enskild fråga än toouse en fråga toolocate en entitet med hello sekundärt index och en annan toolookup hello nödvändiga data i hello primärindex.  
 
-#### <a name="when-to-use-this-pattern"></a>När du ska använda det här mönstret
-Använd det här mönstret när klientprogrammet måste hämta entiteter med olika nycklar olika när klienten behöver hämta entiteter i olika sorteringsordningar, och där du kan identifiera varje entitet med olika unika värden. Använd det här mönstret när du vill undvika överstiger skalbarhetsgränser partition när du utför entitet sökningar med hjälp av de olika **RowKey** värden.  
+#### <a name="when-toouse-this-pattern"></a>När toouse det här mönstret
+Använd det här mönstret när klientprogrammet måste tooretrieve enheter med hjälp av en mängd olika nycklar när klienten måste tooretrieve entiteter i olika sorteringsordningar, och där du kan identifiera varje entitet med olika unika värden. Använd det här mönstret när du vill tooavoid överstiger hello partition skalbarhetsgränser när du utför entitet sökningar med olika hello **RowKey** värden.  
 
 #### <a name="related-patterns-and-guidance"></a>Vägledning och relaterade mönster
-Följande mönster och guider kan även vara relevanta när du implementerar det här mönstret:  
+hello kan följande mönster och guider även vara relevanta när du implementerar det här mönstret:  
 
 * [Mönster för överensstämmelse transaktioner](#eventually-consistent-transactions-pattern)  
 * [Intra-partition sekundärt index mönster](#intra-partition-secondary-index-pattern)  
@@ -524,118 +524,118 @@ Följande mönster och guider kan även vara relevanta när du implementerar det
 Aktivera överensstämmelse beteende mellan partitionsgränser eller lagring system gränser med hjälp av Azure köer.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-EGTs aktivera atomiska transaktioner mellan flera enheter som delar samma partitionsnyckel. För bättre prestanda och skalbarhet som du kan välja att lagra entiteter som har konsekvenskontroll krav i separata partitioner eller i ett separat lagringssystem: i ett sådant scenario, du kan inte använda EGTs för att upprätthålla enhetliga. Du kan till exempel ha ett krav att underhålla slutliga konsekvensen mellan:  
+EGTs aktivera atomiska transaktioner över flera enheter som delar hello samma partitionsnyckel. Du kan bestämma toostore entiteter som har konsekvenskontroll krav i separata partitioner eller i ett separat lagringssystem för prestanda och skalbarhet: du kan inte använda EGTs toomaintain konsekvens i ett sådant scenario. Du kan till exempel ha en krav toomaintain slutliga konsekvensen mellan:  
 
-* Enheter som lagras i två olika partitioner i samma tabell, i olika tabeller i i olika lagringskonton.  
-* En entitet som lagras i tabelltjänsten och en blob som lagras i Blob-tjänsten.  
-* En entitet som lagras i tabelltjänsten och en fil i ett filsystem.  
-* En entitet arkivet i tabelltjänsten indexerat ännu med Azure Search-tjänsten.  
+* Entiteter som lagras i två olika partitioner i hello samma tabell, i olika tabeller i i olika lagringskonton.  
+* En entitet som lagras i hello tabelltjänsten och en blob som lagras i hello Blob-tjänsten.  
+* En entitet som lagras i tabelltjänsten hello och en fil i ett filsystem.  
+* En entitet lagra i hello tabelltjänsten har indexerat med hello Azure Search-tjänsten.  
 
 #### <a name="solution"></a>Lösning
 Du kan implementera en lösning som ger slutliga konsekvensen mellan två eller flera partitioner lagringssystem med hjälp av Azure köer.
-För att illustrera den här metoden förutsätter att du har ett krav för att kunna arkivera gamla medarbetare enheter. Den gamla medarbetare enheter frågas sällan och bör undantas från alla aktiviteter som handlar om aktuella anställda. För att implementera det här kravet du lagrar aktiva medarbetare i den **aktuella** tabell och tidigare anställda i den **Arkiv** tabell. Arkivering av en medarbetare måste du ta bort entiteten från den **aktuella** tabell och lägga till enheten som den **Arkiv** , men du kan inte använda en EGT för att utföra dessa två åtgärder. Arkivåtgärden måste vara överensstämmelse för att undvika risken för att ett fel som orsakar en entitet som ska visas i båda eller inget tabeller. Följande sekvensdiagram beskrivs stegen i den här åtgärden. Mer information ges för undantag sökvägar i följande text.  
+tooillustrate detta hanterar, förutsätter att du har ett krav toobe kan tooarchive gamla medarbetare-enheter. Den gamla medarbetare enheter frågas sällan och bör undantas från alla aktiviteter som handlar om aktuella anställda. tooimplement detta krav som du lagrar aktiva medarbetare i hello **aktuella** tabell och tidigare anställda i hello **Arkiv** tabell. Arkivering av medarbetaren kräver toodelete hello entitet från hello **aktuella** tabell och lägga till hello entiteten toohello **Arkiv** , men du kan inte använda en EGT tooperform dessa två åtgärder. tooavoid hello risk att ett fel orsakar en entitet tooappear i båda eller inget tabeller, hello arkivåtgärden måste vara överensstämmelse. hello beskriver följande sekvensdiagram hello steg i den här åtgärden. Mer information ges för undantag sökvägar i hello texten nedan.  
 
 ![][12]
 
-En klient initierar Arkiv igen genom att placera ett meddelande på en Azure-kö, i det här exemplet att arkivera medarbetare #456. En arbetsroll avsöker kön för nya meddelanden. När den hittar en läser meddelandet och en dold kopia finns kvar i kön. Arbetsrollen nästa hämtar en kopia av entiteten från den **aktuella** tabell, infogar en kopia i den **Arkiv** table och tar sedan bort ursprungligt från den **aktuella** tabell. Slutligen, om det inte fanns några fel från föregående steg, arbetsrollen tar bort dolda meddelandet från kön.  
+En klient initierar hello Arkiv igen genom att placera ett meddelande på en Azure-kö, i det här exemplet tooarchive anställd #456. En arbetsroll avsöker hello kön för nya meddelanden. När den hittar en läser hello-meddelande och lämnar en dold kopia på hello kön. Hej arbetsrollen bredvid hämtar en kopia av hello entitet från hello **aktuella** tabell, infogar en kopia i hello **Arkiv** tabell och borttagningar hello ursprungliga från hello **aktuella**tabell. Slutligen, om det inte fanns några fel från hello föregående steg, hello worker-rollen tar bort dolda hello-meddelande från hello kön.  
 
-I det här exemplet steg 4 infogar medarbetaren till den **Arkiv** tabell. Det gick att lägga till anställde till en blobb i Blob-tjänsten eller en fil i ett filsystem.  
+I det här exemplet steg 4 infogas hello medarbetare hello **Arkiv** tabell. Det gick att lägga till hello medarbetare tooa blob i hello Blob-tjänsten eller en fil i ett filsystem.  
 
 #### <a name="recovering-from-failures"></a>Återställa från fel
-Det är viktigt som åtgärder i steg **4** och **5** måste vara *idempotent* ifall arbetsrollen behöver starta om arkivåtgärden. Om du använder tjänsten tabellen för steget **4** bör du använda en ”infoga eller ersätta” åtgärd; för steg **5** bör du använda en ”ta bort om finns” åtgärden i klientbiblioteket som du använder. Om du använder en annan lagringssystemet, måste du använda en lämplig idempotent-åtgärd.  
+Det är viktigt som hello åtgärder i steg **4** och **5** måste vara *idempotent* om hello arbetsrollen behöver toorestart hello Arkiv igen. Om du använder hello tabelltjänsten för steget **4** bör du använda en ”infoga eller ersätta” åtgärd; för steg **5** bör du använda en ”ta bort om finns” åtgärden i hello klientbiblioteket som du använder. Om du använder en annan lagringssystemet, måste du använda en lämplig idempotent-åtgärd.  
 
-Om arbetsrollen slutförs aldrig steg **6**, och sedan efter en tidsgräns meddelandet visas igen på kön för arbetsrollen att försöka bearbeta den. Worker-rollen kan kontrollera hur många gånger meddelandet i kön har läsa och, om det behövs Flagga det är ett ”skadligt” meddelande för undersökningen genom att skicka den till en särskild kö. Läs mer om läsa meddelanden i kön och kontrollera antalet dequeue [få meddelanden](https://msdn.microsoft.com/library/azure/dd179474.aspx).  
+Om hello arbetsrollen slutförs aldrig steg **6**, sedan efter en tidsgräns hello-meddelande dyker upp i hello kön är klara för hello worker-rollen tootry tooreprocess den. hello worker-rollen kan kontrollera hur många gånger meddelandet i kön hello har lästs och eventuellt Flagga det är ett ”skadligt” meddelande för undersökningen genom att skicka den tooa separata kön. Mer information om läsning Kömeddelanden och kontrollerar hello har status Created antal, se [få meddelanden](https://msdn.microsoft.com/library/azure/dd179474.aspx).  
 
-Fel från tabellen och kön tjänsterna är tillfälligt fel och ditt klientprogram ska innehålla lämplig logik för att hantera dem.  
+Fel från hello tabell och kön services är tillfälligt fel och ditt klientprogram ska innehålla lämplig försök logik toohandle dem.  
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du implementerar det här mönstret:  
+Överväg att hello följande punkter när du bestämmer hur tooimplement detta mönster:  
 
-* Den här lösningen ger inte för transaktionsisoleringen. Till exempel en klient kan läsa den **aktuella** och **Arkiv** tabeller när arbetsrollen mellan stegen **4** och **5**, och se en Inkonsekvent visning av data. Observera att data är konsekventa förr eller senare.  
-* Du måste vara säker på att steg 4 och 5 är idempotent för att säkerställa slutliga konsekvensen.  
-* Du kan skala lösningen genom att använda flera köer och worker rollinstanser.  
+* Den här lösningen ger inte för transaktionsisoleringen. En klient kan till exempel läsa hello **aktuella** och **Arkiv** tabeller när hello arbetsrollen mellan stegen **4** och **5**, och se en Inkonsekvent visning av hello data. Observera att hello data blir konsekvent förr eller senare.  
+* Du måste vara säker på att steg 4 och 5 är idempotent i ordning tooensure slutliga konsekvensen.  
+* Du kan skala hello lösning med flera köer och worker rollinstanser.  
 
-#### <a name="when-to-use-this-pattern"></a>När du ska använda det här mönstret
-Använd det här mönstret när du vill garantera slutliga konsekvensen mellan enheter som finns i olika partitioner eller tabeller. Du kan utöka detta mönster för att säkerställa slutliga konsekvensen för åtgärder i tabelltjänsten och Blob-tjänsten och andra Azure Storage-datakällor, till exempel databasen eller filsystemet.  
+#### <a name="when-toouse-this-pattern"></a>När toouse det här mönstret
+Använd det här mönstret när du vill tooguarantee slutliga konsekvensen mellan enheter som finns i olika partitioner eller tabeller. Du kan utöka det här mönstret tooensure slutliga konsekvensen för åtgärder över hello tabelltjänsten och hello Blob-tjänsten och andra Azure Storage-datakällor, till exempel databasen eller hello-filsystem.  
 
 #### <a name="related-patterns-and-guidance"></a>Vägledning och relaterade mönster
-Följande mönster och guider kan även vara relevanta när du implementerar det här mönstret:  
+hello kan följande mönster och guider även vara relevanta när du implementerar det här mönstret:  
 
 * [Entiteten gruppera transaktioner](#entity-group-transactions)  
 * [Merge eller ersätta](#merge-or-replace)  
 
 > [!NOTE]
-> Om transaktionsisoleringen är viktigt att din lösning bör du designar tabellerna så att du kan använda EGTs.  
+> Om transaktionsisoleringen är viktiga tooyour lösning, bör du designar dina tabeller tooenable du toouse EGTs.  
 > 
 > 
 
 ### <a name="index-entities-pattern"></a>Index entiteter mönster
-Underhålla index enheter om du vill aktivera effektiva sökningar som returnerar en lista över enheter.  
+Underhålla entiteter tooenable effektiva sökningar som returnerar en lista över enheter.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-Tabelltjänsten indexerar automatiskt enheter med hjälp av den **PartitionKey** och **RowKey** värden. Detta gör att ett klientprogram att hämta en entitet som effektivt med en punkt-fråga. Till exempel använder tabellstrukturen som visas nedan, ett klientprogram enkelt kan hämta en enskild medarbetare entitet med id och ett avdelningsnamn (den **PartitionKey** och **RowKey**).  
+Hej tabelltjänsten indexerar automatiskt enheter med hjälp av hello **PartitionKey** och **RowKey** värden. Detta gör att en klient programmet tooretrieve en entitet som effektivt med en punkt-fråga. Till exempel använder hello tabellstrukturen som visas nedan, ett klientprogram enkelt kan hämta en enskild medarbetare entitet med hjälp av hello avdelningsnamn och hello anställnings-id (hello **PartitionKey** och **RowKey** ).  
 
 ![][13]
 
-Om du vill kunna hämta en lista över anställdas enheter baserat på värdet för en annan icke-unikt egenskap, till exempel efternamn, måste du använda en mindre effektiv partition-sökning för att hitta matchningar i stället för att använda ett index för att leta upp dem direkt. Det beror på att tabelltjänsten inte ger sekundärindex.  
+Om du vill använda toobe kan tooretrieve en lista över anställdas enheter baserat på hello värdet för en annan icke-unikt egenskap, till exempel efternamn, måste du använda en mindre effektiv partition skanna toofind matchar snarare än att använda ett index toolook dem upp direkt. Det beror på att hello tabelltjänsten inte ger sekundärindex.  
 
 #### <a name="solution"></a>Lösning
-Om du vill aktivera sökning efter efternamn med entiteten struktur som visas ovan, måste du upprätthålla en lista över medarbetare-ID: n. Om du vill hämta medarbetare entiteter med ett visst efternamn, till exempel Karlsson, måste du först lokalisera listan över medarbetare-ID: n för anställda med Karlsson som efternamn och hämta anställdas enheter. Det finns tre huvudsakliga alternativ för att lagra listor över medarbetare-ID: n:  
+tooenable sökning efter efternamn med hello entitet struktur som visas ovan, måste du upprätthålla en lista över medarbetare-ID: n. Om du vill tooretrieve hello medarbetare entiteter med ett visst efternamn, till exempel Karlsson, måste du först lokalisera hello lista över medarbetare-ID för anställda med Karlsson som efternamn och hämta anställdas enheter. Det finns tre huvudsakliga alternativ för att lagra hello listor över medarbetare-ID: n:  
 
 * Använda blob storage.  
-* Skapa index entiteter i samma partition som anställdas enheter.  
+* Skapa index entiteter i hello samma partition som hello medarbetare enheter.  
 * Skapa index entiteter i en separat partition eller tabellen.  
 
 <u>Alternativ #1: Använda blob storage</u>  
 
-För det första alternativet, skapar du en blob för varje unik efternamn och i varje blobstore en lista över de **PartitionKey** (avdelning) och **RowKey** värden (anställnings-id) för anställda som har det senaste namnet. När du lägger till eller ta bort en medarbetare bör du kontrollera att innehållet i den relevanta blobben är överensstämmelse med anställdas enheter.  
+För hello första alternativet som, du skapar en blob för varje unik efternamn och i varje blobstore en lista över hello **PartitionKey** (avdelning) och **RowKey** (anställnings-id) värden för medarbetare som har det senaste Namn. När du lägger till eller ta bort en medarbetare bör du kontrollera att hello innehållet i hello relevanta blob är överensstämmelse med hello medarbetare entiteter.  
 
-<u>Alternativ #2:</u> skapa index entiteter i samma partition  
+<u>Alternativ #2:</u> skapa index entiteter i hello samma partition  
 
-För det andra alternativet, använder du index entiteter som lagrar följande information:  
+För hello andra alternativet, använder du index entiteter som lagrar hello följande data:  
 
 ![][14]
 
-Den **EmployeeIDs** egenskapen innehåller en lista över medarbetare-ID för anställda med efternamn som lagras i den **RowKey**.  
+Hej **EmployeeIDs** egenskapen innehåller en lista över medarbetare-ID för anställda med hello efternamn som lagras i hello **RowKey**.  
 
-Följande steg beskriver hur du bör följa när du lägger till en ny medarbetare om du använder det andra alternativet. I det här exemplet lägger vi till en anställd med Id 000152 och efternamn Karlsson på försäljningsavdelningen:  
+hello beskriver följande steg hello process som du bör följa när du lägger till en ny medarbetare om du använder hello andra alternativ. I det här exemplet vi lägger till en anställd med Id 000152 och efternamn Karlsson på försäljningsavdelningen hello:  
 
-1. Hämta entiteten index med en **PartitionKey** värdet ”Försäljning” och **RowKey** värdet ”Jansson”. Spara ETag för den här entiteten i steg 2.  
-2. Skapa entitet grupp transaktion (det vill säga en batchåtgärd) som infogar entiteten medarbetare (**PartitionKey** värdet ”Försäljning” och **RowKey** värdet ”000152”), och uppdaterar entiteten index (**PartitionKey** värdet ”Försäljning” och **RowKey** värdet ”Jansson”) genom att lägga till den nya medarbetare-id i listan i fältet EmployeeIDs. Mer information om entiteten grupptransaktioner finns [entitet gruppera transaktioner](#entity-group-transactions).  
-3. Om entiteten grupp transaktionen misslyckas på grund av ett fel för Optimistisk samtidighet (någon annan har bara ändrade entiteten index), måste du börja om från steg 1 igen.  
+1. Hämta hello index entitet med en **PartitionKey** värdet ”Försäljning” och hello **RowKey** värdet ”Jansson”. Spara hello ETag för den här entiteten toouse i steg 2.  
+2. Skapa entitet grupp transaktion (det vill säga en batchåtgärd) som infogar hello ny medarbetare entitet (**PartitionKey** värdet ”Försäljning” och **RowKey** värdet ”000152”), och uppdateringar hello index entitet ( **PartitionKey** värdet ”Försäljning” och **RowKey** värdet ”Jansson”) genom att lägga till hello nya id toohello lista över anställda i hello EmployeeIDs fältet. Mer information om entiteten grupptransaktioner finns [entitet gruppera transaktioner](#entity-group-transactions).  
+3. Om hello entitet grupp transaktionen misslyckas på grund av ett fel för Optimistisk samtidighet (någon annan har bara ändrade hello index entiteten), måste toostart över från steg 1 igen.  
 
-Du kan använda ett liknande sätt att ta bort en medarbetare om du använder andra alternativ. Ändra en anställds efternamn är lite mer komplext eftersom du behöver köra en entitet grupp transaktion som uppdaterar tre enheter: medarbetare entiteten och entiteten index för det gamla efternamnet entiteten index för det nya efternamnet. Innan du gör några ändringar för att hämta ETag-värden som du sedan kan använda för att utföra uppdateringar med hjälp av Optimistisk samtidighet måste du hämta varje entitet.  
+Du kan använda en liknande metoden toodeleting en medarbetare om du använder hello andra alternativ. Ändra en anställds efternamn är lite mer komplext eftersom du behöver tooexecute en entitet grupp transaktion som uppdaterar tre enheter: hello medarbetare entitetstyper, hello index entiteten för hello gamla efternamn och hello index entiteten för hello nya efternamn. Innan du gör ändringar i ordning tooretrieve hello ETag-värden som du kan sedan använda tooperform hello uppdateringar med hjälp av Optimistisk samtidighet måste du hämta varje entitet.  
 
-Följande steg beskriver processen bör du följa när du behöver leta upp alla anställda med ett visst efternamn på en avdelning om du använder andra alternativ. Det här exemplet letar vi upp alla anställda med efternamn Karlsson på försäljningsavdelningen:  
+hello beskriver följande steg hello process som du bör följa när du behöver toolook upp alla hello anställda med ett visst efternamn på en avdelning om du använder hello andra alternativ. Det här exemplet letar vi upp alla hello anställda med efternamn Karlsson på försäljningsavdelningen hello:  
 
-1. Hämta entiteten index med en **PartitionKey** värdet ”Försäljning” och **RowKey** värdet ”Jansson”.  
-2. Parsa listan över anställnings-ID i fältet EmployeeIDs.  
-3. Om du behöver ytterligare information om var och en av dessa anställda (till exempel sina e-postadresser) hämtar var och en av anställdas enheter med hjälp av **PartitionKey** värdet ”Försäljning” och **RowKey** värden från den lista över anställda som du hämtade i steg 2.  
+1. Hämta hello index entitet med en **PartitionKey** värdet ”Försäljning” och hello **RowKey** värdet ”Jansson”.  
+2. Parsa hello lista över anställnings-ID i hello EmployeeIDs fältet.  
+3. Om du behöver ytterligare information om var och en av dessa anställda (till exempel sina e-postadresser) att hämta varje hello medarbetare enheter med hjälp av **PartitionKey** värdet ”Försäljning” och **RowKey** värden från hello lista över anställda som du hämtade i steg 2.  
 
 <u>Alternativet #3:</u> skapa index entiteter i en separat partition eller tabell  
 
-Det tredje alternativet Använd i index entiteter som lagrar följande information:  
+Använd index entiteter som lagrar hello följande data för hello tredje alternativet:  
 
 ![][15]
 
-Den **EmployeeIDs** egenskapen innehåller en lista över medarbetare-ID för anställda med efternamn som lagras i den **RowKey**.  
+Hej **EmployeeIDs** egenskapen innehåller en lista över medarbetare-ID för anställda med hello efternamn som lagras i hello **RowKey**.  
 
-Du kan inte använda EGTs med det tredje alternativet för att upprätthålla enhetliga eftersom indexet entiteter i en separat partition från medarbetare entiteter. Du bör kontrollera att index entiteter är överensstämmelse med medarbetare entiteter.  
+Du kan inte använda EGTs toomaintain konsekvenskontroll eftersom hello index entiteter i en separat partition från hello medarbetare entiteter med hello tredje alternativet. Du bör kontrollera att hello index entiteter är överensstämmelse med hello medarbetare entiteter.  
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du implementerar det här mönstret:  
+Överväg att hello följande punkter när du bestämmer hur tooimplement detta mönster:  
 
-* Denna lösning kräver minst två frågor för att hämta matchande entiteter: en för att fråga index entiteter för att hämta listan över **RowKey** värden och frågor för att hämta varje entitet i listan.  
-* Med hänsyn till att en enskild entitet har en maximal storlek på 1 MB, förutsätter #2 och &#3; i lösningen att lista över medarbetare-ID för alla angivna efternamn aldrig är större än 1 MB. Om listan över medarbetare-ID: n är sannolikt måste vara större än 1 MB i storlek, Använd alternativet #1 och lagra indexinformationen i blob storage.  
-* Om du använder alternativet #2 måste (med EGTs som hanterar att lägga till och ta bort anställda och ändra en anställds efternamn) du utvärdera om volymen av transaktioner, kommer hanterar skalbarhetsgränser i en given partition. Om så är fallet bör du överväga en överensstämmelse lösning (#1 eller #3) som använder köer för att hantera begäranden om uppdateringar och gör det möjligt att lagra indexet-entiteter i en separat partition från medarbetare entiteter.  
-* Alternativet #2 i den här lösningen förutsätter att du vill leta upp efter efternamn inom en avdelning: till exempel du vill hämta en lista över anställda med efternamn Karlsson på försäljningsavdelningen. Om du vill kunna leta upp alla anställda med efternamn Karlsson i hela organisationen använda alternativet #1 eller alternativet #3.
-* Du kan implementera en lösning med kön som levererar slutliga konsekvensen (finns i [överensstämmelse transaktioner mönster](#eventually-consistent-transactions-pattern) för mer information).  
+* Denna lösning kräver minst två frågor tooretrieve matchar entiteter: tooquery hello index entiteter tooobtain hello listan över **RowKey** värden och frågar tooretrieve varje entitet i hello-listan.  
+* Med hänsyn till att en enskild entitet har en maximal storlek på 1 MB, alternativ #2 och alternativet #3 i hello lösning förutsätter hello listan över medarbetare-ID: n för alla angivna efternamn aldrig är större än 1 MB. Om hello medarbetare-ID: n är sannolikt toobe som är större än 1 MB i storlek är alternativet #1 och lagra hello index data i blob storage.  
+* Om du använder alternativet #2 måste (med EGTs toohandle att lägga till och ta bort anställda och ändra en anställds efternamn) du utvärdera om hello mängder transaktioner kommer hanterar hello skalbarhetsgränser i en given partition. Om så är fallet hello bör du överväga en överensstämmelse lösning (#1 eller #3) som använder köer toohandle hello update begär och aktiverar du toostore index entiteter i en separat partition från hello medarbetare entiteter.  
+* Alternativet #2 i den här lösningen förutsätter att du vill att toolook efter efternamn inom en avdelning: till exempel önskade tooretrieve en lista över anställda med efternamn Karlsson i hello försäljningsavdelningen. Om du vill toobe kan toolook upp alla hello anställda med efternamn Karlsson över hello hela organisationen kan använda alternativet #1 eller alternativet #3.
+* Du kan implementera en lösning med kön som levererar slutliga konsekvensen (se hello [överensstämmelse transaktioner mönster](#eventually-consistent-transactions-pattern) för mer information).  
 
-#### <a name="when-to-use-this-pattern"></a>När du ska använda det här mönstret
-Använd det här mönstret när du vill söka efter en mängd av entiteter med samma vanliga egenskapsvärde, till exempel alla anställda med efternamn Karlsson.  
+#### <a name="when-toouse-this-pattern"></a>När toouse det här mönstret
+Använd det här mönstret när du vill toolookup en mängd av entiteter med samma vanliga egenskapsvärde, till exempel alla anställda med hello efternamn Karlsson.  
 
 #### <a name="related-patterns-and-guidance"></a>Vägledning och relaterade mönster
-Följande mönster och guider kan även vara relevanta när du implementerar det här mönstret:  
+hello kan följande mönster och guider även vara relevanta när du implementerar det här mönstret:  
 
 * [Sammansatt nyckel mönster](#compound-key-pattern)  
 * [Mönster för överensstämmelse transaktioner](#eventually-consistent-transactions-pattern)  
@@ -643,230 +643,230 @@ Följande mönster och guider kan även vara relevanta när du implementerar det
 * [Arbeta med heterogena entitetstyper](#working-with-heterogeneous-entity-types)  
 
 ### <a name="denormalization-pattern"></a>Denormalization mönster
-Kombinera relaterade data tillsammans i en enda enhet så att du kan hämta alla data som du behöver med en enda fråga.  
+Kombinera relaterade data tillsammans i en enda entitet tooenable tooretrieve alla hello data som du behöver med en enda fråga.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-I en relationsdatabas normalisera du normalt data för att ta bort duplicering, vilket resulterar i frågor som hämtar data från flera tabeller. Om du normalisera dina data i Azure-tabeller, måste du se flera sändningar fram och tillbaka från klienten till servern för att hämta relaterade data. Till exempel med tabellstrukturen nedan om du behöver två sändningar att hämta information för en avdelning: en för att hämta entiteten avdelningen som innehåller managerns-id och sedan en annan begäran om att hämta information om den manager i en medarbetare entitet.  
+I en relationsdatabas normalisera du vanligtvis tooremove dataduplicering som resulterar i frågor som hämtar data från flera tabeller. Om du normalisera dina data i Azure-tabeller, måste du se flera kommunikationsturer från hello klienten toohello server tooretrieve relaterade data. Till exempel med hello tabellstrukturen nedan om du behöver två avrunda resor tooretrieve hello information för en avdelning: en toofetch hello avdelning entitet som innehåller hello Resurshanterar-id och sedan en annan begäran toofetch hello Managers information i en medarbetare entitet.  
 
 ![][16]
 
 #### <a name="solution"></a>Lösning
-I stället för att lagra data i två separata entiteterna, denormalize data och behålla en kopia av den manager information i entiteten avdelning. Exempel:  
+I stället för att lagra hello data i två separata entiteterna, denormalize hello data och behålla en kopia av information om hello manager i hello avdelning entitet. Exempel:  
 
 ![][17]
 
-Du kan nu hämta allt du behöver om en avdelning med en punkt-fråga med avdelning entiteter som lagras med dessa egenskaper finns.  
+Du kan nu hämta alla hello information du behöver om en avdelning med en punkt-fråga med avdelning entiteter som lagras med dessa egenskaper finns.  
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du implementerar det här mönstret:  
+Överväg att hello följande punkter när du bestämmer hur tooimplement detta mönster:  
 
-* Det finns en kostnad som associeras med att lagra vissa data två gånger. Prestandafördelarna (följd färre begäranden till lagringstjänsten) vanligtvis uppväger marginell ökningen lagringskostnader (och kostnaden är delvis förskjuten genom en minskning av antal transaktioner som du behöver för att hämta information om en avdelning ).  
-* Du måste upprätthålla konsekvensen för de två entiteter som lagrar information om chefer. Du kan hantera konsekvenskontroll problemet med hjälp av EGTs för att uppdatera flera entiteter i en atomisk transaktion: i det här fallet avdelning entiteten och medarbetare entiteten för avdelning manager lagras i samma partition.  
+* Det finns en kostnad som associeras med att lagra vissa data två gånger. hello prestandafördelar (följd färre begäranden toohello storage-tjänst) vanligtvis uppväger hello marginell ökade kostnader för lagring (och kostnaden delvis förskjutning genom en minskning av hello antal transaktioner som du behöver toofetch hello information på en avdelning).  
+* Du måste upprätthålla hello enhetliga hello två entiteter som lagrar information om chefer. Du kan hantera hello konsekvenskontroll problemet med hjälp av EGTs tooupdate flera entiteter i en atomisk transaktion: i det här fallet hello avdelning entiteten och hello medarbetare entiteten för hello avdelning manager lagras i hello samma partition.  
 
-#### <a name="when-to-use-this-pattern"></a>När du ska använda det här mönstret
-Använd det här mönstret när du ofta behöver leta upp relaterad information. Det här mönstret minskar antalet frågor som klienten måste se till att hämta de data som krävs.  
+#### <a name="when-toouse-this-pattern"></a>När toouse det här mönstret
+Använd det här mönstret när du ofta behöver toolook in relaterad information. Det här mönstret minskar hello antalet frågor som klienten måste se tooretrieve hello data som krävs.  
 
 #### <a name="related-patterns-and-guidance"></a>Vägledning och relaterade mönster
-Följande mönster och guider kan även vara relevanta när du implementerar det här mönstret:  
+hello kan följande mönster och guider även vara relevanta när du implementerar det här mönstret:  
 
 * [Sammansatt nyckel mönster](#compound-key-pattern)  
 * [Entiteten gruppera transaktioner](#entity-group-transactions)  
 * [Arbeta med heterogena entitetstyper](#working-with-heterogeneous-entity-types)
 
 ### <a name="compound-key-pattern"></a>Sammansatt nyckel mönster
-Använd sammansatta **RowKey** värden att aktivera en klient att söka efter relaterade data med en enda fråga.  
+Använd sammansatta **RowKey** värden tooenable en klient toolookup relaterade data med en enda fråga.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-I en relationsdatabas är det ganska naturlig använda kopplingar i frågor för att returnera relaterade delar av data till klienten i en enskild fråga. Du kan till exempel använda anställnings-id för att leta upp en lista över relaterade entiteter som innehåller prestanda och granska data för denna medarbetare.  
+I en relationsdatabas, är det ganska naturlig toouse kopplingar i frågor tooreturn relaterade delar av data toohello klienten i en enskild fråga. Du kan till exempel använda hello medarbetare id toolook visas en lista över relaterade entiteter som innehåller prestanda och granska data för denna medarbetare.  
 
-Anta att du lagrar medarbetare entiteter i tabelltjänsten med följande struktur:  
+Anta att du lagrar medarbetare entiteter i hello tabelltjänsten med hello följande struktur:  
 
 ![][18]
 
-Du måste också att lagra historiska data som rör omdömen och prestanda för varje år medarbetaren har arbetat för din organisation och du behöver kunna komma åt informationen per år. Ett alternativ är att skapa en annan tabell som innehåller entiteter med följande struktur:  
+Du måste också toostore historiska data om tooreviews och prestanda för varje år hello medarbetare har arbetat för din organisation och du behöver toobe kan tooaccess informationen per år. Ett alternativ är toocreate en annan tabell som lagrar entiteter med hello följande struktur:  
 
 ![][19]
 
-Observera att med den här metoden kan du välja att duplicera viss information (till exempel förnamn och efternamn) i den nya enheten så att du kan hämta dina data med en enskild begäran. Du kan dock behålla stark konsekvens eftersom du inte kan använda en EGT att automatiskt uppdatera två entiteter.  
+Observera att med den här hanterar du besluta tooduplicate information (till exempel förnamn och efternamn) i hello ny entitet tooenable du tooretrieve dina data med en enskild begäran. Du kan dock behålla stark konsekvens eftersom du inte kan använda en EGT tooupdate hello två entiteter automatiskt.  
 
 #### <a name="solution"></a>Lösning
-Lagra nya entitetstypen i den ursprungliga tabellen med hjälp av entiteter med följande struktur:  
+Lagra nya entitetstypen i den ursprungliga tabellen med hjälp av entiteter med hello följande struktur:  
 
 ![][20]
 
-Observera hur **RowKey** är nu en sammansatt nyckel består av anställnings-id och år granska data som gör att du kan hämta den anställde prestanda och granska data med en begäran för en enda entitet.  
+Observera hur hello **RowKey** nu en sammansatt nyckel består av hello anställnings-id och hello år hello granska data som du kan använda tooretrieve hello medarbetarens prestanda och granska data med en begäran för en enda entitet.  
 
-I följande exempel beskrivs hur du kan hämta alla data för granskning för en viss medarbetare (till exempel medarbetare 000123 på försäljningsavdelningen):  
+hello följande exempel beskrivs hur du kan hämta alla hello granska data för en viss medarbetare (till exempel medarbetare 000123 i hello försäljningsavdelningen):  
 
 $filter = (PartitionKey eq 'Sales') och (RowKey ge 'empid_000123') och (RowKey lt 'empid_000124') & $select = RowKey, Arbetsledarens, peer-klassificering, kommentarer  
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du implementerar det här mönstret:  
+Överväg att hello följande punkter när du bestämmer hur tooimplement detta mönster:  
 
-* Du bör använda ett lämpligt avgränsningstecknet som gör det enkelt att parsa den **RowKey** värde: till exempel **000123_2012**.  
-* Den här entiteten lagras också i samma partition som andra entiteter som innehåller relaterade data för samma medarbetare, vilket innebär att du kan använda EGTs för att underhålla stark konsekvens.
-* Du bör överväga hur ofta du ska fråga efter data om det här mönstret är rätt.  Till exempel om du kommer åt data granska sällan och huvudsakliga medarbetardata ofta bör du behålla dem som separata entiteterna.  
+* Du bör använda ett lämpligt avgränsningstecknet som gör det enkelt tooparse hello **RowKey** värde: till exempel **000123_2012**.  
+* Du också lagrar entiteten i samma partition som andra enheter som innehåller relaterade data för hello hello samma medarbetare, vilket innebär att du kan använda EGTs toomaintain stark konsekvens.
+* Du bör överväga hur ofta du ska fråga hello data toodetermine om det här mönstret är lämpligt.  Om du ansluter till hello granska data mer sällan och hello huvudsakliga medarbetardata ofta bör du hålla dem som separata entiteterna.  
 
-#### <a name="when-to-use-this-pattern"></a>När du ska använda det här mönstret
-Använd det här mönstret när du behöver lagra en eller flera relaterade entiteter som du frågar ofta.  
+#### <a name="when-toouse-this-pattern"></a>När toouse det här mönstret
+Använd det här mönstret när du behöver toostore en eller flera relaterade entiteter som du frågar ofta.  
 
 #### <a name="related-patterns-and-guidance"></a>Vägledning och relaterade mönster
-Följande mönster och guider kan även vara relevanta när du implementerar det här mönstret:  
+hello kan följande mönster och guider även vara relevanta när du implementerar det här mönstret:  
 
 * [Entiteten gruppera transaktioner](#entity-group-transactions)  
 * [Arbeta med heterogena entitetstyper](#working-with-heterogeneous-entity-types)  
 * [Mönster för överensstämmelse transaktioner](#eventually-consistent-transactions-pattern)  
 
 ### <a name="log-tail-pattern"></a>Loggen pilslut mönster
-Hämta den  *n*  entiteter som senast lades till en partition med hjälp av en **RowKey** värde som sorterar i omvänd datum och tid ordning.  
+Hämta hello  *n*  entiteter senast lades tooa partition med hjälp av en **RowKey** värde som sorterar i omvänd datum och tid ordning.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-Ett vanligt krav är att kunna hämta de nyligen skapade enheterna, till exempel de senaste tio utgifter ansökningar som görs av en medarbetare. Tabell frågar stöd för en **$top** frågeåtgärden att returnera först  *n*  entiteter från en uppsättning: Ingen åtgärd har motsvarande frågan att returnera de sista n entiteterna i en mängd.  
+Ett vanligt krav är att kunna tooretrieve hello nyaste entiteter, till exempel hello tio senaste utgifter ansökningar som görs av en medarbetare. Tabell frågar stöd för en **$top** fråga åtgärden tooreturn hello först  *n*  entiteter från en uppsättning: det finns inga motsvarande frågan åtgärden tooreturn hello sista n entiteter i en mängd.  
 
 #### <a name="solution"></a>Lösning
-Lagra enheter med hjälp av en **RowKey** att naturligt sorterar i tidsvärdet i omvänd ordning med hjälp av det senaste posten är alltid den första i tabellen.  
+Store hello enheter med hjälp av en **RowKey** att naturligt sorterar i omvänd tidsvärdet ordning med hjälp av så att den senaste hello-posten är alltid hello förstnämnda i hello tabell.  
 
-Du kan till exempel använda en omvänd tick-värde som härletts från aktuellt datum och tid för att kunna hämta tio senaste utgifter anspråk skickas av en medarbetare. Följande C# kodexemplet visar ett sätt att skapa ett lämpligt ”inverterad tick” värde för en **RowKey** som sorterar från den senaste äldsta:  
+Till exempel toobe kan tooretrieve hello tio senaste utgifter ansökningar som görs av en medarbetare kan du använda en omvänd tick-värde som härletts från hello aktuellt datum och tid. hello följande kodexempel för C# visar enkelriktade toocreate ett lämpligt ”inverterad tick” värde för en **RowKey** som sorterar från hello senaste toohello äldsta:  
 
 `string invertedTicks = string.Format("{0:D19}", DateTime.MaxValue.Ticks - DateTime.UtcNow.Ticks);`  
 
-Du kan komma tillbaka till datum tid-värden med hjälp av följande kod:  
+Du kan få tillbaka toohello datum tid-värden med hjälp av hello följande kod:  
 
 `DateTime dt = new DateTime(DateTime.MaxValue.Ticks - Int64.Parse(invertedTicks));`  
 
-Frågan för tabellen ser ut så här:  
+hello tabellfråga ser ut så här:  
 
 `https://myaccount.table.core.windows.net/EmployeeExpense(PartitionKey='empid')?$top=10`  
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du implementerar det här mönstret:  
+Överväg att hello följande punkter när du bestämmer hur tooimplement detta mönster:  
 
-* Du måste fylla värdet omvänd skalstreck med inledande nollor så strängvärdet sorterar som förväntat.  
-* Du måste vara medveten om skalbarhetsmål på nivån för en partition. Var noga med att inte skapa hotspot-partitioner.  
+* Du måste fylla hello omvänd skalstreck värdet med inledande nollor tooensure hello strängvärde sorterar som förväntat.  
+* Du måste vara medveten om hello skalbarhetsmål på hello nivå för en partition. Var noga med att inte skapa hotspot-partitioner.  
 
-#### <a name="when-to-use-this-pattern"></a>När du ska använda det här mönstret
-Använd det här mönstret när du behöver åtkomst till entiteter i tidsvärdet i omvänd ordning eller när du behöver åtkomst till de nyligen tillagda entiteterna.  
+#### <a name="when-toouse-this-pattern"></a>När toouse det här mönstret
+Använd det här mönstret när du behöver tooaccess entiteter i tidsvärdet i omvänd ordning eller när du behöver tooaccess hello senast har lagts till entiteter.  
 
 #### <a name="related-patterns-and-guidance"></a>Vägledning och relaterade mönster
-Följande mönster och guider kan även vara relevanta när du implementerar det här mönstret:  
+hello kan följande mönster och guider även vara relevanta när du implementerar det här mönstret:  
 
 * [Lägga / lägga till ett mönster](#prepend-append-anti-pattern)  
 * [Hämta entiteter](#retrieving-entities)  
 
 ### <a name="high-volume-delete-pattern"></a>Ta bort mönster för hög volym
-Aktivera borttagning av ett stort antal enheter genom att lagra alla entiteter för samtidiga borttagning i sina egna separata tabell. du tar bort entiteterna genom att ta bort tabellen.  
+Aktivera hello borttagning av ett stort antal enheter genom att lagra alla hello entiteter för samtidiga borttagning i sina egna separata tabell. du tar bort hello enheter genom att ta bort hello tabell.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-Många program att ta bort gamla data som inte längre behöver vara tillgängliga för ett klientprogram, eller som programmet har arkiverats till ett annat lagringsmedium. Dessa data identifieras vanligtvis med ett datum: du till exempel har ett krav för att ta bort poster för alla inloggningsbegäranden som är mer än 60 dagar.  
+Många program ta bort gamla data som inte längre behöver toobe tillgängliga tooa klientprogrammet eller programmet hello har arkiverats tooanother lagringsmedium. Dessa data identifieras vanligtvis med ett datum: du till exempel har en krav toodelete poster för alla inloggningsbegäranden som är mer än 60 dagar.  
 
-Ett möjligt design är att använda datum och tid för inloggningsbegäran i den **RowKey**:  
+Ett möjligt design är toouse hello datum och tid för begäran om inloggning hello i hello **RowKey**:  
 
 ![][21]
 
-Det här sättet undviker partition surfpunkter eftersom programmet kan infoga och ta bort inloggningen entiteter för varje användare i en separat partition. Den här metoden kan dock dyrt och tidskrävande om du har ett stort antal entiteter eftersom du måste först utför en tabellgenomsökning för att identifiera alla enheter att ta bort och du måste ta bort varje gamla entitet. Observera att du kan minska antalet sändningar till servern som krävs för att ta bort de gamla enheterna av batchbearbetning flera delete-begäranden till EGTs.  
+Det här sättet undviker partition surfpunkter eftersom programmet hello kan infoga och ta bort inloggningen entiteter för varje användare i en separat partition. Men den här metoden kan vara kostsamma ta lång tid om du har ett stort antal entiteter eftersom du måste först tooperform en tabell söka i ordning tooidentify alla hello entiteter toodelete och du måste ta bort varje gamla entitet. Observera att du kan minska hello antalet sändningar toohello server krävs toodelete hello gamla enheter av batchbearbetning flera delete-begäranden till EGTs.  
 
 #### <a name="solution"></a>Lösning
-Använd en separat tabell för varje dag på inloggningsförsök. Du kan använda entiteten designen ovan för att undvika surfpunkter när du infogar entiteter och ta bort gamla enheter är nu bara en fråga om du tar bort en tabell varje dag (en enda Lagringsåtgärden) i stället för att hitta och ta bort hundratals och tusentals person inloggningen enheter varje dag.  
+Använd en separat tabell för varje dag på inloggningsförsök. Du kan använda hello entitet design ovan tooavoid surfpunkter när du infogar entiteter och ta bort gamla enheter är nu bara en fråga om du tar bort en tabell varje dag (en enda Lagringsåtgärden) i stället för att hitta och ta bort hundratals och tusentals enheter som enskilda inloggningen varje dag.  
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du implementerar det här mönstret:  
+Överväg att hello följande punkter när du bestämmer hur tooimplement detta mönster:  
 
-* Stöder din design andra sätt som programmet ska använda data, till exempel söka efter specifika enheter som länkar till andra data eller genererar samlar in information?  
+* Stöder din design andra sätt som programmet ska använda hello data, till exempel söka efter specifika enheter som länkar till andra data eller genererar samlar in information?  
 * Din design undvika aktiva punkter vid infogning av nya enheter?  
-* Förvänta dig en fördröjning om du vill återanvända samma namn när du tar bort den. Det är bättre att alltid använda unikt tabellnamn.  
-* Räkna med vissa begränsningar när du börjar använda en ny tabell medan tabelltjänsten lär sig åtkomstmönster och distribuerar partitionerna mellan noder. Du bör överväga hur ofta du behöver skapa nya tabeller.  
+* Förvänta dig en fördröjning om du vill tooreuse hello samma tabellnamnet när den har tagits bort. Det är bättre tooalways Använd unikt tabellnamn.  
+* Räkna med vissa begränsningar när du börjar använda en ny tabell medan hello tabelltjänsten lär sig hello åtkomstmönster och distribuerar hello partitioner mellan noder. Du bör överväga hur ofta du behöver toocreate nya tabeller.  
 
-#### <a name="when-to-use-this-pattern"></a>När du ska använda det här mönstret
-Använd det här mönstret när du har en stor volym med enheter som du måste ta bort samtidigt.  
+#### <a name="when-toouse-this-pattern"></a>När toouse det här mönstret
+Använd det här mönstret när du har en stor volym med enheter som du måste ta bort hello samtidigt.  
 
 #### <a name="related-patterns-and-guidance"></a>Vägledning och relaterade mönster
-Följande mönster och guider kan även vara relevanta när du implementerar det här mönstret:  
+hello kan följande mönster och guider även vara relevanta när du implementerar det här mönstret:  
 
 * [Entiteten gruppera transaktioner](#entity-group-transactions)
 * [Ändra entiteter](#modifying-entities)  
 
 ### <a name="data-series-pattern"></a>Serien datamönster
-Store fullständig dataserier i en enda enhet för att minimera antalet begäranden som du gör.  
+Store fullständig dataserien i en enda entitet toominimize hello antal begäranden som du gör.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-Ett vanligt scenario är för ett program att lagra en serie av data som normalt behöver hämta allt samtidigt. Programmet kan till exempel registrera hur många Snabbmeddelanden meddelanden varje anställd skickar varje timme och sedan använda informationen för att rita ut hur många meddelanden varje användare som skickas över de föregående 24 timmarna. En kan vara att lagra 24 entiteter för varje medarbetare:  
+Ett vanligt scenario är för ett program toostore en serie av data som vanligtvis måste tooretrieve på samma gång. Programmet kan till exempel registrera hur många Snabbmeddelanden meddelanden varje anställd skickar varje timme och sedan använda denna information tooplot hur många meddelanden varje användare hello föregående 24 timmar. En design kanske toostore 24 entiteter för varje medarbetare:  
 
 ![][22]
 
-Med den här designen kan du lätt hitta och uppdatera entitet för varje medarbetare uppdateras när programmet måste uppdatera värdet för antal meddelande. Om du vill hämta information för att rita ett diagram för aktiviteten under de föregående 24 timmarna, måste du hämta 24 entiteter.  
+Med den här designen kan du lätt hitta och uppdatera hello entiteten tooupdate för varje medarbetare när programmet hello måste tooupdate hello-meddelande count-värdet. Dock tooretrieve Hej information tooplot ett diagram över hello aktivitet för hello föregående 24 timmar, måste du hämta 24 entiteter.  
 
 #### <a name="solution"></a>Lösning
-Använd följande design med en separat egenskap för att lagra antalet meddelanden för varje timme:  
+Använd följande design med antal för en separat egenskapen toostore hello-meddelande för varje timme hello:  
 
 ![][23]
 
-Du kan använda en sammanfogning med den här designen för att uppdatera antalet meddelanden för en medarbetare för en given timme. Du kan nu hämta all information som du behöver att rita diagram med en begäran för en enda entitet.  
+Med den här designen kan använda du merge åtgärden tooupdate hello meddelandet antal för en medarbetare för en given timme. Du kan nu hämta alla hello information som du behöver tooplot hello diagram med en begäran för en enda entitet.  
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du implementerar det här mönstret:  
+Överväg att hello följande punkter när du bestämmer hur tooimplement detta mönster:  
 
-* Om fullständig dataserierna inte får plats i en enda entitet (en entitet kan ha upp till 252 egenskaper), kan du använda ett alternativt datalager, till exempel en blob.  
-* Om du har flera klienter som uppdaterar en entitet samtidigt, du behöver använda den **ETag** att implementera Optimistisk samtidighet. Om du har många klienter kan uppstå det hög konkurrens.  
+* Om fullständig dataserierna inte får plats i en enda entitet (en entitet kan ha too252 egenskaper), kan du använda ett alternativt datalager, till exempel en blob.  
+* Om du har flera klienter samtidigt uppdaterar en entitet måste toouse hello **ETag** tooimplement Optimistisk samtidighet. Om du har många klienter kan uppstå det hög konkurrens.  
 
-#### <a name="when-to-use-this-pattern"></a>När du ska använda det här mönstret
-Använd det här mönstret när du behöver uppdatera och hämta en serie som är associerade med en enskild entitet.  
+#### <a name="when-toouse-this-pattern"></a>När toouse det här mönstret
+Använd det här mönstret när du behöver tooupdate och hämta en serie som är associerade med en enskild entitet.  
 
 #### <a name="related-patterns-and-guidance"></a>Vägledning och relaterade mönster
-Följande mönster och guider kan även vara relevanta när du implementerar det här mönstret:  
+hello kan följande mönster och guider även vara relevanta när du implementerar det här mönstret:  
 
 * [Mönster för stora entiteter](#large-entities-pattern)  
 * [Merge eller ersätta](#merge-or-replace)  
-* [Överensstämmelse transaktioner mönster](#eventually-consistent-transactions-pattern) (om du lagrar dataserien i en blob)  
+* [Överensstämmelse transaktioner mönster](#eventually-consistent-transactions-pattern) (om du lagrar hello dataserien i en blob)  
 
 ### <a name="wide-entities-pattern"></a>Wide entiteter mönster
-Använda flera fysiska enheter för att lagra logiska entiteter med mer än 252 egenskaper.  
+Använda flera logiska enheter som fysiska entiteter toostore med mer än 252 egenskaper.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-En enskild entitet kan ha högst 252 egenskaper (exklusive obligatoriska Systemegenskaper) och kan inte lagra mer än 1 MB data totalt. I en relationsdatabas, skulle du normalt får avrunda några gränser för storleken på en rad att lägga till en ny tabell och framtvinga en 1-till-1-relation mellan dem.  
+En enskild entitet kan ha högst 252 egenskaper (exklusive hello obligatoriska Systemegenskaper) och kan inte lagra mer än 1 MB data totalt. I en relationsdatabas, skulle du normalt får avrunda några gränser för hello storleken på en rad att lägga till en ny tabell och framtvinga en 1-till-1-relation mellan dem.  
 
 #### <a name="solution"></a>Lösning
-Du kan använda tabelltjänsten för att lagra flera entiteter som representerar ett enda stort företag objekt med mer än 252 egenskaper. Om du vill spara en uppräkning av antalet IM-meddelanden som skickas av medarbetaren för de senaste 365 dagarna kan du använda följande designen som använder två entiteter med olika scheman:  
+Du kan lagra flera entiteter toorepresent ett enda stort företag objekt med mer än 252 egenskaper med hello tabelltjänsten. Om du vill toostore antalet hello antalet IM-meddelanden som skickas av medarbetaren för hello senaste 365 dagarna, kan du använda följande design som använder två entiteter med olika scheman hello:  
 
 ![][24]
 
-Du kan använda en EGT om du behöver göra en ändring som kräver uppdatering båda entiteter för att hålla dem synkroniserade med varandra. Annars kan du använda en enda merge-operation för att uppdatera antalet meddelanden för en viss dag. För att hämta alla data för en enskild medarbetare måste du hämta båda enheter som du kan göra med två effektivt begäranden som använder både ett **PartitionKey** och en **RowKey** värde.  
+Du kan använda en EGT om du behöver toomake en ändring som behöver uppdateras både entiteter tookeep dem synkroniserade med varandra. Annars kan du använda en enda merge tooupdate hello meddelandet antal för en viss dag. tooretrieve alla hello data för en enskild medarbetare som du måste hämta båda enheter som du kan göra med två effektivt begäranden som använder både ett **PartitionKey** och en **RowKey** värde.  
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du implementerar det här mönstret:  
+Överväg att hello följande punkter när du bestämmer hur tooimplement detta mönster:  
 
-* Hämtar en fullständig logisk entitet omfattar minst två lagringstransaktioner: en för att hämta varje fysisk entitet.  
+* Hämtar en fullständig logisk entitet omfattar minst två lagringstransaktioner: en tooretrieve fysisk entitet.  
 
-#### <a name="when-to-use-this-pattern"></a>När du ska använda det här mönstret
-Använd det här mönstret när behöver lagra enheter vars storlek eller ett antal egenskaper som överskrider gränserna för en enskild entitet i tabelltjänsten.  
+#### <a name="when-toouse-this-pattern"></a>När toouse det här mönstret
+Använd det här mönstret när måste toostore enheter vars storlek eller ett antal egenskaper överskrider hello gränserna för en enskild entitet i hello tabelltjänst.  
 
 #### <a name="related-patterns-and-guidance"></a>Vägledning och relaterade mönster
-Följande mönster och guider kan även vara relevanta när du implementerar det här mönstret:  
+hello kan följande mönster och guider även vara relevanta när du implementerar det här mönstret:  
 
 * [Entiteten gruppera transaktioner](#entity-group-transactions)
 * [Merge eller ersätta](#merge-or-replace)
 
 ### <a name="large-entities-pattern"></a>Mönster för stora entiteter
-Använda blob storage för att lagra stora egenskapsvärden.  
+Använda blob storage toostore stora värden.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-En enskild entitet kan inte lagra mer än 1 MB data totalt. Om en eller flera av dina egenskaper lagrar värden som orsakar den totala storleken på din enhet överskrider detta värde kan lagra du inte hela entiteten i tabelltjänsten.  
+En enskild entitet kan inte lagra mer än 1 MB data totalt. Om en eller flera av dina egenskaper lagrar värden som gör hello totala storleken på din enhet tooexceed detta värde kan lagra du inte hello hela entiteten i hello tabelltjänsten.  
 
 #### <a name="solution"></a>Lösning
-Om entiteten överskrider 1 MB i storlek eftersom en eller flera egenskaper innehåller stora mängder data, du lagra data i Blob-tjänsten och sedan lagra den blob-adressen i en egenskap i entiteten. Du kan till exempel lagra foto av en medarbetare i blob storage och lagra en länk till bilden i den **foto** egenskap för dina medarbetare entitet:  
+Om entiteten överskrider 1 MB i storlek eftersom en eller flera egenskaper innehåller stora mängder data kan du lagra data i hello Blob-tjänsten och spara hello hello blob-adress i en egenskap i hello entitet. Du kan exempelvis lagra hello foto av en medarbetare i blob storage och lagrar en länk toohello foto i hello **foto** egenskap för dina medarbetare entitet:  
 
 ![][25]
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du implementerar det här mönstret:  
+Överväg att hello följande punkter när du bestämmer hur tooimplement detta mönster:  
 
-* Använda eventuell enhetliga mellan entiteten i tabelltjänsten och data i Blob-tjänsten på [överensstämmelse transaktioner mönster](#eventually-consistent-transactions-pattern) att underhålla din entiteter.
-* Hämtar en fullständig entitet omfattar minst två lagringstransaktioner: en för att hämta entiteten och en för att hämta blob-data.  
+* toomaintain slutliga konsekvensen mellan hello entiteten i hello tabelltjänsten och hello data i hello Blob-tjänsten använder hello [överensstämmelse transaktioner mönster](#eventually-consistent-transactions-pattern) toomaintain-enheterna.
+* Hämtar en fullständig entitet omfattar minst två lagringstransaktioner: en tooretrieve hello entitet och en tooretrieve hello blob-data.  
 
-#### <a name="when-to-use-this-pattern"></a>När du ska använda det här mönstret
-Använd det här mönstret när du behöver lagra enheter vars storlek överskrider gränserna för en enskild entitet i tabelltjänsten.  
+#### <a name="when-toouse-this-pattern"></a>När toouse det här mönstret
+Använd det här mönstret när du behöver toostore enheter vars storlek överskrider hello gränserna för en enskild entitet i hello tabelltjänsten.  
 
 #### <a name="related-patterns-and-guidance"></a>Vägledning och relaterade mönster
-Följande mönster och guider kan även vara relevanta när du implementerar det här mönstret:  
+hello kan följande mönster och guider även vara relevanta när du implementerar det här mönstret:  
 
 * [Mönster för överensstämmelse transaktioner](#eventually-consistent-transactions-pattern)  
 * [Wide entiteter mönster](#wide-entities-pattern)
@@ -874,80 +874,80 @@ Följande mönster och guider kan även vara relevanta när du implementerar det
 <a name="prepend-append-anti-pattern"></a>
 
 ### <a name="prependappend-anti-pattern"></a>Lägga/lägga till ett mönster
-Öka skalbarheten när du har en stor volym med infogningar genom att sprida infogningarna över flera partitioner.  
+Öka skalbarheten när du har en stor volym med infogningar genom att sprida hello infogningar över flera partitioner.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-Tillagt eller lägger till enheter till din lagrade entiteter vanligtvis resulterar i programmet att lägga till nya entiteter till den första eller sista partitionen i en sekvens av partitioner. I så fall måste äger alla infogningar vid något tillfälle rum i samma partition, skapar en hotspot som förhindrar tabelltjänsten från belastningen belastningsutjämning infogningar över flera noder och vilket kan orsaka att träffa skalbarhetsmål för programmet partition. Till exempel om du har ett program som loggar nätverks- och åtkomst av anställda, sedan en entitet struktur som visas nedan kan resultera i den aktuella timman partition blir en hotspot om mängden transaktioner når skalbarhet mål för en enskilda partition:  
+Tillagt eller lägger till entiteter tooyour lagras entiteter vanligtvis resulterar i hello programmet att först lägga till nya entiteter toohello eller sista partition av en sekvens av partitioner. Alla hello infogningar vid något tillfälle finns i det här fallet äger rum i hello samma partition, skapar en hotspot som förhindrar att hello tabelltjänsten belastningsutjämning infogar över flera noder och vilket kan orsaka att ditt program toohit hello skalbarhet mål för partitionen. Till exempel om du har ett program som loggar nätverks- och åtkomst av anställda, en entitet struktur som på bilden nedan kan resultera i att hello aktuell timme partition blir en hotspot om hello mängder transaktioner når hello skalbarhet mål för en enskild partition:  
 
 ![][26]
 
 #### <a name="solution"></a>Lösning
-Följande alternativ entitet struktur förhindrar en hotspot på en viss partition som programmet loggar händelser:  
+hello förhindrar följande alternativa entitet struktur en hotspot på en viss partition som hello program loggar händelser:  
 
 ![][27]
 
-Meddelande med det här exemplet hur både den **PartitionKey** och **RowKey** är sammansatta nycklar. Den **PartitionKey** använder både avdelning och medarbetare id för att distribuera loggning över flera partitioner.  
+Observera med det här exemplet hur både hello **PartitionKey** och **RowKey** är sammansatta nycklar. Hej **PartitionKey** använder både hello avdelning och medarbetare id toodistribute hello loggning på flera partitioner.  
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du implementerar det här mönstret:  
+Överväg att hello följande punkter när du bestämmer hur tooimplement detta mönster:  
 
-* Stöder den alternativa nyckelstruktur som undviker att skapa varm partitioner på infogningar effektivt frågorna klientprogrammet gör?  
-* Innebär förväntade volymen av transaktioner som troligen kommer att nå skalbarhetsmål för en enskild partition och begränsas av lagringstjänsten?  
+* Innehåller hello alternativa nyckelstruktur som undviker att skapa varm partitioner på infogningar effektivt stöd hello frågor klientprogrammet gör?  
+* Innebär förväntade volymen av transaktioner du förmodligen tooreach hello skalbarhetsmål för en enskild partition och begränsas av hello lagringstjänsten?  
 
-#### <a name="when-to-use-this-pattern"></a>När du ska använda det här mönstret
-Undvik prepend/lägga till ett mönster när volymen av transaktioner kan leda till begränsning av lagringstjänsten när du använder en varm partition.  
+#### <a name="when-toouse-this-pattern"></a>När toouse det här mönstret
+Undvik hello lägga/lägga till ett mönster när volymen av transaktioner är sannolikt tooresult i begränsning av hello lagringstjänsten när du använder en varm partition.  
 
 #### <a name="related-patterns-and-guidance"></a>Vägledning och relaterade mönster
-Följande mönster och guider kan även vara relevanta när du implementerar det här mönstret:  
+hello kan följande mönster och guider även vara relevanta när du implementerar det här mönstret:  
 
 * [Sammansatt nyckel mönster](#compound-key-pattern)  
 * [Loggen pilslut mönster](#log-tail-pattern)  
 * [Ändra entiteter](#modifying-entities)  
 
 ### <a name="log-data-anti-pattern"></a>Loggen anti datamönster
-Normalt ska du använda Blob-tjänsten i stället för tabelltjänsten för att lagra loggdata.  
+Normalt bör du använda hello Blob-tjänsten i stället för hello toostore tjänstlogginformation på tabellen.  
 
 #### <a name="context-and-problem"></a>Kontexten och problem
-Ett vanligt användningsfall för loggdata är att hämta en uppsättning loggposter för ett visst datum/tid-intervall: till exempel du vill hitta alla fel och kritiska meddelanden som tillämpningsprogrammet loggade mellan 15:04 och 15:06 på ett visst datum. Du inte vill använda datum och tid för loggmeddelandet är för att avgöra partitionen du sparar logg entiteter till: som resulterar i en varm partition eftersom samtidigt, kommer alla entiteter i loggen delar samma **PartitionKey** värde (finns i avsnittet [Prepend/lägga till ett mönster](#prepend-append-anti-pattern)). Följande entitet schemat för ett loggmeddelande resulterar i en varm partition eftersom programmet skriver alla loggmeddelanden till partitionen för den aktuella datum och tid:  
+Ett vanligt användningsfall för loggdata är tooretrieve ett urval av loggposter för ett visst datum/tid-intervall: till exempel önskade toofind alla hello fel och kritiska meddelanden som tillämpningsprogrammet loggade mellan 15:04 och 15:06 på ett visst datum. Du inte vill toouse hello datum och tid för hello logga meddelandet toodetermine hello partition du sparar logg entiteter till: att resulterar i en varm partition eftersom samtidigt, delar alla hello loggen entiteter hello samma **PartitionKey** värdet (i avsnittet hello [Prepend/lägga till ett mönster](#prepend-append-anti-pattern)). Hello efter entitet schemat för ett loggmeddelande resulterar i en varm partition eftersom programmet hello skriver alla loggmeddelanden toohello partition för hello aktuella datum och tid:  
 
 ![][28]
 
-I det här exemplet i **RowKey** innehåller datum och tid för loggmeddelande så att loggmeddelanden lagras i tidsvärdet ordning och innehåller ett meddelande-id om flera loggmeddelanden delar samma datum och tid.  
+I det här exemplet hello **RowKey** omfattar hello datum och tid för hello logga meddelandet tooensure loggmeddelanden lagras i tidsvärdet ordning och omfattar en meddelande-id om flera loggmeddelanden dela hello samma datum och tid.  
 
-En annan metod är att använda en **PartitionKey** som säkerställer att programmet skriver meddelanden över ett antal partitioner. Om källan för loggmeddelandet erbjuder ett sätt att distribuera meddelanden mellan många partitioner, kan du använda följande entitet schema:  
+En annan metod är toouse en **PartitionKey** som säkerställer att programmet hello skriver meddelanden över ett antal partitioner. Om hello källan för hello loggmeddelande erbjuder ett sätt toodistribute meddelanden mellan många partitioner, kan du använda hello efter entitet schemat:  
 
 ![][29]
 
-Problem med det här schemat är dock att om du vill hämta alla loggmeddelanden för ett visst tidsintervall måste du söka varje partition i tabellen.
+Hello problem med det här schemat är dock att tooretrieve alla hello loggmeddelanden för ett visst tidsintervall måste du söka varje partition i hello tabell.
 
 #### <a name="solution"></a>Lösning
-I föregående avsnitt markerade problemet med försöker använda tabelltjänsten för att lagra loggposter och föreslagna två otillräckliga, Designer. En lösning som ledde till en varm partition med risk för prestandaproblem skriva loggmeddelanden; andra lösningen resulterade i dåliga prestanda på grund av kravet att söka igenom varje partition i tabellen för att hämta loggmeddelanden för ett visst tidsintervall. BLOB storage erbjuder en bättre lösning för den här typen av scenario och detta är hur Azure Storage Analytics lagrar loggdata som samlas in.  
+hello föregående avsnitt markerade hello problemet med försök toouse hello loggposter för tabellen service toostore och förslag på två otillräckliga, designerna. En lösning som ledde tooa varm partition med hello risk för prestandaproblem skriva loggmeddelanden; hello resulterade andra lösning i dåliga prestanda på grund av hello krav tooscan varje partition i tabellen hello tooretrieve loggmeddelanden för ett visst tidsintervall. BLOB storage erbjuder en bättre lösning för den här typen av scenario och detta är hur Azure Storage Analytics lagrar hello loggdata som samlas in.  
 
-Det här avsnittet beskrivs hur Storage Analytics lagrar loggdata i blob storage som en illustration av den här metoden för att lagra data som du vanligtvis fråga med intervallet.  
+Det här avsnittet beskrivs hur Storage Analytics lagrar loggdata i blob storage som en illustration av den här metoden toostoring data som du vanligtvis fråga med intervallet.  
 
-Storage Analytics lagrar meddelanden i en avgränsad format i flera blobbar. Avgränsad format gör det enkelt för ett klientprogram att tolka data i loggmeddelandet.  
+Storage Analytics lagrar meddelanden i en avgränsad format i flera blobbar. hello avgränsade format gör det enkelt för en klient programdata tooparse hello i hello loggmeddelande.  
 
-Storage Analytics använder en namngivningskonvention för blobbar som gör det möjligt för dig att hitta blob (eller BLOB) som innehåller loggmeddelanden som du söker. Till exempel innehåller en blob med namnet ”queue/2014/07/31/1800/000001.log” loggmeddelanden som relaterar till Kötjänsten för timme som börjar vid 18:00 31 juli 2014. ”000001” anger att detta är den första loggfilen för den här perioden. Tidsstämplar i de första och sista loggmeddelanden som lagras i filen som en del av den blobbens metadata även information om Storage Analytics. API för blob storage kan du hitta blobbar i en behållare baserat på ett namnprefix: Om du vill hitta alla blobbar som innehåller kön loggdata för timme som börjar vid 18:00, du kan använda prefixet ”kö/2014/07/31/1800”.  
+Storage Analytics använder en namngivningskonvention för blob som gör att du toolocate hello blob (eller BLOB) som innehåller hello loggmeddelanden som du söker. Till exempel innehåller en blob med namnet ”queue/2014/07/31/1800/000001.log” loggmeddelanden som handlar om toohello Kötjänsten för hello timma med början vid 18:00 31 juli 2014. Hej ”000001” anger att detta är hello första loggfilen för den här perioden. Storage Analytics registrerar också hello tidsstämplar av hello först och logga senaste meddelanden som lagras i hello-filen som en del av hello blob-metadata. hello API för blob storage kan du hitta blobbar i en behållare baserat på ett namnprefix: toolocate alla hello blob som innehåller kön logga data för hello timma med början vid 18:00, kan du använda hello prefixet ”kö/2014/07/31/1800”.  
 
-Storage Analytics buffertar loggmeddelanden internt och regelbundet uppdaterar lämpliga blob eller skapar en ny loggposter senaste batchen. Detta minskar antalet skrivningar som måste utföras på blob-tjänsten.  
+Storage Analytics buffrar loggmeddelanden internt och uppdaterar sedan regelbundet hello lämpliga blob eller skapar en ny hello senaste batchen med loggposter. Detta minskar antalet hello av skrivningar toohello blob-tjänsten måste utföras.  
 
-Om du implementerar en liknande lösning i ditt eget program, måste du hantera kompromissen mellan tillförlitlighet (skriver varje loggpost till blob-lagring när den uppstår) och kostnad och skalbarhet (buffring uppdateringar i programmet och skrivning dem till blob storage i batchar).  
+Om du implementerar en liknande lösning i ditt eget program måste du tänka på hur toomanage hello säkerhetsaspekten tillförlitlighet (skriver varje logg post tooblob lagring när den uppstår) och kostnad och skalbarhet (buffring uppdateringar i ditt program och skrivning av dem tooblob lagring i batchar).  
 
 #### <a name="issues-and-considerations"></a>Problem och överväganden
-Tänk på följande när du bestämmer hur du lagrar loggdata:  
+Överväg följande punkter när du bestämmer hur toostore logga data hello:  
 
 * Om du skapar en tabelldesign som undviker potentiella hot partitioner kan hända att du inte kommer åt din loggdata effektivt.  
-* Om du vill bearbeta loggdata måste ofta en klient att läsa in många poster.  
+* tooprocess logga data, en klient måste ofta tooload många poster.  
 * Även om loggdata är ofta strukturerad, kan blob-lagring vara en bättre lösning.  
 
 ### <a name="implementation-considerations"></a>Implementering
-Det här avsnittet beskrivs några av övervägandena att ha i åtanke när du implementerar de mönster som beskrivs i föregående avsnitt. De flesta av det här avsnittet använder exempel skrivna i C# som använder Storage-klientbiblioteket (version 4.3.0 vid tidpunkten för skrivning).  
+Det här avsnittet beskrivs några av hello överväganden toobear i åtanke när du implementerar hello mönster som beskrivs i föregående avsnitt i hello. De flesta av det här avsnittet använder exempel skrivna i C# som använder hello Storage-klientbibliotek (version 4.3.0 när hello skrivning).  
 
 ### <a name="retrieving-entities"></a>Hämta entiteter
-Enligt beskrivningen i avsnittet [Design för frågor](#design-for-querying), de mest effektiva frågan är en punkt-fråga. I vissa fall kan du dock behöva hämta flera entiteter. Det här avsnittet beskrivs några vanliga sätt att hämta entiteter med Storage-klientbiblioteket.  
+Enligt beskrivningen i avsnittet hello [Design för frågor](#design-for-querying), hello effektivaste frågan är en punkt-fråga. Men i vissa fall kanske du måste tooretrieve flera entiteter. Det här avsnittet beskrivs några vanliga metoder tooretrieving enheter med hjälp av hello Storage-klientbiblioteket.  
 
-#### <a name="executing-a-point-query-using-the-storage-client-library"></a>Köra en punkt-fråga med Storage-klientbibliotek
-Det enklaste sättet att köra en fråga om platsen är att använda den **hämta** tabell åtgärden som visas i följande C# kodavsnitt som hämtar en entitet med en **PartitionKey** värdets ”försäljning” och en  **RowKey** värdets ”212”:  
+#### <a name="executing-a-point-query-using-hello-storage-client-library"></a>Köra en punkt-fråga med hello Storage-klientbibliotek
+hello enklaste sättet tooexecute en punkt-fråga är toouse hello **hämta** tabell åtgärden enligt följande kodavsnitt i C# hello som hämtar en entitet med en **PartitionKey** ”försäljning” och en  **RowKey** värdets ”212”:  
 
 ```csharp
 TableOperation retrieveOperation = TableOperation.Retrieve<EmployeeEntity>("Sales", "212");
@@ -959,10 +959,10 @@ if (retrieveResult.Result != null)
 }  
 ```
 
-Observera hur entiteten förväntar att det här exemplet hämtas för att vara av typen **EmployeeEntity**.  
+Observera hur det här exemplet förväntar hello entitet hämtar toobe av typen **EmployeeEntity**.  
 
 #### <a name="retrieving-multiple-entities-using-linq"></a>Hämtning av flera enheter med hjälp av LINQ
-Du kan hämta flera entiteter med hjälp av LINQ med Storage-klientbiblioteket och ange en fråga med en **där** satsen. För att undvika en tabellgenomsökning, bör du alltid skriva den **PartitionKey** värde i where-satsen, och om möjligt den **RowKey** värdet för att undvika tabell och partition genomsökningar. Tabelltjänsten stöder en begränsad uppsättning jämförelseoperatorer (större än, större än eller lika med, mindre än, mindre än eller lika med, lika och inte lika) ska användas i where-satsen. Följande C# kodfragment hittar alla anställda vars efternamn börjar med ”B” (förutsatt att den **RowKey** lagrar efternamn) på försäljningsavdelningen (förutsatt att den **PartitionKey** lagrar den avdelningsnamn):  
+Du kan hämta flera entiteter med hjälp av LINQ med Storage-klientbiblioteket och ange en fråga med en **där** satsen. tooavoid en tabellgenomsökning, bör du alltid skriva hello **PartitionKey** värdet i hello där-satsen, och om möjligt hello **RowKey** värdet tooavoid tabell och partition genomsökningar. Hej tabelltjänsten stöder en begränsad uppsättning jämförelse operatorer (större än, större än eller lika med, mindre än, mindre än eller lika med, lika och inte lika) toouse i hello där satsen. hello följande kodfragment för C# hittar alla hello anställda vars efternamn börjar med ”B” (förutsatt att hello **RowKey** lagrar hello efternamn) i hello försäljningsavdelningen (förutsatt att hello **PartitionKey** lagrar hello avdelningsnamn):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();
@@ -974,9 +974,9 @@ var query = (from employee in employeeQuery
 var employees = query.Execute();  
 ```
 
-Observera hur frågan anger både en **RowKey** och en **PartitionKey** att säkerställa bättre prestanda.  
+Observera hur hello-frågan anger både en **RowKey** och en **PartitionKey** tooensure bättre prestanda.  
 
-Följande kodexempel visar hur motsvarande fungerar med flytande API (Mer information om flytande API: er i allmänhet finns [bästa praxis för att designa en flytande API](http://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
+hello följande kodexempel visar hur motsvarande fungerar med flytande hello-API (Mer information om flytande API: er i allmänhet finns [bästa praxis för att designa en flytande API](http://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(
@@ -996,18 +996,18 @@ var employees = employeeTable.ExecuteQuery(employeeQuery);
 ```
 
 > [!NOTE]
-> Exemplet omsluter flera **CombineFilters** metoder för att inkludera tre filtervillkor.  
+> hello exempel omsluter flera **CombineFilters** metoder tooinclude hello tre filtervillkor.  
 > 
 > 
 
 #### <a name="retrieving-large-numbers-of-entities-from-a-query"></a>Hämtar stort antal enheter från en fråga
-En optimal frågan returnerar en enskild entitet baserat på en **PartitionKey** värde och ett **RowKey** värde. Du kan dock ha ett krav för att returnera många entiteter från samma partition eller även många partitioner i vissa scenarier.  
+En optimal frågan returnerar en enskild entitet baserat på en **PartitionKey** värde och ett **RowKey** värde. I vissa fall kan du dock ha en krav tooreturn många entiteter från hello samma partitions eller ens från flera partitioner.  
 
-Alltid fullständigt bör du testa prestanda för ditt program i dessa scenarier.  
+Alltid fullständigt bör du testa hello prestanda i dessa scenarier.  
 
-En fråga mot tabelltjänsten kan returnera högst 1 000 enheter på en gång och kan utföra för högst fem sekunder. Om resultatet innehåller fler än 1 000 enheter om frågan inte slutfördes inom fem sekunder, eller om frågan överskrider gränsen partition, returnerar tabelltjänsten en fortsättningstoken om du vill aktivera klientprogrammet begär en uppsättning enheter. Mer information om hur fortsättning tokens arbete finns [Timeout för fråga och sidbrytning](http://msdn.microsoft.com/library/azure/dd135718.aspx).  
+En fråga mot hello tabelltjänsten kan returnera högst 1 000 enheter på en gång och kan utföra för högst fem sekunder. Om hello resultatet innehåller fler än 1 000 enheter, om hello frågan slutfördes inte inom fem sekunder, eller om frågan hello korsar hello partition gräns, hello tabelltjänsten returnerar en fortsättning token tooenable hello klientens programmet toorequest hälsning Nästa uppsättning enheter. Mer information om hur fortsättning tokens arbete finns [Timeout för fråga och sidbrytning](http://msdn.microsoft.com/library/azure/dd135718.aspx).  
 
-Om du använder Storage-klientbiblioteket hantera den automatiskt fortsättning token för dig som returnerar entiteter från tabelltjänsten. Följande C# kodexempel använder Storage-klientbiblioteket automatiskt hanterar fortsättning token om tabelltjänsten returnerar dem i ett svar:  
+Om du använder hello Storage-klientbibliotek hantera den automatiskt fortsättning token för dig som returnerar entiteter från hello tabelltjänsten. hello hanterar följande C# kodexempel använder hello Storage-klientbibliotek automatiskt fortsättning token om hello tabelltjänsten returnerar dem i ett svar:  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(
@@ -1022,7 +1022,7 @@ foreach (var emp in employees)
 }  
 ```
 
-Följande C#-kod hanterar uttryckligen fortsättning token:  
+Följande C#-kod hello hanterar fortsättning token explicit:  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(
@@ -1044,25 +1044,25 @@ do
 } while (continuationToken != null);  
 ```
 
-Du kan styra när programmet hämtar nästa segment av data med hjälp av fortsättning token explicit. Till exempel om ditt klientprogram kan du bläddra igenom de entiteter som lagras i en tabell, en användare behöver inte bläddra igenom alla entiteter som hämtas av frågan, så att programmet bara använda en fortsättningstoken för att hämta nästa segment när användaren hade slutförts bläddring genom alla entiteter i det aktuella segmentet. Den här metoden har flera fördelar:  
+Du kan styra när programmet hämtar hello nästa segment av data med hjälp av fortsättning token explicit. Till exempel kan ditt klientprogram kan användare toopage via hello entiteter som lagras i en tabell, en användare bestämma inte toopage via alla hello entiteter som hämtas av hello frågan så att programmet bara använda en fortsättning token tooretrieve hello nästa segment när hello användaren hade slutförts bläddring genom alla hello entiteter i hello aktuella segmentet. Den här metoden har flera fördelar:  
 
-* Du kan begränsa mängden data som ska hämtas från tabelltjänsten och att du flyttar över nätverket.  
-* Det kan du utföra asynkrona i/o i .NET.  
-* Det gör att du kan serialisera fortsättningstoken till permanent lagringsutrymme så att du kan fortsätta om ett program kraschar.  
+* Den låter dig toolimit hello mängden data tooretrieve från hello tabelltjänsten och att du flyttar över hello nätverk.  
+* Det gör du tooperform asynkrona i/o i .NET.  
+* Den låter dig tooserialize hello fortsättning token toopersistent lagring så att du kan fortsätta i ett program kraschar hello-händelse.  
 
 > [!NOTE]
-> En fortsättningstoken returnerar vanligtvis ett segment som innehåller 1 000 enheter, även om det kan vara färre. Detta gäller även om du begränsar antalet poster som en fråga som returnerar med hjälp av **ta** att returnera de första n entiteter som matchar sökvillkoren sökning: tabelltjänsten kan returnera ett segment som innehåller färre än n entiteter tillsammans med en fortsättningstoken så att du kan hämta de återstående enheterna.  
+> En fortsättningstoken returnerar vanligtvis ett segment som innehåller 1 000 enheter, även om det kan vara färre. Detta gäller även hello om du begränsar hello antalet poster som en fråga som returnerar med hjälp av **ta** tooreturn hello första n entiteter som matchar sökvillkoren sökning: hello tabelltjänsten kan returnera ett segment som innehåller färre än n enheter längs med en fortsättning token tooenable hello du tooretrieve återstående entiteter.  
 > 
 > 
 
-Följande C#-kod visar hur du ändrar antal entiteter som returneras i ett segment:  
+hello visar följande C#-kod hur toomodify hello antal entiteter som returneras i ett segment:  
 
 ```csharp
 employeeQuery.TakeCount = 50;  
 ```
 
 #### <a name="server-side-projection"></a>Projektion av serversidan
-En enda entitet kan ha upp till 255 egenskaper och upp till 1 MB i storlek. När du frågar tabellen och hämta entiteter kanske inte behöver alla egenskaper och kan undvika att överföra data i onödan (om du vill minska svarstiden och kostnaden). Du kan använda serversidan projektion Överför bara de egenskaper som du behöver. Följande exempel är hämtar bara den **e-post** egenskapen (tillsammans med **PartitionKey**, **RowKey**, **tidsstämpel**, och **ETag**) från de enheter som väljs av frågan.  
+En enda entitet kan ha upp too255 egenskaper och in too1 MB i storlek. När du frågar hello tabell och hämta entiteter kan du kanske inte behöver alla hello egenskaper och kan undvika att överföra data i onödan (toohelp minska latensen och kostnaden). Du kan använda serversidan tootransfer bara hello projektionsegenskaper du behöver. hello följande exempel är hämtar bara hello **e-post** egenskapen (tillsammans med **PartitionKey**, **RowKey**, **tidsstämpel**, och  **ETag**) från hello entiteter som valts av hello frågan.  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(
@@ -1078,30 +1078,30 @@ foreach (var e in entities)
 }  
 ```
 
-Observera hur **RowKey** värdet är tillgängligt även om den inte ingår i listan över egenskaper som hämtas.  
+Observera hur hello **RowKey** värdet är tillgängligt även om det inte ingick i hello lista över egenskaper tooretrieve.  
 
 ### <a name="modifying-entities"></a>Ändra entiteter
-Storage-klientbiblioteket kan du ändra din entiteter som lagras i tabelltjänsten genom att lägga till, ta bort och uppdatera entiteter. Du kan använda EGTs batch flera insert-, update- och delete-åtgärder tillsammans för att minska antalet sändningar som krävs och förbättra prestandan för din lösning.  
+hello Storage-klientbibliotek kan toomodify entiteter som lagras i tabelltjänsten hello genom att lägga till, ta bort och uppdatera entiteter. Du kan använda EGTs toobatch flera insert-, update- och delete-åtgärder tillsammans tooreduce hello antalet sändningar krävs och förbättra hello prestandan för din lösning.  
 
-Observera att undantag när Storage-klientbiblioteket utför en EGT vanligtvis innehåller index för den entitet som orsakade batch misslyckas. Detta är användbart när du felsöker kod som använder EGTs.  
+Observera att undantag när hello Storage-klientbibliotek utför en EGT vanligtvis innehåller hello index för hello entitet som orsakade hello batch toofail. Detta är användbart när du felsöker kod som använder EGTs.  
 
 Du bör också övervägas hur din design påverkar hur ditt klientprogram hanterar samtidighet och update-åtgärder.  
 
 #### <a name="managing-concurrency"></a>Hantera samtidighet
-Som standard tabelltjänsten implementerar Optimistisk samtidighet kontrollerar på nivån för enskilda entiteter för **infoga**, **sammanfoga**, och **ta bort** åtgärder, även om den är möjligt för en klient att tvinga tabelltjänsten att kringgå de här kontrollerna. Mer information om hur tabelltjänsten hanterar samtidighet finns [hantera samtidighet i Microsoft Azure Storage](../storage/common/storage-concurrency.md).  
+Som standard hello tabelltjänsten implementerar Optimistisk samtidighet kontrollerar på hello nivå för enskilda entiteter för **infoga**, **sammanfoga**, och **ta bort** åtgärder, även om det är möjligt för en klient tooforce hello tabell service toobypass kontrollerna. Mer information om hur hello tabelltjänsten hanterar samtidighet finns [hantera samtidighet i Microsoft Azure Storage](../storage/common/storage-concurrency.md).  
 
 #### <a name="merge-or-replace"></a>Merge eller ersätta
-Den **ersätta** metod för den **TableOperation** klassen ersätter alltid fullständiga entiteten i tabelltjänsten. Om du inte använder en egenskap i begäran när egenskapen finns i entiteten lagrade bort begäran egenskapen från den lagrade entiteten. Om du inte vill ta bort en egenskap från en lagrad entitet explicit, måste du inkludera varje egenskap i begäran.  
+Hej **ersätta** metod för hello **TableOperation** klassen ersätter alltid hello fullständig entitet i hello tabelltjänsten. Om du inte använder en egenskap i hello begäran när egenskapen finns i hello lagras entitet hello begäran tar du bort att egenskapen från hello lagras entitet. Om du inte vill tooremove en egenskap uttryckligen från en lagrad entitet, måste du inkludera varje egenskap i hello-begäran.  
 
-Du kan använda den **sammanfoga** metod för den **TableOperation** klassen för att minska mängden data som du skickar till tabelltjänsten när du vill uppdatera en entitet. Den **sammanfoga** metoden ersätter alla egenskaper i entiteten lagrade med egenskapsvärden från det entitet som ingår i denna begäran, men lämnar kvar alla egenskaper i entiteten lagrade som inte ingår i begäran. Detta är användbart om du har stora entiteter och behöver bara uppdatera ett litet antal egenskaper i en begäran.  
+Du kan använda hello **sammanfoga** metod för hello **TableOperation** klassen tooreduce hello mängden data som du skickar toohello tabelltjänsten när du vill tooupdate en entitet. Hej **sammanfoga** metoden ersätter alla egenskaper i hello lagras entiteten med egenskapsvärden från hello-enhet som finns i hello begäran, men lämnar kvar alla egenskaper i hello lagras entitet som inte ingår i hello-begäran. Detta är användbart om du har stora entiteter och behöver bara tooupdate ett litet antal egenskaper i en begäran.  
 
 > [!NOTE]
-> Den **ersätta** och **sammanfoga** metoder misslyckas om entiteten inte finns. Alternativt kan du använda den **InsertOrReplace** och **InsertOrMerge** metoder som skapar en ny entitet om den inte finns.  
+> Hej **ersätta** och **sammanfoga** metoder misslyckas om hello entiteten inte finns. Alternativt kan du använda hello **InsertOrReplace** och **InsertOrMerge** metoder som skapar en ny entitet om den inte finns.  
 > 
 > 
 
 ### <a name="working-with-heterogeneous-entity-types"></a>Arbeta med heterogena entitetstyper
-Tabelltjänsten är en *schemat mindre* tabell butik som innebär att en enskild tabell kan lagra entiteter av flera typer som ger stor flexibilitet i din design. I följande exempel visas en tabell som lagrar både anställda och avdelningen enheter:  
+Hej tabelltjänsten är en *schemat mindre* tabell butik som innebär att en enskild tabell kan lagra entiteter av flera typer som ger stor flexibilitet i din design. hello illustrerar följande exempel en tabell som lagrar både anställda och avdelningen enheter:  
 
 <table>
 <tr>
@@ -1190,10 +1190,10 @@ Tabelltjänsten är en *schemat mindre* tabell butik som innebär att en enskild
 </tr>
 </table>
 
-Observera att varje entitet måste dock ha **PartitionKey**, **RowKey**, och **tidsstämpel** värden, men kan ha en uppsättning egenskaper. Det finns inget att ange vilken typ av en enhet om du väljer att lagra informationen någonstans. Det finns två alternativ för att identifiera enhetstyp:  
+Observera att varje entitet måste dock ha **PartitionKey**, **RowKey**, och **tidsstämpel** värden, men kan ha en uppsättning egenskaper. Det finns inget tooindicate hello typ av en enhet om du inte väljer toostore informationen någonstans. Det finns två alternativ för att identifiera hello enhetstyp:  
 
-* Lägga till typen i **RowKey** (eller eventuellt den **PartitionKey**). Till exempel **EMPLOYEE_000123** eller **DEPARTMENT_SALES** som **RowKey** värden.  
-* Använda en separat egenskap för att registrera entitetstypen som visas i tabellen nedan.  
+* Lägga hello entitet typen toohello **RowKey** (eller eventuellt hello **PartitionKey**). Till exempel **EMPLOYEE_000123** eller **DEPARTMENT_SALES** som **RowKey** värden.  
+* Använd en separat egenskapen toorecord hello entitetstyp enligt hello tabellen nedan.  
 
 <table>
 <tr>
@@ -1290,23 +1290,23 @@ Observera att varje entitet måste dock ha **PartitionKey**, **RowKey**, och **t
 </tr>
 </table>
 
-Det första alternativet, prepending entiteten typ till den **RowKey**, är användbart om det finns en risk att två entiteter med olika typer kan ha samma nyckelvärde. Dessutom grupperas entiteter av samma typ samman i partitionen.  
+hello första alternativet, tillagt hello entitet typen toohello **RowKey**, är användbart om det finns en risk att två entiteter med olika typer kanske hello samma nyckelvärde. Dessutom grupperas entiteter av samma typ tillsammans i hello partition hello.  
 
-De metoder som beskrivs i det här avsnittet är särskilt relevanta till diskussionen [arvsrelationer](#inheritance-relationships) i den här guiden i avsnittet [modellering relationer](#modelling-relationships).  
+hello tekniker som beskrivs i det här avsnittet är särskilt relevanta toohello diskussion [arvsrelationer](#inheritance-relationships) i den här guiden i hello avsnittet [modellering relationer](#modelling-relationships).  
 
 > [!NOTE]
-> Du bör överväga att använda ett versionsnummer i entiteten TYPVÄRDE att klientprogram att utvecklas POCO objekt och arbeta med olika versioner.  
+> Du bör överväga att använda ett versionsnummer i hello entitet värdet tooenable klienten program tooevolve POCO objekt av typen och arbeta med olika versioner.  
 > 
 > 
 
-Resten av det här avsnittet beskrivs några av de funktioner i Storage-klientbiblioteket som underlättar arbetet med flera typer av enheter i samma tabell.  
+hello resten av det här avsnittet beskrivs några av hello funktioner i hello Storage-klientbiblioteket som gör det lättare att arbeta med flera typer av enheter i hello samma tabell.  
 
 #### <a name="retrieving-heterogeneous-entity-types"></a>Hämta heterogena entitetstyper
-Om du använder Storage-klientbiblioteket finns det tre alternativ för att arbeta med flera typer av enheter.  
+Om du använder hello Storage-klientbiblioteket finns det tre alternativ för att arbeta med flera typer av enheter.  
 
-Om du vet vilken typ av enhet som lagras med ett visst **RowKey** och **PartitionKey** värden, sedan kan du ange entitetstypen när du hämta entiteten som visas i de föregående två exemplen som Hämta entiteter av typen **EmployeeEntity**: [körs en punkt-fråga med Storage-klientbiblioteket](#executing-a-point-query-using-the-storage-client-library) och [hämtning av flera enheter med hjälp av LINQ](#retrieving-multiple-entities-using-linq).  
+Om du vet hello hello-enhet som lagras med ett visst **RowKey** och **PartitionKey** värden, sedan kan du ange hello entitetstypen när du hämtar hello entitet som visas i hello föregående två exempel som hämta entiteter av typen **EmployeeEntity**: [körs en punkt-fråga med hello Storage-klientbibliotek](#executing-a-point-query-using-the-storage-client-library) och [hämtning av flera enheter med hjälp av LINQ](#retrieving-multiple-entities-using-linq).  
 
-Det andra alternativet är att använda den **DynamicTableEntity** typ (en egenskapsuppsättning) i stället för en konkret POCO entitetstyp (det här alternativet kan också förbättra prestanda eftersom det finns inget behov av att serialisera och deserialisera entiteten till .NET-typer). Följande C#-kod potentiellt hämtar flera entiteter med olika typer från tabellen, men returnerar alla entiteter som **DynamicTableEntity** instanser. Därefter använder den **EntityType** egenskapen fastställa typen av varje entitet:  
+hello andra alternativ är toouse hello **DynamicTableEntity** typ (en egenskapsuppsättning) i stället för en konkret POCO entitetstyp (det här alternativet kan också förbättra prestanda eftersom det finns inget behov av tooserialize och deserialisera hello entiteten för. NET typer). hello följande C#-kod potentiellt hämtar flera entiteter med olika typer från hello tabell, men returnerar alla entiteter som **DynamicTableEntity** instanser. Därefter använder hello **EntityType** toodetermine hello egenskapstypen varje entitet:  
 
 ```csharp
 string filter = TableQuery.CombineFilters(
@@ -1339,9 +1339,9 @@ if (e.Properties.TryGetValue("EntityType", out entityTypeProperty))
 }  
 ```
 
-Observera att om du vill hämta andra egenskaper måste du använda den **TryGetValue** -metoden i den **egenskaper** -egenskapen för den **DynamicTableEntity** klass.  
+Observera att tooretrieve andra egenskaper måste du använda hello **TryGetValue** metod på hello **egenskaper** -egenskapen för hello **DynamicTableEntity** klass.  
 
-Ett tredje alternativ är att kombinera med hjälp av den **DynamicTableEntity** typ och en **EntityResolver** instans. På så sätt kan du matcha flera POCO-typer i samma fråga. I det här exemplet i **EntityResolver** ombud använder den **EntityType** egenskapen att skilja mellan de två typerna av entitet som frågan returnerar. Den **lösa** metoden använder den **matcharen** ombud för att lösa **DynamicTableEntity** instanser till **TableEntity** instanser.  
+Ett tredje alternativ är toocombine med hello **DynamicTableEntity** typ och en **EntityResolver** instans. Detta gör att du tooresolve toomultiple POCO typer i hello samma fråga. I det här exemplet hello **EntityResolver** ombud använder hello **EntityType** egenskapen toodistinguish mellan hello två typer av entiteten som hello frågan returnerar. Hej **lösa** metoden använder hello **matcharen** delegera tooresolve **DynamicTableEntity** instanser för**TableEntity** instanser.  
 
 ```csharp
 EntityResolver<TableEntity> resolver = (pk, rk, ts, props, etag) =>
@@ -1386,7 +1386,7 @@ foreach (var e in entities)
 ```
 
 #### <a name="modifying-heterogeneous-entity-types"></a>Ändra heterogena entitetstyper
-Du behöver inte vet vilken typ av en entitet att ta bort den och du vet alltid vilken typ av en enhet när du infogar den. Du kan dock använda **DynamicTableEntity** typen för att uppdatera en entitet utan att känna till dess typ och utan att använda en POCO-entitetsklass. Följande kodexempel hämtas en enda entitet och kontrollerar de **EmployeeCount** egenskapen finns innan den uppdateras.  
+Du behöver inte tooknow hello typ av en entitet toodelete den, och du alltid vet hello-typ för en entitet vid infogande av den. Du kan dock använda **DynamicTableEntity** skriver tooupdate en enhet utan att känna till dess typ och utan att använda en POCO-entitetsklass. hello följande kodexempel hämtas en enda entitet och kontrollerar hello **EmployeeCount** egenskapen finns innan den uppdateras.  
 
 ```csharp
 TableResult result =
@@ -1405,23 +1405,23 @@ employeeTable.Execute(TableOperation.Merge(department));
 ```
 
 ### <a name="controlling-access-with-shared-access-signatures"></a>Kontrollera åtkomst med signaturer för delad åtkomst
-Du kan använda delade signatur åtkomst (SAS)-tokens för att aktivera klientprogram att ändra (och fråga) tabellentiteter direkt utan att behöva autentisera direkt med tabelltjänsten. Det finns vanligtvis tre huvudsakliga fördelar med SAS i ditt program:  
+Du kan använda delade signatur åtkomst (SAS) token tooenable klienten program toomodify (och fråga) tabellentiteter direkt utan hello måste tooauthenticate direkt med hello tabelltjänsten. Det finns vanligtvis tre huvudsakliga fördelar toousing SAS i ditt program:  
 
-* Du behöver inte distribuera din lagringskontonyckel till en osäker plattform (till exempel en mobil enhet) för att tillåta enheten för att komma åt och ändra entiteter i tabelltjänsten.  
-* Du kan avlasta del av arbetet som webb-och arbetsroller utför när du ska hantera dina enheter till klientenheter, till exempel slutanvändarnas datorer och mobila enheter.  
-* Du kan tilldela en begränsad och tid begränsad uppsättning behörigheter till en klient (till exempel tillåta att skrivskyddad åtkomst till specifika resurser).  
+* Du behöver inte toodistribute lagringen konto viktiga tooan osäker plattform (till exempel en mobil enhet) i ordning tooallow som enheten tooaccess och ändra entiteter i hello tabelltjänsten.  
+* Avlastning vissa hello arbete webbplatsen och arbetsroller utför när du ska hantera dina enheter tooclient enheter, till exempel slutanvändarnas datorer och mobila enheter.  
+* Du kan tilldela en begränsad och tid begränsad uppsättning behörigheter tooa klient (till exempel att tillåta läsåtkomst toospecific resurser).  
 
-Läs mer om hur du använder SAS-token med tabelltjänsten [med delad åtkomst signaturer (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).  
+Läs mer om hur du använder SAS-token med hello tabelltjänsten [med delad åtkomst signaturer (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).  
 
-Du måste dock fortfarande skapa SAS-token som ger ett klientprogram för entiteter i tabelltjänsten: du bör göra detta i en miljö som har säker åtkomst till dina nycklar för lagringskonto. Normalt använder du en webb- eller arbetarroll roll för att generera SAS-token och skicka dem till klientprogram som behöver åtkomst till dina enheter. Eftersom det finns fortfarande en arbetet med genererar och leverera SAS-token till klienter, bör du hur du bäst för att minska den här kostnader, särskilt i stora mängder.  
+Du måste dock fortfarande generera hello SAS-token som ger en klient toohello programentiteter i hello tabelltjänsten: du bör göra detta i en miljö som har säker åtkomst tooyour lagringskontonycklar. Normalt använder du en webb- eller arbetarroll rollen toogenerate hello SAS-token och ge dem toohello klientprogram som behöver åtkomst till tooyour entiteter. Eftersom det finns fortfarande en kostnader som genererar och leverera SAS-token tooclients, bör du överväga hur bästa tooreduce denna kostnader, särskilt i stora mängder.  
 
-Det är möjligt att generera en SAS-token som ger åtkomst till en delmängd av entiteter i en tabell. Som standard kan du skapa en SAS-token för en hel tabell, men det är också möjligt att ange att SAS-token som ger åtkomst till antingen en mängd **PartitionKey** värden eller en uppsättning **PartitionKey** och **RowKey** värden. Du kan välja att generera SAS-token för enskilda användare av systemet så att varje användares SAS-token endast ger dem åtkomst till sina egna enheter i tabelltjänsten.  
+Det är möjligt toogenerate en SAS-token som beviljar åtkomst till tooa delmängd av hello entiteter i en tabell. Som standard kan du skapa en SAS-token för en hel tabell, men det är också möjligt toospecify som hello SAS-token bevilja åtkomst tooeither en uppsättning **PartitionKey** värden eller en uppsättning **PartitionKey** och  **RowKey** värden. Du kan välja toogenerate SAS-token för enskilda användare av systemet så att varje användare SAS-token kan dem bara åtkomst tootheir egna entiteter i hello tabelltjänst.  
 
 ### <a name="asynchronous-and-parallel-operations"></a>Asynkron och parallella åtgärder
 Om dina begäranden sprids över flera partitioner, kan du förbättra genomflöde och klienten svarstider med hjälp av asynkron eller parallella frågor.
-Du kan till exempel ha två eller flera worker rollinstanser åtkomst till dina tabeller parallellt. Du kan har enskilda arbetsroller ansvarar för viss uppsättningar av partitioner eller helt enkelt ha flera worker rollinstanser, varje tillgång till alla partitioner i en tabell.  
+Du kan till exempel ha två eller flera worker rollinstanser åtkomst till dina tabeller parallellt. Du kan har enskilda arbetsroller ansvarar för viss uppsättningar av partitioner eller helt enkelt ha flera instanser av worker-rollen, varje kan tooaccess alla hello partitioner i en tabell.  
 
-Inom en klientinstans, kan du förbättra genomflöde genom att köra lagringsåtgärder asynkront. Storage-klientbiblioteket gör det enkelt att skriva asynkrona frågor och ändringar. Du kan till exempel starta med synkron metod som hämtar alla entiteter i en partition som visas i följande C#-kod:  
+Inom en klientinstans, kan du förbättra genomflöde genom att köra lagringsåtgärder asynkront. hello Storage-klientbibliotek gör det enkelt toowrite asynkrona frågor och ändringar. Du kan till exempel starta med hello synkron metod som hämtar alla hello entiteter i en partition som visas i hello följande C#-kod:  
 
 ```csharp
 private static void ManyEntitiesQuery(CloudTable employeeTable, string department)
@@ -1446,7 +1446,7 @@ private static void ManyEntitiesQuery(CloudTable employeeTable, string departmen
 }  
 ```
 
-Du kan enkelt ändra den här koden så att frågan körs asynkront på följande sätt:  
+Du kan enkelt ändra den här koden så hello frågan körs asynkront på följande sätt:  
 
 ```csharp
 private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, string department)
@@ -1470,16 +1470,16 @@ private static async Task ManyEntitiesQueryAsync(CloudTable employeeTable, strin
 }  
 ```
 
-I det här asynkron exemplet ser du följande ändringar från synkron version:  
+I det här asynkron exemplet ser du hello följande ändringar från hello synkron version:  
 
-* Metodsignaturen innehåller nu den **asynkrona** modifierare och returnerar ett **aktivitet** instans.  
-* I stället för att anropa den **ExecuteSegmented** metod för att hämta resultat, metoden nu anropar den **ExecuteSegmentedAsync** metod och använder den **await** modifierare till Hämta resultat asynkront.  
+* hello Metodsignaturen innehåller nu hello **asynkrona** modifierare och returnerar ett **aktivitet** instans.  
+* I stället för att anropa hello **ExecuteSegmented** metoden tooretrieve resultat, hello metoden nu anrop hello **ExecuteSegmentedAsync** metod och använder hello **await** modifierare tooretrieve resulterar asynkront.  
 
-Klientprogrammet kan anropa metoden flera gånger (med olika värden för den **avdelning** parametern), och varje fråga som körs på en separat tråd.  
+hello klientprogrammet kan anropa metoden flera gånger (med olika värden för hello **avdelning** parametern), och varje fråga som körs på en separat tråd.  
 
-Observera att det finns inga asynkrona versionen av den **kör** metod i den **TableQuery** klassen eftersom den **IEnumerable** gränssnittet stöder inte asynkron uppräkning.  
+Observera att det finns inga asynkrona versionen av hello **kör** metod i hello **TableQuery** klassen eftersom hello **IEnumerable** gränssnittet stöder inte asynkron uppräkning.  
 
-Du kan infoga, uppdatera och ta bort entiteter asynkront. Följande C#-exempel visar en enkel, synkron metod för att infoga eller ersätta en medarbetare entitet:  
+Du kan infoga, uppdatera och ta bort entiteter asynkront. hello följande C#-exempel visar en enkel, synkron metod tooinsert eller ersätta en medarbetare entitet:  
 
 ```csharp
 private static void SimpleEmployeeUpsert(CloudTable employeeTable,
@@ -1491,7 +1491,7 @@ private static void SimpleEmployeeUpsert(CloudTable employeeTable,
 }  
 ```
 
-Du kan enkelt ändra den här koden så att uppdateringen körs asynkront på följande sätt:  
+Du kan enkelt ändra den här koden så att hello uppdatering körs asynkront på följande sätt:  
 
 ```csharp
 private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
@@ -1503,17 +1503,17 @@ private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
 }  
 ```
 
-I det här asynkron exemplet ser du följande ändringar från synkron version:  
+I det här asynkron exemplet ser du hello följande ändringar från hello synkron version:  
 
-* Metodsignaturen innehåller nu den **asynkrona** modifierare och returnerar ett **aktivitet** instans.  
-* I stället för att anropa den **kör** metod för att uppdatera entiteten metoden nu anropar den **ExecuteAsync** metoden och använder den **await** modifieraren att hämta resultat asynkront.  
+* hello Metodsignaturen innehåller nu hello **asynkrona** modifierare och returnerar ett **aktivitet** instans.  
+* I stället för att anropa hello **kör** metoden tooupdate hello entiteten, hello metoden nu anrop hello **ExecuteAsync** metod och använder hello **await** modifieraren tooretrieve resulterar asynkront.  
 
-Klientprogrammet kan anropa flera asynkrona metoder som det här och varje metodanropet körs på en separat tråd.  
+hello klientprogrammet kan anropa flera asynkrona metoder som det här och varje metodanropet körs på en separat tråd.  
 
 ### <a name="credits"></a>Krediter
-Vi vill tacka följande medlemmar i Azure-teamet för deras bidrag: Dominic Betts, Jason Hogg, Jean Ghanem, Jai Haridas, Jeff Irwin, Vamshidhar Kommineni, Vinay Shah och Serdar Ozler samt Tom Hollander från Microsoft DX. 
+Vi vill gärna toothank hello följande medlemmar i hello Azure-teamet för deras bidrag: Dominic Betts, Jason Hogg, Jean Ghanem, Jai Haridas, Jeff Irwin, Vamshidhar Kommineni, Vinay Shah och Serdar Ozler samt Tom Hollander från Microsoft DX. 
 
-Vi skulle också vilja Tack på följande Microsoft MVPS för deras feedback om värdefulla vid granskning tillfällen: Igor Papirov och Edward Bakker.
+Vi vill också toothank hello följande Microsoft MVP för deras feedback om värdefulla vid granskning tillfällen: Igor Papirov och Edward Bakker.
 
 [1]: ./media/storage-table-design-guide/storage-table-design-IMAGE01.png
 [2]: ./media/storage-table-design-guide/storage-table-design-IMAGE02.png

@@ -1,6 +1,6 @@
 ---
-title: "Komma igång med att leverera innehåll på begäran med hjälp av REST | Microsoft Docs"
-description: "Den här självstudiekursen vägleder dig genom stegen för att implementera ett program för leverans av på begäran med Azure Media Services med hjälp av REST API."
+title: "aaaGet igång med att leverera innehåll på begäran med hjälp av REST | Microsoft Docs"
+description: "Den här självstudiekursen vägleder dig genom hello stegen för att implementera ett program för leverans av på begäran med Azure Media Services med hjälp av REST API."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,98 +14,98 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: f304f7671465862123f64c8b0f9af95a7c828cc2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f270ed59e9ae9745e8403ec6e19d5c3533fc82b7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Komma igång med att leverera innehåll på begäran med hjälp av REST
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-Denna Snabbstart vägleder dig genom stegen för att implementera ett program för leverans av Video-on-Demand (VoD) med Azure Media Services (AMS) REST API: er.
+Denna Snabbstart vägleder dig genom hello stegen för implementera ett program för leverans av Video-on-Demand (VoD) med Azure Media Services (AMS) REST API: er.
 
-Självstudierna innehåller det grundläggande Media Services-arbetsflödet och de vanligaste programmeringsobjekt och -uppgifter som krävs för utveckling av Media Services. I slutet av självstudierna kommer du att kunna strömma eller progressivt hämta en exempelmediefil som du har överfört, kodat och hämtat.
+hello självstudierna innehåller hello grundläggande Media Services-arbetsflödet och hello vanligaste programmeringsobjekt och uppgifter som krävs för Media Services-utveckling. På hello kursen hello är klar kan ska du kunna toostream eller progressivt hämta en exempelmediefil som överförs, kodat och hämtat.
 
-Följande bild visar några av de vanligast använda objekten när du utvecklar VoD-program mot Media Services OData-modellen.
+hello följande bild visar några av de vanligaste hello objekt när du utvecklar program VoD mot hello Media Services OData-modellen.
 
-Klicka på bilden för att visa den i full storlek.  
+Klicka på hello avbildningen tooview den full storlek.  
 
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
 ## <a name="prerequisites"></a>Krav
-Följande förutsättningar krävs för att börja utveckla med Media Services med REST API: er.
+hello är följande krav nödvändiga toostart utveckling med Media Services med REST API: er.
 
 * Ett Azure-konto. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Ett Media Services-konto. Information om hur du skapar ett Media Services-konto finns i [Så här skapar du ett Media Services-konto](media-services-portal-create-account.md).
-* Förståelse för hur du utvecklar med Media Services REST API. Mer information finns i [Media Services REST API-översikt](media-services-rest-how-to-use.md).
+* Ett Media Services-konto. toocreate Media Services-konto finns [hur tooCreate Media Services-konto](media-services-portal-create-account.md).
+* Förståelse av hur toodevelop med Media Services REST API. Mer information finns i [Media Services REST API-översikt](media-services-rest-how-to-use.md).
 * Ett program som kan skicka HTTP-begäranden och -svar. Den här kursen använder [Fiddler](http://www.telerik.com/download/fiddler).
 
-Följande aktiviteter visas i den här snabbstarten.
+hello efter aktiviteter som visas i den här snabbstarten.
 
-1. Starta slutpunkt för direktuppspelning (med hjälp av Azure Portal).
-2. Ansluta till Media Services-konto med REST API.
+1. Starta strömmande slutpunkten (med hello Azure-portalen).
+2. Ansluta toohello Media Services-konto med REST API.
 3. Skapa en ny tillgång och överföra en videofil med REST API.
-4. Koda källfilen till en uppsättning filer med anpassningsbar bithastighet MP4 med REST API.
-5. Publicera tillgången och hämta strömning och progressiv överföring URL: er med REST API.
+4. Koda hello källfilen till en uppsättning filer med anpassningsbar bithastighet MP4 med REST API.
+5. Publicera hello tillgången och get strömning och progressiv nedladdning URL: er med REST API.
 6. Spela upp ditt innehåll.
 
 >[!NOTE]
->Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda samma princip-ID om du alltid använder samma dagar/åtkomstbehörigheter, till exempel principer för positionerare som är avsedda att vara på plats under en längre tid (icke-överföringsprinciper). Mer information finns i [detta](media-services-dotnet-manage-entities.md#limit-access-policies) avsnitt.
+>Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda hello samma princip-ID om du alltid använder hello samma dagar / åtkomstbehörigheter, till exempel principer för lokaliserare som är avsedda tooremain på plats för lång tid (icke-överföringen principer). Mer information finns i [detta](media-services-dotnet-manage-entities.md#limit-access-policies) avsnitt.
 
 Mer information om AMS REST-entiteter som används i det här avsnittet finns [Azure Media Services REST API-referens](/rest/api/media/services/azure-media-services-rest-api-reference). Se även [Azure Media Services-koncepten](media-services-concepts.md).
 
 >[!NOTE]
 >Vid åtkomst till entiteter i Media Services måste du ange specifika namn på huvudfält och värden i HTTP-begäranden. Mer information finns i [installationsprogrammet för Media Services REST API-utveckling](media-services-rest-how-to-use.md).
 
-## <a name="start-streaming-endpoints-using-the-azure-portal"></a>Starta slutpunkter för direktuppspelning med Azure Portal
+## <a name="start-streaming-endpoints-using-hello-azure-portal"></a>Starta strömningsslutpunkter med hello Azure-portalen
 
-När du arbetar med Azure Media Services är ett av de vanligaste scenarierna att leverera video via direktuppspelning med anpassningsbar bithastighet. Media Services tillhandahåller en dynamisk paketering som gör att du kan leverera ditt MP4-kodade innehåll med anpassningsbar bithastighet i direktuppspelningsformat som stöds av Media Services (MPEG DASH, HLS, Smooth Streaming) direkt när du så önskar, utan att du behöver lagra på förhand paketerade versioner av vart och ett av dessa direktuppspelningsformat.
-
->[!NOTE]
->När ditt AMS-konto skapas läggs en **standard**-slutpunkt för direktuppspelning till på ditt konto med tillståndet **Stoppad**. Om du vill starta direktuppspelning av innehåll och dra nytta av dynamisk paketering och dynamisk kryptering måste slutpunkten för direktuppspelning som du vill spela upp innehåll från ha tillståndet **Körs**.
-
-Starta slutpunkten för direktuppspelning genom att göra följande:
-
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. I fönstret Inställningar klickar du på Slutpunkter för direktuppspelning.
-3. Klicka på den slutpunkt för direktuppspelning som är standard.
-
-    Fönstret INFORMATION OM DEN SLUTPUNKT FÖR DIREKTUPPSPELNING SOM ÄR STANDARD visas.
-
-4. Klicka på ikonen Start.
-5. Klicka på knappen Spara för att spara ändringarna.
-
-## <a id="connect"></a>Ansluta till Media Services-konto med REST API
-
-Information om hur du ansluter till AMS API: et finns [åtkomst till Azure Media Services-API med Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md). 
+När du arbetar med Azure Media Services är en av hello vanligaste scenarierna att leverera video via strömning med anpassningsbar bithastighet. Media Services tillhandahåller en dynamisk paketering som gör att du toodeliver dina MP4-kodade innehåll i strömningsformat som stöds av Media Services (MPEG DASH, HLS, Smooth Streaming) just-in-time, utan att behöva toostore tillsammans med anpassad bithastighet versioner av var och en av dessa strömningsformat.
 
 >[!NOTE]
->När du har anslutit till https://media.windows.net, får du en 301 omdirigering att ange en annan Media Services-URI. Du måste göra följande anrop till en ny URI.
+>När AMS-kontot skapas en **standard** strömningsslutpunkt har lagts till tooyour konto i hello **stoppad** tillstånd. toostart strömning ditt innehåll och dra nytta av dynamisk paketering och dynamisk kryptering hello strömningsslutpunkt som du vill toostream innehåll har toobe i hello **kör** tillstånd.
 
-Till exempel om när du försöker ansluta har du följande:
+toostart Hej strömmande slutpunkten, hello följande:
+
+1. Logga in på hello [Azure-portalen](https://portal.azure.com/).
+2. Streaming slutpunkter på hello inställningar i fönstret.
+3. Klicka på hello standard strömmande slutpunkten.
+
+    hello visas standard information om den STRÖMNINGSSLUTPUNKT.
+
+4. Klicka på hello Start-ikonen.
+5. Klicka på hello spara knappen toosave ändringarna.
+
+## <a id="connect"></a>Anslut toohello Media Services-konto med REST API
+
+Mer information om hur tooconnect toohello AMS API, se [åtkomst hello Azure Media Services API med Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md). 
+
+>[!NOTE]
+>När du har anslutit toohttps://media.windows.net, får du en 301 omdirigering att ange en annan Media Services-URI. Du måste göra följande anrop toohello ny URI.
+
+Till exempel om när du har försökt tooconnect, du har fått hello följande:
 
     HTTP/1.1 301 Moved Permanently
     Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
 
-Du bör publicera dina efterföljande API-anrop till https://wamsbayclus001rest-hs.cloudapp.net/api/.
+Du bör publicera dina efterföljande API-anrop toohttps://wamsbayclus001rest-hs.cloudapp.net/api/.
 
 ## <a id="upload"></a>Skapa en ny tillgång och överföra en videofil med REST API
 
-I Media Services överför du dina digitala filer till en tillgång. Den **tillgången** entitet kan innehålla video, ljud, bilder, miniatyrsamlingar, text spår och textning filer (och metadata om dessa filer.)  När filerna har överförts till tillgången, lagras innehållet på ett säkert sätt i molnet för ytterligare bearbetning och strömning.
+I Media Services överför du dina digitala filer till en tillgång. Hej **tillgången** entitet kan innehålla video, ljud, bilder, miniatyrsamlingar, text spår och textning filer (och hello metadata om dessa filer.)  När hello filerna har överförts till hello tillgång lagras innehållet på ett säkert sätt i hello molnet för ytterligare bearbetning och strömning.
 
-En av de värden som du måste ange när du skapar en tillgång är alternativ för att skapa tillgången. Den **alternativ** egenskapen är ett uppräkningsvärde som beskriver krypteringsalternativen som du kan skapa en tillgång med. Ett giltigt värde är ett av värdena i listan nedan, inte en kombination av värden från listan:
+En av hello värden att du har tooprovide när du skapar en tillgång är alternativ för att skapa tillgången. Hej **alternativ** egenskapen är ett uppräkningsvärde som beskriver hello krypteringsalternativ som du kan skapa en tillgång med. Ett giltigt värde är ett av hello värden hello listan nedan, inte en kombination av värden från listan:
 
 * **Ingen** = **0** – Ingen kryptering används. När du använder det här alternativet skyddas inte innehållet under överföring eller i vila i lagringsutrymmet.
-    Om du planerar att leverera en MP4 med progressivt nedladdning ska du använda det här alternativet.
-* **StorageEncrypted** = **1** – krypterar innehållet lokalt med hjälp av AES 256 bitarskryptering och överför den till Azure Storage där den lagras krypterat i vila. Tillgångar som skyddas med Lagringskryptering avkrypteras automatiskt och placeras i ett krypterat filsystem före kodning och kan krypteras igen innan de överförs tillbaka som en ny utdatatillgång. Lagringskryptering används i första hand när du vill skydda indatamediefiler av hög kvalitet med stark kryptering i vila på disk.
+    Använd det här alternativet om du planerar toodeliver en MP4 med progressivt nedladdning.
+* **StorageEncrypted** = **1** – krypterar innehållet lokalt med hjälp av AES 256 bitarskryptering och sedan överför tooAzure lagring där den lagras krypterat i vila. Tillgångar som skyddas med Lagringskryptering okrypterad och placeras i en krypterad fil system tidigare tooencoding och eventuellt omkrypterade tidigare toouploading tillbaka som en ny utdatatillgång automatiskt. hello primära användningsfall för Lagringskryptering är om du vill toosecure hög kvalitet inkommande mediefilerna med stark kryptering i vila på disk.
 * **CommonEncryptionProtected** = **2** – Använd det här alternativet om du överför innehåll som redan har krypterats och skyddats med vanlig kryptering eller PlayReady DRM (till exempel Smooth Streaming som skyddas med PlayReady DRM).
-* **EnvelopeEncryptionProtected** = **4** – Använd det här alternativet om du överför HLS som krypterats med AES. Filerna måste ha kodats och krypterats av Transform Manager.
+* **EnvelopeEncryptionProtected** = **4** – Använd det här alternativet om du överför HLS som krypterats med AES. hello-filer måste ha kodats och krypterats av Transform Manager.
 
 ### <a name="create-an-asset"></a>Skapa en tillgång
-En tillgång är en behållare för flera typer eller uppsättningar med objekt i Media Services, inklusive video, ljud, bilder, miniatyrsamlingar, textspår och filer med dold textning. I REST-API kräver skapa en tillgång POST-begäran skickades till Media Services och placerar egenskapsinformation om din tillgång i begärandetexten.
+En tillgång är en behållare för flera typer eller uppsättningar med objekt i Media Services, inklusive video, ljud, bilder, miniatyrsamlingar, textspår och filer med dold textning. I hello REST-API: skapa en tillgång måste du skicka POST begära tooMedia tjänster och placerar egenskapsinformation om din tillgång i hello frågans brödtext.
 
-I följande exempel visas hur du skapar en tillgång.
+följande exempel visar hur hello toocreate en tillgång.
 
 **HTTP-begäran**
 
@@ -126,7 +126,7 @@ I följande exempel visas hur du skapar en tillgång.
 
 **HTTP-svar**
 
-Om det lyckas, returneras följande:
+Om det lyckas, returneras hello följande:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -157,9 +157,9 @@ Om det lyckas, returneras följande:
     }
 
 ### <a name="create-an-assetfile"></a>Skapa en AssetFile
-Den [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entiteten representerar en video eller ljud-fil som lagras i en blob-behållare. En resursfil är alltid associerad med en tillgång och en tillgång kan innehålla en eller flera AssetFiles. Media Services Encoder uppgiften misslyckas om objekttypen tillgången filen inte är associerad med en digital fil i en blob-behållaren.
+Hej [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entiteten representerar en video eller ljud-fil som lagras i en blob-behållare. En resursfil är alltid associerad med en tillgång och en tillgång kan innehålla en eller flera AssetFiles. hello misslyckas Media Services-kodaren om objekttypen tillgången filen inte är associerad med en digital fil i en blob-behållaren.
 
-När du har överfört din digitala media-fil till en blobbbehållare som du använder den **sammanfoga** HTTP-begäran om uppdatering av AssetFile med information om media-fil (som visas senare i avsnittet).
+När du har överfört din digitala media-fil till en blobbbehållare du använder hello **sammanfoga** HTTP-begäran tooupdate hello AssetFile med information om media-fil (som visas i hello kapitel).
 
 **HTTP-begäran**
 
@@ -218,10 +218,10 @@ När du har överfört din digitala media-fil till en blobbbehållare som du anv
     }
 
 
-### <a name="creating-the-accesspolicy-with-write-permission"></a>Skapa AccessPolicy med behörighet att skriva
-Innan du laddar upp filer i blob-lagring, ange principen rättigheter för att skriva till en tillgång. För att göra det efter en HTTP-begäran till AccessPolicies entitetsuppsättning. Definiera ett DurationInMinutes värde när de skapas eller felmeddelande en 500 intern Server tillbaka som svar. Mer information om AccessPolicies finns [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+### <a name="creating-hello-accesspolicy-with-write-permission"></a>Skapa hello AccessPolicy med behörighet att skriva
+Innan du laddar upp filer i blob-lagring, ange hello princip rättigheter för att skriva tooan tillgången. Ange toodo som PUBLICERAR en HTTP-begäran toohello AccessPolicies entitet. Definiera ett DurationInMinutes värde när de skapas eller felmeddelande en 500 intern Server tillbaka som svar. Mer information om AccessPolicies finns [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
 
-I följande exempel visas hur du skapar en AccessPolicy:
+följande exempel visar hur hello toocreate en AccessPolicy:
 
 **HTTP-begäran**
 
@@ -240,7 +240,7 @@ I följande exempel visas hur du skapar en AccessPolicy:
 
 **HTTP-svar**
 
-Om det lyckas, returneras följande svar:
+Om det lyckas, returneras hello efter svar:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -266,23 +266,23 @@ Om det lyckas, returneras följande svar:
        "Permissions":2
     }
 
-### <a name="get-the-upload-url"></a>Hämta URL
+### <a name="get-hello-upload-url"></a>Hämta hello URL för överföring
 
-Skapa en SAS-lokaliserare för att ta emot den faktiska URL. Lokaliserare definiera start- och typ av anslutningens slutpunkt för klienter som vill komma åt filer i en tillgång. Du kan skapa flera lokaliserare entiteter för ett angivet AccessPolicy och tillgångshantering par att hantera olika klientbegäranden och behov. Var och en av dessa lokaliserare använder StartTime-värdet plus DurationInMinutes värdet för AccessPolicy för att avgöra hur lång tid som en URL som kan användas. Mer information finns i [lokaliserare](https://docs.microsoft.com/rest/api/media/operations/locator).
+tooreceive hello faktiska överför URL, skapa en SAS-lokaliserare. Lokaliserare definiera hello starttid och typ av anslutningens slutpunkt för klienter som vill tooaccess filer i en tillgång. Du kan skapa flera lokaliserare entiteter för en viss AccessPolicy och tillgångshantering par toohandle olika klient begäranden och behov. Var och en av dessa lokaliserare använder hello StartTime-värdet plus hello DurationInMinutes värdet av hello AccessPolicy toodetermine hello tid kan användas för en URL. Mer information finns i [lokaliserare](https://docs.microsoft.com/rest/api/media/operations/locator).
 
-En SAS-URL har följande format:
+En SAS-URL har hello följande format:
 
     {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
 
 Vissa förutsättningar gäller:
 
 * Du kan inte ha fler än fem unika lokaliserare som är associerade med en viss resurs i taget. Mer information finns i lokaliserare.
-* Om du behöver överföra filer omedelbart ska du ange StartTime-värdet till fem minuter före aktuell tid. Det beror på att det kan finnas klockan skeva mellan klientdatorn och Media Services. StartTime-värdet måste också vara i följande DateTime-format: ÅÅÅÅ-MM-ddTHH (till exempel ”2014-05-23T17:53:50Z”).    
-* Det kan finnas en 30-40 andra fördröjning efter en positionerare skapas när den är tillgänglig för användning. Det här problemet gäller både SAS-URL och ursprung lokaliserare.
+* Om du behöver tooupload dina filer direkt, bör du ange StartTime värdet toofive minuter innan hello aktuell tid. Det beror på att det kan finnas klockan skeva mellan klientdatorn och Media Services. StartTime-värdet måste också vara i hello följande DateTime-format: ÅÅÅÅ-MM-ddTHH (till exempel ”2014-05-23T17:53:50Z”).    
+* Det kan finnas en 30-40 andra fördröjning efter en positionerare skapas toowhen som den är tillgänglig för användning. Det här problemet gäller tooboth SAS-URL och ursprung lokaliserare.
 
 Mer information om SAS finns lokaliserare [detta](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) blogg.
 
-I följande exempel visas hur du skapar en URL SAS-lokaliserare som definieras av egenskapen Type i begärandetexten (”1” för en SAS-lokaliserare) och ”2” för en positionerare för ursprung på begäran. Den **sökväg** returnerade-egenskapen innehåller den URL som du måste använda för att överföra din fil.
+hello som följande exempel visar hur toocreate en SAS-URL-lokaliserare, som definieras av hello typegenskapen i begärandetexten hello (”1” för en SAS-lokaliserare) och ”2” för en positionerare för ursprung på begäran. Hej **sökväg** egenskap som returneras innehåller hello-URL att du måste använda tooupload din fil.
 
 **HTTP-begäran**
 
@@ -307,7 +307,7 @@ I följande exempel visas hur du skapar en URL SAS-lokaliserare som definieras a
 
 **HTTP-svar**
 
-Om det lyckas, returneras följande svar:
+Om det lyckas, returneras hello efter svar:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -338,17 +338,17 @@ Om det lyckas, returneras följande svar:
     }
 
 ### <a name="upload-a-file-into-a-blob-storage-container"></a>Ladda upp en fil till en behållare för blob storage
-När du har AccessPolicy och lokaliserare ange har den faktiska filen överförts till ett Azure blob storage-behållare med hjälp av Azure Storage REST-API: er. Du måste överföra filer som blockblobar. Azure Media Services stöder inte sidblobar.  
+När du har hello AccessPolicy och lokaliserare set är hello faktiska filen överförda tooan Azure blob storage-behållare med hello Azure Storage REST API: er. Du måste överföra hello filer som blockblobar. Azure Media Services stöder inte sidblobar.  
 
 > [!NOTE]
-> Du måste lägga till filnamnet för den fil som du vill överföra till positioneraren **sökväg** värde som erhölls i föregående avsnitt. Till exempel https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> Du måste lägga till hello filnamn hello filen du vill ha tooupload toohello lokaliserare **sökväg** värde togs emot i hello föregående avsnitt. Till exempel https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 >
 >
 
 Mer information om hur du arbetar med Azure storage blobs finns [REST-API för Blob-tjänsten](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-### <a name="update-the-assetfile"></a>Uppdatera AssetFile
-Nu när du har överfört din fil, uppdatera informationen om FileAsset storlek (och andra). Exempel:
+### <a name="update-hello-assetfile"></a>Uppdatera hello AssetFile
+Nu när du har överfört din fil uppdateringsinformation hello FileAsset storlek (och andra). Exempel:
 
     MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -371,12 +371,12 @@ Nu när du har överfört din fil, uppdatera informationen om FileAsset storlek 
 
 **HTTP-svar**
 
-Om det lyckas, returneras följande:
+Om det lyckas, returneras hello följande:
 
     HTTP/1.1 204 No Content
     ...
 
-## <a name="delete-the-locator-and-accesspolicy"></a>Ta bort lokaliserare och AccessPolicy
+## <a name="delete-hello-locator-and-accesspolicy"></a>Ta bort hello lokaliserare och AccessPolicy
 **HTTP-begäran**
 
     DELETE https://wamsbayclus001rest-hs.cloudapp.net/api/Locators('nb%3Alid%3AUUID%3Aaf57bdd8-6751-4e84-b403-f3c140444b54') HTTP/1.1
@@ -391,7 +391,7 @@ Om det lyckas, returneras följande:
 
 **HTTP-svar**
 
-Om det lyckas, returneras följande:
+Om det lyckas, returneras hello följande:
 
     HTTP/1.1 204 No Content
     ...
@@ -409,23 +409,23 @@ Om det lyckas, returneras följande:
 
 **HTTP-svar**
 
-Om det lyckas, returneras följande:
+Om det lyckas, returneras hello följande:
 
     HTTP/1.1 204 No Content
     ...
 
-## <a id="encode"></a>Koda källfilen till en uppsättning MP4-filer med anpassningsbar bithastighet
+## <a id="encode"></a>Koda hello källfilen till en uppsättning MP4-filer med anpassningsbar bithastighet
 
-När du vill föra in tillgångar i Media Services kan media kan vara kodad, transmuxed, gräns och så vidare innan de skickas till klienter. Dessa aktiviteter schemaläggs och körs mot flera bakgrundsrollinstanser för höga prestanda och tillgänglighet. Aktiviteterna kallas jobb och varje jobb består av atomiska uppgifter som gör det faktiska arbetet i tillgångsfilen (Mer information finns i [jobbet](/rest/api/media/services/job), [aktivitet](/rest/api/media/services/task) beskrivningar).
+När du vill föra in tillgångar i Media Services kan media kan vara kodad, transmuxed, gräns och så vidare innan de skickas tooclients. Dessa aktiviteter schemaläggs och körs mot flera bakgrund rollen instanser tooensure hög prestanda och tillgänglighet. Aktiviteterna kallas jobb och varje jobb består av atomiska uppgifter som hello faktiska arbetet i tillgångsfilen hello (Mer information finns i [jobbet](/rest/api/media/services/job), [aktivitet](/rest/api/media/services/task) beskrivningar).
 
-Som tidigare nämnts, när du arbetar med Azure Media Services som en av de vanligaste scenarierna levererar strömning med anpassningsbar bithastighet till dina klienter. Media Services kan dynamiskt Paketera en uppsättning filer med anpassningsbar bithastighet MP4 till något av följande format: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
+Som tidigare nämnts, när arbeta med Azure Media Services en av de vanligaste scenarierna för hello levererar strömning tooyour klienter med anpassningsbar bithastighet. Media Services kan dynamiskt Paketera en uppsättning MP4-filer med anpassningsbar bithastighet till en hello följande format: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
 
-I följande avsnitt beskrivs hur du skapar ett jobb som innehåller en kodning uppgift. Uppgiften anger att omkodning av mezzaninfilen till en uppsättning med anpassningsbar bithastighet MP4s **Media Encoder Standard**. Avsnittet visar även hur du övervakar jobbet bearbetning pågår. När jobbet är klart, skulle du kunna skapa positionerare som behövs för att få åtkomst till dina tillgångar.
+hello efter avsnittet visar hur toocreate ett jobb som innehåller en kodning uppgift. hello aktivitet anger tootranscode hello mezzaninfil till en uppsättning med anpassningsbar bithastighet MP4s **Media Encoder Standard**. hello avsnitt visar även hur toomonitor hello jobbförloppet för bearbetning. Du kommer att kan toocreate lokaliserare som är nödvändiga tooget åtkomst tooyour tillgångar när hello jobbet är klart.
 
 ### <a name="get-a-media-processor"></a>Hämta en medieprocessor
-I Media Services är en medieprocessor en komponent som hanterar en specifik bearbetning aktivitet, till exempel kodning, kryptering eller dekryptering medieinnehåll-Formatkonvertering. Kodning aktiviteten visas i den här självstudiekursen ska vi använda Media Encoder Standard.
+I Media Services är en medieprocessor en komponent som hanterar en specifik bearbetning aktivitet, till exempel kodning, kryptering eller dekryptering medieinnehåll-Formatkonvertering. För hello kodning aktivitet som visas i den här självstudiekursen, vi toouse hello Media Encoder Standard.
 
-Följande kod i kodaren id-begäranden.
+hello följande kod begäranden hello kodare id.
 
 **HTTP-begäran**
 
@@ -469,9 +469,9 @@ Följande kod i kodaren id-begäranden.
     }
 
 ### <a name="create-a-job"></a>Skapa ett jobb
-Varje jobb kan ha en eller flera aktiviteter beroende på vilken typ av bearbetning som du vill utföra. Via REST-API kan du skapa jobb och deras relaterade uppgifter i ett av två sätt: aktiviteter kan vara definierade infogad via navigeringsegenskap uppgifter på jobbet entiteter eller OData-batch-bearbetning. Media Services SDK använder batch-bearbetning. För läsbarhet kodexempel i det här avsnittet finns dock uppgifter definierats internt. Mer information om batchbearbetning finns [Open Data Protocol (OData) gruppbearbetning](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Varje jobb kan ha en eller flera aktiviteter beroende på hello typ av bearbetning som du vill tooaccomplish. Via hello REST-API, du kan skapa jobb och deras relaterade uppgifter i ett av två sätt: aktiviteter kan vara definierade infogad via hello uppgifter navigeringsegenskap på jobbet entiteter eller OData-batch-bearbetning. hello Media Services SDK använder batch-bearbetning. Men för hello läsbarhet hello kodexempel i det här avsnittet, uppgifter som är definierade infogad. Mer information om batchbearbetning finns [Open Data Protocol (OData) gruppbearbetning](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-I följande exempel visas hur du skapar och efter ett jobb med en aktivitet som anger för att koda ett videoklipp vid en viss upplösning och kvalitet. Avsnittet följande dokumentation innehåller en lista över de [uppgift förinställningar](http://msdn.microsoft.com/library/mt269960) stöds av Media Encoder Standard processor.  
+hello som följande exempel visar hur toocreate och efter ett jobb med en uppgift ange tooencode en video på en viss upplösning och kvalitet. hello följande dokumentationsavsnitt innehåller hello lista över alla hello [uppgift förinställningar](http://msdn.microsoft.com/library/mt269960) stöds av Media Encoder Standard hello-processor.  
 
 **HTTP-begäran**
 
@@ -507,7 +507,7 @@ I följande exempel visas hur du skapar och efter ett jobb med en aktivitet som 
 
 **HTTP-svar**
 
-Om det lyckas, returneras följande svar:
+Om det lyckas, returneras hello efter svar:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -567,35 +567,35 @@ Om det lyckas, returneras följande svar:
     }
 
 
-Det finns några viktiga saker att tänka varje jobb begäran:
+Det finns några viktiga saker toonote varje jobb begäran:
 
-* TaskBody egenskaper måste använda literal XML för att definiera antalet indata eller utdata tillgångar som används av aktiviteten. Aktiviteten innehåller XML-schemadefinitionen för XML-filen.
-* I definitionen TaskBody varje inre värde för <inputAsset> och <outputAsset> måste anges som JobInputAsset(value) eller JobOutputAsset(value).
+* TaskBody egenskaper måste använda literal XML toodefine hello antal indata eller utdata tillgångar som används av hello aktivitet. hello avsnittet innehåller hello XML Schema Definition för hello XML.
+* I hello TaskBody definition, varje inre värde för <inputAsset> och <outputAsset> måste anges som JobInputAsset(value) eller JobOutputAsset(value).
 * En aktivitet kan innehålla flera utdata tillgångar. En JobOutputAsset(x) kan bara användas en gång som utdata för en aktivitet i ett jobb.
 * Du kan ange JobInputAsset eller JobOutputAsset som inkommande tillgång för en aktivitet.
 * Aktiviteter måste inte utgör en cykel.
-* Värdeparametern som du skickar till JobInputAsset eller JobOutputAsset representerar indexet för en tillgång. De faktiska tillgångarna har definierats i navigeringsegenskaper InputMediaAssets och OutputMediaAssets på entiteten jobbdefinitionen.
+* Parametern för hello-värde som du skickar tooJobInputAsset eller JobOutputAsset representerar hello indexvärdet för en tillgång. hello har faktiska tillgångar definierats i hello InputMediaAssets och OutputMediaAssets navigeringsegenskaper på hello jobbdefinitionen för entiteten.
 
 > [!NOTE]
-> Eftersom Media Services bygger på OData v3 enskilda tillgångar i InputMediaAssets och OutputMediaAssets navigering egenskapssamlingar refereras via en ”__metadata: uri” namn / värde-par.
+> Eftersom Media Services bygger på OData v3 hello enskilda tillgångar i InputMediaAssets och OutputMediaAssets navigering egenskapsuppsättningar refereras via en ”__metadata: uri” namn / värde-par.
 >
 >
 
-* InputMediaAssets mappas till en eller flera resurser som du har skapat i Media Services. OutputMediaAssets skapas av systemet. De hänvisar inte till en befintlig tillgång.
-* OutputMediaAssets kan namnges med attributet assetName. Om det här attributet är inte tillgängligt och sedan namnet på OutputMediaAsset är det inre textvärdet för den <outputAsset> elementet är med suffixet namnvärdet för jobb eller jobb-Id-värde (i de fall där egenskapen namn har inte definierats). Till exempel om du anger ett värde för assetName till ”Sample”, anges sedan OutputMediaAsset Name-egenskapen till ”Sample”. Men om du inte har angett ett värde för assetName men ställts in på jobbnamnet till ”NewJob”, OutputMediaAsset namnet skulle vara ”_NewJob JobOutputAsset (värde)”.
+* InputMediaAssets mappar tooone eller flera resurser som du har skapat i Media Services. OutputMediaAssets skapas med hello system. De hänvisar inte till en befintlig tillgång.
+* OutputMediaAssets kan namnges med hello assetName attribut. Om det här attributet är inte tillgängligt och sedan hello hello OutputMediaAsset heter det inre textvärdet hello hello <outputAsset> elementet är med suffixet hello jobbnamn värde eller hello jobb-Id-värde (i hello fall där hello namnegenskapen har inte definierats). Till exempel om du anger ett värde för assetName för ”Sample”, och sedan hello OutputMediaAsset namnegenskapen skulle anges för ”Sample”. Men om du inte har angett ett värde för assetName men ställts in hello Jobbnamn är för ”NewJob” och sedan hello OutputMediaAsset namn ”_NewJob JobOutputAsset (värde)”.
 
-    I följande exempel visas hur du ställer in attributet assetName:
+    hello som följande exempel visar hur tooset hello assetName attribut:
 
         "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"
-* Så här aktiverar du länkning av aktivitet:
+* tooenable länkning för uppgiften:
 
   * Ett jobb måste ha minst två aktiviteter
-  * Det måste finnas minst en aktivitet vars indata är resultatet av en annan aktivitet i jobbet.
+  * Det måste finnas minst en aktivitet vars indata är resultatet av en annan aktivitet i hello-jobbet.
 
-Mer information finns i [skapar ett jobb Encoding med Media Services REST API](media-services-rest-encode-asset.md).
+Mer information finns i [skapar en kodning jobb med hello Media Services REST API](media-services-rest-encode-asset.md).
 
 ### <a name="monitor-processing-progress"></a>Övervakaren bearbetning pågår
-Du kan hämta jobbstatus med hjälp av egenskapen tillstånd som visas i följande exempel.
+Du kan hämta hello jobbstatus med hello tillstånd egenskapen som visas i följande exempel hello.
 
 **HTTP-begäran**
 
@@ -612,7 +612,7 @@ Du kan hämta jobbstatus med hjälp av egenskapen tillstånd som visas i följan
 
 **HTTP-svar**
 
-Om det lyckas, returneras följande svar:
+Om det lyckas, returneras hello efter svar:
 
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -630,9 +630,9 @@ Om det lyckas, returneras följande svar:
 
 
 ### <a name="cancel-a-job"></a>Avbryta ett jobb
-Media Services kan du avbryta jobb som körs med funktionen CancelJob. Det här anropet returnerar en 400 felkoden om du försöker avbryta ett jobb när dess tillstånd har avbrutits, avbryta, fel eller slutförts.
+Media Services kan du toocancel jobb som körs via hello CancelJob funktion. Det här anropet returnerar 400 felkoden om du försöker toocancel ett jobb när dess tillstånd har avbrutits, avbryta, fel eller slutförts.
 
-I följande exempel visas hur du anropar CancelJob.
+följande exempel visar hur hello toocall CancelJob.
 
 **HTTP-begäran**
 
@@ -649,12 +649,12 @@ I följande exempel visas hur du anropar CancelJob.
 Om det lyckas, returneras en 204-svarskod med ingen brödtext.
 
 > [!NOTE]
-> Du måste URL-koda jobb-id (normalt nb:jid:UUID: somevalue) när skickas den i som en parameter till CancelJob.
+> Du måste URL-koda hello jobb-id (normalt nb:jid:UUID: somevalue) när du skickar det som en parameter tooCancelJob.
 >
 >
 
-### <a name="get-the-output-asset"></a>Hämta utdatatillgången
-Följande kod visar hur du begär utdatatillgången Id.
+### <a name="get-hello-output-asset"></a>Hämta hello utdatatillgången
+hello följande kod visar hur toorequest hello utdata tillgången Id.
 
 **HTTP-begäran**
 
@@ -703,42 +703,42 @@ Följande kod visar hur du begär utdatatillgången Id.
 
 
 
-## <a id="publish_get_urls"></a>Publicera tillgången och hämta strömning och progressiv överföring URL: er med REST API
+## <a id="publish_get_urls"></a>Publicera hello tillgången och get strömning och progressiv nedladdning URL: er med REST API
 
-Om du vill strömma eller hämta en tillgång behöver du först ”publicera” den genom att skapa en positionerare. Positionerare ger åtkomst till filer som finns i tillgången. Media Services stöder två typer av positionerare: OnDemandOrigin-positionerare som används för att strömma media (till exempel MPEG DASH, HLS eller Smooth Streaming) och Access Signature (SAS)-positionerare som används för att hämta mediefiler. Mer information om SAS finns lokaliserare [detta](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) blogg.
+toostream eller hämta en tillgång, du behöver för ”publicera” den genom att skapa en positionerare. Positionerare ger åtkomst toofiles i hello tillgången. Media Services stöder två typer av positionerare: OnDemandOrigin-positionerare som används toostream media (till exempel MPEG DASH, HLS eller Smooth Streaming) och signatur åtkomst (SAS)-positionerare används toodownload mediefiler. Mer information om SAS finns lokaliserare [detta](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) blogg.
 
-När du har skapat positionerarna kan du skapa URL: er som används för att strömma eller hämta dina filer.
+När du skapar hello positionerare kan skapa du hello URL: er som används toostream eller hämta dina filer.
 
 >[!NOTE]
->När ditt AMS-konto skapas läggs en **standard**-slutpunkt för direktuppspelning till på ditt konto med tillståndet **Stoppad**. Om du vill starta direktuppspelning av innehåll och dra nytta av dynamisk paketering och dynamisk kryptering måste slutpunkten för direktuppspelning som du vill spela upp innehåll från ha tillståndet **Körs**.
+>När AMS-kontot skapas en **standard** strömningsslutpunkt har lagts till tooyour konto i hello **stoppad** tillstånd. toostart strömning ditt innehåll och dra nytta av dynamisk paketering och dynamisk kryptering hello strömningsslutpunkt som du vill toostream innehåll har toobe i hello **kör** tillstånd.
 
-En strömmande URL för Smooth Streaming har följande format:
+En strömmande URL för Smooth Streaming har hello följande format:
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
-En strömmande URL för HLS har följande format:
+En strömmande URL för HLS har hello följande format:
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-En strömmande URL för MPEG DASH har följande format:
+En strömmande URL för MPEG DASH har hello följande format:
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
 
-En SAS-URL som används för att hämta filer har följande format:
+En SAS-URL som används för toodownload filer har hello följande format:
 
     {blob container name}/{asset name}/{file name}/{SAS signature}
 
-Det här avsnittet visar hur du utföra följande uppgifter krävs för att ”publicera” dina tillgångar.  
+Det här avsnittet visar hur tooperform hello följande uppgifter krävs för ”publicera” dina tillgångar.  
 
-* Skapa AccessPolicy med läsbehörighet
+* Skapa hello AccessPolicy med läsbehörighet
 * Skapa en SAS-URL för hämtning av innehåll
 * Skapa ett ursprung URL för direktuppspelning av innehåll
 
-### <a name="creating-the-accesspolicy-with-read-permission"></a>Skapa AccessPolicy med läsbehörighet
-Innan strömmande mediainnehåll, definiera en AccessPolicy med läsbehörighet och skapa lämpliga lokaliserare enheten som anger vilken typ av leveransmekanismen som du vill aktivera för dina klienter. Mer information om egenskaper som är tillgängliga finns [AccessPolicy Entitetsegenskaper](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties).
+### <a name="creating-hello-accesspolicy-with-read-permission"></a>Skapa hello AccessPolicy med läsbehörighet
+Innan du laddar ned eller strömmande mediainnehåll först definiera ett AccessPolicy med läsbehörighet och skapa hello lämpliga lokaliserare entitet som anger hello leveransmekanismen som du vill tooenable för klienterna. Mer information om hello-egenskaper som är tillgängliga finns [AccessPolicy Entitetsegenskaper](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties).
 
-I följande exempel visas hur du anger AccessPolicy för läsbehörighet för den angivna resursen.
+hello som följande exempel visar hur toospecify hello AccessPolicy för läsbehörighet för den angivna resursen.
 
     POST https://wamsbayclus001rest-hs.net/API/AccessPolicies HTTP/1.1
     Content-Type: application/json
@@ -753,15 +753,15 @@ I följande exempel visas hur du anger AccessPolicy för läsbehörighet för de
 
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
-Om det lyckas, returneras 201 koden som beskriver AccessPolicy för entiteten som du skapade. Du kan sedan använda AccessPolicy Id tillsammans med tillgångsinformation-Id för den tillgång som innehåller den fil som du vill leverera (till exempel en utdatatillgången) för att skapa lokaliserare entiteten.
+Om det lyckas, returneras 201 koden som beskriver hello AccessPolicy entitet som du skapade. Du kan sedan använda hello AccessPolicy Id tillsammans med hello tillgångsnummer hello tillgång som innehåller hello fil toodeliver (till exempel en utdatatillgången) toocreate hello lokaliserare entitet.
 
 > [!NOTE]
-> Grundläggande arbetsflödet är samma som överför en fil när du vill föra in en tillgång (som beskrevs tidigare i det här avsnittet). Som överför filer, om du (eller klienterna) behöver komma åt dina filer direkt, ange dessutom StartTime-värdet till fem minuter före aktuell tid. Den här åtgärden är nödvändigt eftersom det kan finnas klockan skeva mellan klienten och Media Services. StartTime-värdet måste vara i följande DateTime-format: ÅÅÅÅ-MM-ddTHH (till exempel ”2014-05-23T17:53:50Z”).
+> Det här grundläggande arbetsflödet är hello samma som överför en fil när du vill föra in en tillgång (som beskrevs tidigare i det här avsnittet). Ange dessutom StartTime värdet toofive minuter innan hello klockslaget som ladda upp filer, om du (eller klienterna) behöver tooaccess filerna direkt. Den här åtgärden är nödvändigt eftersom det kan finnas klockan skeva mellan hello-klienten och Media Services. hello StartTime-värdet måste vara i hello följande DateTime-format: ÅÅÅÅ-MM-ddTHH (till exempel ”2014-05-23T17:53:50Z”).
 >
 >
 
 ### <a name="creating-a-sas-url-for-downloading-content"></a>Skapa en SAS-URL för hämtning av innehåll
-Följande kod visar hur du kan få en URL som kan användas för att hämta en mediefil skapas och överföra tidigare. AccessPolicy har skrivskyddad behörighet som anges och lokaliserare sökvägen refererar till en SAS-URL för hämtning.
+hello följande kod visar hur tooget en URL som kan använda toodownload en mediefil skapas och överföra tidigare. Hej AccessPolicy har skrivskyddad behörighet som anges och hello lokaliserare sökvägen refererar tooa SAS nedladdnings-URL.
 
     POST https://wamsbayclus001rest-hs.net/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -776,7 +776,7 @@ Följande kod visar hur du kan få en URL som kan användas för att hämta en m
 
     {"AccessPolicyId": "nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8", "AssetId" : "nb:cid:UUID:71d2dd33-efdf-ec43-8ea1-136a110bd42c", "StartTime" : "2014-05-17T16:45:53", "Type":1}
 
-Om det lyckas, returneras följande svar:
+Om det lyckas, returneras hello efter svar:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -819,24 +819,24 @@ Om det lyckas, returneras följande svar:
     }
 
 
-Den returnerade **sökväg** egenskap innehåller SAS-URL.
+hello returnerade **sökväg** egenskap innehåller hello SAS-URL.
 
 > [!NOTE]
-> Om du hämtar lagringskrypterad innehåll måste du manuellt dekryptera den innan du gör den eller använda lagring dekryptering MediaProcessor i en Bearbetningsuppgift bearbetade utdatafiler i klartext till en OutputAsset och sedan hämta från tillgången. Mer information om bearbetningen finns i skapar ett jobb Encoding med Media Services REST API. Lokaliserare för SAS-URL: en kan inte uppdateras när de har skapats. Du kan exempelvis återanvända samma lokaliserare med ett uppdaterat StartTime-värde. Detta beror på hur SAS-URL: er skapas. Om du vill komma åt en tillgång för att ladda ned efter en positionerare har upphört att gälla måste du skapa en ny med en ny StartTime.
+> Om du hämtar lagringskrypterad innehåll, måste du manuellt dekryptera den innan du gör den eller använda hello lagring dekryptering MediaProcessor i en bearbetning uppgiften toooutput bearbetas filer i hello Rensa tooan OutputAsset och sedan ladda ned från tillgången. Mer information om bearbetningen finns i skapar en kodning jobb med hello Media Services REST API. Lokaliserare för SAS-URL: en kan inte uppdateras när de har skapats. Du kan exempelvis återanvända hello samma lokaliserare med ett uppdaterat StartTime-värde. Detta är på grund av hello sätt SAS-URL: er skapas. Om du vill tooaccess en tillgång för att ladda ned efter en positionerare har upphört att gälla, måste du skapa en ny med en ny StartTime.
 >
 >
 
 ### <a name="download-files"></a>Hämta filer
-När du har AccessPolicy och lokaliserare ange kan hämta du filer med hjälp av Azure Storage REST-API: er.  
+Du kan hämta filer med hjälp av hello Azure Storage REST API: er när du har hello AccessPolicy och lokaliserare uppsättningen.  
 
 > [!NOTE]
-> Du måste lägga till filnamnet för den fil som du vill ladda ned till positioneraren **sökväg** värde som erhölls i föregående avsnitt. Till exempel https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> Du måste lägga till hello filnamn hello filen du vill ha toodownload toohello lokaliserare **sökväg** värde togs emot i hello föregående avsnitt. Till exempel https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 >
 >
 
 Mer information om hur du arbetar med Azure storage blobs finns [REST-API för Blob-tjänsten](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-På grund av kodningsjobbet som du utförde tidigare (kodning till anpassningsbar MP4-uppsättningen) har du flera MP4-filer som du kan hämta progressivt. Exempel:    
+På grund av hello kodning jobb som du utförde tidigare (kodning till anpassningsbar MP4-uppsättningen), har du flera MP4-filer som du kan hämta progressivt. Exempel:    
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
@@ -856,7 +856,7 @@ På grund av kodningsjobbet som du utförde tidigare (kodning till anpassningsba
 
 
 ### <a name="creating-a-streaming-url-for-streaming-content"></a>Skapa en strömnings-URL för direktuppspelning av innehåll
-Följande kod visar hur du skapar en Strömningslokaliserare URL:
+Hej följande kod visar hur toocreate en Strömningslokaliserare URL:
 
     POST https://wamsbayclus001rest-hs/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -871,7 +871,7 @@ Följande kod visar hur du skapar en Strömningslokaliserare URL:
 
     {"AccessPolicyId": "nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8", "AssetId" : "nb:cid:UUID:eb5540a2-116e-4d36-b084-7e9958f7f3c3", "StartTime" : "2014-05-17T16:45:53",, "Type":2}
 
-Om det lyckas, returneras följande svar:
+Om det lyckas, returneras hello efter svar:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -913,23 +913,23 @@ Om det lyckas, returneras följande svar:
        }
     }
 
-Om du vill strömma en Smooth Streaming ursprung URL i en strömmande media player måste du lägga till sökvägen egenskap med namnet på Smooth Streaming manifestfilen, följt av ”/ manifest”.
+toostream en Smooth Streaming ursprung URL i en strömmande media player, måste du lägga till hello sökväg egenskap med namnet hello hello Smooth Streaming manifestfilen, följt av ”/ manifest”.
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest
 
-Om du vill strömma HLS, Lägg till (format = m3u8 aapl) när den ”/ manifest”.
+toostream HLS, Lägg till (format = m3u8 aapl) efter hello ”/ manifest”.
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
-Om du vill strömma MPEG DASH, Lägg till (format = mpd-tid-csf) när den ”/ manifest”.
+toostream MPEG DASH, Lägg till (format = mpd-tid-csf) efter hello ”/ manifest”.
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
 ## <a id="play"></a>Spela upp ditt innehåll
-Strömma videon med hjälp av [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+toostream du video-använder [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
-Om du vill testa den progressiva nedladdningen, att klistra in en URL i en webbläsare (till exempel Internet Explorer, Chrome, Safari).
+tootest progressiv hämtning, klistra in en URL i en webbläsare (till exempel Internet Explorer, Chrome, Safari).
 
 ## <a name="next-steps-media-services-learning-paths"></a>Nästa steg: sökvägar för Media Services-utbildning
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

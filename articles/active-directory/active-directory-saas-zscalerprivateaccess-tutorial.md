@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Zscaler privat åtkomst (ZPA) | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Zscaler privat åtkomst (ZPA)."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Zscaler privat åtkomst (ZPA)."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,71 +13,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 5c598bfa5b6725d21a89df54dbcb3314cc631d80
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0370cff60c8ac15bd1919acccc924da1e50dc45b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>Självstudier: Azure Active Directory-integrering med Zscaler privat åtkomst (ZPA)
 
-I kursen får lära du att integrera Zscaler privat åtkomst (ZPA) med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate Zscaler privat åtkomst (ZPA) med Azure Active Directory (AD Azure).
 
-Integrera Zscaler privat åtkomst (ZPA) med Azure AD ger dig följande fördelar:
+Integrera Zscaler privat åtkomst (ZPA) med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till Zscaler privat åtkomst (ZPA)
-- Du kan aktivera användarna att automatiskt hämta inloggade till Zscaler privat åtkomst (ZPA) (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - till Azure-hanteringsportalen
+- Du kan styra i Azure AD som har åtkomst tooZscaler privat åtkomst (ZPA)
+- Du kan aktivera din användare tooautomatically get inloggade tooZscaler privat åtkomst (ZPA) (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure Management portal
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-Om du vill konfigurera Azure AD-integrering med Zscaler privat åtkomst (ZPA) behöver du följande:
+tooconfigure Azure AD-integrering med Zscaler privat åtkomst (ZPA), behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En Zscaler privat åtkomst (ZPA) enkel inloggning på aktiverade prenumeration
 
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Du bör inte använda produktionsmiljön, om det inte är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion av en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Zscaler privat åtkomst (ZPA) från galleriet
+1. Att lägga till Zscaler privat åtkomst (ZPA) från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
 
-## <a name="adding-zscaler-private-access-zpa-from-the-gallery"></a>Att lägga till Zscaler privat åtkomst (ZPA) från galleriet
-Du måste lägga till Zscaler privat åtkomst (ZPA) från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Zscaler privat åtkomst (ZPA) i Azure AD.
+## <a name="adding-zscaler-private-access-zpa-from-hello-gallery"></a>Att lägga till Zscaler privat åtkomst (ZPA) från hello-galleriet
+tooconfigure hello integrering av Zscaler privat åtkomst (ZPA) i Azure AD, behöver du tooadd Zscaler privat åtkomst (ZPA) från hello galleriet tooyour lista över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till Zscaler privat åtkomst (ZPA) från galleriet:**
+**tooadd Zscaler privat åtkomst (ZPA) från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-hanteringsportalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-hanteringsportalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Klicka på **Lägg till** knappen överst i dialogrutan.
+3. Klicka på **Lägg till** hello längst upp i hello dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **Zscaler privat åtkomst (ZPA)**.
+4. Skriv i sökrutan hello **Zscaler privat åtkomst (ZPA)**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_001.png)
 
-5. Välj i resultatpanelen **Zscaler privat åtkomst (ZPA)**, och klicka sedan på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **Zscaler privat åtkomst (ZPA)**, och klicka sedan på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_0001.png)
 
@@ -85,74 +85,74 @@ Du måste lägga till Zscaler privat åtkomst (ZPA) från galleriet i listan öv
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Zscaler privat åtkomst (ZPA) baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till motsvarande användaren i Zscaler privat åtkomst (ZPA) till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk mellan en Azure AD-användare och relaterade användaren i Zscaler privat åtkomst (ZPA) upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Zscaler privat åtkomst (ZPA) är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användaren i Zscaler privat åtkomst (ZPA) toobe upprättas.
 
-Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i Zscaler privat åtkomst (ZPA).
+Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i Zscaler privat åtkomst (ZPA).
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med Zscaler privat åtkomst (ZPA), måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med Zscaler privat åtkomst (ZPA), behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Zscaler privat åtkomst (ZPA)](#creating-a-zscaler-private-access-(zpa)-test-user)**  – du har en motsvarighet för Britta Simon i Zscaler privat åtkomst (ZPA) som är kopplad till Azure AD-representation av henne.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Zscaler privat åtkomst (ZPA)](#creating-a-zscaler-private-access-(zpa)-test-user)**  -toohave en motsvarighet för Britta Simon i Zscaler privat åtkomst (ZPA) som är länkade toohello Azure AD-representation av henne.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-hanteringsportalen och konfigurera enkel inloggning i tillämpningsprogrammet Zscaler privat åtkomst (ZPA).
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure Management portal och konfigurera enkel inloggning i tillämpningsprogrammet Zscaler privat åtkomst (ZPA).
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med Zscaler privat åtkomst (ZPA):**
+**tooconfigure Azure AD enkel inloggning med Zscaler privat åtkomst (ZPA), utför följande steg hello:**
 
-1. I Azure-hanteringsportalen på den **Zscaler privat åtkomst (ZPA)** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure Management portal på hello **Zscaler privat åtkomst (ZPA)** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** dialogrutan som **läge** Välj **SAML-baserade inloggning** att aktivera enkel inloggning på.
+2. På hello **enkel inloggning** dialogrutan som **läge** Välj **SAML-baserade inloggning** tooenable för enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_300.png)
     
-3. På den **Zscaler privat åtkomst (ZPA)-domän och URL: er** avsnittet, utför följande steg:
+3. På hello **Zscaler privat åtkomst (ZPA)-domän och URL: er** avsnittet, utföra hello följande steg:
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_01.png)
 
-    a. I den **logga URL** textruta Skriv en URL med följande mönster:`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
+    a. I hello **logga URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
 
-    b. I den **identifierare** textruta typ:`https://samlsp.private.zscaler.com/auth/metadata`
+    b. I hello **identifierare** textruta typ:`https://samlsp.private.zscaler.com/auth/metadata`
 
     > [!NOTE] 
-    > Observera att detta inte är verkliga värden. Du måste uppdatera dessa värden med den faktiska logga URL och identifierare. Här rekommenderar vi att du om du vill använda det unika värdet för URL: en i identifieraren. Kontakta [Zscaler privat åtkomst (ZPA) supportteamet](https://help.zscaler.com/zpa-submit-ticket) att hämta dessa värden.
+    > Observera att detta inte är hello verkliga värden. Du har tooupdate dessa värden med hello faktiska inloggning URL och identifierare. Vi rekommenderar här du toouse hello unikt värde för URL: en i hello identifierare. Kontakta [Zscaler privat åtkomst (ZPA) supportteamet](https://help.zscaler.com/zpa-submit-ticket) tooget dessa värden.
 
-4. På den **SAML-signeringscertifikat** klickar du på **Skapa nytt certifikat**.
+4. På hello **SAML-signeringscertifikat** klickar du på **Skapa nytt certifikat**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_400.png)   
 
-5. På den **skapa nya certifikat** dialogrutan, klicka på kalenderikonen och välj en **förfallodatum**. Klicka på **spara** knappen.
+5. På hello **skapa nya certifikat** dialogrutan Klicka hello kalendern och välj en **förfallodatum**. Klicka på **spara** knappen.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_500.png)
 
-6. På den **SAML-signeringscertifikat** väljer **aktivera nya certifikatet** och på **spara** knappen.
+6. På hello **SAML-signeringscertifikat** väljer **aktivera nya certifikatet** och på **spara** knappen.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_02.png)
 
-7. På popup-fönstret **förnyelsecertifikat** -fönstret klickar du på **OK**.
+7. På popup-fönster hello **förnyelsecertifikat** -fönstret klickar du på **OK**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_general_600.png)
 
-8. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
+8. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_03.png) 
 
 9. Logga in på webbplatsen för företagets Zscaler privat åtkomst (ZPA) som en administratör i en annan webbläsarfönster.
 
-10. Gå till **administratör** och klicka sedan på **Idp Configuration**.
+10. Navigera för**administratör** och klicka sedan på **Idp Configuration**.
 
     ![Konfigurera enkel inloggning på App-sida](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_04.png)
 
-11. I den **Idp Configuration** klickar du på **lägga till nya IDP konfigurationen**.
+11. I hello **Idp Configuration** klickar du på **lägga till nya IDP konfigurationen**.
 
     ![Konfigurera enkel inloggning på App-sida](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_05.png)
 
-12. I den **nya IDP konfigurationen** avsnittet, utför följande steg:
+12. I hello **nya IDP konfigurationen** avsnittet, utföra hello följande steg:
 
     ![Konfigurera enkel inloggning på App-sida](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_06.png)
 
@@ -163,33 +163,33 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-hanteringsportal
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i Azure Management portal kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure Management portal kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-hanteringsportalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-hanteringsportalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscalerprivateaccess-tutorial/create_aaduser_01.png) 
 
-2. Gå till **användare och grupper** och på **alla användare** att visa en lista över användare.
+2. Gå för**användare och grupper** och på **alla användare** toodisplay hello lista över användare.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscalerprivateaccess-tutorial/create_aaduser_02.png) 
 
-3. Klicka på överst i dialogrutan **Lägg till** att öppna den **användaren** dialogrutan.
+3. Hello överst i dialogrutan hello klickar du på **Lägg till** tooopen hello **användaren** dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscalerprivateaccess-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscalerprivateaccess-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**. 
 
@@ -197,26 +197,26 @@ Syftet med det här avsnittet är att skapa en testanvändare i Azure Management
 
 ### <a name="creating-a-zscaler-private-access-zpa-test-user"></a>Skapa en testanvändare Zscaler privat åtkomst (ZPA)
 
-I det här avsnittet skapar du en användare som kallas Britta Simon i Zscaler privat åtkomst (ZPA). Se tillsammans med [Zscaler privat åtkomst (ZPA) supportteamet](https://help.zscaler.com/zpa-submit-ticket) att lägga till användare i Zscaler privat åtkomst (ZPA)-plattformen.
+I det här avsnittet skapar du en användare som kallas Britta Simon i Zscaler privat åtkomst (ZPA). Se tillsammans med [Zscaler privat åtkomst (ZPA) supportteamet](https://help.zscaler.com/zpa-submit-ticket) tooadd hello användare i hello Zscaler privat åtkomst (ZPA)-plattformen.
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning med sin åtkomst beviljas till Zscaler privat åtkomst (ZPA).
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att ge sina access tooZscaler privat åtkomst (ZPA).
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela Britta Simon till Zscaler privat åtkomst (ZPA), utför du följande steg:**
+**tooassign Britta Simon tooZscaler privat åtkomst (ZPA), utför följande steg hello:**
 
-1. Öppna vyn program i Azure-hanteringsportalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure Management portal öppnar du hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **Zscaler privat åtkomst (ZPA)**.
+2. Välj i listan med program hello **Zscaler privat åtkomst (ZPA)**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_50.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -224,7 +224,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -234,14 +234,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen Zscaler privat åtkomst (ZPA) på åtkomstpanelen du bör få automatiskt loggat in på ditt program Zscaler privat åtkomst (ZPA).
+När du klickar på hello Zscaler privat åtkomst (ZPA)-panelen i hello åtkomstpanelen får automatiskt inloggade tooyour Zscaler privat åtkomst (ZPA) program.
 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

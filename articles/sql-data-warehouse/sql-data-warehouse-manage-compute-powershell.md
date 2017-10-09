@@ -1,6 +1,6 @@
 ---
-title: Hantera datorkraft i Azure SQL Data Warehouse (PowerShell) | Microsoft Docs
-description: "PowerShell-uppgifter för hantering av beräkningskraft. Skala beräkningsresurser genom att justera dwu: er. Eller, pausa och återuppta beräkningsresurser för att spara kostnader."
+title: "aaaManage beräkningskraft i Azure SQL Data Warehouse (PowerShell) | Microsoft Docs"
+description: "PowerShell uppgifter toomanage beräkningskraft. Skala beräkningsresurser genom att justera dwu: er. Eller, pausa och återuppta beräkning resurser toosave kostnader."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 6a185d96447c2e1b0b463439dd062081e783da5f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8b379d4cf89570649767f6896d2c630d4f1111d7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-powershell"></a>Hantera datorkraft i Azure SQL Data Warehouse (PowerShell)
 > [!div class="op_single_selector"]
@@ -32,17 +32,17 @@ ms.lasthandoff: 07/11/2017
 >
 
 ## <a name="before-you-begin"></a>Innan du börjar
-### <a name="install-the-latest-version-of-azure-powershell"></a>Installera den senaste versionen av Azure PowerShell
+### <a name="install-hello-latest-version-of-azure-powershell"></a>Installera hello senaste versionen av Azure PowerShell
 > [!NOTE]
-> Om du vill använda Azure PowerShell med SQL Data Warehouse, behöver du Azure PowerShell version 1.0.3 eller senare.  Kontrollera din nuvarande version kör kommandot **Get-Module - ListAvailable-Name Azure**. Du kan installera den senaste versionen från [Microsoft Web Platform Installer][Microsoft Web Platform Installer].  Mer information finns i [hur du installerar och konfigurerar du Azure PowerShell][How to install and configure Azure PowerShell].
+> toouse Azure PowerShell med SQL Data Warehouse, behöver du Azure PowerShell version 1.0.3 eller senare.  tooverify din nuvarande version kör hello kommando **Get-Module - ListAvailable-Name Azure**. Du kan installera hello senaste versionen från [Microsoft Web Platform Installer][Microsoft Web Platform Installer].  Mer information finns i [hur tooinstall och konfigurera Azure PowerShell][How tooinstall and configure Azure PowerShell].
 >
 > 
 
 ### <a name="get-started-with-azure-powershell-cmdlets"></a>Kom igång med Azure PowerShell-cmdlets
-Att komma igång:
+tooget igång:
 
 1. Öppna Azure PowerShell.
-2. Köra dessa kommandon för att logga in till Azure Resource Manager och välja din prenumeration i PowerShell-Kommandotolken.
+2. I PowerShell-Kommandotolken hello köra dessa kommandon toosign i toohello Azure Resource Manager och välja din prenumeration.
 
     ```PowerShell
     Login-AzureRmAccount
@@ -56,7 +56,7 @@ Att komma igång:
 ## <a name="scale-compute-power"></a>Skala datorkraft
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-Du kan ändra de dwu: er i [Set-AzureRmSqlDatabase] [ Set-AzureRmSqlDatabase] PowerShell-cmdlet. I följande exempel anger servicenivåmålet till DW1000 för MySQLDW som finns på servern minserver-databasen.
+toochange hello dwu: er, använda hello [Set-AzureRmSqlDatabase] [ Set-AzureRmSqlDatabase] PowerShell-cmdlet. hello följande exempel anger hello service nivån mål tooDW1000 för hello databasen MySQLDW som finns på servern MinServer.
 
 ```Powershell
 Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
@@ -67,10 +67,10 @@ Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -Requested
 ## <a name="pause-compute"></a>Pausa beräkning
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-Pausa en databas genom att använda den [Suspend-AzureRmSqlDatabase] [ Suspend-AzureRmSqlDatabase] cmdlet. Följande exempel pausar en databas med namnet Database02 som finns på en server med namnet Server01. Servern är i ett Azure-resursgrupp med namnet ResourceGroup1.
+toopause en databas kan använda hello [Suspend-AzureRmSqlDatabase] [ Suspend-AzureRmSqlDatabase] cmdlet. hello pausar följande exempel en databas med namnet Database02 som finns på en server med namnet Server01. hello-servern heter i en Azure-resursgrupp ResourceGroup1.
 
 > [!NOTE]
-> Observera att om din server är foo.database.windows.net, använda ”foo” - servernamn i PowerShell-cmdlets.
+> Observera att om servern är foo.database.windows.net, Använd ”foo” som hello - servernamn i hello PowerShell-cmdlets.
 >
 > 
 
@@ -78,7 +78,7 @@ Pausa en databas genom att använda den [Suspend-AzureRmSqlDatabase] [ Suspend-A
 Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
 –ServerName "Server01" –DatabaseName "Database02"
 ```
-En variant exemplet nästa hämtar databasen till $database-objekt. Den kommer sedan objektet till [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]. Resultatet lagras i objektet resultDatabase. Kommandot visas resultatet.
+En variant exemplet nästa hämtar hello databasen till hello $database objekt. Den sedan kommer hello-objekt för[Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]. hello resultat lagras i hello objektet resultDatabase. hello kommandot visar hello resultat.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
@@ -92,14 +92,14 @@ $resultDatabase
 ## <a name="resume-compute"></a>Återuppta beräkning
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-Starta en databas med den [Resume-AzureRmSqlDatabase] [ Resume-AzureRmSqlDatabase] cmdlet. Följande exempel startar en databas med namnet Database02 som finns på en server med namnet Server01. Servern är i ett Azure-resursgrupp med namnet ResourceGroup1.
+toostart en databas kan använda hello [Resume-AzureRmSqlDatabase] [ Resume-AzureRmSqlDatabase] cmdlet. hello startar följande exempel en databas med namnet Database02 som finns på en server med namnet Server01. hello-servern heter i en Azure-resursgrupp ResourceGroup1.
 
 ```Powershell
 Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
 –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-En variant exemplet nästa hämtar databasen till $database-objekt. Den kommer sedan objektet till [Resume-AzureRmSqlDatabase] [ Resume-AzureRmSqlDatabase] och lagrar resultatet i $resultDatabase. Kommandot visas resultatet.
+En variant exemplet nästa hämtar hello databasen till hello $database objekt. Den sedan kommer hello-objekt för[Resume-AzureRmSqlDatabase] [ Resume-AzureRmSqlDatabase] och lagrar hello resultat i $resultDatabase. hello kommandot visar hello resultat.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
@@ -112,7 +112,7 @@ $resultDatabase
 
 ## <a name="check-database-state"></a>Kontrollera databasens status
 
-I ovanstående exempel visas en kan använda [Get-AzureRmSqlDatabase] [ Get-AzureRmSqlDatabase] cmdlet om du vill ha information om en databas, vilket kontrollerar status, men ska användas som ett argument. 
+Enligt hello exemplen ovan, kan använda [Get-AzureRmSqlDatabase] [ Get-AzureRmSqlDatabase] cmdlet tooget information på en databas, vilket kontrollerar hello status, men också toouse som ett argument. 
 
 ```powershell
 Get-AzureRmSqlDatabase [-ResourceGroupName] <String> [-ServerName] <String> [[-DatabaseName] <String>]
@@ -142,7 +142,7 @@ ElasticPoolName               :
 EarliestRestoreDate           : 1/1/0001 12:00:00 AM
 ```
 
-Där du kan sedan kontrollera för att se den *Status* av databasen. I det här fallet kan du se att den här databasen är online. 
+Där du kan sedan kontrollera toosee hello *Status* av hello-databasen. I det här fallet kan du se att den här databasen är online. 
 
 När du kör det här kommandot får statusvärdet antingen Online, pausa, inställd på återupptar, skalning och pausad.
 
@@ -156,7 +156,7 @@ Andra hanteringsåtgärder finns [översikt över][Management overview].
 <!--Article references-->
 [Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 [Management overview]: ./sql-data-warehouse-overview-manage.md
-[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[How tooinstall and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Manage compute overview]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->

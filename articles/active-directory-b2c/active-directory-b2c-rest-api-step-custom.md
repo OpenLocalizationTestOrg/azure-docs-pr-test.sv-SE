@@ -14,48 +14,48 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
-ms.openlocfilehash: dc319c97e64e55861b84cc3943667418077a05d8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 90a495029f48d70232ef3f99de4ea4d351395aa7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Genomgång: Integrera utbyte av REST API-anspråk i din Azure AD B2C användaren resa som ett orchestration-steg
 
-Den identitet upplevelse Framework (IEF) för Azure Active Directory B2C det (Azure AD B2C) gör det möjligt för identitet utvecklare att integrera en interaktion med en RESTful-API i en resa för användaren.  
+hello identitet upplevelse Framework (IEF) för Azure Active Directory B2C det (Azure AD B2C) gör det möjligt för hello identitet developer toointegrate interaktion med en RESTful-API i en resa för användaren.  
 
-I slutet av den här genomgången kommer du att kunna skapa en Azure AD B2C användaren resa som interagerar med RESTful-tjänster.
+Hello slutet av den här genomgången, kommer du att kunna toocreate en Azure AD B2C användaren resa som interagerar med RESTful-tjänster.
 
-IEF skickar data i anspråk och tar emot data tillbaka i anspråk. REST API anspråk exchange:
+hello IEF skickar data i anspråk och tar emot data tillbaka i anspråk. hello REST API anspråk exchange:
 
 - Kan utformas som en orchestration-steg.
 - Kan utlösa en extern åtgärd. Det kan till exempel logga en händelse i en extern databas.
-- Kan användas för att hämta ett värde och sedan lagra den i databasen.
+- Kan använda toofetch ett värde och sedan lagra den i hello användardatabas.
 
-Du kan använda mottagna anspråk senare ändra flödet av körningen.
+Du kan använda hello emot anspråk senare toochange hello flödet av körningen.
 
-Du kan också utforma interaktionen som en verifieringsprofil. Mer information finns i [genomgång: integrera REST API-anspråk utbyte i din Azure AD B2C användaren resa som autentiserades på indata från användaren](active-directory-b2c-rest-api-validation-custom.md).
+Du kan också utforma hello interaktion som en verifieringsprofil. Mer information finns i [genomgång: integrera REST API-anspråk utbyte i din Azure AD B2C användaren resa som autentiserades på indata från användaren](active-directory-b2c-rest-api-validation-custom.md).
 
-Scenariot är att när användaren utför en profil-redigering, vi vill:
+hello scenario är att när användaren utför en profil-redigering, vi vill:
 
-1. Leta upp användaren i ett externt system.
-2. Hämta den stad där användaren har registrerats.
-3. Returnera attributet till programmet som ett anspråk.
+1. Leta upp hello användare i ett externt system.
+2. Hämta hello stad där användaren har registrerats.
+3. Returnera attributet toohello programmet som ett anspråk.
 
 ## <a name="prerequisites"></a>Krav
 
-- En Azure AD B2C-klient som konfigurerats för att slutföra ett lokalt konto sign-upp/inloggning, enligt beskrivningen i [komma igång](active-directory-b2c-get-started-custom.md).
-- En REST API-slutpunkt kan interagera med. Den här genomgången använder en enkel Azure funktionen app webhook som ett exempel.
-- *Rekommenderade*: Slutför den [REST API-anspråk exchange genomgång som en verifiering steg](active-directory-b2c-rest-api-validation-custom.md).
+- En Azure AD B2C-klient som konfigurerats toocomplete ett lokalt konto sign-upp/inloggning, enligt beskrivningen i [komma igång](active-directory-b2c-get-started-custom.md).
+- En REST API-slutpunkten toointeract med. Den här genomgången använder en enkel Azure funktionen app webhook som ett exempel.
+- *Rekommenderade*: fullständig hello [REST API-anspråk exchange genomgång som en verifiering steg](active-directory-b2c-rest-api-validation-custom.md).
 
-## <a name="step-1-prepare-the-rest-api-function"></a>Steg 1: Förbered REST API-funktion
+## <a name="step-1-prepare-hello-rest-api-function"></a>Steg 1: Förbered hello REST API-funktion
 
 > [!NOTE]
-> Installationen av REST API-funktioner som ligger utanför omfånget för den här artikeln. [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) ger en utmärkt toolkit för att skapa RESTful-tjänster i molnet.
+> Installationen av REST API-funktioner är utanför hello omfånget för den här artikeln. [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) ger en utmärkt toolkit toocreate RESTful-tjänster i hello molnet.
 
-Vi har konfigurerat en Azure-funktion som tar emot ett anspråk som kallas `email`, och returnerar sedan anspråket `city` med tilldelade värdet för `Redmond`. Exemplet Azure funktionen finns på [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
+Vi har konfigurerat en Azure-funktion som tar emot ett anspråk som kallas `email`, och sedan returnerar hello anspråk `city` med hello tilldelas värdet `Redmond`. hello exempel Azure funktionen finns på [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
 
-Den `userMessage` anspråk som returnerar funktionen Azure är valfri i den här kontexten och IEF ignoreras den. Du kan eventuellt använda den som ett meddelande skickas till programmet och visas för användaren senare.
+Hej `userMessage` anspråk som hello Azure returnerar är valfri i den här kontexten och hello IEF ignoreras den. Du kan eventuellt använda den som ett meddelande skickades toohello program och presenteras toohello användaren senare.
 
 ```csharp
 if (requestContentAsJObject.email == null)
@@ -78,14 +78,14 @@ return request.CreateResponse<ResponseContent>(
     "application/json");
 ```
 
-En funktionsapp i Azure-gör det enkelt att hämta funktions-URL som innehåller identifierare för specifik funktion. I det här fallet URL-Adressen är: https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==. Du kan använda den för att testa.
+En funktionsapp i Azure-gör det enkelt tooget hello funktions-URL, vilket innefattar hello identifierare för hello specifik funktion. I det här fallet hello URL: en är: https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==. Du kan använda den för att testa.
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>Steg 2: Konfigurera exchange för RESTful-API-anspråk som en teknisk profil i filen TrustFrameworExtensions.xml
+## <a name="step-2-configure-hello-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>Steg 2: Konfigurera exchange för hello RESTful-API-anspråk som en teknisk profil i filen TrustFrameworExtensions.xml
 
-En teknisk profil är den fullständiga konfigurationen av exchange önskad med RESTful-tjänsten. Öppna filen TrustFrameworkExtensions.xml och Lägg till följande XML-kodstycke i den `<ClaimsProvider>` element.
+En teknisk profil är hello fullständig konfiguration av hello exchange önskad med hello RESTful-tjänst. Öppna hello TrustFrameworkExtensions.xml filen och Lägg till följande XML-kodstycke i hello hello `<ClaimsProvider>` element.
 
 > [!NOTE]
-> I följande XML RESTful-providern `Version=1.0.0.0` beskrivs som protokoll. Överväg att som den funktion som ska interagera med externa-tjänsten. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
+> I hello följande XML, RESTful-providern `Version=1.0.0.0` beskrivs som hello-protokollet. Överväg att som hello-funktion som kommer att interagera med externa hello-tjänsten. <!-- TODO: A full definition of hello schema can be found...link tooRESTful Provider schema definition>-->
 
 ```XML
 <ClaimsProvider>
@@ -111,18 +111,18 @@ En teknisk profil är den fullständiga konfigurationen av exchange önskad med 
 </ClaimsProvider>
 ```
 
-Den `<InputClaims>` elementet definierar vilka anspråk som skickas från IEF REST-tjänst. I det här exemplet innehållet i anspråket `givenName` kommer att skickas till REST-tjänst som anspråket `email`.  
+Hej `<InputClaims>` elementet definierar hello anspråk som ska skickas från hello IEF toohello REST-tjänst. I det här exemplet hello innehållet i hello anspråk `givenName` skickas toohello REST-tjänst som hello anspråk `email`.  
 
-Den `<OutputClaims>` elementet definierar vilka anspråk som IEF ska förvänta sig från REST-tjänst. Oavsett vilket antal anspråk som tas emot av IEF kommer att använda dem som anges här. I det här exemplet ett anspråk som tas emot som `city` kommer att mappas till en IEF anspråk som kallas `city`.
+Hej `<OutputClaims>` elementet definierar hello anspråk som hello IEF förväntar sig från hello REST-tjänst. Oavsett hello antal anspråk som tas emot hello IEF kommer att använda dem som anges här. I det här exemplet ett anspråk som tas emot som `city` mappade tooan IEF anspråk anropas `city`.
 
-## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Steg 3: Lägg till nytt anspråk `city` i schemat för TrustFrameworkExtensions.xml-fil
+## <a name="step-3-add-hello-new-claim-city-toohello-schema-of-your-trustframeworkextensionsxml-file"></a>Steg 3: Lägg till nytt anspråk för hello `city` toohello schemat för TrustFrameworkExtensions.xml-fil
 
-Anspråket `city` är ännu inte definierats var som helst i vår schemat. Lägg därför till en definition i elementet `<BuildingBlocks>`. Du hittar det här elementet i början av filen TrustFrameworkExtensions.xml.
+hello anspråk `city` är ännu inte definierats var som helst i vår schemat. Lägg därför till en definition i hello element `<BuildingBlocks>`. Du hittar det här elementet hello början av hello TrustFrameworkExtensions.xml fil.
 
 ```XML
 <BuildingBlocks>
-    <!--The claimtype city must be added to the TrustFrameworkPolicy-->
-    <!-- You can add new claims in the BASE file Section III, or in the extensions file-->
+    <!--hello claimtype city must be added toohello TrustFrameworkPolicy-->
+    <!-- You can add new claims in hello BASE file Section III, or in hello extensions file-->
     <ClaimsSchema>
         <ClaimType Id="city">
             <DisplayName>City</DisplayName>
@@ -134,14 +134,14 @@ Anspråket `city` är ännu inte definierats var som helst i vår schemat. Lägg
 </BuildingBlocks>
 ```
 
-## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>Steg 4: Ta REST service anspråk exchange som en orchestration-steg i din profil Redigera användare resa i TrustFrameworkExtensions.xml
+## <a name="step-4-include-hello-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>Steg 4: Ta hello REST service anspråk exchange som ett orchestration-steg i din profil Redigera användare resa i TrustFrameworkExtensions.xml
 
-Lägga till ett steg till profilen Redigera användare resan, efter att användaren har autentiserats (orchestration-steg 1 – 4 i följande XML) och användaren har angett informationen uppdaterade profilen (steg 5).
+Lägga till ett steg toohello profil Redigera användare resa efter hello användaren har autentiserats (orchestration-steg 1 – 4 i hello följande XML) och hello användaren har angett hello uppdateras profilinformation (steg 5).
 
 > [!NOTE]
-> Det finns många användningsområden där REST API-anrop kan användas som ett orchestration-steg. Som ett orchestration-steg kan den användas som en uppdatering för ett externt system när en användare har slutfört en uppgift som första gången registrering eller som en uppdatering av spårningsprofil för att synkronisera informationen. I det här fallet används det att utöka informationen till programmet när profilen har redigerat.
+> Det finns många användningsområden där hello REST API-anrop kan användas som ett orchestration-steg. Som ett orchestration-steg den kan användas som ett externt system update tooan när en användare har slutfört en uppgift som första gången registrering eller som en profil uppdatering tookeep information som synkroniseras. I det här fallet är det använda tooaugment hello informationen toohello programmet när hello profil redigera.
 
-Kopiera profilen Redigera användare resa XML-koden från filen TrustFrameworkBase.xml i filen TrustFrameworkExtensions.xml inuti den `<UserJourneys>` element. Gör ändringar i steg 6.
+Kopiera hello profil Redigera användare resa XML-koden från hello TrustFrameworkBase.xml tooyour TrustFrameworkExtensions.xml fil i hello `<UserJourneys>` element. Gör hello ändras i steg 6.
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
@@ -152,9 +152,9 @@ Kopiera profilen Redigera användare resa XML-koden från filen TrustFrameworkBa
 ```
 
 > [!IMPORTANT]
-> Om ordern inte överensstämmer med din version, kontrollerar du att du infogar koden som steg innan den `ClaimsExchange` typen `SendClaims`.
+> Om din version inte matchar hello ordning se till att du infogar hello kod som hello steg innan hello `ClaimsExchange` typen `SendClaims`.
 
-Sista XML för transporten användare bör se ut så här:
+hello sista XML för hello användaren resa bör se ut så här:
 
 ```XML
 <UserJourney Id="ProfileEdit">
@@ -200,7 +200,7 @@ Sista XML för transporten användare bör se ut så här:
                 <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
             </ClaimsExchanges>
         </OrchestrationStep>
-        <!-- Add a step 6 to the user journey before the JWT token is created-->
+        <!-- Add a step 6 toohello user journey before hello JWT token is created-->
         <OrchestrationStep Order="6" Type="ClaimsExchange">
             <ClaimsExchanges>
                 <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
@@ -212,11 +212,11 @@ Sista XML för transporten användare bör se ut så här:
 </UserJourney>
 ```
 
-## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Steg 5: Lägg till anspråket `city` till den förlitande parten princip filen så att begäran skickas till ditt program
+## <a name="step-5-add-hello-claim-city-tooyour-relying-party-policy-file-so-hello-claim-is-sent-tooyour-application"></a>Steg 5: Lägg till hello anspråk `city` tooyour förlitande part princip filen så hello anspråk skickas tooyour program
 
-Redigera filen ProfileEdit.xml förlitande part (RP) och ändra den `<TechnicalProfile Id="PolicyProfile">` element att lägga till följande: `<OutputClaim ClaimTypeReferenceId="city" />`.
+Redigera filen ProfileEdit.xml förlitande part (RP) och ändra hello `<TechnicalProfile Id="PolicyProfile">` elementet tooadd hello följande: `<OutputClaim ClaimTypeReferenceId="city" />`.
 
-När du lägger till nya anspråk, tekniska profilen ser ut så här:
+När du har lagt till hello nytt anspråk hello tekniska profil ser ut så här:
 
 ```XML
 <DisplayName>PolicyProfile</DisplayName>
@@ -231,15 +231,15 @@ När du lägger till nya anspråk, tekniska profilen ser ut så här:
 
 ## <a name="step-6-upload-your-changes-and-test"></a>Steg 6: Överföra dina ändringar och testa
 
-Skriv över de befintliga versionerna av principen.
+Skriv över hello befintliga versioner av hello princip.
 
-1.  (Valfritt:) Spara den befintliga versionen (genom att ladda ned) av tilläggsfilen innan du fortsätter. Om du vill behålla inledande komplexitet låg, rekommenderar vi att du inte överföra flera versioner av tilläggsfilen.
-2.  (Valfritt:) Byt namn på den nya versionen av princip-ID för att redigera filen genom att ändra `PolicyId="B2C_1A_TrustFrameworkProfileEdit"`.
-3.  Ladda upp tilläggsfilen.
-4.  Överför principfilen redigera RP.
-5.  Använd **kör nu** att testa principen. Granska den token som IEF returnerar till programmet.
+1.  (Valfritt:) Spara hello befintlig version (genom att ladda ned) av tilläggsfilen innan du fortsätter. tookeep hello inledande komplexitet låg, rekommenderar vi att du inte överföra flera versioner av hello-tillägg-fil.
+2.  (Valfritt:) Byt namn på hello ny version av hello princip-ID för hello princip redigera filen genom att ändra `PolicyId="B2C_1A_TrustFrameworkProfileEdit"`.
+3.  Överför hello-tillägg-fil.
+4.  Överför hello principfil redigera RP.
+5.  Använd **kör nu** tootest hello princip. Granska hello token som hello IEF returnerar toohello program.
 
-Om allt är korrekt konfigurerat, token tas nytt anspråk `city`, med värdet `Redmond`.
+Om allt är korrekt konfigurerat, hello token tas hello nytt anspråk `city`, med hello värdet `Redmond`.
 
 ```JSON
 {
@@ -261,4 +261,4 @@ Om allt är korrekt konfigurerat, token tas nytt anspråk `city`, med värdet `R
 
 [Använd en REST-API som en verifiering steg](active-directory-b2c-rest-api-validation-custom.md)
 
-[Ändra profil Redigera för att samla in ytterligare information från användarna](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+[Ändra hello profil redigera toogather ytterligare information från användarna](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)

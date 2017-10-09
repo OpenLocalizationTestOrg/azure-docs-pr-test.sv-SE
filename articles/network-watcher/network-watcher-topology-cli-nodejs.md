@@ -1,6 +1,6 @@
 ---
-title: "Visa Azure Nätverksbevakaren topologi - Azure CLI 1.0 | Microsoft Docs"
-description: "Den här artikeln beskriver hur du använder Azure CLI 1.0 för att fråga nätverkets topologi."
+title: "aaaView Azure Nätverksbevakaren topologi - Azure CLI 1.0 | Microsoft Docs"
+description: "Den här artikeln beskriver hur toouse Azure CLI 1.0 tooquery nätverkets topologi."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 9178c485a92e04564c95dae8073f045b5c639bb7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 30679d6dc74e85bacfc86c63bd1afa873893c772
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="view-network-watcher-topology-with-azure-cli-10"></a>Visa Nätverksbevakaren topologi med Azure CLI 1.0
 
@@ -28,39 +28,39 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-topology-cli.md)
 > - [REST-API](network-watcher-topology-rest.md)
 
-Funktionen topologi i Nätverksbevakaren ger en bild av nätverksresurser i en prenumeration. I portalen visas den här visualiseringen för dig automatiskt. Informationen bakom vyn topologi i portalen kan hämtas via PowerShell.
-Den här funktionen gör topologiinformationen mer flexibla data kan användas av andra verktyg för att bygga ut visualiseringen.
+hello topologi funktion i Nätverksbevakaren ger en bild av hello nätverksresurser i en prenumeration. Hello-portalen visas den här visualiseringen tooyou automatiskt. hello informationen bakom hello topologiska vyn i hello portal kan hämtas via PowerShell.
+Den här funktionen gör hello topologiinformation mer flexibla hello data kan användas av andra verktyg toobuild ut hello visualiseringen.
 
 Den här artikeln använder plattformsoberoende Azure CLI version 1.0, som är tillgänglig för Windows, Mac och Linux. 
 
-Sambandet modelleras under två relationer.
+hello sammankoppling modelleras under två relationer.
 
 - **Inneslutning** -exempel: innehåller ett undernät för virtuellt nätverk innehåller ett nätverkskort
 - **Associerade** -exempel: NIC som är kopplad till en virtuell dator
 
-I följande lista finns egenskaper som returneras när du frågar topologi REST API.
+hello finns följande lista egenskaper som returneras när du frågar hello topologi REST API.
 
-* **namnet** -namnet på resursen
-* **ID** -uri för resursen.
-* **plats** -plats där resurserna finns.
-* **kopplingarna** -en lista över kopplingar till det refererade objektet.
-    * **namnet** -namnet på den refererade resursen.
-    * **resourceId** -resourceId är URI: n för den resurs som refereras i kopplingen.
-    * **associationType** -relationen mellan det underordnade objektet och överordnat refererar till det här värdet. Giltiga värden är **innehåller** eller **associerade**.
+* **namnet** - hello namn på hello resurs
+* **ID** -hello hello resurs-uri.
+* **plats** -hello plats där hello resurserna finns.
+* **kopplingarna** -en lista över kopplingar toohello refererar till objektet.
+    * **namnet** -hello namnet på hello refererar till resursen.
+    * **resourceId** -hello resourceId är hello uri hello-resurs som refereras i hello association.
+    * **associationType** -hello förhållandet mellan hello underordnat objekt och hello överordnade refererar till det här värdet. Giltiga värden är **innehåller** eller **associerade**.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-I det här scenariot kan du använda den `network watcher topology` för att hämta topologiinformationen. Det finns också en artikel om hur du [hämta nätverkets topologi med REST API](network-watcher-topology-rest.md).
+I det här scenariot kan du använda hello `network watcher topology` cmdlet tooretrieve hello topologiinformation. Det finns också en artikel om hur för[hämta nätverkets topologi med REST API](network-watcher-topology-rest.md).
 
-Det här scenariot förutsätter att du redan har följt stegen i [skapa en Nätverksbevakaren](network-watcher-create.md) att skapa en Nätverksbevakaren.
+Det här scenariot förutsätter att du redan har följt stegen hello i [skapa en Nätverksbevakaren](network-watcher-create.md) toocreate en Nätverksbevakaren.
 
 ## <a name="scenario"></a>Scenario
 
-Det scenario som beskrivs i den här artikeln hämtar topologi-svar för en viss resursgrupp.
+hello-scenario som beskrivs i den här artikeln hämtar hello topologi svar för en viss resursgrupp.
 
 ## <a name="retrieve-topology"></a>Hämta topologi
 
-Den `network watcher topology` cmdlet hämtar topologin för en viss resursgrupp. Lägg till argumentet ”--json” att visa oput i json-format
+Hej `network watcher topology` cmdlet hämtar hello topologin för en viss resursgrupp. Lägga till hello argumentet ”--json” tooview hello oput i json-format
 
 ```azurecli
 azure network watcher topology -g resourceGroupName -n networkWatcherName -r topologyResourceGroupName --json
@@ -68,7 +68,7 @@ azure network watcher topology -g resourceGroupName -n networkWatcherName -r top
 
 ## <a name="results"></a>Resultat
 
-Resultaten har egenskapen name ”resurser”, som innehåller text för json-svar för den `network watcher topology` cmdlet.  Svaret innehåller resurser för Nätverkssäkerhetsgruppen och deras associationer (det vill säga innehåller, associerade).
+hello resultaten har egenskapen name ”resurser”, som innehåller hello json svarstexten för hello `network watcher topology` cmdlet.  hello svaret innehåller hello resurser i hello säkerhetsgrupp för nätverk och deras associationer (det vill säga innehåller, associerade).
 
 ```json
 {
@@ -113,4 +113,4 @@ Resultaten har egenskapen name ”resurser”, som innehåller text för json-sv
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om säkerhetsregler som tillämpas på nätverksresurserna genom att besöka [Säkerhetsöversikt grupp vy](network-watcher-security-group-view-overview.md)
+Mer information om hello säkerhetsregler som tillämpade tooyour nätverksresurser genom att besöka [Säkerhetsöversikt grupp vy](network-watcher-security-group-view-overview.md)

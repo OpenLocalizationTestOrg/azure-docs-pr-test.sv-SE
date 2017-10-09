@@ -1,6 +1,6 @@
 ---
-title: Ta bort ett Site Recovery-valv
-description: "Lär dig hur du tar bort en Azure Site Recovery-valvet, baserat på scenariot Site Recovery."
+title: aaaDelete Site Recovery-valvet
+description: "Lär dig hur toodelete en Azure Site Recovery-valvet, baserat på hello Site Recovery scenario."
 service: site-recovery
 documentationcenter: 
 author: rajani-janaki-ram
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/04/2017
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: b95b9defa0a037f7d7d3ef36b99bc7c53c751050
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 36db202d8b790bb5d31d1348fb72f51acb5d559c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="delete-a-site-recovery-vault"></a>Ta bort ett Site Recovery-valv
-Beroenden kan hindra dig från att ta bort en Azure Site Recovery-valvet. Du behöver vidta åtgärder kan variera, beroende på Site Recovery-scenario: VMware till Azure, Hyper-V (med och utan System Center Virtual Machine Manager) till Azure och Azure Backup. Om du vill ta bort ett valv som används i Azure Backup finns [ta bort ett säkerhetskopieringsvalv i Azure](../backup/backup-azure-delete-vault.md).
+Beroenden kan hindra dig från att ta bort en Azure Site Recovery-valvet. hello åtgärder du måste tootake beror på hello Site Recovery-scenario: VMware tooAzure tooAzure för Hyper-V (med och utan System Center Virtual Machine Manager) och Azure Backup. toodelete ett valv som används i Azure Backup finns [ta bort ett säkerhetskopieringsvalv i Azure](../backup/backup-azure-delete-vault.md).
 
 >[!Important]
->Om du testar produkten och inte är orolig för dataförlust, Använd kraft delete-metoden snabbt ta bort valvet och dess beroenden.
+>Om du testar hello produkten och inte är orolig för dataförlust, Använd hello Tvingad borttagning metoden toorapidly bort hello valvet och dess beroenden.
 
-> PowerShell-kommandot tar bort allt innehåll på valvet och går inte att ångra.
+> hello PowerShell-kommando tar bort alla hello innehållet i hello valvet och går inte att ångra.
 
-## <a name="use-powershell-to-force-delete-the-vault"></a>Använd PowerShell för att tvinga ta bort valvet 
+## <a name="use-powershell-tooforce-delete-hello-vault"></a>Använd PowerShell tooforce ta bort hello valv 
 
-Ta bort Site Recovery-valvet även om det finns skyddade objekt genom att använda dessa kommandon:
+toodelete hello Site Recovery-valvet även om det finns skyddade objekt, använda följande kommandon:
 
     Login-AzureRmAccount
 
@@ -42,37 +42,37 @@ Ta bort Site Recovery-valvet även om det finns skyddade objekt genom att använ
 
 
 ## <a name="delete-a-site-recovery-vault"></a>Ta bort ett Site Recovery-valv 
-Följ rekommenderade åtgärder för ditt scenario om du vill ta bort valvet.
+toodelete hello valvet, följ hello rekommenderade steg för ditt scenario.
 
-### <a name="vmware-vms-to-azure"></a>Virtuella VMware-datorer till Azure
+### <a name="vmware-vms-tooazure"></a>TooAzure för virtuella VMware-datorer
 
-1. Ta bort alla skyddade virtuella datorer genom att följa stegen i [inaktivera skyddet för en VMware](site-recovery-manage-registration-and-protection.md##disable-protection-for-a-vmware-vm-or-physical-server).
+1. Ta bort alla skyddade virtuella datorer med hjälp av hello stegen i [inaktivera skyddet för en VMware](site-recovery-manage-registration-and-protection.md##disable-protection-for-a-vmware-vm-or-physical-server).
 
-2. Ta bort alla replikeringsprinciper genom att följa stegen i [ta bort en replikeringsprincip](site-recovery-setup-replication-settings-vmware.md##delete-a-replication-policy).
+2. Ta bort alla replikeringsprinciper genom att följa stegen hello i [ta bort en replikeringsprincip](site-recovery-setup-replication-settings-vmware.md##delete-a-replication-policy).
 
-3. Ta bort referenser till vCenter genom att följa stegen i [ta bort en vCenter](site-recovery-vmware-to-azure-manage-vCenter.md##delete-a-vcenter-in-azure-site-recovery).
+3. Ta bort referenser toovCenter genom följande hello stegen i [ta bort en vCenter](site-recovery-vmware-to-azure-manage-vCenter.md##delete-a-vcenter-in-azure-site-recovery).
 
-4. Ta bort konfigurationsservern genom att följa stegen i [inaktivera en konfigurationsserver](site-recovery-vmware-to-azure-manage-configuration-server.md##decommissioning-a-configuration-server).
+4. Ta bort hello konfigurationsservern genom att följa stegen hello i [inaktivera en konfigurationsserver](site-recovery-vmware-to-azure-manage-configuration-server.md##decommissioning-a-configuration-server).
 
-5. Ta bort valvet.
+5. Ta bort hello valv.
 
 
-### <a name="hyper-v-vms-with-virtual-machine-manager-to-azure"></a>Hyper-V-datorer (med Virtual Machine Manager) till Azure
-1. Ta bort alla skyddade virtuella datorer genom att följa stegen i [inaktivera skyddet för en VMware-VM eller fysisk server](site-recovery-manage-registration-and-protection.md##disable-protection-for-a-vmware-vm-or-physical-server).
+### <a name="hyper-v-vms-with-virtual-machine-manager-tooazure"></a>Hyper-V-datorer (med Virtual Machine Manager) tooAzure
+1. Ta bort alla skyddade virtuella datorer med hjälp av hello stegen i [inaktivera skyddet för en VMware-VM eller fysisk server](site-recovery-manage-registration-and-protection.md##disable-protection-for-a-vmware-vm-or-physical-server).
 
-2. Ta bort alla replikeringsprinciper genom att följa stegen i [ta bort en replikeringsprincip](site-recovery-setup-replication-settings-vmware.md##delete-a-replication-policy).
+2. Ta bort alla replikeringsprinciper genom att följa stegen hello i [ta bort en replikeringsprincip](site-recovery-setup-replication-settings-vmware.md##delete-a-replication-policy).
 
-3.  Ta bort referenser till Virtual Machine Manager-servrar genom att följa stegen i [avregistrera en VMM-server med anslutna](site-recovery-manage-registration-and-protection.md##unregister-a-connected-vmm-server).
+3.  Ta bort refererar till tooVirtual Machine Manager-servrar genom att följa stegen hello i [avregistrera en VMM-server med anslutna](site-recovery-manage-registration-and-protection.md##unregister-a-connected-vmm-server).
 
-4.  Ta bort valvet.
+4.  Ta bort hello valv.
 
-### <a name="hyper-v-vms-without-virtual-machine-manager-to-azure"></a>Hyper-V-datorer (utan Virtual Machine Manager) till Azure
-1. Ta bort alla skyddade virtuella datorer genom att följa stegen i [inaktivera skyddet för en VMware-VM eller fysisk server](site-recovery-manage-registration-and-protection.md##disable-protection-for-a-vmware-vm-or-physical-server).
+### <a name="hyper-v-vms-without-virtual-machine-manager-tooazure"></a>Hyper-V-datorer (utan Virtual Machine Manager) tooAzure
+1. Ta bort alla skyddade virtuella datorer med hjälp av hello stegen i [inaktivera skyddet för en VMware-VM eller fysisk server](site-recovery-manage-registration-and-protection.md##disable-protection-for-a-vmware-vm-or-physical-server).
 
-2. Ta bort alla replikeringsprinciper genom att följa stegen i [ta bort en replikeringsprincip](site-recovery-setup-replication-settings-vmware.md##delete-a-replication-policy).
+2. Ta bort alla replikeringsprinciper genom att följa stegen hello i [ta bort en replikeringsprincip](site-recovery-setup-replication-settings-vmware.md##delete-a-replication-policy).
 
-3. Ta bort referenser till Hyper-V-servrar genom att följa stegen i [avregistrera Hyper-V-värd](/site-recovery-manage-registration-and-protection.md##unregister-a-hyper-v-host-in-a-hyper-v-site).
+3. Ta bort refererar till tooHyper-V-servrar genom att följa stegen hello i [avregistrera Hyper-V-värd](/site-recovery-manage-registration-and-protection.md##unregister-a-hyper-v-host-in-a-hyper-v-site).
 
-4. Ta bort Hyper-V-platsen.
+4. Ta bort hello Hyper-V-platsen.
 
-5. Ta bort valvet.
+5. Ta bort hello valv.

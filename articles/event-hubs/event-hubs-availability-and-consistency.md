@@ -1,6 +1,6 @@
 ---
-title: "Tillgänglighet och konsekvens i Händelsehubbar i Azure | Microsoft Docs"
-description: "Så här ger maximal mängd tillgänglighet och konsekvens med Händelsehubbar i Azure med hjälp av partitioner."
+title: "aaaAvailability och konsekvens i Händelsehubbar i Azure | Microsoft Docs"
+description: "Hur tooprovide hello maximal mängd tillgänglighet och konsekvens med Händelsehubbar i Azure med hjälp av partitioner."
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: 681a9d1636d547492f6f827461c6b2494b918778
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a8ededaae1589830da21cb8910ca694d2d628bd2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Tillgänglighet och konsekvens i Händelsehubbar
 
 ## <a name="overview"></a>Översikt
-Händelsehubbar i Azure använder en [partitionering modellen](event-hubs-features.md#partitions) för bättre tillgänglighet och parallellisering inom en enskild händelsehubb. Till exempel om en händelsehubb har fyra partitioner och en av dessa partitioner flyttas från en server till en annan i en åtgärd för belastningsutjämning, du fortfarande skicka och ta emot från tre partitioner. Dessutom kan med fler partitioner du behöva flera samtidiga läsare bearbetning av dina data, förbättra din sammanställda genomflöde. Förstå konsekvenserna av att partitionering och ordning i ett distribuerat system är en kritisk del av lösningen.
+Händelsehubbar i Azure använder en [partitionering modellen](event-hubs-features.md#partitions) tooimprove tillgänglighet och parallellisering inom en enskild händelsehubb. Till exempel om en händelsehubb har fyra partitioner och en av dessa partitioner flyttas från en server tooanother i en åtgärd för belastningsutjämning, du fortfarande skicka och ta emot från tre partitioner. Dessutom med fler partitioner kan du toohave flera samtidiga läsare bearbetning av dina data, förbättra din sammanställda genomflöde. Förstå hello följderna av att partitionering och ordning i ett distribuerat system är en viktig aspekt för lösningen.
 
-För att visa en kompromiss mellan ordning och tillgänglighet, finns det [CAP-sats](https://en.wikipedia.org/wiki/CAP_theorem), även kallad Brewers-sats. Den här sats beskrivs valet mellan konsekvens, tillgänglighet och tolerans för partitionen.
+toohelp förklarar hello säkerhetsaspekten ordning och tillgänglighet, se hello [CAP-sats](https://en.wikipedia.org/wiki/CAP_theorem), även kallad Brewers-sats. Den här sats beskrivs hello val mellan konsekvens, tillgänglighet och tolerans för partitionen.
 
 Brewers sats definierar konsekvens och tillgänglighet på följande sätt:
-* Partitionera tolerans: möjlighet för databearbetning systemet fortsätta databearbetning, även om en partition fel inträffar.
+* Partitionera tolerans: hello möjligheten för en databearbetning system toocontinue databearbetning, även om en partition fel inträffar.
 * Tillgänglighet: en icke-misslyckas nod returnerar ett rimligt svar inom en rimlig tidsperiod (med några fel eller timeout).
-* Konsekvenskontroll: Läs garanteras att returnera den senaste skrivningen för en viss klient.
+* Konsekvenskontroll: Läs garanteras tooreturn hello senaste skrivåtgärder för en viss klient.
 
 ## <a name="partition-tolerance"></a>Tolerans för partition
-Händelsehubbar är byggt på en partitionerad datamodell. Du kan konfigurera antalet partitioner i din event hub under installationen, men du kan inte ändra det här värdet senare. Eftersom du måste använda partitioner med Händelsehubbar, måste du fatta ett beslut om tillgänglighet och konsekvens för ditt program.
+Händelsehubbar är byggt på en partitionerad datamodell. Du kan konfigurera hello antalet partitioner i din event hub under installationen, men du kan inte ändra det här värdet senare. Eftersom du måste använda partitioner med Händelsehubbar kan ha du toomake beslut om tillgänglighet och konsekvens för ditt program.
 
 ## <a name="availability"></a>Tillgänglighet
-Det enklaste sättet att komma igång med Händelsehubbar är att använda standardinställningen. Om du skapar en ny `EventHubClient` objekt och använda den `Send` metoden händelserna automatiskt distribueras mellan partitioner i din event hub. Detta gör att störst upptid.
+hello enklaste sättet tooget igång med Händelsehubbar är toouse hello standardbeteendet. Om du skapar en ny `EventHubClient` objekt och använda hello `Send` metoden händelserna automatiskt distribueras mellan partitioner i din event hub. Detta gör att hello största mängden tid.
 
-Den här modellen är prioriterade för användningsområden som kräver högsta tid.
+Den här modellen är prioriterade för användningsområden som kräver hello maximal tid.
 
 ## <a name="consistency"></a>Konsekvens
-I vissa situationer kan det vara viktigt att sorteringen av händelser. Du kan exempelvis vilja backend-systemet att bearbeta ett uppdateringskommando innan ett borttagningskommando. I den här instansen, du kan ange Partitionsnyckeln på en händelse eller Använd en `PartitionSender` objekt att endast skicka händelser till en viss partition. På så sätt att när dessa händelser läses från partitionen är de läsas i ordning.
+I vissa situationer kan det vara viktigt att hello sorteringen av händelser. Du kanske till exempel din serverdel system tooprocess ett uppdateringskommando innan ett borttagningskommando. I den här instansen, du kan ange hello partitionsnyckel på en händelse eller Använd en `PartitionSender` objekt tooonly skicka händelser tooa viss partition. På så sätt att när dessa händelser läses från hello partition, är de läsas i ordning.
 
-Kom ihåg att om viss partitionen som du skickar är tillgänglig, visas ett felsvar med den här konfigurationen. Om du inte har en mappning till en enskild partition som en jämförelsepunkt skickar din händelse till nästa tillgängliga partition händelsehubbtjänsten.
+Kom ihåg att om hello viss partition toowhich som du skickar är tillgänglig, visas ett felsvar med den här konfigurationen. Som en jämförelsepunkt om du inte har en mappning mellan tooa enskild partition, skickar hello händelsehubbtjänsten din händelse toohello nästa tillgängliga partition.
 
-En möjlig lösning så ordning när också maximera upptid, att aggregera händelser som en del av programmet för händelsebearbetning. Det enklaste sättet att göra detta är att klona en händelse med en anpassad sequence number-egenskapen. Följande kod visar ett exempel:
+En möjlig lösning tooensure ordning när också maximera upptid, skulle vara tooaggregate händelser som en del av programmet för händelsebearbetning. Hej enklaste sättet tooaccomplish detta är toostamp din händelse med en anpassad sequence number-egenskapen. hello följande kod visar ett exempel:
 
 ```csharp
-// Get the latest sequence number from your application
+// Get hello latest sequence number from your application
 var sequenceNumber = GetNextSequenceNumber();
 // Create a new EventData object by encoding a string as a byte array
 var data = new EventData(Encoding.UTF8.GetBytes("This is my message..."));
@@ -58,10 +58,10 @@ data.Properties.Add("SequenceNumber", sequenceNumber);
 await eventHubClient.SendAsync(data);
 ```
 
-Det här exemplet skickar din händelse till en av de tillgängliga partitionerna i din event hub och anger motsvarande sekvensnumret från ditt program. Denna lösning kräver tillstånd hållas av ditt program för bearbetning, men ger en slutpunkt som är mer troligt att vara tillgänglig för din avsändare.
+Det här exemplet skickar din händelse tooone över hello tillgängliga partitioner i din event hub och anger hello motsvarande sekvensnumret från ditt program. Denna lösning kräver tillstånd toobe som tillämpningsprogrammet bearbetning, men ger en slutpunkt som är mer troligt toobe som är tillgängliga för din avsändare.
 
 ## <a name="next-steps"></a>Nästa steg
-Du kan lära dig mer om Event Hubs genom att gå till följande länkar:
+Mer information om Händelsehubbar genom att besöka hello följande länkar:
 
 * [Översikt över Event Hubs service](event-hubs-what-is-event-hubs.md)
 * [Skapa en Event Hub](event-hubs-create.md)

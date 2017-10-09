@@ -1,6 +1,6 @@
 ---
-title: "Introduktion till topologi i Azure-Nätverksbevakaren | Microsoft Docs"
-description: "Den här sidan innehåller en översikt över funktionerna Nätverksbevakaren topologi"
+title: "aaaIntroduction tootopology i Azure-Nätverksbevakaren | Microsoft Docs"
+description: "Den här sidan innehåller en översikt över hello Nätverksbevakaren topologi funktioner"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 42443f614b76b8180ac163b9889163021adbf048
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7fa1c5518e4a25a5db999d898a9ee19fd0121db7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-topology-in-azure-network-watcher"></a>Introduktion till topologi i Azure Nätverksbevakaren
+# <a name="introduction-tootopology-in-azure-network-watcher"></a>Introduktion tootopology i Azure Nätverksbevakaren
 
-Topologi returnerar ett diagram över nätverksresurser i ett virtuellt nätverk. Diagrammet visar sambandet mellan resurser för att representera nätverksanslutning för slutpunkt till slutpunkt.
+Topologi returnerar ett diagram över nätverksresurser i ett virtuellt nätverk. hello diagrammet visar hello sambandet mellan hello resurser toorepresent hello slutet tooend nätverksanslutning.
 
 ![Översikt över labbtopologi][1]
 
-I portalen returnerar topologi resursobjekt på en per virtuellt nätverk basis. Relationerna illustreras med linjer mellan resurser resurser utanför Nätverksbevakaren region, även om resursen gruppen inte visas. Resurser som returneras i vyn portal är en delmängd av nätverkskomponenter som är visas i diagram registreringen. Se en fullständig lista över nätverksresurser som du kan använda [PowerShell](network-watcher-topology-powershell.md) eller [REST](network-watcher-topology-rest.md)
+I hello portal returnerar topologi hello resursobjekt på en per virtuellt nätverk basis. hello relationer illustreras med linjer mellan hello resurser resurser utanför hello Nätverksbevakaren region, även om hello resurs grupp inte ska visas. hello resurser returneras i hello portal-vy är en delmängd av hello nätverkskomponenter som är visas i diagram registreringen. toosee hello fullständig lista över nätverksresurser som du kan använda [PowerShell](network-watcher-topology-powershell.md) eller [REST](network-watcher-topology-rest.md)
 
 > [!NOTE]
-> En instans av Nätverksbevakaren krävs för varje region som du vill köra topologi på.
+> En instans av Nätverksbevakaren krävs i varje region som du vill ha toorun topologi.
 
-Som resurser returneras anslutningen mellan dem modelleras under två relationer.
+Som resurser returneras hello anslutning mellan dem modelleras under två relationer.
 
 - **Inneslutning** -exempel: virtuellt nätverk innehåller ett undernät som innehåller ett nätverkskort
 - **Associerade** -exempel: ett nätverkskort är kopplat till en virtuell dator
 
 ### <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du använder PowerShell för att hämta topologiska vyn genom att besöka [Nätverksbevakaren topologi med PowerShell](network-watcher-topology-powershell.md)
+Lär dig hur toouse PowerShell tooretrieve hello topologi visa genom att besöka [Nätverksbevakaren topologi med PowerShell](network-watcher-topology-powershell.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "Få samma Office 365-upplevelse på alla enheter med Azure RemoteApp | Microsoft Docs"
-description: "Lär dig att dela en Office 365-app med dina användare genom att använda Azure RemoteApp."
+title: "aaaGet hello samma Office 365-upplevelse på alla enheter med Azure RemoteApp | Microsoft Docs"
+description: "Lär dig hur tooshare någon Office 365-app med dina användare via Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: guscatalano
@@ -14,47 +14,47 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 11/23/2016
 ms.author: guscatal;elizapo
-ms.openlocfilehash: 584c781c97097cda3c1455ade05cba8659f11073
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 140056c22c8c69b9ec605318e35a72b144da07eb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-same-office-365-experience-on-any-device-with-azure-remoteapp"></a>Få samma Office 365-upplevelse på alla enheter med Azure RemoteApp
+# <a name="get-hello-same-office-365-experience-on-any-device-with-azure-remoteapp"></a>Get hello samma Office 365-upplevelse på alla enheter med Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs [meddelandet](https://go.microsoft.com/fwlink/?linkid=821148) för mer information.
+> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs hello [meddelande](https://go.microsoft.com/fwlink/?linkid=821148) mer information.
 > 
 > 
 
-Den här artikeln beskriver hur du distribuerar Office 365 på alla enheter i företaget. Användarna kan få samma funktioner och användargränssnitt på Android, Apple och Windows.
+Den här artikeln beskriver hur toodeploy Office 365 på alla enheter i företaget. Användarna kan få hello samma funktioner och användargränssnitt inloggningen på Android, Apple och Windows.
 
 Vi gör det genom att använda Azure RemoteApp och låta Office 365 vara värd för skalningsbara virtuella datorer i Azure som användarna kan ansluta till. Den här uppsättningen av virtuella datorer kallar vi ”molnsamlingen”.
 
 ## <a name="create-a-cloud-collection"></a>Skapa en molnsamling
-Först när du har skapat ett Azure-konto navigerar du till **RemoteApp** genom att klicka på länken till vänster.
-![Visa Azure RemoteApp på Azure-portalen](./media/remoteapp-tutorial-o365anywhere/1-menu.png)
+Först när du har skapat ett Azure-konto navigerar för**RemoteApp** genom att klicka på hello länk på hello vänster sida.
+![Visa Azure RemoteApp på hello Azure-portalen](./media/remoteapp-tutorial-o365anywhere/1-menu.png)
 
-Fortsätt sedan genom att klicka på **ny** längst ned och ”snabbt skapa” en samling. Ange de uppgifter som vi tillhandahåller om namn, region, prenumeration och plan samt bilden ”Office Proffesional 2013”.
+Fortsätt sedan genom att klicka på **nya** på hello nedre och ”snabbt skapa” en samling. Ange ett namn, hello region, hello prenumeration, hello plan och hello bilden ”Office Proffesional 2013” som vi tillhandahåller.
 ![Dialogrutan Skapa](./media/remoteapp-tutorial-o365anywhere/2-quickcreate.png)
 
-När du har gjort klart formuläret ska samlingen börja skapas. Det kan ta upp till ungefär en timme.
+När du är klar ska hello formuläret hello samling processen starta. Det kan ta upp tooan timme.
 
 ![Väntar](./media/remoteapp-tutorial-o365anywhere/3-waiting.png)
 
-När processen är klar ser det ut ungefär så här. Om vi klickar på **Publicera** kan vi se att de flesta Office-program redan har publicerats för oss.
+När hello processen är klar, ser den ut ungefär så här. Om vi klickar på **Publicera** kan vi se att de flesta Office-program redan har publicerats för oss.
 ![Samlingen har skapats](./media/remoteapp-tutorial-o365anywhere/4-done.png)
 
 ![Publicerade appar](./media/remoteapp-tutorial-o365anywhere/5-publish.png)
 
-Vid det här laget kan du också lägga till fler användare som har åtkomst till den här samlingen genom att klicka på **Användaråtkomst**.
+Då du kan också lägga till fler användare som har åtkomst toothis samling genom att klicka på **användaråtkomst**.
 ![Konfigurera användaråtkomst](./media/remoteapp-tutorial-o365anywhere/6-user.png)
 
-Nu ska vi prova att ansluta till Office 365!
+Nu ska vi prova att ansluta tooOffice 365!
 
-## <a name="connect-to-office-365"></a>Ansluta till Office 365
-Vi ska gå till [https://www.remoteapp.windowsazure.com/](https://www.remoteapp.windowsazure.com/), rulla ned och klicka på **Ladda ned klienter** och installera Azure RemoteApp-klienten på den enheten du använder. Skärmbilderna nedan gäller för Windows.
+## <a name="connect-toooffice-365"></a>Ansluta tooOffice 365
+Vi ska gå för[https://www.remoteapp.windowsazure.com/](https://www.remoteapp.windowsazure.com/), bläddra nedåt och klicka på **hämta klienter** tooinstall hello Azure RemoteApp-klienten på hello-enhet som du är på. hello skärmbilderna nedan gäller för Windows.
 
-När programmet startas blir du ombedd att logga in med ditt Microsoft-konto (kallades förut ”Live ID”). Använd samma som ditt Azure-konto för tillfället. När du är inloggad bör du se ett meddelande om nya inbjudningar. Om du klickar på det ska du se en lista som liknar den nedan. Acceptera den inbjudan som matchar din mejl som Azure-kontoägare.
+När hello programmet startas blir du ombedd toosign in med ditt Microsoft-konto (kallades förut ”Live ID”), Använd hello samma som ditt Azure-konto för tillfället. När du är inloggad bör du se ett meddelande om nya inbjudningar. Om du klickar på det ska du se en lista som liknar den nedan. Acceptera hello inbjudan som matchar Azure-konto ägarens e-postadress.
 
 ![Ny inbjudan](./media/remoteapp-tutorial-o365anywhere/7-araclient.png)
 
@@ -62,11 +62,11 @@ Hur det ser ut när det finns nya inbjudningar.
 
 ![Godkänna ett program](./media/remoteapp-tutorial-o365anywhere/8-invitation.png)
 
-Du bör se alla Office-program i Azure RemoteApp-klienten när du har accepterat inbjudan.
+När du har accepterat inbjudan hello bör du se alla hello Office-appar i hello Azure RemoteApp-klienten.
 
 ![Lista över appar](./media/remoteapp-tutorial-o365anywhere/9-work.png)
 
-När du klickar på någon av dessa bör programmet startas på den virtuella Azure-datorn och du är klar! Ha det så kul!
+Om du klickar på någon av dessa hello-program ska starta på hello Azure-dator och du är klar! Ha det så kul!
 
 ![startar](./media/remoteapp-tutorial-o365anywhere/10-arastart.png)
 

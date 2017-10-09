@@ -1,6 +1,6 @@
 ---
-title: "Licensiering Microsoft® Smooth Streaming klienten portera Kit"
-description: "Mer information om hur för Microsoft® Smooth Streaming klienten portera Kit."
+title: "aaaLicensing Microsoft® Smooth Streaming klienten portera Kit"
+description: "Läs mer om hur toolicensing hello Microsoft® Smooth Streaming klienten portera Kit."
 services: media-services
 documentationcenter: 
 author: xpouyat
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: xpouyat
-ms.openlocfilehash: b5a36ac6771bef220afe29446cd56c1b65a498d9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 56c3dccda73dd02207bb4dbe8109ba6fda917a6b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licensiering Microsoft® Smooth Streaming klienten portera Kit
 ## <a name="overview"></a>Översikt
-Microsoft Smooth Streaming klienten portera Kit (**SSPK** för kort) är en Smooth Streaming-klient-implementering som är optimerad för att hjälpa inbäddade enhetstillverkare, kabel och mobila operatorer, innehåll leverantörer, luren tillverkare oberoende programvaruleverantörer (ISV) och lösningsleverantörer att skapa produkter och tjänster för direktuppspelning av anpassningsbar strömning innehåll i Smooth Streaming-format. SSPK är en enhet och plattform oberoende implementering av Smooth Streaming-klient som kan överföras av licenstagaren till enheten och plattform. 
+Microsoft Smooth Streaming klienten portera Kit (**SSPK** för kort) är en Smooth Streaming-klient-implementering som är optimerade toohelp inbäddade enhetstillverkare, kabel och mobila operatorer, innehåll leverantörer, luren tillverkare, oberoende programvaruleverantörer (ISV) och solution providers toocreate produkter och tjänster för direktuppspelning av anpassningsbar strömning innehåll i Smooth Streaming-format. SSPK är en enhet och plattform oberoende implementering av Smooth Streaming-klient som kan överföras av hello licenstagaren tooany enheten och plattform. 
 
-Med nedan är en hög nivå arkitektur och IIS Smooth Streaming portera Kit är klienten för Smooth Streaming-implementering som tillhandahålls av Microsoft och innehåller alla kärnlogik för uppspelning av Smooth Streaming-innehåll. Detta är portar av partner för en viss enhet eller plattformen genom att implementera rätt gränssnitt. 
+Med nedan är en hög nivå arkitektur och IIS Smooth Streaming portera Kit är hello Smooth Streaming klienten implementering som tillhandahålls av Microsoft och innehåller alla hello core logik för uppspelning av Smooth Streaming-innehåll. Detta är portar av partner för en viss enhet eller plattformen genom att implementera rätt gränssnitt. 
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
 ## <a name="description"></a>Beskrivning
-SSPK licensieras på villkor som ger utmärkt affärsvärde. SSPK licens får branschen:
+SSPK licensieras på villkor som ger utmärkt affärsvärde. SSPK licens ger hello branschen med:
 
 * Smooth Streaming portera Kit källa i C++ 
   * implementerar Smooth Streaming klientfunktioner
@@ -37,44 +37,44 @@ SSPK licensieras på villkor som ger utmärkt affärsvärde. SSPK licens får br
 * Programmet Player API: er 
   * programmeringsgränssnitt för interaktion med ett media player-program
 * Plattform Abstraction Layer (PAL) gränssnitt 
-  * programmeringsgränssnitt för interaktion med operativsystemet (trådar, sockets)
+  * programmeringsgränssnitt för interaktion med hello operativsystem (trådar, sockets)
 * Hardware Abstraction Layer (HAL) gränssnitt 
   * programmeringsgränssnitt för interaktion med A / V-avkodare (avkoda, återgivning)
 * Digital Rights Management (DRM) gränssnitt 
-  * programmeringsgränssnitt för hantering av DRM via DRM Abstraction Layer (DAL)
+  * programmeringsgränssnitt för hantering av DRM via hello DRM Abstraction Layer (DAL)
   * Microsoft PlayReady portera Kit levereras separat, men integrerar via det här gränssnittet. Mer information om Microsoft PlayReady Device licensiering, klickar du på [här](http://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
 * Exempel på implementering 
   * exempel på PAL implementering för Linux
   * exempel på HAL implementering för GStreamer
 
 ## <a name="licensing-options"></a>Licensieringsalternativ
-Microsoft Smooth Streaming klienten portera Kit görs tillgängligt för licenstagare enligt två distinkta licensavtal: en för att utveckla Smooth Streaming klienten Interim produkter och en annan för att distribuera Smooth Streaming klienten slutliga produkter till slutanvändare.
+Microsoft Smooth Streaming klienten portera Kit görs tillgängliga toolicensees under två distinkta licensavtal: en för att utveckla Smooth Streaming klienten Interim produkter och en annan för att distribuera Smooth Streaming klienten slutliga produkter tooend användare.
 
-* För kretsuppsättning tillverkare, systemintegrerare eller oberoende leverantörer (ISV) som kräver en källa code portera kit för att utveckla Interim produkter, Microsoft Smooth Streaming klienten portera Kit **Interim produktlicensen** ska köras.
-* För enhetstillverkare eller ISV: er som behöver distributionsrättigheter för Smooth Streaming klienten slutliga produkter till slutanvändare, Microsoft Smooth Streaming klienten portera Kit **slutliga produktlicensen** ska köras.
+* För kretsuppsättning tillverkare, systemintegrerare eller oberoende leverantörer (ISV) som kräver en källa kod portera sats toodevelop Interim produkter, Microsoft Smooth Streaming klienten portera Kit **Interim produktlicensen** ska köras.
+* För enhetstillverkare eller ISV: er som behöver distributionsrättigheter för Smooth Streaming klienten slutliga produkter tooend användare hello Microsoft Smooth Streaming klienten portera Kit **slutliga produktlicensen** ska köras.
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Microsoft Smooth Streaming klienten portera Kit Interim produktlicens
-Under denna licens, erbjuder Microsoft en Smooth Streaming klienten portera Kit och nödvändiga immateriella rättigheter att utveckla och distribuera Smooth Streaming klienten Interim produkter till andra Smooth Streaming klienten portera Kit enheten licenstagare som distribuera Smooth Streaming klienten slutliga produkter.
+Under denna licens, Microsoft erbjuder ett Smooth Streaming klienten portera Kit och hello nödvändiga immateriella rättigheter toodevelop och distribuera Smooth Streaming klienten Interim produkter tooother Smooth Streaming klienten portera Kit enheten licenstagare som distribuera Smooth Streaming klienten slutliga produkter.
 
 #### <a name="fee-structure"></a>Avgift struktur
-USA 50 000 enstaka licens avgift ger åtkomst till den Smooth Streaming klienten portera Kit. 
+50 000 USA enstaka licens avgift ger åtkomst toohello Smooth Streaming klienten portera Kit. 
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Microsoft Smooth Streaming klienten portera Kit Final produktlicens
-Under denna licens erbjuder Microsoft alla nödvändiga immateriella rättigheter får Smooth Streaming klienten Interim produkter från andra Smooth Streaming klienten portera Kit licenstagare och distribuera företagsanpassad Smooth Streaming klienten slutliga Produkter för slutanvändare.
+Under denna licens erbjuder Microsoft all nödvändig immateriella rättigheter tooreceive Smooth Streaming klienten Interim produkter från andra Smooth Streaming klienten portera Kit licenstagare och toodistribute företagsanpassad Smooth Streaming klienten slutliga Produkter tooend användare.
 
 #### <a name="fee-structure"></a>Avgift struktur
-Smooth Streaming klienten slutliga produkten erbjuds under en royalty modell som under:
+hello Smooth Streaming klienten färdiga produkten erbjuds under en royalty modell som under:
 
 * $0.10 per enhet implementering levererade
-* Royalty är begränsad till 50 000 varje år
+* hello royalty är begränsad till 50 000 varje år
 * Ingen royalty för första 10 000 enheter implementeringar varje år 
 
 ## <a name="licensing-procedure-and-sspk-access"></a>Licensiering proceduren och SSPK åtkomst
 Kontakta e- [ sspkinfo@microsoft.com ](mailto:sspkinfo@microsoft.com) licensiering för alla frågor.
 
-Den [SSPK Distribution portal](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) är tillgänglig för den registrerade Interim licenstagare.
+Hej [SSPK Distribution portal](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) är tillgänglig tooregistered Interim licenstagare.
 
-Interimistisk och slutlig SSPK licenstagare kan skicka tekniska frågor till [ smoothpk@microsoft.com ](mailto:smoothpk@microsoft.com).
+Interimistisk och slutlig SSPK licenstagare kan skicka tekniska frågor för[smoothpk@microsoft.com](mailto:smoothpk@microsoft.com).
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming klienten tillfälliga produkten avtal licenstagare
 * Adroit Business-lösningar, Inc

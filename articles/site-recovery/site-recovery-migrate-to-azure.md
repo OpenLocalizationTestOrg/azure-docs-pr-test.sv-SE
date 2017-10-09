@@ -1,6 +1,6 @@
 ---
-title: Migrera till Azure med Site Recovery | Microsoft Docs
-description: "Den här artikeln ger en översikt över migrering av virtuella datorer och fysiska servrar till Azure med Azure Site Recovery"
+title: aaaMigrate tooAzure med Site Recovery | Microsoft Docs
+description: "Den här artikeln innehåller en översikt över migrera virtuella datorer och fysiska servrar tooAzure med Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,70 +14,70 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/05/2017
 ms.author: raynew
-ms.openlocfilehash: f4dfe430fba51bd009431ca72279a21be55e3a40
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6e65deee337c5371d441812ddb820dc8bc233684
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrate-to-azure-with-site-recovery"></a>Migrera till Azure med Site Recovery
+# <a name="migrate-tooazure-with-site-recovery"></a>Migrera tooAzure med Site Recovery
 
-Läs den här artikeln för en översikt över användning av Azure Site Recovery-tjänsten för migrering av virtuella datorer och fysiska servrar.
+Den här artikeln för en översikt av hello Azure Site Recovery-tjänsten för migrering av virtuella datorer och fysiska servrar.
 
-Site Recovery är en Azure-tjänst som understödjer din BCDR-strategi genom att dirigera replikeringen av lokala fysiska servrar och virtuella datorer till molnet (Azure) eller till ett sekundärt datacenter. Vid driftstopp på den primära platsen växlar du över till den sekundära platsen så att program och arbetsbelastningar fortsätter att vara tillgängliga. Du växlar tillbaka till den primära platsen när den har återgått till normal drift. Läs mer i [Vad är Site Recovery?](site-recovery-overview.md) Du kan även använda Site Recovery för att migrera dina befintliga lokala arbetsbelastningar till Azure för att påskynda ditt molnresa och utnyttja samlingen med funktioner som Azure erbjuder.
+Site Recovery är en Azure-tjänst som stödjer tooyour BCDR-strategi genom att samordna replikeringen av lokala fysiska servrar och virtuella datorer toohello molnet (Azure) eller tooa sekundärt datacenter. Vid driftstopp på den primära platsen växlar du över toohello sekundär plats tookeep appar och arbetsbelastningar som är tillgängliga. Du växlar tillbaka tooyour primära platsen när den returnerar toonormal åtgärder. Läs mer i [Vad är Site Recovery?](site-recovery-overview.md) Du kan också använda Site Recovery toomigrate din befintliga lokala arbetsbelastningar tooAzure tooexpedite ditt moln körnings- och tillg hello uppsättning funktioner som Azure erbjuder.
 
-I den här videon får du en snabb översikt över hur du utför migrering.
+För en snabb överblick över hur tooperform migrering, se toothis video.
 >[!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/ASRHowTo-Video2-Migrate-Virtual-Machines-to-Azure/player]
 
-Den här artikeln beskriver distribution i [Azure-portalen](https://portal.azure.com). Den [klassiska Azure-portalen](https://manage.windowsazure.com/) kan användas för att bibehålla befintliga Site Recovery-valv men du kan inte skapa nya valv.
+Den här artikeln beskrivs distribution i hello [Azure-portalen](https://portal.azure.com). Hej [klassiska Azure-portalen](https://manage.windowsazure.com/) kan vara används toomaintain befintliga Site Recovery-valv men du kan inte skapa nya valv.
 
-Skriva eventuella kommentarer längst ned i den här artikeln. Om du har tekniska frågor kan du ställa dem i [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Skicka kommentarer längst ned hello i den här artikeln. Tekniska frågor om hello [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 ## <a name="what-do-we-mean-by-migration"></a>Vad menar vi med migrering?
 
-Du kan distribuera Site Recovery för replikering av lokala virtuella datorer och fysiska servrar till Azure eller till en sekundär plats. Du kan replikera datorer, växla dem från den primära platsen när avbrott uppstår och återställa dem till den primära platsen när den har återhämtat sig. Förutom detta kan du använda Site Recovery för att migrera virtuella datorer och fysiska servrar till Azure så att användarna kan komma åt dem som virtuella Azure-datorer. Migrering innebär replikering, redundans från den primära platsen till Azure och en fullständig migreringsgest.
+Du kan distribuera Site Recovery för replikering av lokala virtuella datorer och fysiska servrar, tooAzure eller tooa sekundär plats. Du kan replikera datorer, redundansväxla dem från hello primär plats när avbrott inträffar och inte dem tillbaka toohello primär plats när den återställs. I tillägg toothis kan du använda Site Recovery toomigrate virtuella datorer och fysiska servrar tooAzure så att användare kan komma åt dem som virtuella Azure-datorer. Migrering innebär att replikering och redundans från hello primär plats tooAzure och en fullständig migrering gest.
 
 ## <a name="what-can-site-recovery-migrate"></a>Vad kan Site Recovery migrera?
 
 Du kan:
 
-- Migrera arbetsbelastningar som körs på en lokal virtuell Hyper-V-dator, virtuella VMware-datorer och fysiska servrar som ska köras på virtuella Azure-datorer. Du kan också göra fullständig replikering och återställning i det här scenariot.
+- Migrera arbetsbelastningar som körs på lokala datorer med Hyper-V, virtuella VMware-datorer och fysiska servrar toorun på Azure Virtual Machines. Du kan också göra fullständig replikering och återställning i det här scenariot.
 - Migrera [virtuella Azure IaaS-datorer](site-recovery-migrate-azure-to-azure.md) mellan Azure-regioner. För närvarande stöds endast migrering i detta scenario, vilket innebär att återställning efter fel inte stöds.
-- Migrera [AWS Windows-instanser](site-recovery-migrate-aws-to-azure.md) till virtuella Azure IaaS-datorer. För närvarande stöds endast migrering i detta scenario, vilket innebär att återställning efter fel inte stöds.
+- Migrera [instanser i AWS Windows](site-recovery-migrate-aws-to-azure.md) tooAzure IaaS-VM. För närvarande stöds endast migrering i detta scenario, vilket innebär att återställning efter fel inte stöds.
 
 ## <a name="migrate-on-premises-vms-and-physical-servers"></a>Migrera lokala virtuella datorer och fysiska servrar
 
-För att migrera lokala virtuella Hyper-V-datorer, virtuella VMware-datorer och fysiska servrar följer du i princip samma steg som vid vanlig replikering.
+toomigrate lokala Hyper-V virtuella datorer, virtuella VMware-datorer och fysiska servrar kan du följa nästan hello samma steg som används för vanlig replikering.
 
 1. Skapa ett Recovery Services-valv
-2. Konfigurera de nödvändiga hanteringsservrarna (VMware, VMM, Hyper-V – beroende på vad du vill migrera), lägg till dem i valvet och specificera replikeringsinställningarna.
-3. Aktivera replikering för de datorer som du vill migrera
-4. Kör ett snabbt redundanstest efter den inledande migreringen för att se till att allt fungerar som det ska.
+2. Konfigurera hello krävs hanteringsservrar (VMware VMM Hyper-V - beroende på vad du vill toomigrate), lägga till dem toohello valvet och ange inställningar för replikering.
+3. Aktivera replikering för hello datorer du vill toomigrate
+4. Kör en snabb testa redundans tooensure att allt fungerar som den ska efter hello inledande migreringen.
 5. När du har kontrollerat att din replikeringsmiljö fungerar, använder du en planerad eller oplanerad redundans beroende på [vad som stöds](site-recovery-failover.md) för scenariot. Vi rekommenderar att du använder en planerad redundans när så är möjligt.
-6. För migrering behöver du inte utföra en redundans eller ta bort den. Istället väljer du alternativet **Fullständig migrering** för varje dator som du vill migrera.
-     - I **Replikerade objekt** högerklickar du på den virtuella datorn och på **Slutför migrering**. Klicka på **OK** för att slutföra. Du kan följa förloppet i egenskaperna för virtuella datorer genom att övervaka det fullständiga migreringsjobbet i **Site Recovery-jobb**.
-     - Åtgärden **Fullständig migrering** slutför migreringsprocessen, tar bort replikering för datorn och stoppar Site Recovery-debitering för datorn.
+6. För migrering kan du inte behöver toocommit en växling vid fel, eller ta bort den. I stället kan du välja hello **slutföra migreringen** alternativet för varje dator som du vill toomigrate.
+     - I **replikerade objekt**och högerklicka på hello VM, klicka på **slutföra migreringen**. Klicka på **OK** toocomplete. Du kan följa förloppet i hello VM-egenskaper i genom att övervaka hello fullständig migreringsjobb i **Site Recovery-jobb**.
+     - Hej **slutföra migreringen** åtgärden är klar in hello migreringsprocessen, tar bort replikeringen av hello datorn och stoppar Site Recovery-faktureringen för hello datorn.
 
 ![fullständig migrering](./media/site-recovery-hyper-v-site-to-azure/migrate.png)
 
 ## <a name="migrate-between-azure-regions"></a>Migrera mellan Azure-regioner
 
-Du kan migrera virtuella Azure-datorer mellan regioner med hjälp av Site Recovery. I det här scenariot stöds bara migrering. Med andra ord kan du replikera virtuella Azure-datorer och växla över dem till en annan region, men du kan inte återställa. I det här scenariot ställer du in ett Recovery Services-valv, distribuerar en lokal konfigurationsserver för att hantera replikering, lägger till den till valvet och anger replikeringsinställningar. Du aktiverar replikering för de datorer som du vill migrera och kör en snabb testredundans. Sedan kör du en oplanerad redundans med alternativet **Fullständig migrering**.
+Du kan migrera virtuella Azure-datorer mellan regioner med hjälp av Site Recovery. I det här scenariot stöds bara migrering. Med andra ord kan du replikera hello Azure virtuella datorer och redundansväxla tooanother region, men du kan inte återställas. Distribuera en lokal configuration server toomanage replikering i det här scenariot som du ställer in ett Recovery Services-valv, lägga till den toohello valvet och ange replikeringsinställningarna. Du kan aktivera replikering för hello datorer du vill toomigrate och köra en snabb testa redundans. Sedan du kör en oplanerad redundans med hello **slutföra migreringen** alternativet.
 
-## <a name="migrate-aws-to-azure"></a>Migrera AWS till Azure
+## <a name="migrate-aws-tooazure"></a>Migrera AWS tooAzure
 
-Du kan migrera AWS-instanser till virtuella Azure-datorer. I det här scenariot stöds bara migrering. Med andra ord kan du replikera AWS-instanser och växla över dem till Azure, men du kan inte återställa. AWS-instanser hanteras på samma sätt som fysiska servrar när det gäller migrering. Du ställer in ett Recovery Services-valv, distribuerar en lokal konfigurationsserver för att hantera replikering, lägger till den till valvet och anger replikeringsinställningar. Du aktiverar replikering för de datorer som du vill migrera och kör en snabb testredundans. Sedan kör du en oplanerad redundans med alternativet **Fullständig migrering**.
+Du kan migrera AWS instanser tooAzure virtuella datorer. I det här scenariot stöds bara migrering. Med andra ord kan du replikera hello AWS instanser och redundansväxla tooAzure, men du kan inte återställas. AWS instanser hanteras i hello samma sätt som fysiska servrar för migrering. Du ställa in ett Recovery Services-valv, distribuera en lokal configuration server toomanage replikering, lägga till den toohello valvet och ange inställningar för replikering. Du kan aktivera replikering för hello datorer du vill toomigrate och köra en snabb testa redundans. Sedan du kör en oplanerad redundans med hello **slutföra migreringen** alternativet.
 
 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Migrera virtuella VMware-datorer till Azure](site-recovery-vmware-to-azure.md)
-- [Migrera virtuella Hyper-V-datorer i VMM-moln till Azure](site-recovery-vmm-to-azure.md)
-- [Migrera virtuella Hyper-V-datorer utan VMM till Azure](site-recovery-hyper-v-site-to-azure.md)
+- [Migrera tooAzure för virtuella VMware-datorer](site-recovery-vmware-to-azure.md)
+- [Migrera Hyper-V virtuella datorer i VMM-moln tooAzure](site-recovery-vmm-to-azure.md)
+- [Migrera Hyper-V virtuella datorer utan VMM tooAzure](site-recovery-hyper-v-site-to-azure.md)
 - [Migrera virtuella Azure-datorer mellan Azure-regioner](site-recovery-migrate-azure-to-azure.md)
-- [Migrera AWS-instanser till Azure](site-recovery-migrate-aws-to-azure.md)
-- [Förbereda migrerade datorer att aktivera replikering](site-recovery-azure-to-azure-after-migration.md) till en annan region för katastrofåterställning.
+- [Migrera AWS instanser tooAzure](site-recovery-migrate-aws-to-azure.md)
+- [Förbereda migrerade datorer tooenable replikering](site-recovery-azure-to-azure-after-migration.md) tooanother region för disaster recovery behov.
 - Börja skydda dina arbetsbelastningar genom att [replikera virtuella Azure datorer.](site-recovery-azure-to-azure.md)

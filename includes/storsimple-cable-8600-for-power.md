@@ -1,25 +1,25 @@
 <!--author=alkohli last changed: 9/16/15-->
 
 
-#### <a name="to-cable-your-device-for-power"></a>Att kabelanslut din enhet för ström
+#### <a name="toocable-your-device-for-power"></a>toocable för enheten
 > [!NOTE]
-> Båda höljen på StorSimple-enheten inkluderar redundant PCMs. PCMs måste installeras och ansluten till olika strömkällor att säkerställa hög tillgänglighet för varje enhet.
+> Båda höljen på StorSimple-enheten inkluderar redundant PCMs. För varje höljet hello PCMs måste vara installerad och anslutna toodifferent power källor tooensure hög tillgänglighet.
 > 
 > 
 
-1. Kontrollera att strömbrytare på alla PCMs i OFF-läge.
-2. Anslut strömkablar till båda PCMs från primära höljet. Strömkablar identifieras i rött i power går diagrammet nedan.
-3. Kontrollera att två PCMs på primära enheten använder separata strömkällor.
-4. Bifoga strömkablar slå på rack distribution enheter som visas i power kablar diagram.
-5. Upprepa steg 2 till 4 för EBOD höljet.
-6. Aktivera EBOD höljet genom att vända på strömknappen på varje PCM till på plats.
-7. Kontrollera att EBOD höljet är aktiverat genom att kontrollera att grön indikatorer på baksidan av EBOD domänkontrollant är aktiverade.
-8. Aktivera primära höljet genom att vända varje PCM växeln till på plats.
-9. Kontrollera att systemet är på genom att säkerställa enhetskontroll indikatorer har aktiverat.
-10. Kontrollera att anslutningen mellan EBOD domänkontrollanten och enhetskontroll är aktiva genom att verifiera att fyra led bredvid SAS-port på EBOD domänkontrollant är grön.
+1. Kontrollera att hello strömbrytare på alla hello PCMs i hello OFF-läge.
+2. Ansluta hello power sladdar tooboth PCMs på primära hello-hölje. hello strömkablar identifieras i rött i hello power kablar diagrammet nedan.
+3. Kontrollera att som hello två PCMs på hello primära höljet Använd separata strömkällor.
+4. Koppla hello power sladdar toohello slå på hello rack distribution enheter enligt hello power kablar diagram.
+5. Upprepa steg 2 till 4 för hello EBOD hölje.
+6. Aktivera hello EBOD hölje genom att vända hello strömbrytare på varje PCM toohello ON position.
+7. Kontrollera att hello EBOD hölje är aktiverat genom att kontrollera att hello grön indikatorer på hello baksidan hello EBOD domänkontrollant är aktiverade.
+8. Aktivera hello primära höljet genom att vända varje PCM växeln toohello ON position.
+9. Kontrollera att hello system är på genom att säkerställa hello enhetskontroll indikatorer har aktiverat.
+10. Se till att hello anslutningen mellan hello EBOD domänkontrollant och hello enhetskontroll är aktiva genom att verifiera att hello fyra led nästa toohello SAS-port på hello EBOD domänkontrollant är grön.
     
     > [!IMPORTANT]
-    > För att säkerställa hög tillgänglighet för ditt system, rekommenderar vi att du noggrant följer power kablar schemat visas i följande diagram.
+    > tooensure hög tillgänglighet för ditt system, rekommenderar vi strikt följa toohello power kablar schemat visas i följande diagram hello.
     > 
     > 
     

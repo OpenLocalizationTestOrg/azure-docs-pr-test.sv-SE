@@ -1,6 +1,6 @@
 ---
-title: En rundtur via analyser i Azure Application Insights | Microsoft Docs
-description: "Kort prover av alla huvudsakliga frågor i Analytics, kraftfullt sökverktyg av Application Insights."
+title: aaaA visning via analyser i Azure Application Insights | Microsoft Docs
+description: "Kort prover av alla hello huvudsakliga frågor i Analytics hello kraftfullt sökverktyg av Application Insights."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -13,35 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: bwren
-ms.openlocfilehash: f5650d212eb2f8c460f062b3c11ae14c1e026ba6
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c268e26c6bf93ac2ee2a9d5e83613150dcf90b04
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>En genomgång av Analytics i Application Insights
-[Analytics](app-insights-analytics.md) är kraftfull sökfunktionen i [Programinsikter](app-insights-overview.md). Dessa sidor beskrivs Log Analytics-frågespråket.
+[Analytics](app-insights-analytics.md) är hello kraftfulla sökfunktionen i [Programinsikter](app-insights-overview.md). Dessa sidor beskrivs Log Analytics-frågespråket.
 
-* **[Titta på inledande videon](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
-* **[Testkör Analytics på våra simulerade data](https://analytics.applicationinsights.io/demo)**  om din app inte skickar data till Application Insights ännu.
-* **[SQL-användarnas cheat blad](https://aka.ms/sql-analytics)**  översätter vanligaste idioms.
+* **[Se hello inledande video](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
+* **[Testkör Analytics på våra simulerade data](https://analytics.applicationinsights.io/demo)**  om din app inte skickar data tooApplication insikter ännu.
+* **[SQL-användarnas cheat blad](https://aka.ms/sql-analytics)**  översätter hello vanligaste idioms.
 
-Låt oss ta ett gå igenom några enkla frågor för att komma igång.
+Låt oss ta ett gå igenom några grundläggande frågor tooget som du startade.
 
-## <a name="connect-to-your-application-insights-data"></a>Anslut till Application Insights-data
+## <a name="connect-tooyour-application-insights-data"></a>Ansluta tooyour Application Insights-data
 Öppna Analytics från din app [översikt bladet](app-insights-dashboards.md) i Application Insights:
 
 ![Öppna portal.azure.com, öppna Application Insights-resursen och klicka på Analytics.](./media/app-insights-analytics-tour/001.png)
 
 ## <a name="takehttpsdocsloganalyticsioquerylanguagequerylanguagetakeoperatorhtml-show-me-n-rows"></a>[Ta](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html): Visa n rader
-Datapunkter som loggar användaren operations (vanligtvis HTTP-begäranden tas emot av ditt webbprogram) lagras i en tabell som kallas `requests`. Varje rad är en telemetri data togs emot från Application Insights SDK i din app.
+Datapunkter som loggar användaren operations (vanligtvis HTTP-begäranden tas emot av ditt webbprogram) lagras i en tabell som kallas `requests`. Varje rad är en telemetri data togs emot från hello Application Insights SDK i din app.
 
-Låt oss börja med att undersöka några exempel raderna i tabellen:
+Låt oss börja med att undersöka några exempel rader i tabellen hello:
 
 ![resultat](./media/app-insights-analytics-tour/010.png)
 
 > [!NOTE]
-> Placera markören någonstans i instruktionen innan du klickar på OK. Du kan dela en instruktion över flera rader, men Placera inte tomma rader i en instruktion. Tomma rader är ett praktiskt sätt att hålla flera separata frågor i fönstret.
+> Placera markören hello någonstans i hello instruktionen innan du klickar på OK. Du kan dela en instruktion över flera rader, men Placera inte tomma rader i en instruktion. Tomma rader är ett bekvämt sätt tookeep flera separata frågor i hello-fönstret.
 >
 >
 
@@ -49,19 +49,19 @@ Välj kolumner, drar du dem, gruppera efter kolumner, och filtrera:
 
 ![Klicka på kolumnmarkering i övre högra hörnet av resultat](./media/app-insights-analytics-tour/030.png)
 
-Expandera alla objekt om du vill se detaljerad information:
+Expandera alla toosee hello information om:
 
 ![Välj tabellen och konfigurera kolumner](./media/app-insights-analytics-tour/040.png)
 
 > [!NOTE]
-> Klicka på huvudet för en kolumn för att ordna om resultat som är tillgängliga i webbläsaren. Men tänk på att antalet rader som hämtas till webbläsaren för en stor resultatmängd är begränsad. Sortering därmed visar inte alltid de faktiska högsta eller lägsta artiklarna. Om du vill sortera objekt på ett tillförlitligt sätt att använda den `top` eller `sort` operator.
+> Klicka på hello chefen för en kolumn toore ordning hello resultat är tillgängliga i hello webbläsare. Men tänk på att hello antal rader hämtade toohello webbläsare för en stor resultatmängd är begränsad. Sortering därmed visar inte alltid du hello faktiska högsta eller lägsta objekt. toosort-objekt på ett tillförlitligt sätt, använder du hello `top` eller `sort` operator.
 >
 >
 
 ## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[TOP](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) och [sortera](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
-`take`är användbar för att få en snabb exempel på ett resultat, men den visar rader från tabellen i bokstavsordning. För att få en ordnad vy kan du använda `top` (till exempel) eller `sort` (över hela tabellen).
+`take`är användbara tooget en snabb exempel på ett resultat, men den visar rader från tabellen hello i bokstavsordning. Använd tooget en ordnad vy `top` (till exempel) eller `sort` (via hello hela tabellen).
 
-Visa de första n raderna, sorterade efter en viss kolumn:
+Visa hello första n rader, sorterade efter en viss kolumn:
 
 ```AIQL
 
@@ -80,9 +80,9 @@ Visa de första n raderna, sorterade efter en viss kolumn:
     requests | sort by timestamp desc | take 10
 ```
 
-Resultatet blir detsamma, men körs det lite långsammare. (Du kan också skriva `order`, vilket är ett alias för `sort`.)
+hello resultatet blir hello detsamma, men det skulle köras lite långsammare. (Du kan också skriva `order`, vilket är ett alias för `sort`.)
 
-Kolumnrubrikerna i tabellvyn kan också användas för att sortera resultaten på skärmen. Men av kursen, om du har använt `take` eller `top` för att hämta bara en del av en tabell, du får endast ordna poster som du har hämtat.
+hello kolumnrubrikerna i hello tabellvy kan också vara används toosort hello resultat på hello-skärmen. Men av kursen, om du har använt `take` eller `top` tooretrieve bara en del av en tabell, ska du bara ordna hello poster som du har hämtats.
 
 ## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[Där](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html): filtrering på ett villkor
 
@@ -97,7 +97,7 @@ Låt oss se bara begäranden som returnerade en viss Resultatkod:
 
 ![](./media/app-insights-analytics-tour/250.png)
 
-Den `where` operator tar ett booleskt uttryck. Här följer några huvudpunkter om dem:
+Hej `where` operator tar ett booleskt uttryck. Här följer några huvudpunkter om dem:
 
 * `and`, `or`: Booleska operatorer
 * `==`, `<>`, `!=` : lika med och inte lika med
@@ -105,7 +105,7 @@ Den `where` operator tar ett booleskt uttryck. Här följer några huvudpunkter 
 
 <!---Read all about [scalar expressions]().--->
 
-### <a name="getting-the-right-type"></a>Hämtning av rätt typ
+### <a name="getting-hello-right-type"></a>Hämta hello rätt typ
 Sök efter misslyckade begäranden:
 
 ```AIQL
@@ -119,21 +119,21 @@ Sök efter misslyckade begäranden:
 
 ## <a name="time"></a>Tid
 
-Som standard är dina frågor begränsade till den senaste 24 timmarna. Men du kan ändra detta intervall:
+Dina frågor är som standard begränsad toohello senaste 24 timmarna. Men du kan ändra detta intervall:
 
 ![](./media/app-insights-analytics-tour/change-time-range.png)
 
-Åsidosätt tidsintervallet genom att skriva en fråga som nämns `timestamp` i en where-sats. Exempel:
+Åsidosätt hello tidsintervall genom att skriva en fråga som nämns `timestamp` i en where-sats. Exempel:
 
 ```AIQL
 
-    // What were the slowest requests over the past 3 days?
+    // What were hello slowest requests over hello past 3 days?
     requests
-    | where timestamp > ago(3d)  // Override the time range
+    | where timestamp > ago(3d)  // Override hello time range
     | top 5 by duration
 ```
 
-Funktionen tid intervallet motsvarar en 'where'-sats läggas till efter varje uppgift om något av källtabellerna.
+hello tid intervallet funktionen är likvärdiga tooa 'where' satsen läggas till efter varje uppgift om något av hello källtabellerna.
 
 `ago(3d)`innebär 'tre dagar sedan'. Andra tidsenheter inkludera timmar (`2h`, `2.5h`), minuter (`25m`), och sekunder (`10s`).
 
@@ -163,7 +163,7 @@ Andra exempel:
 
 
 ## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[Projektet](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html): Välj, byta namn på och bearbetning kolumner
-Använd [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) att välja ut bara de kolumner som du vill:
+Använd [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) toopick ut precis hello kolumner som du vill:
 
 ```AIQL
 
@@ -189,14 +189,14 @@ Du kan också byta namn på kolumner och definiera nya:
 ![Resultat](./media/app-insights-analytics-tour/270.png)
 
 * Kolumnnamn kan innehålla blanksteg eller symboler om de omges så här: `['...']` eller`["..."]`
-* `%`är den vanliga modulo-operatorn.
+* `%`är hello vanliga modulo-operatorn.
 * `1d`(som är en siffra, en hade ”) är en literal timespan vilket innebär en dag. Här följer några fler timespan-litteraler: `12h`, `30m`, `10s`, `0.01s`.
-* `floor`(alias `bin`) Avrundar värdet nedåt till närmaste signifikanta grundläggande värdet du anger. Så `floor(aTime, 1s)` avrundas nedåt till närmaste andra gången.
+* `floor`(alias `bin`) Avrundar värdet ned toohello närmaste multipel av hello Basvärde som du anger. Så `floor(aTime, 1s)` Avrundar taget ned toohello närmsta sekund.
 
-Uttryck kan innehålla alla vanliga operatorer (`+`, `-`,...), och det finns en uppsättning praktiska funktioner.
+Uttryck kan innehålla alla hello vanliga operatorer (`+`, `-`,...), och det finns en uppsättning praktiska funktioner.
 
 ## <a name="extend"></a>Utöka
-Om du vill lägga till kolumner i befintliga använda [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html):
+Om du bara vill tooadd kolumner toohello befintliga använder [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html):
 
 ```AIQL
 
@@ -205,11 +205,11 @@ Om du vill lägga till kolumner i befintliga använda [ `extend` ](https://docs.
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-Med hjälp av [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html) är mindre utförlig än [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) om du vill behålla de befintliga kolumnerna.
+Med hjälp av [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html) är mindre utförlig än [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) om du vill tookeep alla hello befintliga kolumner.
 
-### <a name="convert-to-local-time"></a>Omvandla till lokal tid
+### <a name="convert-toolocal-time"></a>Konvertera toolocal tid
 
-Tidsstämplar är alltid i UTC. Så om du är på oss Pacific kusten och det är vinter, kan du så här:
+Tidsstämplar är alltid i UTC. Om du är på hello oss Pacific kusten och det är vinter, kan du därför som detta:
 
 ```AIQL
 
@@ -222,44 +222,44 @@ Tidsstämplar är alltid i UTC. Så om du är på oss Pacific kusten och det är
 ## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[Sammanfatta](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html): aggregera grupper av rader
 `Summarize`tillämpar en angiven *aggregeringsfunktionen* över grupper av rader.
 
-Till exempel överföringstiden för ditt webbprogram svara på en begäran rapporteras i fältet `duration`. Låt oss se genomsnittlig svarstid för alla begäranden:
+Till exempel hello överföringstiden för ditt webbprogram toorespond tooa begäran rapporteras i hello fältet `duration`. Låt oss se genomsnittlig svarstid för hello tid tooall begäranden:
 
 ![](./media/app-insights-analytics-tour/410.png)
 
-Eller kan vi dela resultatet i förfrågningar av olika namn:
+Eller kan vi dela hello resultatet i förfrågningar av olika namn:
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize`samlar in datapunkter i dataströmmen i grupper som den `by` satsen utvärderar lika. Varje värde i den `by` uttryck - varje åtgärdsnamn i exemplet ovan - resulterar i en rad i resultattabellen.
+`Summarize`samlar in hello datapunkter i hello dataström i grupper för vilka hello `by` satsen utvärderar lika. Varje värde i hello `by` uttryck - varje åtgärdsnamn i hello ovan exempel - resulterar i en rad i hello resultattabellen.
 
 Eller vi gick grupperar resultaten efter tid på dagen:
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-Observera hur vi använder den `bin` funktionen (även kallat `floor`). Om vi använde `by timestamp`, varje inkommande rad skulle hamna i en egen liten grupp. För en kontinuerlig skalära som tidsvärden eller siffror som vi behöver Bryt kontinuerligt område i en hanterbar antal diskreta värden. `bin`-som är bara det gamla avrundas nedåt `floor` fungerar - är det enklaste sättet att göra detta.
+Observera hur vi använder hello `bin` funktionen (även kallat `floor`). Om vi använde `by timestamp`, varje inkommande rad skulle hamna i en egen liten grupp. För en kontinuerlig skalära like gånger eller nummer har vi toobreak hello kontinuerligt område i hanterbara flera diskreta värden. `bin`-som är precis hello bekant avrundas nedåt `floor` fungerar - är hello enklaste sättet toodo som.
 
-Vi kan använda samma metod för att minska intervall i strängar:
+Vi kan använda hello samma teknik tooreduce intervall av strängar:
 
 ![](./media/app-insights-analytics-tour/440.png)
 
-Observera att du kan använda `name=` att ange namnet på en resultatkolumn, antingen i mängduttryck eller av-satsen.
+Observera att du kan använda `name=` tooset hello namnet på en resultatkolumn i hello mängduttryck eller hello av-satsen.
 
 ## <a name="counting-sampled-data"></a>Cyklisk exempeldata
-`sum(itemCount)`är aggregeringen rekommenderade att räkna händelser. I många fall itemCount == 1, så funktionen bara räknar antalet rader i gruppen. Men när [provtagning](app-insights-sampling.md) är i drift, bara en del av de ursprungliga händelserna behålls som datapunkter i Application Insights, så att det finns för varje datapunkt som du ser, `itemCount` händelser.
+`sum(itemCount)`är hello rekommenderade aggregering toocount händelser. I många fall itemCount == 1, så hello funktionen bara räknar upp hello antalet rader i hello grupp. Men när [provtagning](app-insights-sampling.md) är i drift, en bråkdel av hello ursprungliga händelser behålls som datapunkter i Application Insights, så att det finns för varje datapunkt som du ser, `itemCount` händelser.
 
-Till exempel om sampling ignorerar 75% av den ursprungliga händelser och sedan itemCount == 4 i kvarhållna poster -, för varje kvarhållna post det var fyra ursprungliga poster.
+Till exempel om sampling ignorerar 75% av hello ursprungliga händelser och sedan itemCount == 4 i hello behålls poster – det vill säga för varje kvarhållna post fanns fyra ursprungliga poster.
 
-Anpassningsbar provtagning gör itemCount vara högre under perioder när ditt program som ofta används.
+Anpassningsbar provtagning gör itemCount toobe högre under perioder när ditt program som ofta används.
 
-Sammanfattningsvis itemCount därför ger en bra uppskattning av det ursprungliga antalet händelser.
+Sammanfattningsvis itemCount därför ger en bra uppskattning hello ursprungliga antalet händelser.
 
 ![](./media/app-insights-analytics-tour/510.png)
 
-Det finns också en `count()` aggregering (och ett antal åtgärden) i de fall där du verkligen vill räkna antalet rader i en grupp.
+Det finns också en `count()` aggregering (och ett antal åtgärden) i de fall där du verkligen vill toocount hello antalet rader i en grupp.
 
 Det finns en mängd [aggregeringsfunktioner](https://docs.loganalytics.io/learn/tutorials/aggregations.html).
 
-## <a name="charting-the-results"></a>Diagram resultaten
+## <a name="charting-hello-results"></a>Diagram hello resultat
 ```AIQL
 
     exceptions
@@ -271,11 +271,11 @@ Resultatet visas som en tabell som standard:
 
 ![](./media/app-insights-analytics-tour/225.png)
 
-Vi kan göra bättre än tabellvyn. Nu ska vi titta på resultaten i schemat med lodrätt staplar alternativet:
+Vi kan göra bättre än hello tabellvy. Vi titta på hello resulterar i hello diagramvy med hello vertikalstreck alternativet:
 
 ![Klicka på diagrammet och sedan välja stående stapeldiagram och tilldela x och y axlar](./media/app-insights-analytics-tour/230.png)
 
-Observera att även om vi inte sortera resultaten av tid (som du ser i tabellen visas), diagram alltid visas datum och tid i rätt ordning.
+Observera att även om vi inte sortera hello resultaten av tid (som du ser i hello tabell visa), hello diagramvyn alltid visar datum och tid i rätt ordning.
 
 
 ## <a name="timecharts"></a>Timecharts
@@ -288,14 +288,14 @@ Visa det hur många händelser är varje timma:
         by bin(timestamp, 1h)
 ```
 
-Välj Visningsalternativ för diagram:
+Välj Visningsalternativ för hello diagram:
 
 ![timechart](./media/app-insights-analytics-tour/080.png)
 
 ## <a name="multiple-series"></a>Flera serier
-Flera uttryck i den `summarize` satsen skapar flera kolumner.
+Flera uttryck i hello `summarize` satsen skapar flera kolumner.
 
-Flera uttryck i den `by` satsen skapar flera rader, ett för varje kombination av värden.
+Flera uttryck i hello `by` satsen skapar flera rader, ett för varje kombination av värden.
 
 ```AIQL
 
@@ -308,13 +308,13 @@ Flera uttryck i den `by` satsen skapar flera rader, ett för varje kombination a
 ![Tabell för förfrågningar efter timme och plats](./media/app-insights-analytics-tour/090.png)
 
 ### <a name="segment-a-chart-by-dimensions"></a>Segmentera ett diagram av dimensioner
-Om du skapa diagram över en tabell som har en strängkolumn och en numerisk kolumn användas strängen för att dela upp de numeriska data i separata antal punkter. Om det finns fler än en strängkolumn, kan du välja vilken kolumn som ska användas som diskriminatorn.
+Om diagrammet en tabell som har en strängkolumn och en numerisk kolumn hello sträng kan använda toosplit hello numeriska data till olika antal datapunkter. Om det finns fler än en strängkolumn, kan du välja vilka kolumnen toouse som hello diskriminator.
 
 ![Segmentera ett analytics-diagram](./media/app-insights-analytics-tour/100.png)
 
 #### <a name="bounce-rate"></a>Studs hastighet
 
-Konvertera ett booleskt värde till en sträng som ska användas som en diskriminator:
+Konvertera en boolesk tooa sträng toouse den som en diskriminator:
 
 ```AIQL
 
@@ -331,16 +331,16 @@ Konvertera ett booleskt värde till en sträng som ska användas som en diskrimi
 ```
 
 ### <a name="display-multiple-metrics"></a>Visa flera mått
-Om diagram av en tabell som har mer än en numerisk kolumn, förutom tidsstämpeln, kan du visa en kombination av dessa.
+Om du diagram av en tabell som har mer än en numerisk kolumn i tillägg toohello tidsstämpel och kan du visa en kombination av dessa.
 
 ![Segmentera ett analytics-diagram](./media/app-insights-analytics-tour/110.png)
 
-Du måste välja **inte dela** innan du kan välja flera numeriska kolumner. Du kan inte dela genom en strängkolumn samtidigt som visar mer än en numerisk kolumn.
+Du måste välja **inte dela** innan du kan välja flera numeriska kolumner. Du kan inte dela genom en strängkolumn på hello samma tid som visas mer än en numerisk kolumn.
 
 ## <a name="daily-average-cycle"></a>Dagliga genomsnittliga cykel
-Hur varierar användning under den genomsnittliga dagen?
+Hur varierar användning över hello genomsnittlig dag?
 
-Antal begäranden när modulo en dag binned i timmar:
+Antal begäranden med hello tid modulo en dag binned i timmar:
 
 ```AIQL
 
@@ -355,12 +355,12 @@ Antal begäranden när modulo en dag binned i timmar:
 ![Linjediagram timmar i en genomsnittlig dag](./media/app-insights-analytics-tour/120.png)
 
 > [!NOTE]
-> Observera att för närvarande har vi att konvertera tidsvaraktigheter till datum och tid för att visa på ett linjediagram.
+> Observera att för närvarande har vi tooconvert tid varaktigheter toodatetimes i ordning toodisplay på ett linjediagram.
 >
 >
 
 ## <a name="compare-multiple-daily-series"></a>Jämför flera dagliga serier
-Hur användning varierar över tid på dagen i olika länder?
+Hur användning varierar över hello tid på dagen i olika länder?
 
 ```AIQL
 
@@ -392,16 +392,16 @@ Hur många sessioner är det av olika längd?
     | project d = sessionDuration + datetime("2016-01-01"), count_
 ```
 
-Den sista raden krävs för att konvertera till datetime. För närvarande visas x-axeln i ett diagram som en skalär endast om det är ett datetime-värde.
+hello sista raden är nödvändiga tooconvert toodatetime. För närvarande visas hello x-axeln i ett diagram som en skalär endast om det är ett datetime-värde.
 
-Den `where` satsen utesluter one-shot sessioner (sessionDuration == 0) och anger längden på x-axeln.
+Hej `where` satsen utesluter one-shot sessioner (sessionDuration == 0) och anger hello längd hello x-axeln.
 
 ![](./media/app-insights-analytics-tour/290.png)
 
 ## <a name="percentileshttpsdocsloganalyticsioquerylanguagequerylanguagepercentilesaggfunctionhtml"></a>[Percentiler](https://docs.loganalytics.io/queryLanguage/query_language_percentiles_aggfunction.html)
 Vilka områden för varaktigheter täcka olika delar av sessioner?
 
-Använda frågan ovan, men ersätt den sista raden:
+Använda hello ovan frågan, men ersätt hello sista raden:
 
 ```AIQL
 
@@ -415,7 +415,7 @@ Använda frågan ovan, men ersätt den sista raden:
     | summarize percentiles(sesh, 5, 20, 50, 80, 95)
 ```
 
-Vi också bort den övre gränsen i where-satsen för att få rätt uppgifter som inkluderar alla sessioner med mer än en förfrågan:
+Vi också bort hello övre gräns på hello där sats i ordning tooget korrigera uppgifter som inkluderar alla sessioner med mer än en förfrågan:
 
 ![Resultat](./media/app-insights-analytics-tour/180.png)
 
@@ -425,7 +425,7 @@ Där hittar som:
 * 50% av sessioner senaste 36 minuter.
 * 5% av sessioner senaste mer än 7 dagar
 
-Om du vill ha en separat uppdelning för varje land, vi bara ha för att sammanfatta kolumnen client_CountryOrRegion separat via båda operatorer:
+tooget en separat uppdelning för varje land, vi har precis toobring hello client_CountryOrRegion kolumn separat via båda sammanfatta operatorer:
 
 ```AIQL
 
@@ -443,9 +443,9 @@ Om du vill ha en separat uppdelning för varje land, vi bara ha för att sammanf
 ![](./media/app-insights-analytics-tour/190.png)
 
 ## <a name="join"></a>Slå ihop
-Vi har åtkomst till flera tabeller, inklusive begäranden och undantag.
+Vi har åtkomst tooseveral tabeller, inklusive begäranden och undantag.
 
-Om du vill hitta undantag som rör en begäran som returnerade ett fel svar vi koppla tabellerna på `session_Id`:
+toofind hello undantag relaterade tooa begäran som returnerade ett fel svar, vi kan koppla hello tabeller på `session_Id`:
 
 ```AIQL
 
@@ -456,12 +456,12 @@ Om du vill hitta undantag som rör en begäran som returnerade ett fel svar vi k
 ```
 
 
-Det är bra att använda `project` att välja bara de kolumner som vi behöver innan du utför kopplingen.
-I samma-satser vi Byt namn på kolumn för tidsstämpel.
+Det är god sed toouse `project` tooselect bara hello kolumner som vi behöver innan du utför hello koppling.
+I hello samma satser vi byta namn på hello kolumn för tidsstämpel.
 
-## <a name="lethttpsdocsloganalyticsioquerylanguagequerylanguageletstatementhtml-assign-a-result-to-a-variable"></a>[Låt](https://docs.loganalytics.io/queryLanguage/query_language_letstatement.html): tilldela en variabel ett resultat
+## <a name="lethttpsdocsloganalyticsioquerylanguagequerylanguageletstatementhtml-assign-a-result-tooa-variable"></a>[Låt](https://docs.loganalytics.io/queryLanguage/query_language_letstatement.html): tilldela en variabel för resultatet tooa
 
-Använd `let` att skilja ut delarna av uttrycket ovan. Resultatet är oförändrad:
+Använd `let` tooseparate hello delar av hello föregående uttryck. hello resultatet är oförändrad:
 
 ```AIQL
 
@@ -474,10 +474,10 @@ Använd `let` att skilja ut delarna av uttrycket ovan. Resultatet är oförändr
 ```
 
 > [!Tip] 
-> Analytics-klienten Placera inte tomma rader mellan delar av frågan. Se till att köra alla.
+> Hello Analytics-klienten Placera inte tomma rader mellan hello delar av hello fråga. Se till att tooexecute alla.
 >
 
-Använd `toscalar` att konvertera en enskild cell till ett värde:
+Använd `toscalar` tooconvert en enskild tabell tooa Cellvärde:
 
 ```AIQL
 let topCities =  toscalar (
@@ -493,7 +493,7 @@ requests
 
 ### <a name="functions"></a>Funktioner
 
-Använd *kan* att definiera en funktion:
+Använd *kan* toodefine en funktion:
 
 ```AIQL
 
@@ -507,11 +507,11 @@ Använd *kan* att definiera en funktion:
 ```
 
 ## <a name="accessing-nested-objects"></a>Åtkomst till kapslade objekt
-Kapslade objekt kan nås enkelt. Du kan till exempel se strukturerade objekt så här i dataströmmen undantag:
+Kapslade objekt kan nås enkelt. Till exempel i hello undantag dataströmmen ser du strukturerade objekt så här:
 
 ![Resultat](./media/app-insights-analytics-tour/520.png)
 
-Du kan förenkla den genom att välja de egenskaper som du är intresserad av:
+Du kan förenkla den genom att välja hello egenskaper som du är intresserad av:
 
 ```AIQL
 
@@ -519,11 +519,11 @@ Du kan förenkla den genom att välja de egenskaper som du är intresserad av:
     | extend method1 = tostring(details[0].parsedStack[1].method)
 ```
 
-Observera att du måste konvertera resultatet till lämplig.
+Observera att du måste toocast hello toohello lämplig resultattyp.
 
 
 ## <a name="custom-properties-and-measurements"></a>Anpassade egenskaper och mått
-Om programmet ansluts [anpassade dimensioner (Egenskaper) och anpassade mått](app-insights-api-custom-events-metrics.md#properties) till händelser, så visas dem i den `customDimensions` och `customMeasurements` objekt.
+Om programmet ansluts [anpassade dimensioner (Egenskaper) och anpassade mått](app-insights-api-custom-events-metrics.md#properties) tooevents och du kommer att se dem i hello `customDimensions` och `customMeasurements` objekt.
 
 Till exempel om appen innehåller:
 
@@ -536,17 +536,17 @@ Till exempel om appen innehåller:
     telemetryClient.TrackEvent("myEvent", dimensions, measurements);
 ```
 
-Så här extraherar värdena i Analytics:
+tooextract värdena i Analytics:
 
 ```AIQL
 
     customEvents
     | extend p1 = customDimensions.p1,
-      m1 = todouble(customMeasurements.m1) // cast to expected type
+      m1 = todouble(customMeasurements.m1) // cast tooexpected type
 
 ```
 
-Verifiera om en anpassad dimensionen är av en viss typ:
+tooverify om en anpassad dimensionen är av en viss typ:
 
 ```AIQL
 
@@ -556,47 +556,47 @@ Verifiera om en anpassad dimensionen är av en viss typ:
 ```
 
 ## <a name="dashboards"></a>Instrumentpaneler
-Du kan fästa resultaten till en instrumentpanel för att sätta samman alla dina viktigaste diagram och tabeller.
+Du kan fästa resultat tooa instrumentpanelen i ordning toobring ihop alla dina viktigaste diagram och tabeller.
 
-* [Azure delade instrumentpanelen](app-insights-dashboards.md#share-dashboards): Klicka på ikonen PIN-kod. Innan du gör det måste du ha en delad instrumentpanel. Öppna Azure-portalen eller skapa en instrumentpanel och klicka på resursen.
+* [Azure delade instrumentpanelen](app-insights-dashboards.md#share-dashboards): Klicka på ikonen för hello PIN-kod. Innan du gör det måste du ha en delad instrumentpanel. Öppna hello Azure-portalen, eller skapa en instrumentpanel och klicka på resursen.
 * [Power BI-instrumentpanel](app-insights-export-power-bi.md): Klicka på Exportera, Power BI-fråga. En fördel med detta alternativ är att du kan visa din fråga tillsammans med andra resultat från en mängd olika källor.
 
 ## <a name="combine-with-imported-data"></a>Kombinera med importerade data
 
-Analytics-rapporter se bra ut på instrumentpanelen, men ibland vill du att konvertera data till ett datamängder formulär. Anta exempelvis att din autentiserade användare identifieras i telemetrin av ett alias. Du vill visa namnen verkliga i resultaten. Om du vill göra detta måste en CSV-fil som mappar från alias till de verkliga namn.
+Analytics-rapporter se bra ut på hello instrumentpanelen, men ibland vill du tootranslate hello data tooa flera datamängder formuläret. Anta exempelvis att din autentiserade användare identifieras i hello telemetri av ett alias. Du vill att tooshow sitt verkliga namn i resultaten. toodo, du behöver en CSV-fil som kopplar från hello-alias toohello verkliga namn.
 
-Du kan importera en fil och använda den precis som alla standardtabeller (begäranden, undantag och så vidare). Antingen fråga på sin egen eller Anslut den med andra tabeller. Om du har en tabell med namnet usermap och kolumner har till exempel `realName` och `userId`, och sedan använda den för att översätta det `user_AuthenticatedId` i begärandetelemetri:
+Du kan importera en fil och använda den precis som alla hello standardtabeller (begäranden, undantag och så vidare). Antingen fråga på sin egen eller Anslut den med andra tabeller. Om du har en tabell med namnet usermap och kolumner har till exempel `realName` och `userId`, kan du använda den tootranslate hello `user_AuthenticatedId` i hello begärandetelemetri:
 
 ```AIQL
 
     requests
     | where notempty(user_AuthenticatedId)
     | project userId = user_AuthenticatedId
-      // get the realName field from the usermap table:
+      // get hello realName field from hello usermap table:
     | join kind=leftouter ( usermap ) on userId
       // count transactions by name:
     | summarize count() by realName
 ```
 
-Så här importerar du en tabell, i bladet schemat under **andra datakällor**, följ instruktionerna för att lägga till en ny datakälla genom att överföra ett urval av dina data. Du kan sedan använda den här definitionen för att överföra tabeller.
+tooimport en tabell i hello schemat bladet under **andra datakällor**, följ hello instruktioner tooadd en ny datakälla genom att överföra ett urval av dina data. Du kan sedan använda den här definitionen tooupload tabeller.
 
-Import-funktionen är för närvarande under förhandsgranskning, så visas först en ”Kontakta oss” länk under ”andra datakällor”. Används för att registrera dig för förhandsgranskningsprogrammet och länken kommer sedan att ersättas av knappen ”Lägg till ny datakälla”.
+hello importfunktionen genomgår förhandsgranskning för närvarande, så visas först en ”Kontakta oss” länk under ”andra datakällor”. Använd den här toosign in toohello förhandsgranskningsprogrammet och hello länken kommer sedan att ersättas av knappen ”Lägg till ny datakälla”.
 
 
 ## <a name="tables"></a>Tabeller
-Dataströmmen telemetri från din app är tillgängligt via flera tabeller. Schemat för egenskaper som är tillgängliga för varje tabell visas till vänster i fönstret.
+hello dataström telemetri från din app är tillgängligt via flera tabeller. hello schemat för egenskaper som är tillgängliga för varje tabell är synlig i hello till vänster i fönstret hello.
 
 ### <a name="requests-table"></a>Begäranden tabell
-Antal HTTP-begäranden till ditt webbprogram och segment per sidnamn:
+Antal HTTP-begäranden tooyour webbapp och segment per sidnamn:
 
 ![Antal begäranden segmenterat efter namn](./media/app-insights-analytics-tour/analytics-count-requests.png)
 
-Sök efter begäranden som inte uppfyller de flesta:
+Sök efter hello-begäranden som inte uppfyller de flesta:
 
 ![Antal begäranden segmenterat efter namn](./media/app-insights-analytics-tour/analytics-failed-requests.png)
 
 ### <a name="custom-events-table"></a>Anpassade händelser tabell
-Om du använder [trackevent ()](app-insights-api-custom-events-metrics.md#trackevent) för att skicka dina egna händelser, kan du läsa dem från den här tabellen.
+Om du använder [trackevent ()](app-insights-api-custom-events-metrics.md#trackevent) toosend egna händelser, du kan läsa dem i den här tabellen.
 
 Låt oss ta ett exempel där app-koden innehåller dessa rader:
 
@@ -609,66 +609,66 @@ Låt oss ta ett exempel där app-koden innehåller dessa rader:
            {"querytime", totalTime}})
 ```
 
-Visa hur ofta dessa händelser:
+Visar hello frekvensen för dessa händelser:
 
 ![Visa antal anpassade händelser](./media/app-insights-analytics-tour/analytics-custom-events-rate.png)
 
-Extrahera mått och dimensioner från händelser:
+Extrahera mått och dimensioner från hello händelser:
 
 ![Visa antal anpassade händelser](./media/app-insights-analytics-tour/analytics-custom-events-dimensions.png)
 
 ### <a name="custom-metrics-table"></a>Anpassade mått tabell
-Om du använder [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) om du vill skicka dina egna måttvärden hittar du resultaten i den **customMetrics** dataströmmen. Exempel:  
+Om du använder [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) toosend egna måttvärden hittar du resultaten i hello **customMetrics** dataströmmen. Exempel:  
 
 ![Anpassade mått i Application Insights analytics](./media/app-insights-analytics-tour/analytics-custom-metrics.png)
 
 > [!NOTE]
-> I [Metrics Explorer](app-insights-metrics-explorer.md), alla anpassade mått som är kopplad till någon typ av telemetri visas tillsammans i bladet mått tillsammans med mått som skickas med `TrackMetric()`. Men i Analytics, anpassade mått fortfarande är kopplade till oavsett vilken typ av telemetri som de har gjort på - händelser eller begäranden och så vidare - medan mått som skickats av TrackMetric visas i sina egna dataströmmen.
+> I [Metrics Explorer](app-insights-metrics-explorer.md), alla anpassade mått bifogade tooany telemetri visas tillsammans i hello mått bladet tillsammans med mått som skickas med `TrackMetric()`. Men i Analytics, anpassade mått är fortfarande kopplad toowhichever typ av telemetri som de har gjort på - händelser eller begäranden och så vidare - medan mått som skickats av TrackMetric visas i sina egna dataströmmen.
 >
 >
 
 ### <a name="performance-counters-table"></a>Prestandaräknare tabell
-[Prestandaräknare](app-insights-performance-counters.md) visa grundläggande system mätvärden för din app, t.ex CPU eller minne och nätverksanvändning. Du kan konfigurera SDK för att skicka ytterligare räknare, inklusive din egen anpassade räknare.
+[Prestandaräknare](app-insights-performance-counters.md) visa grundläggande system mätvärden för din app, t.ex CPU eller minne och nätverksanvändning. Du kan konfigurera hello SDK toosend ytterligare räknare, inklusive din egen anpassade räknare.
 
-Den **performanceCounters** schemat visar den `category`, `counter` namn, och `instance` namn för varje prestandaräknare. Namn på prestandaräknarinstanser gäller endast vissa prestandaräknare och anger namnet på processen som antalet avser vanligtvis. Räknarna för programmet visas i telemetri för varje program. Till exempel om du vill se vilka räknare är tillgängliga:
+Hej **performanceCounters** schemat visar hello `category`, `counter` namn, och `instance` namn för varje prestandaräknare. Namn på prestandaräknarinstanser är endast tillämplig toosome prestandaräknare och anger vanligtvis hello namnet på hello process toowhich hello antal avser. I hello telemetri för varje program ser du bara hello räknare för programmet. Till exempel toosee vilka räknare är tillgängliga:
 
 ![Prestandaräknare i Application Insights analytics](./media/app-insights-analytics-tour/analytics-performance-counters.png)
 
-Hämta ett diagram av minne över den valda perioden:
+tooget ett diagram av minne över hello vald period:
 
 ![Minne timechart i Application Insights analytics](./media/app-insights-analytics-tour/analytics-available-memory.png)
 
-Som andra telemetri **performanceCounters** också har en kolumn `cloud_RoleInstance` som anger identiteten för värddatorn som appen körs. Till exempel för att jämföra prestandan för din app på olika datorer:
+Som andra telemetri **performanceCounters** också har en kolumn `cloud_RoleInstance` som visar hello identitet hello värddatorn som appen körs. Till exempel toocompare hello prestandan för din app på hello olika datorer:
 
 ![Prestanda åtskilda med rollinstans i Application Insights analytics](./media/app-insights-analytics-tour/analytics-metrics-role-instance.png)
 
 ### <a name="exceptions-table"></a>Feltabellen
 [Undantag som rapporterats av din app](app-insights-asp-net-exceptions.md) är tillgängliga i den här tabellen.
 
-Delta i operation_Id för att hitta HTTP-begäran som din app hantering när undantagsfel inträffade:
+toofind Hej HTTP-begäran som din app hantering när hello undantagsfel inträffade, delta i operation_Id:
 
 ![Ansluta till undantag med begäranden på operation_Id](./media/app-insights-analytics-tour/analytics-exception-request.png)
 
 ### <a name="browser-timings-table"></a>Webbläsaren tidsinställningar för tabellen
 `browserTimings`Visar sidan Läs in data som samlas in i användarnas webbläsare.
 
-[Konfigurera din app för klientsidan telemetri](app-insights-javascript.md) för att kunna se dessa mått.
+[Konfigurera din app för klientsidan telemetri](app-insights-javascript.md) ordning toosee dessa mått.
 
-Schemat innehåller [mått som anger längden på olika faser i processen för inläsning sidan](app-insights-javascript.md#page-load-performance). (De inte anger hur lång tid som användarna läsa en sida.)  
+hello-schemat innehåller [mått som anger hello längder i olika faser i hello sidan processen för inläsning](app-insights-javascript.md#page-load-performance). (De inte visar hello tidslängd användarna läsa en sida.)  
 
-Visa popularities på olika sidor och läsa in tider för varje sida:
+Visa hello popularities på olika sidor och läsa in tider för varje sida:
 
 ![Sidinläsningstider i Analytics](./media/app-insights-analytics-tour/analytics-page-load.png)
 
 ### <a name="availability-results-table"></a>Tillgänglighet resultattabellen
-`availabilityResults`Visar resultatet av dina [webbtester](app-insights-monitor-web-app-availability.md). Varje körning av dina tester från varje test plats rapporteras separat.
+`availabilityResults`Visar hello resultatet av dina [webbtester](app-insights-monitor-web-app-availability.md). Varje körning av dina tester från varje test plats rapporteras separat.
 
 ![Sidinläsningstider i Analytics](./media/app-insights-analytics-tour/analytics-availability.png)
 
 ### <a name="dependencies-table"></a>Beroenden tabell
-Innehåller resultatet av anrop att din app gör att databaser och REST API: er och andra anrop till TrackDependency(). Även AJAX-anrop från webbläsaren.
+Innehåller resultatet av anrop som din app gör toodatabases och REST API: er och andra anropar tooTrackDependency(). Även AJAX-anrop från hello webbläsare.
 
-AJAX-anrop från webbläsaren:
+AJAX-anrop från hello webbläsare:
 
 ```AIQL
 
@@ -676,7 +676,7 @@ AJAX-anrop från webbläsaren:
     | take 10
 ```
 
-Beroendeanrop från servern:
+Beroendeanrop från hello-servern:
 
 ```AIQL
 
@@ -684,10 +684,10 @@ Beroendeanrop från servern:
     | take 10
 ```
 
-Beroende på serversidan resultatet visar alltid `success==False` om Application Insights-agenten inte är installerad. Dock är andra data korrekta.
+Beroende på serversidan resultatet visar alltid `success==False` om hello Application Insights Agent är inte installerat. Dock är hello andra data korrekta.
 
 ### <a name="traces-table"></a>Spår tabell
-Innehåller telemetri som skickats av din app att använda TrackTrace(), eller [andra loggning ramverk](app-insights-asp-net-trace-logs.md).
+Innehåller hello telemetri som skickats av din app att använda TrackTrace(), eller [andra loggning ramverk](app-insights-asp-net-trace-logs.md).
 
 ## <a name="video"></a>Video 
 
@@ -700,6 +700,6 @@ Avancerade frågor:
 
 ## <a name="next-steps"></a>Nästa steg
 * [Språkreferens för Analytics](app-insights-analytics-reference.md)
-* [SQL-användarnas cheat blad](https://aka.ms/sql-analytics) översätter vanligaste idioms.
+* [SQL-användarnas cheat blad](https://aka.ms/sql-analytics) översätter hello vanligaste idioms.
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]

@@ -1,6 +1,6 @@
 ---
-title: "Felsöka Azure-Behållarinstanser"
-description: "Lär dig hur du felsöker problem med Azure Container instanser"
+title: "aaaTroubleshooting Behållarinstanser som Azure"
+description: "Lär dig hur tootroubleshoot problem med Azure Container instanser"
 services: container-instances
 documentationcenter: 
 author: seanmck
@@ -17,25 +17,25 @@ ms.workload: na
 ms.date: 08/03/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 86fa4b7dca7c362f95c0243a33f03d1f2dd3ab42
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: dfec636a0a174c74a6f2e9d9c4da6e871f8d2fda
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Felsöka distributionsproblem med Azure Container instanser
 
-Den här artikeln visar hur du felsöker problem när du distribuerar behållare till Azure-Behållarinstanser. Här beskrivs också några vanliga problem kan du stöta på.
+Den här artikeln visar hur tootroubleshoot problem när du distribuerar behållare tooAzure Behållarinstanser. Här beskrivs också några hello vanliga problem kan du stöta på.
 
 ## <a name="getting-diagnostic-events"></a>Hämtning av diagnostiska händelser
 
-Om du vill visa loggar från din programkod i en behållare som du kan använda den [az behållaren loggar](/cli/azure/container#logs) kommando. Men om din behållaren inte distribuerar har du behöver diagnostisk information som tillhandahålls av Azure Behållarinstanser resursprovidern. Om du vill visa händelser för din behållare, kör du följande kommando:
+tooview loggar från din programkod i en behållare, kan du använda hello [az behållaren loggar](/cli/azure/container#logs) kommando. Men om din behållaren inte distribuerar har du tooreview hello diagnostisk information som tillhandahålls av hello Azure Behållarinstanser resursprovidern. tooview hello händelser för din behållaren, kör hello följande kommando:
 
 ```azurecli-interactive
 az container show -n mycontainername -g myresourcegroup
 ```
 
-Utdata innehåller huvudegenskaper för din behållare, tillsammans med distribution av händelser:
+hello utdata innehåller hello huvudegenskaper för din behållare, tillsammans med distribution av händelser:
 
 ```bash
 {
@@ -91,9 +91,9 @@ Utdata innehåller huvudegenskaper för din behållare, tillsammans med distribu
 
 Det finns några vanliga problem för de flesta fel i distributionen.
 
-### <a name="unable-to-pull-image"></a>Det gick inte att pull-bild
+### <a name="unable-toopull-image"></a>Det går inte toopull bild
 
-Om Azure Behållarinstanser inte att hämta bilden från början, ett nytt försök under en period innan förr eller senare. Om bilden inte kan hämtas, visas händelser som liknar följande:
+Om Azure-Behållarinstanser är toopull avbildningen först ett nytt försök under en period innan förr eller senare. Om du inte kan hämtas hello avbildningen, visas händelser, t.ex. hello följande:
 
 ```bash
 "events": [
@@ -108,7 +108,7 @@ Om Azure Behållarinstanser inte att hämta bilden från början, ett nytt förs
     "count": 1,
     "firstTimestamp": "2017-08-03T22:19:32+00:00",
     "lastTimestamp": "2017-08-03T22:19:32+00:00",
-    "message": "Failed: Failed to pull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image microsoft/aci-hellowrld:latest not found",
+    "message": "Failed: Failed toopull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image microsoft/aci-hellowrld:latest not found",
     "type": "Warning"
   },
   {
@@ -121,11 +121,11 @@ Om Azure Behållarinstanser inte att hämta bilden från början, ett nytt förs
 ]
 ```
 
-Lös, ta bort behållaren och försök distributionen betalande uppmärksam på att du har angett rätt avbildning.
+tooresolve, ta bort hello-behållaren och försök distributionen betalande uppmärksam på att du har angett rätt hello avbildningsnamn.
 
 ### <a name="container-continually-exits-and-restarts"></a>Behållaren kontinuerligt avslutas och startas om
 
-För närvarande stöder endast Behållarinstanser som Azure tidskrävande tjänster. Om din behållare körs slutförande och avslutar den automatiskt startar och körs igen. Om det händer visas händelser som de som följer. Observera att behållaren startar och sedan startar om snabbt. Behållaren instanser API innehåller en `retryCount` egenskap som visar hur många gånger en viss behållare har startats om.
+För närvarande stöder endast Behållarinstanser som Azure tidskrävande tjänster. Om din behållare körs toocompletion och avslutar den automatiskt startar om och körs igen. Om det händer visas händelser som de som följer. Observera hello behållaren startar och sedan startar om snabbt. hello behållaren instanser API innehåller en `retryCount` egenskap som visar hur många gånger en viss behållare har startats om.
 
 ```bash
 "events": [
@@ -189,13 +189,13 @@ För närvarande stöder endast Behållarinstanser som Azure tidskrävande tjän
 ```
 
 > [!NOTE]
-> De flesta behållaren avbildningar för Linux-distributioner kan du ange ett gränssnitt, till exempel bash, som kommandot. Eftersom ett gränssnitt på sin egen inte är en tidskrävande tjänst avsluta omedelbart i dessa behållare och faller inom en omstart loop.
+> De flesta behållaren avbildningar för Linux-distributioner kan du ange ett gränssnitt, till exempel bash, som hello Standardkommandot. Eftersom ett gränssnitt på sin egen inte är en tidskrävande tjänst avsluta omedelbart i dessa behållare och faller inom en omstart loop.
 
-### <a name="container-takes-a-long-time-to-start"></a>Behållaren tar lång tid att starta
+### <a name="container-takes-a-long-time-toostart"></a>Behållaren tar en lång tid toostart
 
-Om din behållaren tar lång tid att starta, men till slut lyckas, starta genom att titta på storleken på behållaren avbildningen. Eftersom Azure Behållarinstanser hämtar avbildningen behållare på begäran, relaterat starttiden uppstår direkt till dess storlek.
+Om din behållaren tar en lång tid toostart, men till slut lyckas, starta genom att titta på hello storleken på behållaren avbildningen. Eftersom Azure Behållarinstanser hämtar avbildningen behållare på begäran, hello starttiden uppstår är direkt relaterade tooits storlek.
 
-Du kan visa storleken på avbildningen behållare med Docker CLI:
+Du kan visa hello storleken på behållaren avbildningen med hjälp av hello Docker CLI:
 
 ```bash
 docker images
@@ -208,6 +208,6 @@ REPOSITORY                             TAG                 IMAGE ID            C
 microsoft/aci-helloworld               latest              7f78509b568e        13 days ago         68.1MB
 ```
 
-Nyckeln till att hålla bildstorleken små är att säkerställa att dina slutliga avbildningen inte innehåller allt som inte krävs vid körning. Det här är ett sätt att göra med [flera steg versioner](https://docs.docker.com/engine/userguide/eng-image/multistage-build/). Flera steg skapar gör det enkelt att se till att den slutliga avbildningen innehåller de artefakter som du behöver för ditt program och inte något av extra innehåll som krävdes vid byggning.
+hello viktiga tookeeping bildstorleken små är att säkerställa att dina slutliga avbildningen inte innehåller allt som inte krävs vid körning. Enkelriktade toodo detta är med [flera steg versioner](https://docs.docker.com/engine/userguide/eng-image/multistage-build/). Versioner av flera steg gör det enkelt tooensure att hello slutliga avbildningen innehåller endast hello artefakter som du behöver för ditt program och inte något av hello extra innehåll som krävdes vid byggning.
 
-Ett annat sätt att minska effekten av avbildningen pull på din behållaren starttiden är värd för behållaren avbildningen med Azure Container registret i samma region som du tänker använda Azure Container instanser. Detta förkortar nätverkssökvägen behållaren avbildningen måste reser kan avsevärt minska hämtningstiden.
+hello andra sätt tooreduce hello effekten av hello avbildningen pull på din behållaren starttiden är toohost hello behållaren avbildning med hjälp av hello Azure Container registret i hello samma region där du ska toouse Azure Container instanser. Detta förkortar hello nätverkssökväg som hello behållaren avbildningen måste tootravel avsevärt förkortar hello hämtningstiden.

@@ -1,6 +1,6 @@
 ---
-title: "Kvotgränserna för Azure Data Lake Analytics | Microsoft Docs"
-description: "Lär dig hur du justerar och öka kvotgränserna i Azure Data Lake Analytics (ADLA)-konton."
+title: "aaaAzure kvotgränserna för Data Lake Analytics | Microsoft Docs"
+description: "Lär dig hur tooadjust och öka kvoten begränsar i Azure Data Lake Analytics (ADLA)-konton."
 services: data-lake-analytics
 keywords: Azure Data Lake Analytics
 documentationcenter: 
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: omidm
-ms.openlocfilehash: 957f306ea0e80b5830ad64e5ef06c6d122d9eccc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 875c4d00e0c57414031e50754495c02162bdca48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-data-lake-analytics-quota-limits"></a>Kvotgränserna för Azure Data Lake Analytics
 
-Lär dig hur du justerar och öka kvotgränserna i Azure Data Lake Analytics (ADLA)-konton. Känna till dessa begränsningar kan hjälpa dig förstå din U-SQL-jobbet beteende. Alla kvotgränserna är mjuka, så du kan öka de maximala gränserna genom att nå ut till oss.
+Lär dig hur tooadjust och öka kvoten begränsar i Azure Data Lake Analytics (ADLA)-konton. Känna till dessa begränsningar kan hjälpa dig förstå din U-SQL-jobbet beteende. Alla kvotgränserna är mjuka, så du kan öka hello maximala gränsen genom att nå ut toous.
 
 ## <a name="azure-subscriptions-limits"></a>Azure-prenumerationer gränser
 
 **Maximalt antal ADLA konton per prenumeration:** 5
 
- Detta är det maximala antalet ADLA konton som du kan skapa per prenumeration. Om du försöker skapa ett sjätte ADLA konto får du felmeddelandet ”du har nått det maximala antalet Data Lake Analytics-konton tillåts (5) i regionen under prenumerationsnamn”. I det här fallet antingen ta bort alla oanvända ADLA konton eller nå oss av [öppna ett supportärende](#increase-maximum-quota-limits).
+ Detta är hello maximalt antal ADLA konton som du kan skapa per prenumeration. Om du försöker toocreate en sjätte ADLA konto, får du felmeddelandet ”du har nått hello maximalt antal Data Lake Analytics-konton tillåts (5) i regionen under prenumerationsnamn”. I det här fallet antingen ta bort alla oanvända ADLA konton eller nå ut toous av [öppna ett supportärende](#increase-maximum-quota-limits).
 
 ## <a name="adla-account-limits"></a>ADLA gränser
 
 **Maximalt antal Analytics (Australien) per konto:** 250
 
-Detta är det maximala antalet Australien som kan köras samtidigt i ditt konto. Om din totala kör Australien över alla jobb som överskrider denna gräns, nya jobb ställs i kö automatiskt. Exempel:
+Detta är hello maxantalet Australien som kan köras samtidigt i ditt konto. Om din totala kör Australien över alla jobb som överskrider denna gräns, nya jobb ställs i kö automatiskt. Exempel:
 
-* Om du har endast ett jobb körs med 250 Australien när du skickar en andra jobb den kommer att vänta i jobbkön tills det första jobbet har slutförts.
-* Om du redan har fem jobb som körs och var och en med 50 Australien när du skickar ett sjätte jobb som behöver 20 Australien den väntar i jobbkön tills det finns 20 Australien som är tillgängliga.
+* Om du har endast ett jobb körs med 250 Australien när du skickar en andra jobb den kommer att vänta i jobbkön hello tills hello första jobbet har slutförts.
+* Om du redan har fem jobb som körs och var och en med 50 Australien när du skickar ett sjätte jobb som behöver 20 Australien den väntar i jobbkön hello tills det finns 20 Australien som är tillgängliga.
 
 **Maximalt antal samtidiga U-SQL-jobb per konto:** 20
 
-Detta är det maximala antalet jobb som kan köras samtidigt i ditt konto. Ovanför det här värdet senare jobb ställs i kö automatiskt.
+Detta är hello maximalt antal jobb som kan köras samtidigt i ditt konto. Ovanför det här värdet senare jobb ställs i kö automatiskt.
 
 ## <a name="adjust-adla-quota-limits-per-account"></a>Justera ADLA kvotgränserna per konto
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in toohello [Azure-portalen](https://portal.azure.com).
 2. Välj ett befintligt ADLA-konto.
 3. Klicka på **Egenskaper**.
-4. Justera **parallellitet** och **samtidiga jobb** som passar dina behov.
+4. Justera **parallellitet** och **samtidiga jobb** toosuit dina behov.
 
     ![Azure Data Lake Analytics-portalblad](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-properties.png)
 
@@ -59,19 +59,19 @@ Detta är det maximala antalet jobb som kan köras samtidigt i ditt konto. Ovanf
     ![Azure Data Lake Analytics-portalblad](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
 
     ![Azure Data Lake Analytics-portalblad](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
-2. Välj typ av problem **kvot**.
+2. Välj typ av problem hello **kvot**.
 3. Välj din **prenumeration** (Kontrollera att den inte är en ”” utvärderingsprenumeration).
 4. Välj typ av kvot **Datasjöanalys**.
 
     ![Azure Data Lake Analytics-portalblad](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
 
-5. I bladet problemet förklarar begärda öka gränsen med **information** av varför du behöver den här extra kapacitet.
+5. I bladet problemet hello förklarar begärda öka gränsen med **information** av varför du behöver den här extra kapacitet.
 
     ![Azure Data Lake Analytics-portalblad](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-details.png)
 
-6. Kontrollera din kontaktinformation och skapa supportbegäran.
+6. Kontrollera din kontaktinformation och skapa hello supportförfrågan.
 
-Microsoft har granskat din begäran och ett försök att passa dina behov så snart som möjligt.
+Microsoft har granskat din begäran och försöker tooaccommodate verksamheten behöver så snart som möjligt.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,5 +1,5 @@
 ---
-title: "Anpassade inställningar för Apptjänstmiljöer"
+title: "aaaCustom inställningar för Apptjänstmiljöer"
 description: "Anpassade konfigurationsinställningar för Apptjänstmiljöer"
 services: app-service
 documentationcenter: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2016
 ms.author: stefsch
-ms.openlocfilehash: 687475fae0c90713c15e8abbb92b71059eae81c0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3d140688c88b389e71bfdd465c418339cccab3a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Anpassade konfigurationsinställningar för Apptjänstmiljöer
 ## <a name="overview"></a>Översikt
-Eftersom Apptjänstmiljöer är isolerad för att en kund är vissa konfigurationsinställningar som kan tillämpas enbart på Apptjänstmiljöer. Den här artikeln beskrivs de olika anpassningar som är tillgängliga för Apptjänstmiljöer.
+Eftersom Apptjänstmiljöer är isolerad tooa kund, är vissa konfigurationsinställningar som kan användas exklusivt tooApp miljöer. Den här artikeln dokument hello olika anpassningar som är tillgängliga för Apptjänstmiljöer.
 
-Om du inte har en Apptjänst-miljö, se [så här skapar du en Apptjänst-miljö](app-service-web-how-to-create-an-app-service-environment.md).
+Om du inte har en Apptjänst-miljö, se [hur tooCreate en Apptjänstmiljö](app-service-web-how-to-create-an-app-service-environment.md).
 
-Du kan lagra Apptjänstmiljö anpassningar med hjälp av en matris i den nya **clusterSettings** attribut. Det här attributet finns i ”egenskaper” ordlistan av den *hostingEnvironments* Azure Resource Manager-entiteten.
+Du kan lagra Apptjänstmiljö anpassningar med hjälp av en matris i hello nya **clusterSettings** attribut. Det här attributet kan hittas i hello ”egenskaper” uppslagslista av hello *hostingEnvironments* Azure Resource Manager-entiteten.
 
-Följande förkortas Resource Manager mallen fragment visas den **clusterSettings** attribut:
+hello följande förkortade Resource Manager mallen utdrag visar hello **clusterSettings** attribut:
 
     "resources": [
     {
@@ -48,25 +48,25 @@ Följande förkortas Resource Manager mallen fragment visas den **clusterSetting
        }
     }
 
-Den **clusterSettings** attribut kan ingå i en Resource Manager-mall för att uppdatera Apptjänst-miljön.
+Hej **clusterSettings** attribut kan ingå i en Resource Manager mallen tooupdate hello Apptjänst-miljö.
 
-## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Använda Azure Resource Explorer för att uppdatera en Apptjänst-miljö
-Du kan också uppdatera Apptjänst-miljön med hjälp av [resursutforskaren Azure](https://resources.azure.com).  
+## <a name="use-azure-resource-explorer-tooupdate-an-app-service-environment"></a>Använd resursutforskaren Azure tooupdate en Apptjänst-miljö
+Du kan också uppdatera hello Apptjänst-miljön med hjälp av [resursutforskaren Azure](https://resources.azure.com).  
 
-1. Gå till noden i resursutforskaren, för Apptjänst-miljön (**prenumerationer** > **resursgrupper** > **providers** > **Microsoft.Web** > **hostingEnvironments**). Klicka på den specifika Apptjänstmiljö som du vill uppdatera.
-2. I den högra rutan, klickar du på **läsning och skrivning** i det övre verktygsfältet för att tillåta interaktiva redigering i Resursläsaren.  
-3. Klicka på blå **redigera** knappen så att Resource Manager-mall kan redigeras.
-4. Bläddra längst ned i den högra rutan. Den **clusterSettings** attributet är på längst ned, där du kan ange eller uppdatera dess värde.
-5. Skriv (eller kopiera och klistra in) matrisen konfigurationsvärden som du vill ha i den **clusterSettings** attribut.  
-6. Klicka på gröna **PLACERA** knappen som finns längst upp i den högra rutan för att utföra ändringen i Apptjänst-miljön.
+1. Resursutforskaren, gå toohello nod för hello Apptjänst-miljö (**prenumerationer** > **resursgrupper** > **providers**  >  **Microsoft.Web** > **hostingEnvironments**). Klicka sedan på hello specifika Apptjänst-miljö som du vill tooupdate.
+2. I hello högra rutan, klickar du på **läsning och skrivning** i hello övre verktygsfältet tooallow interaktiva redigering i Resursläsaren.  
+3. Klicka på hello blå **redigera** knappen toomake hello Resource Manager-mall kan redigeras.
+4. Rulla toohello längst ned på hello högra rutan. Hej **clusterSettings** attributet är hello mycket längst ned i där du kan ange eller uppdatera dess värde.
+5. Typen (eller kopiera och klistra in) hello-matris med konfigurationsvärden som du vill använda i hello **clusterSettings** attribut.  
+6. Klicka på hello grön **PLACERA** knappen som finns hello överst i hello högra fönstret toocommit hello ändra toohello Apptjänst-miljö.
 
-Men du skickar ändringen tar ungefär 30 minuter multiplicerat med antalet synliga komponenter i Apptjänst-miljön för att ändringarna ska börja gälla.
-Till exempel om en Apptjänst-miljö har fyra frontwebbservrarna, tar ungefär två timmar för av konfigurationsuppdateringen ska slutföras. Medan konfigurationsändringen lyfts, kan någon annan skalning operations eller ändra konfigurationsåtgärder ske i Apptjänst-miljön.
+Men du skickar hello ändra tar ungefär 30 minuter multiplicerat med hello antal frontwebbservrarna i hello Apptjänstmiljö för hello ändra tootake effekt.
+Till exempel om en Apptjänst-miljö har fyra frontwebbservrarna, tar ungefär två timmar för hello configuration uppdatering toofinish. Medan hello konfigurationsändring lyfts, kan någon annan skalning operations eller ändra konfigurationsåtgärder ske på hello Apptjänst-miljö.
 
 ## <a name="disable-tls-10"></a>Inaktivera TLS 1.0
-En återkommande fråga från kunder, särskilt kunder som arbetar med PCI-överensstämmelse granskningar, så att uttryckligen inaktivera TLS 1.0 för sina appar.
+En återkommande fråga från kunder, särskilt de kunder som arbetar med PCI-överensstämmelse granskningar, är hur tooexplicitly inaktivera TLS 1.0 för sina appar.
 
-TLS 1.0 kan inaktiveras via följande **clusterSettings** post:
+TLS 1.0 kan inaktiveras via hello följande **clusterSettings** post:
 
         "clusterSettings": [
             {
@@ -76,7 +76,7 @@ TLS 1.0 kan inaktiveras via följande **clusterSettings** post:
         ],
 
 ## <a name="change-tls-cipher-suite-order"></a>Ändra TLS cipher suite order
-En annan fråga från kunder är om de kan ändra listan över chiffer som förhandlas fram av servern, och detta kan uppnås genom att ändra den **clusterSettings** enligt nedan. Listan över tillgängliga krypteringssviter kan hämtas från [MSDN-artikel](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).
+En annan fråga från kunder är om de kan ändra hello lista över chiffer som förhandlas fram av servern, och detta kan uppnås genom att ändra hello **clusterSettings** enligt nedan. hello lista över tillgängliga krypteringssviter kan hämtas från [MSDN-artikel](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).
 
         "clusterSettings": [
             {
@@ -86,12 +86,12 @@ En annan fråga från kunder är om de kan ändra listan över chiffer som förh
         ],
 
 > [!WARNING]
-> Om felaktiga värden har angetts för chiffersviten SChannel inte förstår kan alla TLS-kommunikation till servern sluta fungera. I så fall behöver du ta bort den *FrontEndSSLCipherSuiteOrder* post från **clusterSettings** och skicka den uppdaterade mallen Resource Manager om du vill återgå till standardinställningarna cipher suite.  Använd den här funktionen med försiktighet.
+> Om felaktiga värden har angetts för hello cipher suite som SChannel inte förstår kan alla TLS tooyour kommunikationsservern sluta fungera. I så fall behöver du tooremove hello *FrontEndSSLCipherSuiteOrder* post från **clusterSettings** och skicka hello uppdateras Resource Manager mallen toorevert tillbaka toohello standard cipher Suite-inställningar.  Använd den här funktionen med försiktighet.
 > 
 > 
 
 ## <a name="get-started"></a>Kom igång
-Mallwebbplatsen för Azure Quickstart Resource Manager-innehåller en mall med basdefinitionen för [att skapa en Apptjänst-miljö](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
+plats för hello Azure Quickstart Resource Manager-mallen innehåller en mall med hello basdefinitionen för [att skapa en Apptjänst-miljö](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
 
 <!-- LINKS -->
 

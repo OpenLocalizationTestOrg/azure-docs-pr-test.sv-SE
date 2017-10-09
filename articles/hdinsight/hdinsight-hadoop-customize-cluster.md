@@ -1,6 +1,6 @@
 ---
-title: "Anpassa HDInsight-kluster med skriptåtgärder - Azure | Microsoft Docs"
-description: "Lär dig hur du anpassar HDInsight-kluster med skriptåtgärder."
+title: "aaaCustomize HDInsight-kluster med hjälp av skript åtgärder - Azure | Microsoft Docs"
+description: "Lär dig hur toocustomize HDInsight-kluster med skriptåtgärder."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,41 +16,41 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: ec95b6d66c71b4278dd1e16807fcc75f5e8b1c36
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 076fff23e016db47bc7e9963582a545ad638e691
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Anpassa Windows-baserade HDInsight-kluster med skriptåtgärder
-**Script åtgärd** kan användas för att anropa [anpassade skript](hdinsight-hadoop-script-actions.md) när klustret skapas för att installera ytterligare programvara på ett kluster.
+**Script åtgärd** kan vara används tooinvoke [anpassade skript](hdinsight-hadoop-script-actions.md) under hello klusterskapandeprocessen för att installera ytterligare programvara på ett kluster.
 
-Informationen i den här artikeln är specifik för Windows-baserade HDInsight-kluster. Linux-baserade kluster, se [anpassa Linux-baserade HDInsight-kluster med skriptåtgärder](hdinsight-hadoop-customize-cluster-linux.md).
+hello informationen i den här artikeln är särskilda tooWindows-baserade HDInsight-kluster. Linux-baserade kluster, se [anpassa Linux-baserade HDInsight-kluster med skriptåtgärder](hdinsight-hadoop-customize-cluster-linux.md).
 
 > [!IMPORTANT]
-> Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux är hello endast operativsystem på HDInsight version 3.4 eller senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-HDInsight-kluster kan anpassas i en mängd andra sätt, till exempel inklusive ytterligare Azure Storage-konton, ändringar i Hadoop konfigurationsfiler (core-site.xml, hive-site.xml osv.), eller lägga till delade bibliotek (t.ex. Hive, Oozie) till vanliga platser i klustret. Dessa anpassningar kan göras via Azure PowerShell, Azure HDInsight .NET SDK eller Azure-portalen. Mer information finns i [skapa Hadoop-kluster i HDInsight][hdinsight-provision-cluster].
+HDInsight-kluster kan anpassas i en mängd andra sätt, till exempel inklusive ytterligare Azure Storage-konton, ändra hello Hadoop konfigurationsfiler (core-site.xml, hive-site.xml osv.) eller att lägga till delade bibliotek (t.ex. Hive, Oozie) i vanliga platser i hello kluster. Dessa anpassningar kan göras via Azure PowerShell, hello Azure HDInsight .NET SDK eller hello Azure-portalen. Mer information finns i [skapa Hadoop-kluster i HDInsight][hdinsight-provision-cluster].
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
-## <a name="script-action-in-the-cluster-creation-process"></a>Skriptåtgärder i klusterskapandeprocessen
-Skriptåtgärder används endast när ett kluster som håller på att skapas. Följande diagram illustrerar när skriptet körs under skapandeprocessen:
+## <a name="script-action-in-hello-cluster-creation-process"></a>Skriptåtgärder i hello klusterskapandeprocessen
+Skriptåtgärder används endast när ett kluster finns i hello processen att skapas. hello följande diagram illustrerar när skriptet körs under skapandeprocessen hello:
 
 ![HDInsight-kluster anpassning och faserna när klustret skapas][img-hdi-cluster-states]
 
-När skriptet körs klustret försätts den **ClusterCustomization** steget. I det här skedet skriptet körs under kontot system admin parallellt på noderna i klustret, och ger fullständig admin-privilegier på noderna.
+När hello skriptet körs hello klustret registrerar hello **ClusterCustomization** steget. I det här skedet hello skript körs under hello systemkontot admin, parallellt på alla hello angivna noder i klustret hello och ger fullständig admin-privilegier på hello noder.
 
 > [!NOTE]
-> Eftersom du har administratörsrättigheter på klusternoder under den **ClusterCustomization** skede, du kan använda skriptet för att utföra åtgärder som att stoppa och starta tjänster, inklusive Hadoop-relaterade tjänster. Därför som en del av skript, måste du kontrollera att tjänsterna Ambari och andra Hadoop-relaterade tjänster är igång innan körningen för skriptet. De här tjänsterna krävs har kännedom om hälsa och tillstånd för klustret medan det skapas. Om du ändrar någon konfiguration på det kluster som påverkar dessa tjänster måste du använda hjälpfunktioner som tillhandahålls. Läs mer om hjälpfunktioner [utveckla skriptåtgärd skript för HDInsight][hdinsight-write-script].
+> Eftersom du har administratörsrättigheter på hello klusternoder under den **ClusterCustomization** steg, som du kan använda hello skriptet tooperform åtgärder som att stoppa och starta tjänster, inklusive Hadoop-relaterade tjänster. Så som en del av hello skript, måste du se till att hello Ambari och andra Hadoop-relaterade tjänsterna är igång innan hello skriptet är klar. De här tjänsterna krävs toosuccessfully fastställa hello hälsa och status för hello klustret medan det skapas. Om du ändrar någon konfiguration på det kluster som påverkar dessa tjänster måste du använda hello hjälpfunktioner som tillhandahålls. Läs mer om hjälpfunktioner [utveckla skriptåtgärd skript för HDInsight][hdinsight-write-script].
 >
 >
 
-Utdata och i felloggarna för skriptet lagras i standardkontot för lagring som du angav för klustret. Loggfilerna lagras i en tabell med namnet **u < \cluster-name-fragment >< \time-stamp > setuplog**. Det här är sammanställda loggar från skriptet köras på alla noder (huvudnod och arbetarnoder) i klustret.
+hello utdata och hello felloggarna hello skriptet lagras i hello standardkontot för lagring du angett för hello klustret. hello loggfilerna lagras i en tabell med namnet hello **u < \cluster-name-fragment >< \time-stamp > setuplog**. Det här är sammanställda loggar från hello skript köras på alla hello noder (huvudnod och arbetarnoder) i hello kluster.
 
-Varje kluster kan acceptera flera skriptåtgärder som anropas i den ordning som de har angetts. Ett skript kan vara kördes på huvudnoden, arbetsnoderna eller båda.
+Varje kluster kan acceptera flera skriptåtgärder som startas i hello ordning som de har angetts. Ett skript kan vara kördes på hello huvudnod, hello arbetarnoder eller båda.
 
-HDInsight tillhandahåller flera skript för att installera följande komponenter i HDInsight-kluster:
+HDInsight tillhandahåller flera skript tooinstall hello följande komponenter i HDInsight-kluster:
 
 | Namn | Skript |
 | --- | --- |
@@ -60,36 +60,36 @@ HDInsight tillhandahåller flera skript för att installera följande komponente
 | - **Installera Giraph** |https://hdiconfigactions.BLOB.Core.Windows.NET/giraphconfigactionv01/giraph-Installer-v01.ps1. Se [installerar och använder Giraph på HDInsight-kluster](hdinsight-hadoop-giraph-install.md). |
 | **Läsa in Hive-bibliotek** |https://hdiconfigactions.BLOB.Core.Windows.NET/setupcustomhivelibsv01/Setup-customhivelibs-v01.ps1. Se [lägga till Hive-bibliotek i HDInsight-kluster](hdinsight-hadoop-add-hive-libraries.md) |
 
-## <a name="call-scripts-using-the-azure-portal"></a>Anropa skript med hjälp av Azure portal
-**Från Azure-portalen**
+## <a name="call-scripts-using-hello-azure-portal"></a>Anropa skript med hjälp av hello Azure-portalen
+**Från hello Azure-portalen**
 
 1. Skapa ett kluster, enligt beskrivningen i [skapa Hadoop-kluster i HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
-2. Under valfri konfiguration för den **skriptåtgärder** bladet, klickar du på **lägga till skriptåtgärd** att ge information om skriptåtgärd, enligt nedan:
+2. Under valfri konfiguration för hello **skriptåtgärder** bladet, klickar du på **lägga till skriptåtgärd** tooprovide information om hello skriptåtgärd enligt nedan:
 
-    ![Använd skriptåtgärder för att anpassa ett kluster](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "Använd skriptåtgärder att anpassa ett kluster")
+    ![Använd skriptåtgärder toocustomize ett kluster](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "Använd skriptåtgärder toocustomize ett kluster")
 
     <table border='1'>
         <tr><th>Egenskap</th><th>Värde</th></tr>
         <tr><td>Namn</td>
-            <td>Ange ett namn för skriptåtgärden.</td></tr>
+            <td>Ange ett namn för hello skriptåtgärder.</td></tr>
         <tr><td>Skript-URI</td>
-            <td>Ange URI till det skript som anropas för att anpassa klustret. S</td></tr>
+            <td>Ange hello URI toohello skript som är anropade toocustomize hello-kluster. S</td></tr>
         <tr><td>HEAD/Worker</td>
-            <td>Ange noderna (**Head** eller **Worker**) som anpassning skriptet körs.</b>.
+            <td>Ange hello noder (**Head** eller **Worker**) på vilken hello anpassning skript körs.</b>.
         <tr><td>Parametrar</td>
-            <td>Ange parametrar, om det krävs av skriptet.</td></tr>
+            <td>Ange hello parametrar, om det krävs av hello skript.</td></tr>
     </table>
 
-    Tryck på RETUR för att lägga till fler än en skriptåtgärd för att installera flera komponenter i klustret.
-3. Klicka på **Välj** spara skriptet åtgärd konfigurationen och fortsätta med skapa ett kluster.
+    Tryck på RETUR tooadd mer än ett skript åtgärd tooinstall flera komponenter på hello klustret.
+3. Klicka på **Välj** toosave hello skript konfigurationen och fortsätta med skapa ett kluster.
 
 ## <a name="call-scripts-using-azure-powershell"></a>Anropa skript med hjälp av Azure PowerShell
-Den här följande PowerShell-skript visar hur du installerar Spark på Windows-baserat HDInsight-kluster.  
+Den här följande PowerShell-skript visar hur tooinstall Spark på Windows baserade HDInsight-kluster.  
 
     # Provide values for these variables
-    $subscriptionID = "<Azure Suscription ID>" # After "Login-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
+    $subscriptionID = "<Azure Suscription ID>" # After "Login-AzureRmAccount", use "Get-AzureRmSubscription" toolist IDs.
 
-    $nameToken = "<Enter A Name Token>"  # The token is use to create Azure service names.
+    $nameToken = "<Enter A Name Token>"  # hello token is use toocreate Azure service names.
     $namePrefix = $nameToken.ToLower() + (Get-Date -Format "MMdd")
 
     $resourceGroupName = $namePrefix + "rg"
@@ -103,7 +103,7 @@ Den här följande PowerShell-skript visar hur du installerar Spark på Windows-
     $defaultBlobContainerName = $hdinsightClusterName
 
     #############################################################
-    # Connect to Azure
+    # Connect tooAzure
     #############################################################
 
     Try{
@@ -115,7 +115,7 @@ Den här följande PowerShell-skript visar hur du installerar Spark på Windows-
     Select-AzureRmSubscription -SubscriptionId $subscriptionID
 
     #############################################################
-    # Prepare the dependent components
+    # Prepare hello dependent components
     #############################################################
 
     # Create resource group
@@ -141,13 +141,13 @@ Den här följande PowerShell-skript visar hur du installerar Spark på Windows-
     # Create cluster with ApacheSpark
     #############################################################
 
-    # Specify the configuration options
+    # Specify hello configuration options
     $config = New-AzureRmHDInsightClusterConfig `
                 -DefaultStorageAccountName "$defaultStorageAccountName.blob.core.windows.net" `
                 -DefaultStorageAccountKey $defaultStorageAccountKey
 
 
-    # Add a script action to the cluster configuration
+    # Add a script action toohello cluster configuration
     $config = Add-AzureRmHDInsightScriptAction `
                 -Config $config `
                 -Name "Install Spark" `
@@ -166,22 +166,22 @@ Den här följande PowerShell-skript visar hur du installerar Spark på Windows-
             -Config $config
 
 
-Om du vill installera andra program, måste du ersätta skriptfilen i skriptet:
+tooinstall andra program, behöver du tooreplace hello skriptfilen i hello skript:
 
-När du uppmanas, anger du autentiseringsuppgifterna för klustret. Det kan ta flera minuter innan klustret har skapats.
+När du uppmanas du ange hello autentiseringsuppgifter för hello klustret. Det kan ta flera minuter innan hello klustret har skapats.
 
 ## <a name="call-scripts-using-net-sdk"></a>Anropa skript med hjälp av .NET SDK
-I följande exempel visar hur du installerar Spark på Windows-baserat HDInsight-kluster. Om du vill installera annan programvara som behöver du ersätta skriptfilen i koden.
+hello visar följande exempel hur tooinstall Spark på Windows baserade HDInsight-kluster. tooinstall andra program, behöver du tooreplace hello skriptfilen i hello kod.
 
-**Så här skapar du ett HDInsight-kluster med Spark**
+**toocreate ett HDInsight-kluster med Spark**
 
 1. Skapa ett C#-konsolprogram i Visual Studio.
-2. Kör följande kommando från Nuget Package Manager-konsolen.
+2. Kör följande kommando hello från hello Nuget Package Manager-konsolen.
 
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
-3. Använd följande using-instruktioner i filen Program.cs:
+3. Använd hello följande using-instruktioner i hello Program.cs-filen:
 
         using System;
         using System.Security;
@@ -192,14 +192,14 @@ I följande exempel visar hur du installerar Spark på Windows-baserat HDInsight
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
         using Microsoft.Rest;
         using Microsoft.Rest.Azure.Authentication;
-4. Placera koden i klassen med följande:
+4. Placera hello koden i hello klass med hello följande:
 
         private static HDInsightManagementClient _hdiManagementClient;
 
         // Replace with your AAD tenant ID if necessary
         private const string TenantId = UserTokenProvider.CommonTenantId;
         private const string SubscriptionId = "<Your Azure Subscription ID>";
-        // This is the GUID for the PowerShell client. Used for interactive logins in this example.
+        // This is hello GUID for hello PowerShell client. Used for interactive logins in this example.
         private const string ClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
         private const string ResourceGroupName = "<ExistingAzureResourceGroupName>";
         private const string NewClusterName = "<NewAzureHDInsightClusterName>";
@@ -252,11 +252,11 @@ I följande exempel visar hur du installerar Spark på Windows-baserat HDInsight
         }
 
         /// <summary>
-        /// Authenticate to an Azure subscription and retrieve an authentication token
+        /// Authenticate tooan Azure subscription and retrieve an authentication token
         /// </summary>
-        /// <param name="TenantId">The AAD tenant ID</param>
-        /// <param name="ClientId">The AAD client ID</param>
-        /// <param name="SubscriptionId">The Azure subscription ID</param>
+        /// <param name="TenantId">hello AAD tenant ID</param>
+        /// <param name="ClientId">hello AAD client ID</param>
+        /// <param name="SubscriptionId">hello Azure subscription ID</param>
         /// <returns></returns>
         static TokenCloudCredentials Authenticate(string TenantId, string ClientId, string SubscriptionId)
         {
@@ -276,42 +276,42 @@ I följande exempel visar hur du installerar Spark på Windows-baserat HDInsight
         /// <param name="authToken">An authentication token for your Azure subscription</param>
         static void EnableHDInsight(TokenCloudCredentials authToken)
         {
-            // Create a client for the Resource manager and set the subscription ID
+            // Create a client for hello Resource manager and set hello subscription ID
             var resourceManagementClient = new ResourceManagementClient(new TokenCredentials(authToken.Token));
             resourceManagementClient.SubscriptionId = SubscriptionId;
-            // Register the HDInsight provider
+            // Register hello HDInsight provider
             var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
         }
-5. Tryck på **F5** för att köra programmet.
+5. Tryck på **F5** toorun hello program.
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Stöd för öppen källkod programvara som används i HDInsight-kluster
-Tjänsten Microsoft Azure HDInsight är en flexibel plattform som låter dig skapa stordataprogram i molnet med hjälp av ett ekosystem med öppen källkod tekniker formaterat runt Hadoop. Microsoft Azure tillhandahåller en allmän supportnivå för öppen källkod tekniker som beskrivs i den **stöd för Scope** avsnitt i den <a href="http://azure.microsoft.com/support/faq/" target="_blank">Azure Support FAQ webbplats</a>. HDInsight-tjänst ger ytterligare en säkerhetsnivå för stöd för några av komponenterna som beskrivs nedan.
+hello Microsoft Azure HDInsight-tjänst är en flexibel plattform som du kan använda toobuild-stordataprogram i hello molnet med hjälp av ett ekosystem med öppen källkod tekniker formaterat runt Hadoop. Microsoft Azure tillhandahåller en allmän supportnivå för öppen källkod tekniker som beskrivs i hello **stöd för Scope** avsnitt i hello <a href="http://azure.microsoft.com/support/faq/" target="_blank">Azure Support FAQ webbplats</a>. Hej HDInsight-tjänst ger ytterligare en säkerhetsnivå för stöd för några av hello komponenter som beskrivs nedan.
 
-Det finns två typer av komponenter som öppen källkod som är tillgängliga i HDInsight-tjänst:
+Det finns två typer av komponenter som öppen källkod som är tillgängliga i hello HDInsight-tjänst:
 
-* **Inbyggda komponenter** -komponenterna är förinstallerat på HDInsight-kluster och tillhandahåller huvudfunktionerna i klustret. Till exempel YARN ResourceManager Hive-frågespråket (HiveQL) och Mahout biblioteket som hör till den här kategorin. En fullständig lista över komponenter i serverkluster finns i [vad är nytt i Hadoop-klusterversioner som tillhandahålls av HDInsight?](hdinsight-component-versioning.md) </a>.
-* **Anpassade komponenter** -kan du som användare i klustret, installera eller använda i din arbetsbelastning någon komponent som är tillgängliga i communityn eller skapades av du.
+* **Inbyggda komponenter** -komponenterna är förinstallerat på HDInsight-kluster och tillhandahåller huvudfunktionerna i hello klustret. Till exempel tillhör YARN resurshanteraren, hello Hive-frågespråket (HiveQL) och hello Mahout biblioteksresurser toothis kategori. En fullständig lista över komponenter i serverkluster finns i [vad är nytt i hello Hadoop-klusterversioner som tillhandahålls av HDInsight?](hdinsight-component-versioning.md) </a>.
+* **Anpassade komponenter** -du som användare av hello klustret kan installera eller använda i din arbetsbelastning någon komponent som är tillgängliga i hello community eller skapades av du.
 
-Inbyggda komponenter stöds fullt ut och Microsoft-supporten hjälper att isolera och lösa problem relaterade till komponenterna.
+Inbyggda komponenter stöds fullt ut och Microsoft Support kommer att tooisolate och lösa problem relaterade toothese komponenter.
 
 > [!WARNING]
-> Komponenter som ingår i HDInsight-kluster stöds fullt ut och Microsoft-supporten hjälper att isolera och lösa problem relaterade till komponenterna.
+> Komponenter som ingår i hello HDInsight-kluster stöds fullt ut och Microsoft Support kommer att tooisolate och lösa problem relaterade toothese komponenter.
 >
-> Anpassade komponenter få kommersiellt rimliga stöd för att hjälpa dig att felsöka problemet ytterligare. Detta kan resultera i att lösa problemet eller där du uppmanas att engagera tillgängliga kanaler för öppen källkod där djup expertis för att teknik finns. Det finns till exempel många community-webbplatser som kan användas, t.ex: [MSDN-forum för HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Apache-projekt har också project-webbplatser [http://apache.org](http://apache.org), till exempel: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Anpassade komponenter får stöd för kommersiellt rimliga toohelp du toofurther hello felsökning. Detta kan resultera i att lösa problemet hello eller be tooengage tillgängliga kanaler för hello öppnas teknikerna där djup expertis för att teknik finns. Det finns till exempel många community-webbplatser som kan användas, t.ex: [MSDN-forum för HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Apache-projekt har också project-webbplatser [http://apache.org](http://apache.org), till exempel: [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
 >
 >
 
-HDInsight-tjänst finns flera sätt att använda anpassade komponenter. Oavsett hur en komponent används eller installeras i klustret, gäller samma nivå av support. Nedan visas en lista över de vanligaste sätten att anpassade komponenter kan användas på HDInsight-kluster:
+Hej HDInsight-tjänst finns flera sätt toouse anpassade komponenter. Oavsett hur en komponent används eller installeras på hello-kluster, gäller hello samma supportnivå. Nedan visas en lista över hello vanligaste sätten att anpassade komponenter kan användas på HDInsight-kluster:
 
-1. Jobbet - Hadoop och andra typer av jobb som kör eller använda anpassade komponenter kan skickas till klustret.
-2. Anpassning av kluster - när klustret skapas som du kan ange ytterligare inställningar och anpassade komponenter som ska installeras på klusternoderna.
-3. Exempel - för populära anpassade komponenter, Microsoft och andra kan ge exempel på hur du kan använda de här komponenterna i HDInsight-kluster. De här exemplen tillhandahålls utan stöd.
+1. Jobbet - Hadoop och andra typer av jobb som kör eller använda anpassade komponenter kan vara skickade toohello.
+2. Anpassning av kluster - när klustret skapas som du kan ange ytterligare inställningar och anpassade komponenter som ska installeras på hello klusternoder.
+3. Exempel - för populära anpassade komponenter, Microsoft och andra kan ge exempel på hur du kan använda de här komponenterna på hello HDInsight-kluster. De här exemplen tillhandahålls utan stöd.
 
 ## <a name="develop-script-action-scripts"></a>Utveckla skriptåtgärd skript
 Se [utveckla skriptåtgärd skript för HDInsight][hdinsight-write-script].
 
 ## <a name="see-also"></a>Se även
-* [Skapa Hadoop-kluster i HDInsight] [ hdinsight-provision-cluster] innehåller instruktioner om hur du skapar ett HDInsight-kluster med hjälp av andra anpassade alternativ.
+* [Skapa Hadoop-kluster i HDInsight] [ hdinsight-provision-cluster] innehåller instruktioner om hur toocreate ett HDInsight-kluster med hjälp av andra anpassade alternativ.
 * [Utveckla skriptåtgärd skript för HDInsight][hdinsight-write-script]
 * [Installera och använda Spark på HDInsight-kluster][hdinsight-install-spark]
 * [Installera och använda R i HDInsight-kluster][hdinsight-install-r]

@@ -1,5 +1,5 @@
 ---
-title: "Ändra inställningar för FabricTransport i Azure mikrotjänster | Microsoft Docs"
+title: "aaaChange FabricTransport inställningar i Azure mikrotjänster | Microsoft Docs"
 description: "Lär dig mer om hur du konfigurerar Azure Service Fabric aktören kommunikationsinställningar."
 services: Service-Fabric
 documentationcenter: .net
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 75bdd4644f4ccc583271b9169c50a375e2cd6629
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e312b475407eb95a435b93d80c0f2e9618b9ea1f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurera inställningar för FabricTransport för Reliable Actors
 
-Här följer de inställningar som du kan konfigurera:
+Här följer hello-inställningar som du kan konfigurera:
 - C#: [FabricTransportRemotingSettings](
 https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 - Java: [FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 
-Du kan ändra standardkonfigurationen av FabricTransport på följande sätt.
+Du kan ändra hello standardkonfigurationen av FabricTransport på följande sätt.
 
 ## <a name="assembly-attribute"></a>Sammansättningsattributet
 
-Den [FabricTransportActorRemotingProvider](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute) måste attributet som ska tillämpas på aktören klienten och aktören service sammansättningar.
+Hej [FabricTransportActorRemotingProvider](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute) måste attributet toobe som tillämpats på hello aktören klienten och aktören service sammansättningar.
 
-I följande exempel visas hur du ändrar standardvärdet för FabricTransport OperationTimeout inställningar:
+hello som följande exempel visar hur toochange hello standardvärdet FabricTransport OperationTimeout inställningar:
 
   ```csharp
     using Microsoft.ServiceFabric.Actors.Remoting.FabricTransport;
@@ -49,11 +49,11 @@ I följande exempel visas hur du ändrar standardvärdet för FabricTransport Op
 
 ## <a name="config-package"></a>Konfigurationspaketet
 
-Du kan använda en [konfigurationspaketet](service-fabric-application-model.md) att ändra standardkonfigurationen.
+Du kan använda en [konfigurationspaketet](service-fabric-application-model.md) toomodify hello standardkonfigurationen.
 
-### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Konfigurera FabricTransport inställningar för tjänsten aktören
+### <a name="configure-fabrictransport-settings-for-hello-actor-service"></a>Konfigurera inställningar för FabricTransport för hello aktören service
 
-Lägg till ett TransportSettings avsnitt i filen settings.xml.
+Lägg till ett TransportSettings avsnitt i hello settings.xml-filen.
 
 Som standard söker aktören koden för SectionName som ”&lt;ActorName&gt;TransportSettings”. Om som hittas söker efter SectionName som ”TransportSettings”.
 
@@ -72,9 +72,9 @@ Som standard söker aktören koden för SectionName som ”&lt;ActorName&gt;Tran
    </Section>
   ```
 
-### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Konfigurera inställningar för FabricTransport för klientsammansättningen aktören
+### <a name="configure-fabrictransport-settings-for-hello-actor-client-assembly"></a>Konfigurera inställningar för FabricTransport för hello aktören klientsammansättningen
 
-Om klienten inte körs som en del av en tjänst, kan du skapa en ”&lt;klienten Exe-namn&gt;. settings.xml” filen på samma plats som klienten .exe-fil. Lägg sedan till ett TransportSettings avsnitt i filen. SectionName ska vara ”TransportSettings”.
+Om hello klienten inte körs som en del av en tjänst, kan du skapa en ”&lt;klienten Exe-namn&gt;. settings.xml” filen i hello samma plats som hello klienten .exe-fil. Lägg sedan till ett TransportSettings avsnitt i filen. SectionName ska vara ”TransportSettings”.
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -96,7 +96,7 @@ Om klienten inte körs som en del av en tjänst, kan du skapa en ”&lt;klienten
 
   * Konfigurera FabricTransport inställningar för säker aktören Tjänstklienten med sekundärt certifikat.
   Sekundär certifikatinformationen kan läggas till genom att lägga till parametern CertificateFindValuebySecondary.
-  Nedan visas i exemplet för lyssnare TransportSettings.
+  Nedan visas hello exempel hello lyssnare TransportSettings.
 
     ```xml
     <Section Name="TransportSettings">
@@ -110,7 +110,7 @@ Om klienten inte körs som en del av en tjänst, kan du skapa en ”&lt;klienten
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
      ```
-     Nedan visas i exemplet för klienten TransportSettings.
+     Nedan visas hello exempel hello klienten TransportSettings.
 
     ```xml
    <Section Name="TransportSettings">
@@ -125,8 +125,8 @@ Om klienten inte körs som en del av en tjänst, kan du skapa en ”&lt;klienten
     </Section>
      ```
     * Konfigurera inställningar för FabricTransport för att skydda aktören Service eller-klienten med hjälp av ämnesnamnet.
-    Användaren måste ange findType som FindBySubjectName, lägga till CertificateIssuerThumbprints och CertificateRemoteCommonNames värden.
-  Nedan visas i exemplet för lyssnare TransportSettings.
+    Användaren måste tooprovide findType som FindBySubjectName, lägga till CertificateIssuerThumbprints och CertificateRemoteCommonNames värden.
+  Nedan visas hello exempel hello lyssnare TransportSettings.
 
      ```xml
     <Section Name="TransportSettings">
@@ -140,7 +140,7 @@ Om klienten inte körs som en del av en tjänst, kan du skapa en ”&lt;klienten
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
     ```
-  Nedan visas i exemplet för klienten TransportSettings.
+  Nedan visas hello exempel hello klienten TransportSettings.
 
     ```xml
      <Section Name="TransportSettings">

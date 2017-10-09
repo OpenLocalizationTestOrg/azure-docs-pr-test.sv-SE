@@ -1,6 +1,6 @@
 ---
-title: Mallfunktioner Azure Resource Manager - resurser | Microsoft Docs
-description: "Beskriver funktionerna du använder i en Azure Resource Manager-mall för att hämta värden om resurser."
+title: "Mallfunktioner för aaaAzure Resource Manager - resurser | Microsoft Docs"
+description: "Beskriver hello funktioner toouse i en Azure Resource Manager mallen tooretrieve värden om resurser."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2017
 ms.author: tomfitz
-ms.openlocfilehash: 494ade55f21c19d9c68d5cc52756528401d9bb77
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c9d524b338b8b7ea6d8c9e0135d48e4fb8f167c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Resursfunktioner för Azure Resource Manager-mallar
 
-Hanteraren för filserverresurser innehåller följande funktioner för att hämta resurs värden:
+Resource Manager tillhandahåller hello följande funktioner för att hämta resurs värden:
 
 * [listKeys och lista {Value}](#listkeys)
 * [providers](#providers)
@@ -31,7 +31,7 @@ Hanteraren för filserverresurser innehåller följande funktioner för att häm
 * [resurs-ID](#resourceid)
 * [prenumeration](#subscription)
 
-Om du vill hämta värden från parametrar, variabler eller den aktuella distributionen finns [distribution värdet funktioner](resource-group-template-functions-deployment.md).
+tooget värden från parametrar, variabler eller hello aktuella distribution, se [distribution värdet funktioner](resource-group-template-functions-deployment.md).
 
 <a id="listkeys" />
 <a id="list" />
@@ -41,18 +41,18 @@ Om du vill hämta värden från parametrar, variabler eller den aktuella distrib
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion)`
 
-Returnerar värden för någon resurstyp av som har stöd för listan igen. Den vanligaste användningen är `listKeys`. 
+Returnerar hello värden för någon resurstyp av som har stöd för hello listan igen. hello vanligaste användningen är `listKeys`. 
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| resourceName eller resourceIdentifier |Ja |Sträng |Unik identifierare för resursen. |
-| apiVersion |Ja |Sträng |API-versionen av resursen runtime-tillståndet. Normalt i formatet, **åååå-mm-dd**. |
+| resourceName eller resourceIdentifier |Ja |Sträng |Unik identifierare för hello resurs. |
+| apiVersion |Ja |Sträng |API-versionen av resursen runtime-tillståndet. Normalt i hello-format, **åååå-mm-dd**. |
 
 ### <a name="return-value"></a>Returvärde
 
-Det returnerade objektet från listKeys har följande format:
+hello returnerade objekt från listKeys har hello följande format:
 
 ```json
 {
@@ -71,32 +71,32 @@ Det returnerade objektet från listKeys har följande format:
 }
 ```
 
-Andra listfunktioner har olika returnerade format. Om du vill se format för en funktion, inkludera den i avsnittet utdata som visas i exemplet mallen. 
+Andra listfunktioner har olika returnerade format. toosee hello format för en funktion, inkludera den i hello utdata avsnittet som visas i hello exempelmall. 
 
 ### <a name="remarks"></a>Kommentarer
 
-Alla åtgärder som börjar med **lista** kan användas som en funktion i mallen. De tillgängliga åtgärderna innehåller inte bara listKeys, men även åtgärder som `list`, `listAdminKeys`, och `listStatus`. Du kan dock använda **lista** åtgärder som kräver att värden i begärandetexten. Till exempel den [lista kontots SAS](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) åtgärden kräver begärantext som *signedExpiry*, så du inte kan använda den i en mall.
+Alla åtgärder som börjar med **lista** kan användas som en funktion i mallen. hello tillgängliga åtgärder innehåller inte bara listKeys, men även åtgärder som `list`, `listAdminKeys`, och `listStatus`. Du kan dock använda **lista** åtgärder som kräver att värden i hello begäran. Till exempel hello [lista kontots SAS](/rest/api/storagerp/storageaccounts#StorageAccounts_ListAccountSAS) åtgärden kräver begärantext som *signedExpiry*, så du inte kan använda den i en mall.
 
-För att avgöra vilka resurstyper har en liståtgärd har du följande alternativ:
+toodetermine vilka resurstyper har en liståtgärd, har du hello följande alternativ:
 
-* Visa den [REST-API: et](/rest/api/) för resursprovidern och leta efter Liståtgärder. Till exempel lagringskonton har den [listKeys åtgärden](/rest/api/storagerp/storageaccounts#StorageAccounts_ListKeys).
-* Använd den [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) PowerShell-cmdlet. I följande exempel hämtas alla Liståtgärder för storage-konton:
+* Visa hello [REST-API: et](/rest/api/) för resursprovidern och leta efter Liståtgärder. Till exempel storage-konton har hello [listKeys åtgärden](/rest/api/storagerp/storageaccounts#StorageAccounts_ListKeys).
+* Använd hello [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) PowerShell-cmdlet. hello hämtas följande exempel alla Liståtgärder för storage-konton:
 
   ```powershell
   Get-AzureRmProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
   ```
-* Du kan använda kommandot Azure CLI för att filtrera listan åtgärderna:
+* Använd följande Azure CLI kommando toofilter endast hello Liståtgärder hello:
 
   ```azurecli
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-Ange resursen med hjälp av antingen den [resourceId funktionen](#resourceid), eller formatet `{providerNamespace}/{resourceType}/{resourceName}`.
+Ange hello resursen med hjälp av antingen hello [resourceId funktionen](#resourceid), eller hello format `{providerNamespace}/{resourceType}/{resourceName}`.
 
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du återställer de primära och sekundära nycklarna från ett lagringskonto i avsnittet utdata.
+hello följande exempel visas hur tooreturn hello primära och sekundära nycklarna från ett lagringskonto i hello matar ut avsnitt.
 
 ```json
 {
@@ -122,18 +122,18 @@ I följande exempel visas hur du återställer de primära och sekundära nyckla
 ## <a name="providers"></a>providers
 `providers(providerNamespace, [resourceType])`
 
-Returnerar information om en resursprovider och dess resurstyper som stöds. Om du inte anger en resurstyp returnerar funktionen typerna som stöds för resursprovidern.
+Returnerar information om en resursprovider och dess resurstyper som stöds. Om du inte anger en resurstyp returneras hello alla typer av hello stöds för hello resursprovidern.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Ja |Sträng |Namespace av providern |
-| resourceType |Nej |Sträng |Typ av resurs i det angivna namnområdet. |
+| providerNamespace |Ja |Sträng |Namespace hello-provider |
+| resourceType |Nej |Sträng |hello typ av resurs i hello angetts namnområde. |
 
 ### <a name="return-value"></a>Returvärde
 
-Varje typ som stöds returneras i följande format: 
+Varje typ som stöds returneras i hello följande format: 
 
 ```json
 {
@@ -143,11 +143,11 @@ Varje typ som stöds returneras i följande format:
 }
 ```
 
-Matrisen sorteringen av de returnerade värdena är inte säkert.
+Matrisen sorteringen av hello returnerade värden inte är säkert.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder funktionen providern:
+hello som följande exempel visar hur toouse hello providern funktionen:
 
 ```json
 {
@@ -163,7 +163,7 @@ I följande exempel visas hur du använder funktionen providern:
 }
 ```
 
-Föregående exempel returnerar ett objekt i följande format:
+hello föregående exempel returnerar ett objekt i hello följande format:
 
 ```json
 {
@@ -197,21 +197,21 @@ Returnerar ett objekt som representerar en resurs runtime-tillståndet.
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | resourceName eller resourceIdentifier |Ja |Sträng |Namn eller unik identifierare för en resurs. |
-| apiVersion |Nej |Sträng |API-versionen av den angivna resursen. Inkludera den här parametern när resursen inte är etablerad inom samma mall. Normalt i formatet, **åååå-mm-dd**. |
+| apiVersion |Nej |Sträng |API-versionen av hello angivna resursen. Inkludera den här parametern när hello resursen inte har etablerats inom samma mall. Normalt i hello-format, **åååå-mm-dd**. |
 
 ### <a name="return-value"></a>Returvärde
 
-Varje resurstypen returnerar andra egenskaper för funktionen referens. Funktionen returnerar inte ett enda fördefinierade format. Returnera objektet om du vill visa egenskaperna för en resurstyp i avsnittet utdata som visas i exemplet.
+Varje resurstypen returnerar andra egenskaper för hello referens-funktionen. hello funktionen returnerar inte ett enda fördefinierade format. toosee hello egenskaper för en resurstyp returnerar hello objekt i hello matar ut avsnittet enligt hello exempel.
 
 ### <a name="remarks"></a>Kommentarer
 
-Funktionen referens hämtar sitt värde från en runtime-tillståndet och kan därför inte användas i avsnittet variables. Det kan användas i utdata avsnitt i en mall. 
+hello referens funktionen hämtar sitt värde från en runtime-tillståndet och kan därför inte användas i hello variabler avsnitt. Det kan användas i utdata avsnitt i en mall. 
 
-Med hjälp av funktionen referens deklarera du implicit att en resurs beror på en annan resurs om den refererade resursen etableras inom samma mall. Du behöver inte också använda dependsOn-egenskapen. Funktionen utvärderas inte förrän den refererade resursen har slutfört distributionen.
+Med funktionen hello referens deklarera du implicit att en resurs beror på en annan resurs om hello refererar till resursen har etablerats i samma mall. Du behöver inte tooalso Använd hello dependsOn-egenskapen. hello utvärderas funktionen inte förrän hello refererade resursen har slutfört distributionen.
 
-Skapa en mall som returnerar objektet i avsnittet utdata om du vill se egenskapsnamn och värden för en resurstyp. Om du har en befintlig resurs av den typen returnerar mallen för objektet utan att distribuera nya resurser. 
+Skapa en mall som hämtar hello objekt i hello utdata toosee hello egenskapsnamn och värden för en resurstyp. Om du har en befintlig resurs av den typen returnerar mallen hello-objekt utan att distribuera nya resurser. 
 
-Normalt använder du den **referens** funktionen för att returnera ett visst värde från ett objekt, till exempel slutpunkt för blob-URI eller fullständigt domännamn.
+Normalt använder du hello **referens** fungerar tooreturn ett visst värde från ett objekt, t.ex slutpunkt för blob-hello URI eller fullständigt domännamn.
 
 ```json
 "outputs": {
@@ -228,7 +228,7 @@ Normalt använder du den **referens** funktionen för att returnera ett visst v�
 
 ### <a name="example"></a>Exempel
 
-Använd följande för att distribuera och referera till resursen i samma mall:
+referens- och toodeploy hello-resurs i hello samma mall, Använd:
 
 ```json
 {
@@ -263,7 +263,7 @@ Använd följande för att distribuera och referera till resursen i samma mall:
 }
 ``` 
 
-Föregående exempel returnerar ett objekt i följande format:
+hello föregående exempel returnerar ett objekt i hello följande format:
 
 ```json
 {
@@ -281,7 +281,7 @@ Föregående exempel returnerar ett objekt i följande format:
 }
 ```
 
-I följande exempel refererar till ett lagringskonto som inte har distribuerats i den här mallen. Storage-konto finns redan i samma resursgrupp.
+hello följande exempel refererar till ett lagringskonto som inte har distribuerats i den här mallen. hello storage-konto finns redan i hello samma resursgrupp.
 
 ```json
 {
@@ -307,11 +307,11 @@ I följande exempel refererar till ett lagringskonto som inte har distribuerats 
 ## <a name="resourcegroup"></a>resourceGroup
 `resourceGroup()`
 
-Returnerar ett objekt som representerar den aktuella resursgruppen. 
+Returnerar ett objekt som representerar hello aktuella resursgruppen. 
 
 ### <a name="return-value"></a>Returvärde
 
-Det returnerade objektet är i följande format:
+hello returnerade objektet är i hello följande format:
 
 ```json
 {
@@ -328,7 +328,7 @@ Det returnerade objektet är i följande format:
 
 ### <a name="remarks"></a>Kommentarer
 
-Ett vanligt användningsområde för funktionen resourceGroup är att skapa resurser på samma plats som resursgruppen. I följande exempel används resursgruppens plats tilldelas platsen för en webbplats.
+Ett vanligt användningsområde för hello resourceGroup funktionen är toocreate resurser i hello samma plats som hello resursgrupp. hello följande exempel används hello resursgruppens plats tooassign hello plats för en webbplats.
 
 ```json
 "resources": [
@@ -344,7 +344,7 @@ Ett vanligt användningsområde för funktionen resourceGroup är att skapa resu
 
 ### <a name="example"></a>Exempel
 
-Följande mall returnerar egenskaperna för resursgruppen.
+hello returnerar följande mall hello hello resursgruppens egenskaper.
 
 ```json
 {
@@ -360,7 +360,7 @@ Följande mall returnerar egenskaperna för resursgruppen.
 }
 ```
 
-Föregående exempel returnerar ett objekt i följande format:
+hello föregående exempel returnerar ett objekt i hello följande format:
 
 ```json
 {
@@ -378,21 +378,21 @@ Föregående exempel returnerar ett objekt i följande format:
 ## <a name="resourceid"></a>resourceId
 `resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
 
-Returnerar den unika identifieraren för en resurs. Du kan använda den här funktionen när resursnamnet är tvetydigt eller inte etablerade inom samma mall. 
+Returnerar hello Unik identifierare för en resurs. Du använder den här funktionen när hello resursnamnet är tvetydigt eller inte etablerade inom hello samma mall. 
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Nej |sträng (i GUID-format) |Standardvärdet är den aktuella prenumerationen. Ange det här värdet när du vill hämta en resurs i en annan prenumeration. |
-| resourceGroupName |Nej |Sträng |Standardvärdet är aktuella resursgruppen. Ange det här värdet när du vill hämta en resurs i en annan resursgrupp. |
+| subscriptionId |Nej |sträng (i GUID-format) |Standardvärdet är hello aktuell prenumeration. Ange det här värdet när du behöver tooretrieve en resurs i en annan prenumeration. |
+| resourceGroupName |Nej |Sträng |Standardvärdet är aktuella resursgruppen. Ange det här värdet när du behöver tooretrieve en resurs i en annan resursgrupp. |
 | resourceType |Ja |Sträng |Typ av resurs inklusive resursleverantörens namnrymd. |
 | resourceName1 |Ja |Sträng |Namnet på resursen. |
 | resourceName2 |Nej |Sträng |Nästa resurs namn segment om resursen är kapslad. |
 
 ### <a name="return-value"></a>Returvärde
 
-Identifieraren returneras i följande format:
+hello identifierare returneras i hello följande format:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -400,33 +400,33 @@ Identifieraren returneras i följande format:
 
 ### <a name="remarks"></a>Kommentarer
 
-De parametervärden som du anger beror på om resursen är i samma prenumeration och resurs grupp som den aktuella distributionen.
+hello parametervärden som du anger beror på om hello resursen är i hello samma prenumeration och resurs grupp som hello aktuella distributionen.
 
-För att få resurs-ID för ett lagringskonto i samma prenumeration och resursgrupp, använder du:
+tooget hello resurs-ID för ett lagringskonto i hello samma prenumeration och resursgrupp, Använd:
 
 ```json
 "[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-För att få resurs-ID för ett lagringskonto i samma prenumeration, men en annan resursgrupp, använder du:
+tooget hello resurs-ID för ett lagringskonto i hello samma prenumeration, men en annan resursgrupp, Använd:
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-För att få resurs-ID för ett lagringskonto i en annan prenumeration och resursgrupp, använder du:
+tooget hello resurs-ID för ett lagringskonto i en annan prenumeration och resursgrupp, Använd:
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-För att få resurs-ID för en databas i en annan resursgrupp, använder du:
+Använd tooget hello resurs-ID för en databas i en annan resursgrupp:
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
 ```
 
-Du behöver ofta, Använd den här funktionen när du använder ett lagringskonto eller ett virtuellt nätverk i en annan resursgrupp. I följande exempel visas hur en resurs från en extern resursgrupp enkelt kan användas:
+Ofta måste toouse den här funktionen när du använder ett lagringskonto eller ett virtuellt nätverk i en annan resursgrupp. hello följande exempel visas hur en resurs från en extern resursgrupp enkelt kan användas:
 
 ```json
 {
@@ -473,7 +473,7 @@ Du behöver ofta, Använd den här funktionen när du använder ett lagringskont
 
 ### <a name="example"></a>Exempel
 
-I följande exempel returneras resurs-ID för ett lagringskonto i resursgruppen:
+hello följande exempel returnerar hello resurs-ID för ett lagringskonto i hello resursgrupp:
 
 ```json
 {
@@ -501,7 +501,7 @@ I följande exempel returneras resurs-ID för ett lagringskonto i resursgruppen:
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -515,11 +515,11 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="subscription"></a>prenumeration
 `subscription()`
 
-Returnerar information om prenumerationen för den aktuella distributionen. 
+Returnerar information om hello prenumerationen för hello aktuella distributionen. 
 
 ### <a name="return-value"></a>Returvärde
 
-Funktionen returnerar följande format:
+hello funktionen returnerar hello följande format:
 
 ```json
 {
@@ -532,7 +532,7 @@ Funktionen returnerar följande format:
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas funktionen prenumeration anropas i avsnittet utdata. 
+hello visar följande exempel hello prenumeration funktionen anropas under hello utdata. 
 
 ```json
 {
@@ -549,8 +549,8 @@ I följande exempel visas funktionen prenumeration anropas i avsnittet utdata.
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-* En beskrivning av avsnitt i en Azure Resource Manager-mallen finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
-* Om du vill slå samman flera mallar, se [använda länkade mallar med Azure Resource Manager](resource-group-linked-templates.md).
-* Iterera ett angivet antal gånger när du skapar en typ av resurs finns [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md).
-* Information om hur du distribuerar mallen som du har skapat finns [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
+* En beskrivning av hello avsnitt i en Azure Resource Manager-mallen finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
+* flera mallar finns i toomerge [använda länkade mallar med Azure Resource Manager](resource-group-linked-templates.md).
+* tooiterate ett angivet antal gånger när du skapar en typ av resurs finns [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md).
+* toosee hur toodeploy hello mallen som du har skapat, finns i [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
 

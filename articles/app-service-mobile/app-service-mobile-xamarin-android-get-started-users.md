@@ -1,6 +1,6 @@
 ---
-title: "Kom igång med Mobile Apps i Xamarin Android-autentisering"
-description: "Lär dig hur du använder Mobilappar för att autentisera användare för Xamarin Android-appen via en mängd olika identitetsleverantörer, inklusive AAD, Google, Facebook, Twitter och Microsoft."
+title: "aaaGet igång med Mobile Apps i Xamarin Android-autentisering"
+description: "Lär dig hur toouse Mobile Apps tooauthenticate användare av Xamarin Android-app via en mängd olika identitetsleverantörer, inklusive AAD, Google, Facebook, Twitter och Microsoft."
 services: app-service\mobile
 documentationcenter: xamarin
 author: ggailey777
@@ -14,47 +14,47 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panarasi
-ms.openlocfilehash: 8f9a1109018c708d52cdcb7b8bce43861cecd31c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 500a4efa816e4f6d75d359e31d6357da56a72f6e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-authentication-to-your-xamarinandroid-app"></a>Lägg till autentisering i Xamarin.Android-app
+# <a name="add-authentication-tooyour-xamarinandroid-app"></a>Lägg till autentisering tooyour Xamarin.Android-app
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-Det här avsnittet visar hur du autentiserar användare i en Mobilapp från klientprogrammet. I kursen får du lägger till autentisering i Snabbstart-projektet som en identitetsleverantör som stöds av Azure Mobile Apps. Efter att kunna autentiseras och auktoriseras i Mobile App visas användar-ID-värdet.
+Det här avsnittet beskrivs hur du tooauthenticate användare av en Mobilapp från klientprogrammet. Lägg till autentisering toohello snabbstartsprojekt en identitetsleverantör som stöds av Azure Mobile Apps i den här självstudiekursen. Efter att kunna autentiseras och auktoriseras i hello Mobilapp visas hello användar-ID-värdet.
 
-Den här kursen är baserad på Mobilapp Snabbstart. Du måste också slutföra kursen [skapa en Xamarin.Android-app]. Om du inte använder serverprojekt hämtade Snabbstart, måste du lägga till tillägget autentiseringspaket projektet. Mer information om server tilläggspaket finns [arbeta med serverdelen .NET SDK för Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Den här kursen är baserad på hello Mobilapp Snabbstart. Du måste också slutföra kursen hello [skapa en Xamarin.Android-app]. Om du inte använder hello laddat ned Snabbstart serverprojekt, måste du lägga till hello autentisering tillägget paketet tooyour projekt. Mer information om server tilläggspaket finns [arbeta med serverdelen för hello .NET SDK för Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 ## <a name="register"></a>Registrera din app för autentisering och konfigurera Apptjänster
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Lägg till din app i tillåtna externa omdirigerings-URL
+## <a name="redirecturl"></a>Lägg till din app toohello tillåtna externa omdirigerings-URL
 
-Säker autentisering måste du definiera en ny URL-schema för din app. Detta gör att autentiseringssystemet kan omdirigera tillbaka till din app när autentiseringen är klar. I den här självstudiekursen kommer vi använda URL-schemat _appname_ i hela. Du kan dock använda alla URL-schema som du väljer. Det bör vara unikt för din mobila program. Du vill aktivera omdirigering på serversidan:
+Säker autentisering måste du definiera en ny URL-schema för din app. Detta tillåter hello autentisering system tooredirect tillbaka tooyour appen när hello-autentiseringen är klar. I den här självstudiekursen kommer vi använda hello URL-schema _appname_ i hela. Du kan dock använda alla URL-schema som du väljer. Det bör vara unikt tooyour mobila program. tooenable hello omdirigering på serversidan hello:
 
-1. Välj din Apptjänst i [Azure-portalen].
+1. I hello [Azure portal], väljer du din Apptjänst.
 
-2. Klicka på den **autentisering / auktorisering** menyalternativet.
+2. Klicka på hello **autentisering / auktorisering** menyalternativet.
 
-3. I den **tillåtna externa omdirigerings-URL: er**, ange `url_scheme_of_your_app://easyauth.callback`.  Den **url_scheme_of_your_app** i den här strängen är URL-schemat för din mobila program.  Det bör följa den normala URL specifikation för ett protokoll (Använd bokstäver och siffror och börja med en bokstav).  Du bör anteckna den sträng som du väljer när du behöver justera mobilprogram koden med URL-schemat på flera platser.
+3. I hello **tillåtna externa omdirigerings-URL: er**, ange `url_scheme_of_your_app://easyauth.callback`.  Hej **url_scheme_of_your_app** i den här strängen är hello URL-schema för din mobila program.  Det bör följa den normala URL specifikation för ett protokoll (Använd bokstäver och siffror och börja med en bokstav).  Du bör anteckna hello sträng som du väljer när du behöver tooadjust mobilprogram koden med hello URL-schemat på flera platser.
 
 4. Klicka på **OK**.
 
 5. Klicka på **Spara**.
 
-## <a name="permissions"></a>Begränsa behörighet för autentiserade användare
+## <a name="permissions"></a>Begränsa behörigheter tooauthenticated användare
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Kör klientprojektet i Visual Studio eller Xamarin Studio på en enhet eller emulator. Kontrollera att ett undantag med en statuskod 401 (obehörig) aktiveras när appen startar. Detta beror på att appen försöker få åtkomst till din mobilappsserverdel som en oautentiserad användare. Den *TodoItem* tabellen nu kräver autentisering.
+Kör hello klientprojekt i Visual Studio eller Xamarin Studio på en enhet eller emulator. Kontrollera att ett undantag med en statuskod 401 (obehörig) utlöses efter hello appen startar. Detta beror på att hello app försöker tooaccess serverdelen för Mobilappen som en oautentiserad användare. Hej *TodoItem* tabellen nu kräver autentisering.
 
-Därefter uppdaterar du klientappen till begäran resurser från serverdelen för Mobilappen med en autentiserad användare.
+Därefter uppdaterar du hello klienten app toorequest resurser från hello mobilappsserverdel med en autentiserad användare.
 
-## <a name="add-authentication"></a>Lägg till autentisering i appen
-Appen har uppdaterats så att användare måste trycker du på den **inloggning** knappen och autentisera innan data visas.
+## <a name="add-authentication"></a>Lägg till autentisering toohello app
+hello appen är uppdaterade toorequire användare tootap hello **inloggning** knappen och autentisera innan data visas.
 
-1. Lägg till följande kod i den **TodoActivity** klass:
+1. Lägg till följande kod toohello hello **TodoActivity** klass:
    
         // Define a authenticated user.
         private MobileServiceUser user;
@@ -84,24 +84,24 @@ Appen har uppdaterats så att användare måste trycker du på den **inloggning*
             // Load data only after authentication succeeds.
             if (await Authenticate())
             {
-                //Hide the button after authentication succeeds.
+                //Hide hello button after authentication succeeds.
                 FindViewById<Button>(Resource.Id.buttonLoginUser).Visibility = ViewStates.Gone;
    
-                // Load the data.
+                // Load hello data.
                 OnRefreshItemsSelected();
             }
         }
    
-    Detta skapar en ny metod för att autentisera en användare och en metod hanterare för en ny **inloggning** knappen. I ovanstående exempelkoden användaren autentiseras med hjälp av en inloggning med Facebook. En dialogruta för att visa det användar-ID som autentiseras en gång.
+    Detta skapar en ny metod tooauthenticate en användare och en metod hanterare för en ny **inloggning** knappen. hello användaren i hello exempelkod ovan autentiseras med hjälp av en inloggning med Facebook. En dialogruta är används toodisplay hello användar-ID som autentiseras en gång.
    
    > [!NOTE]
-   > Om du använder en identitetsleverantör än Facebook, ändra värdet som skickas till **LoginAsync** ovan till något av följande: *MicrosoftAccount*, *Twitter*,  *Google*, eller *WindowsAzureActiveDirectory*.
+   > Om du använder en identitetsleverantör än Facebook ändrar hello-värdet som skickades för**LoginAsync** ovan tooone av hello följande: *MicrosoftAccount*, *Twitter*, *Google*, eller *WindowsAzureActiveDirectory*.
    > 
    > 
-2. I den **OnCreate** metod, ta bort eller kommenterar ut följande kodrad:
+2. I hello **OnCreate** metod-, delete- eller kommenterar ut hello följande kodrad:
    
         OnRefreshItemsSelected ();
-3. Lägg till följande i filen Activity_To_Do.axml *LoginUser* knappen definitionen innan den befintliga *AddItem* knappen:
+3. Lägg till följande hello i hello Activity_To_Do.axml filen *LoginUser* knappen definitionen innan hello befintliga *AddItem* knappen:
    
           <Button
             android:id="@+id/buttonLoginUser"
@@ -109,10 +109,10 @@ Appen har uppdaterats så att användare måste trycker du på den **inloggning*
             android:layout_height="wrap_content"
             android:onClick="LoginUser"
             android:text="@string/login_button_text" />
-4. Lägg till följande element i filen Strings.xml resurser:
+4. Lägg till följande element toohello Strings.xml resursfilen hello:
    
         <string name="login_button_text">Sign in</string>
-5. Öppna filen AndroidManifest.xml, Lägg till följande kod inuti `<application>` XML-elementet:
+5. Öppna hello AndroidManifest.xml filen, lägga till följande kod i hello `<application>` XML-elementet:
 
         <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
           <intent-filter>
@@ -123,7 +123,7 @@ Appen har uppdaterats så att användare måste trycker du på den **inloggning*
           </intent-filter>
         </activity>
 
-6. I Visual Studio eller Xamarin Studio kör klientprojektet på en enhet eller emulator och logga in med ditt valda identitetsleverantör. När du har loggat in, visas inloggnings-ID och listan över todo-objekt och du kan göra uppdateringar till data.
+6. I Visual Studio eller Xamarin Studio kör hello klientprojektet på en enhet eller emulator och logga in med ditt valda identitetsleverantör. När du har loggat in, hello visas inloggnings-ID och hello listan över todo-objekt, och du kan göra uppdateringar toohello data.
 
 <!-- URLs. -->
 [skapa en Xamarin.Android-app]: app-service-mobile-xamarin-android-get-started.md

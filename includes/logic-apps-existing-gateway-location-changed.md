@@ -1,0 +1,2 @@
+**Q**: Varför ändrades hello plats för Mina befintliga gatewayen? <br/>
+**En**: Gateway-resurser som skapades innan 3 kan 2017 flyttades toohello ursprungliga platser för hello Azure AD-klient för hello arbets- eller Skol-konto som skapade dessa gateways. Ändringarna påverkar dock inte körs för tillfället logikappar som ska fortsätta att fungera som vanligt. Med hello gateway allmän tillgänglighet i maj gateway resursplatser kan skilja sig från logik app platser.

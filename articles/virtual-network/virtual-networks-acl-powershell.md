@@ -1,6 +1,6 @@
 ---
-title: "Hantera Azure endpoint åtkomstkontrollistor | PowerShell | Klassiska | Microsoft Docs"
-description: "Lär dig att hantera ACL: er med PowerShell"
+title: "aaaManage Azure endpoint åtkomst styra listor | PowerShell | Klassiska | Microsoft Docs"
+description: "Lär dig hur toomanage ACL: er med PowerShell"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: c3476908447380ccd7e8b9c0f1c2a55ae763cc1e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a7ca241ea108a266085bfb689b742d781e58da1c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>Hantera åtkomstkontrollistor för slutpunkten med PowerShell i den klassiska distributionsmodellen
-Du kan skapa och hantera nätverket åtkomstkontrollistor (ACL) för slutpunkter med hjälp av Azure PowerShell eller i hanteringsportalen. I det här avsnittet hittar du procedurer för ACL vanliga uppgifter som du kan utföra med hjälp av PowerShell. Lista över Azure PowerShell cmdlets finns [Azure Management-Cmdlets](http://go.microsoft.com/fwlink/?LinkId=317721). Mer information om åtkomstkontrollistor finns [vad är ett nätverk åtkomstkontrollista (ACL)?](virtual-networks-acl.md). Om du vill hantera din ACL: er med hjälp av hanteringsportalen, se [så ange slutpunkter till en virtuell dator](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+# <a name="manage-endpoint-access-control-lists-using-powershell-in-hello-classic-deployment-model"></a>Hantera åtkomstkontrollistor för slutpunkten med PowerShell i hello klassiska distributionsmodellen
+Du kan skapa och hantera nätverket åtkomstkontrollistor (ACL) för slutpunkter med hjälp av Azure PowerShell eller hello-hanteringsportalen. I det här avsnittet hittar du procedurer för ACL vanliga uppgifter som du kan utföra med hjälp av PowerShell. Hello lista över Azure PowerShell cmdlets finns [Azure Management-Cmdlets](http://go.microsoft.com/fwlink/?LinkId=317721). Mer information om åtkomstkontrollistor finns [vad är ett nätverk åtkomstkontrollista (ACL)?](virtual-networks-acl.md). Om du vill toomanage din ACL: er med hjälp av hello-hanteringsportalen, se [hur tooSet in slutpunkter tooa virtuella](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="manage-network-acls-by-using-azure-powershell"></a>Hantera nätverket ACL: er med hjälp av Azure PowerShell
-Du kan använda Azure PowerShell-cmdlets för att skapa, ta bort och konfigurera (uppsättning) nätverket åtkomstkontrollistor (ACL). Innehåller några exempel på några av de sätt som du kan konfigurera en ACL med hjälp av PowerShell.
+Du kan använda Azure PowerShell-cmdlets toocreate, ta bort och konfigurera (uppsättning) nätverket åtkomstkontrollistor (ACL). Innehåller några exempel på några av hello sätt kan du konfigurera en ACL med hjälp av PowerShell.
 
-Du kan använda något av följande om du vill hämta en fullständig lista över ACL PowerShell-cmdlet:
+tooretrieve en fullständig lista över hello ACL PowerShell-cmdlets, du kan använda något av följande hello:
 
     Get-Help *AzureACL*
     Get-Command -Noun AzureACLConfig
 
 ### <a name="create-a-network-acl-with-rules-that-permit-access-from-a-remote-subnet"></a>Skapa en ACL i nätverket med regler som tillåter åtkomst från ett fjärranslutet undernät
-I exemplet nedan kan du skapa en ny ACL som innehåller regler. Denna ACL tillämpas sedan på en virtuell dator-slutpunkt. ACL-regler i exemplet nedan kommer att tillåta åtkomst från ett fjärranslutet undernät. Öppna ett Azure PowerShell ISE för att skapa en ny ACL i nätverket med tillståndet regler för ett fjärranslutet undernät. Kopiera och klistra in skriptet nedan, konfigurera skriptet med egna värden och sedan köra skriptet.
+hello exemplet nedan visar hur-toocreate en ny ACL som innehåller regler. Det här används sedan tooa virtuell datorslutpunkt. hello ACL-regler i hello exemplet nedan kommer att tillåta åtkomst från ett fjärranslutet undernät. toocreate en ny nätverket ACL med tillståndet regler för ett fjärranslutet undernät, öppna ett Azure PowerShell ISE. Kopiera och klistra in hello skriptet nedan, konfigurera hello skript med egna värden och sedan köra hello skript.
 
-1. Skapa det nya nätverk ACL-objektet.
+1. Skapa hello nya ACL-objekt i nätverket.
    
         $acl1 = New-AzureAclConfig
-2. Ange en regel som tillåter åtkomst från ett fjärranslutet undernät. I exemplet nedan som du anger regel *100* (som har högre prioritet än 200 och högre) så att det fjärranslutna undernätet *10.0.0.0/8* åtkomst till den virtuella datorslutpunkten. Ersätt värdena med dina egna konfigurationskrav. Namnet ”SharePoint ACL-config” ska ersättas med det egna namnet som du vill anropa den här regeln.
+2. Ange en regel som tillåter åtkomst från ett fjärranslutet undernät. I hello exemplet nedan kan du ange regel *100* (som har högre prioritet än 200 och högre) tooallow hello fjärrundernät *10.0.0.0/8* komma åt toohello virtuell datorslutpunkt. Ersätt hello värden med din egen konfigurationskrav. hello namnet ”SharePoint ACL-config” ska ersättas med hello eget namn som du vill toocall den här regeln.
    
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
             –Action permit –RemoteSubnet "10.0.0.0/8" `
             –Description "SharePoint ACL config"
-3. Upprepa cmdleten, där du ersätter värdena med dina egna konfigurationskrav för ytterligare regler. Se till att ändra den här regeln number ordern så att den ordning som du vill att regler tillämpas. Antalet nedre regeln företräde framför högre nummer.
+3. Upprepa hello cmdlet, ersätter hello värden med din egen konfigurationskrav för ytterligare regler. Vara säker på att toochange hello regel nummer ordning tooreflect hello order som du vill hello regler toobe tillämpas. hello lägre nummer i regeln företräde framför hello högre nummer.
    
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 200 `
             –Action permit –RemoteSubnet "157.0.0.0/8" `
             –Description "web frontend ACL config"
-4. Därefter kan du antingen skapa en ny slutpunkt (Lägg till) eller ange ACL för en befintlig slutpunkt (anges). I det här exemplet ska vi lägga till en ny virtuell dator-slutpunkt som kallas ”web” och uppdatera virtuell datorslutpunkt med ACL-inställningar.
+4. Därefter kan du antingen skapa en ny slutpunkt (Lägg till) eller ange hello ACL för en befintlig slutpunkt (anges). I det här exemplet ska vi lägga till en ny virtuell dator-slutpunkt som kallas ”web” och uppdatera hello virtuella slutpunkten med hello ACL-inställningar.
    
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Add-AzureEndpoint –Name "web" –Protocol tcp –Localport 80 - PublicPort 80 –ACL $acl1 `
         | Update-AzureVM
-5. Sedan kombinera cmdletar och kör skriptet. I det här exemplet kombinerade cmdlets skulle se ut så här:
+5. Sedan kombinera hello-cmdlets och köra hello-skript. I det här exemplet hello kombinerade cmdlets skulle se ut så här:
    
         $acl1 = New-AzureAclConfig
         Set-AzureAclConfig –AddRule –ACL $acl1 –Order 100 `
@@ -66,21 +66,21 @@ I exemplet nedan kan du skapa en ny ACL som innehåller regler. Denna ACL tillä
         |Update-AzureVM
 
 ### <a name="remove-a-network-acl-rule-that-permits-access-from-a-remote-subnet"></a>Ta bort en nätverket ACL-regel som tillåter åtkomst från ett fjärranslutet undernät
-Exemplet nedan visar ett sätt att ta bort en regel för Portåtkomstkontroll.  Ta bort en nätverket regeln med tillståndet regler för ett fjärranslutet undernät, öppna ett Azure PowerShell ISE. Kopiera och klistra in skriptet nedan, konfigurera skriptet med egna värden och sedan köra skriptet.
+hello exemplet nedan sätt-tooremove en regel för Portåtkomstkontroll.  tooremove ett nätverk regeln med tillståndet regler för ett fjärranslutet undernät, öppna ett Azure PowerShell ISE. Kopiera och klistra in hello skriptet nedan, konfigurera hello skript med egna värden och sedan köra hello skript.
 
-1. Första steget är att hämta nätverket ACL-objektet för den virtuella datorslutpunkten. Sedan tar du bort regeln för Portåtkomstkontroll. I det här fallet bort vi den efter regeln-ID. Detta tar endast bort regel-ID 0 från ACL. ACL-objekt tas inte bort från den virtuella datorslutpunkten.
+1. Första steget är tooget hello nätverket ACL-objekt för hello virtuella slutpunkt. Sedan tar du bort hello regeln. I det här fallet bort vi den efter regeln-ID. Detta tar endast bort hello regel-ID 0 från hello ACL. Hello ACL-objekt tas inte bort från hello virtuella slutpunkten.
    
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Get-AzureAclConfig –EndpointName "web" `
         | Set-AzureAclConfig –RemoveRule –ID 0 –ACL $acl1
-2. Därefter måste du använda nätverket ACL-objekt till den virtuella datorslutpunkten och uppdatera den virtuella datorn.
+2. Därefter måste du tillämpa hello nätverket ACL objektet toohello virtuell datorslutpunkt och uppdatera hello virtuell dator.
    
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Set-AzureEndpoint –ACL $acl1 –Name "web" `
         | Update-AzureVM
 
 ### <a name="remove-a-network-acl-from-a-virtual-machine-endpoint"></a>Ta bort en ACL i nätverket från en virtuell datorslutpunkt
-I vissa fall kanske du vill ta bort ett nätverk ACL-objekt från den virtuella datorslutpunkten. För att göra det, öppnar du en Azure PowerShell ISE. Kopiera och klistra in skriptet nedan, konfigurera skriptet med egna värden och sedan köra skriptet.
+I vissa fall kanske du vill tooremove ett nätverk ACL-objekt från en virtuell dator-slutpunkt. toodo som öppnas i ett Azure PowerShell ISE. Kopiera och klistra in hello skriptet nedan, konfigurera hello skript med egna värden och sedan köra hello skript.
 
         Get-AzureVM –ServiceName $serviceName –Name $vmName `
         | Remove-AzureAclConfig –EndpointName "web" `

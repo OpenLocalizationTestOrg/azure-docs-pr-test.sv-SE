@@ -1,5 +1,5 @@
 ---
-title: "Optimera transaktioner för SQL Data Warehouse | Microsoft Docs"
+title: "aaaOptimizing transaktioner för SQL Data Warehouse | Microsoft Docs"
 description: "Bästa praxis riktlinjer för att skriva effektiva transaktionsuppdateringar i Azure SQL Data Warehouse"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,36 +15,36 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: f9f19d75a37351b3562ce8c2f3629df14c5437c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1a821161711db9460b7e10d3cf7ba498d711448b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="optimizing-transactions-for-sql-data-warehouse"></a>Optimera transaktioner för SQL Data Warehouse
-Den här artikeln förklarar hur du optimerar prestanda för transaktionell koden och minimerar risken för lång återställningar.
+Den här artikeln förklarar hur toooptimize hello prestanda för transaktionell koden och minimerar risken för lång återställningar.
 
 ## <a name="transactions-and-logging"></a>Transaktioner och loggning
-Transaktioner är en viktig komponent i en relationsdatabas-motor. SQL Data Warehouse använder transaktioner under dataändringar. Dessa transaktioner kan vara uttryckliga eller underförstådda. Enskild `INSERT`, `UPDATE` och `DELETE` -satser är alla exempel implicit transaktioner. Skrivs explicita transaktioner explicit av en utvecklare som använder `BEGIN TRAN`, `COMMIT TRAN` eller `ROLLBACK TRAN` och används vanligtvis när flera ändringar instruktioner måste kopplas samman i en enda atomiska enhet. 
+Transaktioner är en viktig komponent i en relationsdatabas-motor. SQL Data Warehouse använder transaktioner under dataändringar. Dessa transaktioner kan vara uttryckliga eller underförstådda. Enskild `INSERT`, `UPDATE` och `DELETE` -satser är alla exempel implicit transaktioner. Skrivs explicita transaktioner explicit av en utvecklare som använder `BEGIN TRAN`, `COMMIT TRAN` eller `ROLLBACK TRAN` och används vanligtvis när flera ändringar instruktioner måste toobe knutna tillsammans i en atomisk enhet. 
 
-Azure SQL Data Warehouse sparar ändringar till databasen med transaktionsloggar. Varje distribution har sin egen transaktionsloggen. Transaktionen sparas loggen automatiskt. Det finns ingen konfiguration krävs. Dock samtidigt som den här processen garanterar skrivningen införs en kostnader i systemet. Du kan minimera den här effekten genom att skriva ett effektivt kod. Transaktionellt effektiv kod hamnar brett i två kategorier.
+Azure SQL Data Warehouse genomför ändringar toohello databasen med hjälp av transaktionsloggar. Varje distribution har sin egen transaktionsloggen. Transaktionen sparas loggen automatiskt. Det finns ingen konfiguration krävs. Dock samtidigt som den här processen garanterar hello skrivåtgärder införs en kostnader i hello system. Du kan minimera den här effekten genom att skriva ett effektivt kod. Transaktionellt effektiv kod hamnar brett i två kategorier.
 
 * Använd minimal loggning konstruktioner där det är möjligt
-* Bearbetning av data med begränsade batchar för att undvika enda tidskrävande transaktioner
-* Anta en partitionsväxling mönster för stora ändringar i en given partition
+* Bearbetning av data med hjälp av omfång batchar tooavoid enda tidskrävande transaktioner
+* Anta en partitionsväxling mönster för stora ändringar tooa angivna partition
 
 ## <a name="minimal-vs-full-logging"></a>Minimal kontra fullständig loggning
-Till skillnad från fullständigt loggade åtgärder som använder transaktionsloggen för att hålla reda på varje rad ändring, hålla minimalt loggade åtgärder reda på utsträckning allokeringar och endast metadata ändringar. Därför minimal loggning innebär loggning bara den information som krävs för att återställa transaktionen om ett fel eller en uttrycklig begäran (`ROLLBACK TRAN`). När mycket mindre information spåras i transaktionsloggen, presterar minimalt loggade åtgärden bättre än på samma sätt storlek fullständigt loggade åtgärden. Dessutom eftersom färre skrivningar går transaktionsloggen, en mycket mindre mängd loggdata genereras och det är flera i/o effektivt.
+Till skillnad från fullständigt loggade åtgärder som använder hello transaction log tookeep reda på varje rad ändring, hålla minimalt loggade åtgärder reda på utsträckning allokeringar och endast metadata ändringar. Därför minimal loggning innebär att loggning endast hello-information som är nödvändiga toorollback hello transaktion i hello händelse av ett fel eller en uttrycklig begäran (`ROLLBACK TRAN`). Som mycket mindre information spåras i hello transaktionsloggen, presterar minimalt loggade åtgärden bättre än på samma sätt storlek fullständigt loggade åtgärden. Dessutom eftersom färre skrivningar går hello transaktionsloggen, en mycket mindre mängd loggdata genereras och det är flera i/o effektivt.
 
-Säkerhetsgränsen transaktionen gäller endast för fullständigt loggade åtgärder.
+hello transaktion säkerhetsgränsen gäller endast toofully loggade åtgärder.
 
 > [!NOTE]
-> Minimalt loggade åtgärder kan delta i explicita transaktioner. Det är möjligt att återställa minimalt loggade åtgärder som alla ändringar i allokering strukturer spåras. Det är viktigt att förstå att ändringen är inloggad ”minimalt” är inte icke loggas.
+> Minimalt loggade åtgärder kan delta i explicita transaktioner. Alla ändringar i allokering strukturer spåras, är det möjligt tooroll tillbaka minimalt loggade åtgärder. Det är viktigt toounderstand hello ändringen har ”minimalt” loggade den inte är icke loggas.
 > 
 > 
 
 ## <a name="minimally-logged-operations"></a>Minimalt loggade åtgärder
-Följande åtgärder kan loggas minimalt:
+hello kan följande åtgärder loggas minimalt:
 
 * SKAPA TABLE AS SELECT ([CTAS][CTAS])
 * INSERT... VÄLJ
@@ -62,12 +62,12 @@ Följande åtgärder kan loggas minimalt:
 -->
 
 > [!NOTE]
-> Internt dataflyttsåtgärderna (exempelvis `BROADCAST` och `SHUFFLE`) påverkas inte av transaktionen säkerhet gränsen.
+> Internt dataflyttsåtgärderna (exempelvis `BROADCAST` och `SHUFFLE`) påverkas inte av hello transaktion säkerhet gränsen.
 > 
 > 
 
 ## <a name="minimal-logging-with-bulk-load"></a>Minimal loggning med massinläsning
-`CTAS`och `INSERT...SELECT` är både Massredigera belastningen åtgärder. Dock både påverkas av tabelldefinitionen mål och beror på belastningen scenario. Nedan finns en tabell med information om din massåtgärd helt eller minimalt loggas:  
+`CTAS`och `INSERT...SELECT` är både Massredigera belastningen åtgärder. Dock både påverkas av hello mål tabelldefinitionen och beror på hello belastningen scenario. Nedan finns en tabell med information om din massåtgärd helt eller minimalt loggas:  
 
 | Primärt Index | Läs in Scenario | Loggningsläge |
 | --- | --- | --- |
@@ -78,22 +78,22 @@ Följande åtgärder kan loggas minimalt:
 | Grupperat Columnstore-Index |Batchstorlek > = 102,400 per partition justerad distribution |**Minimal** |
 | Grupperat Columnstore-Index |Batch-storlek < 102,400 per partition justerad distribution |Fullständig |
 
-Det är värt att nämna att alla skrivningar för att uppdatera sekundära eller icke-grupperade index alltid är fullständigt loggade åtgärder.
+Det är värt att nämna att alla skrivningar tooupdate sekundär eller icke-grupperade index kommer alltid att vara helt loggade åtgärder.
 
 > [!IMPORTANT]
-> SQL Data Warehouse har 60-distributioner. Därför, förutsatt att alla rader fördelas jämnt och hamnar i en enda partition din batch måste innehålla 6,144,000 rader eller större loggas minimalt vid skrivning till ett grupperat Columnstore-Index. Om tabellen är partitionerad och raderna som ska infogas span partitionsgränser, behöver du 6,144,000 rader per partition gräns förutsatt att data fördelas jämnt. Varje partition i varje distribution måste oberoende överskrida 102 400 raden tröskelvärdet för insert minimalt vara inloggad på distributionsplatsen.
+> SQL Data Warehouse har 60-distributioner. Därför, förutsatt att alla rader fördelas jämnt och hamnar i en enda partition din batch måste toocontain 6,144,000 rader eller större toobe minimalt loggas när du skriver tooa klustrade Kolumnlagringsindexet. Om hello tabellen är partitionerad och hello rader infogas span partitionsgränser, behöver du 6,144,000 rader per partition gräns förutsatt att data fördelas jämnt. Varje partition i varje distribution måste oberoende överskrids hello 102 400 raden för hello insert toobe minimalt loggat in hello-distribution.
 > 
 > 
 
-Läsa in data i en icke-tom tabell med ett grupperat index innehåller ofta en blandning av fullständigt loggade och minimalt loggade rader. Ett grupperat index är ett belastningsutjämnade träd (b-trädet) sidor. Om sidan som skrivs till redan innehåller rader från en annan transaktion, sedan loggas dessa skrivningar fullständigt. Men om sidan är tom loggas sedan skrivningen till sidan minimalt.
+Läsa in data i en icke-tom tabell med ett grupperat index innehåller ofta en blandning av fullständigt loggade och minimalt loggade rader. Ett grupperat index är ett belastningsutjämnade träd (b-trädet) sidor. Om hello sida skrivs tooalready innehåller rader från en annan transaktion, sedan loggas dessa skrivningar fullständigt. Men om hello sida är tom loggas sedan hello skrivåtgärder toothat sidan minimalt.
 
 ## <a name="optimizing-deletes"></a>Optimera borttagningar
-`DELETE`är fullständigt loggade åtgärden.  Om du vill ta bort en stor mängd data i en tabell eller en partition är det ofta mer praktiskt att `SELECT` data som du vill behålla, som kan köras som ett minimalt loggade åtgärden.  Du åstadkommer detta genom att skapa en ny tabell med [CTAS][CTAS].  När du skapat använda [Byt namn på] [ RENAME] att byta ut din gamla tabell med den nyligen skapade tabellen.
+`DELETE`är fullständigt loggade åtgärden.  Om du behöver toodelete en stor mängd data i en tabell eller en partition kan det ofta passar bättre för`SELECT` hello data du vill tookeep som kan köras som ett minimalt loggade åtgärden.  tooaccomplish, skapa en ny tabell med [CTAS][CTAS].  När du skapat använda [Byt namn på] [ RENAME] tooswap ut din gamla tabell med hello nyskapad tabell.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
 
---Step 01. Create a new table select only the records we want to kep (PromotionKey 2)
+--Step 01. Create a new table select only hello records we want tookep (PromotionKey 2)
 CREATE TABLE [dbo].[FactInternetSales_d]
 WITH
 (    CLUSTERED COLUMNSTORE INDEX
@@ -113,20 +113,20 @@ WHERE    [PromotionKey] = 2
 OPTION (LABEL = 'CTAS : Delete')
 ;
 
---Step 02. Rename the Tables to replace the 
-RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
-RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
+--Step 02. Rename hello Tables tooreplace hello 
+RENAME OBJECT [dbo].[FactInternetSales]   too[FactInternetSales_old];
+RENAME OBJECT [dbo].[FactInternetSales_d] too[FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Optimera uppdateringar
-`UPDATE`är fullständigt loggade åtgärden.  Om du behöver uppdatera ett stort antal rader i en tabell eller en partition det ofta vara mycket mer effektivt att använda minimalt loggade åtgärden som [CTAS] [ CTAS] gör.
+`UPDATE`är fullständigt loggade åtgärden.  Om du behöver tooupdate ett stort antal rader i en tabell eller en partition det ofta vara mycket mer effektivt toouse minimalt loggade åtgärden som [CTAS] [ CTAS] toodo så.
 
-I exemplet nedan en fullständig tabell uppdatering har konverterats till ett `CTAS` så att minimal loggning är möjligt.
+I hello exempel under en fullständig uppdatering har konverterade tooa `CTAS` så att minimal loggning är möjligt.
 
-I det här fallet vi efterhand lägger till en beloppet för försäljning i tabellen:
+I det här fallet vi efterhand lägger till en rabatt toohello försäljning i hello tabell:
 
 ```sql
---Step 01. Create a new table containing the "Update". 
+--Step 01. Create a new table containing hello "Update". 
 CREATE TABLE [dbo].[FactInternetSales_u]
 WITH
 (    CLUSTERED INDEX
@@ -171,31 +171,31 @@ FROM    [dbo].[FactInternetSales]
 OPTION (LABEL = 'CTAS : Update')
 ;
 
---Step 02. Rename the tables
-RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
-RENAME OBJECT [dbo].[FactInternetSales_u] TO [FactInternetSales];
+--Step 02. Rename hello tables
+RENAME OBJECT [dbo].[FactInternetSales]   too[FactInternetSales_old];
+RENAME OBJECT [dbo].[FactInternetSales_u] too[FactInternetSales];
 
---Step 03. Drop the old table
+--Step 03. Drop hello old table
 DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Skapa nytt stora tabeller kan dra nytta av funktioner för SQL Data Warehouse arbetsbelastning. För mer information finns i avsnittet för hantering av arbetsbelastningen i de [samtidighet] [ concurrency] artikel.
+> Skapa nytt stora tabeller kan dra nytta av funktioner för SQL Data Warehouse arbetsbelastning. För mer information finns toohello arbetsbelastning management-avsnittet i hello [samtidighet] [ concurrency] artikel.
 > 
 > 
 
 ## <a name="optimizing-with-partition-switching"></a>Optimera med Växla partition
-När inför storskaliga ändringar i en [tabell partition][table partition], och sedan en partitionsväxling mönstret gör mycket bra. Om data ändras är viktig och sträcker sig över flera partitioner, ger bara iterera över partitionerna sedan samma resultat.
+När inför storskaliga ändringar i en [tabell partition][table partition], och sedan en partitionsväxling mönstret gör mycket bra. Om hello dataändring är viktig och spänner över flera partitioner, bara iterera över hello partitioner uppnår hello samma resultat.
 
-Stegen för att utföra en partition växel är följande:
+hello steg tooperform en partition växel är följande:
 
 1. Skapa en tom av partition
-2. Utför uppdateringen som en CTAS
-3. Byta ut befintliga data till tabellen
-4. Växla i nya data
-5. Rensa data
+2. Utför hello uppdatering som en CTAS
+3. Byta ut hello befintliga data toohello ut tabell
+4. Växla i hello nya data
+5. Rensa hello data
 
-Men för att identifiera partitionerna som ska växla vi måste först skapa en helper-procedur som nedan. 
+Dock identifiera toohelp hello partitioner tooswitch vi måste först toobuild en helper-procedur som hello en nedan. 
 
 ```sql
 CREATE PROCEDURE dbo.partition_data_get
@@ -241,12 +241,12 @@ OPTION (LABEL = 'dbo.partition_data_get : CTAS : #ptn_data')
 GO
 ```
 
-Den här proceduren maximerar återanvändning av kod och behåller partitionsväxling exempel mer kompakt.
+Den här proceduren maximerar återanvändning av kod och behåller hello partitionsväxling exempel mer kompakt.
 
-Koden nedan visar de fem steg som nämns ovan för att få en fullständig partitionsväxling rutinen.
+hello koden nedan visar hello fem steg som nämns ovan tooachieve en fullständig partitionsväxling rutinen.
 
 ```sql
---Create a partitioned aligned empty table to switch out the data 
+--Create a partitioned aligned empty table tooswitch out hello data 
 IF OBJECT_ID('[dbo].[FactInternetSales_out]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_out]
@@ -268,7 +268,7 @@ WHERE 1=2
 OPTION (LABEL = 'CTAS : Partition Switch IN : UPDATE')
 ;
 
---Create a partitioned aligned table and update the data in the select portion of the CTAS
+--Create a partitioned aligned table and update hello data in hello select portion of hello CTAS
 IF OBJECT_ID('[dbo].[FactInternetSales_in]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_in]
@@ -315,29 +315,29 @@ WHERE    OrderDateKey BETWEEN 20020101 AND 20021231
 OPTION (LABEL = 'CTAS : Partition Switch IN : UPDATE')
 ;
 
---Use the helper procedure to identify the partitions
---The source table
+--Use hello helper procedure tooidentify hello partitions
+--hello source table
 EXEC dbo.partition_data_get 'dbo','FactInternetSales',20030101
 DECLARE @ptn_nmbr_src INT = (SELECT ptn_nmbr FROM #ptn_data)
 SELECT @ptn_nmbr_src
 
---The "in" table
+--hello "in" table
 EXEC dbo.partition_data_get 'dbo','FactInternetSales_in',20030101
 DECLARE @ptn_nmbr_in INT = (SELECT ptn_nmbr FROM #ptn_data)
 SELECT @ptn_nmbr_in
 
---The "out" table
+--hello "out" table
 EXEC dbo.partition_data_get 'dbo','FactInternetSales_out',20030101
 DECLARE @ptn_nmbr_out INT = (SELECT ptn_nmbr FROM #ptn_data)
 SELECT @ptn_nmbr_out
 
---Switch the partitions over
+--Switch hello partitions over
 DECLARE @SQL NVARCHAR(4000) = '
-ALTER TABLE [dbo].[FactInternetSales]    SWITCH PARTITION '+CAST(@ptn_nmbr_src AS VARCHAR(20))    +' TO [dbo].[FactInternetSales_out] PARTITION '    +CAST(@ptn_nmbr_out AS VARCHAR(20))+';
-ALTER TABLE [dbo].[FactInternetSales_in] SWITCH PARTITION '+CAST(@ptn_nmbr_in AS VARCHAR(20))    +' TO [dbo].[FactInternetSales] PARTITION '        +CAST(@ptn_nmbr_src AS VARCHAR(20))+';'
+ALTER TABLE [dbo].[FactInternetSales]    SWITCH PARTITION '+CAST(@ptn_nmbr_src AS VARCHAR(20))    +' too[dbo].[FactInternetSales_out] PARTITION '    +CAST(@ptn_nmbr_out AS VARCHAR(20))+';
+ALTER TABLE [dbo].[FactInternetSales_in] SWITCH PARTITION '+CAST(@ptn_nmbr_in AS VARCHAR(20))    +' too[dbo].[FactInternetSales] PARTITION '        +CAST(@ptn_nmbr_src AS VARCHAR(20))+';'
 EXEC sp_executesql @SQL
 
---Perform the clean-up
+--Perform hello clean-up
 TRUNCATE TABLE dbo.FactInternetSales_out;
 TRUNCATE TABLE dbo.FactInternetSales_in;
 
@@ -347,9 +347,9 @@ DROP TABLE #ptn_data
 ```
 
 ## <a name="minimize-logging-with-small-batches"></a>Minimera loggning med små batchar
-För stora mängder data ändras, kan det vara klokt att dela upp igen i segment eller batchar att definiera omfattningen av arbetsenheten.
+För stora mängder data ändras, kan det vara klokt toodivide hello åtgärden i segment eller batchar tooscope hello arbete.
 
-Ett fungerande exempel finns nedan. Batchstorleken har angetts till ett trivial antal om du vill markera tekniken. I verkligheten vara batchstorleken betydligt större. 
+Ett fungerande exempel finns nedan. hello batchstorlek har ställts in tooa trivial nummer toohighlight hello tekniken. I verkligheten är hello batchstorlek betydligt större. 
 
 ```sql
 SET NO_COUNT ON;
@@ -408,20 +408,20 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Pausa och skalning vägledning
-Azure SQL Data Warehouse kan du pausa, fortsätta och skala ditt informationslager på begäran. När du pausar du eller skala ditt SQL Data Warehouse är det viktigt att förstå att alla pågående transaktioner avslutas omedelbart. Gör eventuella öppna transaktioner ska återställas till. Om din arbetsbelastning hade utfärdas en lång körs och ofullständiga dataändring innan åtgärden pausa eller skala, behöver detta verk du ångras. Detta kan påverka den tid det tar att pausa eller skala din Azure SQL Data Warehouse-databas. 
+Azure SQL Data Warehouse kan du pausa, fortsätta och skala ditt informationslager på begäran. När du pausar du eller skala ditt SQL Data Warehouse är det viktigt toounderstand att alla pågående transaktioner avslutas omedelbart. orsakar toobe alla öppna transaktioner återställs. Om din arbetsbelastning har utfärdats tidskrävande och ofullständiga data ändras tidigare måste toohello paus eller skalningsåtgärden sedan detta verk toobe ångra. Detta kan påverka hello tid det tar toopause eller skala din Azure SQL Data Warehouse-databas. 
 
 > [!IMPORTANT]
 > Båda `UPDATE` och `DELETE` är fullständigt loggade åtgärder och så att dessa Ångra/Gör om kan ta betydligt längre tid än motsvarande minimalt loggade åtgärder. 
 > 
 > 
 
-Bästa scenario är att låta svarta data ändras transaktioner slutförd innan pausa eller skalning SQL Data Warehouse. Men kan det inte alltid praktiskt. Överväg att något av följande alternativ för att minska risken för en lång återställning:
+hello bästa scenario är toolet i svarta data ändras transaktioner fullständig tidigare toopausing eller skalning SQL Data Warehouse. Men kan det inte alltid praktiskt. toomitigate hello risken för en lång återställning betrakta ett av hello följande alternativ:
 
 * Skriv långvariga åtgärder med hjälp av [CTAS][CTAS]
-* Nedbrytning av åtgärden i segment; operativsystem för en delmängd av raderna
+* Nedbrytning hello åtgärden i segment; operativsystem för en delmängd av hello rader
 
 ## <a name="next-steps"></a>Nästa steg
-Se [transaktioner i SQL Data Warehouse] [ Transactions in SQL Data Warehouse] lära dig mer om isoleringsnivåer och transaktionell gränser.  En översikt över andra metodtips finns [Metodtips för SQL Data Warehouse][SQL Data Warehouse Best Practices].
+Se [transaktioner i SQL Data Warehouse] [ Transactions in SQL Data Warehouse] toolearn mer om isoleringsnivåer och transaktionell gränser.  En översikt över andra metodtips finns [Metodtips för SQL Data Warehouse][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 

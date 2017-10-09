@@ -1,6 +1,6 @@
 ---
-title: "Skapa en Azure Service Fabric-behållarapp | Microsoft Docs"
-description: "Skapa din första Windows-behållarapp på Azure Service Fabric.  Skapa en Docker-avbildning med en Python-app, överför avbildningen till ett behållarregister och skapa och distribuera en Service Fabric-behållarapp."
+title: "aaaCreate ett program för Azure Service Fabric-behållaren | Microsoft Docs"
+description: "Skapa din första Windows-behållarapp på Azure Service Fabric.  Skapa en Docker-avbildning med en Python-program, push hello avbildningen tooa behållare registret, skapa och distribuera ett program för Service Fabric-behållare."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/18/2017
 ms.author: ryanwi
-ms.openlocfilehash: 025bde02b3f342ec3399d51819d1fa8a91f11374
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b79d3a41eb2da5f7791266588fe9ea7becb0e58f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Skapa din första Service Fabric-behållarapp i Windows
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Du behöver inga göra några ändringar i din app för att köra en befintlig app i en Windows-behållare i ett Service Fabric-kluster. Den här artikeln vägleder dig genom att skapa en Docker-avbildning som innehåller ett Python [Flask](http://flask.pocoo.org/)-program och distribuera den till ett Service Fabric-kluster.  Du kan också dela programmet via [Azure Container-registret](/azure/container-registry/).  Den här artikeln förutsätter att du har grundläggande kunskaper om Docker. Mer information om Docker finns i [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Översikt över Docker).
+Kör ett befintligt program i en Windows-behållare på ett Service Fabric-kluster kräver inte några ändringar tooyour program. Den här artikeln vägleder dig genom att skapa en Docker-avbildning som innehåller en Python [Flask](http://flask.pocoo.org/) program och distribuera den tooa Service Fabric-klustret.  Du kan också dela programmet via [Azure Container-registret](/azure/container-registry/).  Den här artikeln förutsätter att du har grundläggande kunskaper om Docker. Du kan lära dig om Docker genom att läsa hello [Docker översikt](https://docs.docker.com/engine/understanding-docker/).
 
 ## <a name="prerequisites"></a>Krav
 En utvecklingsdator som kör:
 * Visual Studio 2015 eller Visual Studio 2017.
 * [Service Fabric SDK och verktyg](service-fabric-get-started.md).
-*  Docker för Windows.  [Hämta Docker CE för Windows (stabil)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Efter installationen startar du Docker, högerklickar på ikonen för fack och väljer **Switch to Windows containers** (Växla till Windows-behållare). Detta krävs för att köra Docker-avbildningar baserade på Windows.
+*  Docker för Windows.  [Hämta Docker CE för Windows (stabil)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Efter installation och Start Docker, högerklicka på ikonen i systemfältet hello och välj **växla tooWindows behållare**. Detta är obligatorisk toorun Docker bilder baserat på Windows.
 
 Ett Windows-kluster med tre eller fler noder som kör Windows Server 2016 med behållare – [Skapa ett kluster](service-fabric-cluster-creation-via-portal.md) eller [prova Service Fabric utan kostnad](https://aka.ms/tryservicefabric).
 
 Ett register i Azure Container Registry – [Skapa ett behållarregister](../container-registry/container-registry-get-started-portal.md) i din Azure-prenumeration.
 
-## <a name="define-the-docker-container"></a>Definiera dockerbehållare
-Skapa en avbildning baserat på [Python-avbildningen](https://hub.docker.com/_/python/) på Docker Hub.
+## <a name="define-hello-docker-container"></a>Definiera hello dockerbehållare
+Skapa en avbildning baserat på hello [Python avbildningen](https://hub.docker.com/_/python/) finns på Docker-hubb.
 
-Definiera Docker-behållaren i en Dockerfile. Dockerfile innehåller instruktioner för att ställa in miljön i di behållare, läsa in programmet som du vill köra och mappa portar. Dockerfile är indata för kommandot `docker build` som skapar avbildningen.
+Definiera Docker-behållaren i en Dockerfile. Hej Dockerfile innehåller instruktioner för konfigurerar hello miljön i ditt behållare, inläsning hello-program som du vill toorun och mappa portar. Hej Dockerfile är hello inkommande toohello `docker build` -kommandot, vilket skapar hello bild.
 
-Skapa en tom katalog och skapa filen *Dockerfile* (utan filtillägget). Lägg till följande i *Dockerfile* och spara dina ändringar:
+Skapa en tom katalog och skapa hello filen *Dockerfile* (med utan filtillägget). Lägg till följande hello för*Dockerfile* och spara dina ändringar:
 
 ```
 # Use an official Python runtime as a base image
 FROM python:2.7-windowsservercore
 
-# Set the working directory to /app
+# Set hello working directory too/app
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
+# Copy hello current directory contents into hello container at /app
 ADD . /app
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 
-# Make port 80 available to the world outside this container
+# Make port 80 available toohello world outside this container
 EXPOSE 80
 
 # Define environment variable
 ENV NAME World
 
-# Run app.py when the container launches
+# Run app.py when hello container launches
 CMD ["python", "app.py"]
 ```
 
-Läs [Dockerfile-referensen](https://docs.docker.com/engine/reference/builder/) för mer information.
+Läs hello [Dockerfile referens](https://docs.docker.com/engine/reference/builder/) för mer information.
 
 ## <a name="create-a-simple-web-application"></a>Skapa en enkel webbapp
-Skapa en flask-webbapplikation som lyssnar på port 80 och returnerar ”Hello World”!.  Skapa filen *requirements.txt* i samma katalog.  Lägg till följande och spara dina ändringar:
+Skapa en flask-webbapplikation som lyssnar på port 80 och returnerar ”Hello World”!.  Hej samma katalog, skapa hello-fil i *requirements.txt*.  Lägg till följande hello och spara dina ändringar:
 ```
 Flask
 ```
 
-Skapa även filen *app.py* och lägg till följande:
+Skapa även hello *app.py* och Lägg till hello följande:
 
 ```python
 from flask import Flask
@@ -92,16 +92,16 @@ if __name__ == "__main__":
 ```
 
 <a id="Build-Containers"></a>
-## <a name="build-the-image"></a>Skapa avbildningen
-Kör kommandot `docker build` för att skapa avbildningen som kör ditt webbprogram. Öppna ett PowerShell-fönster och navigera till den katalog som innehåller din Dockerfile. Kör följande kommando:
+## <a name="build-hello-image"></a>Skapa hello-bild
+Kör hello `docker build` kommandot toocreate hello avbildningen som kör ditt webbprogram. Öppna ett PowerShell-fönster och navigera toohello katalog som innehåller hello Dockerfile. Kör följande kommando hello:
 
 ```
 docker build -t helloworldapp .
 ```
 
-Med det här kommandot skapas den nya avbildningen med hjälp av instruktionerna i din Dockerfile och avbildningen får namnet "helloworldapp" (-t-taggning). Genom att skapa en avbildning hämtas basavbildningen från Docker Hub och en ny avbildning skapas som lägger till ditt program ovanpå basavbildningen.  
+Det här kommandot versioner hello ny avbildning med hjälp av hello instruktioner i din Dockerfile naming (-t taggning) hello avbildning ”helloworldapp”. Skapa en avbildning hämtar hello basavbildning från Docker-hubb och skapar en ny avbildning som lägger till ditt program ovanpå hello basavbildning.  
 
-När build-kommandot har slutförts kör du `docker images`-kommandot för att se information om den nya avbildningen:
+När hello build-kommandot har slutförts kör hello `docker images` kommandot toosee information om nya hello-avbildningen:
 
 ```
 $ docker images
@@ -110,71 +110,71 @@ REPOSITORY                    TAG                 IMAGE ID            CREATED   
 helloworldapp                 latest              8ce25f5d6a79        2 minutes ago       10.4 GB
 ```
 
-## <a name="run-the-application-locally"></a>Kör programmet lokalt
-Kontrollera avbildningen lokalt innan du överför den till behållarregistret.  
+## <a name="run-hello-application-locally"></a>Kör hello programmet lokalt
+Kontrollera avbildningen lokalt innan du skickar den hello behållaren registret.  
 
-Kör programmet:
+Kör programmet hello:
 
 ```
 docker run -d --name my-web-site helloworldapp
 ```
 
-*name* namnger den behållare som körs (i stället för behållar-ID:t).
+*namnet* ger en namnet toohello kör behållare (i stället för hello behållar-ID).
 
-När behållaren har startat letar du reda på dess IP-adress så att du kan ansluta till den behållare som körs via en webbläsare:
+När hello behållare startar hitta dess IP-adress så att du kan ansluta tooyour kör behållare från en webbläsare:
 ```
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-Anslut till den behållare som körs.  Öppna en webbläsare som pekar på den returnerade IP-adressen, till exempel ”http://172.31.194.61”. Nu visas normalt rubriken "Hello World!" i webbläsaren.
+Ansluta toohello kör behållare.  Öppna en webbläsare som pekar toohello IP-adress returneras, till exempel ”http://172.31.194.61”. Du bör se hello rubriken ”Hello World”! Visa i hello webbläsare.
 
-Om du vill stoppa behållaren kör du:
+toostop din behållare, kör:
 
 ```
 docker stop my-web-site
 ```
 
-Ta bort behållaren från utvecklingsdatorn:
+Ta bort hello behållare från utvecklingsdatorn:
 
 ```
 docker rm my-web-site
 ```
 
 <a id="Push-Containers"></a>
-## <a name="push-the-image-to-the-container-registry"></a>Överför avbildningen till behållarregistret
-När du har kontrollerat att behållaren körs på utvecklingsdatorn överför du avbildningen till registret i Azure Container Registry.
+## <a name="push-hello-image-toohello-container-registry"></a>Push hello avbildningen toohello behållare registret
+När du har kontrollerat hello behållaren som körs på utvecklingsdatorn push hello avbildningen tooyour registret i registret för Azure-behållare.
 
-Kör ``docker login`` för att logga in till behållarregistret med dina [autentiseringsuppgifter för registret](../container-registry/container-registry-authentication.md).
+Kör ``docker login`` toolog i tooyour behållare registret med din [registret autentiseringsuppgifter](../container-registry/container-registry-authentication.md).
 
-I följande exempel skickas ID:t och lösenordet för ett Azure Active Directory [-tjänstobjekt](../active-directory/active-directory-application-objects.md). Du kanske till exempel har tilldelat ett tjänstobjekt till registret för ett automatiseringsscenario. Du kan också logga in med ditt användarnamn och lösenord för registret.
+hello följande exempel skickar hello-ID och lösenord för ett Azure Active Directory [tjänstens huvudnamn](../active-directory/active-directory-application-objects.md). Du kan till exempel har tilldelat en service principal tooyour registret för ett automation-scenario. Du kan också logga in med ditt användarnamn och lösenord för registret.
 
 ```
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
-Följande kommando skapar en tagg, eller ett alias, för avbildningen, med en fullständigt kvalificerad sökväg till registret. I det här exemplet placeras avbildningen i ```samples```-namnområdet för att undvika oreda i registrets rot.
+hello följande kommando skapar en tagg eller alias för hello bild med ett fullständigt kvalificerad sökväg tooyour register. Det här exemplet platser hello bilden i hello ```samples``` namnområde tooavoid oreda i hello rot hello registret.
 
 ```
 docker tag helloworldapp myregistry.azurecr.io/samples/helloworldapp
 ```
 
-Överför avbildningen till behållarregistret:
+Push hello avbildningen tooyour behållare registret:
 
 ```
 docker push myregistry.azurecr.io/samples/helloworldapp
 ```
 
-## <a name="create-the-containerized-service-in-visual-studio"></a>Skapa behållartjänsten i Visual Studio
-SDK:en och verktygen för Service Fabric innehåller en tjänstmall som hjälper dig att skapa ett behållarprogram.
+## <a name="create-hello-containerized-service-in-visual-studio"></a>Skapa hello container service i Visual Studio
+hello Service Fabric-SDK och verktyg tillhandahåller en tjänst mallen toohelp du skapar ett container program.
 
 1. Starta Visual Studio.  Välj **Arkiv** > **Nytt** > **Projekt**.
 2. Välj **Service Fabric-programmet**, ge det namnet "MyFirstContainer" och klicka på **OK**.
-3. Välj **Guest Container** (Gästbehållare) i listan med **tjänstmallar**.
-4. I **Avbildningsnamn** skriver du "myregistry.azurecr.io/samples/helloworldapp" (den avbildning som du skickade till lagringsplatsen för behållaren).
+3. Välj **gäst behållaren** hello listan över **tjänstmallar**.
+4. I **avbildningsnamn** ange ”myregistry.azurecr.io/samples/helloworldapp”, hello bild du pushas tooyour behållare databasen.
 5. Namnge tjänsten och klicka på **OK**.
 
 ## <a name="configure-communication"></a>Konfigurera kommunikation
-Behållartjänsten behöver en slutpunkt för kommunikation. Lägg till ett `Endpoint`-element med protokollet, porten och typen i filen ServiceManifest.xml. Behållartjänsten för den här artikeln lyssnar på port 8081.  I det här exemplet används en fast port, 8081.  Om ingen port har angetts väljs en port slumpmässigt från portintervallet för programmet.  
+hello container service måste en slutpunkt för kommunikation. Lägg till en `Endpoint` element med hello-protokollet, porten och typen toohello ServiceManifest.xml fil. Hello av tjänsten lyssnar på port 8081 för den här artikeln.  I det här exemplet används en fast port, 8081.  Om ingen port anges väljs en slumpmässigt vald port från hello portintervall för programmet.  
 
 ```xml
 <Resources>
@@ -184,12 +184,12 @@ Behållartjänsten behöver en slutpunkt för kommunikation. Lägg till ett `End
 </Resources>
 ```
 
-Genom att definiera en slutpunkt publicerar Service Fabric slutpunkten i namngivningstjänsten.  Andra tjänster som körs i klustret kan lösa den här behållaren.  Du kan också utföra kommunikation mellan behållare med hjälp av den [omvända proxyn](service-fabric-reverseproxy.md).  Du utför kommunikation genom att tillhandahålla HTTP-lyssningsporten för den omvända proxyn och namnet på de tjänster som du vill kommunicera med som miljövariabler.
+Genom att definiera en slutpunkt publicerar Service Fabric hello endpoint toohello Naming service.  Andra tjänster som körs i hello kluster kan lösa den här behållaren.  Du kan också utföra behållare till en annan kommunikation via hello [omvänd proxy](service-fabric-reverseproxy.md).  Kommunikation utförs genom att ange hello omvänd proxy HTTP lyssningsport och hello namnet på hello-tjänster som du vill använda toocommunicate med som miljövariabler.
 
 ## <a name="configure-and-set-environment-variables"></a>Konfigurera och ange miljövariabler
-Miljövariabler kan anges för varje kodpaketet i tjänstmanifestet. Den här funktionen är tillgänglig för alla tjänster oavsett om de har distribueras som behållare eller processer, eller körbara gäster. Du kan åsidosätta värden för miljövariabler i applikationsmanifestet eller ange dem under distributionen som programparametrar.
+Miljövariabler kan anges för varje kodpaketet i hello service manifest. Den här funktionen är tillgänglig för alla tjänster oavsett om de har distribueras som behållare eller processer, eller körbara gäster. Du kan åsidosätta miljövariabeln värden i hello application manifest eller ange dem under distributionen som parametrar för programmet.
 
-Följande XML-kodfragment i tjänstmanifestet visar ett exempel på hur du anger miljövariabler för ett kodpaket:
+hello följande service manifest XML-fragment visar ett exempel på hur toospecify miljövariabler för ett paket med koden:
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   ...
@@ -199,7 +199,7 @@ Följande XML-kodfragment i tjänstmanifestet visar ett exempel på hur du anger
 </CodePackage>
 ```
 
-Dessa miljövariabler kan åsidosättas i applikationsmanifestet:
+De här miljövariablerna kan åsidosättas i programmanifestet hello:
 
 ```xml
 <ServiceManifestImport>
@@ -211,7 +211,7 @@ Dessa miljövariabler kan åsidosättas i applikationsmanifestet:
 ```
 
 ## <a name="configure-container-port-to-host-port-mapping-and-container-to-container-discovery"></a>Konfigurera mappning mellan behållarport och värdport och identifiering mellan behållare
-Konfigurera en värdport som används för att kommunicera med behållaren. Portbindningen mappar porten där tjänsten lyssnar inuti behållaren till en port på värden. Lägg till ett `PortBinding`-element i `ContainerHostPolicies`-elementet i filen ApplicationManifest.xml.  I den här artikeln är `ContainerPort` 80 (behållaren exponerar port 80, som anges i Dockerfile) och `EndpointRef` är ”Guest1TypeEndpoint” (slutpunkten som tidigare definierats i tjänstmanifestet).  Inkommande begäranden till tjänsten på port 8081 mappas till port 80 på behållaren.
+Konfigurera en toocommunicate för porten som används av värden med hello behållare. hello-portbindningen mappar hello port på vilken hello tjänsten lyssnar inuti hello behållaren tooa port på hello värden. Lägg till en `PortBinding` element i `ContainerHostPolicies` element av hello ApplicationManifest.xml fil.  Den här artikeln `ContainerPort` är 80 (hello behållaren visar port 80, som anges i hello Dockerfile) och `EndpointRef` är ”Guest1TypeEndpoint” (hello slutpunkt som tidigare definierats i hello tjänstmanifestet).  Inkommande begäranden toohello tjänst på port 8081 mappas tooport 80 hello behållaren.
 
 ```xml
 <Policies>
@@ -222,7 +222,7 @@ Konfigurera en värdport som används för att kommunicera med behållaren. Port
 ```
 
 ## <a name="configure-container-registry-authentication"></a>Konfigurera autentisering av behållarregister
-Konfigurera autentisering av behållarregister genom att lägga till `RepositoryCredentials` i `ContainerHostPolicies` filen ApplicationManifest.xml. Lägg till kontot och lösenordet för behållarregistret myregistry.azurecr.io, så att tjänsten kan ladda ned behållaravbildningen från centrallagret.
+Konfigurera behållaren registret autentisering genom att lägga till `RepositoryCredentials` för`ContainerHostPolicies` hello ApplicationManifest.xml filen. Lägg till hello konto och lösenord för hello myregistry.azurecr.io behållare registret, vilket gör att hello service toodownload hello behållaren avbildningen från hello databasen.
 
 ```xml
 <Policies>
@@ -233,9 +233,9 @@ Konfigurera autentisering av behållarregister genom att lägga till `Repository
 </Policies>
 ```
 
-Vi rekommenderar att du krypterar centrallagrets lösenord genom att använda ett chiffreringscertifikat som distribueras till alla noder i klustret. När Service Fabric distribuerar tjänstpaketet till klustret används chiffreringscertifikatet för att avkryptera chiffertexten.  Cmdleten Invoke-ServiceFabricEncryptText används för att skapa chiffertexten för lösenordet, som läggs till i filen ApplicationManifest.xml.
+Vi rekommenderar att du krypterar hello databasen lösenord med hjälp av en chiffrering av certifikat som har distribuerats tooall klusternoder hello. När Service Fabric distribuerar hello service paketet toohello kluster, är hello chiffrering certifikat används toodecrypt hello chiffertext.  hello Invoke-ServiceFabricEncryptText cmdlet har använt toocreate hello chiffertext för hello lösenord, som har lagts till toohello ApplicationManifest.xml fil.
 
-Följande skript skapar ett nytt självsignerat certifikat och exporterar det till en PFX-fil.  Certifikatet importeras till ett befintligt nyckelvalv och distribueras sedan till Service Fabric-klustret.
+hello följande skript skapar ett nytt självsignerat certifikat och exporterar den tooa PFX-filen.  hello certifikatet importeras till en befintlig nyckelvalvet och sedan distribueras toohello Service Fabric-klustret.
 
 ```powershell
 # Variables.
@@ -253,26 +253,26 @@ Login-AzureRmAccount
 
 Select-AzureRmSubscription -SubscriptionId $subscriptionId
 
-# Create a self signed cert, export to PFX file.
+# Create a self signed cert, export tooPFX file.
 New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject $subjectname -Provider 'Microsoft Enhanced Cryptographic Provider v1.0' `
 | Export-PfxCertificate -FilePath $filepath -Password $certpwd
 
-# Import the certificate to an existing key vault.  The key vault must be enabled for deployment.
+# Import hello certificate tooan existing key vault.  hello key vault must be enabled for deployment.
 $cer = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certificateName -FilePath $filepath -Password $certpwd
 
 Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $groupname -EnabledForDeployment
 
-# Add the certificate to all the VMs in the cluster.
+# Add hello certificate tooall hello VMs in hello cluster.
 Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $cer.SecretId
 ```
-Kryptera lösenordet med cmdleten [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps).
+Kryptera hello lösenord med hjälp av hello [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) cmdlet.
 
 ```powershell
 $text = "=P==/==/=8=/=+u4lyOB=+=nWzEeRfF="
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint $cer.Thumbprint -Text $text -StoreLocation Local -StoreName My
 ```
 
-Ersätt lösenordet med chiffertexten som returneras av cmdleten [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) och ange `PasswordEncrypted` ”true”.
+Ersätt hello lösenord med hello chiffertext som returneras av hello [Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) cmdlet och ange `PasswordEncrypted` för ”true”.
 
 ```xml
 <Policies>
@@ -288,14 +288,14 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 ```
 
 ## <a name="configure-isolation-mode"></a>Konfigurera isoleringsläge
-Windows stöder två isoleringslägen för behållare: process och Hyper-V. Om processisoleringsläget används delar alla behållare som körs på samma värddator kärna med värden. Om Hyper-V-isoleringsläget används isoleras kärnorna mellan varje Hyper-V-behållare och behållarvärden. Isoleringsläget anges i `ContainerHostPolicies`-elementet i applikationsmanifestfilen. Isoleringslägena som kan anges är `process`, `hyperv` och `default`. Standardinställningen för standardisoleringsläget är `process` på Windows Server-värddatorer och `hyperv` på Windows 10-värddatorer. Följande kodfragment visar hur isoleringsläget har angetts i applikationsmanifestfilen.
+Windows stöder två isoleringslägen för behållare: process och Hyper-V. Med hello arbetsprocesser hello alla hello-behållare som körs på samma värd datorn resursen hello kernel med hello-värden. Med hello Hyper-V-isoleringsläge isoleras hello kärnor mellan varje Hyper-V-behållaren och hello behållaren värden. hello isoleringsläge har angetts i hello `ContainerHostPolicies` element i hello programmanifestfilen. hello arbetslägen som kan anges är `process`, `hyperv`, och `default`. hello standard isoleringsläge standardvärden för`process` på Windows Server är värd för, och är som standard för`hyperv` på Windows 10-värdar. hello följande utdrag visar hur hello isoleringsläge har angetts i hello programmanifestfilen.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
 ```
 
 ## <a name="configure-resource-governance"></a>Konfigurera resursstyrning
-Med [resursstyrning](service-fabric-resource-governance.md) begränsas resurserna som behållaren kan använda på värddatorn. `ResourceGovernancePolicy`-elementet som anges i applikationsmanifestet, används för att deklarera resursgränser för ett tjänstkodpaket. Resursgränser kan anges för följande resurser: Memory, MemorySwap, CpuShares (relativ processorvikt), MemoryReservationInMB, BlkioWeight (relativ BlockIO-vikt).  I det här exemplet hämtar tjänstpaketet Guest1Pkg en kärna på klusternoderna där det är placerat.  Minnesgränser är absoluta, så kodpaketet är begränsat till 1024 MB minne (med samma reservation). Kodpaket (behållare eller processer) kan inte tilldela mer minne än den här gränsen, och försök att göra detta leder till undantag utanför minnet. För att tvingande resursbegränsning ska fungera bör minnesbegränsningar ha angetts för alla kodpaket inom ett tjänstpaket.
+[Resurs-styrning](service-fabric-resource-governance.md) begränsar hello resurser som hello behållare kan använda på hello värden. Hej `ResourceGovernancePolicy` element som anges i hello programmanifestet är används toodeclare gränserna för ett paket för service-kod. Resursen gränser kan anges för hello följande resurser: minne, MemorySwap, CpuShares (CPU relativa viktade), MemoryReservationInMB BlkioWeight (BlockIO relativa vikt).  I det här exemplet hämtar servicepaket Guest1Pkg en kärna på hello klusternoder där den är placerad.  Minnesgränserna är absolut, så hello kodpaketet är begränsad too1024 MB minne (och en mjuk garanti reservation av hello samma). Koden paket (behållare eller processer) är inte kan tooallocate mer minne än den här gränsen och försök toodo så resulterar i ett undantag i minnet är slut. Resursen gränsen tvingande toowork har alla kod paket i ett tjänstepaket minnesgränserna som angetts.
 
 ```xml
 <ServiceManifestImport>
@@ -307,23 +307,23 @@ Med [resursstyrning](service-fabric-resource-governance.md) begränsas resursern
 </ServiceManifestImport>
 ```
 
-## <a name="deploy-the-container-application"></a>Distribuera behållarappen
-Spara alla dina ändringar och skapa programmet. Om du vill publicera appen högerklickar du på **MyFirstContainer** i Solution Explorer och väljer **Publish** (Publicera).
+## <a name="deploy-hello-container-application"></a>Distribuera programmet hello
+Spara dina ändringar och skapa hello program. toopublish ditt program, högerklicka på **MyFirstContainer** i Solution Explorer och markera **publicera**.
 
-I **anslutningsslutpunkten** anger du hanteringsslutpunkten för klustret.  Till exempel "containercluster.westus2.cloudapp.azure.com:19000". Slutpunkten för klientanslutningen finns på översiktsbladet för ditt kluster i [Azure Portal](https://portal.azure.com).
+I **Anslutningens slutpunkt**, ange hello hanteringsslutpunkten för hello klustret.  Till exempel "containercluster.westus2.cloudapp.azure.com:19000". Du kan hitta hello klientanslutning slutpunkt i hello översikt bladet för klustret i hello [Azure-portalen](https://portal.azure.com).
 
 Klicka på **Publicera**.
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) är ett webbaserat verktyg för att granska och hantera appar och noder i ett Service Fabric-kluster. Öppna en webbläsare och gå till http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ och följ programdistributionen.  Appen distribueras men är i ett feltillstånd tills avbildningen har laddats ned på klusternoderna (vilket kan ta en stund beroende på avbildningens storlek): ![Fel][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) är ett webbaserat verktyg för att granska och hantera appar och noder i ett Service Fabric-kluster. Öppna en webbläsare och gå toohttp://containercluster.westus2.cloudapp.azure.com:19080 Explorer- och följ hello programdistribution.  hello programmet distribuerar men är i ett feltillstånd tills hello avbildningen hämtas på hello klusternoder (vilket kan ta en stund, beroende på hello bildstorleken): ![fel][1]
 
-Appen är klar när den har ```Ready```status: ![Ready][2] (Klar)
+hello programmet är klart när den är i ```Ready``` tillstånd: ![redo][2]
 
-Öppna en webbläsare och navigera till http://containercluster.westus2.cloudapp.azure.com:8081. Nu visas normalt rubriken "Hello World!" i webbläsaren.
+Öppna en webbläsare och gå toohttp://containercluster.westus2.cloudapp.azure.com:8081. Du bör se hello rubriken ”Hello World”! Visa i hello webbläsare.
 
 ## <a name="clean-up"></a>Rensa
-Det kostar pengar så länge klustret körs. Fundera på om du vill [ta bort klustret](service-fabric-get-started-azure-cluster.md#remove-the-cluster).  [Party-kluster](http://tryazureservicefabric.westus.cloudapp.azure.com/) tas bort automatiskt efter ett par timmar.
+Du kan fortsätta tooincur avgifter medan hello klustret körs bör du överväga att [tar bort klustret](service-fabric-get-started-azure-cluster.md#remove-the-cluster).  [Party-kluster](http://tryazureservicefabric.westus.cloudapp.azure.com/) tas bort automatiskt efter ett par timmar.
 
-När du har överfört avbildningen till behållarregistret kan du ta bort den lokala avbildningen från utvecklingsdatorn:
+När du trycker på hello avbildningen toohello behållare registret kan du ta bort hello lokal image på utvecklingsdatorn:
 
 ```
 docker rmi helloworldapp
@@ -331,7 +331,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Komplett exempel på Service Fabric-app och tjänstmanifest
-Här är de fullständiga tjänst- och appmanifesten som används i den här artikeln.
+Här är klar hello-tjänsten och applikationsmanifest som används i denna artikel.
 
 ### <a name="servicemanifestxml"></a>ServiceManifest.xml
 ```xml
@@ -342,20 +342,20 @@ Här är de fullständiga tjänst- och appmanifesten som används i den här art
                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
-    <!-- This is the name of your ServiceType.
-         The UseImplicitHost attribute indicates this is a guest service. -->
+    <!-- This is hello name of your ServiceType.
+         hello UseImplicitHost attribute indicates this is a guest service. -->
     <StatelessServiceType ServiceTypeName="Guest1Type" UseImplicitHost="true" />
   </ServiceTypes>
 
   <!-- Code package is your service executable. -->
   <CodePackage Name="Code" Version="1.0.0">
     <EntryPoint>
-      <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
+      <!-- Follow this link for more information about deploying Windows containers tooService Fabric: https://aka.ms/sfguestcontainers -->
       <ContainerHost>
         <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName>
       </ContainerHost>
     </EntryPoint>
-    <!-- Pass environment variables to your container: -->    
+    <!-- Pass environment variables tooyour container: -->    
     <EnvironmentVariables>
       <EnvironmentVariable Name="HttpGatewayPort" Value=""/>
       <EnvironmentVariable Name="BackendServiceName" Value=""/>
@@ -363,13 +363,13 @@ Här är de fullständiga tjänst- och appmanifesten som används i den här art
 
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an
+  <!-- Config package is hello contents of hello Config directoy under PackageRoot that contains an
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
   <Resources>
     <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to
+      <!-- This endpoint is used by hello communication listener tooobtain hello port on which to
            listen. Please note that if your service is partitioned, this port is shared with
            replicas of different partitions that are placed in your code. -->
       <Endpoint Name="Guest1TypeEndpoint" UriScheme="http" Port="8081" Protocol="http"/>
@@ -388,8 +388,8 @@ Här är de fullständiga tjänst- och appmanifesten som används i den här art
   <Parameters>
     <Parameter Name="Guest1_InstanceCount" DefaultValue="-1" />
   </Parameters>
-  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion
-       should match the Name and Version attributes of the ServiceManifest element defined in the
+  <!-- Import hello ServiceManifest from hello ServicePackage. hello ServiceManifestName and ServiceManifestVersion
+       should match hello Name and Version attributes of hello ServiceManifest element defined in the
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Guest1Pkg" ServiceManifestVersion="1.0.0" />
@@ -411,11 +411,11 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
-    <!-- The section below creates instances of service types, when an instance of this
+    <!-- hello section below creates instances of service types, when an instance of this
          application type is created. You can also create one or more instances of service type using the
          ServiceFabric PowerShell module.
 
-         The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
+         hello attribute ServiceTypeName below must match hello name defined in hello imported ServiceManifest.xml file. -->
     <Service Name="Guest1">
       <StatelessService ServiceTypeName="Guest1Type" InstanceCount="[Guest1_InstanceCount]">
         <SingletonPartition />
@@ -427,7 +427,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Ställ in tidsintervall innan behållaren tvångsavslutas
 
-Du kan ställa in ett tidsintervall för hur lång exekveringstid som ska gå innan behållaren tas bort när borttagning av tjänsten (eller flytt till en annan nod) har påbörjats. När du ställer in ett tidsintervall skickas kommandot `docker stop <time in seconds>` till behållaren.   Mer information finns i [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Tidsintervallet anges i avsnittet `Hosting`. I följande klustermanifestutdrag visas hur du ställer in väntetidsintervallet:
+Du kan konfigurera ett tidsintervall för hello runtime toowait innan hello behållaren tas bort när hello tjänsten tas bort (eller en flytta tooanother nod) har startats. Konfigurera hello tidsintervall skickar hello `docker stop <time in seconds>` kommandot toohello behållare.   Mer information finns i [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). hello tidsintervall toowait anges under hello `Hosting` avsnitt. hello följande klustret manifestet fragment visar hur tooset hello vänta intervall:
 
 ```xml
 {
@@ -440,12 +440,12 @@ Du kan ställa in ett tidsintervall för hur lång exekveringstid som ska gå in
         ]
 }
 ```
-Standardtidsintervallet är inställt på 10 sekunder. Eftersom inställningen är dynamisk uppdateras tidsgränsen med en konfigurationsuppdatering på klustret. 
+hello standard tidsintervall har angetts too10 sekunder. Eftersom den här konfigurationen är dynamiska, en config endast uppgradera hello klustret uppdateringar hello tidsgränsen uppnåddes. 
 
 
-## <a name="configure-the-runtime-to-remove-unused-container-images"></a>Ställ in exekveringstid för att ta bort behållaravbildningar som inte används
+## <a name="configure-hello-runtime-tooremove-unused-container-images"></a>Konfigurera hello runtime tooremove oanvända behållaren bilder
 
-Du kan ställa in Service Fabric-klustret på att ta bort oanvända behållaravbildningar från noden. Med den här inställningen kan du få tillbaka diskutrymme om det finns för många behållaravbildningar på noden.  Aktivera funktionen genom att uppdatera avsnittet `Hosting` i klustermanifestet enligt följande utdrag: 
+Du kan konfigurera hello Service Fabric-kluster tooremove oanvända behållaren bilder från hello-nod. Den här konfigurationen kan disk space toobe återfångats om för många behållare avbildningar finns på hello-nod.  tooenable den här funktionen, uppdatering hello `Hosting` avsnittet i hello klustermanifestet som visas i följande fragment hello: 
 
 
 ```xml
@@ -461,15 +461,15 @@ Du kan ställa in Service Fabric-klustret på att ta bort oanvända behållaravb
 } 
 ```
 
-Avbildningar som inte ska raderas kan du ange under parametern `ContainerImagesToSkip`. 
+För bilder som inte ska tas bort, kan du ange dem under hello `ContainerImagesToSkip` parameter. 
 
 
 
 ## <a name="next-steps"></a>Nästa steg
 * Mer information om hur du kör [behållare i Service Fabric](service-fabric-containers-overview.md).
-* Läs kursen [Distribuera ett .NET-program i en behållare](service-fabric-host-app-in-a-container.md).
-* Läs om Service Fabric-[applivscykeln](service-fabric-application-lifecycle.md).
-* Se [kodexempel för Service Fabric-behållare](https://github.com/Azure-Samples/service-fabric-dotnet-containers) på GitHub.
+* Läs hello [distribuera ett .NET-program i en behållare](service-fabric-host-app-in-a-container.md) kursen.
+* Lär dig mer om hello Service Fabric [programmet livscykel](service-fabric-application-lifecycle.md).
+* Utcheckning hello [kodexempel för Service Fabric-behållaren](https://github.com/Azure-Samples/service-fabric-dotnet-containers) på GitHub.
 
 [1]: ./media/service-fabric-get-started-containers/MyFirstContainerError.png
 [2]: ./media/service-fabric-get-started-containers/MyFirstContainerReady.png

@@ -1,6 +1,6 @@
 ---
-title: ".NET-flernivåprogram med hjälp av Azure Service Bus | Microsoft Docs"
-description: "En .NET-självstudiekurs som hjälper dig att utveckla en flernivåapp i Azure som använder Service Bus-köer för att kommunicera mellan nivåerna."
+title: "aaa.NET flernivåapp med hjälp av Azure Service Bus | Microsoft Docs"
+description: "En .NET-självstudiekurs som hjälper dig att utveckla en flernivåapp i Azure som använder Service Bus-köer toocommunicate mellan nivåer."
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -14,100 +14,100 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 04/11/2017
 ms.author: sethm
-ms.openlocfilehash: 8b502f5ac5d89801d390a872e7a8b06e094ecbba
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 485910ff1d3b8b0a709ee14ede32e57cf873829a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>.NET-flernivåapp med hjälp av Azure Service Bus-köer
 ## <a name="introduction"></a>Introduktion
-Att utveckla för Microsoft Azure är enkelt tack vare Visual Studio och det kostnadsfria utvecklingsverktyget Azure SDK för .NET. Den här självstudiekursen vägleder dig igenom stegen för att skapa en app som använder flera Azure-resurser som körs i din lokala miljö.
+Utveckla för Microsoft Azure är enkelt med Visual Studio och hello kostnadsfria Azure SDK för .NET. Den här självstudiekursen vägleder dig genom hello steg toocreate ett program som använder flera Azure-resurser som körs i din lokala miljö.
 
-Du kommer att få lära dig följande:
+Får du lära dig hello följande:
 
-* Hur du förbereder datorn för Azure-utveckling med en enda nedladdning och installation.
-* Hur du använder Visual Studio för att utveckla för Azure.
-* Hur du skapar en flernivåapp i Azure genom att använda webb- och arbetsroller.
-* Hur du kan kommunicera mellan nivåer med hjälp av Service Bus-köer.
+* Hur tooenable datorn för Azure-utveckling med en enda hämta och installera.
+* Hur toouse Visual Studio toodevelop för Azure.
+* Hur toocreate en flernivåapp i Azure med hjälp av webb-och arbetsroller.
+* Hur toocommunicate mellan nivåer med hjälp av Service Bus-köer.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-I den här självstudiekursen kommer du att skapa och köra flernivåappen i en molntjänst för Azure. Klientdelen är en ASP.NET MVC-webbroll och serverdelen en arbetsroll som använder en Service Bus-kö. Du kan skapa samma flernivåapp med klientdelen som ett webbprojekt som distribueras till en Azure-webbplats i stället för till en molntjänst. Du kan också prova att gå igenom självstudiekursen [.NET-hybridapp lokalt/i molnet](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md).
+I den här självstudiekursen kommer du bygger och kör hello flernivåapp i en Azure-molntjänst. hello klientdelen är en ASP.NET MVC-webbroll och serverdelen hello är en arbetsroll som använder Service Bus-kö. Du kan skapa hello samma flernivåapp med klientdelen hello som ett webbprojekt som är distribuerade tooan Azure-webbplats i stället för en tjänst i molnet. Du kan också testa hello [.NET på lokalt/i molnet hybridprogram](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) kursen.
 
-Följande skärmdump visar den färdiga appen.
+hello visar följande skärmbild som hello slutföra programmet.
 
 ![][0]
 
 ## <a name="scenario-overview-inter-role-communication"></a>Scenarioöversikt: kommunikation mellan roller
-Om du vill skicka in en order för bearbetning måste klientdelens UI-komponent, som kör webbrollen, interagera med den mellannivålogik som kör arbetsrollen. I det här exemplet används en meddelandetjänst via Service Bus för kommunikation mellan nivåerna.
+toosubmit en order för bearbetning, hello frontend UI-komponent, körs i hello webbrollen, måste interagera med hello mellannivålogik som körs i hello worker-rollen. Det här exemplet använder Service Bus-meddelanden för hello kommunikation mellan hello nivåer.
 
-Genom att använda en meddelandetjänst mellan webben och mellannivåerna frikopplas de båda komponenterna. Till skillnad från direkt dataöverföring (d.v.s. TCP eller HTTP), ansluter webbnivån inte direkt till mellannivån. Istället skickar den arbetsenheter, som meddelanden, till Service Bus, som lagrar dem på ett tillförlitligt sätt tills mellannivån är klar att använda och bearbeta dem.
+Med hjälp av Service Bus frikopplas-meddelanden mellan hello webben och mellannivåerna de båda komponenterna. Däremot toodirect messaging (d.v.s. TCP eller HTTP) hello webbnivå inte ansluta toohello mellannivå direkt; i stället skickar den arbetsenheter, som meddelanden, till Service Bus, som lagrar dem tills hello mellannivån är klar tooconsume och bearbeta dem på ett tillförlitligt sätt.
 
-Service Bus innehåller två entiteter för att stödja den asynkrona meddelandetjänsten: köer och ämnen. När man använder köer förbrukas varje meddelande som skickas till kön av en enda mottagare. Ämnena stödjer det mönster för publicera/prenumerera där varje publicerat meddelande görs tillgängligt för en prenumeration som har registrerats med ämnet. Varje prenumeration underhåller logiskt nog sin egen meddelandekö. Prenumerationer kan också konfigureras med filterregler som begränsar den uppsättning av meddelanden som skickas vidare till prenumerationskön till dem som matchar filtret. I följande exempel används Service Bus-köer.
+Service Bus innehåller två entiteter toosupport asynkrona meddelanden: köer och ämnen. Med köer skickas varje meddelande toohello kö används av en enda mottagare. Ämnena stödjer hello Publicera/prenumerera-mönster där varje publicerat meddelande görs tillgängligt tooa prenumeration som har registrerats med hello-avsnittet. Varje prenumeration underhåller logiskt nog sin egen meddelandekö. Prenumerationer kan också konfigureras med filterregler som begränsar hello uppsättning av meddelanden som skickas till hello prenumeration kön toothose som matchar filtret hello. hello används följande exempel Service Bus-köer.
 
 ![][1]
 
 Denna kommunikationsmekanism har flera fördelar jämfört med funktioner för direkta meddelanden:
 
-* **Tidsbestämd frikoppling.** Med mönstret för asynkrona meddelanden behöver producenter och konsumenter inte vara online samtidigt. Service Bus lagrar meddelanden på ett säkert sätt tills den konsumerande parten är redo att ta emot dem. Detta gör att komponenterna i den distribuerade appen kan frikopplas, antingen frivilligt, till exempel för underhåll, eller på grund av en komponentkrasch, utan att detta påverkar hela systemet. Dessutom behöver den konsumerande appen endast kopplas upp och vara online under vissa tider på dagen.
-* **Belastningsutjämning.** I många program varierar systembelastningen beroende på tidpunkten, medan den bearbetningstid som krävs för varje arbetsenhet vanligtvis är konstant. Medlingen mellan meddelandeproducenter och -konsumenter med hjälp av en kö innebär att den konsumerande appen (arbetaren) endast måste konfigureras för att kunna hantera en genomsnittlig belastning i stället för mycket hög belastning vid vissa tider. Köns djup växer och dras samman allt eftersom den inkommande belastningen varierar. Detta sparar direkt pengar eftersom den mängd infrastruktur som krävs för att underhålla programbelastningen blir mindre.
-* **Belastningsutjämning.** Allt eftersom belastningen ökar kan fler arbetsprocesser läggas till för att läsa från kön. Varje meddelande bearbetas bara av en av arbetsprocesserna. Dessutom gör den här pull-baserade belastningsbalanseringen att du får en optimal användning av arbetsdatorerna. Detta gäller även om arbetsdatorerna har olika processorkraft: de kommer att hämta meddelanden med den hastighet som var och en av dem klarar av. Det här mönstret kallas ofta för ett *konkurrerande konsument*-mönster.
+* **Tidsbestämd frikoppling.** Med hello mönstret för asynkrona meddelanden, producenter och konsumenter behöver inte vara online på hello samtidigt. Service Bus lagrar meddelanden på ett tillförlitligt sätt tills hello konsumerande parten är redo att ta emot dem.. Detta gör att hello komponenter i hello distribuerade program toobe frånkopplad, antingen frivilligt, till exempel för underhåll, eller på grund av tooa komponentkrasch, utan att påverka systemet som helhet. Dessutom kanske hello förbrukar program behöver bara toocome online vid vissa tidpunkter på dagen hello.
+* **Belastningsutjämning.** I många program varierar systembelastningen över tiden, medan hello bearbetningstid som krävs för varje arbetsenhet vanligtvis är konstant. Medlingen mellan meddelandeproducenter och konsumenter med hjälp av en kö innebär att hello förbrukar program (hello arbetaren) endast måste toobe etableras tooaccommodate genomsnittlig belastning i stället för belastning. hello kön hello djup växer och dras samman allt eftersom hello inkommande belastningen varierar. Detta sparar direkt pengar beträffande hello mängden infrastruktur krävs tooservice hello programinläsning.
+* **Belastningsutjämning.** Eftersom belastningen ökar kan läggas fler arbetsprocesser tooread från hello kö. Varje meddelande bearbetas av bara en av hello arbetsprocesser. Dessutom gör den här pull-baserade belastningsbalanseringen att optimal användning av arbetsdatorerna hello även om arbetsdatorerna skiljer sig åt vad gäller processorkraft: de hämtar meddelanden med sina egna högsta hastighet. Det här mönstret kallas ofta hello *konkurrerande konsument* mönster.
   
   ![][2]
 
-I följande avsnitt pratar vi om den kod som implementerar denna arkitektur.
+hello följande avsnitt beskrivs hello-kod som implementerar denna arkitektur.
 
-## <a name="set-up-the-development-environment"></a>Konfigurera utvecklingsmiljön
-Innan du kan börja utveckla Azure-program måste du skaffa de verktyg som krävs och ställa in din utvecklingsmiljö.
+## <a name="set-up-hello-development-environment"></a>Ställa in hello utvecklingsmiljö
+Innan du kan börja utveckla Azure-program, hämta hello verktyg och Ställ in din utvecklingsmiljö.
 
-1. Installera Azure SDK för .NET från [hämtningssidan](https://azure.microsoft.com/downloads/) för SDK.
-2. Klicka på den version av [Visual Studio](http://www.visualstudio.com) du använder i kolumnen **.NET**. Stegen i den här handledningen använder Visual Studio 2015, men det går lika bra med Visual Studio 2017.
-3. När du uppmanas att köra eller spara installationsprogrammet, klickar du på **Kör**.
-4. I **Installationsprogram för webbplattform** klickar du på **Installera** och fortsätter med installationen.
-5. När installationen är klar har du allt som behövs för att börja utveckla appen. SDK inkluderar verktyg som låter dig utveckla Azure-program i Visual Studio på ett enkelt sätt.
+1. Installera hello Azure SDK för .NET från hello SDK [Nedladdningssida](https://azure.microsoft.com/downloads/).
+2. I hello **.NET** kolumn, och klicka på hello version av [Visual Studio](http://www.visualstudio.com) du använder. hello stegen i den här självstudiekursen används Visual Studio 2015, men de fungerar även med Visual Studio 2017.
+3. När du uppmanas toorun eller spara hello installer, klickar du på **kör**.
+4. I hello **installationsprogram för webbplattform**, klickar du på **installera** och fortsätta med installationen hello.
+5. När hello installationen är klar har du allt nödvändigt toostart toodevelop hello app. hello SDK inkluderar verktyg som låter dig utveckla Azure-program i Visual Studio.
 
 ## <a name="create-a-namespace"></a>Skapa ett namnområde
-Nästa steg är att skapa ett namnområde för tjänsten och få en nyckel till signatur för delad åtkomst (SAS). Ett namnområde ger en appgräns för varje app som exponeras via Service Bus. SAS-nyckeln genereras av systemet när ett namnområde har skapats. Kombinationen av namnområdet och SAS-nyckeln ger referensen för Service Bus som används för att tillåta åtkomst till ett program.
+hello nästa steg är toocreate ett namnområde för tjänsten och få en delad signatur åtkomst (SAS)-nyckel. Ett namnområde ger en appgräns för varje app som exponeras via Service Bus. SAS-nyckeln genereras av hello systemet när ett namnområde har skapats. hello kombinationen av namnområdet och SAS-nyckeln ger hello autentiseringsuppgifter för Service Bus tooauthenticate åtkomst tooan program.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-web-role"></a>Skapa en webbroll
-I det här avsnittet ska du skapa klientdelen för din app. Först skapar du de sidor som din app visar.
-Efter det lägger du till kod som skickar objekt till en Service Bus-kö och visar statusinformation om denna kö.
+I det här avsnittet skapar du hello klientdelen för ditt program. Först skapar du hello sidor som din app visar.
+Efter det att lägga till kod som skickar objekt tooa Service Bus-kö och visar statusinformation om hello kö.
 
-### <a name="create-the-project"></a>Skapa projektet
-1. Du startar Visual Studio med administratörsbehörighet genom att högerklicka på programikonen för **Visual Studio** och sedan klicka på **Kör som administratör**. Azure Compute Emulator, som diskuteras senare i den här artikel, kräver att Visual Studio startas med administratörsbehörighet.
+### <a name="create-hello-project"></a>Skapa hello-projekt
+1. Starta Visual Studio med administratörsbehörighet: Högerklicka på hello **Visual Studio** programikonen och klicka sedan på **kör som administratör**. hello Azure compute emulator, som beskrivs senare i den här artikeln kräver att Visual Studio startas med administratörsbehörighet.
    
-   I Visual Studio klickar du på **Nytt** i menyn **Arkiv** och sedan på **Projekt**.
-2. Från **Installerade mallar**, under **Visual C#**, klickar du på **Moln** och sedan på **Azure Cloud Service**. Ge projektet följande namn: **MultiTierApp**. Klicka sedan på **OK**.
+   I Visual Studio på hello **filen** -menyn klickar du på **ny**, och klicka sedan på **projekt**.
+2. Från **Installerade mallar**, under **Visual C#**, klickar du på **Moln** och sedan på **Azure Cloud Service**. Namnet hello projektet **MultiTierApp**. Klicka sedan på **OK**.
    
    ![][9]
 3. Dubbelklicka på **ASP.NET Web Role** från rollerna **.NET Framework 4.5**.
    
    ![][10]
-4. Hovra över **WebRole1** under **Azure Cloud Service Solution** och klicka på pennikonen. Byt sedan namn på webbrollen till **FrontendWebRole**. Klicka sedan på **OK**. (Kontrollera att du anger ”Frontend” med ett litet ”e”, det vill säga, inte ”FrontEnd”).
+4. Hovra över **WebRole1** under **Azure Cloud Service solution**och klicka på pennikonen hello Byt namn på hello webbroll för**FrontendWebRole**. Klicka sedan på **OK**. (Kontrollera att du anger ”Frontend” med ett litet ”e”, det vill säga, inte ”FrontEnd”).
    
    ![][11]
-5. Från dialogrutan **Nytt ASP.NET-projekt** klickar du på **MVC** i listan **Välj en mall**.
+5. Från hello **nytt ASP.NET-projekt** i dialogrutan hello **Välj en mall** klickar du på **MVC**.
    
    ![][12]
-6. Medan du fortfarande är kvar i dialogrutan **Nytt ASP.NET-projekt**, klickar du på knappen **Ändra autentisering**. I dialogrutan **Ändra autentisering** klickar du på **Ingen autentisering** och sedan på **OK**. För den här självstudiekursen distribuerar du en app som inte kräver någon användarinloggning.
+6. Fortfarande i hello **nytt ASP.NET-projekt** dialogrutan klickar du på hello **ändra autentisering** knappen. I hello **ändra autentisering** dialogrutan klickar du på **ingen autentisering**, och klicka sedan på **OK**. För den här självstudiekursen distribuerar du en app som inte kräver någon användarinloggning.
    
     ![][16]
-7. Väl tillbaka i dialogrutan **Nytt ASP.NET-projekt** klickar du på **OK** för att skapa projektet.
-8. I projektet **FrontendWebRole** i **Solution Explorer** högerklickar du på **Referenser** och sedan klickar du på **Hantera NuGet-paket**.
-9. Klicka på **Bläddra**-fliken och sök sedan efter `Microsoft Azure Service Bus`. Välj paketet **WindowsAzure.ServiceBus** genom att klicka på **Installera** och godkänn användarvillkoren.
+7. Tillbaka i hello **nytt ASP.NET-projekt** dialogrutan klickar du på **OK** toocreate hello projektet.
+8. I **Solution Explorer**, i hello **FrontendWebRole** projekt, högerklicka på **referenser**, klicka på **hantera NuGet-paket**.
+9. Klicka på hello **Bläddra** fliken, och sök sedan efter `Microsoft Azure Service Bus`. Välj hello **WindowsAzure.ServiceBus** paketet genom att klicka på **installera**, och Godkänn hello villkor för användning.
    
    ![][13]
    
-   Observera att de obligatoriska klientsammansättningarna nu refereras och vissa nya kodfiler har lagts till.
-10. I **Solution Explorer** högerklickar du på **Modeller**. Klicka sedan på **Lägg till** och på **Klass**. I rutan **Namn** anger du namnet **OnlineOrder.cs**. Klicka sedan på **Lägg till**.
+   Observera att hello krävs klientsammansättningarna nu refereras och vissa nya kodfiler har lagts till.
+10. I **Solution Explorer** högerklickar du på **Modeller**. Klicka sedan på **Lägg till** och på **Klass**. I hello **namn** rutan, hello typnamn **OnlineOrder.cs**. Klicka sedan på **Lägg till**.
 
-### <a name="write-the-code-for-your-web-role"></a>Skriva koden för webbrollen
-I detta avsnitt ska du skapa de olika sidor som din app visar.
+### <a name="write-hello-code-for-your-web-role"></a>Skriva hello koden för webbrollen
+I det här avsnittet skapar du hello olika sidor som din app visar.
 
-1. Ersätt den befintliga definitionen för namnområdet med följande kod i filen OnlineOrder.cs i Visual Studio:
+1. Ersätt den befintliga definitionen för namnområdet med följande kod hello i hello OnlineOrder.cs-filen i Visual Studio:
    
    ```csharp
    namespace FrontendWebRole.Models
@@ -119,14 +119,14 @@ I detta avsnitt ska du skapa de olika sidor som din app visar.
        }
    }
    ```
-2. I **Solution Explorer** dubbelklickar du på **Controllers\HomeController.cs**. Lägg till följande **using**-uttryck högst upp i filen för att inkludera namnområdena för den modell som du precis har skapat, samt Service Bus.
+2. I **Solution Explorer** dubbelklickar du på **Controllers\HomeController.cs**. Lägg till följande hello **med** instruktioner överst hello i hello filen tooinclude hello namnområdena för den modell som du precis skapade, samt Service Bus.
    
    ```csharp
    using FrontendWebRole.Models;
    using Microsoft.ServiceBus.Messaging;
    using Microsoft.ServiceBus;
    ```
-3. Ersätt även den befintliga definitionen för namnområdet med följande kod i filen HomeController.cs i Visual Studio. Den här koden innehåller metoder för att hantera överföring av objekt till kön.
+3. Ersätt även den befintliga definitionen för namnområdet med följande kod hello i hello HomeController.cs filen i Visual Studio. Den här koden innehåller metoder för att hantera hello överföring av objekt toohello kö.
    
    ```csharp
    namespace FrontendWebRole.Controllers
@@ -135,7 +135,7 @@ I detta avsnitt ska du skapa de olika sidor som din app visar.
        {
            public ActionResult Index()
            {
-               // Simply redirect to Submit, since Submit will serve as the
+               // Simply redirect tooSubmit, since Submit will serve as the
                // front page of this application.
                return RedirectToAction("Submit");
            }
@@ -146,7 +146,7 @@ I detta avsnitt ska du skapa de olika sidor som din app visar.
            }
    
            // GET: /Home/Submit.
-           // Controller method for a view you will create for the submission
+           // Controller method for a view you will create for hello submission
            // form.
            public ActionResult Submit()
            {
@@ -156,17 +156,17 @@ I detta avsnitt ska du skapa de olika sidor som din app visar.
            }
    
            // POST: /Home/Submit.
-           // Controller method for handling submissions from the submission
+           // Controller method for handling submissions from hello submission
            // form.
            [HttpPost]
-           // Attribute to help prevent cross-site scripting attacks and
+           // Attribute toohelp prevent cross-site scripting attacks and
            // cross-site request forgery.  
            [ValidateAntiForgeryToken]
            public ActionResult Submit(OnlineOrder order)
            {
                if (ModelState.IsValid)
                {
-                   // Will put code for submitting to queue here.
+                   // Will put code for submitting tooqueue here.
    
                    return RedirectToAction("Submit");
                }
@@ -178,34 +178,34 @@ I detta avsnitt ska du skapa de olika sidor som din app visar.
        }
    }
    ```
-4. I menyn **Skapa** klickar du på **Skapa lösning** för att kontrollera att det arbete du utfört hittills är korrekt.
-5. Nu ska du skapa vyn för den `Submit()`-metod som du skapade tidigare. Högerklicka inne i `Submit()`-metoden (överlagringen av `Submit()` som inte tar några parametrar) och välj sedan **Lägg till vy**.
+4. Från hello **skapa** -menyn klickar du på **skapa lösning** tootest hello noggrannhet arbete hittills.
+5. Nu skapar hello vy för hello `Submit()` metod som du skapade tidigare. Högerklicka inne hello `Submit()` metod (hello överlagring för `Submit()` som tar några parametrar), och välj sedan **Lägg till vy**.
    
    ![][14]
-6. En dialogruta för att skapa vyn visas. Välj **Skapa** i listan **Mall**. Klicka på klassen **OnlineOrder** i listan **Modellklass**.
+6. En dialogruta för att skapa hello vyn. I hello **mallen** Välj **skapa**. I hello **Modellklass** klickar du på hello **OnlineOrder** klass.
    
    ![][15]
 7. Klicka på **Lägg till**.
-8. Nu ska du ändra visningsnamnet för din app. Dubbelklicka på filen **Views\Shared\\_Layout.cshtml** i **Solution Explorer** för att öppna den i Visual Studio-redigeraren.
+8. Nu ska du ändra hello visas namnet på ditt program. I **Solution Explorer**, dubbelklicka på den **Views\Shared\\_Layout.cshtml** filen tooopen i hello Visual Studio-redigeraren.
 9. Ersätt alla förekomster av **My ASP.NET Application** med **LITWARE'S Products**.
-10. Ta bort länkarna för **Start**, **Om** och **Kontakt**. Ta bort den markerade koden:
+10. Ta bort hello **Start**, **om**, och **Kontakta** länkar. Ta bort hello markerade koden:
     
     ![][28]
-11. Slutligen ändrar du överföringssidan för att inkludera information om kön. Dubbelklicka på filen **Views\Home\Submit.cshtml** i **Solution Explorer** för att öppna den i Visual Studio-redigeraren. Lägg till följande rad efter `<h2>Submit</h2>`. Just nu är `ViewBag.MessageCount` tom. Du kommer att fylla i denna senare.
+11. Slutligen ändra hello skickas sidan tooinclude viss information om hello kö. I **Solution Explorer**, dubbelklicka på den **Views\Home\Submit.cshtml** filen tooopen i hello Visual Studio-redigeraren. Lägg till följande rad efter hello `<h2>Submit</h2>`. Nu hello `ViewBag.MessageCount` är tom. Du kommer att fylla i denna senare.
     
     ```html
-    <p>Current number of orders in queue waiting to be processed: @ViewBag.MessageCount</p>
+    <p>Current number of orders in queue waiting toobe processed: @ViewBag.MessageCount</p>
     ```
-12. Du har nu implementerat ditt användargränssnitt (UI). Du kan trycka på **F5** för att köra programmet och bekräfta att det ser ut som du förväntar dig att det ska göra.
+12. Du har nu implementerat ditt användargränssnitt (UI). Du kan trycka på **F5** toorun programmet och bekräfta att det ser ut som förväntat.
     
     ![][17]
 
-### <a name="write-the-code-for-submitting-items-to-a-service-bus-queue"></a>Skriva koden för att skicka objekt till en Service Bus-kö
-Nu ska du lägga till kod för att skicka objekt till en kö. Först måste du skapa en klass som innehåller anslutningsinformation för Service Bus-kön. Sedan initierar du anslutningen från Global.aspx.cs. Slutligen uppdaterar du den överföringskod som du skapade tidigare i HomeController.cs för att den faktiskt ska skicka objekt till en Service Bus-kö.
+### <a name="write-hello-code-for-submitting-items-tooa-service-bus-queue"></a>Skriva hello-kod för att skicka objekt tooa Service Bus-kö
+Lägg nu till kod för att skicka objekt tooa kön. Först måste du skapa en klass som innehåller anslutningsinformation för Service Bus-kön. Sedan initierar du anslutningen från Global.aspx.cs. Slutligen uppdatera hello överföringskod som du skapade tidigare i HomeController.cs tooactually skicka objekt tooa Service Bus-kö.
 
-1. Högerklicka på **FrontendWebRole** (högerklicka på projektet, inte på rollen) i **Solution Explorer**. Klicka på **Lägg till** och sedan på **Klass**.
-2. Ge klassen namnet **QueueConnector.cs**. Klicka på **Lägg till** för att skapa klassen.
-3. Lägg nu till kod som innehåller anslutningsinformationen och initierar anslutningen till en Service Bus-kö. Ersätt hela innehållet i QueueConnector.cs med följande kod och ange värden för `your Service Bus namespace` (namnet på ditt namnområde) och `yourKey`, som är den **primärnyckel** som du tidigare hämtade från Azure Portal.
+1. I **Solution Explorer**, högerklicka på **FrontendWebRole** (Högerklicka på hello projektet, inte hello rollen). Klicka på **Lägg till** och sedan på **Klass**.
+2. Namnge hello klassen **QueueConnector.cs**. Klicka på **Lägg till** toocreate hello-klassen.
+3. Lägg nu till kod som kapslar in hello anslutningsinformationen och initierar hello anslutning tooa Service Bus-kö. Ersätt hello hela innehållet i QueueConnector.cs med följande kod hello och ange värden för `your Service Bus namespace` (namnet på ditt namnområde) och `yourKey`, vilket är hello **primärnyckel** du tidigare fick från hello Azure portalen.
    
    ```csharp
    using System;
@@ -223,15 +223,15 @@ Nu ska du lägga till kod för att skicka objekt till en kö. Först måste du s
            // on every request.
            public static QueueClient OrdersQueueClient;
    
-           // Obtain these values from the portal.
+           // Obtain these values from hello portal.
            public const string Namespace = "your Service Bus namespace";
    
-           // The name of your queue.
+           // hello name of your queue.
            public const string QueueName = "OrdersQueue";
    
            public static NamespaceManager CreateNamespaceManager()
            {
-               // Create the namespace manager which gives you access to
+               // Create hello namespace manager which gives you access to
                // management operations.
                var uri = ServiceBusEnvironment.CreateServiceUri(
                    "sb", Namespace, String.Empty);
@@ -242,21 +242,21 @@ Nu ska du lägga till kod för att skicka objekt till en kö. Först måste du s
    
            public static void Initialize()
            {
-               // Using Http to be friendly with outbound firewalls.
+               // Using Http toobe friendly with outbound firewalls.
                ServiceBusEnvironment.SystemConnectivity.Mode =
                    ConnectivityMode.Http;
    
-               // Create the namespace manager which gives you access to
+               // Create hello namespace manager which gives you access to
                // management operations.
                var namespaceManager = CreateNamespaceManager();
    
-               // Create the queue if it does not exist already.
+               // Create hello queue if it does not exist already.
                if (!namespaceManager.QueueExists(QueueName))
                {
                    namespaceManager.CreateQueue(QueueName);
                }
    
-               // Get a client to the queue.
+               // Get a client toohello queue.
                var messagingFactory = MessagingFactory.Create(
                    namespaceManager.Address,
                    namespaceManager.Settings.TokenProvider);
@@ -267,39 +267,39 @@ Nu ska du lägga till kod för att skicka objekt till en kö. Först måste du s
    }
    ```
 4. Se nu till att din **initiera**-metod anropas. Dubbelklicka på **Global.asax\Global.asax.cs** i **Solution Explorer**.
-5. Lägg till följande kodrad i slutet av metoden **Application_Start**.
+5. Lägg till följande kodrad i slutet av hello av hello hello **Application_Start** metod.
    
    ```csharp
    FrontendWebRole.QueueConnector.Initialize();
    ```
-6. Slutligen uppdaterar du den webbkod som du skapade tidigare, för att på så sätt skicka objekt till kön. I **Solution Explorer** dubbelklickar du på **Controllers\HomeController.cs**.
-7. Uppdatera metoden `Submit()` (överlagring som inte tar några parametrar) enligt följande anvisningar för att hämta meddelanderäknaren för kön.
+6. Slutligen uppdatera hello web-kod som du skapade tidigare, för att skicka objekt toohello kön. I **Solution Explorer** dubbelklickar du på **Controllers\HomeController.cs**.
+7. Uppdatera hello `Submit()` metod (hello överlagring som inte tar några parametrar) enligt följande tooget hello-meddelande räkna hello kön.
    
    ```csharp
    public ActionResult Submit()
    {
-       // Get a NamespaceManager which allows you to perform management and
+       // Get a NamespaceManager which allows you tooperform management and
        // diagnostic operations on your Service Bus queues.
        var namespaceManager = QueueConnector.CreateNamespaceManager();
    
-       // Get the queue, and obtain the message count.
+       // Get hello queue, and obtain hello message count.
        var queue = namespaceManager.GetQueue(QueueConnector.QueueName);
        ViewBag.MessageCount = queue.MessageCount;
    
        return View();
    }
    ```
-8. Uppdatera metoden `Submit(OnlineOrder order)` (överlagring som inte tar några parametrar) enligt följande anvisningar för att skicka orderinformation till kön.
+8. Uppdatera hello `Submit(OnlineOrder order)` metod (hello överlagring som tar några parametrar) enligt följande toosubmit ordning information toohello kön.
    
    ```csharp
    public ActionResult Submit(OnlineOrder order)
    {
        if (ModelState.IsValid)
        {
-           // Create a message from the order.
+           // Create a message from hello order.
            var message = new BrokeredMessage(order);
    
-           // Submit the order.
+           // Submit hello order.
            QueueConnector.OrdersQueueClient.Send(message);
            return RedirectToAction("Submit");
        }
@@ -309,63 +309,63 @@ Nu ska du lägga till kod för att skicka objekt till en kö. Först måste du s
        }
    }
    ```
-9. Du kan nu köra appen igen. Varje gång du skickar en order, ökar antalet meddelanden.
+9. Du kan nu köra hello programmet igen. Varje gång du skickar en order, ökar antal för hello-meddelande.
    
    ![][18]
 
-## <a name="create-the-worker-role"></a>Skapa arbetsrollen
-Du ska nu skapa den arbetsroll som behandlar orderöverföringen. I det här exemplet använder vi den projektmall för Visual Studio som heter **Arbetsroll med Service Bus-kö**. Du har redan fått de autentiseringsuppgifter som krävs från portalen.
+## <a name="create-hello-worker-role"></a>Skapa hello worker-rollen
+Nu ska du skapa hello arbetsroll som behandlar orderöverföringen hello. Det här exemplet används hello **Arbetsroll med Service Bus-kö** projektmall för Visual Studio. Du har redan fått hello krävs autentiseringsuppgifter från hello-portalen.
 
-1. Kontrollera att du har anslutit Visual Studio till ditt Azure-konto.
-2. Högerklicka på **Roller** i Visual Studio, i **Solution Explorer**, under projektet **MultiTierApp**.
-3. Klicka på **Lägg till** och sedan på **Nytt arbetsrollprojekt**. Dialogrutan **Lägg till nytt rollprojekt** visas.
+1. Kontrollera att du har anslutit Visual Studio tooyour Azure-konto.
+2. I Visual Studio i **Solution Explorer** högerklickar du på den **roller** mapp under hello **MultiTierApp** projekt.
+3. Klicka på **Lägg till** och sedan på **Nytt arbetsrollprojekt**. Hej **Lägg till nytt Rollprojekt** dialogrutan visas.
    
    ![][26]
-4. Klicka på **Arbetsroll med Service Bus-kö** i dialogrutan **Lägg till nytt rollprojekt**.
+4. I hello **Lägg till nytt Rollprojekt** dialogrutan klickar du på **Arbetsroll med Service Bus-kö**.
    
    ![][23]
-5. Ge projektet namnet **OrderProcessingRole** i rutan **Namn**. Klicka sedan på **Lägg till**.
-6. Kopiera den anslutningssträng som du fick i steg 9 av avsnittet ”Skapa ett namnområde för Service Bus” till Urklipp.
-7. I **Solution Explorer** högerklickar du på **OrderProcessingRole** som du skapade i steg 5 (se till att du högerklickar på **OrderProcessingRole** under **Roller** och inte på klassen). Klicka sedan på **Egenskaper**.
-8. På fliken **Inställningar** i dialogrutan **Egenskaper** klickar du inuti rutan **Värde** för **Microsoft.ServiceBus.ConnectionString** och sedan klistrar du in slutpunktsvärdet som du kopierade i steg 6.
+5. I hello **namn** rutan, namnet hello projekt **OrderProcessingRole**. Klicka sedan på **Lägg till**.
+6. Kopiera hello anslutningssträng som du hämtade i steg 9 av hello ”skapa ett namnområde för Service Bus” avsnittet toohello Urklipp.
+7. I **Solution Explorer**, högerklicka på hello **OrderProcessingRole** du skapade i steg 5 (se till att du högerklickar på **OrderProcessingRole** under **Roller**, och inte hello klassen). Klicka sedan på **Egenskaper**.
+8. På hello **inställningar** för hello **egenskaper** dialogrutan klickar du inuti hello **värdet** för **Microsoft.ServiceBus.ConnectionString**, och klistra in hello slutpunktsvärdet som du kopierade i steg 6.
    
    ![][25]
-9. Skapa en **OnlineOrder**-klass för att representera ordrarna allt eftersom du behandlar dem från kön. Du kan återanvända en klass som du redan har skapat. Högerklicka på klassen **OrderProcessingRole** (högerklicka på klassikonen, inte på rollen) i **Solution Explorer**. Klicka på **Lägg till** och sedan på **Befintligt objekt**.
-10. Bläddra till undermappen för **FrontendWebRole\Models** och dubbelklicka sedan på **OnlineOrder.cs** för att lägga till den i projektet.
-11. I **WorkerRole.cs** ändrar du värdet för variabeln **QueueName** från `"ProcessingQueue"` till `"OrdersQueue"`, som visas i följande kod.
+9. Skapa en **OnlineOrder** klassen toorepresent hello order som du behandlar dem från hello kö. Du kan återanvända en klass som du redan har skapat. I **Solution Explorer**, högerklicka på hello **OrderProcessingRole** klass (Högerklicka på hello klassikonen, inte hello rollen). Klicka på **Lägg till** och sedan på **Befintligt objekt**.
+10. Bläddra toohello undermapp för **FrontendWebRole\Models**, och dubbelklicka sedan på **OnlineOrder.cs** tooadd den toothis projekt.
+11. I **WorkerRole.cs**, ändra hello värdet på hello **könamn** variabel från `"ProcessingQueue"` för`"OrdersQueue"` enligt hello följande kod.
     
     ```csharp
-    // The name of your queue.
+    // hello name of your queue.
     const string QueueName = "OrdersQueue";
     ```
-12. Lägg till följande using-uttryck högst upp i filen WorkerRole.cs.
+12. Lägg till hello följande med instruktionen hello överst i hello WorkerRole.cs fil.
     
     ```csharp
     using FrontendWebRole.Models;
     ```
-13. I funktionen `Run()`, inuti anropet `OnMessage()`, ersätter du innehållet i satsen `try` med följande kod.
+13. I hello `Run()` funktionen inuti hello `OnMessage()` anropa, ersätter hello innehållet i hello `try` -sats med hello följande kod.
     
     ```csharp
     Trace.WriteLine("Processing", receivedMessage.SequenceNumber.ToString());
-    // View the message as an OnlineOrder.
+    // View hello message as an OnlineOrder.
     OnlineOrder order = receivedMessage.GetBody<OnlineOrder>();
     Trace.WriteLine(order.Customer + ": " + order.Product, "ProcessingMessage");
     receivedMessage.Complete();
     ```
-14. Du har nu gjort klart appen! Du kan testa den kompletta appen genom att högerklicka på MultiTierApp-projektet i Solution Explorer och välja **Ställ in som startprojekt**. Slutligen trycker du på F5. Observera att antalet meddelanden inte ökar. Detta eftersom arbetsrollen behandlar objekt från kön och sedan markeras dessa som slutförda. Du kan se spårad utdata från arbetsrollen genom att titta i användargränssnittet för Azure Compute Emulator. Du kan göra detta genom att högerklicka på emulatorikonen i aktivitetsfältets meddelandefält och välja **Visa Compute Emulator UI**.
+14. Du har slutfört hello program. Du kan testa hello fullständiga programmet genom att högerklicka på hello MultiTierApp-projektet i Solution Explorer välja **Set as Startup Project**, och sedan trycka på F5. Observera att antalet meddelanden inte ökar, eftersom hello arbetsrollen behandlar objekt från kön hello och markerar dem som slutförd. Du kan se hello spårningsutdata från arbetsrollen genom att visa hello Azure Compute Emulator UI. Du kan göra detta genom att högerklicka hello emulatorikonen i hello meddelandefältet i Aktivitetsfältet och välja **visa Compute Emulator UI**.
     
     ![][19]
     
     ![][20]
 
 ## <a name="next-steps"></a>Nästa steg
-Om du vill lära dig mer om Service Bus kan du använda följande resurser:  
+toolearn mer om Service Bus finns hello följande resurser:  
 
 * [Dokumentation för Azure Service Bus][sbdocs]  
 * [Tjänstesida för Service Bus][sbacom]  
-* [Använda Service Bus-köer][sbacomqhowto]  
+* [Hur tooUse Service Bus-köer][sbacomqhowto]  
 
-Mer information om flernivåscenarier finns i:  
+toolearn mer om flernivåscenarier, se:  
 
 * [.NET-flernivåapp med hjälp av lagringstabeller, köer och blob-objekt][mutitierstorage]  
 

@@ -1,6 +1,6 @@
 ---
-title: "Kontrollera trafik med Azure Network Watcher IP flödet verifiera - Azure-portalen | Microsoft Docs"
-description: "Den här artikeln beskrivs hur du kontrollerar om trafik till eller från en virtuell dator tillåts eller nekas"
+title: Kontrollera aaaVerify trafik med Azure Network Watcher IP - Azure-portalen | Microsoft Docs
+description: "Den här artikeln beskriver hur toocheck om trafik tooor från en virtuell dator tillåts eller nekas"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 7db29c186cf6e6f3b40a680ab76f1d2763f806ba
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: abf639f36d32f3416dd927e66b635267b746e62f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="check-if-traffic-is-allowed-or-denied-to-or-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Kontrollera om trafik tillåts eller nekas till eller från en virtuell dator med IP-flöda Kontrollera en komponent i Azure Nätverksbevakaren
+# <a name="check-if-traffic-is-allowed-or-denied-tooor-from-a-vm-with-ip-flow-verify-a-component-of-azure-network-watcher"></a>Kontrollera om trafik som tillåts eller nekas tooor från en virtuell dator med IP-flöda Kontrollera en komponent i Azure Nätverksbevakaren
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
@@ -30,36 +30,36 @@ ms.lasthandoff: 07/11/2017
 > - [Azure REST-API](network-watcher-check-ip-flow-verify-rest.md)
 
 
-IP-flöde verifiera är en funktion i Nätverksbevakaren som hjälper dig att kontrollera om tillåts trafik till eller från en virtuell dator. Verifieringen kan köras för inkommande eller utgående trafik. Det här scenariot är användbart för att hämta aktuella tillstånd om en virtuell dator kan kommunicera med en extern resurs eller en annan resurs. IP-flöde Kontrollera kan användas för att kontrollera om Nätverkssäkerhetsgrupp (NSG)-regler är korrekt konfigurerade och felsöka flöden som blockeras av NSG-regler. En annan orsak till att använda IP flödet Kontrollera är att kontrollera att trafik som du vill blockerade blockeras korrekt av NSG: N.
+IP-flöde verifiera är en funktion i Nätverksbevakaren som gör att du tooverify om trafik tillåts tooor från en virtuell dator. hello verifiering kan köras för inkommande eller utgående trafik. Det här scenariot är användbart tooget aktuella tillstånd om en virtuell dator kan prata tooan extern resurs eller en annan resurs. IP-flöde verifiera går att använda tooverify om Nätverkssäkerhetsgrupp (NSG)-regler är korrekt konfigurerade och felsöka flöden som blockeras av NSG-regler. En annan orsak till att använda IP flödet Kontrollera tooensure trafik som du vill blockerade blockeras korrekt av hello NSG.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Det här scenariot förutsätter att du redan har följt stegen i [skapa en Nätverksbevakaren](network-watcher-create.md) att skapa en Nätverksbevakaren eller har en befintlig instans av Nätverksbevakaren. Det här scenariot förutsätter att det finns en resursgrupp med en giltig virtuell dator som ska användas.
+Det här scenariot förutsätter att du redan har följt stegen hello i [skapa en Nätverksbevakaren](network-watcher-create.md) toocreate en Nätverksbevakaren eller har en befintlig instans av Nätverksbevakaren. hello scenariot förutsätter att en resursgrupp med en giltig virtuell dator finns toobe används.
 
 ## <a name="scenario"></a>Scenario
 
-Det här scenariot använder IP-flöda Kontrollera för att verifiera om en virtuell dator kan du kontakta en annan dator via port 443. Om trafiken nekas returnerar säkerhetsregeln som nekar trafiken. Läs mer om IP-flöda Kontrollera [flöda Kontrollera översikt över IP](network-watcher-ip-flow-verify-overview.md)
+Det här scenariot använder IP-flöda Kontrollera tooverify om en virtuell dator kan prata tooanother datorn via port 443. Om hello trafik nekas returnerar hello säkerhetsregel som nekar trafiken. toolearn mer om IP-flöda Kontrollera finns [flöda Kontrollera översikt över IP](network-watcher-ip-flow-verify-overview.md)
 
 ### <a name="run-ip-flow-verify"></a>Kontrollera kör IP-flöde
 
-Navigera till din Nätverksbevakaren och på **IP-flöde Kontrollera**. Välj den virtuella datorn och nätverksgränssnittet som du vill kontrollera trafik från. Ange ytterligare filtrering information och klickar på **Kontrollera**.
+Navigera tooyour Nätverksbevakaren och klicka på **IP-flöde Kontrollera**. Välj hello virtuell dator och gränssnitt som du vill tooverify trafik från. Ange ytterligare filtrering information och klickar på **Kontrollera**.
 
-När du klickar på **Kontrollera**, flödet baserat på kriterier som du angav är markerad. Resultatet är antingen **åtkomst tillåts** eller **åtkomst nekad**. Om åtkomst nekas tillhandahålls Nätverkssäkerhetsgrupp (NSG) och säkerhet regel som blockerar trafik. Om DOS-trafik är förväntat, lyckades regeln.
+När du klickar på **Kontrollera**, hello flödet baserat på hello kriterier som du angav är markerad. hello resultatet är antingen **åtkomst tillåts** eller **åtkomst nekad**. Om åtkomst nekas hello Nätverkssäkerhetsgrupp (NSG) och säkerhetsregeln som blockerar trafik tillhandahålls. Om hello DOS-trafik är förväntat, lyckades hello regeln.
 
 > [!NOTE]
-> IP-flöde Kontrollera kräver att den Virtuella datorresursen allokeras.
+> IP-flöde Kontrollera kräver att hello Virtuella datorresursen allokeras.
 
-Som du ser i följande bild, tilläts utgående HTTPS-trafiken.
+Som du ser i följande bild hello tilläts hello utgående HTTPS-trafik.
 
 ![IP-flöde Kontrollera översikt][1]
 
-Som det visas i följande bild, trafik ändras till inkommande och den inkommande porten ändras till 123. Trafik nu nekas meddelandet ”åtkomst nekad” har angetts tillsammans med gruppen och säkerhet nätverkssäkerhetsregeln som nekar trafik.
+Som det visas i följande bild hello trafik ändras tooinbound och hello inkommande port ändras too123. Trafik nekas nu har hello-meddelande ”åtkomst nekad” angetts tillsammans med hello grupp och säkerhet nätverkssäkerhetsregeln som nekar hello trafik.
 
 ![IP-flöde resultat][2]
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om trafik blockeras och får inte vara, se [hantera Nätverkssäkerhetsgrupper](../virtual-network/virtual-network-manage-nsg-arm-portal.md) att spåra de grupp och säkerhet Nätverkssäkerhetsregler som har definierats.
+Om trafik blockeras och får inte vara, se [hantera Nätverkssäkerhetsgrupper](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack hello network security grupp och säkerhet regler som har definierats.
 
 [1]: ./media/network-watcher-check-ip-flow-verify-portal/figure1.png
 [2]: ./media/network-watcher-check-ip-flow-verify-portal/figure2.png

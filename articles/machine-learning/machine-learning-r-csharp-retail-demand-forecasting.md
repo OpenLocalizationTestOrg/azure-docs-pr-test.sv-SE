@@ -1,5 +1,5 @@
 ---
-title: "(föråldrad) Prognosticering - ETS + STL - Azure | Microsoft Docs"
+title: aaa(deprecated) Prognosticering - ETS + STL - Azure | Microsoft Docs
 description: "(föråldrad) Prognosticering - ETS + STL"
 services: machine-learning
 documentationcenter: 
@@ -16,38 +16,38 @@ ms.date: 01/06/2017
 ms.author: yijichen
 ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-redirect_document_id: TRUE
-ms.openlocfilehash: a575af931a41b7a55eb2102f3553640a16099146
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 550d423898d46564936fdcfbf05b7c88d2e292c2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deprecated-forecasting---ets--stl"></a>(föråldrad) Prognosticering - ETS + STL
 
 > [!NOTE]
-> Microsoft DataMarket dras och detta API är inaktuell. 
+> hello Microsoft DataMarket dras och detta API är inaktuell. 
 > 
-> Du hittar många användbara exempel experiment och API: er i den [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Mer information om galleriet finns [resursen och identifiera resurser i Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md).
+> Du hittar många användbara exempel experiment och API: er i hello [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Mer information om hello galleriet finns [resursen och identifiera resurser i hello Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md).
 
-Detta [webbtjänsten](https://datamarket.azure.com/dataset/aml_labs/demand_forecast) implementerar när Trend uppdelning (STL) och exponentiell utjämning ETS modeller för att skapa förutsägelser baserat på historisk data som anges av användaren. Ökar behovet av en viss produkt år? Kan jag förutsäga min produktförsäljning för säsongen jul så att jag kan effektivt kunna planera min inventering? Prognosmodellen modeller är lgh att åtgärda dessa frågor. Senaste data får granska dessa modeller dolda trender och säsongsvärdet att förutsäga framtida trender. 
+Detta [webbtjänsten](https://datamarket.azure.com/dataset/aml_labs/demand_forecast) implementerar när Trend uppdelning (STL) och exponentiell utjämning ETS modeller tooproduce förutsägelser baserat på hello historiska data som hello användaren. Kommer hello begäran för en specifik produkt ökad år? Kan jag förutsäga min produktförsäljning för hello jul säsongen så att jag kan effektivt kunna planera min inventering? Prognosmodeller är lgh tooaddress sådana frågor. Angivna hello tidigare data, Undersök dessa modeller dolda trender och säsongsvärdet toopredict framtida trender. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-> Den här webbtjänsten kan till exempel användas av användare – potentiellt via en mobilapp via en webbplats eller på en lokal dator. Men syftet med webbtjänsten är också som fungerar som ett exempel på hur Azure Machine Learning kan användas för att skapa webbtjänster ovanpå R-koden. Med bara några få rader med kod för R och klickar på en knapp i Azure Machine Learning Studio, ett experiment skapas med R-koden och publiceras som en webbtjänst. Webbtjänsten kan sedan publiceras på Azure Marketplace och används av användare och enheter över hela världen med inga infrastrukturinställningar av författaren till webbtjänsten.  
+> Den här webbtjänsten kan till exempel användas av användare – potentiellt via en mobilapp via en webbplats eller på en lokal dator. Men hello syftet hello-webbtjänsten är också tooserve som ett exempel på hur Azure Machine Learning kan vara används toocreate webbtjänster ovanpå R-koden. Med bara några få rader med kod för R och klickar på en knapp i Azure Machine Learning Studio, ett experiment skapas med R-koden och publiceras som en webbtjänst. hello-webbtjänsten kan sedan publicerade toohello Azure Marketplace och används av användare och enheter över hello world utan infrastruktur inställningar av hello författare av hello web service.  
 > 
 > 
 
 ## <a name="consumption-of-web-service"></a>Användning av web service
-Den här tjänsten accepterar 4 argument och beräknar prognoser.
-De angivna argumenten är:
+Den här tjänsten accepterar 4 argument och beräknar hello prognoser.
+hello-indataargument är:
 
-* Frekvens - anger frekvensen av rådata (varje dag/vecka/månad/varje kvartal/år).
+* Frekvens - anger hello frekvensen av hello rådata (varje dag/vecka/månad/varje kvartal/år).
 * Horizon - framtiden prognos tidsram.
-* Date - lägga till i den nya tid series-data för tid.
-* Värde: lägga till i de nya tidsvärdena serie data.
+* Datum – Lägg till i hello nya tidsserier data för tid.
+* Värde: lägga till i hello nya serie data tidsvärden.
 
-Utdata från tjänsten är de beräknade värdena.
+hello utdata från hello-tjänsten är hello beräknade värden.
 
 Exempelindata kan vara: 
 
@@ -56,11 +56,11 @@ Exempelindata kan vara:
 * Datum - 15/1/2012, 2012-2-15, 2012-3-15; 4-15-2012; 2012-5-15; 6/15/2012; 15/7/2012, 8 / 15/2012, 9-15-2012, 10/15/2012; 11-15-2012, 2012-12/15; 2013-1/15; 2013-2/15; 2013-3/15; 2013-4/15; 2013-5/15; 2013-6/15; 2013-7/15; 8 / 15/2013; 2013-9/15; 2013/10/15; 2013-11/15; 2013-12/15; 2014-1-15, 2014-2-15, 2014-3-15; 2014-4-15; 2014-5-15; 2014-6-15; 2014-7-15, 8 / 2014-15; 2014-9-15
 * Värde: 3.479; 3.68; 3.832; 3.941; 3.797; 3.586; 3.508; 3.731; 3.915; 3.844; 3.634; 3.549; 3.557; 3.785; 3.782; 3.601; 3.544; 3.556; 3.65; 3.709; 3.682; 3.511; 3.429; 3.51; 3.523; 3.525; 3.626; 3.695; 3.711; 3.711; 3.693; 3.571; 3.509
 
-> Den här tjänsten, är som finns på Azure Marketplace en OData-tjänst. Dessa kan anropas via POST eller GET-metoder. 
+> Den här tjänsten, är som finns på hello Azure Marketplace en OData-tjänst. Dessa kan anropas via POST eller GET-metoder. 
 > 
 > 
 
-Det finns flera olika sätt att använda tjänsten automatiskt (en exempelapp är [här](http://microsoftazuremachinelearning.azurewebsites.net/StlEtsForecasting.aspx)).
+Det finns flera olika sätt att konsumera hello service automatiskt (en exempelapp är [här](http://microsoftazuremachinelearning.azurewebsites.net/StlEtsForecasting.aspx)).
 
 ### <a name="starting-c-code-for-web-service-consumption"></a>Startar C#-kod för web service användning:
     public class Input
@@ -93,17 +93,17 @@ Det finns flera olika sätt att använda tjänsten automatiskt (en exempelapp ä
 
 
 ## <a name="creation-of-web-service"></a>Skapandet av web service
-> Den här webbtjänsten har skapats med Azure Machine Learning. För en kostnadsfri utvärderingsversion som inledande videoklipp om hur du skapar experiment och [publicering webbtjänster](machine-learning-publish-a-machine-learning-web-service.md), se [azure.com/ml](http://azure.com/ml). Nedan visas en skärmbild av experiment som skapade web service och exempel koden för alla moduler i experimentet.
+> Den här webbtjänsten har skapats med Azure Machine Learning. För en kostnadsfri utvärderingsversion som inledande videoklipp om hur du skapar experiment och [publicering webbtjänster](machine-learning-publish-a-machine-learning-web-service.md), se [azure.com/ml](http://azure.com/ml). Nedan visas en skärmbild av hello experiment som skapade hello web service och exempel-kod för varje hello moduler i hello experiment.
 > 
 > 
 
-I Azure Machine Learning skapas skapades ett nytt tomt experiment från. Inkommande exempeldata överfördes med en fördefinierad dataschemat. Länkad till data schemat är en [köra R-skriptet] [ execute-r-script] modul, vilket genererar STL och ETS prognosmodeller med hjälp av stl, ets, och 'prognosen' funktioner från R. 
+I Azure Machine Learning skapas skapades ett nytt tomt experiment från. Inkommande exempeldata överfördes med en fördefinierad dataschemat. Länkade toohello dataschemat är en [köra R-skriptet] [ execute-r-script] modul, vilket genererar STL och ETS prognosmodeller med hjälp av stl, ets, och 'prognosen' funktioner från R. 
 
 ### <a name="experiment-flow"></a>Experiment flöde:
 ![Experiment flöde][2]
 
 #### <a name="module-1"></a>Modul 1:
-    # Add in the CSV file with the data in the format shown below 
+    # Add in hello CSV file with hello data in hello format shown below 
 ![Exempeldata][3]    
 
 #### <a name="module-2"></a>Modulen 2:
@@ -134,10 +134,10 @@ I Azure Machine Learning skapas skapades ett nytt tomt experiment från. Inkomma
     maml.mapOutputPort("data.forecast");
 
 ## <a name="limitations"></a>Begränsningar
-Detta är ett väldigt enkelt exempel för ETS + STL prognoser. Som kan ses från exempelkoden ovan, inga fel som fångas implementeras och tjänsten förutsätter att alla variabler är kontinuerlig positiva värden och hur ofta ska vara ett heltal som är större än 1. Längden på angreppsmetoderna datum och värdet ska vara samma och längden för tidsserier ska vara större än 2 * frekvens. Variabeln datum bör följa formatet ”mm/dd/åååå'.
+Detta är ett väldigt enkelt exempel för ETS + STL prognoser. Som kan ses från hello exempelkod ovan, inga fel som fångas implementeras och hello service förutsätter att alla hello-variabler är kontinuerlig positiva värden och hello frekvensen måste vara ett heltal som är större än 1. hello hello datum och värdet angreppsmetoderna bör innehålla hello samma och hello tidsserier hello längd måste vara större än 2 * frekvens. hello datum variabeln bör följa toohello format 'mm/dd/åååå'.
 
 ## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
-Vanliga frågor om förbrukningen av webbtjänst eller publicering på Azure Marketplace finns [här](machine-learning-marketplace-faq.md).
+Vanliga frågor om förbrukningen av hello webbtjänst eller publishing toohello Azure Marketplace finns [här](machine-learning-marketplace-faq.md).
 
 [1]: ./media/machine-learning-r-csharp-retail-demand-forecasting/retail-img1.png
 [2]: ./media/machine-learning-r-csharp-retail-demand-forecasting/retail-img2.png

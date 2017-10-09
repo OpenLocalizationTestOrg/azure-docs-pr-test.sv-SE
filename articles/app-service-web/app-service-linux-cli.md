@@ -1,5 +1,5 @@
 ---
-title: "Hantera webbprogrammet på Linux med hjälp av Azure CLI 2.0 | Microsoft Docs"
+title: "aaaManage webbprogrammet på Linux med hjälp av Azure CLI 2.0 | Microsoft Docs"
 description: "Hantera webbprogrammet på Linux med hjälp av Azure CLI."
 keywords: "Azure apptjänst, webbprogram, cli, linux, oss"
 services: app-service
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
-ms.openlocfilehash: 04aceecf0cb4cad5c838b7254bf7079a36bbd0d8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5e8e0da8a362450c56d2e87e087f77598ec874ac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-web-app-on-linux-using-azure-cli"></a>Hantera webbprogrammet på Linux med hjälp av Azure CLI
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
-Kommandona i den här artikeln ska du kunna skapa och hantera ett webbprogram i Linux med Azure CLI 2.0.
-Du kan börja använda den nya versionen av CLI på två sätt:
+Hello kommandona i den här artikeln du kan toocreate och hantera ett webbprogram i Linux med Azure CLI 2.0.
+Du kan börja använda hello ny version av hello CLI på två sätt:
 
 * [Installera Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) på din dator.
 * Med hjälp av [Azure-molnet Shell (förhandsgranskning)](../cloud-shell/overview.md)
@@ -34,7 +34,7 @@ Du kan börja använda den nya versionen av CLI på två sätt:
 
 ## <a name="create-a-linux-app-service-plan"></a>Skapa en Linux-Programtjänstplan
 
-Om du vill skapa en Linux App Service-Plan kan du använda följande kommando:
+toocreate en Linux App Service-Plan, kan du använda hello följande kommando:
 
 ```azurecli-interactive
 az appservice plan create -n appname -g rgname --islinux -l "South Central US" --sku S1 --number-of-workers 1
@@ -42,23 +42,23 @@ az appservice plan create -n appname -g rgname --islinux -l "South Central US" -
 
 ## <a name="create-a-custom-docker-container-web-app"></a>Skapa en anpassad dockerbehållare Web App
 
-För att skapa en webbapp och konfigurerar den för att köra en anpassad dockerbehållare, kan du använda följande kommando:
+toocreate en webbapp och konfigurerar den toorun anpassade dockerbehållare, du kan använda hello följande kommando:
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -i elnably/dockerimagetest
 ```
  
-## <a name="activate-the-docker-container-logging"></a>Aktivera loggning för Docker-behållare
+## <a name="activate-hello-docker-container-logging"></a>Aktivera loggning för hello Docker-behållare
 
-Du kan använda följande kommando för att aktivera loggning för Docker-behållare:
+tooactivate hello Docker behållare loggning kan du använda hello följande kommando:
 
 ```azurecli-interactive
 az webapp log config -n sname -g rgname --web-server-logging filesystem
 ```
  
-## <a name="change-the-custom-docker-container-for-an-existing-web-app-on-linux-app"></a>Ändra den anpassade dockerbehållare för en befintlig Webbapp på Linux-App
+## <a name="change-hello-custom-docker-container-for-an-existing-web-app-on-linux-app"></a>Ändra hello anpassade dockerbehållare för en befintlig Webbapp på Linux-App
 
-Om du vill ändra en tidigare skapad app från den aktuella Docker-avbildningen till en ny avbildning kan du använda följande kommando:
+toochange en tidigare skapad app från hello aktuella Docker bild tooa ny avbildning, kan du använda hello följande kommando:
 
 ```azurecli-interactive
 az webapp config container set -n sname -g rgname -c apurvajo/mariohtml5
@@ -66,7 +66,7 @@ az webapp config container set -n sname -g rgname -c apurvajo/mariohtml5
 
 ## <a name="using-docker-images-from-a-private-registry"></a>Använda Docker-avbildningar från ett privat register
 
-Du kan konfigurera din app att använda bilder från ett privat register. Du måste ange en url för ditt registret, användarnamn och lösenord. Göra du kan detta med följande kommando:
+Du kan konfigurera din app toouse bilder från ett privat register. Du behöver tooprovide hello url för ditt registret, användarnamn och lösenord. Göra du kan detta med hjälp av hello följande kommando:
 
 ```azurecli-interactive
 az webapp config container set -n sname1 -g rgname -c <container name> -r <server url> -u <username> -p <password>
@@ -74,7 +74,7 @@ az webapp config container set -n sname1 -g rgname -c <container name> -r <serve
 
 ## <a name="enable-continuous-deployments-for-custom-docker-images"></a>Aktivera kontinuerlig distribution för anpassade Docker-avbildningar
 
-Med det här kommandot kan du aktivera funktionen för CD och få webhooksadressen. URL: en kan användas för att konfigurera DockerHub eller Azure-behållare registret repor.
+Med följande kommando som du kan aktivera hello hello CD-funktioner och få hello webhooksadressen. URL: en kan vara används tooconfigure du DockerHub eller Azure-behållare registret repor.
 
 ```azurecli-interactive
 az webapp deployment container config -n sname -g rgname -e true
@@ -82,7 +82,7 @@ az webapp deployment container config -n sname -g rgname -e true
 
 ## <a name="create-a-web-app-on-linux-app-using-one-of-our-built-in-runtime-frameworks"></a>Skapa ett webbprogram på Linux-App med en av våra inbyggda runtime-ramverk
 
-Du kan använda följande kommando för att skapa ett webbprogram för PHP 5.6 på Linux-App som.
+toocreate ett webbprogram för PHP-5.6 på Linux-App som du kan använda följande kommando hello.
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -r "php|5.6"
@@ -90,7 +90,7 @@ az webapp create -n sname -g rgname -p pname -r "php|5.6"
 
 ## <a name="change-framework-version-for-an-existing-web-app-on-linux-app"></a>Ändra framework-version för en befintlig Webbapp på Linux-App
 
-Om du vill ändra en tidigare skapad app från den aktuella framework-versionen till Node.js 6.11 kan du använda följande kommando:
+toochange en tidigare skapad app från hello aktuella framework version tooNode.js 6.11, kan du använda hello följande kommando:
 
 ```azurecli-interactive
 az webapp config set -n sname -g rgname --linux-fx-version "node|6.11"
@@ -98,7 +98,7 @@ az webapp config set -n sname -g rgname --linux-fx-version "node|6.11"
 
 ## <a name="set-up-git-deployments-for-your-web-app"></a>Konfigurera Git-distributioner för Webbappen
 
-Om du vill konfigurera Git-distributioner för din app kan du använda följande kommando:
+tooset Git-distributioner för din app kan du använda hello följande kommando:
 
 ```azurecli-interactive
 az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> --branch <branch>

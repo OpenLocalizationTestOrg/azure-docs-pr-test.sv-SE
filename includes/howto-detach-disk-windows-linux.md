@@ -1,39 +1,39 @@
-När du inte längre behöver en datadisk som är ansluten till en virtuell dator kan du enkelt koppla bort den. När du kopplar bort en disk tar du bort den från den virtuella datorn, men du tar inte bort den från Azure-lagringskontot.
+När du inte längre behöver en datadisk som är bifogade tooa virtuell dator kan du enkelt kan koppla från den. Kopplar bort en disk tar bort hello disk från hello virtuell dator, men ta bort inte hello disken från hello Azure storage-konto.
 
-Om du vill använda befintliga data på disken igen kan du ansluta den igen till samma virtuella dator, eller till en annan.  
+Om du vill toouse hello befintliga data på hello disk, du kan återansluta den toohello samma virtuella dator eller en annan.  
 
 > [!NOTE]
-> För att koppla bort en operativsystemdisk måste du först ta bort den virtuella datorn.
+> toodetach en operativsystemdisk, måste du först toodelete hello virtuell dator.
 >
 
-## <a name="find-the-disk"></a>Hitta disken
-Följ de här stegen om du inte känner till namnet på disken eller vill kontrollera det innan du kopplar från den.
+## <a name="find-hello-disk"></a>Hitta hello disk
+Om du inte vet hello namnet på hello disk eller vill tooverify den innan du koppla från den, Följ dessa steg.
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in toohello [Azure-portalen](https://portal.azure.com).
 
-2. Klicka på **Virtual Machines** och välj sedan den lämpliga virtuella enheten.
+2. Klicka på **virtuella datorer**, och sedan väljer hello lämpliga VM.
 
-3. Klicka på **Diskar** under **Inställningar** längs vänsterkanten på instrumentpanelen för den virtuella datorn.
+3. Klicka på **diskar** längs hello vänster kant hello virtuella instrumentpanelen under **inställningar**.
 
- Instrumentpanelen för den virtuella datorn visar namn och typ för alla anslutna diskar. Den här skärmen visar till exempel en virtuell dator med en operativsystemdisk och en datadisk:
+ hello virtuella instrumentpanelen visar hello namn och typ för alla anslutna diskar. Den här skärmen visar till exempel en virtuell dator med en operativsystemdisk och en datadisk:
 
     ![Hitta datadisk](./media/howto-detach-disk-windows-linux/vmwithdisklist.png)
 
-## <a name="detach-the-disk"></a>Koppla från disken
-1. I Azure Portal klickar du på **Virtuella datorer** och sedan på namnet på den virtuella dator som har datadisken som du vill koppla från.
+## <a name="detach-hello-disk"></a>Koppla bort hello disk
+1. Hello Azure-portalen, klicka på **virtuella datorer**, och klicka sedan på hello namnet på hello virtuell dator som har hello datadisk du vill toodetach.
 
-2. Klicka på **Diskar** under **Inställningar** längs vänsterkanten på instrumentpanelen för den virtuella datorn.
+2. Klicka på **diskar** längs hello vänster kant hello virtuella instrumentpanelen under **inställningar**.
 
-3. Klicka på den disk som du vill koppla från.
+3. Klicka på hello disk du vill toodetach.
 
-  ![Identifiera disken du vill koppla från](./media/howto-detach-disk-windows-linux/disklist.png)
+  ![Identifiera hello disk toodetach](./media/howto-detach-disk-windows-linux/disklist.png)
 
-4. Klicka på **Koppla från** i kommandofältet.
+4. Hello kommandofältet klickar du på **Detach**.
 
-  ![Leta upp kommandot för att koppla från](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
+  ![Leta upp hello frånkoppling kommando](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
 
-5. Klicka på **Ja** i bekräftelsefönstret för att koppla från disken.
+5. I fönstret för bekräftelse av hello klickar du på **Ja** toodetach hello disk.
 
-  ![Bekräfta frånkoppling av disken](./media/howto-detach-disk-windows-linux/confirmdetach.png)
+  ![Bekräfta kopplar bort hello-disk](./media/howto-detach-disk-windows-linux/confirmdetach.png)
 
-Disken finns kvar i lagringsutrymmet men är inte längre kopplad till en virtuell dator.
+hello disk kvar i lagring men är inte längre kopplade tooa virtuell dator.

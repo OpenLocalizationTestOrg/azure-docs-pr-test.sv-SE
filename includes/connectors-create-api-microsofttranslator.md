@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Krav
 * En [MicrosoftTranslator](https://www.microsoft.com/translator) konto  
 
-Innan du kan använda ditt konto MicrosoftTranslator i en logikapp, måste du godkänna logik för att ansluta till ditt konto för MicrosoftTranslator. Lyckligtvis kan du göra detta direkt i din logikapp på Azure Portal.  
+Innan du kan använda ditt konto MicrosoftTranslator i en logikapp, måste du godkänna hello logik app tooconnect tooyour MicrosoftTranslator konto. Lyckligtvis kan du göra detta direkt i din logikapp på hello Azure-portalen.  
 
-Här följer stegen för att verifiera din logikapp för att ansluta till ditt konto MicrosoftTranslator:  
+Här följer hello steg tooauthorize din logik app tooconnect tooyour MicrosoftTranslator konto:  
 
-1. Om du vill skapa en anslutning till MicrosoftTranslator, i logik app designer **visa Microsoft hanterade API: er** i nedrullningsbara listan anger *MicrosoftTranslator* i sökrutan. Välj utlösaren eller åtgärd du vill använda:  
+1. toocreate en anslutning tooMicrosoftTranslator, i hello logik app designer väljer **visa Microsoft hanterade API: er** i hello listrutan och ange sedan *MicrosoftTranslator* i hello sökrutan. Välj hello utlösare eller åtgärden som du kommer att gilla toouse:  
    ![MicrosoftTranslator steg i att skapa anslutningen](./media/connectors-create-api-microsofttranslator/microsofttranslator-1.png)  
-2. Om du inte har skapat alla anslutningar till MicrosoftTranslator innan du kan hämta uppmanas du att ange autentiseringsuppgifter för MicrosoftTranslator. Dessa autentiseringsuppgifter används för att auktorisera din logikapp för att ansluta till och komma åt ditt konto MicrosoftTranslator data:  
+2. Om du inte skapat några anslutningar tooMicrosoftTranslator innan får du ange tooprovide MicrosoftTranslator-autentiseringsuppgifter. Dessa autentiseringsuppgifter att använda tooauthorize din logik app tooconnect till och komma åt ditt konto MicrosoftTranslator data:  
    ![MicrosoftTranslator steg i att skapa anslutningen](./media/connectors-create-api-microsofttranslator/microsofttranslator-2.png)  
-3. Observera att anslutningen har skapats och du kan nu välja att fortsätta med andra steg i din logikapp:  
+3. Observera hello anslutningen har skapats och du är nu ledigt tooproceed med hello andra steg i din logikapp:  
    ![MicrosoftTranslator steg i att skapa anslutningen](./media/connectors-create-api-microsofttranslator/microsofttranslator-3.png)  
 

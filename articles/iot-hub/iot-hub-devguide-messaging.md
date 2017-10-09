@@ -1,5 +1,5 @@
 ---
-title: "Förstå Azure IoT Hub-meddelanden | Microsoft Docs"
+title: aaaUnderstand Azure IoT Hub-meddelanden | Microsoft Docs
 description: "Utvecklarhandbok - enhet till moln och moln till enhet meddelanden med IoT-hubben. Innehåller information om meddelandeformat och stöds kommunikationsprotokoll."
 services: iot-hub
 documentationcenter: .net
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: f54398d7ac46bf178d2bb603669b399d25370736
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a610741e23e243f392f1c042f9ab4a00d42f734f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>Enhet till moln och moln till enhet meddelanden med IoT-hubb
 
-Använd IoT-hubb-meddelanden för att kommunicera med dina enheter genom att:
+Använd IoT-hubb messaging toocommunicate med dina enheter genom att:
 
-* Skicka [enhet till moln] [ lnk-d2c] meddelanden från dina enheter till din lösning serverdel.
-* Skicka [moln till enhet] [ lnk-c2d] meddelanden från lösningen serverdel till dina enheter.
+* Skicka [enhet till moln] [ lnk-d2c] meddelanden från enheter tooyour lösningen serverdel.
+* Skicka [moln till enhet] [ lnk-c2d] meddelanden från hello-lösningen avslutar tooyour enheter.
 
-Grundläggande egenskaper för IoT-hubb meddelandefunktioner är tillförlitlighet och hållbarhet av meddelanden. De här egenskaperna aktiverar återhämtning för återkommande anslutning på enhetens sida och att läsa in toppar i händelsebearbetning på sidan moln. IoT-hubb implementerar *minst en gång* leverans garanterar för både enhet till moln och moln till enhet meddelanden.
+Grundläggande egenskaper för IoT-hubb meddelandefunktioner är hello tillförlitlighet och hållbarhet av meddelanden. De här egenskaperna aktivera återhämtning toointermittent anslutning på hello enheten sida och tooload ger spikar i diagrammet i händelsebearbetning på hello molnet sida. IoT-hubb implementerar *minst en gång* leverans garanterar för både enhet till moln och moln till enhet meddelanden.
 
-En introduktion till funktionerna för IoT-hubb finns i artiklar [Azure och Sakernas Internet] [ lnk-azure-iot] och [översikt över tjänsten Azure IoT Hub] [ lnk-iot-hub-overview].
+En introduktion toohello funktionerna i IoT-hubb finns hello artiklar [Azure och Sakernas Internet] [ lnk-azure-iot] och [översikt över hello Azure IoT Hub service] [lnk-iot-hub-overview].
 
-## <a name="when-to-use-iot-hub-messaging"></a>När du ska använda IoT-hubb-meddelanden
+## <a name="when-toouse-iot-hub-messaging"></a>När meddelanden om toouse IoT-hubb
 
-Använda meddelanden från enhet till moln för att skicka tid serien telemetri och aviseringar från din enhet och moln till enhet meddelanden för envägs-meddelanden till din enhetsapp.
+Använda meddelanden från enhet till moln för att skicka tid serien telemetri och aviseringar från din enhet och moln till enhet meddelanden för enkelriktade meddelanden tooyour enheten appen.
 
-* Referera till [enhet till moln kommunikation vägledning] [ lnk-d2c-guidance] om osäkra mellan med hjälp av meddelanden från enhet till moln, rapporterade egenskaper eller ladda upp filen.
-* Referera till [moln till enhet kommunikation vägledning] [ lnk-c2d-guidance] om osäkra mellan att använda moln till enhet meddelanden, önskade egenskaper eller direkt metoder.
+* Se för[enhet till moln kommunikation vägledning] [ lnk-d2c-guidance] om osäkra mellan med hjälp av meddelanden från enhet till moln, rapporterade egenskaper eller ladda upp filen.
+* Se för[moln till enhet kommunikation vägledning] [ lnk-c2d-guidance] om osäkra mellan att använda moln till enhet meddelanden, önskade egenskaper eller direkt metoder.
 
 ## <a name="next-steps"></a>Nästa steg
 

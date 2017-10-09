@@ -1,23 +1,23 @@
 ## <a name="route-tables"></a>Vägtabeller
-Väg tabellen resurser innehåller vägar som används för att definiera hur trafiken flödar i Azure-infrastrukturen. Du kan använda användardefinierade vägar (UDR) för att skicka all trafik från ett visst undernät till en virtuell installation, till exempel en brandvägg eller intrångsidentifiering identifiering-system (ID). Du kan associera en routingtabell till undernät. 
+Väg tabellen resurser innehåller vägar toodefine hur trafiken flödar i Azure-infrastrukturen. Du kan använda användardefinierade vägar (UDR) toosend all trafik från ett visst undernät tooa virtuell installation, till exempel en brandvägg eller intrångsidentifiering identifiering-system (ID). Du kan associera en väg tabellen toosubnets. 
 
-Routningstabeller innehåller följande egenskaper.
+Routningstabeller innehålla hello följande egenskaper.
 
 | Egenskap | Beskrivning | Exempelvärden |
 | --- | --- | --- |
-| **vägar** |Samling användardefinierade vägar i routningstabellen |Se [användardefinierade vägar](#User-defined-routes) |
-| **undernät** |Samling av undernät i vägtabellen tillämpas på |Se [undernät](#Subnets) |
+| **vägar** |Samling användardefinierade vägar i routningstabellen för hello |Se [användardefinierade vägar](#User-defined-routes) |
+| **undernät** |Samling av routningstabellen för undernät hello används för|Se [undernät](#Subnets) |
 
 ### <a name="user-defined-routes"></a>Användardefinierade vägar
-Du kan skapa udr: er för att ange där trafik ska skickas till, baserat på dess mål-adress. Du kan se en väg som standard-gateway-definition baserat på mål-adress för ett nätverkspaket.
+Du kan skapa udr: er toospecify där trafik ska skickas till, baserat på dess mål-adress. Du kan se en väg som hello gateway standarddefinition baserat på hello måladress för ett nätverkspaket.
 
-Udr: er innehåller följande egenskaper. 
+Udr: er innehåller hello följande egenskaper. 
 
 | Egenskap | Beskrivning | Exempelvärden |
 | --- | --- | --- |
-| **addressPrefix** |Adressprefixet eller fullständig IP-adress för mål |192.168.1.0/24, 192.168.1.101 |
-| **nextHopType** |Typ av enhet som trafiken skickas till |VirtualAppliance, VPN-Gateway, Internet |
-| **nextHopIpAddress** |IP-adressen för nästa hopp |192.168.1.4 |
+| **addressPrefix** |Adressprefixet eller fullständig IP-adress för hello mål |192.168.1.0/24, 192.168.1.101 |
+| **nextHopType** |Typ av enhet hello trafik skickas för|VirtualAppliance, VPN-Gateway, Internet |
+| **nextHopIpAddress** |IP-adress för hello nästa hopp |192.168.1.4 |
 
 Exempel routningstabellen i JSON-format:
 
@@ -52,6 +52,6 @@ Exempel routningstabellen i JSON-format:
 
 ### <a name="additional-resources"></a>Ytterligare resurser
 * Hämta mer information [udr: er](../articles/virtual-network/virtual-networks-udr-overview.md).
-* Läs den [REST API-referensdokumentation](https://msdn.microsoft.com/library/azure/mt502549.aspx) för routningstabeller.
-* Läs den [REST API-referensdokumentation](https://msdn.microsoft.com/library/azure/mt502539.aspx) definierats vägar (udr: er) för användaren.
+* Läs hello [REST API-referensdokumentation](https://msdn.microsoft.com/library/azure/mt502549.aspx) för routningstabeller.
+* Läs hello [REST API-referensdokumentation](https://msdn.microsoft.com/library/azure/mt502539.aspx) definierats vägar (udr: er) för användaren.
 

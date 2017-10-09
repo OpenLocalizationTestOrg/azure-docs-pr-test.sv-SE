@@ -1,6 +1,6 @@
 ---
-title: "Anpassade skript körs på virtuella Linux-datorer i Azure | Microsoft Docs"
-description: "Automatisera åtgärder för Linux VM-konfigurationen genom att använda tillägget för anpassat skript"
+title: "aaaRun anpassade skript på Linux virtuella datorer i Azure | Microsoft Docs"
+description: "Automatisera åtgärder för Linux VM-konfigurationen med hjälp av hello tillägget för anpassat skript"
 services: virtual-machines-linux
 documentationcenter: 
 author: neilpeterson
@@ -15,28 +15,28 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: nepeters
-ms.openlocfilehash: 1dde64aac72c11ccfccf4fdb676279692befaadd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f2c273a5fbd4cd1695aea48fa4bd08e691511e5f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-azure-custom-script-extension-with-linux-virtual-machines"></a>Med hjälp av tillägget för anpassat skript för Azure med Linux virtuella datorer
-Tillägget för anpassat skript hämtar och kör skript på virtuella Azure-datorer. Det här tillägget är användbart för post distributionskonfiguration, Programvaruinstallation eller någon annan konfiguration / hanteringsaktivitet. Skript kan hämtas från Azure-lagring eller andra tillgängliga Internetplats eller som tillägget körtiden. Tillägget för anpassat skript kan integreras med Azure Resource Manager-mallar och kan också köras med hjälp av Azure CLI, PowerShell, Azure-portalen eller Azure Virtual Machine REST API.
+# <a name="using-hello-azure-custom-script-extension-with-linux-virtual-machines"></a>Med hjälp av hello Azure-tillägget för anpassat skript med Linux-datorer
+hello tillägget för anpassat skript hämtar och kör skript på virtuella Azure-datorer. Det här tillägget är användbart för post distributionskonfiguration, Programvaruinstallation eller någon annan konfiguration / hanteringsaktivitet. Skript kan hämtas från Azure-lagring eller andra tillgängliga Internetplats eller tillhandahålls toohello tillägget körtiden. hello tillägget för anpassat skript kan integreras med Azure Resource Manager-mallar och kan också köras med hello Azure CLI, PowerShell, Azure-portalen eller hello Azure virtuella REST API.
 
-Det här dokumentet beskrivs hur du använder tillägget för anpassat skript från Azure CLI och en Azure Resource Manager-mall och även detaljer felsökningssteg för Linux-datorer.
+Det här dokumentet beskriver hur toouse hello tillägget för anpassat skript från hello Azure CLI och en Azure Resource Manager-mall och även information om felsökning i Linux-system.
 
 ## <a name="extension-configuration"></a>Tilläggets konfiguration
-Tillägget för anpassat skript konfigurationen anger sådant som skriptets placering och kommandot ska köras. Den här konfigurationen kan lagras i konfigurationsfiler, anges på kommandoraden eller i en Azure Resource Manager-mall. Känsliga data kan lagras i en skyddad konfiguration, som krypteras och dekrypteras endast inuti den virtuella datorn. Skyddade konfigurationen är användbar när kommandot körningen innehåller hemligheter, till exempel ett lösenord.
+hello tillägget för anpassat skript konfigurationen anger sådant som skriptets placering och hello kommandot toobe kör. Den här konfigurationen kan lagras i konfigurationsfiler, anges på kommandoraden för hello, eller i en Azure Resource Manager-mall. Känsliga data kan lagras i en skyddad konfiguration, som krypteras och dekrypteras endast inuti hello virtuella datorn. hello skyddade konfigurationen är användbar när hello körning av kommandot innehåller hemligheter, till exempel ett lösenord.
 
 ### <a name="public-configuration"></a>Offentliga konfiguration
 Schema:
 
-**Obs** -dessa egenskapsnamn är skiftlägeskänsliga. Använda namnen som visas nedan för att undvika distributionsproblem.
+**Obs** -dessa egenskapsnamn är skiftlägeskänsliga. Använd hello namn som du ser nedan tooavoid distributionsproblem.
 
-* **commandToExecute**: (krävs, string) post punkt att köra skript
-* **fileUris**: (valfritt, Strängmatrisen) URL: er för filer som ska hämtas.
-* **tidsstämpel** (valfritt, heltal) använda det här fältet bara för att utlösa en kör av skriptet genom att ändra värdet för det här fältet.
+* **commandToExecute**: (krävs, string) hello post punkt skriptet tooexecute
+* **fileUris**: (valfritt, Strängmatrisen) hello URL: er för filer toobe hämtas.
+* **tidsstämpel** (valfritt, heltal) använder det här fältet endast tootrigger en kör hello skriptet genom att ändra värdet för det här fältet.
 
 ```json
 {
@@ -48,11 +48,11 @@ Schema:
 ### <a name="protected-configuration"></a>Skyddade konfiguration
 Schema:
 
-**Obs** -dessa egenskapsnamn är skiftlägeskänsliga. Använda namnen som visas nedan för att undvika distributionsproblem.
+**Obs** -dessa egenskapsnamn är skiftlägeskänsliga. Använd hello namn som du ser nedan tooavoid distributionsproblem.
 
-* **commandToExecute**: (valfritt, string) att posten punkt skriptet körs. Använd det här fältet i stället om kommandot innehåller hemligheter, till exempel lösenord.
-* **storageAccountName**: (valfritt, string) namnet på lagringskontot. Om du anger autentiseringsuppgifter för lagring, måste alla fileUris vara URL: er för Azure-BLOB.
-* **storageAccountKey**: (valfritt, string) åtkomstnyckeln för lagringskontot.
+* **commandToExecute**: (valfritt, string) hello post punkt skriptet tooexecute. Använd det här fältet i stället om kommandot innehåller hemligheter, till exempel lösenord.
+* **storageAccountName**: (valfritt, string) hello namnet på lagringskontot. Om du anger autentiseringsuppgifter för lagring, måste alla fileUris vara URL: er för Azure-BLOB.
+* **storageAccountKey**: (valfritt, string) hello åtkomstnyckeln för lagringskontot.
 
 ```json
 {
@@ -63,13 +63,13 @@ Schema:
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-När du använder Azure CLI för att köra tillägget för anpassat skript, skapa en konfigurationsfil eller filer som innehåller åtminstone uri för filen och köra skriptkommandot.
+När du använder hello Azure CLI toorun hello tillägget för anpassat skript, skapa en konfigurationsfil eller filer som innehåller på minsta hello filen uri och hello skriptkommandot för körning.
 
 ```azurecli
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-Inställningarna kan du kan också anges i kommandot som en JSON-formaterad sträng. På så sätt kan konfigurationen anges under körning och utan en separat fil.
+Du kan också anges hello inställningar i hello kommando som en JSON-formaterad sträng. Detta gör att hello configuration toobe anges under körning och utan en separat fil.
 
 ```azurecli
 az vm extension set '
@@ -111,7 +111,7 @@ Azure CLI-kommando:
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-**Exempel 3** – en offentlig konfigurationsfil används för att ange skriptfil URI och en skyddad fil används för att ange kommandot som ska köras.
+**Exempel 3** – en offentlig konfigurationsfil är används toospecify hello skriptfilen URI och en skyddad fil är används toospecify hello kommandot toobe utförs.
 
 Offentliga konfigurationsfil:
 
@@ -136,7 +136,7 @@ az vm extension set --resource-group myResourceGroup --vm-name myVM --name custo
 ```
 
 ## <a name="resource-manager-template"></a>Resource Manager-mall
-Tillägget för Azure anpassat skript kan köras vid tidpunkten för distribution för virtuell dator med en Resource Manager-mall. Gör du genom att lägga till korrekt formaterad JSON i mallen för distribution.
+hello Azure-tillägget för anpassat skript kan köras vid tidpunkten för distribution för virtuell dator med en Resource Manager-mall. toodo Lägg därför till korrekt formaterad JSON toohello Distributionsmall.
 
 ### <a name="resource-manager-examples"></a>Resource Manager-exempel
 **Exempel 1** -offentliga konfiguration.
@@ -199,32 +199,32 @@ Tillägget för Azure anpassat skript kan köras vid tidpunkten för distributio
 }
 ```
 
-Se .net Core musik Store demonstration för en komplett exempel - [musik Store Demo](https://github.com/neilpeterson/nepeters-azure-templates/tree/master/dotnet-core-music-linux-vm-sql-db).
+Se hello .net Core musik Store demonstration för en komplett exempel - [musik Store Demo](https://github.com/neilpeterson/nepeters-azure-templates/tree/master/dotnet-core-music-linux-vm-sql-db).
 
 ## <a name="troubleshooting"></a>Felsökning
-När tillägget för anpassat skript körs skriptet skapas eller hämtas i en katalog som liknar följande exempel. Kommandoutdata sparas i den här katalogen i `stdout` och `stderr` fil.
+När hello tillägget för anpassat skript körs, skapas hello skript eller hämtas till en katalog och liknande toohello som följande exempel. hello kommandoutdata sparas i den här katalogen i `stdout` och `stderr` fil.
 
 ```bash
 /var/lib/waagent/custom-script/download/0/
 ```
 
-Tillägget för Azure-skript skapar en logg som finns här.
+hello Azure skripttillägg genererar en logg som finns här.
 
 ```bash
 /var/log/azure/custom-script/handler.log
 ```
 
-Körningstillståndet för tillägget för anpassat skript kan också hämtas med Azure CLI.
+Hej Körningstillståndet för hello tillägget för anpassat skript kan också hämtas med hello Azure CLI.
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM
 ```
 
-Det ser ut som följande utdata:
+hello utdata ser ut så hello följande text:
 
 ```azurecli
 info:    Executing command vm extension get
-+ Looking up the VM "scripttst001"
++ Looking up hello VM "scripttst001"
 data:    Publisher                   Name                                      Version  State
 data:    --------------------------  ----------------------------------------  -------  ---------
 data:    Microsoft.Azure.Extensions  CustomScript                              2.0      Succeeded

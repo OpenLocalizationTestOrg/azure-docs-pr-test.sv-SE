@@ -1,57 +1,57 @@
 
 # <a name="azure-and-internet-of-things"></a>Azure och Sakernas Internet
 
-Välkommen till Microsoft Azure och Sakernas Internet (Internet of Things, IoT). Den här artikeln introducerar en lösningsarkitektur för IoT som beskriver de vanligast förekommande egenskaperna för en IoT-lösning som du kan distribuera med hjälp av Azure-tjänster. IoT-lösningar kräver säker, dubbelriktad kommunikation mellan enheter, potentiellt miljontals, samt en serverdelslösning. En serverdelslösning kan exempelvis använda automatiserad, förutsägande analys för att få fram insikter från din enhet-till-molnet händelseström.
+Välkommen tooMicrosoft Azure och hello Sakernas Internet (IoT). Den här artikeln introducerar en lösningsarkitektur för IoT som beskriver hello gemensamma egenskaperna för en IoT-lösning som du kan distribuera med Azure-tjänster. IoT-lösningar kräver säker, dubbelriktad kommunikation mellan enheter, möjligen numrering i hello miljoner och en lösningens serverdel. En lösningens serverdel kan till exempel använda automatiserad, förutsägbara analytics toouncover insikter från din enhet till moln händelseströmmen.
 
-Azure IoT Hub är en viktig byggsten vid implementering av den här IoT-lösningsarkitekturen med hjälp av Azure-tjänster. IoT Suite tillhandahåller fullständiga, slutpunkt-till-slutpunkts-implementeringar av den här arkitekturen för specifika IoT-scenarier. Några exempel:
+Azure IoT Hub är en viktig byggsten vid implementering av den här IoT-lösningsarkitekturen med hjälp av Azure-tjänster. IoT Suite tillhandahåller fullständiga, slutpunkt-till-slutpunkts-implementeringar av den här arkitekturen för specifika IoT-scenarier. Exempel:
 
-* *Fjärrövervaknings*-lösningen låter dig övervaka status för enheter som till exempel varuautomater.
-* *Förutsägbart underhålls*-lösningen hjälper dig att förutse underhållsbehov av enheter som till exempel pumpar vid avlägsna pumpstationer för att kunna undvika oplanerade avbrott.
-* Lösningen *connected factory* hjälper dig att ansluta och övervaka dina industriella enheter.
+* Hej *fjärrövervaknings* lösningen kan du toomonitor hello status för enheter som till exempel försäljningsautomater.
+* Hej *förutsägande Underhåll* lösningen hjälper dig att tooanticipate underhållsbehov för enheter, till exempel pumpar på avlägsna pumpstationer och tooavoid Ej schemalagda driftstopp.
+* Hej *anslutna factory* lösningen hjälper dig att tooconnect och övervaka dina industriella enheter.
 
 ## <a name="iot-solution-architecture"></a>IoT-lösningsarkitektur
 
-I följande diagram visas en typisk IoT-lösningsarkitektur. Diagrammet innehåller inte namnen på några specifika Azure-tjänster, utan beskriver snarare nyckelelementen för en generisk IoT-lösningsarkitektur. I den här lösningen samlar IoT-enheter in data som de sedan skickar till en molngateway. Molngatewayen tillhandahåller data för bearbetning av andra serverdelstjänster som levererar data till andra verksamhetsspecifika program eller till mänskliga operatörer via en instrumentpanel eller annan presentationsenhet.
+hello följande diagram visar en typisk IoT-lösningsarkitektur. hello diagrammet innehåller inte hello namnen på eventuella specifika Azure-tjänster, men beskrivs hello nyckelelement i en allmän IoT-lösningsarkitektur. Samla in data som de skickar tooa molngateway i den här arkitekturen IoT-enheter. Hej molngatewayen tillhandahåller hello data tillgängliga för bearbetning av andra backend-tjänster från var data levereras tooother line-of-business-program eller toohuman operatörer via en instrumentpanel eller annan presentationsenhet.
 
 ![IoT-lösningsarkitektur][img-solution-architecture]
 
 > [!NOTE]
-> En detaljerad beskrivning av IoT-arkitekturen finns i [Microsoft Azure IoT Reference Architecture][lnk-refarch] (Referensarkitektur för Microsoft Azure IoT).
+> En detaljerad beskrivning av IoT-arkitekturen finns i hello [Referensarkitektur för Microsoft Azure IoT][lnk-refarch].
 
 ### <a name="device-connectivity"></a>Enhetsanslutning
 
-I den här IoT-lösningsarkitekturen skickar enheter telemetri, till exempel sensoravläsningar från en pumpstation, till en molnslutpunkt för lagring och bearbetning. I ett scenario med förutsägande underhåll kan lösningen för serverdelen använda sig av strömmen med sensordata för att fastställa när en specifik pump kräver underhåll. Enheter kan också ta emot och svara på meddelanden från moln till enhet genom att läsa meddelanden från en molnslutpunkt. Exempelvis kan serverdelen av lösningen i scenariot med förutsägande underhåll skicka meddelanden till andra pumpar på pumpstationen för att börja dirigera om flöden strax innan underhållet ska påbörjas. Den här proceduren säkerställer att underhållsteknikern kan sätta igång så fort han anländer.
+I den här IoT-lösningsarkitekturen skickar enheter telemetri, till exempel sensoravläsningar från en pumpstation, tooa molnslutpunkt för lagring och bearbetning. I ett scenario med förutsägande Underhåll kan hello lösningens serverdel använda hello dataström med sensor data toodetermine när en specifik pump kräver underhåll. Enheter kan också ta emot och svara toocloud till enhet meddelanden genom att läsa meddelanden från en molnslutpunkt. Till exempel i hello förutsägande Underhåll scenariot hello lösning serverdel kan skicka meddelanden tooother pumpar i hello pumpa station toobegin omdirigering flöden precis innan toostart. Den här proceduren skulle se till att hello underhållsingenjören kan komma igång så fort HEN kommer dit.
 
-En av de största utmaningarna med IoT-projekt är att på ett tillförlitligt och säkert sätt kunna ansluta enheter till lösningens serverdel. IoT-enheter skiljer sig från andra klienter, till exempel webbläsare och mobilappar. IoT-enheter:
+En av hello största utmaningarna för IoT-projekt är hur tooreliably och på ett säkert sätt ansluta enheter toohello lösningens serverdel. IoT-enheter har olika egenskaper som jämfört med tooother klienter, till exempel webbläsare och mobilappar. IoT-enheter:
 
 * Är ofta inbyggda system utan en mänsklig operatör.
 * Kan distribueras på avlägsna platser, där fysisk åtkomst är dyr.
-* Kan i vissa fall enbart nås via lösningens serverdel. Det finns inget annat sätt att interagera med enheten.
+* Kan endast nås via hello lösningens serverdel. Det finns inga andra sätt toointeract med hello enhet.
 * Kan ha begränsade ström- och bearbetningsresurser.
 * Kan ha oregelbunden, långsam eller dyr nätverksanslutning.
-* Kan behöva använda patentskyddade, anpassade eller branschspecifika programprotokoll.
+* Kanske måste toouse egna, anpassade eller branschspecifika programprotokoll.
 * Kan skapas med en stor mängd populära maskinvaru- och programvaruplattformar.
 
-Förutom kraven ovan behöver alla IoT-lösningar också erbjuda skalbarhet, säkerhet och tillförlitlighet. Den resulterande uppsättningen anslutningskrav är svår och tidskrävande att implementera med traditionella teknologier, till exempel webbehållare och asynkrona meddelandeköer. Azure IoT Hub och enhets-SDK:erna för Azure IoT gör det enklare att implementera lösningar som uppfyller dessa krav.
+Dessutom toohello kraven ovan behöver alla IoT-lösningar också erbjuda skalbarhet, säkerhet och tillförlitlighet. hello är resulterande uppsättningen anslutningskrav svår och tidskrävande tooimplement med traditionella teknologier, till exempel webbehållare och asynkrona meddelandeköer. Azure IoT-hubb och hello gör SDK för Azure IoT-enheter enklare tooimplement lösningar som uppfyller dessa krav.
 
-En enhet kan kommunicera direkt med en slutpunkt för en molngateway, eller om enheten inte kan använda sig av något av de kommunikationsprotokoll som molgatewayen stöder så kan den ansluta via en mellanliggande gateway. Till exempel kan [Azure IoT-protokollgatewayen][lnk-protocol-gateway] utföra protokollöversättningar om enheter inte kan använda sig av något av de protokoll som stöds av IoT Hub.
+En enhet kan kommunicera direkt med en slutpunkt för en molngateway, eller om hello enheten inte kan använda någon av hello kommunikationsprotokoll som hello gateway har stöd för molnet, den kan ansluta via en mellanliggande gateway. Till exempel hello [Azure IoT-protokollgatewayen] [ lnk-protocol-gateway] kan utföra protokollöversättning om enheter inte kan använda någon av hello-protokoll som stöds i IoT-hubb.
 
 ### <a name="data-processing-and-analytics"></a>Databearbetning och analys
 
-Det är i IoT-lösningens serverdel i molnet som den största delen av databearbetningen sker, speciellt vad gäller filtrering och sammanställning av telemetri och vidarebefordran till andra tjänster. Serverdelen för IoT-lösningen:
+I hello moln är en serverdelen för IoT-lösning där de flesta av hello databearbetning sker, till exempel filtrering och aggregering av telemetri och vidarebefordring tooother tjänster. Hej IoT-lösningens serverdel:
 
-* Tar emot stora mängder telemetri från dina enheter och bestämmer hur telemetridata bearbetas och lagras. 
-* Kan låta dig skicka kommandon från molnet till specifika enheter.
-* Möjliggör enhetsregistrering, vilket låter dig etablera enheter och styra vilka enheter som får ansluta till din infrastruktur.
-* Låter dig kontrollera status för enheter och övervaka deras verksamhet.
+* Tar emot telemetri från dina enheter och bestämmer hur tooprocess och lagra dessa data. 
+* Kan låta dig toosend kommandon från hello moln toospecific enhet.
+* Möjliggör enhetsregistrering som gör att du tooprovision enheter och toocontrol vilka enheter som får tooconnect tooyour infrastruktur.
+* Aktiverar du tootrack hello status för enheter och övervaka deras verksamhet.
 
-I det förutsägande underhållsscenariot, lagrar lösningens serverdel historisk telemetridata. Lösningens serverdel kan använda sig av dessa data för att identifiera mönster som indikerar att det är dags för underhåll av en viss pump.
+Hello scenario med förutsägande Underhåll lagrar hello lösningens serverdel historiska telemetridata. hello lösningens serverdel kan använda den här toouse tooidentify datamönster som anger att Underhåll på en specifik pump.
 
-IoT-lösningar kan inkludera automatiska feedback-slingor. En analysmodul i lösningens serverdel kan exempelvis utläsa från telemetridata att temperaturen för en specifik enhet är över normal driftsnivå. Lösningen kan sedan skicka ett kommando till enheten och instruera den att vidta åtgärder.
+IoT-lösningar kan inkludera automatiska feedback-slingor. En analytics-modul i hello lösningens serverdel kan exempelvis identifiera från telemetrin att hello temperaturen för en specifik enhet är över normal driftsnivå. hello-lösning kan skicka en kommandot toohello enhet, instruktion tootake korrigerande åtgärder.
 
 ### <a name="presentation-and-business-connectivity"></a>Presentation och företagsanslutningar
 
-Slutanvändarna kan interagera med IoT-lösningen och enheterna via ett presentations- och företagsanslutningsskikt. I det här skiktet kan användare se och analysera data som samlats in från deras enheter. Vyerna kan bestå av instrumentpaneler eller BI-rapporter som kan visa både historiska data eller nästan realtidsdata. En operatör kan exempelvis kontrollera statusen för en viss pumpstation och se alla varningar som har utlösts i systemet. Här kan även IoT-lösningens serverdel integreras med befintliga branschspecifika program för att knyta samman med företagets verksamhetsprocesser eller arbetsflöden. Förutsägande underhåll kan till exempel integreras med ett system för schemaläggning som bokar in en ingenjör att besöka en pumpstation när en pump är i behov av underhåll.
+hello presentation och lager för anslutningen kan användarna toointeract med hello IoT-lösningen och hello-enheter. Det gör att användare tooview och analysera hello data som samlas in från sina enheter. Vyerna kan ta hello form av instrumentpaneler eller BI-rapporter som kan visa både historiska data eller nästan realtidsdata. Operatör kan exempelvis kontrollera hello status viss pumpstation och se alla varningar som skapats av hello system. Lagret tillåter också integrering av hello IoT lösningens serverdel med befintliga av branschspecifika program tootie i företagets verksamhetsprocesser eller arbetsflöden. Till exempel kan hello förutsägande underhållslösningen integreras med ett system för schemaläggning som books en tekniker toovisit en pumpstation när hello lösningen identifierar en pump i behov av underhåll.
 
 ![Instrumentpanel för IoT-lösning][img-dashboard]
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Service Bus länkas namnområden | Microsoft Docs"
+title: "aaaAzure Service Bus länkas namnområden | Microsoft Docs"
 description: "Implementeringsdetaljer parad namnområde och kostnad"
 services: service-bus-messaging
 documentationcenter: na
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: sethm
-ms.openlocfilehash: a200ea7937b9f5296c743928a9408897adfba428
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c44b2b95d2228e1ad8075b52634d88a1593d3b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>Länkas namnområde implementeringsdetaljer och cost effekter
-Den [PairNamespaceAsync] [ PairNamespaceAsync] metod med en [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] instansen, utför synliga uppgifter å dina vägnar. Eftersom det är kostnad överväganden när du använder funktionen, är det viktigt att förstå dessa uppgifter så att du förväntar dig beteendet när det sker. API: et aktiverar följande automatiska funktioner för din räkning:
+Hej [PairNamespaceAsync] [ PairNamespaceAsync] metod med en [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] instansen, utför synliga uppgifter å dina vägnar. Eftersom det är kostnad överväganden när du använder hello funktion, är användbar toounderstand de uppgifter så att du förväntar dig hello beteendet när det sker. hello API aktiverar hello följande automatiska funktioner för din räkning:
 
 * Skapa eftersläpning köer.
-* Skapa en [MessageSender] [ MessageSender] objekt som kommunicerar köer och ämnen.
-* Om en meddelandeentitet blir otillgänglig, pinga skickar meddelanden till entiteten i ett försök att identifiera när enheten blir tillgänglig igen.
-* Du kan även skapa en uppsättning ”meddelande pumpar” som flytta meddelanden från eftersläpning köer till de primära köerna.
-* Samordnar avslutande/felaktig av primära och sekundära [MessagingFactory] [ MessagingFactory] instanser.
+* Skapa en [MessageSender] [ MessageSender] objekt som nämns tooqueues eller avsnitt.
+* När en meddelandeentitet blir otillgänglig, skickar pingmeddelanden toohello entiteten i ett försök toodetect när enheten blir tillgänglig igen.
+* Du kan även skapa en uppsättning ”meddelande pumpar” att flytta meddelanden från hello eftersläpning köer toohello primära köer.
+* Samordnar avslutande/felaktig av hello primära och sekundära [MessagingFactory] [ MessagingFactory] instanser.
 
-På en hög nivå funktionen fungerar på följande sätt: när den primära entiteten är felfri, ingen funktionsändringar sker. När den [FailoverInterval] [ FailoverInterval] varaktighet är slut och de primära entiteten ser inte lyckas skickar efter en inte är tillfällig [MessagingException] [ MessagingException] eller en [TimeoutException][TimeoutException], händer följande:
+På en hög nivå hello-funktionen fungerar på följande sätt: när hello primära entiteten är felfri, ingen funktionsändringar sker. När hello [FailoverInterval] [ FailoverInterval] tid förflutit och hello primära entiteten ser inga lyckade skickar efter ett tillfälligt [MessagingException] [ MessagingException] eller en [TimeoutException][TimeoutException], hello följande beteende inträffar:
 
-1. Skicka till den primära entiteten har inaktiverats och systemet pingar den primära enheten förrän pingar har levereras.
+1. Skicka operations toohello primära entiteten är inaktiverade och hello system pingar hello primära entiteten tills pingar har levereras.
 2. En slumpmässig eftersläpning kö har valts.
-3. [BrokeredMessage] [ BrokeredMessage] objekt dirigeras till valda eftersläpning kön.
-4. Om en send-åtgärd till valda eftersläpning kön misslyckas kön hämtas från rotationen och en ny kö har valts. Alla avsändare på den [MessagingFactory] [ MessagingFactory] instans Lär dig mer om felet.
+3. [BrokeredMessage] [ BrokeredMessage] objekt är routade toohello valt eftersläpning kön.
+4. Om en skicka åtgärden toohello valt eftersläpning kön misslyckas kön hämtas från hello rotation och en ny kö har valts. Alla avsändare på hello [MessagingFactory] [ MessagingFactory] instans Läs hello-fel.
 
-I följande figurer visas sekvensen. Först skickar avsändare meddelanden.
+hello följande figur visas hello sekvens. Först skickar hello avsändare meddelanden.
 
 ![Parad namnområden][0]
 
-Vid fel ska skickas till primära kön börjar avsändaren skicka meddelanden till en slumpmässigt vald eftersläpning kö. Samtidigt, startar en ping-aktivitet.
+Vid fel toosend toohello primära kön börjar hello avsändaren skicka meddelanden tooa slumpmässigt eftersläpning kön. Samtidigt, startar en ping-aktivitet.
 
 ![Parad namnområden][1]
 
-Nu finns kvar i sekundär kö meddelanden och inte har levererats till primära kön. När primära kön är felfri igen, ska minst en process köras syphon. Syphon levererar meddelanden från alla olika eftersläpning köer till rätt mål-enheter (köer och ämnen).
+Nu finns kvar i hello sekundär kö hälsningsmeddelande och inte har levererats toohello primära kön. När hello primära kön är felfri igen, bör minst en process körs hello syphon. Hej syphon ger dig en hälsningsmeddelande från alla hello olika eftersläpning köer toohello rätt mål entiteter (köer och ämnen).
 
 ![Parad namnområden][2]
 
-Resten av det här avsnittet innehåller information om specifik information om hur dessa delar fungerar.
+hello resten av det här avsnittet beskrivs hello specifik information om hur dessa delar fungerar.
 
 ## <a name="creation-of-backlog-queues"></a>Skapandet av eftersläpning köer
-Den [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] objekt har överförts till den [PairNamespaceAsync] [ PairNamespaceAsync] metoden anger antalet eftersläpning köer du vill använda. Varje kö eftersläpning skapas med följande egenskaper uttryckligen ange (alla andra värden är inställda på att den [QueueDescription] [ QueueDescription] standardvärden):
+Hej [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] objekt som överförts toohello [PairNamespaceAsync] [ PairNamespaceAsync] metoden anger hello Antal eftersläpning köer du vill toouse. Varje kö eftersläpning skapas med hello följande egenskaper uttryckligen ange (alla andra värden anges toohello [QueueDescription] [ QueueDescription] standardvärden):
 
 | Sökväg | [primära namnutrymme] / x-servicebus-överföring / [index] där [index] är ett värde i [0, BacklogQueueCount) |
 | --- | --- |
@@ -63,15 +63,15 @@ Den [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOp
 | EnableDeadLetteringOnMessageExpiration |SANT |
 | EnableBatchedOperations |SANT |
 
-Till exempel den första eftersläpning kön skapas för namnområdet **contoso** heter `contoso/x-servicebus-transfer/0`.
+Till exempel skapa hello första eftersläpning kön för namnområdet **contoso** heter `contoso/x-servicebus-transfer/0`.
 
-När du skapar köerna kontrollerar koden först om det finns en sådan kö. Om det inte finns kön, skapa kön. Koden inte rensa ”extra” eftersläpning köer. I synnerhet om programmet med primära namnområde **contoso** begär fem eftersläpning köer, men en eftersläpning kö med sökvägen `contoso/x-servicebus-transfer/7` finns extra eftersläpning kön är kvar men används inte. Systemet tillåter uttryckligen extra eftersläpning köer finns som inte används. Du är ansvarig för att rensa alla oanvända/oönskad eftersläpning köer som ägare namnområde. Orsaken till detta beslut är att Service Bus inte kan vet vilket syfte som finns för alla köer i namnområdet. Dessutom, om en kö med det angivna namnet finns men inte uppfyller den antagna [QueueDescription][QueueDescription], din orsaker är din egen för ändra standardbeteendet. Inga garantier görs för att ändringarna till eftersläpning köer av din kod. Se till att testa dina ändringar noggrant.
+När du skapar hello köer hello kod kontrollerar först toosee om det finns en sådan kö. Om hello kön inte finns, skapas hello kön. hello koden inte rensa ”extra” eftersläpning köer. Specifikt, om hello program med hello primära namnområde **contoso** begär fem eftersläpning köer, men en eftersläpning kö med sökvägen hello `contoso/x-servicebus-transfer/7` finns extra eftersläpning kön är kvar men används inte. hello system tillåter uttryckligen extra eftersläpning köer tooexist som inte används. Du är ansvarig för att rensa alla oanvända/oönskad eftersläpning köer som hello namnområde ägare. hello orsaken till detta beslut är att Service Bus inte kan vet vilket syfte som finns för alla hello köer i namnområdet. Dessutom, om en kö finns med namnet hello men inte uppfyller hello antas [QueueDescription][QueueDescription], din orsaker är din egen för ändra hello standardbeteendet. Inga garantier görs för ändringar toohello eftersläpning köer av din kod. Ändra till tootest noggrant.
 
 ## <a name="custom-messagesender"></a>Anpassade MessageSender
-När du skickar, alla meddelanden gå igenom en intern [MessageSender] [ MessageSender] objekt som fungerar sedan normalt när allt fungerar och omdirigerar till eftersläpningen köer när saker ”delar”. Vid mottagning av ett fel uppstod, startar en timer. När en [TimeSpan] [ TimeSpan] period som består av den [FailoverInterval] [ FailoverInterval] egenskapens värde under vilket inga lyckade meddelanden skickas, växling vid fel används. Nu händer följande för varje entitet:
+När du skickar, alla meddelanden gå igenom en intern [MessageSender] [ MessageSender] objekt som fungerar sedan normalt när allt fungerar och omdirigerar toohello eftersläpning köer när saker ”delar”. Vid mottagning av ett fel uppstod, startar en timer. När en [TimeSpan] [ TimeSpan] period som består av hello [FailoverInterval] [ FailoverInterval] egenskapsvärde under vilka inga lyckade meddelanden skickas , hello växling vid fel används. Nu händer hello följande för varje entitet:
 
-* Ping-uppgiften körs varje [PingPrimaryInterval] [ PingPrimaryInterval] att kontrollera om enheten är tillgänglig. När den här aktiviteten lyckas startar alla klientkod som använder enheten omedelbart skicka nya meddelanden till det primära namnområdet.
-* Kommande begäranden att skicka till att samma entitet från andra sändare leder den [BrokeredMessage] [ BrokeredMessage] som skickas till ändras så att de är placerade i eftersläpning kön. Detta tar bort vissa egenskaper från den [BrokeredMessage] [ BrokeredMessage] objekt och lagrar dem på en annan plats. Följande egenskaper tas bort och lagts till under ett nytt alias, vilket gör att Service Bus och SDK att bearbeta meddelanden enhetligt:
+* Ping-uppgiften körs varje [PingPrimaryInterval] [ PingPrimaryInterval] toocheck om hello enheten är tillgänglig. När den här aktiviteten lyckas startar alla klientkod som använder hello entitet omedelbart skicka nya meddelanden toohello primära namnområdet.
+* Kommande begäranden toosend toothat samma entitet från andra sändare leder hello [BrokeredMessage] [ BrokeredMessage] skickas toobe ändrade toosit i hello eftersläpning kö. hello ändring tar bort vissa egenskaper från hello [BrokeredMessage] [ BrokeredMessage] objekt och lagrar dem på en annan plats. hello är följande egenskaper avmarkerad och läggas till under ett nytt alias, vilket gör att Service Bus och hello SDK tooprocess meddelanden enhetligt:
 
 | Gamla egenskapsnamn | Nya egenskapsnamn |
 | --- | --- |
@@ -79,23 +79,23 @@ När du skickar, alla meddelanden gå igenom en intern [MessageSender] [ Message
 | TimeToLive |x-ms-timetolive |
 | ScheduledEnqueueTimeUtc |x-ms-sökväg |
 
-Den ursprungliga målsökvägen lagras också i meddelandet som en egenskap med namnet x-ms-sökväg. Den här designen kan meddelanden för många enheter som ska finnas i en enda eftersläpning kö. Egenskaperna översätts igen genom syphon.
+hello ursprungliga målsökväg lagras också i hello-meddelande som en egenskap med namnet x-ms-sökväg. Den här designen kan meddelanden för många enheter toocoexist i en enda eftersläpning kö. hello egenskaper översätts igen genom hello syphon.
 
-Anpassat [MessageSender] [ MessageSender] objekt problem kan uppstå när meddelanden hanterar 256 KB-gränsen och växling vid fel används. Anpassat [MessageSender] [ MessageSender] -objektet lagrar meddelanden för alla köer och ämnen tillsammans i eftersläpning köer. Det här objektet blandas meddelanden från många primärfärgerna tillsammans i eftersläpning köer. Om du vill hantera belastningsutjämningen bland många klienter som inte vet varandra SDK slumpvis en eftersläpning kö för varje [QueueClient] [ QueueClient] eller [TopicClient] [ TopicClient] du skapar i koden.
+hello anpassade [MessageSender] [ MessageSender] objekt problem kan uppstå när meddelanden hanterar hello 256 KB-gränsen och växling vid fel används. hello anpassade [MessageSender] [ MessageSender] -objektet lagrar meddelanden för alla köer och ämnen tillsammans i hello eftersläpning köer. Det här objektet blandas meddelanden från många primärfärgerna tillsammans i hello eftersläpning köer. toohandle belastningsutjämningen bland många klienter som inte känner till alla andra hello SDK slumpmässigt hämtar en eftersläpning kö för varje [QueueClient] [ QueueClient] eller [TopicClient] [ TopicClient] du skapar i koden.
 
 ## <a name="pings"></a>Pingar
-Ett ping-meddelande är ett tomt [BrokeredMessage] [ BrokeredMessage] med dess [ContentType] [ ContentType] -egenskapen angetts till programmet/vnd.ms-servicebus-ping och en [TimeToLive] [ TimeToLive] värdet 1 sekund. Den här ping har en särskild egenskap i Service Bus: ett ping skickas aldrig när alla anroparen begär en [BrokeredMessage][BrokeredMessage]. Du har aldrig alltså att lära dig att ta emot och ignorera dessa meddelanden. Varje entitet (unikt kö eller ett ämne) per [MessagingFactory] [ MessagingFactory] instans per klient ska pingas när de anses vara otillgänglig. Som standard är detta sker en gång per minut. Ping-meddelanden anses vara vanliga Service Bus-meddelanden och kan resultera i kostnader för bandbredd och meddelanden. När klienter identifiera att systemet är tillgängligt, stoppa meddelanden.
+Ett ping-meddelande är ett tomt [BrokeredMessage] [ BrokeredMessage] med dess [ContentType] [ ContentType] egenskapsuppsättning tooapplication/vnd.ms-servicebus-ping och en [TimeToLive] [ TimeToLive] värdet 1 sekund. Den här ping har en särskild egenskap i Service Bus: hello aldrig skickas ett ping när alla anroparen begär en [BrokeredMessage][BrokeredMessage]. Du aldrig har alltså toolearn hur tooreceive och ignorera dessa meddelanden. Varje entitet (unikt kö eller ett ämne) per [MessagingFactory] [ MessagingFactory] instans per klient ska pingas när de anses vara toobe inte tillgänglig. Som standard är detta sker en gång per minut. Ping-meddelanden betraktas toobe vanliga Service Bus-meddelanden och kan resultera i kostnader för bandbredd och meddelanden. Så snart hello-klienter identifiera att hello systemet är tillgängligt, stoppa hälsningsmeddelande.
 
-## <a name="the-syphon"></a>Syphon
-Minst ett körbart program i programmet bör aktivt köra syphon. Syphon utför lång avsökning får som pågår i 15 minuter. När du har 10 eftersläpning köer och alla entiteter som är tillgängliga anropar programmet som är värd för syphon mottagningsåtgärd 40 gånger per timme, 960 gånger per dag och 28800 gånger i 30 dagar. När syphon är aktivt flyttar meddelanden från eftersläpningen till primära kön, inträffar följande avgifterna (standard kostnader för meddelandestorlek och bandbredd som används i alla led) i varje meddelande:
+## <a name="hello-syphon"></a>Hej syphon
+Minst ett körbart program i hello program bör aktivt köra hello syphon. Hej syphon utför lång avsökning får som pågår i 15 minuter. När du har 10 eftersläpning köer och alla entiteter som är tillgängliga hello program som är värd för hello syphon anrop hello mottagningsåtgärd 40 gånger per timme, 960 gånger per dag och 28800 gånger i 30 dagar. När hello syphon aktivt flyttar meddelanden från hello eftersläpning toohello primära kö, inträffar varje meddelande hello följande avgifter (standard kostnader för meddelandestorlek och bandbredd som används i alla led):
 
-1. Skicka till eftersläpningen.
-2. Ta emot från eftersläpningen.
-3. Skicka till den primära servern.
-4. Ta emot från den primära servern.
+1. Skicka toohello eftersläpning.
+2. Ta emot från hello eftersläpning.
+3. Skicka toohello primära.
+4. Ta emot från hello primära.
 
 ## <a name="closefault-behavior"></a>Stäng/fel beteende
-I ett program som är värd för syphon, när primärt eller sekundära [MessagingFactory] [ MessagingFactory] hos eller stängs utan sin partner som också är fel/stängd och syphon identifierar det här tillståndet syphon handlingar. Om den andra [MessagingFactory] [ MessagingFactory] inte är stängd inom 5 sekunder, kommer syphon fault fortfarande öppen [MessagingFactory][MessagingFactory].
+I ett program som är värd för hello syphon, en gång hello primär eller sekundär [MessagingFactory] [ MessagingFactory] hos eller stängs utan dess partner samtidigt fel/stängs och hello syphon identifierar det här tillståndet , hello syphon fungerar. Om hello andra [MessagingFactory] [ MessagingFactory] inte är stängd inom 5 sekunder kommer hello syphon fault hello fortfarande öppen [MessagingFactory] [ MessagingFactory] .
 
 ## <a name="next-steps"></a>Nästa steg
 Se [asynkrona meddelanden mönster och hög tillgänglighet] [ Asynchronous messaging patterns and high availability] för en detaljerad beskrivning av asynkrona Service Bus-meddelanden. 

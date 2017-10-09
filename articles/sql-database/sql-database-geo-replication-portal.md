@@ -1,6 +1,6 @@
 ---
 title: 'Azure-portalen: SQL Database geo-replikering | Microsoft Docs'
-description: "Konfigurera geo-replikering för Azure SQL Database i Azure-portalen och initiera redundans"
+description: "Konfigurera geo-replikering för Azure SQL Database i hello Azure-portalen och initiera redundans"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,85 +15,85 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/06/2016
 ms.author: carlrab
-ms.openlocfilehash: db90fad2fe397f0c8466db6bdc1bd8c8d1cf8f15
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 09cbbdb040f36c42593e3be87ce6db2238f36656
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurera aktiv geo-replikering för Azure SQL Database i Azure-portalen och initiera redundans
+# <a name="configure-active-geo-replication-for-azure-sql-database-in-hello-azure-portal-and-initiate-failover"></a>Konfigurera aktiv geo-replikering för Azure SQL Database i hello Azure-portalen och initiera redundans
 
-Den här artikeln visar hur du konfigurerar aktiv geo-replikering för SQL-databasen i den [Azure-portalen](http://portal.azure.com) och för att initiera växling vid fel.
+Den här artikeln beskrivs hur du tooconfigure aktiv geo-replikering för SQL-databas i hello [Azure-portalen](http://portal.azure.com) och tooinitiate redundans.
 
-Om du vill initiera redundans med Azure-portalen finns [starta en planerad eller oplanerad växling för Azure SQL Database med Azure-portalen](sql-database-geo-replication-portal.md).
+tooinitiate redundans med hello Azure-portalen finns [starta en planerad eller oplanerad växling för Azure SQL Database med hello Azure-portalen](sql-database-geo-replication-portal.md).
 
-Om du vill konfigurera aktiv geo-replikering med hjälp av Azure portal, behöver du följande resurs:
+tooconfigure aktiv geo-replikering med hjälp av hello Azure-portalen, behöver du hello följande resurser:
 
-* En Azure SQL database: den primära databasen som du vill replikera till en annan geografisk region.
+* En Azure SQL database: hello primära databasen som du vill tooreplicate tooa olika geografiska region.
 
 > [!Note]
-Aktiv geo-replikering måste vara mellan databaser i samma prenumeration.
+Aktiv geo-replikering måste vara mellan databaser i hello samma prenumeration.
 
 ## <a name="add-a-secondary-database"></a>Lägg till en sekundär databas
-Följande steg kan du skapa en ny sekundär databas i ett partnerskap geo-replikering.  
+hello skapa följande en ny sekundär databas i ett partnerskap geo-replikering.  
 
-Du måste vara prenumerationsägaren eller Medägare för att lägga till en sekundär databas.
+tooadd en sekundär databas måste du vara hello prenumerationsägare eller Medägare.
 
-Den sekundära databasen har samma namn som den primära databasen och har samma servicenivåer som standard. Den sekundära databasen kan vara en enskild databas eller en databas i en elastisk pool. Mer information finns i [tjänstnivåer](sql-database-service-tiers.md).
-När sekundärt skapas och dirigeras, börjar data replikeras från den primära databasen till den nya sekundära databasen.
+hello sekundära databasen har samma namn som den primära databasen i hello hello och har, som standard hello samma servicenivå. hello sekundära databasen kan vara en enskild databas eller en databas i en elastisk pool. Mer information finns i [tjänstnivåer](sql-database-service-tiers.md).
+Hello sekundära skapas och dirigeras börjar data när replikering från hello primära toohello nya sekundära databasen.
 
 > [!NOTE]
-> Kommandot misslyckas om partner-databas redan finns (till exempel till följd av avslutar relationen för en tidigare geo-replikering).
+> Hello kommandot misslyckas om hello partner databas redan finns (till exempel till följd av avslutar relationen för en tidigare geo-replikering).
 > 
 
-1. I den [Azure-portalen](http://portal.azure.com), bläddra till den databas som du vill konfigurera för geo-replikering.
-2. På sidan SQL-databasen väljer **georeplikering**, och välj sedan regionen för att skapa den sekundära databasen. Du kan välja en region än den region som är värd för den primära databasen, men vi rekommenderar den [parad region](../best-practices-availability-paired-regions.md).
+1. I hello [Azure-portalen](http://portal.azure.com), bläddra toohello databasen som du vill tooset för geo-replikering.
+2. Hello SQL-databas på sidan Välj **georeplikering**, och välj sedan hello region toocreate hello sekundär databas. Du kan välja en annan region än hello region värd hello primära databasen, men vi rekommenderar hello [parad region](../best-practices-availability-paired-regions.md).
    
     ![Konfigurera geo-replikering](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
-3. Välj eller konfigurera servern och prisnivå för den sekundära databasen.
+3. Välj eller konfigurera hello-servern och prisnivå för hello sekundär databas.
    
     ![Konfigurera sekundära](./media/sql-database-geo-replication-portal/create-secondary.png)
-4. Alternativt kan du lägga till en sekundär databas till en elastisk pool. Klicka för att skapa den sekundära databasen i en pool **elastisk pool** och välj en pool på målservern. En pool måste redan finnas på målservern. Det här arbetsflödet kan inte skapa en pool.
-5. Klicka på **skapa** att lägga till sekundärt.
-6. Den sekundära databasen skapas och seeding-processen börjar.
+4. Du kan också kan du lägga till en sekundär tooan elastisk databaspool. toocreate hello sekundär databas i en pool, klickar du på **elastisk pool** och välj en pool på hello målserver. En pool måste redan finnas på hello målserver. Det här arbetsflödet kan inte skapa en pool.
+5. Klicka på **skapa** tooadd hello sekundär.
+6. hello sekundär databas skapas och hello seeding processen påbörjas.
    
     ![Konfigurera sekundära](./media/sql-database-geo-replication-portal/seeding0.png)
-7. När seeding processen är klar visas den sekundära databasen dess status.
+7. När hello seeding processen är klar visas dess status hello sekundär databas.
    
     ![Seeding klar](./media/sql-database-geo-replication-portal/seeding-complete.png)
 
 ## <a name="initiate-a-failover"></a>Initiera redundans
 
-Den sekundära databasen kan växlas till primärt.  
+hello sekundära databasen kan vara avstängda toobecome hello primära.  
 
-1. I den [Azure-portalen](http://portal.azure.com), bläddra till den primära databasen i partnerskap geo-replikering.
-2. På bladet SQL-databasen väljer **alla inställningar** > **georeplikering**.
-3. I den **SEKUNDÄRSERVRAR** väljer du den databas du vill bli den nya primärt och på **redundans**.
+1. I hello [Azure-portalen](http://portal.azure.com), bläddra toohello primära databasen hello geo-replikering tillsammans.
+2. På bladet för hello SQL-databas, Välj **alla inställningar** > **georeplikering**.
+3. I hello **SEKUNDÄRSERVRAR** listan, Välj hello-databas som du vill toobecome hello nya primära och på **redundans**.
    
     ![växling vid fel](./media/sql-database-geo-replication-failover-portal/secondaries.png)
-4. Klicka på **Ja** starta redundansväxlingen.
+4. Klicka på **Ja** toobegin hello redundans.
 
-Kommandot växlar omedelbart den sekundära databasen till den primära rollen. 
+hello växlar omedelbart hello sekundär databas i hello primära rollen. 
 
-Det finns en kort period under vilken båda databaserna är inte tillgänglig (terabyte 0 till 25 sekunder) när rollerna växlas. Om den primära databasen har flera sekundära databaser, automatiskt de andra sekundärservrar för att ansluta till den nya primärt automatiskt om kommandot. Hela åtgärden bör ta mindre än en minut att slutföra under normala omständigheter. 
+Det finns en kort period under vilken båda databaserna är inte tillgängliga (på hello ordning 0 too25 sekunder) när hello roller växlas. Om hello primära databasen har flera sekundära databaser, hello kommandot automatiskt hello Omkonfigurerar andra sekundärservrar tooconnect toohello nya primära servern. hello hela åtgärden bör ta mindre än en minut toocomplete under normala omständigheter. 
 
 > [!NOTE]
-> Det här kommandot har utformats för snabb återställning av databasen vid ett strömavbrott. Utlöser redundans utan datasynkronisering (tvingas redundans).  Om den primära servern är online och acceptera transaktioner när kommandot utfärdas dataförluster kan uppstå. 
+> Det här kommandot har utformats för snabb återställning av databasen hello vid ett strömavbrott. Utlöser redundans utan datasynkronisering (tvingas redundans).  Om hello primära är online och acceptera transaktioner när hello-kommandot har utfärdats dataförluster kan uppstå. 
 > 
 > 
 
 ## <a name="remove-secondary-database"></a>Ta bort sekundära databas
-Den här åtgärden permanent avslutar replikering till den sekundära databasen och ändras på sekundärt rollen till en vanlig skrivskyddad databas. Om anslutningen till den sekundära databasen är bruten kommandot lyckas men sekundära har inte blir oskyddad förrän anslutningen har återställts.  
+Den här åtgärden avbryter permanent hello replikering toohello sekundära databas och ändringar hello roll hello sekundära tooa vanlig skrivskyddad databas. Om hello anslutningen toohello sekundära databasen är skadad, hello kommando lyckas men hello sekundära har inte blir oskyddad tills när anslutningen har återställts.  
 
-1. I den [Azure-portalen](http://portal.azure.com), bläddra till den primära databasen i partnerskap geo-replikering.
-2. På sidan SQL-databasen väljer **georeplikering**.
-3. I den **SEKUNDÄRSERVRAR** Markera databasen som du vill ta bort från partnerskap för geo-replikering.
+1. I hello [Azure-portalen](http://portal.azure.com), bläddra toohello primära databasen hello geo-replikering tillsammans.
+2. Hello SQL-databas på sidan Välj **georeplikering**.
+3. I hello **SEKUNDÄRSERVRAR** listan, Välj hello-databasen som du vill använda tooremove från hello geo-replikering partnerskap.
 4. Klicka på **Replikeringsstopp**.
    
     ![Ta bort sekundär](./media/sql-database-geo-replication-portal/remove-secondary.png)
-5. En bekräftelse öppnas. Klicka på **Ja** att ta bort databasen från partnerskap för geo-replikering. (Ange det till en skrivskyddad databas inte en del av all replikering.)
+5. En bekräftelse öppnas. Klicka på **Ja** tooremove hello-databas från hello geo-replikering partnerskap. (Ange det tooa oskyddad databas inte en del av all replikering.)
 
 ## <a name="next-steps"></a>Nästa steg
-* Mer information om aktiv geo-replikering finns [aktiv geo-replikering](sql-database-geo-replication-overview.md).
+* toolearn mer information om aktiv geo-replikering, se [aktiv geo-replikering](sql-database-geo-replication-overview.md).
 * En översikt över verksamhetskontinuitet och scenarier finns [översikt över verksamhetskontinuitet](sql-database-business-continuity.md).
 

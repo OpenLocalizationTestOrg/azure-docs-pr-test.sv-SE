@@ -1,6 +1,6 @@
 ---
-title: "Ändringar av Azure AD v2.0-slutpunkten | Microsoft Docs"
-description: "En beskrivning av ändringar som görs i app model v2.0 förhandsversion protokoll."
+title: aaaChanges toohello Azure AD v2.0-slutpunkten | Microsoft Docs
+description: "En beskrivning av de ändringar som görs toohello app model v2.0 förhandsversion protokoll."
 services: active-directory
 documentationcenter: 
 author: dstrockis
@@ -15,28 +15,28 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: ae73833a68db14804dc40eaf07ff7d3effaa9052
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d7b28a481e12d5dbbc4a10110193bdbd754f4929
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="important-updates-to-the-v20-authentication-protocols"></a>Viktiga uppdateringar till v2.0-autentiseringsprotokoll
-Uppmärksamhet utvecklare! Under de kommande två veckorna kommer vi att göra några uppdateringar till vår v2.0-autentiseringsprotokoll som kan innebära att bryta ändringar för alla program som du har skrivit under våra förhandsversionen.  
+# <a name="important-updates-toohello-v20-authentication-protocols"></a>Viktiga uppdateringar toohello v2.0-autentiseringsprotokoll
+Uppmärksamhet utvecklare! Över hello kommer nästa två veckor, vi att göra några uppdateringar tooour v2.0-autentiseringsprotokoll som kan innebära att bryta ändringar för alla program som du har skrivit under våra förhandsversionen.  
 
 ## <a name="who-does-this-affect"></a>Som påverkar detta?
-Alla appar som har skrivits för att använda v2.0 konvergerat autentisering slutpunkt
+Alla appar som har skrivits toouse hello v2.0 konvergerat autentisering slutpunkt
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
 ```
 
-Mer information om v2.0-slutpunkten kan hittas [här](active-directory-appmodel-v2-overview.md).
+Mer information om hello v2.0-slutpunkten kan hittas [här](active-directory-appmodel-v2-overview.md).
 
-Om du har skapat en app med v2.0-slutpunkten genom att skriva direkt till v2.0-protokollet bör med hjälp av vår OpenID Connect och OAuth web middlewares eller använda andra 3 part-bibliotek för att utföra autentisering, du förberedas att testa dina projekt och göra ändringar Om det behövs.
+Om du har skapat en app med hello v2.0-slutpunkten genom att skriva direkt toohello v2.0-protokollet med hjälp av vår OpenID Connect och OAuth web middlewares eller genom att använda andra 3 part bibliotek tooperform, bör du vara beredd tootest ditt projekt och gör nödvändiga ändringar.
 
 ## <a name="who-doesnt-this-affect"></a>Som detta påverkar inte?
-Alla appar som har skrivits mot autentiseringsslutpunkten produktion Azure AD
+Alla appar som har skrivits mot hello produktion Azure AD authentication slutpunkt
 
 ```
 https://login.microsoftonline.com/common/oauth2/authorize
@@ -44,11 +44,11 @@ https://login.microsoftonline.com/common/oauth2/authorize
 
 Det här protokollet anges i bricka och ska inte ha några ändringar.
 
-Dessutom om din app **endast** använder våra ADAL-biblioteket för att utföra autentisering, du behöver ändra något.  ADAL har skärmad appen från ändringarna.  
+Dessutom om din app **endast** använder våra ADAL-biblioteket tooperform autentisering, behöver du inte toochange något.  ADAL har skärmad appen från hello ändringar.  
 
-## <a name="what-are-the-changes"></a>Vilka är ändringarna?
-### <a name="removing-the-x5t-value-from-jwt-headers"></a>Ta bort värdet x5t från JWT rubriker
-V2.0-slutpunkten använder JWT-token i stor utsträckning, som innehåller ett huvud parametrar avsnitt med relevanta metadata om token.  Om du avkoda rubriken för en av våra nuvarande JWTs hittade något som liknar:
+## <a name="what-are-hello-changes"></a>Vad är hello ändringar?
+### <a name="removing-hello-x5t-value-from-jwt-headers"></a>Ta bort hello x5t värdet från JWT rubriker
+hello v2.0-slutpunkten använder JWT-token i stor utsträckning, som innehåller ett huvud parametrar avsnitt med relevanta metadata om hello-token.  Om du avkoda hello rubriken för en av våra nuvarande JWTs hittade något som liknar:
 
 ```
 { 
@@ -59,23 +59,23 @@ V2.0-slutpunkten använder JWT-token i stor utsträckning, som innehåller ett h
 }
 ```
 
-Där både ”x5t” och ”barn” identifiera den offentliga nyckeln som ska användas för att validera token signatur, som hämtas från metadataslutpunkten OpenID Connect.
+Där båda hello ”x5t” och ”barn” egenskaperna identifiera hello offentlig nyckel som ska använda toovalidate hello token signatur, som hämtas från hello OpenID Connect metadata endpoint.
 
-Ändra vi gör här är att ta bort egenskapen ”x5t”.  Du kan fortsätta att använda samma mekanismer för att validera token, men bör enbart använda egenskapen ”barn” för att hämta rätt offentlig nyckel som anges i protokollet OpenID Connect. 
+hello ändra vi gör här är tooremove hello ”x5t”-egenskap.  Du kan fortsätta toouse hello samma mekanismer toovalidate token, men bör enbart använda hello ”barn” egenskapen tooretrieve hello rätt offentlig nyckel, som anges i hello OpenID Connect-protokollet. 
 
 > [!IMPORTANT]
-> **Jobbet: Kontrollera att din app inte beror på förekomsten av x5t-värdet.**
+> **Jobbet: Kontrollera att din app inte är beroende av hello förekomsten av hello x5t värde.**
 > 
 > 
 
 ### <a name="removing-profileinfo"></a>Ta bort profile_info
-Tidigare v2.0-slutpunkten har tagits returnerar ett JSON-objekt med base64-kodade i token svar som anropas `profile_info`.  När du begär en åtkomst-token från v2.0-slutpunkten genom att skicka en begäran om att:
+Tidigare hello v2.0-slutpunkten har returnerar ett JSON-objekt med base64-kodade i token svar som anropas `profile_info`.  När du begär en åtkomst-token från hello v2.0-slutpunkten genom att skicka en begäran om att:
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
 
-Svaret ser ut som följande JSON-objekt:
+hello svar ser ut som hello följande JSON-objekt:
 
 ```
 { 
@@ -88,9 +88,9 @@ Svaret ser ut som följande JSON-objekt:
 }
 ```
 
-Den `profile_info` värdet finns information om den användare som signerade i app - deras visningsnamn, förnamn, efternamn, e-postadress, identifierare och så vidare.  Främst i `profile_info` användes för cachelagring av token och visa syften.
+Hej `profile_info` värdet finns information om hello användare inloggad hello app – deras visningsnamn, förnamn, efternamn, e-postadress, identifierare och så vidare.  Främst hello `profile_info` användes för cachelagring av token och visa syften.
 
-Vi nu bort den `profile_info` värdet – men oroa dig inte, vi fortfarande tillhandahåller denna information för utvecklare i en något annan plats.  I stället för `profile_info`, v2.0-slutpunkten nu returnerar ett `id_token` i varje token svar:
+Vi nu bort hello `profile_info` värdet – men oroa dig inte, vi fortfarande lämnar den här informationen toodevelopers i en något annan plats.  I stället för `profile_info`, hello v2.0-slutpunkten nu returnerar ett `id_token` i varje token svar:
 
 ```
 { 
@@ -103,17 +103,17 @@ Vi nu bort den `profile_info` värdet – men oroa dig inte, vi fortfarande till
 }
 ```
 
-Du kan avkoda och parsa id_token för att hämta samma information som du har fått från profile_info.  Id_token är en JSON-Webbtoken (JWT), med innehåll som anges av OpenID Connect.  Koden för detta så bör vara mycket lik – du behöver att extrahera id_token mellersta segmentet (brödtext) och base64 avkoda komma åt JSON-objekt i.
+Du kan avkoda och parsa hello id_token tooretrieve hello samma information som du har fått från profile_info.  Hej id_token är en JSON-Webbtoken (JWT), med innehåll som anges av OpenID Connect.  hello kod för att göra det bör vara mycket lik – du behöver tooextract hello mitten segmentet (hello brödtext) i hello id_token och base64 avkoda den tooaccess hello JSON-objekt i.
 
-Under de kommande två veckorna bör du skapa kod din app att hämta informationen från antingen den `id_token` eller `profile_info`, beroende på vad som finns.  På så sätt när ändringen har gjorts kan din app kan sömlöst hantera övergången från `profile_info` till `id_token` utan avbrott.
+Över hello nästa två veckor, bör du skapa kod din app tooretrieve hello användarinformation från antingen hello `id_token` eller `profile_info`, beroende på vad som finns.  På så sätt när hello ändring görs kan din app kan sömlöst hantera hello övergången från `profile_info` för`id_token` utan avbrott.
 
 > [!IMPORTANT]
-> **Jobbet: Kontrollera att din app inte beror på förekomsten av den `profile_info` värde.**
+> **Jobbet: Kontrollera att din app inte är beroende av hello förekomsten av hello `profile_info` värde.**
 > 
 > 
 
 ### <a name="removing-idtokenexpiresin"></a>Ta bort id_token_expires_in
-Liknar `profile_info`, vi också bort den `id_token_expires_in` parametern från svar.  Tidigare v2.0-slutpunkten kan returnera ett värde för `id_token_expires_in` tillsammans med varje id_token svar, till exempel på ett auktorisera svar:
+Liknande för`profile_info`, vi också bort hello `id_token_expires_in` parametern från svar.  Tidigare hello v2.0-slutpunkten kan returnera ett värde för `id_token_expires_in` tillsammans med varje id_token svar, till exempel på ett auktorisera svar:
 
 ```
 https://myapp.com?id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...&id_token_expires_in=3599...
@@ -132,15 +132,15 @@ Eller i ett token svar:
 }
 ```
 
-Den `id_token_expires_in` värdet anger hur många sekunder som id_token gälla för.  Nu ska vi bort den `id_token_expires_in` värdet helt.  Du kan i stället använda OpenID Connect-standard `nbf` och `exp` utger sig för att kontrollera giltigheten för en id_token.  Finns det [v2.0 tokenreferens](active-directory-v2-tokens.md) mer information om dessa anspråk.
+Hej `id_token_expires_in` värdet visar hello antalet sekunder som hello id_token gälla för.  Nu ska vi bort hello `id_token_expires_in` värdet helt.  Du kan i stället använda hello OpenID Connect standard `nbf` och `exp` tooexamine hello giltigheten för en id_token-anspråk.  Se hello [v2.0 tokenreferens](active-directory-v2-tokens.md) mer information om dessa anspråk.
 
 > [!IMPORTANT]
-> **Jobbet: Kontrollera att din app inte beror på förekomsten av den `id_token_expires_in` värde.**
+> **Jobbet: Kontrollera att din app inte är beroende av hello förekomsten av hello `id_token_expires_in` värde.**
 > 
 > 
 
-### <a name="changing-the-claims-returned-by-scopeopenid"></a>Ändra de anspråk som returneras av omfånget = openid
-Den här ändringen kommer att de viktigaste – faktum, påverkar nästan alla program som använder v2.0-slutpunkten.  Många program skicka begäranden till v2.0-slutpunkten med den `openid` omfång som:
+### <a name="changing-hello-claims-returned-by-scopeopenid"></a>Ändra hello anspråk som returneras av omfånget = openid
+Den här ändringen kommer att hello viktigaste – faktum, påverkar nästan alla program som använder hello v2.0-slutpunkten.  Många program skicka begäranden toohello v2.0-slutpunkten med hello `openid` omfång som:
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -151,9 +151,9 @@ client_id=...
 &scope=openid offline_access https://outlook.office.com/mail.read
 ```
 
-Idag, när användaren ger ditt medgivande för det `openid` omfång, appen tar emot en mängd information om användaren i den resulterande id_token.  Dessa anspråk kan innehålla användarens namn, prioriterade användarnamn, e-postadress, objekt-ID och mer.
+Idag, när användaren hello ger ditt medgivande för hello `openid` omfång, appen tar emot en mängd information om hello användare i hello resulterande id_token.  Dessa anspråk kan innehålla användarens namn, prioriterade användarnamn, e-postadress, objekt-ID och mer.
 
-I den här uppdateringen kan vi ändrar informationen som den `openid` omfång ger din appåtkomst till, att bättre comform med OpenID Connect-specifikationen.  Den `openid` omfång kommer endast att din app kan logga in användaren i och ta emot en appspecifika identifierare för användare i den `sub` anspråk för id_token.  Anspråk i en id_token med endast den `openid` omfång beviljas kommer att vara fritt från personligt identifierbar information.  Exempel id_token anspråk är:
+I den här uppdateringen kan vi ändrar hello information som hello `openid` omfång ger din appåtkomst till toobetter comform med hello OpenID Connect-specifikationen.  Hej `openid` omfång kommer endast att appen toosign hello användare i och får en appspecifika identifierare för hello användare på hello `sub` anspråk av hello id_token.  Hej anspråk i en id_token med endast hello `openid` omfång beviljas kommer att vara fritt från personligt identifierbar information.  Exempel id_token anspråk är:
 
 ```
 { 
@@ -169,12 +169,12 @@ I den här uppdateringen kan vi ändrar informationen som den `openid` omfång g
 }
 ```
 
-Om du vill hämta personligt identifierbar information (PII) om användaren i din app behöver din app och begär ytterligare behörighet från användaren.  Vi introducerar stöd för två nya scope från OpenID Connect-specifikationen – den `email` och `profile` scope – som gör att du gör.
+Om du vill tooobtain personligt identifierbar information (PII) om hello användare i din app behöver din app toorequest ytterligare behörigheter från hello användare.  Vi introducerar stöd för två nya scope från hello OpenID Connect spec – hello `email` och `profile` scope – som gör att du toodo så.
 
-* Den `email` scope är mycket enkelt – den kan din appåtkomst till användarens primära e-postadress via den `email` anspråk i id_token.  Observera att den `email` anspråk alltid visas inte i id_tokens – den endast ska ingå om sådana finns i användarens profil.
-* Den `profile` omfång ger din appåtkomst till andra grundläggande information om användare – deras namn, prioriterade username, objekt-ID och så vidare.
+* Hej `email` scope är mycket enkelt – det gör att din app åtkomst toohello användarens primära e-postadress via hello `email` anspråk i hello id_token.  Observera att hello `email` anspråk alltid visas inte i id_tokens – den endast ska ingå om de är tillgängliga i hello användarprofil.
+* Hej `profile` omfång ger din app åtkomst tooall andra grundläggande information om hello användare – deras namn, prioriterade username, objekt-ID och så vidare.
 
-Du kan code din app på en minimal avslöjande sätt – du kan be användaren för just uppsättningen information att din app kräver för att utföra sitt jobb.  Om du vill fortsätta få en fullständig uppsättning användarinformation som din app erhåller bör du inkludera alla tre scope i din auktoriseringsförfrågningar:
+Detta gör att du toocode din app på en minimal avslöjande sätt – du kan be hello användaren för bara hello uppsättning information att appen kräver toodo sitt jobb.  Om du vill hämta hello hela uppsättningen av användarinformation som din app erhåller toocontinue, bör du inkludera alla tre scope i din auktoriseringsförfrågningar:
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -185,55 +185,55 @@ client_id=...
 &scope=openid profile email offline_access https://outlook.office.com/mail.read
 ```
 
-Din app kan börja skicka den `email` och `profile` scope omedelbart och v2.0-slutpunkten accepterar dessa två scope och börja begär behörighet från användare efter behov.  Men ändringen i tolkning av den `openid` scope börjar inte gälla för några veckor.
+Din app kan börja skicka hello `email` och `profile` scope omedelbart och hello v2.0-slutpunkten accepterar dessa två scope och börja begär behörighet från användare efter behov.  Dock hello ändra i hello tolkning av hello `openid` scope börjar inte gälla för några veckor.
 
 > [!IMPORTANT]
-> **Jobbet: lägga till den `profile` och `email` scope om information om användaren krävs för din app.**  Observera att ADAL innehåller båda dessa behörigheter i begäranden som standard. 
+> **Jobbet: Lägg till hello `profile` och `email` scope om information om hello användare krävs för din app.**  Observera att ADAL innehåller båda dessa behörigheter i begäranden som standard. 
 > 
 > 
 
-### <a name="removing-the-issuer-trailing-slash"></a>Ta bort utfärdaren avslutande snedstreck.
-Tidigare utformades utfärdaren värdet som visas i token från v2.0-slutpunkten
+### <a name="removing-hello-issuer-trailing-slash"></a>Ta bort hello utfärdaren avslutande snedstreck.
+Tidigare tog hello utfärdaren värde som visas i token från hello v2.0-slutpunkten hello formulär
 
 ```
 https://login.microsoftonline.com/{some-guid}/v2.0/
 ```
 
-Guid var där klient-ID för Azure AD-klienten som utfärdade token.  Med de här ändringarna blir utfärdaren värdet
+Hello guid var där hello tenantId för hello Azure AD-klienten som utfärdade hello-token.  Med de här ändringarna blir hello utfärdaren värdet
 
 ```
 https://login.microsoftonline.com/{some-guid}/v2.0 
 ```
 
-i båda token och OpenID Connect discovery-dokumentet.
+i båda token och hello OpenID Connect discovery-dokumentet.
 
 > [!IMPORTANT]
-> **Jobbet: Kontrollera att din app accepterar utfärdaren värde både med och utan avslutande snedstreck vid verifiering av utfärdare.**
+> **Jobbet: Kontrollera att din app tillåter hello utfärdaren både med och utan avslutande snedstreck vid verifiering av utfärdare.**
 > 
 > 
 
 ## <a name="why-change"></a>Varför ändra?
-Huvudsyftet med introduktion till dessa ändringar är att vara kompatibel med OpenID Connect standard-specifikationen.  Genom OpenID Connect kompatibla, hoppas vi att minimera skillnaderna mellan integrera med Microsoft identity-tjänster och andra tjänster identitet i branschen.  Vi vill att utvecklare kan använda sina favorit öppen källkod autentiseringsbibliotek utan att behöva ändra biblioteken för att hantera Microsoft skillnader.
+hello Huvudsyftet med introduktion till dessa ändringar är toobe som är kompatibla med hello OpenID Connect standard specifikation.  Genom OpenID Connect kompatibla, hoppas vi toominimize skillnaderna mellan integrera med Microsoft identity-tjänster och andra tjänster identitet i hello bransch.  Vi vill tooenable utvecklare toouse sina favorit öppen källkod autentiseringsbibliotek utan tooalter hello bibliotek tooaccommodate Microsoft skillnader.
 
 ## <a name="what-can-you-do"></a>Vad kan du göra?
-Från och med idag, kan du börja gör alla ändringar som beskrivs ovan.  Du bör omedelbart:
+Från och med idag, kan du börja att göra alla hello ändringar som beskrivs ovan.  Du bör omedelbart:
 
-1. **Ta bort eventuella beroenden på den `x5t` huvud-parametern.**
-2. **Hantera övergången från `profile_info` till `id_token` i token svar.**
-3. **Ta bort eventuella beroenden på den `id_token_expires_in` parametern svar.**
-4. **Lägg till den `profile` och `email` scope till din app om din app behöver grundläggande information.**
+1. **Ta bort eventuella beroenden på hello `x5t` huvud-parametern.**
+2. **Hantera hello övergången från `profile_info` för`id_token` i token svar.**
+3. **Ta bort eventuella beroenden på hello `id_token_expires_in` parametern svar.**
+4. **Lägg till hello `profile` och `email` scope tooyour app om din app behöver grundläggande information.**
 5. **Acceptera utfärdaren värden i token både med och utan avslutande snedstreck.**
 
-Vår [v2.0-protokollet dokumentationen](active-directory-v2-protocols.md) har redan uppdaterats för att återspegla ändringarna, så att du kan använda den som en referens i hjälpa uppdatera din kod.
+Vår [v2.0-protokollet dokumentationen](active-directory-v2-protocols.md) redan har uppdaterats tooreflect ändringarna, så att du kan använda den som en referens i hjälpa uppdatera din kod.
 
-Om du har fler frågor om omfattningen av ändringarna gärna nå oss på Twitter på @AzureAD.
+Om du har fler frågor på hello omfattning hello ändringar kan du antingen ledigt tooreach out toous på Twitter på @AzureAD.
 
 ## <a name="how-often-will-protocol-changes-occur"></a>Hur ofta sker protokollet ändringar?
-Vi förutser inte några ytterligare bryta ändras till autentiseringsprotokollet.  Vi avsiktligt paketering ändringarna i en versionen så att du inte behöver gå igenom den här typen av uppdateringen igen när snart.  Naturligtvis vi kommer att fortsätta att lägga till funktioner till Autentiseringstjänsten konvergerade v2.0 som du kan dra nytta av, men ändringarna bör vara tillsatsen och inte break befintlig kod.
+Vi förutser inte några ytterligare bryta ändras toohello autentiseringsprotokoll.  Vi avsiktligt paketering ändringarna i en versionen så att du inte toogo via den här typen av uppdateringen igen när snart.  Naturligtvis vi kommer att fortsätta tooadd funktioner toohello konvergerat v2.0 authentication-tjänsten som du kan dra nytta av, men ändringarna bör vara tillsatsen och inte break befintlig kod.
 
-Slutligen vill vi säga Tack för provat saker i förhandsversionen.  Insikter och erfarenheter från våra tidiga brukare har ovärderlig hittills och vi hoppas att du kommer att fortsätta att dela dina åsikter och idéer.
+Slutligen vill vi toosay Tack för provat saker under hello förhandsversionen.  hello insikter och erfarenheter från våra tidiga brukare har ovärderlig hittills och vi hoppas att du kommer att fortsätta tooshare dina åsikter och idéer.
 
 Kodning Grattis!
 
-Microsoft Identity-delning
+hello Microsoft Identity Division
 

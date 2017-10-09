@@ -1,6 +1,6 @@
 ---
-title: Skapa en virtuell dator med en statisk offentlig IP-adress - Azure PowerShell | Microsoft Docs
-description: "Lär dig hur du skapar en virtuell dator med en statisk offentlig IP-adress med hjälp av PowerShell."
+title: aaaCreate en virtuell dator med en statisk offentlig IP-adress - Azure PowerShell | Microsoft Docs
+description: "Lär dig hur toocreate en virtuell dator med en statisk offentlig IP-adress med hjälp av PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4c413d3cb5c242a16f3e534dafe322785a35141
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d2b88319cb114b8616f60dbee41e8fdc6d8b1b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-powershell"></a>Skapa en virtuell dator med en statisk offentlig IP-adress med hjälp av PowerShell
 
@@ -34,16 +34,16 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
 > [!NOTE]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../resource-manager-deployment-model.md). Den här artikeln täcker distributionsmodell hanteraren för filserverresurser, som Microsoft rekommenderar för de flesta nya distributioner i stället för den klassiska distributionsmodellen.
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../resource-manager-deployment-model.md). Den här artikeln täcker hello Resource Manager-distributionsmodellen, som Microsoft rekommenderar för de flesta nya distributioner i stället för hello klassiska distributionsmodellen.
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
 ## <a name="step-1---start-your-script"></a>Steg 1 – starta skriptet
-Du kan hämta den fullständiga PowerShell-skript som används [här](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/virtual-network-deploy-static-pip-arm-ps.ps1). Följ stegen nedan för att ändra skriptet fungerar i din miljö.
+Du kan hämta hello fullständig PowerShell-skript används [här](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/virtual-network-deploy-static-pip-arm-ps.ps1). Följ hello steg nedan toochange hello skriptet toowork i din miljö.
 
-Ändra värdena för variabler nedan baserat på de värden som du vill använda för din distribution. Följande värden mappas till det scenario som används i den här artikeln:
+Ändra hello värden hello variabler nedan baserat på hello värden som du vill toouse för din distribution. hello följande värden kartan toohello scenario används i den här artikeln:
 
 ```powershell
 # Set variables resource group
@@ -74,8 +74,8 @@ $pipName               = "PIPWEB1"
 $dnsName               = "iaasstoryws1"
 ```
 
-## <a name="step-2---create-the-necessary-resources-for-your-vm"></a>Steg 2 – skapa nödvändiga resurser för den virtuella datorn
-Innan du skapar en virtuell dator, måste en resursgrupp, virtuella nätverk, offentlig IP-adress och NIC som ska användas av den virtuella datorn.
+## <a name="step-2---create-hello-necessary-resources-for-your-vm"></a>Steg 2 – Skapa hello nödvändiga resurser för den virtuella datorn
+Innan du skapar en virtuell dator, måste en resursgrupp, virtuella nätverk, offentliga IP- och NIC toobe som används av hello VM.
 
 1. Skapa en ny resursgrupp.
 
@@ -83,7 +83,7 @@ Innan du skapar en virtuell dator, måste en resursgrupp, virtuella nätverk, of
     New-AzureRmResourceGroup -Name $rgName -Location $location
     ```
 
-2. Skapa VNet och undernät.
+2. Skapa hello VNet och undernät.
 
     ```powershell
     $vnet = New-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName `
@@ -95,14 +95,14 @@ Innan du skapar en virtuell dator, måste en resursgrupp, virtuella nätverk, of
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-3. Skapa offentlig IP-resurs. 
+3. Skapa hello offentliga IP-resurs. 
 
     ```powershell
     $pip = New-AzureRmPublicIpAddress -Name $pipName -ResourceGroupName $rgName `
         -AllocationMethod Static -DomainNameLabel $dnsName -Location $location
     ```
 
-4. Skapa nätverksgränssnitt (NIC) för den virtuella datorn i ovanstående med en offentlig IP-undernätet. Notera den första cmdlet hämtar VNet från Azure, detta är nödvändigt eftersom en `Set-AzureRmVirtualNetwork` utfördes för att ändra befintliga VNet.
+4. Skapa hello nätverksgränssnitt (NIC) för hello VM i hello undernät ovanstående med hello offentlig IP. Lägg märke till hello första cmdlet hämtar hello virtuella nätverk från Azure, detta är nödvändigt eftersom en `Set-AzureRmVirtualNetwork` har utförd toochange hello befintliga VNet.
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
@@ -112,26 +112,26 @@ Innan du skapar en virtuell dator, måste en resursgrupp, virtuella nätverk, of
         -PublicIpAddress $pip
     ```
 
-5. Skapa ett lagringskonto som värd för VM OS-enhet.
+5. Skapa en storage-konto toohost hello VM OS-enhet.
 
     ```powershell
     $stdStorageAccount = New-AzureRmStorageAccount -Name $stdStorageAccountName `
     -ResourceGroupName $rgName -Type Standard_LRS -Location $location
     ```
 
-## <a name="step-3---create-the-vm"></a>Steg 3 – skapa den virtuella datorn
+## <a name="step-3---create-hello-vm"></a>Steg 3 – skapa hello VM
 Nu när alla nödvändiga resurser är på plats kan skapa du en ny virtuell dator.
 
-1. Skapa konfigurationsobjektet för den virtuella datorn.
+1. Skapa hello konfigurationsobjektet för hello VM.
 
     ```powershell
     $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
     ```
 
-2. Hämta autentiseringsuppgifter för det lokala administratörskontot för virtuell dator.
+2. Hämta autentiseringsuppgifter för hello VM lokala administratörskontot.
 
     ```powershell
-    $cred = Get-Credential -Message "Type the name and password for the local administrator account."
+    $cred = Get-Credential -Message "Type hello name and password for hello local administrator account."
     ```
 
 3. Skapa ett konfigurationsobjekt för virtuell dator.
@@ -141,39 +141,39 @@ Nu när alla nödvändiga resurser är på plats kan skapa du en ny virtuell dat
         -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
     ```
 
-4. Ange avbildningen av operativsystemet för den virtuella datorn.
+4. Ange hello operativsystemsavbildning för hello VM.
 
     ```powershell
     $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -PublisherName $publisher `
         -Offer $offer -Skus $sku -Version $version
     ```
 
-5. Konfigurera OS-disk.
+5. Konfigurera hello OS-disk.
 
     ```powershell
     $osVhdUri = $stdStorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $osDiskName + ".vhd"
     $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name $osDiskName -VhdUri $osVhdUri -CreateOption fromImage
     ```
 
-6. Lägg till nätverkskortet i den virtuella datorn.
+6. Lägg till hello NIC toohello VM.
 
     ```powershell
     $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id -Primary
     ```
 
-7. Skapa den virtuella datorn.
+7. Skapa hello VM.
 
     ```powershell
     New-AzureRmVM -VM $vmConfig -ResourceGroupName $rgName -Location $location
     ```
 
-8. Spara skriptfilen.
+8. Spara hello skriptfilen.
 
-## <a name="step-4---run-the-script"></a>Steg 4 – kör skriptet
-Efter att göra nödvändiga ändringar och förstå skriptet visas ovanför genom att köra skriptet. 
+## <a name="step-4---run-hello-script"></a>Steg 4 – kör hello skript
+Visa ovan, kör hello skript efter göra nödvändiga ändringar och förstå hello skript. 
 
-1. Från PowerShell-konsolen eller PowerShell ISE, kör du skriptet ovan.
-2. Följande utdata ska visas efter några minuter:
+1. Från PowerShell-konsolen eller PowerShell ISE, kör du hello skriptet ovan.
+2. hello följande utdata ska visas efter några minuter:
    
         ResourceGroupName : IaaSStory
         Location          : westus

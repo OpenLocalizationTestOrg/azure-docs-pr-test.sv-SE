@@ -1,6 +1,6 @@
 ---
-title: Distribuera resurser med PowerShell och mall | Microsoft Docs
-description: "Använd Azure Resource Manager och Azure PowerShell för att distribuera en resurser till Azure. Resurserna definieras i en Resource Manager-mall."
+title: aaaDeploy resurser med PowerShell och mall | Microsoft Docs
+description: "Använd Azure Resource Manager och Azure PowerShell toodeploy en tooAzure resurser. hello resurser har definierats i en Resource Manager-mall."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5f395abf8ebdfbac18fd17d8183b392673e280ec
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 41506811ba3c2ea5df6313db70978ade50f71161
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Distribuera resurser med Resource Manager-mallar och Azure PowerShell
 
-Det här avsnittet beskriver hur du använder Azure PowerShell med Resource Manager-mallar för att distribuera resurserna till Azure. Om du inte är bekant med principerna för att distribuera och hantera dina Azure lösningar finns [översikt över Azure Resource Manager](resource-group-overview.md).
+Det här avsnittet beskrivs hur toouse Azure PowerShell med Resource Manager mallar toodeploy tooAzure dina resurser. Om du inte är bekant med hello begrepp för att distribuera och hantera dina Azure lösningar finns [översikt över Azure Resource Manager](resource-group-overview.md).
 
-Resource Manager-mallen som du distribuerar kan antingen vara en lokal fil på din dator eller en extern fil som finns i en databas som GitHub. Den mall som du distribuerar i den här artikeln är tillgänglig i den [exempelmall](#sample-template) avsnitt, eller som [lagring mall i GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
+hello Resource Manager-mall som du distribuerar kan antingen vara en lokal fil på din dator eller en extern fil som finns i en databas som GitHub. hello-mallen som du distribuerar i den här artikeln är tillgänglig i hello [exempelmall](#sample-template) avsnitt, eller som [lagring mall i GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
 
 [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install.md)]
 
@@ -32,15 +32,15 @@ Resource Manager-mallen som du distribuerar kan antingen vara en lokal fil på d
 
 ## <a name="deploy-a-template-from-your-local-machine"></a>Distribuera en mall från den lokala datorn
 
-När du distribuerar resurser till Azure måste du:
+När du distribuerar resurser tooAzure du:
 
-1. Logga in på ditt Azure-konto
-2. Skapa en resursgrupp som fungerar som behållare för distribuerade resurser. Namnet på resursgruppen får bara innehålla alfanumeriska tecken, punkter, understreck, bindestreck och parenteser. Det kan vara upp till 90 tecken. Den kan inte sluta med en punkt.
-3. Distribuera till resursgrupp mallen som definierar resurser för att skapa
+1. Logga in tooyour Azure-konto
+2. Skapa en resursgrupp som fungerar som behållare för hello för hello distribuerade resurser. hello namnet på hello resursgruppen får bara innehålla alfanumeriska tecken, punkter, understreck, bindestreck och parenteser. Det kan vara upp too90 tecken. Den kan inte sluta med en punkt.
+3. Distribuera toohello resurs grupp hello-mallen som definierar hello resurser toocreate
 
-En mall kan innehålla parametrar som gör att du kan anpassa distributionen. Exempelvis kan du ange värden som är anpassade för en viss miljö (t.ex dev, test- och). Mallen exempel definierar en parameter för lagringskontot SKU.
+En mall kan innehålla parametrar som möjliggör toocustomize hello distribution. Exempelvis kan du ange värden som är anpassade för en viss miljö (t.ex dev, test- och). hello exempelmall definierar en parameter för hello lagringskontot SKU.
 
-I följande exempel skapar en resursgrupp och distribuerar en mall från den lokala datorn:
+hello följande exempel skapar en resursgrupp och distribuerar en mall från den lokala datorn:
 
 ```powershell
 Login-AzureRmAccount
@@ -50,7 +50,7 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 
-Det kan ta några minuter att slutföra distributionen. När den är klar visas ett meddelande som innehåller resultatet:
+hello distributionen kan ta några minuter toocomplete. När den är klar visas ett meddelande som innehåller hello resultat:
 
 ```powershell
 ProvisioningState       : Succeeded
@@ -58,9 +58,9 @@ ProvisioningState       : Succeeded
 
 ## <a name="deploy-a-template-from-an-external-source"></a>Distribuera en mall från en extern källa
 
-Du kanske föredrar att lagra dem på en extern plats istället för att lagra Resource Manager-mallar på den lokala datorn. Du kan lagra mallar i en källkontroll (till exempel GitHub). Eller, du kan lagra dem i ett Azure storage-konto för delad åtkomst i din organisation.
+Istället för att lagra Resource Manager-mallar på din lokala dator kanske du hellre toostore dem i en extern plats. Du kan lagra mallar i en källkontroll (till exempel GitHub). Eller, du kan lagra dem i ett Azure storage-konto för delad åtkomst i din organisation.
 
-Distribuera en extern mall att använda den **TemplateUri** parameter. Använd URI: N i exemplet för att distribuera exempelmall från GitHub.
+toodeploy en extern mallen använder hello **TemplateUri** parameter. Använd hello URI i hello exempel toodeploy hello exempel mallen från GitHub.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -68,11 +68,11 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
   -storageAccountType Standard_GRS
 ```
 
-I exemplet ovan kräver en offentligt tillgänglig URI för mallen, som fungerar i de flesta scenarier eftersom mallen inte innehålla känsliga data. Om du behöver ange känsliga data (till exempel en adminlösenord) skicka det värdet som en säker parameter. Om du inte vill att mallen ska vara offentligt tillgänglig, kan du dock skydda den genom att lagra det i en behållare för privat lagring. Information om hur du distribuerar en mall som kräver en signatur (SAS) token för delad åtkomst finns i [distribuera privata mallar med SAS-token](resource-manager-powershell-sas-token.md).
+hello kräver exemplet ovan en offentligt tillgänglig URI för hello mallen, som fungerar i de flesta scenarier eftersom mallen inte innehålla känsliga data. Om du behöver toospecify känsliga data (till exempel en adminlösenord) kan skicka värdet som en säker parameter. Om du inte vill att din mall toobe offentligt tillgänglig, kan du dock skydda det genom att lagra det i en behållare för privat lagring. Information om hur du distribuerar en mall som kräver en signatur (SAS) token för delad åtkomst finns i [distribuera privata mallar med SAS-token](resource-manager-powershell-sas-token.md).
 
 ## <a name="parameter-files"></a>Parametern-filer
 
-I stället för att skicka parametrar som infogade värden i skriptet kan det vara lättare att använda en JSON-fil som innehåller parametrarnas värden. Parameterfilen måste vara i följande format:
+I stället för att skicka parametrar som infogade värden i skriptet kan du enklare toouse en JSON-fil som innehåller hello parametervärden. hello parameterfil måste vara i hello följande format:
 
 ```json
 {
@@ -86,11 +86,11 @@ I stället för att skicka parametrar som infogade värden i skriptet kan det va
 }
 ```
 
-Observera att avsnittet Parametrar innehåller ett parameternamn som matchar den parameter som definierats i mallen (storageAccountType). Parameterfilen innehåller ett värde för parametern. Det här värdet skickas automatiskt till mallen under distributionen. Du kan skapa flera parametern filer för olika distributionsscenarier och sedan ange lämpliga parameterfil. 
+Observera att hello parametrar avsnittet innehåller ett parameternamn som matchar hello-parameter som definierats i mallen (storageAccountType). hello parameterfilen innehåller ett värde för parametern hello. Det här värdet skickas automatiskt toohello mallen under distributionen. Du kan skapa flera parametern filer för olika distributionsscenarier och sedan ange hello lämpliga parameterfil. 
 
-Kopiera föregående exempel och spara den som en fil med namnet `storage.parameters.json`.
+Kopiera hello föregående exempel och spara den som en fil med namnet `storage.parameters.json`.
 
-Om du vill lägga till en lokal parameterfil, Använd den **TemplateParameterFile** parameter:
+toopass en lokal parameterfil använda hello **TemplateParameterFile** parameter:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -98,7 +98,7 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
-Om du vill lägga till en extern parameterfil, Använd den **TemplateParameterUri** parameter:
+toopass externa parameterfilen använda hello **TemplateParameterUri** parameter:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -106,35 +106,35 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Ex
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
 ```
 
-Du kan använda infogade parametrar och en lokal parameterfil i samma åtgärd för distribution. Du kan till exempel ange vissa värden i den lokala parameterfilen och lägga till andra värden infogade under distributionen. Om du anger värden för en parameter i både lokala parameterfilen och infogade företräde infogade värdet.
+Du kan använda infogade parametrar och en lokal parameter filen i hello samma distributionsåtgärder. Du kan till exempel ange vissa värden i hello lokala parameterfilen och lägga till andra värden infogade under distributionen. Om du anger värden för en parameter i både hello lokala parameterfilen och infogade företräde hello infogade värdet.
 
-Men när du använder en extern parameterfil, du kan inte skicka andra värden antingen infogade eller från en lokal fil. När du anger en parameterfil i den **TemplateParameterUri** parametern, alla infogade parametrar kommer att ignoreras. Ange alla värdena i den externa filen. Om din mall innehåller något känsligt värde som du inte kan ingå i parameterfilen, lägga till värdet i ett nyckelvalv eller dynamiskt tillhandahåller alla parametern värden infogad.
+Men när du använder en extern parameterfil, du kan inte skicka andra värden antingen infogade eller från en lokal fil. När du anger en parameterfil i hello **TemplateParameterUri** parametern, alla infogade parametrar kommer att ignoreras. Ange alla värden i hello extern fil. Om mallen innehåller något känsligt värde som du inte kan ingå i hello parameterfil, lägger du till att värdet tooa nyckelvalv eller dynamiskt tillhandahåller alla parametern värden infogad.
 
-Om mallen innehåller en parameter med samma namn som en av parametrarna i PowerShell-kommandot, PowerShell visar parametern från din mall med username@Domain **från mall**. Till exempel en parameter med namnet **ResourceGroupName** i din mall står i konflikt med den **ResourceGroupName** parametern i den [ny AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) cmdlet. Du uppmanas att ange ett värde för **ResourceGroupNameFromTemplate**. I allmänhet bör du undvika den här förvirring genom att namnge inte parametrar med samma namn som parametrar som används för distributionsåtgärder.
+Om mallen innehåller en parameter med samma namn som en hello parametrar i hello PowerShell-kommando hello, PowerShell visar hello parametern från din mall med hello username@Domain **från mall**. Till exempel en parameter med namnet **ResourceGroupName** i din mall står i konflikt med hello **ResourceGroupName** parameter i hello [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)cmdlet. Du är tooprovide ange ett värde för **ResourceGroupNameFromTemplate**. I allmänhet bör du undvika den här förvirring genom att inte namnges parametrar med samma namn som parametrar som används för distributionsåtgärder hello.
 
 ## <a name="test-a-template-deployment"></a>Testa en för malldistribution
 
-Testa din mall och parametern-värden utan att faktiskt distribuera resurser med [Test AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/test-azurermresourcegroupdeployment). 
+tootest din mall och parametern värden utan att faktiskt distribuera några resurser använder [Test AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/test-azurermresourcegroupdeployment). 
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType Standard_GRS
 ```
 
-Om inga fel identifieras kommandot har slutförts utan ett svar. Om ett fel upptäcks returnerar kommandot ett felmeddelande. Försök att skicka ett felaktigt värde för lagringskontot SKU, returnerar till exempel följande fel:
+Om inga fel identifieras hello-kommandot har slutförts utan ett svar. Om ett fel upptäcks returnerar hello kommando ett felmeddelande. Till exempel returnerar försöker toopass ett felaktigt värde för hello lagringskontot SKU, hello följande fel:
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName testgroup `
   -TemplateFile c:\MyTemplates\storage.json -storageAccountType badSku
 
 Code    : InvalidTemplate
-Message : Deployment template validation failed: 'The provided value 'badSku' for the template parameter 'storageAccountType'
-          at line '15' and column '24' is not valid. The parameter value is not part of the allowed value(s):
+Message : Deployment template validation failed: 'hello provided value 'badSku' for hello template parameter 'storageAccountType'
+          at line '15' and column '24' is not valid. hello parameter value is not part of hello allowed value(s):
           'Standard_LRS,Standard_ZRS,Standard_GRS,Standard_RAGRS,Premium_LRS'.'.
 Details :
 ```
 
-Om mallen har ett syntaxfel, returnerar kommandot ett felmeddelande om att det inte kunde tolka mallen. Meddelandet Anger radnumret och positionen för parsningsfel.
+Om mallen har ett syntaxfel, returnerar hello kommando ett felmeddelande om att det inte kunde tolka hello mallen. hello-meddelande visar hello radnummer och positionen för hello Tolkningsfel.
 
 ```powershell
 Test-AzureRmResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
@@ -143,7 +143,7 @@ Test-AzureRmResourceGroupDeployment : After parsing a value an unexpected charac
 
 [!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
 
-Om du vill använda fullständig läge i `Mode` parameter:
+toouse fullständig läge, Använd hello `Mode` parameter:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Mode Complete -Name ExampleDeployment `
@@ -152,7 +152,7 @@ New-AzureRmResourceGroupDeployment -Mode Complete -Name ExampleDeployment `
 
 ## <a name="sample-template"></a>Exempelmall
 
-Följande mall används i exemplen i det här avsnittet. Kopiera och spara den som en fil med namnet storage.json. Information om hur du skapar den här mallen finns [skapa din första Azure Resource Manager-mallen](resource-manager-create-first-template.md).  
+hello används följande mall för hello exemplen i det här avsnittet. Kopiera och spara den som en fil med namnet storage.json. toounderstand hur toocreate den här mallen finns [skapa din första Azure Resource Manager-mallen](resource-manager-create-first-template.md).  
 
 ```json
 {
@@ -200,10 +200,10 @@ Följande mall används i exemplen i det här avsnittet. Kopiera och spara den s
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-* Exemplen i den här artikeln distribuera resurser i en resursgrupp i din standard-prenumeration. Om du vill använda en annan prenumeration finns [hantera Azure-prenumerationer](/powershell/azure/manage-subscriptions-azureps).
+* hello exemplen i den här artikeln distribuera resurser tooa resursgrupp i prenumerationen standard. toouse en annan prenumeration finns [hantera Azure-prenumerationer](/powershell/azure/manage-subscriptions-azureps).
 * En fullständig exempelskript som distribuerar en mall finns i [distributionsskriptet för Resource Manager-mallen](resource-manager-samples-powershell-deploy.md).
-* Information om hur du definierar parametrar i mallen finns [förstå struktur och syntaxen för Azure Resource Manager-mallar](resource-group-authoring-templates.md).
+* hur toodefine parametrarna i mallen, se toounderstand [förstå hello struktur och syntaxen för Azure Resource Manager-mallar](resource-group-authoring-templates.md).
 * Tips om hur du löser vanliga distributionsfel finns [felsöka vanliga Azure-distribution med Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Information om hur du distribuerar en mall som kräver en SAS-token finns [distribuera privata mallar med SAS-token](resource-manager-powershell-sas-token.md).
-* Vägledning för hur företag kan använda resurshanteraren för att effektivt hantera prenumerationer finns i [Azure enterprise scaffold - förebyggande prenumerationsåtgärder](resource-manager-subscription-governance.md).
+* Anvisningar om hur företag kan använda Resource Manager tooeffectively hantera prenumerationer, se [kodskelett Azure enterprise - normativ prenumeration styrning](resource-manager-subscription-governance.md).
 

@@ -1,0 +1,2 @@
+> [!NOTE]
+> Hej [säker överföring krävs](../articles/storage/common/storage-require-secure-transfer.md) funktionen tillämpar alla begäranden tooyour kontot via en säker anslutning. Den här funktionen stöds bara av HDInsight-kluster med version 3.6 eller senare. Mer information finns i [Skapa ett Hadoop-kluster med lagringskonton som använder säker överföring i Azure HDInsight](../articles/hdinsight/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md).

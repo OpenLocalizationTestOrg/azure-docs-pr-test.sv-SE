@@ -1,16 +1,16 @@
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Ange struktur definition för rektangulär datauppsättningar
-Avsnittet strukturen i datauppsättningar JSON är en **valfria** avsnittet för rektangulär tabeller (med rader och kolumner) och innehåller en uppsättning kolumner för tabellen. Du använder avsnittet struktur för antingen tillhandahåller typinformation för typkonverteringar eller göra kolumnmappningarna. I följande avsnitt beskrivs de här funktionerna i detalj. 
+hello structure-avsnittet i hello datauppsättningar JSON är en **valfria** avsnittet för rektangulär tabeller (med rader och kolumner) och innehåller en uppsättning kolumner för hello tabellen. Du använder hello struktur avsnittet för antingen tillhandahåller typinformation för typkonverteringar eller göra kolumnmappningarna. hello följande avsnitt beskrivs de här funktionerna i detalj. 
 
-Varje kolumn innehåller följande egenskaper:
+Varje kolumn innehåller hello följande egenskaper:
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| namn |Namnet på kolumnen. |Ja |
-| typ |Datatypen för kolumnen. Se typen konverteringar avsnittet nedan för mer information om när ska du ange typinformation |Nej |
-| Kultur |.NET baserat kulturen som ska användas när typ har angetts och är .NET typen Datetime eller Datetimeoffset. Standardvärdet är ”en-us”. |Nej |
-| Format |Formatsträng som ska användas när typ har angetts och är .NET typen Datetime eller Datetimeoffset. |Nej |
+| namn |Namnet på hello-kolumn. |Ja |
+| typ |Datatypen för kolumnen hello. Se typen konverteringar avsnittet nedan för mer information om när ska du ange typinformation |Nej |
+| Kultur |.NET baserat kultur toobe används när typ har angetts och är .NET typen Datetime eller Datetimeoffset. Standardvärdet är ”en-us”. |Nej |
+| Format |Formatera strängen toobe används när typ har angetts och är .NET typen Datetime eller Datetimeoffset. |Nej |
 
-I följande exempel visas avsnittet struktur JSON för en tabell som har tre kolumner användar-ID, namn och lastlogindate.
+hello visar följande exempel hello struktur avsnittet JSON för en tabell som har tre kolumner användar-ID, namn och lastlogindate.
 
 ```json
 "structure": 
@@ -21,17 +21,17 @@ I följande exempel visas avsnittet struktur JSON för en tabell som har tre kol
 ],
 ```
 
-Använd följande riktlinjer för när du ska inkludera ”struktur” information och vad som ska ingå i den **struktur** avsnitt.
+Använd följande riktlinjer när hello tooinclude ”” strukturinformation och vilka tooinclude i hello **struktur** avsnitt.
 
-* **För strukturerade datakällor** att lagra data schema och ange information tillsammans med själva (källor som Azure tabell för SQL Server, Oracle, etc.), bör du ange avsnittet ”struktur” om du vill att informationen göra kolumnmappningen för specifika källa kolumner till specifika kolumner i mottagare och deras namn är inte samma (Mer information finns i kolumnen mappning nedan). 
+* **För strukturerade datakällor** som lagrar data schema och ange information tillsammans med själva (källor som Azure tabell för SQL Server, Oracle, etc.), bör du ange hello ”struktur” avsnittet om du vill göra kolumnmappningen i specifika hello informationen källkolumner toospecific kolumner i mottagare och deras namn är hello inte samma (Mer information finns i kolumnen mappning nedan). 
   
-    Som nämnts ovan är är typinformationen valfri i avsnittet ”struktur”. För strukturerade källor typinformation finns redan som en del av definitionen för datamängden i datalagret, så du bör inte inkludera typinformation när du inkluderar avsnittet ”struktur”.
-* **För schemat för skrivskyddade datakällor (specifikt Azure blob)** kan du lagra data utan att spara schemat eller typ information med data. Du bör ta ”struktur” för dessa typer av datakällor i följande fall 2:
-  * Du vill göra kolumnmappningen.
-  * När dataset är en datakälla i en Kopieringsaktivitet kan du kan ange av typinformation i ”struktur” och data factory använder den här typinformation för konvertering till inbyggda typer för sink. Se [flytta data till och från Azure Blob](../articles/data-factory/data-factory-azure-blob-connector.md) artikel för mer information.
+    Som nämnts ovan är hello typinformation valfri i avsnittet ”struktur”. För strukturerade källor typinformation finns redan som en del av datauppsättningsdefinitionen i hello datalagring, så du bör inte innehåller typinformation när du inkluderar hello ”struktur” avsnittet.
+* **För schemat för skrivskyddade datakällor (specifikt Azure blob)** du toostore data utan att spara schemat eller typ information med hello data. Du bör ta ”struktur” för dessa typer av datakällor i hello efter 2 fall:
+  * Vill du toodo kolumnmappningen.
+  * När hello dataset är en datakälla i en Kopieringsaktivitet kan du kan ange av typinformation i ”struktur” och data factory använder denna typinformation för konvertering toonative typer för hello sink. Se [flytta data tooand från Azure Blob](../articles/data-factory/data-factory-azure-blob-connector.md) artikel för mer information.
 
 ### <a name="supported-net-based-types"></a>Stöd för. NET-baserade typer
-Data factory stöder följande CLS kompatibla .NET baserat typen värden för att ange information i ”struktur” för schemat för skrivskyddade datakällor som Azure blob.
+Data factory stöder hello följande CLS-kompatibel .NET baserat värden av typen för att tillhandahålla ange information i ”struktur” för schemat för skrivskyddade datakällor som Azure blob.
 
 * Int16
 * Int32 
@@ -45,7 +45,7 @@ Data factory stöder följande CLS kompatibla .NET baserat typen värden för at
 * GUID
 * Datum och tid
 * DateTimeOffset
-* TimeSpan 
+* Tidsintervall 
 
-Du kan också ange ”kultur” & ”format” sträng för att underlätta tolkning av din egen Datetime-sträng för Datetime & Datetimeoffset. Se exemplet för typkonvertering nedan.
+För Datetime & Datetimeoffset kan du också ange ”kultur” & ”format” sträng toofacilitate tolkning av din egen Datetime-sträng. Se exemplet för typkonvertering nedan.
 

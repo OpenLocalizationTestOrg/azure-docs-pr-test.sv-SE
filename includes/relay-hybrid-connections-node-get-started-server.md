@@ -2,25 +2,25 @@
 
 Skapa en ny JavaScript-fil som kallas `listener.js`.
 
-### <a name="add-the-relay-npm-package"></a>Lägg till Relay NPM-paketet
+### <a name="add-hello-relay-npm-package"></a>Lägg till hello Relay NPM-paketet
 
 Kör `npm install hyco-ws` från Kommandotolken för en nod i projektmappen.
 
-### <a name="write-some-code-to-receive-messages"></a>Skriva kod för att ta emot meddelanden
+### <a name="write-some-code-tooreceive-messages"></a>Skriva kod tooreceive meddelanden
 
-1. Lägg till följande konstant överst i filen `listener.js`.
+1. Lägg till följande konstant toohello överkant hello hello `listener.js` fil.
    
     ```js
     const WebSocket = require('hyco-ws');
     ```
-2. Lägg till följande konstanter i filen `listener.js` för hybridanslutningsinformationen. Ersätt platshållarna inom hakparentes med de värden du erhöll när du skapade hybridanslutningen.
+2. Lägg till följande konstanter toohello hello `listener.js` -filen för hello hybrid anslutningsinformation. Ersätt hello platshållare inom parentes med hello-värden som du fick när du skapade hello hybridanslutning.
    
-   1. `const ns` – Relay-namnområde. Se till att du använder det fullständiga namnområdesnamnet, till exempel `{namespace}.servicebus.windows.net`.
-   2. `const path` – Namnet på hybridanslutningen.
-   3. `const keyrule` – Namnet på SAS-nyckeln.
-   4. `const key` – SAS-nyckelvärdet.
+   1. `const ns`-hello Relay namnområde. Vara säker på att toouse hello fullständiga namnområdesnamnet; till exempel `{namespace}.servicebus.windows.net`.
+   2. `const path`-hello namnet på hello hybridanslutning.
+   3. `const keyrule`-hello namnet på hello SAS-nyckel.
+   4. `const key`-hello SAS-nyckelvärdet.
 
-3. Lägg till följande kod i `listener.js`-filen:
+3. Lägg till följande kod toohello hello `listener.js` fil:
    
     ```js
     var wss = WebSocket.createRelayedServer(

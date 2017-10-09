@@ -1,6 +1,6 @@
 ---
-title: "Använda Azure Key Vault från ett webbprogram | Microsoft Docs"
-description: "Använd den här kursen för att lära dig hur du använder Azure Key Vault från ett webbprogram."
+title: "aaaUse Azure Key Vault från ett webbprogram | Microsoft Docs"
+description: "Använd den här självstudiekursen toohelp du lära dig hur toouse Azure nyckeln valvet från ett webbprogram."
 services: key-vault
 documentationcenter: 
 author: adhurwit
@@ -14,77 +14,77 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: adhurwit
-ms.openlocfilehash: d095bcfe37baefa90cf79bb48bff3f703ce1dad7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d5e2299e60b379c4e234d5cd6be03411c5a5c958
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Använda Azure Key Vault från webbprogram
 ## <a name="introduction"></a>Introduktion
-Använd den här kursen för att lära dig hur du använder Azure Key Vault från ett webbprogram i Azure. Den vägleder dig genom processen att komma åt en hemlighet från ett Azure Key Vault så att den kan användas i ditt webbprogram.
+Använd den här självstudiekursen toohelp du lära dig hur toouse Azure nyckeln valvet från ett webbprogram i Azure. Den vägleder dig genom hello processen att komma åt en hemlighet från ett Azure Key Vault så att den kan användas i ditt webbprogram.
 
-**Uppskattad tidsåtgång:** 15 minuter
+**Uppskattad tid toocomplete:** 15 minuter
 
 Översiktlig information om Azure Key Vault finns i [Vad är Azure Key Vault?](key-vault-whatis.md)
 
 ## <a name="prerequisites"></a>Krav
-För att kunna slutföra den här självstudiekursen behöver du följande:
+toocomplete den här självstudien måste du ha hello följande:
 
-* En URI för en hemlighet i en Azure Key Vault
-* En klient-ID och en Klienthemlighet för ett webbprogram som har registrerats med Azure Active Directory som har åtkomst till ditt Nyckelvalv
-* Ett webbprogram. Vi ska visa stegen för ett ASP.NET MVC-program som distribueras i Azure som en Webbapp.
+* En URI tooa hemlighet i en Azure Key Vault
+* En klient-ID och en Klienthemlighet för ett webbprogram som har registrerats med Azure Active Directory som har åtkomst tooyour Key Vault
+* Ett webbprogram. Vi ska visa hello steg för ett ASP.NET MVC-program som distribueras i Azure som en Webbapp.
 
 > [!NOTE]
-> Det är viktigt att du har slutfört stegen i [Kom igång med Azure Key Vault](key-vault-get-started.md) för den här självstudiekursen så att du har en hemlighet och klient-ID och Klienthemlighet URI för ett webbprogram.
+> Det är viktigt att du har slutfört stegen i hello [Kom igång med Azure Key Vault](key-vault-get-started.md) för den här självstudiekursen så att du har hello URI tooa hemlighet och hello klient-ID och Klienthemlighet för ett webbprogram.
 > 
 > 
 
-Webbprogram som kommer åt Nyckelvalvet är det som är registrerad i Azure Active Directory och har fått tillgång till ditt Nyckelvalv. Om detta inte är fallet kan du gå tillbaka till registrera ett program i komma igång-kursen och upprepa stegen.
+hello webbprogram som kommer åt hello Key Vault är hello något som är registrerad i Azure Active Directory och har fått åtkomst tooyour Key Vault. Om detta inte är fallet hello gå tillbaka tooRegister ett program i hello komma igång-kursen och upprepa hello stegen.
 
-Den här kursen är avsedd för webbutvecklare som förstår grunderna för att skapa webbprogram på Azure. Läs mer om Azure Web Apps [översikt över Web Apps](../app-service-web/app-service-web-overview.md).
+Den här kursen är avsedd för webbutvecklare som förstår hello grunderna för att skapa webbprogram på Azure. Läs mer om Azure Web Apps [översikt över Web Apps](../app-service-web/app-service-web-overview.md).
 
 ## <a id="packages"></a>Lägg till Nuget-paket
-Det finns två paket som ditt webbprogram måste ha installerats.
+Det finns två paket som ditt webbprogram måste toohave installerad.
 
 * Active Directory Authentication Library - innehåller metoder för att interagera med Azure Active Directory och hantera användaridentitet
 * Azure Key Vault Library - innehåller metoder för att interagera med Azure Key Vault
 
-Båda dessa paket kan installeras med hjälp av kommandot Install-Package Package Manager-konsolen.
+Båda dessa paket kan installeras med hello kommandot hello Install-Package Package Manager-konsolen.
 
-    // this is currently the latest stable version of ADAL
+    // this is currently hello latest stable version of ADAL
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
 
     Install-Package Microsoft.Azure.KeyVault
 
 
 ## <a id="webconfig"></a>Ändra Web.Config
-Det finns tre inställningar för program som behöver läggas till i filen web.config på följande sätt.
+Det finns tre inställningar för program som behöver toobe tillagda toohello web.config-filen på följande sätt.
 
-    <!-- ClientId and ClientSecret refer to the web application registration with Azure Active Directory -->
+    <!-- ClientId and ClientSecret refer toohello web application registration with Azure Active Directory -->
     <add key="ClientId" value="clientid" />
     <add key="ClientSecret" value="clientsecret" />
 
-    <!-- SecretUri is the URI for the secret in Azure Key Vault -->
+    <!-- SecretUri is hello URI for hello secret in Azure Key Vault -->
     <add key="SecretUri" value="secreturi" />
 
 
-Om du inte kommer att vara värd för programmet som en Azure Web App, bör du lägga till faktiska värden för ClientId, Klienthemligheten och hemlighet URI till web.config. Annars lämnar du värdena dummy eftersom vi kommer att lägga till de faktiska värdena i Azure Portal för en extra nivå av säkerhet.
+Om du inte kommer toohost ditt program som en Azure Web App, bör du lägga till hello faktiska ClientId, Klienthemligheten och hemlighet URI värden toohello web.config. Annars lämnar du värdena dummy eftersom vi kommer att lägga till hello faktiska värden i hello Azure-portalen för en extra nivå av säkerhet.
 
-## <a id="gettoken"></a>Lägg till metoden för att hämta ett åtkomsttoken
-För att kunna använda Key Vault API behöver du en åtkomst-token. Key Vault klienten hanterar anrop till Key Vault-API men du måste ange den med en funktion som hämtar den åtkomst-token.  
+## <a id="gettoken"></a>Lägg till metoden tooGet en åtkomst-Token
+I ordning toouse hello Key Vault API behöver du en åtkomst-token. hello Key Vault-klienten hanterar anrop toohello Key Vault-API, men du måste toosupply den med en funktion som hämtar hello åtkomst-token.  
 
-Följande är koden för att hämta en token från Azure Active Directory. Den här koden kan gå var som helst i programmet. Jag vill lägga till en klass med verktyg för webbplatsuppgradering eller EncryptionHelper.  
+Följande är hello koden tooget en åtkomst-token från Azure Active Directory. Den här koden kan gå var som helst i programmet. Jag som tooadd ett verktyg för webbplatsuppgradering eller EncryptionHelper klass.  
 
     //add these using statements
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using System.Threading.Tasks;
     using System.Web.Configuration;
 
-    //this is an optional property to hold the secret after it is retrieved
+    //this is an optional property toohold hello secret after it is retrieved
     public static string EncryptSecret { get; set; }
 
-    //the method that will be provided to the KeyVaultClient
+    //hello method that will be provided toohello KeyVaultClient
     public static async Task<string> GetToken(string authority, string resource, string scope)
     {
         var authContext = new AuthenticationContext(authority);
@@ -93,18 +93,18 @@ Följande är koden för att hämta en token från Azure Active Directory. Den h
         AuthenticationResult result = await authContext.AcquireTokenAsync(resource, clientCred);
 
         if (result == null)
-            throw new InvalidOperationException("Failed to obtain the JWT token");
+            throw new InvalidOperationException("Failed tooobtain hello JWT token");
 
         return result.AccessToken;
     }
 
 > [!NOTE]
-> Använda ett klient-ID och Klienthemlighet är det enklaste sättet att autentisera en Azure AD-program. Och använda den i ditt webbprogram för en uppdelning av uppgifter och mer kontroll över din nyckelhantering. Men den förlitar sig på att placera Klienthemligheten i inställningarna som kan vara riskabelt som som ger den hemlighet som du vill skydda i inställningarna för några. Nedan visas en diskussion om hur du använder en klient-ID och certifikat i stället för klient-ID och Klienthemlighet för att autentisera Azure AD-program.
+> Använda ett klient-ID och Klienthemlighet är hello enklaste sättet tooauthenticate ett Azure AD-program. Och använda den i ditt webbprogram för en uppdelning av uppgifter och mer kontroll över din nyckelhantering. Men den förlitar sig på att placera hello Klienthemlighet i inställningarna som kan vara riskabelt som som ger hello hemlighet som du vill tooprotect i inställningarna för några. Nedan visas en diskussion om hur toouse klient-ID och certifikat i stället för klient-ID och Klienthemlighet tooauthenticate hello Azure AD-program.
 > 
 > 
 
-## <a id="appstart"></a>Hämta hemligheten på programmet starta
-Nu måste vi kod för att anropa API för Key Vault och hämta hemligheten. Följande kod kan placeras var som helst så länge den anropas innan du behöver använda den. Jag har placerat den här koden i programmet Starta händelsen i Global.asax så att den körs en gång vid start och tillgängliggör hemligheten för programmet.
+## <a id="appstart"></a>Hämta hello hemligheten på programmet starta
+Vi behöver nu code toocall hello Key Vault-API och hämta hello hemlighet. hello följande kod kan placeras var som helst så länge den anropas innan du behöver toouse den. Jag har placerat den här koden i hello programmet Starta händelsen i hello Global.asax så att den körs en gång vid start och gör hello hemlighet som är tillgängliga för hello program.
 
     //add these using statements
     using Microsoft.Azure.KeyVault;
@@ -115,34 +115,34 @@ Nu måste vi kod för att anropa API för Key Vault och hämta hemligheten. Föl
 
     var sec = await kv.GetSecretAsync(WebConfigurationManager.AppSettings["SecretUri"]);
 
-    //I put a variable in a Utils class to hold the secret for general  application use.
+    //I put a variable in a Utils class toohold hello secret for general  application use.
     Utils.EncryptSecret = sec.Value;
 
 
 
-## <a id="portalsettings"></a>Lägg till App-inställningar i Azure-portalen (valfritt)
-Om du har en Azure Web App kan du nu lägga till de faktiska värdena för AppSettings i Azure Portal. Genom att göra de faktiska värdena är inte i web.config men skyddas via portalen där du har separata åtkomstfunktioner för kontrollen. Dessa värden ersätts med de värden som du angav i filen web.config. Kontrollera att namnen är samma.
+## <a id="portalsettings"></a>Lägg till App-inställningar i hello Azure-portalen (valfritt)
+Du kan nu lägga hello faktiska värden för hello AppSettings i hello Azure-portalen om du har en Azure-Webbapp. Genom att göra hello faktiska värden är inte i hello web.config men skyddas via hello Portal där du har separata åtkomstfunktioner för kontrollen. Dessa värden ersätts för hello-värden som du angav i filen web.config. Kontrollera att hello namn är hello samma.
 
 ![Programinställningar som visas i Azure Portal][1]
 
 ## <a name="authenticate-with-a-certificate-instead-of-a-client-secret"></a>Autentisera med ett certifikat i stället för en Klienthemlighet
-Ett annat sätt att autentisera en Azure AD-program är att använda ett klient-ID och ett certifikat i stället för en klient-ID och Klienthemlighet. Nedan följer stegen för att använda ett certifikat i en Azure Web App:
+Ett annat sätt tooauthenticate ett Azure AD-program är att använda ett klient-ID och ett certifikat i stället för en klient-ID och Klienthemlighet. Följande är hello steg toouse ett certifikat i en Azure Web App:
 
 1. Hämta eller skapa ett certifikat
-2. Associera certifikatet med ett Azure AD-program
-3. Lägg till kod i ditt webbprogram till att använda certifikat
-4. Lägga till ett certifikat till ditt webbprogram
+2. Associera hello certifikat med ett Azure AD-program
+3. Lägg till kod tooyour Web App toouse hello certifikat
+4. Lägg till ett certifikat tooyour Web App
 
-**Hämta eller skapa ett certifikat** för våra ändamål vi gör ett testcertifikat. Här är några av kommandon som du kan använda i en utvecklare kommandotolk för att skapa ett certifikat. Ändra katalogen till önskad cert-filer som har skapats.  Kan också använda aktuellt datum plus 1 år för start- och slutdatum för certifikatet.
+**Hämta eller skapa ett certifikat** för våra ändamål vi gör ett testcertifikat. Här är några av kommandon som du kan använda i en kommandotolk för utvecklare toocreate ett certifikat. Ändra katalogen toowhere som du vill hello cert filer som har skapats.  För hello inledande och avslutande hello certifikatet, Använd hello aktuellt datum plus 1 år.
 
     makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r
     pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 
-Anteckna slutdatumet och lösenordet för PFX (i det här exemplet: 07/31/2016 och test123). Du behöver dem nedan.
+Anteckna hello slutdatum och .pfx hello hello lösenord (i det här exemplet: 07/31/2016 och test123). Du behöver dem nedan.
 
 Mer information om hur du skapar ett testcertifikat finns [så här: skapa dina egna testa certifikat](https://msdn.microsoft.com/library/ff699202.aspx)
 
-**Associera certifikatet med ett Azure AD-program** nu när du har ett certifikat måste du koppla den med Azure AD-program. Azure Portal stöder för närvarande kan inte arbetsflöden. Detta kan utföras via PowerShell. Kör följande kommandon för att partner certifikatet med Azure AD-program:
+**Associera hello certifikat med ett Azure AD-program** nu när du har ett certifikat måste tooassociate den med Azure AD-program. Hello Azure Portal stöder för närvarande kan inte arbetsflöden. Detta kan utföras via PowerShell. Kör följande kommandon tooassoicate hello certifikat med hello Azure AD-programmet hello:
 
     $x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
     $x509.Import("C:\data\KVWebApp.cer")
@@ -158,16 +158,16 @@ Mer information om hur du skapar ett testcertifikat finns [så här: skapa dina 
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName $sp.ServicePrincipalName -PermissionsToSecrets all -ResourceGroupName 'contosorg'
 
-    # get the thumbprint to use in your app settings
+    # get hello thumbprint toouse in your app settings
     $x509.Thumbprint
 
-När du har kört dessa kommandon, kan du se program i Azure AD. När du söker kan du kontrollera att du väljer ”mitt företag äger” i stället för ”program företaget använder” i dialogrutan Sök.
+När du har kört dessa kommandon, kan du se hello program i Azure AD. När du söker kan se till att du väljer ”mitt företag äger” i stället för ”program företaget använder” i dialogrutan för hello Sök.
 
-Läs mer om Azure AD-program och ServicePrincipal objekt i [program och tjänstens huvudnamn objekt](../active-directory/active-directory-application-objects.md)
+toolearn mer om Azure AD-program och ServicePrincipal objekt, se [program och tjänstens huvudnamn objekt](../active-directory/active-directory-application-objects.md)
 
-**Lägg till kod i ditt webbprogram till att använda certifikatet** nu vi lägger till kod i ditt webbprogram för att komma åt cert och användas för autentisering.
+**Lägg till kod tooyour Web App toouse hello certifikat** nu ska du lägga till kod tooyour Web App tooaccess hello cert och användas för autentisering.
 
-Först är koden för att få åtkomst till certifikatet.
+Det finns först kod tooaccess hello certifikat.
 
     public static class CertificateHelper
     {
@@ -178,7 +178,7 @@ Först är koden för att få åtkomst till certifikatet.
             {
                 store.Open(OpenFlags.ReadOnly);
                 X509Certificate2Collection col = store.Certificates.Find(X509FindType.FindByThumbprint,
-                    findValue, false); // Don't validate certs, since the test root isn't installed.
+                    findValue, false); // Don't validate certs, since hello test root isn't installed.
                 if (col == null || col.Count == 0)
                     return null;
                 return col[0];
@@ -191,9 +191,9 @@ Först är koden för att få åtkomst till certifikatet.
     }
 
 
-Observera att StoreLocation CurrentUser i stället för LocalMachine. Och som vi tillhandahåller false till metoden hitta eftersom vi använder ett test-certifikat.
+Observera att hello StoreLocation CurrentUser i stället för LocalMachine. Och som vi tillhandahåller 'false' toohello hitta metod eftersom vi använder ett test-certifikat.
 
-Nästa är kod som använder CertificateHelper och skapar en ClientAssertionCertificate som krävs för autentisering.
+Nästa är kod som använder hello CertificateHelper och skapar en ClientAssertionCertificate som krävs för autentisering.
 
     public static ClientAssertionCertificate AssertionCert { get; set; }
 
@@ -204,7 +204,7 @@ Nästa är kod som använder CertificateHelper och skapar en ClientAssertionCert
     }
 
 
-Här är en ny kod att hämta åtkomsttoken. Det här ersätter metoden GetToken. Jag har gett den ett annat namn i informationssyfte.
+Här är hello ny kod tooget hello åtkomsttoken. Det här ersätter hello GetToken metoden ovan. Jag har gett den ett annat namn i informationssyfte.
 
     public static async Task<string> GetAccessToken(string authority, string resource, string scope)
     {
@@ -215,21 +215,21 @@ Här är en ny kod att hämta åtkomsttoken. Det här ersätter metoden GetToken
 
 Jag har placera alla den här koden i mitt Web App-projekt verktyg för webbplatsuppgradering klass för enkel användning.
 
-Den senaste ändringen av koden är i metoden Application_Start. Vi måste först anropa metoden GetCert() för att läsa in ClientAssertionCertificate. Och vi ändra Återanropsmetoden som vi tillhandahåller när du skapar en ny KeyVaultClient. Observera att detta ersätter den kod som vi hade ovan.
+hello senaste kodändring är i hello Application_Start metod. Vi måste först toocall hello GetCert() metoden tooload hello ClientAssertionCertificate. Och vi ändra hello-metod som vi tillhandahåller när du skapar en ny KeyVaultClient. Observera att detta ersätter hello koden som vi hade ovan.
 
     Utils.GetCert();
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetAccessToken));
 
 
-**Lägga till ett certifikat till ditt webbprogram via Azure Portal** lägger till ett certifikat till ditt webbprogram är en enkel process. Gå till Azure Portal först och navigera till ditt webbprogram. På inställningsbladet för ditt webbprogram, klickar du på posten för ”anpassade domäner och SSL”. I bladet som öppnar du kommer att kunna ladda upp det certifikat som du skapade ovan KVWebApp.pfx, se till att du kommer ihåg lösenordet för pfx.
+**Lägg till certifikat tooyour webbprogram via hello Azure Portal** att lägga till ett certifikat tooyour Web App är en enkel process. Först gå toohello Azure-portalen och navigera tooyour Web App. Klicka på hello post för ”anpassade domäner och SSL” på hello inställningar-bladet för din Webbapp. På hello bladet som öppnar du är kan tooupload hello certifikatet som du skapade ovan KVWebApp.pfx, Kom ihåg att hello lösenord för hello pfx.
 
-![Lägga till ett certifikat till en Webbapp i Azure-portalen][2]
+![Att lägga till ett certifikat tooa webbprogram i hello Azure-portalen][2]
 
-Det sista som du behöver göra är att lägga till en programinställning ditt webbprogram som har namnet webbplatsen\_BELASTNINGEN\_certifikat och värdet *. Se till att alla certifikat har lästs in. Om du vill läsa in de certifikat som du har överfört kan du ange en kommaavgränsad lista över sina tumavtryck.
+hello sista du behöver toodo är tooadd en tillämpningsinställning tooyour webbprogram som har hello namn webbplats\_BELASTNINGEN\_certifikat och värdet *. Se till att alla certifikat har lästs in. Om du vill använda tooload endast hello certifikat som du har laddat upp och du kan ange en kommaavgränsad lista över sina tumavtryck.
 
-Läs mer om att lägga till ett certifikat till en Webbapp i [med hjälp av certifikat i Azure webbplatser program](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/)
+toolearn mer information om hur du lägger till ett certifikat tooa Web App finns [med hjälp av certifikat i Azure webbplatser program](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/)
 
-**Lägga till ett certifikat till Key Vault som en hemlighet** i stället för att ladda upp certifikatet till tjänsten Web App direkt, kan du lagra den på Key Vault som en hemlighet och distribuera den därifrån. Detta är en tvåstegsprocess som beskrivs i följande blogginlägg [distribuera Azure-certifikat för webbprogram via Key Vault](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)
+**Lägga till ett certifikat tooKey valvet som en hemlighet** i stället för att ladda upp dina certifikat toohello Web App service direkt, kan du lagra den på Key Vault som en hemlighet och distribuera den därifrån. Detta är en tvåstegsprocess som beskrivs i följande blogginlägget hello [distribuera Azure-certifikat för webbprogram via Key Vault](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)
 
 ## <a id="next"></a>Nästa steg
 Programmering referenser finns [Azure Key Vault C# klienten API-referens för](https://msdn.microsoft.com/library/azure/dn903628.aspx).

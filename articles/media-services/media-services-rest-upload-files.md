@@ -1,6 +1,6 @@
 ---
-title: "Ladda upp filer till ett Media Services-konto med hjälp av REST | Microsoft Docs"
-description: "Lär dig mer om att få medieinnehåll i Media Services genom att skapa och ladda upp tillgångar."
+title: "aaaUpload filer till ett Media Services-konto med hjälp av REST | Microsoft Docs"
+description: "Lär dig hur tooget media innehåll i Media Services genom att skapa och ladda upp tillgångar."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: 955356ffe6fc524c1528364add7e2c2a336137b7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2a92cecdc32d747d7a478946f069c15931eb32b9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Ladda upp filer till ett Media Services-konto med hjälp av REST
 > [!div class="op_single_selector"]
@@ -28,57 +28,57 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-I Media Services överför du dina digitala filer till en tillgång. Den [tillgången](https://docs.microsoft.com/rest/api/media/operations/asset) entitet kan innehålla video, ljud, bilder, miniatyrsamlingar, text spår och textning filer (och metadata om dessa filer.)  När filerna har överförts till tillgången, lagras innehållet på ett säkert sätt i molnet för ytterligare bearbetning och strömning. 
+I Media Services överför du dina digitala filer till en tillgång. Hej [tillgången](https://docs.microsoft.com/rest/api/media/operations/asset) entitet kan innehålla video, ljud, bilder, miniatyrsamlingar, text spår och textning filer (och hello metadata om dessa filer.)  När hello filerna har överförts till hello tillgång lagras innehållet på ett säkert sätt i hello molnet för ytterligare bearbetning och strömning. 
 
 > [!NOTE]
-> Följande gäller:
+> det gäller hello följande överväganden:
 > 
-> * Media Services använder värdet för egenskapen IAssetFile.Name när du skapar URL: er för strömning innehållet (till exempel http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Därför tillåts procent-encoding inte. Värdet för den **namn** egenskapen får inte ha något av följande [procent-encoding-reserverade tecken](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? [] # % ”. Dessutom det kan bara finnas ett '.' för filnamnstillägget.
-> * Längden på namnet får inte vara större än 260 tecken.
-> * Det finns en gräns för maximal filstorlek för bearbetning i Media Services. Information om filstorleksbegränsningen finns i [det här](media-services-quotas-and-limitations.md) avsnittet.
+> * Media Services använder hello värdet hello IAssetFile.Name egenskapen när du skapar URL: er för hello direktuppspelning av innehåll (till exempel http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Därför tillåts procent-encoding inte. Hej värdet för hello **namn** egenskapen får inte ha någon av följande hello [procent-encoding-reserverade tecken](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? [] # % ”. Dessutom det kan bara finnas ett '.' för hello filnamnstillägg.
+> * hello längd på hello namn får inte vara större än 260 tecken.
+> * Det finns en gräns toohello maximal filstorlek som stöds för bearbetning i Media Services. Se [detta](media-services-quotas-and-limitations.md) avsnittet för information om hello filstorleksbegränsningar.
 > 
 
-Det grundläggande arbetsflödet för uppladdning av tillgångar är uppdelad i följande avsnitt:
+hello grundläggande arbetsflöde för uppladdning av tillgångar är indelad i följande avsnitt hello:
 
 * Skapa en tillgång
 * Kryptera en tillgång (valfritt)
-* Överför en fil till blob storage
+* Överför en fil tooblob lagring
 
-AMS kan du överföra tillgångar gruppvis. Mer information finns i [det här](media-services-rest-upload-files.md#upload_in_bulk) avsnittet.
+AMS kan du också tooupload tillgångar gruppvis. Mer information finns i [det här](media-services-rest-upload-files.md#upload_in_bulk) avsnittet.
 
 > [!NOTE]
 > Vid åtkomst till entiteter i Media Services måste du ange specifika namn på huvudfält och värden i HTTP-begäranden. Mer information finns i [installationsprogrammet för Media Services REST API-utveckling](media-services-rest-how-to-use.md).
 > 
 
-## <a name="connect-to-media-services"></a>Ansluta till Media Services
+## <a name="connect-toomedia-services"></a>Ansluta tooMedia tjänster
 
-Information om hur du ansluter till AMS API: et finns [åtkomst till Azure Media Services-API med Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md). 
+Mer information om hur tooconnect toohello AMS API, se [åtkomst hello Azure Media Services API med Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->När du har anslutit till https://media.windows.net, får du en 301 omdirigering att ange en annan Media Services-URI. Du måste göra följande anrop till en ny URI.
+>När du har anslutit toohttps://media.windows.net, får du en 301 omdirigering att ange en annan Media Services-URI. Du måste göra följande anrop toohello ny URI.
 
 ## <a name="upload-assets"></a>Överför tillgångar
 
 ### <a name="create-an-asset"></a>Skapa en tillgång
 
-En tillgång är en behållare för flera typer eller uppsättningar med objekt i Media Services, inklusive video, ljud, bilder, miniatyrsamlingar, textspår och filer med dold textning. I REST-API kräver skapa en tillgång POST-begäran skickades till Media Services och placerar egenskapsinformation om din tillgång i begärandetexten.
+En tillgång är en behållare för flera typer eller uppsättningar med objekt i Media Services, inklusive video, ljud, bilder, miniatyrsamlingar, textspår och filer med dold textning. I hello REST-API: skapa en tillgång måste du skicka POST begära tooMedia tjänster och placerar egenskapsinformation om din tillgång i hello frågans brödtext.
 
-En av de egenskaper som du kan ange när du skapar en tillgång är **alternativ**. **Alternativ för** är ett uppräkningsvärde som beskriver krypteringsalternativen som du kan skapa en tillgång med. Ett giltigt värde är ett av värdena i listan nedan, inte en kombination av värden. 
+En av hello egenskaper som du kan ange när du skapar en tillgång är **alternativ**. **Alternativ för** är ett uppräkningsvärde som beskriver hello krypteringsalternativ som du kan skapa en tillgång med. Ett giltigt värde är ett av hello värden hello listan nedan, inte en kombination av värden. 
 
-* **Ingen** = **0**: Ingen kryptering används. Detta är standardvärdet. Observera att när du använder det här alternativet om ditt innehåll inte skyddas under överföringen eller i vila i lagring.
-    Om du planerar att leverera en MP4 med progressivt nedladdning ska du använda det här alternativet. 
-* **StorageEncrypted** = **1**: Ange om du vill använda för dina filer som ska krypteras med AES 256-bitarskryptering för överföring och lagring.
+* **Ingen** = **0**: Ingen kryptering används. Detta är standardvärdet för hello. Observera att när du använder det här alternativet om ditt innehåll inte skyddas under överföringen eller i vila i lagring.
+    Använd det här alternativet om du planerar toodeliver en MP4 med progressivt nedladdning. 
+* **StorageEncrypted** = **1**: Ange om du vill använda för dina filer toobe som krypterats med AES 256-bitarskryptering för överföring och lagring.
   
     Om tillgången är lagringskrypterad, måste du konfigurera principen för tillgångsleverans. Mer information finns i [konfigurera tillgångsleveransprincip](media-services-rest-configure-asset-delivery-policy.md).
 * **CommonEncryptionProtected** = **2**: Ange om du överför filer som skyddas med en gemensam krypteringsmetod (till exempel PlayReady). 
-* **EnvelopeEncryptionProtected** = **4**: Ange om du överför HLS som krypterats med AES-filer. Observera att filerna måste ha kodats och krypterats av Transform Manager.
+* **EnvelopeEncryptionProtected** = **4**: Ange om du överför HLS som krypterats med AES-filer. Observera att hello filer måste har kodats och krypterats av Transform Manager.
 
 > [!NOTE]
-> Om din tillgång kommer att använda kryptering, måste du skapa en **ContentKey** och länka det till din tillgång enligt beskrivningen i följande avsnitt:[hur du skapar en ContentKey](media-services-rest-create-contentkey.md). Observera att när du har överfört filerna till tillgången du behöver uppdatera egenskaper för kryptering på den **AssetFile** entitet med de värden som du har fått under den **tillgången** kryptering. Göra det med hjälp av den **sammanfoga** HTTP-begäran. 
+> Om din tillgång kommer att använda kryptering, måste du skapa en **ContentKey** och länka det tooyour tillgång enligt beskrivningen i följande ämne hello:[hur toocreate en ContentKey](media-services-rest-create-contentkey.md). Observera att när du har överfört hello filer till hello tillgång du egenskaper för tooupdate hello kryptering på hello **AssetFile** entitet med hello-värden som du har fått under hello **tillgången** kryptering. Göra det med hjälp av hello **sammanfoga** HTTP-begäran. 
 > 
 > 
 
-I följande exempel visas hur du skapar en tillgång.
+följande exempel visar hur hello toocreate en tillgång.
 
 **HTTP-begäran**
 
@@ -96,7 +96,7 @@ I följande exempel visas hur du skapar en tillgång.
 
 **HTTP-svar**
 
-Om det lyckas, returneras följande:
+Om det lyckas, returneras hello följande:
 
     HTP/1.1 201 Created
     Cache-Control: no-cache
@@ -125,11 +125,11 @@ Om det lyckas, returneras följande:
     }
 
 ### <a name="create-an-assetfile"></a>Skapa en AssetFile
-Den [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entiteten representerar en video eller ljud-fil som lagras i en blob-behållare. En resursfil är alltid associerat med en tillgång och en tillgång kan innehålla en eller många tillgångsfiler. Media Services Encoder uppgiften misslyckas om objekttypen tillgången filen inte är associerad med en digital fil i en blob-behållaren.
+Hej [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entiteten representerar en video eller ljud-fil som lagras i en blob-behållare. En resursfil är alltid associerat med en tillgång och en tillgång kan innehålla en eller många tillgångsfiler. hello misslyckas Media Services-kodaren om objekttypen tillgången filen inte är associerad med en digital fil i en blob-behållaren.
 
-Observera att den **AssetFile** instansen och den faktiska mediefilen är två distinkta objekt. AssetFile-instans innehåller metadata om filen media när mediefilen innehåller faktiskt medieinnehåll.
+Observera att hello **AssetFile** instansen och hello faktiska mediefilen är två distinkta objekt. Hej AssetFile instans innehåller metadata om hello mediefilen när hello mediefilen innehåller hello faktiskt medieinnehåll.
 
-När du har överfört din digitala media-fil till en blobbbehållare, ska du använda den **sammanfoga** HTTP-begäran om uppdatering av AssetFile med information om media-fil (som visas senare i avsnittet). 
+När du har överfört din digitala media-fil till en blobbbehållare använder hello **sammanfoga** HTTP-begäran tooupdate hello AssetFile med information om media-fil (som visas i hello kapitel). 
 
 **HTTP-begäran**
 
@@ -186,14 +186,14 @@ När du har överfört din digitala media-fil till en blobbbehållare, ska du an
        "ContentChecksum":null
     }
 
-### <a name="creating-the-accesspolicy-with-write-permission"></a>Skapar AccessPolicy med behörighet att skriva.
+### <a name="creating-hello-accesspolicy-with-write-permission"></a>Skapar hello AccessPolicy med behörighet att skriva.
 
 >[!NOTE]
->Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda samma princip-ID om du alltid använder samma dagar/åtkomstbehörigheter, till exempel principer för positionerare som är avsedda att vara på plats under en längre tid (icke-överföringsprinciper). Mer information finns i [detta](media-services-dotnet-manage-entities.md#limit-access-policies) avsnitt.
+>Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda hello samma princip-ID om du alltid använder hello samma dagar / åtkomstbehörigheter, till exempel principer för lokaliserare som är avsedda tooremain på plats för lång tid (icke-överföringen principer). Mer information finns i [detta](media-services-dotnet-manage-entities.md#limit-access-policies) avsnitt.
 
-Innan du laddar upp filer i blob-lagring, ange principen rättigheter för att skriva till en tillgång. För att göra det efter en HTTP-begäran till AccessPolicies entitetsuppsättning. Ange ett värde för DurationInMinutes när de skapas eller du får felmeddelandet 500 intern Server tillbaka som svar. Mer information om AccessPolicies finns [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+Innan du laddar upp filer i blob-lagring, ange hello princip rättigheter för att skriva tooan tillgången. Ange toodo som PUBLICERAR en HTTP-begäran toohello AccessPolicies entitet. Ange ett värde för DurationInMinutes när de skapas eller du får felmeddelandet 500 intern Server tillbaka som svar. Mer information om AccessPolicies finns [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
 
-I följande exempel visas hur du skapar en AccessPolicy:
+följande exempel visar hur hello toocreate en AccessPolicy:
 
 **HTTP-begäran**
 
@@ -211,7 +211,7 @@ I följande exempel visas hur du skapar en AccessPolicy:
 
 **HTTP-begäran**
 
-    If successful, the following response is returned:
+    If successful, hello following response is returned:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -236,20 +236,20 @@ I följande exempel visas hur du skapar en AccessPolicy:
        "Permissions":2
     }
 
-### <a name="get-the-upload-url"></a>Hämta URL
-Skapa en SAS-lokaliserare för att ta emot den faktiska URL. Lokaliserare definiera start- och typ av anslutningens slutpunkt för klienter som vill komma åt filer i en tillgång. Du kan skapa flera lokaliserare entiteter för ett angivet AccessPolicy och tillgångshantering par att hantera olika klientbegäranden och behov. Var och en av dessa lokaliserare använda StartTime-värdet plus DurationInMinutes värdet för AccessPolicy för att avgöra hur lång tid som en URL som kan användas. Mer information finns i [lokaliserare](https://docs.microsoft.com/rest/api/media/operations/locator).
+### <a name="get-hello-upload-url"></a>Hämta hello URL för överföring
+tooreceive hello faktiska överför URL, skapa en SAS-lokaliserare. Lokaliserare definiera hello starttid och typ av anslutningens slutpunkt för klienter som vill tooaccess filer i en tillgång. Du kan skapa flera lokaliserare entiteter för en viss AccessPolicy och tillgångshantering par toohandle olika klient begäranden och behov. Var och en av dessa lokaliserare använda hello StartTime-värdet plus hello DurationInMinutes värdet av hello AccessPolicy toodetermine hello tid kan användas för en URL. Mer information finns i [lokaliserare](https://docs.microsoft.com/rest/api/media/operations/locator).
 
-En SAS-URL har följande format:
+En SAS-URL har hello följande format:
 
     {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
 
 Vissa förutsättningar gäller:
 
 * Du kan inte ha fler än fem unika lokaliserare som är associerade med en viss resurs i taget. Mer information finns i lokaliserare.
-* Om du behöver överföra filer omedelbart ska du ange StartTime-värdet till fem minuter före aktuell tid. Det beror på att det kan finnas klockan skeva mellan klientdatorn och Media Services. StartTime-värdet måste också vara i följande DateTime-format: ÅÅÅÅ-MM-ddTHH (till exempel ”2014-05-23T17:53:50Z”).    
-* Det kan finnas en 30-40 andra fördröjning efter en positionerare skapas när den är tillgänglig för användning. Det här problemet gäller både SAS-URL och ursprung lokaliserare.
+* Om du behöver tooupload dina filer direkt, bör du ange StartTime värdet toofive minuter innan hello aktuell tid. Det beror på att det kan finnas klockan skeva mellan klientdatorn och Media Services. StartTime-värdet måste också vara i hello följande DateTime-format: ÅÅÅÅ-MM-ddTHH (till exempel ”2014-05-23T17:53:50Z”).    
+* Det kan finnas en 30-40 andra fördröjning efter en positionerare skapas toowhen som den är tillgänglig för användning. Det här problemet gäller tooboth SAS-URL och ursprung lokaliserare.
 
-I följande exempel visas hur du skapar en URL SAS-lokaliserare som definieras av egenskapen Type i begärandetexten (”1” för en SAS-lokaliserare) och ”2” för en positionerare för ursprung på begäran. Den **sökväg** returnerade-egenskapen innehåller den URL som du måste använda för att överföra din fil.
+hello som följande exempel visar hur toocreate en SAS-URL-lokaliserare, som definieras av hello typegenskapen i begärandetexten hello (”1” för en SAS-lokaliserare) och ”2” för en positionerare för ursprung på begäran. Hej **sökväg** egenskap som returneras innehåller hello-URL att du måste använda tooupload din fil.
 
 **HTTP-begäran**
 
@@ -271,7 +271,7 @@ I följande exempel visas hur du skapar en URL SAS-lokaliserare som definieras a
 
 **HTTP-svar**
 
-Om det lyckas, returneras följande svar:
+Om det lyckas, returneras hello efter svar:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -302,17 +302,17 @@ Om det lyckas, returneras följande svar:
     }
 
 ### <a name="upload-a-file-into-a-blob-storage-container"></a>Ladda upp en fil till en behållare för blob storage
-När du har AccessPolicy och lokaliserare ange har den faktiska filen överförts till en Azure Blob Storage-behållare med hjälp av Azure Storage REST-API: er. Du måste överföra filer som blockblobar. Azure Media Services stöder inte sidblobar.  
+När du har hello AccessPolicy och lokaliserare set är hello själva filen överförda tooan Azure Blob Storage-behållare med hello Azure Storage REST API: er. Du måste överföra hello filer som blockblobar. Azure Media Services stöder inte sidblobar.  
 
 > [!NOTE]
-> Du måste lägga till filnamnet för den fil som du vill överföra till positioneraren **sökväg** värde som erhölls i föregående avsnitt. Till exempel https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . . 
+> Du måste lägga till hello filnamn hello filen du vill ha tooupload toohello lokaliserare **sökväg** värde togs emot i hello föregående avsnitt. Till exempel https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . . 
 > 
 > 
 
 Mer information om hur du arbetar med Azure storage blobs finns [REST-API för Blob-tjänsten](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-### <a name="update-the-assetfile"></a>Uppdatera AssetFile
-Nu när du har överfört din fil, uppdatera informationen om FileAsset storlek (och andra). Exempel:
+### <a name="update-hello-assetfile"></a>Uppdatera hello AssetFile
+Nu när du har överfört din fil uppdateringsinformation hello FileAsset storlek (och andra). Exempel:
 
     MERGE https://media.windows.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -335,9 +335,9 @@ Nu när du har överfört din fil, uppdatera informationen om FileAsset storlek 
 
 **HTTP-svar**
 
-Om det lyckas följande returneras: HTTP/1.1 204 Nej innehåll
+Om det lyckas hello följande returneras: HTTP/1.1 204 Nej innehåll
 
-### <a name="delete-the-locator-and-accesspolicy"></a>Ta bort lokaliserare och AccessPolicy
+### <a name="delete-hello-locator-and-accesspolicy"></a>Ta bort hello lokaliserare och AccessPolicy
 **HTTP-begäran**
 
     DELETE https://media.windows.net/api/Locators('nb%3Alid%3AUUID%3Aaf57bdd8-6751-4e84-b403-f3c140444b54') HTTP/1.1
@@ -351,7 +351,7 @@ Om det lyckas följande returneras: HTTP/1.1 204 Nej innehåll
 
 **HTTP-svar**
 
-Om det lyckas, returneras följande:
+Om det lyckas, returneras hello följande:
 
     HTTP/1.1 204 No Content 
     ...
@@ -369,14 +369,14 @@ Om det lyckas, returneras följande:
 
 **HTTP-svar**
 
-Om det lyckas, returneras följande:
+Om det lyckas, returneras hello följande:
 
     HTTP/1.1 204 No Content 
     ...
 
 ## <a id="upload_in_bulk"></a>Överför tillgångar i grupp
-### <a name="create-the-ingestmanifest"></a>Skapa IngestManifest
-IngestManifest är en behållare för en uppsättning tillgångar, tillgångsfiler och statistik information som kan användas för att fastställa förloppet för bulk vill föra in för.
+### <a name="create-hello-ingestmanifest"></a>Skapa hello IngestManifest
+Hej IngestManifest är en behållare för en uppsättning tillgångar, tillgångsfiler och statistik information som kan vara används toodetermine hello fortskrider samtidigt vill föra in för hello.
 
 **HTTP-begäran**
 
@@ -394,7 +394,7 @@ IngestManifest är en behållare för en uppsättning tillgångar, tillgångsfil
     { "Name" : "ExampleManifestREST" }
 
 ### <a name="create-assets"></a>Skapa tillgångar
-Innan du skapar IngestManifestAsset, måste du skapa den tillgång som ska utföras samtidigt vill föra in. En tillgång är en behållare för flera typer eller uppsättningar med objekt i Media Services, inklusive video, ljud, bilder, miniatyrsamlingar, textspår och filer med dold textning. I REST-API kräver skapa en tillgång en HTTP POST-begäran skickades till Microsoft Azure Media Services och placerar egenskapsinformation om din tillgång i begärandetexten. I det här exemplet skapas tillgången med alternativet StorageEncrption(1) ingår i begärandetexten.
+Innan du skapar hello IngestManifestAsset måste toocreate hello tillgång som ska utföras samtidigt vill föra in. En tillgång är en behållare för flera typer eller uppsättningar med objekt i Media Services, inklusive video, ljud, bilder, miniatyrsamlingar, textspår och filer med dold textning. I hello REST-API kräver skapar en tillgång skickar en HTTP POST-begäran tooMicrosoft Azure Media Services och placerar egenskapsinformation om din tillgång i hello frågans brödtext. I det här exemplet skapas hello tillgångsinformation med hjälp av hello StorageEncrption(1) alternativet medföljer hello frågans brödtext.
 
 **HTTP-svar**
 
@@ -411,8 +411,8 @@ Innan du skapar IngestManifestAsset, måste du skapa den tillgång som ska utfö
 
     { "Name" : "ExampleManifestREST_Asset", "Options" : 1 }
 
-### <a name="create-the-ingestmanifestassets"></a>Skapa IngestManifestAssets
-IngestManifestAssets representerar tillgångar i en IngestManifest som används med samtidigt vill föra in. Den huvudsakligen länka tillgången till manifestet. Azure Media Services bevakar internt för filöverföringen baserat på IngestManifestFiles samlingen som är kopplad till IngestManifestAsset. När filerna har överförts är tillgången klar. Du kan skapa en ny IngestManifestAsset med en HTTP POST-begäran. Inkludera IngestManifest-Id och tillgångsinformation Id som IngestManifestAsset bör länka samman för att föra in bulk i frågans brödtext.
+### <a name="create-hello-ingestmanifestassets"></a>Skapa hello IngestManifestAssets
+IngestManifestAssets representerar tillgångar i en IngestManifest som används med samtidigt vill föra in. hello länkar i princip hello tillgången toohello manifest. Azure Media Services söker internt efter hello filöverföringen baserat på IngestManifestFiles samlingen som är kopplad toohello IngestManifestAsset. När filerna har överförts är hello tillgången klar. Du kan skapa en ny IngestManifestAsset med en HTTP POST-begäran. I hello begärantext inkludera hello IngestManifest Id och hello tillgångsnummer som hello IngestManifestAsset bör länka samman för att föra in samtidigt.
 
 **HTTP-svar**
 
@@ -429,8 +429,8 @@ IngestManifestAssets representerar tillgångar i en IngestManifest som används 
     { "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "Asset" : { "Id" : "nb:cid:UUID:b757929a-5a57-430b-b33e-c05c6cbef02e"}}
 
 
-### <a name="create-the-ingestmanifestfiles-for-each-asset"></a>Skapa IngestManifestFiles för varje tillgång
-En IngestManifestFile representerar ett faktiska video eller ljud blob-objekt som överförs som en del av bulk vill föra in för en tillgång. Kryptering relaterade egenskaper krävs inte om inte tillgången använder ett krypteringsalternativ. Exemplet i det här avsnittet visar skapar en IngestManifestFile som använder StorageEncryption för tillgången skapade tidigare.
+### <a name="create-hello-ingestmanifestfiles-for-each-asset"></a>Skapa hello IngestManifestFiles för varje tillgång
+En IngestManifestFile representerar ett faktiska video eller ljud blob-objekt som överförs som en del av bulk vill föra in för en tillgång. Kryptering relaterade egenskaper krävs inte om inte hello tillgången använder ett krypteringsalternativ. hello-exempel som används i det här avsnittet visar skapar en IngestManifestFile som använder StorageEncryption för hello tillgången skapade tidigare.
 
 **HTTP-svar**
 
@@ -447,23 +447,23 @@ En IngestManifestFile representerar ett faktiska video eller ljud blob-objekt so
 
     { "Name" : "REST_Example_File.wmv", "ParentIngestManifestId" : "nb:mid:UUID:5c77f186-414f-8b48-8231-17f9264e2048", "ParentIngestManifestAssetId" : "nb:maid:UUID:beed8531-9a03-9043-b1d8-6a6d1044cdda", "IsEncrypted" : "true", "EncryptionScheme" : "StorageEncryption", "EncryptionVersion" : "1.0", "EncryptionKeyId" : "nb:kid:UUID:32e6efaf-5fba-4538-b115-9d1cefe43510" }
 
-### <a name="upload-the-files-to-blob-storage"></a>Överföra filer till Blob Storage
-Du kan använda en hög hastighet klientprogrammet kan överföra tillgångsfiler till blob storage-behållare Uri som anges av egenskapen BlobStorageUriForUpload för IngestManifest. En tjänst för överföringen av viktiga hög hastighet är [Aspera på begäran för Azure-programmet](http://go.microsoft.com/fwlink/?LinkId=272001).
+### <a name="upload-hello-files-tooblob-storage"></a>Överför hello filer tooBlob lagring
+Du kan använda en hög hastighet klientprogrammet kan överföra hello tillgången filer toohello blob storage-behållare tillhandahålls av hello BlobStorageUriForUpload-egenskapen för hello IngestManifest Uri. En tjänst för överföringen av viktiga hög hastighet är [Aspera på begäran för Azure-programmet](http://go.microsoft.com/fwlink/?LinkId=272001).
 
 ### <a name="monitor-bulk-ingest-progress"></a>Övervakaren Bulk mata in pågår
-Du kan övervaka förloppet för bulk vill föra in åtgärder för en IngestManifest genom att avsöka egenskapen statistik för IngestManifest. Att egenskapen är en komplex typ [IngestManifestStatistics](https://docs.microsoft.com/rest/api/media/operations/ingestmanifeststatistics). Om du vill söka egenskapen statistik skicka en HTTP GET-begäran skickas IngestManifest Id.
+Du kan övervaka hello samtidigt vill föra in åtgärder för en IngestManifest genom att avsöka hello statistik-egenskapen för hello IngestManifest. Att egenskapen är en komplex typ [IngestManifestStatistics](https://docs.microsoft.com/rest/api/media/operations/ingestmanifeststatistics). toopoll hello statistik egenskapen skicka en HTTP GET-begäran skickas hello IngestManifest-Id.
 
 ## <a name="create-contentkeys-used-for-encryption"></a>Skapa ContentKeys som används för kryptering
-Om din tillgång kommer att använda kryptering, måste du skapa ContentKey som ska användas för kryptering innan du skapar tillgångsfiler. Följande egenskaper ska tas med i begärandetexten för storage kryptering.
+Om din tillgång kommer att använda kryptering, måste du skapa hello ContentKey toobe används för kryptering innan du skapar hello tillgångsfiler. För lagringskryptering, ska hello följande egenskaper tas med i hello frågans brödtext.
 
 | Egenskapen för brödtext i begäran | Beskrivning |
 | --- | --- |
-| Id |ContentKey-Id som vi generera oss själva i följande format ”nb:kid:UUID:<NEW GUID>”. |
-| ContentKeyType |Detta är viktiga innehållstypen som ett heltal för den här nyckeln. Vi skickar värdet 1 för kryptering. |
-| EncryptedContentKey |Vi skapa ett nytt innehåll nyckelvärde som är en 256-bitars (32 byte)-värde. Nyckeln är krypterad med storage kryptering X.509-certifikat som vi hämta från Microsoft Azure Media Services genom att köra en HTTP GET-begäran för GetProtectionKeyId och GetProtectionKey metoder. |
-| ProtectionKeyId |Detta är skydd nyckel-id för storage kryptering X.509-certifikatet som användes för att kryptera våra innehållsnyckeln. |
-| ProtectionKeyType |Detta är krypteringstyp för skydd nyckeln som används för att kryptera innehållsnyckeln. Det här värdet är StorageEncryption(1) i vårt exempel. |
-| Kontrollsumma |Den beräknade kontrollsumman MD5 för innehållsnyckeln. Det beräknas genom att kryptera innehållet Id med innehållsnyckeln. Koden visar hur du beräkna kontrollsumman. |
+| Id |hello ContentKey-Id som vi generera oss själva med hjälp av hello följande format ”nb:kid:UUID:<NEW GUID>”. |
+| ContentKeyType |Detta är hello viktiga innehållstyp som ett heltal för den här nyckeln. Vi skickar hello värdet 1 för kryptering. |
+| EncryptedContentKey |Vi skapa ett nytt innehåll nyckelvärde som är en 256-bitars (32 byte)-värde. hello nyckeln är krypterad med hello storage kryptering X.509-certifikat som vi hämta från Microsoft Azure Media Services genom att köra en HTTP GET-begäran för hello GetProtectionKeyId och GetProtectionKey metoder. |
+| ProtectionKeyId |Detta är hello skydd nyckel-id för hello storage kryptering X.509-certifikat som har använt tooencrypt våra innehållsnyckeln. |
+| ProtectionKeyType |Detta är hello krypteringstyp för hello Skyddsnyckel som har använt tooencrypt hello innehållsnyckeln. Det här värdet är StorageEncryption(1) i vårt exempel. |
+| Kontrollsumma |hello MD5 beräknade kontrollsumman för hello innehållsnyckeln. Det beräknas genom att kryptera hello innehåll Id med hello innehållsnyckeln. hello exempelkod visar hur toocalculate hello kontrollsumma. |
 
 **HTTP-svar**
 
@@ -480,8 +480,8 @@ Om din tillgång kommer att använda kryptering, måste du skapa ContentKey som 
 
     {"Id" : "nb:kid:UUID:316d14d4-b603-4d90-b8db-0fede8aa48f8", "ContentKeyType" : 1, "EncryptedContentKey" : "Y4NPej7heOFa2vsd8ZEOcjjpu/qOq3RJ6GRfxa8CCwtAM83d6J2mKOeQFUmMyVXUSsBCCOdufmieTKi+hOUtNAbyNM4lY4AXI537b9GaY8oSeje0NGU8+QCOuf7jGdRac5B9uIk7WwD76RAJnqyep6U/OdvQV4RLvvZ9w7nO4bY8RHaUaLxC2u4aIRRaZtLu5rm8GKBPy87OzQVXNgnLM01I8s3Z4wJ3i7jXqkknDy4VkIyLBSQvIvUzxYHeNdMVWDmS+jPN9ScVmolUwGzH1A23td8UWFHOjTjXHLjNm5Yq+7MIOoaxeMlKPYXRFKofRY8Qh5o5tqvycSAJ9KUqfg==", "ProtectionKeyId" : "7D9BB04D9D0A4A24800CADBFEF232689E048F69C", "ProtectionKeyType" : 1, "Checksum" : "TfXtjCIlq1Y=" }
 
-### <a name="link-the-contentkey-to-the-asset"></a>Länka ContentKey till tillgången
-ContentKey är kopplad till en eller flera resurser genom att skicka en HTTP POST-begäran. Följande begäran är ett exempel länka exempel ContentKey till exempel tillgången Id.
+### <a name="link-hello-contentkey-toohello-asset"></a>Länka hello ContentKey toohello tillgångsinformation
+Hej ContentKey är associerade tooone eller flera resurser genom att skicka en HTTP POST-begäran. hello är följande begäran ett exempel toolink hello exempel ContentKey toohello exempel tillgång efter-Id.
 
 **HTTP-svar**
 
@@ -513,7 +513,7 @@ ContentKey är kopplad till en eller flera resurser genom att skicka en HTTP POS
 
 Du kan nu koda överförda tillgångar. Mer information finns i [Koda tillgångar](media-services-portal-encode.md).
 
-Du kan också använda Azure Functions för att utlösa ett kodningsjobb baserat på en fil som skickas till den konfigurerade behållaren. Mer information finns i [det här exemplet](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
+Du kan också använda Azure Functions tootrigger ett kodningsjobb baserat på en fil som inkommer på hello konfigurerats behållare. Mer information finns i [det här exemplet](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
 
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -521,5 +521,5 @@ Du kan också använda Azure Functions för att utlösa ett kodningsjobb baserat
 ## <a name="provide-feedback"></a>Ge feedback
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-[How to Get a Media Processor]: media-services-get-media-processor.md
+[How tooGet a Media Processor]: media-services-get-media-processor.md
 

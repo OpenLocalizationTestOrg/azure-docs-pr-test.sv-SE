@@ -1,6 +1,6 @@
 ---
-title: Anslut till Azure SQL Data Warehouse - SSMS | Microsoft Docs
-description: "Använda SQL Server Management Studio (SSMS) för att ansluta till och fråga Azure SQL Data Warehouse."
+title: aaaConnect tooAzure SQL Data Warehouse - SSMS | Microsoft Docs
+description: "Använd SQL Server Management Studio (SSMS) tooconnect tooand fråga Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: 
 author: antvgski
@@ -15,13 +15,13 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
-ms.openlocfilehash: 207fb9fd861c66039fbde89681aed3df3a2f4021
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bcbaf7139d2e5183b388b8d58c015cf5ad726722
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Anslut till SQL Data Warehouse med SQL Server Management Studio (SSMS)
+# <a name="connect-toosql-data-warehouse-with-sql-server-management-studio-ssms"></a>Ansluta tooSQL Data Warehouse med SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -31,61 +31,61 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Använda SQL Server Management Studio (SSMS) för att ansluta till och fråga Azure SQL Data Warehouse. 
+Använd SQL Server Management Studio (SSMS) tooconnect tooand fråga Azure SQL Data Warehouse. 
 
 ## <a name="prerequisites"></a>Krav
-Du behöver följande för att använda de här självstudierna:
+toouse den här kursen behöver du:
 
-* Ett befintligt SQL Data Warehouse. Se [Skapa ett SQL Data Warehouse][Create a SQL Data Warehouse] för att se hur man skapar det.
+* Ett befintligt SQL Data Warehouse. toocreate, se [skapa ett SQL Data Warehouse][Create a SQL Data Warehouse].
 * SQL Server Management Studio (SSMS) installerat. [Installera SSMS] [ Install SSMS] kostnadsfritt om det inte redan har.
-* Det fullständigt kvalificerade servernamnet. [Anslut till SQL Data Warehouse][Connect to SQL Data Warehouse] för att hitta detta.
+* hello fullständigt kvalificerade namn för SQL server. toofind detta, se [ansluta tooSQL datalagret][Connect tooSQL Data Warehouse].
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Anslut till din SQL Data Warehouse
+## <a name="1-connect-tooyour-sql-data-warehouse"></a>1. Ansluta tooyour SQL Data Warehouse
 1. Öppna SSMS.
-2. Öppna Object Explorer. Om du vill göra det, Välj **filen** > **ansluta Object Explorer**.
+2. Öppna Object Explorer. toodo detta, Välj **filen** > **ansluta Object Explorer**.
    
     ![SQL Server Object Explorer][1]
-3. Fyll i fälten i fönstret anslut till server.
+3. Fyll i hello i hello Anslut tooServer fönster.
    
-    ![Anslut till server][2]
+    ![Ansluta tooServer][2]
    
-   * **Servernamn**. Ange det **servernamn** som du identifierade tidigare.
+   * **Servernamn**. Ange hello **servernamn** konstaterats tidigare.
    * **Autentisering**. Välj **SQL Server-autentisering** eller **Active Directory-integrerad autentisering**.
    * **Användarnamn** och **lösenord**. Ange användarnamn och lösenord om du valde SQL Server-autentisering ovan.
-   * Klicka på **anslut**.
-4. Expandera din Azure SQL-server för att utforska. Du kan se de databaser som är associerade med servern. Expandera AdventureWorksDW för att se tabellerna i din exempeldatabas.
+   * Klicka på **Anslut**.
+4. tooexplore, expandera din Azure SQL-server. Du kan visa hello databaser som är associerade med hello-servern. Expandera AdventureWorksDW toosee hello tabeller i din exempeldatabas.
    
     ![Utforska AdventureWorksDW][3]
 
 ## <a name="2-run-a-sample-query"></a>2. Kör en exempelfråga
-När du nu etablerat en anslutning till din databas, är det dags att skriva en fråga.
+Nu när en anslutning har etablerat tooyour databasen, dags att skriva en fråga.
 
 1. Högerklicka på din databas i SQL Server Object Explorer.
 2. Välj **ny fråga**. Ett nytt frågefönster öppnas.
    
     ![Ny fråga][4]
-3. Kopiera den här TSQL-frågan till frågefönstret:
+3. Kopiera den här TSQL-frågan till frågefönstret hello:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Kör frågan. Gör detta genom att klicka på `Execute` eller använder följande genväg: `F5`.
+4. Kör hello-fråga. toodo, genom att välja `Execute` eller Använd hello följande genväg: `F5`.
    
     ![Kör frågan][5]
-5. Titta på frågeresultaten. I det här exemplet har tabellen FactInternetSales 60398 rader.
+5. Titta på hello frågeresultat. I det här exemplet har hello tabellen FactInternetSales 60398 rader.
    
     ![Frågeresultat][6]
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du anslutit och frågat, kan du [visualisera dina data med PowerBI][visualizing the data with PowerBI].
+Nu när du kan ansluta och fråga, försök [visualisera hello data med PowerBI][visualizing hello data with PowerBI].
 
-För att konfigurera din miljö för Azure Active Directory-autentisering, se [Autentisera till SQL Data Warehouse][Authenticate to SQL Data Warehouse].
+tooconfigure din miljö för Azure Active Directory-autentisering, se [autentisera tooSQL datalagret][Authenticate tooSQL Data Warehouse].
 
 <!--Arcticles-->
-[Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
+[Connect tooSQL Data Warehouse]: sql-data-warehouse-connect-overview.md
 [Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-[Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
-[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md 
+[Authenticate tooSQL Data Warehouse]: sql-data-warehouse-authentication.md
+[visualizing hello data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md 
 
 <!--Other-->
 [Azure portal]: https://portal.azure.com

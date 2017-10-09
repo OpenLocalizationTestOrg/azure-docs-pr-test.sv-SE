@@ -1,20 +1,20 @@
-## <a name="view-the-telemetry"></a>Visa telemetrin
+## <a name="view-hello-telemetry"></a>Visa hello telemetri
 
-Hallon Pi nu skicka telemetri till fjärranslutna övervakningslösning. Du kan visa telemetrin på instrumentpanelen för lösningen. Du kan också skicka meddelanden till din hallon Pi från instrumentpanelen lösning.
+hello hallon Pi nu skicka telemetri toohello remote övervakningslösning. Du kan visa hello telemetri på instrumentpanelen för hello-lösning. Du kan också skicka meddelanden tooyour hallon Pi hello lösning instrumentpanel.
 
-- Gå till instrumentpanelen lösning.
-- Välj din enhet i den **enhet för att visa** listrutan.
-- Telemetri från hallon Pi visas på instrumentpanelen.
+- Navigera toohello lösning instrumentpanelen.
+- Välj din enhet i hello **enhet tooView** listrutan.
+- hello telemetri från hello hallon Pi visar hello instrumentpanelen.
 
-![Visa telemetri från hallon Pi][img-telemetry-display]
+![Visa telemetri från hello hallon Pi][img-telemetry-display]
 
-## <a name="initiate-the-firmware-update"></a>Initiera firmware-uppdatering
+## <a name="initiate-hello-firmware-update"></a>Initiera hello firmware-uppdatering
 
-Den inbyggda programvara uppdateringen hämtas och installeras en uppdaterad version av klientprogrammet enheten på hallon Pi. Mer information om uppdateringen inbyggd programvara finns i beskrivningen av inbyggd programvara update mönstret i [översikt över hantering av enheter med IoT-hubben][lnk-update-pattern].
+hello firmware-uppdateringen hämtas och installeras en uppdaterad version av klientprogrammet för hello enheten på hello hallon Pi. Mer information om uppdateringen för hello inbyggd programvara finns hello beskrivningen av mönstret av inbyggd programvara för hello i [översikt över hantering av enheter med IoT-hubben][lnk-update-pattern].
 
-Du startar uppdateringen firmware genom att anropa en metod på enheten. Den här metoden är asynkron och returnerar så fort börjar uppdateringsprocessen. Enheten använder rapporterade egenskaper för att meddela lösning om förloppet för uppdateringen.
+Du startar hello firmware-uppdateringen genom att anropa en metod i hello enhet. Den här metoden är asynkron och returnerar så snart hello uppdateringen påbörjas. hello enheten använder rapporterade egenskaper toonotify hello lösning om hello fortskrider hello uppdateringen.
 
-Du kan anropa metoder på din hallon Pi från instrumentpanelen lösning. När hallon Pi först ansluter till den fjärranslutna övervakningslösning skickar information om hur den stöder. 
+Du kan anropa metoder på din hallon Pi hello lösning instrumentpanel. När hello hallon Pi först ansluter toohello remote övervakningslösning, skickar information om hello-metoder stöder. 
 
 [img-telemetry-display]: media/iot-suite-raspberry-pi-kit-view-telemetry-advanced/telemetry.png
 [lnk-update-pattern]: ../articles/iot-hub/iot-hub-device-management-overview.md

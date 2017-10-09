@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell skriptexempel - kopia (flytta) hanterade diskar till samma eller olika prenumeration | Microsoft Docs
-description: Azure PowerShell skriptexempel - kopia (flytta) hanterade diskar till samma eller en annan prenumeration
+title: aaaAzure PowerShell skriptexempel - kopia (flytta) hanteras diskar toosame eller annan prenumeration | Microsoft Docs
+description: Azure PowerShell skriptexempel - kopia (flytta) hanteras diskar toosame eller en annan prenumeration
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: 6fa94de0461cc538a60d57ca3518141afd9d0469
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5a92118e10a14615e5b1713f1b90188b37b05305
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Kopiera hanterade diskar i samma prenumeration eller annan prenumeration med PowerShell
+# <a name="copy-managed-disks-in-hello-same-subscription-or-different-subscription-with-powershell"></a>Kopiera hanterade diskar i hello samma prenumeration eller annan prenumeration med PowerShell
 
-Det här skriptet skapar en kopia av en befintlig hanterade disk i samma prenumeration eller annan prenumeration. Den nya disken skapas i samma region som den överordnade hantera disken.   
+Det här skriptet skapar en kopia av en befintlig hanterade disk i hello samma prenumeration eller en annan prenumeration. hello ny disk skapas i hello samma region som hello överordnade hanterade disken.   
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -31,16 +31,16 @@ Det här skriptet skapar en kopia av en befintlig hanterade disk i samma prenume
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-powershell[huvudsakliga](../../../powershell_scripts/storage/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.ps1 "kopiera hanteras disk")]
+[!code-powershell[main](../../../powershell_scripts/storage/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.ps1 "Copy managed disk")]
 
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon för att skapa en ny hanterade disk i målprenumerationen med ID: T för den hanterade källdisken. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder följande kommandon toocreate en ny hanterade disk i hello mål en prenumeration med hjälp av hello-Id för hello källa hanterade disken. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
-| [Ny AzureRmDiskConfig](/powershell/module/azurerm.compute/New-AzureRmDiskConfig) | Skapar diskkonfigurationen som används för att skapa en disk. Den innehåller resurs-Id för överordnad disk och plats som är samma som plats för överordnad disk.  |
+| [Ny AzureRmDiskConfig](/powershell/module/azurerm.compute/New-AzureRmDiskConfig) | Skapar diskkonfigurationen som används för att skapa en disk. Den omfattar hello resurs-Id för hello överordnad disk och plats som är samma som hello platsen för överordnad disk.  |
 | [Ny AzureRmDisk](/powershell/module/azurerm.compute/New-AzureRmDisk) | Skapar en disk med diskkonfigurationen disknamnet och resursgruppens namn som parametrar skickades. |
 
 
@@ -48,6 +48,6 @@ Det här skriptet använder följande kommandon för att skapa en ny hanterade d
 
 [Skapa en virtuell dator från en hanterad disk](./../../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Mer information om Azure PowerShell-modulen finns [Azure PowerShell dokumentationen](/powershell/azure/overview).
+Mer information om hello Azure PowerShell-modulen finns [Azure PowerShell dokumentationen](/powershell/azure/overview).
 
-Ytterligare virtuella PowerShell-skript-exempel finns i den [Virtuella för Windows Azure-dokumentationen](../../virtual-machines/windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ytterligare virtuella PowerShell-skript-exempel finns i hello [Virtuella för Windows Azure-dokumentationen](../../virtual-machines/windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

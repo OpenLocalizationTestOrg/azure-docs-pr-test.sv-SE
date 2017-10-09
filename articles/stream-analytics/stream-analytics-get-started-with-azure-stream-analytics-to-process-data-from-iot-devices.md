@@ -1,5 +1,5 @@
 ---
-title: "IoT-realtidsdataströmmar och Azure Stream Analytics | Microsoft Docs"
+title: "aaaIoT dataströmmar i realtid och Azure Stream Analytics | Microsoft Docs"
 description: "IoT-sensortaggar och dataströmmar med dataströmsanalys och realtidsbearbetning av data"
 keywords: "iot-lösning, komma igång med iot"
 services: stream-analytics
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.openlocfilehash: 3af5aaa833478ef35fb57664c573ebf22d7a4599
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 422e6b719d0289880aa7f17fdc585e2b768c63d7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Komma igång med Azure Stream Analytics för bearbetning av data från IoT-enheter
-I den här självstudiekursen lär du dig hur du skapar logiken för bearbetning av dataströmmar för datainsamling från IoT-enheter (Internet of Things). Vi använder verkliga IoT-användningsfall (Internet of Things) för att demonstrera hur du snabbt och billigt kan skapa din lösning.
+# <a name="get-started-with-azure-stream-analytics-tooprocess-data-from-iot-devices"></a>Komma igång med Azure Stream Analytics tooprocess data från IoT-enheter
+I den här kursen får du lära dig hur toocreate stream-logik toogather databearbetning från Sakernas Internet (IoT) enheter. Vi använder en verkliga, Sakernas Internet (IoT) Använd case toodemonstrate hur toobuild din lösning snabbt och billigt kan.
 
 ## <a name="prerequisites"></a>Krav
 * [Azure-prenumeration](https://azure.microsoft.com/pricing/free-trial/)
 * Du kan ladda ned exempel på frågefiler och datafiler från [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)
 
 ## <a name="scenario"></a>Scenario
-Contoso, ett företag inom industriell automation, har helt automatiserat sin produktionsprocess. Maskinerna på den här anläggningen har sensorer som sänder dataströmmar i realtid. I detta scenario vill en av företagets fabrikschefer få realtidsinsikter från dessa sensordata för att identifiera mönster och vidta lämpliga åtgärder utifrån resultatet. Vi ska använda Stream Analytics Query Language (SAQL) mot sensorinformationen för att identifiera intressanta mönster i den inkommande dataströmmen.
+Contoso, vilket är ett företag i hello industriell automation utrymme har helt automatiserat sin produktionsprocess. hello maskiner i den här anläggningen har sensorer som sänder dataströmmar i realtid kan. I det här scenariot en av företagets fabrikschefer vill toohave realtidsinsikter från hello sensor data toolook för mönster och vidta lämpliga åtgärder utifrån dem. Vi använder hello Stream Analytics Query Language (saql) mot över hello sensor data toofind intressanta mönster från hello inkommande dataström.
 
 Här genereras data från en enhet med Texas Instruments SensorTag.
 
 ![Texas Instruments SensorTag](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-01.jpg)
 
-Nyttolasten för dessa data är i JSON-format och ser ut ungefär så här:
+Hej datanyttolast hello finns i JSON-format och ser ut som följande hello:
 
     {
         "time": "2016-01-26T20:47:53.0000000",  
@@ -44,16 +44,16 @@ Nyttolasten för dessa data är i JSON-format och ser ut ungefär så här:
         "hmdt": 34  
     }  
 
-I ett verkligt scenario har du flera hundra av dessa sensorer som genererar händelser som en dataström. I en idealisk situation skulle det finnas en gateway-enhet som kör kod för att skicka dessa händelser till [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) eller [Azure IoT Hubs](https://azure.microsoft.com/services/iot-hub/). Ditt Stream Analytics-jobb skulle mata in de här händelserna från Event Hubs och köra analysfrågor i realtid mot dataströmmarna. Sedan kunde du skicka resultaten till någon av de [utdatatyper som stöds](stream-analytics-define-outputs.md).
+I ett verkligt scenario har du flera hundra av dessa sensorer som genererar händelser som en dataström. Vi rekommenderar en gateway-enhet kör kod toopush dessa händelser för[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) eller [Azure IoT-hubbar](https://azure.microsoft.com/services/iot-hub/). Stream Analytics-jobbet skulle mata in dessa händelser från Event Hubs och köra analys i realtid frågor mot hello dataströmmar. Du kan sedan skicka hello resultat tooone av hello [stöds utdata](stream-analytics-define-outputs.md).
 
-För att förenkla användningen av den här komma igång-guiden ingår en exempeldatafil med data från verkliga SensorTag-enheter. Du kan köra frågor på dessa exempeldata och se resultaten. I efterföljande självstudiekurser lär du dig hur du kopplar jobbet till in- och utdataenheter och hur du distribuerar det till Azure-tjänsten.
+För att förenkla användningen av den här komma igång-guiden ingår en exempeldatafil med data från verkliga SensorTag-enheter. Du kan köra frågor på hello exempeldata och se resultaten. I efterföljande självstudiekurser får du lära dig hur tooconnect din jobbet tooinputs och utdata och distribuera dem toohello Azure-tjänsten.
 
 ## <a name="create-a-stream-analytics-job"></a>Skapa ett Stream Analytics-jobb
-1. I [Azure-portalen](http://portal.azure.com), klickar du på plustecknet och skriver sedan **STREAM ANALYTICS** i textfönstret till höger. Välj sedan **Stream Analytics-jobbet** i resultatlistan.
+1. I hello [Azure-portalen](http://portal.azure.com), klicka hello plustecken och skriv sedan **STREAM ANALYTICS** hello text fönstret toohello till höger. Välj sedan **Stream Analytics-jobbet** i hello resultatlistan.
    
     ![Skapa ett nytt Stream Analytics-jobb](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
-2. Ange ett unikt jobbnamn och kontrollera att prenumerationen är korrekt för jobbet. Skapa sedan en ny resursgrupp eller välj en befintlig på din prenumeration.
-3. Markera sedan en plats för jobbet. Det rekommenderas att välja samma plats som resursgruppen och avsett lagringskonto vid dataöverföring för snabb bearbetning och minskade kostnader.
+2. Ange ett unikt namn och kontrollera hello prenumeration är hello rätt en för ditt jobb. Skapa sedan en ny resursgrupp eller välj en befintlig på din prenumeration.
+3. Markera sedan en plats för jobbet. För snabb bearbetning och minskning av kostnaden i dataöverföring som du väljer hello rekommenderas samma plats som hello resursgrupp och avsedda storage-konto.
    
     ![Information om att skapa ett nytt Stream Analytics-jobb](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
    
@@ -61,61 +61,61 @@ För att förenkla användningen av den här komma igång-guiden ingår en exemp
    > Du bör endast skapa det här lagringskontot en gång per region. Den här lagringen delas mellan alla Stream Analytics-jobb som skapas i en region.
    > 
    > 
-4. Markera kryssrutan om du vill placera jobbet på instrumentpanelen och klicka sedan på **SKAPA**.
+4. Kontrollera hello rutan tooplace ditt jobb på instrumentpanelen och klicka sedan på **skapa**.
    
     ![jobbskapande pågår](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
-5. Du bör se Distribution startas... längst upp till höger i webbläsarfönstret. Snart ändras det till ett slutfört fönster såsom visas nedan.
+5. Du bör se en 'distributionen har startat... ”visas i hello upp till höger i webbläsarfönstret. Snart ändras tooa slutförts fönster som visas nedan.
    
     ![jobbskapande pågår](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
 ### <a name="create-an-azure-stream-analytics-query"></a>Skapa en Azure Stream Analytics-fråga
-När jobbet har skapats är det dags att öppna det och skapa en fråga. Du kan enkelt komma åt ditt jobb genom att klicka på panelen för det.
+När jobbet har skapats dess tid tooopen den och skapa en fråga. Du kan enkelt komma åt ditt jobb genom att klicka på panelen hello för den.
 
 ![Jobbpanel](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 
-I fönstret **Jobbtopologi** klickar du i rutan **FRÅGA** om du vill gå till frågeredigeraren. Via redigeraren **FRÅGA** kan du ange en T-SQL-fråga som utför transformationen av inkommande data.
+I hello **jobbet topologi** klickar du på hello **FRÅGAN** rutan toogo toohello frågeredigeraren. Hej **FRÅGAN** redigeraren kan du tooenter T-SQL-fråga som utför omvandlingen hello över hello inkommande händelsedata.
 
 ![Frågeruta](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
 ### <a name="query-archive-your-raw-data"></a>Fråga: Arkivera dina rådata
-Den enklaste typen av fråga är en anslutningsfråga som arkiverar alla indata till dess angivna utdataenheter. Hämta exempeldatafilen från [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) till en plats på datorn. 
+hello enklaste formen av frågan är en direktfråga som arkiverar alla indata tooits avses utdata. Hämta hello Exempeldatafilen från [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) tooa plats på datorn. 
 
-1. Klistra in frågan från filen PassThrough.txt. 
+1. Klistra in hello frågan från hello PassThrough.txt fil. 
    
     ![Testa indataströmmen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
-2. Klicka på de tre punkterna bredvid indata och välj rutan **Överför exempeldata från filen**.
+2. Klicka på hello tre punkter nästa tooyour indata och välj **ladda upp exempeldata från filen** rutan.
    
     ![Testa indataströmmen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
-3. Detta leder till att en ruta öppnas till höger, välj datafilen HelloWorldASA InputStream.json från din hämtade plats och klicka på **OK** längst ned i fönstret.
+3. Ett fönster som öppnas på hello som ett resultat, i den väljer hello HelloWorldASA-InputStream.json data från din hämtade plats och klicka på **OK** längst hello hello-fönstret.
    
     ![Testa indataströmmen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
-4. Klicka på kugghjulet **Testa** till vänster i den övre delen av fönstret och bearbeta testfrågan mot exempeldatauppsättningen. Ett resultatfönster öppnas under frågan när bearbetningen är klar.
+4. Klicka på hello **testa** redskap i hello övre vänstra del av hello fönster och bearbeta testa frågan mot hello exempeldatamängd. En resultatfönstret öppnas under frågan som hello bearbetningen är klar.
    
     ![Testresultat](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
-### <a name="query-filter-the-data-based-on-a-condition"></a>Fråga: Filtrera dina data baserat på ett villkor
-Nu ska vi prova att filtrera resultatet baserat på ett villkor. Vi vill bara visa resultat för de händelser som kommer från ”SensorA.” Frågan finns i filen Filtering.txt.
+### <a name="query-filter-hello-data-based-on-a-condition"></a>Fråga: Hello filterdata baserat på ett villkor
+Nu ska vi prova toofilter hello resultat baserat på ett villkor. Vi vill gärna tooshow resultat för de händelser som kommer från ”sensorA”. hello-frågan är i hello Filtering.txt-filen.
 
 ![Filtrera en dataström](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
-Observera att den skiftlägeskänsliga frågan jämför ett strängvärde. Klicka på kugghjulet **Testa** igen för att köra frågan. Frågan ska returnera 389 rader från 1860 händelser.
+Observera att hello skiftlägeskänsliga frågan jämför ett strängvärde. Klicka på hello **Test** redskap igen tooexecute hello frågan. hello frågan ska returnera 389 rader från 1 860 händelser.
 
 ![Andra utdataresultat från frågetest](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-09.png)
 
-### <a name="query-alert-to-trigger-a-business-workflow"></a>Fråga: Varna för att utlösa ett företagsarbetsflöde
-Nu gör vi vår fråga mer detaljerad. För varje sensortyp vill vi övervaka genomsnittstemperaturen per 30-sekundersfönster och visa resultat bara om genomsnittet överstiger 100 grader. Vi skriver följande fråga och klickar på **Testa** för att se resultaten. Frågan finns i filen ThresholdAlerting.txt.
+### <a name="query-alert-tootrigger-a-business-workflow"></a>Fråga: Varning tootrigger ett företagsarbetsflöde
+Nu gör vi vår fråga mer detaljerad. För varje typ av sensor vi vill toomonitor medeltemperaturen under 30 sekunder fönster och endast visa resultatet om genomsnittstemperaturen hello är över 100 grader. Vi kommer att skriva hello följande fråga och klicka sedan på **Test** toosee hello resultat. hello-frågan är i hello ThresholdAlerting.txt-filen.
 
 ![30 sekunders-filterfråga](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-Du bör nu endast se resultat som innehåller 245 rader och namnen på de sensorer där genomsnittstemperaturen överstiger 100 grader. Den här frågan grupperar händelseströmmen efter **dspl**, vilket är sensornamnet, under ett **Rullande fönster** på 30 sekunder. Tidsfrågor ska ange hur vi vill att tid ska behandlas. Med hjälp av **TIMESTAMP BY**-satsen har vi angett att kolumnen **OUTPUTTIME** ska associera tider med alla temporala beräkningar. Mer detaljerad information finns i MSDN-artiklarna om [tidshantering](https://msdn.microsoft.com/library/azure/mt582045.aspx) och [fönsterfunktioner](https://msdn.microsoft.com/library/azure/dn835019.aspx).
+Du bör nu se resultat som innehåller bara 245 rader och namnen på sensorer där medeltemperaturen hello är större än 100. Den här frågan grupper hello dataström med händelser efter **dspl**, vilket är hello sensornamnet över en **rullande fönster** på 30 sekunder. Temporala frågor måste ange hur vi vill tid tooprogress. Med hjälp av hello **TIMESTAMP BY** -sats har vi angett hello **OUTPUTTIME** kolumnen tooassociate gånger med alla temporala beräkningar. Detaljerad information finns i hello MSDN artiklar om [tidshantering](https://msdn.microsoft.com/library/azure/mt582045.aspx) och [fönsterhantering funktioner](https://msdn.microsoft.com/library/azure/dn835019.aspx).
 
 ### <a name="query-detect-absence-of-events"></a>Fråga: Identifiera avsaknad av händelser
-Hur kan vi skriva en fråga för att hitta brist på inmatningshändelser? Vi kan till exempel ta reda på den senaste gången en sensor skickade data, men sedan inte skickade några händelser under den följande minuten. Frågan finns i filen AbsenseOfEvent.txt.
+Hur kan vi skriva en fråga toofind bristande inkommande händelser? Hitta hello senast gör att en sensor skickade data och sedan inte skickade händelser för hello nästa minut. hello-frågan är i hello AbsenseOfEvent.txt-filen.
 
 ![Identifiera avsaknad av händelser](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-Här använder vi en **VÄNSTER YTTRE** koppling för samma dataström (självkoppling). För en **INRE** koppling returneras resultatet bara om en matchning hittas.  Om en händelse från vänster sida i kopplingen är omatchad i en **VÄNSTER YTTRE** koppling returneras en rad med NULL för alla kolumner i den högra sidan. Den här tekniken är väldigt användbar för att hitta frånvaro av händelser. Mer information om [JOIN](https://msdn.microsoft.com/library/azure/dn835026.aspx) finns i MSDN-dokumentationen.
+Här exemplet använder vi en **LEFT OUTER** ansluta toohello samma dataström (självkoppling). För en **INRE** koppling returneras resultatet bara om en matchning hittas.  För en **LEFT OUTER** koppling om en händelse från vänster sida av hello koppling hello är omatchad en rad som har NULL för alla hello kolumner i hello höger returneras. Den här metoden är användbar toofind frånvaro av händelser. Mer information om [JOIN](https://msdn.microsoft.com/library/azure/dn835026.aspx) finns i MSDN-dokumentationen.
 
 ## <a name="conclusion"></a>Slutsats
-Syftet med de här självstudierna är att demonstrera hur du skriver olika Stream Analytics Query Language-frågor och visar resultatet i webbläsaren. Men det här är bara början. Du kan göra så mycket mer med Stream Analytics. Stream Analytics stöder olika typer av indata och utdata och kan även använda funktioner i Azure Machine Learning, vilket gör det till ett stabilt verktyg för att analysera dataströmmar. Du kan lära dig mer om Stream Analytics med vår [utbildningskarta](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/). Mer information om hur du skriver frågor finns i artikeln om [vanliga frågemönster](stream-analytics-stream-analytics-query-patterns.md).
+hello syftet med den här kursen är toodemonstrate hur toowrite olika Stream Analytics-frågespråket frågor och se resulterar i hello webbläsare. Men det här är bara början. Du kan göra så mycket mer med Stream Analytics. Stream Analytics stöder en mängd olika in- och utdataenheter och kan även använda funktioner i Azure Machine Learning toomake den ett stabilt verktyg för analys av dataströmmar. Du kan starta tooexplore mer om Stream Analytics med hjälp av vår [Utbildningsväg](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/). Mer information om hur toowrite frågor, hello artikeln om [vanliga frågemönster](stream-analytics-stream-analytics-query-patterns.md).
 

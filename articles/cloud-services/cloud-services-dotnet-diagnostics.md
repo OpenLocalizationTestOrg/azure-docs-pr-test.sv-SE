@@ -1,6 +1,6 @@
 ---
-title: "Hur du använder Azure diagnostics (.NET) med molntjänster | Microsoft Docs"
-description: "Med Azure-diagnostik för att samla in data från Azure-molntjänster för felsökning, mäta prestanda, övervakning, trafik analys och mer."
+title: "aaaHow toouse Azure diagnostics (.NET) med molntjänster | Microsoft Docs"
+description: "Med hjälp av Azure-diagnostik toogather molntjänster data från Azure för felsökning mäta prestanda, övervakning, trafik analys och mer."
 services: cloud-services
 documentationcenter: .net
 author: rboucher
@@ -14,31 +14,31 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: robb
-ms.openlocfilehash: 333d2f26ce043a167fb84858c8327cb39e868ffa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1525eac1e85955d8f05aa21a9805e0a80d0e4bca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Aktivera Azure-diagnostik i Azure-molntjänster
 Se [översikt över Azure Diagnostics](../azure-diagnostics.md) för en bakgrund på Azure-diagnostik.
 
-## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Så här aktiverar du diagnostik i en Arbetsroll
-Här beskrivs hur du implementerar en Azure-arbetsroll som skickar telemetridata med hjälp av .NET EventSource-klassen. Azure-diagnostik för att samla in telemetridata och lagrar den i ett Azure storage-konto. När du skapar en arbetsroll kan Visual Studio automatiskt diagnostik 1.0 som en del av lösningen i Azure SDK för .NET 2.4 och tidigare. I följande anvisningar beskrivs processen för att skapa arbetsrollen inaktivera diagnostik 1.0 från lösningen, och distribuera diagnostik 1.2 eller 1.3 worker-rollen.
+## <a name="how-tooenable-diagnostics-in-a-worker-role"></a>Hur tooEnable diagnostik i en Arbetsroll
+Här beskrivs hur tooimplement en Azure-arbetsroll som genererar telemetri data med hjälp av hello EventSource .NET-klass. Azure-diagnostik är används toocollect hello telemetridata och lagrar den i ett Azure storage-konto. När du skapar en arbetsroll kan Visual Studio automatiskt diagnostik 1.0 som en del av hello lösning i Azure SDK för .NET 2.4 och tidigare. hello beskrivs följande anvisningar hello processen för att skapa hello arbetsrollen inaktiverar diagnostik 1.0 från hello lösning och distribuera diagnostik 1.2 eller 1.3 tooyour worker-rollen.
 
 ### <a name="prerequisites"></a>Krav
-Den här artikeln förutsätter att du har en Azure-prenumeration och använder Visual Studio med Azure SDK. Om du inte har en Azure-prenumeration kan du registrera dig för den [kostnadsfri utvärderingsversion][Free Trial]. Se till att [installera och konfigurera Azure PowerShell version 0.8.7 eller senare][Install and configure Azure PowerShell version 0.8.7 or later].
+Den här artikeln förutsätter att du har en Azure-prenumeration och använder Visual Studio med hello Azure SDK. Om du inte har en Azure-prenumeration kan du registrera dig för hello [kostnadsfri utvärderingsversion][Free Trial]. Kontrollera att för[installera och konfigurera Azure PowerShell version 0.8.7 eller senare][Install and configure Azure PowerShell version 0.8.7 or later].
 
 ### <a name="step-1-create-a-worker-role"></a>Steg 1: Skapa en Arbetsroll
 1. Starta **Visual Studio**.
-2. Skapa en **Azure Cloud Service** projektet från den **moln** mall som riktar sig till .NET Framework 4.5.  Namnge projektet ”WadExample” och klicka på Ok.
-3. Välj **Arbetsrollen** och klicka på Ok. Projektet kommer att skapas.
-4. I **Solution Explorer**, dubbelklicka på den **WorkerRole1** egenskaper för filen.
-5. I den **Configuration** fliken avmarkera **aktivera diagnostik** att inaktivera diagnostik 1.0 (Azure SDK 2.4 och tidigare versioner).
-6. Skapa en lösning för att kontrollera att du har några fel.
+2. Skapa en **Azure Cloud Service** projektet från hello **moln** mall som riktar sig till .NET Framework 4.5.  Namnge projektet hello ”WadExample” och klicka på Ok.
+3. Välj **Arbetsrollen** och klicka på Ok. hello projektet kommer att skapas.
+4. I **Solution Explorer**, dubbelklicka på hello **WorkerRole1** egenskaper för filen.
+5. I hello **Configuration** fliken avmarkera **aktivera diagnostik** toodisable diagnostik 1.0 (Azure SDK 2.4 och tidigare versioner).
+6. Skapa din lösning tooverify som du har inga fel.
 
 ### <a name="step-2-instrument-your-code"></a>Steg 2: Instrumentera koden
-Ersätt innehållet i WorkerRole.cs med följande kod. Klass SampleEventSourceWriter, som ärvts från det [EventSource klassen][EventSource Class], implementerar fyra metoderna för loggning: **SendEnums**, **MessageMethod** , **SetOther** och **HighFreq**. Den första parametern till den **WriteEvent** metod definierar ID för respektive händelsen. Metoden implementerar en oändlig loop som anropar metoderna för loggning som implementerats i den **SampleEventSourceWriter** klassen var 10: e sekund.
+Ersätt hello innehållet i WorkerRole.cs med hello följande kod. Hej klassen SampleEventSourceWriter, ärvs från hello [EventSource klassen][EventSource Class], implementerar fyra metoderna för loggning: **SendEnums**, **MessageMethod** , **SetOther** och **HighFreq**. Hej den första parametern toohello **WriteEvent** metod definierar hello-ID för respektive hello-händelse. hello metoden implementerar en oändlig loop som anropar varje hello loggningsmetoder som införts i hello **SampleEventSourceWriter** klassen var 10: e sekund.
 
 ```csharp
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -53,7 +53,7 @@ namespace WorkerRole1
     sealed class SampleEventSourceWriter : EventSource
     {
         public static SampleEventSourceWriter Log = new SampleEventSourceWriter();
-        public void SendEnums(MyColor color, MyFlags flags) { if (IsEnabled())  WriteEvent(1, (int)color, (int)flags); }// Cast enums to int for efficient logging.
+        public void SendEnums(MyColor color, MyFlags flags) { if (IsEnabled())  WriteEvent(1, (int)color, (int)flags); }// Cast enums tooint for efficient logging.
         public void MessageMethod(string Message) { if (IsEnabled())  WriteEvent(2, Message); }
         public void SetOther(bool flag, int myInt) { if (IsEnabled())  WriteEvent(3, flag, myInt); }
         public void HighFreq(int value) { if (IsEnabled()) WriteEvent(4, value); }
@@ -89,7 +89,7 @@ namespace WorkerRole1
                 Thread.Sleep(10000);
                 Trace.TraceInformation("Working");
 
-                // Emit several events every time we go through the loop
+                // Emit several events every time we go through hello loop
                 for (int i = 0; i < 6; i++)
                 {
                     SampleEventSourceWriter.Log.SendEnums(MyColor.Blue, MyFlags.Flag2 | MyFlags.Flag3);
@@ -108,11 +108,11 @@ namespace WorkerRole1
 
         public override bool OnStart()
         {
-            // Set the maximum number of concurrent connections
+            // Set hello maximum number of concurrent connections
             ServicePointManager.DefaultConnectionLimit = 12;
 
             // For information on handling configuration changes
-            // see the MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
+            // see hello MSDN topic at http://go.microsoft.com/fwlink/?LinkId=166357.
 
             return base.OnStart();
         }
@@ -125,26 +125,26 @@ namespace WorkerRole1
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
-1. Distribuera arbetsrollen till Azure från Visual Studio genom att välja den **WadExample** projektet i Solution Explorer sedan **publicera** från den **skapa** menyn.
+1. Distribuera din worker-rollen tooAzure från Visual Studio genom att välja hello **WadExample** projekt i hello Solution Explorer sedan **publicera** från hello **skapa** menyn.
 2. Välj din prenumeration.
-3. I den **Publiceringsinställningar i Microsoft Azure** markerar **Skapa nytt...** .
-4. I den **skapa Molntjänsten och Lagringskontot** dialogrutan, ange en **namn** (till exempel ”WadExample”) och välj en region eller affinitetsgrupp.
-5. Ange den **miljö** till **mellanlagring**.
+3. I hello **Publiceringsinställningar i Microsoft Azure** markerar **Skapa nytt...** .
+4. I hello **skapa Molntjänsten och Lagringskontot** dialogrutan, ange en **namn** (till exempel ”WadExample”) och välj en region eller affinitetsgrupp.
+5. Ange hello **miljö** för**mellanlagring**.
 6. Ändra andra **inställningar** som behövs och klicka på **publicera**.
-7. När distributionen har slutförts, verifiera i Azure-portalen som din molntjänst i en **kör** tillstånd.
+7. När distributionen har slutförts, verifiera i hello Azure-portalen som din molntjänst i en **kör** tillstånd.
 
-### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>Steg 4: Skapa konfigurationsfilen diagnostik och installera tillägget
-1. Hämta schemadefinitionen offentliga konfiguration filen genom att köra följande PowerShell-kommando:
+### <a name="step-4-create-your-diagnostics-configuration-file-and-install-hello-extension"></a>Steg 4: Skapa konfigurationsfilen diagnostik och installera tillägg för hello
+1. Hämta hello offentliga konfiguration filen schemadefinition genom att köra följande PowerShell-kommando hello:
 
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Lägg till en XML-fil till din **WorkerRole1** projektet genom att högerklicka på den **WorkerRole1** projektet och välj **Lägg till** -> **nytt objekt...** -> **Visual C# objekt** -> **Data** -> **XML-filen**. Namn på filen ”WadExample.xml”.
+2. Lägg till en XML-filen tooyour **WorkerRole1** projektet genom att högerklicka på hello **WorkerRole1** projektet och välj **Lägg till** -> **nytt objekt...** -> **Visual C# objekt** -> **Data** -> **XML-filen**. Namnet hello filen ”WadExample.xml”.
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. Koppla WadConfig.xsd till konfigurationsfilen. Kontrollera att WadExample.xml editor-fönstret är det aktiva fönstret. Tryck på **F4** att öppna den **egenskaper** fönster. Klicka på den **scheman** egenskap i den **egenskaper** fönster. Klicka på den **...** i den **scheman** egenskapen. Klicka på **Lägg …** och navigera till den plats där du sparade XSD-filen och välj filen WadConfig.xsd. Klicka på **OK**.
+3. Associera hello WadConfig.xsd med hello konfigurationsfilen. Se till att hello WadExample.xml editor-fönstret hello aktivt fönster. Tryck på **F4** tooopen hello **egenskaper** fönster. Klicka på hello **scheman** egenskap i hello **egenskaper** fönster. Klicka på hello **...** i hello **scheman** egenskapen. Klicka på hello **Lägg till...** knappen och navigera toohello plats där du sparade hello XSD-filen och välj hello filen WadConfig.xsd. Klicka på **OK**.
 
-4. Ersätt innehållet i konfigurationsfilen WadExample.xml med följande XML och spara filen. Den här konfigurationsfilen definierar några prestandaräknare för att samla in: en för CPU-användning och en för minnesanvändning. Konfigurationen definierar de fyra händelser som motsvarar metoderna i klassen SampleEventSourceWriter.
+4. Ersätt hello innehållet i konfigurationsfilen för hello WadExample.xml med hello följande XML och spara hello-fil. Den här konfigurationsfilen definierar några prestandaräknare toocollect: en för CPU-användning och en för minnesanvändning. Sedan definierar hello configuration hello fyra händelser motsvarande toohello metoder i hello SampleEventSourceWriter klass.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -170,10 +170,10 @@ namespace WorkerRole1
 ```
 
 ### <a name="step-5-install-diagnostics-on-your-worker-role"></a>Steg 5: Installera diagnostik på Worker-rollen
-PowerShell-cmdletar för att hantera diagnostik för en webb- eller arbetarroll roll är: Set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension och ta bort AzureServiceDiagnosticsExtension.
+hello PowerShell-cmdlets för att hantera diagnostik för en webb- eller arbetarroll roll är: Set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension och ta bort AzureServiceDiagnosticsExtension.
 
 1. Öppna Azure PowerShell.
-2. Kör skriptet för att installera diagnostik på worker-rollen (Ersätt *StorageAccountKey* med lagringskontonyckel lagringskontots wadexample och *config_path* med sökvägen till  *WadExample.xml* filen):
+2. Köra hello skriptet tooinstall diagnostik på worker-rollen (Ersätt *StorageAccountKey* med hello lagringskontonyckel lagringskontots wadexample och *config_path* med hello sökvägen toohello *WadExample.xml* filen):
 
 ```powershell
 $storage_name = "wadexample"
@@ -185,18 +185,18 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 ```
 
 ### <a name="step-6-look-at-your-telemetry-data"></a>Steg 6: Visa telemetridata
-I Visual Studio **Server Explorer**, navigera till wadexample storage-konto. När Molntjänsten har körts cirka fem (5) minuter, bör du se tabellerna **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** och **WADSetOtherTable**. Dubbelklicka på en av tabellerna för att visa telemetri som har samlats in.
+I hello Visual Studio **Server Explorer**, navigera toohello wadexample storage-konto. När hello Molntjänsten har körts cirka fem (5) minuter, bör du se hello tabeller **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**, **WADPerformanceCountersTable** och **WADSetOtherTable**. Dubbelklicka på en hello tabeller tooview hello telemetri som har samlats in.
 
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>Schemat för konfigurationsfilen
-Konfigurationsfilen diagnostik definierar värden som används för att initiera diagnostiska konfigurationsinställningar när diagnostik agenten startas. Finns det [senaste Schemareferens](https://msdn.microsoft.com/library/azure/mt634524.aspx) giltiga värden och exempel.
+hello diagnostik konfigurationsfilen definierar värden som används tooinitialize diagnostiska konfigurationsinställningar när hello diagnostik agent startas. Se hello [senaste Schemareferens](https://msdn.microsoft.com/library/azure/mt634524.aspx) giltiga värden och exempel.
 
 ## <a name="troubleshooting"></a>Felsökning
 Om du har problem med att se [felsökning Azure Diagnostics](../azure-diagnostics-troubleshooting.md) för hjälp med vanliga problem.
 
 ## <a name="next-steps"></a>Nästa steg
-[Visa en lista över relaterade Azure virtuella datorer diagnostiska artiklar](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) felsökning om du vill ändra de data du samlar in eller Läs mer om diagnostik i allmänhet.
+[Visa en lista över relaterade Azure virtuella datorer diagnostiska artiklar](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) toochange hello data du samlar in, felsöka problem eller Läs mer om diagnostik i allmänhet.
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

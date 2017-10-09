@@ -1,6 +1,6 @@
 ---
-title: "Etablera datavetenskap virtuell dator för Linux (Ubuntu) i Azure | Microsoft Docs"
-description: "Konfigurera och skapa en datavetenskap virtuell dator för Linux (Ubuntu) i Azure för att utföra analyser och maskininlärning."
+title: "aaaProvision hello datavetenskap virtuell dator för Linux (Ubuntu) i Azure | Microsoft Docs"
+description: "Konfigurera och skapa en datavetenskap virtuell dator för Linux (Ubuntu) på Azure toodo analytics och maskininlärning."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: 148603618a7da05d250a6c4f789a212e98791e53
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 037c126c0a35d8065fc89c591089df73d2b91425
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Etablera datavetenskap virtuell dator för Linux (Ubuntu)
-Datavetenskap virtuell dator för Linux är en bild av Ubuntu-baserad virtuell dator som gör det enkelt att komma igång med djup learning på Azure. Djupgående learning verktyg är:
+# <a name="provision-hello-data-science-virtual-machine-for-linux-ubuntu"></a>Etablera hello datavetenskap virtuell dator för Linux (Ubuntu)
+hello datavetenskap virtuell dator för Linux är en Ubuntu-baserad avbildning av virtuell dator som gör det enkelt tooget igång med djup learning på Azure. Djupgående learning verktyg är:
 
   * [Caffe](http://caffe.berkeleyvision.org/): ett ramverk för djup learning byggd för hastighet, expressivity och modularitet
   * [Caffe2](https://github.com/caffe2/caffe2): en plattformsoberoende version av Caffe
@@ -33,12 +33,12 @@ Datavetenskap virtuell dator för Linux är en bild av Ubuntu-baserad virtuell d
   * [TensorFlow](https://www.tensorflow.org/): ett bibliotek för öppen källkod för datorn intelligence från Google
   * [Theano](http://deeplearning.net/software/theano/): A Python-bibliotek för att definiera, optimera och effektivt utvärderar matematiska uttryck som involverar flerdimensionella matriser
   * [Torch](http://torch.ch/): ett vetenskapliga databehandling ramverk med brett stöd för maskininlärningsalgoritmer
-  * CUDA, cuDNN och NVIDIA-drivrutinen
+  * CUDA, cuDNN och hello NVIDIA drivrutinen
   * Många exempel Jupyter-anteckningsböcker
 
-Alla bibliotek är GPU-versioner, men de kan också köras på Processorn.
+Alla bibliotek är hello GPU-versioner, men de kan också köras på hello CPU.
 
-Datavetenskap virtuell dator för Linux innehåller även populära verktyg för data vetenskap och utveckling aktiviteter, inklusive:
+hello datavetenskap virtuell dator för Linux innehåller även populära verktyg för data vetenskap och utveckling aktiviteter, inklusive:
 
 * Microsoft R Server Developer Edition med Microsoft R öppet
 * Anaconda Python-distribution (version 2.7 och 3.5), inklusive populära data analysbibliotek
@@ -61,45 +61,45 @@ Gör datavetenskap omfattar iteration av en serie uppgifter:
 
 1. Hitta, läsa in och förbearbetning av data
 2. Skapa och testa modeller
-3. Distribuera modeller för användning i intelligent program
+3. Distribuera hello modeller för användning i intelligent program
 
-Datavetare utföra dessa uppgifter med hjälp av olika verktyg. Det kan ta mycket lång tid att hitta rätt versioner av programvaran och sedan ladda ned, kompilera och installera dessa versioner.
+Datavetare använda olika verktyg toocomplete dessa uppgifter. Det kan vara ganska tidskrävande toofind hello lämpliga programversioner hello och sedan toodownload, kompilera och installera dessa versioner.
 
-Datavetenskap virtuell dator för Linux kan avsevärt minska det här problemet. Använd den för att projektet analytics. På så sätt kan du arbeta med aktiviteter på olika språk, inklusive R, Python, SQL, Java och C++. Azure SDK om du ingår i den virtuella datorn kan du skapa program med hjälp av olika tjänster på Linux för Microsoft cloud-plattformen. Dessutom har du åtkomst till andra språk som Ruby, Perl, PHP och node.js som också har förinstallerat.
+hello datavetenskap virtuell dator för Linux kan avsevärt minska det här problemet. Använda den toojump starta projektet analytics. Den låter dig toowork på uppgifter på olika språk, inklusive R, Python, SQL, Java och C++. hello Azure SDK ingår i hello VM kan du toobuild dina program med hjälp av olika tjänster på Linux för hello Microsoft cloud-plattformen. Dessutom har du åtkomst tooother språk som Ruby, Perl, PHP och node.js som också har förinstallerat.
 
-Det finns inga avgifter för programvara för den här datavetenskap VM-avbildning. Du betalar endast Azure maskinvara användning avgifter som utvärderas baserat på storleken på den virtuella datorn som du etablerar. Mer information om beräkning avgifter kan hittas på den [VM lista sida på Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+Det finns inga avgifter för programvara för den här datavetenskap VM-avbildning. Du betalar endast hello Azure maskinvara användning avgifter som utvärderas baserat på hello storleken på hello virtuell dator som du etablerar. Mer information om hello compute avgifter kan hittas på hello [VM lista sida på hello Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
 
-## <a name="other-versions-of-the-data-science-virtual-machine"></a>Andra versioner av datavetenskap virtuell dator
-En [CentOS](machine-learning-data-science-linux-dsvm-intro.md) bilden är också tillgänglig, med många av samma verktyg som Ubuntu-bild. En [Windows](machine-learning-data-science-provision-vm.md) bilden är också tillgänglig.
+## <a name="other-versions-of-hello-data-science-virtual-machine"></a>Andra versioner av hello datavetenskap virtuell dator
+En [CentOS](machine-learning-data-science-linux-dsvm-intro.md) bilden är också tillgänglig, med många av hello samma verktyg som hello Ubuntu avbildningen. En [Windows](machine-learning-data-science-provision-vm.md) bilden är också tillgänglig.
 
 ## <a name="prerequisites"></a>Krav
-Innan du kan skapa en virtuell dator för vetenskap av Data för Linux, måste du ha en Azure-prenumeration. Om du vill skaffa en finns [hämta kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/free/).
+Innan du kan skapa en virtuell dator för vetenskap av Data för Linux, måste du ha en Azure-prenumeration. tooobtain, se [hämta kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>Skapa din datavetenskap virtuell dator för Linux
-Här följer stegen för att skapa en instans av datavetenskap Virtual Machine för Linux:
+Här följer hello steg toocreate en instans av hello datavetenskap virtuell dator för Linux:
 
-1. Navigera till den virtuella datorn med på den [Azure-portalen](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu).
-2. Klicka på **skapa** (längst ned) så att guiden.![ Konfigurera-data-vetenskap-vm](./media/machine-learning-data-science-dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
-3. Följande avsnitt innehåller indata för varje steg i guiden (räkna upp till höger i föregående bild) som används för att skapa Microsoft datavetenskap Virtual Machine. Här följer de indata som behövs för att konfigurera var och en av de här stegen:
+1. Navigera toohello virtuella lista på hello [Azure-portalen](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu).
+2. Klicka på **skapa** (längst ned hello) toobring hello guiden Installera.![ Konfigurera-data-vetenskap-vm](./media/machine-learning-data-science-dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
+3. hello följande avsnitt ger hello indata för varje hello stegen i guiden för hello (räknas upp på hello höger i föregående bild hello) använda toocreate hello Microsoft datavetenskap Virtual Machine. Här följer hello indata behövs tooconfigure varje av de här stegen:
    
    a. **Grunderna**:
    
    * **Namnet**: namnet på din server för vetenskap av data som du skapar.
    * **Användarnamnet**: första kontot inloggning ID.
    * **Lösenordet**: första kontolösenord (du kan använda offentliga SSH-nyckeln i stället för lösenord).
-   * **Prenumerationen**: Om du har mer än en prenumeration väljer du en som datorn ska skapas och debiteras. Du måste ha behörighet för resursen skapas för den här prenumerationen.
+   * **Prenumerationen**: Om du har mer än en prenumeration väljer hello en på vilka hello datorn är toobe skapas och debiteras. Du måste ha behörighet för resursen skapas för den här prenumerationen.
    * **Resursgruppen**: du kan skapa en ny eller Använd en befintlig grupp.
-   * **Plats**: Välj datacenter som är mest lämplig. Vanligtvis är det datacenter som har de flesta av dina data, eller så ligger närmast din fysiska platsen för snabbaste nätverksåtkomst.
+   * **Plats**: Välj hello datacenter som är mest lämplig. Det är vanligtvis hello datacenter som har de flesta av dina data, eller som är närmast tooyour fysiska platsen för snabbaste nätverksåtkomst.
    
    b. **Storlek**:
    
-   * Välj en av de servertyper som uppfyller dina krav på funktionsnivå och kostnaden begränsningar. Välj **visa alla** att se fler alternativ för VM-storlekar. Välj en virtuell dator i NC-klass för GPU utbildning.
+   * Välj en av hello servertyper som uppfyller dina krav på funktionsnivå och kostnaden begränsningar. Välj **visa alla** toosee VM-storlekar på fler sätt. Välj en virtuell dator i NC-klass för GPU utbildning.
    
    c. **Inställningar för**:
    
    * **Disktyp**: Välj **Premium** om du föredrar Solid-State-hårddisk (SSD). Annars väljer du **Standard**. GPU VMs kräver en disk som Standard.
-   * **Lagringskontot**: du kan skapa ett nytt Azure storage-konto i din prenumeration eller använda en befintlig på samma plats som har valts på den **grunderna** steg i guiden.
-   * **Andra parametrar**: I de flesta fall kan du bara använda standardvärdena. Hovra över informationsmeddelande länken Hjälp om specifika fält för att överväga icke-standardvärden.
+   * **Lagringskontot**: du kan skapa ett nytt Azure storage-konto i din prenumeration, eller använda en befintlig i hello samma plats som har valts på hello **grunderna** steg hello guiden.
+   * **Andra parametrar**: I de flesta fall kan du bara använda hello standardvärden. tooconsider icke-standardvärden, hovra över hello informationsmeddelande länk för hjälp om hello specifika fält.
    
    d. **Sammanfattning**:
    
@@ -107,143 +107,143 @@ Här följer stegen för att skapa en instans av datavetenskap Virtual Machine f
    
    e. **Köpa**:
    
-   * Starta etableringen, klicka på **köpa**. En länk som villkoren i transaktionen. Den virtuella datorn inte har några ytterligare kostnader utöver beräkning för server-storlek som du har valt i den **storlek** steg.
+   * toostart Hej etablering, klickar du på **köpa**. En länk som toohello användningsvillkor hello transaktion. hello VM har inte några ytterligare kostnader utöver hello beräkning för hello server storlek som du valde i hello **storlek** steg.
 
-Etableringen bör ta 5-10 minuter. Status för etablering av visas på Azure-portalen.
+hello etablering bör ta 5-10 minuter. hello status för etablering av hello visas på hello Azure-portalen.
 
-## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Hur du kommer åt datavetenskap virtuell dator för Linux
-När den virtuella datorn har skapats kan logga du in till den med hjälp av SSH. Använd de kontoautentiseringsuppgifter som du skapade i den **grunderna** avsnitt i steg 3 för gränssnittet text shell. På Windows, kan du ladda ned en SSH-klientverktyg som [Putty](http://www.putty.org). Du kan använda X11 vidarebefordran på Putty eller installera X2Go klienten om du föredrar en grafisk skrivbord (X Windows System).
+## <a name="how-tooaccess-hello-data-science-virtual-machine-for-linux"></a>Hur tooaccess hello datavetenskap virtuell dator för Linux
+Efter hello virtuell dator skapas, kan du logga in tooit med hjälp av SSH. Använd hello autentiseringsuppgifter som du skapade i hello **grunderna** avsnitt i steg 3 för hello text shell-gränssnittet. På Windows, kan du ladda ned en SSH-klientverktyg som [Putty](http://www.putty.org). Du kan använda X11 vidarebefordran på Putty eller installera hello X2Go klienten om du föredrar en grafisk skrivbord (X Windows System).
 
 > [!NOTE]
-> Klienten X2Go utföra betydligt bättre än X11 vidarebefordran i testning. Vi rekommenderar att du använder X2Go-klienten för ett grafiskt gränssnitt för fjärrskrivbord.
+> Hej X2Go klienten utföra betydligt bättre än X11 vidarebefordran i testning. Vi rekommenderar att du använder hello X2Go klienten för ett grafiskt gränssnitt för fjärrskrivbord.
 > 
 > 
 
 ## <a name="installing-and-configuring-x2go-client"></a>Installera och konfigurera X2Go klienten
-Linux VM är redan etablerade med X2Go server och redo att acceptera anslutningar. Gör följande på klienten för att ansluta till Linux VM grafiska skrivbordet:
+hello Linux VM har redan etablerats med X2Go server och redo tooaccept klientanslutningar. tooconnect toohello Linux VM grafiska skrivbordet hello följa på klienten:
 
-1. Hämta och installera klienten för din klientplattform från X2Go [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
-2. Kör klienten X2Go och välj **ny Session**. Öppnar ett fönster för konfiguration med flera flikar. Ange följande konfigurationsparametrar:
+1. Hämta och installera hello X2Go klienten för din klientplattform från [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
+2. Köra hello X2Go klienten och välja **ny Session**. Öppnar ett fönster för konfiguration med flera flikar. Ange hello följande konfigurationsparametrar:
    * **Sessionen fliken**:
-     * **Värden**: värdnamn eller IP-adressen för din Linux datavetenskap VM.
-     * **Inloggningen**: användarnamn på Linux-VM.
-     * **SSH-Port**: lämna på 22, standardvärdet.
-     * **Sessionstyp**: ändra värdet till XFCE. Linux VM stöder för närvarande endast XFCE skrivbordet.
-   * **Fliken Media**: du kan inaktivera stöd för ljud och skriva ut om du inte behöver använda dem-klienten.
-   * **Delade mappar**: Om du vill kataloger från dina klientdatorer monteras på Linux VM, lägger du till klienten datorn kataloger som du vill dela med den virtuella datorn på den här fliken.
+     * **Värden**: hello värdnamn eller IP-adressen för din Linux datavetenskap VM.
+     * **Inloggningen**: användarnamn på hello Linux VM.
+     * **SSH-Port**: lämnar den 22 hello standardvärdet.
+     * **Sessionstyp**: ändra hello värdet tooXFCE. Hello Linux VM stöder för närvarande endast XFCE skrivbordet.
+   * **Fliken Media**: du kan inaktivera stöd för ljud och klienten utskrift om du inte behöver toouse dem.
+   * **Delade mappar**: Om du vill kataloger från dina klientdatorer monteras på hello Linux VM, lägga till hello klienten datorn kataloger som du vill tooshare med hello VM på den här fliken.
 
-När du loggar in på den virtuella datorn med hjälp av SSH-klienten eller XFCE grafiska via X2Go klienten, är du redo att börja använda verktygen som installeras och konfigureras på den virtuella datorn. På XFCE, kan du se program menyn genvägar och ikoner på skrivbordet för många av verktyg.
+När du loggar in toohello VM med hjälp av hello SSH-klienten eller XFCE grafiska via hello X2Go klienten är klar toostart använda hello verktyg som installerats och konfigurerats på hello VM. På XFCE, kan du se program menyn genvägar och ikoner på skrivbordet för många hello verktyg.
 
-## <a name="tools-installed-on-the-data-science-virtual-machine-for-linux"></a>Verktygen som installeras på den datavetenskap virtuella datorn för Linux
+## <a name="tools-installed-on-hello-data-science-virtual-machine-for-linux"></a>Verktygen som installeras på hello datavetenskap virtuell dator för Linux
 ### <a name="deep-learning-libraries"></a>Djupgående Learning bibliotek
 
 #### <a name="cntk"></a>CNTK
-Microsoft Cognitive Toolki – kallas även CNTK - är öppen källkod djup learning toolkit. Python-bindningar är tillgängliga i rot- och py35 Conda miljöer. Det har också ett kommandoradsverktyg (cntk) som redan finns i SÖKVÄGEN.
+hello Microsoft kognitiva Toolki – kallas även CNTK - är öppen källkod djup learning toolkit. Python-bindningar är tillgängliga i hello rot- och py35 Conda miljöer. Det har också ett kommandoradsverktyg (cntk) som redan hello sökväg.
 
-Exempel Python anteckningsböcker är tillgängliga i JupyterHub. Kör följande kommandon i gränssnittet för att köra ett grundläggande exempel på kommandoraden:
+Exempel Python anteckningsböcker är tillgängliga i JupyterHub. toorun ett grundläggande exempel på kommandoraden för hello, kör du följande kommandon i hello shell hello:
 
     cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
     cntk configFile=lr_bs.cntk makeMode=false command=Train
 
-Mer information finns i avsnittet CNTK i [GitHub](https://github.com/Microsoft/CNTK), och [CNTK wiki](https://github.com/Microsoft/CNTK/wiki).
+Mer information finns i hello CNTK avsnitt i [GitHub](https://github.com/Microsoft/CNTK), och hello [CNTK wiki](https://github.com/Microsoft/CNTK/wiki).
 
 #### <a name="caffe"></a>Caffe
-Caffe är ett ramverk för djup learning från Berkeley Vision och Learning Center. Den är tillgänglig i /opt/caffe. Exempel finns i /opt/caffe/examples.
+Caffe är en djup framework från hello Berkeley Vision och Learning Center. Den är tillgänglig i /opt/caffe. Exempel finns i /opt/caffe/examples.
 
 #### <a name="caffe2"></a>Caffe2
-Caffe2 är ett ramverk för djup learning från Facebook som bygger på Caffe. Den är tillgänglig i Python 2.7 i Conda rot-miljö. Kör följande från gränssnittet för att aktivera den:
+Caffe2 är ett ramverk för djup learning från Facebook som bygger på Caffe. Den är tillgänglig i Python 2.7 i hello Conda rot-miljö. tooactivate den kör hello följande från hello shell:
 
     source /anaconda/bin/activate root
 
 Vissa exempel bärbara datorer är tillgängliga i JupyterHub.
 
 #### <a name="h2o"></a>H2O
-H2O är en snabb, i minnet och distribuerade machine learning och förutsägelseanalys plattform. En Python-paketet har installerats i rot- och py35 Anaconda-miljöer. Ett R-paket installeras även. Starta H2O från kommandoraden kör `java -jar /dsvm/tools/h2o/current/h2o.jar`; det finns olika [kommandoradsalternativ](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) som du kan konfigurera. Webbgränssnittet flöda kan nås genom att bläddra till http://localhost:54321 att komma igång. Exempel bärbara datorer är också tillgängliga i JupyterHub.
+H2O är en snabb, i minnet och distribuerade machine learning och förutsägelseanalys plattform. En Python-paketet har installerats i båda hello rot och py35 Anaconda miljöer. Ett R-paket installeras även. toostart H2O från hello kommandorad kör `java -jar /dsvm/tools/h2o/current/h2o.jar`; det finns olika [kommandoradsalternativ](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) kan som du tooconfigure. hello flöda Webbgränssnittet kan nås genom att bläddra toohttp://localhost:54321 tooget igång. Exempel bärbara datorer är också tillgängliga i JupyterHub.
 
 #### <a name="keras"></a>Keras
-Keras är ett övergripande neurala nätverk API i Python som kan köras på överkant Tensorflow eller Theano. Den är tillgänglig i de rot- och py35 Python-miljöerna. 
+Keras är ett övergripande neurala nätverk API i Python som kan köras på överkant Tensorflow eller Theano. Den är tillgänglig i hello rot och py35 Python-miljöer. 
 
 #### <a name="mxnet"></a>MXNet
-MXNet är ett ramverk för djup learning som utformats för både effektivitet och flexibilitet. Den har R och Python bindningar som ingår i DSVM. Exempel bärbara datorer ingår i JupyterHub och exempelkod finns i /dsvm/samples/mxnet.
+MXNet är ett ramverk för djup learning som utformats för både effektivitet och flexibilitet. Den har R och Python bindningar på hello DSVM. Exempel bärbara datorer ingår i JupyterHub och exempelkod finns i /dsvm/samples/mxnet.
 
 #### <a name="nvidia-digits"></a>NVIDIA SIFFROR
-NVIDIA djup Learning GPU utbildning systemet, kallas även SIFFROR, är ett system för att förenkla vanliga djup learning aktiviteter som hanterar data, utforma och neurala nätverk på GPU system och övervakning av prestanda i realtid med avancerade visualiseringen. 
+hello NVIDIA djup Learning GPU utbildning System, kallas även SIFFROR, är ett system toosimplify vanliga djup learning aktiviteter som att hantera data, utforma och neurala nätverk på GPU system och övervakning av prestanda i realtid med avancerade visualiseringen. 
 
-SIFFROR är tillgänglig som en tjänst som kallas siffror. Starta tjänsten och bläddra till http://localhost:5000 att komma igång.
+SIFFROR är tillgänglig som en tjänst som kallas siffror. Starta hello-tjänsten och bläddra toohttp://localhost:5000 tooget igång.
 
-SIFFROR installeras även som en Python-modul i Conda rot-miljö.
+SIFFROR installeras även som en Python-modul i hello Conda rot-miljö.
 
 #### <a name="tensorflow"></a>TensorFlow
-TensorFlow är Googles djup learning bibliotek. Det är en öppen källkod programbibliotek för numeriska beräkning med hjälp av diagram för flödet av data. TensorFlow är tillgängliga i py35 Python-miljö och vissa exempel bärbara datorer ingår i JupyterHub.
+TensorFlow är Googles djup learning bibliotek. Det är en öppen källkod programbibliotek för numeriska beräkning med hjälp av diagram för flödet av data. Vissa exempel bärbara datorer ingår i JupyterHub TensorFlow är tillgängliga i hello py35 Python-miljö.
 
 #### <a name="theano"></a>Theano
-Theano är en Python-bibliotek för effektiv numeriska beräkning. Den är tillgänglig i de rot- och py35 Python-miljöerna. 
+Theano är en Python-bibliotek för effektiv numeriska beräkning. Den är tillgänglig i hello rot och py35 Python-miljöer. 
 
 #### <a name="torch"></a>Torch
-Torch är ett vetenskapliga databehandling ramverk med brett stöd för maskininlärningsalgoritmer. Det är tillgängligt i /dsvm/tools/torch och th interaktiva sessionen och luarocks Pakethanteraren är tillgängliga på kommandoraden. Exempel är tillgängliga i /dsvm/samples/torch.
+Torch är ett vetenskapliga databehandling ramverk med brett stöd för maskininlärningsalgoritmer. Den är tillgänglig i /dsvm/tools/torch och hello th interaktiva sessionen och luarocks Pakethanteraren är tillgängliga på hello-kommandoraden. Exempel är tillgängliga i /dsvm/samples/torch.
 
-PyTorch är också tillgängliga i roten Anaconda-miljö. Exempel är i /dsvm/samples/pytorch.
+PyTorch är också tillgängliga i hello rot Anaconda miljö. Exempel är i /dsvm/samples/pytorch.
 
 ### <a name="microsoft-r-server"></a>Microsoft R Server
-R är en av de vanligaste språken för dataanalys och maskininlärning. Om du vill använda R för din analys av har den virtuella datorn Microsoft R Server (FRU) med Microsoft R öppna (MRO) och matematiska Kernel-biblioteket (MKL). MKL optimerar matematiska operations vanligt i analytiska algoritmer. MRO är 100 procent kompatibel med R CRAN och någon av R-bibliotek som publicerats i CRAN kan installeras på MRO. FRU ger dig skalning och operationalization R modeller till webbtjänster. Du kan redigera din R-program på en standard-redigerare, t.ex. RStudio, vi och Emacs. Om du använder redigeraren Emacs har arbeta med R-filer i redigeraren Emacs Observera att Emacs paketet EDDELANDEN (Emacs talar statistik), vilket förenklar förinstallerat.
+R är en av hello vanligaste språken för dataanalys och maskininlärning. Om du vill toouse R för din analytics har hello VM Microsoft R Server (FRU) med hello Microsoft R öppna (MRO) och matematiska Kernel-biblioteket (MKL). Hej MKL optimerar matematiska operations vanligt i analytiska algoritmer. MRO är 100 procent kompatibel med R CRAN och någon av hello R-bibliotek som publicerats i CRAN kan installeras på hello MRO. FRU ger dig skalning och operationalization R modeller till webbtjänster. Du kan redigera din R-program i ett hello standard redigerare, t.ex. RStudio, vi och Emacs. Om du använder hello Emacs editor Observera hello Emacs paketet EDDELANDEN (Emacs talar statistik), har som förenklar arbetar med R filer hello Emacs Editor redan installerats.
 
-Att starta R konsolen kan du börja skriva **R** i gränssnittet. Då kommer du till en interaktiv miljö. Du använder vanligtvis en redigerare som Emacs eller vi för att utveckla ditt R-program och sedan köra skript i R. Med RStudio har du en fullständigt grafiskt IDE-miljö för att utveckla ditt R-program.
+toolaunch R konsolen du skriver **R** hello Shell. Då kommer du tooan interaktiv miljö. toodevelop R-program du använder vanligtvis en redigerare som Emacs eller vi och sedan köra hello skript i R. Med RStudio har ett fullständigt grafiskt IDE-miljö toodevelop R-programmet.
 
-Det finns också ett R-skript att installera den [upp 20 R-paket](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) om du vill. Det här skriptet kan köras när du är i R interaktiva gränssnittet, som kan anges (som tidigare nämnts) genom att skriva **R** i gränssnittet.  
+Det finns också ett R-skript för tooinstall hello [upp 20 R-paket](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) om du vill. Det här skriptet kan köras när du är i interaktiva hello R-gränssnittet, som kan anges (som tidigare nämnts) genom att skriva **R** hello Shell.  
 
 ### <a name="python"></a>Python
-För utveckling med hjälp av Python, har distribution av Anaconda Python 2.7 och 3.5 installerats. Den här distributionen innehåller grundläggande Python tillsammans med ungefär 300 populäraste matematiska, ingenjörer och data analytics paket. Du kan använda standard textredigerare. Du kan dessutom använda Spyder, en Python IDE som medföljer Anaconda Python-distributioner. Spyder måste ha ett grafiskt skrivbord eller X11 vidarebefordran. En genväg till Spyder tillhandahålls i grafiska skrivbordet.
+För utveckling med hjälp av Python, har distribution av Anaconda Python 2.7 och 3.5 installerats. Den här distributionen innehåller hello basera Python tillsammans med ungefär 300 hello populäraste matematiska, ingenjörer och data analytics paket. Du kan använda hello standard textredigerare. Du kan dessutom använda Spyder, en Python IDE som medföljer Anaconda Python-distributioner. Spyder måste ha ett grafiskt skrivbord eller X11 vidarebefordran. En genväg tooSpyder tillhandahålls i hello grafiska desktop.
 
-Eftersom vi har både Python 2.7 och 3.5, måste du uttryckligen aktivera önskade Python versionen (conda environment) du vill arbeta med i den aktuella sessionen. Aktiveringen anger sökvägsvariabeln till den önskade versionen av Python.
+Eftersom vi har både Python 2.7 och 3.5, behöver toospecifically aktivera hello önskad Python-version (conda environment) du vill använda toowork på i hello aktuell session. hello aktiveringen anger hello sökväg variabeln toohello önskade versionen av Python.
 
-Kör följande från gränssnittet för att aktivera Python 2.7 conda miljö:
+tooactivate hello Python 2.7 conda miljö, kör hello följande från hello shell:
 
     source /anaconda/bin/activate root
 
 Python 2.7 är installerad på */anaconda/bin*.
 
-Kör följande från gränssnittet för att aktivera Python 3.5 conda miljö:
+tooactivate hello Python 3.5 conda miljö, kör hello följande från hello shell:
 
     source /anaconda/bin/activate py35
 
 
 Python 3.5 är installerad på */anaconda/envs/py35/bin*.
 
-Om du vill anropa en interaktiv session Python, skriver du **python** i gränssnittet. Du kan ange om du är på ett grafiskt gränssnitt eller har X11 vidarebefordran set in **pycharm** att starta PyCharm Python IDE.
+tooinvoke en Python interaktiva sessionen, skriver du **python** hello Shell. Du kan ange om du är på ett grafiskt gränssnitt eller har X11 vidarebefordran set in **pycharm** toolaunch hello PyCharm Python IDE.
 
-Om du vill installera ytterligare Python-bibliotek, måste du köra ```conda``` eller ````pip```` kommandot under sudo och ange sökvägen till Python package manager (conda eller pip) för att installera rätt Python-miljön. Exempel:
+tooinstall ytterligare Python-bibliotek, behöver du toorun ```conda``` eller ````pip```` kommandot under sudo och ange sökvägen till hello Python package manager (conda eller pip) tooinstall toohello rätt Python-miljö. Exempel:
 
     sudo /anaconda/bin/pip install <package> #for Python 2.7 environment
     sudo /anaconda/envs/py35/bin/pip install <package> # for Python 3.5 environment
 
 
 ### <a name="jupyter-notebook"></a>Jupyter-anteckningsbok
-Anaconda distribution innehåller också en Jupyter-anteckningsbok en miljö att dela kod och analys. Jupyter-anteckningsbok sker via JupyterHub. Du loggar in med ditt lokala Linux-användarnamn och lösenord.
+Hej Anaconda distribution innehåller också en Jupyter-anteckningsbok, en miljö tooshare koden och analys. Hej Jupyter-anteckningsbok sker via JupyterHub. Du loggar in med ditt lokala Linux-användarnamn och lösenord.
 
-Jupyter-anteckningsbok servern har konfigurerats med Python 2, 3 Python och R kärnor före. Det finns en skrivbordsikon med namnet ”Jupyter Notebook” för att starta webbläsaren för att komma åt servern för bärbar dator. Om du är på den virtuella datorn via SSH eller X2Go klient kan du kan också besöka [https://localhost:8000 /](https://localhost:8000/) Jupyter notebook-servern.
+hello Jupyter-anteckningsbok server har konfigurerats med Python 2, 3 Python och R kärnor före. Det finns en skrivbordsikon med namnet ”Jupyter-anteckningsbok” toolaunch hello webbläsare tooaccess hello anteckningsboken server. Om du är på hello VM via SSH eller X2Go klient kan du kan också besöka [https://localhost:8000 /](https://localhost:8000/) tooaccess hello Jupyter-anteckningsbok server.
 
 > [!NOTE]
 > Fortsätt om du får några certifikatvarningar.
 > 
 > 
 
-Du kan komma åt Jupyter-anteckningsbok server från valfri värddator. Skriv *https://\<VM DNS-namn eller IP-adressen\>: 8000 /*
+Du kan komma åt hello Jupyter-anteckningsbok server från valfri värddator. Skriv *https://\<VM DNS-namn eller IP-adressen\>: 8000 /*
 
 > [!NOTE]
-> Port 8000 öppnas i brandväggen som standard när den virtuella datorn har etablerats.
+> Port 8000 öppnas i hello-brandväggen som standard när hello VM etableras.
 > 
 > 
 
-Vi har paketerat exempel anteckningsböcker--en i Python och en i R. Du kan se länken prov på startsidan för bärbar dator när du autentiserar dig till Jupyter-anteckningsbok med hjälp av din lokala Linux-användarnamn och lösenord. Du kan skapa en ny anteckningsbok genom att välja **ny**, och sedan språket kernel. Om du inte ser den **ny** , klicka på den **Jupyter** ikon på upp till vänster att gå till startsidan för anteckningsboken-servern.
+Vi har paketerat exempel anteckningsböcker--en i Python och en i R. Du kan se hello länken toohello exempel på startsidan för hello bärbar dator när du autentiserar toohello Jupyter-anteckningsbok med hjälp av din lokala Linux-användarnamn och lösenord. Du kan skapa en ny anteckningsbok genom att välja **ny**, och sedan hello språket kernel. Om du inte ser hello **ny** , klicka på hello **Jupyter** ikon på startsidan för hello övre vänstra toogo toohello hello anteckningsboken Server.
 
 ### <a name="apache-spark-standalone"></a>Apache Väck fristående 
-En fristående instans av Apache Spark är förinstallerat på Linux DSVM som hjälper dig att utveckla Spark-program lokalt först innan du testar och distribuerar stora kluster. Du kan köra PySpark program via Jupyter-kernel. När du öppnar Jupyter och klicka på knappen ”Ny” visas en lista över tillgängliga kärnor. ”Spark – Python” är PySpark-kerneln som låter dig skapa Spark program som använder Python språk. Du kan också använda en Python IDE som PyCharm eller Spyder för att skapa du Spark-program. Eftersom detta är en fristående instans, Spark-stacken körs inom det anropande klientprogrammet. Detta gör det snabbare och enklare att felsöka problem jämfört med att utveckla på ett Spark-kluster. 
+En fristående instans av Apache Spark är förinstallerat på hello Linux DSVM toohelp först utveckla lokalt Spark-program innan du testar och distribuerar stora kluster. Du kan köra PySpark program via hello Jupyter kernel. När du öppnar Jupyter och klicka på knappen för hello ”nytt” visas en lista över tillgängliga kärnor. Hej ”Spark – Python” är hello PySpark-kerneln som låter dig skapa Spark program som använder Python språk. Du kan också använda en Python IDE som PyCharm eller Spyder toobuild du Väck program. Eftersom detta är en fristående instans, hello Spark stacken körs inom hello anropar klientprogram. Detta gör det snabbare och enklare tootroubleshoot problem jämfört med toodeveloping på ett Spark-kluster. 
 
-En bärbar dator PySpark exempel finns på Jupyter som du hittar i katalogen ”SparkML” under arbetskatalogen för Jupyter ($HOME/anteckningsböcker/SparkML/pySpark). 
+En bärbar dator PySpark exempel finns på Jupyter som du hittar i hello ”SparkML” katalog under hello arbetskatalogen för Jupyter ($HOME/anteckningsböcker/SparkML/pySpark). 
 
 Om programmering i R Spark ska använda du Microsoft R Server, SparkR eller sparklyr. 
 
-Innan du kör i Spark-kontexten i Microsoft R Server, måste du göra en engångsinställning som installationsprogrammet steg för att aktivera en lokal nod Hadoop HDFS och Yarn-instans. Som standard installeras men inaktiveras på DSVM Hadoop-tjänster. För att aktivera den, måste du köra följande kommandon som rot för första gången:
+Innan du kör i Spark-kontexten i Microsoft R Server, måste toodo en en tid installationen steg tooenable en lokal nod Hadoop HDFS och Yarn-instans. Som standard installeras men inaktiverat på hello DSVM Hadoop-tjänster. I ordning tooenable, behöver du toorun hello följande kommandon som rot hello första gången:
 
     echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
     cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
@@ -253,108 +253,108 @@ Innan du kör i Spark-kontexten i Microsoft R Server, måste du göra en engång
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Du kan stoppa Hadoop-relaterade tjänster när du inte behöver dem genom att köra ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` ett exempel som visar hur du utvecklar och testar FRU i fjärranslutna Spark-kontexten (som är fristående Spark-instans på DSVM) har angetts och är tillgängliga i den `/dsvm/samples/MRS` katalog. 
+Du kan stoppa hello Hadoop-relaterade tjänster när du inte behöver dem genom att köra ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` ett exempel som visar hur toodevelop och testa FRU i fjärranslutna Spark-kontexten (vilket är hello fristående Spark-instans på hello DSVM) har angetts och är tillgängliga i hello `/dsvm/samples/MRS` directory. 
 
 ### <a name="ides-and-editors"></a>IDEs och redigerare
-Du kan välja mellan flera kod redigerare. Detta inkluderar vi/VIM Emacs, PyCharm, RStudio och IntelliJ. IntelliJ, RStudio PyCharm är grafiska redigerare och måste du vara inloggad på ett grafiskt skrivbord ska användas. Dessa redigerare har skrivbord och menyn genvägar till köra dem igen.
+Du kan välja mellan flera kod redigerare. Detta inkluderar vi/VIM Emacs, PyCharm, RStudio och IntelliJ. IntelliJ, RStudio och PyCharm är grafiska redigerare och behöver du toobe inloggad tooa grafiska skrivbord toouse dem. Dessa redigerare har skrivbord och menyn genvägar toolaunch dem.
 
-**VIM** och **Emacs** är textbaserade redigerare. Vi har installerat ett tillägg paket kallas Emacs talar statistik (EDDELANDEN) som underlättar arbetet med R Emacs Editor Emacs. Mer information finns på [EDDELANDEN](http://ess.r-project.org/).
+**VIM** och **Emacs** är textbaserade redigerare. Vi har installerat ett tillägg paket kallas Emacs talar statistik (EDDELANDEN) som underlättar arbetet med R hello Emacs Editor Emacs. Mer information finns på [EDDELANDEN](http://ess.r-project.org/).
 
-**LaTex** installeras via texlive paketet tillsammans med tillägget Emacs [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) paket, vilket förenklar redigering LaTex dokument inom Emacs.  
+**LaTex** installeras via hello texlive paket tillsammans med tillägget Emacs [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) paket, vilket förenklar redigering LaTex dokument inom Emacs.  
 
 ### <a name="databases"></a>Databaser
 
 #### <a name="graphical-sql-client"></a>Grafisk SQL-klient
-**SQuirrel SQL**, en grafisk SQL-klient har angetts för att ansluta till olika databaser (till exempel Microsoft SQL Server och MySQL) och för att köra SQL-frågor. Du kan du köra från en grafisk session (med X2Go klienten, till exempel). För att anropa SQuirrel SQL kan du starta från ikonen på skrivbordet eller kör följande kommando på gränssnittet.
+**SQuirrel SQL**, en grafisk SQL-klient har angetts tooconnect toodifferent databaser (till exempel Microsoft SQL Server och MySQL) och toorun SQL-frågor. Du kan du köra från en grafisk session (med hello X2Go klienten, till exempel). tooinvoke SQuirrel SQL, kan du antingen starta från hello-ikonen på hello skrivbordet eller kör följande kommando på hello shell hello.
 
     /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 
-Ställ in drivrutiner och databasen alias innan den första användningen. JDBC-drivrutiner finns på:
+Innan hello först använda ställa in drivrutiner och databasen alias. hello JDBC-drivrutiner finns på:
 
 */usr/Share/Java/jdbcdrivers*
 
 Mer information finns i [SQuirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots).
 
 #### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Kommandoradsverktyg för att komma åt Microsoft SQL Server
-Paketets ODBC-drivrutinen för SQL Server levereras med två verktyg för kommandoraden:
+hello ODBC drivrutinspaket för SQL Server levereras med två verktyg för kommandoraden:
 
-**BCP**: bcp-verktyget bulk kopierar data mellan en instans av Microsoft SQL Server och en fil i ett format som angetts av användaren. Bcp-verktyget för att importera många nya rader till SQL Server-tabeller eller exportera data från tabeller till datafiler. Om du vill importera data till en tabell, måste du använda en fil för den tabellen, eller förstå tabellen och vilka typer av data som är giltiga för dess kolumner.
+**BCP**: hello bcp-verktyget bulk kopierar data mellan en instans av Microsoft SQL Server och en fil i ett format som angetts av användaren. hello bcp-verktyget kan vara används tooimport stort antal nya rader i SQL Server-tabeller eller tooexport data från tabeller till datafiler. tooimport data i en tabell, du måste använda en fil för den tabellen, eller förstå hello struktur hello tabell och hello typer av data som är giltiga för dess kolumner.
 
 Mer information finns i [ansluter med bcp](https://msdn.microsoft.com/library/hh568446.aspx).
 
-**SQLCMD**: du kan ange Transact-SQL-uttryck med sqlcmd-verktyget, samt system procedurer och skriptfiler i Kommandotolken. Det här verktyget använder ODBC för att köra Transact-SQL-satser.
+**SQLCMD**: du kan ange Transact-SQL-uttryck med hello sqlcmd-verktyget, samt system procedurer och skriptfiler hello Kommandotolken. Det här verktyget används ODBC tooexecute Transact-SQL-batchar.
 
 Mer information finns i [ansluter med sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
 
 > [!NOTE]
-> Det finns vissa skillnader i det här verktyget mellan Linux och Windows-plattformar. Finns i dokumentationen för mer information.
+> Det finns vissa skillnader i det här verktyget mellan Linux och Windows-plattformar. Hello dokumentationen för information.
 > 
 > 
 
 #### <a name="database-access-libraries"></a>Bibliotek för åtkomst av databasen
-Bibliotek är tillgängligt i R och Python till access-databaser.
+Det finns bibliotek i R och Python tooaccess databaser.
 
-* I R, den **RODBC** paketet eller **dplyr** paketet kan du fråga eller köra SQL-uttryck på databasservern.
-* I Python, den **pyodbc** biblioteket ger åtkomst till databasen med ODBC som underliggande lager.  
+* I R hello **RODBC** paketet eller **dplyr** paketet kan du tooquery eller köra SQL-uttryck på hello databasserver.
+* I Python, hello **pyodbc** biblioteket ger åtkomst till databasen med ODBC som hello underliggande lager.  
 
 ### <a name="azure-tools"></a>Azure-verktyg
-Följande Azure tools är installerat på den virtuella datorn:
+hello följande Azure-verktyg är installerade på hello VM:
 
-* **Azure-kommandoradsgränssnittet**: I Azure CLI kan du skapa och hantera Azure-resurser via shell-kommandon. Om du vill anropa Azure-verktyg, skriver du **azure hjälp**. Mer information finns i [dokumentationssidan för Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Microsoft Azure Lagringsutforskaren**: Microsoft Azure Lagringsutforskaren är ett grafiskt verktyg som används för att bläddra igenom objekten som du har lagrat i Azure storage-konto och för att ladda upp och hämta data till och från Azure BLOB. Du kan öppna Lagringsutforskaren från ikonen genväg på skrivbordet. Du kan anropa den från Kommandotolken i gränssnittet genom att skriva **StorageExplorer**. Du måste vara inloggad från en klient X2Go eller har X11 vidarebefordran set upp.
-* **Azure-bibliotek**: följande är några av de förinstallerade biblioteken.
+* **Azure-kommandoradsgränssnittet**: hello Azure CLI kan du toocreate och hantera Azure-resurser via shell-kommandon. tooinvoke hello Azure-verktyg, skriver du **azure hjälp**. Mer information finns i hello [dokumentationssidan för Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+* **Microsoft Azure Lagringsutforskaren**: Microsoft Azure Lagringsutforskaren är ett grafiskt verktyg som används toobrowse via hello-objekt som du har lagrat i Azure storage-konto och tooand för tooupload och hämta data från Azure BLOB. Du kan öppna Lagringsutforskaren från hello genväg på skrivbordet ikon. Du kan anropa den från Kommandotolken i gränssnittet genom att skriva **StorageExplorer**. Du behöver toobe loggar in från en klient X2Go eller ha X11 vidarebefordran set upp.
+* **Azure-bibliotek**: hello nedan visas några av hello förinstallerade bibliotek.
   
-  * **Python**: Azure-relaterade bibliotek i Python som installeras är **azure**, **azureml**, **pydocumentdb**, och **pyodbc**. Du kan komma åt Azure storage-tjänster, Azure Machine Learning och Azure Cosmos DB (en NoSQL-databas på Azure) med de tre första biblioteken. Fjärde biblioteket pyodbc (tillsammans med Microsoft ODBC-drivrutin för SQL Server), ger åtkomst till SQL Server, Azure SQL Database och Azure SQL Data Warehouse från Python med hjälp av en ODBC-gränssnittet. Ange **pip listan** att se alla bibliotek. Se till att köra detta kommando i 3.5 miljöer och Python 2.7.
-  * **R**: Azure-relaterade bibliotek i R som installeras är **AzureML** och **RODBC**.
-  * **Java**: listan över Azure Java-bibliotek finns i katalogen **/dsvm/sdk/AzureSDKJava** på den virtuella datorn. Nyckel-biblioteken har Azure lagring och hantering av API: er och Azure Cosmos DB JDBC-drivrutiner för SQL Server.  
+  * **Python**: hello Azure-relaterade bibliotek i Python som installeras är **azure**, **azureml**, **pydocumentdb**, och **pyodbc** . Hej tre första bibliotek med, du kan komma åt Azure storage-tjänster, Azure Machine Learning och Azure Cosmos DB (en NoSQL-databas på Azure). hello fjärde bibliotek, pyodbc (tillsammans med hello Microsoft ODBC-drivrutin för SQL Server), kan åtkomst tooSQL Server, Azure SQL Database och Azure SQL Data Warehouse från Python med hjälp av en ODBC-gränssnittet. Ange **pip listan** toosee alla hello visas bibliotek. Vara säker på att toorun 3.5 miljöer och det här kommandot i båda hello Python 2.7.
+  * **R**: hello Azure-relaterade bibliotek i R som installeras är **AzureML** och **RODBC**.
+  * **Java**: hello lista över Azure Java-bibliotek finns i hello directory **/dsvm/sdk/AzureSDKJava** på hello VM. hello viktiga bibliotek är Azure lagring och hantering av API: er och Azure Cosmos DB JDBC-drivrutiner för SQL Server.  
 
-Du kan komma åt den [Azure-portalen](https://portal.azure.com) från förinstallerade Firefox webbläsaren. På Azure-portalen kan du skapa, hantera och övervaka Azure-resurser.
+Du kan komma åt hello [Azure-portalen](https://portal.azure.com) från hello förinstallerade Firefox webbläsare. På hello Azure-portalen, kan du skapa, hantera och övervaka Azure-resurser.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-Azure Machine Learning är en helt hanterad molntjänst som gör att du kan skapa, distribuera och dela förutsägelseanalyslösningar. Du kan skapa dina experiment och modeller från Azure Machine Learning Studio. Den kan nås från en webbläsare på den virtuella datorn för vetenskap av data genom att besöka [Microsoft Azure Machine Learning](https://studio.azureml.net).
+Azure Machine Learning är en helt hanterad molntjänst som du kan använda toobuild, distribuera och dela förutsägelseanalyslösningar. Du kan skapa dina experiment och modeller från Azure Machine Learning Studio. Den kan nås från en webbläsare på hello datavetenskap virtuella datorn genom att besöka [Microsoft Azure Machine Learning](https://studio.azureml.net).
 
-När du loggar in på Azure Machine Learning Studio har du åtkomst till en experiment arbetsyta där du kan skapa en logisk flöde för de maskininlärningsalgoritmer. Du har åtkomst till en Jupyter-anteckningsbok som finns på Azure Machine Learning och fungerar sömlöst med experiment i Machine Learning Studio. Operationalisera maskininlärning modeller som du har skapat genom att omsluta dem i ett webbgränssnitt för tjänsten. Detta gör att klienter på alla språk att anropa förutsägelser från maskininlärning modeller. Mer information finns i [Machine Learning dokumentationen](https://azure.microsoft.com/documentation/services/machine-learning/).
+När du loggar in tooAzure Machine Learning Studio har åtkomst tooan experiment arbetsyta där du kan skapa en logisk flöde för hello maskininlärningsalgoritmer. Du har åtkomst tooa Jupyter-anteckningsbok finns på Azure Machine Learning och fungerar sömlöst med hello experiment i Machine Learning Studio. Operationalisera hello maskininlärning modeller som du har skapat genom att omsluta dem i ett webbgränssnitt för tjänsten. Detta gör att klienter som skrivits i alla språk tooinvoke förutsägelser från maskininlärning för hello modeller. Mer information finns i hello [Machine Learning dokumentationen](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-Du kan också skapa modeller i R eller Python på den virtuella datorn och distribuerar den i produktion i Azure Machine Learning. Vi har installerat bibliotek i R (**AzureML**) och Python (**azureml**) att aktivera den här funktionen.
+Du kan också skapa modeller i R eller Python på hello VM och distribuerar den i produktion i Azure Machine Learning. Vi har installerat bibliotek i R (**AzureML**) och Python (**azureml**) tooenable den här funktionen.
 
-Information om hur du distribuerar modeller i R och Python i Azure Machine Learning finns [tio saker du kan göra på datavetenskap virtuella](machine-learning-data-science-vm-do-ten-things.md) (särskilt avsnittet ”Skapa modeller med R eller Python och använda dem med hjälp av Azure Machine Learning ”).
+Mer information om hur toodeploy modeller i R och Python i Azure Machine Learning finns [tio saker du kan göra på hello datavetenskap virtuella](machine-learning-data-science-vm-do-ten-things.md) (särskilt hello avsnittet ”bygga modeller med R eller Python och Operationalisera dem. med Azure Machine Learning ”).
 
 > [!NOTE]
-> Dessa instruktioner skrevs för Windows-versionen av den virtuella datorn vetenskapliga Data. Men den informationen om att distribuera modeller till Azure Machine Learning finns gäller för Linux-VM.
+> Dessa instruktioner skrevs för hello Windows-versionen av hello datavetenskap VM. Men hello uppgifterna det om att distribuera modeller tooAzure Machine Learning är tillämpliga toohello Linux VM.
 > 
 > 
 
 ### <a name="machine-learning-tools"></a>Machine learning-verktyg
-Den virtuella datorn innehåller några maskininlärning verktyg och algoritmer som före kompileras och förinstallerat lokalt. Exempel på dessa är:
+hello VM innehåller några maskininlärning verktyg och algoritmer som före kompileras och förinstallerat lokalt. Exempel på dessa är:
 
 * **Vowpal Wabbit**: en snabb online inlärningsalgoritm.
 * **xgboost**: ett verktyg som ger en optimerad, ökat trädet algoritmer.
 * **Rattle**: ett R-baserade grafiskt verktyg för enkel datagranskning och modellering.
-* **Python**: Anaconda Python medföljer maskininlärningsalgoritmer med bibliotek som lär du dig Scikit. Du kan installera andra bibliotek med hjälp av den `pip install` kommando.
+* **Python**: Anaconda Python medföljer maskininlärningsalgoritmer med bibliotek som lär du dig Scikit. Du kan installera andra bibliotek med hello `pip install` kommando.
 * **LightGBM**: snabb, distribuerade och hög prestanda toningar förstärkning framework baserat på beslut trädet algoritmer.
-* **R**: ett omfattande Meddelandebibliotek machine learning-funktioner är tillgänglig för R. Vissa av de bibliotek som är förinstallerade är lm, glm, randomForest, rpart. Du kan installera andra bibliotek genom att köra:
+* **R**: ett omfattande Meddelandebibliotek machine learning-funktioner är tillgänglig för R. Vissa av hello bibliotek som är förinstallerat är lm, glm, randomForest, rpart. Du kan installera andra bibliotek genom att köra:
   
         install.packages(<lib name>)
 
-Här är ytterligare information om de första tre maskininlärning verktyg i listan.
+Här är ytterligare information om hello först tre machine learning verktyg i hello-listan.
 
 #### <a name="vowpal-wabbit"></a>Vowpal Wabbit
 Vowpal Wabbit är machine learning-system som använder tekniker, till exempel online, hash, allreduce, minskning, learning2search, aktiv, och interaktiva learning.
 
-Om du vill köra verktyget på en grundläggande exempel gör du följande:
+toorun hello verktyget på en grundläggande exempel hello följande:
 
     cp -r /dsvm/tools/VowpalWabbit/demo vwdemo
     cd vwdemo
     vw house_dataset
 
-Det finns andra, större demonstrationer i katalogen. Mer information om VW finns [det här avsnittet i GitHub](https://github.com/JohnLangford/vowpal_wabbit), och [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki).
+Det finns andra, större demonstrationer i katalogen. Mer information om VW finns [det här avsnittet i GitHub](https://github.com/JohnLangford/vowpal_wabbit), och hello [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki).
 
 #### <a name="xgboost"></a>xgboost
-Det här är ett bibliotek som har utformats och optimerats för ökat (trädet) algoritmer. Syftet med det här biblioteket är att push-beräkning gränserna för datorer bra som behövs för att tillhandahålla storskaliga trädet förstärkning som är skalbart, bärbar och korrekt.
+Det här är ett bibliotek som har utformats och optimerats för ökat (trädet) algoritmer. hello syftet med det här biblioteket är toopush hello beräkning gränserna för datorer toohello yttersta behövs tooprovide storskaliga trädet förstärkning som är skalbart, bärbar och korrekt.
 
 Det har angetts som en kommandorad som ett R-bibliotek.
 
-Om du vill använda det här biblioteket i R kan du starta en interaktiv R-session (genom att skriva **R** i gränssnittet), och läsa in biblioteket.
+toouse det här biblioteket i R, du kan starta en interaktiv R-session (genom att skriva **R** hello Shell), och Läs in hello bibliotek.
 
 Här är ett enkelt exempel som du kan köra R-fråga:
 
@@ -368,51 +368,51 @@ Här är ett enkelt exempel som du kan köra R-fråga:
                     eta = 1, nthread = 2, nround = 2, objective = "binary:logistic")
     pred <- predict(bst, test$data)
 
-Här är kommandona som ska köras i gränssnittet för att köra kommandoraden xgboost:
+toorun hello xgboost kommandoraden följer hello kommandon tooexecute hello Shell:
 
     cp -r /dsvm/tools/xgboost/demo/binary_classification/ xgboostdemo
     cd xgboostdemo
     xgboost mushroom.conf
 
 
-En .model-fil skrivs till den angivna katalogen. Information om det här exemplet demo finns [på GitHub](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification).
+En .model-fil skrivs toohello katalogen som angetts. Information om det här exemplet demo finns [på GitHub](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification).
 
-Mer information om xgboost finns i [xgboost dokumentationssidan](https://xgboost.readthedocs.org/en/latest/), och dess [GitHub-lagringsplatsen](https://github.com/dmlc/xgboost).
+Mer information om xgboost finns hello [xgboost dokumentationssidan](https://xgboost.readthedocs.org/en/latest/), och dess [GitHub-lagringsplatsen](https://github.com/dmlc/xgboost).
 
 #### <a name="rattle"></a>Spännen
-Rattle (den **R** **A**nalytical **T**yg **T**o **L**tjäna **E** GUI-baserade datagranskning och modellering används asily). Den visar statistisk och visual sammanfattningar av data, transformeringar data som lätt kan modelleras, skapar både oövervakade och övervakat modeller från data, visar prestanda för modeller grafiskt, och anger poäng nya data. Den genererar också R-kod, replikerar åtgärder i Användargränssnittet som kan köras direkt i R eller användas som utgångspunkt för ytterligare analys.
+Rattle (hello **R** **A**nalytical **T**yg **T**o **L**tjäna **E** GUI-baserade datagranskning och modellering används asily). Den visar statistisk visual sammanfattningar av data, transformeringar data som kan modelleras lätt, skapar både oövervakade och övervakat modeller från hello data, anger hello grafiskt prestanda av modeller och anger poäng nya data. Den genererar också R-kod, replikerar hello åtgärder i hello användargränssnitt som kan köras direkt i R eller användas som utgångspunkt för ytterligare analys.
 
-Om du vill köra spännen måste vara i en grafisk inloggning skrivbordssession. Skriv på terminalen och ```R``` kommer R-miljön. Ange följande kommandon i Kommandotolken R:
+toorun spännen, du måste toobe i en grafisk inloggning skrivbordssession. Skriv på hello terminal ```R``` tooenter hello R-miljö. Ange hello följande kommandon i Kommandotolken hello R:
 
     library(rattle)
     rattle()
 
-Nu ett grafiskt gränssnitt som öppnas med en uppsättning flikar. Här följer stegen för Snabbstart i spännen som behövs för att använda exempeldata väder data och skapa en modell. I vissa av stegen nedan uppmanas du att installera automatiskt och läsa in vissa nödvändiga R-paket som inte redan finns på systemet.
+Nu ett grafiskt gränssnitt som öppnas med en uppsättning flikar. Här följer hello Snabbstart stegen i spännen behövs toouse exempeldata väder data och skapa en modell. I vissa hello stegen nedan är begärd tooautomatically installera och läsa in vissa nödvändiga R-paket som inte redan finns på hello system.
 
 > [!NOTE]
-> Om du inte har behörighet att installera paketet i systemkatalogen (standard), kan du se en kommandotolk på din R-konsolfönster för att installera paket till ditt personliga bibliotek. Svaret *y* om du ser dessa frågor.
+> Om du inte har åtkomst tooinstall hello paketet i systemkatalogen för hello (hello standard), kan du se Kommandotolken på ditt R konsolen fönstret tooinstall paket tooyour personliga bibliotek. Svaret *y* om du ser dessa frågor.
 > 
 > 
 
 1. Klicka på **Kör**.
-2. En dialogruta visas, frågar om du vill använda exempelinformationen väder. Klicka på **Ja** att läsa in exemplet.
-3. Klicka på den **modellen** fliken.
-4. Klicka på **Execute** att skapa en beslutsträdet.
-5. Klicka på **Rita** att visa beslutsträdet.
-6. Klicka på den **skog** alternativknappen och klickar på **Execute** att bygga en slumpmässig skog.
-7. Klicka på den **utvärdera** fliken.
-8. Klicka på den **Risk** alternativknappen och klickar på **Execute** ska visas två Risk (kumulativ) prestanda områden.
-9. Klicka på den **loggen** att visa generera R-koden för föregående operationer.
-   (På grund av ett fel i den aktuella versionen av spännen, måste du infoga ett  *#*  tecknet framför *exportera den här loggen...*  texten i loggen.)
-10. Klicka på den **exportera** för att spara filen R-skript med namnet *weather_script. R* till arbetsmappen.
+2. En dialogruta visas, frågar om du vill toouse hello exempel väder datauppsättning. Klicka på **Ja** tooload hello exempel.
+3. Klicka på hello **modellen** fliken.
+4. Klicka på **kör** toobuild en beslutsträdet.
+5. Klicka på **Rita** toodisplay hello beslutsträdet.
+6. Klicka på hello **skog** alternativknappen och klickar på **kör** toobuild en slumpmässig skog.
+7. Klicka på hello **utvärdera** fliken.
+8. Klicka på hello **Risk** alternativknappen och klickar på **kör** toodisplay två Risk (kumulativ) prestanda områden.
+9. Klicka på hello **loggen** fliken tooshow hello generera R-kod för hello föregående åtgärder.
+   (På grund av tooa programfel i hello aktuella versionen av spännen, behöver du tooinsert en  *#*  tecknet framför *exportera den här loggen...*  i hello texten hello loggen.)
+10. Klicka på hello **exportera** knappen toosave hello R-skriptfil med namnet *weather_script. R* toohello arbetsmapp.
 
-Du kan avsluta spännen och R. Nu kan du ändra genererade R-skriptet, eller använda den som den är att köra den när som helst om du vill upprepa allt som gjordes i Gränssnittet Rattle. Detta är ett enkelt sätt att snabbt göra analyser och maskininlärning i ett enkelt grafiskt gränssnitt vid automatisk generering av kod i R för att ändra och/eller Läs särskilt för nybörjare i R.
+Du kan avsluta spännen och R. Nu kan du ändra hello genereras R-skript eller använda den som den är toorun den när som helst toorepeat allt som gjordes i hello Rattle Användargränssnittet. Detta är ett enkelt sätt tooquickly göra analyser och maskininlärning i ett enkelt grafiskt gränssnitt vid automatisk generering av kod i R toomodify och/eller Läs särskilt för nybörjare i R.
 
 ## <a name="next-steps"></a>Nästa steg
 Här visas hur du kan fortsätta att din inlärning och undersökning:
 
-* Den [datavetenskap på den datavetenskap virtuella för Linux](machine-learning-data-science-linux-dsvm-walkthrough.md) genomgången visar hur du utför flera gemensamma datavetenskap uppgifter med Linux datavetenskap VM etablerats här. 
-* Utforska datavetenskap verktyg på datavetenskap VM genom att försöka med de verktyg som beskrivs i den här artikeln. Du kan också köra *dsvm mer information* på gränssnittet på den virtuella datorn för en grundläggande introduktion och länkar till mer information om verktygen som installeras på den virtuella datorn.  
-* Lär dig hur du skapar slutpunkt till slutpunkt Analyslösningar systematiskt med den [Team datavetenskap Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
-* Besök den [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) för machine learning och analytics exempel som använder Cortana Analytics Suite.
+* Hej [datavetenskap på hello datavetenskap virtuell dator för Linux](machine-learning-data-science-linux-dsvm-walkthrough.md) genomgången visar hur tooperform flera vanliga datavetenskap aktiviteter med hello Linux datavetenskap VM etablerats här. 
+* Utforska hello olika datavetenskap verktyg på hello datavetenskap VM av provat hello verktyg som beskrivs i den här artikeln. Du kan också köra *dsvm mer information* på hello shell inom hello virtuell dator för en grundläggande introduktion och pekare toomore information om hello verktyg som installerats på hello VM.  
+* Lär dig hur toobuild slutpunkt till slutpunkt Analyslösningar systematiskt med hello [Team datavetenskap Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+* Besök hello [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) för machine learning och analytics exempel för att använda hello Cortana Analytics Suite.
 

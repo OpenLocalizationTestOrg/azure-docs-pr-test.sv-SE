@@ -1,6 +1,6 @@
 ---
-title: "Lista över alla dina Azure Import/Export-jobb | MicrosoftDocs"
-description: "Lär dig mer om att visa en lista över Azure Import/Export service jobb i en prenumeration."
+title: aaaList alla dina Azure Import/Export-jobb | MicrosoftDocs
+description: "Lär dig hur toolist alla hello Azure Import/Export service jobb i en prenumeration."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 1977bfc0e516088310f45ecdd960287eeed2c2d8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0e12bf3dc3f2084a1987ac362cf8d1041059543c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enumerating-jobs-in-the-azure-importexport-service"></a>Uppräkning av jobb i tjänsten Azure Import/Export
-För att räkna upp alla jobb i en prenumeration anropar den [lista jobb](/rest/api/storageimportexport/jobs#Jobs_List) igen. `List Jobs`Returnerar en lista över jobb samt följande attribut:
+# <a name="enumerating-jobs-in-hello-azure-importexport-service"></a>Uppräkning av jobb i hello Azure Import/Export service
+tooenumerate alla jobb i en prenumeration anropet hello [lista jobb](/rest/api/storageimportexport/jobs#Jobs_List) igen. `List Jobs`Returnerar en lista över jobb som hello följande attribut:
 
--   Typ av jobb (importera och exportera)
+-   hello typ av jobb (importera och exportera)
 
--   Jobbets aktuella tillstånd
+-   hello jobbets aktuella tillstånd
 
--   Projektet har kopplats till lagringskontot
+-   hello jobbet associerat lagringskonto
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Med hjälp av tjänsten Import/Export REST API](storage-import-export-using-the-rest-api.md)
+* [Med hjälp av hello Import/Export service REST API](storage-import-export-using-the-rest-api.md)

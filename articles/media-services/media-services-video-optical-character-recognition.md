@@ -1,6 +1,6 @@
 ---
-title: Digitalisera text med Azure Media Analytics OCR | Microsoft Docs
-description: "Azure Media Analytics OCR (OCR) kan du konvertera textinnehåll i videofiler till redigerbar, sökbara digitala text.  På så sätt kan du automatisera extrahering av beskrivande metadata från media video signalen."
+title: aaaDigitize text med Azure Media Analytics OCR | Microsoft Docs
+description: "Azure Media Analytics OCR (OCR) kan du tooconvert textinnehåll i videofiler till redigerbar, sökbara digitala text.  Detta möjliggör tooautomate hello extrahering av beskrivande metadata från hello video signal medieinnehåll."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,40 +14,40 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako
-ms.openlocfilehash: 43f5b3a9bbec243e668c79702045094fcfedbdda
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0476c3ba3942b2c5182a34a429909adbf5c75ac9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Använd Azure Media Analytics konvertera textinnehåll i videofiler till digitala text
+# <a name="use-azure-media-analytics-tooconvert-text-content-in-video-files-into-digital-text"></a>Använd Azure Media Analytics tooconvert textinnehåll i videofiler till digitala text
 ## <a name="overview"></a>Översikt
-Om du behöver extrahera textinnehåll från din videofiler och generera en redigerbar sökbara digitala text, använder du Azure Media Analytics OCR (OCR). Denna Azure Media Processor identifierar textinnehåll i din videofiler och genererar textfiler för din användning. OCR kan du automatisera extrahering av beskrivande metadata från media video signalen.
+Om du behöver tooextract text innehåll från din videofiler och generera en redigerbar sökbara digitala text, använder du Azure Media Analytics OCR (OCR). Denna Azure Media Processor identifierar textinnehåll i din videofiler och genererar textfiler för din användning. OCR kan du tooautomate hello extrahering av beskrivande metadata från hello video signal medieinnehåll.
 
-När den används tillsammans med en sökmotor, kan du enkelt indexera media med text och förbättra identifieringsmöjligheten för ditt innehåll. Detta är mycket användbart i hög textrepresentation video, t.ex. en inspelning eller skärmdump av ett bildspel. Azure OCR Media processorn är optimerad för digital text.
+När den används tillsammans med en sökmotor, kan du enkelt indexera media med text och förbättra hello identifieringsmöjligheten för ditt innehåll. Detta är mycket användbart i hög textrepresentation video, t.ex. en inspelning eller skärmdump av ett bildspel. hello Azure OCR Medieprocessor är optimerad för digital text.
 
-Den **Azure Media OCR** medieprocessor är för närvarande under förhandsgranskning.
+Hej **Azure Media OCR** medieprocessor är för närvarande under förhandsgranskning.
 
-Det här avsnittet innehåller information om **Azure Media OCR** och visar hur du använder det med Media Services SDK för .NET. Ytterligare information och exempel finns [bloggen](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
+Det här avsnittet innehåller information om **Azure Media OCR** och visar hur toouse med Media Services SDK för .NET. Ytterligare information och exempel finns [bloggen](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/).
 
 ## <a name="ocr-input-files"></a>OCR inkommande filer
-Videofiler. För närvarande stöds följande format: MP4, MOV och WMV.
+Videofiler. För närvarande hello följande format stöds: MP4, MOV och WMV.
 
 ## <a name="task-configuration"></a>Konfigurera aktivitet
 Uppgiftskonfigurationen (förinställda). När du skapar en uppgift med **Azure Media OCR**, måste du ange en konfiguration som förinställningen med hjälp av JSON eller XML. 
 
 >[!NOTE]
->OCR-motorn tar bara en bild region med minsta 40 bildpunkter och maximala 32000 bildpunkter som en giltig inmatning i både höjd och bredd.
+>hello OCR-motorn tar bara en bild region med minsta 40 bildpunkter toomaximum 32000 bildpunkter som en giltig inmatning i både höjd och bredd.
 >
 
 ### <a name="attribute-descriptions"></a>Attributbeskrivningar
 | Attributets namn | Beskrivning |
 | --- | --- |
-|AdvancedOutput| Om du anger AdvancedOutput till true innehåller JSON-utdata positionsparametrarna data för varje ord (förutom fraser och regioner). Om du inte vill se detaljerna flaggan till false. Standardvärdet är false. Mer information finns i [bloggen](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
-| Språk |(valfritt) beskriver språket i texten som ska eftersökas. Något av följande: AutoDetect (standard), arabiska, ChineseSimplified, ChineseTraditional, tjeckiska, danska, nederländska, engelska, finska, franska, tyska, grekiska, ungerska, italienska, japanska, koreanska, norska, polska, portugisiska, rumänska, ryska, SerbianCyrillic, SerbianLatin, slovakiska, spanska, svenska, turkiska. |
-| TextOrientation |(valfritt) beskriver orienteringen på texten som ska eftersökas.  ”Left” innebär att upp i alla bokstäver är pekar mot vänster.  Standardtexten (till exempel den som finns i en bok) kan anropas ”in” orienterad.  Något av följande: AutoDetect (standard), höger, nedåt, vänster. |
-| TimeInterval |(valfritt) beskriver samplingsfrekvensen.  Standardvärdet är varje 1/2 sekund.<br/>JSON-format –: mm: ss. SSS (standard 00:00:00.500)<br/>XML-format – W3C XSD varaktighet primitiv (standard PT0.5) |
-| DetectRegions |(valfritt) En matris med DetectRegion objekt att ange regioner inom ramen att identifiera text video.<br/>Ett DetectRegion objekt består av följande fyra heltalsvärden:<br/>Vänster – bildpunkter från den vänstra marginalen<br/>TOP – bildpunkter från den övre marginalen<br/>Bredd – bredden för regionen i bildpunkter<br/>Höjd – höjd region i bildpunkter |
+|AdvancedOutput| Om du ställer in AdvancedOutput tootrue innehåller hello JSON-utdata positionsparametrarna data för varje ord (i tillägget toophrases och regioner). Om du inte vill toosee detaljerna, ange hello flaggan toofalse. hello standardvärdet är false. Mer information finns i [bloggen](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/).|
+| Språk |(valfritt) beskriver hello språk för vilka toolook. En av följande hello: AutoDetect (standard), arabiska, ChineseSimplified, ChineseTraditional, tjeckiska, danska, nederländska, engelska, finska, franska, tyska, grekiska, ungerska, italienska, japanska, koreanska, norska, polska, portugisiska, rumänska, ryska, SerbianCyrillic, SerbianLatin, slovakiska, spanska, svenska, turkiska. |
+| TextOrientation |(valfritt) beskriver hello orientering för vilka toolook.  ”Vänstra” innebär att hello överkant versaler pekar mot hello vänster.  Standardtexten (till exempel den som finns i en bok) kan anropas ”in” orienterad.  En av följande hello: AutoDetect (standard), höger, nedåt, vänster. |
+| TimeInterval |(valfritt) beskriver hello samplingsfrekvensen.  Standardvärdet är varje 1/2 sekund.<br/>JSON-format –: mm: ss. SSS (standard 00:00:00.500)<br/>XML-format – W3C XSD varaktighet primitiv (standard PT0.5) |
+| DetectRegions |(valfritt) En matris med DetectRegion objekt att ange regioner inom hello bildruta i vilken toodetect text.<br/>Ett DetectRegion objekt består av följande fyra heltalsvärden hello:<br/>Vänster – bildpunkter från hello vänster marginal<br/>TOP – bildpunkter från hello top-marginal<br/>Bredd – bredden på hello region i bildpunkter<br/>Höjd – höjd hello region i bildpunkter |
 
 #### <a name="json-preset-example"></a>Förinställda JSON-exempel
 
@@ -91,33 +91,33 @@ Uppgiftskonfigurationen (förinställda). När du skapar en uppgift med **Azure 
     </VideoOcrPreset>
 
 ## <a name="ocr-output-files"></a>OCR utdatafilerna
-Utdata från medieprocessor OCR är en JSON-fil.
+hello utdata hello OCR medium processorkonfiguration är en JSON-fil.
 
-### <a name="elements-of-the-output-json-file"></a>Element i JSON-filen för utdata
-Video OCR utdata innehåller tid-segmenterade data om tecken hittades i videon.  Du kan använda attribut, till exempel språk eller orientering hone in på exakt ord att du är intresserad av att analysera. 
+### <a name="elements-of-hello-output-json-file"></a>Element i hello utdata-JSON-fil
+hello Video OCR utdata innehåller tid-segmenterade data om hello tecken hittades i videon.  Du kan använda attribut, till exempel språk eller orientering toohone i på exakt hello ord att du är intresserad av att analysera. 
 
-Utdata innehåller följande attribut:
+hello utdata innehåller hello följande attribut:
 
 | Element | Beskrivning |
 | --- | --- |
-| tidsrymd |”tick” per sekund i videon |
+| tidsrymd |”tick” per sekund av hello video |
 | Offset |tidsförskjutningen för tidsstämplar. I version 1.0 av API: er för Video att detta alltid vara 0. |
-| ramhastighet |Bildrutor per sekund av videon |
-| Bredd |bredd i bildpunkter |
-| Höjd |höjden för videon i bildpunkter |
-| fragment |matris med tidsbaserade segment som metadata chunked-video |
+| ramhastighet |Bildrutor per sekund av hello video |
+| Bredd |bredden på hello video i bildpunkter |
+| Höjd |höjden på hello video i bildpunkter |
+| fragment |matris med tidsbaserade segment i vilka hello metadata chunked-video |
 | start |Starttid för ett fragment i ”tick” |
 | Varaktighet |längden på ett fragment i ”tick” |
-| intervall |intervallet för varje händelse inom det angivna fragmentet |
+| interval |intervallet för varje händelse inom hello angivna fragment |
 | evenemang |matris som innehåller regioner |
 | Region |objektet som representerar upptäckte ord eller fraser |
-| språk |språket i texten som upptäckts inom ett område |
-| orientering |orienteringen på texten som upptäckts inom ett område |
+| språk |språket hello texten identifieras inom en region |
+| orientering |textens hello identifieras inom en region orientering |
 | rader |matris med rader med text som har identifierats inom ett område |
-| Text |texten som |
+| Text |hello faktiska text |
 
 ### <a name="json-output-example"></a>Exempel på utdata JSON
-I följande exempel på utdata innehåller allmän video information och flera video fragment. I varje video fragmentet innehåller den varje region som identifieras av OCR HP med språket och dess textorientering. Området innehåller även alla word rader i den här regionen med radens text, radens position och varje ord information (ordet innehåll, position och förtroende) i den här raden. Följande är ett exempel och du placerar vissa infogade kommentarer.
+hello innehåller följande exempel på utdata hello allmän video information och flera video fragment. I varje video fragmentet innehåller den varje region som identifieras av OCR MP med hello språk och dess textorientering. hello region innehåller även alla word rader i den här regionen med hello rad text, hello radpositionen och varje ord information (ordet innehåll, position och förtroende) i den här raden. hello följande är ett exempel och du placerar vissa infogade kommentarer.
 
     {
         "version": 1, 
@@ -130,14 +130,14 @@ I följande exempel på utdata innehåller allmän video information och flera v
             {
                 "start": 0, 
                 "duration": 180000, 
-                "interval": 90000,  // the time information about this fragment
+                "interval": 90000,  // hello time information about this fragment
                 "events": [
                     [
                        { 
-                            "region": { // the detected region array in this fragment 
+                            "region": { // hello detected region array in this fragment 
                                 "language": "English",  // region language
                                 "orientation": "Up",  // text orientation
-                                "lines": [  // line information array in this region, including the text and the position
+                                "lines": [  // line information array in this region, including hello text and hello position
                                     {
                                         "text": "One Two", 
                                         "left": 10, 
@@ -174,15 +174,15 @@ I följande exempel på utdata innehåller allmän video information och flera v
 
 ## <a name="net-sample-code"></a>Exempelkod för .NET
 
-Följande program visar hur du:
+hello följande program visar hur du:
 
-1. Skapa en tillgång och överför en mediefil till tillgången.
+1. Skapa en tillgång och överför en mediefil till hello tillgång.
 2. Skapa ett jobb med en konfiguration/förinställda OCR-fil.
-3. Hämta JSON utdatafilerna. 
+3. Hämta hello utdata JSON-filer. 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Skapa och konfigurera ett Visual Studio-projekt
 
-Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
+Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Exempel
 
@@ -198,7 +198,7 @@ Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinform
     {
         class Program
         {
-            // Read values from the App.config file.
+            // Read values from hello App.config file.
             private static readonly string _AADTenantDomain =
                 ConfigurationManager.AppSettings["AADTenantDomain"];
             private static readonly string _RESTAPIEndpoint =
@@ -214,17 +214,17 @@ Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinform
 
                 _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-                // Run the OCR job.
+                // Run hello OCR job.
                 var asset = RunOCRJob(@"C:\supportFiles\OCR\presentation.mp4",
                                             @"C:\supportFiles\OCR\config.json");
 
-                // Download the job output asset.
+                // Download hello job output asset.
                 DownloadAsset(asset, @"C:\supportFiles\OCR\Output");
             }
 
             static IAsset RunOCRJob(string inputMediaFilePath, string configurationFile)
             {
-                // Create an asset and upload the input media file to storage.
+                // Create an asset and upload hello input media file toostorage.
                 IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
                     "My OCR Input Asset",
                     AssetCreationOptions.None);
@@ -232,38 +232,38 @@ Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinform
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My OCR Job");
 
-                // Get a reference to Azure Media OCR.
+                // Get a reference tooAzure Media OCR.
                 string MediaProcessorName = "Azure Media OCR";
 
                 var processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
-                // Read configuration from the specified file.
+                // Read configuration from hello specified file.
                 string configuration = File.ReadAllText(configurationFile);
 
-                // Create a task with the encoding details, using a string preset.
+                // Create a task with hello encoding details, using a string preset.
                 ITask task = job.Tasks.AddNew("My OCR Task",
                     processor,
                     configuration,
                     TaskOptions.None);
 
-                // Specify the input asset.
+                // Specify hello input asset.
                 task.InputAssets.Add(asset);
 
-                // Add an output asset to contain the results of the job.
+                // Add an output asset toocontain hello results of hello job.
                 task.OutputAssets.AddNew("My OCR Output Asset", AssetCreationOptions.None);
 
-                // Use the following event handler to check job progress.  
+                // Use hello following event handler toocheck job progress.  
                 job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                // Launch the job.
+                // Launch hello job.
                 job.Submit();
 
-                // Check job execution and wait for job to finish.
+                // Check job execution and wait for job toofinish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
 
                 progressJobTask.Wait();
 
-                // If job state is Error, the event handling
+                // If job state is Error, hello event handling
                 // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)

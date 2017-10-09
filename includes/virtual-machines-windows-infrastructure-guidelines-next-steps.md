@@ -1,4 +1,4 @@
-Fullständig rad riktlinjer hjälper dig att förstå alla olika designöverväganden för att bygga vår infrastrukturen program i Azure:
+hello fullständig serie riktlinjer hjälper till att du förstår alla hello annan utformning för skapande av våra program infrastrukturen i Azure:
 
 * [Azure-prenumeration och riktlinjer för konton](../articles/virtual-machines/windows/infrastructure-subscription-accounts-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Riktlinjer för namngivning av Azure-infrastrukturen](../articles/virtual-machines/windows/infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

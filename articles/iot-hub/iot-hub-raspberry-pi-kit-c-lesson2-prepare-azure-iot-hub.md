@@ -1,6 +1,6 @@
 ---
-title: 'Connect Raspberry PI (C) till Azure IoT - lektionen 2: registrera enhet | Microsoft Docs'
-description: "Skapa en resursgrupp, skapa en Azure IoT-hubb och registrera Pi i Azure IoT-hubb med hjälp av Azure CLI."
+title: 'Connect Raspberry PI (C) tooAzure IoT - lektionen 2: registrera enhet | Microsoft Docs'
+description: "Skapa en resursgrupp, skapa en Azure IoT-hubb och registrera Pi i hello Azure IoT-hubb med hjälp av hello Azure CLI."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,33 +17,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: d7bfd8f6ae8d15dfe09f06a40a4ab415ff2e0a7c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 473658c5a8e1e0d4cfced0efafbad2640a1e0696
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-iot-hub-and-register-raspberry-pi-3"></a>Skapa din IoT-hubb och registrera hallon Pi 3
 ## <a name="what-you-will-do"></a>Vad du ska göra
 * Skapa en resursgrupp.
-* Skapa din Azure IoT-hubb i resursgruppen.
-* Lägg till hallon Pi 3 Azure IoT-hubben med hjälp av Azure-kommandoradsgränssnittet (Azure CLI).
+* Skapa din Azure IoT-hubb i hello resursgruppen.
+* Lägga till hallon Pi 3 toohello Azure IoT-hubb med hello Azure-kommandoradsgränssnittet (Azure CLI).
 
-När du använder Azure CLI för att lägga till Pi din IoT-hubb kan genererar tjänsten en nyckel för Pi att autentisera med tjänsten. Om du har några problem kan hitta lösningar på den [felsökning sidan](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
+När du använder hello Azure CLI tooadd Pi tooyour IoT-hubb genererar hello tjänsten en nyckel för Pi tooauthenticate med hello-tjänsten. Om du har några problem med söka efter lösningar på hello [felsökning sidan](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
 I den här artikeln får du lära dig:
-* Hur du använder Azure CLI för att skapa en IoT-hubb.
-* Så här skapar du en enhetsidentitet för Pi i din IoT-hubb.
+* Hur toouse hello Azure CLI toocreate en IoT-hubb.
+* Hur toocreate enhetsidentitet för Pi i din IoT-hubb.
 
 ## <a name="what-you-need"></a>Vad du behöver
 * Ett Azure-konto
-* En Mac- eller en Windows-dator med Azure CLI installerad
+* En Mac- eller en Windows-dator med hello Azure CLI installerat
 
 ## <a name="create-your-iot-hub"></a>Skapa din IoT-hubb
-Azure IoT-hubb hjälper dig att ansluta, övervaka och hantera miljontals IoT tillgångar. Följ dessa steg för att skapa din IoT-hubb:
+Azure IoT-hubb hjälper dig att ansluta, övervaka och hantera miljontals IoT tillgångar. toocreate din IoT-hubb gör du följande:
 
-1. Logga in på ditt Azure-konto genom att köra följande kommando:
+1. Logga in tooyour Azure-konto genom att köra följande kommando hello:
 
    ```bash
    az login
@@ -51,40 +51,40 @@ Azure IoT-hubb hjälper dig att ansluta, övervaka och hantera miljontals IoT ti
 
    Alla tillgängliga prenumerationer visas efter en lyckad inloggning.
 
-2. Ange den standard-prenumeration som du vill använda genom att köra följande kommando:
+2. Ange hello standard prenumeration som du vill toouse genom att köra följande kommando hello:
 
    ```bash
    az account set --subscription {subscription id or name}
    ```
 
-   `subscription ID or name`hittar du i utdata från den `az login` eller `az account list` kommando.
+   `subscription ID or name`hittar du i hello utdata från hello `az login` eller hello `az account list` kommando.
 
-3. Registrera providern genom att köra följande kommando. Resursproviders är tjänster som tillhandahåller resurser för ditt program. Du måste registrera providern innan du kan distribuera Azure-resurs som providern erbjuder.
+3. Registrera hello providern genom att köra följande kommando hello. Resursproviders är tjänster som tillhandahåller resurser för ditt program. Du måste registrera hello providern innan du kan distribuera hello Azure-resurs som hello tjänstleverantören erbjuder.
 
    ```bash
    az provider register -n "Microsoft.Devices"
    ```
-4. Skapa en resursgrupp med namnet iot-sample i USA, västra region genom att köra följande kommando:
+4. Skapa en resursgrupp med namnet iot-sample i hello västra USA region genom att köra följande kommando hello:
 
    ```bash
    az group create --name iot-sample --location westus
    ```
 
-   `westus`är den plats som du skapar din resursgrupp. Om du vill använda en annan plats, kan du köra `az account list-locations -o table` att se alla platser har stöd för Azure.
+   `westus`är hello-plats som du skapar din resursgrupp. Om du vill toouse till en annan plats, kan du köra `az account list-locations -o table` toosee alla hello platser har stöd för Azure.
  
-5. Skapa en IoT-hubb i iot-sample resursgruppen genom att köra följande kommando:
+5. Skapa en IoT-hubb i hello iot-sample resursgruppen genom att köra följande kommando hello:
 
    ```bash
    az iot hub create --name {my hub name} --resource-group iot-sample
    ```
 
-   Som standard skapar verktyget en IoT-hubb i den kostnadsfria prisnivån. Mer information finns i [Azure IoT Hub-priser](https://azure.microsoft.com/pricing/details/iot-hub/).
+   Som standard skapar hello verktyget en IoT-hubb i hello kostnadsfria prisnivån. Mer information finns i [Azure IoT Hub-priser](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 > [!NOTE]
-> Namnet på din IoT-hubb måste vara globalt unika. Du kan skapa en enda F1-versionen av Azure IoT Hub under din Azure-prenumeration.
+> hello namnet på din IoT-hubb måste vara globalt unika. Du kan skapa en enda F1-versionen av Azure IoT Hub under din Azure-prenumeration.
 
 ## <a name="register-pi-in-your-iot-hub"></a>Registrera Pi i din IoT-hubb
-Varje enhet som skickar meddelanden till din IoT-hubb och tar emot meddelanden från din IoT-hubb måste registreras med ett unikt ID.
+Varje enhet som skickar meddelanden tooyour IoT-hubb och tar emot meddelanden från din IoT-hubb måste registreras med ett unikt ID.
 
 Registrera Pi i din hubb genom att köra följande kommando:
 
@@ -93,8 +93,8 @@ az iot device create --device-id myraspberrypi --hub {my hub name} --resource-gr
 ```
 
 ## <a name="summary"></a>Sammanfattning
-Du har skapat en IoT-hubb och registrerad Pi med en enhetsidentitet i din IoT-hubb. Du är redo att lära dig hur du skickar meddelanden från Pi till din IoT-hubb.
+Du har skapat en IoT-hubb och registrerad Pi med en enhetsidentitet i din IoT-hubb. Du är klar toolearn hur toosend meddelanden från Pi tooyour IoT-hubb.
 
 ## <a name="next-steps"></a>Nästa steg
-[Skapa en funktionsapp i Azure-och ett Azure Storage-konto för att bearbeta och lagra IoT-hubb meddelanden](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md).
+[Skapa en funktionsapp i Azure-och en Azure Storage-konto tooprocess och lagra IoT-hubb meddelanden](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md).
 

@@ -1,15 +1,15 @@
-## <a name="push-to-azure-from-git"></a>Skicka till Azure från Git
+## <a name="push-tooazure-from-git"></a>Push-tooAzure från Git
 
-Lägg till en Azure-fjärrdatabas till din lokala Git-databas.
+Lägg till en Azure remote tooyour lokal Git-lagringsplats.
 
 ```bash
 git remote add azure <URI from previous step>
 ```
 
-Skicka till Azure-fjärrdatabasen för att distribuera appen. Du uppmanas att ange lösenordet som du skapade tidigare när du skapade distributionsanvändaren. Se till att du anger det lösenord som du skapade i [Konfigurera en distributionsanvändare](#configure-a-deployment-user), inte lösenordet du använde när du loggade in på Azure Portal.
+Skicka toohello Azure remote toodeploy din app. Du ombeds hello lösenord som du skapade tidigare när du skapade hello distribution användare. Se till att ange hello lösenordet du skapade i [konfigurerar en distribution användare](#configure-a-deployment-user), inte hello lösenord du använder toolog i toohello Azure-portalen.
 
 ```bash
 git push azure master
 ```
 
-Föregående kommando visar information liknande den i följande exempel:
+hello Visar föregående kommando information liknande toohello följande exempel:

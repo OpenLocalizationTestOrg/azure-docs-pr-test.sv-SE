@@ -1,6 +1,6 @@
 ---
-title: Skala Service Fabric-klustret in eller ut | Microsoft Docs
-description: "Skala Service Fabric-klustret in eller ut för att matcha begäran genom att ange regler för automatisk skalning för varje nod typ/virtuella datorns skaluppsättning. Lägg till eller ta bort noder till ett Service Fabric-kluster"
+title: aaaScale ett Service Fabric-kluster in eller ut | Microsoft Docs
+description: "Skala Service Fabric-klustret in eller ut toomatch begäran genom att ange regler för automatisk skalning för varje nod typ/virtuella datorns skaluppsättning. Lägg till eller ta bort noder tooa Service Fabric-kluster"
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: chackdan
-ms.openlocfilehash: 32d8fca81c20e77db4ed3aae05d017ccc2ce1be3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 37cfeaf80edc016cf6de017d1c2dc6fbcb8acc2a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>Skala Service Fabric-klustret in eller ut använda regler för automatisk skalning
-Skaluppsättningar för den virtuella datorn är en Azure compute-resurs som du kan använda för att distribuera och hantera en samling med virtuella datorer som en uppsättning. Varje nodtyp som definieras i Service Fabric-klustret har konfigurerats som en separat skaluppsättning för virtuell dator. Varje nodtyp kan sedan skalas i ut oberoende av varandra, har olika uppsättningar av öppna portar och kan ha olika kapacitetsdata. Läs mer om den i den [nodetypes får Service Fabric](service-fabric-cluster-nodetypes.md) dokumentet. Eftersom typer för Service Fabric-nod i klustret har skapats på skalningsuppsättningar i virtuella datorer på serverdelen, behöver du ställa in automatisk skalning regler för varje nod typ/virtuella datorns skaluppsättning.
+Skaluppsättningar för den virtuella datorn är en Azure compute-resurs som du kan använda toodeploy och hantera en samling med virtuella datorer som en uppsättning. Varje nodtyp som definieras i Service Fabric-klustret har konfigurerats som en separat skaluppsättning för virtuell dator. Varje nodtyp kan sedan skalas i ut oberoende av varandra, har olika uppsättningar av öppna portar och kan ha olika kapacitetsdata. Läs mer om den i hello [nodetypes får Service Fabric](service-fabric-cluster-nodetypes.md) dokumentet. Eftersom hello Service Fabric-nodtyper i klustret har skapats på skalningsuppsättningar i virtuella datorer på hello backend, behöver du tooset Autoskala regler för varje nod typ/virtuella datorns skaluppsättning.
 
 > [!NOTE]
-> Din prenumeration måste ha tillräckligt med kärnor att lägga till de nya virtuella datorer som utgör det här klustret. Det finns ingen modellverifiering, så att du får tid distributionsfel, om någon av kvotgränserna nådde.
+> Din prenumeration måste ha tillräckligt med kärnor tooadd hello nya virtuella datorer som utgör det här klustret. Det finns ingen modellverifiering, så att du får tid distributionsfel, om någon av hello kvotgränserna träffar.
 > 
 > 
 
-## <a name="choose-the-node-typevirtual-machine-scale-set-to-scale"></a>Välj noden typ/Virtual Machine skaluppsättningen att skala
-Du är för närvarande inte att ange regler för automatisk skalning för skalningsuppsättningar i virtuella datorer med hjälp av portalen, så Låt oss använda Azure PowerShell (1.0 +) lista över typer noden och sedan lägga till Autoskala regler till dem.
+## <a name="choose-hello-node-typevirtual-machine-scale-set-tooscale"></a>Välj hello nod typ/virtuella datorn uppsättning tooscale
+För närvarande kan du inte kan toospecify hello Autoskala regler för skalningsuppsättningar i virtuella datorer med hjälp av hello portal, så vi kan använda Azure PowerShell (1.0 +) toolist hello nodtyper och Lägg sedan till Autoskala regler toothem.
 
-Om du vill hämta listan över virtuella datorns skaluppsättning som utgör ditt kluster kör du följande cmdlets:
+tooget hello lista över virtuella skaluppsättning som utgör ditt kluster som kör hello följande cmdlets:
 
 ```powershell
 Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/VirtualMachineScaleSets
@@ -39,78 +39,78 @@ Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/
 Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <Virtual Machine scale set name>
 ```
 
-## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>Ange regler för automatisk skalning för noden typ/virtuella datorns skaluppsättning
-Om klustret har flera nodtyper, upprepar du detta för varje nod typer/virtuella datorn anger att du vill skala (in eller ut). Ta hänsyn till antalet noder som du behöver innan du ställer in automatisk skalning. Det minsta antalet noder som du måste ha för den primära nodtypen drivs av tillförlitlighet-nivå som du har valt. Läs mer om [tillförlitlighetsnivåer](service-fabric-cluster-capacity.md).
+## <a name="set-auto-scale-rules-for-hello-node-typevirtual-machine-scale-set"></a>Ange regler för automatisk skalning för hello nod typ/virtuella datorns skaluppsättning
+Om klustret har flera nodtyper, upprepar du detta för varje nod typer/virtuella datorn anger som du vill tooscale (in eller ut). Ta hänsyn till kontot hello antalet noder som du behöver innan du ställer in automatisk skalning. hello minsta antalet noder som du måste ha för hello primära nodtypen drivs av hello tillförlitlighet nivå som du har valt. Läs mer om [tillförlitlighetsnivåer](service-fabric-cluster-capacity.md).
 
 > [!NOTE]
-> Skala ned den primära noden typ till mindre än det minsta antalet se klustret instabil eller sätta. Detta kan resultera i förlust av data för dina program och systemtjänster.
+> Skala ned hello primära noden typen tooless än hello minsta antalet göra hello klustret instabil eller sätta. Detta kan resultera i förlust av data för dina program och hello systemtjänster.
 > 
 > 
 
-Funktionen Autoskala är för närvarande inte styrs av belastning som dina program kan rapporterar till Service Fabric. Så just nu den Autoskala du rent styrs av de prestandaräknare som sänds av var och en av den virtuella datorn skaluppsättning instanser.  
+Hello Autoskala funktionen är för närvarande inte styrs av hello belastningar som dina program kan reporting tooService Fabric. Så vid denna tidpunkt hello drivs Autoskala du rent av hello prestandaräknare som orsakat av varje hello Virtual Machine scale set instanser.  
 
-Följ dessa instruktioner [att ställa in automatisk skalning för varje skaluppsättning för virtuell dator för](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
+Följ dessa instruktioner [tooset in Autoskala för varje skaluppsättning för virtuell dator för](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
 > [!NOTE]
-> I en skala ned scenario, om inte din nodtyp har en hållbarhet guld eller Silver måste du anropa den [cmdlet Remove-ServiceFabricNodeState](https://msdn.microsoft.com/library/azure/mt125993.aspx) med lämplig nod-namn.
+> I en skala ned scenario, om inte din nodtyp har en hållbarhet guld eller Silver måste toocall hello [cmdlet Remove-ServiceFabricNodeState](https://msdn.microsoft.com/library/azure/mt125993.aspx) med hello lämpliga nodnamn.
 > 
 > 
 
-## <a name="manually-add-vms-to-a-node-typevirtual-machine-scale-set"></a>Manuellt lägga till virtuella datorer i en nod typ/virtuella datorns skaluppsättning
-Följ exemplet/instruktionerna i den [Snabbstart mallgalleriet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) att ändra antalet virtuella datorer i varje Nodetype. 
+## <a name="manually-add-vms-tooa-node-typevirtual-machine-scale-set"></a>Manuellt lägga till virtuella datorer tooa nod typ/virtuella datorns skaluppsättning
+Följ hello exemplet/instruktionerna i hello [Snabbstart mallgalleriet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) toochange hello antalet virtuella datorer i varje Nodetype. 
 
 > [!NOTE]
-> Lägga till virtuella datorer tar tid, så förväntar sig inte vara omedelbar tilläggen. Planera därför att lägga till kapacitet i tid, så att mer än 10 minuter innan VM-kapaciteten är tillgänglig för replikerna / service instanser som ska placeras.
+> Lägga till virtuella datorer tar tid, så förväntar sig inte hello tillägg toobe omedelbar. Så planerar tooadd kapacitet bra i tid, tooallow mer än 10 minuter innan hello VM-kapaciteten är tillgänglig för hello repliker / service instanser tooget placeras.
 > 
 > 
 
-## <a name="manually-remove-vms-from-the-primary-node-typevirtual-machine-scale-set"></a>Ta bort virtuella datorer manuellt från det primära noden typ/virtuellt datorns skaluppsättning
+## <a name="manually-remove-vms-from-hello-primary-node-typevirtual-machine-scale-set"></a>Ta bort virtuella datorer manuellt från hello primära noden typ/virtuella datorns skaluppsättning
 > [!NOTE]
-> Service fabric systemtjänsterna körs i den primära nodtypen i klustret. Mindre än vad tillförlitlighetsnivån garanterar så aldrig ska stänga av eller minska antalet instanser i de nodtyperna. Referera till [information på tillförlitlighet nivåerna här](service-fabric-cluster-capacity.md). 
+> hello service fabric-systemtjänster kör i hello primära nodtypen i klustret. Mindre än vad hello tillförlitlighetsnivån garanterar så aldrig ska stänga av eller skala ned hello antalet instanser i de nodtyperna. Se för[hello information på tillförlitlighet nivåerna här](service-fabric-cluster-capacity.md). 
 > 
 > 
 
-Du måste köra den följande steg för en VM-instansen i taget. Detta ger systemtjänsterna (och tillståndskänsliga tjänster) stängs avslutas på VM-instans som du tar bort och nya repliker som skapas på andra noder.
+Du behöver tooexecute hello Följ anvisningarna nedan för en VM-instans i taget. Detta ger hello systemtjänster (och tillståndskänsliga tjänster) toobe avslutas på vanligt sätt på hello VM-instans som du tar bort och nya repliker som skapas på andra noder.
 
-1. Kör [inaktivera ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) med syftet 'RemoveNode' att inaktivera noden ska du ta bort (högsta instans i den nodtypen).
-2. Kör [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) och kontrollera att noden verkligen har övergått till inaktiverad. Om inte, vänta tills noden är inaktiverad. Du kan skynda dig det här steget.
-3. Följ exemplet/instruktionerna i den [Snabbstart mallgalleriet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) att ändra antal virtuella datorer med en i denna Nodetype. Instansen tas bort är den högsta VM-instansen. 
-4. Upprepa steg 1 till 3 efter behov, men aldrig skala ned antalet instanser i de primära noden typerna mindre än tillförlitlighetsnivån garanterar. Referera till [information på tillförlitlighet nivåerna här](service-fabric-cluster-capacity.md). 
+1. Kör [inaktivera ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) med avsiktshantering 'RemoveNode' toodisable hello noden ska tooremove (hello högsta instans i den nodtypen).
+2. Kör [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) toomake till noden hello verkligen har övergått toodisabled. Om inte, vänta tills hello nod är inaktiverad. Du kan skynda dig det här steget.
+3. Följ hello exemplet/instruktionerna i hello [Snabbstart mallgalleriet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) toochange hello antal virtuella datorer med en i denna Nodetype. hello instansen tas bort är hello högsta VM. 
+4. Upprepa steg 1 till 3 efter behov, men aldrig skala ned hello antalet instanser i hello primära nodtyper mindre än vad hello tillförlitlighetsnivån garanterar. Se för[hello information på tillförlitlighet nivåerna här](service-fabric-cluster-capacity.md). 
 
-## <a name="manually-remove-vms-from-the-non-primary-node-typevirtual-machine-scale-set"></a>Ta manuellt bort virtuella datorer från icke-primär nod typ/virtuella datorns skaluppsättning
+## <a name="manually-remove-vms-from-hello-non-primary-node-typevirtual-machine-scale-set"></a>Ta bort virtuella datorer manuellt från hello icke-primär nod typ/virtuella datorns skaluppsättning
 > [!NOTE]
-> För en tillståndskänslig tjänst behöver du ett visst antal noder alltid upp till att upprätthålla tillgänglighet och bevara tillståndet för din tjänst. Vid mycket minimum behöver du antalet noder lika med mål replik set antalet partitionen/service. 
+> För en tillståndskänslig tjänst behöver du ett visst antal noder toobe alltid in toomaintain tillgänglighet och bevara tillståndet för din tjänst. Vid hello mycket minsta behöver du hello antalet noder lika toohello mål replik set antal hello partitionen/service. 
 > 
 > 
 
-Du måste köra de följande stegen en VM-instansen i taget. Detta ger systemtjänsterna (och tillståndskänsliga tjänster) stängs avslutas på VM-instans som du tar bort och nya repliker skapas annan var.
+Du behöver hello köra hello följande steg för en VM-instans i taget. Detta ger hello systemtjänster (och tillståndskänsliga tjänster) toobe avslutas på vanligt sätt på hello VM-instans som du tar bort och nya repliker skapas annan var.
 
-1. Kör [inaktivera ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) med syftet 'RemoveNode' att inaktivera noden ska du ta bort (högsta instans i den nodtypen).
-2. Kör [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) och kontrollera att noden verkligen har övergått till inaktiverad. Om du inte vänta tills noden är inaktiverad. Du kan skynda dig det här steget.
-3. Följ exemplet/instruktionerna i den [Snabbstart mallgalleriet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) att ändra antal virtuella datorer med en i denna Nodetype. Den högsta VM-instansen tas nu bort. 
-4. Upprepa steg 1 till 3 efter behov, men aldrig skala ned antalet instanser i de primära noden typerna mindre än tillförlitlighetsnivån garanterar. Referera till [information på tillförlitlighet nivåerna här](service-fabric-cluster-capacity.md).
+1. Kör [inaktivera ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) med avsiktshantering 'RemoveNode' toodisable hello noden ska tooremove (hello högsta instans i den nodtypen).
+2. Kör [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) toomake till noden hello verkligen har övergått toodisabled. Om du inte vänta tills hello nod är inaktiverad. Du kan skynda dig det här steget.
+3. Följ hello exemplet/instruktionerna i hello [Snabbstart mallgalleriet](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) toochange hello antal virtuella datorer med en i denna Nodetype. Hello högsta VM-instans tas nu bort. 
+4. Upprepa steg 1 till 3 efter behov, men aldrig skala ned hello antalet instanser i hello primära nodtyper mindre än vad hello tillförlitlighetsnivån garanterar. Se för[hello information på tillförlitlighet nivåerna här](service-fabric-cluster-capacity.md).
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Beteenden som du kan se i Service Fabric Explorer
-När du skalar upp ett kluster visar Service Fabric Explorer antalet noder (virtuella skaluppsättning instanser) som ingår i klustret.  Men när du skalar ett kluster av du ser den borttagna nod och VM-instans som visas i ett feltillstånd om du anropar [ta bort ServiceFabricNodeState cmd](https://msdn.microsoft.com/library/mt125993.aspx) med lämplig nod-namn.   
+När du skalar upp en kluster-hello visar Service Fabric Explorer hello antalet noder (virtuella skaluppsättning instanser) som ingår i hello kluster.  Men när du skalar ett kluster av du ser hello bort noden och VM-instans visas i feltillstånd om du anropar [ta bort ServiceFabricNodeState cmd](https://msdn.microsoft.com/library/mt125993.aspx) med hello lämpliga nodnamn.   
 
-Här är förklaring till problemet.
+Här är hello förklaring till problemet.
 
-Noderna som anges i Service Fabric Explorer är en avbildning av vilka Service Fabric systemtjänsterna (FM specifikt) medveten om antalet noder i klustret hade/har. När du skalar virtuella datorns skaluppsättning anges den virtuella datorn har tagits bort men FM systemtjänst fortfarande tror att noden (som har mappats till den virtuella datorn som har tagits bort) kommer tillbaka. Service Fabric Explorer fortsätter så att visa noden (även om hälsotillståndet kan vara fel eller okänd).
+hello noder som anges i Service Fabric Explorer är reflektion vilka hello Service Fabric-systemtjänster (FM specifikt) vet om hello antalet noder hello klustret hade/har. När du skalar hello virtuella skala anges hello VM togs bort men FM systemtjänst fortfarande tror att hello-nod (som var mappade toohello VM som har tagits bort) kommer tillbaka. Så fortsätter Service Fabric Explorer toodisplay noden (även om hälsotillståndet för hello kan vara fel eller okänd).
 
-För att se till att en nod ska tas bort när en virtuell dator tas bort, har du två alternativ:
+I ordning toomake till att en nod ska tas bort när en virtuell dator tas bort, har du två alternativ:
 
-1) Välj den hållbarhet guld eller Silver (tillgänglig snart) för nodtyper i klustret, som ger dig infrastruktur-integration. Som sedan bort noder från våra tjänster (FM) systemtillstånd när du skala.
-Referera till [information om hållbarhet nivåer här](service-fabric-cluster-capacity.md)
+1) Välj den hållbarhet guld eller Silver (tillgänglig snart) för hello nodtyper i klustret, som ger dig hello infrastruktur-integration. Som sedan bort hello noder från våra tjänster (FM) systemtillstånd när du skala.
+Se för[hello information om hållbarhet nivåer här](service-fabric-cluster-capacity.md)
 
-2) När VM-instans har skalats, måste du anropa den [cmdlet Remove-ServiceFabricNodeState](https://msdn.microsoft.com/library/mt125993.aspx).
+2) När hello VM-instans har skalats, måste toocall hello [cmdlet Remove-ServiceFabricNodeState](https://msdn.microsoft.com/library/mt125993.aspx).
 
 > [!NOTE]
-> Service Fabric-kluster kräver ett visst antal noder som ska vara igång hela tiden för att underhålla tillgänglighet och bevara tillstånd - kallas ”för att underhålla kvorum”. Därför är det oftast säkert att stänga av alla datorer i klustret om du först har utfört en [fullständig säkerhetskopiering av din tillstånd](service-fabric-reliable-services-backup-restore.md).
+> Service Fabric-kluster kräver ett visst antal noder toobe in på alla hello tid i ordning toomaintain tillgänglighet och bevara tillstånd - refererad tooas ”för att underhålla kvorum”. Det är den vanligtvis osäkra tooshut ned alla hello-datorer i hello kluster om du först har utfört en [fullständig säkerhetskopiering av din tillstånd](service-fabric-reliable-services-backup-restore.md).
 > 
 > 
 
 ## <a name="next-steps"></a>Nästa steg
-Läs följande också mer information om planering av kapacitet för klustret, uppgradera ett kluster och partitionering tjänster:
+Läs hello följande tooalso mer information om planering klustret kapacitet, uppgradera ett kluster och partitionering tjänster:
 
 * [Planera din kapacitet för kluster](service-fabric-cluster-capacity.md)
 * [Klusteruppgradering](service-fabric-cluster-upgrade.md)

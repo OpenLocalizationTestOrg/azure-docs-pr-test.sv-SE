@@ -1,5 +1,5 @@
 ---
-title: "Felsökning av Linux VM-tillägget fel | Microsoft Docs"
+title: "aaaTroubleshooting Linux VM tillägget fel | Microsoft Docs"
 description: "Lär dig mer om hur du felsöker Azure Linux VM-tillägget fel"
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 589890de379d0b729de1f1ba9e604e0ec0496f50
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 29a0ca34207421e0014380000a313d3c44e7e594
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-azure-linux-vm-extension-failures"></a>Felsöka Azure Linux VM-tillägget fel
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
 ## <a name="viewing-extension-status"></a>Visa Tilläggsstatus för
-Azure Resource Manager-mallar kan köras från Azure CLI. När mallen körs visas tilläggets status från Azure Resursläsaren eller kommandoradsverktyg.
+Azure Resource Manager-mallar kan köras från hello Azure CLI. När hello mallen körs visas hello tillståndets status från Azure Resursläsaren eller hello kommandoradsverktyg.
 
 Här är ett exempel:
 
@@ -34,7 +34,7 @@ Azure CLI:
       azure vm get-instance-view
 
 
-Här är exempel på utdata:
+Här är exempel på utdata från hello:
 
       Extensions:  {
       "ExtensionType": "Microsoft.Compute.CustomScriptExtension",
@@ -60,14 +60,14 @@ Här är exempel på utdata:
   ]
 
 ## <a name="troubleshooting-extenson-failures"></a>Felsöka Extenson fel:
-### <a name="re-running-the-extension-on-the-vm"></a>Köra tillägget på den virtuella datorn
-Om du kör skript på den virtuella datorn med hjälp av tillägget för anpassat skript, kan du ibland stöter på ett fel där VM skapades men inte det gick att skriptet. Under dessa villkor är det rekommenderade sättet att åtgärda felet för att tillägget tas bort och kör mallen igen.
-Obs: I framtiden kommer den här funktionen skulle förbättras för att ta bort behovet av att avinstallera tillägget.
+### <a name="re-running-hello-extension-on-hello-vm"></a>Köra hello tillägg på hello VM
+Om du kör skript på hello VM som använder tillägget för anpassat skript kan du ibland stöter på ett fel där VM skapades men hello skriptet har misslyckats. Under dessa villkor hello rekommenderat sätt toorecover från det här felet är tooremove hello tillägg och kör hello mallen igen.
+Obs: I framtiden kan den här funktionen är utökad tooremove hello behöver för att avinstallera hello-tillägget.
 
-#### <a name="remove-the-extension-from-azure-cli"></a>Ta bort tillägget från Azure CLI
+#### <a name="remove-hello-extension-from-azure-cli"></a>Hello tillägget tas bort från Azure CLI
       azure vm extension set --resource-group "KPRG1" --vm-name "kundanapdemo" --publisher-name "Microsoft.Compute.CustomScriptExtension" --name "myCustomScriptExtension" --version 1.4 --uninstall
 
-Där ”publsher-name” motsvarar tilläggstypen från utdata från ”azure vm get-instans view” och namn är namnet på resursen tillägg från mallen
+Där ”publsher-name” motsvarar toohello tilläggstypen från hello utdata ”azure vm get-instans-vyn” och hello namn hello tillägget resurs från hello mall
 
-När tillägget har tagits bort går kan mallen köras igen att köra skript på den virtuella datorn.
+När hello tillägget har tagits bort, kan hello mallen vara gång toorun hello skript på hello VM.
 

@@ -1,6 +1,6 @@
 ---
-title: "Köp ett anpassat domännamn för Azure-Webbappar"
-description: "Lär dig hur du köper ett anpassat domännamn med en webbapp i Azure App Service."
+title: "aaaBuy ett anpassat domännamn för Azure-Webbappar"
+description: "Lär dig hur toobuy en anpassad domän namn med en webbapp i Azure App Service."
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -14,173 +14,173 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.openlocfilehash: 3cb22b935624041ab51e64028a1b668fd694f9b5
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2ff61a3f27020516c917fe105ece99eb2a5754b7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Köp ett anpassat domännamn för Azure-Webbappar
 
-Apptjänst-domäner (förhandsversion) är toppnivådomäner som hanteras direkt i Azure. De gör det lättare att hantera anpassade domäner för [Azure Web Apps](app-service-web-overview.md). Den här kursen visar hur du köper en Apptjänst-domän och tilldela Azure Web Apps DNS-namn.
+Apptjänst-domäner (förhandsversion) är toppnivådomäner som hanteras direkt i Azure. De gör det enkelt toomanage anpassade domäner för [Azure Web Apps](app-service-web-overview.md). Den här kursen visar hur toobuy en Apptjänst-domän och tilldela DNS-namn tooAzure Web Apps.
 
-Den här artikeln är Azure App Service (Web Apps, API Apps, Mobilappar, Logic Apps). Azure Storage eller Azure VM finns [tilldela Apptjänst domän till Azure VM eller Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). Cloud Services, se [konfigurera ett anpassat domännamn för en Azure-molntjänst](../cloud-services/cloud-services-custom-domain-name-portal.md).
+Den här artikeln är Azure App Service (Web Apps, API Apps, Mobilappar, Logic Apps). Azure Storage eller Azure VM finns [tilldela Apptjänst domän tooAzure VM eller Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). Cloud Services, se [konfigurera ett anpassat domännamn för en Azure-molntjänst](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att slutföra den här kursen behöver du:
+toocomplete den här kursen:
 
 * [Skapa en Apptjänst-app](/azure/app-service/), eller använda en app som du skapade för en annan kursen.
 
-## <a name="prepare-the-app"></a>Förbered appen
+## <a name="prepare-hello-app"></a>Förbereda hello appen
 
-Att använda anpassade domäner i Azure Web Apps ditt webbprograms [programtjänstplanen](https://azure.microsoft.com/pricing/details/app-service/) måste vara en betald nivå (**delade**, **grundläggande**, **Standard**, eller **Premium**). I det här steget kan se du till att webbappen är i det prisnivån.
+toouse anpassade domäner i Azure Web Apps ditt webbprograms [programtjänstplanen](https://azure.microsoft.com/pricing/details/app-service/) måste vara en betald nivå (**delade**, **grundläggande**, **Standard**, eller **Premium**). I det här steget kan se du till att hello-webbprogrammet i hello stöds prisnivån.
 
-### <a name="sign-in-to-azure"></a>Logga in på Azure
+### <a name="sign-in-tooazure"></a>Logga in tooAzure
 
-Öppna den [Azure-portalen](https://portal.azure.com) och logga in med ditt Azure-konto.
+Öppna hello [Azure-portalen](https://portal.azure.com) och logga in med ditt Azure-konto.
 
-### <a name="navigate-to-the-app-in-the-azure-portal"></a>Navigera till appen i Azure-portalen
+### <a name="navigate-toohello-app-in-hello-azure-portal"></a>Navigera toohello app i hello Azure-portalen
 
-I den vänstra menyn, Välj **Apptjänster**, och välj sedan namnet på appen.
+Välj hello vänstra menyn **Apptjänster**, och välj sedan hello namnet på hello app.
 
-![Portalen navigering till Azure-app](./media/app-service-web-tutorial-custom-domain/select-app.png)
+![Portalen navigering tooAzure app](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
-Du ser sidan för hantering av Apptjänst-app.  
+Du ser sidan för hantering av hello av hello Apptjänst-app.  
 
-### <a name="check-the-pricing-tier"></a>Kontrollera prisnivån
+### <a name="check-hello-pricing-tier"></a>Kontrollera hello prisnivån
 
-I det vänstra navigeringsfönstret på appsidan, bläddra till den **inställningar** avsnittet och väljer **skala upp (apptjänstplan)**.
+Bläddra i hello vänster navigeringsfält hello app sidan, toohello **inställningar** avsnittet och väljer **skala upp (apptjänstplan)**.
 
 ![Skala-menyn](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-Appens aktuell nivå markeras med en blå kantlinje. Kontrollera att appen inte är i den **lediga** nivå. Anpassad DNS stöds inte i den **lediga** nivå. 
+aktuella hello app-nivå markeras med en blå kantlinje. Kontrollera toomake till hello appen inte hello **lediga** nivå. Anpassad DNS stöds inte i hello **lediga** nivå. 
 
 ![Kontrollera prisnivå](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Om App Service-plan inte **lediga**Stäng den **Välj din prisnivå** sidan och gå vidare till [köpa domänen](#buy-the-domain).
+Om hello programtjänstplanen är inte **lediga**Stäng hello **Välj din prisnivå** sidan och hoppa över för[köp hello domän](#buy-the-domain).
 
-### <a name="scale-up-the-app-service-plan"></a>Skala upp App Service-plan
+### <a name="scale-up-hello-app-service-plan"></a>Skala upp hello App Service-plan
 
-Välj någon av de icke kostnadsfria nivåerna (**delade**, **grundläggande**, **Standard**, eller **Premium**). 
+Väljer du någon av hello icke kostnadsfria nivåer (**delade**, **grundläggande**, **Standard**, eller **Premium**). 
 
 Klicka på **Välj**.
 
 ![Kontrollera prisnivå](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
-När du ser följande meddelande har åtgärden slutförts.
+När du ser följande meddelande hello har hello skalningsåtgärden slutförts.
 
 ![Skala åtgärd-bekräftelse](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
-## <a name="buy-the-domain"></a>Köpa domänen
+## <a name="buy-hello-domain"></a>Köpa hello domän
 
-### <a name="sign-in-to-azure"></a>Logga in på Azure
-Öppna den [Azure-portalen](https://portal.azure.com/) och logga in med ditt Azure-konto.
+### <a name="sign-in-tooazure"></a>Logga in tooAzure
+Öppna hello [Azure-portalen](https://portal.azure.com/) och logga in med ditt Azure-konto.
 
 ### <a name="launch-buy-domains"></a>Starta köp domäner
-I den **Web Apps** klickar du på namnet på ditt webbprogram, Välj **inställningar**, och välj sedan **anpassade domäner**
+I hello **Web Apps** klickar du på hello namnet på ditt webbprogram, Välj **inställningar**, och välj sedan **anpassade domäner**
    
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
-I den **anpassade domäner** klickar du på **köpa domäner**.
+I hello **anpassade domäner** klickar du på **köpa domäner**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
-### <a name="configure-the-domain-purchase"></a>Konfigurera domänen köpet
+### <a name="configure-hello-domain-purchase"></a>Konfigurera hello domän köp
 
-I den **Service tillämpningsdomän** sidan den **Sök efter domän** skriver domännamnet som du vill köpa och skriv `Enter`. Föreslagna tillgängliga domäner visas under textrutan. Välj en eller flera domäner som du vill köpa. 
+I hello **Service tillämpningsdomän** i hello sidan **Sök efter domän** rutan, typ hello domännamn som du vill toobuy och skriv `Enter`. hello visas föreslagna tillgängliga domäner under textrutan hello. Välj en eller flera domäner som du vill toobuy. 
    
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
-Klicka på den **kontaktuppgifter** och fylla i domänens kontaktinformation formulär. När du är klar klickar du på **OK** att återgå till sidan App Service-domän.
+Klicka på hello **kontaktuppgifter** och fylla i hello domän kontaktinformation formulär. När du är klar klickar du på **OK** tooreturn toohello Service tillämpningsdomän sidan.
    
-Det är viktigt att du fyller i alla obligatoriska fält med så mycket noggrannhet som möjligt. Felaktiga data kontaktinformation kan resultera i misslyckande med att köpa domäner. 
+Det är viktigt att du fyller i alla obligatoriska fält med så mycket noggrannhet som möjligt. Felaktiga data kontaktinformation kan resultera i fel toopurchase domäner. 
 
-Välj därefter önskade alternativ för din domän. Se följande tabell förklaringar:
+Välj därefter hello önskade alternativ för din domän. Se följande tabell förklaringar hello:
 
 | Inställning | Föreslaget värde | Beskrivning |
 |-|-|-|
-|Förnya automatiskt | **Aktivera** | Förnyar din App Service domän automatiskt varje år. Ditt kreditkort debiteras samma inköpspriset vid tidpunkten för förnyelsen. |
-|Sekretesskydd | Aktivera | Välja att ”sekretesskydd”, som ingår i inköpspriset _gratis_ (utom toppnivådomäner vars register inte stöder sekretesskydd, t.ex _. co.in_, _. co.uk_och så vidare). |
-| Tilldela standard värdnamn | **www** och**@** | Välj önskad värdnamnsbindningar om så önskas. När domänen köp åtgärden är slutförd måste kan ditt webbprogram nås på den valda värdnamnen. Om webbappen bakom [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), visas alternativet att tilldela rotdomänen (@), eftersom Traffic Manager har inte stöd för A-poster. Du kan ändra värdnamnet tilldelningar efter domän köpet har slutförts. |
+|Förnya automatiskt | **Aktivera** | Förnyar din App Service domän automatiskt varje år. Ditt kreditkort debiteras hello samma inköpspriset på hello tid för förnyelse. |
+|Sekretesskydd | Aktivera | Välja för ”sekretesskydd”, som ingår i hello inköpspriset _gratis_ (utom toppnivådomäner vars register inte stöder sekretesskydd, t.ex _. co.in_, _. Co.uk_och så vidare). |
+| Tilldela standard värdnamn | **www** och**@** | Välj hello önskade värdnamnsbindningar, om så önskas. När hello domän köp åtgärden är slutförd måste kan ditt webbprogram nås på hello valt värdnamn. Om hello webbprogram finns bakom [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), du inte ser hello alternativet tooassign hello rotdomänen (@), eftersom Traffic Manager har inte stöd för A-poster. Du kan ändra toohello hostname tilldelningar när hello domän köpet har slutförts. |
 
 ### <a name="accept-terms-and-purchase"></a>Acceptera villkoren och köpa
 
-Klicka på **juridiska villkor** att granska villkoren och kostnader och klicka sedan på **köpa**.
+Klicka på **juridiska villkor** tooreview hello villkor och hello kostnader, klicka sedan på **köpa**.
 
 > [!NOTE]
-> Apptjänst domäner använda DNS för Azure som värd för domänerna. Förutom domän registreringsavgift gäller användningskostnader för Azure DNS. Mer information finns i [priser för Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
+> Apptjänst domäner använder Azure DNS toohost hello domäner. Dessutom toohello domän registreringsavgift användningskostnader för Azure DNS tillämpas. Mer information finns i [priser för Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
 >
 >
 
-I den **Service tillämpningsdomän** klickar du på **OK**. Medan åtgärden pågår kan se du följande meddelanden:
+Tillbaka i hello **Service tillämpningsdomän** klickar du på **OK**. Medan hello pågår, kan du se hello följande meddelanden:
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
 
-### <a name="test-the-hostnames"></a>Testa värdnamnen
+### <a name="test-hello-hostnames"></a>Testa hello värdnamn
 
-Om du har tilldelat ditt webbprogram standard värdnamn se du också en lyckad avisering för varje vald värdnamn. 
+Om du har tilldelat standard värdnamn tooyour webbprogrammet kan se du också ett fungerande meddelande för varje vald värdnamn. 
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-Du också se valda värdnamn i den **anpassade domäner** sidan den **värdnamn** avsnitt. 
+Du också se hello valt värdnamn i hello **anpassade domäner** i hello sidan **värdnamn** avsnitt. 
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
-Gå till listan värdnamn i webbläsaren om du vill testa värdnamnen. I exemplet i den föregående skärmbilden försök gå till _kontoso.net_ och _www.kontoso.net_.
+tootest hello värdnamn navigera toohello visas värdnamn i hello webbläsare. I exemplet hello i hello föregående skärmbilden försök navigera too_kontoso.net_ och _www.kontoso.net_.
 
-## <a name="assign-hostnames-to-web-app"></a>Tilldela webbprogrammet värdnamn
+## <a name="assign-hostnames-tooweb-app"></a>Tilldela värdnamn tooweb app
 
-Om du inte väljer att tilldela en eller flera standard värdnamn till ditt webbprogram under inköpsprocessen, eller om måste du tilldela ett värdnamn som inte finns, kan du tilldela ett värdnamn på när som helst.
+Om du väljer att inte tooassign en eller flera standard värdnamn tooyour webbapp under hello köpa process eller om du inte behöver tooassign ett värdnamn i listan, kan du tilldela ett värdnamn när som helst.
 
-Du kan också tilldela värdnamn i programdomänen för tjänsten till ett annat webbprogram. Stegen är beroende av om App Service-domänen och webbprogrammet tillhöra samma prenumeration.
+Du kan också tilldela värdnamn i hello Service tillämpningsdomän tooany andra webbprogram. hello steg beror på om hello programdomänen för tjänsten och hello webbapp hör toohello samma prenumeration.
 
-- Annan prenumeration: mappa anpassade DNS-poster från domänen App Service till webbprogrammet som en externt köpta domän. Mer information om att lägga till anpassade DNS-namn till en App Service-domän finns [hantera anpassade DNS-poster](#custom). Om du vill mappa en extern köpta domän till en webbapp, se [mappa ett befintligt anpassade DNS-namn till Azure Web Apps](app-service-web-tutorial-custom-domain.md). 
-- Samma prenumeration: Använd följande steg.
+- Annan prenumeration: mappa anpassade DNS-poster från hello Service tillämpningsdomän toohello webbapp som en externt köpta domän. För information om att lägga till anpassade DNS namn tooan programdomänen för tjänsten, se [hantera anpassade DNS-poster](#custom). toomap en extern köpta domän tooa webbapp, se [mappa en befintlig anpassad DNS-namnet tooAzure Web Apps](app-service-web-tutorial-custom-domain.md). 
+- Samma prenumeration: Använd hello följande steg.
 
 ### <a name="launch-add-hostname"></a>Starta Lägg till värdnamn
-I den **Apptjänster** markerar du namnet på ditt webbprogram som du vill tilldela värdnamn, Välj **inställningar**, och välj sedan **anpassade domäner**.
+I hello **Apptjänster** sidan, Välj hello namnet på ditt webbprogram som du vill tooassign värdnamn, Välj **inställningar**, och välj sedan **anpassade domäner**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
-Kontrollera att dina köpta domän visas i den **App Service domäner** avsnittet, men inte välja den. 
+Kontrollera att dina köpta domän visas i hello **App Service domäner** avsnittet, men inte välja den. 
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 > [!NOTE]
-> Alla App Service-domäner i samma prenumeration som visas i webbappens **anpassade domäner** sidan. Om din domän finns i webbappens prenumeration, men du kan se den i webbapp **anpassade domäner** och prova att öppna den **anpassade domäner** sidan eller uppdatera webbsida. Kontrollera också notification bell överst i Azure-portalen för pågår eller skapa fel.
+> Alla App Service-domäner i samma prenumeration visas i hello webbapp hello **anpassade domäner** sidan. Om din domän finns i hello webbapp prenumeration, men du kan se den i hello webbapp **anpassade domäner** och prova att öppna hello **anpassade domäner** sidan eller uppdatera hello webbsida. Kontrollera också hello notification bell hello överst i hello Azure-portalen för pågår eller skapa fel.
 >
 >
 
 Välj **lägga till värdnamnet**.
 
 ### <a name="configure-hostname"></a>Konfigurera värdnamnet
-I den **lägga till värdnamnet** dialogrutan Skriv fullständigt kvalificerade domännamnet för din App Service-domän eller en underdomän. Exempel:
+I hello **lägga till värdnamnet** dialogrutan, typen hello fullständigt kvalificerade domännamnet för din App Service-domän eller en underdomän. Exempel:
 
 - kontoso.NET
 - www.kontoso.NET
 - ABC.kontoso.NET
 
-När du är klar väljer **verifiera**. Hostname-posttypen väljs automatiskt för dig.
+När du är klar väljer **verifiera**. hello hostname-posttypen väljs automatiskt för dig.
 
 Välj **lägga till värdnamnet**.
 
-När åtgärden är klar, kan du se ett fungerande meddelande för tilldelade värdnamnet.  
+När hello åtgärden är slutförd måste se du ett lyckade meddelande för hello tilldelade värdnamn.  
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 ### <a name="close-add-hostname"></a>Stäng lägga till värdnamnet
-I den **lägga till värdnamnet** anger andra värdnamnet för ditt webbprogram efter behov. När du är klar stänger du den **lägga till värdnamnet** sidan.
+I hello **lägga till värdnamnet** anger du eventuella andra hostname tooyour webbapp som du vill. När du är klar stänger du hello **lägga till värdnamnet** sidan.
 
-Du bör nu se nytilldelade hostname(s) i din app **anpassade domäner** sidan.
+Du bör nu se hello som tilldelats nyligen hostname(s) i din app **anpassade domäner** sidan.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
 
-### <a name="test-the-hostnames"></a>Testa värdnamnen
+### <a name="test-hello-hostnames"></a>Testa hello värdnamn
 
-Gå till listan värdnamn i webbläsaren. I exemplet i den föregående skärmbilden försök gå till _abc.kontoso.net_.
+Navigera toohello visas värdnamn i hello webbläsare. Försök navigera too_abc.kontoso.net_ i hello exemplet i hello föregående skärmbild.
 
 <a name="custom" />
 
@@ -190,52 +190,52 @@ I Azure, DNS-poster för en tillämpningsdomän Service hanteras med hjälp av [
 
 ### <a name="open-app-service-domain"></a>Öppna App Service-domän
 
-Välj i Azure-portalen från den vänstra menyn **fler tjänster** > **App Service domäner**.
+Välj i hello Azure-portalen hello vänstra menyn **fler tjänster** > **App Service domäner**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
-Välj domänen som ska hantera. 
+Välj hello domän toomanage. 
 
 ### <a name="access-dns-zone"></a>Åtkomst till DNS-zonen
 
-Välj domänens vänstra menyn **DNS-zonen**.
+Välj hello domän vänstra menyn **DNS-zonen**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
-Den här åtgärden öppnar den [DNS-zonen](../dns/dns-zones-records.md) sidan i din App Service-domän i Azure DNS. Information om hur du redigerar DNS-poster finns [hur du hanterar DNS-zoner i Azure portal](../dns/dns-operations-dnszones-portal.md).
+Den här åtgärden öppnar hello [DNS-zonen](../dns/dns-zones-records.md) sidan i din App Service-domän i Azure DNS. Mer information om hur tooedit DNS-poster finns [hur toomanage DNS-zoner i hello Azure-portalen](../dns/dns-operations-dnszones-portal.md).
 
 ## <a name="cancel-purchase-delete-domain"></a>Avbryt inköp (ta bort domän)
 
-När du har köpt tjänsten tillämpningsdomänen har fem dagar att häva köpet för en full återbetalning. Efter fem dagar du kan ta bort domänen App Service, men det går inte att få en återbetalning.
+När du har köpt hello App Service-domän har du fem dagar toocancel köpet för en full återbetalning. Efter fem dagar du kan ta bort hello programdomänen för tjänsten, men det går inte att få en återbetalning.
 
 ### <a name="open-app-service-domain"></a>Öppna App Service-domän
 
-Välj i Azure-portalen från den vänstra menyn **fler tjänster** > **App Service domäner**.
+Välj i hello Azure-portalen hello vänstra menyn **fler tjänster** > **App Service domäner**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
-Välj domänen du vill avbryta eller ta bort. 
+Välj hello domän tooyou vill toocancel eller ta bort. 
 
 ### <a name="delete-hostname-bindings"></a>Ta bort värdnamnsbindningar
 
-Välj domänens vänstra menyn **värdnamnsbindningar**. Värdnamnsbindningar från alla Azure-tjänster i den här listan.
+Välj hello domän vänstra menyn **värdnamnsbindningar**. Hej värdnamnsbindningar från alla Azure-tjänster i den här listan.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
 
-Du kan inte ta bort tjänsten tillämpningsdomän förrän alla värdnamnsbindningar har tagits bort.
+Du kan inte ta bort hello Service tillämpningsdomän förrän alla värdnamnsbindningar har tagits bort.
 
-Ta bort varje värdnamn bindning genom att välja **...**   >  **Ta bort**. När alla bindningar tas bort, Välj **spara**.
+Ta bort varje värdnamn bindning genom att välja **...**   >  **Ta bort**. När alla hello bindningar tas bort, Välj **spara**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
 ### <a name="cancel-or-delete"></a>Avbryt eller ta bort
 
-Välj domänens vänstra menyn **översikt**. 
+Välj hello domän vänstra menyn **översikt**. 
 
-Om den annullering på domänen köpta inte har gått, väljer **Avbryt inköp**. Annars kan du se en **ta bort** knappen i stället. Om du vill ta bort domänen utan bidrag, Välj **ta bort**.
+Om hello annullering hello köpt domän inte har gått, väljer **Avbryt inköp**. Annars kan du se en **ta bort** knappen i stället. toodelete hello domän utan bidrag, Välj **ta bort**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
-Välj **OK** att bekräfta åtgärden. Om du inte vill fortsätta klickar du utanför bekräftelsedialogrutan.
+Välj **OK** tooconfirm hello igen. Om du inte vill tooproceed Klicka utanför hello bekräftelsedialogruta.
 
-När åtgärden är klar, är domänen utgivna från prenumerationen och är tillgängliga för alla att köpa igen. 
+När hello åtgärd har slutförts, hello domänen är utgivna från din prenumeration och är tillgängliga för alla toopurchase igen. 

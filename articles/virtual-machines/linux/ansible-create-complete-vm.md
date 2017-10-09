@@ -1,6 +1,6 @@
 ---
-title: "Använd Ansible för att skapa en fullständig Linux VM i Azure | Microsoft Docs"
-description: "Lär dig hur du använder Ansible för att skapa och hantera en fullständig miljö med Linux virtuella datorer i Azure"
+title: "aaaUse Ansible toocreate en fullständig Linux VM i Azure | Microsoft Docs"
+description: "Lär dig hur toouse Ansible toocreate och hantera en fullständig miljö med Linux virtuella datorer i Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2017
 ms.author: iainfou
-ms.openlocfilehash: b2fcc288b40c12a9b3f966156ee2eedf4acca313
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 970b0427f39fc23240f9faab868196ca4f444e0f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Skapa en miljö med fullständiga Linux virtuella datorer i Azure med Ansible
-Ansible kan du automatisera distributionen och konfigurationen av resurser i din miljö. Du kan använda Ansible för att hantera dina virtuella datorer (VM) i Azure, samma som någon annan resurs. Den här artikeln visar hur du skapar en komplett Linux-miljö och ge support för resurser med Ansible. Du kan också lära dig hur du [skapa en grundläggande virtuell dator med Ansible](ansible-create-vm.md).
+Ansible kan du tooautomate hello distributionen och konfigurationen av resurser i din miljö. Du kan använda Ansible toomanage dina virtuella datorer (VM) i Azure, hello samma precis som alla andra resurser. Den här artikeln beskrivs hur du toocreate en fullständig Linux-miljö och ge support för resurser med Ansible. Du kan också lära dig hur för[skapa en grundläggande virtuell dator med Ansible](ansible-create-vm.md).
 
 
 ## <a name="prerequisites"></a>Krav
-Om du vill hantera Azure-resurser med Ansible, behöver du följande:
+toomanage Azure resurser med Ansible måste hello följande:
 
-- Ansible och Azure SDK för Python-moduler som har installerats på värdsystemet.
+- Ansible och hello Azure Python SDK-moduler som installerats på värdsystemet.
     - Installera Ansible på [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), [CentOS 7.3](ansible-install-configure.md#centos-73), och [SLES 12,2 SP2](ansible-install-configure.md#sles-122-sp2)
-- Konfigurera om du använder dessa autentiseringsuppgifter för Azure och Ansible.
+- Autentiseringsuppgifter för Azure och Ansible konfigurerats toouse dem.
     - [Skapa autentiseringsuppgifter för Azure och konfigurera Ansible](ansible-install-configure.md#create-azure-credentials)
-- Azure CLI version 2.0.4 eller senare. Kör `az --version` för att hitta versionen. 
-    - Om du behöver uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). Du kan också använda [moln Shell](/azure/cloud-shell/quickstart) från din webbläsare.
+- Azure CLI version 2.0.4 eller senare. Kör `az --version` toofind hello version. 
+    - Om du behöver tooupgrade finns [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). Du kan också använda [moln Shell](/azure/cloud-shell/quickstart) från din webbläsare.
 
 
 ## <a name="create-virtual-network"></a>Skapa det virtuella nätverket
-Följande avsnitt i en Ansible playbook skapar ett virtuellt nätverk med namnet *myVnet* i den *10.0.0.0/16* adressutrymmet:
+hello följande avsnitt i en Ansible playbook skapar ett virtuellt nätverk med namnet *myVnet* i hello *10.0.0.0/16* adressutrymmet:
 
 ```yaml
 - name: Create virtual network
@@ -47,7 +47,7 @@ Följande avsnitt i en Ansible playbook skapar ett virtuellt nätverk med namnet
     address_prefixes: "10.10.0.0/16"
 ```
 
-Om du vill lägga till ett undernät, nedan skapar ett undernät med namnet *mySubnet* i den *myVnet* virtuellt nätverk:
+tooadd ett undernät hello efter avsnittet skapar ett undernät med namnet *mySubnet* i hello *myVnet* virtuellt nätverk:
 
 ```yaml
 - name: Add subnet
@@ -60,7 +60,7 @@ Om du vill lägga till ett undernät, nedan skapar ett undernät med namnet *myS
 
 
 ## <a name="create-public-ip-address"></a>Skapa offentlig IP-adress
-Skapa och tilldela en offentlig IP-adress till den virtuella datorn kan komma åt resurser via Internet. Följande avsnitt i en Ansible playbook skapar en offentlig IP-adress med namnet *myPublicIP*:
+tooaccess resurser över hello Internet, skapa och tilldela en offentlig IP-adress tooyour VM. hello följande avsnitt i en Ansible playbook skapar en offentlig IP-adress med namnet *myPublicIP*:
 
 ```yaml
 - name: Create public IP address
@@ -72,7 +72,7 @@ Skapa och tilldela en offentlig IP-adress till den virtuella datorn kan komma å
 
 
 ## <a name="create-network-security-group"></a>Skapa Nätverkssäkerhetsgrupp
-Nätverkssäkerhetsgrupper styra flödet i nätverkstrafiken till och från den virtuella datorn. Följande avsnitt i en Ansible playbook skapar en nätverkssäkerhetsgrupp med namnet *myNetworkSecurityGroup* och definierar en regel för att tillåta SSH-trafik på TCP-port 22:
+Nätverkssäkerhetsgrupper styra hello flödet av nätverkstrafiken till och från den virtuella datorn. hello följande avsnitt i en Ansible playbook skapar en nätverkssäkerhetsgrupp med namnet *myNetworkSecurityGroup* och definierar en regel tooallow SSH-trafik på TCP-port 22:
 
 ```yaml
 - name: Create Network Security Group that allows SSH
@@ -90,7 +90,7 @@ Nätverkssäkerhetsgrupper styra flödet i nätverkstrafiken till och från den 
 
 
 ## <a name="create-virtual-network-interface-card"></a>Skapa virtuella nätverkskort
-Ett virtuellt nätverkskort (NIC) ansluter den virtuella datorn till ett givet virtuellt nätverk, offentlig IP-adress och nätverkssäkerhetsgruppen. Följande avsnitt i en Ansible playbook skapar ett virtuellt nätverkskort med namnet *myNIC* anslutna till de virtuella nätverksresurser som du har skapat:
+Ett virtuellt nätverkskort (NIC) ansluter din VM tooa givet virtuellt nätverk, offentlig IP-adress och nätverkssäkerhetsgruppen. hello följande avsnitt i en Ansible playbook skapar ett virtuellt nätverkskort med namnet *myNIC* anslutna toohello virtuella nätverk resurser du har skapat:
 
 ```yaml
 - name: Create virtual network inteface card
@@ -105,7 +105,7 @@ Ett virtuellt nätverkskort (NIC) ansluter den virtuella datorn till ett givet v
 
 
 ## <a name="create-virtual-machine"></a>Skapa en virtuell dator
-Det sista steget är att skapa en virtuell dator och använda de resurser som skapades. Följande avsnitt i en Ansible playbook skapar en virtuell dator med namnet *myVM* och bifogar det virtuella nätverkskortet med namnet *myNIC*. Ange dina egna offentliga nyckel data i den *key_data* koppla på följande sätt:
+hello sista steget är toocreate en virtuell dator och använda alla hello resurser skapas. hello följande avsnitt i en Ansible playbook skapar en virtuell dator med namnet *myVM* och bifogar hello virtuellt nätverkskort med namnet *myNIC*. Ange dina egna offentliga nyckel data i hello *key_data* koppla på följande sätt:
 
 ```yaml
 - name: Create VM
@@ -127,7 +127,7 @@ Det sista steget är att skapa en virtuell dator och använda de resurser som sk
 ```
 
 ## <a name="complete-ansible-playbook"></a>Slutföra Ansible playbook
-Skapa en Ansible playbook med namnet för att samordna dessa avsnitt *azure_create_complete_vm.yml* och klistra in följande innehåll:
+toobring dessa avsnitt tillsammans, skapa en Ansible playbook med namnet *azure_create_complete_vm.yml* och klistra in hello följande innehåll:
 
 ```yaml
 - name: Create Azure VM
@@ -187,19 +187,19 @@ Skapa en Ansible playbook med namnet för att samordna dessa avsnitt *azure_crea
         version: latest
 ```
 
-Ansible måste distribuera alla resurser i en resursgrupp. Skapa en resursgrupp med [az group create](/cli/azure/vm#create). I följande exempel skapas en resursgrupp med namnet *myResourceGroup* i den *eastus* plats:
+Ansible måste en resurs grupp toodeploy alla resurser i. Skapa en resursgrupp med [az group create](/cli/azure/vm#create). hello följande exempel skapar en resursgrupp med namnet *myResourceGroup* i hello *eastus* plats:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-För att skapa fullständiga Virtuella miljön med Ansible, kör du playbook på följande sätt:
+toocreate hello fullständig VM-miljö med Ansible, köra hello playbook på följande sätt:
 
 ```bash
 ansible-playbook azure_create_complete_vm.yml
 ```
 
-Utdata liknar följande exempel som visar den virtuella datorn har skapats:
+hello utdata ser ut ungefär toohello följande exempel som visar hello VM har skapats:
 
 ```bash
 PLAY [Create Azure VM] ****************************************************
@@ -230,4 +230,4 @@ localhost                  : ok=7    changed=6    unreachable=0    failed=0
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Det här exemplet skapas en fullständig VM-miljö inklusive de nödvändiga resurserna för virtuella nätverk. En mer direkt exempel skapa en virtuell dator i befintliga nätverksresurser med standardalternativen finns [skapa en virtuell dator](ansible-create-vm.md).
+Det här exemplet skapas en fullständig VM-miljö inklusive hello krävs virtuella nätverksresurser. En mer direkt exempel toocreate en virtuell dator i befintliga nätverksresurser med standardalternativ, se [skapa en virtuell dator](ansible-create-vm.md).

@@ -1,5 +1,5 @@
 ---
-title: "Översikt över Azure Relay API | Microsoft Docs"
+title: "aaaAzure Relay API översikt | Microsoft Docs"
 description: "Översikt över tillgängliga Azure Relay API: er"
 services: event-hubs
 documentationcenter: na
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: sethm
-ms.openlocfilehash: 8d93a0344adc3b0b7617f3a7d85124142d7a7555
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3c4d737d5fee9a8babce094fa6dfddb28910834b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="available-relay-apis"></a>Tillgängliga Relay-API: er
 
 ## <a name="runtime-apis"></a>Runtime-API: er
 
-I följande tabell visas alla tillgängliga Relay runtime-klienter.
+hello visas följande tabell alla tillgängliga Relay runtime-klienter.
 
-Den [ytterligare information](#additional-information) avsnitt innehåller mer information om statusen för varje runtime-bibliotek.
+Hej [ytterligare information](#additional-information) avsnitt innehåller mer information om hello status för varje runtime-bibliotek.
 
 | Språk-plattformen | Tillgänglig funktion | Klientpaketet | Databasen |
 | --- | --- | --- | --- |
@@ -37,9 +37,9 @@ Den [ytterligare information](#additional-information) avsnitt innehåller mer i
 ### <a name="additional-information"></a>Ytterligare information
 
 #### <a name="net"></a>.NET
-.NET-ekosystemet har flera körningar, så det finns flera .NET-bibliotek för Händelsehubbar. .NET standardbibliotek kan köras med .NET Core eller .NET Framework, medan biblioteket för .NET Framework kan endast köras i en miljö med .NET Framework. Läs mer på .NET Frameworks [framework-versioner](/dotnet/articles/standard/frameworks#framework-versions).
+hello .NET ekosystemet har flera körningar, så det finns flera .NET-bibliotek för Händelsehubbar. hello .NET standardbibliotek kan köras med .NET Core eller hello .NET Framework, medan hello-biblioteket för .NET Framework kan endast köras i en miljö med .NET Framework. Läs mer på .NET Frameworks [framework-versioner](/dotnet/articles/standard/frameworks#framework-versions).
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om Azure Relay finns i följande länkar:
+toolearn mer om Azure Relay finns i följande länkar:
 * [Vad är Azure Relay?](relay-what-is-it.md)
 * [Vanliga frågor och svar om Relay](relay-faq.md)

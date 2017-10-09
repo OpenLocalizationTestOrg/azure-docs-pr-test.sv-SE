@@ -1,6 +1,6 @@
 ---
-title: "Förstå och lösa WebHCat fel på HDInsight - Azure | Microsoft Docs"
-description: "Lär dig hur på cirka vanliga fel som returneras av WebHCat i HDInsight och hur du löser dem."
+title: "aaaUnderstand och Lös WebHCat-fel i HDInsight - Azure | Microsoft Docs"
+description: "Lär dig hur tooabout vanliga fel som returneras av WebHCat i HDInsight och tooresolve dem."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,41 +16,41 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 6d8162e0d64ec9fc42690392b7c822593c0c2767
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0071a1e9ed448ae146b93c8f4f518e31b95d27c9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Förstå och åtgärda fel togs emot från WebHCat på HDInsight
 
-Läs mer om felmeddelanden när du använder WebHCat med HDInsight och hur du löser dem.. WebHCat används internt av klientsidan verktyg som Azure PowerShell och Data Lake-verktyg för Visual Studio.
+Lär dig mer om felmeddelanden när du använder WebHCat med HDInsight och hur tooresolve dem. WebHCat används internt av klientsidan verktyg som Azure PowerShell och hello Data Lake-verktyg för Visual Studio.
 
 ## <a name="what-is-webhcat"></a>Vad är WebHCat
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) är en REST-API för [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog)en tabell och lagring lagringshanteringslager för Hadoop. WebHCat är aktiverat som standard i HDInsight-kluster och används av olika verktyg för att skicka jobb, hämta jobbstatus osv utan att logga in på klustret.
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) är en REST-API för [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog)en tabell och lagring lagringshanteringslager för Hadoop. WebHCat är aktiverat som standard i HDInsight-kluster och används av olika verktyg toosubmit jobb, hämta jobbstatus osv utan att logga i toohello kluster.
 
 ## <a name="modifying-configuration"></a>Ändra konfigurationen
 
 > [!IMPORTANT]
-> Flera av de fel som anges i det här dokumentet inträffa konfigurerade maximalt har överskridits. När steget upplösning nämns att du kan ändra ett värde, måste du använda något av följande för att utföra ändringen:
+> Flera hello-fel som beskrivs i det här dokumentet inträffa konfigurerade maximalt har överskridits. När hello upplösning steg nämns att du kan ändra ett värde, måste du använda något av följande tooperform hello ändra hello:
 
-* För **Windows** kluster: Använd en skriptåtgärd för att konfigurera värdet när klustret skapas. Mer information finns i [utveckla skriptåtgärder](hdinsight-hadoop-script-actions.md).
+* För **Windows** kluster: använda ett skript åtgärd tooconfigure hello värde när klustret skapas. Mer information finns i [utveckla skriptåtgärder](hdinsight-hadoop-script-actions.md).
 
-* För **Linux** kluster: Använd Ambari (web eller REST API) för att ändra värdet. Mer information finns i [hantera HDInsight med Ambari](hdinsight-hadoop-manage-ambari.md)
+* För **Linux** kluster: Använd Ambari (web eller REST API) toomodify hello värde. Mer information finns i [hantera HDInsight med Ambari](hdinsight-hadoop-manage-ambari.md)
 
 > [!IMPORTANT]
-> Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux är hello endast operativsystem på HDInsight version 3.4 eller senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ### <a name="default-configuration"></a>Standardkonfigurationen
 
-Om följande standardvärden överskrids kan försämra WebHCat prestanda eller orsaka fel:
+Om hello följande standardvärden överskrids den WebHCat prestanda försämras eller orsaka fel:
 
 | Inställning | Vad verktyget gör | Standardvärde |
 | --- | --- | --- |
-| [yarn.Scheduler.Capacity.maximum-program][maximum-applications] |Det maximala antalet jobb som kan vara aktiva samtidigt (väntande eller körs) |10 000 |
-| [templeton.Exec.Max procs][max-procs] |Det maximala antalet förfrågningar som hanteras samtidigt |20 |
-| [mapreduce.jobhistory.Max-ålder-ms][max-age-ms] |Antalet dagar som jobbhistorik bevaras |7 dagar |
+| [yarn.Scheduler.Capacity.maximum-program][maximum-applications] |Hej maximalt antal jobb som kan vara aktiva samtidigt (väntande eller körs) |10 000 |
+| [templeton.Exec.Max procs][max-procs] |hello maximala antalet förfrågningar som hanteras samtidigt |20 |
+| [mapreduce.jobhistory.Max-ålder-ms][max-age-ms] |hello antalet dagar som jobbhistorik bevaras |7 dagar |
 
 ## <a name="too-many-requests"></a>För många begäranden
 
@@ -58,7 +58,7 @@ Om följande standardvärden överskrids kan försämra WebHCat prestanda eller 
 
 | Orsak | Lösning |
 | --- | --- |
-| Du har överskridit de maximala samtidiga begäranden som betjänats med WebHCat per minut (standard är 20) |Minska din arbetsbelastning så att du inte skickar mer än det maximala antalet samtidiga begäranden eller öka antal samtidiga begäranden genom att ändra `templeton.exec.max-procs`. Mer information finns i [ändra konfiguration](#modifying-configuration) |
+| Du har överskridit hello högsta antal samtidiga begäranden hanteras av WebHCat per minut (standard är 20) |Minska din arbetsbelastning tooensure att du inte skicka fler än hello maximalt antal samtidiga begäranden eller öka hello samtidig förfrågan genom att ändra `templeton.exec.max-procs`. Mer information finns i [ändra konfiguration](#modifying-configuration) |
 
 ## <a name="server-unavailable"></a>Servern är inte tillgänglig
 
@@ -66,7 +66,7 @@ Om följande standardvärden överskrids kan försämra WebHCat prestanda eller 
 
 | Orsak | Lösning |
 | --- | --- |
-| Statuskoden genereras vanligtvis under växling mellan den primära och sekundära HeadNode för klustret |Vänta två minuter och försök igen |
+| Statuskoden genereras vanligtvis under växling mellan hello primära och sekundära HeadNode för hello-kluster |Vänta två minuter och försök igen hello |
 
 ## <a name="bad-request-content-could-not-find-job"></a>Felaktig begäran innehåll: Det gick inte att hitta jobbet
 
@@ -74,9 +74,9 @@ Om följande standardvärden överskrids kan försämra WebHCat prestanda eller 
 
 | Orsak | Lösning |
 | --- | --- |
-| Jobbinformation har rensats av jobbhistoriken rengöringsband |Loggperioden för jobbhistorik är 7 dagar. Loggperioden kan ändras genom att ändra `mapreduce.jobhistory.max-age-ms`. Mer information finns i [ändra konfiguration](#modifying-configuration) |
-| Jobbet har avslutats på grund av en växling vid fel |Försök jobbet i upp till två minuter |
-| Ett ogiltigt jobb-id har använts |Kontrollera om jobb-id är korrekt |
+| Jobbinformation har rensats av hello jobbhistorik rengöringsband |hello loggperioden för jobbhistorik är 7 dagar. hello loggperioden kan ändras genom att ändra `mapreduce.jobhistory.max-age-ms`. Mer information finns i [ändra konfiguration](#modifying-configuration) |
+| Jobbet har avslutats på grund av tooa växling vid fel |Försök jobbet för in tootwo i minuter |
+| Ett ogiltigt jobb-id har använts |Kontrollera om hello jobb-id är korrekt |
 
 ## <a name="bad-gateway"></a>Ogiltig gateway
 
@@ -84,10 +84,10 @@ Om följande standardvärden överskrids kan försämra WebHCat prestanda eller 
 
 | Orsak | Lösning |
 | --- | --- |
-| Internt skräpinsamling sker i WebHCat-processen |Vänta tills skräpinsamling avsluta eller starta om tjänsten WebHCat |
-| Tidsgränsen nåddes för väntar på svar från ResourceManager-tjänsten. Det här felet kan inträffa om antalet aktiva program går den konfigurerade maximalt (standard 10 000-tal) |Vänta tills pågående jobb för att slutföra eller öka gränsen för antal samtidiga jobb genom att ändra `yarn.scheduler.capacity.maximum-applications`. Mer information finns i [ändra configuration](#modifying-configuration) avsnitt. |
-| Försök att hämta alla jobb via den [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) anrop när `Fields` har angetts till`*` |Inte hämtar *alla* Jobbdetaljer. I stället använda `jobid` att hämta information om jobb som endast är större än vissa jobb-id. Eller Använd inte`Fields` |
-| WebHCat-tjänsten har stoppats under HeadNode växling vid fel |Vänta i två minuter och försök igen |
+| Internt skräpinsamling sker inom hello WebHCat-processen |Vänta tills skräp samling toofinish eller hello WebHCat-tjänsten |
+| Tidsgränsen nåddes för väntar på svar från hello ResourceManager-tjänsten. Det här felet kan inträffa om hello antalet aktiva program går hello konfigurerade maximala (standard 10 000-tal) |Vänta tills pågående jobb toocomplete eller öka hello samtidiga jobb genom att ändra `yarn.scheduler.capacity.maximum-applications`. Mer information finns i hello [ändra configuration](#modifying-configuration) avsnitt. |
+| Försök tooretrieve alla jobb via hello [GET /jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) anrop när `Fields` har angetts för`*` |Inte hämtar *alla* Jobbdetaljer. I stället använda `jobid` tooretrieve information om jobb som endast är större än vissa jobb-id. Eller Använd inte`Fields` |
+| Hej WebHCat-tjänsten är inte tillgänglig under HeadNode växling vid fel |Vänta i två minuter och försök sedan hello åtgärden |
 | Det finns mer än 500 väntande jobb skicka via WebHCat |Vänta tills väntar jobben har slutförts innan du skickar flera jobb |
 
 [maximum-applications]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html

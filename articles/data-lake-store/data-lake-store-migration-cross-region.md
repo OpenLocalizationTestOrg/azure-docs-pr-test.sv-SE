@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Store mellan region migrering | Microsoft Docs
+title: aaaAzure Data Lake Store mellan region migrering | Microsoft Docs
 description: "Mer information om migrering mellan region för Azure Data Lake Store."
 services: data-lake-store
 documentationcenter: 
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: 650e1ea1a5e768ac72afc49435e4c4ab318a464a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 561ac821c1bd555886035867678cb685997564eb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>Migrera Data Lake Store över regioner
 
-Som Azure Data Lake Store blir tillgängliga i nya regioner, kan du välja att göra en enstaka migrering för att dra nytta av nya region. Lär dig vad du ska tänka på när du planerar och slutföra migreringen.
+Eftersom Azure Data Lake Store blir tillgängliga i nya regioner, kan du välja toodo en enstaka migrering tootake nytta av nya hello-regionen. Lär dig vilka tooconsider som du planerar och slutföra hello migreringen.
 
 ## <a name="prerequisites"></a>Krav
 
 * **En Azure-prenumeration**. Mer information finns i [skapa din kostnadsfria Azure-konto idag](https://azure.microsoft.com/pricing/free-trial/).
 * **Ett Data Lake Store-konto i två olika regioner**. Mer information finns i [Kom igång med Azure Data Lake Store](data-lake-store-get-started-portal.md).
-* **Azure Data Factory**. Mer information finns i [introduktion till Azure Data Factory](../data-factory/data-factory-introduction.md).
+* **Azure Data Factory**. Mer information finns i [introduktion tooAzure Data Factory](../data-factory/data-factory-introduction.md).
 
 
 ## <a name="migration-considerations"></a>Överväganden vid migrering
 
-Först identifiera migreringsstrategi som passar bäst för ditt program som skriver, läser eller bearbetar data i Data Lake Store. När du väljer en strategi, Överväg programmets tillgänglighet och avbrottstiden som uppstår under migreringen. Till exempel kan den enklaste metoden är att använda migrering ”lift och SKIFT” molnmodellen. I den här metoden pausar programmet i din befintliga region när alla data kopieras till den nya regionen. När kopieringen är klar du återuppta ditt program i den nya regionen och ta sedan bort det gamla Data Lake Store-kontot. Det krävs avbrott under migreringen.
+Först identifiera hello migreringsstrategi som passar bäst för ditt program som skriver, läser eller bearbetar data i Data Lake Store. När du väljer en strategi, Överväg programmets tillgänglighet och hello-avbrott som uppstår under migreringen. Den enklaste metoden kanske till exempel toouse hello ”lift och SKIFT” migrering modell. I den här metoden pausar hello program i din befintliga region medan kopieras alla dina data är toohello ny region. När hello kopieringen är klar du återuppta ditt program i hello ny region och tar bort hello gamla Data Lake Store-konto. Driftstopp under migreringen hello krävs.
 
-Om du vill minska avbrottstiden starta du omedelbart att mata in nya data i den nya regionen. När du har den minsta mängd data som behövs, kör ditt program i den nya regionen. Fortsätta att kopiera äldre data från befintliga Data Lake Store-kontot till det nya Data Lake Store-kontot i den nya regionen i bakgrunden. Med den här metoden kan du växeln till den nya regionen lite avbrott. Ta bort det gamla Data Lake Store-kontot när alla äldre data har kopierats.
+tooreduce driftstopp, du kan starta direkt vill föra in nya data i hello ny region. När du har hello minsta mängd data som behövs, kör ditt program i hello nya region. Fortsätt toocopy äldre data från hello befintliga Data Lake Store-konto toohello ny Data Lake Store-konto i hello nya region i hello bakgrund. Med den här metoden kan du hello växeln toohello ny region med lite avbrottstid. Ta bort hello gamla Data Lake Store-konto när alla hello äldre data har kopierats.
 
-Viktig information att tänka på när du planerar migreringen är:
+Andra viktiga information tooconsider när du planerar migreringen är:
 
-* **Datavolymen**. Mängden data (i GB, hur många filer och mappar och så vidare) påverkar tid och resurser som du behöver för migreringen.
+* **Datavolymen**. hello datavolymen (i GB hello antal filer och mappar och så vidare) påverkar hello tid och resurser som du behöver för hello migrering.
 
-* **Data Lake Store-kontonamnet**. Det nya kontonamnet i den nya regionen måste vara globalt unika. Namnet på ditt gamla Data Lake Store-konto i östra USA 2 kan till exempel vara contosoeastus2.azuredatalakestore.net. Ditt nya Data Lake Store-konto i Norra Europa contosonortheu.azuredatalakestore.net kan namnet.
+* **Data Lake Store-kontonamnet**. hello nya kontonamnet i hello nya region måste vara globalt unika. Hello namnet på ditt gamla Data Lake Store-konto i östra USA 2 kan till exempel vara contosoeastus2.azuredatalakestore.net. Ditt nya Data Lake Store-konto i Norra Europa contosonortheu.azuredatalakestore.net kan namnet.
 
-* **Verktyg för**. Vi rekommenderar att du använder den [Azure Data Factory-Kopieringsaktiviteten](../data-factory/data-factory-azure-datalake-connector.md) att kopiera Data Lake Store-filer. Data Factory har stöd för flytt av data med hög prestanda och tillförlitlighet. Tänk på att Data Factory kopierar endast mapphierarkin och innehållet i filerna. Du måste manuellt koppla alla åtkomstkontrollistor (ACL) som du använder i det gamla kontot till det nya kontot. Mer information, inklusive prestandamål för bästa möjliga scenarier finns i [prestandajustering guide och Kopieringsaktivitet prestanda](../data-factory/data-factory-copy-activity-performance.md). Om du vill att data som kopieras snabbare kan du behöva använda ytterligare enheter i molnet Data Movement. Vissa andra verktyg som AdlCopy, stöder inte kopiering av data mellan regioner.  
+* **Verktyg för**. Vi rekommenderar att du använder hello [Azure Data Factory-Kopieringsaktiviteten](../data-factory/data-factory-azure-datalake-connector.md) toocopy Data Lake Store-filer. Data Factory har stöd för flytt av data med hög prestanda och tillförlitlighet. Tänk på att Data Factory kopierar endast hello mapphierarkin och innehållet i hello-filer. Du behöver toomanually gäller alla åtkomstkontrollistor (ACL) som du använder i hello gamla konto toohello nytt konto. Mer information, inklusive prestandamål för bästa möjliga scenarier finns hello [prestandajustering guide och Kopieringsaktivitet prestanda](../data-factory/data-factory-copy-activity-performance.md). Om du vill kopiera snabbare data kan du behöva toouse ytterligare molnet Data Movement enheter. Vissa andra verktyg som AdlCopy, stöder inte kopiering av data mellan regioner.  
 
 * **Kostnader för bandbredd**. [Kostnader för bandbredd](https://azure.microsoft.com/en-us/pricing/details/bandwidth/) gäller eftersom data överförs utanför en Azure-region.
 
-* **ACL: er på dina data**. Skydda dina data i den nya regionen genom att använda ACL: er för filer och mappar. Mer information finns i [att skydda data som lagras i Azure Data Lake Store](data-lake-store-secure-data.md). Vi rekommenderar att du använder migrering för att uppdatera och ändra din ACL: er. Du kanske vill använda inställningarna för liknar de aktuella inställningarna. Du kan visa ACL: er som tillämpas på alla filer med hjälp av Azure portal [PowerShell-cmdlets](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission), eller SDK: er.  
+* **ACL: er på dina data**. Skydda dina data i hello ny region genom att använda ACL: er toofiles och mappar. Mer information finns i [att skydda data som lagras i Azure Data Lake Store](data-lake-store-secure-data.md). Vi rekommenderar att du använder hello migrering tooupdate och justera dina ACL: er. Du kanske vill toouse liknande tooyour aktuella inställningar. Du kan visa hello ACL: er som används tooany filen med hjälp av hello Azure-portalen [PowerShell-cmdlets](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission), eller SDK: er.  
 
-* **Platsen för Analystjänster**. För bästa prestanda måste din analytics tjänster, till exempel Azure Data Lake Analytics eller Azure HDInsight vara i samma region som dina data.  
+* **Platsen för Analystjänster**. För bästa prestanda bör din analytics tjänster, till exempel Azure Data Lake Analytics eller Azure HDInsight måste vara i hello samma region som dina data.  
 
 ## <a name="next-steps"></a>Nästa steg
 * [Översikt över Azure Data Lake Store](data-lake-store-overview.md)

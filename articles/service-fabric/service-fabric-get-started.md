@@ -1,6 +1,6 @@
 ---
-title: "Konfigurera en utvecklingsmiljö för Azure-mikrotjänster | Microsoft Docs"
-description: "Installera runtime, SDK och verktyg och skapa ett lokalt utvecklingskluster. När du har slutfört den här installationen är du redo att börja bygga program."
+title: "aaaSet utvecklingsmiljön för Azure mikrotjänster | Microsoft Docs"
+description: "Installera hello runtime, verktyg och SDK och skapa ett kluster för lokal utveckling. När du har slutfört den här installationen kommer du att redo toobuild program."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/10/2017
 ms.author: ryanwi, mikhegn
-ms.openlocfilehash: f0c6957217c21bdfd76498944e248fc808f2d271
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 9b0442778999d4c3d2b99adb98f6596dcbdc36d3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="prepare-your-development-environment"></a>Förbereda utvecklingsmiljön
 > [!div class="op_single_selector"]
@@ -28,11 +28,11 @@ ms.lasthandoff: 08/18/2017
 > 
 > 
 
- För att kunna skapa och köra [Azure Service Fabric-program][1] på en utvecklingsdator måste du installera runtime, SDK och verktyg. Du måste även aktivera körning av Windows PowerShell-skript som ingår i SDK.
+ toobuild och kör [Azure Service Fabric program] [ 1] på utvecklingsdatorn, installera hello runtime, SDK och verktyg. Du måste också tooenable körning av hello Windows PowerShell-skript som ingår i hello SDK.
 
 ## <a name="prerequisites"></a>Krav
 ### <a name="supported-operating-system-versions"></a>Operativsystemversioner som stöds
-Följande operativsystemversioner stöds för utveckling:
+följande versioner av operativsystemet hello stöds för utveckling:
 
 * Windows 7
 * Windows 8/Windows 8.1
@@ -41,27 +41,27 @@ Följande operativsystemversioner stöds för utveckling:
 * Windows 10
 
 > [!NOTE]
-> Windows 7 innehåller bara Windows PowerShell 2.0 som standard. Service Fabric PowerShell-cmdletar kräver PowerShell 3.0 eller senare. Du kan [ladda ned Windows PowerShell 5.0][powershell5-download] från Microsoft Download Center.
+> Windows 7 innehåller bara Windows PowerShell 2.0 som standard. Service Fabric PowerShell-cmdletar kräver PowerShell 3.0 eller senare. Du kan [hämta Windows PowerShell 5.0] [ powershell5-download] från hello Microsoft Download Center.
 > 
 > 
 
-## <a name="install-the-sdk-and-tools"></a>Installera SDK och verktyg
-### <a name="to-use-visual-studio-2017"></a>Använda Visual Studio 2017
-Service Fabric-verktyg är en del av arbetsbelastningen i Azure Development och Management i Visual Studio 2017. Aktivera den här arbetsbelastningen som en del av Visual Studio-installationen.
-Du måste också installera Microsoft Azure Service Fabric SDK, med hjälp av installationsprogrammet för webbplattform.
+## <a name="install-hello-sdk-and-tools"></a>Installera verktyg och hello SDK
+### <a name="toouse-visual-studio-2017"></a>toouse 2017 för Visual Studio
+Service Fabric-verktyg är en del av hello Azure utveckling och hantering av arbetsbelastningen i Visual Studio-2017. Aktivera den här arbetsbelastningen som en del av Visual Studio-installationen.
+Du måste dessutom tooinstall hello Microsoft Azure Service Fabric SDK, med hjälp av Web Platform Installer.
 
-* [Installera Microsoft Azure Service Fabric SDK][core-sdk]
+* [Installera hello Microsoft Azure Service Fabric-SDK][core-sdk]
 
-### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Använda Visual Studio 2015 (kräver Visual Studio 2015 Update 2 eller senare)
-För Visual Studio 2015 installeras Service Fabric-verktyg tillsammans med SDK med hjälp av installationsprogrammet för webbplattform:
+### <a name="toouse-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>toouse Visual Studio 2015 (kräver Visual Studio 2015 Update 2 eller senare)
+För Visual Studio 2015 installeras Service Fabric tillsammans med hello SDK, med hjälp av hello installationsprogram för webbplattform:
 
-* [Installera Microsoft Azure Service Fabric SDK och verktyg][full-bundle-vs2015]
+* [Installera verktyg och hello Microsoft Azure Service Fabric-SDK][full-bundle-vs2015]
 
 ### <a name="sdk-installation-only"></a>SDK-installation endast
-Om du bara behöver SDK kan du installera det här paketet:
-* [Installera Microsoft Azure Service Fabric SDK][core-sdk]
+Om du bara behöver hello SDK kan du installera det här paketet:
+* [Installera hello Microsoft Azure Service Fabric-SDK][core-sdk]
 
-De aktuella versionerna är:
+hello aktuella versioner är:
 * Service Fabric SDK 2.7.198
 * Service Fabric runtime 5.7.198
 * Service Fabric-verktyg för Visual Studio 2015 1.7.50721
@@ -71,7 +71,7 @@ De aktuella versionerna är:
 En lista över versioner som stöds finns i [Service Fabric-stöd](service-fabric-support.md)
 
 ## <a name="enable-powershell-script-execution"></a>Aktivera körning av PowerShell-skript
-Service Fabric använder Windows PowerShell-skript för att skapa ett lokalt utvecklingskluster och för att distribuera program från Visual Studio. Som standard blockerar Windows dessa skript så att de inte kan köras. För att aktivera dem måste du ändra PowerShell-körningsprincipen. Öppna PowerShell som administratör och ange följande kommando:
+Service Fabric använder Windows PowerShell-skript för att skapa ett lokalt utvecklingskluster och för att distribuera program från Visual Studio. Som standard blockerar Windows dessa skript så att de inte kan köras. tooenable dem måste du ändra PowerShell-körningsprincipen. Öppna PowerShell som administratör och ange hello följande kommando:
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
@@ -81,11 +81,11 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 Nu när du har konfigurerat utvecklingsmiljön ska du börja bygga och köra appar.
 
 * [Skapa ditt första Service Fabric-program i Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
-* [Lär dig hur du distribuerar och hanterar program i ditt lokala kluster](service-fabric-get-started-with-a-local-cluster.md)
-* [Lär dig mer om programmeringsmodeller: Reliable Services och Reliable Actors](service-fabric-choose-framework.md)
-* [Kolla in Service Fabric-kodexemplen på GitHub](https://aka.ms/servicefabricsamples)
+* [Lär dig hur toodeploy och hantera program på din lokala klustret](service-fabric-get-started-with-a-local-cluster.md)
+* [Lär dig mer om hello programmeringsmodeller: Reliable Services och Reliable Actors](service-fabric-choose-framework.md)
+* [Kolla in hello Service Fabric-kodexempel på GitHub](https://aka.ms/servicefabricsamples)
 * [Visualisera ditt kluster med hjälp av Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
-* [Följ utbildningsvägen för Service Fabric för en bred introduktion till plattformen](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
+* [Följ hello Service Fabric learning sökvägen tooget en bred introduktion toohello plattform](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 * Lär dig mer om [Service Fabric-supportalternativen](service-fabric-support.md)
 
 [1]: http://azure.microsoft.com/en-us/campaigns/service-fabric/ "Service Fabric-kampanjsida"

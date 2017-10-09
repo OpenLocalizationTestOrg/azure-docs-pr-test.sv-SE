@@ -1,6 +1,6 @@
 ---
-title: Anpassa HDInsight-kluster med bootstrap - Azure | Microsoft Docs
-description: "Lär dig hur du anpassar HDInsight-kluster med starttjänsten."
+title: aaaCustomize HDInsight-kluster med bootstrap - Azure | Microsoft Docs
+description: "Lär dig hur toocustomize HDInsight-kluster med starttjänsten."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: c7a6fafa90eac66774d564c82c926c662baf784c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0029680fd1aa0e9e6aa9cdf667256c31b7ddc565
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Anpassa HDInsight-kluster med starttjänsten
 
-Ibland kan vill du konfigurera konfigurationsfiler, bland annat:
+Ibland vill du tooconfigure hello konfigurationsfiler, bland annat:
 
 * clusterIdentity.xml
 * Core-site.xml
@@ -42,7 +42,7 @@ Ibland kan vill du konfigurera konfigurationsfiler, bland annat:
 * webhcat-site.xml
 * yarn-site.xml
 
-Det finns tre metoder för att använda bootstrap:
+Det finns tre metoder toouse bootstrap:
 
 * Använda Azure PowerShell
 * Använd .NET SDK
@@ -50,12 +50,12 @@ Det finns tre metoder för att använda bootstrap:
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-Information om hur du installerar ytterligare komponenter på HDInsight-kluster under tiden för skapandet av finns i:
+Information om hur du installerar ytterligare komponenter på HDInsight-kluster under skapandeprocessen hello finns i:
 
 * [Anpassa HDInsight-kluster med skriptåtgärder (Linux)](hdinsight-hadoop-customize-cluster-linux.md)
 
 ## <a name="use-azure-powershell"></a>Använda Azure PowerShell
-Följande PowerShell-kod anpassar en Hive-konfiguration:
+följande PowerShell-koden hello anpassar en Hive-konfiguration:
 
     # hive-site.xml configuration
     $hiveConfigValues = @{ "hive.metastore.client.socket.timeout"="90" }
@@ -80,19 +80,19 @@ Följande PowerShell-kod anpassar en Hive-konfiguration:
 
 En fullständig fungerande PowerShell-skript finns i [bilaga A](#hdinsight-hadoop-customize-cluster-bootstrap.md/appx-a:-powershell-sample).
 
-**Så här kontrollerar du ändringen:**
+**tooverify hello ändringen:**
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
-2. I den vänstra menyn klickar du på **HDInsight-kluster**. Om du inte ser det klickar du på **fler tjänster** första.
-3. Klicka på det kluster som du just har skapat med hjälp av PowerShell-skript.
-4. Klicka på **instrumentpanelen** högst upp på bladet för att öppna Ambari UI.
-5. Klicka på **Hive** i den vänstra menyn.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com).
+2. Hello vänstra menyn klickar du på **HDInsight-kluster**. Om du inte ser det klickar du på **fler tjänster** första.
+3. Klicka på hello kluster som du just har skapat med hjälp av hello PowerShell-skript.
+4. Klicka på **instrumentpanelen** från hello överkant hello bladet tooopen hello Ambari UI.
+5. Klicka på **Hive** hello vänstra menyn.
 6. Klicka på **HiveServer2** från **sammanfattning**.
-7. Klicka på den **konfigurationerna** fliken.
-8. Klicka på **Hive** i den vänstra menyn.
-9. Klicka på den **Avancerat** fliken.
+7. Klicka på hello **konfigurationerna** fliken.
+8. Klicka på **Hive** hello vänstra menyn.
+9. Klicka på hello **Avancerat** fliken.
 10. Bläddra nedåt och expandera sedan **avancerade hive-plats**.
-11. Leta efter **hive.metastore.client.socket.timeout** i avsnittet.
+11. Leta efter **hive.metastore.client.socket.timeout** i hello-avsnittet.
 
 Vissa flera exempel på hur du anpassar andra konfigurationsfiler:
 
@@ -111,7 +111,7 @@ Vissa flera exempel på hur du anpassar andra konfigurationsfiler:
 Mer information finns i Azim Uddin blogg med titeln [anpassa HDInsight-kluster skapas](http://blogs.msdn.com/b/bigdatasupport/archive/2014/04/15/customizing-hdinsight-cluster-provisioning-via-powershell-and-net-sdk.aspx).
 
 ## <a name="use-net-sdk"></a>Använd .NET SDK
-Se [skapa Linux-baserade kluster i HDInsight med hjälp av .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
+Se [skapa Linux-baserade kluster i HDInsight med hello .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
 
 ## <a name="use-resource-manager-template"></a>Använd Resource Manager-mall
 Du kan använda bootstrap i Resource Manager-mall:
@@ -129,7 +129,7 @@ Du kan använda bootstrap i Resource Manager-mall:
 ![HDInsight Hadoop anpassar klustret bootstrap Azure Resource Manager-mall](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>Se även
-* [Skapa Hadoop-kluster i HDInsight] [ hdinsight-provision-cluster] innehåller instruktioner om hur du skapar ett HDInsight-kluster med hjälp av andra anpassade alternativ.
+* [Skapa Hadoop-kluster i HDInsight] [ hdinsight-provision-cluster] innehåller instruktioner om hur toocreate ett HDInsight-kluster med hjälp av andra anpassade alternativ.
 * [Utveckla skriptåtgärd skript för HDInsight][hdinsight-write-script]
 * [Installera och använda Spark på HDInsight-kluster][hdinsight-install-spark]
 * [Installera och använda R i HDInsight-kluster][hdinsight-install-r]
@@ -181,10 +181,10 @@ Detta PowerShell-skript skapar ett HDInsight-kluster och anpassar en Hive-instä
     $ErrorActionPreference = "Stop"
 
     ####################################
-    # Connect to Azure
+    # Connect tooAzure
     ####################################
-    #region - Connect to Azure subscription
-    Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+    #region - Connect tooAzure subscription
+    Write-Host "`nConnecting tooyour Azure subscription ..." -ForegroundColor Green
     try{Get-AzureRmContext}
     catch{Login-AzureRmAccount}
     #endregion
@@ -198,7 +198,7 @@ Detta PowerShell-skript skapar ett HDInsight-kluster och anpassar en Hive-instä
         -Name  $resourceGroupName `
         -Location $location
 
-    Write-Host "Creating the default storage account and default blob container ..."  -ForegroundColor Green
+    Write-Host "Creating hello default storage account and default blob container ..."  -ForegroundColor Green
     New-AzureRmStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $defaultStorageAccountName `
@@ -213,7 +213,7 @@ Detta PowerShell-skript skapar ett HDInsight-kluster och anpassar en Hive-instä
                                     -StorageAccountKey $defaultStorageAccountKey
     New-AzureStorageContainer `
         -Name $defaultBlobContainerName `
-        -Context $defaultStorageContext #use the cluster name as the container name
+        -Context $defaultStorageContext #use hello cluster name as hello container name
 
     ####################################
     # Create a configuration object
@@ -249,7 +249,7 @@ Detta PowerShell-skript skapar ett HDInsight-kluster och anpassar en Hive-instä
         -Config $config
 
     ####################################
-    # Verify the cluster
+    # Verify hello cluster
     ####################################
     Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
 

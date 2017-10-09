@@ -1,6 +1,6 @@
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-Vill du hålla dig uppdaterad med produktnyheter? Läs vår [blogg] eller följ oss på [Twitter] </br>
+Vill du toostay in toodate med produktnyheterna? Läs vår [blogg] eller följ oss på [Twitter] </br>
 Har du önskemål om en ny funktion för SQL DW? Publicera den på [UserVoice] </br>
 Har du en produktfråga? Ställ din fråga på [MSDN] </br>
 Har du en teknisk fråga? Ställ din fråga på [StackOverflow]</br>

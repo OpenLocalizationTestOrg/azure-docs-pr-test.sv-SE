@@ -1,6 +1,6 @@
 ---
-title: "Felsöka U-SQL-jobb | Microsoft Docs"
-description: "Lär dig att felsöka en misslyckad U-SQL-nod med hjälp av Visual Studio."
+title: aaaDebug U-SQL-jobb | Microsoft Docs
+description: "Lär dig hur toodebug U-SQL misslyckades vertex med Visual Studio."
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/02/2016
 ms.author: saveenr
-ms.openlocfilehash: 2a77c72d3062272305208934d6406d040266c753
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 092bffa1a59ed91c5837402d0276447480b923fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felsöka användardefinierade C#-kod för misslyckade U-SQL-jobb
 
-U-SQL ger en modellen för utökning med C#, så att du kan skriva koden för att lägga till funktioner, till exempel en anpassad extraktor eller reducer. Läs mer i [U-SQL-programmering guiden](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). I praktiken någon kod måste felsökning och ge endast system för stordata begränsad runtime felsökningsinformation som loggfiler.
+U-SQL ger en modellen för utökning med C#, så att du kan skriva din kod tooadd funktioner, till exempel en anpassad extraktor eller reducer. Det finns fler toolearn [U-SQL-programmering guiden](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). I praktiken någon kod måste felsökning och ge endast system för stordata begränsad runtime felsökningsinformation som loggfiler.
 
-Azure Data Lake-verktyg för Visual Studio innehåller en funktion som kallas **misslyckades Vertex felsöka**, vilket gör att du klona en misslyckade jobbet från molnet till den lokala datorn för felsökning. Lokala klonen fångar hela molnmiljön, inklusive alla indata och användarkod.
+Azure Data Lake-verktyg för Visual Studio innehåller en funktion som kallas **misslyckades Vertex felsöka**, vilket gör att du klona en misslyckade jobbet från hello molnet tooyour lokal dator för felsökning. hello lokala klona avbildar hello hela molnmiljö, inklusive alla indata och användarkod.
 
-Följande videoklipp visar misslyckades Vertex Debug i Azure Data Lake-verktyg för Visual Studio.
+hello följande videoklipp visar misslyckades Vertex Debug i Azure Data Lake-verktyg för Visual Studio.
 
 > [!VIDEO https://e0d1.wpc.azureedge.net/80E0D1/OfficeMixProdMediaBlobStorage/asset-d3aeab42-6149-4ecc-b044-aa624901ab32/b0fc0373c8f94f1bb8cd39da1310adb8.mp4?sv=2012-02-12&sr=c&si=a91fad76-cfdd-4513-9668-483de39e739c&sig=K%2FR%2FdnIi9S6P%2FBlB3iLAEV5pYu6OJFBDlQy%2FQtZ7E7M%3D&se=2116-07-19T09:27:30Z&rscd=attachment%3B%20filename%3DDebugyourcustomcodeinUSQLADLA.mp4]
 >
 
 > [!NOTE]
-> Visual Studio kräver följande två uppdateringar, om de inte redan är installerade: [Microsoft Visual C++ 2015 Redistributable uppdatering 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) och [Universal C Runtime för Windows](https://www.microsoft.com/download/details.aspx?id=50410).
+> Visual Studio kräver hello följande två uppdateringar om de inte redan är installerade: [Microsoft Visual C++ 2015 Redistributable uppdatering 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) och [Universal C Runtime för Windows](https://www.microsoft.com/download/details.aspx?id=50410).
 
-## <a name="download-failed-vertex-to-local-machine"></a>Gick inte att hämta hörn till den lokala datorn
+## <a name="download-failed-vertex-toolocal-machine"></a>Gick inte att hämta vertex toolocal datorn
 
-När du öppnar ett jobb som misslyckades i Azure Data Lake-verktyg för Visual Studio kan se du ett gult avisering fält med detaljerade felmeddelanden på fliken fel.
+När du öppnar ett jobb som misslyckades i Azure Data Lake-verktyg för Visual Studio kan du se ett gult avisering fält med detaljerade felmeddelanden hello fel på fliken.
 
-1. Klicka på **hämta** att hämta alla nödvändiga resurser och inkommande dataströmmar. Om hämtningen inte slutförs, klicka på **försök**.
+1. Klicka på **hämta** toodownload alla hello nödvändiga resurser och inkommande dataströmmar. Om hello hämtningen inte slutförs, klicka på **försök**.
 
-2. Klicka på **öppna** När nedladdningen är klar för att generera en lokal felsökningsmiljö. En ny Visual Studio-instans med en lösning för felsökning skapas och öppnas automatiskt.
+2. Klicka på **öppna** när hello nedladdningen är klar toogenerate lokala felsökningsmiljö. En ny Visual Studio-instans med en lösning för felsökning skapas och öppnas automatiskt.
 
 ![Azure Data Lake Analytics U-SQL felsökning i visual studio download vertex](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
 
@@ -52,32 +52,32 @@ Jobb kan inkludera bakomliggande kod källfiler eller registrerade sammansättni
 
 ## <a name="debug-job-failed-with-code-behind"></a>Felsöka jobb som misslyckades med bakomliggande kod
 
-Om ett U-SQL-jobb misslyckas och jobbet innehåller användarkod (vanligtvis namnet `Script.usql.cs` i ett U-SQL-projekt), att källkoden har importerats till felsökning lösningen.  Därifrån kan du använda Visual Studio felsökningsverktyg (titta på, variabler, etc.) för att felsöka problemet.
+Om ett U-SQL-jobb misslyckas och hello arbetsuppgifter inbegriper användarkod (vanligtvis namnet `Script.usql.cs` i ett U-SQL-projekt), att källkoden har importerats till hello felsökning lösning.  Därifrån kan du använda hello Visual Studio felsökning verktyg (titta på, variabler, etc.) tootroubleshoot hello problem.
 
 > [!NOTE]
-> Innan du felsökning, måste du kontrollera att **Common Language Runtime undantag** i fönstret undantag inställningar (**Ctrl + Alt + E**).
+> Innan du felsökning, vara säker på att toocheck **Common Language Runtime undantag** i hello undantag inställningar fönster (**Ctrl + Alt + E**).
 
 ![Azure Data Lake Analytics U-SQL felsökning i visual studio-inställning](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-clr-exception-setting.png)
 
-1. Tryck på **F5** att köra kod bakomliggande kod. Det kan köras förrän den har stoppats av ett undantagsfel.
+1. Tryck på **F5** toorun hello bakomliggande kod kod. Det kan köras förrän den har stoppats av ett undantagsfel.
 
-2. Öppna den `ADLTool_Codebehind.usql.cs` filen och ange brytpunkter, tryck på **F5** för felsökning av kod steg för steg.
+2. Öppna hello `ADLTool_Codebehind.usql.cs` filen och ange brytpunkter, tryck på **F5** toodebug hello kod steg för steg.
 
     ![Azure Data Lake Analytics U-SQL debug-undantag](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-exception.png)
 
 ## <a name="debug-job-failed-with-assemblies"></a>Felsöka jobb som misslyckades med sammansättningar
 
-Om du använder registrerade sammansättningar i U-SQL-skript kan systemet kan inte hämta källkoden automatiskt. I det här fallet manuellt lägger till de sammansättningarna källfilerna i lösningen.
+Om du använder registrerade sammansättningar i U-SQL-skript kan hello system kan inte hämta hello källkoden automatiskt. I det här fallet manuellt lägga till hello sammansättningar källa kod filer toohello lösning.
 
-### <a name="configure-the-solution"></a>Konfigurera lösningen
+### <a name="configure-hello-solution"></a>Konfigurera hello lösning
 
-1. Högerklicka på **lösning 'VertexDebug' > Lägg till > befintligt projekt...**  att hitta de sammansättningarna källkoden och lägger till projektet i Felsökning lösningen.
+1. Högerklicka på **lösning 'VertexDebug' > Lägg till > befintligt projekt...**  toofind hello sammansättningar källkoden och Lägg till hello projektet toohello felsökning lösning.
 
     ![Azure Data Lake Analytics U-SQL-debug lägga till projekt](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-add-project-to-debug-solution.png)
 
-2. Högerklicka på **LocalVertexHost > Egenskaper** i lösningen och kopiera den **Working Directory** sökväg.
+2. Högerklicka på **LocalVertexHost > Egenskaper** i hello lösning och kopiera hello **Working Directory** sökväg.
 
-3. Högerklicka på **sammansättningsprojekt källa kod > Egenskaper**väljer den **skapa** fliken längst till vänster och klistra in den kopierade sökvägen som **utdata > Utdatasökvägen**.
+3. Högerklicka på **sammansättningsprojekt källa kod > Egenskaper**väljer hello **skapa** fliken längst till vänster och klistra in hello kopieras sökväg som **utdata > Utdatasökvägen**.
 
     ![Ange sökväg till pdb för Azure Data Lake Analytics U-SQL-felsökning](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
@@ -85,35 +85,35 @@ Om du använder registrerade sammansättningar i U-SQL-skript kan systemet kan i
 
 ### <a name="start-debug"></a>Starta felsökning
 
-1. Högerklicka på **Kodprojekt för sammansättningen källa > återskapa** till .pdb utdatafilerna till den `LocalVertexHost` arbetskatalogen.
+1. Högerklicka på **Kodprojekt för sammansättningen källa > återskapa** toooutput .pdb filer toohello `LocalVertexHost` arbetskatalogen.
 
-2. Tryck på **F5** och projektet kommer att köras tills den har stoppats av ett undantagsfel. Du kan se följande varningsmeddelande som du kan ignorera. Det kan ta upp till en minut att komma till skärmen för felsökning.
+2. Tryck på **F5** och hello projektet kommer att köras tills den har stoppats av ett undantagsfel. Du kan se hello följande varningsmeddelande som du kan ignorera. Det kan ta upp tooa minut tooget toohello debug skärmen.
 
     ![Azure Data Lake Analytics U-SQL felsökning i visual studio-varning](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-visual-studio-u-sql-debug-warning.png)
 
-3. Öppna källkoden och ange brytpunkter, tryck på **F5** för felsökning av kod steg för steg.
+3. Öppna källkoden och ange brytpunkter, tryck på **F5** toodebug hello kod steg för steg.
 
-Du kan också använda Visual Studio felsökningsverktyg (titta på, variabler, etc.) för att felsöka problemet.
+Du kan också använda hello Visual Studio felsökning verktyg (titta på, variabler, etc.) tootroubleshoot hello problem.
 
 > [!NOTE]
-> Återskapa sammansättningsprojekt källa kod varje gång när du ändrar koden för att generera uppdaterade .pdb filer.
+> Återskapa hello sammansättningsprojekt källa kod varje gång när du har ändrat hello kodfiler toogenerate uppdateras .pdb.
 
-Efter felsökning visar utdatafönstret följande meddelande om projektet har slutförts:
+Efter felsökning visar hello utdatafönstret hello efter meddelande om hello projekt slutförs:
 
 ```
-The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
+hello Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
 ```
 
 ![Azure Data Lake Analytics U-SQL-debug lyckas](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
 
-## <a name="resubmit-the-job"></a>Skicka jobbet
+## <a name="resubmit-hello-job"></a>Skicka hello jobb
 
-När du har slutfört felsökning, skicka om det misslyckade jobbet.
+När du har slutfört felsökning, skicka hello misslyckade jobbet.
 
-1. Kopiera C#-koden till bakomliggande kod källfilen för jobb med bakomliggande kod lösningar (vanligtvis `Script.usql.cs`).
-2. Registrera uppdaterade .dll sammansättningarna i databasen ADLA för jobb med sammansättningar:
-    1. Från Server Explorer eller Cloud Explorer, expandera den **ADLA konto > databaser** nod.
-    2. Högerklicka på **sammansättningar** och registrera ditt nya .dll-sammansättningar med databasen ADLA: ![Azure Data Lake Analytics U-SQL-debug registrera sammansättningen](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-register-assembly.png)
+1. Kopiera C#-kod för jobb med bakomliggande kod lösningar till hello bakomliggande kod källfilen (vanligtvis `Script.usql.cs`).
+2. Registrera hello uppdateras .dll sammansättningar i databasen ADLA för jobb med sammansättningar:
+    1. Från Server Explorer eller Cloud Explorer expanderar du hello **ADLA konto > databaser** nod.
+    2. Högerklicka på **sammansättningar** och registrera ditt nya .dll-sammansättningar med hello ADLA databasen: ![Azure Data Lake Analytics U-SQL-debug registrera sammansättningen](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-register-assembly.png)
 3. Skicka jobbet.
 
 ## <a name="next-steps"></a>Nästa steg

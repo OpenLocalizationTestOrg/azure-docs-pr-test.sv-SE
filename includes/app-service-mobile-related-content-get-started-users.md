@@ -1,9 +1,9 @@
 * [App Service autentisering / auktorisering: översikt](../articles/app-service/app-service-authentication-overview.md)
-* [Lägg till autentisering i en Webbapp](../articles/app-service-web/app-service-web-get-started-2.md#authenticate-your-users)
-* Lägg till autentisering i appen Mobile: [iOS][ios-get-started-users], [Android][android-get-started-users], [Windows Universal] [ windows-get-started-users], [Xamarin.Android][xamarin-android-get-started-users], [Xamarin.iOS][xamarin-ios-get-started-users], [Xamarin.Forms] [ xamarin-forms-get-started-users], [Cordova][cordova-get-started-users]  
-  Lär dig hur du lägger till autentisering i Apptjänst till din mobila app.
+* [Lägg till autentisering tooa Web App](../articles/app-service-web/app-service-web-get-started-2.md#authenticate-your-users)
+* Lägg till autentisering tooyour Mobilapp: [iOS][ios-get-started-users], [Android][android-get-started-users], [Windows Universal] [ windows-get-started-users], [Xamarin.Android][xamarin-android-get-started-users], [Xamarin.iOS][xamarin-ios-get-started-users], [Xamarin.Forms] [ xamarin-forms-get-started-users], [Cordova][cordova-get-started-users]  
+  Lär dig hur tooadd Apptjänst autentisering tooyour mobila appar.
 * Autentisering i API Apps: [UPN](../articles/app-service-api/app-service-api-dotnet-user-principal-auth.md), [tjänstens huvudnamn](../articles/app-service-api/app-service-api-dotnet-service-principal-auth.md)  
-  Lär dig att skydda din API-app med App Service-autentisering.
+  Lär dig hur toosecure API-appen med App Service-autentisering.
 
 [android-get-started-users]: ../articles/app-service-mobile/app-service-mobile-android-get-started-users.md
 [cordova-get-started-users]: ../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md

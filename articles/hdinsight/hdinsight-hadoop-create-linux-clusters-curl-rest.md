@@ -1,6 +1,6 @@
 ---
-title: "Skapa Hadoop-kluster med hjälp av Azure REST API - Azure | Microsoft Docs"
-description: "Lär dig hur du skapar HDInsight-kluster genom att skicka Azure Resource Manager-mallar REST-API: et för Azure."
+title: "Hadoop-aaaCreate kluster med hjälp av Azure REST API - Azure | Microsoft Docs"
+description: "Lär dig hur toocreate HDInsight-kluster genom att skicka Azure Resource Manager mallar toohello Azure REST API."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,31 +16,31 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/10/2017
 ms.author: larryfr
-ms.openlocfilehash: a36a41c231472ceeeb46d02ddb65549b1c79728a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 87b585e5084eccdc3d7c57483deabb4ad6e32597
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Skapa Hadoop-kluster med hjälp av Azure REST API
+# <a name="create-hadoop-clusters-using-hello-azure-rest-api"></a>Skapa Hadoop-kluster med hello Azure REST API
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Lär dig hur du skapar ett HDInsight-kluster med hjälp av en Azure Resource Manager-mall och Azure REST API.
+Lär dig hur toocreate ett HDInsight-kluster med en Azure Resource Manager-mall och hello Azure REST API.
 
-Azure REST-API kan du utföra hanteringsåtgärder på tjänster i Azure-plattformen, inklusive skapandet av nya resurser, till exempel HDInsight-kluster.
+hello Azure REST-API kan du tooperform hanteringsåtgärder på tjänster i hello Azure-plattformen, inklusive hello skapandet av nya resurser, till exempel HDInsight-kluster.
 
 > [!IMPORTANT]
-> Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux är hello endast operativsystem på HDInsight version 3.4 eller senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 > [!NOTE]
-> Stegen i det här dokumentet används de [curl (https://curl.haxx.se/)](https://curl.haxx.se/) verktyg för att kommunicera med Azure REST API.
+> hello stegen i det här dokumentet används hello [curl (https://curl.haxx.se/)](https://curl.haxx.se/) verktyget toocommunicate med hello Azure REST API.
 
 ## <a name="create-a-template"></a>Skapa en mall
 
-Azure Resource Manager-mallarna är JSON-dokument som beskriver en **resursgruppen** och alla resurser i den (till exempel HDInsight.) Den här metoden mallbaserade kan du definiera de resurser som du behöver för HDInsight i en mall.
+Azure Resource Manager-mallarna är JSON-dokument som beskriver en **resursgruppen** och alla resurser i den (till exempel HDInsight.) Den här metoden mallbaserade kan toodefine hello resurser som behövs för HDInsight i en mall.
 
-Följande JSON-dokumentet är en fusion mall och parametrar filer från [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), vilket skapar ett Linux-baserade kluster med ett lösenord för att skydda det SSH-kontot.
+hello följande JSON-dokumentet är en sammanslagning av hello mall och parametrar filer från [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), vilket skapar en Linux-baserade kluster med hjälp av ett lösenord toosecure hello SSH-användarkontot.
 
    ```json
    {
@@ -56,50 +56,50 @@ Följande JSON-dokumentet är en fusion mall och parametrar filer från [https:/
                        "storm",
                        "spark"],
                        "metadata": {
-                           "description": "The type of the HDInsight cluster to create."
+                           "description": "hello type of hello HDInsight cluster toocreate."
                        }
                    },
                    "clusterName": {
                        "type": "string",
                        "metadata": {
-                           "description": "The name of the HDInsight cluster to create."
+                           "description": "hello name of hello HDInsight cluster toocreate."
                        }
                    },
                    "clusterLoginUserName": {
                        "type": "string",
                        "metadata": {
-                           "description": "These credentials can be used to submit jobs to the cluster and to log into cluster dashboards."
+                           "description": "These credentials can be used toosubmit jobs toohello cluster and toolog into cluster dashboards."
                        }
                    },
                    "clusterLoginPassword": {
                        "type": "securestring",
                        "metadata": {
-                           "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+                           "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
                        }
                    },
                    "sshUserName": {
                        "type": "string",
                        "metadata": {
-                           "description": "These credentials can be used to remotely access the cluster."
+                           "description": "These credentials can be used tooremotely access hello cluster."
                        }
                    },
                    "sshPassword": {
                        "type": "securestring",
                        "metadata": {
-                           "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+                           "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
                        }
                    },
                    "clusterStorageAccountName": {
                        "type": "string",
                        "metadata": {
-                           "description": "The name of the storage account to be created and be used as the cluster's storage."
+                           "description": "hello name of hello storage account toobe created and be used as hello cluster's storage."
                        }
                    },
                    "clusterWorkerNodeCount": {
                        "type": "int",
                        "defaultValue": 4,
                        "metadata": {
-                           "description": "The number of nodes in the HDInsight cluster."
+                           "description": "hello number of nodes in hello HDInsight cluster."
                        }
                    }
                },
@@ -215,52 +215,52 @@ Följande JSON-dokumentet är en fusion mall och parametrar filer från [https:/
    }
    ```
 
-Det här exemplet används i stegen i det här dokumentet. Ersätta exemplet *värden* i den **parametrar** avsnitt med värden för klustret.
+Det här exemplet används i hello stegen i det här dokumentet. Ersätt hello exempel *värden* i hello **parametrar** avsnitt med hello värden för klustret.
 
 > [!IMPORTANT]
-> Mallen använder standardvärdet för antalet arbetarnoder (4) för ett HDInsight-kluster. Om du planerar på mer än 32 arbetarnoder, måste du välja en huvudnod storlek med minst 8 kärnor och 14 GB RAM-minne.
+> hello-mallen använder hello standardantalet arbetarnoder (4) för ett HDInsight-kluster. Om du planerar på mer än 32 arbetarnoder, måste du välja en huvudnod storlek med minst 8 kärnor och 14 GB RAM-minne.
 >
 > Mer information om noden storlekar och relaterade kostnader finns [HDInsight priser](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-## <a name="log-in-to-your-azure-subscription"></a>Logga in till din Azure-prenumeration
+## <a name="log-in-tooyour-azure-subscription"></a>Logga in tooyour Azure-prenumeration
 
-Följ stegen i [Kom igång med Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) och ansluta till din prenumeration med hjälp av den `az login` kommando.
+Följ stegen i hello [Kom igång med Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) och ansluta tooyour prenumeration med hjälp av hello `az login` kommando.
 
 ## <a name="create-a-service-principal"></a>Skapa ett huvudnamn för tjänsten
 
 > [!NOTE]
-> Här är en förkortad version av den *skapa tjänstens huvudnamn med lösenord* avsnitt i den [Använd Azure CLI för att skapa ett huvudnamn för tjänsten att komma åt resurser](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password) dokumentet. Dessa steg att skapa ett huvudnamn för tjänsten som används för att autentisera till Azure REST API.
+> Här är en förkortad version av hello *skapa tjänstens huvudnamn med lösenord* avsnitt i hello [Använd Azure CLI toocreate ett huvudnamn för tjänsten tooaccess resurser](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password) dokumentet. Dessa steg att skapa ett huvudnamn för tjänsten som används tooauthenticate toohello Azure REST API.
 
-1. Använd följande kommando från en kommandorad för att visa dina Azure-prenumerationer.
+1. Använd följande kommando toolist hello dina Azure-prenumerationer från en kommandorad.
 
    ```bash
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    I listan väljer du den prenumeration som du vill använda och notera den **PRENUMERATIONSID** och __Tenant_ID__ kolumner. Spara dessa värden.
+    Markera i hello hello prenumeration som du vill använda toouse och Observera hello **PRENUMERATIONSID** och __Tenant_ID__ kolumner. Spara dessa värden.
 
-2. Använd följande kommando för att skapa ett program i Azure Active Directory.
+2. Använd följande kommando toocreate ett program i Azure Active Directory hello.
 
    ```bash
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    Ersätt värdena för den `--display-name`, `--homepage`, och `--identifier-uris` med egna värden. Ange ett lösenord för den nya Active Directory-posten.
+    Ersätt hello värden för hello `--display-name`, `--homepage`, och `--identifier-uris` med egna värden. Ange ett lösenord för hello nya Active Directory-posten.
 
    > [!NOTE]
-   > Den `--home-page` och `--identifier-uris` värden behöver inte referera till en webbsida som finns på internet. De måste vara unikt URI: er.
+   > Hej `--home-page` och `--identifier-uris` värden behöver inte tooreference en webbsida som finns på hello internet. De måste vara unikt URI: er.
 
-   Värdet som returneras från det här kommandot är den __App-ID__ för det nya programmet. Spara det här värdet.
+   hello värdet som returneras från det här kommandot är hello __App-ID__ hello nya programmet. Spara det här värdet.
 
-3. Använd följande kommando för att skapa ett huvudnamn för tjänsten med hjälp av den **App-ID**.
+3. Använd hello följande kommando toocreate ett huvudnamn för tjänsten med hjälp av hello **App-ID**.
 
    ```bash
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     Värdet som returneras från det här kommandot är den __objekt-ID__. Spara det här värdet.
+     hello värdet som returneras från det här kommandot är hello __objekt-ID__. Spara det här värdet.
 
-4. Tilldela den **ägare** roll till tjänstens huvudnamn med den **objekt-ID** värde. Använd den **prenumerations-ID** du fick tidigare.
+4. Tilldela hello **ägare** rollen toohello tjänstens huvudnamn med hjälp av hello **objekt-ID** värde. Använd hello **prenumerations-ID** du fick tidigare.
 
    ```bash
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
@@ -268,7 +268,7 @@ Följ stegen i [Kom igång med Azure CLI 2.0](https://docs.microsoft.com/cli/azu
 
 ## <a name="get-an-authentication-token"></a>Hämta en token för autentisering
 
-Använd följande kommando för att hämta någon autentiseringstoken:
+Använd följande kommando tooretrieve någon autentiseringstoken hello:
 
 ```bash
 curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
@@ -280,11 +280,11 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 --data-urlencode "resource=https://management.azure.com/"
 ```
 
-Ange `$TENANTID`, `$APPID`, och `$PASSWORD` till värdena som anskaffats eller använts tidigare.
+Ange `$TENANTID`, `$APPID`, och `$PASSWORD` toohello värden hämtas eller använt tidigare.
 
-Om denna begäran lyckades, du får svar 200 serien och svarstexten innehåller ett JSON-dokument.
+Om denna begäran lyckades, du får svar 200 serien och hello svarstexten innehåller ett JSON-dokument.
 
-JSON-dokument som returneras av denna begäran innehåller ett element med namnet **access_token**. Värdet för **access_token** används för att autentiseringsbegäranden till REST API.
+hello JSON-dokument som returneras av denna begäran innehåller ett element med namnet **access_token**. Hej värdet för **access_token** är används tooauthentication begäranden toohello REST API.
 
 ```json
 {
@@ -298,12 +298,12 @@ JSON-dokument som returneras av denna begäran innehåller ett element med namne
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Använd följande för att skapa en resursgrupp.
+Använd hello följande toocreate en resursgrupp.
 
-* Ange `$SUBSCRIPTIONID` till prenumerationen ID togs emot när tjänstens huvudnamn.
-* Ange `$ACCESSTOKEN` till åtkomsttoken som togs emot i föregående steg.
-* Ersätt `DATACENTERLOCATION` med du vill skapa resursgrupp och resurser i datacentret. Till exempel 'södra centrala USA'.
-* Ange `$RESOURCEGROUPNAME` till namn som du vill använda för den här gruppen:
+* Ange `$SUBSCRIPTIONID` toohello prenumerations-ID togs emot när hello tjänstens huvudnamn.
+* Ange `$ACCESSTOKEN` toohello åtkomst-token togs emot i hello föregående steg.
+* Ersätt `DATACENTERLOCATION` med hello Datacenter gärna toocreate hello resursgrupp och resurser i. Till exempel 'södra centrala USA'.
+* Ange `$RESOURCEGROUPNAME` toohello namn som du vill toouse för den här gruppen:
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
@@ -314,34 +314,34 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-Om denna begäran lyckades, du får svar 200 serien och svarstexten innehåller ett JSON-dokument som innehåller information om gruppen. Den `"provisioningState"` elementet innehåller ett värde för `"Succeeded"`.
+Om denna begäran lyckades, du får svar 200 serien och hello svarstexten innehåller ett JSON-dokument som innehåller information om hello grupp. Hej `"provisioningState"` elementet innehåller ett värde för `"Succeeded"`.
 
 ## <a name="create-a-deployment"></a>Skapa en distribution
 
-Använd följande kommando för att distribuera mallen till resursgruppen.
+Använd hello följande kommando toodeploy hello mallen toohello resursgruppen.
 
-* Ange `$DEPLOYMENTNAME` till namn som du vill använda för den här distributionen.
+* Ange `$DEPLOYMENTNAME` toohello namn som du vill toouse för den här distributionen.
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
 -H "Authorization: Bearer $ACCESSTOKEN" \
 -H "Content-Type: application/json" \
--d "{set your body string to the template and parameters}"
+-d "{set your body string toohello template and parameters}"
 ```
 
 > [!NOTE]
-> Om du har sparat mallen till en fil kan du använda följande kommando i stället för `-d "{ template and parameters}"`:
+> Om du har sparat hello mallfilen tooa du kan använda följande kommando i stället för hello `-d "{ template and parameters}"`:
 >
 > `--data-binary "@/path/to/file.json"`
 
-Om denna begäran lyckades, du får svar 200 serien och svarstexten innehåller ett JSON-dokument som innehåller information om distributionen.
+Om begäran lyckades, du får svar 200 serien och hello svarstexten innehåller ett JSON-dokument som innehåller information om hello distributionsåtgärder.
 
 > [!IMPORTANT]
-> Distributionen har skickats, men har inte slutförts. Det kan ta flera minuter, vanligtvis cirka 15, för att distributionen ska slutföras.
+> hello distributionen har skickats, men har inte slutförts. Det kan ta flera minuter, vanligtvis cirka 15 för hello distribution toocomplete.
 
-## <a name="check-the-status-of-a-deployment"></a>Kontrollera status för en distribution
+## <a name="check-hello-status-of-a-deployment"></a>Hello statusen för en distribution
 
-Om du vill kontrollera status för distributionen, använder du följande kommando:
+toocheck hello status för hello-distributionen, Använd hello följande kommando:
 
 ```bash
 curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -349,7 +349,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-Det här kommandot returnerar ett JSON-dokument som innehåller information om distributionen. Den `"provisioningState"` elementet innehåller statusen för distributionen. Om det här elementet innehåller ett värde av `"Succeeded"`, och sedan distributionen har slutförts.
+Det här kommandot returnerar ett JSON-dokument som innehåller information om hello distributionsåtgärder. Hej `"provisioningState"` elementet innehåller hello status för hello-distributionen. Om det här elementet innehåller ett värde av `"Succeeded"`, och sedan hello distributionen har slutförts.
 
 ## <a name="troubleshoot"></a>Felsöka
 
@@ -357,7 +357,7 @@ Om du får problem med att skapa HDInsight-kluster läser du [åtkomstkontrollkr
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har skapat ett HDInsight-kluster, kan du använda följande för att lära dig hur du arbetar med ditt kluster.
+Nu när du har skapat ett HDInsight-kluster använder du följande toolearn hur hello toowork med ditt kluster.
 
 ### <a name="hadoop-clusters"></a>Hadoop-kluster
 

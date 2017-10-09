@@ -1,6 +1,6 @@
 ---
-title: "Skapa, hantera eller ta bort ett lagringskonto på den klassiska Azure-portalen | Microsoft Docs"
-description: "Skapa ett nytt lagringskonto, hantera åtkomstnycklarna för ditt konto eller ta bort ett lagringskonto på Azure-portalen. Läs mer om premium- och standardlagringskonton."
+title: aaaHow toocreate, hantera eller ta bort ett lagringskonto i hello klassiska Azure-portalen | Microsoft Docs
+description: "Skapa ett nytt lagringskonto, hantera åtkomstnycklarna för ditt konto eller ta bort ett lagringskonto i hello Azure-portalen. Läs mer om premium- och standardlagringskonton."
 services: storage
 documentationcenter: 
 author: robinsh
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: robinsh
-ms.openlocfilehash: 599d509d00e8366a5095cac7503b11cf818e6a34
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6ee2359e02c7c9e9c111e1fc87a6160bb8b785b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="about-azure-storage-accounts"></a>Om Azure-lagringskonton
 [!INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ## <a name="overview"></a>Översikt
-Med ett Azure Storage-konto får du tillgång till Azures blobb-, kö-, tabell- och filtjänster i Azure Storage. Ditt lagringskonto tillhandahåller den unika namnrymden för dina Azure Storage-dataobjekt. Som standard är data i ditt konto endast tillgängliga för dig, kontoägaren.
+Ett Azure storage ger dig åtkomst toohello Azure Blob, kön, tabell, och Filtjänster i Azure Storage. Ditt lagringskonto tillhandahåller hello unika namnrymden för dina Azure Storage-dataobjekt. Hello data i ditt konto är tillgängligt endast tooyou hello kontoägaren som standard.
 
 Det finns två typer av lagringskonton:
 
@@ -36,23 +36,23 @@ Det finns två typer av lagringskonton:
 ## <a name="storage-account-billing"></a>Fakturering för lagringskonto
 Du debiteras för användningen av Azure Storage baserat på ditt lagringskonto. Storage-kostnaderna baseras på fyra faktorer: lagringskapacitet, replikeringsschema, lagringstransaktioner och utgående datatrafik.
 
-* Lagringskapacitet syftar på hur mycket av lagringskontots tilldelade utrymme som du använder för att lagra data. Kostnaden för att bara lagra data bestäms av hur mycket data du lagrar och hur de replikeras.
+* Lagringskapacitet syftar toohow mycket av lagringskontots du använder toostore data. hello kostnaden för att lagra data bestäms av hur mycket data du lagrar och hur de replikeras.
 * Replikeringen anger hur många kopior av dina data som hanteras på samma gång och på vilka platser.
-* Transaktioner avser alla läs- och skrivåtgärder till Azure Storage.
-* Utgående datatrafik (egress) syftar på data som överförs ut från en Azure-region. När data på ditt lagringskonto används av ett program som inte körs i samma region, oavsett om programmet är en molntjänst eller en annan typ av program, så debiteras du för den utgående datatrafiken. (För Azure-tjänster kan du gruppera dina data och tjänster i samma datacenter för att därigenom minska eller eliminera kostnaderna för utgående datatrafik.)  
+* Transaktioner finns tooall läsa och skriva operations tooAzure lagring.
+* Datatrafik refererar toodata överförs ut från en Azure-region. När hello data i ditt lagringskonto används av ett program som inte körs i hello samma region om som programmet är en molnbaserad tjänst eller någon annan typ av program och debiteras du för utgående datatrafik. (För Azure-tjänster, du kan vidta åtgärder toogroup dina data och tjänster i hello samma data centers tooreduce eller eliminera kostnaderna för utgående datatrafik.)  
 
-Sidan [Priser för Azure Storage](https://azure.microsoft.com/pricing/details/storage) innehåller detaljerad prisinformation för lagringskapacitet, replikering och transaktioner. Sidan [Prisinformation om dataöverföringar](https://azure.microsoft.com/pricing/details/data-transfers/) innehåller detaljerad prisinformation för utgående datatrafik.
+Hej [priser för Azure Storage](https://azure.microsoft.com/pricing/details/storage) innehåller detaljerad prisinformation för lagringskapacitet, replikering och transaktioner. Hej [prisinformation om dataöverföringar](https://azure.microsoft.com/pricing/details/data-transfers/) innehåller detaljerad prisinformation för utgående datatrafik.
 
 Detaljerad information om ett lagringskontos kapacitets- och prestandamål finns i [Skalbarhets- och prestandamål för Azure Storage](storage-scalability-targets.md).
 
 > [!NOTE]
-> När du skapar en virtuell dator i Azure skapas ett lagringskonto automatiskt åt dig på distributionsplatsen om du inte redan har ett lagringskonto på den platsen. Du behöver alltså inte följa stegen nedan för att skapa ett lagringskonto för dina virtuella datorer. Namnet på lagringskontot baseras på den virtuella datorns namn. Mer information finns i [dokumentationen för Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
+> När du skapar en virtuell dator i Azure skapas storage-konto du automatiskt hello distribution plats om du inte redan har ett lagringskonto på den här platsen. Det är därför inte nödvändigt toofollow hello stegen nedan toocreate ett lagringskonto för virtuella diskar. hello lagringskontonamnet baseras på hello virtuellt datornamn. Se hello [dokumentation för Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) för mer information.
 > 
 > 
 
 ## <a name="create-a-storage-account"></a>skapar ett lagringskonto
-1. Logga in på den [klassiska Azure-portalen](https://manage.windowsazure.com).
-2. Klicka på **Nytt** i Aktivitetsfältet längst ned på sidan. Välj **Datatjänster** | **Storage** och klicka sedan på **Snabbregistrering**.
+1. Logga in toohello [klassiska Azure-portalen](https://manage.windowsazure.com).
+2. Klicka på **ny** i hello Aktivitetsfältet på hello hello sidans nederkant. Välj **Datatjänster** | **Storage** och klicka sedan på **Snabbregistrering**.
    
     ![NewStorageAccount](./media/storage-create-storage-account-classic-portal/storage_NewStorageAccount.png)
 3. I **URL** anger du ett namn för ditt lagringskonto.
@@ -60,115 +60,115 @@ Detaljerad information om ett lagringskontos kapacitets- och prestandamål finns
    > [!NOTE]
    > Namnet på ett lagringskonto måste vara mellan 3 och 24 tecken långt och får endast innehålla siffror och gemener.
    > 
-   > Namnet på ditt lagringskonto måste vara unikt i Azure. Den klassiska Azure-portalen meddelar dig om det namn som du väljer på lagringskontot redan är taget.
+   > Namnet på ditt lagringskonto måste vara unikt i Azure. hello klassiska Azure-portalen visar om hello lagringskontonamn du väljer är upptaget.
    > 
    > 
    
-    Mer information om hur lagringskontots namn används för att adressera dina objekt i Azure Storage finns nedan i [Slutpunkter för lagringskonto](#storage-account-endpoints).
-4. I **Plats/tillhörighetsgrupp** väljer du en plats för ditt lagringskonto som ligger nära dig eller dina kunder. Om data i ditt lagringskonto ska kunna nås från en annan Azure-tjänst, till exempel en molntjänst eller en virtuell dator i Azure, kan du välja en tillhörighetsgrupp i listan och gruppera ditt lagringskonto i samma datacenter med andra Azure-tjänster som du använder för att därigenom förbättra prestanda och sänka kostnaderna.
+    Se [slutpunkter för Lagringskonto](#storage-account-endpoints) nedan för information om hur hello lagringskontonamnet kommer att använda tooaddress dina objekt i Azure Storage.
+4. I **plats/Tillhörighetsgrupp**, Välj en plats för ditt lagringskonto som är nära tooyou eller tooyour kunder. Om data i ditt lagringskonto ska kunna nås från en annan Azure-tjänst, till exempel en virtuell Azure-dator eller tjänst i molnet, kanske du vill tooselect en tillhörighetsgrupp från hello listan toogroup ditt lagringskonto i hello samma datacenter med andra Azure-tjänster att du använder tooimprove prestanda och sänka kostnaderna.
    
-    Observera att du måste välja en tillhörighetsgrupp när ditt lagringskonto skapas. Du kan inte flytta ett befintligt konto till en tillhörighetsgrupp. Mer information om tillhörighetsgrupper finns i  [Samplacering av tjänster med en tillhörighetsgrupp](#service-co-location-with-an-affinity-group) nedan.
+    Observera att du måste välja en tillhörighetsgrupp när ditt lagringskonto skapas. Du kan inte flytta en befintlig affinitetsgrupp för kontot tooan. Mer information om tillhörighetsgrupper finns i  [Samplacering av tjänster med en tillhörighetsgrupp](#service-co-location-with-an-affinity-group) nedan.
    
    > [!IMPORTANT]
-   > Om du vill ta reda på vilka platser som är tillgängliga för din prenumeration anropar du åtgärden som [visar en lista över alla resursproviders](https://msdn.microsoft.com/library/azure/dn790524.aspx). Om du vill visa alla tillgängliga providers med hjälp av PowerShell anropar du [Get-AzureLocation](https://msdn.microsoft.com/library/azure/dn757693.aspx). Från .NET använder du metoden [List](https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.provideroperationsextensions.list.aspx) i klassen ProviderOperationsExtensions.
+   > toodetermine vilka platser som är tillgänglig för din prenumeration, kan du anropa hello [lista över alla resursproviders](https://msdn.microsoft.com/library/azure/dn790524.aspx) igen. toolist providers med hjälp av PowerShell anropar [Get-AzureLocation](https://msdn.microsoft.com/library/azure/dn757693.aspx). Från .NET använder hello [lista](https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.provideroperationsextensions.list.aspx) metod för hello klassen ProviderOperationsExtensions.
    > 
    > Mer information om vilka tjänster som är tillgängliga i vilken region finns i [Azure-regioner](https://azure.microsoft.com/regions/#services).
    > 
    > 
-5. Om du har mer än en Azure-prenumeration visas fältet **Prenumeration**. I **Prenumeration** anger du den Azure-prenumeration som du vill använda lagringskontot med.
-6. I **Replikering** väljer du önskad replikeringsnivå för ditt lagringskonto. Det rekommenderade replikeringsalternativet är geo-redundant replikering, som ger maximal hållbarhet för dina data. Mer information om replikeringsalternativen för Azure Storage finns i [Azure Storage-replikering](storage-redundancy.md).
-7. Klicka på **Skapa Storage-konto**.
+5. Om du har mer än en Azure-prenumeration kan sedan hello **prenumeration** fältet visas. I **prenumeration**, ange hello Azure-prenumeration som du vill toouse hello lagringskontot med.
+6. I **replikering**, Välj hello önskad replikeringsnivå för ditt lagringskonto. hello rekommenderade replikeringsalternativet är geo-redundant replikering, som ger maximal hållbarhet för dina data. Mer information om replikeringsalternativen för Azure Storage finns i [Azure Storage-replikering](storage-redundancy.md).
+7. Klicka på **Create Storage Account** (Skapa lagringskonto).
    
-    Det kan ta några minuter att skapa lagringskontot. Meddelandena som visas längst ned på den klassiska Azure-portalen anger statusen. När lagringskontot har skapats har det nya kontot statusen **Online** och är redo att användas.
+    Det kan ta några minuter toocreate ditt lagringskonto. Du kan övervaka hello meddelanden längst hello hello Azure klassiska Portal toocheck hello status. När hello storage-konto har skapats, har ditt nya lagringskonto **Online** status och är redo för användning.
 
 ![StoragePage](./media/storage-create-storage-account-classic-portal/Storage_StoragePage.png)
 
 ### <a name="storage-account-endpoints"></a>Slutpunkter för lagringskonto
-Alla objekt som du lagrar i Azure Storage har en unik URL-adress. Lagringskontots namn bildar underdomänen i den adressen. Kombinationen av underdomän och domännamn, som är specifika för varje tjänst, utgör en *slutpunkt* för ditt lagringskonto.
+Alla objekt som du lagrar i Azure Storage har en unik URL-adress. hello storage-konto namnet formulär hello underdomänen i den adressen. hello kombinationen av underdomän och domännamn namn, som är specifika tooeach tjänst, utgör ett *endpoint* för ditt lagringskonto.
 
-Om ditt lagringskonto till exempel heter *mittlagringskonto*, så är standardslutpunkterna för ditt lagringskonto:
+Om ditt lagringskonto heter exempelvis *mittlagringskonto*, hello standardslutpunkterna för ditt lagringskonto är:
 
 * Blob-tjänst: http://*mittlagringskonto*.blob.core.windows.net
 * Tabelltjänst: http://*mittlagringskonto*.table.core.windows.net
 * Kötjänst: http://*mittlagringskonto*.queue.core.windows.net
 * Filtjänst: http://*mittlagringskonto*.file.core.windows.net
 
-Du kan se slutpunkterna för ditt lagringskonto på instrumentpanelen för lagring på den [klassiska Azure-portalen](https://manage.windowsazure.com) när kontot har skapats.
+Du kan se hello slutpunkter för ditt lagringskonto på instrumentpanelen för lagring av hello på hello [klassiska Azure-portalen](https://manage.windowsazure.com) när hello-konto har skapats.
 
-URL:en för åtkomst till ett objekt i ett lagringskonto skapas genom att objektets plats i lagringskontot läggs till i slutpunkten. En blobbadress kan till exempel ha följande format: http://*mittlagringskonto*.blob.core.windows.net/*minbehållare*/*minblobb*.
+hello URL: en för att komma åt ett objekt i ett lagringskonto skapas genom att lägga till hello objektets plats i hello storage-konto toohello slutpunkt. En blobbadress kan till exempel ha följande format: http://*mittlagringskonto*.blob.core.windows.net/*minbehållare*/*minblobb*.
 
-Du kan också konfigurera ett eget domännamn som ska användas med ditt lagringskonto. Mer information finns i [Konfigurera ett eget domännamn för din slutpunkt för Blob Storage](storage-custom-domain-name.md).
+Du kan också konfigurera en anpassad domän namnet toouse med ditt lagringskonto. Mer information finns i [Konfigurera ett eget domännamn för din slutpunkt för Blob Storage](storage-custom-domain-name.md).
 
 ### <a name="service-co-location-with-an-affinity-group"></a>Samplacering av tjänster med en tillhörighetsgrupp
-En *tillhörighetsgrupp* är en geografisk gruppering av dina Azure-tjänster och virtuella datorer med ditt Azure Storage-konto. En tillhörighetsgrupp kan förbättra tjänstprestanda genom att placera datorarbetsbelastningar i samma datacenter eller nära målanvändarna. Dessutom utgår inga faktureringskostnader för utgående trafik när en annan tjänst som ingår i samma tillhörighetsgrupp använder data i lagringskontot.
+En *tillhörighetsgrupp* är en geografisk gruppering av dina Azure-tjänster och virtuella datorer med ditt Azure Storage-konto. En tillhörighetsgrupp kan förbättra tjänstprestanda genom att placera datorarbetsbelastningar i hello samma data center eller nära hello målgrupp för användaren. Dessutom inga faktureringskostnader för utgående trafik när komma åt data i ett lagringskonto från en annan tjänst som är en del av hello samma tillhörighetsgrupp.
 
 > [!NOTE]
-> Om du vill skapa en tillhörighetsgrupp öppnar du området <b>Inställningar</b> på den [klassiska Azure-portalen](https://manage.windowsazure.com), klickar på <b>Tillhörighetsgrupper</b> och klickar sedan antingen på <b>Lägg till en tillhörighetsgrupp</b> eller på knappen <b>Lägg till</b>. Du kan också skapa och hantera tillhörighetsgrupper med hjälp av Azure Service Management-API:et. Mer information finns i <a href="http://msdn.microsoft.com/library/azure/ee460798.aspx">Åtgärder med tillhörighetsgrupper</a>.
+> toocreate en tillhörighetsgrupp öppna hello <b>inställningar</b> område i hello [klassiska Azure-portalen](https://manage.windowsazure.com), klickar du på <b>Tillhörighetsgrupper</b>, och klicka sedan på antingen <b>Lägg till en tillhörighetsgruppen</b> eller hello <b>Lägg till</b> knappen. Du kan också skapa och hantera tillhörighetsgrupper med hjälp av hello Azure Service Management API. Mer information finns i <a href="http://msdn.microsoft.com/library/azure/ee460798.aspx">Åtgärder med tillhörighetsgrupper</a>.
 > 
 > 
 
 ## <a name="view-copy-and-regenerate-storage-access-keys"></a>Visa, kopiera och återskapa åtkomstnycklar för lagring
-När du skapar ett lagringskonto genererar Azure två 512-bitars åtkomstnycklar för lagring, som används för autentisering när lagringskontot används. Eftersom två åtkomstnycklar för lagring genereras kan du återskapa nycklarna utan avbrott i lagringstjänsten eller i åtkomsten till den tjänsten.
+När du skapar ett lagringskonto genererar Azure två 512-bitars åtkomstnycklar för lagring, som används för autentisering vid åtkomst av hello storage-konto. Genom att tillhandahålla två åtkomstnycklar för lagring, kan du tooregenerate hello nycklarna utan avbrott tooyour lagringstjänsten eller toothat-tjänsten för dataåtkomst.
 
 > [!NOTE]
-> Vi rekommenderar att du inte delar dina åtkomstnycklar för lagring med andra. Du kan ge åtkomst till lagringsresurser utan att lämna ut dina åtkomstnycklar genom att använda en *signatur för delad åtkomst*. En signatur för delad åtkomst ger åtkomst till en resurs i ditt konto under ett intervall som du definierar och med de behörigheter som du anger. Mer information finns i [Använda signaturer för delad åtkomst (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+> Vi rekommenderar att du inte delar dina åtkomstnycklar för lagring med andra. toopermit åtkomst toostorage resurser utan att lämna ut dina åtkomstnycklar, du kan använda en *signatur för delad åtkomst*. En signatur för delad åtkomst ger åtkomst tooa resurs i ditt konto för ett intervall som du definierar och med hello behörigheter som du anger. Mer information finns i [Använda signaturer för delad åtkomst (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 > 
 > 
 
-På den [klassiska Azure-portalen](https://manage.windowsazure.com) använder du **Hantera nycklar** på instrumentpanelen eller sidan **Storage** för att visa, kopiera och återskapa åtkomstnycklar för lagring som används för att komma åt blobb-, tabell- och kötjänsterna.
+I hello [klassiska Azure-portalen](https://manage.windowsazure.com), använda **hantera nycklar** på hello instrumentpanel eller hello **lagring** sidan tooview och kopiera åtkomstnycklar för generera hello lagring som används tooaccess hello Blob-, tabell-och kön.
 
 ### <a name="copy-a-storage-access-key"></a>Kopiera en lagringsåtkomstnyckel
-Du kan använda **Hantera nycklar** för att kopiera en lagringsåtkomstnyckel som ska användas i en anslutningssträng. Anslutningssträngen kräver lagringskontots namn och en nyckel som ska användas vid autentisering. Information om hur du konfigurerar anslutningssträngar för att få åtkomst till Azure-lagringstjänster finns i [Konfigurera Azure Storage-anslutningssträngar](storage-configure-connection-string.md).
+Du kan använda **hantera nycklar** toocopy en lagring access key toouse i en anslutningssträng. hello anslutningssträngen kräver hello lagringskontonamn och en nyckel toouse vid autentisering. För information om hur du konfigurerar anslutningen strängar tooaccess Azure-lagringstjänster, se [konfigurera Azure Storage-anslutningssträngar](storage-configure-connection-string.md).
 
-1. På den [klassiska Azure-portalen](https://manage.windowsazure.com) klickar du på **Storage** och sedan på namnet på lagringskontot för att öppna instrumentpanelen.
+1. I hello [klassiska Azure-portalen](https://manage.windowsazure.com), klickar du på **lagring**, och klicka sedan på hello namnet på hello konto tooopen hello lagringsinstrumentpanel.
 2. Klicka på **Hantera nycklar**.
    
      **Hantera åtkomstnycklar** öppnas.
    
     ![Managekeys](./media/storage-create-storage-account-classic-portal/Storage_ManageKeys.png)
-3. Du kopierar en lagringsåtkomstnyckel genom att markera nyckeltexten. Högerklicka sedan och klicka på **Kopiera**.
+3. toocopy en lagringsåtkomstnyckel väljer hello nyckeltexten. Högerklicka sedan och klicka på **Kopiera**.
 
 ### <a name="regenerate-storage-access-keys"></a>Återskapa åtkomstnycklar för lagring
-Vi rekommenderar att du ändrar åtkomstnycklarna för ditt lagringskonto med jämna mellanrum för att skydda lagringsanslutningarna. Två åtkomstnycklar tilldelas så att du kan upprätthålla anslutningar till lagringskontot med den ena åtkomstnyckeln medan du återskapar den andra.
+Vi rekommenderar att du ändrar hello snabbtangenter tooyour lagring konto regelbundet toohelp Behåll säker lagringsanslutningar. Två åtkomstnycklar tilldelas så att du kan upprätthålla anslutningar toohello storage-konto med hjälp av ena åtkomstnyckeln medan du återskapar hello andra snabbtangent.
 
 > [!WARNING]
-> Tjänster i Azure och dina program som är beroende av lagringskontot kan påverkas när du återskapar åtkomstnycklarna. Alla klienter som använder åtkomstnycklar för att komma åt lagringskontot måste uppdateras så att de använder den nya nyckeln.
+> Återskapar åtkomstnycklarna kan påverka tjänster i Azure som dina program som är beroende av hello storage-konto. Alla klienter som använder hello access key tooaccess hello storage-konto måste vara uppdaterade toouse hello ny nyckel.
 > 
 > 
 
-**Medietjänster** – Om du har medietjänster som är beroende av ditt lagringskonto måste du synkronisera åtkomstnycklarna med medietjänsten igen när du har återskapat nycklarna.
+**Media services** -om du har medietjänster som är beroende av ditt lagringskonto, du måste nlängd hello åtkomstnycklarna med medietjänsten när du har återskapat hello nycklar.
 
-**Program** – Om du har webbprogram och molntjänster som använder lagringskontot går anslutningarna förlorade om du återskapa nycklar, såvida du inte ”rullar” nycklarna. 
+**Program** - om du har webbprogram eller cloud services att använda hello storage-konto, förlorar du hello anslutningar om du återskapa nycklar, såvida inte du lanserar dina nycklar. 
 
-**Lagringsutforskare** – Om du använder [lagringsutforskare](storage-explorers.md) behöver du förmodligen uppdatera lagringsnyckeln som används av dessa program.
+**Lagringsutforskare** - om du använder något [lagringsutforskare](storage-explorers.md), behöver du förmodligen tooupdate hello lagringsnyckel som används av programmen.
 
-Processen för att rotera åtkomstnycklar för lagring ser ut så här:
+Här är hello processen för att rotera åtkomstnycklar för lagring:
 
-1. Uppdatera anslutningssträngarna i programkoden så att de refererar till lagringskontots sekundära åtkomstnyckel.
-2. Återskapa lagringskontots primära åtkomstnyckel. På den [klassiska Azure-portalen](https://manage.windowsazure.com) klickar du på **Hantera nycklar** från instrumentpanelen eller sidan **Konfigurera**. Klicka på **Återskapa** under den primära åtkomstnyckeln och klicka sedan på **Ja** för att bekräfta att du vill skapa en ny nyckel.
-3. Uppdatera anslutningssträngarna i koden så att de refererar till den nya primärnyckeln.
-4. Återskapa den sekundära åtkomstnyckeln.
+1. Uppdatera hello anslutningssträngar i ditt program kod tooreference hello sekundära åtkomstnyckeln för hello storage-konto.
+2. Återskapa hello primära åtkomstnyckeln för ditt lagringskonto. I hello [klassiska Azure-portalen](https://manage.windowsazure.com), från hello instrumentpanelen eller hello **konfigurera** klickar du på **hantera nycklar**. Klicka på **återskapa** under hello primärnyckeln och klicka sedan på **Ja** tooconfirm som du vill toogenerate en ny nyckel.
+3. Uppdatera hello anslutningssträngar i din kod tooreference hello nya primärnyckeln.
+4. Återskapa hello sekundära åtkomstnyckeln.
 
 ## <a name="delete-a-storage-account"></a>Ta bort ett lagringskonto
-Om du vill ta bort ett lagringskonto som du inte längre använder klickar du på **Ta bort** på instrumentpanelen eller sidan **Konfigurera**. **Ta bort** tar bort hela lagringskontot, inklusive alla blobbar, tabeller och köer i kontot.
+tooremove ett lagringskonto som du inte längre använder, Använd **ta bort** på hello instrumentpanel eller hello **konfigurera** sidan. **Ta bort** borttagningar hello hela lagringskontot, inklusive alla hello blobbar, tabeller och köer i hello-konto.
 
 > [!WARNING]
-> Det går inte att återställa ett borttaget lagringskonto eller att hämta innehåll som det innehöll före borttagningen. Var noga med att säkerhetskopiera allt som du vill spara innan du tar bort kontot. Detta gäller även alla resurser i kontot. När du tar bort en blobb, tabell, kö eller fil tas den bort permanent.
+> Det är inte möjlig toorestore ett borttaget lagringskonto eller hämta hello innehåll som det innehöll före borttagningen. Vara säker på att tooback in något du toosave innan du tar bort hello-kontot. Detta gäller även alla resurser i hello-konto – när du tar bort en blob, tabell, kö eller fil den bort permanent.
 > 
-> Om ditt lagringskonto innehåller VHD-filer för en virtuell dator i Azure måste du ta bort alla avbildningar och diskar som använder dessa VHD-filer innan du kan ta bort lagringskontot. Börja med att stoppa den virtuella datorn om den körs och ta sedan bort den. Om du vill ta bort diskar går du till fliken **Diskar** och tar bort diskarna där. Om du vill ta bort avbildningar går du till fliken **Avbildningar** och tar bort eventuella avbildningar som lagras i kontot.
+> Om ditt lagringskonto innehåller VHD-filer för en virtuell Azure-dator, du måste ta bort alla avbildningar och diskar som använder dessa VHD-filer innan du kan ta bort hello storage-konto. Stoppa först hello virtuella datorn om den körs, och ta sedan bort den. toodelete diskar, navigera toohello **diskar** och tar bort diskarna där. toodelete bilder, navigera toohello **bilder** och tar bort eventuella avbildningar som lagras i hello-kontot.
 > 
 > 
 
-1. På den [klassiska Azure-portalen](https://manage.windowsazure.com) klickar du på **Lagring**.
-2. Klicka någonstans på lagringskontot utom på namnet och klicka sedan på **Ta bort**.
+1. I hello [klassiska Azure-portalen](https://manage.windowsazure.com), klickar du på **lagring**.
+2. Klicka någonstans i hello lagringskontot utom hello namn och klicka sedan på **ta bort**.
    
      Eller
    
-    Klicka på namnet på lagringskontot för att öppna instrumentpanelen och klicka sedan på **Ta bort**.
-3. Klicka på **Ja** för att bekräfta att du vill ta bort lagringskontot.
+    Klicka på hello konto tooopen hello lagringsinstrumentpanel hello namn och klicka sedan på **ta bort**.
+3. Klicka på **Ja** tooconfirm som du vill toodelete hello storage-konto.
 
 ## <a name="next-steps"></a>Nästa steg
-* Mer information om Azure Storage finns i [Azure Storage-dokumentationen](https://azure.microsoft.com/documentation/services/storage/).
-* Besök [Azure Storage-teamets blogg](http://blogs.msdn.com/b/windowsazurestorage/).
-* [Överföra data med kommandoradsverktyget AzCopy](storage-use-azcopy.md)
+* toolearn mer om Azure Storage finns hello [Azure Storage-dokumentationen](https://azure.microsoft.com/documentation/services/storage/).
+* Besök hello [Azure Storage-teamets blogg](http://blogs.msdn.com/b/windowsazurestorage/).
+* [Överföra data med kommandoradsverktyget Azcopy hello](storage-use-azcopy.md)
 

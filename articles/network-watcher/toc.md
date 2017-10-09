@@ -17,7 +17,7 @@
 ### [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
 ### [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 ### [REST](network-watcher-packet-capture-manage-rest.md)
-## Verifiera IP-flöden till och från en virtuell dator
+## Kontrollera IP-flöden tooand från en virtuell dator
 ### [Portal](network-watcher-check-ip-flow-verify-portal.md)
 ### [PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 ### [CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
@@ -59,8 +59,8 @@
 # Gör så här för att
 ## [Övervaka VPN-gateway med Azure Automation](network-watcher-monitor-with-azure-automation.md)
 ## [Diagnostisera lokal anslutning via en VPN-gateway](network-watcher-diagnose-on-premises-connectivity.md)
-## [Analysera infångade paket för att identifiera avvikelser](network-watcher-deep-packet-inspection.md)
-## [Använda infångade paket för att utföra proaktiv nätverksövervakning med Azure Functions](network-watcher-alert-triggered-packet-capture.md)
+## [Analysera paket insamlingar toofind avvikelser](network-watcher-deep-packet-inspection.md)
+## [Använda paket avbilda toodo proaktiv nätverksövervakning med Azure Functions](network-watcher-alert-triggered-packet-capture.md)
 ## [Visualisera flödesloggar med Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 ## [Visualisera flödesloggar med verktyg för öppen källkod](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ## [Visualisera nätverkstrafikmönster med verktyg för öppen källkod](network-watcher-using-open-source-tools.md)

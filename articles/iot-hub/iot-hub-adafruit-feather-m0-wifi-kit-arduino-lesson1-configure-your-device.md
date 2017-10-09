@@ -1,12 +1,12 @@
 ---
-title: 'Connect Arduino (C) till Azure IoT - lektionen 1: Konfigurera enhet | Microsoft Docs'
+title: 'Connect Arduino (C) tooAzure IoT - lektionen 1: Konfigurera enhet | Microsoft Docs'
 description: "Konfigurera Adafruit ludd M0 WiFi för första gången."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "arduino ställer in, ansluta arduino till pc, installationsprogrammet arduino, arduino-kort"
+keywords: "arduino ställer in, ansluta arduino toopc, installationsprogrammet arduino, arduino-kort"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started
 ms.assetid: f5b334f0-a148-41aa-b374-ce7b9f5b305a
@@ -17,49 +17,49 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 9e319292e5d30dea7e45857e435825861aad1c84
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 30b764e8ff6221995456283a226e79f064b2d74e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-your-device"></a>Konfigurera din enhet
 ## <a name="what-you-will-do"></a>Vad du ska göra
-Konfigurera din Adafruit ludd M0 WiFi Arduino board för första gången som samlar in ändringar, startar upp. Om du har några problem kan hitta lösningar på den [felsökning sidan](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md).
+Konfigurera Adafruit ludd M0 WiFi Arduino-kort för första gången som samlar in hello ändringar, startar upp. Om du har några problem med söka efter lösningar på hello [felsökning sidan](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md).
 
 ## <a name="what-you-need"></a>Vad du behöver
-För att slutföra den här åtgärden behöver du följande delar för din startpaket för Adafruit ludd M0 Wi-Fi:
+toocomplete den här åtgärden måste hello följande delar för din startpaket för Adafruit ludd M0 Wi-Fi:
 
-* Adafruit ludd M0 WiFi-kort
-* En Micro B till typ A USB-kabel
+* Hej Adafruit ludd M0 WiFi-kort
+* Micro B-tooType en USB-kabel
 
 ![Kit][kit]
 
 Du behöver också:
 
 * En dator som kör Windows, Mac eller Linux.
-* En trådlös anslutning för Arduino-kort att ansluta till.
-* En Internet-anslutning att hämta verktyget för serverkonfiguration.
+* En trådlös anslutning för din Arduino board tooconnect till.
+* En Internet-anslutning toodownload-konfigurationsverktyget.
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
 I den här artikeln får du lära dig:
 
-* Så här montera Arduino-kort och slår upp för följande erfarenheter.
-* Hur du lägger till seriell port behörigheter på Ubuntu.
+* Hur tooassemble din Arduino kort och power den för hello följande lektioner.
+* Hur tooadd serieport behörigheter på Ubuntu.
 
-## <a name="connect-your-arduino-board-to-your-computer"></a>Ansluta Arduino-kort till din dator
+## <a name="connect-your-arduino-board-tooyour-computer"></a>Anslut datorn Arduino board tooyour
 
-1. Anslut micro USB-kabel till översta micro USB-port.
+1. Anslut hello micro USB-kabel till hello översta micro USB-port.
 
    ![Övre micro USB-port][top-micro-usb-port]
 
-2. Anslut den andra änden av USB-kabel till din dator.
+2. Plug hello andra änden av USB-kabel till datorn.
 
    ![Datorn USB][computer-usb]
 
 ## <a name="add-serial-port-permissions-on-ubuntu"></a>Lägg till behörigheter för seriell port på Ubuntu
 
-Du kan hoppa över det här avsnittet om du använder Windows eller macOS. För Ubuntu behöver du följande steg för att kontrollera att den normala linux-användaren har behörighet att använda USB-port för Arduino-kortet.
+Du kan hoppa över det här avsnittet om du använder Windows eller macOS. För Ubuntu behöver du följande steg toomake till hello normal linux användaren har hello behörigheter toooperate på hello USB-port för Arduino-kortet hello.
 
 1. Nu som normal användare från terminalen:
 
@@ -77,25 +77,25 @@ Du kan hoppa över det här avsnittet om du använder Windows eller macOS. För 
    crw-rw---- 1 root dialout 188, 0 5 apr 23.01 ttyACM0
    ```
 
-   ”0” kan vara ett annat nummer eller flera poster kan returneras. I det första fallet är de data vi behöver `uucp`, i andra är `dialout`, vilket är gruppägare av filen.
+   Hej ”0” kan vara ett annat nummer eller flera poster kan returneras. I hello första case hello data som vi behöver `uucp`, i hello andra är `dialout`, vilket är hello gruppägare hello-filen.
 
-2. Lägg till användaren till den i gruppen:
+2. Lägg till användargrupp toohello toohello:
 
    ```bash
    sudo usermod -a -G group-name username
    ```
 
-   Där `group-name` är den information som finns i det första steget och `username` är ditt linux-användarnamn.
+   Där `group-name` är hello data hittades i hello första steget, och `username` är ditt linux-användarnamn.
 
-3. Du måste logga ut och in igen för att ändringen ska börja gälla och slutföra installationen.
+3. Du behöver toolog ut och in igen för den här ändringen tootake effekt och fullständig hello inställningar.
 
 ## <a name="summary"></a>Sammanfattning
-Du har lärt dig hur du konfigurerar Arduino-kort i den här artikeln. Nästa uppgift är att installera verktyg och program som förberedelse för att köra ett exempelprogram på Arduino-kort.
+I den här artikeln har du lärt dig hur tooconfigure Arduino-kort. hello nästa uppgift är tooinstall hello nödvändiga verktyg och program som förberedelse för att köra ett exempelprogram på Arduino-kort.
 
 ![Maskinvara är klar][hardware-is-ready]
 
 ## <a name="next-steps"></a>Nästa steg
-[Skaffa dig verktyg][get-the-tools]
+[Hämta hello-verktyg][get-the-tools]
 <!-- Images and links -->
 
 [kit]: media/iot-hub-adafruit-feather-m0-wifi-lessons/lesson1/kit.png

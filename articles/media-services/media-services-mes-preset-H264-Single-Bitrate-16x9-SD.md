@@ -1,6 +1,6 @@
 ---
-title: "H264 enkel bithastighet 16 x 9 SD Media Encoder Standard förinställda - Azure | Microsoft Docs"
-description: "Avsnittet ger en översikt över de ** H264 enkel bithastighet 16 x 9 SD ** uppgiften förinställda."
+title: "aaaH264 enkel bithastighet 16 x 9 SD Media Encoder Standard förinställda - Azure | Microsoft Docs"
+description: "hello avsnittet ger en översikt över hello ** H264 enkel bithastighet 16 x 9 SD ** uppgiften förinställda."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 746dc845f1e32d6be3f207448523d8966da9f8a0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e5fbf6b8accaf779014bee67ee4f5fd6910b2d25
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="h264-single-bitrate-16x9-sd"></a>H264 Enkel bithastighet 16 x 9 SD
-`Media Encoder Standard`definierar en uppsättning kodning förinställningar som du kan använda när du skapar kodning jobb. Du kan använda en `preset name` att ange i vilket format du vill koda media-fil. Du kan också skapa egna JSON eller XML-baserade förinställningar (med hjälp av UTF-8- eller UTF-16-kodning. Du skulle sedan överföra anpassad förinställning på kodaren. Lista över alla förvalda namn som stöds av det här `Media Encoder Standard` kodare, se [aktivitet förinställningar för Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definierar en uppsättning kodning förinställningar som du kan använda när du skapar kodning jobb. Du kan använda en `preset name` toospecify i vilket format du vill att tooencode media-fil. Du kan också skapa egna JSON eller XML-baserade förinställningar (med hjälp av UTF-8- eller UTF-16-kodning. Du skulle sedan överföra hello anpassade förinställda toohello kodare. Hello lista över alla hello förinställningen namn som stöds av det här `Media Encoder Standard` kodare, se [aktivitet förinställningar för Media Encoder Standard](media-services-mes-presets-overview.md).  
   
- Det här avsnittet beskrivs de `H264 Single Bitrate 16x9 SD` förinställda XML och JSON-format.  
+ Det här avsnittet visar hello `H264 Single Bitrate 16x9 SD` förinställda XML och JSON-format.  
   
- Den här förinställda ger en enda MP4-fil med en bithastighet 2200 kbit/s och AAC stereoljud. Detaljerad information om profilen bithastighet, provtagning hastighet, etc. Om detta förinställda ska undersöka XML- eller JSON som anges nedan. Förklaringar av vad varje element i dessa förinställda innebär och giltiga värden för varje element finns i [Media Encoder Standard schemat](media-services-mes-schema.md) avsnittet.  
+ Den här förinställda ger en enda MP4-fil med en bithastighet 2200 kbit/s och AAC stereoljud. Detaljerad information om profilen bithastighet, provtagning hastighet, etc. Om detta förinställda ska undersöka hello XML- eller JSON som anges nedan. Förklaringar av vad varje element i dessa förinställda innebär och hello giltiga värden för varje element finns hello [Media Encoder Standard schemat](media-services-mes-schema.md) avsnittet.  
   
  XML  
   

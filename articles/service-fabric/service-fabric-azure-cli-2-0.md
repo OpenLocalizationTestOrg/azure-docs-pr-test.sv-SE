@@ -1,6 +1,6 @@
 ---
-title: "Kom igång med Azure Service Fabric och Azure CLI 2.0"
-description: "Lär dig hur du använder kommandomodulen Azure Service Fabric i Azure CLI version 2.0. Lär dig hur du ansluter till ett kluster och hanterar program."
+title: "aaaGet igång med Azure Service Fabric och Azure CLI 2.0"
+description: "Lär dig hur toouse hello Azure Service Fabric-kommandon modul i Azure CLI version 2.0. Lär dig hur tooconnect tooa klustret, och hur toomanage program."
 services: service-fabric
 author: samedder
 manager: timlt
@@ -8,25 +8,25 @@ ms.service: service-fabric
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: edwardsa
-ms.openlocfilehash: ee3302b984ca2f5509755dc17b0a5fd06ace0afe
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ddbd0ef503dd3fff61494cc2cfa7c9a2e8d0a9a7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-service-fabric-and-azure-cli-20"></a>Service Fabric och Azure CLI 2.0
 
-Azure kommandoradsverktyget (Azure CLI) version 2.0 innehåller kommandon för att hjälpa dig att hantera Azure Service Fabric-kluster. Kom igång med Azure Service Fabric och Azure CLI.
+hello Azure kommandoradsverktyget (Azure CLI) version 2.0 innehåller kommandon toohelp som du hanterar Azure Service Fabric-kluster. Lär dig hur tooget igång med Azure CLI och Service Fabric.
 
 ## <a name="install-azure-cli-20"></a>Installera Azure CLI 2.0
 
-Azure CLI 2.0 innehåller nu kommandon för att interagera med och hantera Service Fabric-kluster. För att få den senaste versionen av Azure CLI följer du standardanvisningarna för [Azure CLI 2.0-installation](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
+Du kan använda Azure CLI 2.0 kommandon toointeract med och hantera Service Fabric-kluster. tooget hello senaste versionen av Azure CLI, följ hello [Azure CLI 2.0 standardinstallation](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
-Mer information finns i [Översikt över Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview).
+Mer information finns i hello [översikt över Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/overview).
 
 ## <a name="azure-cli-syntax"></a>Azure CLI-syntax
 
-Alla Service Fabric-kommandon har prefixet `az sf` i Azure CLI. För allmän information om de kommandon som du kan använda, använd `az sf -h`. För hjälp med ett enda kommando, använd `az sf <command> -h`.
+Alla Service Fabric-kommandon har prefixet `az sf` i Azure CLI. Allmän information om hello-kommandon som du kan använda använda `az sf -h`. För hjälp med ett enda kommando, använd `az sf <command> -h`.
 
 Service Fabric-kommandon i CLI följer detta namngivningsmönster:
 
@@ -34,11 +34,11 @@ Service Fabric-kommandon i CLI följer detta namngivningsmönster:
 az sf <object> <action>
 ```
 
-`<object>` är målet för `<action>`.
+`<object>`är hello mål för `<action>`.
 
 ## <a name="select-a-cluster"></a>Välj ett kluster
 
-Innan du kan utföra några åtgärder måste du välja ett kluster att ansluta till. Följande kod är ett exempel. Koden ansluter till ett oskyddat kluster.
+Du måste välja en kluster-tooconnect till innan du utför några åtgärder. Ett exempel finns i hello följande kod. hello koden ansluter tooan oskyddade kluster.
 
 > [!WARNING]
 > Använd inte oskyddade Service Fabric-kluster i produktionsmiljöer.
@@ -47,7 +47,7 @@ Innan du kan utföra några åtgärder måste du välja ett kluster att ansluta 
 az sf cluster select --endpoint http://testcluster.com:19080
 ```
 
-Klusterslutpunkten måste föregås av `http` eller `https`. Det måste innehålla porten för HTTP-gateway. Den här porten och adressen är samma som webbadressen för Service Fabric Explorer.
+Hej klusterslutpunkten måste föregås av `http` eller `https`. Det måste innehålla hello port för hello HTTP-gateway. hello porten och adressen är hello samtidigt som hello Service Fabric Explorer-URL.
 
 Du kan antingen använda okrypterade .pem-filer, eller .crt- och .key-filer, för kluster som är säkrade med ett certifikat. Exempel:
 
@@ -55,22 +55,22 @@ Du kan antingen använda okrypterade .pem-filer, eller .crt- och .key-filer, fö
 az sf cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
-Mer information finns i [Ansluta till ett Azure Service Fabric-kluster](service-fabric-connect-to-secure-cluster.md).
+Mer information finns i [Anslut tooa säker Azure Service Fabric-kluster](service-fabric-connect-to-secure-cluster.md).
 
 > [!NOTE]
-> Kommandot `select` inverkar inte på anrop innan den returnerar. Om du vill kontrollera att du har angett ett kluster korrekt använder du ett kommando som `az sf cluster health`. Kontrollera att kommandot inte returnerar några fel.
+> Hej `select` kommando inte fungerar på alla begäranden innan den returnerar. tooverify att du har angett ett kluster korrekt, använder du ett kommando som `az sf cluster health`. Kontrollera att hello kommando inte returnerar några fel.
 
 ## <a name="basic-operations"></a>Grundläggande åtgärder
 
-Klustrets anslutningsinformation bevaras mellan olika Azure CLI-sessioner. När du har valt ett Service Fabric-kluster kan du köra alla Service Fabric-kommandon på klustret.
+Klustrets anslutningsinformation bevaras mellan olika Azure CLI-sessioner. När du har valt ett Service Fabric-kluster kan du köra ett Service Fabric-kommando på hello klustret.
 
-Om du till exempel vill se hälsotillståndet för Service Fabric-klustret kör du följande kommando:
+Till exempel använda tooget hello hälsotillstånd för Service Fabric-kluster, hello följande kommando:
 
 ```azurecli
 az sf cluster health
 ```
 
-Kommandot resulterar i följande utdata (förutsatt att JSON-utdata har angetts i konfigurationen av Azure CLI):
+hello kommandot resulterar i hello följande utdata (förutsatt att JSON-utdata har angetts i konfigurationen för hello Azure CLI):
 
 ```json
 {
@@ -97,33 +97,33 @@ Kommandot resulterar i följande utdata (förutsatt att JSON-utdata har angetts 
 
 ## <a name="tips-and-troubleshooting"></a>Felsökning och tips
 
-Följande information kan vara till hjälp om du stöter på problem när du använder Service Fabric-kommandon i Azure CLI.
+Du kan hitta hello efter information som är användbar om du stöter på problem när du använder Service Fabric-kommandon i Azure CLI.
 
-### <a name="convert-a-certificate-from-pfx-to-pem-format"></a>Konvertera ett certifikat från PFX till PEM
+### <a name="convert-a-certificate-from-pfx-toopem-format"></a>Konvertera ett certifikat från tooPEM PFX-format
 
-Azure CLI har stöd för certifikat på klientsidan i form av PEM-filer (.pem-filtillägg). Om du använder PFX-filer från Windows måste du konvertera dessa certifikat till PEM-format. Om du vill konvertera en PFX-fil till en PEM-fil använder du följande kommando:
+Azure CLI har stöd för certifikat på klientsidan i form av PEM-filer (.pem-filtillägg). Om du använder PFX-filer från Windows, måste du konvertera dessa certifikat tooPEM format. tooconvert en PFX-filen tooa PEM-fil, Använd hello följande kommando:
 
 ```bash
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
-Mer information finns i [OpenSSL-dokumentationen](https://www.openssl.org/docs/).
+Mer information finns i hello [OpenSSL dokumentationen](https://www.openssl.org/docs/).
 
 ### <a name="connection-issues"></a>Anslutningsproblem
 
-Vissa åtgärder kan generera följande meddelande:
+Vissa åtgärder kan generera hello följande meddelande:
 
-`Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known`
+`Failed tooestablish a new connection: [Errno 8] nodename nor servname provided, or not known`
 
-Kontrollera att den angivna kluster-slutpunkten är tillgänglig och lyssnar. Kontrollera också att gränssnittet för Service Fabric Explorer kan nås på denna värd och port. Använd `az sf cluster select` till att uppdatera slutpunkten.
+Kontrollera att hello angett klusterslutpunkt är tillgänglig och lyssnar. Kontrollera också att hello Service Fabric Explorer Användargränssnittet är tillgänglig på som värd och port. tooupdate hello slutpunkt och Använd `az sf cluster select`.
 
 ### <a name="detailed-logs"></a>Detaljerade loggar
 
-Detaljerade loggar är ofta användbara när du felsöker eller rapporterar problem. Azure CLI innehåller en global `--debug`-flagga som ökar loggfilernas detaljnivå.
+Detaljerade loggar är ofta användbara när du felsöker eller rapporterar problem. Azure CLI erbjuder en global `--debug` flagga som ökar hello detaljnivå loggfiler.
 
 ### <a name="command-help-and-syntax"></a>Hjälp och syntax för kommandon
 
-Service Fabric-kommandona följer samma regler som i Azure CLI. Hjälp med ett visst kommando eller en grupp med kommandon, använder du flaggan `-h`:
+Service Fabric-kommandon Följ hello samma konventioner som Azure CLI. Hjälp med ett visst kommando eller en grupp med kommandon för att använda hello `-h` flaggan:
 
 ```azurecli
 az sf application -h

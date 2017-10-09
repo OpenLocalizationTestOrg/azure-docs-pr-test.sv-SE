@@ -1,6 +1,6 @@
 ---
-title: Skydda DNS-zoner och poster | Microsoft Docs
-description: "Hur du skyddar DNS-zoner och postuppsättningar i Microsoft Azure DNS."
+title: aaaProtecting DNS-zoner och poster | Microsoft Docs
+description: Tooprotect DNS-zoner och registrera anger hur i Microsoft Azure DNS.
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -13,99 +13,99 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2016
 ms.author: jonatul
-ms.openlocfilehash: 0b7040d6273b3a6b85cd55850d596807226b87fc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7945f6240feeed3d79a11d340f9f845e083026ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-protect-dns-zones-and-records"></a>Så här skyddar du DNS-zoner och poster
+# <a name="how-tooprotect-dns-zones-and-records"></a>Hur tooprotect DNS zoner och registrerar
 
 DNS-zoner och poster är viktiga resurser. Ta bort en DNS-zon eller bara en DNS-post kan resultera i en totala avbrott.  Det är därför viktigt att kritiska DNS-zoner och poster skyddas mot obehörig eller oavsiktliga ändringar.
 
-Den här artikeln förklarar hur Azure DNS kan du skydda DNS-zoner och poster mot sådana ändringar.  Det använda två kraftfulla säkerhetsfunktioner som tillhandahålls av Azure Resource Manager: [rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-what-is.md) och [resurslås](../azure-resource-manager/resource-group-lock-resources.md).
+Den här artikeln förklarar hur Azure DNS gör du tooprotect din DNS-zoner och poster mot sådana ändringar.  Det använda två kraftfulla säkerhetsfunktioner som tillhandahålls av Azure Resource Manager: [rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-what-is.md) och [resurslås](../azure-resource-manager/resource-group-lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Rollbaserad åtkomstkontroll
 
-Azure rollbaserad åtkomstkontroll (RBAC) Aktivera detaljerad åtkomsthantering för Azure-användare, grupper och resurser. Med RBAC kan bevilja du exakt åtkomstnivå som användare måste utföra sitt arbete. Mer information om hur RBAC kan hjälpa dig att hantera åtkomsten finns [vad är rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-what-is.md).
+Azure rollbaserad åtkomstkontroll (RBAC) Aktivera detaljerad åtkomsthantering för Azure-användare, grupper och resurser. Med RBAC kan bevilja du exakt hello mängden åtkomst att användarna måste tooperform sitt arbete. Mer information om hur RBAC kan hjälpa dig att hantera åtkomsten finns [vad är rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-what-is.md).
 
-### <a name="the-dns-zone-contributor-role"></a>Rollen DNS-zonen-deltagare
+### <a name="hello-dns-zone-contributor-role"></a>hello-DNS-zonen ' deltagarrollen
 
-DNS-zonen-deltagare roll är en inbyggd roll som tillhandahålls av Azure för att hantera DNS-resurser.  Tilldela DNS-zonen deltagarbehörighet till en användare eller grupp kan den gruppen att hantera DNS-resurser, men inte resurser för andra typer.
+hello är DNS-zonen-deltagare en inbyggd roll som tillhandahålls av Azure för att hantera DNS-resurser.  Tilldela DNS-zonen deltagare behörigheter tooa användare eller grupp kan den grupp toomanage DNS-resurser, men inte resurser för andra typer.
 
-Anta exempelvis att resurs grupp 'myzones' innehåller fem zoner för Contoso Corporation. Tilldela DNS-administratören DNS-zonen-deltagare behörigheter till resursgruppen kan fullständig kontroll över dessa DNS-zoner. Den förhindrar tillståndsbeviljande onödiga, till exempel DNS-administratören inte kan skapa eller stoppa virtuella datorer.
+Anta exempelvis att myzones' hello resurs grupp' innehåller fem zoner för Contoso Corporation. Beviljande hello DNS-administratören DNS-zonen-deltagare behörigheter toothat resursgrupp, kan fullständig kontroll över dessa DNS-zoner. Den förhindrar tillståndsbeviljande onödiga, till exempel hello DNS-administratören inte kan skapa eller stoppa virtuella datorer.
 
-Det enklaste sättet att tilldela behörigheter för RBAC [via Azure portal](../active-directory/role-based-access-control-configure.md).  Öppna 'Åtkomstkontroll (IAM)'-bladet för resursgruppen på ”Lägg till' och sedan Markera rollen DNS-zonen-deltagare och välj nödvändiga användare eller grupper för att bevilja behörighet.
+hello enklaste sättet tooassign RBAC behörigheter [via hello Azure-portalen](../active-directory/role-based-access-control-configure.md).  Öppna hello-åtkomstkontroll (IAM)-bladet för hello resursgrupp, och sedan klicka på ”Lägg till' och välj sedan hello DNS-zonen-deltagare och välj hello krävs användare eller grupper toogrant behörigheter.
 
-![Resursgruppsnivå RBAC via Azure portal](./media/dns-protect-zones-recordsets/rbac1.png)
+![Resursgruppsnivå RBAC via hello Azure-portalen](./media/dns-protect-zones-recordsets/rbac1.png)
 
 Behörigheter kan också vara [beviljas med hjälp av Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
 
 ```powershell
-# Grant 'DNS Zone Contributor' permissions to all zones in a resource group
+# Grant 'DNS Zone Contributor' permissions tooall zones in a resource group
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
-Kommandot motsvarande är också [tillgängliga via Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+hello likvärdigt kommando är också [tillgängliga via hello Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md):
 
 ```azurecli
-# Grant 'DNS Zone Contributor' permissions to all zones in a resource group
+# Grant 'DNS Zone Contributor' permissions tooall zones in a resource group
 azure role assignment create --signInName "<user email address>" --roleName "DNS Zone Contributor" --resourceGroup "<resource group name>"
 ```
 
 ### <a name="zone-level-rbac"></a>Zonen nivå RBAC
 
-Azure RBAC-regler kan användas till en prenumeration, resursgrupp eller till en enskild resurs. Vid Azure DNS kan resursen vara en enskild DNS-zon eller även en enskild uppsättning av poster.
+Azure RBAC-reglerna kan vara tillämpade tooa prenumeration, en resurs grupp eller tooan enskilda resurs. Hello gäller Azure DNS, kan resursen vara en enskild DNS-zon eller även en enskild uppsättning av poster.
 
-Anta exempelvis att resurs grupp 'myzones' innehåller zonen contoso.com och en underdomänen 'customers.contoso.com' där CNAME-poster skapas för varje kundkonto.  Det konto som används för att hantera dessa CNAME-poster ska tilldelas behörigheter att skapa poster i zonen 'customers.contoso.com', den inte ska ha åtkomst till andra zoner.
+Anta exempelvis att myzones' hello resurs grupp' innehåller hello zonen ”contoso.com” och en underdomänen 'customers.contoso.com' där CNAME-poster skapas för varje kundkonto.  hello konto som används för toomanage dessa CNAME-poster ska tilldelas behörigheter toocreate poster i hello 'customers.contoso.com' zon, den får inte ha åtkomst toohello andra zoner.
 
-Zonen RBAC-behörighet kan beviljas via Azure portal.  Öppna bladet 'Åtkomstkontroll (IAM)' för zonen, på ”Lägg till” och sedan välja rollen DNS-zonen-deltagare och välj nödvändiga användare eller grupper för att bevilja behörighet.
+Zonen RBAC-behörighet kan beviljas via hello Azure-portalen.  Öppna hello-åtkomstkontroll (IAM)-bladet för hello zon, och sedan klicka på ”Lägg till' och välj sedan hello DNS-zonen-deltagare och välj hello krävs användare eller grupper toogrant behörigheter.
 
-![DNS-zonen nivå RBAC via Azure portal](./media/dns-protect-zones-recordsets/rbac2.png)
+![DNS-zonen nivå RBAC via hello Azure-portalen](./media/dns-protect-zones-recordsets/rbac2.png)
 
 Behörigheter kan också vara [beviljas med hjälp av Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
 
 ```powershell
-# Grant 'DNS Zone Contributor' permissions to a specific zone
+# Grant 'DNS Zone Contributor' permissions tooa specific zone
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
-Kommandot motsvarande är också [tillgängliga via Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+hello likvärdigt kommando är också [tillgängliga via hello Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md):
 
 ```azurecli
-# Grant 'DNS Zone Contributor' permissions to a specific zone
+# Grant 'DNS Zone Contributor' permissions tooa specific zone
 azure role assignment create --signInName <user email address> --roleName "DNS Zone Contributor" --resource-name <zone name> --resource-type Microsoft.Network/DNSZones --resource-group <resource group name>
 ```
 
 ### <a name="record-set-level-rbac"></a>Postuppsättning nivå RBAC
 
-Vi kan ta ytterligare ett steg. Överväg att e-administratören för Contoso Corporation, som behöver åtkomst till MX och TXT-poster på apex i zonen ”contoso.com”.  Hon behöver inte åtkomst till alla andra MX och TXT-poster, eller alla poster för alla andra typer.  Azure DNS kan du tilldela behörigheter på nivån postuppsättning exakt för poster som e-administratör behöver åtkomst till.  E-administratör beviljas exakt kontrollera hon måste och kan inte göra några andra ändringar.
+Vi kan ta ytterligare ett steg. Överväg att hello e-administratören för Contoso Corporation, som behöver åtkomst toohello MX och TXT-poster på hello apex av hello ”contoso.com” zon.  Hon inte behöver komma åt tooany andra MX och TXT-poster eller poster tooany av någon annan typ.  Azure DNS kan du tooassign behörigheter på hello postuppsättning genom tooprecisely hello poster som hello e-administratör behöver åtkomst till.  hello e-administratör beviljas exakt hello Kontrollera hon behöver och är toomake andra ändringar.
 
-Postuppsättningen behörighet på användarnivå RBAC kan konfigureras via Azure-portalen med hjälp av knappen ”användare” i bladet postuppsättning:
+Postuppsättningen behörighet på användarnivå RBAC kan konfigureras via hello Azure-portalen med hjälp av knappen hello användare i hello postuppsättning bladet:
 
-![Postuppsättning nivå RBAC via Azure portal](./media/dns-protect-zones-recordsets/rbac3.png)
+![Postuppsättning nivå RBAC via hello Azure-portalen](./media/dns-protect-zones-recordsets/rbac3.png)
 
 Postuppsättningen behörighet på användarnivå RBAC kan också vara [beviljas med hjälp av Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md):
 
 ```powershell
-# Grant permissions to a specific record set
+# Grant permissions tooa specific record set
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
-Kommandot motsvarande är också [tillgängliga via Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md):
+hello likvärdigt kommando är också [tillgängliga via hello Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md):
 
 ```azurecli
-# Grant permissions to a specific record set
+# Grant permissions tooa specific record set
 azure role assignment create --signInName "<user email address>" --roleName "DNS Zone Contributor" --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
 ### <a name="custom-roles"></a>Anpassade roller
 
-Inbyggda DNS-zonen-deltagare-rollen ger fullständig kontroll över DNS-resursposter. Du kan också skapa egna kunden Azure roller, som ger även mer detaljerad kontroll.
+hello inbyggda DNS-zonen-deltagare rollen ger fullständig kontroll över DNS-resursposter. Det är också möjligt toobuild egna kund Azure roller, tooprovide ännu mer detaljerad kontroll.
 
-Studera igen exemplet som en CNAME-post i zonen 'customers.contoso.com' skapas för varje kundkonto för Contoso Corporation.  Det konto som används för att hantera dessa skapa CNAME-poster ska beviljas behörighet att hantera CNAME-poster.  Det är sedan det går inte att ändra poster för andra typer (till exempel ändra MX-poster) eller utföra åtgärder på zonnivå, till exempel ta bort zonen.
+Fundera igen hello exempel som en CNAME-post i zonen hello 'customers.contoso.com' skapas för varje kundkonto för Contoso Corporation.  hello konto som används för toomanage dessa CNAME-resursposter beviljas behörighet toomanage CNAME poster.  Det är toomodify poster av andra typer (till exempel ändra MX-poster) eller utföra åtgärder på zonnivå, till exempel ta bort zonen.
 
-I följande exempel visas en anpassad rolldefinition för att hantera CNAME-poster:
+hello som följande exempel visar en anpassad rolldefinition för att hantera CNAME-poster:
 
 ```json
 {
@@ -131,47 +131,47 @@ I följande exempel visas en anpassad rolldefinition för att hantera CNAME-post
 }
 ```
 
-Egenskapen åtgärder definierar följande DNS-specifika behörigheter:
+hello åtgärder egenskapen definierar hello följande DNS-specifika behörigheter:
 
 * `Microsoft.Network/dnsZones/CNAME/*`ger fullständig kontroll över CNAME-poster
-* `Microsoft.Network/dnsZones/read`ger behörighet att läsa DNS-zoner, men inte ändra dem, så att du ser zonen där CNAME håller på att skapas.
+* `Microsoft.Network/dnsZones/read`beviljar behörighet tooread DNS-zoner, men inte toomodify dem, aktiverar du toosee hello zonen i vilka hello CNAME håller på att skapas.
 
-De återstående åtgärderna kopieras från den [DNS-zonen inbyggda deltagarrollen](../active-directory/role-based-access-built-in-roles.md#dns-zone-contributor).
+hello återstående åtgärder kopieras från hello [DNS-zonen inbyggda deltagarrollen](../active-directory/role-based-access-built-in-roles.md#dns-zone-contributor).
 
 > [!NOTE]
-> Använda en anpassad RBAC-roll för att förhindra att ta bort postuppsättningar fortfarande så att de kan uppdateras inte är en effektiv kontroll. Det förhindrar postuppsättningar tas bort, men den förhindrar inte dem som ska ändras.  Tillåtna ändringar lägga till och ta bort poster från uppsättningen av poster, inklusive ta bort alla poster om du vill lämna en 'empty-postuppsättning. Detta har samma effekt som tar bort posten från en DNS-matchning synvinkel.
+> Med hjälp av en anpassad RBAC rollen tooprevent bort post anger fortfarande så att de toobe uppdateras inte är en effektiv kontroll. Det förhindrar postuppsättningar tas bort, men den förhindrar inte dem som ska ändras.  Tillåtna ändringar omfattar att lägga till och ta bort poster från hello postuppsättningen, inklusive ta bort alla poster tooleave en 'empty-postuppsättning. Detta har samma effekt som tar bort hello post ange från en DNS-matchning synvinkel hello.
 
-Anpassade Rolldefinitioner kan för närvarande inte definieras via Azure portal. En anpassad roll som baseras på den här rolldefinition kan skapas med hjälp av Azure PowerShell:
+Anpassade Rolldefinitioner kan för närvarande inte definieras via hello Azure-portalen. En anpassad roll som baseras på den här rolldefinition kan skapas med hjälp av Azure PowerShell:
 
 ```powershell
 # Create new role definition based on input file
 New-AzureRmRoleDefinition -InputFile <file path>
 ```
 
-Det kan även skapas via Azure CLI:
+Det kan även skapas via hello Azure CLI:
 
 ```azurecli
 # Create new role definition based on input file
 azure role create -inputfile <file path>
 ```
 
-Rollen kan sedan tilldelas på samma sätt som inbyggda roller, enligt beskrivningen tidigare i den här artikeln.
+hello roll kan sedan tilldelas i hello samma sätt som inbyggda roller, enligt beskrivningen tidigare i den här artikeln.
 
-Mer information om hur du skapa, hantera och tilldela anpassade roller finns [anpassade roller i Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
+Mer information om hur toocreate, hantera och tilldela anpassade roller finns [anpassade roller i Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
 
 ## <a name="resource-locks"></a>Resurslås
 
-Förutom RBAC stöder en annan typ av säkerhetskontroll, nämligen möjligheten att ”låsa” resurser i Azure Resource Manager. Där RBAC regler kan du styra åtgärder för specifika användare och grupper, resurslås som tillämpas på resursen och börjar gälla för alla användare och roller. Mer information finns i [Låsa resurser med Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
+I tillägg tooRBAC Azure Resource Manager har stöd för en annan typ av säkerhetskontroll, nämligen hello möjlighet too'lock' resurser. Om RBAC reglerna tillåter toocontrol hello åtgärder för specifika användare och grupper, resurslås är tillämpade toohello resurs och börjar gälla för alla användare och roller. Mer information finns i [Låsa resurser med Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
 
-Det finns två typer av resurslås: **DoNotDelete** och **ReadOnly**. Dessa kan användas till en DNS-zon eller till en enskild uppsättning av poster.  I följande avsnitt beskrivs några vanliga scenarier och hur du stöder dem med hjälp av resource Lås.
+Det finns två typer av resurslås: **DoNotDelete** och **ReadOnly**. Dessa kan tillämpas tooa DNS-zon eller tooan enskilda postuppsättning.  hello följande avsnitt beskrivs några vanliga scenarier och hur toosupport dem med hjälp av resource Lås.
 
 ### <a name="protecting-against-all-changes"></a>Skydd mot alla ändringar
 
-För att förhindra att alla ändringar som gäller en ReadOnly-Lås för zonen.  Detta förhindrar att nya postuppsättningar skapas och befintliga postuppsättningar från att ändras eller tas bort.
+tooprevent ändringar som gjorts, tillämpa en ReadOnly Lås toohello zon.  Detta förhindrar att nya postuppsättningar skapas och befintliga postuppsättningar från att ändras eller tas bort.
 
-Zonen nivån resurslås kan skapas via Azure portal.  I bladet DNS-zonen klickar du på Lås, Lägg sedan 'till':
+Zonen nivån resurslås kan skapas via hello Azure-portalen.  Klicka på Lås, hello DNS-zonen bladet Lägg sedan 'till':
 
-![Zonen nivån resurslås via Azure portal](./media/dns-protect-zones-recordsets/locks1.png)
+![Zonen nivån resurslås via hello Azure-portalen](./media/dns-protect-zones-recordsets/locks1.png)
 
 På zonnivå resurs Lås kan även skapas via Azure PowerShell:
 
@@ -180,16 +180,16 @@ På zonnivå resurs Lås kan även skapas via Azure PowerShell:
 New-AzureRmResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
 ```
 
-Konfigurera Azure-resurslås stöds inte för närvarande via Azure CLI.
+Konfigurera Azure-resurslås stöds inte för närvarande via hello Azure CLI.
 
 ### <a name="protecting-individual-records"></a>Skydda enskilda poster
 
-För att förhindra att en befintlig DNS-post mot ändring gäller en ReadOnly-Lås för uppsättningen av poster.
+tooprevent en befintlig DNS-post mot ändringar, gäller en ReadOnly Lås toohello postuppsättning.
 
 > [!NOTE]
-> Tillämpa DoNotDelete lås på en postuppsättning är inte en effektiv kontroll. Det förhindrar att posten tas bort, men den förhindrar inte att den kan ändras.  Tillåtna ändringar lägga till och ta bort poster från uppsättningen av poster, inklusive ta bort alla poster om du vill lämna en 'empty-postuppsättning. Detta har samma effekt som tar bort posten från en DNS-matchning synvinkel.
+> Tillämpa en DoNotDelete Lås tooa är postuppsättning inte en effektiv kontroll. Det förhindrar hello-postuppsättning tas bort, men den förhindrar inte att den kan ändras.  Tillåtna ändringar omfattar att lägga till och ta bort poster från hello postuppsättningen, inklusive ta bort alla poster tooleave en 'empty-postuppsättning. Detta har samma effekt som tar bort hello post ange från en DNS-matchning synvinkel hello.
 
-Postuppsättning nivån resurslås för närvarande kan bara konfigureras med Azure PowerShell.  De stöds inte i Azure-portalen eller Azure CLI.
+Postuppsättning nivån resurslås för närvarande kan bara konfigureras med Azure PowerShell.  De stöds inte i hello Azure-portalen eller Azure CLI.
 
 ```powershell
 # Lock a DNS record set
@@ -198,27 +198,27 @@ New-AzureRmResourceLock -LockLevel <lock level> -LockName "<lock name>" -Resourc
 
 ### <a name="protecting-against-zone-deletion"></a>Skydd mot zon borttagning
 
-När en zon tas bort i Azure DNS, raderas även alla uppsättningar av poster i zonen.  Den här åtgärden kan inte ångras.  Oavsiktlig borttagning av en kritisk zon har möjlighet att ha en betydande marknadsfördelar.  Därför är det mycket viktigt att skydda mot oavsiktlig zonen borttagning.
+När en zon tas bort i Azure DNS, alla uppsättningar av poster i zonen hello också att tas bort.  Den här åtgärden kan inte ångras.  Oavsiktlig borttagning av en kritisk zon har hello potentiella toohave betydande marknadsfördelar.  Därför är det mycket viktigt tooprotect mot oavsiktlig zonen borttagning.
 
-Tillämpa DoNotDelete lås på en zon förhindrar att zonen tas bort.  Men eftersom Lås ärvs av underordnade resurser den förhindrar också att alla uppsättningar av poster i zonen tas bort, vilket kan vara önskvärt.  Dessutom enligt beskrivningen i noteringen ovan, är det också ineffektiv eftersom poster fortfarande kan tas bort från de befintliga postuppsättningar.
+Tillämpa en DoNotDelete Lås tooa zon förhindrar hello zon tas bort.  Men eftersom Lås ärvs av underordnade resurser den förhindrar också att alla uppsättningar av poster i hello zon tas bort, vilket kan vara önskvärt.  Dessutom enligt beskrivningen i hello Obs ovan, är det också ineffektiv eftersom poster fortfarande kan tas bort från hello befintliga postuppsättningar.
 
-Överväg att använda ett DoNotDelete Lås till en post i zonen, till exempel uppsättningen SOA-poster som ett alternativ.  Eftersom zonen inte kan tas bort utan att även ta bort postuppsättningar, skyddar detta mot zon borttagning, men ändå låta postuppsättningar i zonen ska ändras fritt. Om ett försök görs att ta bort zonen identifierar Azure Resource Manager detta skulle även att ta bort uppsättningen av SOA-poster och blockerar anropet eftersom SOA är låst.  Inga postuppsättningar tas bort.
+Överväg att använda en DoNotDelete Lås tooa post som i hello zonen, till exempel hello SOA-postuppsättning som ett alternativ.  Eftersom hello zon inte kan tas bort utan att även ta bort hello postuppsättningar, skyddar detta mot zon borttagning, men ändå låta postuppsättningar inom hello zonen toobe ändrade fritt. Om ett försök görs toodelete hello zonen, identifierar Azure Resource Manager detta skulle även bort hello SOA-postuppsättning och block hello anropet eftersom hello SOA är låst.  Inga postuppsättningar tas bort.
 
-Följande PowerShell-kommando skapar ett DoNotDelete Lås mot SOA-post på den angivna zonen:
+hello följande PowerShell-kommando skapar ett DoNotDelete Lås mot hello SOA-post på hello angivna zonen:
 
 ```powershell
-# Protect against zone delete with DoNotDelete lock on the record set
+# Protect against zone delete with DoNotDelete lock on hello record set
 New-AzureRmResourceLock -LockLevel DoNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
-Ett annat sätt att förhindra oavsiktlig zonen borttagning är med hjälp av en anpassad roll så operatorn och tjänstkonton som används för att hantera zoner har inte behörighet zonen. Du kan tillämpa en tvåstegsverifiering delete, första beviljande zonen behörighet att ta bort (definitionsområdet zonen, så att du tar bort fel zon) och andra för att ta bort zonen när du behöver ta bort en zon.
+Ett annat sätt tooprevent zon för oavsiktlig borttagning är med hjälp av en anpassad roll tooensure hello operatorn och toomanage för konton som används av tjänsten inte har zonen zonerna ta bort behörigheter. När du behöver toodelete en zon, kan du använda en tvåstegsverifiering ta bort, första beviljande zonen behörighet att ta bort (definitionsområdet hello zonen, tooprevent bort hello fel zon) och andra toodelete hello zon.
 
-Den här andra tillvägagångssättet har fördelen att det fungerar för alla zoner som har åtkomst till dessa konton utan att behöva komma ihåg att skapa någon Lås. Den har nackdelen att alla konton med behörighet att zonen ta bort, till exempel prenumerationsägaren, fortfarande av misstag kan ta bort en zon för kritiska.
+Den här andra metoden har hello fördelen att det fungerar för alla zoner som har åtkomst till dessa konton utan att behöva tooremember toocreate alla Lås. Den har hello Nackdelen är att alla konton med behörighet att zonen ta bort, till exempel hello prenumerationsägaren fortfarande av misstag kan ta bort en zon för kritiska.
 
-Det är möjligt att använda båda metoderna - resurslås och anpassade roller - samtidigt som en metod för skydd på djupet för DNS-zonen skydd.
+Det är möjligt toouse båda metoderna - resurslås och anpassade roller - på hello samma tid, som en metod för skydd på djupet tooDNS zon skydd.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Läs mer om hur du arbetar med RBAC [Kom igång med åtkomsthantering i Azure portal](../active-directory/role-based-access-control-what-is.md).
+* Läs mer om hur du arbetar med RBAC [Kom igång med åtkomsthantering i hello Azure-portalen](../active-directory/role-based-access-control-what-is.md).
 * Mer information om hur du arbetar med resurslås finns [låsa resurser med Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
 

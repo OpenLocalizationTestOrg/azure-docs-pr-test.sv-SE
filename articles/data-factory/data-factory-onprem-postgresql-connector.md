@@ -1,6 +1,6 @@
 ---
-title: "Flytta data från PostgreSQL med hjälp av Azure Data Factory | Microsoft Docs"
-description: "Läs mer om hur du flyttar data från PostgreSQL-databas med hjälp av Azure Data Factory."
+title: "aaaMove data från PostgreSQL med hjälp av Azure Data Factory | Microsoft Docs"
+description: "Mer information om hur toomove data från PostgreSQL-databas med hjälp av Azure Data Factory."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jingwang
-ms.openlocfilehash: fd26f0d03f8b0b352a6544a81ad952d2e2a1b7a0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ea384f4e06f7d7bedae2949e4ea727c8f8806614
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Flytta data från PostgreSQL med hjälp av Azure Data Factory
-Den här artikeln förklarar hur du använder aktiviteten kopiera i Azure Data Factory för att flytta data från en lokal PostgreSQL-databas. Den bygger på den [Data Movement aktiviteter](data-factory-data-movement-activities.md) artikel som presenterar en allmän översikt över dataflyttning med copy-aktivitet.
+Den här artikeln förklarar hur toouse hello Kopieringsaktiviteten i Azure Data Factory toomove data från en lokal PostgreSQL-databas. Den bygger på hello [Data Movement aktiviteter](data-factory-data-movement-activities.md) artikel som ger en allmän översikt över dataflyttning hello kopieringsaktiviteten.
 
-Du kan kopiera data från ett dataarkiv för lokala PostgreSQL till alla stöds sink-datalagret. En lista över datakällor som stöds som sänkor av kopieringsaktiviteten finns [stöds datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data factory stöder för närvarande flytta data från en PostgreSQL-databas till andra databaser, men inte för att flytta data från andra datalager till en PostgreSQL-databas. 
+Du kan kopiera data från ett lokalt PostgreSQL data store tooany stöds sink dataarkiv. En lista över datakällor som stöds som sänkor av hello kopieringsaktiviteten finns [stöds datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data factory för närvarande stöder flyttning av data från en PostgreSQL-databas tooother datalager, men inte för att flytta data från andra data lagras tooan PostgreSQL-databas. 
 
 ## <a name="prerequisites"></a>Nödvändiga komponenter
 
-Data Factory-tjänsten stöder anslutning till lokala PostgreSQL källor med hjälp av Data Management Gateway. Se [flytta data mellan lokala platser och moln](data-factory-move-data-between-onprem-and-cloud.md) artikeln innehåller information om Data Management Gateway och stegvisa instruktioner om hur du konfigurerar en gateway.
+Data Factory-tjänsten stöder anslutande tooon lokala PostgreSQL källor med hello Data Management Gateway. Se [flytta data mellan lokala platser och moln](data-factory-move-data-between-onprem-and-cloud.md) artikel toolearn om Data Management Gateway och stegvisa instruktioner om hur du konfigurerar hello gateway.
 
-Gateway krävs även om PostgreSQL-databasen finns i en Azure IaaS-VM. Du kan installera gatewayen på samma IaaS-VM som dataarkiv eller på en annan virtuell dator som en gateway kan ansluta till databasen.
+Gateway krävs även om hello PostgreSQL-databasen finns i en Azure IaaS-VM. Du kan installera gatewayen på hello samma IaaS VM som hello data lagras eller på en annan virtuell dator så länge som hello gateway kan ansluta toohello databas.
 
 > [!NOTE]
 > Se [felsökning av problem med gateway](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) tips om hur du felsöker anslutning /-gateway relaterade problem.
 
 ## <a name="supported-versions-and-installation"></a>Versioner som stöds och installation
-Data Management Gateway att ansluta till PostgreSQL-databasen, installera den [Ngpsql dataprovider för PostgreSQL](http://go.microsoft.com/fwlink/?linkid=282716) 2.0.12 eller senare på samma system som Data Management Gateway. PostgreSQL version 7.4 och senare stöds.
+För Data Management Gateway tooconnect toohello PostgreSQL-databas, installera hello [Ngpsql dataprovider för PostgreSQL](http://go.microsoft.com/fwlink/?linkid=282716) 2.0.12 eller ovan på hello samma system som hello Data Management Gateway. PostgreSQL version 7.4 och senare stöds.
 
 ## <a name="getting-started"></a>Komma igång
 Du kan skapa en pipeline med en kopia-aktivitet som flyttar data från ett dataarkiv för lokala PostgreSQL med hjälp av olika verktyg/API: er. 
 
-- Det enklaste sättet att skapa en pipeline är att använda den **guiden Kopiera**. Finns [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genomgång om hur du skapar en pipeline med hjälp av guiden Kopiera data. 
-- Du kan också använda följande verktyg för att skapa en pipeline: 
+- hello enklaste sättet toocreate en pipeline är toouse hello **guiden Kopiera**. Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genomgång om hur du skapar en pipeline med hjälp av guiden för hello kopiera data. 
+- Du kan också använda följande verktyg toocreate en pipeline hello: 
     - Azure Portal
     - Visual Studio
     - Azure PowerShell
@@ -49,76 +49,76 @@ Du kan skapa en pipeline med en kopia-aktivitet som flyttar data från ett dataa
     - .NET-API
     - REST API
 
-     Se [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) för stegvisa instruktioner för att skapa en pipeline med en Kopieringsaktivitet. 
+     Se [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) för stegvisa instruktioner toocreate en pipeline med en Kopieringsaktivitet. 
 
-Om du använder verktyg eller API: er, kan du utföra följande steg för att skapa en pipeline som flyttar data från ett dataarkiv som källa till ett dataarkiv som mottagare:
+Om du använder hello verktyg eller API: er kan utföra du hello följande steg toocreate en pipeline som flyttar data från en källdata lagra tooa sink-datalagret:
 
-1. Skapa **länkade tjänster** att länka inkommande och utgående data lagras till din data factory.
-2. Skapa **datauppsättningar** att representera inkommande och utgående data för kopieringen. 
+1. Skapa **länkade tjänster** toolink indata och utdata lagrar tooyour data factory.
+2. Skapa **datauppsättningar** toorepresent indata och utdata för hello kopieringsåtgärden. 
 3. Skapa en **pipeline** med en kopia-aktivitet som tar en datamängd som indata och en dataset som utdata. 
 
-När du använder guiden skapas JSON definitioner för dessa Data Factory-enheter (länkade tjänster, datauppsättningar och pipelinen) automatiskt för dig. När du använder Verktyg/API: er (utom .NET API), kan du definiera dessa Data Factory-enheter med hjälp av JSON-format.  Ett exempel med JSON-definitioner för Data Factory-entiteter som används för att kopiera data från ett dataarkiv för lokala PostgreSQL finns [JSON-exempel: kopiera data från PostgreSQL till Azure Blob](#json-example-copy-data-from-postgresql-to-azure-blob) i den här artikeln. 
+När du använder guiden hello skapas automatiskt JSON definitioner för dessa Data Factory-enheter (länkade tjänster, datauppsättningar och hello pipeline) för dig. När du använder Verktyg/API: er (utom .NET API), kan du definiera dessa Data Factory-enheter med hjälp av hello JSON-format.  Ett exempel med JSON-definitioner för Data Factory-entiteter som ska använda toocopy data från ett dataarkiv för lokala PostgreSQL finns [JSON-exempel: kopiera data från PostgreSQL tooAzure Blob](#json-example-copy-data-from-postgresql-to-azure-blob) i den här artikeln. 
 
-Följande avsnitt innehåller information om JSON-egenskaper som används för att definiera Data Factory entiteter i en PostgreSQL-datalager:
+hello följande avsnitt innehåller information om JSON-egenskaper används toodefine Data Factory entiteter specifika tooa PostgreSQL-datalager:
 
 ## <a name="linked-service-properties"></a>Länkad tjänstegenskaper
-Följande tabell innehåller en beskrivning för JSON-element som är specifika för PostgreSQL länkad tjänst.
+hello följande tabell innehåller en beskrivning för JSON-element specifika tooPostgreSQL länkad tjänst.
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| typ |Egenskapen type måste anges till: **OnPremisesPostgreSql** |Ja |
-| server |Namnet på PostgreSQL-server. |Ja |
-| Databasen |Namnet på PostgreSQL-databas. |Ja |
-| Schemat |Namnet på schemat i databasen. Schemanamnet är skiftlägeskänslig. |Nej |
-| AuthenticationType |Typ av autentisering som används för att ansluta till PostgreSQL-databasen. Möjliga värden är: anonym, grundläggande och Windows. |Ja |
+| typ |hello Typegenskapen måste anges till: **OnPremisesPostgreSql** |Ja |
+| server |Namnet på hello PostgreSQL-server. |Ja |
+| Databasen |Namnet på hello PostgreSQL-databas. |Ja |
+| Schemat |Namnet på hello schema i hello-databasen. hello schemanamnet är skiftlägeskänslig. |Nej |
+| AuthenticationType |Typ av autentisering används tooconnect toohello PostgreSQL-databas. Möjliga värden är: anonym, grundläggande och Windows. |Ja |
 | användarnamn |Ange användarnamnet om du använder grundläggande eller Windows-autentisering. |Nej |
-| lösenord |Ange lösenordet för det användarkonto som du angav för användarnamnet. |Nej |
-| gatewayName |Namnet på den gateway som Data Factory-tjänsten ska använda för att ansluta till den lokala PostgreSQL-databasen. |Ja |
+| lösenord |Ange lösenord för hello-användarkonto som du angav för hello användarnamn. |Nej |
+| gatewayName |Namnet på hello-gateway som hello Data Factory-tjänsten ska använda tooconnect toohello lokala PostgreSQL-databas. |Ja |
 
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
-En fullständig lista över egenskaper som är tillgängliga för att definiera datauppsättningarna & avsnitt finns i [skapa datauppsättningar](data-factory-create-datasets.md) artikel. Avsnitt som struktur, tillgänglighet och princip på en datamängd JSON är liknande för alla typer av datauppsättningen.
+En fullständig lista över egenskaper som är tillgängliga för att definiera datauppsättningarna & avsnitt finns hello [skapa datauppsättningar](data-factory-create-datasets.md) artikel. Avsnitt som struktur, tillgänglighet och princip på en datamängd JSON är liknande för alla typer av datauppsättningen.
 
-Avsnittet typeProperties är olika för varje typ av dataset och ger information om placeringen av data i datalagret. TypeProperties avsnittet för dataset av typen **RelationalTable** (som omfattar PostgreSQL dataset) har följande egenskaper:
+hello typeProperties avsnittet är olika för varje typ av dataset och ger information om hello platsen för hello data i datalagret hello. Hej typeProperties avsnittet för dataset av typen **RelationalTable** (som omfattar PostgreSQL dataset) har hello följande egenskaper:
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| tableName |Namnet på tabellen i PostgreSQL-databasinstansen som den länkade tjänsten refererar till. TableName är skiftlägeskänslig. |Nej (om **frågan** av **RelationalSource** har angetts) |
+| tableName |Namnet på hello tabell i hello PostgreSQL-databasinstansen som den länkade tjänsten refererar till. hello tableName är skiftlägeskänslig. |Nej (om **frågan** av **RelationalSource** har angetts) |
 
 ## <a name="copy-activity-properties"></a>Kopiera egenskaper för aktivitet
-En fullständig lista över avsnitt & egenskaper som är tillgängliga för att definiera aktiviteter finns i [skapar Pipelines](data-factory-create-pipelines.md) artikel. Egenskaper som namn, beskrivning, ingående och utgående tabeller och principen är tillgängliga för alla typer av aktiviteter.
+En fullständig lista över avsnitt & egenskaper som är tillgängliga för att definiera aktiviteter finns hello [skapar Pipelines](data-factory-create-pipelines.md) artikel. Egenskaper som namn, beskrivning, ingående och utgående tabeller och principen är tillgängliga för alla typer av aktiviteter.
 
-De egenskaper som är tillgängliga i avsnittet typeProperties i aktiviteten varierar beroende på varje aktivitetstyp. För Kopieringsaktivitet kan variera de beroende på vilka typer av datakällor och sänkor.
+De egenskaper som är tillgängliga under hello typeProperties i hello aktivitet varierar beroende på varje aktivitetstyp. För Kopieringsaktivitet kan varierar de beroende på hello typer av datakällor och sänkor.
 
-När datakällan är av typen **RelationalSource** (som omfattar PostgreSQL), följande egenskaper finns i avsnittet typeProperties:
+När datakällan är av typen **RelationalSource** (som omfattar PostgreSQL), hello följande egenskaper finns i avsnittet typeProperties:
 
 | Egenskap | Beskrivning | Tillåtna värden | Krävs |
 | --- | --- | --- | --- |
-| DocumentDB |Använd anpassad fråga för att läsa data. |SQL-sträng. Till exempel: ”frågan” ”: Välj * från \"MySchema\".\" Mytable prefix\"”. |Nej (om **tableName** av **dataset** har angetts) |
+| DocumentDB |Använda hello anpassad fråga tooread data. |SQL-sträng. Till exempel: ”frågan” ”: Välj * från \"MySchema\".\" Mytable prefix\"”. |Nej (om **tableName** av **dataset** har angetts) |
 
 > [!NOTE]
-> Schema och tabellnamn är skiftlägeskänsliga. Innesluts i `""` (dubbla citattecken) i frågan.  
+> Schema och tabellnamn är skiftlägeskänsliga. Innesluts i `""` (dubbla citattecken) i hello-frågan.  
 
 **Exempel:**
 
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
-## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON-exempel: kopiera data från PostgreSQL till Azure-Blob
-Det här exemplet innehåller exempel JSON definitioner som du kan använda för att skapa en pipeline med [Azure-portalen](data-factory-copy-activity-tutorial-using-azure-portal.md) eller [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) eller [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De visar hur du kopierar data från PostgreSQL-databas till Azure Blob Storage. Dock datan kan kopieras till någon av sänkor anges [här](data-factory-data-movement-activities.md#supported-data-stores-and-formats) med hjälp av aktiviteten kopiera i Azure Data Factory.   
+## <a name="json-example-copy-data-from-postgresql-tooazure-blob"></a>JSON-exempel: kopiera data från PostgreSQL tooAzure Blob
+Det här exemplet innehåller exempel JSON definitioner som du kan använda toocreate en pipeline med hjälp av [Azure-portalen](data-factory-copy-activity-tutorial-using-azure-portal.md) eller [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) eller [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De visar hur toocopy data från PostgreSQL-databas tooAzure Blob Storage. Data kan dock vara kopierade tooany av hello sänkor anges [här](data-factory-data-movement-activities.md#supported-data-stores-and-formats) med hello Kopieringsaktiviteten i Azure Data Factory.   
 
 > [!IMPORTANT]
-> Det här exemplet innehåller JSON kodavsnitt. Stegvisa instruktioner för att skapa datafabriken inkluderas inte. Se [flytta data mellan lokala platser och moln](data-factory-move-data-between-onprem-and-cloud.md) artikel stegvisa instruktioner.
+> Det här exemplet innehåller JSON kodavsnitt. Stegvisa instruktioner för att skapa datafabriken hello inkluderas inte. Se [flytta data mellan lokala platser och moln](data-factory-move-data-between-onprem-and-cloud.md) artikel stegvisa instruktioner.
 
-Exemplet har följande data factory enheter:
+hello exemplet har hello följande data factory-enheter:
 
 1. En länkad tjänst av typen [OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#linked-service-properties).
 2. En länkad tjänst av typen [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
 3. Indata [dataset](data-factory-create-datasets.md) av typen [RelationalTable](data-factory-onprem-postgresql-connector.md#dataset-properties).
 4. Utdata [dataset](data-factory-create-datasets.md) av typen [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. Den [pipeline](data-factory-create-pipelines.md) med Kopieringsaktiviteten som använder [RelationalSource](data-factory-onprem-postgresql-connector.md#copy-activity-properties) och [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+5. Hej [pipeline](data-factory-create-pipelines.md) med Kopieringsaktiviteten som använder [RelationalSource](data-factory-onprem-postgresql-connector.md#copy-activity-properties) och [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Exemplet kopierar data från ett frågeresultat i PostgreSQL-databas till en blobb varje timme. JSON-egenskaper som används i exemplen beskrivs i exemplen i följande avsnitt.
+hello exemplet kopierar data från ett frågeresultat i PostgreSQL-databas tooa blob varje timme. hello JSON egenskaper som används i exemplen beskrivs i hello-exempel i följande avsnitt.
 
-Som ett första steg bör du konfigurera data management gateway. Anvisningarna är i den [flytta data mellan lokala platser och moln](data-factory-move-data-between-onprem-and-cloud.md) artikel.
+Som ett första steg bör du konfigurera hello data management gateway. hello anvisningar finns i hello [flytta data mellan lokala platser och moln](data-factory-move-data-between-onprem-and-cloud.md) artikel.
 
 **PostgreSQL länkade tjänsten:**
 
@@ -154,9 +154,9 @@ Som ett första steg bör du konfigurera data management gateway. Anvisningarna 
 ```
 **PostgreSQL inkommande datauppsättningen:**
 
-Exemplet förutsätter att du har skapat en tabell ”mytable” som prefix i PostgreSQL och innehåller en kolumn med namnet ”tidsstämpel” för tid series-data.
+hello exemplet förutsätter att du har skapat en tabell ”mytable” som prefix i PostgreSQL och innehåller en kolumn med namnet ”tidsstämpel” för tid series-data.
 
-Ange `"external": true` informerar Data Factory-tjänsten att datamängden är extern till data factory och inte tillverkas av en aktivitet i datafabriken.
+Ange `"external": true` informerar hello Data Factory-tjänsten som hello dataset är externa toohello data factory och inte tillverkas av en aktivitet i hello data factory.
 
 ```json
 {
@@ -183,7 +183,7 @@ Ange `"external": true` informerar Data Factory-tjänsten att datamängden är e
 
 **Azure Blob utdatauppsättningen:**
 
-Data skrivs till en ny blob varje timme (frekvens: timme, intervall: 1). Mappen sökvägen och filnamnet för blobben utvärderas dynamiskt baserat på starttiden för den sektor som bearbetas. Mappsökvägen använder år, månad, dag och timmar delar av starttiden.
+Data skrivs tooa nya blob varje timme (frekvens: timme, intervall: 1). hello mappen sökvägen och filnamnet för hello blob utvärderas dynamiskt baserat på hello starttiden för hello-segment som bearbetas. hello mappsökväg använder år, månad, dag och timmar delar av hello starttid.
 
 ```json
 {
@@ -243,7 +243,7 @@ Data skrivs till en ny blob varje timme (frekvens: timme, intervall: 1). Mappen 
 
 **Pipeline med kopieringsaktiviteten:**
 
-Pipelinen innehåller en kopia-aktivitet som är konfigurerad för att använda indata och utdata-datauppsättningar och har schemalagts att köras varje timme. I pipeline-JSON-definitionen av **källa** är inställd på **RelationalSource** och **sink** är inställd på **BlobSink**. SQL-frågan som angetts för den **frågan** egenskapen väljer vilka data från tabellen public.usstates i PostgreSQL-databas.
+hello pipelinen innehåller en kopia-aktivitet som är konfigurerade toouse hello inkommande och utgående datauppsättningar och är schemalagda toorun varje timme. I hello pipeline JSON-definitionen hello **källa** typ har angetts för**RelationalSource** och **sink** typ har angetts för**BlobSink**. hello SQL-frågan som angetts för hello **frågan** egenskapen väljer hello data från hello public.usstates tabell i hello PostgreSQL-databas.
 
 ```json
 {
@@ -289,12 +289,12 @@ Pipelinen innehåller en kopia-aktivitet som är konfigurerad för att använda 
 }
 ```
 ## <a name="type-mapping-for-postgresql"></a>Mappning för PostgreSQL
-Som anges i den [data movement aktiviteter](data-factory-data-movement-activities.md) artikel kopieringsaktiviteten utför automatisk konverteringar från källtyper att registrera typer med följande metod i steg 2:
+Som anges i hello [data movement aktiviteter](data-factory-data-movement-activities.md) artikel kopieringsaktiviteten utför automatisk konverteringar från källan typer toosink typer med hello följande metod i steg 2:
 
-1. Konvertera från interna källtyper till .NET-typ
-2. Konvertera från .NET-typ till interna mottagare typ.
+1. Konvertera från inbyggda typer too.NET källtypen
+2. Konvertera från .NET typen toonative Mottagartypen
 
-När data flyttas till PostgreSQL, används följande mappningar från PostgreSQL-typ för .NET-typ.
+När du flyttar data tooPostgreSQL som hello följande mappningar används från PostgreSQL typ too.NET.
 
 | Typ av PostgreSQL-databas | PostgresSQL alias | .NET framework-typ |
 | --- | --- | --- |
@@ -319,7 +319,7 @@ När data flyttas till PostgreSQL, används följande mappningar från PostgreSQ
 | int4range | |Sträng |&nbsp;
 | int8range | |Sträng |&nbsp;
 | heltal |int, int4 |Int32 |
-| intervallet [fält] [(p)] | |TimeSpan |&nbsp;
+| intervallet [fält] [(p)] | |Tidsintervall |&nbsp;
 | JSON | |Sträng |&nbsp;
 | jsonb | |byte] |&nbsp;
 | raden | |Byte [], sträng |&nbsp;
@@ -339,11 +339,11 @@ När data flyttas till PostgreSQL, används följande mappningar från PostgreSQ
 | Seriell |serial4 |Int32 |
 | Text | |Sträng |&nbsp;
 
-## <a name="map-source-to-sink-columns"></a>Karta källan till mottagare för kolumner
-Mer information om mappning kolumner i datauppsättningen källan till kolumner i datauppsättning mottagare, se [mappa dataset kolumner i Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-toosink-columns"></a>Mappa källkolumner toosink
+toolearn mappning tabellkolumner i källan dataset toocolumns i sink dataset finns [mappa dataset kolumner i Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="repeatable-read-from-relational-sources"></a>Upprepbar läsning från relationella källor
-Tänk på att undvika oväntade resultat repeterbarhet när kopiering av data från relationella data lagras. I Azure Data Factory, kan du köra en sektor manuellt. Du kan också konfigurera i principen för en dataset så att ett segment som körs när ett fel uppstår. När ett segment körs på något sätt, måste du kontrollera att samma data läses oavsett hur många gånger ett segment körs. Se [Repeatable läsa från relationella källor](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+När du kopierar data från relationella datalager, Kom ihåg tooavoid repeterbarhet oönskade resultat. I Azure Data Factory, kan du köra en sektor manuellt. Du kan också konfigurera i principen för en dataset så att ett segment som körs när ett fel uppstår. När ett segment körs på antingen sätt måste toomake att som hello samma data läses oavsett hur många gånger ett segment körs. Se [Repeatable läsa från relationella källor](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Prestanda och finjustering
-Se [kopiera aktivitet prestanda och justera guiden](data-factory-copy-activity-performance.md) vill veta mer om viktiga faktorer som påverkan prestanda för flytt av data (Kopieringsaktiviteten) i Azure Data Factory och olika sätt att optimera den.
+Se [kopiera aktivitet prestanda och justera guiden](data-factory-copy-activity-performance.md) toolearn om nyckeln faktorer som påverkan prestanda för flytt av data (Kopieringsaktiviteten) i Azure Data Factory och olika sätt toooptimize den.

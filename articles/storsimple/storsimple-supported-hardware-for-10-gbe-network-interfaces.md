@@ -1,6 +1,6 @@
 ---
-title: "Maskinvara för StorSimple 10 GbE-gränssnitt | Microsoft Docs"
-description: "Beskriver stöds liten formfaktor pluggable (SFP) mottagarna, kablar och växlar för 10 GbE-nätverkskort på StorSimple-enheten."
+title: "aaaHardware för StorSimple 10 GbE-gränssnitt | Microsoft Docs"
+description: "Beskriver hello stöds liten formfaktor pluggable (SFP) mottagarna, kablar och växlar för hello 10 GbE-nätverkskort på StorSimple-enheten."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-ms.openlocfilehash: db03b3cd668bf8e35913872ac4225de6d4d3edd1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3e6769380040ab08d9a57ef7221bf62c6c855137
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Maskinvara som stöds för 10 GbE-nätverkskort på din StorSimple-enhet
+# <a name="supported-hardware-for-hello-10-gbe-network-interfaces-on-your-storsimple-device"></a>Maskinvara som stöds för hello 10 GbE-nätverkskort på din StorSimple-enhet
 ## <a name="overview"></a>Översikt
 Den här artikeln innehåller information om kompletterande maskinvara som fungerar med din Microsoft Azure StorSimple-enhet.
 
 ## <a name="list-of-devices-tested-by-microsoft"></a>Lista över enheter som har testats av Microsoft
-Microsoft har testat följande liten formfaktor pluggable (SFP) mottagarna, kablar och växlar för att säkerställa att de fungerar optimalt med enheter. (Följande tabeller kommer att uppdateras när ny maskinvara har testats.)
+Microsoft har testat hello följande liten formfaktor pluggable (SFP) mottagarna, kablar och växlar tooensure att de fungerar optimalt med enheter. (hello följande tabeller kommer att uppdateras när ny maskinvara har testats.)
 
 ### <a name="sfp-transceivers"></a>SFP + mottagarna
 | Kontrollera | Modellen |
@@ -47,8 +47,8 @@ Microsoft har testat följande liten formfaktor pluggable (SFP) mottagarna, kabl
 | 2. |Cisco |N3K-C3048-ZM-F |
 | 3. |Cisco |N5K-C5596UP-MI |
 
-## <a name="list-of-devices-tested-in-the-field"></a>Lista över enheter som ska testas i fältet
-Det här avsnittet innehåller en lista med enheter som har distribuerats i fältet av StorSimple-kunder. Dessa inte har testats av Microsoft, men kan komma att arbeta med din StorSimple-enhet.
+## <a name="list-of-devices-tested-in-hello-field"></a>Lista över enheter som ska testas i hello-fält
+Det här avsnittet innehåller hello lista över enheter som har distribuerats i hello fält av StorSimple-kunder. Dessa inte har testats av Microsoft, men är sannolikt toowork med din StorSimple-enhet.
 
 | Parameter | Värde |
 | --- | --- |
@@ -64,10 +64,10 @@ Det här avsnittet innehåller en lista med enheter som har distribuerats i fäl
 | StorSimple programvaruversion |6.3.9600.17491 |
 
 ## <a name="list-of-devices-tested-by-oem-provider-mellanox"></a>Lista över enheter som har testats av OEM-provider (Mellanox)
-Mellanox har testat följande liten formfaktor pluggable (SFP) mottagarna, kablar och växlar för att säkerställa att de fungerar optimalt med Mellanox nätverksgränssnitt, till exempel 10 GbE-nätverksgränssnitt på StorSimple-enheten.
+Mellanox har testat hello följande liten formfaktor pluggable (SFP) mottagarna, kablar och växlar tooensure att de fungerar optimalt med Mellanox nätverksgränssnitt, till exempel hello 10 GbE-nätverkskort på din StorSimple-enhet.
 
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Kablar och moduler som stöds av Mellanox
-I följande tabell visas kablar och moduler som stöds av Mellanox. Dessa inte har testats av Microsoft, men kan komma att arbeta med din StorSimple-enhet.
+hello följande tabell visas hello kablar och moduler som stöds av Mellanox. Dessa inte har testats av Microsoft, men är sannolikt toowork med din StorSimple-enhet.
 
 | S. Nej. | Hastighet | Modellen | Beskrivning | Kontrollera |
 | --- | --- | --- | --- | --- |
@@ -78,7 +78,7 @@ I följande tabell visas kablar och moduler som stöds av Mellanox. Dessa inte h
 | 5. |10 GbE |Cisco SFP-H10GBCU1M |Cisco SFP + kabel |Cisco |
 | 6. |10 GbE |Cisco SFP-H10GBCU3M |Cisco SFP + kabel |Cisco |
 | 7. |10 GbE |Cisco SFP-H10GBCU5M |Cisco SFP + kabel |Cisco |
-| 8. |10 GbE |J9281B HP X242 10 G |SFP + till SFP + 1 miljon direktansluten kopparkabel |HP |
+| 8. |10 GbE |J9281B HP X242 10 G |SFP + tooSFP + 1 miljon bifoga koppar kabel |HP |
 | 9. |10 GbE |455883 B21 HP BLc |10Gb SR SFP + välja |HP |
 | 10. |10 GbE |455886 B21 HP BLc |10Gb LR SFP + välja |HP |
 | 11. |10 GbE |487649 B21 HP BLc |SFP + 0,5 m 10GbE koppar kabel |HP |
@@ -97,18 +97,18 @@ I följande tabell visas kablar och moduler som stöds av Mellanox. Dessa inte h
 | 24. |10 GbE |JD095B HP |X240 10 G SFP + SFP + 0.65 m DAC-kabel |HP |
 | 25. |10 GbE |JD096B HP |X240 10 G SFP + SFP + 1.2 m DAC-kabel |HP |
 | 26. |10 GbE |JD097B HP |X240 10 G SFP + SFP + 3 m DAD-kabel |HP |
-| 27. |10 GbE |MAM1Q00A QSA Mellanox |QSFP till SFP + kort |Mellanox tekniker |
-| 28. |10 GbE |MC2309124-006 Huvudmålservern |Passiva kopparkabel 1 x SFP+ till QSFP 10 Gbit/s 24awg 7 m |Mellanox tekniker |
-| 29. |10 GbE |MC2309124 007 Huvudmålservern |Passiva kopparkabel 1 x SFP+ till QSFP 10 Gbit/s 24awg 7 m |Mellanox tekniker |
-| 30. |10 GbE |MC2309130 003 Huvudmålservern |Passiva kopparkabel 1 x SFP+ till QSFP 10 Gbit/s 30awg 3 m |Mellanox tekniker |
-| 31. |10 GbE |MC2309130 00A Huvudmålservern |Passiva kopparkabel 1 x SFP+ till QSFP 10 Gbit/s 30awg 0,5 m |Mellanox tekniker |
+| 27. |10 GbE |MAM1Q00A QSA Mellanox |QSFP tooSFP + nätverkskort |Mellanox tekniker |
+| 28. |10 GbE |MC2309124-006 Huvudmålservern |Passiva koppar kabel 1 x SFP + tooQSFP 10 Gbit/s 24awg 7m |Mellanox tekniker |
+| 29. |10 GbE |MC2309124 007 Huvudmålservern |Passiva koppar kabel 1 x SFP + tooQSFP 10 Gbit/s 24awg 7m |Mellanox tekniker |
+| 30. |10 GbE |MC2309130 003 Huvudmålservern |Passiva koppar kabel 1 x SFP + tooQSFP 10 Gbit/s 30awg 3m |Mellanox tekniker |
+| 31. |10 GbE |MC2309130 00A Huvudmålservern |Passiva koppar kabel 1 x SFP + tooQSFP 10 Gbit/s 30awg 0,5 m |Mellanox tekniker |
 | 32. |10 GbE |MC3309124 005 Huvudmålservern |Passiva koppar kabel 1 x SFP+ 10 Gbit/s 24awg 5 m |Mellanox tekniker |
 | 33. |10 GbE |MC3309124 007 Huvudmålservern |Passiva koppar kabel 1 x SFP+ 10 Gbit/s 24awg 7 m |Mellanox tekniker |
 | 34. |10 GbE |MC3309130 003 Huvudmålservern |Passiva koppar kabel 1 x SFP+ 10 Gbit/s 30awg 3 m |Mellanox tekniker |
 | 35. |10 GbE |MC3309130 00A Huvudmålservern |Passiva koppar kabel 1 x SFP+ 10 Gbit/s 30awg 0,5 m |Mellanox tekniker |
 
 ### <a name="switches-supported-by-mellanox"></a>Växlar som stöds av Mellanox
-I följande tabell visas de växlar som stöds av Mellanox. Dessa inte har testats av Microsoft, men kan komma att arbeta med din StorSimple-enhet.
+hello i den följande tabellen listas hello-växlar som stöds av Mellanox. Dessa inte har testats av Microsoft, men är sannolikt toowork med din StorSimple-enhet.
 
 | S. Nej. | Hastighet | Modellen | Beskrivning | Kontrollera |
 | --- | --- | --- | --- | --- |

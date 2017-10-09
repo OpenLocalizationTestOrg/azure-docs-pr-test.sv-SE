@@ -1,6 +1,6 @@
 ---
-title: Testa redundans (VMM till VMM) i Azure Site Recovery | Microsoft Docs
-description: "Azure Site Recovery samordnar replikering, redundans och återställning av virtuella datorer och fysiska servrar. Läs mer om redundans till Azure eller ett sekundärt datacenter."
+title: "aaaTest växling vid fel (VMM tooVMM) i Azure Site Recovery | Microsoft Docs"
+description: "Azure Site Recovery samordnar hello replikering, redundans och återställning av virtuella datorer och fysiska servrar. Läs mer om tooAzure för växling vid fel eller ett sekundärt datacenter."
 services: site-recovery
 documentationcenter: 
 author: prateek9us
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: pratshar
-ms.openlocfilehash: afc4790d5714ce7145c8f4291a05acc2e9882a9b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6b4f65ab692cbb0665102c4f51ea0694151cd3ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="test-failover-vmm-to-vmm-in-site-recovery"></a>Testa redundans (VMM till VMM) i Site Recovery
+# <a name="test-failover-vmm-toovmm-in-site-recovery"></a>Testa redundans (VMM tooVMM) i Site Recovery
 
 
-Den här artikeln innehåller information och instruktioner för att göra ett redundanstest eller visa disaster recovery (DR) av virtuella datorer (VM) och fysiska servrar som skyddas med Azure Site Recovery. Du ska använda en System Center Virtual Machine Manager VMM-hanterade lokal plats som återställningsplatsen.
+Den här artikeln innehåller information och instruktioner för att göra ett redundanstest eller visa disaster recovery (DR) av virtuella datorer (VM) och fysiska servrar som skyddas med Azure Site Recovery. Du ska använda en System Center Virtual Machine Manager VMM-hanterade lokal plats som hello återställningsplatsen.
 
-Du kan köra ett redundanstest för att verifiera din replikeringsstrategi för eller utföra en DR-test utan avbrott eller dataförlust. Testa redundans har inte någon effekt på pågående replikering eller i din produktionsmiljö. Du kan köra den på en virtuell dator eller en [återställningsplanen](site-recovery-create-recovery-plans.md). När du utlöst ett redundanstest måste du ange det nätverk som de virtuella testdatorerna ska ansluta till. Du kan spåra förloppet för redundanstestningen på den **jobb** sidan.  
+Du kör ett test redundans toovalidate din replikeringsstrategi för eller utföra en DR-test utan avbrott eller dataförlust. Testa redundans har inte någon effekt på hello pågående replikering eller i din produktionsmiljö. Du kan köra den på en virtuell dator eller en [återställningsplanen](site-recovery-create-recovery-plans.md). När du utlöst ett redundanstest måste toospecify hello nätverk som de virtuella testdatorer som hello ska ansluta till. Du kan följa hello förloppet hello testningen på hello **jobb** sidan.  
 
-Om du har några kommentarer eller frågor kan du publicera dem längst ned i den här artikeln eller på den [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Om du har kommentarer eller frågor, publicera dem längst ned hello av den här artikeln eller på hello [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
-## <a name="prepare-the-infrastructure-for-test-failover"></a>Förbereda infrastrukturen för att testa redundans
-Om du vill köra ett redundanstest genom att använda ett befintligt nätverk förbereda Active Directory, DHCP och DNS i nätverket.
+## <a name="prepare-hello-infrastructure-for-test-failover"></a>Förbereda hello infrastrukturen för att testa redundans
+Om du vill toorun ett redundanstest genom att använda ett befintligt nätverk kan du förbereda Active Directory, DHCP och DNS i nätverket.
 
-Om du vill köra ett redundanstest med hjälp av alternativet för att skapa Virtuella nätverk automatiskt kan du lägga till en manuell åtgärd innan grupp 1 i återställningsplanen som du ska använda för redundanstestning. Sedan lägger du till infrastrukturresurser automatiskt skapade nätverket innan du kör redundanstestet.
+Om du vill toorun testa redundans med hjälp av hello alternativet toocreate VM-nätverk automatiskt kan du lägga till en manuell åtgärd innan grupp 1 i hello återställningsplan att du ska toouse för hello testning av redundans. Lägg sedan till hello infrastruktur resurser toohello skapas automatiskt nätverket innan du kör hello testa redundans.
 
-### <a name="things-to-note"></a>Saker att Observera
-När du replikerar till en sekundär plats, vilken typ av nätverk som använder den replikerade datorn behöver inte matchar typ av logiska nätverk som används för att testa redundans, men vissa kombinationer kanske inte fungerar. Om replikeringen använder DHCP- och VLAN-baserad isolering, behöver det Virtuella datornätverket för repliken inte en statisk IP-adresspool. Det med hjälp av Windows-Nätverksvirtualisering för att testa redundans fungerar inte eftersom ingen adresspool är tillgängliga. 
+### <a name="things-toonote"></a>Saker toonote
+När du replikerar tooa sekundär plats, hello typen av nätverk att hello replik datorn använder inte behöver toomatch hello typ av logiska nätverk som används för att testa redundans, men vissa kombinationer kanske inte fungerar. Om hello replik använder DHCP- och VLAN-baserad isolering, behöver inte en statisk IP-adresspool hello Virtuellt datornätverk för hello replik. Det med hjälp av Windows-Nätverksvirtualisering för att testa redundans hello fungerar inte eftersom ingen adresspool är tillgängliga. 
 
-Dessutom fungerar redundanstestningen inte om repliken nätverket använder ingen isolering och testnätverket använder Windows-Nätverksvirtualisering. Det beror på att ingen isolering nätverket saknar undernät som krävs för att skapa ett nätverk för Windows-Nätverksvirtualisering.
+Dessutom fungerar hello testa redundans inte om hello replik nätverket använder ingen isolering och hello testnätverket använder Windows-Nätverksvirtualisering. Det beror på att hello no isolation nätverket har hello undernät krävs toocreate ett nätverk för Windows-Nätverksvirtualisering.
 
-Hur replikerade virtuella datorerna är anslutna till mappade VM-nätverk efter växling vid fel som beror på hur det Virtuella datornätverket har konfigurerats i VMM-konsolen.
+Hur replikerade virtuella datorerna är anslutna toomapped VM-nätverk efter växling vid fel som beror på hur hello VM-nätverk är konfigurerad i hello VMM-konsolen.
 
 #### <a name="vm-network-configured-with-no-isolation-or-vlan-isolation"></a>Virtuellt datornätverk utan isolering eller VLAN-isolering
-Om DHCP har definierats för det Virtuella datornätverket, är den replikerade virtuella datorn ansluten till VLAN-ID via inställningarna som har angetts för nätverksplatsen i det associerade logiska nätverket. Den virtuella datorn får sin IP-adress från DHCP-servern finns. 
+Om DHCP har definierats för hello Virtuella datornätverket är hello replikerade virtuella datorn ansluten toohello VLAN-ID via hello-inställningarna som har angetts för hello nätverksplats i hello associerat logiskt nätverk. hello virtuell dator tar emot dess IP-adress från hello tillgänglig DHCP-server. 
 
-Du behöver inte definiera en statisk IP-adresspool för det Virtuella datornätverket mål. Om du använder en statisk IP-adresspool för det Virtuella datornätverket, är den replikerade virtuella datorn ansluten till VLAN-ID via inställningarna som har angetts för nätverksplatsen i det associerade logiska nätverket.
+Du behöver inte toodefine en statisk IP-adresspool för hello mål VM-nätverk. Om du använder en statisk IP-adresspool för hello VM-nätverk, är hello replikerade virtuella datorn ansluten toohello VLAN-ID via hello-inställningarna som har angetts för hello nätverksplats i hello associerat logiskt nätverk.
 
-Den virtuella datorn får sin IP-adress från den pool som har definierats för det Virtuella datornätverket. Om en statisk IP-adresspool har inte definierats i VM målnätverket, misslyckas IP-adressallokering. Skapa IP-adresspool på både käll- och VMM-servrar som du ska använda för skydd och återställning.
+hello virtuell dator tar emot dess IP-adress från hello-pool som har definierats för hello VM-nätverk. Om en statisk IP-adresspool har inte definierats i hello mål VM-nätverk, misslyckas IP-adressallokering. Skapa hello IP-adresspool på båda hello käll- och VMM-servrar som du ska använda för skydd och återställning.
 
 #### <a name="vm-network-with-windows-network-virtualization"></a>Virtuellt datornätverk med Nätverksvirtualisering i Windows
-Om ett Virtuellt datornätverk är konfigurerad med Windows-Nätverksvirtualisering, bör du definiera en statisk adresspool för VM målnätverket, oavsett om VM-källnätverket är konfigurerad för att använda DHCP eller en statisk IP-adresspool. 
+Om ett Virtuellt datornätverk är konfigurerad med Windows-Nätverksvirtualisering, bör du definiera en statisk adresspool för hello mål VM-nätverk, oavsett om hello källnätverket är konfigurerade toouse DHCP eller en statisk IP-adresspool. 
 
-Om du definierar DHCP, VMM-målservern fungerar som en DHCP-server och tillhandahåller en IP-adress från den pool som har definierats för det Virtuella datornätverket mål. Om användning av en statisk IP-adresspool har definierats för källservern, allokerar en IP-adress i VMM-målservern från poolen. I båda fallen misslyckas IP-adressallokering om en statisk IP-adresspool inte har definierats.
+Om du definierar DHCP hello VMM-målservern fungerar som en DHCP-server och tillhandahåller en IP-adress hello-pool som har definierats för hello målnätverket VM. Om användning av en statisk IP-adresspool har definierats för hello källserver allokerar en IP-adress från hello poolen hello VMM-målservern. I båda fallen misslyckas IP-adressallokering om en statisk IP-adresspool inte har definierats.
 
 
 ### <a name="prepare-dhcp"></a>Förbereda DHCP
-Om de virtuella datorerna som är involverad i testa redundans använda DHCP, skapa en test DHCP-server i det isolerade nätverket för att testa redundans.
+Om hello virtuella datorer som är involverad i testa redundans använda DHCP, skapa en test DHCP-server inom hello isolerat nätverk i hello syftet att testa redundans.
 
 ### <a name="prepare-active-directory"></a>Förbereda Active Directory
-Om du vill köra ett redundanstest för program, testa, måste en kopia av Active Directory produktionsmiljön i din testmiljö. Mer information finns i [redundanstestning för Active Directory](site-recovery-active-directory.md#test-failover-considerations).
+toorun ett redundanstest för program, testa, behöver du en kopia av Active Directory-produktionsmiljö hello i din testmiljö. Mer information finns i hello [redundanstestning för Active Directory](site-recovery-active-directory.md#test-failover-considerations).
 
 ### <a name="prepare-dns"></a>Förbereda DNS
-Förbered en DNS-server för att testa redundans på följande sätt:
+Förbered en DNS-server för att testa redundans hello på följande sätt:
 
-* **DHCP**: om virtuella datorer använder DHCP IP-adressen för testet DNS ska uppdateras på test DHCP-servern. Om du använder en nätverkstyp för Windows-Nätverksvirtualisering, fungerar VMM-servern som DHCP-servern. IP-adressen för DNS ska vara uppdaterade i nätverket. I det här fallet registrera de virtuella datorerna sig själva till relevanta DNS-servern.
-* **Statisk adress**: om virtuella datorer använder en statisk IP-adress, IP-adressen för DNS-testserver ska uppdateras i nätverket. Du kan behöva uppdatera DNS med IP-adressen för de virtuella testdatorerna. Du kan använda följande exempelskript för detta ändamål:
+* **DHCP**: om virtuella datorer använder DHCP hello IP-adressen för hello test DNS ska uppdateras på hello test DHCP-server. Om du använder en nätverkstyp av Nätverksvirtualisering för Windows fungerar hello VMM-servern som hello DHCP-server. Hello IP-adressen för DNS ska vara uppdaterade i hello nätverket. I det här fallet hello virtuella datorer kan registrera sig själva toohello relevanta DNS-server.
+* **Statisk adress**: om virtuella datorer använder en statisk IP-adress, hello IP-adressen för hello-test som ska vara uppdaterade DNS-server i nätverket. Du kan behöva tooupdate DNS med hello IP-adressen för hello virtuella testdatorer. Du kan använda följande exempelskript för detta ändamål hello:
 
         Param(
         [string]$Zone,
@@ -80,39 +80,39 @@ Förbered en DNS-server för att testa redundans på följande sätt:
 
 
 ## <a name="run-a-test-failover"></a>Köra ett redundanstest
-Den här proceduren beskriver hur du kör ett redundanstest för en återställningsplan. Du kan också köra redundans för en enskild virtuell dator den **virtuella datorer** fliken.
+Den här proceduren beskriver hur toorun ett redundanstest för en återställning planerar. Du kan också köra hello redundans för en enskild virtuell dator på hello **virtuella datorer** fliken.
 
 ![Testa redundans-bladet](./media/site-recovery-test-failover-vmm-to-vmm/TestFailover.png)
 
 1. Välj **Återställningsplaner** > *recoveryplan_name*. Klicka på **redundans** > **Redundanstestningen**.
-1. På den **Redundanstestning** bladet ange hur virtuella datorer måste vara anslutna till nätverk efter redundanstestet. Mer information finns i [alternativ](#network-options-in-site-recovery).
-1. Följa redundansförloppet på den **jobb** fliken.
-1. När redundansväxlingen är klar kontrollerar du att de virtuella datorerna startas.
-1. När du är klar klickar du på **Rensa redundanstestet** på återställningsplanen. I **anteckningar**, registrera och spara observationer från redundanstestningen. Det här steget tar bort de virtuella datorer och nätverk som har skapats under redundanstestningen.
+1. På hello **Redundanstestning** bladet ange hur virtuella datorer måste vara anslutna toonetworks efter hello testa redundans. Mer information finns i hello [alternativ](#network-options-in-site-recovery).
+1. Följa redundansförloppet på hello **jobb** fliken.
+1. När redundansväxlingen är klar kan du kontrollera att hello virtuella datorer starta korrekt.
+1. När du är klar klickar du på **Rensa redundanstestet** på hello återställningsplan. I **anteckningar**, registrera och spara observationer från redundanstestningen hello. Det här steget tar bort hello virtuella datorer och nätverk som har skapats under redundanstestningen.
 
 
 ## <a name="network-options-in-site-recovery"></a>Nätverksalternativ i Site Recovery
 
-När du kör ett redundanstest, uppmanas du att välja nätverksinställningar för replik testdatorer. Du har flera alternativ.  
+När du kör ett redundanstest uppmanas du tooselect nätverksinställningar för replik testdatorer. Du har flera alternativ.  
 
 | **Testa redundans alternativet** | **Beskrivning** | **Kontrollera redundans** | **Detaljer** |
 | --- | --- | --- | --- |
-| **Växla över till en sekundär VMM-plats--utan nätverk** |Markera inte ett Virtuellt datornätverk. |Växling vid fel kontrollerar du att testdatorer skapas.<br/><br/>Den virtuella testdatorn har skapats på värden där den replikerade virtuella datorn finns. Det är inte lägga till det moln där den virtuella replikdatorn finns. |<p>Misslyckades-over-datorn är inte ansluten till något nätverk.<br/><br/>Datorn kan vara ansluten till ett Virtuellt datornätverk när den har skapats. |
-| **Växla över till en sekundär VMM-plats--med nätverk** |Välj ett befintligt Virtuellt datornätverk. |Växling vid fel kontrollerar du att virtuella datorer skapas. |Den virtuella testdatorn har skapats på värden där den replikerade virtuella datorn finns. Det är inte lägga till det moln där den virtuella replikdatorn finns.<br/><br/>Skapa ett Virtuellt datornätverk som är isolerat från produktionsnätverket.<br/><br/>Om du använder ett VLAN-baserade nätverk, rekommenderar vi att du skapar ett separat logiskt nätverk (används inte i produktion) i VMM för detta ändamål. Det här logiska nätverket används för att skapa Virtuella datornätverk för redundanstestning.<br/><br/>Det logiska nätverket ska kopplas till minst ett nätverkskort för alla Hyper-V-servrar som är värd för virtuella datorer.<br/><br/>För VLAN logiska nätverk, ska nätverksplatser som du lägger till det logiska nätverket isoleras.<br/><br/>Om du använder ett Windows-Nätverksvirtualisering – logiska nätverk med skapar Azure Site Recovery automatiskt isolerade Virtuella nätverk. |
-| **Växla över till en sekundär plats i VMM – skapa ett nätverk** |En tillfällig testnätverket skapas automatiskt utifrån den inställning som du anger i **logiskt nätverk** och dess relaterade nätverksplatser. |Växling vid fel kontrollerar du att virtuella datorer skapas. |Använd det här alternativet om återställningsplanen använder mer än ett Virtuellt datornätverk. Om du använder Windows nätverksvirtualiseringsnätverk kan det här alternativet automatiskt skapa Virtuella datornätverk med samma inställningar (undernät och IP-adresspooler) i nätverket för den virtuella replikdatorn. Dessa Virtuella datornätverk rensas automatiskt när du testar redundansen är klar.</p><p>Den virtuella testdatorn har skapats på värden där den replikerade virtuella datorn finns. Det är inte lägga till det moln där den virtuella replikdatorn finns. |
+| **Växla över tooa sekundär VMM-plats--utan nätverk** |Markera inte ett Virtuellt datornätverk. |Växling vid fel kontrollerar du att testdatorer skapas.<br/><br/>hello testa virtuell dator skapas på hello värd där hello replikerade virtuella datorn finns. Den är inte läggas till toohello moln där hello replikerade virtuella datorn finns. |<p>hello misslyckades över datorn är inte anslutna tooany nätverk.<br/><br/>hello datorn kan vara anslutna tooa Virtuella datornätverket när den har skapats. |
+| **Växla över tooa sekundär VMM-plats--med nätverk** |Välj ett befintligt Virtuellt datornätverk. |Växling vid fel kontrollerar du att virtuella datorer skapas. |hello testa virtuell dator skapas på hello värd där hello replikerade virtuella datorn finns. Den är inte läggas till toohello moln där hello replikerade virtuella datorn finns.<br/><br/>Skapa ett Virtuellt datornätverk som är isolerat från produktionsnätverket.<br/><br/>Om du använder ett VLAN-baserade nätverk, rekommenderar vi att du skapar ett separat logiskt nätverk (används inte i produktion) i VMM för detta ändamål. Den här logiska nätverket är används toocreate Virtuella datornätverk för redundanstestning.<br/><br/>hello logiska nätverket ska kopplas till minst en av hello nätverkskort för alla hello Hyper-V-servrar som är värd för virtuella datorer.<br/><br/>Hej nätverksplatser som du lägger till isoleras toohello logiskt nätverk för logiska VLAN-nätverk.<br/><br/>Om du använder ett Windows-Nätverksvirtualisering – logiska nätverk med skapar Azure Site Recovery automatiskt isolerade Virtuella nätverk. |
+| **Växla över tooa sekundär VMM-plats--skapa ett nätverk** |En tillfällig testnätverket skapas automatiskt utifrån hello-inställningen som du anger i **logiskt nätverk** och dess relaterade nätverksplatser. |Växling vid fel kontrollerar du att virtuella datorer skapas. |Använd det här alternativet om hello återställningsplan använder mer än ett Virtuellt datornätverk. Om du använder Windows nätverksvirtualiseringsnätverk kan det här alternativet automatiskt skapa Virtuella datornätverk med hello samma inställningar (undernät och IP-adresspooler) i hello nätverk av hello replikerade virtuella datorn. Dessa Virtuella datornätverk rensas automatiskt efter hello redundanstestet har slutförts.</p><p>hello testa virtuell dator skapas på hello värd där hello replikerade virtuella datorn finns. Den är inte läggas till toohello moln där hello replikerade virtuella datorn finns. |
 
 > [!TIP]
-> IP-adressen som angavs till en virtuell dator under testning av redundans är samma IP-adress som den virtuella datorn kommer att ta emot en planerad eller oplanerad växling vid fel (förutsatt att IP-adress är tillgänglig i nätverket). Om samma IP-adress är inte tillgänglig i nätverket får den virtuella datorn en annan IP-adress som är tillgänglig i nätverket.
+> hello IP-adress anges tooa virtuella datorn under redundanstestningen är hello samma IP-adress som hello virtuell dator kan få en planerad eller oplanerad växling vid fel (förutsatt att hello IP-adress är tillgänglig i nätverket hello). Om hello samma IP-adress inte är tillgänglig i nätverket hello får en annan IP-adress som är tillgänglig i nätverket hello hello virtuell dator.
 >
 >
 
 
-## <a name="test-failover-to-a-production-network-on-a-recovery-site"></a>Testa redundans för ett produktionsnätverk på en återställningsplats
-Vi rekommenderar att du väljer ett nätverk som skiljer sig från nätverket produktion recovery plats som du angav i när du utför ett redundanstest [nätverksmappning](https://docs.microsoft.com/azure/site-recovery/site-recovery-network-mapping). Men om du vill validera nätverksanslutningen från slutpunkt till slutpunkt på en virtuell dator misslyckades över, notera följande:
+## <a name="test-failover-tooa-production-network-on-a-recovery-site"></a>Testa redundans tooa produktionsnätverk på en återställningsplats
+Vi rekommenderar att du väljer ett nätverk som skiljer sig från nätverket produktion recovery plats som du angav i när du utför ett redundanstest [nätverksmappning](https://docs.microsoft.com/azure/site-recovery/site-recovery-network-mapping). Men om du verkligen toovalidate slutpunkt till slutpunkt nätverksanslutningen på en virtuell dator misslyckades över hello följande punkter:
 
-* Kontrollera att den primära virtuella datorn är avstängd när du utför redundanstestet. Om du inte kör två virtuella datorer med samma identitet i samma nätverk på samma gång. Denna situation kan leda till oönskade konsekvenser.
-* Alla ändringar som du gör i virtuella testdatorer redundans försvinner när du rensa virtuella testdatorer växling vid fel. Dessa ändringar replikeras inte till den primära virtuella datorn.
-* Det här kan du göra testning leder till avbrott för ditt produktionsprogram. Be användare av programmet inte att använda programmet när DR-test pågår.  
+* Kontrollera att hello den primära virtuella datorn stängs av när du gör hello testa redundans. Om du inte två virtuella datorer med samma identitet som ska köras i samma nätverk på hello hello hello samma tid. Denna situation kan leda tooundesired konsekvenser.
+* Alla ändringar du gör toohello testa redundans virtuella datorer går förlorade när du rensar hello testa redundans virtuella datorer. Dessa ändringar är inte replikeras tillbaka toohello primära virtuella datorn.
+* Det här kan du göra testning leder toodowntime för ditt produktionsprogram. Be användare av programmet hello inte toouse hello programmet när hello DR detaljgranska pågår.  
 
 
 ## <a name="next-steps"></a>Nästa steg

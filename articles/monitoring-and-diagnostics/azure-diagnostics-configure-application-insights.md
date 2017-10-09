@@ -1,6 +1,6 @@
 ---
-title: "Konfigurera Azure-diagnostik för att skicka data till Application Insights | Microsoft Docs"
-description: "Uppdatera Azure-diagnostik offentliga konfiguration för att skicka data till Application Insights."
+title: aaaConfigure Azure Diagnostics toosend data tooApplication insikter | Microsoft Docs
+description: Uppdatera hello Azure Diagnostics offentliga konfiguration toosend data tooApplication insikter.
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2016
 ms.author: robb
-ms.openlocfilehash: 67dc2d5bbfa2012e4e098616edda593d023c4c1e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7c36f29da8fdc12fa58c17458348a311b900b0f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Skicka Cloud Service, virtuell dator eller Service Fabric diagnostikdata till Application Insights
-Molntjänster, virtuella datorer, virtuella datorer och Service Fabric alla filnamnstillägget Azure Diagnostics att samla in data.  Azure diagnostics skickar data till Azure Storage-tabeller.  Du kan dock också pipe alla eller en delmängd av data till andra platser med hjälp av Azure-diagnostik tillägget 1.5 eller senare.
+# <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-tooapplication-insights"></a>Skicka Cloud Service, virtuell dator eller Service Fabric diagnostikdata tooApplication insikter
+Molntjänster, virtuella datorer, virtuella datorer och Service Fabric alla använda hello Azure Diagnostics tillägget toocollect data.  Azure diagnostics skickar data tooAzure Storage-tabeller.  Du kan dock också pipe alla eller en delmängd av hello data tooother platser med hjälp av Azure-diagnostik tillägget 1.5 eller senare.
 
-Den här artikeln beskriver hur du skickar data från Azure-diagnostik-tillägg till Application Insights.
+Den här artikeln beskriver hur toosend data från hello Azure Diagnostics tillägget tooApplication insikter.
 
 ## <a name="diagnostics-configuration-explained"></a>Diagnostik-konfiguration beskrivs
-Azure diagnostics tillägget 1.5 introduceras egenskaperna som är ytterligare platser där du kan skicka diagnostikdata.
+hello Azure diagnostics tillägget 1.5 introduceras sänkor, vilket ytterligare platser där du kan skicka diagnostikdata.
 
 Exempel konfigurationen av en mottagare för Application Insights:
 
@@ -63,40 +63,40 @@ Exempel konfigurationen av en mottagare för Application Insights:
     ]
 }
 ```
-- Den **Sink** *namn* attributet är ett strängvärde som unikt identifierar sink.
+- Hej **Sink** *namn* attributet är ett strängvärde som unikt identifierar hello mottagare.
 
-- Den **ApplicationInsights** element anger instrumentation nyckeln för Application insights-resurs där Azure diagnostikdata skickas.
-    - Om du inte har en befintlig Application Insights-resurs, se [skapar en ny Application Insights-resurs](../application-insights/app-insights-create-new-resource.md) mer information om att skapa en resurs och hämtar nyckeln instrumentation.
-    - Om du utvecklar en tjänst i molnet med Azure SDK 2.8 och senare fylls instrumentation nyckeln i automatiskt. Värdet är baserad på den **APPINSIGHTS_INSTRUMENTATIONKEY** konfigurationsinställning för tjänst när paketera Cloud Service-projekt. Se [Programinsikter för användning med Azure-diagnostik för att felsöka problem med Cloud Service](../cloud-services/cloud-services-dotnet-diagnostics-applicationinsights.md).
+- Hej **ApplicationInsights** element anger instrumentation nyckeln för hello Application insights-resurs där hello Azure diagnostikdata skickas.
+    - Om du inte har en befintlig Application Insights-resurs, se [skapar en ny Application Insights-resurs](../application-insights/app-insights-create-new-resource.md) mer information om att skapa en resurs och hämtar hello instrumentation nyckel.
+    - Om du utvecklar en tjänst i molnet med Azure SDK 2.8 och senare fylls instrumentation nyckeln i automatiskt. hello värdet baseras på hello **APPINSIGHTS_INSTRUMENTATIONKEY** konfigurationsinställning för tjänst när paketera hello Cloud Service-projekt. Se [Programinsikter för användning med Azure-diagnostik tootroubleshoot Molntjänsten utfärdar](../cloud-services/cloud-services-dotnet-diagnostics-applicationinsights.md).
 
-- Den **kanaler** elementet innehåller ett eller flera **kanal** element.
-    - Den *namn* attributet unikt refererar till kanalen.
-    - Den *loglevel* attribut kan du ange den Loggnivå som kanalen tillåter. Tillgängliga nivåer i den ordning de mest till minst information är:
+- Hej **kanaler** elementet innehåller ett eller flera **kanal** element.
+    - Hej *namn* attribut refererar unikt toothat kanal.
+    - Hej *loglevel* attribut kan du ange hello Loggnivå som hello kanalen tillåter. hello tillgängliga loggningsnivåer i ordningen för de flesta tooleast information är:
         - Utförlig
         - Information
         - Varning
         - Fel
         - kritiska
 
-En kanal som fungerar som ett filter och kan du välja specifika loggningsnivåer att skicka till mål-mottagare. Du kan till exempel samla in detaljerade loggarna och skicka dem till lagring, men skicka endast fel till sink.
+En kanal som fungerar som ett filter och låter dig tooselect viss loggning nivåer toosend toohello mål mottagare. Du kan till exempel samla in detaljerade loggarna och skicka dem toostorage, men skicka endast fel toohello mottagare.
 
-Följande bild visar den här relationen.
+hello visar följande bild den här relationen.
 
 ![Diagnostik offentliga konfiguration](./media/azure-diagnostics-configure-applicationinsights/AzDiag_Channels_App_Insights.png)
 
-Bilden nedan sammanfattas konfigurationsvärdena och hur de fungerar. Du kan inkludera flera handfat i konfigurationen på olika nivåer i hierarkin. Sink på den översta nivån som fungerar som en global inställning och den som anges i enskilda element fungerar som en åsidosättning av den globala inställningen.
+Följande bild hello sammanfattas hello konfigurationsvärden och hur de fungerar. Du kan inkludera flera handfat i hello konfiguration på olika nivåer i hello hierarki. hello sink toppnivå hello fungerar som en global inställning och hello något har angetts på hello enskilda element fungerar som en åsidosättning toothat global inställning.
 
 ![Diagnostik egenskaperna med Application Insights](./media/azure-diagnostics-configure-applicationinsights/Azure_Diagnostics_Sinks.png)
 
 ## <a name="complete-sink-configuration-example"></a>Fullständig sink Konfigurationsexempel
-Här är en komplett exempel på offentliga konfiguration fil som
-1. skickar alla fel till Application Insights (angivna på den **DiagnosticMonitorConfiguration** nod)
-2. skickar också utförlig nivå loggar för programloggarna (angivna på den **loggar** nod).
+Här är en komplett exempel på hello offentliga konfiguration fil som
+1. skickar alla fel tooApplication insikter (anges på hello **DiagnosticMonitorConfiguration** nod)
+2. skickar också utförlig nivå loggar för hello programloggarna (anges på hello **loggar** nod).
 
 ```XML
 <WadCfg>
   <DiagnosticMonitorConfiguration overallQuotaInMB="4096"
-       sinks="ApplicationInsights.MyTopDiagData"> <!-- All info below sent to this channel -->
+       sinks="ApplicationInsights.MyTopDiagData"> <!-- All info below sent toothis channel -->
     <DiagnosticInfrastructureLogs />
     <PerformanceCounters>
       <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT3M" />
@@ -106,7 +106,7 @@ Här är en komplett exempel på offentliga konfiguration fil som
       <DataSource name="Application!*" />
     </WindowsEventLog>
     <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose"
-            sinks="ApplicationInsights.MyLogData"/> <!-- This specific info sent to this channel -->
+            sinks="ApplicationInsights.MyLogData"/> <!-- This specific info sent toothis channel -->
   </DiagnosticMonitorConfiguration>
 
 <SinksConfig>
@@ -124,7 +124,7 @@ Här är en komplett exempel på offentliga konfiguration fil som
 "WadCfg": {
     "DiagnosticMonitorConfiguration": {
         "overallQuotaInMB": 4096,
-        "sinks": "ApplicationInsights.MyTopDiagData", "_comment": "All info below sent to this channel",
+        "sinks": "ApplicationInsights.MyTopDiagData", "_comment": "All info below sent toothis channel",
         "DiagnosticInfrastructureLogs": {
         },
         "PerformanceCounters": {
@@ -150,7 +150,7 @@ Här är en komplett exempel på offentliga konfiguration fil som
         "Logs": {
             "scheduledTransferPeriod": "PT1M",
             "scheduledTransferLogLevelFilter": "Verbose",
-            "sinks": "ApplicationInsights.MyLogData", "_comment": "This specific info sent to this channel"
+            "sinks": "ApplicationInsights.MyLogData", "_comment": "This specific info sent toothis channel"
         }
     },
     "SinksConfig": {
@@ -175,9 +175,9 @@ Här är en komplett exempel på offentliga konfiguration fil som
     }
 }
 ```
-I den tidigare konfigurationen har följande rader följande:
+I tidigare hello-konfigurationen har hello följande raderna hello följande innebörd:
 
-### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Skicka alla data som samlas in av Azure-diagnostik
+### <a name="send-all-hello-data-that-is-being-collected-by-azure-diagnostics"></a>Skicka alla hello-data som samlas in av Azure-diagnostik
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
@@ -189,7 +189,7 @@ I den tidigare konfigurationen har följande rader följande:
 }
 ```
 
-### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Skicka bara felloggar till Application Insights sink
+### <a name="send-only-error-logs-toohello-application-insights-sink"></a>Skicka bara fel loggar toohello Application Insights mottagare
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights.MyTopDiagdata">
@@ -201,7 +201,7 @@ I den tidigare konfigurationen har följande rader följande:
 }
 ```
 
-### <a name="send-verbose-application-logs-to-application-insights"></a>Skicka utförliga programloggar till Application Insights
+### <a name="send-verbose-application-logs-tooapplication-insights"></a>Skicka utförliga programloggar tooApplication insikter
 
 ```XML
 <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose" sinks="ApplicationInsights.MyLogData"/>
@@ -216,10 +216,10 @@ I den tidigare konfigurationen har följande rader följande:
 ## <a name="limitations"></a>Begränsningar
 
 - **Kanaler bara logga typ och inte prestanda räknare.** Om du anger en kanal med elementet prestandaräknaren ignoreras.
-- **Loggningsnivån för en kanal får inte överskrida loggningsnivån för vad som samlas in av Azure-diagnostik.** T.ex, du kan inte samla in program logga fel i loggarna elementet och försök att skicka utförlig loggar till Application Insights sink. Den *scheduledTransferLogLevelFilter* attributet måste alltid samla in lika eller fler loggar än loggarna som du försöker skicka till en mottagare.
-- **Du kan inte skicka blob-data som samlas in av Azure-diagnostik tillägget till Application Insights.** Till exempel allt som anges under den *kataloger* nod. För kraschdumpar faktiska krasch-dump skickas till blob storage och endast ett meddelande om att krasch-dump genererades skickas till Application Insights.
+- **hello loggningsnivån för en kanal får inte överskrida hello loggningsnivån för vad som samlas in av Azure-diagnostik.** Till exempel inte du samla in program logga fel i hello loggar element och försök toosend detaljerade loggarna toohello Application Insights mottagare. Hej *scheduledTransferLogLevelFilter* attributet måste alltid samla in lika eller fler loggar än hello loggar du försöker toosend tooa mottagare.
+- **Du kan inte skicka blob-data som samlas in av Azure-diagnostik tillägget tooApplication insikter.** Till exempel allt som anges under hello *kataloger* nod. För kraschdumpar hello faktiska krasch-dump skickas tooblob lagring och ett meddelande som hello krasch-dump genererades skickas tooApplication insikter.
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig hur du [se information om din Azure-diagnostik](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events) i Application Insights.
-* Använd [PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md) aktivera tillägget för Azure-diagnostik för ditt program.
-* Använd [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) aktivera tillägget för Azure-diagnostik för ditt program
+* Lär dig hur för[se information om din Azure-diagnostik](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events) i Application Insights.
+* Använd [PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md) tooenable hello Azure diagnostics tillägget för ditt program.
+* Använd [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) tooenable hello Azure diagnostics tillägget för ditt program

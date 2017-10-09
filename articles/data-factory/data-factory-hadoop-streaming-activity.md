@@ -1,6 +1,6 @@
 ---
-title: Transformera data med Hadoop Streaming Activity - Azure | Microsoft Docs
-description: "Lär dig hur du kan använda Hadoop Streaming Activity i ett Azure data factory för att omvandla data med Hadoop Streaming program som körs på en på-begäran/din egen HDInsight-kluster."
+title: aaaTransform data med Hadoop Streaming Activity - Azure | Microsoft Docs
+description: "Lär dig hur du kan använda hello Hadoop Streaming Activity i ett Azure data factory tootransform data med Hadoop Streaming program som körs på en på-begäran/din egen HDInsight-kluster."
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
-ms.openlocfilehash: bfe62aa60f5a0ff339e1d495d22a5fdfac10d5dc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a7ddb7268f47162709a9c8136ccd69e0b7d4ad7d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformera data med Hadoop Streaming Activity i Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,15 +33,15 @@ ms.lasthandoff: 08/18/2017
 > * [Data Lake Analytics U-SQL-aktivitet](data-factory-usql-activity.md)
 > * [Anpassad aktivitet för .NET](data-factory-use-custom-activities.md)
 
-Du kan använda HDInsightStreamingActivity aktiviteten anropa en Hadoop Streaming job från ett Azure Data Factory-pipelinen. Följande JSON-utdrag visar syntaxen för HDInsightStreamingActivity i en pipeline-JSON-fil. 
+Du kan använda hello HDInsightStreamingActivity aktiviteten anropa en Hadoop Streaming job från ett Azure Data Factory-pipelinen. hello visar följande JSON-utdrag hello syntax för att använda hello HDInsightStreamingActivity i en pipeline-JSON-fil. 
 
-HDInsight Streaming Activity i en Datafabrik [pipeline](data-factory-create-pipelines.md) Hadoop Streaming program körs på [egna](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) eller [på begäran](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-baserade HDInsight-kluster. Den här artikeln bygger på den [data transformation aktiviteter](data-factory-data-transformation-activities.md) artikel som presenterar en allmän översikt över data transformation och stöds omvandling aktiviteter.
+Hej HDInsight Streaming Activity i en Datafabrik [pipeline](data-factory-create-pipelines.md) Hadoop Streaming program körs på [egna](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) eller [på begäran](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-baserat HDInsight kluster. Den här artikeln bygger på hello [data transformation aktiviteter](data-factory-data-transformation-activities.md) artikel som presenterar en allmän översikt över data transformation och hello stöd för omvandling av aktiviteter.
 
 > [!NOTE] 
-> Om du har använt Azure Data Factory, Läs igenom [introduktion till Azure Data Factory](data-factory-introduction.md) och gör kursen: [skapa din första pipeline data](data-factory-build-your-first-pipeline.md) innan du läser den här artikeln. 
+> Om du är ny tooAzure Data Factory, Läs igenom [introduktion tooAzure Data Factory](data-factory-introduction.md) och hello Självstudier: [skapa din första pipeline data](data-factory-build-your-first-pipeline.md) innan du läser den här artikeln. 
 
 ## <a name="json-sample"></a>JSON-exempel
-HDInsight-klustret fylls automatiskt med exempel program (wc.exe och cat.exe) och (davinci.txt). Som standard är namnet på behållaren som används av HDInsight-klustret namn för själva klustret. Om klusternamnet är myhdicluster, är namnet på blobbehållare som är kopplad till exempel myhdicluster. 
+Hej HDInsight-kluster fylls automatiskt med exempel program (wc.exe och cat.exe) och (davinci.txt). Som standard är namnet på hello-behållare som används av hello HDInsight-kluster hello namnet på själva hello-klustret. Om klusternamnet är myhdicluster, är namnet på hello blob-behållare som är kopplad till exempel myhdicluster. 
 
 ```JSON
 {
@@ -89,30 +89,30 @@ HDInsight-klustret fylls automatiskt med exempel program (wc.exe och cat.exe) oc
 }
 ```
 
-Observera följande punkter:
+Observera följande punkter hello:
 
-1. Ange den **linkedServiceName** till namnet på den länkade tjänst som pekar på ditt HDInsight-kluster som strömmande mapreduce-jobbet körs.
-2. Ange vilken typ av aktivitet till **HDInsightStreaming**.
-3. För den **mapper** egenskap, ange namnet på mapper körbara. I det här exemplet är cat.exe mapper körbara.
-4. För den **reducer** egenskap, ange namnet på reducer körbara. I det här exemplet är wc.exe reducer körbara.
-5. För den **inkommande** egenskapen type, ange indatafilen (inklusive platsen) för mapparen. Exempel ”: wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt”: adfsample är blobbehållare, exempel/data/Gutenberg är mappen och davinci.txt är blob.
-6. För den **utdata** egenskapen type, ange utdatafilen (inklusive platsen) för reducer. Utdata för direktuppspelning av Hadoop-jobb skrivs till den plats som anges för den här egenskapen.
-7. I den **filePaths** ange sökvägar för mappning och reducer körbara filer. Exempel: ”adfsample/example/apps/wc.exe” adfsample är blobbehållare, exempel/appar är mappen och wc.exe är den körbara filen.
-8. För den **fileLinkedService** egenskap, ange länkad Azure Storage-tjänst som representerar den Azure-lagring som innehåller de filer som anges i avsnittet filePaths.
-9. För den **argument** egenskap, ange argument för direktuppspelningsjobbet.
-10. Den **getDebugInfo** egenskapen är ett valfritt element. När den är inställd på fel laddas i loggarna ned endast vid fel. När den är inställd på alltid laddas alltid loggar oavsett körningsstatusen.
+1. Ange hello **linkedServiceName** toohello namnet på hello länkade tjänst som pekar på vilka hello strömning mapreduce-jobbet körs tooyour HDInsight-kluster.
+2. Ange hello hello verksamhetens för**HDInsightStreaming**.
+3. För hello **mapper** egenskap, ange mapper körbara hello namn. I exemplet hello är cat.exe hello mapper körbara.
+4. För hello **reducer** egenskap, ange reducer körbara hello namn. I exemplet hello är wc.exe hello reducer körbara.
+5. För hello **inkommande** egenskapen type, ange hello indatafilen (inklusive hello plats) för hello mapper. I exemplet hello ”: wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt”: adfsample är hello blob-behållare, exempel/data/Gutenberg är hello mapp och davinci.txt är hello-blob.
+6. För hello **utdata** egenskapen type, ange hello utdatafilen (inklusive hello plats) för hello reducer. hello utdata från hello Hadoop Streaming job skrivs toohello plats som anges för den här egenskapen.
+7. I hello **filePaths** ange hello sökvägar för hello mapper och reducer körbara filer. I exemplet hello: ”adfsample/example/apps/wc.exe” adfsample är hello blob-behållare, exempel/appar är hello mapp och wc.exe är hello körbara.
+8. För hello **fileLinkedService** egenskap, ange hello Azure Storage länkade tjänst som representerar hello Azure-lagring som innehåller hello-filer som anges i hello filePaths avsnitt.
+9. För hello **argument** egenskap, ange hello argument för hello strömning jobb.
+10. Hej **getDebugInfo** egenskapen är ett valfritt element. När den är inställd tooFailure laddas hello loggar endast vid fel. När den är inställd tooAlways laddas alltid loggar oavsett hello Körstatus.
 
 > [!NOTE]
-> Som du ser i exemplet kan du ange en datamängd för utdata för Hadoop Streaming Activity för den **matar ut** egenskapen. Den här datauppsättningen är bara en dummy datamängd som krävs för att driva pipeline-schemat. Du behöver inte ange några inkommande dataset för aktiviteten för den **indata** egenskapen.  
+> Enligt hello exempel, anger du ett utdatauppsättningen för hello Hadoop Streaming Activity för hello **matar ut** egenskapen. Den här datauppsättningen är bara en dummy datamängd som är nödvändiga toodrive hello pipeline schema. Du behöver inte toospecify några inkommande dataset för hello aktivitet för hello **indata** egenskapen.  
 > 
 > 
 
 ## <a name="example"></a>Exempel
-Ordräkning strömmande kartan/minska programmet körs i pipeline i den här genomgången på Azure HDInsight-klustret. 
+hello pipeline i den här genomgången körs hello ordräkning strömmande kartan/minska program på Azure HDInsight-klustret. 
 
 ### <a name="linked-services"></a>Länkade tjänster
 #### <a name="azure-storage-linked-service"></a>Länkad Azure-lagringstjänst
-Först skapar du en länkad tjänst om du vill länka Azure Storage som används av Azure HDInsight-kluster till Azure data factory. Om du kopiera och klistra in följande kod, Glöm inte att ersätta kontonamn och kontonyckel med namn och nyckel för Azure Storage. 
+Först skapar du en länkad tjänst toolink hello Azure Storage som används av hello Azure HDInsight-kluster toohello Azure data factory. Om du kopiera och klistra in följande kod hello, Glöm inte tooreplace namn och kontonyckel med hello namnet och nyckeln för Azure Storage. 
 
 ```JSON
 {
@@ -127,7 +127,7 @@ Först skapar du en länkad tjänst om du vill länka Azure Storage som används
 ```
 
 #### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight länkad tjänst
-Därefter skapar du en länkad tjänst om du vill länka ditt Azure HDInsight-kluster till Azure data factory. Om du kopiera och klistra in följande kod, Ersätt HDInsight-klustrets namn med namnet på ditt HDInsight-kluster och ändra värdena för användarens namn och lösenord. 
+Därefter måste skapa du en länkad tjänst toolink din Azure HDInsight-kluster toohello Azure data factory. Om du kopiera och klistra in följande kod hello, Ersätt HDInsight-klustrets namn med hello namnet på ditt HDInsight-kluster och ändra värdena för användarens namn och lösenord. 
 
 ```JSON
 {
@@ -146,7 +146,7 @@ Därefter skapar du en länkad tjänst om du vill länka ditt Azure HDInsight-kl
 
 ### <a name="datasets"></a>Datauppsättningar
 #### <a name="output-dataset"></a>Datamängd för utdata
-Pipeline i det här exemplet tar inte alla indata. Du kan ange en datamängd för utdata för aktiviteten strömning HDInsight. Den här datauppsättningen är bara en dummy datamängd som krävs för att driva pipeline-schemat. 
+hello pipeline i det här exemplet tar inte alla indata. Du kan ange en datamängd för utdata för hello HDInsight Streaming Activity. Den här datauppsättningen är bara en dummy datamängd som är nödvändiga toodrive hello pipeline schema. 
 
 ```JSON
 {
@@ -171,9 +171,9 @@ Pipeline i det här exemplet tar inte alla indata. Du kan ange en datamängd fö
 ```
 
 ### <a name="pipeline"></a>Pipeline
-Pipeline i det här exemplet har endast en aktivitet som är av typen: **HDInsightStreaming**. 
+hello pipeline i det här exemplet har endast en aktivitet som är av typen: **HDInsightStreaming**. 
 
-HDInsight-klustret fylls automatiskt med exempel program (wc.exe och cat.exe) och (davinci.txt). Som standard är namnet på behållaren som används av HDInsight-klustret namn för själva klustret. Om klusternamnet är myhdicluster, är namnet på blobbehållare som är kopplad till exempel myhdicluster.  
+Hej HDInsight-kluster fylls automatiskt med exempel program (wc.exe och cat.exe) och (davinci.txt). Som standard är namnet på hello-behållare som används av hello HDInsight-kluster hello namnet på själva hello-klustret. Om klusternamnet är myhdicluster, är namnet på hello blob-behållare som är kopplad till exempel myhdicluster.  
 
 ```JSON
 {

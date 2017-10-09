@@ -1,6 +1,6 @@
 ---
-title: "Anslutningsappar för Azure Logic Apps | Microsoft Docs"
-description: Bygg och skapa logikappar bland alla Microsoft-hanterade anslutningsappar
+title: "aaaConnectors för Logikappar i Azure | Microsoft Docs"
+description: "Välj från alla hello tillgängliga Microsoft-hanterade anslutningar toobuild och skapa logikappar"
 services: logic-apps
 documentationcenter: 
 author: MandiOhlinger
@@ -15,44 +15,44 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: c14ac7592efabfec8668d7437463e2d8771ee072
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d681d13d642e6e1512d1f8ab0e1078a194b5da83
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="connectors-list"></a>Lista över anslutningsappar
 > [!TIP]
-> I den [fullständiga A-Z-listan](#az) (i det här avsnittet) listas alla tillgängliga anslutningsappar du kan använda i Logic Apps. [Information om anslutningen](/connectors/) visar en lista över alla utlösare och åtgärder som definierats i swagger och visar också eventuella gränser för varje anslutning.
+> Hej [A-Z lista](#az) visar alla tillgängliga hello kopplingar som du kan du använda i dina Logic Apps (i det här avsnittet). [Information om anslutningen](/connectors/) visar en lista över alla utlösare och åtgärder som definierats i hello swagger och visar också några gränser för varje koppling.
 
-Anslutningsappar är en viktig del när du skapar logikappar. Med sådana anslutningsappar kan du verkligen utöka dina lokala och molnbaserade program för att göra olika saker med data som du skapar och data du redan har. Anslutningsapparna finns i följande kategorier: 
+Anslutningsappar är en viktig del när du skapar logikappar. Med hjälp av dessa anslutningar, kan du expandera din lokala och molnet program toodo olika saker med data som du skapar och data som du redan har. hello kopplingar är tillgängliga i hello följande kategorier: 
 
 * **Standardanslutningsappar**: Automatiskt tillgängliga och ingår när du använder logikappar. Vissa exempel är Service Bus, Power BI, Oracle Database, OneDrive och många fler.
 
-* **Anslutningsappar för integrationskonton**: De här är tillgängliga när du köper ett integrationskonto. Med sådana anslutningsappar kan du omvandla och validera XML, bearbeta business-to-business-meddelanden med AS2 / X12 / EDIFACT och koda och avkoda flata filer. Om du arbetar med BizTalk Server är de här anslutningsapparna en bra metod för att utöka dina BizTalk-arbetsflöden till Azure.  
+* **Anslutningsappar för integrationskonton**: De här är tillgängliga när du köper ett integrationskonto. Med sådana anslutningsappar kan du omvandla och validera XML, bearbeta business-to-business-meddelanden med AS2 / X12 / EDIFACT och koda och avkoda flata filer. Om du arbetar med BizTalk Server sedan dessa kopplingar är en bra passar tooexpand BizTalk-arbetsflöden i Azure.  
 
-    BizTalk Server har också en [Logic Apps-adapter](https://msdn.microsoft.com/library/mt787163.aspx) för mottagning från en logikapp och sändning till en logikapp.
+    BizTalk Server har också en [Logic Apps kortet](https://msdn.microsoft.com/library/mt787163.aspx) som innehåller från en logikapp, skicka och ta emot tooa logikapp.
 
 * **Enterprise-anslutningsappar**: Innehåller MQ och SAP. Tillgängligt för en extra kostnad. 
 
-I informationen om [Logic Apps-priser](https://azure.microsoft.com/pricing/details/logic-apps/) och [prismodellen](../logic-apps/logic-apps-pricing.md) kan du läsa mer om kostnaderna. 
+[Priser för Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) och [priser modellen](../logic-apps/logic-apps-pricing.md) innehåller mer information om hello kostnader. 
 
 ## <a name="popular-connectors"></a>Populära anslutningsappar
-Det finns tusentals program och miljontals körningar som bearbetar data och information med hjälp av dessa anslutningsappar. I följande tabell anges de populäraste och några favoriter hos våra användare:
+Det finns tusentals program och miljontals körningar som bearbetar data och information med hjälp av dessa anslutningsappar. hello i den följande tabellen listas hello mest populära och vissa Favoriter med våra användare:
 
 | |  |  |  |
 | --- | --- | --- | --- |
-| [![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc] | Om du vill automatisera alla aktiviteter med ditt lagringskonto bör du titta på den här anslutningsappen. Stöder CRUD-åtgärder (skapa, läsa, uppdatera, ta bort). | [![API Icon][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | Skapa funktioner som kör anpassade fragment för C# eller node.js och använd sedan använda dessa funktioner i logikapparna.  |
-| [![API Icon][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | Detta är ett av de mest efterfrågade anslutningsprogrammen. Den har utlösare och åtgärder för att automatisera arbetsflöden med leads och mycket mer. | [![API Icon][Event-Hubs-icon]<br/>**Event Hubs**][event-hubs-doc] | Använda och publicera händelser i en Event Hub. Du kan till exempel hämta utdata från din logikapp med Event Hubs och sedan skicka dem till en leverantör av realtidsanalys. |
-| [![API Icon][FTPicon]<br/>**FTP**][FTPdoc] | Om FTP-servern är tillgänglig från internet kan du automatisera arbetsflöden att arbeta med filer och mappar. <br/><br/>Det finns också SFTP med SFTP-anslutningsappen. | [![API Icon][HTTPicon]<br/>**HTTP**][httpdoc] | Använd logikappar för att kommunicera med valfri slutpunkt över HTTP. |
-| [![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | Massor av utlösare och många fler åtgärder för att använda e-post och händelser för Office 365 i dina arbetsflöden. <br/><br/>Den här anslutningsappen innehåller ett *e-postmeddelande med godkännande* för att godkänna semesteransökningar, utgiftsrapporter och så vidare. <br/><br/>Office 365-användare är också tillgängliga med anslutningsappen för Office 365-användare.| [![API Icon][HTTP-Requesticon]<br/>**Begäran/svar**][HTTP-Requestdoc] | Den här anslutningsappen tillhandahåller en HTTPS-URL. När logikappen tar emot en begäran till denna URL startar logikappen. |
-| [![API Icon][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | Logga enkelt in med ditt Salesforce-konto för att få åtkomst till objekt som leads med mera. |  [![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc] | Den populäraste anslutningsappen i Logic Apps, den innehåller utlösare och åtgärder för att göra asynkrona meddelanden och publicera/prenumerera på köer, prenumerationer och avsnitt. |
-|  [![API Icon][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | Om du gör något med SharePoint och kan dra nytta av automatisering rekommenderar vi att du tittar på den här anslutningsappen. Kan användas med lokal SharePoint och SharePoint Online. | [![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | En av de mest använda anslutningsapparna. Den kan ansluta till en lokal SQL Server och en Azure SQL Database. | 
-| [![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc] | Logga enkelt in med ett Twitter-konto, och påbörja sedan ett arbetsflöde när en ny tweet postas. Spara sedan dessa tweets till en SQL Database eller SharePoint-lista. | | | 
+| [![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc] | Om du vill tooautomate alla uppgifter med ditt lagringskonto, bör du titta på den här anslutningen. Stöder CRUD-åtgärder (skapa, läsa, uppdatera, ta bort). | [![API Icon][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | Skapa funktioner som kör anpassade fragment för C# eller node.js och använd sedan använda dessa funktioner i logikapparna.  |
+| [![API Icon][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | En av hello de flesta vanliga för kopplingar. Den har utlösare och åtgärder toohelp Automatisera arbetsflöden leads och mycket mer. | [![API Icon][Event-Hubs-icon]<br/>**Event Hubs**][event-hubs-doc] | Använda och publicera händelser i en Event Hub. Du kan till exempel hämta utdata från din logikapp med Händelsehubbar och sedan skicka hello utdata tooa leverantör av realtidsanalys. |
+| [![API Icon][FTPicon]<br/>**FTP**][FTPdoc] | Om FTP-servern är tillgänglig från hello internet, och sedan kan du automatisera arbetsflöden toowork med filer och mappar. <br/><br/>SFTP är också tillgänglig i hello SFTP-anslutningen. | [![API Icon][HTTPicon]<br/>**HTTP**][httpdoc] | Använda logic apps toocommunicate med valfri slutpunkt via HTTP. |
+| [![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | Mängd utlösare, och många fler åtgärder toouse Office 365 e-post och händelser i dina arbetsflöden. <br/><br/>Denna koppling inkluderar en *godkännande e-post* åtgärd tooapprove semester begäranden utgifter rapporter och så vidare. <br/><br/>Office 365-användare finns också med hello användare av Office 365-kopplingen.| [![API Icon][HTTP-Requesticon]<br/>**Begäran/svar**][HTTP-Requestdoc] | Den här anslutningsappen tillhandahåller en HTTPS-URL. När hello logikapp tar emot en begäran toothis URL, startar hello logikapp. |
+| [![API Icon][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | Enkelt logga in med ditt Salesforce-konto tooget åtkomst tooobjects, till exempel Leads, med mera. |  [![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc] | hello populäraste anslutningen inom logic apps kan det innehåller utlösare och åtgärder toodo asynkrona meddelanden och publicera/prenumerera med köer, prenumerationer och ämnen. |
+|  [![API Icon][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | Om du gör något med SharePoint och kan dra nytta av automatisering rekommenderar vi att du tittar på den här anslutningsappen. Kan användas med lokal SharePoint och SharePoint Online. | [![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | En av hello används oftast kopplingar, den kan ansluta tooan lokala SQL Server och en Azure SQL Database. | 
+| [![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc] | Logga enkelt in med ett Twitter-konto, och påbörja sedan ett arbetsflöde när en ny tweet postas. Spara dessa tweets tooa SQL-databas eller en SharePoint-lista. | | | 
 
 ## <a name="integration-account-connectors"></a>Anslutningar för integrationskonton 
 
-Enterprise-integrationspaketet (EIP) innehåller anslutningsappar som är välkända för BizTalk Server-communityn. När du köper ett [integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) får du också följande anslutningsappar: 
+hello Enterprise Integration Pack (EIP) innehåller kopplingar som är kända toohello BizTalk Server-communityn. När du köper en [integrering konto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), du får också hello följande kopplingar: 
 
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -62,7 +62,7 @@ Enterprise-integrationspaketet (EIP) innehåller anslutningsappar som är välk�
 
 ## <a name="enterprise-connectors"></a>Enterprise-anslutningsappar
 
-Anslut dina företagsprogram med dina logikappar.
+Ansluta tooyour företagsprogram inom dina logic apps.
 
 |  |  |
 | --- | --- |
@@ -71,7 +71,7 @@ Anslut dina företagsprogram med dina logikappar.
 
 ## <a name="az"></a>Fullständig lista, A–Z
 
-[Information om anslutningen](/connectors/) visar en lista över alla utlösare och åtgärder som definierats i swagger och visar också eventuella gränser för varje anslutning.
+[Information om anslutningen](/connectors/) lista över alla utlösare och åtgärder som definierats i hello swagger och visar också några gränser för varje koppling.
 
 | | | | | | | | | | | | | |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -80,26 +80,26 @@ Anslut dina företagsprogram med dina logikappar.
 
 | | |
 |---|---|
-|<a name="1"></a>10to8-schemaläggning<br/><br/><a name="a"></a>Act!<br/>Adobe Creative Cloud<br/>appFigures<br/>[AS2][as2doc]<br/>Asana<br/>Azure Active Directory (AD)<br/>Azure API Management<br/>Azure Apptjänster<br/>Azure Application<br/>Azure Automation<br/>[Azure Blob Storage][azureblobstoragedoc]<br/>Azure Data Lake<br/>Azure DocumentDB (Cosmos DB)<br/>[Azure Functions][azure-functionsdoc]<br/>[Azure Logic Apps][nested-logic-appdoc]<br/>AzureML<br/>Azure Queues<br/>Azure Resource Manager<br/>[Azure SQL Database][sql-serverdoc]<br/><br/><a name="b"></a>Basecamp 2<br/>Basecamp 3<br/>Batch<br/>Benchmark Email<br/>Bing Search<br/>Bitbucket<br/>Bitly<br/>BizTalk Server<br/>Blogger<br/>Box<br/>Buffer<br/><br/><a name="c"></a>Calendly<br/>Campfire<br/>Capsule CRM<br/>Chatter<br/>Cognito-formulär<br/>Prissättning för Cognitive Services – API för visuellt innehåll<br/>Ansikts-API för Cognitive Services<br/>Cognitive Services LUIS<br/>Cognitive Services-textanalys<br/>Common Data Service<br/>Konvertering av innehåll<br/>Kontroll-avsluta<br/>[Custom APIs / web apps][api/web-appdoc]<br/><br/><a name="d"></a>Dataåtgärder<br/>[DB2][db2doc]<br/>Disqus<br/>DocuSign<br/>Do Until<br/>Dropbox<br/>[Dynamics 365 CRM Online][Dynamics-365doc]<br/>Dynamics 365 for Financials<br/>Dynamics 365 for Operations<br/>Dynamics NAV<br/><br/><a name="e"></a>Easy Redmine<br/>EDIFACT<br/>[Event Hubs][event-hubs-doc]<br/>Eventbrite<br/><br/><a name="f"></a>Facebook<br/>[Filsystem][filesystemdoc]<br/>[Flat fil][flatfiledoc]<br/>FreshBooks<br/>Freshdesk<br/>Freshservice<br/>[FTP][ftpdoc]<br/><br/><a name="g"></a>GitHub<br/>Gmail<br/>Google Calendar<br/>Google Contacts<br/>Google Drive<br/>Google-blad<br/>Google-uppgifter<br/>GoToMeeting<br/>GoToTraining<br/>GoToWebinar<br/><br/><a name="h"></a>Harvest<br/>HelloSign<br/>HipChat<br/>[HTTP][httpdoc]<br/>[HTTP + Swagger][http-swaggerdoc]<br/>[HTTP-webhook][webhookdoc]<br/><br/><a name="i"></a>[Informix][informixdoc]<br/>Infusionsoft<br/>Inoreader<br/>Insightly<br/>Instagram<br/>Instapaper<br/>Integrationskonto<br/>Intercom | <a name="j"></a>JotForm<br/>JIRA<br/><br/><a name="l"></a>LeanKit<br/>LiveChat<br/><br/><a name="m"></a>MailChimp<br/>Mandrill<br/>Medel<br/>Microsoft Forms<br/>Microsoft Teams<br/>Microsoft Translator<br/>[MQ][mqdoc]<br/>MSN Väder<br/>Muhimbi PDF<br/>MySQL<br/><br/><a name="n"></a>Nexmo<br/><br/><a name="o"></a>[Office 365 Outlook][office365-outlookdoc]<br/>Office 365-användare<br/>Office 365 Video<br/>OneDrive<br/>OneDrive för företag<br/>OneNote (företag)<br/>[Oracle Database][oracle-db-doc]<br/>Outlook Customer Manager<br/>Outlook-uppgifter<br/>Outlook.com<br/><br/><a name="p"></a>PagerDuty<br/>Parserr<br/>Paylocity<br/>Pinterest<br/>Pipedrive<br/>Pivotal Tracker<br/>Planner<br/>PostgreSQL<br/>Power BI<br/>Project Online<br/><br/><a name="r"></a>Redmine<br/>[Begäran/svar][http-requestdoc]<br/>RSS<br/><br/><a name="s"></a>[Salesforce][salesforcedoc]<br/>[SAP Application Server][sapconnector]<br/>[SAP Message Server][sapconnector]<br/>[Schema][recurrencedoc]<br/>Omfång<br/>SendGrid<br/>Skicka meddelanden till en batch<br/>[Service Bus][service-busdoc]<br/>SFTP<br/>[SharePoint Online][sharepointdoc]<br/>[SharePoint Server][sharepointserver]<br/>Slack<br/>Smartsheet<br/>SMTP<br/>SparkPost<br/>[SQL Server][sql-serverdoc]<br/>Stripe<br/>SurveyMonkey<br/>Switch Case<br/><br/><a name="t"></a>Teamwork Projects<br/>Teradata<br/>Todoist<br/>Toodledo<br/>[Omvandla XML][xmltransformdoc]<br/>Trello<br/>Twilio<br/>[Twitter][twitterdoc]<br/>Typeform<br/><br/><a name="u"></a>UserVoice<br/><br/><a name="v"></a>Variabler<br/>Vimeo<br/>Visual Studio Team Services<br/><br/><a name="w"></a>WebMerge<br/>WordPress<br/>Wunderlist<br/><br/><a name="x"></a>[X12][x12doc]<br/>[XML-verifiering][xmlvalidatedoc]<br/><br/><a name="y"></a>Yammer<br/>YouTube<br/><br/><a name="z"></a>Zendesk |
+|<a name="1"></a>10to8-schemaläggning<br/><br/><a name="a"></a>Act!<br/>Adobe Creative Cloud<br/>appFigures<br/>[AS2][as2doc]<br/>Asana<br/>Azure Active Directory (AD)<br/>Azure API Management<br/>Azure Apptjänster<br/>Azure Application<br/>Azure Automation<br/>[Azure Blob Storage][azureblobstoragedoc]<br/>Azure Data Lake<br/>Azure DocumentDB (Cosmos DB)<br/>[Azure Functions][azure-functionsdoc]<br/>[Azure Logic Apps][nested-logic-appdoc]<br/>AzureML<br/>Azure Queues<br/>Azure Resource Manager<br/>[Azure SQL Database][sql-serverdoc]<br/><br/><a name="b"></a>Basecamp 2<br/>Basecamp 3<br/>Batch<br/>Benchmark Email<br/>Bing Search<br/>Bitbucket<br/>Bitly<br/>BizTalk Server<br/>Blogger<br/>Box<br/>Buffer<br/><br/><a name="c"></a>Calendly<br/>Campfire<br/>Capsule CRM<br/>Chatter<br/>Cognito-formulär<br/>Prissättning för Cognitive Services – API för visuellt innehåll<br/>Ansikts-API för Cognitive Services<br/>Cognitive Services LUIS<br/>Cognitive Services-textanalys<br/>Common Data Service<br/>Konvertering av innehåll<br/>Kontroll-avsluta<br/>[Custom APIs / web apps][api/web-appdoc]<br/><br/><a name="d"></a>Dataåtgärder<br/>[DB2][db2doc]<br/>Disqus<br/>DocuSign<br/>Do Until<br/>Dropbox<br/>[Dynamics 365 CRM Online][Dynamics-365doc]<br/>Dynamics 365 for Financials<br/>Dynamics 365 for Operations<br/>Dynamics NAV<br/><br/><a name="e"></a>Easy Redmine<br/>EDIFACT<br/>[Event Hubs][event-hubs-doc]<br/>Eventbrite<br/><br/><a name="f"></a>Facebook<br/>[Filsystem][filesystemdoc]<br/>[Flat fil][flatfiledoc]<br/>FreshBooks<br/>Freshdesk<br/>Freshservice<br/>[FTP][ftpdoc]<br/><br/><a name="g"></a>GitHub<br/>Gmail<br/>Google Calendar<br/>Google Contacts<br/>Google Drive<br/>Google-blad<br/>Google-uppgifter<br/>GoToMeeting<br/>GoToTraining<br/>GoToWebinar<br/><br/><a name="h"></a>Harvest<br/>HelloSign<br/>HipChat<br/>[HTTP][httpdoc]<br/>[HTTP + Swagger][http-swaggerdoc]<br/>[HTTP-webhook][webhookdoc]<br/><br/><a name="i"></a>[Informix][informixdoc]<br/>Infusionsoft<br/>Inoreader<br/>Insightly<br/>Instagram<br/>Instapaper<br/>Integrationskonto<br/>Intercom | <a name="j"></a>JotForm<br/>JIRA<br/><br/><a name="l"></a>LeanKit<br/>LiveChat<br/><br/><a name="m"></a>MailChimp<br/>Mandrill<br/>Medel<br/>Microsoft Forms<br/>Microsoft Teams<br/>Microsoft Translator<br/>[MQ][mqdoc]<br/>MSN Väder<br/>Muhimbi PDF<br/>MySQL<br/><br/><a name="n"></a>Nexmo<br/><br/><a name="o"></a>[Office 365 Outlook][office365-outlookdoc]<br/>Office 365-användare<br/>Office 365 Video<br/>OneDrive<br/>OneDrive för företag<br/>OneNote (företag)<br/>[Oracle Database][oracle-db-doc]<br/>Outlook Customer Manager<br/>Outlook-uppgifter<br/>Outlook.com<br/><br/><a name="p"></a>PagerDuty<br/>Parserr<br/>Paylocity<br/>Pinterest<br/>Pipedrive<br/>Pivotal Tracker<br/>Planner<br/>PostgreSQL<br/>Power BI<br/>Project Online<br/><br/><a name="r"></a>Redmine<br/>[Begäran/svar][http-requestdoc]<br/>RSS<br/><br/><a name="s"></a>[Salesforce][salesforcedoc]<br/>[SAP Application Server][sapconnector]<br/>[SAP Message Server][sapconnector]<br/>[Schema][recurrencedoc]<br/>Omfång<br/>SendGrid<br/>Skicka meddelanden toobatch<br/>[Service Bus][service-busdoc]<br/>SFTP<br/>[SharePoint Online][sharepointdoc]<br/>[SharePoint Server][sharepointserver]<br/>Slack<br/>Smartsheet<br/>SMTP<br/>SparkPost<br/>[SQL Server][sql-serverdoc]<br/>Stripe<br/>SurveyMonkey<br/>Switch Case<br/><br/><a name="t"></a>Teamwork Projects<br/>Teradata<br/>Todoist<br/>Toodledo<br/>[Omvandla XML][xmltransformdoc]<br/>Trello<br/>Twilio<br/>[Twitter][twitterdoc]<br/>Typeform<br/><br/><a name="u"></a>UserVoice<br/><br/><a name="v"></a>Variabler<br/>Vimeo<br/>Visual Studio Team Services<br/><br/><a name="w"></a>WebMerge<br/>WordPress<br/>Wunderlist<br/><br/><a name="x"></a>[X12][x12doc]<br/>[XML-verifiering][xmlvalidatedoc]<br/><br/><a name="y"></a>Yammer<br/>YouTube<br/><br/><a name="z"></a>Zendesk |
 
 > [!TIP]
-> För att komma igång med Azure Logic Apps innan du registrerar dig för ett Azure-konto går du till [Prova Logic Apps](https://tryappservice.azure.com/?appservice=logic). Du kan skapa en kortvarig startlogikapp omedelbart. Inget kreditkort krävs, och du gör inga åtaganden.
+> Gå tooget igång med Azure Logikappar innan du registrerar dig för ett Azure-konto för[försök Logic Apps](https://tryappservice.azure.com/?appservice=logic). Du kan skapa en kortvarig startlogikapp omedelbart. Inget kreditkort krävs, och du gör inga åtaganden.
 
 ## <a name="connectors-as-triggers-and-actions"></a>Anslutningsappar som utlösare och åtgärder
 
-En **utlösare** startar eller kör en instans på din logikapp. Flera anslutningsappar innehåller utlösare som kan meddela din app när specifika händelser äger rum. FTP-anslutningsappen har till exempel utlösaren `OnUpdatedFile` som meddelar din logikapp när en fil har uppdaterats. 
+En **utlösare** startar eller kör en instans på din logikapp. Flera anslutningsappar innehåller utlösare som kan meddela din app när specifika händelser äger rum. Hello FTP-anslutningen har till exempel hello `OnUpdatedFile` utlösaren som startar logikappen när en fil har uppdaterats. 
 
-Logic Apps innehåller följande typer av utlösare:  
+Logic apps är hello följande typer av utlösare:  
 
-* *Sökningsutlösare*: Dessa utlösare avsöker din tjänst med en angiven frekvens för att söka efter nya data. 
+* *Avsöka utlösare*: dessa utlösare avsöker din tjänst med en frekvens som är angiven toocheck för nya data. 
 
-    När det finns nya data körs en ny instans av din logikapp med data som indata. 
+    När det finns nya data körs en ny instans av logikappen med hello data som indata. 
 
-* *Push-utlösare*: de här utlösarna lyssnar efter data på en slutpunkt eller efter att en händelse ska inträffa och utlöser därefter en ny instans av din logikapp.
+* *Push-utlösare*: dessa utlösare lyssnar efter data på en slutpunkt eller för en händelse utlöser toohappen, sedan en ny instans av logikappen.
 
 * *Upprepningsutlösare*: Den här utlösaren instantierar en instans av din logikapp på en app i ett förutbestämt schema.
 
-Anslutningsapparna tillhandahåller också **åtgärder** som du kan använda i ditt arbetsflöde. Din logikapp kan till exempel söka efter data och sedan använda dessa data senare i din logikapp. Mer specifikt kan du låsa upp kunddata från en SQL Database och sean använda dessa kunddata för att bygga ditt arbetsflöde. 
+Anslutningsapparna tillhandahåller också **åtgärder** som du kan använda i ditt arbetsflöde. Din logikapp kan till exempel söka efter data och sedan använda dessa data senare i din logikapp. Mer specifikt kan du söka efter kunddata från en SQL-databas och sedan använda den här kunden data toobuild arbetsflödet. 
 
 > [!TIP]
 > I [översikten över anslutningsappar](connectors-overview.md) finns mer information om utlösare och åtgärder. 
@@ -107,30 +107,30 @@ Anslutningsapparna tillhandahåller också **åtgärder** som du kan använda i 
 
 ## <a name="message-manipulation-actions"></a>Åtgärder för att manipulera meddelanden
 
-Logikappar innehåller inbyggda åtgärder som kan ändra eller manipulera nyttolastdata. Den inbyggda anslutningsappen **Dataåtgärder** innehåller följande åtgärder: 
+Logikappar innehåller inbyggda åtgärder som kan ändra eller manipulera nyttolastdata. hello inbyggda **dataåtgärder** koppling inkluderar hello följande åtgärder: 
 
 | | |
 |---|---|
-| **Skriva** | Skapa eller generera värden eller objekt att använda senare eller när du skapar ditt arbetsflöde. Du kan exempelvis redigera ett JSON-objekt med värden från flera steg, eller beräkna en konstant för senare referens i en logikappkörning. |
-| **Skapa CSV-tabell**<br/>**Skapa HTML-tabell** | Omvandla en matrisresultatuppsättning till en CSV- eller HTML-tabell. Lägg exempelvis till en åtgärd för att lista poster för CRM och lägg till ett filter för poster som lagts till idag. Skicka sedan resultatet som en HTML-tabell i ett e-postmeddelande. |
-| **Filtrera matris** (fråga) | Filtrera ett resultat på de poster som intresserar dig. Du kan exempelvis söka på alla tweets med `#Azure` och sedan ”filtrera” de returnerade tweetsen så att de endast visar resultat som är `Tweeted_by_followers > 50`. |
-| **Anslut dig** | Anslut dig till en matris med en avgränsare. Till exempel returnerar åtgärden för att identifiera nyckelfraser en matris med nyckelfraser. Du kan "ansluta" dig till dem med en `,` eller liknande. Så istället för `["Some", "Phrase"]` har du `"Some, Phrase"`. |
-| **Parsa JSON** | Parsa ut och få åtkomst till värden från ett JSON-objekt i designern. Om till exempel Azure-funktionen returnerar en JSON-nyttolast kan du parsa den för att få åtkomst till JSON-egenskaperna senare i ett annat steg. Åtgärden validerar också att JSON matchar det angivna schemat vid körning. | 
-| **Välj** | Välj vissa egenskaper i en matris för vidare bearbetning. Om du ”listar poster” från SQL och den returnerar 15 kolumner ska du bara välja några av kolumnerna för ytterligare bearbetning. Utdata är en matris som endast innehåller de egenskaper du väljer. |
+| **Skriva** | Skapa eller generera värden eller objekt toouse senare, eller som du skapar arbetsflödet. Du kan exempelvis skapa en JSON-objekt med värden från flera steg eller beräkna en konstant tooreference senare i en logikapp som körs. |
+| **Skapa CSV-tabell**<br/>**Skapa HTML-tabell** | Omvandla en matrisresultatuppsättning till en CSV- eller HTML-tabell. Till exempel lägga till hello CRM ”lista” åtgärd och Lägg till ett filter för poster som lagts till i dag. Skicka hello resultat som en HTML-tabell i ett e-postmeddelande. |
+| **Filtrera matris** (fråga) | Filtrera en resultatet set toohello transaktioner som intresserar dig. Till exempel söka efter alla tweets med `#Azure`, och sedan returneras ”filter” Hej tweets tooonly returnerar resultat som är `Tweeted_by_followers > 50`. |
+| **Anslut dig** | Anslut dig till en matris med en avgränsare. Till exempel returnerar hello identifiera nyckeln fraser åtgärden en matris av viktiga fraser. Du kan "ansluta" dig till dem med en `,` eller liknande. Så istället för `["Some", "Phrase"]` har du `"Some, Phrase"`. |
+| **Parsa JSON** | Tolka och komma åt värden från ett JSON-objekt i hello designer. Till exempel om din Azure-funktion returnerar en JSON-nyttolast kan sedan du parsa den tooaccess hello JSON egenskaper senare i ytterligare ett steg. hello åtgärd validerar också att hello JSON matchar hello angivna schemat vid körning. | 
+| **Välj** | Välj vissa egenskaper i en matris för vidare bearbetning. Om du ”listar poster” från SQL och den returnerar 15 kolumner ska du bara välja några av kolumnerna för ytterligare bearbetning. hello-utdata är en matris som endast innehåller hello egenskaper som du väljer. |
 
 ## <a name="custom-connectors-and-azure-certification"></a>Anpassade anslutningsappar och Azure-certifiering 
 
-För att anropa API:er som kör anpassad kod eller som inte är tillgängliga som kopplingar kan du [utöka plattformen Logic Apps](../logic-apps/logic-apps-create-api-app.md) genom att skapa REST-baserade API Apps som anpassade kopplingar. 
+toocall i API: er som kör anpassad kod eller inte är tillgängliga som kopplingar kan du utöka hello Logic Apps plattform av [skapa REST-baserad API Apps som anpassade kopplingar](../logic-apps/logic-apps-create-api-app.md). 
 
-Om du vill göra dina anpassade API Apps offentliga och använda dem i Azure ska du skicka dina nomineringar till [programmet Microsoft Azure Certified](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/).
+Om du vill toomake din anpassade API Apps offentliga och tillgängliga toouse i Azure, sedan skicka nomineringarna-toohello [Microsoft Azure-certifierad programmet](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/).
 
 ## <a name="get-help"></a>Få hjälp
 
-I [Azure Logic Apps-forumet](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) kan du ställa frågor, besvara frågor och sedan vad andra Azure Logic Apps-användare håller på med.
+tooask frågor, besvara frågor och se vilka andra användare i Azure Logic Apps gör gå toohello [Logikappar i Azure-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-På [webbplatsen för Logic Apps-användarfeedback](http://aka.ms/logicapps-wish) kan du hjälpa till med att förbättra Azure Logic Apps och anslutningsapparna genom att rösta på förslag eller komma med egna förslag på förbättringar.
+toohelp förbättra Azure Logic Apps och kopplingar, rösta eller skicka in förslag på hello [Logic Apps användaren feedbackwebbplats](http://aka.ms/logicapps-wish).
 
-Saknar vi ett avsnitt om anslutningsprogram eller någon annan viktig information? Om Ja, hjälpa oss genom att bidra till våra befintliga avsnitt eller skriv ett nytt. Vår dokumentation är öppen källkod och finns på GitHub. Kom igång på vår [GitHub-lagringsplats](https://github.com/Microsoft/azure-docs). 
+Saknar vi ett avsnitt om anslutningsprogram eller någon annan viktig information? Om Ja, hjälpa oss genom att lägga till befintliga artiklar för tooour eller skriva egna. Vår dokumentation är öppen källkod och finns på GitHub. Kom igång på vår [GitHub-lagringsplats](https://github.com/Microsoft/azure-docs). 
 
 ## <a name="next-steps"></a>Nästa steg
 * [Skapa din första logiska app](../logic-apps/logic-apps-create-a-logic-app.md)
@@ -142,28 +142,28 @@ Saknar vi ett avsnitt om anslutningsprogram eller någon annan viktig informatio
 [api/web-appdoc]: ../logic-apps/logic-apps-custom-hosted-api.md "Integrera logikappar med App Service API Apps"
 [azureblobstoragedoc]: ./connectors-create-api-azureblobstorage.md "Hantera filer i blobbehållaren med Azure Blob Storage Connector"
 [azure-functionsdoc]: ../logic-apps/logic-apps-azure-functions.md "Integrera logikappar med Azure Functions"
-[db2doc]: ./connectors-create-api-db2.md "Anslut till IBM DB2 i molnet eller lokalt. Uppdatera en rad, hämta en tabell och mycket mer"
-[Dynamics-365doc]: ./connectors-create-api-crmonline.md "Ansluta till Dynamics CRM Online så att du kan arbeta med CRM Online-data"
-[event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "Anslut till Azure Event Hubs. Ta emot och skicka händelser mellan logikappar och händelsehubbar"
-[filesystemdoc]: ../logic-apps/logic-apps-using-file-connector.md "Ansluta till ett lokalt filsystem"
-[ftpdoc]: ./connectors-create-api-ftp.md "Ansluta till en FTP-/FTPS-server för FTP-aktiviteter, till exempel överföring, hämtning och borttagning av filer och mycket mer"
-[httpdoc]: ./connectors-native-http.md "Göra HTTP-anrop med HTTP-anslutningsappen"
-[http-requestdoc]: ./connectors-native-reqres.md "Lägga till åtgärder för HTTP-begäranden och svar i logikappar"
+[db2doc]: ./connectors-create-api-db2.md "Ansluta tooIBM DB2 i hello molnet eller lokalt. Uppdatera en rad, hämta en tabell och mycket mer"
+[Dynamics-365doc]: ./connectors-create-api-crmonline.md "Anslut tooDynamics CRM Online så att du kan arbeta med CRM Online-data"
+[event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "Ansluta tooAzure Händelsehubbar. Ta emot och skicka händelser mellan logikappar och händelsehubbar"
+[filesystemdoc]: ../logic-apps/logic-apps-using-file-connector.md "Ansluta tooan lokalt filsystem"
+[ftpdoc]: ./connectors-create-api-ftp.md "Ansluta tooan FTP / FTPS-server för FTP-aktiviteter, t.ex. ladda upp, hämta, ta bort filer och mycket mer"
+[httpdoc]: ./connectors-native-http.md "HTTP-anrop med hello HTTP-anslutningen"
+[http-requestdoc]: ./connectors-native-reqres.md "Lägga till åtgärder för HTTP-begäranden och -svar tooyour logikappar"
 [http-swaggerdoc]: ./connectors-native-http-swagger.md "Göra HTTP-anrop med HTTP + Swagger-anslutningsappen"
-[informixdoc]: ./connectors-create-api-informix.md "Anslut till Informix i molnet eller lokalt. Läsa en rad, lista tabeller och annat"
+[informixdoc]: ./connectors-create-api-informix.md "Ansluta tooInformix i hello molnet eller lokalt. Läs en rad och lista hello tabeller"
 [nested-logic-appdoc]: ../logic-apps/logic-apps-http-endpoint.md "Integrera logikappar med kapslade arbetsflöden"
-[office365-outlookdoc]: ./connectors-create-api-office365-outlook.md "Anslut till ditt Office 365-konto. Skicka och ta emot e-post, hantera din kalender och dina kontakter med mera"
-[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Anslut till en Oracle-databas för att lägga till, infoga och ta bort rader med mera"
-[mqdoc]: ./connectors-create-api-mq.md "Ansluta till MQ lokalt eller Azure och skicka och ta emot meddelanden"
+[office365-outlookdoc]: ./connectors-create-api-office365-outlook.md "Ansluta tooyour Office 365-konto. Skicka och ta emot e-post, hantera din kalender och dina kontakter med mera"
+[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Ansluta tooan Oracle-databasen tooadd, infoga, ta bort rader och mycket mer"
+[mqdoc]: ./connectors-create-api-mq.md "Ansluta tooMQ lokal eller Azure, och skicka och ta emot meddelanden"
 [recurrencedoc]:  ./connectors-native-recurrence.md "Utlösa återkommande åtgärder för logikappar"
-[salesforcedoc]: ./connectors-create-api-salesforce.md "Anslut till ditt Salesforce-konto. Hantera konton, leads, affärsmöjligheter och mycket mer"
-[sapconnector]: ../logic-apps/logic-apps-using-sap-connector.md "Ansluta till ett lokalt SAP-system"
+[salesforcedoc]: ./connectors-create-api-salesforce.md "Ansluta tooyour Salesforce-konto. Hantera konton, leads, affärsmöjligheter och mycket mer"
+[sapconnector]: ../logic-apps/logic-apps-using-sap-connector.md "Ansluta tooan lokal SAP-systemet"
 [service-busdoc]: ./connectors-create-api-servicebus.md "Skicka meddelanden från Service Bus-köer och Service Bus-ämnen och ta emot meddelanden från Service Bus-köer och Service Bus-prenumerationer"
-[sharepointdoc]: ./connectors-create-api-sharepointonline.md "Anslut till SharePoint Online. Hantera dokument, listobjekt och annat"
-[sharepointserver]: ./connectors-create-api-sharepointserver.md "Anslut till lokala SharePoint-servrar. Hantera dokument, listobjekt och annat"
-[sql-serverdoc]: ./connectors-create-api-sqlazure.md "Anslut till Azure SQL Database eller SQL Server. Skapa, uppdatera, hämta och ta bort poster i en SQL-databastabell."
-[twitterdoc]: ./connectors-create-api-twitter.md "Anslut till Twitter. Hämta tidslinjer, publicera tweets och mycket mer"
-[webhookdoc]: ./connectors-native-webhook.md "Lägga till webhook-åtgärder och utlösare i logikappar"
+[sharepointdoc]: ./connectors-create-api-sharepointonline.md "Ansluta tooSharePoint Online. Hantera dokument, listobjekt och annat"
+[sharepointserver]: ./connectors-create-api-sharepointserver.md "Ansluta tooSharePoint på lokal server. Hantera dokument, listobjekt och annat"
+[sql-serverdoc]: ./connectors-create-api-sqlazure.md "Ansluta tooAzure SQL Database eller SQLServer. Skapa, uppdatera, hämta och ta bort poster i en SQL-databastabell."
+[twitterdoc]: ./connectors-create-api-twitter.md "Ansluta tooTwitter. Hämta tidslinjer, publicera tweets och mycket mer"
+[webhookdoc]: ./connectors-native-webhook.md "Lägg till Webhook åtgärder och utlösare tooyour logikappar"
 
 [as2doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "Läs mer om AS2 för Enterprise-integration."
 [x12doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "Läs mer om X12 för Enterprise-integration"
@@ -180,38 +180,38 @@ Saknar vi ett avsnitt om anslutningsprogram eller någon annan viktig informatio
 [integrationaccountdoc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "Kolla upp scheman, kartor, partner med mera i ditt integrationskonto"
 
 
-[boxDoc]: ./connectors-create-api-box.md "Anslut till Box. Överföra, hämta, ta bort, visa filer och mycket mer "
+[boxDoc]: ./connectors-create-api-box.md "Ansluta tooBox. Överföra, hämta, ta bort, visa filer och mycket mer "
 [delaydoc]: ./connectors-native-delay.md "Utföra fördröjda åtgärder"
-[dropboxdoc]: ./connectors-create-api-dropbox.md "Anslut till Dropbox. Överföra, hämta, ta bort, visa filer och mycket mer "
-[facebookdoc]: ./connectors-create-api-facebook.md "Anslut till Facebook. Publicera på en tidslinje, hämta ett sidflöde och mycket mer"
-[githubdoc]: ./connectors-create-api-github.md "Ansluta till GitHub och spåra problem"
-[google-drivedoc]: ./connectors-create-api-googledrive.md "Ansluta till Google Drive så att du kan arbeta med dina data"
-[google-sheetsdoc]: ./connectors-create-api-googlesheet.md "Ansluta till Google Kalkylark så att du kan göra ändringar i kalkylblad"
-[google-tasksdoc]: ./connectors-create-api-googletasks.md "Ansluter till Google Tasks så att du kan hantera uppgifter"
-[google-calendardoc]: ./connectors-create-api-googlecalendar.md "Ansluter till Google Kalender och kan hantera kalendern."
-[http-responsedoc]: ./connectors-native-reqres.md "Lägga till åtgärder för HTTP-begäranden och svar i logikappar"
-[instagramdoc]: ./connectors-create-api-instagram.md "Anslut till Instagram. Utlösa eller utföra åtgärder vid händelser"
-[mailchimpdoc]: ./connectors-create-api-mailchimp.md "Anslut till ditt MailChimp-konto. Hantera och automatisera e-post"
-[mandrilldoc]: ./connectors-create-api-mandrill.md "Ansluta till Mandrill för kommunikation"
-[microsoft-translatordoc]: ./connectors-create-api-microsofttranslator.md "Anslut till Microsoft Translator. Översätta text, identifiera språk och annat" 
+[dropboxdoc]: ./connectors-create-api-dropbox.md "Ansluta tooDropbox. Överföra, hämta, ta bort, visa filer och mycket mer "
+[facebookdoc]: ./connectors-create-api-facebook.md "Ansluta tooFacebook. Bokför tooa tidslinje, hämta ett Sidflöde och mycket mer"
+[githubdoc]: ./connectors-create-api-github.md "Ansluta tooGitHub och spåra problem"
+[google-drivedoc]: ./connectors-create-api-googledrive.md "Anslut tooGoogleDrive så att du kan arbeta med dina data"
+[google-sheetsdoc]: ./connectors-create-api-googlesheet.md "Anslut tooGoogle blad så att du kan ändra dina blad"
+[google-tasksdoc]: ./connectors-create-api-googletasks.md "Ansluter tooGoogle uppgifter så att du kan hantera dina uppgifter"
+[google-calendardoc]: ./connectors-create-api-googlecalendar.md "Ansluter tooGoogle kalender och hantera kalendern."
+[http-responsedoc]: ./connectors-native-reqres.md "Lägga till åtgärder för HTTP-begäranden och -svar tooyour logikappar"
+[instagramdoc]: ./connectors-create-api-instagram.md "Ansluta tooInstagram. Utlösa eller utföra åtgärder vid händelser"
+[mailchimpdoc]: ./connectors-create-api-mailchimp.md "Ansluta tooyour MailChimp-konto. Hantera och automatisera e-post"
+[mandrilldoc]: ./connectors-create-api-mandrill.md "Ansluta tooMandrill för kommunikation"
+[microsoft-translatordoc]: ./connectors-create-api-microsofttranslator.md "Ansluta tooMicrosoft översättare. Översätta text, identifiera språk och annat" 
 [office365-usersdoc]: ./connectors-create-api-office365-users.md 
 [office365-videodoc]: ./connectors-create-api-office365-video.md "Hämta videoinformation, videolistor, videokanaler och uppspelnings-URL:er för Office 365-videor"
-[onedrivedoc]: ./connectors-create-api-onedrive.md "Anslut till ditt personliga Microsoft OneDrive. Överföra, ta bort och lista filer med mera"
-[onedrive-for-businessdoc]: ./connectors-create-api-onedriveforbusiness.md "Anslut till företagets Microsoft OneDrive. Överföra, ta bort och lista filer och mycket mer"
-[outlook.comdoc]: ./connectors-create-api-outlook.md "Anslut till din Outlook-postlåda. Hantera din e-post, dina kalender, dina kontakter och mycket mer"
-[project-onlinedoc]: ./connectors-create-api-projectonline.md "Anslut till Microsoft Project Online. Hantera projekt, uppgifter, resurser och mycket mer"
-[querydoc]: ./connectors-native-query.md "Välja och filtrera matriser med frågeåtgärden"
-[rssdoc]: ./connectors-create-api-rss.md "Publicera och hämta flödesobjekt, utlös åtgärder när ett nytt objekt publiceras på en RSS-feed."
-[sendgriddoc]: ./connectors-create-api-sendgrid.md "Anslut till SendGrid. Skicka e-post och hantera mottagarlistor"
-[sftpdoc]: ./connectors-create-api-sftp.md "Anslut till ditt SFTP-konto. Överföra, hämta och ta bort filer med mera"
-[slackdoc]: ./connectors-create-api-slack.md "Ansluta till Slack och skicka meddelanden till Slack-kanaler"
-[smtpdoc]: ./connectors-create-api-smtp.md "Ansluta till en SMTP-server och skicka e-post med bifogade filer"
-[sparkpostdoc]: ./connectors-create-api-sparkpost.md "Ansluter till SparkPost för kommunikation"
-[trellodoc]: ./connectors-create-api-trello.md "Anslut till Trello. Hantera dina projekt och organisera vad du vill med vem du vill"
-[twiliodoc]: ./connectors-create-api-twilio.md "Anslut till Twilio. Skicka och hämta meddelanden, hämta tillgängliga nummer, hantera inkommande telefonnummer och mycket mer"
-[wunderlistdoc]: ./connectors-create-api-wunderlist.md "Anslut till Wunderlist. Hantera uppgifter och uppgiftslistor, håll dig uppdaterad och mycket mer"
-[yammerdoc]: ./connectors-create-api-yammer.md "Anslut till Yammer. Skicka meddelanden, få nya meddelanden och mycket mer"
-[youtubedoc]: ./connectors-create-api-youtube.md "Anslut till YouTube. Hantera videor och kanaler"
+[onedrivedoc]: ./connectors-create-api-onedrive.md "Ansluta tooyour privata Microsoft OneDrive. Överföra, ta bort och lista filer med mera"
+[onedrive-for-businessdoc]: ./connectors-create-api-onedriveforbusiness.md "Ansluta tooyour business Microsoft OneDrive. Överföra, ta bort och lista filer och mycket mer"
+[outlook.comdoc]: ./connectors-create-api-outlook.md "Ansluta tooyour postlåda i Outlook. Hantera din e-post, dina kalender, dina kontakter och mycket mer"
+[project-onlinedoc]: ./connectors-create-api-projectonline.md "Ansluta tooMicrosoft Project Online. Hantera projekt, uppgifter, resurser och mycket mer"
+[querydoc]: ./connectors-native-query.md "Välj och filtrera matriser med hello frågeåtgärden"
+[rssdoc]: ./connectors-create-api-rss.md "Publicera och hämta flödesobjekt, utlösa åtgärder när ett nytt objekt är publicerade tooan RSS-feed."
+[sendgriddoc]: ./connectors-create-api-sendgrid.md "Ansluta tooSendGrid. Skicka e-post och hantera mottagarlistor"
+[sftpdoc]: ./connectors-create-api-sftp.md "Ansluta tooyour SFTP-konto. Överföra, hämta och ta bort filer med mera"
+[slackdoc]: ./connectors-create-api-slack.md "Ansluta tooSlack och skicka meddelanden tooSlack kanaler"
+[smtpdoc]: ./connectors-create-api-smtp.md "Ansluta tooa SMTP-servern och skicka e-post med bifogade filer"
+[sparkpostdoc]: ./connectors-create-api-sparkpost.md "Ansluter tooSparkPost för kommunikation"
+[trellodoc]: ./connectors-create-api-trello.md "Ansluta tooTrello. Hantera dina projekt och organisera vad du vill med vem du vill"
+[twiliodoc]: ./connectors-create-api-twilio.md "Ansluta tooTwilio. Skicka och hämta meddelanden, hämta tillgängliga nummer, hantera inkommande telefonnummer och mycket mer"
+[wunderlistdoc]: ./connectors-create-api-wunderlist.md "Ansluta tooWunderlist. Hantera uppgifter och uppgiftslistor, håll dig uppdaterad och mycket mer"
+[yammerdoc]: ./connectors-create-api-yammer.md "Ansluta tooYammer. Skicka meddelanden, få nya meddelanden och mycket mer"
+[youtubedoc]: ./connectors-create-api-youtube.md "Ansluta tooYouTube. Hantera videor och kanaler"
 
 
 <!--Icon references-->

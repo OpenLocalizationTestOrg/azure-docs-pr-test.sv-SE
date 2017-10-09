@@ -1,15 +1,15 @@
-1. Om du klickar på **Anslut** så skapas och hämtas en protokollfil för fjärrskrivbord (.rdp-fil). Klicka på **Öppna** för att använda filen.
-2. Du får en varning om att RDP-filen kommer från en okänd utgivare. Detta är normalt. Fortsätt genom att klicka på **Anslut** i fjärrskrivbordsfönstret.
+1. Om du klickar på **Anslut** så skapas och hämtas en protokollfil för fjärrskrivbord (.rdp-fil). Klicka på **öppna** toouse den här filen.
+2. Du får en varning om att hello RDP-filen kommer från en okänd utgivare. Detta är normalt. På hello fjärrskrivbordet i fönstret **Anslut** toocontinue.
    
     ![Skärmbild med ett varning som meddelar att utgivaren är okänd.](./media/virtual-machines-log-on-win-server/rdp-warn.png)
-3. I **Windows-säkerhet**-fönstret, anger du autentiseringsuppgifterna för ett konto på den virtuella datorn och klickar sedan på **OK**.
+3. I hello **Windows-säkerhet** , anger hello autentiseringsuppgifterna för ett konto på hello virtuella datorn och klicka sedan på **OK**.
    
-     **Lokalt konto**: detta är vanligtvis det lokala kontots användarnamn och lösenord som du angav när du skapade den virtuella datorn. I det här fallet är domänen namnet på den virtuella datorn och är registrerad som *vmnamn*&#92;*användarnamn*.  
+     **Lokalt konto** -detta är vanligtvis hello lokalt konto, användarnamn och lösenord som du angav när du skapade hello virtuell dator. I det här fallet hello domänen hello hello virtuella datorns namn och anges den som *vmname*&#92; *användarnamnet*.  
    
-    **Domänansluten VM**: Om den virtuella datorn tillhör en domän, anger du användarnamnet i formatet *Domän*&#92;*Användarnamn*. Kontot måste också antingen vara i gruppen administratörer eller ha beviljats behörighet för fjärråtkomst för den virtuella datorn.
+    **Domänansluten VM** - om hello VM tillhör tooa domän, ange hello användarnamn i formatet hello *domän*&#92; *Användarnamnet*. hello-kontot måste också tooeither att gruppera i hello administratörer eller ha beviljats fjärråtkomst privilegier toohello VM.
    
-    **Domänkontroller**: om den virtuella datorn är en domänkontroller, anger di användarnamn och lösenord för ett domänadministratörskonto för den domänen.
-4. Klicka på **Ja** för att verifiera den virtuella datorns identitet och slutföra inloggning.
+    **Domänkontrollanten** - om hello VM är en domänkontrollant, Skriv hello användarnamn och lösenord för ett domänadministratörskonto för domänen.
+4. Klicka på **Ja** tooverify hello hello virtuella datorns identitet och slutföra inloggning.
    
-   ![Skärmbild som visar ett meddelande om verifieringen av den virtuella datorns identitet.](./media/virtual-machines-log-on-win-server/cert-warning.png)
+   ![Skärmbild som visar ett meddelande möts verifierar hello identitet hello VM.](./media/virtual-machines-log-on-win-server/cert-warning.png)
 

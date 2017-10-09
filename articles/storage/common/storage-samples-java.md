@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage-exempel som använder Java | Microsoft Docs"
-description: "Visa, hämta och köra exempelkod och program för Azure Storage. Identifiera komma igång prover för blobbar, köer, tabeller och filer med hjälp av klientbibliotek för Java-lagring."
+title: "aaaAzure lagring exempel som använder Java | Microsoft Docs"
+description: "Visa, hämta och köra exempelkod och program för Azure Storage. Identifiera komma igång prover för blobbar, köer, tabeller och filer med hjälp av hello Java storage, klientbiblioteken."
 services: storage
 documentationcenter: na
 author: seguler
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
-ms.openlocfilehash: fd27e1ac9a773e7b0f5245aa74acdb0521cd098c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6aec326cbfedc1166fc61037ac39d33c15d28d2c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-storage-samples-using-java"></a>Azure Storage-exempel som använder Java
 
 ## <a name="java-sample-index"></a>Index för Java-exempel
 
-Följande tabell innehåller en översikt över scenarier som tas upp i varje prov och våra exempel-databasen. Klicka på länkar för att visa motsvarande exempelkoden i GitHub.
+hello följande tabell ger en översikt över våra exempel databasen och hello scenarier beskrivs i varje prov. Klicka på hello länkar tooview hello motsvarande exempelkoden i GitHub.
 
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Slutpunkt</th><th style="font-size:110%">Scenario</th><th style="font-size:110%">Exempelkod</th></tr></thead><tbody> 
 <tr> 
@@ -197,13 +197,13 @@ Följande tabell innehåller en översikt över scenarier som tas upp i varje pr
 
 ## <a name="azure-code-samples-library"></a>Azure-kodexempel-bibliotek
 
-Om du vill visa hela exemplet biblioteket, gå till den [Azure kodexempel](https://azure.microsoft.com/resources/samples/?service=storage) biblioteket, som innehåller exempel för Azure Storage som du kan hämta och kör lokalt. Koden exempel biblioteket innehåller exempelkod i ZIP-format. Du kan också bläddra och klona lagringsplatsen för varje prov GitHub.
+tooview hello fullständigt exempel bibliotek, gå toohello [Azure kodexempel](https://azure.microsoft.com/resources/samples/?service=storage) biblioteket, som innehåller exempel för Azure Storage som du kan hämta och kör lokalt. hello kod exempel biblioteket innehåller exempelkod i ZIP-format. Du kan också bläddra och klona hello GitHub-lagringsplatsen för varje prov.
 
 [!INCLUDE [storage-java-samples-include](../../../includes/storage-java-samples-include.md)]
 
 ## <a name="getting-started-guides"></a>Komma igång guider
 
-Se följande guider om du letar efter information om hur du installerar och kom igång med Azure Storage-klientbibliotek.
+Kolla in hello följande guider om du letar efter information om hur tooinstall och komma igång med hello Azure Storage, Klientbiblioteken.
 
 * [Komma igång med Azure Blob-tjänsten i Java](../blobs/storage-java-how-to-use-blob-storage.md)
 * [Komma igång med Azure-kötjänsten i Java](../storage-java-how-to-use-queue-storage.md)

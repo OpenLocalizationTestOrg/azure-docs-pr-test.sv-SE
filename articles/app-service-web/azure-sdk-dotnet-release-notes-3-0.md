@@ -1,5 +1,5 @@
 ---
-title: "Azure SDK för .NET 3.0 viktig information | Microsoft Docs"
+title: "aaaAzure SDK för .NET 3.0 viktig information | Microsoft Docs"
 description: "Azure SDK för .NET 3.0 viktig information"
 services: app-service\web
 documentationcenter: .net
@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 03/07/2017
 ms.author: juliako
-ms.openlocfilehash: eea4e569ac2d0192ed7872d2fcb9bed03614832b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8970b4c9b64de40dc29a33d69006a00ae5e38a50
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-sdk-for-net-30-release-notes"></a>Azure SDK för .NET 3.0 viktig information
 
-Det här avsnittet innehåller viktig information för version 3.0 av Azure SDK för .NET.
+Det här avsnittet innehåller viktig information för version 3.0 av hello Azure SDK för .NET.
 
 ##<a name="azure-sdk-for-net-30-release-summary"></a>Azure SDK för .NET 3.0-utgåvan sammanfattning
 
 Utgivningsdatum: 03/07/2017
  
-Inga senaste Azure SDK 3.0 ändringar har införts i den här versionen. Det finns inga uppgraderingsprocessen som behövs för att utnyttja detta SDK med befintliga Cloud Service-projekt. Om du vill tillåta användning av Azure SDK 3.0 utan en uppgraderingsprocessen installerar Azure SDK 3.0 till samma kataloger som Azure SDK 2.9. De flesta komponenter att ändra inte den högre versionen från 2.9 men i stället uppdatera build-nummer.
+Inga senaste ändringar toohello Azure SDK 3.0 har lagts till i den här versionen. Det finns också några uppgraderingsprocessen behövs tooleverage detta SDK med befintliga Cloud Service-projekt. tooallow användning av hello Azure SDK 3.0 utan uppgraderingen, Azure SDK 3.0 installerar toohello samma kataloger som Azure SDK 2.9. De flesta hello komponenter att ändra inte hello huvudversion från 2.9 men i stället uppdatera hello build-nummer.
 
 ## <a name="visual-studio-2017-rtw"></a>Visual Studio 2017 RTW
 
-- I Visual Studio 2017 skapas den här versionen av Azure SDK för .NET Azure-arbetsbelastning. Alla verktyg som du behöver göra Azure-utveckling ska ingå i Visual Studio 2017 framöver. SDK: N blir fortfarande tillgängliga via WebPI för Visual Studio 2015. Vi har avbrutit Azure SDK för .NET-versioner för Visual Studio 2013 nu när Visual Studio 2017 har släppts.
+- Den här versionen av hello Azure SDK för .NET är inbyggd i toohello Azure arbetsbelastning i Visual Studio 2017. Alla hello verktyg du behöver toodo Azure-utveckling ska ingå i Visual Studio 2017 framöver. Hello SDK blir fortfarande tillgängliga via WebPI för Visual Studio 2015. Vi har avbrutit Azure SDK för .NET-versioner för Visual Studio 2013 nu när Visual Studio 2017 har släppts.
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-- Ändra beteende för att lagra endast en partiell anslutningssträng med nyckel ersättas med en token för anslutningssträngen för lagring av molntjänster diagnostik. Den faktiska lagringsnyckeln lagras nu på mappen så att dess åtkomst kan kontrolleras. Visual Studio läser lagringsnyckeln från mapp för lokala felsökning och publiceringsprocessen. 
-- Som svar på ändringar som beskrivs ovan, förbättrad Visual Studio Online-teamet aktivitet för Azure Cloud Services Distributionsmall så att användarna kan ange lagringsnyckeln för att ställa in diagnostik tillägget vid publicering till Azure i kontinuerlig integrering och distribution.
-- Vi har gjort det möjligt att lagra säker anslutningssträngen och tokenisering för Azure Diagnostics (BOMULLSTUSS), som hjälper dig att lösa problem med konfigurationen över environements.
+- Ändrade hello beteende tooonly lagra en partiell anslutningssträng med hello nyckel ersättas med en token för anslutningssträngen för lagring av molntjänster diagnostik. hello faktiska lagringsnyckel lagras nu på hello mapp så att dess åtkomst kan kontrolleras. Visual Studio läser hello lagringsnyckel från mapp för lokala felsökning och publiceringsprocessen. 
+- I svaret toohello ändra som beskrivs ovan, team Visual Studio Online förbättrad hello Azure Cloud Services Distributionsmall för aktiviteten så att användarna kan ange hello lagringsnyckel för att ställa in diagnostik tillägget när du publicerar tooAzure i kontinuerlig Integration och distribution.
+- Vi har gjort det möjliga toostore säker anslutningssträngen och tokenisering för Azure Diagnostics (BOMULLSTUSS), toohelp du lösa problem med konfigurationen över environements.
  
 ### <a name="windows-server-2016-virtual-machines"></a>Windows Server 2016 virtuella datorer
 
-- Visual Studio stöder nu distribuera Cloud Services till OS-familjen 5 (Windows Server 2016) virtuella datorer. Du kan ändra dina inställningar om du vill rikta nya OS-familjen för befintliga molntjänster. När du skapar nya molntjänster, om du väljer att skapa tjänsten med hjälp av .net 4.6 eller högre, kommer den som standard tjänsten om du vill använda OS-familjen 5.  Mer information kan du granska den [gäst-OS-familjen stöder tabellen](../cloud-services/cloud-services-guestos-update-matrix.md).
+- Visual Studio stöder nu distribuera molntjänster tooOS familj 5 (Windows Server 2016) virtuella datorer. Du kan ändra dina inställningar tootarget för befintliga molntjänster hello nya OS-familjen. När du skapar nya molntjänster, om du väljer toocreate hello-tjänsten med hjälp av .net 4.6 eller högre, kommer den som standard hello service toouse OS-familjen 5.  Mer information kan du granska hello [gäst-OS-familjen stöder tabellen](../cloud-services/cloud-services-guestos-update-matrix.md).
 
 ### <a name="known-issues"></a>Kända problem
 
-- Azure .NET SDK 3.0 introducerade ett problem när du tar bort Visual Studio-2017 i en konfiguration för sida vid sida med Visual Studio 2015.  Om du har Azure SDK för Visual Studio 2015 tas Microsoft Azure Storage-emulatorn och Microsoft Azure Compute Emulator bort om du avinstallerar Visual Studio 2017.  Detta genererar ett fel när du skapar och felsökning nya Cloud services-projekt i Visual Studio 2015. För att åtgärda problemet genom att installera Azure SDK från installationsprogram för webbplattform.  Problemet löses i en framtida uppdatering för Visual Studio-2017.  .
+- Azure .NET SDK 3.0 introducerade ett problem när du tar bort Visual Studio-2017 i en konfiguration för sida vid sida med Visual Studio 2015.  Om du har hello Azure SDK för Visual Studio 2015 hello Microsoft Azure Storage-emulatorn och Microsoft Azure Compute Emulator kommer tas bort om du avinstallerar Visual Studio 2017.  Detta genererar ett fel när du skapar och felsökning nya Cloud services-projekt i Visual Studio 2015. I ordning toofix det här problemet genom att installera om hello Azure SDK från hello installationsprogram för webbplattform.  hello problemet löses i en framtida uppdatering för Visual Studio-2017.  .
 
  
 ### <a name="azure-in-role-cache"></a>Azure i Rollinstanser 

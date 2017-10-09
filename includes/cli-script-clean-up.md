@@ -1,6 +1,6 @@
 ## <a name="clean-up-deployment"></a>Rensa distribution
 
-Efter skriptexempel har körts, användas Följ kommandot för att ta bort resursgruppen och alla resurser som är associerade med den.
+Efter hello skriptexempel har körts kan hello Följ kommandot vara används tooremove hello resursgruppen och alla resurser som är kopplade till den.
 
 ```azurecli
 az group delete --name myResourceGroup

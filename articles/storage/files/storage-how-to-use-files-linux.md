@@ -1,6 +1,6 @@
 ---
-title: "Använda Azure File storage med Linux | Microsoft Docs"
-description: "Lär dig mer om att montera en filresurs på Azure över SMB på Linux."
+title: aaaUse Azure File storage med Linux | Microsoft Docs
+description: "Lär dig hur toomount en Azure-fil för att dela över SMB i Linux."
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/8/2017
 ms.author: renash
-ms.openlocfilehash: d8987082c559a374b8d19fd69e20cf5e81cb25ef
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: eeaa24b7f9e646724c5d86ae1e80dfdadaff34fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-file-storage-with-linux"></a>Använda Azure File storage med Linux
-[Azure File Storage](../storage-dotnet-how-to-use-files.md) är Microsofts lättanvända filsystem i molnet. Azure-filresurser kan monteras i Linux-distributioner som använder den [cifs-verktyg för webbplatsuppgradering paketet](https://wiki.samba.org/index.php/LinuxCIFS_utils) från den [Samba projekt](https://www.samba.org/). Den här artikeln beskrivs två sätt att montera en filresurs i Azure: på begäran med den `mount` kommandot och på Start genom att skapa en post i `/etc/fstab`.
+[Azure File storage](../storage-dotnet-how-to-use-files.md) är Microsofts enkelt toouse moln-filsystem. Azure-filresurser kan monteras i Linux-distributioner med hello [cifs-verktyg för webbplatsuppgradering paketet](https://wiki.samba.org/index.php/LinuxCIFS_utils) från hello [Samba projekt](https://www.samba.org/). Den här artikeln beskrivs två sätt toomount en Azure-filresurs: på begäran med hello `mount` kommandot och på Start genom att skapa en post i `/etc/fstab`.
 
 > [!NOTE]  
-> För att montera en filresurs på Azure utanför Azure stöder region som den är värd för, till exempel lokalt eller i en annan Azure region Operativsystemet kryptering funktionerna i SMB 3.0. Krypteringsfunktionerna för SMB 3.0 för Linux introducerades i 4.11 kernel. Den här funktionen gör det möjligt för montering av Azure-filresursen från lokala eller en annan Azure-region. Vid tidpunkten för publicering har den här funktionen anpassats till Ubuntu från 16.04 och senare.
+> I ordning toomount en Azure-filresurs utanför hello stöder Azure-region som den är värd för, till exempel lokalt eller i en annan Azure region hello OS hello kryptering funktionerna i SMB 3.0. Krypteringsfunktionerna för SMB 3.0 för Linux introducerades i 4.11 kernel. Den här funktionen gör det möjligt för montering av Azure-filresursen från lokala eller en annan Azure-region. När hello publicering har den här funktionen anpassats tooUbuntu från 16.04 och senare.
 
 
-## <a name="prerequisities-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>Prerequisities för att montera en Azure-fil dela med Linux- och cifs-verktyg för webbplatsuppgradering-paket
-* **Välj en Linux-distributionsplats som kan ha cifs-verktyg för webbplatsuppgradering paketet installeras**: Microsoft rekommenderar följande Linux-distributioner i Azure-avbildning galleriet:
+## <a name="prerequisities-for-mounting-an-azure-file-share-with-linux-and-hello-cifs-utils-package"></a>Prerequisities för att montera en filresurs på Azure med Linux- och hello cifs-verktyg för webbplatsuppgradering-paket
+* **Välj en Linux-distributionsplats som kan ha hello cifs-verktyg för webbplatsuppgradering package installerad**: rekommenderar Microsoft hello följande Linux-distributioner i hello Azure-avbildning galleriet:
 
     * Ubuntu Server 14.04 +
     * RHEL 7 +
@@ -37,82 +37,82 @@ ms.lasthandoff: 08/29/2017
     * openSUSE 13.2 +
     * SUSE Linux Enterprise Server 12
 
-* <a id="install-cifs-utils"></a>**Cifs-verktyg för webbplatsuppgradering paketet har installerats**: den cifs-verktyg för webbplatsuppgradering kan installeras med hjälp av package manager på Linux-distribution av ditt val. 
+* <a id="install-cifs-utils"></a>**hello cifs-verktyg för webbplatsuppgradering paket installeras**: hello cifs-verktyg för webbplatsuppgradering kan installeras med hello Pakethanteraren på hello Linux distribution av ditt val. 
 
-    På **Ubuntu** och **Debian-baserade** distributioner, använda den `apt-get` Pakethanteraren:
+    På **Ubuntu** och **Debian-baserade** distributioner, använda hello `apt-get` Pakethanteraren:
 
     ```
     sudo apt-get update
     sudo apt-get install cifs-utils
     ```
 
-    På **RHEL** och **CentOS**, använda den `yum` Pakethanteraren:
+    På **RHEL** och **CentOS**, använda hello `yum` Pakethanteraren:
 
     ```
     sudo yum install samba-client samba-common cifs-utils
     ```
 
-    På **openSUSE**, använda den `zypper` Pakethanteraren:
+    På **openSUSE**, använda hello `zypper` Pakethanteraren:
 
     ```
     sudo zypper install samba*
     ```
 
-    Använd lämplig package manager på andra distributioner eller [kompilera från källan](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download).
+    Använd hello lämpliga Pakethanteraren på andra distributioner eller [kompilera från källan](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download).
 
-* **Besluta om filen/katalogen behörigheterna för den monterade resursen**: vi att använda 0777 i exemplen nedan, för att ge Läs-, Skriv- och körbehörighet till alla användare. Du kan ersätta den med andra [chmod-behörigheter](https://en.wikipedia.org/wiki/Chmod) enligt önskemål. 
+* **Besluta om hello directory/filbehörigheter hello monterade resursen**: I hello exemplen nedan, vi använda 0777, toogive läsa, skriva och köra behörigheter tooall användare. Du kan ersätta den med andra [chmod-behörigheter](https://en.wikipedia.org/wiki/Chmod) enligt önskemål. 
 
-* **Lagringskontonamn**: Om du vill montera en Azure-filresurs behöver du namnet på lagringskontot.
+* **Lagringskontonamnet**: toomount ett Azure-filresurs, du behöver hello namnet på hello storage-konto.
 
-* **Lagringskontonyckel**: Om du vill montera en Azure-filresurs behöver du den primära (eller sekundära) lagringsnyckeln. SAS-nycklar stöds inte för montering.
+* **Lagringskontonyckel**: toomount ett Azure-filresurs, du behöver hello primära (eller sekundära) lagringsnyckel. SAS-nycklar stöds inte för montering.
 
-* **Kontrollera att port 445 är öppen**: SMB kommunicerar via TCP-port 445 - Kontrollera att se om brandväggen inte blockerar TCP-portarna 445 från klientdatorn.
+* **Kontrollera att port 445 är öppen**: SMB kommunicerar via TCP-port 445 - Kontrollera toosee om brandväggen inte blockerar TCP-port 445 från klientdatorn.
 
-## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Montera filen Azure dela på begäran med`mount`
-1. **[Installera paketet cifs-verktyg för webbplatsuppgradering för Linux-distribution](#install-cifs-utils)**.
+## <a name="mount-hello-azure-file-share-on-demand-with-mount"></a>Montera hello Azure-filresurs på begäran med`mount`
+1. **[Installera hello cifs-verktyg för webbplatsuppgradering paketet för Linux-distribution](#install-cifs-utils)**.
 
-2. **Skapa en mapp för monteringspunkten**: Detta kan göras var som helst i filsystemet.
+2. **Skapa en mapp för hello monteringspunkt**: Detta kan göras var som helst i hello-filsystemet.
 
     ```
     mkdir mymountpoint
     ```
 
-3. **Använd mount-kommando för att montera filresursen Azure**: Kom ihåg att ersätta `<storage-account-name>`, `<share-name>`, och `<storage-account-key>` med rätt information.
+3. **Använd hello montera kommandot toomount hello Azure-filresurs**: spara tooreplace `<storage-account-name>`, `<share-name>`, och `<storage-account-key>` med hello rätt information.
 
     ```
     sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> ./mymountpoint -o vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
     ```
 
 > [!Note]  
-> När du är klar använder Azure-filresurs, kan du använda `sudo umount ./mymountpoint` demontera resursen.
+> När du är klar med hello Azure-filresursen, men du kan använda `sudo umount ./mymountpoint` toounmount hello resursen.
 
-## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Skapa en beständig monteringspunkt för Azure-filresursen med`/etc/fstab`
-1. **[Installera paketet cifs-verktyg för webbplatsuppgradering för Linux-distribution](#install-cifs-utils)**.
+## <a name="create-a-persistent-mount-point-for-hello-azure-file-share-with-etcfstab"></a>Skapa en beständig monteringspunkt för hello Azure-filresurs med`/etc/fstab`
+1. **[Installera hello cifs-verktyg för webbplatsuppgradering paketet för Linux-distribution](#install-cifs-utils)**.
 
-2. **Skapa en mapp för monteringspunkten**: Detta kan göras var som helst i filsystemet, men du behöver Observera den absoluta sökvägen till mappen. I följande exempel skapas en mapp under roten.
+2. **Skapa en mapp för hello monteringspunkt**: Detta kan göras var som helst i hello filsystemet, men du måste toonote hello absolut sökväg hello-mappen. hello följande exempel skapas en mapp under roten.
 
     ```
     sudo mkdir /mymountpoint
     ```
 
-3. **Använd följande kommando för att lägga till följande rad `/etc/fstab`** : Kom ihåg att ersätta `<storage-account-name>`, `<share-name>`, och `<storage-account-key>` med rätt information.
+3. **Använd hello följande kommando tooappend hello följer raden för`/etc/fstab`**: spara tooreplace `<storage-account-name>`, `<share-name>`, och `<storage-account-key>` med hello rätt information.
 
     ```
     sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
     ```
 
 > [!Note]  
-> Du kan använda `sudo mount -a` att montera filresursen Azure när du har redigerat `/etc/fstab` i stället för att startas om.
+> Du kan använda `sudo mount -a` toomount hello Azure-filresurs när du har redigerat `/etc/fstab` i stället för att startas om.
 
 ## <a name="feedback"></a>Feedback
-Linux-användare som vi vill gärna höra av dig!
+Linux-användare, och vi vill toohear från dig!
 
-Azure File storage för Linux användargrupp innehåller ett forum för att dela feedback när du utvärdera och anta File storage i Linux. E-post [Azure File storage Linux-användare](mailto:azurefileslinuxusers@microsoft.com) att ansluta till den användargruppen.
+hello Azure File storage för Linux användargrupp ger ett forum du tooshare feedback när du utvärdera och anta File storage i Linux. E-post [Azure File storage Linux-användare](mailto:azurefileslinuxusers@microsoft.com) toojoin hello användargrupp.
 
 ## <a name="next-steps"></a>Nästa steg
 Mer information om Azure File Storage finns på följande länkar.
 * [File Service REST API referens](http://msdn.microsoft.com/library/azure/dn167006.aspx)
-* [Använda AzCopy med Microsoft Azure storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
-* [Använda Azure CLI med Azure storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
+* [Hur toouse AzCopy med Microsoft Azure storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* [Använda hello Azure CLI med Azure storage](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Vanliga frågor och svar](../storage-files-faq.md)
 * [Felsökning](storage-troubleshoot-linux-file-connection-problems.md)

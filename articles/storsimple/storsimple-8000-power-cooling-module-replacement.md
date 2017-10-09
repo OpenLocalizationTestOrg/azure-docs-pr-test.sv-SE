@@ -1,6 +1,6 @@
 ---
-title: "Ersätta en PCM på enheten StorSimple 8000-serien | Microsoft Docs"
-description: "Beskriver hur du tar bort och ersätter ström och kylning modul (PCM) på din StorSimple-enhet"
+title: "aaaReplace en PCM på enheten StorSimple 8000-serien | Microsoft Docs"
+description: "Förklarar hur tooremove och Ersätt hello ström och kylning modul (PCM) på din StorSimple-enhet"
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 7d181e6e434c998573dbea4b541cfacf7a28ee66
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 474fd09787c5361a81efda4de74356027ac60f47
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Ersätta en ström och kylning modulen på din StorSimple-enhet
 ## <a name="overview"></a>Översikt
-Ström och kylning modul (PCM) i Microsoft Azure StorSimple-enheten består av en strömförsörjning och kylfläktar som styrs från den primära servern och EBOD höljen. Det finns endast en modell för PCM som är certifierad för varje enhet. Primär höljet är certifierad för en 764 W PCM och EBOD höljet är certifierad för en 580 W PCM. Även om PCMs för primära höljet och EBOD höljet är olika, är ersättning proceduren identiska.
+hello ström och kylning modul (PCM) i Microsoft Azure StorSimple-enheten består av en strömförsörjning och kylfläktar som styrs via hello primära och EBOD bilagor. Det finns endast en modell för PCM som är certifierad för varje enhet. hello primära höljet är certifierad för en 764 W PCM och hello EBOD hölje är certifierad för en 580 W PCM. Även om hello PCMs för hello primära höljet och hello EBOD hölje mellan är hello ersättning proceduren identiska.
 
 Den här självstudiekursen beskrivs hur du:
 
@@ -30,35 +30,35 @@ Den här självstudiekursen beskrivs hur du:
 * Installera en ersättning PCM
 
 > [!IMPORTANT]
-> Innan du tar bort och ersätter en PCM granska säkerhetsinformation i [ersättning av StorSimple maskinvara komponenten](storsimple-8000-hardware-component-replacement.md).
+> Innan du tar bort och ersätter en PCM granska hello säkerhetsinformation i [ersättning av StorSimple maskinvara komponenten](storsimple-8000-hardware-component-replacement.md).
 
 
 ## <a name="before-you-replace-a-pcm"></a>Innan du ersätter en PCM
-Tänk på följande viktiga problem innan du ersätter din PCM:
+Tänk på följande viktiga problem innan du ersätter din PCM hello:
 
-* Om PCM-strömförsörjning misslyckas, lämna felaktiga installerat modulen, men ta bort strömsladd. Fläkten fortsätter att ta emot ström från höljet och fortsätta att tillhandahålla rätt kylning. Om fläkten misslyckas, måste PCM bytas omedelbart.
-* Innan du tar bort PCM koppla kraften från PCM genom att inaktivera den huvudsakliga växeln (om sådan finns) eller genom att ta bort strömsladd fysiskt. Detta ger en varning om att datorn att stängas power är nära förestående.
-* Kontrollera att den andra PCM fungerar för fortsatt systemfunktioner innan du ersätter felaktiga PCM. En felaktig PCM måste ersättas med en fullt fungerande PCM så snart som möjligt.
-* PCM modulen ersättning tar bara några minuter att slutföra, men den måste slutföras inom 10 minuter på att ta bort misslyckade PCM för att förhindra överhettning.
-* Observera att ersättning 764 W PCM moduler skickas från fabriken inte innehåller batterimodulen säkerhetskopiering. Du måste ta bort batteriet från din felaktiga PCM och infoga det i modulen innan du utför ersättningen ersättning. Mer information finns i så här [ta bort och infoga en reserv batteri modul](storsimple-8000-battery-replacement.md).
+* Om hello strömförsörjning av hello PCM misslyckas, lämna hello felaktiga module installerad ta bort hello strömsladd hello-fläkt fortsätter tooreceive strömförsörjning från hello höljet och fortsätta tooprovide rätt kylning. Om hello-fläkt misslyckas måste hello PCM toobe ersättas omedelbart.
+* Innan du tar bort hello PCM koppla hello ur strömmen hello PCM genom att inaktivera hello huvudsakliga växel (om sådan finns) eller genom att ta bort hello strömsladd fysiskt. Detta ger tooyour varningssystem att en power avstängning är nära förestående.
+* Kontrollera att hello andra PCM fungerar för fortsatt systemåtgärd innan ersätter hello felaktiga PCM. En felaktig PCM måste ersättas med en fullt fungerande PCM så snart som möjligt.
+* PCM modulen ersättning tar bara några minuter toocomplete, men den måste slutföras inom 10 minuter på att ta bort hello misslyckades PCM tooprevent överhettning.
+* Observera att hello ersättning 764 W PCM moduler från hello factory inte innehålla hello säkerhetskopiering batterimodulen. Du behöver tooremove hello batteri från din felaktiga PCM och infoga det i hello ersättning modulen tidigare tooperforming hello ersättning. Mer information finns i hur för[ta bort och infoga en reserv batteri modul](storsimple-8000-battery-replacement.md).
 
 ## <a name="remove-a-pcm"></a>Ta bort en PCM
-Följ dessa instruktioner när du är redo att ta bort en ström och kylning modul (PCM) från Microsoft Azure StorSimple-enhet.
+Följ dessa instruktioner när du är klar tooremove en ström och kylning modul (PCM) från Microsoft Azure StorSimple-enhet.
 
 > [!NOTE]
-> Innan du tar bort din PCM kontrollerar du att rätt ersätter (764 W för primära höljet) eller 580 W för EBOD höljet.
+> Innan du tar bort din PCM kontrollerar du att rätt ersätter (764 W för hello primära höljet) eller 580 W för hello EBOD hölje.
 
-#### <a name="to-remove-a-pcm"></a>Ta bort en PCM
-1. I den klassiska Azure-portalen klickar du på **Inställningar > övervaka > maskinvara hälsa**. Kontrollera statusen för komponenterna PCM under **delade komponenter** att identifiera vilket PCM misslyckades:
+#### <a name="tooremove-a-pcm"></a>tooremove en PCM
+1. I hello klassiska Azure-portalen klickar du på **Inställningar > övervaka > maskinvara hälsa**. Kontrollera status för hello hello PCM komponenter under **delade komponenter** tooidentify som PCM misslyckades:
    
-   * Om en strömförsörjning i PCM 0 har misslyckats, status för **strömförsörjning i PCM 0** blir röd.
-   * Om en strömförsörjning i PCM 1 har misslyckats, status för **strömförsörjning i PCM 1** blir röd.
-   * Om fläkten i PCM 1 har inte statusen för antingen **kylning 0 för PCM 0** eller **kylning 1 för PCM 0** blir röd.
-2. Leta upp den misslyckade PCM på baksidan av primära höljet. Om du kör en 8600-modell, identifiera primära höljet genom att titta på System enhet ID-numret visas på Kontrollpanelen LED-skärmen. Standard enhets-ID som visas på det primära höljet är **00**, medan standardvärdet enhets-ID som visas på höljet EBOD är **01**. I följande diagram och tabell förklarar frontpanel LED-skärmen.
+   * Om en strömförsörjning i PCM 0 har misslyckats hello status för **strömförsörjning i PCM 0** blir röd.
+   * Om en strömförsörjning i PCM 1 har misslyckats hello status för **strömförsörjning i PCM 1** blir röd.
+   * Om hello-fläkt i PCM 1 har misslyckats hello statusen **kylning 0 för PCM 0** eller **kylning 1 för PCM 0** blir röd.
+2. Leta upp hello misslyckade PCM på hello tillbaka av hello primära enhet. Om du kör en 8600-modell, identifiera hello primära höljet genom att titta på hello System identifiering enhetsnummer visas hello frontpanel Indikator visas. Hej standard enhets-ID som visas på hello primära höljet är **00**, medan hello standard enhets-ID som visas på hello EBOD hölje är **01**. hello beskrivs följande diagram och tabellen hello frontpanel hello Indikator visas.
    
     ![System-ID på OPS frontpanel](./media/storsimple-power-cooling-module-replacement/IC740991.png)
    
-     **Bild 1** framför panelen på enheten  
+     **Bild 1** framför panelen av hello-enhet  
    
    | Etikett | Beskrivning |
    |:--- |:--- |
@@ -67,7 +67,7 @@ Följ dessa instruktioner när du är redo att ta bort en ström och kylning mod
    | 3 |Modul-fel |
    | 4 |Logiska fel |
    | 5 |Enhet ID visas |
-3. Övervakning indikatorn indikatorer på baksidan primära höljet kan också användas för att identifiera den felande PCM. Finns i följande diagram och tabell för att förstå hur du använder indikatorer för att hitta den felande PCM. Till exempel om det Indikator som motsvarar den **fläkt misslyckas** är upplysta, fläkten misslyckades. Likaså om den Indikator motsvarar **AC misslyckas** är upplysta, strömförsörjningen misslyckades. 
+3. hello övervakning indikator led i hello baksidan hello primära höljet kan också användas tooidentify hello felaktiga PCM. Se hello följande diagram och tabell toounderstand hur toouse hello indikatorer toolocate hello felaktiga PCM. Till exempel om hello LEDDE motsvarande toohello **fläkt misslyckas** är upplysta, hello-fläkt misslyckades. Likaså om hello LEDDE för motsvarande**AC misslyckas** är upplysta, hello strömförsörjning misslyckades. 
    
     ![Bakplan för enheten PCM övervakning indikatorn indikatorer](./media/storsimple-power-cooling-module-replacement/IC740992.png)
    
@@ -81,7 +81,7 @@ Följ dessa instruktioner när du är redo att ta bort en ström och kylning mod
    | 4 |PCM OK |
    | 5 |DC strömavbrott |
    | 6 |Batteri felfri |
-4. Referera till följande diagram av StorSimple-enhet för att hitta modulen misslyckade PCM. PCM 0 är till vänster och PCM 1 till höger. Tabellen nedan beskrivs modulerna.
+4. Läs följande diagram över hello baksidan hello StorSimple enheten toolocate hello misslyckades PCM modulen toohello. PCM 0 är hello vänster och PCM 1 på hello rätt. hello i tabellen nedan beskrivs hello moduler.
    
      ![Bakplan av primära Höljesmoduler](./media/storsimple-power-cooling-module-replacement/IC740994.png)
    
@@ -93,50 +93,50 @@ Följ dessa instruktioner när du är redo att ta bort en ström och kylning mod
    | 2 |PCM 1 |
    | 3 |Styrenhet 0 |
    | 4 |Kontrollant 1 |
-5. Stäng av den felaktiga PCM och koppla bort Ange strömsladd. Du kan nu ta bort PCM.
-6. Förstå själva låset och sidan av PCM referensen mellan USB och pekfingret och klämma dem tillsammans för att öppna referensen.
+5. Aktivera ut hello felaktiga PCM och koppla från hello strömsladd leverans. Du kan nu ta bort hello PCM.
+6. Tag hello låset och hello sida av hello PCM hantera mellan USB och pekfingret och klämma dem tillsammans tooopen hello referensen.
    
     ![Öppna PCM referensen](./media/storsimple-power-cooling-module-replacement/IC740995.png)
    
-    **Bild 4** öppna PCM-referens
-7. Krama referensen och ta bort PCM.
+    **Bild 4** öppnas hello PCM hantera
+7. Greppet hello hantera och ta bort hello PCM.
    
     ![Ta bort PCM-enhet](./media/storsimple-power-cooling-module-replacement/IC740996.png)
    
-    **Bild 5** tar bort PCM
+    **Bild 5** tar bort hello PCM
 
 ## <a name="install-a-replacement-pcm"></a>Installera en ersättning PCM
-Följ instruktionerna för att installera en PCM i din StorSimple-enhet. Se till att du har infogat säkerhetskopiering batterimodulen innan du installerar ersättning PCM (gäller endast 764 W PCMs). Mer information finns i så här [ta bort och infoga en reserv batteri modul](storsimple-8000-battery-replacement.md).
+Följ dessa instruktioner tooinstall en PCM i din StorSimple-enhet. Se till att du har infogat hello säkerhetskopiering batteri modulen tidigare tooinstalling hello ersättning PCM (gäller too764 W PCMs). Mer information finns i hur för[ta bort och infoga en reserv batteri modul](storsimple-8000-battery-replacement.md).
 
-#### <a name="to-install-a-pcm"></a>Så här installerar du en PCM
-1. Kontrollera att du har rätt ersättning PCM för denna enhet. Primär höljet måste en 764 W PCM och EBOD höljet måste en 580 W PCM. Du bör inte försöka använda den 580 W PCM i primära höljet eller 764 W-PCM i EBOD hölje. Följande bild visar var du vill identifiera den här informationen på den etikett som fästs på PCM.
+#### <a name="tooinstall-a-pcm"></a>tooinstall en PCM
+1. Kontrollera att du har hello rätt ersättning PCM för denna enhet. hello primära höljet måste en 764 W PCM och hello EBOD hölje måste en 580 W PCM. Du bör inte försöka toouse hello 580 W PCM i hello primära hölje eller hello 764 W PCM i hello EBOD hölje. Följande bild visar där tooidentify informationen på hello etiketten som fästs toohello PCM hello.
    
     ![Enheten PCM etikett](./media/storsimple-power-cooling-module-replacement/IC740973.png)
    
     **Bild 6** PCM etikett
-2. Sök efter skada på höljet var särskilt uppmärksam på anslutningarna. 
+2. Sök efter skada toohello hölje, och var särskilt uppmärksam toohello kopplingar. 
    
    > [!NOTE]
-   > **Installera inte modulen om någon koppling stift är böjda.**
+   > **Installera inte hello modulen om någon koppling stift är böjda.**
    > 
    > 
-3. Dra modulen till höljet med PCM-referensen i öppet läge.
+3. Öppna position, bild hello-modulen till hello höljet med hello PCM hantera i hello.
    
     ![Installerar PCM-enhet](./media/storsimple-power-cooling-module-replacement/IC740975.png)
    
-    **Bild 7** installerar PCM
-4. Stäng manuellt PCM-referensen. Du bör höra en klickning som snabbt tillkallar handtaget låstypen.
+    **Bild 7** installerar hello PCM
+4. Stäng hello PCM referensen manuellt. Du bör höra en klickning som snabbt tillkallar hello handtaget låstypen.
    
    > [!NOTE]
-   > För att säkerställa att utöva connector PIN-koder tug du försiktigt på referensen utan att släppa låset. Om PCM bilder ut, innebär det att låset stängdes innan kopplingarna ägnar åt.
+   > tooensure som hello connector PIN-koder har blivit engagerade du försiktigt tug hello handtag utan att släppa hello spärren. Om hello PCM bilder ut, innebär det att hello spärren stängdes innan hello kopplingar ägnar åt.
    
-5. Anslut strömkablarna strömkällan och PCM.
-6. Skydda belastningen befrielse balar.
-7. Aktivera PCM.
-8. Kontrollera att ersättningen lyckades: navigera till din enhet i Enhetshanteraren för StorSimple-tjänsten Azure-portalen och sedan till **Inställningar > övervaka > maskinvara hälsa**. Under den **delade komponenter**, status för PCM vara grön.
+5. Ansluta hello kablar toohello power kraftkälla och toohello PCM.
+6. Skydda hello stam befrielse balar.
+7. Aktivera hello PCM.
+8. Kontrollera att hello ersättning lyckades: navigera tooyour enheten i hello Azure-portalen för StorSimple Device Manager-tjänsten, och sedan för**Inställningar > övervakaren > maskinvara hälsa**. Under hello **delade komponenter**, hello status för hello PCM vara grön.
    
    > [!NOTE]
-   > Det kan ta några minuter för ersättning PCM helt initieras.
+   > Det kan ta några minuter för hello ersättning PCM toocompletely initieras.
 
 ## <a name="next-steps"></a>Nästa steg
 Lär dig mer om [ersättning av StorSimple maskinvara komponenten](storsimple-8000-hardware-component-replacement.md).

@@ -1,6 +1,6 @@
 ---
-title: "Hantera access control-poster för virtuell StorSimple-matrisen | Microsoft Docs"
-description: "Beskriver hur du hanterar access control-poster (ACRs) för att avgöra vilka värdar som kan ansluta till en volym på den virtuella StorSimple-matrisen."
+title: "aaaManage access control-poster för virtuell StorSimple-matrisen | Microsoft Docs"
+description: "Beskriver hur toomanage åtkomstkontroll poster (ACRs) toodetermine vilka värdar som kan ansluta tooa volym på hello virtuella StorSimple-matris."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -15,114 +15,114 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ce65aa4efba735305208f7a6d761bc2814d1b8f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 608fdf72413761ce3c9c4bf297a748489c415685
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Använd StorSimple Enhetshanteraren för att hantera access control-poster för virtuell StorSimple-matris
+# <a name="use-storsimple-device-manager-toomanage-access-control-records-for-storsimple-virtual-array"></a>Använd StorSimple Enhetshanteraren toomanage kontroll åtkomstregister för virtuell StorSimple-matris
 
 ## <a name="overview"></a>Översikt
 
-Access control-poster (ACRs) kan du ange vilka värdar som kan ansluta till en volym på den virtuella StorSimple-matrisen (kallas även den lokala virtuella enheten StorSimple). ACRs är inställd på en viss volym och innehålla iSCSI-kvalificerade namn (kvalificerade) på värdarna. När en värd försöker ansluta till en volym enhetskontroller ACR som är kopplad till volymen för IQN namn och om det finns en matchning, upprättas anslutningen. Den **Access control-poster** bladet inom den **Configuration** avsnitt i Device Manager-tjänsten visar alla access control poster med motsvarande kvalificerade av värdarna.
+Access control-poster (ACRs) kan du toospecify vilka värdar som kan ansluta tooa volym på hello virtuella StorSimple-matris (även kallat hello lokala virtuella enheten StorSimple). ACRs anges tooa specifika volymen och innehålla hello iSCSI kvalificerade namn (kvalificerade) hello-värdar. När en värd försöker tooconnect tooa volym, hello enhetskontroller hello ACR som är kopplad till volymen för hello IQN namn och om det finns en matchning, upprättas hello-anslutning. Hej **Access control-poster** bladet inom hello **Configuration** avsnitt i Device Manager-tjänsten visar alla hello access control-poster med hello motsvarande kvalificerade hello värdar.
 
 ![Hantera access control-poster](./media/storsimple-virtual-array-manage-acrs/ova-manage-acrs.png)
 
-Den här självstudiekursen beskriver följande vanliga ACR-relaterade aktiviteter:
+Den här kursen förklaras hello följande vanliga ACR-relaterade uppgifter:
 
-* Hämta IQN
+* Hämta hello IQN
 * Lägg till en åtkomstkontrollpost
 * Redigera en åtkomstkontrollpost
 * Ta bort en åtkomstkontrollpost
 
 > [!IMPORTANT]
 > 
-> * När du tilldelar en ACR till en volym, se till att volymen inte samtidigt kan kommas åt av mer än en icke-klustrad värd eftersom detta kan skada volymen.
-> * När du tar bort en ACR från en volym, se till att motsvarande värden inte har åtkomst till volymen eftersom borttagningen kan resultera i en skrivskyddad avbrott.
+> * När du tilldelar en ACR tooa volym Se till att hello inte är samtidigt komma åt volymen av mer än en icke-klustrad värd eftersom detta kan skada hello volym.
+> * När du tar bort en ACR från en volym, kontrollera hello motsvarande värden inte kommer åt hello volymen eftersom hello borttagning kan resultera i en skrivskyddad avbrott.
 
 
-## <a name="get-the-iqn"></a>Hämta IQN
+## <a name="get-hello-iqn"></a>Hämta hello IQN
 
-Utför följande steg för att hämta IQN för en Windows-värd som kör Windows Server 2012.
+Utför följande steg tooget hello IQN för en Windows-värd som kör Windows Server 2012 hello.
 
 [!INCLUDE [storsimple-get-iqn](../../includes/storsimple-get-iqn.md)]
 
 ## <a name="add-an-acr"></a>Lägg till en ACR
 
-Du använder **Access control-poster** bladet inom den **Configuration** avsnitt i Enhetshanteraren för StorSimple-tjänsten för att lägga till ACRs. Normalt kan du associera en ACR med en volym.
+Du använder **Access control-poster** bladet inom hello **Configuration** avsnitt i din StorSimple Enhetshanteraren service tooadd ACRs. Normalt kan du associera en ACR med en volym.
 
-Information om hur du kopplar en ACR med en volym, gå till [lägga till en volym](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
+Information om hur du kopplar en ACR med en volym finns för[lägga till en volym](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume).
 
 > [!IMPORTANT]
-> När du tilldelar en ACR till en volym, se till att volymen inte samtidigt kan kommas åt av mer än en icke-klustrad värd eftersom detta kan skada volymen.
+> När du tilldelar en ACR tooa volym Se till att hello inte är samtidigt komma åt volymen av mer än en icke-klustrad värd eftersom detta kan skada hello volym.
 
 
-Utför följande steg för att lägga till en ACR.
+Utför följande steg tooadd en ACR hello.
 
-#### <a name="to-add-an-acr"></a>Att lägga till en ACR
+#### <a name="tooadd-an-acr"></a>tooadd en ACR
 
-1. Markera din tjänst på Landningssida för tjänsten, dubbelklickar du på tjänstens namn och sedan inom den **Configuration** klickar du på **Access control-poster**.
-2. I den **Access control-poster** bladet, klickar du på **Lägg till**.
-3. I den **lägga till ACR** bladet gör du följande:
+1. Markera din tjänst på hello Landningssida för tjänsten, genom att dubbelklicka på hello tjänstnamn och sedan i hello **Configuration** klickar du på **Access control-poster**.
+2. I hello **Access control-poster** bladet, klickar du på **Lägg till**.
+3. I hello **lägga till ACR** bladet hello följande:
    
     1. Ange ett **namn** för din ACR.
     
-    2. Under **iSCSI-Initierarnamn**, ange IQN namnet på din Windows-värd. Om du vill hämta IQN för Windows Server-värd, gör du följande:
+    2. Under **iSCSI-Initierarnamn**, ange hello IQN namnet på din Windows-värd. tooget hello IQN för Windows Server-värd, hello följande:
    
-    3. Starta Microsoft iSCSI-initieraren på din Windows-värd. I fönstret iSCSI-Initieraregenskaper på den **Configuration** , markera och kopiera strängen från den **Initierarnamn** fältet.
-    Klistra in den här strängen i den **IQN** i den **lägga till ACR** bladet.
+    3. Starta hello Microsoft iSCSI-initieraren på din Windows-värd. I hello iSCSI-initieraren fönstret Egenskaper på hello **Configuration** , markera och kopiera hello sträng från hello **Initierarnamn** fältet.
+    Klistra in den här strängen i hello **IQN** i hello **lägga till ACR** bladet.
    
-    6. Klicka på **Lägg till** att lägga till ACR.  
+    6. Klicka på **Lägg till** tooadd hello ACR.  
    
         ![Lägg till access control-poster](./media/storsimple-virtual-array-manage-acrs/ova-add-acrs.png)
-4. Tabell listan uppdateras det här tillägget.
+4. Hej tabular lista är uppdaterade tooreflect det här tillägget.
 
 ## <a name="edit-an-acr"></a>Redigera en ACR
 
-Du använder den **Access control-poster** bladet inom den **Configuration** avsnitt i Enhetshanteraren tjänsten i Azure portal för att redigera ACRs.
+Du använder hello **Access control-poster** bladet inom hello **Configuration** avsnitt i Enhetshanteraren tjänsten i hello Azure portal tooedit ACRs.
 
 > [!NOTE]
-> Du bör inte ändra en ACR som används för närvarande. Om du vill redigera en ACR som är kopplade till en volym som används för närvarande, bör du först se volymen offline.
+> Du bör inte ändra en ACR som används för närvarande. tooedit en ACR som är kopplade till en volym som används för närvarande, bör du först se hello volymen offline.
 
 
-Utför följande steg om du vill redigera en ACR.
+Utför följande steg tooedit en ACR hello.
 
-#### <a name="to-edit-an-acr"></a>Så här redigerar du en ACR
+#### <a name="tooedit-an-acr"></a>tooedit en ACR
 
-1. Markera din tjänst på Landningssida för tjänsten, dubbelklickar du på tjänstens namn och sedan inom den **Configuration** avsnittet **Access control-poster**.
-2. I den **Access control-poster** bladet från tabular lista av access control-poster, dubbelklicka på ACR som du vill ändra.
-3. I den **access control poster** bladet gör du följande:
+1. Markera din tjänst på hello Landningssida för tjänsten, genom att dubbelklicka på hello tjänstnamn och sedan i hello **Configuration** avsnittet **Access control-poster**.
+2. I hello **Access control-poster** bladet från hello tabular lista över hello access control-poster, dubbelklicka på hello ACR toomodify gärna.
+3. I hello **access control poster** bladet hello följande:
    
-    1. Ange det kvalificerade iSCSI-namnet för ACR.
+    1. Ange hello IQN för hello ACR.
    
-    2. Klicka på **spara** längst upp på bladet för att spara ändrade ACR. Du ser följande bekräftelsemeddelande:
+    2. Klicka på **spara** hello överst i hello bladet toosave hello ändrade ACR. Du ser hello följande bekräftelsemeddelande:
    
         ![Redigera access control-poster](./media/storsimple-virtual-array-manage-acrs/ova-edit-acrs.png)
 
 ## <a name="delete-an-access-control-record"></a>Ta bort en åtkomstkontrollpost
 
-Du använder den **Configuration** sida i Azure portal för att ta bort ACRs.
+Du använder hello **Configuration** sida i hello Azure portal toodelete ACRs.
 
 > [!NOTE]
 > 
-> * Du bör inte ta bort en ACR som används för närvarande. Om du vill ta bort en ACR som är kopplade till en volym som används måste ha du först volymen offline.
-> * När du tar bort en ACR från en volym, se till att motsvarande värden inte har åtkomst till volymen eftersom borttagningen kan resultera i en skrivskyddad avbrott.
+> * Du bör inte ta bort en ACR som används för närvarande. toodelete en ACR som är kopplade till en volym som används för närvarande, bör du först se hello volymen offline.
+> * När du tar bort en ACR från en volym, kontrollera hello motsvarande värden inte kommer åt hello volymen eftersom hello borttagning kan resultera i en skrivskyddad avbrott.
 
 
-Utför följande steg för att ta bort en åtkomstkontrollpost.
+Utför följande steg toodelete en åtkomstkontrollpost hello.
 
-#### <a name="to-delete-an-access-control-record"></a>Ta bort en åtkomstkontrollpost
+#### <a name="toodelete-an-access-control-record"></a>toodelete en åtkomstkontrollpost
 
-1. Markera din tjänst på Landningssida för tjänsten, dubbelklickar du på tjänstens namn och sedan inom den **Configuration** avsnittet **Access control-poster**.
+1. Markera din tjänst på hello Landningssida för tjänsten, genom att dubbelklicka på hello tjänstnamn och sedan i hello **Configuration** avsnittet **Access control-poster**.
 
-2. I den **Access control-poster** bladet från tabular lista av access control-poster, dubbelklicka på ACR som du vill ta bort.
+2. I hello **Access control-poster** bladet från hello tabular lista över hello access control-poster, dubbelklicka på hello ACR toodelete gärna.
 
-3. Klicka på Redigera access control poster bladet **ta bort**.
+3. I hello redigera access control poster-bladet klickar du på **ta bort**.
    
     ![Ta bort ACRS](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs.png)
 
-4. När du uppmanas att bekräfta, klickar du på **ta bort** att ta bort. Tabell listan uppdateras borttagningen.
+4. När du uppmanas att bekräfta, klickar du på **ta bort** toocontinue med hello borttagning. hello tabular lista är uppdaterade tooreflect hello borttagning.
    
    ![Varningsmeddelande](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs-warning.png)
 

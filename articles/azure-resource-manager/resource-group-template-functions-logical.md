@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager Mallfunktioner - logiska | Microsoft Docs
-description: "Beskriver funktionerna du använder i en Azure Resource Manager-mall för att fastställa logiska värden."
+title: aaaAzure Resource Manager Mallfunktioner - logiska | Microsoft Docs
+description: "Beskriver hello funktioner toouse i en Azure Resource Manager mallen toodetermine logiska värden."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 313601ad99cdc12c4b50f5469959d37a9fa70d35
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: aec6341fbde00b4eba3b4539ff9a9aec774333fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logiska funktioner för Azure Resource Manager-mallar
 
@@ -39,8 +39,8 @@ Kontrollerar om båda parametervärden är true.
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Booleskt värde |Det första värdet för att kontrollera om är true. |
-| arg2 |Ja |Booleskt värde |Det andra värdet för att kontrollera om är true. |
+| arg1 |Ja |Booleskt värde |Hej första värde toocheck om är true. |
+| arg2 |Ja |Booleskt värde |Hej andra värdet toocheck om är true. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -48,7 +48,7 @@ Returnerar **SANT** om båda värdena är true, annars **FALSKT**.
 
 ### <a name="examples"></a>Exempel
 
-I följande exempel visas hur du använder logiska funktioner.
+följande exempel visar hur hello toouse logiska funktioner.
 
 ```json
 {
@@ -72,7 +72,7 @@ I följande exempel visas hur du använder logiska funktioner.
 }
 ```
 
-Utdata från föregående exempel är:
+hello utdata från hello föregående exempel är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -84,20 +84,20 @@ Utdata från föregående exempel är:
 ## <a name="bool"></a>bool
 `bool(arg1)`
 
-Konverterar parametern till ett booleskt värde.
+Konverterar hello parametern tooa boolean.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |sträng eller ett heltal |Värdet som ska konverteras till ett booleskt värde. |
+| arg1 |Ja |sträng eller ett heltal |Hej värdet tooconvert tooa boolean. |
 
 ### <a name="return-value"></a>Returvärde
-Ett booleskt värde för konverterade värdet.
+Ett booleskt värde för hello konverteras värdet.
 
 ### <a name="examples"></a>Exempel
 
-I följande exempel visas hur du använder bool med en sträng eller ett heltal.
+följande exempel visar hur hello toouse bool med en sträng eller ett heltal.
 
 ```json
 {
@@ -125,7 +125,7 @@ I följande exempel visas hur du använder bool med en sträng eller ett heltal.
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -143,9 +143,9 @@ Returnerar ett värde baserat på om ett villkor är SANT eller FALSKT.
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| Villkor |Ja |Booleskt värde |Värdet för att kontrollera om det är true. |
-| trueValue |Ja | sträng, int, objekt eller matris |Värdet som returneras när villkoret är sant. |
-| falseValue |Ja | sträng, int, objekt eller matris |Värdet som returneras om villkoret är FALSKT. |
+| Villkor |Ja |Booleskt värde |Hej värdet toocheck om det inte stämmer. |
+| trueValue |Ja | sträng, int, objekt eller matris |hello värdet tooreturn när hello villkoret är sant. |
+| falseValue |Ja | sträng, int, objekt eller matris |hello värdet tooreturn när hello villkoret är FALSKT. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -153,7 +153,7 @@ Returnerar andra parameter när den första parametern är **SANT**, annars retu
 
 ### <a name="remarks"></a>Kommentarer
 
-Du kan använda den här funktionen för att ange en resursegenskap villkorligt. I följande exempel är inte en fullständig mall, men den visar relevanta delar för att ange villkorligt tillgänglighetsuppsättningen.
+Du kan använda den här funktionen tooconditionally en resursegenskap. hello följande exempel är inte en fullständig mall, men den visar hello relevanta delar för att ange villkorligt hello tillgänglighetsuppsättning.
 
 ```json
 {
@@ -199,7 +199,7 @@ Du kan använda den här funktionen för att ange en resursegenskap villkorligt.
 
 ### <a name="examples"></a>Exempel
 
-I följande exempel visas hur du använder den `if` funktion.
+följande exempel visar hur hello toouse hello `if` funktion.
 
 ```json
 {
@@ -220,7 +220,7 @@ I följande exempel visas hur du använder den `if` funktion.
 }
 ```
 
-Utdata från föregående exempel är:
+hello utdata från hello föregående exempel är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -231,13 +231,13 @@ Utdata från föregående exempel är:
 ## <a name="not"></a>inte
 `not(arg1)`
 
-Konverterar booleskt värde till motsatt värde.
+Konverterar booleskt värde tooits motsatt värde.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Booleskt värde |Värdet som ska konverteras. |
+| arg1 |Ja |Booleskt värde |hello värdet tooconvert. |
 
 
 ### <a name="return-value"></a>Returvärde
@@ -246,7 +246,7 @@ Returnerar **SANT** när parametern är **FALSKT**. Returnerar **FALSKT** när p
 
 ### <a name="examples"></a>Exempel
 
-I följande exempel visas hur du använder logiska funktioner.
+följande exempel visar hur hello toouse logiska funktioner.
 
 ```json
 {
@@ -270,7 +270,7 @@ I följande exempel visas hur du använder logiska funktioner.
 }
 ```
 
-Utdata från föregående exempel är:
+hello utdata från hello föregående exempel är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -278,7 +278,7 @@ Utdata från föregående exempel är:
 | orExampleOutput | bool | True |
 | notExampleOutput | bool | False |
 
-I följande exempel används **inte** med [är lika med](resource-group-template-functions-comparison.md#equals).
+hello följande exempel används **inte** med [är lika med](resource-group-template-functions-comparison.md#equals).
 
 ```json
 {
@@ -294,7 +294,7 @@ I följande exempel används **inte** med [är lika med](resource-group-template
     }
 ```
 
-Utdata från föregående exempel är:
+hello utdata från hello föregående exempel är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -310,8 +310,8 @@ Kontrollerar om antingen parametervärdet är true.
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Booleskt värde |Det första värdet för att kontrollera om är true. |
-| arg2 |Ja |Booleskt värde |Det andra värdet för att kontrollera om är true. |
+| arg1 |Ja |Booleskt värde |Hej första värde toocheck om är true. |
+| arg2 |Ja |Booleskt värde |Hej andra värdet toocheck om är true. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -319,7 +319,7 @@ Returnerar **SANT** om antingen värdet är true, annars **FALSKT**.
 
 ### <a name="examples"></a>Exempel
 
-I följande exempel visas hur du använder logiska funktioner.
+följande exempel visar hur hello toouse logiska funktioner.
 
 ```json
 {
@@ -343,7 +343,7 @@ I följande exempel visas hur du använder logiska funktioner.
 }
 ```
 
-Utdata från föregående exempel är:
+hello utdata från hello föregående exempel är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -353,8 +353,8 @@ Utdata från föregående exempel är:
 
 
 ## <a name="next-steps"></a>Nästa steg
-* En beskrivning av avsnitt i en Azure Resource Manager-mallen finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
-* Om du vill slå samman flera mallar, se [använda länkade mallar med Azure Resource Manager](resource-group-linked-templates.md).
-* Iterera ett angivet antal gånger när du skapar en typ av resurs finns [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md).
-* Information om hur du distribuerar mallen som du har skapat finns [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
+* En beskrivning av hello avsnitt i en Azure Resource Manager-mallen finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
+* flera mallar finns i toomerge [använda länkade mallar med Azure Resource Manager](resource-group-linked-templates.md).
+* tooiterate ett angivet antal gånger när du skapar en typ av resurs finns [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md).
+* toosee hur toodeploy hello mallen som du har skapat, finns i [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
 

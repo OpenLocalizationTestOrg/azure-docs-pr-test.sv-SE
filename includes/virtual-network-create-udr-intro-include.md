@@ -1,6 +1,6 @@
-Även om användningen av systemvägar förenklar trafik automatiskt för din distribution så finns det fall där du kan vilja kontrollera routingen för paket genom en virtuell installation. Du kan göra det genom att skapa användardefinierade vägar som anger next hop för paket som flödar till ett specifikt undernät så att de istället går till din virtuella installation och som aktiverar IP-vidarebefordring för VM:en som kör den virtuella installationen.
+Även om hello användningen av systemvägar förenklar trafik automatiskt för din distribution, finns det fall där du vill toocontrol hello routning av paket via en virtuell installation. Du kan därför genom att skapa användardefinierade vägar som anger hello next hop för paket som flödar tooa undernätverk toogo tooyour virtuell installation i stället och aktivera IP-vidarebefordring för hello VM som körs som hello virtuell installation.
 
-Några av de fall där virtuella installationer kan användas är:
+Några av hello fall där virtuella installationer kan användas är:
 
 * Övervaka trafik med ett intrång identifiering system (ID)
 * Kontrollera trafik med en brandvägg

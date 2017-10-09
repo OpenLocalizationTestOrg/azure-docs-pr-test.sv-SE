@@ -1,4 +1,4 @@
-Azure Data Factory stöder följande transformeringsaktiviteter som kan läggas till enskilt, eller kopplade till en annan aktivitet, i pipelines.
+Azure Data Factory stöder hello efter omvandling av aktiviteter som kan vara tillagda toopipelines antingen individuellt eller härledda med en annan aktivitet.
 
 | Datatransformeringsaktivitet | Compute-miljö |
 |:--- |:--- |
@@ -13,8 +13,8 @@ Azure Data Factory stöder följande transformeringsaktiviteter som kan läggas 
 | [DotNet](../articles/data-factory/data-factory-use-custom-activities.md) |HDInsight [Hadoop] eller Azure Batch |
 
 > [!NOTE]
-> Du kan använda MapReduce-aktiviteten för att köra Spark-program i ditt HDInsight Spark-kluster. Mer information finns i [Invoke Spark programs from Azure Data Factory](../articles/data-factory/data-factory-spark.md) (Anropa Spark-program från Azure Data Factory).
-> Du kan skapa en anpassad aktivitet som kör R-skript i ditt HDInsight-kluster med R installerat. Se [Run R Script using Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) (Köra R-skript med Azure Data Factory).
+> Du kan använda MapReduce aktiviteten toorun Spark-program på HDInsight Spark-klustret. Mer information finns i [Invoke Spark programs from Azure Data Factory](../articles/data-factory/data-factory-spark.md) (Anropa Spark-program från Azure Data Factory).
+> Du kan skapa en anpassad aktivitet toorun R-skript på ditt HDInsight-kluster med R installerat. Se [Run R Script using Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) (Köra R-skript med Azure Data Factory).
 > 
 > 
 

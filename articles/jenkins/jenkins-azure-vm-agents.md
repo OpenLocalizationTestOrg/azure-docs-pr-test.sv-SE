@@ -1,5 +1,5 @@
 ---
-title: "Använda virtuella Azure-agenter för kontinuerlig integrering med Jenkins."
+title: "aaaUse Virtuella Azure-agenter för kontinuerlig integrering med Jenkins."
 description: Azure VM-agenter som Jenkins slaves.
 services: multiple
 documentationcenter: 
@@ -15,57 +15,57 @@ ms.topic: hero-article
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 0b22a559fbc03158a6d4398603d1a7d2874d7b67
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2388e6919d0280372166fbd325d80dafb00d7550
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-vm-agents-for-continuous-integration-with-jenkins"></a>Använda virtuella Azure-agenter för kontinuerlig integrering med Jenkins.
 
-Den här snabbstarten visar hur du använder plugin-programmet Jenkins Azure VM-agenter för att skapa en agent för Linux (Ubuntu) på begäran i Azure.
+Den här snabbstarten visar hur hello toouse Jenkins Azure VM agenter plugin-programmet toocreate en agent för Linux (Ubuntu) av på begäran i Azure.
 
 ## <a name="prerequisites"></a>Krav
 
-För att slutföra den här snabbstarten behöver du:
+toocomplete denna Snabbstart:
 
-* Om du inte redan har en Jenkins-master, kan du starta börja med [Lösningsmallen](install-jenkins-solution-template.md) 
-* Se [Skapa huvudsaklig Azure-tjänst med Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) om du inte redan har en huvudsaklig Azure-tjänst.
+* Om du inte redan har en Jenkins master, du kan starta med hello [Lösningsmall](install-jenkins-solution-template.md) 
+* Se för[skapa ett Azure-tjänstens huvudnamn med Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) om du inte redan har en Azure-tjänstens huvudnamn.
 
 ## <a name="install-azure-vm-agents-plugin"></a>Installera Plugin-program för Azure VM-agenter
 
-Om du börjar från [Lösningsmallen](install-jenkins-solution-template.md) är plugin-programmet för Azure VM-agenten installerad i Jenkins-master.
+Om du startar från hello [Lösningsmall](install-jenkins-solution-template.md), hello Azure VM-agenten plugin-programmet är installerat i hello Jenkins master.
 
-I annat fall installerar du plugin-programmet **Azure VM agenter** från Jenkins instrumentpanelen.
+I annat fall installerar hello **Azure VM agenter** plugin-programmet från inom hello Jenkins instrumentpanelen.
 
-## <a name="configure-the-plugin"></a>Konfigurera plugin-programmet
+## <a name="configure-hello-plugin"></a>Konfigurera hello plugin-program
 
-* I Jenkins-instrumentpanelen klickar du på **Hantera Jenkins -> Konfigurera System ->**. Bläddra till längst ned på sidan och leta reda på avsnittet i listrutan **Lägga till nya molntjänster**. Välj **Microsoft Azure VM agenter** på menyn
-* Välj ett befintligt konto i listrutan Azure-autentiseringsuppgifter.  För att lägga till en ny **Microsoft Azure Service Principal** anger du följande värden: prenumerations-ID, klient-ID, Klienthemligheten och OAuth 2.0-Token för slutpunkt.
+* Inom hello Jenkins instrumentpanelen, klickar du på **Jenkins hantera -> Konfigurera System ->**. Rulla toohello längst ned på sidan för hello och hitta hello avsnitt med hello nedrullningsbara **lägga till nya molntjänster**. Hello-menyn, Välj **Microsoft Azure VM agenter**
+* Välj ett befintligt konto hello Azure-autentiseringsuppgifterna listrutan.  tooadd en ny **Microsoft Azure Service Principal** ange hello följande värden: prenumerations-ID, klient-ID, Klienthemligheten och OAuth 2.0-Token för slutpunkt.
 
 ![Azure-autentiseringsuppgifter](./media/jenkins-azure-vm-agents/service-principal.png)
 
-* Klicka på **verifiera konfigurationen** och kontrollera att profilkonfigurationen är korrekt.
-* Spara konfigurationen och fortsätt till nästa steg.
+* Klicka på **verifiera konfigurationen** toomake att hello profilkonfigurationen är korrekt.
+* Spara hello konfigurationen och fortsätta toohello nästa steg.
 
 ## <a name="template-configuration"></a>Mallkonfiguration
 
 ### <a name="general-configuration"></a>Allmän konfiguration
-Konfigurera en mall som ska användas för att definiera en Azure VM-agent. 
+Konfigurera en mall för Använd toodefine Virtuella Azure-agenten. 
 
-* Klicka på **Lägg till** att lägga till en mall. 
+* Klicka på **Lägg till** tooadd en mall. 
 * Ge din nya mall ett nytt namn. 
-* För etiketten, anger du ”ubuntu”. Den här etiketten används under jobbkonfigurationen.
-* Välj önskad region från kombinationsrutan.
-* Välj önskad storlek för den virtuella datorn.
-* Ange namnet på Azure Storage-kontot eller lämna det tomt om du vill använda standardnamnet ”jenkinsarmst”.
-* Ange tiden för datakvarhållning i minuter. Den här inställningen anger hur många minuter Jenkins kan vänta innan du tar bort en inaktiv agent automatiskt. Ange 0 om du inte vill att inaktiva agenter ska tas bort automatiskt.
+* Ange hello etiketten ”ubuntu”. Den här etiketten används under konfigurationen av hello jobb.
+* Välj önskad region för hello hello kombinationsruta.
+* Välj hello önskade VM-storlek.
+* Ange kontonamn för hello Azure Storage eller lämna den tom toouse hello standardnamnet ”jenkinsarmst”.
+* Ange hello kvarhållningstiden i minuter. Den här inställningen definierar hello antal minuter som Jenkins kan vänta innan du tar bort en inaktiv agent automatiskt. Ange 0 om du inte vill att inaktiva agenter toobe tas bort automatiskt.
 
 ![Allmän konfiguration](./media/jenkins-azure-vm-agents/general-config.png)
 
 ### <a name="image-configuration"></a>Bildkonfiguration
 
-Välj **Bildreferens** och använd följande konfiguration som exempel om du vill skapa en agent för Linux (Ubuntu). Se [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) för den senaste bilderna som stöds i Azure.
+toocreate linuxagenten (Ubuntu), Välj **bild referens** och Använd hello efter konfigurationen som exempel. Se för[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) för hello senaste Azure stöds bilder.
 
 * Bildutgivare: Canonical
 * Bild-erbjudande: UbuntuServer
@@ -84,23 +84,23 @@ sudo apt-get install -y openjdk-7-jdk
 ```
 ![Bildkonfiguration](./media/jenkins-azure-vm-agents/image-config.png)
 
-* Klicka på **Kontrollera mallen** att kontrollera konfigurationen.
+* Klicka på **Kontrollera mallen** tooverify hello konfiguration.
 * Klicka på **Spara**.
 
 ## <a name="create-a-job-in-jenkins"></a>Skapa ett jobb i Jenkins
 
-* I instrumentpanelen för Jenkins klickar du på **Nytt objekt**. 
+* Inom hello Jenkins instrumentpanelen, klickar du på **nytt objekt**. 
 * Ange ett namn och välj **Freestyle-projekt** och sedan på **OK**.
-* På fliken **Allmänt** markerar du ”Begränsa var projekt kan köras” och typen ”ubuntu” i etikettuttrycket. Nu kan du se ”ubuntu” i listrutan.
+* I hello **allmänna** fliken, markerar ”begränsa där du kan köra project” och typ ”ubuntu” i etikettuttrycket. Nu kan du se ”ubuntu” i hello listrutan.
 * Klicka på **Spara**.
 
 ![Ställ in jobb](./media/jenkins-azure-vm-agents/job-config.png)
 
 ## <a name="build-your-new-project"></a>Skapa det nya projektet
 
-* Gå tillbaka till Jenkins-instrumentpanelen.
-* Högerklicka på det nya jobbet du skapade och klicka sedan på **Skapa nu**. En version har startats. 
-* När versionen har slutförts, går du till **Konsolutdata**. Du ser att versionen skapades via en fjärranslutning på Azure.
+* Gå tillbaka toohello Jenkins instrumentpanelen.
+* Högerklicka på hello nytt jobb som du har skapat, klicka på **skapa nu**. En version har startats. 
+* När hello build är klar, går för**konsolen utdata**. Du ser att hello build utfördes via fjärranslutning på Azure.
 
 ![Konsolutdata](./media/jenkins-azure-vm-agents/console-output.png)
 

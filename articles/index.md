@@ -1,13 +1,13 @@
 ---
 layout: HubPage
 hide_bc: True
-title: Microsoft Azure-dokumentation
-description: "Lär dig att skapa och hantera kraftfulla program med Microsoft Azure-molntjänster. Hämta dokumentation, exempelkod, självstudier och annat."
-ms.openlocfilehash: cec37e94b31d08930d7262b2f30dd3e84793af46
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+title: aaaMicrosoft Azure-dokumentationen
+description: "Lär dig hur toobuild och hantera kraftfulla program med Microsoft Azure-molntjänster. Hämta dokumentation, exempelkod, självstudier och annat."
+ms.openlocfilehash: 29267e2e5fd7c750526541e4d357bedc5b1f409c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1129,7 +1129,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Skalningsuppsättningar för Virtual Machines</h3>
-                                                    <p>Hantera och skala tiotals till tusentals virtuella Linux- och Windows-datorer</p>
+                                                    <p>Hantera och skala 10-tal too1000s för Linux och Windows-datorer</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1266,7 +1266,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Nätverksöversikt</h3>
-                                                    <p>En integrerad vy av nätverkstjänsterna i Azure</p>
+                                                    <p>En integrerad vy av hello nätverkstjänster i Azure</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1285,7 +1285,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Virtual Network</h3>
-                                                    <p>Etablera privata nätverk, med möjlighet att ansluta till lokala datacenter</p>
+                                                    <p>Etablera privata nätverk, om du vill ansluta tooon lokala Datacenter</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1304,7 +1304,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Belastningsutjämnare</h3>
-                                                    <p>Leverera hög tillgänglighet och nätverksprestanda till dina program</p>
+                                                    <p>Ge hög tillgänglighet och nätverksprestanda tooyour program</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1380,7 +1380,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>CDN</h3>
-                                                    <p>Leverera innehåll till slutanvändare via ett robust nätverk med globala datacenter </p>
+                                                    <p>Leverera innehåll tooend-användare via ett stabilt nätverk av globala Datacenter </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1418,7 +1418,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>ExpressRoute</h3>
-                                                    <p>Dedikerade fiberanslutningar för privata nätverk till Azure</p>
+                                                    <p>Dedikerat privata nätverk fiber anslutningar tooAzure</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1593,8 +1593,8 @@ ms.lasthandoff: 08/29/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup</h3>
-                                                    <p>Enkel och tillförlitlig säkerhetskopiering av servern till molnet</p>
+                                                    <h3>Säkerhetskopiering</h3>
+                                                    <p>Enkel och tillförlitlig server säkerhetskopiering toohello moln</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1612,7 +1612,7 @@ ms.lasthandoff: 08/29/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Site Recovery</h3>
+                                                    <h3>Webbplatsåterställning</h3>
                                                     <p>Dirigera skydd och återställning av privata moln</p>
                                                 </div>
                                             </div>
@@ -1656,7 +1656,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Mobile Apps</h3>
-                                                    <p>Bygg och hantera serverdelen för alla sorters mobilappar</p>
+                                                    <p>Bygg- och hello serverdelen för alla mobila appar</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1694,7 +1694,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Logic Apps</h3>
-                                                    <p>Automatisera åtkomsten och användningen av data mellan moln utan att skriva kod</p>
+                                                    <p>Automatisera hello åtkomst och användning av data mellan moln utan att skriva kod</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1713,7 +1713,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>CDN</h3>
-                                                    <p>Leverera innehåll till slutanvändare via ett robust nätverk med globala datacenter </p>
+                                                    <p>Leverera innehåll tooend-användare via ett stabilt nätverk av globala Datacenter </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1970,7 +1970,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Server Stretch Database</h3>
-                                                    <p>Sträck ut lokala SQL Server-databaser dynamiskt till Azure</p>
+                                                    <p>Dynamiskt stretch lokala SQL Server-databaser tooAzure</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2046,7 +2046,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Redis Cache</h3>
-                                                    <p>Dataåtkomst med stora dataflöden och korta svarstider för snabba/skalbara program</p>
+                                                    <p>Hög genomströmning, låg latens toobuild fast skalbara program för dataåtkomst</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2127,7 +2127,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Webbsökning i Bing</h3>
-                                                    <p>Lägg till kraftfull webbsökning i dina appar</p>
+                                                    <p>Ansluta kraftfulla Sök tooyour webbprogram</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2165,7 +2165,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Custom Vision Service</h3>
-                                                    <p>En anpassningsbar webbtjänst som lär sig att känna igen specifikt innehåll i bilder</p>
+                                                    <p>En anpassningsbar webbtjänst som lär sig toorecognize vissa innehållstyper i bilder visar färgerna</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2203,7 +2203,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Language Understanding Intelligent Services (LUIS)</h3>
-                                                    <p>Lär apparna att förstå kommandon från användarna</p>
+                                                    <p>Utbilda dina appar toounderstand kommandon från användarna</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2222,7 +2222,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Anpassad Bing-sökning</h3>
-                                                    <p>Skapa det sökresultat du letar efter</p>
+                                                    <p>Skapa hello sökresultat som du söker efter</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2265,7 +2265,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning</h3>
-                                                    <p>Kraftfullt verktyg för molnbaserad förutsägelseanalys som möjliggör förutsägande underhåll</p>
+                                                    <p>Kraftfull molnbaserad förutsägelseanalyser verktyget tooenable förutsägande Underhåll</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2303,7 +2303,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Catalog</h3>
-                                                    <p>Aktivera självbetjäning av datakällsidentifiering i hela företaget</p>
+                                                    <p>Aktivera självbetjäning datakällsidentifiering över hello företaget</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2398,7 +2398,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Analysis Services</h3>
-                                                    <p>Datamodeller i företagsklass i molnet</p>
+                                                    <p>Företagsklass datamodeller i hello moln</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2479,7 +2479,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure IoT Suite</h3>
-                                                    <p>Avbilda och analysera outnyttjade data för att förbättra affärsresultat</p>
+                                                    <p>Samla in och analysera outnyttjade data tooimprove verksamhetsresultat</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2536,7 +2536,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning</h3>
-                                                    <p>Kraftfullt verktyg för molnbaserad förutsägelseanalys som möjliggör förutsägande underhåll</p>
+                                                    <p>Kraftfull molnbaserad förutsägelseanalyser verktyget tooenable förutsägande Underhåll</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2598,7 +2598,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Logic Apps</h3>
-                                                    <p>Automatisera åtkomsten och användningen av data mellan moln utan att skriva kod</p>
+                                                    <p>Automatisera hello åtkomst och användning av data mellan moln utan att skriva kod</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2636,7 +2636,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Management</h3>
-                                                    <p>Publicera API:er till utvecklare, partner och anställda på ett säkert sätt och efter behov</p>
+                                                    <p>Publicera API: er toodevelopers, partner och anställda på ett säkert sätt och i skala</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2674,7 +2674,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Server Stretch Database</h3>
-                                                    <p>Sträck ut lokala SQL Server-databaser dynamiskt till Azure</p>
+                                                    <p>Dynamiskt stretch lokala SQL Server-databaser tooAzure</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2712,7 +2712,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Biztalk Services</h3>
-                                                    <p>Integrera företaget i molnet på ett smidigt sätt</p>
+                                                    <p>Integrera sömlöst hello enterprise och hello moln</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2736,7 +2736,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Security Center</h3>
-                                                    <p>Förhindra, identifiera och svara på hot med ökad insyn</p>
+                                                    <p>Förebygga, upptäcka och åtgärda toothreats med ökad synlighet</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2755,7 +2755,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Key Vault</h3>
-                                                    <p>Lär dig hantera kryptografiska nycklar och hemligheter</p>
+                                                    <p>Lär dig hur toomanage kryptografiska nycklar och hemligheter</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2793,7 +2793,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Active Directory B2C</h3>
-                                                    <p>Kundidentitets- och åtkomsthantering i molnet</p>
+                                                    <p>Konsumenten identitets- och åtkomsthantering i hello moln</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2812,7 +2812,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Active Directory Domain Services</h3>
-                                                    <p>Anslut virtuella Azure-datorer till en domän utan domänkontrollanter</p>
+                                                    <p>Ansluta till virtuella Azure-datorer tooa domän utan domänkontrollanter</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2831,7 +2831,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Multi-Factor Authentication</h3>
-                                                    <p>Skydda åtkomsten till dina data och appar med en extra autentiseringsnivå</p>
+                                                    <p>Skydda åtkomst till tooyour data och appar med en extra nivå av autentisering</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2850,7 +2850,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Säkerhetsinformation</h3>
-                                                    <p>Läs mer om hur du tryggt och säkert baserar dina molnlösningar på Azures säkra infrastruktur</p>
+                                                    <p>Lär dig hur Azure tillhandahåller en infrastruktur för säker toobuild molnlösningar</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2874,7 +2874,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Visual Studio Team Services</h3>
-                                                    <p>Tjänster för team som gör att de kan dela kod, spåra arbete och leverera programvara</p>
+                                                    <p>Tjänster för team tooshare kod, spåra arbete och leverera programvara</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2931,7 +2931,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Management</h3>
-                                                    <p>Publicera API:er till utvecklare, partner och anställda på ett säkert sätt och efter behov</p>
+                                                    <p>Publicera API: er toodevelopers, partner och anställda på ett säkert sätt och i skala</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2993,7 +2993,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Log Analytics</h3>
-                                                    <p>Lär dig att omvandla maskindata till driftsinformation</p>
+                                                    <p>Lär dig hur tootransform datorn data i operativa tillgångsinformation</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3030,8 +3030,8 @@ ms.lasthandoff: 08/29/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup</h3>
-                                                    <p>Enkel och tillförlitlig säkerhetskopiering av servern till molnet</p>
+                                                    <h3>Säkerhetskopiering</h3>
+                                                    <p>Enkel och tillförlitlig server säkerhetskopiering toohello moln</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3049,7 +3049,7 @@ ms.lasthandoff: 08/29/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Site Recovery</h3>
+                                                    <h3>Webbplatsåterställning</h3>
                                                     <p>Dirigera skydd och återställning av privata moln</p>
                                                 </div>
                                             </div>
@@ -3107,7 +3107,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Fakturering</h3>
-                                                    <p>Lär dig hur du läser och förstår användningen och fakturan för Azure-prenumerationen</p>
+                                                    <p>Lär dig hur tooread/förstå hello användnings- och faktura för din Azure-prenumeration</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3126,7 +3126,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Advisor</h3>
-                                                    <p>Öka kostnadseffektiviteten, prestandan, tillgängligheten och säkerheten för dina Azure-resurser</p>
+                                                    <p>Förbättra hello kostnad effektivitet, prestanda, hög tillgänglighet och säkerhet för dina Azure-resurser</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3278,7 +3278,7 @@ ms.lasthandoff: 08/29/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/dotnet/azure/dotnet-sdk-azure-install">Hämta Azure Libraries för .NET</a>
+                                                    <a href="/dotnet/azure/dotnet-sdk-azure-install">Hämta hello Azure-bibliotek för .NET</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/dotnet/azure">Kom igång</a>
@@ -3302,7 +3302,7 @@ ms.lasthandoff: 08/29/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/python/azure/python-sdk-azure-install">Hämta Azure Libraries för Python</a>
+                                                    <a href="/python/azure/python-sdk-azure-install">Hämta hello Azure-bibliotek för Python</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/python/azure">Kom igång</a>
@@ -3326,7 +3326,7 @@ ms.lasthandoff: 08/29/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/nodejs/azure/node-sdk-azure-install">Hämta Azure Libraries för Node.js</a>
+                                                    <a href="/nodejs/azure/node-sdk-azure-install">Hämta hello Azure-bibliotek för Node.js</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/nodejs/azure/?view=azure-node-2.0.0">Kom igång</a>
@@ -3350,7 +3350,7 @@ ms.lasthandoff: 08/29/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/java/azure/java-sdk-azure-install">Hämta Azure Libraries för Java</a>
+                                                    <a href="/java/azure/java-sdk-azure-install">Hämta hello Azure-bibliotek för Java</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/java/azure">Kom igång</a>
@@ -3374,7 +3374,7 @@ ms.lasthandoff: 08/29/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://rubygems.org/gems/azure">Hämta Ruby SDK</a>
+                                                    <a href="https://rubygems.org/gems/azure">Hämta hello SDK för Ruby</a>
                                                 </h3>
                                                 <p>
                                                     <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">Kom igång</a>
@@ -3646,7 +3646,7 @@ ms.lasthandoff: 08/29/2017
                         <ul id="architecture1" class="cardsC">
                             <li>
                                 <div class="container intro">
-                                    <p>En uppsättning rekommenderade arkitekturer för molnprogram. Varje arkitektur innehåller rekommendationer, ingående anvisningar och en körbar komponent som återspeglar rekommendationerna.</p>
+                                    <p>En uppsättning rekommenderade arkitekturer för molnprogram. Varje arkitektur innehåller rekommendationer, förebyggande åtgärder och en körbar komponent som inbegriper hello rekommendationer.</p>
                                 </div>
                             </li>
                             <li>
@@ -3661,7 +3661,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Guide för Azure-programarkitektur</h3>
-                                                    <p>Skaffa dig grundläggande kunskaper för att lyckas i molnet. Börja här om du är nybörjare i molnet eller Azure.</p>
+                                                    <p>Grundläggande kunskaper toobe lyckas i hello molnet. Börja här om du är ny toohello moln eller en ny tooAzure.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3680,7 +3680,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Referensarkitekturer</h3>
-                                                    <p>En uppsättning rekommenderade arkitekturer för molnet. Varje arkitektur innehåller bästa praxis, ingående anvisningar och en distribuerbar lösning.</p>
+                                                    <p>En uppsättning rekommenderade arkitekturer för hello molnet. Varje arkitektur innehåller bästa praxis, ingående anvisningar och en distribuerbar lösning.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3699,7 +3699,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Designmönster för molnet</h3>
-                                                    <p>Utforma mönster för molnet. Varje mönster beskriver problem, ett mönster som åtgärdar problemet och ett exempel baserat på Azure.</p>
+                                                    <p>Designmönster för hello molnet. Varje mönster beskriver ett problem, ett mönster som adresser hello problemet och ett exempel baserat på Azure.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3737,7 +3737,7 @@ ms.lasthandoff: 08/29/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Scenario Guides</h3>
-                                                    <p>Guidance for various end-to-end application scenarios in the cloud. Includes
+                                                    <p>Guidance for various end-to-end application scenarios in hello cloud. Includes
                                                         written guidance and reference implementations.</p>
                                                 </div>
                                             </div>

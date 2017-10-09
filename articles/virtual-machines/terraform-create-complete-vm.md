@@ -1,6 +1,6 @@
 ---
-title: "Skapa en grundläggande infrastruktur i Azure med hjälp av Terraform | Microsoft Docs"
-description: "Lär dig att skapa Azure-resurser med hjälp av Terraform"
+title: "aaaCreate grundläggande infrastruktur i Azure med hjälp av Terraform | Microsoft Docs"
+description: "Lär dig hur toocreate Azure resurser med hjälp av Terraform"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: echuvyrov
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/14/2017
 ms.author: echuvyrov
-ms.openlocfilehash: 9660a95b440c2e4311829979e270d9f10099f624
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 916a838c118f28b3fbd373188e0acb2afc655081
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-basic-infrastructure-in-azure-by-using-terraform"></a>Skapa en grundläggande infrastruktur i Azure med hjälp av Terraform
-Den här artikeln beskriver de steg som du behöver göra för att etablera en virtuell dator, tillsammans med underliggande infrastruktur till Azure. Du kommer lära dig hur du skriver skript för Terraform och visualisera ändringarna innan du gör dem i din molninfrastruktur. Du också lära dig hur du skapar infrastrukturen i Azure med hjälp av Terraform.
+Den här artikeln beskriver hello stegen tootake tooprovision en virtuell dator, tillsammans med underliggande infrastruktur till Azure. Du får lära dig hur toowrite Terraform skript och hur toovisualize hello ändras innan du ser dem i din molninfrastruktur. Du får också lära dig hur toocreate infrastrukturen i Azure med hjälp av Terraform.
 
-Kom igång genom att skapa en fil med namnet \terraform_azure101.tf i textredigeraren väljer (Visual Studio Code/Sublime/Vim/etc.). Det exakta namnet på filen är inte viktigt eftersom Terraform godkänner namnet på mappen som en parameter: körs alla skript i mappen. Klistra in följande kod i den nya filen:
+tooget igång, skapa en fil med namnet \terraform_azure101.tf i textredigeraren väljer (Visual Studio Code/Sublime/Vim/etc.). hello exakt namnet på hello-filen inte är viktig eftersom Terraform accepterar hello mappnamn som en parameter: körs alla skript i hello mapp. Klistra in hello följande kod i hello ny fil:
 
 ~~~~
-# Configure the Microsoft Azure Provider
-# NOTE: if you defined these values as environment variables, you do not have to include this block
+# Configure hello Microsoft Azure Provider
+# NOTE: if you defined these values as environment variables, you do not have tooinclude this block
 provider "azurerm" {
   subscription_id = "your_subscription_id_from_script_execution"
   client_id       = "your_appId_from_script_execution"
@@ -42,46 +42,46 @@ resource "azurerm_resource_group" "helloterraform" {
     location = "West US"
 }
 ~~~~
-I den `provider` avsnitt av skript, anger du Terraform att använda en Azure leverantör för att etablera resurser i skriptet. Värden för PRENUMERATIONSID, appId, lösenord och tenant_id finns i [installera och konfigurera Terraform](terraform-install-configure.md) guide. Om du har skapat miljövariabler för värdena i det här blocket, behöver du inte lägger till den. 
+I hello `provider` avsnitt i hello skript anger du Terraform toouse en Azure-providern tooprovision resurser i hello skript. tooget värden för PRENUMERATIONSID, appId, lösenord och tenant_id, se hello [installera och konfigurera Terraform](terraform-install-configure.md) guide. Om du har skapat miljövariabler för hello värden i det här blocket, behöver du inte tooinclude den. 
 
-Den `azurerm_resource_group` resursen instruerar Terraform att skapa en ny resursgrupp. Du kan se flera resurstyper som är tillgängliga i Terraform senare i den här artikeln.
+Hej `azurerm_resource_group` resurs instruerar Terraform toocreate en ny resursgrupp. Du kan se flera resurstyper som är tillgängliga i Terraform senare i den här artikeln.
 
-## <a name="execute-the-script"></a>Kör skriptet för
-När du har sparat skriptet Avsluta till konsolen/kommandoraden och Skriv följande:
+## <a name="execute-hello-script"></a>Kör hello-skript
+När du har sparat hello skript avsluta toohello konsolen/kommandoraden och skriver hello följande:
 ```
 terraform init
 ```
-initiera Terraform provider för Azure. Skriv följande:
+tooinitialize Terraform provider för Azure. Skriv hello följande:
 ```
 terraform plan terraformscripts
 ```
-Vi anta att `terraformscripts` är den mapp där skriptet sparades. Vi använde den `plan` Terraform kommando som tittar på de resurser som definierats i skripten. Den jämför dem med tillståndsinformationen sparas av Terraform och matar ut planerad körningen _utan_ faktiskt att skapa resurser i Azure. 
+Vi anta att `terraformscripts` är hello mapp där hello skript har sparats. Vi använde hello `plan` Terraform kommando som ser ut på hello resurser som definierats i hello skript. Den jämför toohello statusinformation sparas av Terraform och sedan utdata hello planerad körning _utan_ faktiskt att skapa resurser i Azure. 
 
-När du kör det föregående kommandot, bör du se något som liknar följande skärm:
+När du kör hello föregående kommando, bör du se något liknande hello följande skärm:
 
 ![Terraform plan](linux/media/terraform/tf_plan2.png)
 
-Om allt ser rätt, att etablera den här ny resursgrupp i Azure genom att köra följande: 
+Om allt ser rätt, att etablera den här ny resursgrupp i Azure genom att köra följande hello: 
 ```
 terraform apply terraformscripts
 ```
-I Azure-portalen ska du se den nya tomma resursgruppen kallas `terraformtest`. I följande avsnitt du lägga till en virtuell dator och infrastrukturen som stöder för den virtuella datorn till resursgruppen.
+I hello Azure-portalen, bör du se hello ny tom resursgrupp kallas `terraformtest`. I följande avsnitt hello, du lägger till en virtuell dator och alla hello stödjande infrastruktur för den virtuella dator toohello resursgruppen.
 
 ## <a name="provision-an-ubuntu-vm-with-terraform"></a>Etablera en virtuell Ubuntu-dator med Terraform
-Vi utöka Terraform-skriptet som vi har skapat med den information som krävs för att etablera en virtuell dator som kör Ubuntu. De resurser som du etablerar i följande avsnitt finns:
+Utöka hello Terraform skript som vi har skapat med hello information som är nödvändiga tooprovision vi en virtuell dator som kör Ubuntu. hello-resurser som du etablerar i följande avsnitt hello är:
 
 * Ett nätverk med ett enda undernät
 * Ett nätverkskort 
 * Ett lagringskonto med en lagringsbehållare
 * En offentlig IP-adress
-* En virtuell dator som använder alla tidigare resurser 
+* En virtuell dator som använder alla hello tidigare resurser 
 
-Omfattande dokumentation för varje Terraform Azure-resurser finns i [Terraform dokumentationen](https://www.terraform.io/docs/providers/azurerm/index.html).
+Omfattande dokumentation för varje hello Azure Terraform resurser finns hello [Terraform dokumentationen](https://www.terraform.io/docs/providers/azurerm/index.html).
 
-Den fullständiga versionen av den [skript](#complete-terraform-script) ges också i informationssyfte.
+hello fullständig version av hello [skript](#complete-terraform-script) ges också i informationssyfte.
 
-### <a name="extend-the-terraform-script"></a>Utöka skriptet Terraform
-Utöka det skript som har skapats med följande resurser: 
+### <a name="extend-hello-terraform-script"></a>Utöka hello Terraform skript
+Utöka hello-skript som har skapats med hello följande resurser: 
 ~~~~
 # create a virtual network
 resource "azurerm_virtual_network" "helloterraformnetwork" {
@@ -99,7 +99,7 @@ resource "azurerm_subnet" "helloterraformsubnet" {
     address_prefix = "10.0.2.0/24"
 }
 ~~~~
-Föregående skript skapar ett virtuellt nätverk och ett undernät i det virtuella nätverket. Observera referensen till den resursgrupp som du redan har skapat via ”${azurerm_resource_group.helloterraform.name}” i både det virtuella nätverket och definitionen för undernätet.
+hello föregående skript skapar ett virtuellt nätverk och ett undernät i det virtuella nätverket. Observera hello referens toohello resursgruppen du redan har skapat via ”${azurerm_resource_group.helloterraform.name}” i både hello virtuella nätverk och hello undernätsdefinition.
 
 ~~~~
 # create public IP
@@ -129,7 +129,7 @@ resource "azurerm_network_interface" "helloterraformnic" {
     }
 }
 ~~~~
-Föregående skript kodavsnitt skapa en offentlig IP-adress och ett nätverksgränssnitt som använder offentliga IP-Adressen skapas. Observera referenser till subnet_id och public_ip_address_id. Terraform har inbyggd intelligens att förstå att nätverksgränssnittet har ett beroende på de resurser som måste skapas innan det har skapandet för nätverksgränssnittet.
+hello föregående skript kodavsnitt skapa en offentlig IP-adress och ett nätverksgränssnitt som använder hello offentliga IP-Adressen skapas. Observera hello referenser toosubnet_id och public_ip_address_id. Terraform har inbyggd intelligens toounderstand som hello nätverksgränssnittet har ett beroende på hello resurser som behöver toobe som skapats före hello skapandet av hello nätverksgränssnitt.
 
 ~~~~
 # create a random id
@@ -158,7 +158,7 @@ resource "azurerm_storage_container" "helloterraformstoragestoragecontainer" {
     depends_on = ["azurerm_storage_account.helloterraformstorage"]
 }
 ~~~~
-Här kan du skapat ett lagringskonto och en lagringsbehållare i detta lagringskonto. Det här lagringskontot är där du lagrar virtuella hårddiskar (VHD) för den virtuella datorn ska skapas.
+Här kan du skapat ett lagringskonto och en lagringsbehållare i detta lagringskonto. Det här lagringskontot är där du lagrar virtuella hårddiskar (VHD) för hello virtuell dator om toobe skapas.
 
 ~~~~
 # create virtual machine
@@ -198,25 +198,25 @@ resource "azurerm_virtual_machine" "helloterraformvm" {
     }
 }
 ~~~~
-Slutligen skapar utdraget en virtuell dator som använder alla resurser som redan etablerats. De är ett lagringskonto och en behållare för en virtuell Hårddisk, ett nätverksgränssnitt med offentliga IP- och undernät har angetts, och resursgruppen du skapat redan. Observera egenskapen vm_size där skriptet anger en Azure A0 SKU.
+Slutligen skapar hello utdraget en virtuell dator som använder alla hello-resurser som redan etablerats. De är ett lagringskonto och en behållare för en virtuell Hårddisk, ett nätverksgränssnitt med offentliga IP- och undernät har angetts, och hello resursgruppen du skapat redan. Observera hello vm_size egenskap, där hello skript anger en Azure A0 SKU.
 
-### <a name="execute-the-script"></a>Kör skriptet för
-Avsluta till konsolen/kommandoraden med fullständig skriptet sparas, och Skriv följande:
+### <a name="execute-hello-script"></a>Kör hello-skript
+Avsluta toohello konsolen/kommandoraden med hello fullständig skript sparas, och Skriv hello följande:
 ```
 terraform apply terraformscripts
 ```
-Efter en stund resurser, inklusive en virtuell dator visas i den `terraformtest` resursgrupp i Azure-portalen.
+Efter en stund hello resurser, inklusive en virtuell dator visas i hello `terraformtest` resursgrupp i hello Azure-portalen.
 
 ## <a name="complete-terraform-script"></a>Slutföra Terraform skript
 
-För din bekvämlighet visas nedan det fullständiga Terraform-skriptet som tillhandahåller alla infrastrukturen som beskrivs i den här artikeln.
+För din bekvämlighet visas nedan hello fullständiga Terraform skriptet som tillhandahåller alla hello infrastruktur beskrivs i den här artikeln.
 
 ```
 variable "resourcesname" {
   default = "helloterraform"
 }
 
-# Configure the Microsoft Azure Provider
+# Configure hello Microsoft Azure Provider
 provider "azurerm" {
   subscription_id = "XXX"
   client_id       = "XXX"
@@ -339,4 +339,4 @@ resource "azurerm_virtual_machine" "helloterraformvm" {
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Du har skapat grundläggande infrastruktur i Azure med hjälp av Terraform. Mer komplicerade scenarier inklusive exempel Använd belastningsutjämning och virtuella skala uppsättningar, finns ett stort antal [Terraform exempel Azure](https://github.com/hashicorp/terraform/tree/master/examples). En aktuell lista över Azure providers som stöds finns i [Terraform dokumentationen](https://www.terraform.io/docs/providers/azurerm/index.html).
+Du har skapat grundläggande infrastruktur i Azure med hjälp av Terraform. Mer komplicerade scenarier inklusive exempel Använd belastningsutjämning och virtuella skala uppsättningar, finns ett stort antal [Terraform exempel Azure](https://github.com/hashicorp/terraform/tree/master/examples). En aktuell lista över Azure providers som stöds finns i hello [Terraform dokumentationen](https://www.terraform.io/docs/providers/azurerm/index.html).

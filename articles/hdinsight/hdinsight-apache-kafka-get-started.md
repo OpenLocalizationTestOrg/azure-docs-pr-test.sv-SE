@@ -1,6 +1,6 @@
 ---
-title: "Kom igång med Apache Kafka – Azure HDInsight | Microsoft Docs"
-description: "Lär dig hur du skapar ett Apache Kafka-kluster i Azure HDInsight. Lär dig hur du skapar ämnen, prenumeranter och konsumenter."
+title: aaaStart med Apache Kafka - Azure HDInsight | Microsoft Docs
+description: "Lär dig hur toocreate en Apache Kafka kluster på Azure HDInsight. Lär dig hur toocreate ämnen, prenumeranter och konsumenter."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,41 +15,41 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/14/2017
 ms.author: larryfr
-ms.openlocfilehash: 03e6996f0f44e04978080b3bd267e924f342b7fc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b93299d88dc2cf9a9764662509308ff75fd74474
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="start-with-apache-kafka-preview-on-hdinsight"></a>Kom igång med Apache Kafka (förhandsversion) i HDInsight
 
-Lär dig hur du skapar och använder ett [Apache Kafka](https://kafka.apache.org)-kluster i Azure HDInsight. Kafka är en distribuerad direktuppspelningsplattform med öppen källkod som är tillgänglig i HDInsight. Den används ofta som en asynkron meddelandekö eftersom den innehåller funktioner som påminner om en publicera-prenumerera-meddelandekö.
+Lär dig hur toocreate och använda en [Apache Kafka](https://kafka.apache.org) kluster på Azure HDInsight. Kafka är en distribuerad direktuppspelningsplattform med öppen källkod som är tillgänglig i HDInsight. Det används ofta som förhandlare meddelandet eftersom det ger liknande funktioner tooa publicera och prenumerera meddelandekön.
 
 > [!NOTE]
-> Det finns för närvarande två versioner av Kafka med HDInsight; 0.9.0 (HDInsight 3.4) och 0.10.0 (HDInsight 3.5 och 3.6). Stegen i det här dokumentet förutsätter att du använder Kafka på HDInsight 3.6.
+> Det finns för närvarande två versioner av Kafka med HDInsight; 0.9.0 (HDInsight 3.4) och 0.10.0 (HDInsight 3.5 och 3.6). hello stegen i det här dokumentet förutsätter att du använder Kafka på HDInsight 3,6.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="create-a-kafka-cluster"></a>Skapa ett Kafka-kluster
 
-Använd följande steg om du vill skapa en Kafka i HDInsight-klustret:
+Använd hello följa steg toocreate en Kafka på HDInsight-kluster:
 
-1. Från [Azure Portal](https://portal.azure.com) väljer du **+ NY**, **Intelligence + Analytics** och väljer sedan **HDInsight**.
+1. Från hello [Azure-portalen](https://portal.azure.com)väljer **+ ny**, **Intelligence + analys**, och välj sedan **HDInsight**.
    
     ![Skapa ett HDInsight-kluster](./media/hdinsight-apache-kafka-get-started/create-hdinsight.png)
 
-2. Från **Grundläggande**, ange följande information:
+2. Från **grunderna**, ange hello följande information:
 
-    * **Klusternamn**: Namnet på HDInsight-klustret.
-    * **Prenumeration**: Välj den prenumeration som du vill använda.
-    * **Användarnamn för klusterinloggning** och **Lösenord för klusterinloggning**: Inloggningen vid åtkomst till klustret via HTTPS. Du kan använda dessa autentiseringsuppgifter för att få åtkomst till tjänster som Ambari-webbgränssnittet eller REST API.
-    * **Secure Shell-användarnamn (SSH)**: Den inloggning som används vid åtkomst till klustret via SSH. Som standard är lösenordet detsamma som lösenordet för klusterinloggning.
-    * **Resursgrupp**: Resursgruppen som klustret ska skapas i.
-    * **Plats**: Azure-region som klustret ska skapas i.
+    * **Klusternamn**: hello namnet på hello HDInsight-kluster.
+    * **Prenumerationen**: Välj hello prenumeration toouse.
+    * **Klustret inloggning användarnamn** och **klustret inloggningslösenordet**: hello inloggning vid åtkomst till hello klustret via HTTPS. Du använder dessa autentiseringsuppgifter tooaccess tjänster, till exempel hello Ambari-Webbgränssnittet eller REST API.
+    * **Secure Shell (SSH) användarnamn**: hello-inloggning som används vid åtkomst till hello klustret via SSH. Som standard är hello lösenord hello samma som hello inloggningslösenordet för klustret.
+    * **Resursgruppen**: hello resurs grupp toocreate hello klustret i.
+    * **Plats**: hello Azure-region toocreate hello klustret i.
    
  ![Välj en prenumeration](./media/hdinsight-apache-kafka-get-started/hdinsight-basic-configuration.png)
 
-3. Välj **Klustertyp** och ange följande värden från **Klusterkonfiguration**:
+3. Välj **kluster typen**, och sedan ange hello följande värden från **klusterkonfigurationen**:
    
     * **Klustertyp**: Kafka
 
@@ -57,65 +57,65 @@ Använd följande steg om du vill skapa en Kafka i HDInsight-klustret:
 
     * **Klusternivå**: Standard
      
- Slutligen kan spara inställningarna med kommandot **Välj**.
+ Använd slutligen hello **Välj** knappen toosave inställningar.
      
  ![Välj klustertyp](./media/hdinsight-apache-kafka-get-started/set-hdinsight-cluster-type.png)
 
-4. När du har valt klustertypen anger du klustertypen med hjälp av knappen __Välj__. Använd sedan knappen __Nästa__ och slutföra den grundläggande konfigurationen.
+4. När du har valt hello typ av kluster, använda hello __Välj__ knappen tooset hello typ av kluster. Använd sedan hello __nästa__ toofinish grundläggande konfiguration.
 
-5. Från **Lagring** ska du välja eller skapa ett lagringskonto. Lämna övriga fält på standardvärden för stegen i det här dokumentet. Spara lagringskonfigurationen genom att klicka på __Nästa__.
+5. Från **Lagring** ska du välja eller skapa ett lagringskonto. Hello stegen i det här dokumentet, lämna hello andra fält till hello standardvärden. Använd hello __nästa__ toosave konfiguration för lagring.
 
-    ![Ange inställningarna för lagringskontot för HDInsight](./media/hdinsight-apache-kafka-get-started/set-hdinsight-storage-account.png)
+    ![Ange hello konto lagringsinställningarna för HDInsight](./media/hdinsight-apache-kafka-get-started/set-hdinsight-storage-account.png)
 
-6. Från __Program (valfritt)__ väljer du __Nästa__ för att fortsätta. Inga program krävs för det här exemplet.
+6. Från __program (valfritt)__väljer __nästa__ toocontinue. Inga program krävs för det här exemplet.
 
-7. Från __Klusterstorlek__ väljer du __Nästa__ för att fortsätta.
+7. Från __klusterstorleken__väljer __nästa__ toocontinue.
 
     > [!WARNING]
-    > Klustret måste innehålla minst tre arbetsnoder för att garantera tillgängligheten för Kafka i HDInsight.
+    > tooguarantee tillgängligheten för Kafka på HDInsight, klustret måste innehålla minst tre arbetsnoderna.
 
-    ![Ange klusterstorlek för Kafka](./media/hdinsight-apache-kafka-get-started/kafka-cluster-size.png)
+    ![Ange hello Kafka klusterstorleken](./media/hdinsight-apache-kafka-get-started/kafka-cluster-size.png)
 
     > [!NOTE]
-    > Antalet **diskar per arbetsnod** anger hur skalbart Kafka är i HDInsight. Mer information finns i [Configure storage and scalability of Kafka on HDInsight](hdinsight-apache-kafka-scalability.md) (Konfigurera lagring och skalbarhet för Kafka i HDInsight).
+    > Hej **diskar per arbetsnoden** post kontroller hello skalbarheten för Kafka på HDInsight. Mer information finns i [Configure storage and scalability of Kafka on HDInsight](hdinsight-apache-kafka-scalability.md) (Konfigurera lagring och skalbarhet för Kafka i HDInsight).
 
-8. Från __Avancerade inställningar__ väljer du __Nästa__ för att fortsätta.
+8. Från __avancerade inställningar__väljer __nästa__ toocontinue.
 
-9. Från **Sammanfattning** kan du granska konfigurationen för klustret. Använd länkarna __Redigera__ om du behöver ändra eventuella inställningar som är felaktiga. Till sist skapar du klustret genom att klicka på Skapa.
+9. Från hello **sammanfattning**, granska hello konfigurationen för hello kluster. Använd hello __redigera__ länkar toochange inställningar som är felaktiga. Slutligen Använd the__Create__ knappen toocreate hello-kluster.
    
     ![Sammanfattning av klusterkonfiguration](./media/hdinsight-apache-kafka-get-started/hdinsight-configuration-summary.png)
    
     > [!NOTE]
-    > Det kan ta upp till 20 minuter att skapa klustret.
+    > Det kan ta upp too20 minuter toocreate hello klustret.
 
-## <a name="connect-to-the-cluster"></a>Anslut till klustret
+## <a name="connect-toohello-cluster"></a>Ansluta toohello kluster
 
 > [!IMPORTANT]
-> När du utför följande steg måste du använda en SSH-klient. Mer information finns i dokumentet [Använda SSH med HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+> När du utför följande steg hello, måste du använda en SSH-klient. Mer information finns i hello [använda SSH med HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) dokumentet.
 
-Anslut till klustret via SSH från klienten:
+Använd SSH tooconnect toohello kluster från din klient:
 
 ```ssh SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net```
 
-Ersätt **SSHUSER** med det SSH-användarnamn som du angav när klustret skapades. Ersätt **CLUSTERNAME** med namnet på klustret.
+Ersätt **SSHUSER** med hello SSH-användarnamn som du angav när klustret skapas. Ersätt **KLUSTERNAMN** med hello hello klustrets namn.
 
-När du uppmanas till det anger du det lösenord som du använde för SSH-kontot.
+När du uppmanas ange hello-lösenord som du använde för hello SSH-konto.
 
 Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
 
-## <a id="getkafkainfo"></a>Hämta information om värden i Zookeeper och Broker
+## <a id="getkafkainfo"></a>Hämta information om hello Zookeeper och Broker värden
 
-När du arbetar med Kafka, måste du känna två värdvärden: *Zookeeper*-värdarna och *Broker*-värdarna. Dessa värdar används med Kafka-API och många av de verktyg som levereras med Kafka.
+När du arbetar med Kafka, måste du känna två värden värden. Hej *Zookeeper* värdar och hello *Broker* värdar. Dessa värdar används med hello Kafka API och många hello verktyg som levereras med Kafka.
 
-Skapa miljövariabler som innehåller värdinformationen med hjälp av följande steg. Dessa miljövariabler används i stegen i det här dokumentet.
+Använd hello följande steg toocreate miljövariabler som innehåller information om hello värden. De här miljövariablerna används i hello stegen i det här dokumentet.
 
-1. Använd följande kommando från en SSH-anslutning till klustret för att installera verktyget `jq`. Det här verktyget används för att parsa JSON-dokument och är användbart vid hämtning av värdinformation för asynkron meddelandekö:
+1. Från ett SSH-anslutning toohello kluster, Använd hello följande kommando tooinstall hello `jq` verktyget. Det här verktyget är används tooparse JSON-dokument och är användbart vid hämtning av information om hello broker värden:
    
     ```bash
     sudo apt -y install jq
     ```
 
-2. Ange miljövariabler med information som hämtas från Ambari med hjälp av följande kommandon:
+2. tooset hello miljövariablerna med information som hämtas från Ambari, Använd hello följande kommandon:
 
     ```bash
     CLUSTERNAME='your cluster name'
@@ -129,86 +129,86 @@ Skapa miljövariabler som innehåller värdinformationen med hjälp av följande
     ```
 
     > [!IMPORTANT]
-    > Ange `CLUSTERNAME=` till namnet på Kafka-klustret. Ange `PASSWORD=` med inloggningslösenordet (för administratör) som du använde när klustret skapas.
+    > Ange `CLUSTERNAME=` toohello namnet på hello Kafka klustret. Ange `PASSWORD=` toohello inloggning (admin) lösenord som du använde när du skapar hello kluster.
 
-    Följande text är ett exempel på innehållet i `$KAFKAZKHOSTS`:
+    hello följande är ett exempel på hello innehållet i `$KAFKAZKHOSTS`:
    
     `zk0-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181,zk2-kafka.eahjefxxp1netdbyklgqj5y1ud.ex.internal.cloudapp.net:2181`
    
-    Följande text är ett exempel på innehållet i `$KAFKABROKERS`:
+    hello följande är ett exempel på hello innehållet i `$KAFKABROKERS`:
    
     `wn1-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092,wn0-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092`
 
     > [!NOTE]
-    > Kommandot `cut` används för att trimma listan över värdar till två värdposter. Du behöver inte ange den fullständiga listan över värdar när du skapar en Kafka-konsument eller -producent.
+    > Hej `cut` kommandot är används tootrim hello listan över värdar tootwo värdposter. Du behöver inte tooprovide hello fullständig lista över värdar när du skapar en Kafka konsument eller tillverkare.
    
     > [!WARNING]
-    > Förlita dig inte på att den information som returneras från den här sessionen alltid är korrekt. Om du skalar klustret läggs nya asynkrona meddelandeköer till respektive tas bort. Om ett fel uppstår och en nod ersätts kan värdnamnet för noden ändras.
+    > Förlita dig inte på hello informationen som returneras från den här sessionen tooalways är korrekt. Om du skalar hello kluster, nya mäklare läggs till eller tas bort. Om ett fel inträffar och har ersatts av en nod, kan hello värdnamn för hello nod ändras.
     >
-    > Du bör hämta värdinformation om Zookeeper och asynkron meddelandekö strax innan du använder den för att kontrollera att du har giltig information.
+    > Du bör hämta information om hello Zookeeper och broker värdar strax innan du använder tooensure som du har en giltig information.
 
 ## <a name="create-a-topic"></a>Skapa ett ämne
 
-Kafka lagrar dataströmmar i kategorier som kallas *ämnen*. Från en SSH-anslutning till en klusterhuvudnod använder du ett skript som medföljer Kafka för att skapa ett ämne:
+Kafka lagrar dataströmmar i kategorier som kallas *ämnen*. Använda ett skript som medföljer Kafka toocreate ett ämne från en SSH-anslutning tooa klustret headnode:
 
 ```bash
 /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
 ```
 
-Det här kommandot ansluter till Zookeeper med hjälp av värdinformationen som lagras i `$KAFKAZKHOSTS`, och skapar sedan ett Kafka-ämne med namnet **test**. Du kan verifiera att ämnet har skapats med hjälp av följande skript för att lista ämnen:
+Det här kommandot ansluter tooZookeeper med information om hello värden som lagras i `$KAFKAZKHOSTS`, och sedan skapa Kafka ämne med namnet **testa**. Du kan verifiera hello avsnittet skapades med hjälp av hello följande skript toolist avsnitt:
 
 ```bash
 /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
 ```
 
-Utdata från det här kommandot visar Kafka-avsnitt som innehåller ämnet **test**.
+hello kommandots utdata visar Kafka avsnitt som innehåller hello **testa** avsnittet.
 
 ## <a name="produce-and-consume-records"></a>Skapa och använda poster
 
 Kafka lagrar *poster* i ämnen. Poster produceras av *producenter*, och används av *konsumenter*. Producenter hämtar poster från asynkrona Kafka-*meddelandeköer*. Varje arbetsnod i HDInsight-klustret är en asynkron Kafka-meddelandekö.
 
-Använd följande steg för att lagra poster i det testämne som du skapade tidigare och läs dem sedan med en konsument:
+Använd följande steg toostore poster i hello test avsnittet du skapade tidigare och läsa dem med hjälp av en konsument hello:
 
-1. Använd ett skript som medföljer Kafka för att skriva poster till ämnet från SSH-sessionen:
+1. Använda ett skript som medföljer Kafka toowrite poster toohello avsnittet från hello SSH-session:
    
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic test
     ```
    
-    Du kommer inte tillbaka till uppmaningen efter det här kommandot. Skriv i stället ange några textmeddelanden och använd sedan **Ctrl + C** för att sluta skicka till ämnet. Varje rad skickas som en separat post.
+    Du returneras inte toohello fråga efter det här kommandot. I stället skriver några textmeddelanden och använder sedan **Ctrl + C** toostop skicka toohello avsnittet. Varje rad skickas som en separat post.
 
-2. Använd ett skript som medföljer Kafka för att läsa poster från ämnet:
+2. Använda ett skript som medföljer Kafka tooread poster från hello avsnittet:
    
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic test --from-beginning
     ```
    
-    Med det här kommandot hämtar du posterna från ämnet och visar dem. Med hjälp av `--from-beginning` anges att konsumenten ska starta från början av direktuppspelningen så att alla poster hämtas.
+    Detta kommando hämtar hello poster hello artikeln och visar dem. Med hjälp av `--from-beginning` anger hello konsumenten toostart från hello början av hello stream, så hämtas alla poster.
 
-3. Använd __Ctrl + C__ om du vill stoppa konsumenten.
+3. Använd __Ctrl + C__ toostop hello konsumenten.
 
 ## <a name="producer-and-consumer-api"></a>Producent- och konsument-API
 
-Du kan även programmässigt producera och använda poster med hjälp av [Kafka-API: er](http://kafka.apache.org/documentation#api). Använd följande steg från din utvecklingsmiljö för att skapa en Java-producent och -konsument.
+Du kan också programmässigt skapa och använda poster med hello [Kafka API: er](http://kafka.apache.org/documentation#api). toobuild Java producent och konsumenten, använder du hello följande steg från din utvecklingsmiljö.
 
 > [!IMPORTANT]
-> Du måste ha följande komponenter installerade i utvecklingsmiljön:
+> Du måste ha följande komponenter installerade i din utvecklingsmiljö hello:
 >
 > * [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) eller motsvarande, till exempel OpenJDK.
 >
 > * [Apache Maven](http://maven.apache.org/)
 >
-> * En SSH-klient och kommandot `scp` . Mer information finns i dokumentet [Använda SSH med HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+> * En SSH-klienten och hello `scp` kommando. Mer information finns i hello [använda SSH med HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) dokumentet.
 
-1. Ladda ned exempel från [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started). Använd projektet i katalogen `Producer-Consumer` för exemplet med producent/konsument. Det här exemplet innehåller följande klasser:
+1. Hämta hello exempel från [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started). Använd hello-projekt i hello exempelvis hello producenten/konsumenten `Producer-Consumer` directory. Det här exemplet innehåller hello följande klasser:
    
-    * **Kör** – Startar antingen konsumenten eller producenten.
+    * **Kör** -startar hello konsumenten eller tillverkare.
 
-    * **Producent** – Sparar 1 000 000 poster i ämnet.
+    * **Producenten** -butiker 1 000 000 poster toohello avsnittet.
 
-    * **Konsument** – Läser poster från ämnet.
+    * **Konsumenten** -läser poster från hello-avsnittet.
 
-2. Skapa ett jar-paket genom att navigera till sökvägen för katalogen `Producer-Consumer` och sedan använda följande kommando:
+2. toocreate ett jar-paket, ändra kataloger toohello placeringen hello `Producer-Consumer` katalogen och Använd hello följande kommando:
 
     ```
     mvn clean package
@@ -216,63 +216,63 @@ Du kan även programmässigt producera och använda poster med hjälp av [Kafka-
 
     Det här kommandot skapar en katalog med namnet `target`, som innehåller en fil med namnet `kafka-producer-consumer-1.0-SNAPSHOT.jar`.
 
-3. Använd följande kommandon för att kopiera filen `kafka-producer-consumer-1.0-SNAPSHOT.jar` till ditt HDInsight-kluster:
+3. Använd hello följande kommandon toocopy hello `kafka-producer-consumer-1.0-SNAPSHOT.jar` filen tooyour HDInsight-kluster:
    
     ```bash
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
    
-    Ersätt **SSHUSER** med SSH-användare för klustret och ersätt **CLUSTERNAME** med namnet på klustret. Ange lösenordet för SSH-användaren när du uppmanas till det.
+    Ersätt **SSHUSER** med hello SSH-användare för klustret och Ersätt **KLUSTERNAMN** med hello namnet på klustret. När du uppmanas ange hello lösenord för hello SSH-användare.
 
-4. När filen kopierats med kommandot `scp` ansluter du till klustret via SSH. Skriv posterna till testämnet med följande kommando:
+4. En gång hello `scp` kommandot slutförs kopiera hello-fil, ansluta toohello kluster med SSH. Använd följande kommando toowrite poster toohello testämne hello:
 
     ```bash
     java -jar kafka-producer-consumer.jar producer $KAFKABROKERS
     ```
 
-5. När processen är klar kan du använda följande kommando för att läsa från ämnet:
+5. När hello processen är klar använder du hello efter kommandot tooread från hello avsnittet:
    
     ```bash
     java -jar kafka-producer-consumer.jar consumer $KAFKABROKERS
     ```
    
-    De lästa posterna, tillsammans med antalet poster, visas. Du kan se några fler än 1 000 000 loggade om du har skickat flera poster till ämnet med hjälp av ett skript i ett tidigare steg.
+    hello poster läsas tillsammans med antalet poster visas. Du kan se några fler än 1 000 000 loggas som du har skickat flera poster toohello avsnitt med ett skript i ett tidigare steg.
 
-6. Använd __Ctrl + C__ om du vill avsluta konsumenten.
+6. Använd __Ctrl + C__ tooexit hello konsumenten.
 
 ### <a name="multiple-consumers"></a>Flera konsumenter
 
-Kafka-konsumenter använder en konsumentgrupp vid läsning av poster. Att använda samma grupp med flera konsumenter resulterar i belastningsutjämnaravläsningar från ett ämne. Varje konsument i gruppen tar emot en del av posterna. Använd följande steg om du vill se hur det fungerar:
+Kafka-konsumenter använder en konsumentgrupp vid läsning av poster. Hello samma grupp med flera konsumenter balanserade leder till att läsa in läsningar av ett ämne. Varje konsument i hello-gruppen tar emot en del av hello poster. toosee hur det fungerar, Använd hello följande steg:
 
-1. Öppna en ny SSH-session i klustret, så att du har två av dessa. Använd följande för att starta en konsument med samma konsumentgrupps-ID i varje session:
+1. Öppna ett nytt SSH-session toohello kluster, så att du har två av dem. I varje session använder hello följande toostart hello konsumenter med samma konsumenten grupp-ID:
    
     ```bash
     java -jar kafka-producer-consumer.jar consumer $KAFKABROKERS mygroup
     ```
 
-    Detta kommando startar en konsument med grupp-ID `mygroup`.
+    Detta kommando startar konsumenter med hjälp av grupp-ID för hello `mygroup`.
 
     > [!NOTE]
-    > Använd kommandona i avsnittet [Hämta värdinformation för Zookeeper och Broker](#getkafkainfo) till att ange `$KAFKABROKERS` för den här SSH-sessionen.
+    > Använd hello kommandon i hello [hämta hello Zookeeper och Broker värdinformation](#getkafkainfo) avsnittet tooset `$KAFKABROKERS` för den här SSH-sessionen.
 
-2. Titta på när varje session räknar posterna som tas emot från ämnet. Summan av båda sessionerna ska vara identisk med den som du tidigare har tagit emot från en konsument.
+2. Titta på som varje session antal hello-poster som tas emot från hello-avsnittet. hello totalt båda sessioner bör vara hello samma som du tidigare fått från en klient.
 
-Förbrukning av klienter i samma grupp hanteras via partitionerna för ämnet. För det `test`-ämne som skapades tidigare har den åtta partitioner. Om du öppnar åtta SSH-sessioner och startar en konsument i alla sessioner, läser varje konsument poster från en partition i ämnet.
+Användning av klienter i samma grupp hanteras via hello partitioner för hello avsnittet hello. För hello `test` avsnittet skapade tidigare, den har åtta partitioner. Om du öppnar åtta SSH-sessioner och starta en konsument i alla sessioner läser varje konsument poster från en enda partition för hello ämnet.
 
 > [!IMPORTANT]
-> Det får inte finnas flera instanser av konsumenten i en konsumentgrupp än partitioner. I det här exemplet kan en konsumentgrupp innehålla upp till åtta konsumenter, eftersom det är antalet partitioner i ämnet. Du kan även ha flera konsumentgrupper med högst åtta konsumenter vardera.
+> Det får inte finnas flera instanser av konsumenten i en konsumentgrupp än partitioner. I det här exemplet kan en konsumentgrupp innehålla upp tooeight konsumenter eftersom hello antalet partitioner i hello-avsnittet. Du kan även ha flera konsumentgrupper med högst åtta konsumenter vardera.
 
-Poster som lagras i Kafka lagras i den ordning som de tas emot inom en partition. För att uppnå sorterad leverans av poster *inom en partition* skapar du en konsumentgrupp där antalet konsumentinstanser matchar antalet partitioner. För att uppnå sorterad leverans av poster *i ämnet* skapar du en konsumentgrupp med bara en konsumentinstans.
+Poster som lagras i Kafka lagras i hello ordning de tas emot inom en partition. tooachieve i sorterade levereras poster *inom en partition*, skapa en konsumentgrupp där hello antalet instanser av konsumenten matchar hello antalet partitioner. tooachieve i sorterade levereras poster *i hello avsnittet*, skapa en konsumentgrupp med endast en konsument-instans.
 
 ## <a name="streaming-api"></a>Strömmande API
 
-Strömmande API lades till Kafka i version 0.10.0; tidigare versioner är beroende av Apache Spark eller Storm för bearbetning av dataströmmen.
+hello streaming API har lagts till tooKafka i version 0.10.0; tidigare versioner förlitar sig på Apache Spark eller Storm för bearbetning av dataströmmen.
 
-1. Om du inte redan gjort det kan du hämta exemplen från [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) till din utvecklingsmiljö. För direktuppspelningsexemplet använder du projektet i katalogen `streaming`.
+1. Om du inte redan har gjort hämta hello exempel från [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) tooyour utvecklingsmiljö. För hello strömning exempel, använda hello projektet på hello `streaming` directory.
    
-    Det här projektet innehåller endast en klass `Stream`, som läser poster från ämnet `test` som har skapats tidigare. Den räknar antalet lästa ord och genererar varje ord och antalet till ett ämne som heter `wordcounts`. Ämnet `wordcounts` skapas i ett senare steg i det här avsnittet.
+    Det här projektet innehåller endast en klass `Stream`, som läser poster från hello `test` ämne som skapats tidigare. Det antal hello ord läsa och genererar varje ord och räknas tooa avsnitt med namnet `wordcounts`. Hej `wordcounts` avsnittet skapas i ett senare steg i det här avsnittet.
 
-2. Från kommandoraden i din utvecklingsmiljö ändrar du katalogerna till platsen för katalogen `Streaming` och använder sedan följande kommando för att skapa ett jar-paket:
+2. Ändra kataloger toohello placeringen hello från kommandoraden i din utvecklingsmiljö hello `Streaming` katalogen och Använd hello efter kommandot toocreate ett jar-paket:
 
     ```bash
     mvn clean package
@@ -280,44 +280,44 @@ Strömmande API lades till Kafka i version 0.10.0; tidigare versioner är beroen
 
     Det här kommandot skapar en katalog med namnet `target`, som innehåller en fil med namnet `kafka-streaming-1.0-SNAPSHOT.jar`.
 
-3. Använd följande kommandon för att kopiera filen `kafka-streaming-1.0-SNAPSHOT.jar` till ditt HDInsight-kluster:
+3. Använd hello följande kommandon toocopy hello `kafka-streaming-1.0-SNAPSHOT.jar` filen tooyour HDInsight-kluster:
    
     ```bash
     scp ./target/kafka-streaming-1.0-SNAPSHOT.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net:kafka-streaming.jar
     ```
    
-    Ersätt **SSHUSER** med SSH-användare för klustret och ersätt **CLUSTERNAME** med namnet på klustret. Ange lösenordet för SSH-användaren när du uppmanas till det.
+    Ersätt **SSHUSER** med hello SSH-användare för klustret och Ersätt **KLUSTERNAMN** med hello namnet på klustret. När du uppmanas ange hello lösenord för hello SSH-användare.
 
-4. När kommandot `scp` har slutfört kopieringen av filen ansluter du till klustret med SSH och använder sedan följande kommando för att skapa ämnet `wordcounts`:
+4. En gång hello `scp` kommandot slutförs kopiera hello-fil, ansluta toohello kluster med SSH och sedan använda följande kommando toocreate hello hello `wordcounts` avsnittet:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic wordcounts --zookeeper $KAFKAZKHOSTS
     ```
 
-5. Starta sedan den direktuppspelade processen med följande kommando:
+5. Därefter starta hello strömning processen med hjälp av hello följande kommando:
    
     ```bash
     java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS 2>/dev/null &
     ```
    
-    Detta kommando startar den direktuppspelade processen i bakgrunden.
+    Detta kommando startar hello strömning processen i hello bakgrund.
 
-6. Använd följande kommando för att skicka meddelanden till ämnet `test`. Meddelandena behandlas med direktuppspelade exempel:
+6. Använd hello följande kommando toosend meddelanden toohello `test` avsnittet. Dessa meddelanden bearbetas av hello strömning exempel:
    
     ```bash
     java -jar kafka-producer-consumer.jar producer $KAFKABROKERS &>/dev/null &
     ```
 
-7. Använd följande kommando för att visa utdata som skrivs till ämnet `wordcounts` genom den direktuppspelade processen:
+7. Använd hello följande tooview hello kommandoutdata som skrivs toohello `wordcounts` ämne av hello strömning processen:
    
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
     ```
    
     > [!NOTE]
-    > Om du vill visa data måste du beordra konsumenten att skriva ut nyckeln och ange vilken funktion för avserialisering som ska användas för nyckeln och värdet. Nyckelnamnet är ordet, och nyckelvärdet innehåller antalet.
+    > tooview hello data, måste du se hello konsumenten tooprint hello nyckel och hello funktionen för avserialisering toouse för hello nyckel och värde. hello nyckelnamn är hello word och hello nyckelvärdet innehåller hello count.
    
-    De utdata som genereras liknar följande text:
+    hello utdata är liknande toohello följande text:
    
         dwarfs  13635
         ago     13664
@@ -335,11 +335,11 @@ Strömmande API lades till Kafka i version 0.10.0; tidigare versioner är beroen
         snow    13637
    
     > [!NOTE]
-    > Antalet ökar varje gång ett ord påträffas.
+    > hello antal ökar varje gång ett ord har påträffats.
 
-7. Använd __Ctrl + C__ om du vill avsluta konsumenten och använd sedan kommandot `fg` för att återställa den direktuppspelade bakgrundsaktiviteten till förgrunden igen. Använd __Ctrl + C__ för att avsluta den också.
+7. Använd hello __Ctrl + C__ tooexit hello konsumenten och Använd sedan hello `fg` kommandot toobring hello strömmande bakgrund uppgiften tillbaka toohello förgrunden. Använd __Ctrl + C__ tooexit den också.
 
-## <a name="delete-the-cluster"></a>Ta bort klustret
+## <a name="delete-hello-cluster"></a>Ta bort hello kluster
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -349,12 +349,12 @@ Om du får problem med att skapa HDInsight-kluster läser du [åtkomstkontrollkr
 
 ## <a name="next-steps"></a>Nästa steg
 
-I detta dokument har du lärt dig grunderna för att arbeta med Apache Kafka i HDInsight. Använd följande för att lära dig mer om att arbeta med Kafka:
+I det här dokumentet har du lärt dig hello grunderna i att arbeta med Apache Kafka på HDInsight. Använd följande toolearn mer information om hur du arbetar med Kafka hello:
 
 * [Säkerställ en hög tillgänglighet för dina data med Kafka i HDInsight](hdinsight-apache-kafka-high-availability.md)
 * [Öka skalbarheten genom att konfigurera hanterade diskar med Kafka i HDInsight](hdinsight-apache-kafka-scalability.md)
 * [Apache Kafka-dokumentation](http://kafka.apache.org/documentation.html) på kafka.apache.org.
-* [Använd MirrorMaker för att skapa en replik av Kafka på HDInsight](hdinsight-apache-kafka-mirroring.md)
+* [Använda MirrorMaker toocreate en replik av Kafka på HDInsight](hdinsight-apache-kafka-mirroring.md)
 * [Använda Apache Storm med Kafka på HDInsight](hdinsight-apache-storm-with-kafka.md)
 * [Använda Apache Spark med Kafka på HDInsight](hdinsight-apache-spark-with-kafka.md)
-* [Ansluta till Kafka via ett trådlöst Azure-nätverk](hdinsight-apache-kafka-connect-vpn-gateway.md)
+* [Ansluta tooKafka via ett virtuellt Azure-nätverk](hdinsight-apache-kafka-connect-vpn-gateway.md)

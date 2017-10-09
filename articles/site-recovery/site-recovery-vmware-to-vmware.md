@@ -1,6 +1,6 @@
 ---
-title: Replikera virtuella VMware-datorer eller fysiska servrar till en annan plats (klassiska Azure-portalen) | Microsoft Docs
-description: "Använd den här artikeln för att replikera virtuella VMware-datorer eller Windows-/ Linux fysiska servrar till en sekundär plats med Azure Site Recovery."
+title: aaaReplicate virtuella VMware-datorer eller fysiska servrar tooanother plats (klassiska Azure-portalen) | Microsoft Docs
+description: "Använd den här artikeln tooreplicate virtuella VMware-datorer eller Windows-/ Linux fysiska servrar tooa sekundär plats med Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: nsoneji
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: nisoneji
-ms.openlocfilehash: 01a6f35fe61290f8c7275c34273d66956a53d3f9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5789ca07f0aa15cf194615fd33103dac930d7b7f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site-in-the-classic-azure-portal"></a>Replikera lokala virtuella VMware-datorer eller fysiska servrar till en sekundär plats i den klassiska Azure-portalen
+# <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-tooa-secondary-site-in-hello-classic-azure-portal"></a>Replikera lokala virtuella VMware-datorer eller fysiska servrar tooa sekundär plats i hello klassiska Azure-portalen
 
 ## <a name="overview"></a>Översikt
 InMage Scout i Azure Site Recovery tillhandahåller realtid replikering mellan lokala platser för VMware. InMage Scout ingår i Azure Site Recovery-tjänsten prenumerationer. 
@@ -29,22 +29,22 @@ InMage Scout i Azure Site Recovery tillhandahåller realtid replikering mellan l
 **Azure-konto**: du behöver en [Microsoft Azure](https://azure.microsoft.com/) konto. Du kan börja med en [kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/). [Lär dig mer](https://azure.microsoft.com/pricing/details/site-recovery/) om priserna för Site Recovery.
 
 ## <a name="step-1-create-a-vault"></a>Steg 1: Skapa ett valv
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in toohello [Azure-portalen](https://portal.azure.com).
 2. Klicka på Ny > Management > säkerhetskopiering och återställning (OMS). Du kan också klicka på Bläddra > Återställningstjänstvalvet > Lägg till.
-3. I **Namn** anger du ett eget namn som identifierar valvet. Om du har mer än en prenumeration väljer du en av dem.
-4. I **resursgruppen** skapa en ny resursgrupp eller välj en befintlig. Ange en Azure-region för att slutföra obligatoriska fält.
-5. I **plats**, väljer du ett geografiskt område för valvet. Regioner som stöds finns i [priser för Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
-6. Om du vill komma åt valvet från instrumentpanelen på Fäst på instrumentpanelen och klicka på Skapa.
-7. Det nya valvet visas på instrumentpanelen > alla resurser, och på den huvudsakliga Recovery Services-valv bladet.
+3. I **namn** ange ett eget namn tooidentify hello valv. Om du har mer än en prenumeration väljer du en av dem.
+4. I **resursgruppen** skapa en ny resursgrupp eller välj en befintlig. Ange en Azure-region toocomplete obligatoriskt fält.
+5. I **plats**, Välj hello geografiskt område för hello-valvet. toocheck stöds regioner, se [priser för Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
+6. Om du vill tooquickly åtkomst hello valvet från hello instrumentpanelen klickar du på PIN-kod toodashboard och klicka på Skapa.
+7. hello nya valvet visas på hello instrumentpanelen > alla resurser, och på hello huvudsakliga Recovery Services-valv bladet.
 
-## <a name="step-2-configure-the-vault-and-download-inmage-scout-components"></a>Steg 2: Konfigurera valvet och ladda ned InMage Scout komponenter
-1. Välj ditt valv och klicka på inställningar i bladet Recovery Services-valv.
+## <a name="step-2-configure-hello-vault-and-download-inmage-scout-components"></a>Steg 2: Konfigurera hello valvet och ladda ned InMage Scout komponenter
+1. Hello Recovery Services-valv bladet välj ditt valv och klicka på inställningar.
 2. I **inställningar** > **komma igång** klickar du på **Site Recovery** > steg 1: **Förbered infrastrukturen**  >  **Skyddsmål**.
-3. I **skyddsmål** välja till återställningsplatsen och välj Ja, med VMware vSphere-hypervisor-programmet. Klicka sedan på OK.
-4. I **Scout installationsprogrammet**, klicka på hämta ladda ned InMage Scout 8.0.1 GA programvara och registrering nyckel. Installationsfilerna för alla nödvändiga komponenter finns i den hämtade ZIP-fil.
+3. I **skyddsmål** väljer toorecovery plats och välj Ja, med VMware vSphere-hypervisor-programmet. Klicka sedan på OK.
+4. I **Scout installationsprogrammet**, klicka på Hämta toodownload InMage Scout 8.0.1 GA programvara och registrering nyckel. hello installationsfiler för alla hello krävs komponenter är i hello hämtade ZIP-fil.
 
 ## <a name="step-3-install-component-updates"></a>Steg 3: Installera Komponentuppdateringar
-Läs mer om senast [uppdateringar](#updates). Du måste installera uppdateringsfiler på servrar i följande ordning:
+Läs mer om hello senaste [uppdateringar](#updates). Du måste installera hello uppdateringsfiler på servrar i hello följande ordning:
 
 1. Om det finns en RX-server
 2. Konfigurationsservrar
@@ -53,9 +53,9 @@ Läs mer om senast [uppdateringar](#updates). Du måste installera uppdateringsf
 5. vContinuum-servrar
 6. Källservern (både Windows och Linux-Server)
 
-Installera uppdateringar på följande sätt:
+Installera hello uppdateringar på följande sätt:
 
-1. Hämta den [uppdatera](https://aka.ms/asr-scout-update5) ZIP-filen. Den här ZIP-filen innehåller följande filer:
+1. Hämta hello [uppdatera](https://aka.ms/asr-scout-update5) ZIP-filen. Den här ZIP-filen innehåller hello följande filer:
 
    * RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.GZ
    * CX_Windows_8.0.4.0_GA_Update_4_8725865_14Sep16.exe
@@ -63,19 +63,19 @@ Installera uppdateringar på följande sätt:
    * UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
    * vCon_Windows_8.0.5.0_GA_Update_5_11525767_20Apr17.exe
    * UA update4 bitar för RHEL5, OL5, OL6, SUSE 10, SUSE 11: UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
-2. Extrahera ZIP-filer.<br>
-3. **För RX servern**: kopiera **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** till servern RX och extrahera den. I den extraherade mappen kör **/Install**.<br>
-4. **För server-processen konfigurationsservern**: kopiera **CX_Windows_8.0.4.0_GA_Update_4_8725865_14Sep16.exe** till konfigurationsservern och processervern. Dubbelklicka om du vill köra den.<br>
-5. **För Windows-huvudmålservern**: Om du vill uppdatera enhetlig agenten kopiera **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** till huvudmålservern. Dubbelklicka på den att köra den. Observera att enhetlig agenten gäller även för källservern om datakällan inte uppdateras till Update4. Du bör installera den på källservern och, som tidigare nämnts senare i den här listan.<br>
-6. **För vContinuum-servern**: kopiera **vCon_Windows_8.0.5.0_GA_Update_5_11525767_20Apr17.exe** till vContinuum-servern.  Kontrollera att du har stängt guiden vContinuum. Dubbelklicka på filen för att köra den.<br>
-7. **För Linux-huvudmålservern**: Om du vill uppdatera enhetlig agenten kopiera **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** till huvudservern målet server och extrahera den. I den extraherade mappen kör **/Install**.<br>
-8. **För Windows-källservern**: du behöver inte installera uppdatering 5-agenten på källan om soruce finns redan på update4. Om det är mindre än update4 gäller uppdatering 5-agenten.
-Om du vill uppdatera enhetlig agenten kopiera **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** till källservern. Dubbelklicka på den att köra den. <br>
-9. **För Linux-källservern**: Om du vill uppdatera enhetlig agenten kopiera motsvarande version av filen UA till Linux-servern och extrahera den. I den extraherade mappen kör **/Install**.  Exempel: För RHEL 6,7 64 bitarsserver kopierar **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** till servern och extrahera den. I den extraherade mappen kör **/Install**.
+2. Extrahera hello ZIP-filer.<br>
+3. **För hello RX server**: kopiera **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** toohello RX server och extrahera den. Hello extraherade mappen, kör **/Install**.<br>
+4. **För server-processen för hello konfigurationsservern**: kopiera **CX_Windows_8.0.4.0_GA_Update_4_8725865_14Sep16.exe** toohello konfigurationsservern och processervern. Dubbelklicka på toorun den.<br>
+5. **För Windows hello huvudmålservern**: tooupdate hello unified agent, kopiera **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** toohello huvudmålservern. Dubbelklicka på den toorun den. Observera att hello unified agent är också tillämpliga toohello källservern om datakällan inte uppdateras till Update4. Du bör installera den på hello källservern och, som tidigare nämnts senare i den här listan.<br>
+6. **För hello vContinuum-server**: kopiera **vCon_Windows_8.0.5.0_GA_Update_5_11525767_20Apr17.exe** toohello vContinuum-servern.  Kontrollera att du har stängt hello vContinuum-guiden. Dubbelklicka på hello filen toorun.<br>
+7. **För Linux hello huvudmålservern**: tooupdate hello unified agent, kopiera **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** toohello huvudservern mål och extrahera den. Hello extraherade mappen, kör **/Install**.<br>
+8. **För källservern med Windows hello**: du behöver inte tooinstall uppdatering 5 agent på källan om soruce finns redan på update4. Om det är mindre än update4 gäller hello uppdatering 5 agent.
+tooupdate hello unified agent, kopiera **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** toohello källservern. Dubbelklicka på den toorun den. <br>
+9. **För hello Linux källserver**: tooupdate hello unified agent, kopiera motsvarande version av UA filserver toohello Linux och extrahera den. Hello extraherade mappen, kör **/Install**.  Exempel: För RHEL 6,7 64 bitarsserver kopierar **UA_RHEL6 64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** toohello server och extrahera den. Hello extraherade mappen, kör **/Install**.
 
 ## <a name="step-4-set-up-replication"></a>Steg 4: Konfigurera replikering
-1. Konfigurera replikering mellan käll- och mål-VMware-platser.
-2. Använd InMage Scout dokumentationen som hämtas med produkten vägledning. Du kan också du kan komma åt dokumentationen på följande sätt:
+1. Konfigurera replikering mellan hello käll- och VMware platser.
+2. Använda hello InMage Scout dokumentation som hämtas med hello produkten vägledning. Du kan också du kan komma åt hello dokumentationen på följande sätt:
 
    * [Viktig information](https://aka.ms/asr-scout-release-notes)
    * [Kompatibilitetsmatrix](https://aka.ms/asr-scout-cm)
@@ -85,8 +85,8 @@ Om du vill uppdatera enhetlig agenten kopiera **UA_Windows_8.0.5.0_GA_Update_5_1
 
 ## <a name="updates"></a>Uppdateringar
 ### <a name="azure-site-recovery-scout-801-update-5"></a>Azure Site Recovery Scout 8.0.1 uppdatering 5
-Scout uppdatering 5 är en kumulativ uppdatering. Den innehåller alla korrigeringsfiler för update1 till update4 och följande nya felkorrigeringar och förbättringar.
-Korrigeringar som har lagts till från ASR Scout update4 till update5 är specifika för huvudserver och vContinuum-komponenter. Om alla dina källservrar, Huvudmålet, konfigurationsservern, Processervern och RX redan finns på ASR Scout update4 måste du installera uppdateringen 5 endast på huvudmålservern. 
+Scout uppdatering 5 är en kumulativ uppdatering. Den har alla hello korrigeringar av update1 till update4 och följande nya felkorrigeringar och förbättringar.
+Korrigeringar som har lagts till från ASR Scout update4 tooupdate5 är särskilda tooMaster mål- och vContinuum-komponenter. Om alla dina källservrar, Huvudmålet, konfigurationsservern, Processervern och RX redan finns på ASR Scout update4 sedan du behöver tooapply uppdatera 5 endast på huvudmålservern. 
 
 **Stöd för nya plattformar**
 * SUSE Linux Enterprise Server 11 Service Pack-4(SP4)
@@ -98,26 +98,26 @@ Korrigeringar som har lagts till från ASR Scout update4 till update5 är specif
 **Felkorrigeringar och förbättringar**
 
 * Ökad tillförlitlighet för stöd av Windows-kluster
-    * Fast tid några av P2V-MSCS klusterdiskar blir RAW efter återställning
-    * Fixed-P2V MSCS-kluster återställningen misslyckas på grund av disk ordning
+    * Fast tid vissa hello P2V MSCS klusterdiskar blir RAW efter återställning
+    * Fixed-P2V MSCS-kluster återställningen misslyckas på grund av felaktig matchning av toodisk ordning
     * Fixed-MSCS-kluster lägga till diskar misslyckas med storleken felaktig matchning av disk
     * Fixed-källa MSCS-kluster med RDM LUN mappning beredskapskontroll misslyckas storlek verifieringen
-    * Fixed-enskild nod klustret skyddet fungerar inte på grund av SCSI-matchningsfel problem 
-    * Fixed-skydda igen av P2V-Windows-klusterserver misslyckas om mål-klusterdiskar finns. 
+    * Fixed-enskild nod klustret skyddet fungerar inte på grund av tooSCSI matchningsfel problemet 
+    * Fixed-skydda igen hello P2V Windows-klusterserver misslyckas om mål-klusterdiskar finns. 
     
-* Under återställning efter fel skyddet, om valda Huvudmålservern är inte på samma ESXi-servern som skyddad källdatorn (under vidarebefordra skydd), vContinuum hämtar fel Huvudmålservern under återställning efter fel återställningen och därefter återställningen misslyckas.
+* Under återställning efter fel skyddet om valda Huvudmålservern inte finns på att hello samma ESXi-servern som som hello skyddad källdatorn (under vidarebefordra skydd), och sedan vContinuum hämtar hello fel Huvudmålservern under återställning efter fel återställningen och därefter återställningen misslyckas.
 
 > [!NOTE]
 > 
-> * Korrigeringar är tillämpliga på endast de fysiska MSCS-kluster som nyligen skyddade med ASR Scout update5 över P2V-klustret. Att använda klustret åtgärdas på redan skyddade P2V MSCS-kluster med äldre uppdateringar, måste du följa Uppgraderingsstegen som nämns i avsnittet 12, uppgradering skyddade P2V MSCS-kluster till Scout Update5 av [ASR Scout viktig information](https://aka.ms/asr-scout-release-notes).
+> * Är tillämpliga tooonly de fysiska MSCS-kluster som nyligen skyddade med ASR Scout update5 ovan P2V klustret korrigeringar. tooavail hello klustret korrigeringar på hello redan skyddad P2V MSCS-kluster med äldre uppdateringar, behöver du toofollow hello Uppgraderingsstegen som nämns i hello avsnitt 12, uppgradering skyddade P2V MSCS-kluster tooScout Update5 av [ASR Scout versionen Anteckningar](https://aka.ms/asr-scout-release-notes).
 > 
-> * Skydda igen av fysiskt MSCS-kluster kan återanvända befintliga måldiskarna endast om vid tidpunkten för återaktivera skyddet, samma uppsättning med diskar är aktiva på alla klusternoder som de var när skyddat från början. Om inte, finns manuella åtgärder som anges i avsnitt 12 i [ASR Scout viktig information](https://aka.ms/asr-scout-release-notes) att flytta sidan måldiskarna till rätt datastore-sökvägen för att använda dem igen under återaktivera skyddet. Om du skyddar MSCS-kluster i P2V läge utan att uppgradera följande kommer den Skapa ny disk på ESXi målservern. Du måste manuellt ta bort gamla diskar från databasen.
+> * Skydda igen av fysiskt MSCS-kluster kan återanvända befintliga måldiskarna endast om när hello återaktivera skyddet, hello samma uppsättning diskar som är aktiva på varje hello klustret noder som de var när initialt skyddas. Om inte, sedan manuella åtgärder som anges i avsnitt 12 i [ASR Scout viktig information](https://aka.ms/asr-scout-release-notes) för flytta hello mål på serversidan diskar toohello rätt datastore sökvägen toore-använder dem under återaktivera skyddet. Om du skyddar hello MSCS-kluster i P2V läge utan att uppgradera följande kommer den Skapa ny disk på hello ESXi målserver. Du måste toomanually delete hello gamla diskar från hello datalagret.
 > 
-> * När datakällan SLES11 eller SLES11 med alla service pack-servern startas utan problem och sedan markera en manuellt i **rot** disk replikering par för synkroniserar som inte ska meddelas i CX UI. Om du inte ' Markera disken roten för omsynkronisering kan det uppstå problem med dataintegriteten (DI).
+> * När datakällan SLES11 eller SLES11 med alla service pack-servern startas utan problem och sedan markera en manuellt hello **rot** disk replikering par för synkroniserar som inte ska meddelas i CX UI. Om du inte ' Markera hello rotdisk för omsynkronisering, kan du se problem med dataintegriteten (DI).
 > 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 uppdatering 4
-Scout Update 4 är en kumulativ uppdatering. Den innehåller alla korrigeringsfiler för update1 till update3 och följande nya felkorrigeringar och förbättringar.
+Scout Update 4 är en kumulativ uppdatering. Den har alla hello korrigeringar av update1 till update3 och följande nya felkorrigeringar och förbättringar.
 
 **Stöd för nya plattformar**
 
@@ -135,98 +135,98 @@ Scout Update 4 är en kumulativ uppdatering. Den innehåller alla korrigeringsfi
 
 **Felkorrigeringar och förbättringar**
 
-* Förbättrad avstängning hantering för följande Linux OSes och kloner att förhindra oönskade synkroniserar problem.
+* Förbättrad avstängning hantering för följande Linux OSes och kloner tooprevent oönskade synkroniserar problem.
   * Red Hat Enterprise Linux (RHEL) 6.x
   * Oracle Linux (OL) 6.x
-* Slutför behörigheter i enhetlig katalog för agentinstallation nu är begränsad endast till den lokala användaren åtkomst för Linux.
+* För Linux begränsad fullständig åtkomst till behörigheter i enhetlig katalog för agentinstallation är nu endast toohello lokal användare.
 * Timeout för problem vid utfärdande vanliga distribuerade konsekvenskontroll bok märke på kraftigt läsa in distribuerade program som SQL- och Share Point-kluster i Windows.
 * Tillagda loggen relaterade korrigera i CX grundläggande installer.
-* VMware vCLI 6.0 länken läggs till grundläggande Huvudmålet för Windows-installationsprogrammet.
+* VMware vCLI 6.0 hämtningslänken läggs tooWindows Huvudmålet grundläggande installer.
 * Lägga till fler kontroller och loggar för nätverket konfigurationer ändringar under växling vid fel och DR övningar.
-* Tid kvarhållning information har inte rapporterats till CX.  
+* Tid kvarhållning informationen är inte rapporterat toohello CX.  
 * För fysiska klustret misslyckas volym ändra storlek igen guiden vContinuum när datakällan volym förminskas inträffade.
-* Klustret skydd misslyckades med felet ”Det gick inte att hitta disksignaturen” när klustret är PRDM disk.
+* Klustret skydd misslyckades med felet ”Det gick inte toofind hello disksignaturen” när klustret är PRDM disk.
 * cxps transport server kraschar på grund av undantaget intervall.
 * Servernamn och IP-kolumner är nu ändra storlek på sidan för push-installera vContinuum-guiden.
 * RX API-förbättringar
   * Innehåller fem senaste tillgängliga vanliga konsekvenspunkter (endast garanteras taggar).
-  * Ger kapacitet och information om ledigt utrymme för de skydda enheterna.
+  * Innehåller information om kapacitetsplanering och ledigt utrymme för alla hello skyddade enheter.
   * Ger Scout drivrutinen tillstånd på källservern.
 
 > [!NOTE]
 > * **InMage_Scout_Standard_8.0.1_GA.zip** grundläggande paketet har uppdaterats CX grundläggande installer **InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe** och Windows Huvudmålet grundläggande installer **InMage_ Scout_vContinuum_MT_8.0.1.0_Windows_GA_26Feb2015_release.exe**. Använd nya CX och Windows Huvudmålet GA-bitar för alla nya installationen.
 > * Update 4 kan tillämpas direkt på 8.0.1 GA.
-> * Konfigurationsservern och RX uppdateringar kan inte återställas när de har tillämpats på systemet.
+> * hello konfigurationsservern och RX uppdateringar kan inte återställas när de har tillämpats på hello system.
 >
 >
 
 ### <a name="azure-site-recovery-scout-801-update-3"></a>Azure Site Recovery Scout 8.0.1 uppdatering 3
-Uppdatering 3 innehåller följande felkorrigeringar och förbättringar:
+Uppdatering 3 omfattar hello följande felkorrigeringar och förbättringar:
 
-* Det gick inte att registrera i Site Recovery-valvet när de är bakom proxyn konfigurationsservern och RX.
-* Antalet timmar som återställningspunktmål (RPO) inte är uppfyllt uppdateras inte i hälsorapporten.
-* Konfigurationsservern inte synkroniserar med RX när information om ESX maskinvara eller nätverksinformation innehåller UTF-8 tecken.
-* Det gick inte att starta efter återställning av Windows Server 2008 R2-domänkontrollanter.
+* hello konfigurationsservern och RX misslyckas tooregister toohello Site Recovery-valvet när de är bakom hello proxy.
+* hello antal timmar som hello återställningspunktmål (RPO) inte är uppfyllt uppdateras inte i hello hälsorapport.
+* hello konfigurationsservern inte synkroniserar med RX när information om hello ESX maskinvara eller nätverksinformation innehåller UTF-8 tecken.
+* Windows Server 2008 R2-domänkontrollanter misslyckas tooboot efter återställningen.
 * Offlinesynkronisering fungerar inte som förväntat.
-* Efter redundans för virtuell dator (VM), replikering par borttagning hämtar fastnat i CX UI under lång tid och användarna kan inte slutföra återställningen eller åtgärden återuppta.
-* Övergripande kopplar ögonblicksbild åtgärder som utförs av konsekvensjobbet har optimerats för att minska program som SQL-klienter.
-* Prestanda för verktyget konsekvenskontroll (VACP.exe) har förbättrats genom att minska den mängden minne som krävs för att skapa ögonblicksbilder i Windows.
-* Push-installera kraschar när lösenordet är större än 16 tecken.
-* vContinuum kontrollerar inte och fråga efter nya vCenter autentiseringsuppgifter när autentiseringsuppgifterna har ändrats.
-* På Linux, Cachehanteraren huvudmålservern (cachemgr) inte ladda ned filer från processervern, vilket resulterar i replikering par begränsning.
-* När den fysiska kluster (MSCS) disk redundansordning som inte är samma på alla noder har replikering inte angetts för några av volymerna.
-  <br/>Observera att klustret behöver att återaktivera skyddet för att dra nytta av den här korrigeringen.  
-* SMTP-funktioner fungerar inte som förväntat när RX har uppgraderats från Scout 7.1 till Scout 8.0.1.
-* Flera statistik har lagts till i loggen för återställningsåtgärd att spåra den tid det tog för att slutföra den.
-* Stöd har lagts till för Linux-operativsystem på källservern:
+* Efter redundans för virtuell dator (VM), replikering par borttagning hämtar fastnat i hello CX UI under lång tid och användare kan inte slutföra hello återställning och fortsätta.
+* Övergripande ögonblicksbild åtgärder som utförs av hello konsekvensjobbet har optimerats toohelp minska programmet kopplar från som SQL-klienter.
+* hello prestanda hello konsekvens-verktyget (VACP.exe) har förbättrats genom att minska hello minnesanvändning som krävs för att skapa ögonblicksbilder i Windows.
+* hello push-installera kraschar när hello lösenord är större än 16 tecken.
+* vContinuum kontrollerar inte och fråga efter nya vCenter autentiseringsuppgifter när hello inloggningsuppgifterna ändras.
+* På Linux, hello huvudmålservern Cachehanteraren (cachemgr) inte ladda ned filer från hello processervern, vilket resulterar i replikering par begränsning.
+* När hello fysiska failover cluster (MSCS) disk ordning är inte hello samma på alla noder i hello, har replikering inte angetts för några av hello volymer.
+  <br/>Observera att hello-kluster måste toobe återaktivera skyddet tootake nytta av den här snabbkorrigeringen.  
+* SMTP-funktioner fungerar inte som förväntat när RX har uppgraderats från Scout 7.1 tooScout 8.0.1.
+* Flera statistik har lagts till i hello loggen för hello återställning åtgärden tootrack hello tiden det har tagit toocomplete den.
+* Support har för Linux-operativsystem på hello källservern lagts till:
   * Red Hat Enterprise Linux (RHEL) 6 uppdatering 7
   * CentOS 6 uppdatering 7
-* CX och RX UI kan du nu visa meddelandet för par, som blir bitmappsläge.
-* Följande säkerhetskorrigeringar har lagts till i RX:
+* hello CX och RX Användargränssnittet kan du nu visa hello-meddelande för hello-par, övergår i bitmappsläget.
+* hello har följande säkerhetskorrigeringar lagts till i RX:
 
 | **Problembeskrivning** | **Procedurer för implementering** |
 | --- | --- |
-| Auktorisering kringgå via parametern manipulation |Begränsad åtkomst till användare som inte är tillämpliga. |
-| Förfalskning av begäran |Implementerad konceptet sida-token som genererar slumpmässigt för varje sida. <br/>Med den här visas: <li> Det finns bara en inloggning instans för samma användare.</li><li>Sidan uppdatera fungerar inte--dirigeras till instrumentpanelen.</li> |
-| Skadliga filöverföring |Begränsad filer till vissa tillägg. Tillåtna tillägg är: 7z aiff, asf, avi, bmp, csv, doc, docx, fla, flv, gif, gz, gzip, jpeg, jpg, log mid mov, mp3, mp4, mpc, mpeg, mpg, ods odt, pdf, png, ppt, pptx, pxd, qt, RAM-minne, rar, rm, rmi, rmvb, RTF-, sdc, sitd, swf, sxc, sxw, tar , tgz, tif, tiff, txt, vsd, wav, wma, wmv, xls, xlsx, xml och zip. |
+| Auktorisering kringgå via parametern manipulation |Toonon tillämpliga användare med begränsad åtkomst. |
+| Förfalskning av begäran |Implementerad hello sidan token konceptet som genererar slumpmässigt för varje sida. <br/>Med den här visas: <li> Det finns bara en inloggning instans för hello samma användare.</li><li>Sidan uppdatera fungerar inte--dirigeras toohello instrumentpanelen.</li> |
+| Skadliga filöverföring |Begränsad filer toocertain tillägg. Tillåtna tillägg är: 7z aiff, asf, avi, bmp, csv, doc, docx, fla, flv, gif, gz, gzip, jpeg, jpg, log mid mov, mp3, mp4, mpc, mpeg, mpg, ods odt, pdf, png, ppt, pptx, pxd, qt, RAM-minne, rar, rm, rmi, rmvb, RTF-, sdc, sitd, swf, sxc, sxw, tar , tgz, tif, tiff, txt, vsd, wav, wma, wmv, xls, xlsx, xml och zip. |
 | Beständiga globala webbplatsskript |Lägga till indata verifieringar. |
 
 > [!NOTE]
-> * Alla Site Recovery-uppdateringar är kumulativa. Update 3 har alla korrigeringar av uppdatering 1 och uppdatering 2. Uppdatering 3 kan tillämpas direkt på 8.0.1 GA.
-> * Konfigurationsservern och RX uppdateringar kan inte återställas när de har tillämpats på systemet.
+> * Alla Site Recovery-uppdateringar är kumulativa. Update 3 har alla hello korrigeringar av uppdatering 1 och uppdatering 2. Uppdatering 3 kan tillämpas direkt på 8.0.1 GA.
+> * hello konfigurationsservern och RX uppdateringar kan inte återställas när de har tillämpats på hello system.
 >
 >
 
 ### <a name="azure-site-recovery-scout-801-update-2-update-03dec15"></a>Azure Site Recovery Scout 8.0.1 uppdatering 2 (uppdatering 03 Dec 15)
 Korrigeringar i uppdatering 2 är:
 
-* **Konfigurationsservern**: åtgärda ett problem som gjorde funktionen 31 dagars kostnadsfri avläsning inte fungerar som förväntat när konfigurationsservern har registrerats i Site Recovery.
-* **Enhetlig agent**: åtgärda ett problem i uppdatering 1 som resulterade i uppdateringen inte installeras på huvudmålservern när den har uppgraderats från version 8.0 8.0.1.
+* **Konfigurationsservern**: korrigering för ett problem som gjorde hello 31 dagars kostnadsfri avläsning funktionen inte fungerar som förväntat när hello konfigurationsservern har registrerats i Site Recovery.
+* **Enhetlig agent**: korrigering för ett problem i uppdatering 1 som resulterade i hello uppdateringen inte installeras på hello huvudmålservern när den har uppgraderats från version 8.0 too8.0.1.
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 uppdatering 1
-Uppdatering 1 innehåller följande felkorrigeringar och nya funktioner:
+Uppdatering 1 omfattar hello följande felkorrigeringar och nya funktioner:
 
-* ledigt skydd per serverinstans 31 dagar. På så sätt kan du testa funktioner eller ställa in en--konceptbevis.
-  * Alla åtgärder på servern, inklusive redundans och återställning efter fel, kan de första 31 dagar från den tidpunkt som en server först är skyddat med Site Recovery Scout.
-  * Från och med den 32 dag debiteras varje skyddad server med standard instans hastighet för Azure Site Recovery-skydd på en plats som ägs av kunden.
-  * När som helst är antalet skyddade servrar som debiteras för närvarande tillgänglig på sidan instrumentpanelen i Azure Site Recovery-valvet.
+* ledigt skydd per serverinstans 31 dagar. Detta gör att du tootest funktioner eller konfigurera en--konceptbevis.
+  * Alla åtgärder på hello-server, inklusive redundans och återställning efter fel, är gratis för hello första 31 dagar från hello tid som en server först är skyddat med Site Recovery Scout.
+  * Från hello kommer 32 dag framåt, varje skyddad server att debiteras med hello standard instans hastighet för Azure Site Recovery-skydd tooa ägs av kunden plats.
+  * När som helst är hello antalet skyddade servrar som debiteras för närvarande tillgänglig på hello instrumentpanelssida av hello Azure Site Recovery-valvet.
 * Stöd lagts till för för vSphere kommandoradsgränssnittet (vCLI) 5.5 uppdatering 2.
-* Stöd för Linux-operativsystem på källservern:
+* Stöd för Linux-operativsystem på hello källservern:
   * RHEL 6 uppdatering 6
   * RHEL 5 uppdatera 11
   * CentOS 6 uppdatering 6
   * CentOS 5 Update 11
-* Felkorrigeringar för tänka på följande:
-  * Valvet registreringen misslyckas för konfigurationsservern eller RX servern.
+* Felkorrigeringar tooaddress hello följande problem:
+  * Valvet registreringen misslyckas av hello konfigurationsservern eller RX server.
   * Klustervolymer visas inte som förväntat när klustrade virtuella datorer är att återaktivera skyddet när de återupptas.
-  * Det går inte att återställning efter fel när huvudmålservern finns på en annan server ESXi från lokala virtuella maskiner.
-  * Filen konfigurationsbehörighet ändras när du uppgraderar till 8.0.1 som påverkar skydd och åtgärder.
-  * Tröskelvärdet för omsynkronisering är inte tillämpas som förväntat, vilket kan leda till inkonsekvent replikering beteende.
-  * Inställningarna för Återställningspunktmål visas inte korrekt i servergränssnitt konfiguration. Okomprimerad datavärdet visar felaktigt komprimerade värdet.
-  * Åtgärden ta bort ta bort inte som förväntat i guiden vContinuum och replikering tas inte bort från configuration server-gränssnitt.
-  * I guiden vContinuum disken är avmarkerat automatiskt när du klickar på **information** i vyn disk under skyddet för MSCS virtuella datorer.
-  * Under scenariot fysisk till virtuell (P2V) är inte obligatoriska HP-tjänster, till exempel CIMnotify och CqMgHost, flyttas till manuell i återställning av virtuell dator. Detta resulterar i ytterligare starten.
-  * Det går inte att skydd för Linux virtuella datorer när det finns fler än 26 diskar på huvudmålservern.
+  * Det går inte att återställning efter fel när hello huvudmålservern finns på en annan server ESXi från hello lokalt produktion virtuella datorer.
+  * Filen konfigurationsbehörighet ändras när du uppgraderar too8.0.1 som påverkar skydd och åtgärder.
+  * hello omsynkroniseringen tröskelvärdet tillämpas inte som förväntat, vilket leder tooinconsistent replikering beteende.
+  * inställningarna för hello Återställningspunktmål visas inte korrekt i hello configuration servergränssnitt. hello okomprimerade datavärdet visas felaktigt hello komprimerade värde.
+  * hello Remove-åtgärden ta bort inte som förväntat i hello vContinuum-guiden och replikering tas inte bort från hello configuration servergränssnitt.
+  * Hej vContinuum i guiden hello disk är avmarkerat automatiskt när du klickar på **information** i hello disk vy under skyddet för MSCS virtuella datorer.
+  * Under hello fysisk till virtuell (P2V)-scenario är obligatoriska HP-tjänster, till exempel CIMnotify och CqMgHost, inte flyttats toomanual i återställning av virtuell dator. Detta resulterar i ytterligare starten.
+  * Det går inte att skydd för Linux virtuella datorer när det finns fler än 26 diskar på hello huvudmålservern.
 
 ## <a name="next-steps"></a>Nästa steg
-Alla frågor som du har på den [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Alla frågor som du har på hello [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).

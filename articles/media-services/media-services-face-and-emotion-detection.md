@@ -1,6 +1,6 @@
 ---
-title: "Identifiera Ansikts- och Känslo med Azure Media Analytics | Microsoft Docs"
-description: "Det här avsnittet visar hur du identifierar ytor och emotikoner med Azure Media Analytics."
+title: "aaaDetect Ansikts- och Känslo med Azure Media Analytics | Microsoft Docs"
+description: "Det här avsnittet visar hur toodetect står och emotikoner med Azure Media Analytics."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,45 +14,45 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: d7f3bc6c0d21db7adbb0c16c752d4ce49e99da5a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f58d81d82dde08a694cdb4d92c6bab6a40a9c157
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Identifiera Ansikts- och Känslo med Azure Media Analytics
 ## <a name="overview"></a>Översikt
-Den **Azure Media ansikte detektor** medieprocessor (HP) kan du räkna, spåra förflyttningar och även mäta målgruppen deltagande och reaktion via ansikte uttryck. Den här tjänsten innehåller två funktioner: 
+Hej **Azure Media ansikte detektor** medieprocessor (HP) kan du toocount, spåra förflyttningar och även mätaren målgruppen deltagande och reaktion via ansikte uttryck. Den här tjänsten innehåller två funktioner: 
 
 * **Ansikts-identifiering**
   
-    Identifiering av framsidan hittar och spårar mänsklig ytor inom en video. Flera ytor kan identifieras och spåras senare när de flyttas runt, med tid och plats metadata som returneras i en JSON-fil. Under spårning, görs ett försök att ge en konsekvent ID till samma sida när personen flyttar på skärmen, även om de hindras eller lämna en kort ramen.
+    Identifiering av framsidan hittar och spårar mänsklig ytor inom en video. Flera ytor kan identifieras och spåras senare när de flyttas runt, med hello tid och plats metadata som returneras i en JSON-fil. Under spårning försöker toogive en konsekvent ID toohello samma står inför när hello person flyttar på skärmen, även om de hindras eller lämna en kort hello ram.
   
   > [!NOTE]
-  > Den här tjänsten inte att utföra ansiktsigenkänning. En person som lämnar ramen eller blir hindras för länge får ett nytt-ID när de kommer tillbaka.
+  > Den här tjänsten inte att utföra ansiktsigenkänning. En person som lämnar hello ram eller blir hindras för länge får ett nytt-ID när de kommer tillbaka.
   > 
   > 
 * **Känsloigenkänning**
   
-    Känsloigenkänning är en valfri komponent i ansikte identifiering Medieprocessor som returnerar analysis på flera känslomässiga attribut från ytor upptäckt, inklusive lycka, sadness, fruktan, resulterande och mycket mer. 
+    Känsloigenkänning är en valfri komponent i hello ansikte identifiering Medieprocessor som returnerar analysis på flera känslomässiga attribut från hello ytor upptäckt, inklusive lycka, sadness, fruktan, resulterande och mycket mer. 
 
-Den **Azure Media ansikte detektor** MP är för närvarande under förhandsgranskning.
+Hej **Azure Media ansikte detektor** MP är för närvarande under förhandsgranskning.
 
-Det här avsnittet innehåller information om **Azure Media ansikte detektor** och visar hur du använder det med Media Services SDK för .NET.
+Det här avsnittet innehåller information om **Azure Media ansikte detektor** och visar hur toouse med Media Services SDK för .NET.
 
 ## <a name="face-detector-input-files"></a>Står inför detektor inkommande filer
-Videofiler. För närvarande stöds följande format: MP4, MOV och WMV.
+Videofiler. För närvarande hello följande format stöds: MP4, MOV och WMV.
 
 ## <a name="face-detector-output-files"></a>Står inför detektor utdatafilerna
-Framsidan identifiering och spårning API kan hög precision min plats identifieras och spårning som kan identifiera upp till 64 mänsklig ytor i en video. Främre ytor ger bäst resultat, medan sidoytor och små ytor (mindre än eller lika med 24 x 24 bildpunkter) kanske inte är lika exakt.
+hello ansikte identifiering och spårning API kan hög precision min plats identifieras och spårning som kan identifiera dig too64 mänsklig ytor i en video. Främre ytor ange hello bästa resultat vid sidoytor och små ytor (mindre än eller lika med too24x24 bildpunkter) kanske inte lika exakt.
 
-Identifierade och spårade ytor returneras med koordinaterna (vänster, överkant, bredd och höjd) som anger platsen för ytor i bilden i pixlar, samt ett ansikte ID-nummer som indikerar spårning av att enskilda. Ansikts-ID-nummer är lätt att återställa i fall när de främre står inför tappas bort eller överlappas i RAM, vilket resulterar i några personer komma tilldelade flera ID: N.
+hello identifierade och spårade ytor returneras med koordinaterna (vänster, överkant, bredd och höjd) som visar hello platsen för ytor hello bild i bildpunkter som en ansikte ID-nummer som visar hello spårning av att enskilda. Ansikts-ID-nummer är felbenägna tooreset under omständigheter när hello främre yta tappas bort eller överlappas i hello ram ledde till vissa individer komma tilldelade flera ID: N.
 
-## <a id="output_elements"></a>Element i JSON-filen för utdata
+## <a id="output_elements"></a>Element i hello utdata-JSON-fil
 
 [!INCLUDE [media-services-analytics-output-json](../../includes/media-services-analytics-output-json.md)]
 
-Står inför detektor använder tekniker för fragmentering (där metadata kan delas upp i tidsbaserade segment och du kan hämta vad du behöver bara) och segmentering (där händelserna som har delats om de blir för stor). Med hjälp av några enkla beräkningar kan du omvandla data. Om exempelvis en händelse startade 6300 (ticks) med en tidsrymd för 2997 (ticks per sekund) och bildhastighet sedan 29,97 (bildrutor per sekund):
+Framsidan detektor använder tekniker för fragmentering (där hello metadata kan delas upp i tidsbaserade segment och du kan hämta vad du behöver bara) och segmentering (där hello händelser har delats om de blir för stor). Med hjälp av några enkla beräkningar kan du omvandla hello data. Om exempelvis en händelse startade 6300 (ticks) med en tidsrymd för 2997 (ticks per sekund) och bildhastighet sedan 29,97 (bildrutor per sekund):
 
 * Start/tidsrymd = 2.1 sekunder
 * Sekunder x Framerate = 63 ramar
@@ -62,7 +62,7 @@ Står inför detektor använder tekniker för fragmentering (där metadata kan d
 [Indatavideo](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Uppgiftskonfigurationen (förinställda)
-När du skapar en uppgift med **Azure Media ansikte detektor**, måste du ange en konfiguration förinställning. Följande konfiguration förinställningen gäller bara för framsidan identifiering.
+När du skapar en uppgift med **Azure Media ansikte detektor**, måste du ange en konfiguration förinställning. följande konfiguration förinställda hello gäller bara för framsidan identifiering.
 
     {
       "version":"1.0",
@@ -77,7 +77,7 @@ När du skapar en uppgift med **Azure Media ansikte detektor**, måste du ange e
 | Läge |Snabb bearbetning fast - hastighet, men mindre exakt (standard).|
 
 ### <a name="json-output"></a>JSON-utdata
-Följande exempel visar JSON-utdata har trunkerats.
+hello följande exempel på JSON-utdata har trunkerats.
 
     {
     "version": 1,
@@ -131,7 +131,7 @@ Följande exempel visar JSON-utdata har trunkerats.
 [Indatavideo](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Uppgiftskonfigurationen (förinställda)
-När du skapar en uppgift med **Azure Media ansikte detektor**, måste du ange en konfiguration förinställning. Följande konfiguration förinställningen anger för att skapa JSON baserat på känsloigenkänning.
+När du skapar en uppgift med **Azure Media ansikte detektor**, måste du ange en konfiguration förinställning. följande konfiguration förinställda hello anger toocreate JSON baserat på hello känsloigenkänning.
 
     {
       "version": "1.0",
@@ -147,11 +147,11 @@ När du skapar en uppgift med **Azure Media ansikte detektor**, måste du ange e
 | Attributets namn | Beskrivning |
 | --- | --- |
 | Läge |Ytor: Inför endast identifiering.<br/>PerFaceEmotion: Returnerar känslo separat för varje ansikte identifiering.<br/>AggregateEmotion: Returnerar genomsnittlig känslo värden för alla ytor i ram. |
-| AggregateEmotionWindowMs |Använd om AggregateEmotion läge har valt. Anger hur lång video som användes för att skapa varje sammanlagda resultat, i millisekunder. |
-| AggregateEmotionIntervalMs |Använd om AggregateEmotion läge har valt. Anger hur ofta inga sammanlagda resultat. |
+| AggregateEmotionWindowMs |Använd om AggregateEmotion läge har valt. Anger hello lång video används tooproduce varje sammanlagda resultat, i millisekunder. |
+| AggregateEmotionIntervalMs |Använd om AggregateEmotion läge har valt. Anger med vilken frekvens tooproduce mängd resultat. |
 
 #### <a name="aggregate-defaults"></a>Sammanställd standardvärden
-Nedan rekommenderas värden för inställningarna sammanställd fönster och intervall. AggregateEmotionWindowMs bör vara längre än AggregateEmotionIntervalMs.
+Nedan rekommenderas värden för hello aggregerad fönsterfunktion och inställningar. AggregateEmotionWindowMs bör vara längre än AggregateEmotionIntervalMs.
 
 || Standardvärden (s) | Min(s) | Max(s) |
 |--- | --- | --- | --- |
@@ -313,26 +313,26 @@ JSON utdata för sammanställd känslo (trunkerad):
                  "fear": 0,
 
 ## <a name="limitations"></a>Begränsningar
-* Inkommande video format som stöds omfattar MP4, MOV och WMV.
-* Storlek är kan upptäckas står inför 24 x 24 till 2048 x 2048 bildpunkter. Kommer inte att identifiera ytor utanför det här intervallet.
-* För varje video är det maximala antalet ytor returnerade 64.
-* Vissa ytor kanske inte identifieras på grund av tekniska utmaningar; t.ex. väldigt ansikte vinklar (head-attityd) och stora är spärrat. Främre och nästan direkt ytor har bästa resultat.
+* hello stöds video-indataformat inkluderar MP4, MOV och WMV.
+* hello är kan upptäckas ansikte storlek 24 x 24 too2048x2048 bildpunkter. kommer inte att identifiera hello ytor utanför det här intervallet.
+* Varje video är hello maximalt antal ytor som returnerades 64.
+* Vissa ytor kanske inte identifieras på grund av tootechnical utmaningar; t.ex. väldigt ansikte vinklar (head-attityd) och stora är spärrat. Främre och nästan direkt ytor har hello bästa resultat.
 
 ## <a name="net-sample-code"></a>Exempelkod för .NET
 
-Följande program visar hur du:
+hello följande program visar hur du:
 
-1. Skapa en tillgång och överför en mediefil till tillgången.
-2. Skapa ett jobb med en aktivitet för identifiering av står inför baserat på en konfigurationsfil som innehåller följande json-förinställning. 
+1. Skapa en tillgång och överför en mediefil till hello tillgång.
+2. Skapa ett jobb med en aktivitet för identifiering av står inför baserat på en konfigurationsfil som innehåller följande json förinställda hello. 
    
         {
             "version": "1.0"
         }
-3. Hämta JSON utdatafilerna. 
+3. Hämta hello utdata JSON-filer. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Skapa och konfigurera ett Visual Studio-projekt
 
-Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
+Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Exempel
 
@@ -363,17 +363,17 @@ Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinform
 
                 _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-                // Run the FaceDetection job.
+                // Run hello FaceDetection job.
                 var asset = RunFaceDetectionJob(@"C:\supportFiles\FaceDetection\BigBuckBunny.mp4",
                                             @"C:\supportFiles\FaceDetection\config.json");
 
-                // Download the job output asset.
+                // Download hello job output asset.
                 DownloadAsset(asset, @"C:\supportFiles\FaceDetection\Output");
             }
 
             static IAsset RunFaceDetectionJob(string inputMediaFilePath, string configurationFile)
             {
-                // Create an asset and upload the input media file to storage.
+                // Create an asset and upload hello input media file toostorage.
                 IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
                     "My Face Detection Input Asset",
                     AssetCreationOptions.None);
@@ -381,38 +381,38 @@ Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinform
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My Face Detection Job");
 
-                // Get a reference to Azure Media Face Detector.
+                // Get a reference tooAzure Media Face Detector.
                 string MediaProcessorName = "Azure Media Face Detector";
 
                 var processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
-                // Read configuration from the specified file.
+                // Read configuration from hello specified file.
                 string configuration = File.ReadAllText(configurationFile);
 
-                // Create a task with the encoding details, using a string preset.
+                // Create a task with hello encoding details, using a string preset.
                 ITask task = job.Tasks.AddNew("My Face Detection Task",
                     processor,
                     configuration,
                     TaskOptions.None);
 
-                // Specify the input asset.
+                // Specify hello input asset.
                 task.InputAssets.Add(asset);
 
-                // Add an output asset to contain the results of the job.
+                // Add an output asset toocontain hello results of hello job.
                 task.OutputAssets.AddNew("My Face Detectoion Output Asset", AssetCreationOptions.None);
 
-                // Use the following event handler to check job progress.  
+                // Use hello following event handler toocheck job progress.  
                 job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                // Launch the job.
+                // Launch hello job.
                 job.Submit();
 
-                // Check job execution and wait for job to finish.
+                // Check job execution and wait for job toofinish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
 
                 progressJobTask.Wait();
 
-                // If job state is Error, the event handling
+                // If job state is Error, hello event handling
                 // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)

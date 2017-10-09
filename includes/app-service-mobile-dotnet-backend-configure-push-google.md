@@ -1,23 +1,23 @@
-Använd proceduren som matchar din serverdel projekttypen&mdash;antingen [.NET-serverdel](#dotnet) eller [Node.js-serverdel](#nodejs).
+Använd hello-metod som passar din serverdel projekttypen&mdash;antingen [.NET-serverdel](#dotnet) eller [Node.js-serverdel](#nodejs).
 
 ### <a name="dotnet"></a>.NET backend-projekt
-1. Högerklicka på serverprojekt i Visual Studio och klicka på **hantera NuGet-paket**. Sök efter `Microsoft.Azure.NotificationHubs`, och klicka sedan på **installera**. Detta installerar klientbiblioteket Notification Hubs.
-2. Öppna TodoItemController.cs i mappen domänkontrollanter och Lägg till följande `using` instruktioner:
+1. Högerklicka på hello serverprojekt i Visual Studio och klicka på **hantera NuGet-paket**. Sök efter `Microsoft.Azure.NotificationHubs`, och klicka sedan på **installera**. Detta installerar hello Meddelandehubbar klientbiblioteket.
+2. Hello domänkontrollanter i mappen öppna TodoItemController.cs och Lägg till följande hello `using` instruktioner:
 
         using Microsoft.Azure.Mobile.Server.Config;
         using Microsoft.Azure.NotificationHubs;
-3. Ersätt den `PostTodoItem` metoden med följande kod:  
+3. Ersätt hello `PostTodoItem` metod med hello följande kod:  
 
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
         {
             TodoItem current = await InsertAsync(item);
-            // Get the settings for the server project.
+            // Get hello settings for hello server project.
             HttpConfiguration config = this.Configuration;
 
             MobileAppSettingsDictionary settings =
                 this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
-            // Get the Notification Hubs credentials for the Mobile App.
+            // Get hello Notification Hubs credentials for hello Mobile App.
             string notificationHubName = settings.NotificationHubName;
             string notificationHubConnection = settings
                 .Connections[MobileAppSettingsKeys.NotificationHubConnectionString].ConnectionString;
@@ -31,26 +31,26 @@ Använd proceduren som matchar din serverdel projekttypen&mdash;antingen [.NET-s
 
             try
             {
-                // Send the push notification and log the results.
+                // Send hello push notification and log hello results.
                 var result = await hub.SendGcmNativeNotificationAsync(androidNotificationPayload);
 
-                // Write the success result to the logs.
+                // Write hello success result toohello logs.
                 config.Services.GetTraceWriter().Info(result.State.ToString());
             }
             catch (System.Exception ex)
             {
-                // Write the failure result to the logs.
+                // Write hello failure result toohello logs.
                 config.Services.GetTraceWriter()
                     .Error(ex.Message, null, "Push.SendAsync Error");
             }
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 
-4. Publicera om serverprojektet.
+4. Publicera hello serverprojekt.
 
 ### <a name="nodejs"></a>Node.js backend-projekt
-1. Om du inte redan gjort det, [hämta snabbstartsprojektet](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), eller annan användning av [online redigeraren i Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
-2. Ersätt den befintliga koden i filen todoitem.js med följande:
+1. Om du inte redan gjort det, [hämta hello snabbstartsprojekt](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart), eller annan använda hello [online redigeraren i hello Azure-portalen](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).
+2. Ersätt hello befintlig kod i hello todoitem.js filen med hello följande:
 
         var azureMobileApps = require('azure-mobile-apps'),
         promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -59,22 +59,22 @@ Använd proceduren som matchar din serverdel projekttypen&mdash;antingen [.NET-s
         var table = azureMobileApps.table();
 
         table.insert(function (context) {
-        // For more information about the Notification Hubs JavaScript SDK,
+        // For more information about hello Notification Hubs JavaScript SDK,
         // see http://aka.ms/nodejshubs
         logger.info('Running TodoItem.insert');
 
-        // Define the GCM payload.
+        // Define hello GCM payload.
         var payload = {
             "data": {
                 "message": context.item.text
             }
         };   
 
-        // Execute the insert.  The insert returns the results as a Promise,
-        // Do the push as a post-execute action within the promise flow.
+        // Execute hello insert.  hello insert returns hello results as a Promise,
+        // Do hello push as a post-execute action within hello promise flow.
         return context.execute()
             .then(function (results) {
-                // Only do the push if configured
+                // Only do hello push if configured
                 if (context.push) {
                     // Send a GCM native notification.
                     context.push.gcm.send(null, payload, function (error) {
@@ -85,7 +85,7 @@ Använd proceduren som matchar din serverdel projekttypen&mdash;antingen [.NET-s
                         }
                     });
                 }
-                // Don't forget to return the results from the context.execute()
+                // Don't forget tooreturn hello results from hello context.execute()
                 return results;
             })
             .catch(function (error) {
@@ -95,5 +95,5 @@ Använd proceduren som matchar din serverdel projekttypen&mdash;antingen [.NET-s
 
         module.exports = table;  
 
-    Detta skickar ett GCM-meddelande som innehåller item.text när nya todo-objektet infogas.
-3. Publicera om serverprojektet när du redigerar filen i den lokala datorn.
+    Detta skickar ett GCM-meddelande som innehåller hello item.text när nya todo-objektet infogas.
+3. Publicera om hello serverprojekt när du redigerar hello-fil i den lokala datorn.

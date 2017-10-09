@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions Händelsehubbar bindningar | Microsoft Docs"
-description: "Förstå hur du använder Azure Event Hubs bindningar i Azure Functions."
+title: "aaaAzure funktioner Händelsehubbar bindningar | Microsoft Docs"
+description: "Förstå hur toouse Azure Event Hubs bindningar i Azure Functions."
 services: functions
 documentationcenter: na
 author: wesmc7777
@@ -16,55 +16,55 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/20/2017
 ms.author: wesmc
-ms.openlocfilehash: 19021bef8b7156b3049f43b0275c0ed0c6b22514
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e864f032ad5ac58d318c9843c3844b5642733a70
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-event-hubs-bindings"></a>Azure Functions Händelsehubbar bindningar
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Den här artikeln beskriver hur du konfigurerar och använder [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) bindningar för Azure Functions.
+Den här artikeln förklarar hur tooconfigure och använda [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) bindningar för Azure Functions.
 Azure Functions stöder utlösa och utgående bindningar för Händelsehubbar.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Om du har använt Azure Event Hubs, se den [översikt av Händelsehubbar](../event-hubs/event-hubs-what-is-event-hubs.md).
+Om du är ny tooAzure Händelsehubbar finns hello [översikt av Händelsehubbar](../event-hubs/event-hubs-what-is-event-hubs.md).
 
 <a name="trigger"></a>
 
 ## <a name="event-hub-trigger"></a>Händelseutlösare hub
-Använd Händelsehubbar utlösaren ska svara på en händelse som skickas till en event hub händelseström. Du måste ha läsbehörighet till händelsehubben för att konfigurera utlösaren.
+Använd hello Händelsehubbar utlöser toorespond tooan händelse skickas tooan event hub händelseströmmen. Du måste ha läsbehörighet toohello event hub tooset in hello utlösare.
 
-Händelsehubbar funktionen utlösaren använder följande JSON-objekt i den `bindings` matris med function.json:
+Hej Händelsehubbar funktionen utlösaren använder hello följande JSON-objekt i hello `bindings` matris med function.json:
 
 ```json
 {
     "type": "eventHubTrigger",
     "name": "<Name of trigger parameter in function signature>",
     "direction": "in",
-    "path": "<Name of the event hub>",
-    "consumerGroup": "Consumer group to use - see below",
+    "path": "<Name of hello event hub>",
+    "consumerGroup": "Consumer group toouse - see below",
     "connection": "<Name of app setting with connection string - see below>"
 }
 ```
 
-`consumerGroup`är en valfri egenskap som används för att ange den [konsumentgrupp](../event-hubs/event-hubs-features.md#event-consumers) används för att prenumerera på händelser i hubben. Om det utelämnas används den `$Default` konsumentgrupp används.  
-`connection`måste vara namnet på en appinställning som innehåller anslutningssträngen till den event hub-namnområdet.
-Kopiera denna anslutningssträng genom att klicka på den **anslutningsinformationen** knappen för den *namnområde*, inte händelsehubben sig själv. Den här anslutningssträngen måste ha minst läsbehörighet utlösaren ska aktiveras.
+`consumerGroup`är en valfri egenskap används tooset hello [konsumentgrupp](../event-hubs/event-hubs-features.md#event-consumers) används toosubscribe tooevents i hello hubb. Om det utelämnas används hello `$Default` konsumentgrupp används.  
+`connection`måste vara hello namnet på en appinställning som innehåller hello anslutning sträng toohello händelsehubbs namnutrymmet.
+Kopiera denna anslutningssträng genom att klicka på hello **anslutningsinformationen** knapp för hello *namnområde*, inte hello händelsehubb sig själv. Den här anslutningssträngen måste ha minst Läs behörigheter tooactivate hello utlösare.
 
-[Ytterligare inställningar](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) kan anges i en host.json fil att ytterligare finjustera Händelsehubbar utlösare.  
+[Ytterligare inställningar](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) kan finnas i en host.json filen toofurther bra finjustera Händelsehubbar utlösare.  
 
 <a name="triggerusage"></a>
 
 ## <a name="trigger-usage"></a>Utlösaren användning
-När en funktion för Händelsehubbar utlösare utlöses skickas meddelandet som utlöser den i funktionen som en sträng.
+När en funktion för Händelsehubbar utlösare utlöses skickas hello-meddelande som utlöser den till hello funktionen som en sträng.
 
 <a name="triggersample"></a>
 
 ## <a name="trigger-sample"></a>Utlösaren exempel
-Anta att du har följande Händelsehubbar utlösare i den `bindings` matris med function.json:
+Anta att du har följande Händelsehubbar utlösare i hello hello `bindings` matris med function.json:
 
 ```json
 {
@@ -76,7 +76,7 @@ Anta att du har följande Händelsehubbar utlösare i den `bindings` matris med 
 }
 ```
 
-Se exemplet språkspecifika loggar av meddelandetexten i hubben händelseutlösare.
+Se hello språkspecifika exempel loggar hello meddelandetexten hello event hub utlösare.
 
 * [C#](#triggercsharp)
 * [F#](#triggerfsharp)
@@ -95,7 +95,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
-Du kan också få händelsen som en [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) -objektet, vilket ger dig tillgång till metadata för händelser.
+Du kan också få hello händelse som en [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) -objektet, vilket ger dig åtkomst till metadata för toohello händelser.
 
 ```cs
 #r "Microsoft.ServiceBus"
@@ -108,7 +108,7 @@ public static void Run(EventData myEventHubMessage, TraceWriter log)
 }
 ```
 
-Om du vill ta emot händelser i en batch ändra Metodsignaturen till `string[]` eller `EventData[]`.
+tooreceive händelser i en batch ändra hello Metodsignaturen för`string[]` eller `EventData[]`.
 
 ```cs
 public static void Run(string[] eventHubMessages, TraceWriter log)
@@ -143,9 +143,9 @@ module.exports = function (context, myEventHubMessage) {
 <a name="output"></a>
 
 ## <a name="event-hubs-output-binding"></a>Händelsehubbar utdatabindning
-Använda Händelsehubbar utdata bindning skriva händelser till en event hub händelseström. Du måste ha skicka behörighet till en händelsehubb skriva händelser till den.
+Använd hello Händelsehubbar utdata bindning toowrite händelser tooan event hub händelseströmmen. Du måste ha skicka behörighet tooan event hub toowrite händelser tooit.
 
-Utdata bindningen använder följande JSON-objekt i den `bindings` matris med function.json:
+hello utdata bindningen använder hello följande JSON-objekt i hello `bindings` matris med function.json:
 
 ```json
 {
@@ -157,22 +157,22 @@ Utdata bindningen använder följande JSON-objekt i den `bindings` matris med fu
 }
 ```
 
-`connection`måste vara namnet på en appinställning som innehåller anslutningssträngen till den event hub-namnområdet.
-Kopiera denna anslutningssträng genom att klicka på den **anslutningsinformationen** knappen för den *namnområde*, inte händelsehubben sig själv. Den här anslutningssträngen måste ha skicka behörighet att skicka meddelandet till händelseströmmen.
+`connection`måste vara hello namnet på en appinställning som innehåller hello anslutning sträng toohello händelsehubbs namnutrymmet.
+Kopiera denna anslutningssträng genom att klicka på hello **anslutningsinformationen** knapp för hello *namnområde*, inte hello händelsehubb sig själv. Den här anslutningssträngen måste ha skicka behörigheter toosend hello toohello händelse meddelandeströmmen.
 
 ## <a name="output-usage"></a>Användning av utdata
-Det här avsnittet visar hur du använder din Händelsehubbar utdata bindningen i din funktionskoden.
+Det här avsnittet visar hur toouse Händelsehubbarna utdata bindningen i din funktionskoden.
 
-Du kan skicka meddelanden till den konfigurerade event hub med följande parameter:
+Du kan spara händelsehubb för meddelanden toohello som konfigurerats med följande parametertyper hello:
 
 * `out string`
-* `ICollector<string>`(för att skicka flera meddelanden)
+* `ICollector<string>`(toooutput flera meddelanden)
 * `IAsyncCollector<string>`(asynkrona versionen av `ICollector<T>`)
 
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>Exempel på utdata
-Anta att du har följande Händelsehubbar utdatabindning i den `bindings` matris med function.json:
+Anta att du har följande hello Händelsehubbar utdatabindning i hello `bindings` matris med function.json:
 
 ```json
 {
@@ -184,7 +184,7 @@ Anta att du har följande Händelsehubbar utdatabindning i den `bindings` matris
 }
 ```
 
-Se exemplet språkspecifika som skriver en händelse till även dataströmmen.
+Se hello språkspecifika prov som skriver en händelse toohello även dataström.
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
@@ -205,7 +205,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, Trac
 }
 ```
 
-Eller skapa flera meddelanden:
+Eller toocreate flera meddelanden:
 
 ```cs
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, TraceWriter log)
@@ -241,7 +241,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Eller, för att skicka flera meddelanden
+Eller toosend flera meddelanden
 
 ```javascript
 module.exports = function(context) {

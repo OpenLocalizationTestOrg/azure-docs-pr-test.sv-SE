@@ -1,6 +1,6 @@
 ---
-title: "Skapa en hanterad Azure virtuell dator från en virtuell Hårddisk generaliserad lokalt | Microsoft Docs"
-description: "Överför en generaliserad virtuell Hårddisk till Azure och använda den för att skapa nya virtuella datorer, i Resource Manager-distributionsmodellen."
+title: "aaaCreate en hanterad Azure-VM från en virtuell Hårddisk generaliserad lokalt | Microsoft Docs"
+description: "Överför en generaliserad virtuell Hårddisk tooAzure och använda den toocreate nya virtuella datorer i hello Resource Manager-distributionsmodellen."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: cynthn
-ms.openlocfilehash: d802ba16ecb4e32e2adb7be3a8e99c72a1625841
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2fd0c0eec922e6ca8af4e712c1bceb1f9466105c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Överför en generaliserad virtuell Hårddisk och använda den för att skapa nya virtuella datorer i Azure
+# <a name="upload-a-generalized-vhd-and-use-it-toocreate-new-vms-in-azure"></a>Överföra en generaliserad virtuell Hårddisk och använder den toocreate nya virtuella datorer i Azure
 
-Det här avsnittet beskriver hur du använder PowerShell för att överföra en VHD från en generaliserad virtuell dator till Azure, skapa en avbildning från den virtuella Hårddisken och skapa en ny virtuell dator från den avbildningen. Du kan överföra en virtuell Hårddisk som exporteras från ett verktyg för virtualisering av lokalt eller från ett annat moln. Med hjälp av [hanterade diskar](managed-disks-overview.md) för den nya virtuella datorn förenklas VM och ger bättre tillgänglighet när den virtuella datorn placeras i en tillgänglighetsuppsättning. 
+Det här avsnittet vägleder dig genom med hjälp av PowerShell tooupload en VHD från en generaliserad virtuell tooAzure, skapa en avbildning från hello VHD och skapa en ny virtuell dator från den avbildningen. Du kan överföra en virtuell Hårddisk som exporteras från ett verktyg för virtualisering av lokalt eller från ett annat moln. Med hjälp av [hanterade diskar](managed-disks-overview.md) för hello ny virtuell dator förenklar hello VM hantering och ger bättre tillgänglighet när hello VM placeras i en tillgänglighetsuppsättning. 
 
-Om du vill använda ett exempelskript finns [exempel på skript för att överföra en virtuell Hårddisk till Azure och skapa en ny virtuell dator](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+Om du vill toouse ett exempelskript finns [exempel på skript tooupload en VHD-tooAzure och skapa en ny virtuell dator](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-- Du bör följa innan du laddar upp alla VHD till Azure [förbereda en Windows-VHD eller VHDX för att överföra till Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-- Granska [planera för migrering till hanterade diskar](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) innan du påbörjar migreringen till [hanterade diskar](managed-disks-overview.md).
-- Kontrollera att du har den senaste versionen av AzureRM.Compute PowerShell-modulen. Kör följande kommando för att installera den.
+- Du bör följa innan du laddar upp en VHD-tooAzure [förbereda en Windows-VHD eller VHDX tooupload tooAzure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- Granska [planera för migrering av hello tooManaged diskar](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) innan du påbörjar migreringen för[hanterade diskar](managed-disks-overview.md).
+- Kontrollera att du har hello senaste versionen av hello AzureRM.Compute PowerShell-modulen. Kör följande kommando tooinstall hello den.
 
     ```powershell
     Install-Module AzureRM.Compute -RequiredVersion 2.6.0
@@ -39,75 +39,75 @@ Om du vill använda ett exempelskript finns [exempel på skript för att överf�
     Mer information finns i [Azure PowerShell versionshantering](/powershell/azure/overview).
 
 
-## <a name="generalize-the-windows-vm-using-sysprep"></a>Generalisera Windows VM med hjälp av Sysprep
+## <a name="generalize-hello-windows-vm-using-sysprep"></a>Generalisera hello virtuell Windows-dator med hjälp av Sysprep
 
-Sysprep tar bort alla dina personlig information, bland annat och förbereder datorn som ska användas som en bild. Mer information om Sysprep finns [så att använda Sysprep: en introduktion](http://technet.microsoft.com/library/bb457073.aspx).
+Sysprep tar bort alla dina personlig information, bland annat och förbereder hello datorn toobe används som en bild. Mer information om Sysprep finns [hur tooUse Sysprep: en introduktion](http://technet.microsoft.com/library/bb457073.aspx).
 
-Se till att serverroller som körs på datorn som stöds av Sysprep. Mer information finns i [Sysprep-stöd för serverroller](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Kontrollera att hello serverroller som körs på datorn hello stöds av Sysprep. Mer information finns i [Sysprep-stöd för serverroller](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
-> Om du kör Sysprep innan du laddar upp den virtuella Hårddisken till Azure för första gången, kontrollera att du har [förberett din virtuella dator](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) innan du kör Sysprep. 
+> Om du kör Sysprep innan du laddar upp din VHD tooAzure för hello första gången, kontrollera att du har [förberett din virtuella dator](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) innan du kör Sysprep. 
 > 
 > 
 
-1. Logga in på Windows-dator.
-2. Öppna Kommandotolken som administratör. Ändra katalogen till **%windir%\system32\sysprep**, och kör sedan `sysprep.exe`.
-3. I den **systemförberedelseverktyget** dialogrutan **ange System Out of Box Experience (OOBE)**, och se till att den **Generalize** är markerad.
+1. Logga in toohello Windows-dator.
+2. Öppna hello Kommandotolken som administratör. Ändra hello katalogen för**%windir%\system32\sysprep**, och kör sedan `sysprep.exe`.
+3. I hello **systemförberedelseverktyget** dialogrutan **ange System Out of Box Experience (OOBE)**, och se till att hello **Generalize** är markerad.
 4. I **avstängningsalternativ**väljer **avstängning**.
 5. Klicka på **OK**.
    
     ![Starta Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. När Sysprep har slutförts stängs den virtuella datorn. Starta inte om den virtuella datorn.
+6. När Sysprep är klar stänger hello virtuell dator. Starta inte om hello VM.
 
 
 
-## <a name="log-in-to-azure"></a>Logga in på Azure
-Om du inte redan har PowerShell version 1.4 eller senare installerat, läsa [hur du installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview).
+## <a name="log-in-tooazure"></a>Logga in tooAzure
+Om du inte redan har PowerShell version 1.4 eller senare installerat, läsa [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview).
 
-1. Öppna Azure PowerShell och logga in på ditt Azure-konto. Ett popup-fönster öppnas där du kan ange dina autentiseringsuppgifter för Azure-konto.
+1. Öppna Azure PowerShell och logga in tooyour Azure-konto. Ett popup-fönster som öppnas för du tooenter dina Azure-autentiseringsuppgifter.
    
     ```powershell
     Login-AzureRmAccount
     ```
-2. Hämta ID: N för prenumeration för din tillgängliga prenumerationer.
+2. Hämta hello prenumerations-ID: N för din tillgängliga prenumerationer.
    
     ```powershell
     Get-AzureRmSubscription
     ```
-3. Ange rätt prenumerationen med prenumerations-ID. Ersätt  *<subscriptionID>*  med ID korrekt prenumeration.
+3. Ange hello korrekt prenumeration med hjälp av hello prenumerations-ID. Ersätt  *<subscriptionID>*  med hello-ID för hello rätt prenumeration.
    
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<subscriptionID>"
     ```
 
-## <a name="get-the-storage-account"></a>Hämta storage-konto
-Du behöver ett lagringskonto i Azure för att lagra överförda VM-avbildning. Du kan använda ett befintligt lagringskonto eller skapa en ny. 
+## <a name="get-hello-storage-account"></a>Hämta hello storage-konto
+Du behöver ett lagringskonto i Azure toostore hello upp VM-avbildning. Du kan använda ett befintligt lagringskonto eller skapa en ny. 
 
-Om du kommer att använda den virtuella Hårddisken för att skapa en hanterad disk för en virtuell dator, lagringsplats för kontot måste vara samma plats där du skapar den virtuella datorn.
+Om du kommer att använda hello VHD toocreate hanterade diskar för en virtuell dator, måste hello lagringskontoplatsen vara samma hello plats där du skapar hello VM.
 
-Om du vill visa tillgängliga storage-konton, skriver du:
+tooshow hello tillgängliga storage-konton, skriver du:
 
 ```powershell
 Get-AzureRmStorageAccount
 ```
 
-Om du vill använda ett befintligt lagringskonto fortsätter du till den [överför den Virtuella datoravbildningen](#upload-the-vm-vhd-to-your-storage-account) avsnitt.
+Om du vill toouse ett befintligt lagringskonto fortsätta toohello [överför hello VM-avbildning](#upload-the-vm-vhd-to-your-storage-account) avsnitt.
 
-Följ dessa steg om du behöver skapa ett lagringskonto:
+Följ dessa steg om du behöver toocreate ett lagringskonto:
 
-1. Du måste namnet på resursgruppen där lagringskontot ska skapas. Om du vill ta reda på alla resursgrupper i din prenumeration, skriver du:
+1. Du måste hello namnet på hello resursgruppen där hello storage-konto ska skapas. toofind ut hello resursgrupper i din prenumeration, typ:
    
     ```powershell
     Get-AzureRmResourceGroup
     ```
 
-    Så här skapar du en resursgrupp med namnet **myResourceGroup** i den **östra USA** region, typ:
+    en resursgrupp med namnet toocreate **myResourceGroup** i hello **östra USA** region, typ:
 
     ```powershell
     New-AzureRmResourceGroup -Name myResourceGroup -Location "East US"
     ```
 
-2. Skapa ett lagringskonto med namnet **mittlagringskonto** i den här resursgruppen med hjälp av den [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) cmdlet:
+2. Skapa ett lagringskonto med namnet **mittlagringskonto** i den här resursgruppen genom att använda hello [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) cmdlet:
    
     ```powershell
     New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "East US"`
@@ -122,9 +122,9 @@ Följ dessa steg om du behöver skapa ett lagringskonto:
    * **Standard_RAGRS** -geo-redundant lagring med läsbehörighet. 
    * **Premium_LRS** -Premium lokalt redundant lagring. 
 
-## <a name="upload-the-vhd-to-your-storage-account"></a>Överför den virtuella Hårddisken till ditt lagringskonto
+## <a name="upload-hello-vhd-tooyour-storage-account"></a>Överför hello VHD tooyour storage-konto
 
-Använd den [Lägg till AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) för att ladda upp den virtuella Hårddisken till en behållare i ditt lagringskonto. Det här exemplet överför filen *myVHD.vhd* från *”C:\Users\Public\Documents\Virtual hårddiskar\"*  till ett lagringskonto med namnet *mittlagringskonto* i den *myResourceGroup* resursgruppen. Filen placeras i behållare med namnet *minbehållare* och det nya namnet kommer att *myUploadedVHD.vhd*.
+Använd hello [Lägg till AzureRmVhd](https://msdn.microsoft.com/library/mt603554.aspx) cmdlet tooupload hello VHD tooa behållare på ditt lagringskonto. Det här exemplet överföringar hello filen *myVHD.vhd* från *”C:\Users\Public\Documents\Virtual hårddiskar\"*  tooa lagringskontonamnet *mittlagringskonto*i hello *myResourceGroup* resursgruppen. hello-fil placeras i hello behållare med namnet *minbehållare* och hello nytt filnamn blir *myUploadedVHD.vhd*.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -134,12 +134,12 @@ Add-AzureRmVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
 ```
 
 
-Om det lyckas, kan du få ett svar som liknar denna:
+Om det lyckas, får du ett svar som ser ut ungefär toothis:
 
 ```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
+MD5 hash is being calculated for hello file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
 MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
+Elapsed time for hello operation: 00:03:35
 Creating new page blob of size 53687091712...
 Elapsed time for upload: 01:12:49
 
@@ -148,29 +148,29 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-Det här kommandot kan ta en stund att slutföra beroende på nätverksanslutningen och storleken på VHD-filen
+Det här kommandot kan ta en stund beroende på nätverksanslutningen och hello storleken på VHD-filen, toocomplete
 
-Spara den **mål-URI** sökväg som ska användas senare om du ska skapa en hanterad disk eller en ny virtuell dator med hjälp av den överförda virtuella Hårddisken.
+Spara hello **mål-URI** sökväg toouse senare om du ska toocreate hanterade diskar eller en ny virtuell dator med hjälp av hello överföra VHD.
 
 ### <a name="other-options-for-uploading-a-vhd"></a>Andra alternativ för att överföra en virtuell Hårddisk
  
  
-Du kan också ladda upp en virtuell Hårddisk till ditt lagringskonto med hjälp av något av följande:
+Du kan också ladda upp en VHD tooyour storage-konto med en av följande hello:
 
 - [AzCopy](http://aka.ms/downloadazcopy)
 - [Azure Storage kopiera Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
 - [Azure Storage Explorer överför Blobbar](https://azurestorageexplorer.codeplex.com/)
 - [Storage Import/Export Service REST API-referens](https://msdn.microsoft.com/library/dn529096.aspx)
--   Du rekommenderas att använda Import/Export Service om överföring tid är längre än 7 dagar. Du kan använda [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) att uppskatta storlek och överför dataenheten tidpunkt. 
-    Import/Export kan användas för att kopiera till ett standardlagringskonto. Du måste kopiera från standardlagring till premium storage-konto med ett verktyg som AzCopy.
+-   Du rekommenderas att använda Import/Export Service om överföring tid är längre än 7 dagar. Du kan använda [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) tooestimate hello tiden från enhet för storlek och överföring av data. 
+    Import/Export kan vara används tooa toocopy standardlagringskonto. Du behöver toocopy från standardlagring toopremium storage-konto med ett verktyg som AzCopy.
 
 
-## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Skapa en hanterad avbildning från den överförda virtuella Hårddisken 
+## <a name="create-a-managed-image-from-hello-uploaded-vhd"></a>Skapa en hanterad avbildning från hello överföra VHD 
 
-Skapa en hanterad avbildning med hjälp av din generaliserad OS-VHD. Ersätt värdena med din egen information.
+Skapa en hanterad avbildning med hjälp av din generaliserad OS-VHD. Ersätt hello värden med din egen information.
 
 
-1.  Innan du kan definiera de gemensamma parametrarna:
+1.  Ange först hello gemensamma parametrar:
 
     ```powershell
     $vmName = "myVM"
@@ -180,7 +180,7 @@ Skapa en hanterad avbildning med hjälp av din generaliserad OS-VHD. Ersätt vä
     $imageName = "yourImageName"
     ```
 
-4.  Skapa avbildningen med din generaliserad OS-VHD.
+4.  Skapa hello avbildning med hjälp av din generaliserad OS-VHD.
 
     ```powershell
     $imageConfig = New-AzureRmImageConfig -Location $location
@@ -189,15 +189,15 @@ Skapa en hanterad avbildning med hjälp av din generaliserad OS-VHD. Ersätt vä
     ```
 
 ## <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
-Skapa vNet och undernät för den [virtuellt nätverk](../../virtual-network/virtual-networks-overview.md).
+Skapa hello vNet och undernät för hello [virtuellt nätverk](../../virtual-network/virtual-networks-overview.md).
 
-1. Skapa undernätet. Det här exemplet skapar ett undernät med namnet *mySubnet* med adressprefixet för *10.0.0.0/24*.  
+1. Skapa hello undernät. Det här exemplet skapar ett undernät med namnet *mySubnet* med hello adressprefixet *10.0.0.0/24*.  
    
     ```powershell
     $subnetName = "mySubnet"
     $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
-2. Skapa det virtuella nätverket. Det här exemplet skapar ett virtuellt nätverk med namnet *myVnet* med adressprefixet för *10.0.0.0/16*.  
+2. Skapa hello virtuellt nätverk. Det här exemplet skapar ett virtuellt nätverk med namnet *myVnet* med hello adressprefixet *10.0.0.0/16*.  
    
     ```powershell
     $vnetName = "myVnet"
@@ -207,7 +207,7 @@ Skapa vNet och undernät för den [virtuellt nätverk](../../virtual-network/vir
 
 ## <a name="create-a-public-ip-address-and-network-interface"></a>Skapa en offentlig IP-adress och gränssnitt
 
-För att upprätta kommunikation med den virtuella datorn i det virtuella nätverket behöver du en [offentlig IP-adress](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) och ett nätverksgränssnitt.
+tooenable kommunikation med hello virtuell dator i hello virtuella nätverk, behöver du en [offentliga IP-adressen](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) och ett nätverksgränssnitt.
 
 1. Skapa en offentlig IP-adress. Det här exemplet skapas en offentlig IP-adress med namnet *myPip*. 
    
@@ -216,7 +216,7 @@ För att upprätta kommunikation med den virtuella datorn i det virtuella nätve
     $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. Skapa nätverkskortet. Det här exemplet skapar ett nätverkskort med namnet **myNic**. 
+2. Skapa hello NIC. Det här exemplet skapar ett nätverkskort med namnet **myNic**. 
    
     ```powershell
     $nicName = "myNic"
@@ -224,11 +224,11 @@ För att upprätta kommunikation med den virtuella datorn i det virtuella nätve
         -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
-## <a name="create-the-network-security-group-and-an-rdp-rule"></a>Skapa säkerhetsgrupp för nätverk och en RDP-regel
+## <a name="create-hello-network-security-group-and-an-rdp-rule"></a>Skapa hello nätverkssäkerhetsgruppen och en RDP-regel
 
-Du måste ha en nätverkssäkerhetsregeln (NSG) som gör att RDP-åtkomst på port 3389 för att kunna logga in på den virtuella datorn med RDP. 
+toobe kan toolog i tooyour VM som använder RDP måste toohave en nätverkssäkerhetsregeln (NSG) som gör att RDP-åtkomst på port 3389. 
 
-Det här exemplet skapas en NSG som heter *myNsg* som innehåller en regel med namnet *myRdpRule* som tillåter RDP-trafik via port 3389. Mer information om NSG: er finns [öppna portar till en virtuell dator i Azure med hjälp av PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Det här exemplet skapas en NSG som heter *myNsg* som innehåller en regel med namnet *myRdpRule* som tillåter RDP-trafik via port 3389. Mer information om NSG: er finns [öppna portar tooa VM i Azure med hjälp av PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ```powershell
 $nsgName = "myNsg"
@@ -243,40 +243,40 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 ```
 
 
-## <a name="create-a-variable-for-the-virtual-network"></a>Skapa en variabel för det virtuella nätverket
+## <a name="create-a-variable-for-hello-virtual-network"></a>Skapa en variabel för hello virtuellt nätverk
 
-Skapa en variabel för det virtuella nätverket som slutförda. 
+Skapa en variabel för hello slutförts virtuellt nätverk. 
 
 ```powershell
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 
 ```
 
-## <a name="get-the-credentials-for-the-vm"></a>Hämta autentiseringsuppgifterna för den virtuella datorn
+## <a name="get-hello-credentials-for-hello-vm"></a>Hämta hello autentiseringsuppgifter för hello VM
 
-Följande cmdlet öppnas ett fönster där du ska ange ett nytt användarnamn och lösenord ska användas som ett lokalt administratörskonto för att få fjärråtkomst till den virtuella datorn. 
+hello öppnar följande cmdlet ett fönster där anger du en ny användare och lösenord toouse som hello lokalt administratörskonto för att få fjärråtkomst till hello VM. 
 
 ```powershell
 $cred = Get-Credential
 ```
 
-## <a name="add-the-vm-name-and-size-to-the-vm-configuration"></a>Lägg till VM-namnet och storleken i VM-konfigurationen.
+## <a name="add-hello-vm-name-and-size-toohello-vm-configuration"></a>Lägg till hello namn på virtuell dator och storlek toohello VM-konfiguration.
 
 ```powershell
 $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 ```
 
-## <a name="set-the-vm-image-as-source-image-for-the-new-vm"></a>Ange VM-avbildning som källbilden för den nya virtuella datorn
+## <a name="set-hello-vm-image-as-source-image-for-hello-new-vm"></a>Ange hello VM-avbildning som källbilden för hello ny virtuell dator
 
-Ange källa avbildningen med ID: T för den hanterade VM-avbildningen.
+Ange hello Källavbildningen med hello-ID för hello hanterade VM-avbildning.
 
 ```powershell
 $vm = Set-AzureRmVMSourceImage -VM $vm -Id $image.Id
 ```
 
-## <a name="set-the-os-configuration-and-add-the-nic"></a>Ange Operativsystemets konfiguration och Lägg till nätverkskortet.
+## <a name="set-hello-os-configuration-and-add-hello-nic"></a>Ange hello Operativsystemets konfiguration och Lägg till hello NIC.
 
-Ange lagringstypen av (PremiumLRS eller StandardLRS) och storleken på operativsystemdisken. Det här exemplet anges kontotypen *PremiumLRS*, diskens storlek till *128 GB* och disk caching *ReadWrite*.
+Ange hello lagringstyp (PremiumLRS eller StandardLRS) och hello hello OS-diskens storlek. Det här exemplet anger hello kontotyp för*PremiumLRS*, hello diskstorleken för*128 GB* och diskcachelagring för*ReadWrite*.
 
 ```powershell
 $vm = Set-AzureRmVMOSDisk -VM $vm -DiskSizeInGB 128 `
@@ -288,16 +288,16 @@ $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $computerName 
 $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 ```
 
-## <a name="create-the-vm"></a>Skapa den virtuella datorn
+## <a name="create-hello-vm"></a>Skapa hello VM
 
-Skapa den nya virtuella datorn med hjälp av konfigurationen som lagrats i den **$vm** variabeln.
+Skapa ny virtuell dator med hello konfiguration lagras i hello hello **$vm** variabeln.
 
 ```powershell
 New-AzureRmVM -VM $vm -ResourceGroupName $rgName -Location $location
 ```
 
-## <a name="verify-that-the-vm-was-created"></a>Kontrollera att den virtuella datorn har skapats
-När du är klar bör du se den nya virtuella datorn i den [Azure-portalen](https://portal.azure.com) under **Bläddra** > **virtuella datorer**, eller genom att använda följande PowerShell-kommandon:
+## <a name="verify-that-hello-vm-was-created"></a>Kontrollera att hello VM skapades
+När du är klar bör du se hello nyskapad VM i hello [Azure-portalen](https://portal.azure.com) under **Bläddra** > **virtuella datorer**, eller genom att använda följande hello PowerShell-kommandon:
 
 ```powershell
     $vmList = Get-AzureRmVM -ResourceGroupName $rgName
@@ -306,5 +306,5 @@ När du är klar bör du se den nya virtuella datorn i den [Azure-portalen](http
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill logga in till din nya virtuella datorn, bläddra till den virtuella datorn i den [portal](https://portal.azure.com), klickar du på **Anslut**, öppna fjärrskrivbord RDP-filen. Använda kontouppgifter i den ursprungliga virtuella datorn för att logga in på den nya virtuella datorn. Mer information finns i [ansluta och logga in på en virtuell Azure-dator kör Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+toosign i tooyour nya virtuella datorn, bläddra toohello VM i hello [portal](https://portal.azure.com), klickar du på **Anslut**, och öppna hello Remote Desktop RDP-filen. Använd hello autentiseringsuppgifter för den ursprungliga virtuella toosign i tooyour ny virtuell dator. Mer information finns i [hur tooconnect och logga in tooan Azure virtuella datorn kör Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 

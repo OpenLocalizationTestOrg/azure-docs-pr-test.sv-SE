@@ -1,10 +1,10 @@
 
-* För omvandlingen krävs att den virtuella datorn startas om, så du bör schemalägga migreringen av dina virtuella datorer under en redan inställd underhållsperiod. 
+* konvertering av hello kräver en omstart av hello VM, så schemalägga hello migreringen av dina virtuella datorer för en befintlig underhållsfönster. 
 
-* Omvandlingen kan inte ångras. 
+* Det går inte att ångra hello konvertering. 
 
-* Testa omvandlingen först. Migrera först en virtuell testdator innan du gör en migrering i produktion.
+* Vara säker på att tootest hello konvertering. Migrera en virtuell testdator innan du utför hello migrering i produktion.
 
-* Under omvandlingen frigör du den virtuella datorn. Den virtuella datorn får en ny ip-adress när den startas efter omvandlingen. Om det behövs kan du [tilldela datorn en statisk ip-adress](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md).
+* Under hello konverteringen frigöra hello VM. hello VM får en ny IP-adress när den startas efter hello konverteringen. Om det behövs kan du [tilldela en statisk IP-adress](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) toohello VM.
 
-* De ursprungliga virtuella hårddiskarna och lagringskontot som användes av den virtuella datorn före omvandlingen tas inte bort. De kan medföra ytterligare kostnader. För att undvika att debiteras för dem kan du ta bort de ursprungliga virtuella hårddiskblobbarna när du har kontrollerat att omvandlingen har slutförts.
+* hello tas ursprungliga virtuella hårddiskar och hello storage-konto som används av hello VM innan konverteringen inte bort. De fortsätta tooincur avgifter. tooavoid att debiteras för dessa artefakter, ta bort hello ursprungliga VHD-blobbar när du har kontrollerat att hello konverteringen har slutförts.

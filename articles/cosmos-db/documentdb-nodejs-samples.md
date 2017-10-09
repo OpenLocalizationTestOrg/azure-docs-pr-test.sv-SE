@@ -1,5 +1,5 @@
 ---
-title: "Node.js-exempel för Azure Cosmos DB | Microsoft Docs"
+title: aaaNode.js exempel Azure Cosmos DB | Microsoft Docs
 description: "Hitta Node.js exemplen på github för vanliga uppgifter i Azure Cosmos-databasen, inklusive CRUD-åtgärder."
 keywords: node.js-exempel
 services: cosmos-db
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: moderakh
-ms.openlocfilehash: 602615c2434b7ab11ec55f2427c76cf1730b1379
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 55c8ebb9ff425aeeaa49fd0738649d33556a1635
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Azure Cosmos DB Node.js-exempel
 > [!div class="op_single_selector"]
@@ -30,25 +30,25 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Exempel lösningar som utför CRUD-åtgärder och andra vanliga åtgärder på Azure DB som Cosmos-resurser som ingår i den [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) GitHub-lagringsplatsen. Den här artikeln innehåller:
+Exempel lösningar som utför CRUD-åtgärder och andra vanliga åtgärder på Azure DB som Cosmos-resurser som ingår i hello [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) GitHub-lagringsplatsen. Den här artikeln innehåller:
 
-* Länkar till aktiviteter i alla projektfiler för Node.js-exempel.
-* Länkar till relaterade API: N referera till innehåll.
+* Länkar toohello aktiviteter i varje hello Node.js exempel projektfiler.
+* Länkar toohello relaterat innehåll för API-referens.
 
 **Förutsättningar**
 
-1. Du behöver ett Azure-konto du använder dessa Node.js-exempel:
-   * Du kan [kostnadsfritt registrera ett Azure-konto](https://azure.microsoft.com/pricing/free-trial/): du får då krediter som kan användas för att pröva Azure-betaltjänster och när du har använt upp dem så kan du behålla kontot och använda kostnadsfria Azure-tjänster, till exempel Websites. Ditt kreditkort kommer aldrig att debiteras om du inte specifikt ändrar dina inställningar och ber om det.
+1. Du behöver ett Azure-konto toouse exemplen Node.js:
+   * Du kan [öppna ett Azure-konto gratis](https://azure.microsoft.com/pricing/free-trial/): du får kredit du kan använda tootry ut betald Azure-tjänster och även när de används upp du kan behålla hello kontot och använda kostnadsfria Azure-tjänster, till exempel Websites. Ditt kreditkort kommer aldrig att debiteras, såvida du inte uttryckligen ändrar dina inställningar och be toobe debiteras.
      * Du kan [aktivera Visual Studio-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/): din Visual Studio-prenumeration ger dig krediter varje månad som du kan använda för Azure-betaltjänster.
-2. Du måste också den [Node.js SDK](documentdb-sdk-node.md).
+2. Du måste också hello [Node.js SDK](documentdb-sdk-node.md).
    
    > [!NOTE]
-   > Varje exempel är självständigt, den konfigurerar sig själv och rensar efter sig själv. Därför exemplen utfärda flera anrop till [DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection). Varje gång det är klart prenumerationen kommer att debiteras för 1 timme användning per prestandanivån på samlingen som skapas.
+   > Varje exempel är självständigt, den konfigurerar sig själv och rensar efter sig själv. Därför hello exempel utfärda flera anrop för[DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection). Varje gång det gör du din prenumeration kommer att debiteras för 1 timme användning per hello prestandanivån mängden hello håller på att skapas.
    > 
    > 
 
 ## <a name="database-examples"></a>Databas-exempel
-Den [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DatabaseManagement/app.js) -filen för den [DatabaseManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DatabaseManagement) projektet visar hur du utför följande uppgifter.
+Hej [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DatabaseManagement/app.js) -filen för hello [DatabaseManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DatabaseManagement) projektet visar hur tooperform hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |
@@ -59,7 +59,7 @@ Den [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/
 | [Ta bort en databas](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DatabaseManagement/app.js#L133-L144) |[DocumentClient.deleteDatabase](http://azure.github.io/azure-documentdb-node/DocumentClient.html#deleteDatabase) |
 
 ## <a name="collection-examples"></a>Exempel för samlingen
-Den [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/CollectionManagement/app.js) -filen för den [CollectionManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/CollectionManagement) projektet visar hur du utför följande uppgifter.
+Hej [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/CollectionManagement/app.js) -filen för hello [CollectionManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/CollectionManagement) projektet visar hur tooperform hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |
@@ -72,12 +72,12 @@ Den [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/
 | [Ta bort en samling](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L204-L215) |[DocumentClient.deleteCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#deleteCollection) |
 
 ## <a name="document-examples"></a>Dokument-exempel
-Den [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DocumentManagement/app.js) -filen för den [DocumentManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DocumentManagement) projektet visar hur du utför följande uppgifter.
+Hej [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DocumentManagement/app.js) -filen för hello [DocumentManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DocumentManagement) projektet visar hur tooperform hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |
 | [Skapa dokument](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L153-L177) |[DocumentClient.createDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createDocument) |
-| [Läsa dokumentet feed för en samling](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L179-L189) |[DocumentClient.readDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readDocument) |
+| [Läs hello dokument feed för en samling](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L179-L189) |[DocumentClient.readDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readDocument) |
 | [Läsa ett dokument-ID: t](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L191-L201) |[DocumentClient.readDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readDocument) |
 | [Läs dokument bara om dokumentet har ändrats](https://github.com/Azure/azure-documentdb-node/blob/0778eadea7abb2af41e8c22a239dc872c584f421/samples/DocumentManagement/app.js#L79-L107) |[DocumentClient.readDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readDocument)<br/>[RequestOptions.accessCondition](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
 | [Frågan för dokument](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L82-L110) |[DocumentClient.queryDocuments](http://azure.github.io/azure-documentdb-node/DocumentClient.html#queryDocuments) |
@@ -86,13 +86,13 @@ Den [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/
 | [Ta bort ett dokument](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L122-L133) |[DocumentClient.deleteDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#deleteDocument) |
 
 ## <a name="indexing-examples"></a>Indexering exempel
-Den [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/IndexManagement/app.js) -filen för den [IndexManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/IndexManagement) projektet visar hur du utför följande uppgifter.
+Hej [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/IndexManagement/app.js) -filen för hello [IndexManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/IndexManagement) projektet visar hur tooperform hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |
 | [Skapa en samling med standard indexering](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L657-L701) |[DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection) |
 | [Manuellt index ett visst dokument](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L185-L238) |[RequestOptions.indexingDirective: ”innehåller”](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
-| [Exkludera manuellt ett visst dokument från indexet](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L120-L183) |[RequestOptions.indexingDirective: Utelämna](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
+| [Undanta ett visst dokument manuellt från hello index](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L120-L183) |[RequestOptions.indexingDirective: Utelämna](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
 | [Använd lazy indexering för massimport eller läsa tunga samlingar](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L240-L269) |[IndexingMode.Lazy](http://azure.github.io/azure-documentdb-node/global.html#IndexingMode) |
 | [Inkludera specifika sökvägar för ett dokument i indexering](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L433-L444) |[IndexingPolicy.IncludedPaths](http://azure.github.io/azure-documentdb-node/global.html#IndexingPolicy) |
 | [Undanta vissa sökvägar från indexering](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L427-L450) |[IndexingPolicy.ExcludedPath](http://azure.github.io/azure-documentdb-node/global.html#IndexingPolicy) |
@@ -103,7 +103,7 @@ Den [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/
 Mer information om indexering finns [Azure Cosmos DB indexering principer](indexing-policies.md).
 
 ## <a name="server-side-programming-examples"></a>Serversidan programming exempel
-Den [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/ServerSideScripts/app.js) -filen för den [ServerSideScripts](https://github.com/Azure/azure-documentdb-node/tree/master/samples/ServerSideScripts) projektet visar hur du utför följande uppgifter.
+Hej [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/ServerSideScripts/app.js) -filen för hello [ServerSideScripts](https://github.com/Azure/azure-documentdb-node/tree/master/samples/ServerSideScripts) projektet visar hur tooperform hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |
@@ -113,7 +113,7 @@ Den [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/
 Mer information om programmering av serversidan finns [Azure Cosmos DB programmering av serversidan: lagrade procedurer, databasutlösare och UDF: er](programming.md).
 
 ## <a name="partitioning-examples"></a>Partitionering exempel
-Den [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/Partitioning/app.js) -filen för den [partitionering](https://github.com/Azure/azure-documentdb-node/tree/master/samples/Partitioning) projektet visar hur du utför följande uppgifter.
+Hej [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/Partitioning/app.js) -filen för hello [partitionering](https://github.com/Azure/azure-documentdb-node/tree/master/samples/Partitioning) projektet visar hur tooperform hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |

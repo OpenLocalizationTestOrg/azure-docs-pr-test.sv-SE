@@ -1,5 +1,5 @@
 ---
-title: Konfigurera ett Azure Service Fabric-kluster | Microsoft Docs
+title: aaaSet upp ett Azure Service Fabric-kluster | Microsoft Docs
 description: "Snabbstart – skapa ett Service Fabric-kluster i Azure för Windows eller Linux."
 services: service-fabric
 documentationcenter: .net
@@ -14,79 +14,79 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: ryanwi
-ms.openlocfilehash: ec59450052b377412a28f7eaf55d1f1512b55195
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 13c60e293d19d607bb41ee4859706508c219a833
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-service-fabric-cluster-on-azure"></a>Skapa ditt första Service Fabric-kluster i Azure
-Ett [Service Fabric-kluster](service-fabric-deploy-anywhere.md) är en nätverksansluten uppsättning virtuella eller fysiska datorer som dina mikrotjänster distribueras till och hanteras från. I den här snabbstarten får du hjälp att skapa ett kluster med fem noder som körs i antingen Windows eller Linux på bara några minuter via [Azure PowerShell](https://msdn.microsoft.com/library/dn135248) eller [Azure Portal](http://portal.azure.com).  
+Ett [Service Fabric-kluster](service-fabric-deploy-anywhere.md) är en nätverksansluten uppsättning virtuella eller fysiska datorer som dina mikrotjänster distribueras till och hanteras från. Den här snabbstarten hjälper dig att toocreate ett kluster med fem noder, körs på Windows- eller Linux, via hello [Azure PowerShell](https://msdn.microsoft.com/library/dn135248) eller [Azure-portalen](http://portal.azure.com) i bara några minuter.  
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 
-## <a name="use-the-azure-portal"></a>Använda Azure-portalen
+## <a name="use-hello-azure-portal"></a>Använd hello Azure-portalen
 
-Logga in på Azure Portal på [http://portal.azure.com](http://portal.azure.com).
+Logga in toohello Azure-portalen på [http://portal.azure.com](http://portal.azure.com).
 
-### <a name="create-the-cluster"></a>Skapa klustret
+### <a name="create-hello-cluster"></a>Skapa hello-kluster
 
-1. Klicka på knappen **New** (Nytt) i det övre vänstra hörnet i Azure Portal.
-2. Välj **Compute** från bladet **Nytt** och sedan **Service Fabric-kluster** från bladet **Compute**.
-3. Fyll i Service Fabric-formuläret **Grundläggande inställningar**. För **Operativsystem** väljer du den version av Windows eller Linux som du vill köra klusternoderna i. Användarnamnet och lösenordet som anges här används för att logga in på den virtuella datorn. Skapa en ny för **Resursgrupp**. En resursgrupp är en logisk behållare där Azure-resurser skapas och hanteras gemensamt. När du är klar klickar du på **OK**.
+1. Klicka på hello **ny** knappen hittades på hello övre vänstra hörnet av hello Azure-portalen.
+2. Välj **Compute** från hello **ny** bladet och väljer sedan **Service Fabric-kluster** från hello **Compute** bladet.
+3. Fyll i hello Service Fabric **grunderna** formuläret. För **operativsystemet**väljer hello version av Windows eller Linux som du vill hello toorun för noder av klustret. hello-användarnamn och lösenord som anges här är används toolog i toohello virtuella datorn. Skapa en ny för **Resursgrupp**. En resursgrupp är en logisk behållare där Azure-resurser skapas och hanteras gemensamt. När du är klar klickar du på **OK**.
 
     ![Utdata efter klusterinstallationen][cluster-setup-basics]
 
-4. Fyll i formuläret **Klusterkonfiguration**.  För **Antal nodtyper** anger du "1".
+4. Fyll i hello **klusterkonfigurationen** formuläret.  För **Antal nodtyper** anger du "1".
 
-5. Välj **Node type 1 (Primary)** (Nodtyp 1 (Primär)) och fyll i formuläret **Konfiguration av nodtyp**.  Ange ett nodtypnamn och ställ in [Hållbarhetsnivå](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) på "Brons."  Välj en VM-storlek.
+5. Välj **nodtypen 1 (primär)** och fylla i hello **typen nodkonfiguration** formuläret.  Ange ett typnamn för noden och ange hello [hållbarhetsnivån](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) för ”Brons”.  Välj en VM-storlek.
 
-    Nodtypen definierar antalet virtuella datorer och deras storlek, anpassade slutpunkter och andra inställningar för virtuella datorer av samma typ. Varje definierad nodtyp konfigureras som en separat VM-skalningsuppsättning som används till att distribuera och hantera virtuella datorer som en uppsättning. Varje nodtyp kan skalas upp eller ned oberoende av de andra, ha olika portar öppna och ha olika kapacitet.  Den första, eller primära, nodtypen används för systemtjänsterna för Service Fabric, och den måste ha fem eller fler virtuella datorer.
+    Nodtyper definiera hello VM-storlek, antal virtuella datorer, anpassade slutpunkter och andra inställningar för hello virtuella datorer av den typen. Varje nodtyp definierats ställs in som en separat virtuell dator skaluppsättning som används toodeploy och hanterade virtuella datorer som en uppsättning. Varje nodtyp kan skalas upp eller ned oberoende av de andra, ha olika portar öppna och ha olika kapacitet.  hello första eller primära nodtypen är där Service Fabric systemtjänster finns och måste ha fem eller fler virtuella datorer.
 
-    Vid distribution till en produktionsmiljö är det viktigt med [kapacitetsplanering](service-fabric-cluster-capacity.md).  I den här snabbstarten kör du däremot inga program, så välj VM-storleken *DS1_v2 Standard*.  Välj ”Silver” som [tillförlitlighetsnivå](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) och en inledande kapacitet på 5 för VM-skalningsuppsättningar.  
+    Vid distribution till en produktionsmiljö är det viktigt med [kapacitetsplanering](service-fabric-cluster-capacity.md).  I den här snabbstarten kör du däremot inga program, så välj VM-storleken *DS1_v2 Standard*.  Välj ”Silver” för hello [tillförlitlighetsnivån](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) och en inledande virtuella skaluppsättning kapacitet på 5.  
 
-    Anpassade slutpunkter används till att öppna portar i Azure Load Balancer så att du kan ansluta med program som körs i klustret.  Ange ”80, 8172” så att du öppnar portarna 80 och 8172.
+    Anpassade slutpunkter öppna portar i hello Azure belastningsutjämnare så att du kan ansluta med program som körs på hello klustret.  Ange ”80, 8172” tooopen in portarna 80 och 8172.
 
-    Markera inte kryssrutan **Konfigurera avancerade inställningar**, som används till att anpassa slutpunkter för TCP/HTTP-hantering, portintervall för program, [placeringsbegränsningar](service-fabric-cluster-resource-manager-configure-services.md#placement-constraints) och [kapacitetsegenskaper](service-fabric-cluster-resource-manager-metrics.md).    
+    Sök inte hello **konfigurera avancerade inställningar** som används för att anpassa TCP/HTTP-slutpunkter för hantering, programmet portintervall [placeringsbegränsningar](service-fabric-cluster-resource-manager-configure-services.md#placement-constraints), och [kapacitet Egenskaper för](service-fabric-cluster-resource-manager-metrics.md).    
 
     Välj **OK**.
 
-6. I formuläret **Klusterkonfiguration** ställer du in **Diagnostik** på **På**.  I den här snabbstarten behöver du inte ange några anpassade [infrastrukturinställningar](service-fabric-cluster-fabric-settings.md).  Under **Fabric-version** väljer du uppgraderingsläget **Automatiskt** så att Microsoft automatiskt uppdaterar den Fabric-kod som kör klustret.  Ställ in läget som **Manuellt** om du vill [välja en version som stöds](service-fabric-cluster-upgrade.md) och uppgradera till den. 
+6. I hello **klusterkonfigurationen** formuläret genom att ange **diagnostik** för**på**.  För Snabbstart, behöver du inte tooenter alla [fabric inställningen](service-fabric-cluster-fabric-settings.md) egenskaper.  I **Fabric-versionen**väljer **automatisk** Uppgraderingsläge så att Microsoft uppdaterar automatiskt hello version av hello fabric-kod som körs hello klustret.  Ange hello-läge för**manuell** om du vill använda för[väljer en version som stöds](service-fabric-cluster-upgrade.md) tooupgrade till. 
 
     ![Konfiguration av nodtyp][node-type-config]
 
     Välj **OK**.
 
-7. Fyll i formuläret **Säkerhet**.  I den här snabbstarten kan du välja **Ta bort skydd**.  I produktionsmiljöer bör du endast skapa skyddade kluster eftersom alla kan ansluta anonymt till oskyddade kluster och utföra hanteringsåtgärder.  
+7. Fyll i hello **säkerhet** formuläret.  I den här snabbstarten kan du välja **Ta bort skydd**.  Det är mycket rekommenderas toocreate ett säker kluster för produktionsarbetsbelastningar, men eftersom alla anonymt kan ansluta tooan oskyddade kluster och utföra hanteringsåtgärder.  
 
-    Certifikat används i Service Fabric till att autentisera och kryptera olika delar av ett kluster och de program som körs där. Mer information om hur du använder certifikat i Service Fabric finns i [Service Fabric cluster security scenarios](service-fabric-cluster-security.md) (Säkerhet för Service Fabric-kluster).  Om du vill aktivera autentisering av användare via Azure Active Directory eller ställa in certifikat för programsäkerhet kan du [skapa ett kluster från en Resource Manager-mall](service-fabric-cluster-creation-via-arm.md).
+    Certifikat används i Service Fabric tooprovide autentisering och kryptering toosecure olika aspekter av ett kluster och dess program. Mer information om hur du använder certifikat i Service Fabric finns i [Service Fabric cluster security scenarios](service-fabric-cluster-security.md) (Säkerhet för Service Fabric-kluster).  tooenable användarautentisering med Azure Active Directory eller tooset in certifikat för programsäkerhet, [skapa ett kluster från en Resource Manager-mall](service-fabric-cluster-creation-via-arm.md).
 
     Välj **OK**.
 
-8. Granska sammanfattningen.  Om du vill ladda ned en Resource Manager-mall som bygger på de inställningar du har angett väljer du **Ladda ned mall och parametrar**.  Välj **Skapa** så att klustret skapas.
+8. Granska hello sammanfattning.  Om du vill att toodownload en Resource Manager-mall som bygger på hello inställningar som du angett, Välj **ladda ned mall och parametrar**.  Välj **skapa** toocreate hello klustret.
 
-    Du kan se förloppet bland aviseringarna. (Klicka på klockikonen nära statusfältet uppe till höger på skärmen.) Om du klickade på **Fäst på startsidan** när du skapade klustret ser du **Deploying Service Fabric Cluster** (Distribuerar Service Fabric-kluster) fäst på **startsidan**.
+    Du kan se hello förlopp i hello meddelanden. (Klicka på hello ”” klockikonen nära hello hello övre högra hörnet på skärmen i statusfältet.) Om du klickade på **PIN-kod tooStartboard** när du skapar hello klustret måste du se **distribuerar Service Fabric-kluster** Fäst toohello **starta** kort.
 
 ### <a name="view-cluster-status"></a>Visa klusterstatus
-När du har skapat ett kluster kan du granska det på bladet **Översikt** i portalen. Där kan du se information om klustret på instrumentpanelen, bland annat klustrets offentliga slutpunkter och en länk till Service Fabric Explorer.
+När klustret har skapats kan du granska klustret i hello **översikt** bladet i hello portal. Du kan nu se hello information på klustret i hello instrumentpanel, inklusive hello klustrets offentlig slutpunkt och en länk tooService Fabric Explorer.
 
 ![Klusterstatus][cluster-status]
 
-### <a name="visualize-the-cluster-using-service-fabric-explorer"></a>Visualisera klustret med hjälp av Service Fabric Explorer
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) är ett bra verktyg för att visualisera klustret och hantera program.  Service Fabric Explorer är en tjänst som körs i klustret.  Du kommer åt den i en webbläsare genom att klicka på länken **Service Fabric Explorer** på sidan **Översikt** för klustret i portalen.  Du kan också ange adressen direkt i webbläsaren: [http://quickstartcluster.westus.cloudapp.azure.com:19080/Explorer](http://quickstartcluster.westus.cloudapp.azure.com:19080/Explorer)
+### <a name="visualize-hello-cluster-using-service-fabric-explorer"></a>Visualisera hello-kluster med hjälp av Service Fabric explorer
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) är ett bra verktyg för att visualisera klustret och hantera program.  Service Fabric Explorer är en tjänst som körs i hello klustret.  Åtkomst till den i en webbläsare genom att klicka på hello **Service Fabric Explorer** länk hello klustret **översikt** sidan hello-portalen.  Du kan också ange hello-adressen direkt i webbläsaren hello: [http://quickstartcluster.westus.cloudapp.azure.com:19080/Explorer](http://quickstartcluster.westus.cloudapp.azure.com:19080/Explorer)
 
-Instrumentpanelen för klustret innehåller en översikt över klustret, inklusive en sammanfattning av program- och nodhälsan. Nodvyn visar klustrets fysiska layout. För en viss nod kan du inspektera vilka program som har kod distribuerad på noden.
+Hej klusterinstrumentpanel innehåller en översikt över klustret, inklusive en sammanfattning av program och noden hälsa. hello nod vyn visar hello fysiska struktur hello klustret. För en viss nod kan du inspektera vilka program som har kod distribuerad på noden.
 
 ![Service Fabric Explorer][service-fabric-explorer]
 
-### <a name="connect-to-the-cluster-using-powershell"></a>Ansluta till klustret med PowerShell
-Kontrollera att klustret körs genom att ansluta med PowerShell.  Service Fabric PowerShell-modulen installeras med [Service Fabric SDK](service-fabric-get-started.md).  Cmdleten [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) upprättar en anslutning till klustret.   
+### <a name="connect-toohello-cluster-using-powershell"></a>Ansluta toohello kluster med hjälp av PowerShell
+Kontrollera att hello-kluster körs genom att ansluta med hjälp av PowerShell.  Hej ServiceFabric PowerShell-modulen är installerad med hello [Service Fabric SDK](service-fabric-get-started.md).  Hej [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet upprättar en anslutning toohello klustret.   
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint quickstartcluster.westus2.cloudapp.azure.com:19000
 ```
-Fler exempel på hur du ansluter till ett kluster finns i [Ansluta till ett säkert kluster](service-fabric-connect-to-secure-cluster.md). När du har anslutit till klustret använder du cmdleten [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) för att visa en lista över noder i klustret och statusinformation för varje nod. **HealthState** bör vara *OK* för varje nod.
+Se [Anslut tooa säker klustret](service-fabric-connect-to-secure-cluster.md) andra exempel på den anslutande tooa klustret. När du ansluter toohello kluster, använda hello [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet toodisplay en lista över noderna i hello kluster och status för varje nod. **HealthState** bör vara *OK* för varje nod.
 
 ```powershell
 PS C:\Users\sfuser> Get-ServiceFabricNode |Format-Table
@@ -100,31 +100,31 @@ NodeDeactivationInfo NodeName     IpAddressOrFQDN NodeType  CodeVersion  ConfigV
                      _nodetype1_3 10.0.0.7        nodetype1 5.7.198.9494 1                     Up 03:00:38   00:00:00              Ok
 ```
 
-### <a name="remove-the-cluster"></a>Ta bort klustret
-Ett Service Fabric-kluster består av andra Azure-resurser förutom själva klusterresursen. Så om du vill ta bort ett Service Fabric-kluster helt måste du också ta bort alla resurser det består av. Det enklaste sättet att ta bort klustret och alla de resurser det använder är att ta bort resursgruppen. Andra sätt att ta bort ett kluster eller borttagning av vissa (men inte alla) resurser i en resursgrupp beskrivs i [Ta bort ett kluster](service-fabric-cluster-delete.md)
+### <a name="remove-hello-cluster"></a>Ta bort hello kluster
+Service Fabric-klustret består av andra Azure-resurser förutom toohello klusterresurs sig själv. Så toocompletely ta bort Service Fabric-kluster behöver du också toodelete alla hello av resurser. hello enklaste sättet toodelete hello kluster och alla hello-resurser som den förbrukar är toodelete hello resursgruppen. För andra sätt toodelete ett kluster eller toodelete vissa (men inte alla) hello resurser i en resursgrupp, se [tar bort ett kluster](service-fabric-cluster-delete.md)
 
-Ta bort en resursgrupp på Azure Portal:
-1. Navigera till det Service Fabric-kluster du vill ta bort.
-2. Klicka på **Resursgrupp** på sidan med klusterinformation.
-3. På sidan **Resource Group Essentials** (Information om resursgrupp) klickar du på **Ta bort resursgrupp** och följer sedan anvisningarna för borttagning av resursgruppen.
-    ![Ta bort resursgruppen][cluster-delete]
+Ta bort en resursgrupp i hello Azure-portalen:
+1. Navigera toohello Service Fabric-kluster som du vill toodelete.
+2. Klicka på hello **resursgruppen** namn på hello klustret essentials sida.
+3. I hello **resurs grupp Essentials** klickar du på **ta bort resursgruppen** och följer instruktionerna för hello på sidan toocomplete hello borttagningen av hello resursgruppen.
+    ![Ta bort hello resursgruppen][cluster-delete]
 
 
-## <a name="use-azure-powershell-to-deploy-a-secure-cluster"></a>Använda Azure Powershell för att distribuera ett säkert kluster
-1. Ladda ned [Azure Powershell-modul version 4.0 eller senare](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) på datorn.
+## <a name="use-azure-powershell-toodeploy-a-secure-cluster"></a>Använda Azure Powershell toodeploy säker kluster
+1. Hämta hello [Azure Powershell Modulversion 4.0 eller högre](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) på din dator.
 
-2. Öppna ett Windows PowerShell-fönster och kör följande kommando. 
+2. Öppna Windows PowerShell-fönstret, kör hello följande kommando. 
     
     ```powershell
 
     Get-Command -Module AzureRM.ServiceFabric 
     ```
 
-    Du bör se utdata som liknar följande.
+    Du bör se en liknande toohello följande i utdata.
 
     ![ps-list][ps-list]
 
-3. Logga in på Azure och välj den prenumeration som du vill skapa klustret på
+3. Inloggningen tooAzure och välj hello prenumeration toowhich som du vill toocreate hello kluster
 
     ```powershell
 
@@ -133,13 +133,13 @@ Ta bort en resursgrupp på Azure Portal:
     Select-AzureRmSubscription -SubscriptionId "Subcription ID" 
     ```
 
-4. Kör följande kommande för att skapa ett säkert kluster. Glöm inte att anpassa parametrarna. 
+4. Kör hello efter kommandot toonow skapa en säker kluster. Glöm inte toocustomize hello parametrar. 
 
     ```powershell
     $certpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
     $RDPpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force 
     $RDPuser="vmadmin"
-    $RGname="mycluster" # this is also the name of your cluster
+    $RGname="mycluster" # this is also hello name of your cluster
     $clusterloc="SouthCentralUS"
     $subname="$RGname.$clusterloc.cloudapp.azure.com"
     $certfolder="c:\mycertificates\"
@@ -148,34 +148,34 @@ Ta bort en resursgrupp på Azure Portal:
     New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize $clustersize -VmUserName $RDPuser -VmPassword $RDPpwd -CertificateSubjectName $subname -CertificatePassword $certpwd -CertificateOutputFolder $certfolder
     ```
 
-    Det kan ta mellan 10 och 30 minuter att slutföra kommandot. När det har slutförts bör utdata se ut ungefär som nedan. Utdata innehåller information om certifikatet, nyckelvalvet som certifikatet överfördes till och den lokala mapp som certifikatet kopieras till. 
+    hello-kommandot kan ta allt från 10 minuter too30 minuter toocomplete, hello slutet av det, du bör få en liknande toohello följande i utdata. hello utdata innehåller information om hello certifikat, hello KeyVault där paketet har överförts till, och hello lokala mappen där hello certifikat kopieras. 
 
     ![ps-out][ps-out]
 
-5. Kopiera alla utdata och spara dem i en textfil eftersom vi behöver hänvisa till dem. Anteckna följande information från utdata. 
+5. Kopiera hela hello-utdata och spara tooa textfil som vi behöver toorefer tooit. Anteckna hello följande information från hello utdata. 
 
     - **CertificateSavedLocalPath** : c:\mycertificates\mycluster20170504141137.pfx
     - **CertificateThumbprint** : C4C1E541AD512B8065280292A8BA6079C3F26F10
     - **ManagementEndpoint** : https://mycluster.southcentralus.cloudapp.azure.com:19080
     - **ClientConnectionEndpointPort** : 19000
 
-### <a name="install-the-certificate-on-your-local-machine"></a>Installera certifikatet på din lokala dator
+### <a name="install-hello-certificate-on-your-local-machine"></a>Installera hello certifikat på den lokala datorn
   
-För att kunna ansluta till klustret måste du installera certifikatet i det personliga arkivet för den aktuella användaren. 
+tooconnect toohello klustret, behöver du tooinstall hello certifikat till hello Personal (min) arkivet för hello aktuella användaren. 
 
-Kör följande PowerShell-kommando
+Kör följande PowerShell hello
 
 ```powershell
 Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
-        -FilePath C:\mycertificates\the name of the cert.pfx `
+        -FilePath C:\mycertificates\hello name of hello cert.pfx `
         -Password (ConvertTo-SecureString -String certpwd -AsPlainText -Force)
 ```
 
-Du är nu redo att ansluta till det säkra klustret.
+Du är nu redo tooconnect tooyour säker klustret.
 
-### <a name="connect-to-a-secure-cluster"></a>Ansluta till ett säkert kluster 
+### <a name="connect-tooa-secure-cluster"></a>Ansluta tooa säker kluster 
 
-Kör följande PowerShell-kommando för att ansluta till ett säkert kluster. Certifikatinformationen måste matcha certifikatet som användes för att konfigurera klustret. 
+Kör följande PowerShell-kommandot tooconnect tooa säker klustret hello. information om hello certifikat måste matcha ett certifikat som har använt tooset in hello kluster. 
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
@@ -186,7 +186,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 ```
 
 
-I följande exempel visas de ifyllda parametrarna: 
+följande exempel visar hello hello slutförts parametrar: 
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint mycluster.southcentralus.cloudapp.azure.com:19000 `
@@ -196,19 +196,19 @@ Connect-ServiceFabricCluster -ConnectionEndpoint mycluster.southcentralus.clouda
           -StoreLocation CurrentUser -StoreName My
 ```
 
-Kör följande kommando för att kontrollera att du är ansluten och att klustret är felfritt.
+Kör hello efter kommandot toocheck att du är ansluten och hello klustret är felfri.
 
 ```powershell
 
 Get-ServiceFabricClusterHealth
 
 ```
-### <a name="publish-your-apps-to-your-cluster-from-visual-studio"></a>Publicera dina appar till klustret från Visual Studio
+### <a name="publish-your-apps-tooyour-cluster-from-visual-studio"></a>Publicera appar tooyour klustret från Visual Studio
 
-Nu när du har konfigurerat ett Azure-kluster kan du publicera dina program från Visual Studio till Azure enligt anvisningarna i dokumentet [Publicera till ett kluster](service-fabric-publish-app-remote-cluster.md). 
+Nu när du har skapat ett Azure-kluster, kan du publicera dina program tooit från Visual Studio genom följande hello [publicera tooan klustret](service-fabric-publish-app-remote-cluster.md) dokumentet. 
 
-### <a name="remove-the-cluster"></a>Ta bort klustret
-Ett kluster består av andra Azure-resurser förutom själva klusterresursen. Det enklaste sättet att ta bort klustret och alla de resurser det använder är att ta bort resursgruppen. 
+### <a name="remove-hello-cluster"></a>Ta bort hello kluster
+Ett kluster består av andra Azure-resurser förutom toohello klusterresurs sig själv. hello enklaste sättet toodelete hello kluster och alla hello-resurser som den förbrukar är toodelete hello resursgruppen. 
 
 ```powershell
 
@@ -217,8 +217,8 @@ Remove-AzureRmResourceGroup -Name $RGname -Force
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har konfigurerat ett utvecklingskluster provar du följande:
-* [Create a secure cluster in the portal](service-fabric-cluster-creation-via-portal.md) (Skapa ett säkert kluster i portalen)
+Nu när du har skapat ett kluster för utveckling, försök hello följande:
+* [Skapa en säker kluster i hello-portalen](service-fabric-cluster-creation-via-portal.md)
 * [Create a cluster from a template](service-fabric-cluster-creation-via-arm.md) (Skapa ett kluster från en mall) 
 * [Distribuera appar med hjälp av PowerShell](service-fabric-deploy-remove-applications.md)
 

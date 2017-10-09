@@ -1,6 +1,6 @@
 ---
-title: "Hur man frågan med SQL i Azure Cosmos DB? | Microsoft Docs"
-description: "Lär dig hur du fråga med DocumentDB data med SQL i Azure Cosmos DB"
+title: aaaHow tooquery med SQL i Azure Cosmos DB? | Microsoft Docs
+description: "Läs tooquery med DocumentDB-data med SQL i Azure Cosmos DB"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -16,24 +16,24 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: a2a562c06c6302b9548e758b4c6754ec13b6001d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d3dc51acf92cb78d4f4d9dbac7ec54b1382431cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-how-to-query-using-sql"></a>Azure Cosmos DB: Hur man frågan med hjälp av SQL?
+# <a name="azure-cosmos-db-how-tooquery-using-sql"></a>Azure Cosmos DB: Hur tooquery med hjälp av SQL?
 
-Azure Cosmos DB [DocumentDB API](documentdb-introduction.md) stöder frågar dokument med hjälp av SQL. Den här artikeln innehåller ett exempel på dokument och två exempel SQL-frågor och resultat.
+hello Azure Cosmos DB [DocumentDB API](documentdb-introduction.md) stöder frågar dokument med hjälp av SQL. Den här artikeln innehåller ett exempel på dokument och två exempel SQL-frågor och resultat.
 
-Den här artikeln omfattar följande aktiviteter: 
+Den här artikeln beskriver hello följande uppgifter: 
 
 > [!div class="checklist"]
 > * Hämtning av data med SQL
 
 ## <a name="sample-document"></a>Exempel på ett dokument
 
-SQL-frågor i den här artikeln använder följande exempeldokumentet.
+hello SQL-frågor i den här artikeln använder hello följande exempel-dokument.
 
 ```json
 {
@@ -65,18 +65,18 @@ SQL-frågor i den här artikeln använder följande exempeldokumentet.
 ```
 ## <a name="where-can-i-run-sql-queries"></a>Var kan jag köra SQL-frågor?
 
-Du kan köra frågor med Data Explorer i Azure-portalen den [REST-API och SDK](documentdb-sdk-dotnet.md), och även [Query playground](https://www.documentdb.com/sql/demo), som körs frågor på en befintlig uppsättning exempeldata.
+Du kan köra frågor med hello Data Explorer i hello Azure-portalen via hello [REST-API och SDK](documentdb-sdk-dotnet.md), och även hello [Query playground](https://www.documentdb.com/sql/demo), som körs frågor på en befintlig uppsättning exempeldata.
 
 Mer information om SQL-frågor finns:
 * [SQL-fråga och SQL-syntax](documentdb-sql-query.md)
 
 ## <a name="prerequisites"></a>Krav
 
-Den här kursen förutsätter att du har ett konto för Azure Cosmos DB och samling. Har inte något av de? Slutför den [5 minuter quickstart](create-mongodb-nodejs.md) eller [developer kursen](tutorial-develop-mongodb.md) att skapa ett konto och samling.
+Den här kursen förutsätter att du har ett konto för Azure Cosmos DB och samling. Har inte något av de? Fullständig hello [5 minuter quickstart](create-mongodb-nodejs.md) eller hello [developer kursen](tutorial-develop-mongodb.md) toocreate ett konto och samling.
 
 ## <a name="example-query-1"></a>Exempelfråga 1
 
-Exempel family dokumentet ovan får följande SQL-frågan returnerar dokument där fältet id matchar `WakefieldFamily`. Eftersom det är en `SELECT *` -instruktionen utdata från frågan är klar JSON-dokumentet:
+Hello exempel family dokument ovan får följande SQL-frågan returnerar hello dokument där hello id-fältet matchar `WakefieldFamily`. Eftersom det är en `SELECT *` hello utdata från frågan hello-instruktionen är hello fullständig JSON-dokumentet:
 
 **Fråga**
 
@@ -117,7 +117,7 @@ Exempel family dokumentet ovan får följande SQL-frågan returnerar dokument d�
 
 ## <a name="example-query-2"></a>Exempelfråga 2
 
-Nästa fråga returnerar alla angivna namnen på underordnade i familjen vars id matchar `WakefieldFamily` sorterade efter deras klass.
+hello nästa fråga returnerar alla hello angivet namn på barn i hello familj vars id matchar `WakefieldFamily` sorterade efter deras klass.
 
 **Fråga**
 
@@ -137,12 +137,12 @@ Nästa fråga returnerar alla angivna namnen på underordnade i familjen vars id
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudiekursen kommer du har gjort följande:
+I den här kursen har du gjort hello följande:
 
 > [!div class="checklist"]
-> * Lärt dig hur man frågan med SQL  
+> * Lärt dig hur tooquery med SQL  
 
-Du kan nu fortsätta till nästa kurs att lära dig hur du distribuerar dina data globalt.
+Du kan nu fortsätta toohello nästa självstudiekurs toolearn hur toodistribute data globalt.
 
 > [!div class="nextstepaction"]
 > [Distribuera dina data globalt](tutorial-global-distribution-documentdb.md)

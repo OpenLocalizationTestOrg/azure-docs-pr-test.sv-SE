@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: Komma igång | Microsoft Docs"
-description: "Aktivera Azure Active Directory Domain Services med Azure-portalen (förhandsgranskning)"
+description: "Aktivera Azure Active Directory Domain Services med hello Azure-portalen (förhandsgranskning)"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: maheshu
-ms.openlocfilehash: 47507096a6245d4f1ba57a652ddf5167b3776ae9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 79cbb21c4a50194f5ad8ca1a4a8493ee4a260a9d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Aktivera Azure Active Directory Domain Services med Azure-portalen (förhandsgranskning)
-Den här artikeln visar hur du aktiverar Azure Active Directory Domain Services (Azure AD DS) med Azure-portalen.
+# <a name="enable-azure-active-directory-domain-services-using-hello-azure-portal-preview"></a>Aktivera Azure Active Directory Domain Services med hello Azure-portalen (förhandsgranskning)
+Den här artikeln visar hur tooenable Azure Active Directory Domain Services (Azure AD DS) med hjälp av hello Azure-portalen.
 
 
-Att starta den **aktivera Azure AD Domain Services** guiden gör du följande:
+toolaunch hello **aktivera Azure AD Domain Services** guiden, fullständig hello följande steg:
 
-1. Gå till [Azure-portalen](https://portal.azure.com).
-2. I den vänstra rutan klickar du på **ny**.
-3. I den **ny** bladet, skriver **Domain Services** i sökfältet.
+1. Gå toohello [Azure-portalen](https://portal.azure.com).
+2. Hello vänster, klicka på **ny**.
+3. I hello **ny** bladet, skriver **Domain Services** i hello sökfältet.
 
     ![Sök efter domäntjänster](./media/getting-started/search-domain-services.png)
 
-4. Välj **Azure AD Domain Services** från listan över sökförslag. På den **Azure AD Domain Services** bladet, klickar du på den **skapa** knappen.
+4. Klicka på tooselect **Azure AD Domain Services** hello listan över sökförslag. På hello **Azure AD Domain Services** bladet, klickar du på hello **skapa** knappen.
 
     ![Domain services-bladet](./media/getting-started/domain-services-blade.png)
 
-5. Den **aktivera Azure AD Domain Services** starta guiden.
+5. Hej **aktivera Azure AD Domain Services** starta guiden.
 
 
 ## <a name="task-1-configure-basic-settings"></a>Uppgift 1: Konfigurera grundläggande inställningar
-I den **grunderna** sidan i guiden kan du ange DNS-domännamnet för den hanterade domänen. Du kan också välja resursgruppen och Azure-plats som den hanterade domänen ska distribueras.
+I hello **grunderna** sidan för hello guiden kan du ange hello DNS-domännamn för hello hanterade domän. Du kan också välja hello resursgruppen och Azure-plats toowhich hello hanterad domän som ska distribueras.
 
 ![Konfigurera grunderna](./media/getting-started/domain-services-blade-basics.png)
 
-1. Välj den **DNS-domännamn** för din hanterade domän.
+1. Välj hello **DNS-domännamn** för din hanterade domän.
 
-   * Standarddomännamnet för katalogen (med en **. onmicrosoft.com** suffix) har angetts som standard.
+   * hello standarddomännamnet för hello katalogen (med en **. onmicrosoft.com** suffix) har angetts som standard.
 
-   * Du kan också skriva i ett anpassat domännamn. I det här exemplet är det anpassade domännamnet *contoso100.com*.
+   * Du kan också skriva i ett anpassat domännamn. I det här exemplet hello domännamn är *contoso100.com*.
 
      > [!WARNING]
-     > Prefixet för det angivna domännamnet (till exempel *contoso100* i domännamnet *contoso100.com*) kan innehålla upp till 15 tecken. Du kan inte skapa en hanterad domän med ett prefix som är längre än 15 tecken.
+     > hello-prefixet för ett angivet domännamn (till exempel *contoso100* i hello *contoso100.com* domännamn) får innehålla högst 15 tecken. Du kan inte skapa en hanterad domän med ett prefix som är längre än 15 tecken.
      >
      >
 
-2. Kontrollera att DNS-domännamnet som du har valt för den hanterade domänen inte redan finns i det virtuella nätverket. I synnerhet kontrollera om:
+2. Se till att hello DNS-domännamn som du har valt för hello hanterade domänen inte redan finns i hello virtuella nätverk. I synnerhet kontrollera om:
 
-   * Du redan har en domän med samma DNS-domännamn i det virtuella nätverket.
+   * Du redan har en domän med hello samma DNS-domännamn på hello virtuellt nätverk.
 
-   * Det virtuella nätverket där du planerar att aktivera den hanterade domänen har en VPN-anslutning med ditt lokala nätverk. I det här scenariot, se till att du inte har en domän med samma DNS-domännamnet i ditt lokala nätverk.
+   * hello virtuellt nätverk där du planerar att tooenable hello hanterade domänen har en VPN-anslutning med ditt lokala nätverk. I det här scenariot, se till att du inte har en domän med hello samma DNS-namnet på ditt lokala nätverk.
 
-   * Du har en befintlig molntjänst med det namnet i det virtuella nätverket.
+   * Du har en befintlig molntjänst med det namnet på hello virtuellt nätverk.
 
-3. Välj den **typen av virtuellt nätverk**. Som standard den **Resource Manager** typ virtuella nätverk som väljs. Vi rekommenderar att du använder den här typen av virtuellt nätverk för alla nyligen skapade hanterade domäner.
+3. Välj hello **typen av virtuellt nätverk**. Som standard hello **Resource Manager** typ virtuella nätverk som väljs. Vi rekommenderar att du använder den här typen av virtuellt nätverk för alla nyligen skapade hanterade domäner.
 
-4. Välj Azure **prenumeration** i som du vill skapa den hanterade domänen.
+4. Välj hello Azure **prenumeration** som du vill att toocreate hello hanterad domän.
 
-5. Välj den **resursgruppen** till den hanterade domänen ska tillhöra. Du kan välja antingen den **Skapa nytt** eller **använda befintliga** alternativ för att välja en resursgrupp.
+5. Välj hello **resursgruppen** toowhich hello hanterad domän ska tillhöra. Du kan välja antingen hello **Skapa nytt** eller **använda befintliga** alternativ tooselect hello resursgruppen.
 
-6. Välj Azure **plats** i som den hanterade domänen ska skapas. På den **nätverk** sidan i guiden visas bara virtuella nätverk som hör till den plats som du har valt.
+6. Välj hello Azure **plats** i vilka hello hanterad domän ska skapas. På hello **nätverk** sidan hello guiden kan du se endast virtuella nätverk som tillhör toohello plats som du har valt.
 
-7. När du är klar klickar du på **OK** att gå vidare till den **nätverk** sidan i guiden.
+7. När du är klar klickar du på **OK** toomove på toohello **nätverk** hello guiden.
 
 
 ## <a name="next-step"></a>Nästa steg

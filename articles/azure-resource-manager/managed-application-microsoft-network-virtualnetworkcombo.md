@@ -1,6 +1,6 @@
 ---
-title: "Azure hanterade program VirtualNetworkCombo gränssnittselement | Microsoft Docs"
-description: "Beskriver Microsoft.Network.VirtualNetworkCombo UI-element för hanterade program i Azure"
+title: "aaaAzure hanterade program VirtualNetworkCombo gränssnittselement | Microsoft Docs"
+description: "Beskriver hello Microsoft.Network.VirtualNetworkCombo UI-element för hanterade program i Azure"
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: 8bb255b76ac5c3de570fa569a1cfb3ee953f9687
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1b0fa5360d93306f7a814723f77e42540bdaaa9f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI-element
 En grupp av kontroller för att välja ett nytt eller befintligt virtuellt nätverk. Du använder det här elementet när [att skapa ett Azure hanterade program](managed-application-publishing.md).
@@ -25,8 +25,8 @@ En grupp av kontroller för att välja ett nytt eller befintligt virtuellt nätv
 ## <a name="ui-sample"></a>UI-exempel
 ![Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo.png)
 
-- I det övre Trådblock har användaren valts ett nytt virtuellt nätverk, så att användaren kan anpassa namn och adress prefix för varje undernät. I detta fall är konfigurera undernät valfritt.
-- I den nedre Trådblock har användaren valts ett befintligt virtuellt nätverk, så att användaren måste mappa varje undernät som krävs för mallen för distribution till ett befintligt undernät. Konfiguration av undernät krävs i det här fallet.
+- I hello översta Trådblock, har hello användaren valts ett nytt virtuellt nätverk så hello användare kan anpassa namn och adress prefix för varje undernät. I detta fall är konfigurera undernät valfritt.
+- I hello nedre Trådblock hello användare har valts ut för ett befintligt virtuellt nätverk, så hello användaren måste mappa varje undernät hello Distributionsmall kräver tooan befintligt undernät. Konfiguration av undernät krävs i det här fallet.
 
 ## <a name="schema"></a>Schemat
 ```json
@@ -82,15 +82,15 @@ En grupp av kontroller för att välja ett nytt eller befintligt virtuellt nätv
 ```
 
 ## <a name="remarks"></a>Kommentarer
-- Om anges den första icke-överlappande-prefixet för storlek `defaultValue.addressPrefixSize` bestäms automatiskt baserat på de befintliga virtuella nätverk i användarens prenumeration.
-- Standardvärdet för `defaultValue.name` och `defaultValue.addressPrefixSize` är **null**.
-- `constraints.minAddressPrefixSize`måste anges. Alla befintliga virtuella nätverk med ett adressutrymme som är mindre än det angivna värdet är inte tillgängliga för val.
+- Om anges hello första icke-överlappande adressprefixet storlek `defaultValue.addressPrefixSize` bestäms automatiskt baserat på de befintliga virtuella nätverk i hello användarens prenumeration.
+- Hej standardvärdet för `defaultValue.name` och `defaultValue.addressPrefixSize` är **null**.
+- `constraints.minAddressPrefixSize`måste anges. Alla befintliga virtuella nätverk med ett adressutrymme som är mindre än hello angivna värdet är inte tillgänglig för val.
 - `subnets`måste anges, och `constraints.minAddressPrefixSize` måste anges för varje undernät.
-- När du skapar ett nytt virtuellt nätverk, varje undernät adressprefixet beräknas automatiskt utifrån på det virtuella nätverket adressprefixet och motsvarande `addressPrefixSize`.
+- När du skapar ett nytt virtuellt nätverk, varje undernät adressprefixet beräknas automatiskt baserat på hello virtuellt adressprefixet och motsvarande `addressPrefixSize`.
 - När du använder ett befintligt virtuellt nätverk, alla undernät som är mindre än respektive `constraints.minAddressPrefixSize` är inte tillgängliga för val. Dessutom, om angivna undernät som inte innehåller minst `minAddressCount` tillgängliga adresser är inte tillgängliga för val.
-Standardvärdet är **0**. För att säkerställa att tillgängliga adresser är sammanhängande, ange **SANT** för `requireContiguousAddresses`. Standardvärdet är **SANT**.
+hello standardvärdet är **0**. tooensure som hello tillgängliga adresser är sammanhängande, ange **SANT** för `requireContiguousAddresses`. hello standardvärdet är **SANT**.
 - Det går inte att skapa undernät i ett befintligt virtuellt nätverk.
-- Om `options.hideExisting` är **SANT**, kan användaren välja ett befintligt virtuellt nätverk. Standardvärdet är **FALSKT**.
+- Om `options.hideExisting` är **SANT**, hello användaren kan inte välja ett befintligt virtuellt nätverk. hello standardvärdet är **FALSKT**.
 
 ## <a name="sample-output"></a>Exempel på utdata
 ```json
@@ -115,6 +115,6 @@ Standardvärdet är **0**. För att säkerställa att tillgängliga adresser är
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-* En introduktion till hanterade program, se [översikt över Azure Managed Application](managed-application-overview.md).
-* En introduktion till att skapa UI-definitioner, se [komma igång med CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* En introduktion toomanaged program, se [översikt över Azure Managed Application](managed-application-overview.md).
+* En introduktion toocreating UI definitioner finns [komma igång med CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * En beskrivning av gemensamma egenskaper i UI-element, se [CreateUiDefinition element](managed-application-createuidefinition-elements.md).

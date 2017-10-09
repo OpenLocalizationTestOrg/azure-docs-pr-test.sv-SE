@@ -1,21 +1,21 @@
 
-#### <a name="to-configure-remote-management-on-cloud-appliance"></a>Så här konfigurerar du fjärrhantering för molninstallationen
+#### <a name="tooconfigure-remote-management-on-cloud-appliance"></a>tooconfigure fjärrhantering på molnet installation
 
-1. Klicka på **Enheter** i StorSimple Device Manager-tjänsten. Markera och klicka på molninstallationen i listan med enheter som är anslutna till tjänsten.
+1. Klicka på **Enheter** i StorSimple Device Manager-tjänsten. Välj och klicka på ditt moln installation hello listan av enheter anslutna toohello tjänst.
     ![Välj StorSimple-molninstallation](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage1.png)
 
-2. Öppna bladet **Säkerhetsinställningar** genom att gå till **Inställningar > Säkerhet**.
+2. Gå för**Inställningar > säkerhet** tooopen hello **säkerhetsinställningar** bladet.
 
      ![Säkerhetsinställningar för StorSimple](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage2.png)
 
-3. Gå till avsnittet **Fjärrhantering**. Klicka på rutan **Fjärrhantering**.
+3. Gå toohello **fjärrhantering** avsnitt. Klicka på rutan **Fjärrhantering**.
      ![StorSimple-fjärrhantering](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage3.png)
 
-4. På bladet **Fjärrhantering**:
+4. I hello **fjärrhantering** bladet:
 
     1. Kontrollera att **Aktivera fjärradministration** är aktiverat.
-    2. Standard är att ansluta via HTTPS. Du kan välja att ansluta med HTTP. Det är bara acceptabelt att ansluta över HTTP på betrodda nätverk. Kontrollera att HTTP är aktiverat.
-    3. I kommandofältet längst upp på bladet klickar du på **... Mer** och sedan på **Hämta certifikat** för att hämta ett certifikat för fjärrhantering. Du kan ange var du vill spara filen. Det här certifikatet bör installeras på den klient- eller värddator som du använder för att ansluta till molninstallationen.
+    2. hello standardvärdet är tooconnect via HTTPS. Du kan välja tooconnect med HTTP. Det är bara acceptabelt att ansluta över HTTP på betrodda nätverk. Kontrollera att HTTP är aktiverat.
+    3. Hello kommandofältet hello överst på bladet, klickar du på **... Flera** och klicka sedan på **hämta certifikat** toodownload certifikat för fjärrhantering. Du kan ange en plats i vilka toosave den här filen. Det här certifikatet ska installeras på hello klienten eller värddatorn datorn du använder tooconnect toohello moln installation.
 
         ![Bladet Fjärrhantering](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage4.png)
-5. Klicka på **Spara** och bekräfta ändringarna när du uppmanas att göra det.
+5. Klicka på **spara** och när du uppmanas bekräfta hello ändringar.

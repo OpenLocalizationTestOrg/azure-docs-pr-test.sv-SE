@@ -1,0 +1,2 @@
+När du skapar en eller flera Nätverkssäkerhetsgrupper (NSG: er) måste toobe kan tooretrieve information om dina NSG: er, lägga till och ta bort regler, redigera befintliga regler, koppla eller koppla bort NSG: er och ta bort NSG: er. I den här artikeln får du lära dig hur tooexecute av dessa uppgifter. Innan du kan hantera NSG: er, är det viktigt tooknow [hur NSG: er fungerar](../articles/virtual-network/virtual-networks-nsg.md). 
+

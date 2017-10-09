@@ -1,6 +1,6 @@
 ---
-title: "Använda flera instanser uppgifter för att köra program MPI - Azure Batch | Microsoft Docs"
-description: "Lär dig mer om att köra Message Passing Interface (MPI)-program med flera instanser aktivitetstypen i Azure Batch."
+title: "flera instanser av aaaUse uppgifter toorun MPI program – Azure Batch | Microsoft Docs"
+description: "Lär dig hur tooexecute Message Passing Interface (MPI) program med hjälp av hello flera instanser aktiviteten Skriv i Azure Batch."
 services: batch
 documentationcenter: .net
 author: tamram
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: 5/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 77d12d6d48b22dfb3e7f09f273dffc11401bb15f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b0e3295a6aeb76267c26d5504bcff59de3dc5e22
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Använda flera instanser aktiviteter för att köra program för Message Passing Interface (MPI) i Batch
+# <a name="use-multi-instance-tasks-toorun-message-passing-interface-mpi-applications-in-batch"></a>Använda flera instanser uppgifter toorun Message Passing Interface (MPI) program i Batch
 
-Flera instanser uppgifter kan du köra en Azure Batch-uppgiften på flera compute-noder samtidigt. Dessa uppgifter gör det möjligt för höga prestanda scenarier som program för Message Passing Interface (MPI) i gruppen. I den här artikeln beskrivs hur du kan köra flera instanser aktiviteter med hjälp av den [Batch .NET] [ api_net] bibliotek.
+Flera instanser uppgifter kan du toorun en Azure Batch-uppgift på flera compute-noder samtidigt. Dessa uppgifter gör det möjligt för höga prestanda scenarier som program för Message Passing Interface (MPI) i gruppen. I den här artikeln får du lära dig hur tooexecute flera instanser aktiviteter med hjälp av hello [Batch .NET] [ api_net] bibliotek.
 
 > [!NOTE]
-> Exemplen i den här artikeln fokuserar på Batch .NET, MS-MPI och Windows compute-noder, gäller flera instanser uppgiften begrepp som beskrivs här för andra plattformar och tekniker (Python och Intel MPI för Linux-noder, till exempel).
+> Hello exemplen i den här artikeln fokuserar på Batch .NET, MS-MPI och datornoder för Windows är hello flera instanser uppgiften begrepp som beskrivs här tillämpliga tooother plattformar och tekniker (Python och Intel MPI för Linux-noder, till exempel).
 >
 >
 
 ## <a name="multi-instance-task-overview"></a>Översikt över uppgifter för flera instanser
-I batchen, varje uppgift är normalt körs på en enda beräkningsnod--du skickar in flera aktiviteter till ett jobb, och scheman varje aktivitet för körning på en nod för Batch-tjänsten. Men genom att konfigurera en aktivitet **inställningar för flera instanser**, anger du Batch för att skapa en primär aktivitet och flera underaktiviteter som sedan körs på flera noder i stället.
+I batchen, varje uppgift är normalt körs på en enda beräkningsnod--du skickar flera uppgifter tooa jobb, och hello Batch-tjänsten scheman för varje aktivitet för körning på en nod. Men genom att konfigurera en aktivitet **inställningar för flera instanser**, anger du Batch tooinstead skapa en primär aktivitet och flera underaktiviteter som sedan körs på flera noder.
 
 ![Översikt över uppgifter för flera instanser][1]
 
-När du skickar en aktivitet med flera instanser för att ett jobb utför Batch flera steg unika till flera instanser uppgifter:
+När du skickar en uppgift med flera instanser inställningar tooa jobbet utför Batch flera steg unikt toomulti-instans uppgifter:
 
-1. Batch-tjänsten skapar en **primära** och flera **underaktiviteter** baserat på inställningarna för flera instanser. Det totala antalet aktiviteter (primära plus alla underaktiviteter) stämmer med antalet **instanser** (datornoder) du anger i inställningarna för flera instanser.
-2. Batch anger en av compute-noder som den **master**, och scheman för den primära aktiviteten ska köras i bakgrunden. Den schemaläggs underaktiviteter ska köras på resten av compute-noder som tilldelats aktiviteten med flera instanser, en delaktivitet per nod.
-3. Den primära servern och alla underaktiviteter hämta någon **vanliga resursfiler** du anger i inställningarna för flera instanser.
-4. Efter den vanliga resursen filer har laddats ned, primärt och underaktiviteter kör den **samordning kommandot** du anger i inställningarna för flera instanser. Kommandot samordning används vanligtvis för att förbereda noder för att köra uppgiften. Detta kan inkludera startar Bakgrundstjänster (exempelvis [Microsoft MPI][msmpi_msdn]'s `smpd.exe`) och verifiera att noderna är redo att bearbeta meddelanden mellan noder.
-5. Den främsta uppgiften körs den **kommandot programmet** på huvudnoden *när* samordning-kommandot har slutförts som den primära servern och alla underaktiviteter. Kommandot program är kommandoraden för aktiviteten med flera instanser och utförs endast för den primära aktiviteten. I en [MS-MPI][msmpi_msdn]-baserad lösning, det är där du kör MPI-aktiverade appen med `mpiexec.exe`.
+1. hello Batch-tjänsten skapar en **primära** och flera **underaktiviteter** baserat på inställningarna för hello flera instanser. hello Totalt antal aktiviteter (primära plus alla underaktiviteter) stämmer hello antalet **instanser** (datornoder) du anger i inställningarna för hello flera instanser.
+2. Batch anger en hello compute-noder som hello **master**, och scheman hello främsta uppgiften tooexecute på hello master. Den schemaläggs hello underaktiviteter tooexecute på hello resten av hello compute-noder allokerade toohello flera instanser aktivitet, en delaktivitet per nod.
+3. hello primära och alla underaktiviteter hämta någon **vanliga resursfiler** du anger i inställningarna för hello flera instanser.
+4. När du har laddats ned hello vanliga resursfiler, hello primära och underaktiviteter köra hello **samordning kommandot** du anger i inställningarna för hello flera instanser. hello samordning kommandot är brukar användas tooprepare noder för att köra hello-aktivitet. Detta kan inkludera startar Bakgrundstjänster (exempelvis [Microsoft MPI][msmpi_msdn]'s `smpd.exe`) och verifiera att hello noder är klar tooprocess mellan noder meddelanden.
+5. hello främsta uppgiften kör hello **kommandot programmet** på hello huvudnoden *när* hello samordning kommandot har slutförts av hello primära och alla underaktiviteter. kommandot för programmet hello är hello kommandoraden för hello flera instanser själva aktiviteten och körs bara av hello främsta uppgiften. I en [MS-MPI][msmpi_msdn]-baserad lösning, det är där du kör MPI-aktiverade appen med `mpiexec.exe`.
 
 > [!NOTE]
-> Även om det är funktionellt distinkta ”flera instanser aktiviteten” är inte en unik Uppgiftstyp som den [startuppgift har ställts] [ net_starttask] eller [JobPreparationTask] [ net_jobprep]. Aktiviteten med flera instanser är helt enkelt en standard batchaktiviteten ([CloudTask] [ net_task] i Batch .NET) vars flera instanser inställningar har konfigurerats. I den här artikeln vi refererar till detta som den **flera instanser uppgiften**.
+> Även om det är funktionellt distinkta hello ”flera instanser task” är inte en unik Uppgiftstyp som hello [startuppgift har ställts] [ net_starttask] eller [JobPreparationTask] [ net_jobprep]. hello flera instanser aktivitet är helt enkelt en standard Batch-aktivitet ([CloudTask] [ net_task] i Batch .NET) vars flera instanser inställningar har konfigurerats. I den här artikeln finns vi toothis som hello **flera instanser uppgiften**.
 >
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Krav för flera instanser uppgifter
-Flera instanser uppgifter kräver en pool med **kommunikationen mellan noder aktiverat**, och med **samtidiga uppgiftskörningen inaktiveras**. Om du vill inaktivera samtidiga uppgiftskörningen, ange den [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool#Microsoft_Azure_Batch_CloudPool_MaxTasksPerComputeNode) egenskap till 1.
+Flera instanser uppgifter kräver en pool med **kommunikationen mellan noder aktiverat**, och med **samtidiga uppgiftskörningen inaktiveras**. toodisable samtidiga uppgiftskörningen, ange hello [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool#Microsoft_Azure_Batch_CloudPool_MaxTasksPerComputeNode) egenskapen too1.
 
-Det här kodstycket visar hur du skapar en pool för flera instanser aktiviteter med hjälp av Batch .NET-bibliotek.
+Det här kodstycket visar hur toocreate poolen för flera instanser av åtgärder med hello Batch .NET-biblioteket.
 
 ```csharp
 CloudPool myCloudPool =
@@ -67,18 +67,18 @@ myCloudPool.MaxTasksPerComputeNode = 1;
 ```
 
 > [!NOTE]
-> Om du försöker köra en aktivitet för flera instanser i en pool med dessa kommunikation har inaktiverats, eller med en *maxTasksPerNode* värde större än 1, aldrig schemaläggs--på obestämd tid förblir det ”aktiv”. 
+> Om du försöker toorun en aktivitet med flera instanser i en pool med dessa kommunikation har inaktiverats eller med en *maxTasksPerNode* värde större än 1, hello aldrig schemaläggs--på obestämd tid förblir det hello ”aktiv”. 
 >
 > Flera instanser uppgifter kan köra endast på noder i pooler som skapats efter 14 December 2015.
 >
 >
 
-### <a name="use-a-starttask-to-install-mpi"></a>Använd en startuppgift har ställts för att installera MPI
-För att köra MPI program med flera instanser uppgiften, måste du först installera en MPI-implementering (MS-MPI eller Intel MPI, till exempel) på beräkningsnoder i poolen. Detta är ett bra tillfälle att använda en [startuppgift har ställts][net_starttask], som körs varje gång en nod ansluter till en pool eller startas. Det här kodstycket skapar en startuppgift har ställts som anger installationspaketet för MS-MPI som en [resursfilen][net_resourcefile]. Aktiviteten starta kommandoraden körs efter resursfilen laddas ned till noden. I det här fallet utför kommandoraden en obevakad installation av MS-MPI.
+### <a name="use-a-starttask-tooinstall-mpi"></a>Använd en startuppgift har ställts tooinstall MPI
+toorun MPI program med flera instanser uppgiften, måste du först tooinstall en MPI-implementering (MS-MPI eller Intel MPI, till exempel) på hello datornoder i hello pool. Detta är ett bra tillfälle toouse en [startuppgift har ställts][net_starttask], som körs varje gång en nod ansluter till en pool eller startas. Det här kodstycket skapar en startuppgift har ställts som anger hello MS-MPI installationspaketet som en [resursfilen][net_resourcefile]. uppgiften hello-start kommandoraden körs efter hello resursfilen är hämtade toohello nod. I det här fallet utför hello kommandoraden en obevakad installation av MS-MPI.
 
 ```csharp
-// Create a StartTask for the pool which we use for installing MS-MPI on
-// the nodes as they join the pool (or when they are restarted).
+// Create a StartTask for hello pool which we use for installing MS-MPI on
+// hello nodes as they join hello pool (or when they are restarted).
 StartTask startTask = new StartTask
 {
     CommandLine = "cmd /c MSMpiSetup.exe -unattend -force",
@@ -88,15 +88,15 @@ StartTask startTask = new StartTask
 };
 myCloudPool.StartTask = startTask;
 
-// Commit the fully configured pool to the Batch service to actually create
-// the pool and its compute nodes.
+// Commit hello fully configured pool toohello Batch service tooactually create
+// hello pool and its compute nodes.
 await myCloudPool.CommitAsync();
 ```
 
 ### <a name="remote-direct-memory-access-rdma"></a>Direktåtkomst till fjärrminne (RDMA)
-När du väljer en [RDMA-kompatibla storlek](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , till exempel A9 för beräkningsnoder i Batch-pool MPI-program kan dra nytta av nätverk för Azures hög prestanda, låg latens direkt fjärrminne access (RDMA).
+När du väljer en [RDMA-kompatibla storlek](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) som A9 för hello compute-noder i Batch-pool, MPI-program kan dra nytta av nätverk för Azures hög prestanda, låg latens direkt fjärrminne access (RDMA).
 
-Leta efter de storlekar som angetts som ”RDMA-kompatibla” i följande artiklar:
+Leta efter hello-storlekar som angetts som ”RDMA-kompatibla” i hello följande artiklar:
 
 * **CloudServiceConfiguration** pooler
 
@@ -107,22 +107,22 @@ Leta efter de storlekar som angetts som ”RDMA-kompatibla” i följande artikl
   * [Storlekar för virtuella datorer i Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> Dra nytta av RDMA [Linux datornoder](batch-linux-nodes.md), måste du använda **Intel MPI** på noderna. Mer information om CloudServiceConfiguration och VirtualMachineConfiguration pooler finns i avsnittet Pool av den [Batch funktionsöversikt](batch-api-basics.md).
+> tootake nytta av RDMA på [Linux datornoder](batch-linux-nodes.md), måste du använda **Intel MPI** på hello noder. Mer information om CloudServiceConfiguration och VirtualMachineConfiguration pooler finns hello avsnittet av hello [Batch funktionsöversikt](batch-api-basics.md).
 >
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>Skapa en flerinstans-uppgift med Batch .NET
-Nu när vi har omfattas poolen kraven och MPI installationen kan vi skapa aktiviteten med flera instanser. I det här kodstycket vi skapa en standard [CloudTask][net_task], konfigurera dess [MultiInstanceSettings] [ net_multiinstance_prop] egenskapen. Som tidigare nämnts kan flera instanser aktiviteten är inte en distinkta aktivitetstyp, men en standard Batch-aktivitet som konfigurerats med inställningar för flera instanser.
+Nu när vi har omfattas hello poolen krav och MPI installationen kan vi skapa hello flera instanser aktivitet. I det här kodstycket vi skapa en standard [CloudTask][net_task], konfigurera dess [MultiInstanceSettings] [ net_multiinstance_prop] egenskapen. Som tidigare nämnts hello flera instansuppgift är inte en distinkta aktivitetstyp, men en standard Batch-aktivitet som konfigurerats med inställningar för flera instanser.
 
 ```csharp
-// Create the multi-instance task. Its command line is the "application command"
-// and will be executed *only* by the primary, and only after the primary and
-// subtasks execute the CoordinationCommandLine.
+// Create hello multi-instance task. Its command line is hello "application command"
+// and will be executed *only* by hello primary, and only after hello primary and
+// subtasks execute hello CoordinationCommandLine.
 CloudTask myMultiInstanceTask = new CloudTask(id: "mymultiinstancetask",
     commandline: "cmd /c mpiexec.exe -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIApplication.exe");
 
-// Configure the task's MultiInstanceSettings. The CoordinationCommandLine will be executed by
-// the primary and all subtasks.
+// Configure hello task's MultiInstanceSettings. hello CoordinationCommandLine will be executed by
+// hello primary and all subtasks.
 myMultiInstanceTask.MultiInstanceSettings =
     new MultiInstanceSettings(numberOfNodes) {
     CoordinationCommandLine = @"cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d",
@@ -132,15 +132,15 @@ myMultiInstanceTask.MultiInstanceSettings =
     }
 };
 
-// Submit the task to the job. Batch will take care of splitting it into subtasks and
-// scheduling them for execution on the nodes.
+// Submit hello task toohello job. Batch will take care of splitting it into subtasks and
+// scheduling them for execution on hello nodes.
 await myBatchClient.JobOperations.AddTaskAsync("mybatchjob", myMultiInstanceTask);
 ```
 
 ## <a name="primary-task-and-subtasks"></a>Primära aktiviteten och underaktiviteterna
-När du skapar flera instansinställningarna för en aktivitet kan ange du antalet compute-noder som ska köra aktiviteten. När du skickar aktiviteten till ett jobb, Batch-tjänsten skapar en **primära** aktiviteten och det finns tillräckligt med **underaktiviteter** som tillsammans motsvarar antalet noder som du angav.
+När du skapar hello flera instansinställningarna för en uppgift kan du ange hello antal compute-noder som är tooexecute hello aktivitet. När du skickar hello uppgiften tooa jobb hello Batch-tjänsten skapar en **primära** aktiviteten och det finns tillräckligt med **underaktiviteter** som matchar tillsammans hello antalet noder som du angav.
 
-Dessa aktiviteter tilldelas ett id för heltal i intervallet 0 till *numberOfInstances* - 1. Uppgift med id 0 är den primära och alla andra ID: n är underaktiviteter. Till exempel om du skapar följande inställningar för flera instanser för en aktivitet, främsta uppgiften skulle ha ett id 0 och underaktiviteterna skulle ha ID 1 till 9.
+Dessa aktiviteter har tilldelats ett heltal-id i hello intervallet 0 för*numberOfInstances* - 1. hello uppgift med id 0 är hello primära och alla andra ID: n är underaktiviteter. Till exempel om du skapar hello följande inställningar för flera instanser för en uppgift hello främsta uppgiften skulle ha ett id 0 och hello underaktiviteter skulle ha ID 1 till 9.
 
 ```csharp
 int numberOfNodes = 10;
@@ -148,37 +148,37 @@ myMultiInstanceTask.MultiInstanceSettings = new MultiInstanceSettings(numberOfNo
 ```
 
 ### <a name="master-node"></a>Huvudnod
-När du skickar en aktivitet med flera instanser, Batch-tjänsten anger en datornoderna som ”” huvudnoden och schemalägger primära aktiviteten ska köras på huvudnoden. Underaktiviteter är schemalagda att köras på resten av noderna tilldelas aktiviteten med flera instanser.
+När du skickar en aktivitet med flera instanser hello Batch-tjänsten anger en hello compute-noder som hello ”huvudnoden” och scheman hello främsta uppgiften tooexecute på hello huvudnod. hello underaktiviteter är schemalagda tooexecute på hello resten av hello noder allokeras toohello flera instanser aktivitet.
 
 ## <a name="coordination-command"></a>Samordning kommando
-Den **samordning kommandot** körs av både den primära servern och underaktiviteter.
+Hej **samordning kommandot** körs både hello primära och underaktiviteter.
 
-Anrop av kommandot samordning blockerar--batchen inte körs kommandot programmet tills kommandot samordning har returnerat har på alla underaktiviteter. Kommandot samordning bör därför startar alla nödvändiga Bakgrundstjänster, kontrollera att de är klara för användning och avsluta. Till exempel avslutas kommandot samordning för en lösning med hjälp av MS-MPI version 7 startar tjänsten SMPD på noden, sedan:
+hello anrop av hello samordning kommandot blockerar--batchen inte körs kommandot för programmet hello tills hello samordning kommandot har returnerat har på alla underaktiviteter. hello samordning kommandot bör därför startar alla nödvändiga Bakgrundstjänster, kontrollera att de är klara för användning och avsluta. Till exempel kommandot samordning för en lösning med hjälp av MS-MPI version 7 startar hello SMPD-tjänsten på hello noden och sedan avslutas:
 
 ```
 cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 ```
 
-Observera användningen av `start` i det här kommandot samordning. Detta är nödvändigt eftersom den `smpd.exe` program inte returnerar omedelbart efter körning. Utan att använda den [starta] [ cmd_start] kommandot samordning kommandot returnerar inte och därför skulle blockera kommandot program från att köras.
+Observera hello användning av `start` i det här kommandot samordning. Detta är nödvändigt eftersom hello `smpd.exe` program inte returnerar omedelbart efter körning. Utan hello hello [starta] [ cmd_start] kommandot samordning kommandot returnerar inte och därför skulle blockera hello programmet kommandot körs.
 
 ## <a name="application-command"></a>Kommandot programmet
-När den primära aktiviteten och alla underaktiviteter är klar med kommandot samordning, körs kommandoraden för aktiviteten med flera instanser av den primära aktiviteten *endast*. Vi kallar detta den **kommandot programmet** att skilja den från kommandot samordning.
+När hello främsta uppgiften och alla underaktiviteter är klar hello samordning kommando körs hello flera instanser aktivitetens kommandoraden körs av hello främsta uppgiften *endast*. Vi kallar detta hello **kommandot programmet** toodistinguish från hello samordning kommando.
 
-För MS-MPI program kan använda kommandot program för att köra ditt MPI-aktiverade program med `mpiexec.exe`. Här är till exempel ett programkommando för en lösning med hjälp av MS-MPI version 7:
+MS-MPI program, Använd hello programmet kommandot tooexecute din MPI-aktiverat program med `mpiexec.exe`. Här är till exempel ett programkommando för en lösning med hjälp av MS-MPI version 7:
 
 ```
 cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIApplication.exe
 ```
 
 > [!NOTE]
-> Eftersom MS-MPI `mpiexec.exe` använder den `CCP_NODES` variabeln som standard (se [miljövariabler](#environment-variables)) exempel programmet kommandoraden ovan utesluter den.
+> Eftersom MS-MPI `mpiexec.exe` använder hello `CCP_NODES` variabeln som standard (se [miljövariabler](#environment-variables)) hello-exemplet ovan kommandoraden för programmet utesluter den.
 >
 >
 
 ## <a name="environment-variables"></a>Miljövariabler
-Batch skapar flera [miljövariabler] [ msdn_env_var] specifika för flera instanser uppgifter på datornoderna som allokerats till en aktivitet med flera instanser. Din kommandorader samordning och program kan referera till dessa miljövariabler som kan skript och program som de körs.
+Batch skapar flera [miljövariabler] [ msdn_env_var] specifika toomulti-instans uppgifter på hello compute-noder allokeras tooa flera instanser aktivitet. De här miljövariablerna kan referera till din kommandorader samordning och program som kan hello skript och program som de körs.
 
-Följande miljövariabler skapas av Batch-tjänsten för användning av flera instanser uppgifter:
+hello skapas följande miljövariabler av hello Batch-tjänsten för användning av flera instanser uppgifter:
 
 * `CCP_NODES`
 * `AZ_BATCH_NODE_LIST`
@@ -187,56 +187,56 @@ Följande miljövariabler skapas av Batch-tjänsten för användning av flera in
 * `AZ_BATCH_TASK_SHARED_DIR`
 * `AZ_BATCH_IS_CURRENT_NODE_MASTER`
 
-Fullständig information om dessa och andra batchen compute-nod miljövariabler, inklusive innehållet och synlighet finns [Compute-nod miljövariabler][msdn_env_var].
+Fullständig information om detta och hello andra Batch compute-nod miljövariabler, inklusive innehållet och synlighet finns [Compute-nod miljövariabler][msdn_env_var].
 
 > [!TIP]
-> Batch Linux MPI kodexemplet innehåller ett exempel på hur många av de här miljövariablerna kan användas. Den [samordning cmd] [ coord_cmd_example] Bash-skript hämtar vanlig tillämpning och indata-filer från Azure Storage, aktiverar en Network File System (NFS) nätverksresurs på huvudnoden och konfigurerar de andra noderna allokeras till aktiviteten med flera instanser som NFS-klienterna.
+> hello Batch Linux MPI kodexemplet innehåller ett exempel på hur många av de här miljövariablerna kan användas. Hej [samordning cmd] [ coord_cmd_example] Bash skript hämtar vanlig tillämpning och indatafilerna från Azure Storage, aktiverar en Network File System (NFS) nätverksresurs på hello huvudnod och konfigurerar hello andra noder allokerat toohello flera instanser aktivitet som NFS-klienterna.
 >
 >
 
 ## <a name="resource-files"></a>Resursfiler
-Det finns två uppsättningar med resursfiler väga in för flera instanser uppgifter: **vanliga resursfiler** som *alla* uppgifter hämta (både primär och underaktiviteter), och **resursfiler** angetts för flera instanser uppgift sig själv, vilket *endast primärt* uppgift hämtningar.
+Det finns två uppsättningar av resursen filer tooconsider för flera instanser uppgifter: **vanliga resursfiler** som *alla* uppgifter hämta (både primär och underaktiviteter), och hello **resursfiler** angetts för hello flera instanser uppgift sig själv, vilket *endast hello primära* uppgift hämtningar.
 
-Du kan ange en eller flera **vanliga resursfiler** i inställningarna för flera instanser för en aktivitet. Dessa vanliga resursfiler hämtas från [Azure Storage](../storage/common/storage-introduction.md) på varje nod **aktivitet delade katalogen** av den primära servern och alla underaktiviteter. Du kan komma åt den delade katalogen aktivitet från program och samordning kommandorader med hjälp av den `AZ_BATCH_TASK_SHARED_DIR` miljövariabeln. Den `AZ_BATCH_TASK_SHARED_DIR` sökvägen är identiska på alla noder som tilldelats aktiviteten med flera instanser, därför kan du dela ett enda samordning kommando mellan den primära servern och alla underaktiviteter. Batch ”delar inte” katalogen i en mening för fjärråtkomst, men du kan använda den som en monteringspunkt eller dela punkt som nämnts tidigare i tips på miljövariabler.
+Du kan ange en eller flera **vanliga resursfiler** i inställningarna för hello flera instanser för en aktivitet. Dessa vanliga resursfiler hämtas från [Azure Storage](../storage/common/storage-introduction.md) på varje nod **aktivitet delade katalogen** genom hello primära och alla underaktiviteter. Du kan komma åt hello uppgiften delad katalog från program och samordning kommandorader med hello `AZ_BATCH_TASK_SHARED_DIR` miljövariabeln. Hej `AZ_BATCH_TASK_SHARED_DIR` sökvägen är identiska på varje nod allokerade toohello flera instanser aktivitet, vilket du kan dela ett enda samordning kommando mellan hello primära och alla underaktiviteter. Batch ”delar inte” hello katalogen i en mening för fjärråtkomst, men du kan använda den som en monteringspunkt eller dela punkt som nämnts tidigare i hello tips på miljövariabler.
 
-Resursfiler som du anger för aktiviteten med flera instanser hämtas till aktivitetens arbetskatalogen `AZ_BATCH_TASK_WORKING_DIR`, som standard. Som tidigare nämnts, till skillnad från vanliga resursfiler hämtar bara den primära aktiviteten resursfiler som angetts för aktiviteten med flera instanser.
+Resursfiler som du anger för hello själva flera instanser aktiviteten är hämtade toohello aktivitet arbetskatalogen `AZ_BATCH_TASK_WORKING_DIR`, som standard. Som tidigare nämnts kan däremot toocommon resursfiler endast hello primära aktiviteten hämtar resursfiler som angetts för hello flera instanser själva aktiviteten.
 
 > [!IMPORTANT]
-> Använd alltid miljövariablerna `AZ_BATCH_TASK_SHARED_DIR` och `AZ_BATCH_TASK_WORKING_DIR` att referera till de här katalogerna i din kommandorader. Försök inte att konstruera sökvägarna manuellt.
+> Använd alltid hello miljövariabler `AZ_BATCH_TASK_SHARED_DIR` och `AZ_BATCH_TASK_WORKING_DIR` toorefer toothese kataloger i din kommandorader. Försök inte tooconstruct hello sökvägar manuellt.
 >
 >
 
 ## <a name="task-lifetime"></a>Livslängd för aktiviteten
-Livslängden för den primära aktiviteten styr livslängden för aktiviteten hela flera instanser. När primärt avslutas avslutas alla underaktiviteter. Slutkoden för primärt är slutkoden för aktiviteten och därför används för att avgöra lyckats eller misslyckats i aktiviteten för försök igen.
+hello livstid hello främsta uppgiften kontroller hello livstid hello hela flera instanser aktivitet. När primära hello avslutas avslutas alla hello underaktiviteter. hello avslutningskoden hello primära är hello avslutningskoden hello aktivitet och är därför används toodetermine hello lyckad eller misslyckad hello aktivitet för försök igen.
 
-Om någon av underaktiviteterna inte avslutas med koden inte är noll, till exempel hela flera instanser aktiviteten misslyckas. Aktiviteten med flera instanser sedan avslutas och ett nytt försök, upp till gränsen för återförsök.
+Om någon av hello underaktiviteter misslyckas misslyckas avslutades med koden inte är noll, till exempel hello hela flera instanser. hello flera instansuppgift är sedan avslutas och igen in tooits gränsen för återförsök.
 
-När du tar bort en aktivitet med flera instanser bort den primära servern och alla underaktiviteter också av Batch-tjänsten. Alla underaktivitet kataloger och filer tas bort från datornoderna, precis som för en aktivitet som standard.
+När du tar bort en aktivitet med flera instanser bort hello primära och alla underaktiviteter också av hello Batch-tjänsten. Alla underaktivitet kataloger och filer tas bort från hello compute-noder, precis som för en aktivitet som standard.
 
-[TaskConstraints] [ net_taskconstraints] för en aktivitet med flera instanser, som den [MaxTaskRetryCount][net_taskconstraint_maxretry], [MaxWallClockTime] [ net_taskconstraint_maxwallclock], och [RetentionTime] [ net_taskconstraint_retention] gäller egenskaper, som de är för en aktivitet som standard och tillämpas på den primära servern och alla underaktiviteter. Men om du ändrar den [RetentionTime] [ net_taskconstraint_retention] egenskapen när du lägger till flera instanser uppgiften i jobbet ändringen tillämpas endast på den primära aktiviteten. Alla underaktiviteter fortsätta att använda ursprungligt [RetentionTime][net_taskconstraint_retention].
+[TaskConstraints] [ net_taskconstraints] för en aktivitet med flera instanser, till exempel hello [MaxTaskRetryCount][net_taskconstraint_maxretry], [MaxWallClockTime] [ net_taskconstraint_maxwallclock], och [RetentionTime] [ net_taskconstraint_retention] gäller egenskaper, som de är för en aktivitet som standard och tillämpa toohello primära servern och alla underaktiviteter. Men om du ändrar hello [RetentionTime] [ net_taskconstraint_retention] egenskapen när du lägger till hello flera instanser toohello aktiviteten, den här ändringen är tillämpade endast toohello främsta uppgiften. Alla hello underaktiviteter fortsätta toouse hello ursprungliga [RetentionTime][net_taskconstraint_retention].
 
-En beräkningsnod senaste uppgiftslista visar id för en delaktivitet om den senaste aktiviteten var en del av en aktivitet med flera instanser.
+En beräkningsnod senaste uppgiftslista visar hello-id för en delaktivitet om hello aktivitet var en del av en aktivitet med flera instanser.
 
 ## <a name="obtain-information-about-subtasks"></a>Hämta information om underaktiviteter
-Om du vill få information om underaktiviteter genom att använda Batch .NET-bibliotek, anropa den [CloudTask.ListSubtasks] [ net_task_listsubtasks] metod. Den här metoden returnerar information om alla underaktiviteter och information om Beräkningsnoden som körts uppgifterna. Från den här informationen kan bestämma du rotkatalogen för varje underaktivitet, pool-id, det aktuella tillståndet, slutkod med mera. Du kan använda den här informationen i kombination med den [PoolOperations.GetNodeFile] [ poolops_getnodefile] metod för att hämta den underaktivitet filer. Observera att den här metoden inte returnera information för den primära aktiviteten (id 0).
+tooobtain information om underaktiviteter genom att använda hello Batch .NET-bibliotek, anrop hello [CloudTask.ListSubtasks] [ net_task_listsubtasks] metod. Den här metoden returnerar information om alla underaktiviteter och information om hello beräkningsnod som körts hello uppgifter. Från den här informationen kan bestämma du rotkatalogen för varje underaktivitet, hello programpools-id, det aktuella tillståndet, slutkod med mera. Du kan använda den här informationen i kombination med hello [PoolOperations.GetNodeFile] [ poolops_getnodefile] metoden tooobtain hello underaktivitets filer. Observera att den här metoden inte returnera information om hello primära aktivitet (id 0).
 
 > [!NOTE]
-> Om inte annat anges Batch .NET-metoder som fungerar på flera instanser [CloudTask] [ net_task] själva gäller *endast* till den primära aktiviteten. Till exempel när du anropar den [CloudTask.ListNodeFiles] [ net_task_listnodefiles] metoden för en uppgift med flera instanser bara den primära aktiviteten filer som ska returneras.
+> Om inte annat anges hello Batch .NET-metoder som fungerar på flera instanser [CloudTask] [ net_task] själva gäller *endast* toohello främsta uppgiften. Till exempel när du anropar hello [CloudTask.ListNodeFiles] [ net_task_listnodefiles] metoden för en uppgift med flera instanser returneras endast hello främsta uppgiften filer.
 >
 >
 
-Följande kodavsnitt visar hur du hämtar information om underaktiviteter som begär innehållet från noder som de körs.
+hello följande kodavsnitt visar hur tooobtain underaktivitet information, samt begära filinnehållet från hello-noder som de körs.
 
 ```csharp
-// Obtain the job and the multi-instance task from the Batch service
+// Obtain hello job and hello multi-instance task from hello Batch service
 CloudJob boundJob = batchClient.JobOperations.GetJob("mybatchjob");
 CloudTask myMultiInstanceTask = boundJob.GetTask("mymultiinstancetask");
 
-// Now obtain the list of subtasks for the task
+// Now obtain hello list of subtasks for hello task
 IPagedEnumerable<SubtaskInformation> subtasks = myMultiInstanceTask.ListSubtasks();
 
-// Asynchronously iterate over the subtasks and print their stdout and stderr
-// output if the subtask has completed
+// Asynchronously iterate over hello subtasks and print their stdout and stderr
+// output if hello subtask has completed
 await subtasks.ForEachAsync(async (subtask) =>
 {
     Console.WriteLine("subtask: {0}", subtask.Id);
@@ -265,39 +265,39 @@ await subtasks.ForEachAsync(async (subtask) =>
 ```
 
 ## <a name="code-sample"></a>Kodexempel
-Den [MultiInstanceTasks] [ github_mpi] kodexempel på GitHub visar hur du använder en aktivitet med flera instanser för att köra en [MS-MPI] [ msmpi_msdn] på Batch-beräkningsnoder. Följ stegen i [förberedelse](#preparation) och [körning](#execution) att köra exemplet.
+Hej [MultiInstanceTasks] [ github_mpi] kodexempel på GitHub visar hur toouse flera instanser uppgift toorun en [MS-MPI] [ msmpi_msdn] programmet på Batch-beräkningsnoder. Gör så hello i [förberedelse](#preparation) och [körning](#execution) toorun hello exempel.
 
 ### <a name="preparation"></a>Förberedelse
-1. Följ de två första stegen i [så att kompilera och köra ett enkelt program MS-MPI][msmpi_howto]. Det här uppfyller prerequesites för följande steg.
-2. Skapa en *versionen* version av den [MPIHelloWorld] [ helloworld_proj] MPI exempelprogrammet. Detta är det program som körs på datornoderna av aktiviteten med flera instanser.
-3. Skapa en zip-filen med `MPIHelloWorld.exe` (som du skapat i steg 2) och `MSMpiSetup.exe` (som du hämtade i steg 1). Du måste ladda upp zip-fil som ett programpaket i nästa steg.
-4. Använd den [Azure-portalen] [ portal] att skapa en Batch [programmet](batch-application-packages.md) kallas ”MPIHelloWorld” och ange zip-filen som du skapade i föregående steg versionsnummer ”1.0” i programpaket. Se [ladda upp och hantera program](batch-application-packages.md#upload-and-manage-applications) för mer information.
+1. Följ hello två första stegen i [hur toocompile och köra ett enkelt program MS-MPI][msmpi_howto]. Det här uppfyller hello prerequesites för hello följande steg.
+2. Skapa en *versionen* version av hello [MPIHelloWorld] [ helloworld_proj] MPI exempelprogrammet. Detta är hello-program som körs på datornoderna av hello flera instanser aktivitet.
+3. Skapa en zip-filen med `MPIHelloWorld.exe` (som du skapat i steg 2) och `MSMpiSetup.exe` (som du hämtade i steg 1). Du måste ladda upp zip-fil som ett programpaket i hello nästa steg.
+4. Använd hello [Azure-portalen] [ portal] toocreate en Batch [programmet](batch-application-packages.md) kallas ”MPIHelloWorld” och ange hello zip-filen som du skapade i föregående steg i hello versionsnummer ”1.0” hello programpaket. Se [ladda upp och hantera program](batch-application-packages.md#upload-and-manage-applications) för mer information.
 
 > [!TIP]
-> Skapa en *versionen* version av `MPIHelloWorld.exe` så att du inte inkludera eventuella ytterligare beroenden (till exempel `msvcp140d.dll` eller `vcruntime140d.dll`) i programpaketet.
+> Skapa en *versionen* version av `MPIHelloWorld.exe` så att du inte har tooinclude eventuella ytterligare beroenden (till exempel `msvcp140d.dll` eller `vcruntime140d.dll`) i programpaketet.
 >
 >
 
 ### <a name="execution"></a>Körning
-1. Hämta den [azure-batch-samples] [ github_samples_zip] från GitHub.
-2. Öppna MultiInstanceTasks **lösning** i Visual Studio 2015 eller senare. Den `MultiInstanceTasks.sln` lösningsfilen finns:
+1. Hämta hello [azure-batch-samples] [ github_samples_zip] från GitHub.
+2. Öppna hello MultiInstanceTasks **lösning** i Visual Studio 2015 eller senare. Hej `MultiInstanceTasks.sln` lösningsfilen finns:
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
-3. Ange Batch- och autentiseringsuppgifterna för ditt konto i `AccountSettings.settings` i den **Microsoft.Azure.Batch.Samples.Common** projekt.
-4. **Skapa och köra** MultiInstanceTasks-lösningen för att köra MPI exempelprogram på compute-noder i en Batch-pool.
-5. *Valfria*: Använd den [Azure-portalen] [ portal] eller [Batch Explorer] [ batch_explorer] att undersöka exempel pool, jobb och aktivitet (” MultiInstanceSamplePool ”,” MultiInstanceSampleJob ”,” MultiInstanceSampleTask ”) innan du tar bort resurserna.
+3. Ange Batch- och autentiseringsuppgifterna för ditt konto i `AccountSettings.settings` i hello **Microsoft.Azure.Batch.Samples.Common** projekt.
+4. **Skapa och köra** hello MultiInstanceTasks lösning tooexecute hello MPI exempelprogrammet på compute-noder i en Batch-pool.
+5. *Valfria*: Använd hello [Azure-portalen] [ portal] eller hello [Batch Explorer] [ batch_explorer] tooexamine hello exempel pool, jobb, och uppgiften (”MultiInstanceSamplePool”, ”MultiInstanceSampleJob”, ”MultiInstanceSampleTask”) innan du tar bort hello resurser.
 
 > [!TIP]
 > Du kan hämta [Visual Studio Community] [ visual_studio] kostnadsfritt om du inte har Visual Studio.
 >
 >
 
-Utdata från `MultiInstanceTasks.exe` liknar följande:
+Utdata från `MultiInstanceTasks.exe` är liknande toohello följande:
 
 ```
 Creating pool [MultiInstanceSamplePool]...
 Creating job [MultiInstanceSampleJob]...
-Adding task [MultiInstanceSampleTask] to job [MultiInstanceSampleJob]...
+Adding task [MultiInstanceSampleTask] toojob [MultiInstanceSampleJob]...
 Awaiting task completion, timeout in 00:30:00...
 
 Main task [MultiInstanceSampleTask] is in state [Completed] and ran on compute node [tvm-1219235766_1-20161017t162002z]:
@@ -307,7 +307,7 @@ Rank 1 received string "Hello world" from Rank 0
 
 ---- stderr.txt ----
 
-Main task completed, waiting 00:00:10 for subtasks to complete...
+Main task completed, waiting 00:00:10 for subtasks toocomplete...
 
 ---- Subtask information ----
 subtask: 1
@@ -324,12 +324,12 @@ subtask: 2
 Delete job? [yes] no: yes
 Delete pool? [yes] no: yes
 
-Sample complete, hit ENTER to exit...
+Sample complete, hit ENTER tooexit...
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-* Microsoft HPC & Azure Batch-teamets blogg beskrivs [MPI stöd för Linux på Azure Batch][blog_mpi_linux], och innehåller information om hur du använder [OpenFOAM] [ openfoam] med Batch. Du kan hitta Python kodexempel för den [OpenFOAM exempel på GitHub][github_mpi].
-* Lär dig hur du [skapa pooler med Linux datornoderna](batch-linux-nodes.md) för användning i Azure Batch MPI-lösningar.
+* hello Microsoft HPC & Azure Batch-teamets blogg beskrivs [MPI stöd för Linux på Azure Batch][blog_mpi_linux], och innehåller information om hur du använder [OpenFOAM] [ openfoam] med Batch. Du kan hitta Python-kodexempel för hello [OpenFOAM exempel på GitHub][github_mpi].
+* Lär dig hur för[skapa pooler med Linux datornoderna](batch-linux-nodes.md) för användning i Azure Batch MPI-lösningar.
 
 [helloworld_proj]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks/MPIHelloWorld
 

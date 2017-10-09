@@ -1,5 +1,5 @@
 ---
-title: "Vanliga frågor och svar om Azure SQL Data Warehouse | Microsoft Docs"
+title: "aaaAzure SQL Data Warehouse vanliga frågor och svar | Microsoft Docs"
 description: "Den här artikeln innehåller ut vanliga frågor och svar om Azure SQL Data Warehouse från kunder och utvecklare"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: overview
 ms.date: 3/1/2017
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 4c00710ecc0c91f8407eca81b78176075fcbd6ad
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 09fd3f65d9507b09fcb8f477742c7d020add2755
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse vanliga frågor och svar
 
@@ -31,7 +31,7 @@ A. SQL DW erbjuder flera lösningar för att skydda data, till exempel TDE och g
 
 FRÅGOR. Var hittar jag reda på vilka juridiska eller affärsmässiga standarder SQL DW som är kompatibla med?
 
-A. Besök den [Microsoft Compliance] sidan för olika erbjudanden för efterlevnad av produkten som SOC och ISO. Först välja genom efterlevnad titel och sedan expandera Azure i Microsoft i omfånget services avsnittet moln till höger på sidan för att se vilka tjänster som är Azure services är kompatibla.
+A. Besök hello [Microsoft Compliance] sidan för olika erbjudanden för efterlevnad av produkten som SOC och ISO. Först välja genom efterlevnad titel och sedan expandera Azure under hello Microsoft i omfånget cloud services hello höger i hello sidan toosee vilka tjänster som är Azure-tjänster är kompatibla.
 
 FRÅGOR. Kan jag ansluta PowerBI?
 
@@ -43,7 +43,7 @@ A. Se vår aktuella [kapacitetsbegränsningar] sidan.
 
 FRÅGOR. Varför är min skala / / pausa tar så lång tid?
 
-A. En mängd olika faktorer kan påverka tiden för beräkning hanteringsåtgärder. En gemensam fall för långvariga åtgärder är transaktionell återställning. När en åtgärd för skala eller pausa initieras, blockeras alla inkommande sessioner och frågor är tar slut. För att lämna systemet i ett stabilt tillstånd föras transaktioner tillbaka innan en åtgärd kan påbörjas. Det största antalet och större loggstorleken av transaktioner, desto längre tid åtgärden kommer har stannat återställa systemet till ett stabilt tillstånd.
+A. En mängd olika faktorer kan påverka hello tid för beräkning hanteringsåtgärder. En gemensam fall för långvariga åtgärder är transaktionell återställning. När en åtgärd för skala eller pausa initieras, blockeras alla inkommande sessioner och frågor är tar slut. I ordning tooleave hello system i ett stabilt tillstånd föras transaktioner tillbaka innan en åtgärd kan påbörjas. Hej fler hello och större hello loggfilsstorlek av transaktioner, kommer stoppats hello längre hello åtgärden återställer hello system tooa stabilt tillstånd.
 
 ## <a name="user-support"></a>Stöd för användare
 
@@ -73,7 +73,7 @@ A. Medan SQL Data Warehouse stöder många funktioner, vissa stöds inte och dok
 
 FRÅGOR. Stöder du databasprojekt i Visual Studio.
 
-A. Vi stöder för närvarande inte databasprojekt i Visual Studio för SQL Data Warehouse. Om du vill omvandla en röst att hämta den här funktionen kan du besöka vårt User Voice [Database projects funktion begäran].
+A. Vi stöder för närvarande inte databasprojekt i Visual Studio för SQL Data Warehouse. Om du vill att toocast en omröstning tooget denna funktion, finns våra User Voice [Database projects funktion begäran].
 
 FRÅGOR. Stöder SQL Data Warehouse REST API: er?
 
@@ -84,23 +84,23 @@ A. Ja. De flesta REST-funktioner som kan användas med SQL-databas är också ti
 
 FRÅGOR. Vilka klientdrivrutiner som stöder?
 
-A. Stöd för drivrutiner för DW kan hittas på den [anslutningssträngar] sidan
+A. Stöd för drivrutiner för DW kan hittas på hello [anslutningssträngar] sidan
 
 F: vad filformat som stöds av PolyBase med SQL Data Warehouse?
 
 S: Orc, RC, parkettgolv och flat avgränsad text
 
-F: Vad kan ansluta till från SQL DW med PolyBase? 
+F: Vad kan jag ansluta toofrom SQL DW med PolyBase? 
 
 S: [Azure Data Lake Store] och [Azure Storage-Blobbar]
 
-F: går beräkning pushdown vid anslutning till Azure Storage-Blobbar eller ADLS? 
+F: går beräkning pushdown när du ansluter tooAzure Storage-Blobbar eller ADLS? 
 
-A: SQL DW PolyBase interagerar inte bara lagringskomponenter. 
+A: SQL DW PolyBase interagerar Nej, endast hello lagringskomponenter. 
 
-F: kan jag ansluta till HDI?
+F: kan jag ansluta tooHDI?
 
-S: HDI kan använda ADLS eller WASB som HDFS-lagret. Om du har antingen som HDFS-lager kan du läsa in data till SQL DW. Men kan inte du generera pushdown beräkning till HDI-instans. 
+S: HDI kan använda ADLS eller WASB som hello HDFS lager. Om du har antingen som HDFS-lager kan du läsa in data till SQL DW. Men kan inte du generera pushdown beräkning toohello HDI-instans. 
 
 ## <a name="next-steps"></a>Nästa steg
 Mer information om SQL Data Warehouse som helhet finns i vår [översikt] sidan.

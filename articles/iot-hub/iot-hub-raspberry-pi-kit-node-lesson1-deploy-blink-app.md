@@ -1,7 +1,7 @@
 ---
 featureFlags: usabilla
-title: 'Ansluta Raspberry Pi (nod) till Azure IoT - lektionen 1: distribuera appen | Microsoft Docs'
-description: "Klona Node.js exempelprogrammet från GitHub och gulp om du vill distribuera programmet till hallon Pi 3-kort. Det här exempelprogrammet blinkar Indikator anslutna till kortet varannan sekund."
+title: 'Ansluta hallon Pi (nod) tooAzure IoT - lektionen 1: distribuera appen | Microsoft Docs'
+description: "Klona hello Node.js exempelprogrammet från GitHub och gulp toodeploy det här programmet tooyour hallon Pi 3-kort. Det här exempelprogrammet blinkar hello Indikator anslutna toohello board varannan sekund."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -18,54 +18,54 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 8b73000c166950172c07b8e188025dc9da5bc011
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9732df3009b8342d4872fe2318a975a6251e772b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-deploy-the-blink-application"></a>Skapa och distribuera blinkningsprogrammet
+# <a name="create-and-deploy-hello-blink-application"></a>Skapa och distribuera hello blinka program
 ## <a name="what-you-will-do"></a>Vad du ska göra
-Klona Node.js exempelprogrammet från GitHub och verktyget gulp för att distribuera exempelprogrammet till din hallon Pi 3. Exempelprogrammet blinkar Indikator anslutna till kortet varannan sekund. Om du har några problem kan hitta lösningar på den [felsökning sidan](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
+Klona hello Node.js exempelprogrammet från GitHub och använda hello gulp verktyget toodeploy hello exempel programmet tooyour hallon Pi 3. hello exempelprogrammet blinkar hello Indikator anslutna toohello board varannan sekund. Om du har några problem med söka efter lösningar på hello [felsökning sidan](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
 I den här artikeln får du lära dig:
 
-* Hur du använder den `device-discover-cli` verktyg för att hämta nätverksinformation om Pi.
-* Hur du distribuerar och kör exempelprogrammet på Pi.
-* Hur du distribuerar och felsöka program som körs på Pi.
+* Hur toouse hello `device-discover-cli` verktyget tooretrieve nätverk information om Pi.
+* Hur toodeploy och kör hello exempelprogram med Pi.
+* Hur toodeploy och felsöka program som körs på Pi.
 
 ## <a name="what-you-need"></a>Vad du behöver
-Du måste ha slutfört följande åtgärder:
+Du måste ha slutfört hello följande åtgärder:
 
 * [Konfigurera din enhet](iot-hub-raspberry-pi-kit-node-lesson1-configure-your-device.md)
-* [Skaffa dig verktyg](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
+* [Hämta hello-verktyg](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
 
-## <a name="obtain-the-ip-address-and-host-name-of-pi"></a>Hämta IP-adress och värddatornamn namnet PI
-Öppna en kommandotolk i Windows eller en terminal i macOS eller Ubuntu och kör sedan följande kommando:
+## <a name="obtain-hello-ip-address-and-host-name-of-pi"></a>Hämta hello IP-adress och värddatornamn namn PI
+Öppna en kommandotolk i Windows eller en terminal i macOS eller Ubuntu och kör sedan följande kommando hello:
 
 ```bash
 devdisco list --eth
 ```
 
-Du bör se utdata som liknar följande:
+Du bör se utdata som är liknande toohello följande:
 
 ![Identifiering av nätverksenheter](media/iot-hub-raspberry-pi-lessons/lesson1/device_discovery.png)
 
-Anteckna den `IP address` och `hostname` pi. Du behöver den här informationen senare i den här artikeln.
+Anteckna hello `IP address` och `hostname` pi. Du behöver den här informationen senare i den här artikeln.
 
 > [!NOTE]
-> Kontrollera att Pi är ansluten till samma nätverk som datorn. Om datorn är ansluten till ett trådlöst nätverk när Pi är ansluten till ett kabelanslutet nätverk, kan du inte se IP-adressen i devdisco utdata.
+> Se till att Pi är anslutna toohello samma nätverk som datorn. Till exempel om datorn är ansluten tooa trådlösa nätverk medan Pi är anslutna tooa kabelanslutet nätverk kan du kanske inte se hello IP-adress i hello devdisco utdata.
 
-## <a name="clone-the-sample-application"></a>Klona exempelprogrammet
-Följ dessa steg om du vill öppna exempelkoden:
+## <a name="clone-hello-sample-application"></a>Klona hello exempelprogrammet
+tooopen hello exempelkoden, gör du följande:
 
-1. Klona lagringsplatsen exempel från GitHub genom att köra följande kommando:
+1. Klona hello exempel databasen från GitHub genom att köra följande kommando hello:
    
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-getting-started.git
    ```
-2. Öppna exempelprogrammet i Visual Studio Code genom att köra följande kommandon:
+2. Öppna hello exempelprogrammet i Visual Studio Code genom att köra följande kommandon hello:
    
    ```bash
    cd iot-hub-node-raspberrypi-getting-started
@@ -75,27 +75,27 @@ Följ dessa steg om du vill öppna exempelkoden:
 
 ![Lagringsplatsen struktur](media/iot-hub-raspberry-pi-lessons/lesson1/vscode-blink-mac.png)
 
-Den `app.js` filen i den `app` undermapp är viktiga källfilen som innehåller koden för att styra Indikatorn.
+Hej `app.js` filen i hello `app` undermapp är hello källa fil som innehåller hello kod toocontrol hello Indikator.
 
 ### <a name="install-application-dependencies"></a>Installera beroenden
-Installera bibliotek och andra moduler som du behöver för exempelprogrammet genom att köra följande kommando:
+Installera hello bibliotek och andra moduler som du behöver för hello exempelprogrammet genom att köra följande kommando hello:
 
 ```bash
 npm install
 ```
 
-## <a name="configure-the-device-connection"></a>Konfigurera enhetsanslutning
-Följ dessa steg för att konfigurera enhetsanslutningen:
+## <a name="configure-hello-device-connection"></a>Konfigurera hello enhetsanslutning
+tooconfigure Hej enhetsanslutning, gör du följande:
 
-1. Generera konfigurationsfilen enheten genom att köra följande kommando:
+1. Generera hello konfigurationsfilen för enheten genom att köra följande kommando hello:
    
    ```bash
    gulp init
    ```
    
-   Konfigurationsfilen `config-raspberrypi.json` innehåller autentiseringsuppgifter för användare som du använder för att logga in till Pi. För att undvika läckage av användarautentiseringsuppgifter konfigurationsfilen genereras i undermappen `.iot-hub-getting-started` för arbetsmapp på datorn.
+   hello konfigurationsfilen `config-raspberrypi.json` innehåller hello-autentiseringsuppgifter som du använder toolog i tooPi. tooavoid hello läckage av användarautentiseringsuppgifter, hello konfigurationsfilen genereras i hello undermapp `.iot-hub-getting-started` av hello arbetsmapp på datorn.
 
-2. Öppna konfigurationsfilen enheten i Visual Studio Code genom att köra följande kommando:
+2. Öppna konfigurationsfilen för hello enheten i Visual Studio Code genom att köra följande kommando hello:
    
    ```bash
    # For Windows command prompt
@@ -105,18 +105,18 @@ Följ dessa steg för att konfigurera enhetsanslutningen:
    code ~/.iot-hub-getting-started/config-raspberrypi.json
    ```
    
-3. Ersätt platshållaren `[device hostname or IP address]` med IP-adressen eller värdnamnet som du har fått tidigare i ”hämta i IP-adress och värddatornamn namnet pi”.
+3. Ersätt platshållaren hello `[device hostname or IP address]` med hello IP-adress eller värdnamn för hello som du har fått tidigare i ”hämta hello IP-adress och värddatornamn name pi”.
    
    ![Config.JSON](media/iot-hub-raspberry-pi-lessons/lesson1/vscode-config-mac.png)
 
 > [!NOTE]
-> Du kan använda SSH-nyckel i stället för användarnamn och lösenord när du ansluter till hallon Pi. För att kunna göra detta måste du generera en nyckel med hjälp av **ssh-keygen** och **ssh-kopia-id pi @\<enhetsadress\>**.
+> Du kan använda SSH-nyckel i stället för användarnamn och lösenord när du ansluter tooRaspberry Pi. I ordning toodo detta behöver toogenerate hello nyckel med **ssh-keygen** och **ssh-kopia-id pi @\<enhetsadress\>**.
 >
 > Dessa kommandon är tillgängliga i Windows **Git Bash**.
 >
-> Du behöver köra på MacOS **brew installera ssh-kopia-id**.
+> I MacOS måste toorun **brew installera ssh-kopia-id**.
 >
-> Efter att överföra nyckeln till hallon Pi, Ersätt **device_password** med **device_key_path** egenskap i **config raspberrypi.json**.
+> Efter överföring har hello viktiga toohello hallon Pi, Ersätt **device_password** med **device_key_path** egenskap i **config raspberrypi.json**.
 >
 > Uppdaterade rader ska se ut som nedan:
 > ```javascript
@@ -124,32 +124,32 @@ Följ dessa steg för att konfigurera enhetsanslutningen:
 > "device_key_path": "id_rsa",
 > ```
 
-Grattis! Du har skapat det första exempelprogrammet för Pi.
+Grattis! Du har skapat hello första exempelprogram för Pi.
 
-## <a name="deploy-and-run-the-sample-application"></a>Distribuera och köra exempelprogrammet
+## <a name="deploy-and-run-hello-sample-application"></a>Distribuera och köra hello exempelprogrammet
 ### <a name="install-nodejs-and-npm-on-pi"></a>Installera Node.js och NPM på Pi
-Installera Node.js och NPM på Pi genom att köra följande kommando:
+Installera Node.js och NPM på Pi genom att köra följande kommando hello:
 
 ```bash
 gulp install-tools
 ```
 
-Den här uppgiften kan ta 10 minuter att slutföra den första gången du kör den.
+Den här uppgiften kan ta 10 minuter toocomplete hello första gången du kör den.
 
-### <a name="deploy-and-run-the-sample-app"></a>Distribuera och köra sample-appen
-Distribuera och köra exempelprogrammet genom att köra följande kommando:
+### <a name="deploy-and-run-hello-sample-app"></a>Distribuera och köra hello sample-appen
+Distribuera och köra hello exempelprogrammet genom att köra följande kommando hello:
 
 ```bash
 gulp deploy && gulp run
 ```
 
-### <a name="verify-the-app-works"></a>Kontrollera appen fungerar
-Du bör nu se Indikatorn på Pi blinkande varannan sekund.  Om du inte ser Indikator blinkar, finns det [felsökningsguide för](iot-hub-raspberry-pi-kit-node-troubleshooting.md) efter lösningar på vanliga problem.
+### <a name="verify-hello-app-works"></a>Verifiera hello appen fungerar
+Du bör nu se hello Indikator på Pi blinkande varannan sekund.  Om du inte ser hello Indikator blinkar, se hello [felsökningsguide för](iot-hub-raspberry-pi-kit-node-troubleshooting.md) för lösningar toocommon problem.
 ![Blinka Indikator](media/iot-hub-raspberry-pi-lessons/lesson1/led_blinking.jpg)
 
 ## <a name="summary"></a>Sammanfattning
-Du har installerat de verktyg som krävs för att arbeta med Pi och distribuerat ett exempelprogram till Pi blinkar på Indikator. Du kan nu skapa, distribuera och köra en annan exempelprogrammet som ansluter Pi till Azure IoT Hub skicka och ta emot meddelanden.
+Du har installerat hello krävs verktyg toowork med Pi och distribuerat en exempel programmet tooPi tooblink hello Indikator. Du kan nu skapa, distribuera, och kör en annan exempelprogram som ansluter Pi tooAzure IoT-hubb toosend och ta emot meddelanden.
 
 ## <a name="next-steps"></a>Nästa steg
-[Hämta Azure-verktyg](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
+[Hämta hello Azure-verktyg](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-win32.md)
 

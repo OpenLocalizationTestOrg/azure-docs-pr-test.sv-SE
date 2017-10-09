@@ -1,25 +1,25 @@
-## <a name="provision-the-solution"></a>Etablera lösningen
+## <a name="provision-hello-solution"></a>Etablera hello lösning
 
-Om du inte redan har etablerat den förkonfigurerade lösningen för fjärrövervakning i ditt konto:
+Om du inte redan har etablerats hello remote förkonfigurerade övervakningslösning i ditt konto:
 
-1. Logga in på [azureiotsuite.com][lnk-azureiotsuite] med din Azure-kontoinformation och skapa en lösning genom att klicka på **+**.
-2. Klicka på **Välj** på panelen **Fjärrövervakning**.
+1. Logga in för[azureiotsuite.com] [ lnk-azureiotsuite] med din Azure kontoautentiseringsuppgifter och klicka på  **+**  toocreate en lösning.
+2. Klicka på **Välj** på hello **fjärrövervaknings** panelen.
 3. Ange ett **lösningsnamn** för den förkonfigurerade lösningen för fjärrövervakning.
-4. Välj den **region** och **prenumeration** som du vill använda för att etablera lösningen.
-5. Klicka på **Skapa lösning** för att påbörja etableringen. Den här processen tar normalt flera minuter.
+4. Välj hello **Region** och **prenumeration** du vill toouse tooprovision hello-lösningen.
+5. Klicka på **skapa lösningen** toobegin hello etableringsprocessen. Denna process brukar ta flera minuter toorun.
 
-### <a name="wait-for-the-provisioning-process-to-complete"></a>Vänta tills etableringsprocessen har slutförts
-1. Klicka på ikonen för din lösning med statusen **Etablerar**.
-2. Observera **etableringsstatusen** när Azure-tjänsterna distribueras i din Azure-prenumeration.
-3. När etableringen har slutförts ändras statusen till **Klar**.
-4. Klicka på ikonen så ser du informationen om din lösning i den högra rutan.
+### <a name="wait-for-hello-provisioning-process-toocomplete"></a>Vänta tills hello etablering processen toocomplete
+1. Klicka på hello panelen för din lösning med **etablering** status.
+2. Meddelande hello **etablering tillstånd** som Azure-tjänster har distribuerats i din Azure-prenumeration.
+3. När etableringen är klar hello status ändras för**klar**.
+4. Klicka på panelen hello toosee hello information i lösningen i hello högra rutan.
 
 > [!NOTE]
-> Om det uppstår några problem när du distribuerar den förkonfigurerade lösningen kan du läsa [Behörigheter på webbplatsen azureiotsuite.com][lnk-permissions] och [Vanliga frågor och svar][lnk-faq]. Om problemen kvarstår så skapa en tjänstbiljett på [portalen][lnk-portal].
+> Om du upptäcker problem distribuera förkonfigurerade lösning för hello, granska [behörigheter på hello azureiotsuite.com platsen] [ lnk-permissions] och hello [vanliga frågor och svar] [ lnk-faq]. Om hello problem kvarstår, skapa en tjänstbiljett på hello [portal][lnk-portal].
 > 
 > 
 
-Finns det något som du förväntar dig att se men som inte visas för din lösning? Lämna förslag på funktioner i [User Voice](https://feedback.azure.com/forums/321918-azure-iot).
+Finns det information som du förväntar dig toosee som inte visas för lösningen? Lämna förslag på funktioner i [User Voice](https://feedback.azure.com/forums/321918-azure-iot).
 
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
 [lnk-permissions]: ../articles/iot-suite/iot-suite-permissions.md

@@ -1,3 +1,3 @@
 > [!IMPORTANT]
-> IoT-hubben kan identifieras offentligt som en DNS-slutpunkt, så se till att undvika känslig information när du namnger det.
+> Hej IoT-hubben är offentligt kan identifieras som en DNS-slutpunkt, så se till att tooavoid känslig information när du namnger det.
 >

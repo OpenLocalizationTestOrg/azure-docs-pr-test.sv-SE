@@ -1,6 +1,6 @@
 ---
-title: "Belastningsutjämning på flera IP-konfigurationer med hjälp av Azure CLI | Microsoft Docs"
-description: "Lär dig hur du tilldelar flera IP-adresser till en virtuell dator med Azure CLI | Resource Manager."
+title: "aaaLoad utjämning på flera IP-konfigurationer med hjälp av Azure CLI | Microsoft Docs"
+description: "Lär dig hur tooassign flera IP-adresser tooa virtuell dator med Azure CLI | Resource Manager."
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: annahar
-ms.openlocfilehash: bd15713752ea01ad403d8e3dcfed0c9a7adcc7fa
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: df81e1b8193f274bad435d6b506c7be824117416
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="load-balancing-on-multiple-ip-configurations"></a>Belastningsutjämning på flera IP-konfigurationer
 
@@ -28,22 +28,22 @@ ms.lasthandoff: 08/03/2017
 > * [CLI](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
-Den här artikeln beskriver hur du använder Azure-belastningsutjämnaren med flera IP-adresser på sekundärt nätverksgränssnitt (NIC). I det här scenariot har vi två virtuella datorer som kör Windows med en primär och sekundär NIC. Var och en av de sekundära har två IP-konfigurationer. Varje virtuell värd för både webbplatser contoso.com och fabrikam.com. Varje webbplats är bunden till en IP-konfigurationer på sekundära nätverkskortet. Vi kan använda Azure belastningsutjämnare för att visa två klientdelens IP-adresser, en för varje webbplats för att distribuera trafik till respektive IP-konfiguration för webbplatsen. Det här scenariot använder samma portnummer på både frontends som båda backend poolen IP-adresser.
+Den här artikeln beskriver hur toouse Azure belastningsutjämnaren med flera IP-adresser på sekundärt nätverksgränssnitt (NIC). I det här scenariot har vi två virtuella datorer som kör Windows med en primär och sekundär NIC. Varje sekundär hello nätverkskort har två IP-konfigurationer. Varje virtuell värd för både webbplatser contoso.com och fabrikam.com. Varje webbplats är bundna tooone hello IP-konfigurationer på hello sekundära nätverkskortet. Vi använder Azure belastningsutjämnare tooexpose två klientdelens IP-adresser, en för varje webbplats toodistribute trafik toohello respektive IP-konfiguration för hello webbplats. Det här scenariot använder hello samma portnummer över både frontends som båda backend poolen IP-adresser.
 
 ![LB scenariot bild](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
-## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Steg för att belastningsutjämna på flera IP-konfigurationer
+## <a name="steps-tooload-balance-on-multiple-ip-configurations"></a>Steg tooload saldot på flera IP-konfigurationer
 
-Följ stegen nedan för att uppnå det scenario som beskrivs i den här artikeln:
+Så hello nedan tooachieve hello scenario som beskrivs i den här artikeln:
 
-1. [Installera och konfigurera Azure CLI](../cli-install-nodejs.md) Azure CLI genom att följa stegen i den länkade artikeln och loggar till ditt Azure-konto.
+1. [Installera och konfigurera hello Azure CLI](../cli-install-nodejs.md) hello Azure CLI med hjälp av hello stegen i hello länkade artikeln och loggar till ditt Azure-konto.
 2. [Skapa en resursgrupp](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) kallas *contosofabrikam* enligt beskrivningen ovan.
 
     ```azurecli
     azure group create contosofabrikam westcentralus
     ```
 
-3. [Skapa en tillgänglighetsuppsättning](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-availability-set) till för de två virtuella datorerna. I det här scenariot använder du följande kommando:
+3. [Skapa en tillgänglighetsuppsättning](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-availability-set) toofor hello två virtuella datorer. I det här scenariot Använd hello följande kommando:
 
     ```azurecli
     azure availset create --resource-group contosofabrikam --location westcentralus --name myAvailabilitySet
@@ -57,13 +57,13 @@ Följ stegen nedan för att uppnå det scenario som beskrivs i den här artikeln
     azure network vnet subnet create --resource-group contosofabrikam --vnet-name myVnet --name mySubnet --address-prefix 10.0.0.0/24
     ```
 
-5. [Skapa belastningsutjämnaren](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) kallas *mylb*:
+5. [Skapa hello belastningsutjämnaren](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) kallas *mylb*:
 
     ```azurecli
     azure network lb create --resource-group contosofabrikam --location westcentralus --name mylb
     ```
 
-6. Skapa två dynamiska offentliga IP-adresser för klientdelens IP-konfigurationer för din belastningsutjämnare:
+6. Skapa två dynamiska offentliga IP-adresser för hello klientdelens IP-konfigurationer för din belastningsutjämnare:
 
     ```azurecli
     azure network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp1 --domain-name-label contoso --allocation-method Dynamic
@@ -71,7 +71,7 @@ Följ stegen nedan för att uppnå det scenario som beskrivs i den här artikeln
     azure network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp2 --domain-name-label fabrikam --allocation-method Dynamic
     ```
 
-7. Skapa två klientdelens IP-konfigurationer, *contosofe* och *fabrikamfe* respektive:
+7. Skapa hello två klientdelens IP-konfigurationer, *contosofe* och *fabrikamfe* respektive:
 
     ```azurecli
     azure network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp1 --name contosofe
@@ -90,7 +90,7 @@ Följ stegen nedan för att uppnå det scenario som beskrivs i den här artikeln
     azure network lb rule create --resource-group contosofabrikam --lb-name mylb --name HTTPf --protocol tcp --probe-name http --frontend-port 5000 --backend-port 5000 --frontend-ip-name fabrkamfe --backend-address-pool-name fabrikampool
     ```
 
-9. Kör följande kommando nedan och kontrollera sedan utdata till [Kontrollera din belastningsutjämnare](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) skapades på rätt sätt:
+9. Hello kör följande kommando nedan och sedan kontrollera hello utdata för[Kontrollera din belastningsutjämnare](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) skapades på rätt sätt:
 
     ```azurecli
     azure network lb show --resource-group contosofabrikam --name mylb
@@ -104,7 +104,7 @@ Följ stegen nedan för att uppnå det scenario som beskrivs i den här artikeln
     azure storage account create --location westcentralus --resource-group contosofabrikam --kind Storage --sku-name GRS mystorageaccount1
     ```
 
-11. [Skapa nätverksgränssnitten](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) för VM1 och lägga till en andra IP-konfiguration, *VM1 ipconfig2*, och [skapa den virtuella datorn](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms) enligt nedan:
+11. [Skapa hello nätverksgränssnitt](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) för VM1 och lägga till en andra IP-konfiguration, *VM1 ipconfig2*, och [skapa hello VM](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms) enligt nedan:
 
     ```azurecli
     azure network nic create --resource-group contosofabrikam --location westcentralus --subnet-vnet-name myVnet --subnet-name mySubnet --name VM1Nic1 --ip-config-name NIC1-ipconfig1
@@ -124,8 +124,8 @@ Följ stegen nedan för att uppnå det scenario som beskrivs i den här artikeln
     azure vm create --resource-group contosofabrikam --name VM2 --location westcentralus --os-type linux --nic-names VM2Nic1,VM2Nic2 --vnet-name VNet1 --vnet-subnet-name Subnet1 --availset-name myAvailabilitySet --vm-size Standard_DS3_v2 --storage-account-name mystorageaccount2 --image-urn canonical:UbuntuServer:16.04.0-LTS:latest --admin-username <your username>  --admin-password <your password>
     ```
 
-13. Slutligen måste du konfigurera DNS-resursposter för att peka till respektive klientdelens IP-adressen för belastningsutjämnaren. Du kan vara värd för dina domäner i Azure DNS. Mer information om hur du använder Azure DNS med belastningsutjämnaren finns [med hjälp av Azure DNS med andra Azure-tjänster](../dns/dns-for-azure-services.md).
+13. Slutligen måste du konfigurera DNS-resurs registrerar toopoint toohello respektive klientdel IP-adressen för hello belastningsutjämnaren. Du kan vara värd för dina domäner i Azure DNS. Mer information om hur du använder Azure DNS med belastningsutjämnaren finns [med hjälp av Azure DNS med andra Azure-tjänster](../dns/dns-for-azure-services.md).
 
 ## <a name="next-steps"></a>Nästa steg
-- Mer information om hur du kombinerar belastningsutjämning för tjänster i Azure i [med belastningsutjämning tjänster i Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Lär dig hur du kan använda olika typer av loggar i Azure för att hantera och felsöka belastningsutjämnare i [logga analytics för Azure belastningsutjämnare](../load-balancer/load-balancer-monitor-log.md).
+- Mer information om hur toocombine belastningsutjämning services i Azure i [med belastningsutjämning tjänster i Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
+- Lär dig hur du kan använda olika typer av loggar i Azure toomanage och felsöka belastningsutjämnare i [logga analytics för Azure belastningsutjämnare](../load-balancer/load-balancer-monitor-log.md).

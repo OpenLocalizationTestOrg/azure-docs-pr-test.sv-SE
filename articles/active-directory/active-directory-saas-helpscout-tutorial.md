@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med hjälp Scout | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och hjälpa Scout."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och hjälpa Scout."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 84cee39c28a0f7e6b9878441e504131795673020
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 58edd140eb1eb5980796ca743b5f7acd891729a1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Självstudier: Azure Active Directory-integrering med hjälp Scout
 
-I kursen får lära du att integrera hjälpa Scout med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate hjälpa säljare med Azure Active Directory (AD Azure).
 
-Du kan få följande fördelar från hjälp Scout integrera med Azure AD:
+Du får hello följande fördelar från hjälp Scout integrera med Azure AD:
 
-- Du kan styra vem som har åtkomst till hjälpen Scout i Azure AD.
-- Du kan logga in automatiskt Scout hjälpa användarna med enkel inloggning och användarens Azure AD-kontot.
-- Du kan hantera dina konton i en enda central plats och Azure-portalen.
+- Du kan styra vem som har åtkomst tooHelp Scout i Azure AD.
+- Du kan logga in automatiskt dina användare tooHelp Scout med hjälp av enkel inloggning och användarens Azure AD-kontot.
+- Du kan hantera dina konton i en enda central plats, hello Azure-portalen.
 
-Läs mer om programvara som en tjänst (SaaS) appintegrering med Azure AD i [vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+toolearn mer information om programvara som en tjänst (SaaS) app-integrering med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-Om du vill konfigurera Azure AD-integrering med hjälp Scout behöver du följande:
+tooset av Azure AD-integrering med hjälp Scout måste hello följande objekt:
 
 - En Azure AD-prenumeration
 - En prenumeration som hjälper Scout med enkel inloggning aktiverad 
 
 > [!NOTE]
-> Om du testar stegen i den här kursen rekommenderar vi att du inte testa dem i en produktionsmiljö.
+> Om du testar hello stegen i den här kursen rekommenderar vi att du inte testa dem i en produktionsmiljö.
 
-Rekommendationer för att testa stegen i den här självstudiekursen:
+Rekommendationer för att testa hello stegen i den här självstudiekursen:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [skaffa en kostnadsfri utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
@@ -50,172 +50,172 @@ Rekommendationer för att testa stegen i den här självstudiekursen:
 ## <a name="scenario-description"></a>Scenariobeskrivning
 I kursen får testa du Azure AD enkel inloggning i en testmiljö. 
 
-Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Lägg till hjälp Scout från galleriet.
+1. Lägg till hjälp Scout från hello-galleriet.
 2. Konfigurera och testa Azure AD enkel inloggning.
 
-## <a name="add-help-scout-from-the-gallery"></a>Lägg till hjälp Scout från galleriet
-Lägg till hjälp Scout i listan över hanterade SaaS-appar för att ställa in att Scout med Azure AD-integrering i galleriet.
+## <a name="add-help-scout-from-hello-gallery"></a>Lägg till hjälp Scout från hello-galleriet
+tooset in hello integration av hjälpa Scout med Azure AD hello Gallery och lägga till hjälp Scout tooyour lista över hanterade SaaS-appar.
 
-Lägg till hjälp Scout från galleriet:
+tooadd hjälper Scout från galleriet hello:
 
-1. I den [Azure-portalen](https://portal.azure.com), i den vänstra menyn, Välj **Azure Active Directory**. 
+1. I hello [Azure-portalen](https://portal.azure.com), i hello vänstra menyn, Välj **Azure Active Directory**. 
 
-    ![Azure Active Directory-knappen][1]
+    ![hello Azure Active Directory-knappen][1]
 
 2. Välj **företagsprogram**, och välj sedan **alla program**.
 
-    ![Sidan Enterprise program][2]
+    ![hello Enterprise program sida][2]
     
-3. Om du vill lägga till ett nytt program, Välj **nytt program**.
+3. tooadd nya program, Välj **nytt program**.
 
-    ![Knappen Nytt program][3]
+    ![hello-knappen för nytt program][3]
 
-4. I sökrutan anger **hjälp Scout**. I sökresultaten väljer **hjälp Scout**, och välj sedan **Lägg till**.
+4. Skriv i sökrutan hello **hjälp Scout**. I sökresultaten hello väljer **hjälp Scout**, och välj sedan **Lägg till**.
 
-    ![Hjälp Scout i resultatlistan](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_addfromgallery.png)
+    ![Underlätta Scout hello resultatlistan](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_addfromgallery.png)
 
 ## <a name="set-up-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med hjälp Scout baserat på en användare med namnet *Britta Simon*.
 
-För enkel inloggning ska fungera, Azure AD som behöver veta Azure AD motsvarighet användaren i Hjälp Scout. En länk förhållandet mellan en Azure AD-användare och relaterade användaren i Hjälp Scout måste upprättas.
+För enkel inloggning toowork måste Azure AD tooknow hello Azure AD motsvarighet användare i Hjälp Scout. En länk relationen mellan en Azure AD-användare och hello relaterade användare i Hjälp Scout måste upprättas.
 
-Etablera länk-relationen i Hjälp Scout för **användarnamn**, tilldela värdet för den **användarnamn** i Azure AD.
+tooestablish hello länka relation i Hjälp Scout för **användarnamn**, tilldela hello värdet för hello **användarnamn** i Azure AD.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med hjälp Scout, utför följande uppgifter:
+tooconfigure och testa Azure AD enkel inloggning med hjälp Scout fullständig hello följande uppgifter:
 
-1. [Konfigurera Azure AD enkel inloggning](#set-up-azure-ad-single-sign-on). Ställer in en användare att använda den här funktionen.
-2. [Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user). Testerna Azure AD enkel inloggning med användaren Britta Simon.
-3. [Skapa en testanvändare hjälpa Scout](#create-a-help-scout-test-user). Skapar en motsvarighet för Britta Simon i Hjälp Scout som är kopplad till Azure AD-representation av användaren.
-4. [Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user). Ställer in Britta Simon använda Azure AD för enkel inloggning.
-5. [Testa enkel inloggning](#test-single-sign-on). Kontrollerar att konfigurationen fungerar.
+1. [Konfigurera Azure AD enkel inloggning](#set-up-azure-ad-single-sign-on). Ställer in en användare toouse den här funktionen.
+2. [Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user). Testerna Azure AD enkel inloggning med hello användaren Britta Simon.
+3. [Skapa en testanvändare hjälpa Scout](#create-a-help-scout-test-user). Skapar en motsvarighet för Britta Simon i Hjälp Scout som är länkade toohello Azure AD-representation av hello användare.
+4. [Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user). Ställer in Britta Simon toouse Azure AD enkel inloggning.
+5. [Testa enkel inloggning](#test-single-sign-on). Verifierar att hello-konfigurationen fungerar.
 
 ### <a name="set-up-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet kan du ställa in Azure AD enkel inloggning i Azure-portalen. Sedan kan konfigurera du enkel inloggning i tillämpningsprogrammet att Scout.
+I det här avsnittet kan du ställa in Azure AD enkel inloggning i hello Azure-portalen. Sedan kan konfigurera du enkel inloggning i tillämpningsprogrammet att Scout.
 
-Konfigurera Azure AD enkel inloggning med hjälp Scout:
+tooset in Azure AD enkel inloggning med hjälp Scout:
 
-1. I Azure-portalen på den **hjälp Scout** programmet integration anger **enkel inloggning**.
+1. I hello Azure-portalen på hello **hjälp Scout** programmet integration anger **enkel inloggning**.
  
     ![Konfigurera enkel inloggning länk][4]
 
-2. På den **enkel inloggning** sidan för **läge**väljer **SAML-baserade inloggning**.
+2. På hello **enkel inloggning** sidan för **läge**väljer **SAML-baserade inloggning**.
  
     ![Enkel inloggning dialogrutan](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_samlbase.png)
 
-3. Under **hjälp Scout domän och URL: er**, om du vill installera programmet i IDP-initierad läge fullständig följande steg:
+3. Under **hjälp Scout domän och URL: er**om du vill tooset in hello program i IDP-initierad läge fullständig hello följande steg:
 
-    1. I den **identifierare** ange en URL som har följande mönster:`urn:auth0:helpscout:<instancename>`
+    1. I hello **identifierare** ange en URL som har hello följande mönster:`urn:auth0:helpscout:<instancename>`
 
-    2. I den **Reply URL** ange en URL som har följande mönster:`https://helpscout.auth0.com/login/callback?connection=<instancename>`
+    2. I hello **Reply URL** ange en URL som har hello följande mönster:`https://helpscout.auth0.com/login/callback?connection=<instancename>`
 
     ![Hjälpinformation Scout domän URL: er och enkel inloggning](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url.png)
 
-4. Om du vill installera programmet i SP-initierad läge, väljer du den **visa avancerade inställningar för URL: en** och gör sedan följande:
+4. Om du vill tooset in hello program i SP-initierad läge, väljer hello **visa avancerade inställningar för URL: en** kryssrutan och sedan hello följande:
 
-    * I den **inloggning URL** ange en URL som har följande format:`https://secure.helpscout.net/members/login/`
+    * I hello **inloggning URL** ange en URL som har hello följande format:`https://secure.helpscout.net/members/login/`
 
     ![Hjälpinformation Scout domän URL: er och enkel inloggning](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url1.png)
  
     > [!NOTE] 
-    > Värdena i dessa URL: er är bara exempel. Uppdatera värdena med faktiska Identifierare och reply-URL. För att få dessa värden kan kontakta [hjälp Scout supportteamet](mailto:help@helpscout.com). 
+    > hello värden i dessa URL: er är bara exempel. Uppdatera hello värden med hello faktiska identifierare Webbadressen och svar. tooget dessa värden, kontakta [hjälp Scout supportteamet](mailto:help@helpscout.com). 
 
-5. Under **SAML-signeringscertifikat**väljer **XML-Metadata för**, och spara sedan metadatafilen på datorn.
+5. Under **SAML-signeringscertifikat**väljer **XML-Metadata för**, och sedan spara hello metadatafil på datorn.
 
-    ![Länken hämta certifikatet](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_certificate.png) 
+    ![länk för hämtning av hello-certifikat](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_certificate.png) 
 
 6. Välj **Spara**.
 
     ![Konfigurera enkel inloggning spara](./media/active-directory-saas-helpscout-tutorial/tutorial_general_400.png)
     
-7. Om du vill konfigurera enkel inloggning på sidan hjälp Scout, skicka hämtade metadata XML-filen till den [hjälp Scout supportteamet](mailto:help@helpscout.com). Support-teamet hjälper Scout gäller den här inställningen så att SAML enkel inloggning anslutningen är korrekt inställda på båda sidor.
+7. tooset in enkel inloggning på hello hjälpa Scout sida, skicka hello hämtas metadata XML-filen toohello [hjälp Scout supportteamet](mailto:help@helpscout.com). hello hjälpa Scout supportteamet gäller den här inställningen så att hello SAML enkel inloggning-anslutning är korrekt inställda på båda sidor.
 
 > [!TIP]
-> Du kan läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen! När du har lagt till appen genom att välja **Active Directory** > **företagsprogram**, Välj den **enkel inloggning** fliken. Du kan komma åt inbäddade dokumentation i den **Configuration** avsnittet längst ned på sidan. Mer information finns i [Azure AD inbäddade dokumentationen]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Du kan läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du installerar appen! När du har lagt till hello appen genom att välja **Active Directory** > **företagsprogram**väljer hello **enkel inloggning** fliken. Du kan komma åt inbäddade hello-dokumentationen i hello **Configuration** avsnitt på hello hello sidans nederkant. Mer information finns i [Azure AD inbäddade dokumentationen]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
 
-I det här avsnittet i Azure-portalen kan du skapa en testanvändare med namnet Britta Simon.
+I det här avsnittet i hello Azure-portalen skapar du en användare med namnet Britta Simon.
 
 ![Skapa en testanvändare i Azure AD][100]
 
-Skapa en testanvändare i Azure AD:
+toocreate en testanvändare i Azure AD:
 
-1. Välj i Azure-portalen på den vänstra menyn **Azure Active Directory**.
+1. Välj i hello Azure-portalen hello vänstra menyn **Azure Active Directory**.
 
-    ![Azure Active Directory-knappen](./media/active-directory-saas-helpscout-tutorial/create_aaduser_01.png)
+    ![hello Azure Active Directory-knappen](./media/active-directory-saas-helpscout-tutorial/create_aaduser_01.png)
 
-2. Om du vill visa en lista över användare, Välj **användare och grupper**, och välj sedan **alla användare**.
+2. toodisplay hello lista över användare, Välj **användare och grupper**, och välj sedan **alla användare**.
 
     ![Välj användare och grupper och välj sedan alla användare](./media/active-directory-saas-helpscout-tutorial/create_aaduser_02.png)
 
-3. Öppna den **användare** dialogrutan överst i den **alla användare** väljer **Lägg till**.
+3. tooopen hello **användare** dialogrutan hello överst i hello **alla användare** väljer **Lägg till**.
 
-    ![Knappen Lägg till](./media/active-directory-saas-helpscout-tutorial/create_aaduser_03.png)
+    ![hello webbinställningar](./media/active-directory-saas-helpscout-tutorial/create_aaduser_03.png)
 
-4. I den **användaren** dialogrutan rutan, gör du följande:
+4. I hello **användaren** dialogrutan, fullständig hello följande steg:
 
-    1. I den **namn** ange **BrittaSimon**.
+    1. I hello **namn** ange **BrittaSimon**.
 
-    2. I den **användarnamn** ange användarens Britta Simon e-postadress.
+    2. I hello **användarnamn** ange hello användarens Britta Simon e-postadress.
 
-    3. Välj den **visa lösenordet** kryssrutan och sedan skriva ned det värde som visas i den **lösenord** rutan.
+    3. Välj hello **visa lösenordet** kryssrutan och sedan skriva ned hello-värde som visas i hello **lösenord** rutan.
 
     4. Välj **Skapa**.
 
-        ![Dialogrutan användare](./media/active-directory-saas-helpscout-tutorial/create_aaduser_04.png)
+        ![hello användardialogrutan](./media/active-directory-saas-helpscout-tutorial/create_aaduser_04.png)
 
  
 ### <a name="create-a-help-scout-test-user"></a>Skapa en hjälp Scout testanvändare
 
-Syftet med det här avsnittet är att skapa en användare med namnet Britta Simon i Hjälp Scout. Hjälp Scout stöder just-in-time (JIT) etablering, som är aktiverad som standard.
+hello-objekt för det här avsnittet är toocreate en användare med namnet Britta Simon i Hjälp Scout. Hjälp Scout stöder just-in-time (JIT) etablering, som är aktiverad som standard.
 
-I det här avsnittet finns det ingen åtgärd eller åtgärden har slutförts. Om en användare inte redan finns i Hjälp Scout, skapas en ny när du försöker komma åt Hjälp Scout.
+Det finns ingen åtgärd eller uppgift toocomplete i det här avsnittet. Om en användare inte redan finns i Hjälp Scout, skapas en ny när du försöker tooaccess hjälpa Scout.
 
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet tillåter användaren Britta Simon att använda Azure AD enkel inloggning genom att bevilja användarkontoåtkomst till hjälpen Scout.
+I det här avsnittet Tillåt hello användaren Britta Simon toouse Azure AD enkel inloggning genom att tilldela hello användarens konto åtkomst tooHelp Scout.
 
-![Tilldela rollen][200] 
+![Tilldela hello användarroll][200] 
 
-Tilldela Britta Simon hjälpa Scout:
+tooassign Britta Simon tooHelp Scout:
 
-1. Öppna vyn program i Azure-portalen och sedan gå till vyn directory. Välj **företagsprogram**, och välj sedan **alla program**.
+1. Öppna hello program i hello Azure-portalen, och sedan gå toohello directory vyn. Välj **företagsprogram**, och välj sedan **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **hjälp Scout**.
+2. Välj i listan med program hello **hjälp Scout**.
 
-    ![Länken Hjälp Scout i listan med program](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_app.png)  
+    ![hello hjälpa Scout länken i listan med program hello](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_app.png)  
 
-3. Välj i den vänstra menyn **användare och grupper**.
+3. Välj hello vänstra menyn **användare och grupper**.
 
-    ![Länka användare och grupper][202]
+    ![hello användare och grupper länk][202]
 
-4. Välj **Lägg till**. Klicka sedan på den **Lägg uppdrag** väljer **användare och grupper**.
+4. Välj **Lägg till**. Klicka sedan på hello **Lägg uppdrag** väljer **användare och grupper**.
 
-    ![Fönstret Lägg till tilldelning][203]
+    ![hello Lägg uppdrag fönstret][203]
 
-5. På den **användare och grupper** sida i listan över användare, Välj **Britta Simon**.
+5. På hello **användare och grupper** i hello lista över användare, Välj sidan **Britta Simon**.
 
-6. På den **användare och grupper** väljer **Välj**.
+6. På hello **användare och grupper** väljer **Välj**.
 
-7. På den **Lägg uppdrag** väljer **tilldela**.
+7. På hello **Lägg uppdrag** väljer **tilldela**.
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet testa du Azure AD enkel inloggning konfigurationen med hjälp av åtkomstpanelen.
+I det här avsnittet testa du Azure AD enkel inloggning konfigurationen med hjälp av hello åtkomstpanelen.
 
-När du väljer att Scout panelen på åtkomstpanelen bör du vara automatiskt inloggad i tillämpningsprogrammet att Scout.
+När du väljer hello hjälpa Scout panelen i hello åtkomstpanelen bör vara loggas du automatiskt tooyour hjälpa Scout program.
 
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
+Läs mer om åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur toointegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

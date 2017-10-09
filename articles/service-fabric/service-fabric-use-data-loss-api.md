@@ -1,6 +1,6 @@
 ---
-title: "Hur du anropa dataförlust på Service Fabric-tjänster | Microsoft Docs"
-description: "Beskriver hur du använder data går förlorade api"
+title: "aaaHow tooInvoke förlust av Data på Service Fabric-tjänster | Microsoft Docs"
+description: "Beskriver hur toouse hello dataförlust api"
 services: service-fabric
 documentationcenter: .net
 author: LMWF
@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 09/19/2016
 ms.author: lemai
 redirect_url: /azure/service-fabric/service-fabric-testability-overview
-ms.openlocfilehash: 0c4791e56f84d0df38783a13c8d8c564fd25f55f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 014c7ebfd2c42d79a5fe1802ecc3fa0c1f26f9d7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-invoke-data-loss-on-services"></a>Hur du anropa dataförlust för tjänster
+# <a name="how-tooinvoke-data-loss-on-services"></a>Hur tooInvoke dataförlust för tjänster
 > [!WARNING]
-> Det här dokumentet beskrivs hur du kan data gå förlorade i dina tjänster och ska användas med försiktighet.
+> Det här dokumentet beskrivs hur toocause dataförlust i dina tjänster och bör användas med försiktighet.
 > 
 > 
 
 ## <a name="introduction"></a>Introduktion
-Du kan anropa förlust av data på en partition av Service Fabric-tjänsten genom att anropa StartPartitionDataLossAsync().  Detta api använder fel Injection och Analysis Service för att utföra arbetet om du vill att data går förlorade villkor.
+Du kan anropa förlust av data på en partition av Service Fabric-tjänsten genom att anropa StartPartitionDataLossAsync().  Detta api använder hello fel Injection och Analysis Service tooperform hello arbete toocause data går förlorade villkor.
 
-## <a name="using-the-fault-injection-and-analysis-service"></a>Med fel Injection och Analysis Services
-Fel Injection och Analysis Services stöder för närvarande följande API: er i diagrammet nedan.  Till höger om diagrammet visas motsvarande PowerShell-cmdleten.  Information finns i msdn-dokumentationen på varje API för mer information om var och en.
+## <a name="using-hello-fault-injection-and-analysis-service"></a>Med hjälp av hello fel Injection och Analysis Services
+hello fel Injection och Analysis Services stöder för närvarande hello följande API: er i hello diagrammet nedan.  hello höger sida av hello diagram visar hello motsvarande PowerShell-cmdleten.  Mer information om var och en finns toohello msdn-dokumentationen på varje API.
 
 | C#-API | PowerShell-Cmdlet |
 | --- | ---:|
@@ -40,41 +40,41 @@ Fel Injection och Analysis Services stöder för närvarande följande API: er i
 | [StartPartitionRestartAsync][rp] |[Start-ServiceFabricPartitionRestart][psrp] |
 
 ## <a name="conceptual-overview-of-running-a-command"></a>Översikt över ett kommando körs
-Fel Injection och Analysis Services använder en asynkron modell där du startar kommandot med ett API som kallas ”Start” API: et i detta dokument, söker förloppet för det här kommandot med en ”GetProgress” API tills ett avslutat tillstånd, eller tills du avbryta den.
-Anropa ”Start”-API: et för motsvarande API för att starta ett kommando.  Detta API returnerar när fel Injection och Analysis Services har accepterat begäran.  Men det visar inte hur långt kommandot har körts, eller om den har startat ännu.  Anropa API som motsvarar ”Start”-API: et tidigare kallade för ”GetProgress” för att kunna kontrollera status för ett kommando.  API för ”GetProgress” returnerar ett objekt som indikerar aktuell status för kommandot i egenskapen tillstånd.  Ett kommando körs under obestämd tid tills:
+Hej fel Injection och Analysis Services använder en asynkron modell där du startar hello kommandot med ett API som anges tooas hello ”Start” API i detta dokument, sedan kontrollerar hello förloppet för det här kommandot med ett ”GetProgress” API tills en terminal tillstånd, eller tills du avbryta den.
+toostart ett kommando hello ”Start” API-anropet efter hello motsvarande API.  Detta API returnerar när hello fel Injection och Analysis Services har accepterat hello-begäran.  Men det visar inte hur långt kommandot har körts, eller om den har startat ännu.  Anropa hello ”GetProgress” API som motsvarar toohello ”Start” API tidigare kallade pågående ordning toocheck av ett kommando.  Hej ”GetProgress” API returnerar ett objekt som visar hello aktuell status för hello-kommando i egenskapen tillstånd.  Ett kommando körs under obestämd tid tills:
 
-1. Den har slutförts.  Om du anropar ”GetProgress” på den i det här fallet kommer förlopp objektets tillstånd att slutföras.
-2. Ett oåterkalleligt fel uppstår.  Om du anropar ”GetProgress” på den i det här fallet blir förlopp objektets tillstånd felaktig
-3. Avbryta via den [CancelTestCommandAsync] [ cancel] API, eller [stoppa ServiceFabricTestCommand] [ cancelps] PowerShell-cmdlet.  Om du anropar ”GetProgress” på den i det här fallet är förlopp objektets tillstånd avbrott eller ForceCancelled, beroende på ett argument för detta API.  Finns i dokumentationen för [CancelTestCommandAsync] [ cancel] för mer information.
+1. Den har slutförts.  Om du anropar ”GetProgress” på den i det här fallet kommer hello förlopp objektets tillstånd att slutföras.
+2. Ett oåterkalleligt fel uppstår.  Om du anropar ”GetProgress” på den i det här fallet blir hello förlopp objektets tillstånd felaktig
+3. Avbryta via hello [CancelTestCommandAsync] [ cancel] API, eller [stoppa ServiceFabricTestCommand] [ cancelps] PowerShell-cmdlet.  Om du anropa ”GetProgress” på den i det här fallet att hello förlopp objektets tillstånd avbrott eller ForceCancelled, beroende på ett argumentet toothat API.  Hello i dokumentationen för [CancelTestCommandAsync] [ cancel] för mer information.
 
 ## <a name="details-of-running-a-command"></a>Information om ett kommando körs
-Anropa Start-API med förväntade argument för att starta ett kommando.  Alla Start-API: er har en Guid-argument med namnet åtgärds-ID.  Du bör hålla koll på argumentet åtgärds-ID, eftersom den används för att spåra förloppet för det här kommandot.  Detta måste överföras till ”GetProgress” API för att kunna spåra förloppet för kommandot.  Åtgärds-ID måste vara unikt.
+Anropa hello starta API med hello förväntade argument i ordning toostart ett kommando.  Alla Start-API: er har en Guid-argument med namnet åtgärds-ID.  Du bör hålla reda på alla hello åtgärds-ID argumentet, eftersom den används tootrack förloppet för det här kommandot.  Detta måste överföras till hello ”GetProgress” API pågår ordning tootrack hello-kommando.  hello åtgärds-ID måste vara unikt.
 
-När du anropar API: et startar, bör GetProgress API: et anropas i en slinga tills objektet returnerade förlopp tillstånd egenskapen har slutförts.  Alla [Fabrictransientexception's] [ fte] och Operationcanceledexceptions bör provas igen.
-När kommandot har uppnått ett avslutat tillstånd (slutförd, Faulted eller avbrott), har returnerade förlopp objektets resultatet egenskapen ytterligare information.  Om tillståndet är klar innehåller Result.SelectedPartition.PartitionId partitions-id som har valts.  Result.Exception ska vara null.  Om tillståndet är fel Result.Exception har orsaken fel Injection och Analysis Service fel inträffade i kommandot.  Result.SelectedPartition.PartitionId har partitions-id som har valts.  I vissa situationer kan kan kommandot inte ha gått tillräckligt långt att välja en partition.  I så fall kommer PartitionId vara 0.  Om tillståndet avbryts vara Result.Exception null.  Result.SelectedPartition.PartitionId ha partitions-id som har valts som Faulted fallet, men om kommandot inte gått tillräckligt långt att göra det, kommer det vara 0.  Dessutom finns i exemplet nedan.
+När du anropar hello starta API hello GetProgress API ska anropas i en slinga tills hello tillbaka förlopp har objektets tillstånd egenskap slutförts.  Alla [Fabrictransientexception's] [ fte] och Operationcanceledexceptions bör provas igen.
+När hello-kommandot har uppnått ett avslutat tillstånd (slutförd, Faulted eller avbrott), returnerade hello förlopp objektets resultatet egenskapen har ytterligare information.  Om hello tillstånd är klar innehåller Result.SelectedPartition.PartitionId hello partitions-id som har valts.  Result.Exception ska vara null.  Om hello tillstånd är fel har Result.Exception hello orsak hello fel Injection och analys fel hello tjänstkommandot.  Result.SelectedPartition.PartitionId har hello partitions-id som har valts.  I vissa situationer kan hello-kommandot inte har gått tillräckligt långt toochoose en partition.  Hello PartitionId kommer i så fall vara 0.  Om hello tillstånd avbryts vara Result.Exception null.  Result.SelectedPartition.PartitionId ha hello partitions-id som har valts som hello Faulted skiftläge, men om hello kommando inte gått tillräckligt långt toodo så, ska den vara 0.  Du läsa toohello exemplet nedan.
 
-Exempelkoden nedan visar hur du startar och sedan följa förloppet på ett kommando för att orsaka dataförlust av på en specifik partition.
+hello-exempelkod nedan visar hur toostart sedan följa förloppet på ett kommando toocause förlust av data på en specifik partition.
 
 ```csharp
     static async Task PerformDataLossSample()
     {
-        // Create a unique operation id for the command below
+        // Create a unique operation id for hello command below
         Guid operationId = Guid.NewGuid();
 
-        // Note: Use the appropriate overload for your configuration
+        // Note: Use hello appropriate overload for your configuration
         FabricClient fabricClient = new FabricClient();
 
-        // The name of the target service
+        // hello name of hello target service
         Uri targetServiceName = new Uri("fabric:/MyService");
 
-        // The id of the target partition inside the target service
+        // hello id of hello target partition inside hello target service
         Guid targetPartitionId = new Guid("00000000-0000-0000-0000-000002233445");
 
         PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf(targetServiceName, targetPartitionId);
 
-        // Start the command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
-        // successfully it only means the Fault Injection and Analysis Service has saved the intent to perform this work.  It does not say anything about the progress
-        // of the command.
+        // Start hello command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
+        // successfully it only means hello Fault Injection and Analysis Service has saved hello intent tooperform this work.  It does not say anything about hello progress
+        // of hello command.
         while (true)
         {
             try
@@ -94,8 +94,8 @@ Exempelkoden nedan visar hur du startar och sedan följa förloppet på ett komm
 
         PartitionDataLossProgress progress = null;
 
-        // Poll the progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
-        // the command won't be cancelled.        
+        // Poll hello progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
+        // hello command won't be cancelled.        
 
         while (true)
         {
@@ -116,13 +116,13 @@ Exempelkoden nedan visar hur du startar och sedan följa förloppet på ett komm
             {
                 Console.WriteLine("Command '{0}' completed successfully", operationId);
 
-                // In a terminal state .Result.SelectedPartition.PartitionId will have the chosen partition
+                // In a terminal state .Result.SelectedPartition.PartitionId will have hello chosen partition
                 Console.WriteLine("  Printing selected partition='{0}'", progress.Result.SelectedPartition.PartitionId);
                 break;
             }
             else if (progress.State == TestCommandProgressState.Faulted)
             {
-                // If State is Faulted, the progress object's Result property's Exception property will have the reason why.
+                // If State is Faulted, hello progress object's Result property's Exception property will have hello reason why.
                 Console.WriteLine("Command '{0}' failed with '{1}'", operationId, progress.Result.Exception);
                 break;
             }
@@ -136,26 +136,26 @@ Exempelkoden nedan visar hur du startar och sedan följa förloppet på ett komm
     }
 ```
 
-Exemplet nedan visar hur du använder PartitionSelector för att välja en slumpmässig partition för en angiven tjänst:
+hello exemplet nedan visar hur toouse hello PartitionSelector toochoose en slumpmässig partition för en angiven tjänst:
 
 ```csharp
     static async Task PerformDataLossUseSelectorSample()
     {
-        // Create a unique operation id for the command below
+        // Create a unique operation id for hello command below
         Guid operationId = Guid.NewGuid();
 
-        // Note: Use the appropriate overload for your configuration
+        // Note: Use hello appropriate overload for your configuration
         FabricClient fabricClient = new FabricClient();
 
-        // The name of the target service
+        // hello name of hello target service
         Uri targetServiceName = new Uri("fabric:/SampleService ");
 
-        // Use a PartitionSelector that will have the Fault Injection and Analysis Service choose a random partition of “targetServiceName”
+        // Use a PartitionSelector that will have hello Fault Injection and Analysis Service choose a random partition of “targetServiceName”
         PartitionSelector partitionSelector = PartitionSelector.RandomOf(targetServiceName);
 
-        // Start the command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
-        // successfully it only means the Fault Injection and Analysis Service has saved the intent to perform this work.  It does not say anything about the progress
-        // of the command.
+        // Start hello command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
+        // successfully it only means hello Fault Injection and Analysis Service has saved hello intent tooperform this work.  It does not say anything about hello progress
+        // of hello command.
         while (true)
         {
             try
@@ -180,8 +180,8 @@ Exemplet nedan visar hur du använder PartitionSelector för att välja en slump
 
         PartitionDataLossProgress progress = null;
 
-        // Poll the progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
-        // the command won't be cancelled.
+        // Poll hello progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
+        // hello command won't be cancelled.
 
         while (true)
         {
@@ -209,7 +209,7 @@ Exemplet nedan visar hur du använder PartitionSelector för att välja en slump
             }
             else if (progress.State == TestCommandProgressState.Faulted)
             {
-                // If State is Faulted, the progress object's Result property's Exception property will have the reason why.
+                // If State is Faulted, hello progress object's Result property's Exception property will have hello reason why.
                 Console.WriteLine("Command '{0}' failed with '{1}', SelectedPartition {2}", operationId, progress.Result.Exception, progress.Result.SelectedPartition);
                 break;
             }
@@ -224,7 +224,7 @@ Exemplet nedan visar hur du använder PartitionSelector för att välja en slump
 ```
 
 ## <a name="history-and-truncation"></a>Historik över och trunkering
-När ett kommando har uppnått ett avslutat tillstånd, förblir dess metadata i fel Injection och Analysis Service för en viss tid innan den tas bort om du vill spara utrymme.  Om ”GetProgress” anropas med ett kommando åtgärds-ID när den har tagits bort, returneras en FabricException med en ErrorCode KeyNotFound.
+När ett kommando har uppnått ett avslutat tillstånd, dess metadata finns kvar i hello fel Injection och Analysis Services för en viss tid innan den blir bort toosave utrymme.  Om ”GetProgress” anropas med hello åtgärds-ID för ett kommando efter att den har tagits bort, returneras en FabricException med en ErrorCode KeyNotFound.
 
 [dl]: https://msdn.microsoft.com/library/azure/mt693569.aspx
 [ql]: https://msdn.microsoft.com/library/azure/mt693558.aspx

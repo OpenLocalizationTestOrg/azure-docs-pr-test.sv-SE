@@ -1,6 +1,6 @@
 ---
-title: "Skapa en Internetriktade belastningsutjämnare med IPv6 - Azure CLI | Microsoft Docs"
-description: "Lär dig hur du skapar en Internetuppkopplad belastningsutjämnare med IPv6 i Azure Resource Manager med hjälp av Azure CLI"
+title: "aaaCreate en Internetriktade belastningsutjämnare med IPv6 - Azure CLI | Microsoft Docs"
+description: "Lär dig hur toocreate ett Internet belastningsutjämnare med IPv6 i Azure Resource Manager med hjälp av hello Azure CLI"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -15,55 +15,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: efb4771800c42df544c3cc37d1d164045fdcaf3e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7ff75ac90d74a74e3d0c27672b36fbd955a086a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-internet-facing-load-balancer-with-ipv6-in-azure-resource-manager-using-the-azure-cli"></a>Skapa en Internetuppkopplad belastningsutjämnare med IPv6 i Azure Resource Manager med hjälp av Azure CLI
+# <a name="create-an-internet-facing-load-balancer-with-ipv6-in-azure-resource-manager-using-hello-azure-cli"></a>Skapa en Internetuppkopplad belastningsutjämnare med IPv6 i Azure Resource Manager med hello Azure CLI
 
 > [!div class="op_single_selector"]
 > * [PowerShell](load-balancer-ipv6-internet-ps.md)
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Mall](load-balancer-ipv6-internet-template.md)
 
-En Azure belastningsutjämnare är en Layer 4-belastningsutjämnare (TCP, UDP). Belastningsutjämnaren ger hög tillgänglighet genom att distribuera inkommande trafik mellan felfria tjänstinstanser i molntjänster eller virtuella datorer i en belastningsutjämningsuppsättning. Azure belastningsutjämnare kan även presentera dessa tjänster på flera portar, flera IP-adresser eller både och.
+En Azure belastningsutjämnare är en Layer 4-belastningsutjämnare (TCP, UDP). hello belastningsutjämnare ger hög tillgänglighet genom att distribuera inkommande trafik mellan felfri tjänstinstanser i molntjänster eller virtuella datorer i en belastningen belastningsutjämnaren. Azure belastningsutjämnare kan även presentera dessa tjänster på flera portar, flera IP-adresser eller både och.
 
 ## <a name="example-deployment-scenario"></a>Exempelscenario för distribution
 
-Följande diagram illustrerar nätverkslösning för belastningsutjämning som distribueras med hjälp av mallen exempel som beskrivs i den här artikeln.
+hello följande diagram illustrerar hello nätverkslösning för belastningsutjämning som distribueras med hjälp av hello exempelmall som beskrivs i den här artikeln.
 
 ![Belastningsutjämningsscenario](./media/load-balancer-ipv6-internet-cli/lb-ipv6-scenario-cli.png)
 
-I det här scenariot skapar du följande Azure-resurser:
+I det här scenariot skapar du hello följande Azure-resurser:
 
 * två virtuella datorer (VM)
 * ett virtuellt nätverksgränssnitt för varje virtuell dator med både IPv4 och IPv6-adresser som tilldelats
 * en Internetriktade belastningsutjämnare med en IPv4 och IPv6-offentlig IP-adress
-* en Tillgänglighetsuppsättning som innehåller två virtuella datorer
-* två läsa in belastningsutjämning regler för att mappa offentliga VIP till privata slutpunkter
+* en Tillgänglighetsuppsättning toothat innehåller hello två virtuella datorer
+* två läsa in belastningsutjämning regler toomap hello offentliga VIP toohello privata slutpunkter
 
-## <a name="deploying-the-solution-using-the-azure-cli"></a>Distribuera lösningen med hjälp av Azure CLI
+## <a name="deploying-hello-solution-using-hello-azure-cli"></a>Distribuera hello-lösning med hjälp av hello Azure CLI
 
-Följande steg beskriver hur du skapar en Internetuppkopplad belastningsutjämnare med hjälp av Azure Resource Manager med CLI. Med Azure Resource Manager skapas och konfigureras varje resurs separat, och läggs sedan ihop för att skapa en resurs.
+hello följande steg visar hur toocreate Internet-riktade belastningsutjämnaren med Azure Resource Manager med CLI. Med Azure Resource Manager varje resurs har skapats och konfigurerats individuellt och sedan sätta ihop toocreate en resurs.
 
-För att distribuera en belastningsutjämnare måste du skapa och konfigurera följande objekt:
+toodeploy en belastningsutjämnare som du skapar och konfigurerar hello följande objekt:
 
 * IP-konfiguration på klientsidan – innehåller offentliga IP-adresser för inkommande nätverkstrafik.
-* Backend-adresspool (serverdelspool) – innehåller nätverksgränssnitten (NIC) som de virtuella datorerna använder för att ta emot nätverkstrafik från belastningsutjämnaren.
-* Belastningsutjämningsregler – innehåller regler för mappning av en offentlig port på belastningsutjämnaren till en port i backend-adresspoolen.
-* NAT-regler för inkommande trafik – innehåller regler för mappning av en offentlig port i belastningsutjämnaren till en port för en specifik virtuell dator i backend-adresspoolen.
-* Avsökningar – innehåller hälsoavsökningar som används för att kontrollera tillgängligheten av instanser av virtuella datorer i backend-adresspoolen.
+* Backend-adresspool - innehåller nätverksgränssnitt (NIC) för virtuella datorer hello tooreceive nätverkstrafik från hello belastningsutjämnaren.
+* Belastningsutjämning regler - innehåller regler för mappning av en offentlig port på hello belastningen belastningsutjämnaren tooport i hello backend-adresspool.
+* Inkommande NAT-regler - innehåller regler för mappning av en offentlig port på hello belastningen belastningsutjämnaren tooa port för en specifik virtuell dator i hello backend-adresspool.
+* Avsökningar - innehåller hälsa-avsökningar som används toocheck tillgängligheten för virtuella datorer instanser i hello backend-adresspool.
 
 Mer information finns i [Azure Resource Manager-stöd för belastningsutjämnare](load-balancer-arm.md).
 
-## <a name="set-up-your-cli-environment-to-use-azure-resource-manager"></a>Ställ in CLI miljön att använda Azure Resource Manager
+## <a name="set-up-your-cli-environment-toouse-azure-resource-manager"></a>Ställ in din CLI miljö toouse Azure Resource Manager
 
-I det här exemplet kör vi CLI-verktygen i PowerShell-Kommandotolken. Vi använder inte Azure PowerShell-cmdlets, men vi använder PowerShells skriptfunktioner för att förbättra läsbarhet och återanvändning.
+I det här exemplet kör vi hello CLI-verktygen i PowerShell-Kommandotolken. Vi använder inte hello Azure PowerShell-cmdlets, men vi använder PowerShells scripting funktioner tooimprove läsbarhet och återanvändning.
 
-1. Om du aldrig har använt Azure CLI, se [installera och konfigurera Azure CLI](../cli-install-nodejs.md) och följ instruktionerna upp till den punkt där du väljer Azure-konto och prenumeration.
-2. Kör den **azure config mode** kommando för att växla till Resource Manager-läget.
+1. Om du aldrig har använt Azure CLI, se [installera och konfigurera hello Azure CLI](../cli-install-nodejs.md) och följer instruktionerna för hello in toohello punkt där du väljer Azure-konto och prenumeration.
+2. Kör hello **azure config mode** kommandot tooswitch tooResource Manager-läget.
 
     ```azurecli
     azure config mode arm
@@ -73,7 +73,7 @@ I det här exemplet kör vi CLI-verktygen i PowerShell-Kommandotolken. Vi använ
 
         info:    New mode is arm
 
-3. Logga in på Azure och få en lista över prenumerationer.
+3. Logga in tooAzure och hämta en lista över prenumerationer.
 
     ```azurecli
     azure login
@@ -85,9 +85,9 @@ I det här exemplet kör vi CLI-verktygen i PowerShell-Kommandotolken. Vi använ
     azure account list
     ```
 
-    Välj den prenumeration som du vill använda. Anteckna prenumerations-Id för nästa steg.
+    Välj hello-prenumeration som du vill toouse. Anteckna hello prenumerations-Id för hello nästa steg.
 
-4. Ställ in PowerShell variabler för användning med CLI-kommandona.
+4. Ställ in PowerShell variabler för användning med hello CLI-kommandona.
 
     ```powershell
     $subscriptionid = "########-####-####-####-############"  # enter subscription id
@@ -130,16 +130,16 @@ I det här exemplet kör vi CLI-verktygen i PowerShell-Kommandotolken. Vi använ
     $subnet2 = azure network vnet subnet create --resource-group $rgname --name $subnet2Name --address-prefix $subnet2Prefix --vnet-name $vnetName
     ```
 
-## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Skapa den offentliga IP-adresser för frontend-pool
+## <a name="create-public-ip-addresses-for-hello-front-end-pool"></a>Skapa den offentliga IP-adresser för hello frontend-pool
 
-1. Ställ in variablerna PowerShell
+1. Ställ in hello PowerShell variabler
 
     ```powershell
     $publicIpv4Name = "myIPv4Vip"
     $publicIpv6Name = "myIPv6Vip"
     ```
 
-2. Skapa en offentlig IP-adress frontend IP-adresspool.
+2. Skapa en offentlig IP-hello frontend IP-adresspool.
 
     ```azurecli
     $publicipV4 = azure network public-ip create --resource-group $rgname --name $publicIpv4Name --location $location --ip-version IPv4 --allocation-method Dynamic --domain-name-label $dnsLabel
@@ -147,14 +147,14 @@ I det här exemplet kör vi CLI-verktygen i PowerShell-Kommandotolken. Vi använ
     ```
 
     > [!IMPORTANT]
-    > Belastningsutjämnaren använder domänetiketten för den offentliga IP-adressen som sitt fullständiga domännamn (FQDN). Detta en ändring från klassisk distribution som använder Molntjänsten namn som belastningsutjämnare FQDN.
-    > I det här exemplet FQDN är *contoso09152016.southcentralus.cloudapp.azure.com*.
+    > hello belastningsutjämnare använder hello domänetikett hello offentlig IP-adress som dess FQDN. Denna ändring från klassisk distribution som använder hello molntjänstnamnet som hello belastningsutjämnaren FQDN.
+    > I det här exemplet hello FQDN är *contoso09152016.southcentralus.cloudapp.azure.com*.
 
 ## <a name="create-front-end-and-back-end-pools"></a>Skapa frontend och backend-pooler
 
-Det här exemplet skapar frontend IP-adresspool som tar emot inkommande nätverkstrafik på belastningsutjämnaren och backend-IP-pool där frontend poolen skickar belastningsutjämnade nätverkstrafik.
+Det här exemplet skapar hello frontend IP-pool som tar emot hello inkommande nätverkstrafik på hello belastningsutjämnare och hello backend-IP-pool där hello frontend poolen skickar hello belastningsutjämnad trafik.
 
-1. Ställ in variablerna PowerShell
+1. Ställ in hello PowerShell variabler
 
     ```powershell
     $frontendV4Name = "FrontendVipIPv4"
@@ -163,7 +163,7 @@ Det här exemplet skapar frontend IP-adresspool som tar emot inkommande nätverk
     $backendAddressPoolV6Name = "BackendPoolIPv6"
     ```
 
-2. Skapa en IP-adresspool för klientsidan och koppla den offentliga IP-adressen som du skapade i föregående steg och belastningsutjämnaren.
+2. Skapa en frontend IP-adresspool som kopplar hello offentliga IP-Adressen skapas i hello föregående steg och hello belastningsutjämnare.
 
     ```azurecli
     $frontendV4 = azure network lb frontend-ip create --resource-group $rgname --name $frontendV4Name --public-ip-name $publicIpv4Name --lb-name $lbName
@@ -172,18 +172,18 @@ Det här exemplet skapar frontend IP-adresspool som tar emot inkommande nätverk
     $backendAddressPoolV6 = azure network lb address-pool create --resource-group $rgname --name $backendAddressPoolV6Name --lb-name $lbName
     ```
 
-## <a name="create-the-probe-nat-rules-and-lb-rules"></a>Skapa avsökningen, NAT-regler och LB regler
+## <a name="create-hello-probe-nat-rules-and-lb-rules"></a>Skapa hello avsökningen, NAT-regler och LB regler
 
-I det här exemplet skapas följande objekt:
+Det här exemplet skapar hello följande objekt:
 
-* en avsökning-regel för att söka efter anslutning till TCP-port 80
-* en NAT-regel för att översätta all inkommande trafik på port 3389 till port 3389 för RDP<sup>1</sup>
-* en NAT-regel för att översätta all inkommande trafik på port 3391 till port 3389 för RDP<sup>1</sup>
-* En belastningsutjämningsregel som balanserar all inkommande trafik på port 80 till port 80 för adresserna i backend-poolen.
+* en avsökning regeln toocheck för anslutningen tooTCP port 80
+* en NAT-regel tootranslate all inkommande trafik på port 3389 tooport 3389 för RDP<sup>1</sup>
+* en NAT-regel tootranslate all inkommande trafik på port 3391 tooport 3389 för RDP<sup>1</sup>
+* en belastningen belastningsutjämnaren regeln toobalance all inkommande trafik på port 80 tooport 80 på hello adresser i hello backend-adresspool.
 
-<sup>1</sup> NAT-regler associeras med en specifik instans av virtuella datorer bakom belastningsutjämnaren. Den nätverkstrafik som ankommer till port 3389 skickas till specifik virtuell dator och port som associeras med NAT-regeln. Du måste ange ett protokoll (UDP eller TCP) för en NAT-regel. Båda protokollen kan inte tilldelas till samma port.
+<sup>1</sup> NAT-regler är associerade tooa specifik virtuell datorinstans bakom hello belastningsutjämnare. hello nätverkstrafik som ankommer till port 3389 skickas toohello specifik virtuell dator och port som associeras med hello NAT-regeln. Du måste ange ett protokoll (UDP eller TCP) för en NAT-regel. Båda protokollen kan inte vara tilldelad toohello samma port.
 
-1. Ställ in variablerna PowerShell
+1. Ställ in hello PowerShell variabler
 
     ```powershell
     $probeV4V6Name = "ProbeForIPv4AndIPv6"
@@ -193,22 +193,22 @@ I det här exemplet skapas följande objekt:
     $lbRule1V6Name = "LBRuleForIPv6-Port80"
     ```
 
-2. Skapa avsökningen
+2. Skapa hello avsökningen
 
-    I följande exempel skapas en TCP-avsökning som kontrollerar anslutningen till backend-TCP-port 80 var 15: e sekund. Den markeras backend-resursen tillgänglig efter två på varandra följande fel.
+    hello följande exempel skapas en TCP-avsökning som kontrollerar för anslutningen tooback slutpunkt TCP-port 80 var 15: e sekund. Den markeras hello backend-resurs inte tillgänglig efter två på varandra följande fel.
 
     ```azurecli
     $probeV4V6 = azure network lb probe create --resource-group $rgname --name $probeV4V6Name --protocol tcp --port 80 --interval 15 --count 2 --lb-name $lbName
     ```
 
-3. Skapa inkommande NAT-regler som tillåter RDP-anslutningar till backend-resurser
+3. Skapa inkommande NAT-regler som tillåter RDP-anslutningar toohello backend-resurser
 
     ```azurecli
     $inboundNatRuleRdp1 = azure network lb inbound-nat-rule create --resource-group $rgname --name $natRule1V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3389 --backend-port 3389 --lb-name $lbName
     $inboundNatRuleRdp2 = azure network lb inbound-nat-rule create --resource-group $rgname --name $natRule2V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3391 --backend-port 3389 --lb-name $lbName
     ```
 
-4. Skapa regler som skickar trafik till olika portar beroende på vilken frontend tog emot begäran för en belastningsutjämnare
+4. Skapa regler som skickar trafik toodifferent portar beroende på vilken frontend emot hello begäran för en belastningsutjämnare
 
     ```azurecli
     $lbruleIPv4 = azure network lb rule create --resource-group $rgname --name $lbRule1V4Name --frontend-ip-name $frontendV4Name --backend-address-pool-name $backendAddressPoolV4Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 80 --lb-name $lbName
@@ -224,7 +224,7 @@ I det här exemplet skapas följande objekt:
     Förväntad utdata:
 
         info:    Executing command network lb show
-        info:    Looking up the load balancer "myIPv4IPv6Lb"
+        info:    Looking up hello load balancer "myIPv4IPv6Lb"
         data:    Id                              : /subscriptions/########-####-####-####-############/resourceGroups/pscontosorg1southctrlus09152016/providers/Microsoft.Network/loadBalancers/myIPv4IPv6Lb
         data:    Name                            : myIPv4IPv6Lb
         data:    Type                            : Microsoft.Network/loadBalancers
@@ -263,9 +263,9 @@ I det här exemplet skapas följande objekt:
 
 ## <a name="create-nics"></a>Skapa nätverkskort
 
-Skapa nätverkskort och kopplar dem till NAT-regler, regler för inläsning av belastningsutjämnare och avsökningar.
+Skapa nätverkskort och kopplar dem tooNAT regler, regler för inläsning av belastningsutjämnare och avsökningar.
 
-1. Ställ in variablerna PowerShell
+1. Ställ in hello PowerShell variabler
 
     ```powershell
     $nic1Name = "myIPv4IPv6Nic1"
@@ -288,11 +288,11 @@ Skapa nätverkskort och kopplar dem till NAT-regler, regler för inläsning av b
     $nic2IPv6 = azure network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-version "IPv6" --lb-address-pool-ids $backendAddressPoolV6Id --nic-name $nic2Name
     ```
 
-## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Skapa backend-VM resurser och koppla varje nätverkskort
+## <a name="create-hello-back-end-vm-resources-and-attach-each-nic"></a>Skapa hello backend-VM resurser och koppla varje nätverkskort
 
-Du måste ha ett lagringskonto för att skapa virtuella datorer. Belastningsutjämning måste de virtuella datorerna ska vara medlemmar i en tillgänglighetsuppsättning. Mer information om hur du skapar virtuella datorer finns [skapa en virtuell Azure-dator med hjälp av PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
+Du måste ha ett lagringskonto toocreate virtuella datorer. För belastningsutjämning, behöver hello VMs toobe medlemmar i en tillgänglighetsuppsättning. Mer information om hur du skapar virtuella datorer finns [skapa en virtuell Azure-dator med hjälp av PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 
-1. Ställ in variablerna PowerShell
+1. Ställ in hello PowerShell variabler
 
     ```powershell
     $storageAccountName = "ps08092016v6sa0"
@@ -311,23 +311,23 @@ Du måste ha ett lagringskonto för att skapa virtuella datorer. Belastningsutj�
     ```
 
     > [!WARNING]
-    > Det här exemplet använder användarnamn och lösenord för de virtuella datorerna i klartext. Lämplig måste vara försiktig när du använder autentiseringsuppgifter i klartext. Ett säkrare sätt hantera autentiseringsuppgifter i PowerShell finns i [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) cmdlet.
+    > Det här exemplet använder hello användarnamn och lösenord för hello virtuella datorer i klartext. Lämplig måste vara försiktig när du använder autentiseringsuppgifter i hello Rensa. Ett säkrare sätt hantera autentiseringsuppgifter i PowerShell finns i hello [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) cmdlet.
 
-2. Skapa storage-konto och tillgänglighet?
+2. Skapa hello storage-konto och tillgänglighet
 
-    Du kan använda ett befintligt lagringskonto när du skapar de virtuella datorerna. Följande kommando skapar ett nytt lagringskonto.
+    Du kan använda ett befintligt lagringskonto när du skapar hello virtuella datorer. hello följande kommando skapar ett nytt lagringskonto.
 
     ```azurecli
     $storageAcc = azure storage account create $storageAccountName --resource-group $rgName --location $location --sku-name "LRS" --kind "Storage"
     ```
 
-    Skapa sedan tillgänglighetsuppsättningen.
+    Skapa sedan hello tillgänglighetsuppsättning.
 
     ```azurecli
     $availabilitySet = azure availset create --name $availabilitySetName --resource-group $rgName --location $location
     ```
 
-3. Skapa virtuella datorer med associerade nätverkskort
+3. Skapa hello virtuella datorer med hello associerade nätverkskort
 
     ```azurecli
     $vm1 = azure vm create --resource-group $rgname --location $location --availset-name $availabilitySetName --name $vm1Name --nic-id $nic1Id --os-disk-vhd $osDisk1Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension

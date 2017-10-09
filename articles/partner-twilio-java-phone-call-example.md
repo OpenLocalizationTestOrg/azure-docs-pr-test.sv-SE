@@ -1,6 +1,6 @@
 ---
-title: "Hur du gör ett telefonsamtal från Twilio (Java) | Microsoft Docs"
-description: "Lär dig att ringa ett samtal från en webbsida med Twilio i ett Java-program på Azure."
+title: "aaaHow tooMake ett telefonsamtal från Twilio (Java) | Microsoft Docs"
+description: "Lär dig hur toomake en telefon anropa från en webbsida med Twilio i ett Java-program på Azure."
 services: 
 documentationcenter: java
 author: devinrader
@@ -14,30 +14,30 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 04ecb80a2a9e15b549b47138caf71c7e64bda500
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 04fe5a78d431a79790dee3ca75c2b004aea4345d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Hur du gör ett telefonsamtal med Twilio i ett Java-program på Azure
-I följande exempel visas hur du kan använda Twilio ringa ett samtal från en webbsida som finns på Azure. Exempelprogrammet uppmanas användaren för telefonsamtal värden som visas i följande skärmbild visar.
+# <a name="how-toomake-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Hur tooMake ett telefonsamtal med Twilio i ett Java-program på Azure
+hello följande exempel visar hur du kan använda Twilio toomake ett samtal från en webbsida som finns på Azure. hello resulterande program frågar hello användaren för telefonsamtal värden som visas i följande skärmbild som visar hello.
 
 ![Azure anropet formuläret med hjälp av Twilio och Java][twilio_java]
 
-Du behöver göra följande för att använda koden i det här avsnittet:
+Du behöver toodo hello följande toouse hello koden i det här avsnittet:
 
-1. Skaffa ett Twilio-konto och autentisering token. Kom igång med Twilio, utvärdera priser på [http://www.twilio.com/pricing][twilio_pricing]. Du kan registrera dig på [https://www.twilio.com/try-twilio][try_twilio]. Mer information om API som tillhandahålls av Twilio finns [http://www.twilio.com/api][twilio_api].
-2. Hämta Twilio JAR. Vid [https://github.com/twilio/twilio-java][twilio_java_github], du kan hämta GitHub-datakällor och skapa egna JAR eller hämta en förskapad JAR (med eller utan beroenden).
-   Koden i det här avsnittet har skrivits med hjälp av fördefinierade TwilioJava 3.3.8 med beroenden JAR.
-3. Lägg till JAR din Java byggsökväg.
-4. Om du använder Eclipse för att skapa den här Java-program, lägger Twilio JAR i programmet distributionsfilen (WAR) funktionen Eclipses distribution sammansättningen. Om du inte använder Eclipse för att skapa Java-program, kontrollera Twilio JAR är ingår i samma Azure rollen som Java-programmet, och lägga till klassen sökvägen till programmet.
-5. Kontrollera din cacerts keystore innehåller Equifax certifikatutfärdare för säkra-certifikat med MD5 fingeravtryck 67:CB:9 D: C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (serienumret är 35:DE:F4:CF och SHA1 fingeravtrycket D2:32:09:AD:23:D 3:14:23:21:74:E4:0 D: 7F:9 D: 62:13:97:86:63:3A). Det här är certifikatet certifikatutfärdarens certifikat för den [https://api.twilio.com] [ twilio_api_service] -tjänsten som anropas när du använder Twilio APIs. Information om att lägga till den här Certifikatutfärdarens certifikat till din JDK cacert store finns i [att lägga till ett certifikat i certifikatarkivet för Certifikatutfärdaren i Java][add_ca_cert].
+1. Skaffa ett Twilio-konto och autentisering token. tooget igång med Twilio, utvärdera priser på [http://www.twilio.com/pricing][twilio_pricing]. Du kan registrera dig på [https://www.twilio.com/try-twilio][try_twilio]. Information om hello API som tillhandahålls av Twilio finns [http://www.twilio.com/api][twilio_api].
+2. Hämta hello Twilio JAR. Vid [https://github.com/twilio/twilio-java][twilio_java_github], kan du hämta hello GitHub källor och skapa egna JAR eller hämta en förskapad JAR (med eller utan beroenden).
+   hello koden i den här artikeln skrevs med hello fördefinierade JAR TwilioJava 3.3.8 med beroenden.
+3. Lägg till hello JAR tooyour Java byggsökväg.
+4. Om du använder Eclipse toocreate Java-program lägger hello Twilio JAR i programmet distributionsfilen (WAR) funktionen Eclipses distribution sammansättningen. Om du inte använder Eclipse toocreate Java-program, kontrollera hello Twilio JAR ingår i hello samma Azure roll som Java program och tillagda toohello klass-sökväg i ditt program.
+5. Kontrollera din cacerts keystore innehåller hello Equifax certifikatutfärdare för säkra-certifikat med MD5 fingeravtryck 67:CB:9 D: C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (hello seriella nummer är 35:DE:F4:CF och hello SHA1 fingeravtryck D2:32:09:AD:23:D 3:14:23:21:74:E4:0 D: 7F:9 D: 62:13:97:86:63:3A). Det här är hello certifikat certifikatutfärdarens certifikat för hello [https://api.twilio.com] [ twilio_api_service] -tjänsten som anropas när du använder Twilio APIs. Information om att lägga till den här Certifikatutfärdarens certifikat tooyour JDK'S cacert store finns i [att lägga till ett certifikat toohello certifikatarkiv för Java CA][add_ca_cert].
 
-Dessutom förtrogenhet med informationen på [skapar en Hello World program med hjälp av Azure-verktygen för Eclipse][azure_java_eclipse_hello_world], eller med andra tekniker för om du är värd för Java-program i Azure Vi rekommenderar starkt att du inte använder Eclipse.
+Dessutom förtrogenhet med hello information [skapar Hello World använder hello Azure Toolkit för Eclipse][azure_java_eclipse_hello_world], eller med andra tekniker för Java-program i Azure om du använder inte Eclipse, rekommenderas starkt.
 
 ## <a name="create-a-web-form-for-making-a-call"></a>Skapa ett webbformulär för ett samtal
-Följande kod visar hur du skapar ett webbformulär för att hämta användardata för ett samtal. Det här exemplet, ett nytt dynamiskt webbprojekt heter **TwilioCloud**, har skapats och **callform.jsp** har lagts till som en JSP-fil.
+hello följande kod visar hur toocreate en webbplats formuläret tooretrieve användardata för ett samtal. Det här exemplet, ett nytt dynamiskt webbprojekt heter **TwilioCloud**, har skapats och **callform.jsp** har lagts till som en JSP-fil.
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" %>
@@ -64,7 +64,7 @@ Följande kod visar hur du skapar ett webbformulär för att hämta användardat
          </tr>
          <tr>
            <td>Call message:</td>
-           <td><input type="text" size=400 name="callText" value="Hello. This is the call text. Good bye." />
+           <td><input type="text" size=400 name="callText" value="Hello. This is hello call text. Good bye." />
            </td>
          </tr>
          <tr>
@@ -77,8 +77,8 @@ Följande kod visar hur du skapar ett webbformulär för att hämta användardat
     </body>
     </html>
 
-## <a name="create-the-code-to-make-the-call"></a>Skapa koden för att göra anrop
-Följande kod, som kallas när användaren slutför formuläret som visas av callform.jsp, skapar anropet meddelandet och genererar anropet. För det här exemplet JSP-fil med namnet **makecall.jsp** och lades till i **TwilioCloud** projekt. (Använd ditt Twilio-konto och autentisering token i stället för platshållarvärdena för **accountSID** och **authToken** i koden nedan.)
+## <a name="create-hello-code-toomake-hello-call"></a>Skapa hello kod toomake hello anrop
+hello följande kod som anropas när hello användaren Slutför hello formuläret som visas av callform.jsp, skapar anropet hälsningsmeddelande och genererar hello-anrop. För det här exemplet hello JSP-fil med namnet **makecall.jsp** och lades toohello **TwilioCloud** projekt. (Använd ditt Twilio-konto och autentisering token i stället för hello platshållare för värden som har tilldelats för**accountSID** och **authToken** i hello koden nedan.)
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     import="java.util.*"
@@ -99,45 +99,45 @@ Följande kod, som kallas när användaren slutför formuläret som visas av cal
     try 
     {
          // Use your account SID and authentication token instead
-         // of the placeholders shown here.
+         // of hello placeholders shown here.
          String accountSID = "your_twilio_account";
          String authToken = "your_twilio_authentication_token";
 
-         // Instantiate an instance of the Twilio client.     
+         // Instantiate an instance of hello Twilio client.     
          TwilioRestClient client;
          client = new TwilioRestClient(accountSID, authToken);
 
-         // Retrieve the account, used later to retrieve the CallFactory.
+         // Retrieve hello account, used later tooretrieve hello CallFactory.
          Account account = client.getAccount();
 
-         // Display the client endpoint. 
+         // Display hello client endpoint. 
          out.println("<p>Using Twilio endpoint " + client.getEndpoint() + ".</p>");
 
-         // Display the API version.
+         // Display hello API version.
          String APIVERSION = TwilioRestClient.DEFAULT_VERSION;
          out.println("<p>Twilio client API version is " + APIVERSION + ".</p>");
 
-         // Retrieve the values entered by the user.
+         // Retrieve hello values entered by hello user.
          String callTo = request.getParameter("callTo");  
-         // The Outgoing Caller ID, used for the From parameter,
+         // hello Outgoing Caller ID, used for hello From parameter,
          // must have previously been verified with Twilio.
          String callFrom = request.getParameter("callFrom");
          String userText = request.getParameter("callText");
 
-         // Replace spaces in the user's text with '%20', 
-         // to make the text suitable for a URL.
+         // Replace spaces in hello user's text with '%20', 
+         // toomake hello text suitable for a URL.
          userText = userText.replace(" ", "%20");
 
-         // Create a URL using the Twilio message and the user-entered text.
+         // Create a URL using hello Twilio message and hello user-entered text.
          String Url="http://twimlets.com/message";
          Url = Url + "?Message%5B0%5D=" + userText;
 
-         // Display the message URL.
+         // Display hello message URL.
          out.println("<p>");
-         out.println("The URL is " + Url);
+         out.println("hello URL is " + Url);
          out.println("</p>");
 
-         // Place the call From, To and URL values into a hash map. 
+         // Place hello call From, tooand URL values into a hash map. 
          HashMap<String, String> params = new HashMap<String, String>();
          params.put("From", callFrom);
          params.put("To", callTo);
@@ -161,35 +161,35 @@ Följande kod, som kallas när användaren slutför formuläret som visas av cal
     </body>
     </html>
 
-Förutom att göra anropet visar makecall.jsp Twilio-slutpunkten och API-versionen av samtalsstatus. Följande skärmdump är ett exempel:
+Dessutom toomaking Hej anrop, makecall.jsp visar hello Twilio slutpunkt, API-versionen och hello samtalsstatus. Följande skärmbild som visar hello är ett exempel:
 
 ![Azure anropet svaret med hjälp av Twilio och Java][twilio_java_response]
 
-## <a name="run-the-application"></a>Köra programmet
-Följande är de övergripande stegen för att köra programmet; information för de här stegen finns på [skapar en Hello World program med hjälp av Azure-verktygen för Eclipse][azure_java_eclipse_hello_world].
+## <a name="run-hello-application"></a>Kör programmet hello
+Följande är hello anvisningar toorun din ansökan. information för de här stegen finns på [skapar Hello World använder hello Azure Toolkit för Eclipse][azure_java_eclipse_hello_world].
 
-1. Exportera din TwilioCloud WAR till Azure **approot** mapp. 
-2. Ändra **startup.cmd** att packa TwilioCloud-WAR.
-3. Kompilera programmet för beräkningsemulatorn.
-4. Starta distributionen i beräkningsemulatorn.
+1. Exportera din TwilioCloud WAR-toohello Azure **approot** mapp. 
+2. Ändra **startup.cmd** toounzip TwilioCloud-WAR.
+3. Kompilera programmet för hello beräkningsemulatorn.
+4. Starta distributionen i hello beräkningsemulatorn.
 5. Öppna en webbläsare och kör **http://localhost:8080/TwilioCloud/callform.jsp**.
-6. Ange värden i formuläret, klickar du på **gör det här anropet**, och sedan visa resultaten i makecall.jsp.
+6. Ange värden i formuläret hello klickar du på **gör det här anropet**, och sedan visa hello resultatet i makecall.jsp.
 
-När du är redo att distribuera till Azure, recompile för distribution till molnet, distribuera till Azure och kör http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp i webbläsaren (Ersätt värdet för  *your_hosted_name*).
+När du är klar toodeploy tooAzure kompilera om för distributionen toohello molnet, distribuera tooAzure och kör http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp i hello webbläsare (Ersätt värdet för *your_hosted_name*).
 
 ## <a name="next-steps"></a>Nästa steg
-Den här koden har angetts för att visa grundläggande funktioner med hjälp av Twilio i Java i Azure. Innan du distribuerar till Azure i produktion, kanske du vill lägga till flera felhantering eller andra funktioner. Exempel:
+Den här koden har angetts tooshow du grundläggande funktioner med hjälp av Twilio i Java i Azure. Du kanske vill tooadd mer felhantering eller andra funktioner innan du distribuerar tooAzure i produktion. Exempel:
 
-* Istället för att använda ett webbformulär, kunde du använda Azure storage-blobbar eller SQL-databas för att lagra telefonnummer och anropa text. Information om hur du använder Azure storage-blobbar i Java finns [hur du använder tjänsten Blob Storage från Java][howto_blob_storage_java]. Information om hur du använder SQL-databas i Java finns [med hjälp av SQL-databas i Java][howto_sql_azure_java].
-* Du kan använda **RoleEnvironment.getConfigurationSettings** för att hämta Twilio-konto-ID och autentisering token från din distribution konfigurationsinställningar, i stället för att hårdkoda värdena i makecall.jsp. Information om den **RoleEnvironment** klassen, se [med hjälp av Azure Service Runtime Library i JSP] [ azure_runtime_jsp] och dokumentation för körtid för Azure-paketet på [http://dl.windowsazure.com/javadoc][azure_javadoc].
-* Koden makecall.jsp tilldelar en URL som anges Twilio [http://twimlets.com/message][twimlet_message_url], i den **Url** variabeln. URL: en innehåller ett Twilio Markup Language (TwiML)-svar som informerar Twilio hur du fortsätter med anropet. Till exempel TwiML som returneras kan innehålla en  **&lt;säg&gt;**  verb som resulterar i text som talas till mottagaren anrop. I stället för med den angivna Twilio-URL, kan du skapa tjänsten för att svara på Twilios begäran. Mer information finns i [så Använd Twilio för röst- och SMS-funktioner i Java][howto_twilio_voice_sms_java]. Mer information om TwiML kan hittas på [http://www.twilio.com/docs/api/twiml][twiml], och mer information om  **&lt;säg&gt;**  och andra Twilio-verb finns på [http://www.twilio.com/docs/api/twiml/say][twilio_say].
-* Läs Twilio-riktlinjer för säkerhet på [https://www.twilio.com/docs/security][twilio_docs_security].
+* Istället för att använda ett webbformulär, kan du använda Azure storage-blobbar eller SQL-databas toostore telefonnummer och anropa text. Information om hur du använder Azure storage-blobbar i Java finns [hur tooUse hello Blob Storage-tjänst från Java][howto_blob_storage_java]. Information om hur du använder SQL-databas i Java finns [med hjälp av SQL-databas i Java][howto_sql_azure_java].
+* Du kan använda **RoleEnvironment.getConfigurationSettings** tooretrieve hello Twilio-konto-ID och autentisering token från din distribution konfigurationsinställningar, i stället för att hårdkoda hello värdena i makecall.jsp. Information om hello **RoleEnvironment** klassen, se [Using hello Azure Service Runtime Library i JSP] [ azure_runtime_jsp] och hello Azure körtid paketet dokumentationen på [http://dl.windowsazure.com/javadoc][azure_javadoc].
+* Hej makecall.jsp kod tilldelar en Twilio-tillhandahållna URL [http://twimlets.com/message][twimlet_message_url], toohello **Url** variabeln. URL: en innehåller ett Twilio Markup Language (TwiML)-svar som informerar Twilio hur tooproceed med hello anropa. Till exempel hello TwiML som returneras kan innehålla en  **&lt;säg&gt;**  verb som resulterar i texten är talade toohello anrop mottagaren. Istället för att använda hello Twilio-tillhandahållna URL kan du bygga egna service toorespond tooTwilio begäran. Mer information finns i [hur tooUse Twilio för röst- och SMS-funktioner i Java][howto_twilio_voice_sms_java]. Mer information om TwiML kan hittas på [http://www.twilio.com/docs/api/twiml][twiml], och mer information om  **&lt;säg&gt;**  och andra Twilio-verb finns på [http://www.twilio.com/docs/api/twiml/say][twilio_say].
+* Läsa hello Twilio säkerhetsriktlinjer på [https://www.twilio.com/docs/security][twilio_docs_security].
 
 Mer information om Twilio finns [https://www.twilio.com/docs][twilio_docs].
 
 ## <a name="see-also"></a>Se även
-* [Hur du använder Twilio för röst- och SMS-funktioner i Java][howto_twilio_voice_sms_java]
-* [Lägga till ett certifikat i certifikatarkivet för Java-Certifikatutfärdare][add_ca_cert]
+* [Hur tooUse Twilio för röst- och SMS-funktioner i Java][howto_twilio_voice_sms_java]
+* [Lägga till ett certifikat toohello Java CA-certifikatet i lagret][add_ca_cert]
 
 [twilio_pricing]: http://www.twilio.com/pricing
 [try_twilio]: http://www.twilio.com/try-twilio

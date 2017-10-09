@@ -1,6 +1,6 @@
 ---
-title: Azure Import/Export manifestfilen format | Microsoft Docs
-description: "Lär dig mer om formatet för enheten manifestfilen som beskriver mappningen mellan blobbar i Azure Blob storage och filer på en enhet i en import eller exportera jobb i tjänsten Import/Export."
+title: aaaAzure Import/Export manifestfilen format | Microsoft Docs
+description: "Läs mer om hello format hello manifestfilen för enheten som beskriver hello mappning mellan blobbar i Azure Blob storage och filer på en enhet i ett import- eller jobb i hello Import/Export service."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: c1857eb94fba13c30e7f07669616f5d0ab9953f4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d7e5e1990482916f7ff5f891c97343b52e82b2f3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Azure Import/Export service manifest filformat
-Enheten manifestfilen beskriver mappningen mellan blobbar i Azure Blob storage och filer på enheten som består av ett jobb som importeras eller exporteras. För en importen manifestfilen skapas som en del av enheten förberedelseprocessen och lagras på enheten innan enheten skickas till Azure-datacentret. När du exporterar, manifestet skapas och lagras på enheten av tjänsten Azure Import/Export.  
+hello enhet manifestfilen beskriver hello mappning mellan blobbar i Azure Blob storage och filer på enheten som består av ett jobb som importeras eller exporteras. För en importen hello manifestfilen skapas som en del av hello enhet förberedelseprocessen och lagras på hello enhet innan hello enhet skickas toohello Azure-datacenter. När du exporterar, hello manifestet skapas och lagras på hello enhet av hello Azure Import/Export service.  
   
-För både importera och exportera jobben lagras manifestfilen enhet på import- eller enhet; den kan inte överföras till tjänsten via API-åtgärd.  
+För både import och exportjobb hello enhet manifestfilen lagras på hello importera eller exportera enhet; Det är inte överförs toohello tjänsten via API-åtgärd.  
   
-Följande beskriver allmänna formatet för en manifestfil på enheten:  
+hello nedan beskrivs hello formatet av en manifestfil på enheten:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -36,7 +36,7 @@ Följande beskriver allmänna formatet för en manifestfil på enheten:
   
     <!-- First Blob List -->  
     <BlobList>  
-      <!-- Global properties and metadata that applies to all blobs -->  
+      <!-- Global properties and metadata that applies tooall blobs -->  
       [<MetadataPath Hash="md5-hash">global-metadata-file-path</MetadataPath>]  
       [<PropertiesPath   
         Hash="md5-hash">global-properties-file-path</PropertiesPath>]  
@@ -93,44 +93,44 @@ block-list ::=
 
 ## <a name="manifest-xml-elements-and-attributes"></a>Manifestets XML-element och attribut
 
-Dataelement och attribut för manifest-XML-format för enheten har angetts i följande tabell.  
+hello dataelement och attribut i hello enhet Manifestets XML-formatet har angetts i hello i den följande tabellen.  
   
 |XML-Element|Typ|Beskrivning|  
 |-----------------|----------|-----------------|  
-|`DriveManifest`|Rotelementet|Rotelementet för manifestfilen. Alla andra element i filen är under det här elementet.|  
-|`Version`|Attributet sträng|Versionen av manifestfilen.|  
-|`Drive`|Kapslade XML-element|Innehåller manifestet för varje enhet.|  
-|`DriveId`|Sträng|Unikt enheten identifierare för enheten. Identifierare för enheten hittas genom att fråga enheten för dess serienummer. Serienumret för enheten skrivs vanligtvis på enheten samt utanför. Den `DriveID` elementet måste finnas före alla `BlobList` element i manifestfilen.|  
-|`StorageAccountKey`|Sträng|Krävs för import jobb om och bara om `ContainerSas` har inte angetts. Kontonyckel för Azure storage-konto som är associerat med jobbet.<br /><br /> Det här elementet har utelämnats från manifestet för exporten.|  
-|`ContainerSas`|Sträng|Krävs för import jobb om och bara om `StorageAccountKey` har inte angetts. Behållaren SAS för att komma åt blobar som är associerat med jobbet. Se [placera jobbet](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) för dess format. Det här elementet har utelämnats från manifestet för exporten.|  
-|`ClientCreator`|Sträng|Anger klienten som skapade XML-filen. Det här värdet är inte tolkas av tjänsten Import/Export.|  
-|`BlobList`|Kapslade XML-element|Innehåller en lista över blobbar som ingår i att importera eller exportera jobb. Varje blobb i en blob-lista delar samma metadata och egenskaper.|  
-|`BlobList/MetadataPath`|Sträng|Valfri. Anger den relativa sökvägen för en fil på disken som innehåller de metadata som standard som ställs in på blobbar i blob-listan för en importåtgärd. Dessa metadata kan åsidosättas på grundval av blob av blob.<br /><br /> Det här elementet har utelämnats från manifestet för exporten.|  
-|`BlobList/MetadataPath/@Hash`|Attributet sträng|Anger Base16-kodade MD5 hash-värdet för metadatafilen.|  
-|`BlobList/PropertiesPath`|Sträng|Valfri. Anger den relativa sökvägen för en fil på disken som innehåller standardegenskaper som ställs in på blobbar i blob-listan för en importåtgärd. De här egenskaperna kan åsidosättas på grundval av blob av blob.<br /><br /> Det här elementet har utelämnats från manifestet för exporten.|  
-|`BlobList/PropertiesPath/@Hash`|Attributet sträng|Anger Base16-kodade MD5 hash-värdet för filen egenskaper.|  
+|`DriveManifest`|Rotelementet|hello rotelement i hello manifestfilen. Alla andra element i hello-filen är under det här elementet.|  
+|`Version`|Attributet sträng|hello version av hello manifestfilen.|  
+|`Drive`|Kapslade XML-element|Innehåller hello manifest för varje enhet.|  
+|`DriveId`|Sträng|hello unika Enhetsidentifieraren hello-enheten. Hej Enhetsidentifieraren hittas genom att fråga hello enhet för dess serienummer. serienumret för hello enhet skrivs vanligtvis på hello utanför hello-enhet. Hej `DriveID` elementet måste finnas före alla `BlobList` element i hello manifestfilen.|  
+|`StorageAccountKey`|Sträng|Krävs för import jobb om och bara om `ContainerSas` har inte angetts. Hej kontonyckel för hello Azure storage-konto som är associerade med hello jobb.<br /><br /> Det här elementet har utelämnats från hello manifest för exporten.|  
+|`ContainerSas`|Sträng|Krävs för import jobb om och bara om `StorageAccountKey` har inte angetts. hello behållare SAS för att komma åt hello blobbar som är associerade med hello jobb. Se [placera jobbet](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) för dess format. Det här elementet har utelämnats från hello manifest för exporten.|  
+|`ClientCreator`|Sträng|Anger hello-klienten som skapade hello XML-fil. Det här värdet är inte tolkas av hello Import/Export service.|  
+|`BlobList`|Kapslade XML-element|Innehåller en lista över blobbar som är en del av hello importera eller exportera jobb. Varje blobb i en blob-lista resurser hello samma metadata och egenskaper.|  
+|`BlobList/MetadataPath`|Sträng|Valfri. Anger hello relativa sökvägen till en fil på hello-disk som innehåller hello standard metadata som ställs in på blobbar i hello blob-listan för en importen. Dessa metadata kan åsidosättas på grundval av blob av blob.<br /><br /> Det här elementet har utelämnats från hello manifest för exporten.|  
+|`BlobList/MetadataPath/@Hash`|Attributet sträng|Anger hello Base16-kodade MD5 hash-värdet för hello metadatafil.|  
+|`BlobList/PropertiesPath`|Sträng|Valfri. Anger hello relativa sökvägen till en fil på hello-disk som innehåller hello standardegenskaper som ställs in på blobbar i hello blob-listan för en importen. De här egenskaperna kan åsidosättas på grundval av blob av blob.<br /><br /> Det här elementet har utelämnats från hello manifest för exporten.|  
+|`BlobList/PropertiesPath/@Hash`|Attributet sträng|Anger hello Base16-kodade MD5 hash-värde för hello egenskaper för filen.|  
 |`Blob`|Kapslade XML-element|Innehåller information om varje blobb i varje blob-lista.|  
-|`Blob/BlobPath`|Sträng|Relativ URI till blob, från och med behållarens namn. Om blob finns i Rotbehållare, det måste börja med `$root`.|  
-|`Blob/FilePath`|Sträng|Anger den relativa sökvägen till filen på enheten. För exportjobb, ska blobbsökvägen användas för sökvägen till filen om möjligt. *t.ex.*, `pictures/bob/wild/desert.jpg` kommer att exporteras till `\pictures\bob\wild\desert.jpg`. På grund av begränsningar av NTFS-namn kan dock en blob exporteras till en fil med en sökväg som inte liknar blob-sökväg.|  
-|`Blob/ClientData`|Sträng|Valfri. Innehåller kommentarer från kunden. Det här värdet är inte tolkas av tjänsten Import/Export.|  
-|`Blob/Snapshot`|Datum och tid|Valfritt för exportjobb. Anger identifieraren för ögonblicksbild för en ögonblicksbild av exporterade blob.|  
-|`Blob/Length`|Integer|Anger den totala längden på blob i byte. Värdet kan vara upp till 200 GB för en blockblob och upp till 1 TB för en sidblobb. Det här värdet måste vara delbar med 512 för en sidblobb.|  
-|`Blob/ImportDisposition`|Sträng|Valfritt för importjobb utelämnas för exportjobb. Detta anger hur tjänsten Import/Export ska hantera fallet för ett importjobb där en blob med samma namn redan finns. Om det här värdet utelämnas från manifestet importera standardvärdet är `rename`.<br /><br /> Värden för det här elementet är:<br /><br /> -   `no-overwrite`: Om det finns redan en mål-blob med samma namn, importen ska hoppa över att importera den här filen.<br />-   `overwrite`: Alla befintliga mål-blob skrivs över helt av nyligen importerade filen.<br />-   `rename`: Ny blob kommer upp med ett ändrat namn.<br /><br /> Byta namn på regeln är följande:<br /><br /> -Om blobbnamnet inte innehåller en punkt, skapas ett nytt namn genom att lägga till `(2)` till det ursprungliga blobbnamnet, om det här nya namnet också står i konflikt med blobbnamnet på en befintlig sedan `(3)` läggs i stället för `(2)`; och så vidare.<br />-Om blob-namnet innehåller en punkt, anses del efter den sista punkten namnet. Liknar proceduren ovan `(2)` infogas innan den senaste punkten att generera ett nytt namn, om de nya namnet fortfarande står i konflikterna med en befintlig blob-namnet och sedan tjänsten försöker `(3)`, `(4)`och så vidare tills ett namn som inte orsakar konflikter hittas.<br /><br /> Några exempel:<br /><br /> Blob `BlobNameWithoutDot` får namnet:<br /><br /> `BlobNameWithoutDot (2)  // if BlobNameWithoutDot exists`<br /><br /> `BlobNameWithoutDot (3)  // if both BlobNameWithoutDot and BlobNameWithoutDot (2) exist`<br /><br /> Blob `Seattle.jpg` får namnet:<br /><br /> `Seattle (2).jpg  // if Seattle.jpg exists`<br /><br /> `Seattle (3).jpg  // if both Seattle.jpg and Seattle (2).jpg exist`|  
-|`PageRangeList`|Kapslade XML-element|Krävs för en sidblobb.<br /><br /> För en import anger åtgärden, du en lista med byte-intervall för en fil som ska importeras. Varje sidintervall beskrivs av en förskjutning och längd i källfilen som beskriver sidintervall tillsammans med en MD5-hash för regionen. Den `Hash` attribut för ett sidintervall krävs. Tjänsten kommer att verifiera att data i blob hash matchar beräknade MD5-hash från sidintervallet. Valfritt antal sidintervall kan användas för att beskriva en fil för en import, med totalen storleken upp till 1 TB. Alla sidintervall måste vara sorterade efter förskjutningen och utan överlappningar tillåts.<br /><br /> Åtgärden anger en uppsättning med byte-intervall för en blob som har exporterats till enheten för export.<br /><br /> Sidor kan tillsammans omfatta endast underintervall för en blob eller fil.  Den återstående delen av filen som inte omfattas av några sidintervall är förväntat och dess innehåll kan vara odefinierat.|  
+|`Blob/BlobPath`|Sträng|hello relativ URI toohello blob, från och med hello behållarnamn. Om hello blob finns i Rotbehållare, det måste börja med `$root`.|  
+|`Blob/FilePath`|Sträng|Anger hello relativ sökväg toohello-hello enheten. För exportjobb kommer hello blobbsökvägen att användas för hello filsökväg om möjligt. *t.ex.*, `pictures/bob/wild/desert.jpg` exporteras för`\pictures\bob\wild\desert.jpg`. På grund av begränsningar i toohello av NTFS-namnen kan en blob emellertid exporterade tooa fil med en sökväg som inte liknar hello blob-sökväg.|  
+|`Blob/ClientData`|Sträng|Valfri. Innehåller kommentarer från hello kund. Det här värdet är inte tolkas av hello Import/Export service.|  
+|`Blob/Snapshot`|Datum och tid|Valfritt för exportjobb. Anger hello ögonblicksbild identifierare för en ögonblicksbild av exporterade blob.|  
+|`Blob/Length`|Integer|Anger hello hello blob totala längd i byte. hello-värdet kan vara too200 GB för en blockblobb och in too1 TB för en sidblobb. Det här värdet måste vara delbar med 512 för en sidblobb.|  
+|`Blob/ImportDisposition`|Sträng|Valfritt för importjobb utelämnas för exportjobb. Detta anger hur hello Import/Export service ska hantera hello fallet för ett importjobb där en blob med hello samma namn redan finns. Om det här värdet utelämnas från hello importera manifest hello standardvärdet är `rename`.<br /><br /> hello värden för det här elementet är:<br /><br /> -   `no-overwrite`: Om det finns redan en mål-blob med hello samma namn, hello importen ska hoppa över att importera den här filen.<br />-   `overwrite`: Alla befintliga mål-blob skrivs över helt av hello nyligen importerade filen.<br />-   `rename`: hello nya blob kommer upp med ett ändrat namn.<br /><br /> hello byta namn på regeln är följande:<br /><br /> -Om hello blob-namnet inte innehåller en punkt, skapas ett nytt namn genom att lägga till `(2)` toohello ursprungliga blob name; om det här nya namnet också står i konflikt med blobbnamnet på en befintlig sedan `(3)` läggs i stället för `(2)`; och så vidare.<br />-Om hello blob-namnet innehåller en punkt, anses hello del följande hello senaste punkt hello Tilläggsnamn. Liknande toohello ovan proceduren `(2)` införas före hello senaste punkt toogenerate ett nytt namn, om hello nytt namn är fortfarande i konflikt med ett befintligt blob-namn, sedan hello-tjänsten försöker `(3)`, `(4)`och så vidare tills en icke motstridig hitta namnet.<br /><br /> Några exempel:<br /><br /> hello blob `BlobNameWithoutDot` får namnet:<br /><br /> `BlobNameWithoutDot (2)  // if BlobNameWithoutDot exists`<br /><br /> `BlobNameWithoutDot (3)  // if both BlobNameWithoutDot and BlobNameWithoutDot (2) exist`<br /><br /> hello blob `Seattle.jpg` får namnet:<br /><br /> `Seattle (2).jpg  // if Seattle.jpg exists`<br /><br /> `Seattle (3).jpg  // if both Seattle.jpg and Seattle (2).jpg exist`|  
+|`PageRangeList`|Kapslade XML-element|Krävs för en sidblobb.<br /><br /> För en import anger åtgärden, du en lista med byte-intervall för en fil toobe importeras. Varje sidintervall beskrivs av en förskjutning och längd i hello källfil som beskriver hello sidintervallet, tillsammans med en MD5-hash för hello region. Hej `Hash` attribut för ett sidintervall krävs. hello tjänsten verifierar att hello hashdata hello i hello blob matchar hello beräknad MD5-hash från hello sidintervallet. Valfritt antal sidintervall kanske används toodescribe en fil för en import med hello totala storleken upp too1 TB. Alla sidintervall måste vara sorterade efter förskjutningen och utan överlappningar tillåts.<br /><br /> Anger en uppsättning byteintervall av en blob som har exporterats toohello enhet för en export-åtgärd.<br /><br /> hello sidintervall kan tillsammans omfatta endast underintervall för en blob eller fil.  hello resten av hello-fil som inte omfattas av några sidintervall är förväntat och dess innehåll kan vara odefinierat.|  
 |`PageRange`|XML-element|Representerar ett sidintervall.|  
-|`PageRange/@Offset`|Attributet heltal|Anger förskjutningen i filen överföring och blob där ett angivet intervall börjar. Det här värdet måste vara delbar med 512.|  
-|`PageRange/@Length`|Attributet heltal|Anger längden på sidintervallet. Det här värdet måste vara delbar med 512 och högst 4 MB.|  
-|`PageRange/@Hash`|Attributet sträng|Anger Base16-kodade MD5 hash-värdet för sidintervallet.|  
-|`BlockList`|Kapslade XML-element|Krävs för en blockblobb med namngivna block.<br /><br /> En importen anger blockeringslistan en uppsättning block som ska importeras till Azure Storage. Lista över blockerade anger en exportåtgärden, där varje block har lagrats i filen på disken för export. Varje block beskrivs av en förskjutning i filen och en Blockets längd; varje block dessutom namnges av ett block-ID-attribut och innehåller en MD5-hash för blocket. Upp till 50 000 block kan användas för att beskriva en blob.  Alla block måste beställas av Förskjutning, tillsammans med bör omfatta vilka filen *d.v.s.*, det måste finnas inget mellanrum mellan block. Om blob är mer än 64 MB, måste block-ID: N för varje block vara antingen alla saknade eller alla finns. Block-ID: N måste vara Base64-kodade strängar. Se [placera Block](/rest/api/storageservices/put-block) ytterligare krav för block-ID: N.|  
+|`PageRange/@Offset`|Attributet heltal|Anger hello förskjutningen i hello överföring fil- och hello blob där hello angivna sidintervallet börjar. Det här värdet måste vara delbar med 512.|  
+|`PageRange/@Length`|Attributet heltal|Anger hello hello sidintervallet. Det här värdet måste vara delbar med 512 och högst 4 MB.|  
+|`PageRange/@Hash`|Attributet sträng|Anger hello Base16-kodade MD5 hash-värdet för hello sidintervallet.|  
+|`BlockList`|Kapslade XML-element|Krävs för en blockblobb med namngivna block.<br /><br /> En importen anger hello Blockeringslista en uppsättning block som ska importeras till Azure Storage. Hello Blockeringslista anger en exportåtgärden, där varje block har lagrats i hello filen hello export. Varje block beskrivs av en förskjutning i hello fil- och Blockets längd; varje block dessutom namnges av ett block-ID-attribut och innehåller en MD5-hash för hello-block. Konfigurera too50 kanske 000 block används toodescribe en blob.  Alla block måste beställas av Förskjutning, tillsammans med bör omfatta hello fullständig uppsättning hello filen *d.v.s.*, det måste finnas inget mellanrum mellan block. Om hello blob är mer än 64 MB, hello block-ID: N för varje block måste vara alla saknas eller alla finns. Block-ID: N är obligatoriska toobe Base64-kodade strängar. Se [placera Block](/rest/api/storageservices/put-block) ytterligare krav för block-ID: N.|  
 |`Block`|XML-element|Representerar ett block.|  
-|`Block/@Offset`|Attributet heltal|Anger förskjutningen där det angivna blocket börjar.|  
-|`Block/@Length`|Attributet heltal|Anger antalet byte i blocket; Det här värdet måste vara fler än 4MB.|  
-|`Block/@Id`|Attributet sträng|Anger en sträng som representerar block-ID för blocket.|  
-|`Block/@Hash`|Attributet sträng|Anger Base16-kodade MD5-hash av blocket.|  
-|`Blob/MetadataPath`|Sträng|Valfri. Anger den relativa sökvägen för en metadatafil. Under en import är metadata inställd på mål-blob. När du exporterar lagras blobens metadata i metadatafilen på enheten.|  
-|`Blob/MetadataPath/@Hash`|Attributet sträng|Anger Base16-kodade MD5-hash för det blob-metadatafil.|  
-|`Blob/PropertiesPath`|Sträng|Valfri. Anger den relativa sökvägen till en egenskapsfil. Under en import ange egenskaper på mål-blob. När du exporterar lagras blob-egenskaper i filen egenskaper på enheten.|  
-|`Blob/PropertiesPath/@Hash`|Attributet sträng|Anger Base16-kodade MD5-hash för det blob egenskapsfil.|  
+|`Block/@Offset`|Attributet heltal|Anger hello förskjutningen där hello angivet block börjar.|  
+|`Block/@Length`|Attributet heltal|Anger hello antalet byte i hello-block. Det här värdet måste vara fler än 4MB.|  
+|`Block/@Id`|Attributet sträng|Anger en sträng som representerar hello block-ID för hello-block.|  
+|`Block/@Hash`|Attributet sträng|Anger hello Base16-kodade MD5-hash för hello-block.|  
+|`Blob/MetadataPath`|Sträng|Valfri. Anger hello relativ sökväg för en metadatafil. Under en import är hello metadata inställd på hello mål-blob. När du exporterar lagras hello blob metadata i hello metadatafil på hello enhet.|  
+|`Blob/MetadataPath/@Hash`|Attributet sträng|Anger hello Base16-kodade MD5-hash för hello blob-metadatafil.|  
+|`Blob/PropertiesPath`|Sträng|Valfri. Anger hello relativa sökvägen till en egenskapsfil. Under en import anges hello egenskaper på hello mål-blob. När du exporterar lagras hello blob egenskaper i hello egenskaper-hello enheten.|  
+|`Blob/PropertiesPath/@Hash`|Attributet sträng|Anger hello Base16-kodade MD5-hash för hello blob egenskaper-fil.|  
   
 ## <a name="next-steps"></a>Nästa steg
  

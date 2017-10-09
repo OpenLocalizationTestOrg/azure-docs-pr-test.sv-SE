@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med PagerDuty | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och PagerDuty."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och PagerDuty."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,63 +14,63 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: bf5263ce4d8fbc231029c101f167f4b55a921e60
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c3cfbedac3bf075e2d8cd833d5de7ca0bc9468b6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Självstudier: Azure Active Directory-integrering med PagerDuty
 
-I kursen får lära du att integrera PagerDuty med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate PagerDuty med Azure Active Directory (AD Azure).
 
-Integrera PagerDuty med Azure AD ger dig följande fördelar:
+Integrera PagerDuty med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till PagerDuty
-- Du kan aktivera användarna att automatiskt hämta loggat in på PagerDuty (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till tooPagerDuty
+- Du kan aktivera din användare tooautomatically get inloggade tooPagerDuty (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med PagerDuty, behöver du följande:
+tooconfigure Azure AD-integrering med PagerDuty, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En PagerDuty enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till PagerDuty från galleriet
+1. Att lägga till PagerDuty från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-pagerduty-from-the-gallery"></a>Att lägga till PagerDuty från galleriet
-Du måste lägga till PagerDuty från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av PagerDuty i Azure AD.
+## <a name="adding-pagerduty-from-hello-gallery"></a>Att lägga till PagerDuty från hello-galleriet
+tooconfigure hello integrering av PagerDuty i Azure AD, behöver du tooadd PagerDuty hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till PagerDuty från galleriet:**
+**tooadd PagerDuty från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
-    ![Azure Active Directory-knappen][1]
+    ![hello Azure Active Directory-knappen][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
-    ![Bladet Enterprise program][2]
+    ![hello Enterprise program bladet][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
-    ![Knappen Nytt program][3]
+    ![hello-knappen för nytt program][3]
 
-4. I sökrutan skriver **PagerDuty**väljer **PagerDuty** resultatet-panelen klickar **Lägg till** för att lägga till programmet.
+4. Skriv i sökrutan hello **PagerDuty**väljer **PagerDuty** resultatet-panelen klickar **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-pagerduty-tutorial/tutorial_pagerduty_addfromgallery.png)
 
@@ -78,58 +78,58 @@ Du måste lägga till PagerDuty från galleriet i listan över hanterade SaaS-ap
 
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med PagerDuty baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till användaren i PagerDuty motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i PagerDuty upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i PagerDuty är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i PagerDuty toobe upprättas.
 
-I PagerDuty, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+I PagerDuty, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med PagerDuty, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med PagerDuty, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare PagerDuty](#create-a-pagerduty-test-user)**  – du har en motsvarighet för Britta Simon i PagerDuty som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#test-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare PagerDuty](#create-a-pagerduty-test-user)**  -toohave en motsvarighet för Britta Simon i PagerDuty som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#test-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt PagerDuty program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt PagerDuty program.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med PagerDuty:**
+**Utför följande steg hello tooconfigure Azure AD enkel inloggning med PagerDuty:**
 
-1. I Azure-portalen på den **PagerDuty** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **PagerDuty** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning länk][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Enkel inloggning dialogrutan](./media/active-directory-saas-pagerduty-tutorial/tutorial_pagerduty_samlbase.png)
 
-3. På den **PagerDuty domän och URL: er** avsnittet, utför följande steg:
+3. På hello **PagerDuty domän och URL: er** avsnittet, utföra hello följande steg:
 
     ![URL: er och PagerDuty domän med enkel inloggning information](./media/active-directory-saas-pagerduty-tutorial/tutorial_pagerduty_url.png)
 
-    a. I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<tenant-name>.pagerduty.com`
+    a. I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<tenant-name>.pagerduty.com`
 
-    b. I den **identifierare** textruta Skriv en URL med följande mönster:`https://<tenant-name>.pagerduty.com`
+    b. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<tenant-name>.pagerduty.com`
 
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska inloggnings-URL och identifierare. Kontakta [PagerDuty klienten supportteamet](https://www.pagerduty.com/support/) att hämta dessa värden. 
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska inloggnings-URL och identifierare. Kontakta [PagerDuty klienten supportteamet](https://www.pagerduty.com/support/) tooget dessa värden. 
 
-4. På den **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara certifikatfilen på datorn.
+4. På hello **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara sedan hello certifikat på datorn.
 
-    ![Länken hämta certifikatet](./media/active-directory-saas-pagerduty-tutorial/tutorial_pagerduty_certificate.png) 
+    ![länk för hämtning av hello-certifikat](./media/active-directory-saas-pagerduty-tutorial/tutorial_pagerduty_certificate.png) 
 
 5. Klicka på **spara** knappen.
 
     ![Konfigurera enkel inloggning spara](./media/active-directory-saas-pagerduty-tutorial/tutorial_general_400.png)
 
-6. På den **PagerDuty Configuration** klickar du på **konfigurera PagerDuty** att öppna **konfigurera inloggning** fönster. Kopiera den **Sign-Out Webbadressen och SAML enkel inloggning Service** från den **Snabbreferens avsnitt.**
+6. På hello **PagerDuty Configuration** klickar du på **konfigurera PagerDuty** tooopen **konfigurera inloggning** fönster. Kopiera hello **Sign-Out Webbadressen och SAML enkel inloggning Service** från hello **Snabbreferens avsnitt.**
 
     ![PagerDuty konfiguration](./media/active-directory-saas-pagerduty-tutorial/tutorial_pagerduty_configure.png) 
 
 7. Logga in på webbplatsen Pagerduty företag som en administratör i en annan webbläsarfönster.
 
-8. Klicka på menyn högst upp **kontoinställningar**.
+8. Hello-menyn överst hello **kontoinställningar**.
    
     ![Kontoinställningar](./media/active-directory-saas-pagerduty-tutorial/ic778535.png "kontoinställningar")
 
@@ -137,111 +137,111 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
    
     ![Enkel inloggning](./media/active-directory-saas-pagerduty-tutorial/ic778536.png "enkel inloggning")
 
-10. På den **aktivera enkel inloggning (SSO)** utför följande steg:
+10. På hello **aktivera enkel inloggning (SSO)** utför hello följande steg:
    
     ![Aktivera enkel inloggning](./media/active-directory-saas-pagerduty-tutorial/ic778537.png "aktivera enkel inloggning")
    
-    a. Öppna din Base64-kodade certifikat hämtas från Azure-portalen i anteckningar, kopiera innehållet i den till Urklipp och klistra in den till den **X.509-certifikat** textruta
+    a. Öppna din Base64-kodade certifikat hämtas från Azure-portalen i anteckningar, kopiera hello innehållet i den i Urklipp, och klistra in den toohello **X.509-certifikat** textruta
   
-    b. I den **inloggnings-URL** textruta klistra in **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen.
+    b. I hello **Inloggningswebbadressen** textruta klistra in **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen.
   
-    c. I den **logga ut URL** textruta klistra in **Sign-Out URL** som du har kopierat från Azure-portalen.
+    c. I hello **logga ut URL** textruta klistra in **Sign-Out URL** som du har kopierat från Azure-portalen.
  
     d. Välj **aktivera enkel inloggning**.
  
     e. Klicka på **spara ändringar**.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
 
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
 ![Skapa en testanvändare i Azure AD][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
-    ![Azure Active Directory-knappen](./media/active-directory-saas-pagerduty-tutorial/create_aaduser_01.png) 
+    ![hello Azure Active Directory-knappen](./media/active-directory-saas-pagerduty-tutorial/create_aaduser_01.png) 
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
     
-    ![”Användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-pagerduty-tutorial/create_aaduser_02.png) 
+    ![Hej ”användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-pagerduty-tutorial/create_aaduser_02.png) 
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
  
-    ![Knappen Lägg till](./media/active-directory-saas-pagerduty-tutorial/create_aaduser_03.png) 
+    ![hello webbinställningar](./media/active-directory-saas-pagerduty-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
-    ![Dialogrutan användare](./media/active-directory-saas-pagerduty-tutorial/create_aaduser_04.png) 
+    ![hello användardialogrutan](./media/active-directory-saas-pagerduty-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="create-a-pagerduty-test-user"></a>Skapa en testanvändare PagerDuty
 
-Om du vill aktivera Azure AD-användare kan logga in på PagerDuty etableras de i PagerDuty.  
-När det gäller PagerDuty är etablering en manuell aktivitet.
+tooenable Azure AD-användare toolog i tooPagerDuty, måste de etableras i PagerDuty.  
+Hello gäller PagerDuty är etablering en manuell aktivitet.
 
 >[!NOTE]
->Du kan använda något annat Pagerduty användarens konto skapas verktyg eller API: er som tillhandahålls av Pagerduty för att etablera Azure Active Directory användarkonton.
+>Du kan använda något annat Pagerduty användarens konto skapas verktyg eller API: er som tillhandahålls av Pagerduty tooprovision Azure Active Directory användarkonton.
 
-**Utför följande steg om du vill konfigurera ett användarkonto:**
+**tooprovision ett användarkonto, utför följande steg hello:**
 
-1. Logga in på ditt **Pagerduty** klient.
+1. Logga in tooyour **Pagerduty** klient.
 
-2. Klicka på menyn högst upp **användare**.
+2. Hello-menyn överst hello **användare**.
 
 3. Klicka på **lägga till användare**.
    
     ![Lägg till användare](./media/active-directory-saas-pagerduty-tutorial/ic778539.png "lägga till användare")
 
-4.  På den **bjuda in ditt team** dialogrutan, utför följande steg:
+4.  På hello **bjuda in ditt team** dialogrutan utföra hello följande steg:
    
     ![Bjud in ditt team](./media/active-directory-saas-pagerduty-tutorial/ic778540.png "bjuda in ditt team")
 
-    a. Typ av **första och sista namnet** för användare som **Britta Simon**. 
+    a. Typen hello **första och sista namnet** för användare som **Britta Simon**. 
    
     b. Ange **e-post** -adressen för användaren som  **brittasimon@contoso.com** .
    
     c. Klicka på **Lägg till**, och klicka sedan på **skicka inbjuder**.
    
     >[!NOTE]
-    >Alla tillagda användare får en inbjudan för att skapa ett PagerDuty-konto.
+    >Alla tillagda användare får en inbjudan toocreate PagerDuty-konto.
 
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till PagerDuty.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooPagerDuty.
 
-![Tilldela rollen][200]
+![Tilldela hello användarroll][200]
 
-**Om du vill tilldela PagerDuty Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooPagerDuty utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **PagerDuty**.
+2. Välj i listan med program hello **PagerDuty**.
 
-    ![Länken PagerDuty i listan med program](./media/active-directory-saas-pagerduty-tutorial/tutorial_pagerduty_app.png) 
+    ![Hej PagerDuty länken i listan med program hello](./media/active-directory-saas-pagerduty-tutorial/tutorial_pagerduty_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
-    ![Länken ”användare och grupper”][202]
+    ![Hej ”användare och grupper” länk][202]
 
 4. Klicka på **Lägg till** knappen. Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.
 
-    ![Fönstret Lägg till tilldelning][203]
+    ![hello Lägg uppdrag fönstret][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -249,15 +249,15 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen PagerDuty i åtkomst Panelyou bör hämta automatiskt loggat in på ditt PagerDuty program.
+När du klickar på får hello PagerDuty panelen i hello åtkomst Panelyou automatiskt inloggade tooyour PagerDuty program.
 
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

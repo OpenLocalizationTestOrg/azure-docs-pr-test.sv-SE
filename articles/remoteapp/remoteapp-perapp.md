@@ -1,6 +1,6 @@
 ---
-title: "Publicera program till enskilda användare i en Azure RemoteApp-samling (förhandsgranskning) | Microsoft Docs"
-description: "Lär dig hur du kan publicera appar till enskilda användare, i stället för att vara beroende av grupper i Azure RemoteApp."
+title: "aaaPublish program tooindividual användare i Azure RemoteApp-samling (förhandsgranskning) | Microsoft Docs"
+description: "Lär dig hur du kan publicera appar tooindividual användare, i stället för beroende av grupper i Azure RemoteApp."
 services: remoteapp-preview
 documentationcenter: 
 author: piotrci
@@ -14,92 +14,92 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 11/23/2016
 ms.author: piotrci
-ms.openlocfilehash: c94ffffdec3e46ed08d941ee58dcf17b432e1dad
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 87b435552ddbfc2c6d03aeb01d95a44985e71f9f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="publish-applications-to-individual-users-in-an-azure-remoteapp-collection-preview"></a>Publicera program till enskilda användare i en Azure RemoteApp-samling (förhandsgranskning)
+# <a name="publish-applications-tooindividual-users-in-an-azure-remoteapp-collection-preview"></a>Publicera program tooindividual användare i Azure RemoteApp-samling (förhandsgranskning)
 > [!IMPORTANT]
-> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs [meddelandet](https://go.microsoft.com/fwlink/?linkid=821148) för mer information.
+> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs hello [meddelande](https://go.microsoft.com/fwlink/?linkid=821148) mer information.
 > 
 > 
 
-Den här artikeln beskriver hur du publicerar program till enskilda användare i en Azure RemoteApp-samling. Det här är en ny funktion i Azure RemoteApp. För tillfället är den endast tillgänglig för tidiga användare som en ”privat förhandsversion” för utvärderingsändamål.
+Den här artikeln förklarar hur toopublish program tooindividual användare i en Azure RemoteApp-samling. Detta är en ny funktion i Azure RemoteApp, för tillfället i privat förhandsvisning och finns bara tooselect Tidiga efterföljare i utvärderingssyfte.
 
-Från början gick det bara att publicera program på ett sätt med Azure RemoteApp: Administratören publicerade appar från avbildningen som sedan var tillgängliga för alla användare i samlingen.
+Innebar av bara ett sätt att publicera program i Azure RemoteApp: hello administratören publicerade appar från hello avbildningen och de skulle vara synliga tooall användare i hello samling.
 
-Ett vanligt scenario är att inkludera många program i en enda avbildning och distribuera en samling. På så sätt kan man minska hanteringskostnaderna. Ofta är inte alla program relevanta för alla användare – administratörer skulle föredra att publicera appar till enskilda användare så att de inte ser onödiga program i sin program-feed.
+Ett vanligt scenario är tooinclude många program i en enda avbildning och distribuera en samling i ordning tooreduce hanteringskostnader. Ofta är inte alla program som är relevanta tooall användare – administratörer skulle föredra toopublish appar tooindividual användare så att de inte ser onödiga program i deras program-feed.
 
-Det är nu möjligt att göra i Azure RemoteApp – för tillfället är det en begränsad funktion i förhandsgranskningen . Här är en kort sammanfattning av de nya funktionerna:
+Det är nu möjligt att göra i Azure RemoteApp – för tillfället är det en begränsad funktion i förhandsgranskningen . Här är en kort sammanfattning av hello nya funktioner:
 
 1. En samling kan anges till ett av två lägen:
    
-   * Det ursprungliga ”samlingsläget” där alla användare i en samling kan se alla publicerade program. Det är standardläget.
-   * Det nya ”programläget” där användarna bara ser program som uttryckligen har tilldelats dem.
-2. Just nu kan programläget bara aktiveras med Azure RemoteApp PowerShell-cmdlets.
+   * hello ursprungliga samling-läge, där alla användare i en samling kan se publicerade alla program. Det här är standardläget för hello.
+   * hello nya programläge, där användarna bara ser program som har tilldelats explicit toothem
+2. Hello tillfället kan hello programläge endast aktiveras med hjälp av Azure RemoteApp PowerShell-cmdlets.
    
-   * I programläget går det inte att hantera användartilldelning i samlingen via Azure-portalen. Användartilldelning måste hanteras via PowerShell-cmdlets.
-3. Användarna ser bara de program som publicerats direkt till dem. Men det kan fortfarande vara möjligt för användaren att starta andra program som är tillgängliga på bilden genom att öppna dem direkt i operativsystemet.
+   * När Användartilldelning i samlingen hello-uppsättningen tooapplication läge inte kan hanteras via hello Azure-portalen. Användartilldelning måste toobe hanteras via PowerShell-cmdlets.
+3. Användarna ser bara hello program publiceras direkt toothem. Men kan det fortfarande vara möjligt för en användare toolaunch hello andra program som är tillgängliga på hello avbildning genom att öppna dem direkt i hello-operativsystemet.
    
-   * Den här funktionen ger inte en säker låsning av program, den begränsar bara synligheten i denna program-feed.
-   * Om du behöver isolera användare från program måste du använda separata samlingar för det.
+   * Den här funktionen innehåller inte en säker låsning av program. den begränsar bara synligheten i hello program-feed.
+   * Om du behöver tooisolate användare från program behöver toouse separata samlingar för som.
 
-## <a name="how-to-get-azure-remoteapp-powershell-cmdlets"></a>Hur du hämtar Azure RemoteApp PowerShell-cmdlets
-Om du vill prova den nya funktionen för förhandsgranskning behöver du använda Azure PowerShell-cmdlets. För tillfället går det inte att aktivera det nya läget för programpublicering via Azure-hanteringsportalen.
+## <a name="how-tooget-azure-remoteapp-powershell-cmdlets"></a>Hur tooget Azure RemoteApp PowerShell-cmdlets
+tootry hello nya funktionen för förhandsgranskning, behöver du toouse Azure PowerShell-cmdlets. Det är för närvarande inte möjligt toouse hello Azure Management portal tooenable hello nya läget för programpublicering.
 
-Kontrollera först att du har [Azure PowerShell-modulen](/powershell/azure/overview) installerad.
+Kontrollera först att du har hello [Azure PowerShell-modulen](/powershell/azure/overview) installerad.
 
-Starta sedan PowerShell-konsolen i administratörsläge och kör följande cmdlet:
+Starta hello PowerShell-konsolen i administratörsläge och kör hello följande cmdlet:
 
         Add-AzureAccount
 
-Du uppmanas att ange användarnamn och lösenord för Azure. När du har loggat in kommer du att kunna köra Azure RemoteApp-cmdlets mot dina Azure-prenumerationer.
+Du uppmanas att ange användarnamn och lösenord för Azure. När du är inloggad kommer du att kunna toorun Azure RemoteApp-cmdlets mot dina Azure-prenumerationer.
 
-## <a name="how-to-check-which-mode-a-collection-is-in"></a>Kontrollera vilket läge en samling är i
-Kör följande cmdlet:
+## <a name="how-toocheck-which-mode-a-collection-is-in"></a>Hur toocheck vilket läge en samling är i
+Kör följande cmdlet hello:
 
         Get-AzureRemoteAppCollection <collectionName>
 
-![Kontrollera samlingsläget](./media/remoteapp-perapp/araacllelvel.png)
+![Kontrollera samlingsläget hello](./media/remoteapp-perapp/araacllelvel.png)
 
-AclLevel-egenskapen kan ha följande värden:
+Hej AclLevel-egenskapen kan ha hello följande värden:
 
-* Samling: det ursprungliga publiceringsläget. Alla användare ser alla publicerade appar.
-* Program: det nya publiceringsläget. Användarna ser bara de appar som publiceras direkt till dem.
+* Samling: hello ursprungliga publiceringsläget. Alla användare ser alla publicerade appar.
+* Program: hello nya publiceringsläget. Användarna ser bara hello appar direkt publicerade toothem.
 
-## <a name="how-to-switch-to-application-publishing-mode"></a>Växla till läget för programpublicering
-Kör följande cmdlet:
+## <a name="how-tooswitch-tooapplication-publishing-mode"></a>Hur tooswitch tooapplication publiceringsläget
+Kör följande cmdlet hello:
 
         Set-AzureRemoteAppCollection -CollectionName -AclLevel Application
 
-Programmets publiceringstillstånd bevaras: Till en början ser alla användare alla appar som ursprungligen har publicerats.
+Programmets publiceringstillstånd bevaras: till en början ser alla användare alla hello ursprungliga publicerade appar.
 
-## <a name="how-to-list-users-who-can-see-a-specific-application"></a>Visa en lista över användare som kan se ett visst program
-Kör följande cmdlet:
+## <a name="how-toolist-users-who-can-see-a-specific-application"></a>Hur toolist användare som kan se ett visst program
+Kör följande cmdlet hello:
 
         Get-AzureRemoteAppUser -CollectionName <collectionName> -Alias <appAlias>
 
-Detta visar alla användare som kan se programmet.
+Detta visar alla användare som kan se hello program.
 
-Obs! Du kan visa programalias (kallas ”app-alias” i ovanstående syntax) genom att köra Get-AzureRemoteAppProgram – Samlingsnamn <collectionName>.
+Obs: Du kan se hello programalias (kallas ”app-alias” i hello ovanstående syntax) genom att köra Get-AzureRemoteAppProgram – samlingsnamn <collectionName>.
 
-## <a name="how-to-assign-an-application-to-a-user"></a>Tilldela ett program till en användare
-Kör följande cmdlet:
+## <a name="how-tooassign-an-application-tooa-user"></a>Hur tooassign en tooa programanvändare
+Kör följande cmdlet hello:
 
         Add-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
 
-Användaren ser nu programmet i Azure RemoteApp-klienten och kan ansluta till det.
+hello användaren ser nu programmet hello i hello Azure RemoteApp-klienten och kommer att kunna tooconnect tooit.
 
-## <a name="how-to-remove-an-application-from-a-user"></a>Ta bort ett program från en användare
-Kör följande cmdlet:
+## <a name="how-tooremove-an-application-from-a-user"></a>Hur tooremove ett program från en användare
+Kör följande cmdlet hello:
 
         Remove-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
 
 ## <a name="providing-feedback"></a>Skicka feedback
-Vi uppskattar din feedback och dina förslag om den här funktionen för förhandsgranskning. Fyll i vår [undersökning](http://www.instant.ly/s/FDdrb) och berätta vad du tycker.
+Vi uppskattar din feedback och dina förslag om den här funktionen för förhandsgranskning. Fyll i hello [undersökning](http://www.instant.ly/s/FDdrb) toolet oss om vad du tycker.
 
-## <a name="havent-had-a-chance-to-try-the-preview-feature"></a>Har inte haft möjlighet att prova förhandsgranskningen?
-Om du ännu inte har deltagit i förhandsgranskningen använder du denna [undersökning](http://www.instant.ly/s/AY83p) om du vill begära åtkomst.
+## <a name="havent-had-a-chance-tootry-hello-preview-feature"></a>Har inte haft ett chansen tootry hello förhandsgranskningsfunktion?
+Om du inte har deltagit i förhandsgranskningen hello ännu, använder du denna [undersökning](http://www.instant.ly/s/AY83p) toorequest åtkomst.
 

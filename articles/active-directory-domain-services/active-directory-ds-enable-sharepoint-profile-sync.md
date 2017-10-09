@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: Aktivera stöd för användarprofil för SharePoint service | Microsoft Docs"
-description: "Konfigurera Azure Active Directory Domain Services hanterade domäner för att stödja profilsynkronisering för SharePoint Server"
+description: "Konfigurera Azure Active Directory Domain Services hanterade domäner toosupport profilsynkronisering för SharePoint Server"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: c3c923b5c9cd652f0c5b0ec98c1cda740f180122
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9de4f810380309e8f6436fc24412701645978f1b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>Konfigurera en hanterad domän för att stödja profilsynkronisering för SharePoint Server
-SharePoint Server innehåller en tjänsten användarprofil som används för synkronisering av användarprofiler. Om du vill konfigurera tjänsten användarprofil behöver rätt behörigheter beviljas på en Active Directory-domän. Mer information finns i [bevilja behörigheter för Active Directory Domain Services för profilsynkronisering i SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx).
+# <a name="configure-a-managed-domain-toosupport-profile-synchronization-for-sharepoint-server"></a>Konfigurera en hanterad domän toosupport profilsynkronisering för SharePoint Server
+SharePoint Server innehåller en tjänsten användarprofil som används för synkronisering av användarprofiler. tooset in hello tjänsten användarprofil behörighet måste toobe beviljas för en Active Directory-domän. Mer information finns i [bevilja behörigheter för Active Directory Domain Services för profilsynkronisering i SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx).
 
-Den här artikeln förklarar hur du kan konfigurera Azure AD Domain Services hanterade domäner om du vill distribuera tjänsten SharePoint Server synkronisering av användarprofiler.
+Den här artikeln förklarar hur du kan konfigurera Azure AD Domain Services hanterade domäner toodeploy hello SharePoint Server synkronisering av användarprofiler service.
 
-## <a name="the-aad-dc-service-accounts-group"></a>Gruppen 'AAD DC Service Accounts'
-En säkerhetsgrupp som heter '**AAD DC-tjänstkonton**' är tillgänglig i organisationsenheten 'Användare' på din hanterade domän. Du kan se den här gruppen i den **Active Directory-användare och datorer** MMC snapin-modulen på din hanterade domän.
+## <a name="hello-aad-dc-service-accounts-group"></a>hello-tjänstkonton AAD DC-grupp
+En säkerhetsgrupp som heter ”**AAD DC-tjänstkonton**' är tillgängliga i hello 'Användare' organisationsenhet på din hanterade domän. Du kan se den här gruppen i hello **Active Directory-användare och datorer** MMC snapin-modulen på din hanterade domän.
 
 ![AAD DC-tjänstkonton säkerhetsgrupp](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts.png)
 
-Medlemmar i den här säkerhetsgruppen delegeras följande behörigheter:
-- Privilegiet ”Replikera katalogändringar' på root DSE för den hanterade domänen.
-- Privilegiet ”Replikera katalogändringar' på konfigurationsnamngivningskontexten (cn = konfigurationsbehållare) för den hanterade domänen.
+Medlemmar i den här säkerhetsgruppen är delegerad hello följande behörigheter:
+- hello 'Replikera katalogändringar' privilegiet hello root DSE av hello hanterade domän.
+- hello privilegiet ”Replikera katalogändringar' hello konfigurationsnamngivningskontexten (cn = konfigurationsbehållare) av hello hanterade domän.
 
-Den här säkerhetsgruppen även är medlem i den inbyggda gruppen **kompatibel åtkomst innan Windows 2000**.
+Den här säkerhetsgruppen ingår också i hello inbyggd grupp **kompatibel åtkomst innan Windows 2000**.
 
 ![AAD DC-tjänstkonton säkerhetsgrupp](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-properties.png)
 
 
-## <a name="enable-your-managed-domain-to-support-sharepoint-server-user-profile-sync"></a>Aktivera din hanterade domän som stöd för synkronisering av SharePoint Server användarprofiler
-Du kan lägga till tjänstkontot som används för synkronisering av användarprofil SharePoint till den **AAD DC-tjänstkonton** grupp. Konto för synkronisering hämtar därför tillräcklig behörighet för att replikera ändringar i katalogen. Det här konfigurationssteget gör det möjligt för synkronisering av SharePoint Server användarprofiler ska fungera korrekt.
+## <a name="enable-your-managed-domain-toosupport-sharepoint-server-user-profile-sync"></a>Aktivera din hanterade domän toosupport SharePoint Server synkronisering av användarprofiler
+Du kan lägga till hello-tjänstkonto som används för SharePoint användarens profil synkronisering toohello **AAD DC-tjänstkonton** grupp. Därför hämtar hello synkroniseringskontot privilegier tooreplicate ändringar toohello directory. Det här konfigurationssteget gör SharePoint Server användarens profil sync toowork korrekt.
 
 ![AAD-DC-tjänstkonton - lägga till medlemmar](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-add-member.png)
 

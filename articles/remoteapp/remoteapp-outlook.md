@@ -1,6 +1,6 @@
 ---
-title: "Använda Outlook i Azure RemoteApp | Microsoft Docs"
-description: "Information om hur du konfigurerar och använder Outlook i Azure RemoteApp | Microsoft Azure"
+title: aaaUsing Outlook i Azure RemoteApp | Microsoft Docs
+description: "Lär dig hur tooconfigure och använder Outlook i Azure RemoteApp | Microsoft Azure"
 services: remoteapp
 documentationcenter: 
 author: pavithir
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 3feb21385a8b7fa219153c16181887e34d6ea41a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 119d2629ac47bd8d20d617985a9b488068aa959f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-microsoft-outlook-in-azure-remoteapp"></a>Använda Microsoft Outlook i Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs [meddelandet](https://go.microsoft.com/fwlink/?linkid=821148) för mer information.
+> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs hello [meddelande](https://go.microsoft.com/fwlink/?linkid=821148) mer information.
 > 
 > 
 
 Azure RemoteApp stöder Microsoft Outlook O365. Läs mer om hur [Office fungerar i Azure RemoteApp](remoteapp-officesubscription.md). Det finns några rekommenderade inställningar för Outlook när det används i Azure RemoteApp.
 
 ## <a name="cached-mode"></a>Cachelagrat läge
-Cachelagrat läge är en rekommenderad konfiguration när du använder Outlook i Azure RemoteApp. När du konfigurerar ett Outlook 2013-konto att använda cachelagrat Exchange-läge arbetar Outlook 2013 från en lokal kopia av användarens Microsoft Exchange-postlåda som är lagrad i en offline-datafil (OST-fil) på datorn, tillsammans med offline-adressboken (OAB). Den cachelagrade postlådan och OAB uppdateras regelbundet från O365-tjänsten. Läs mer om [skillnaderna mellan cachelagrat läge och onlineläge](https://technet.microsoft.com/library/jj683103.aspx).
+Cachelagrat läge är en rekommenderad konfiguration när du använder Outlook i Azure RemoteApp. När du konfigurerar ett Outlook 2013 konto toouse fungerar cachelagrat Exchange-läge, Outlook 2013 från en lokal kopia av hello användarens Microsoft Exchange-postlåda som är lagrad i en offline-datafil (OST-fil) på hello användarens dator, tillsammans med hello offlineadressboken. (OAB). hello cachelagrade postlådan och OAB uppdateras regelbundet från hello O365-tjänsten. Läs mer om [hello skillnaderna mellan cachelagrat läge och onlineläge](https://technet.microsoft.com/library/jj683103.aspx).
 
-Användaren kan välja **cachelagrat Exchange-läge** eller **onlineläge** under kontoinstallationen eller genom att ändra inställningarna för kontot. Du kan också distribuera något av dessa lägen genom att använda verktyget Office-anpassning eller grupprincipen.  
+hello användaren kan välja **cachelagrat Exchange-läge** eller **onlineläge** under kontoinstallationen eller genom att ändra inställningarna för hello-konto. Du kan också distribuera en läge eller hello andra med hjälp av hello verktyg för anpassning av Office (dessa) eller en Grupprincip.  
 
 Läs [steg för steg-instruktionerna om hur du aktiverar cachelagrat läge](https://technet.microsoft.com/library/c6f4cad9-c918-420e-bab3-8b49e1885034#proc).
 
 ## <a name="search"></a>Söka
-Sökningen i Outlook har begränsningar i Azure RemoteApp. Azure RemoteApp använder delade virtuella datorer för att hantera användarsessioner. Sökindexeringen beror på dator-ID:t, som skiljer sig mellan olika virtuella datorer. Det är möjligt att en användare dirigeras till en ny virtuell dator varje gång de loggar in på Azure RemoteApp. Det betyder att om vi aktiverar lokal sökning körs indexeraren varje gång dator-ID:t ändras (när användaren arbetar från en annan virtuell dator). Beroende på hur stor .OST-filen är kan det ta lång tid för indexeraren att slutföra, vilket betyder att den använder upp resurser som krävs för andra appar. Sökningen blir inte bara långsam, den kanske inte heller ger resultat. Det går att komma runt detta genom att använda kontoprofil med onlineläge, men den allmänna prestandan skulle bli sämre på grund av brist på lokalt cacheminne (mer information om skillnaden mellan cacheläge och onlineläge kommer du till via länken ovan). Tyvärr går det inte att inaktivera indexerad/lokal sökning, och onlinesökning kan inte aktiveras som standard i Outlook 2013.
+Sökningen i Outlook har begränsningar i Azure RemoteApp. Azure RemoteApp använder delade virtuella datorer tooaccommodate användarsessioner. Sökindexeringen beror på hello dator-ID som skiljer sig mellan olika virtuella datorer. Det är möjligt att de är riktade tooa varje gång en användare loggar in på Azure RemoteApp, ny virtuell dator. Det betyder att om vi aktiverar lokal sökning hello indexeraren körs varje gång hello datorns ID ändras (när hello användaren finns på en annan virtuell dator). Beroende på hello hello storlek. OST-fil hello indexeraren kan ta en lång tid toocomplete och använder upp resurser som krävs för andra appar. Sökningen blir inte bara långsam, den kanske inte heller ger resultat. Med hjälp av en kontoprofil onlineläge skulle komma runt problemet, men prestandan bli lidande på grund av toohello bristen på en lokal cache (se hello länken ovan för mer information om hello skillnaden mellan cachelagrat läge och onlineläge). Tyvärr går det inte att inaktivera indexerad/lokal sökning, och onlinesökning kan inte aktiveras som standard i Outlook 2013.
 

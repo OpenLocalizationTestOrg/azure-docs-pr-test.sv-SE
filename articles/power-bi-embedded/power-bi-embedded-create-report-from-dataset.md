@@ -1,5 +1,5 @@
 ---
-title: "Skapa en ny rapport från en datamängd i Azure Power BI Embedded | Microsoft Docs"
+title: "aaaCreate en ny rapport från en datamängd i Azure Power BI Embedded | Microsoft Docs"
 description: "Power BI Embedded rapporter kan nu skapas från en datamängd i ditt eget program."
 services: power-bi-embedded
 documentationcenter: 
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: 457f53aa76059dbb2faed6b264102f1f59b9918a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 41a0a52e4c833313f495bb5ff14749203fef9b41
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-embedded"></a>Skapa en ny rapport från en datamängd i Power BI Embedded
 
 Power BI Embedded rapporter kan nu skapas från en datamängd i ditt eget program. 
 
-Autentiseringsmetoden som liknar att av rapporten bäddas in. Den baseras på åtkomst-token som är specifika för en dataset. Token som används för PowerBI.com har utfärdats av Azure Active Directory (AAD) och Power BI Embedded token utfärdas av din egen tjänst.
+hello autentiseringsmetod liknar toothat av rapporten bäddas in. Den baseras på åtkomst-token som är specifika tooa dataset. Token som används för PowerBI.com har utfärdats av Azure Active Directory (AAD) och Power BI Embedded token utfärdas av din egen tjänst.
 
-När är createing en inbäddad rapport token som utfärdas för en specifik dataset. Token ska vara associerat med bädda in URL: en i samma element för var och en har en unik token. För att skapa en inbäddad rapport *Dataset.Read och Workspace.Report.Create* omfång måste anges i den åtkomst-token.
+När createing en inbäddad rapport hello är token som utfärdats för en specifik dataset. Token som ska associeras med hello bädda in URL: en på hello samma elementet tooensure varje har en unik token. Ordna toocreate en inbäddad rapport *Dataset.Read och Workspace.Report.Create* omfång måste anges i hello åtkomst-token.
 
-## <a name="create-access-token-needed-to-create-new-report"></a>Skapa åtkomsttoken som behövs för att skapa ny rapport
+## <a name="create-access-token-needed-toocreate-new-report"></a>Skapa ny rapport för åtkomst-token nödvändiga toocreate
 
-Power BI Embedded använder bädda in token, som är HMAC signerade JSON Web token. Token som signerats med åtkomst till nyckeln från din Azure Power BI Embedded arbetsytesamling. Bädda in tokens som standard, som används för skrivskyddat läge till en rapport som ska bäddas in i ett program. Bädda in token utfärdas för en viss rapport och ska vara associerat med en embed-URL.
+Power BI Embedded använder bädda in token, som är HMAC signerade JSON Web token. hello token är signerade med hello snabbtangent från din Azure Power BI Embedded arbetsytesamling. Bädda in tokens som standard, har använt tooprovide läsa bara komma åt tooa rapporten tooembed till ett program. Bädda in token utfärdas för en viss rapport och ska vara associerat med en embed-URL.
 
-Åtkomst-token ska skapas på servern som åtkomstnycklarna används för att logga/kryptera token. Information om hur du skapar en åtkomst-token finns [Authenticating och auktorisera med Power BI Embedded](power-bi-embedded-app-token-flow.md). Du kan också granska den [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metod. Här är ett exempel på hur det skulle se ut med .NET SDK för Power BI.
+Åtkomst-token ska skapas på hello-servern som hello snabbtangenter är används toosign/kryptera hello-token. Mer information om hur toocreate en åtkomst-token finns [Authenticating och auktorisera med Power BI Embedded](power-bi-embedded-app-token-flow.md). Du kan också granska hello [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metod. Här är ett exempel på hur det skulle se ut med hello .NET SDK för Power BI.
 
-I det här exemplet har vi vårt datauppsättnings-id som vi vill skap den nya rapporten i. Vi behöver lägga till scope för *Dataset.Read och Workspace.Report.Create*.
+I det här exemplet har vi vårt datauppsättnings-id som vi vill toocreat hello nya rapporten i. Vi behöver också tooadd hello scope för *Dataset.Read och Workspace.Report.Create*.
 
-Den *PowerBIToken klassen* kräver att du installerar den [Power BI Core NuGut paketet](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
+Hej *PowerBIToken klassen* kräver att du installerar hello [Power BI Core NuGut paketet](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
 **NuGet-paketet installation**
 
@@ -59,10 +59,10 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="create-a-new-blank-report"></a>Skapa en ny tom rapport
 
-Skapa konfiguration måste anges för att skapa en ny rapport. Detta ska inkludera den åtkomst-token och embedURL datasetID som vi vill skapa rapporten mot. Detta kräver att du installerar nuget [Power BI JavaScript paketet](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). EmbedUrl blir https://embedded.powerbi.com/appTokenReportEmbed.
+I ordning toocreate en ny rapport hello skapar konfigurationen måste anges. Detta ska inbegripa hello åtkomst-token, hello embedURL och hello datasetID som vi vill toocreate hello rapporten mot. Detta kräver att du installerar hello nuget [Power BI JavaScript paketet](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Hej embedUrl blir https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
-> Du kan använda den [JavaScript rapporten bäddas in provet](https://microsoft.github.io/PowerBI-JavaScript/demo/) att testa funktionen. Det ger även kodexempel för olika åtgärder som är tillgängliga.
+> Du kan använda hello [JavaScript rapporten bäddas in provet](https://microsoft.github.io/PowerBI-JavaScript/demo/) tootest funktioner. Det ger även kodexempel för hello olika åtgärder som är tillgängliga.
 
 **NuGet-paketet installation**
 
@@ -81,23 +81,23 @@ var embedCreateConfiguration = {
         datasetId: '5dac7a4a-4452-46b3-99f6-a25915e0fe55',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Create report
     var report = powerbi.createReport(reportContainer, embedCreateConfiguration);
 ```
 
-Anropar *powerbi.createReport()* gör början i redigeringsläge visas inom den *div* element.
+Anropar *powerbi.createReport()* gör början i redigeringsläge visas inom hello *div* element.
 
 ![](media/power-bi-embedded-create-report-from-dataset/pbi-embedded-create-new-report.png)
 
 ## <a name="save-new-reports"></a>Spara nya rapporter
 
-Rapporten faktiskt skapas inte förrän du anropar den **Spara som** igen. Detta kan göras från Arkiv-menyn eller JavaScript.
+hello rapporten faktiskt skapas inte förrän du anropar hello **Spara som** igen. Detta kan göras från Arkiv-menyn eller JavaScript.
 
 ```
- // Get a reference to the embedded report.
+ // Get a reference toohello embedded report.
     report = powerbi.get(reportContainer);
     
     var saveAsParameters = {
@@ -109,13 +109,13 @@ Rapporten faktiskt skapas inte förrän du anropar den **Spara som** igen. Detta
 ```
 
 > [!IMPORTANT]
-> En ny rapport skapas efter **Spara som** anropas. När du har sparat visas arbetsytan fortfarande datauppsättningen i redigeringsläge och inte i rapporten. Du måste du uppdatera den nya rapporten sätt som andra rapporter.
+> En ny rapport skapas efter **Spara som** anropas. När du har sparat visas hello arbetsytan fortfarande hello dataset i Redigera läge och inte hello rapporten. Du behöver tooreload hello ny rapport sätt som andra rapporter.
 
 ![](media/power-bi-embedded-create-report-from-dataset/pbi-embedded-save-new-report.png)
 
-## <a name="load-the-new-report"></a>Läsa in den nya rapporten
+## <a name="load-hello-new-report"></a>Läsa in hello ny rapport
 
-För att kunna interagera med den nya rapporten som du behöver bädda in den på samma sätt som programmet bäddar in en vanlig rapport, vilket innebär att en ny token utfärdas specifikt för den nya rapporten och sedan anropa metoden Bädda in.
+I ordning toointeract med hello ny rapport måste tooembed i hello samma sätt som programmet hello bäddar in en vanlig rapport, betydelse, en ny token utfärdas specifikt för hello ny rapport och sedan anropa hello bädda in metod.
 
 ```
 <div id="reportContainer"></div>
@@ -126,16 +126,16 @@ var embedConfiguration = {
         reportId: '5dac7a4a-4452-46b3-99f6-a25915e0fe54',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
 ```
 
-## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>Automatisera spara och läsa in i en ny rapport med händelsen ”sparade”
+## <a name="automate-save-and-load-of-a-new-report-using-hello-saved-event"></a>Automatisera spara och läsa in i en ny rapport med hello ”spara” händelse
 
-För att automatisera processen med ”Spara som” i och läser in den nya rapporten kan du använda ”sparade” händelsen. Den här händelsen utlöses när spara åtgärden har slutförts och returnerar ett Json-objekt som innehåller nya reportId, rapportnamnet, gamla reportId (om sådan fanns) och om åtgärden saveAs eller spara.
+I ordning tooautomate hello processen att ”spara som” och läser in hello ny rapport kan du använda hello ”spara” händelse. Den här händelsen utlöses när hello spara åtgärden är klar och den returnerar ett Json-objekt som innehåller hello nya reportId, rapportnamnet, hello gamla reportId (om sådan fanns) och om hello utfördes saveAs eller spara.
 
 ```
 {
@@ -146,7 +146,7 @@ För att automatisera processen med ”Spara som” i och läser in den nya rapp
 }
 ```
 
-För att automatisera processen du lyssna på händelsen ”sparade”, tar den nya reportId, skapa en ny token och bädda in den nya rapporten med den.
+tooAutomate hello process som du kan lyssna på hello ”spara” händelse tar hello nya reportId, skapa nya hello-token och bädda in hello ny rapport med den.
 
 ```
 <div id="reportContainer"></div>
@@ -157,7 +157,7 @@ var embedCreateConfiguration = {
         datasetId: '5dac7a4a-4452-46b3-99f6-a25915e0fe55',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Create report
@@ -171,14 +171,14 @@ var embedCreateConfiguration = {
     // SaveAs report
     report.saveAs(saveAsParameters);
 
-    // report.on will add an event handler which prints to Log window.
+    // report.on will add an event handler which prints tooLog window.
     report.on("saved", function(event) {
         
          // get new Token
          var newReportId =  event.detail.reportObjectId;
 
-        // create new Token. This is a function that the application should provide
-        var newToken = createAccessToken(newReportId,scopes /*provide the wanted scopes*/);
+        // create new Token. This is a function that hello application should provide
+        var newToken = createAccessToken(newReportId,scopes /*provide hello wanted scopes*/);
         
         
     var embedConfiguration = {
@@ -205,4 +205,4 @@ var embedCreateConfiguration = {
 [Inbäddat exempel med JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [Power BI Core NuGut paketet](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
 [Power BI JavaScript-paket](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
-Fler frågor? [Försök med Power BI Community](http://community.powerbi.com/)
+Fler frågor? [Försök hello Power BI-communityn](http://community.powerbi.com/)

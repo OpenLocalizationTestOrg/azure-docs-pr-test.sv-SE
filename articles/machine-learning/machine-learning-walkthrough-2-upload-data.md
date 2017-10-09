@@ -1,6 +1,6 @@
 ---
 title: 'Steg 2: Ladda upp data till en Machine Learning-experiment | Microsoft Docs'
-description: "Steg 2 av utveckla en förutsägelselösning genomgång: Överför lagras offentliga data i Azure Machine Learning Studio."
+description: "Steg 2 av hello utveckla en förutsägelselösning genomgång: Överför lagras offentliga data i Azure Machine Learning Studio."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,63 +14,63 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: c2ab5f5252e1ea1ec51f6c3bd489826c70ff011c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0ea21dcca2d0934ed06508560cf85cf31b48ce6e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-experiment"></a>Genomgång steg 2: Överför befintliga data i ett Azure Machine Learning-experiment
-Detta är det andra steget i den här genomgången [utveckla en förutsägelseanalys i Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
+Detta är hello andra steget i hello genomgången [utveckla en förutsägelseanalys i Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Skapa en Machine Learning-arbetsyta](machine-learning-walkthrough-1-create-ml-workspace.md)
 2. **Överför befintliga data**
 3. [Skapa ett nytt experiment](machine-learning-walkthrough-3-create-new-experiment.md)
-4. [Träna och utvärdera modellerna](machine-learning-walkthrough-4-train-and-evaluate-models.md)
-5. [Distribuera webbtjänsten](machine-learning-walkthrough-5-publish-web-service.md)
-6. [Få åtkomst till webbtjänsten](machine-learning-walkthrough-6-access-web-service.md)
+4. [Träna och utvärdera hello modeller](machine-learning-walkthrough-4-train-and-evaluate-models.md)
+5. [Distribuera hello-webbtjänst](machine-learning-walkthrough-5-publish-web-service.md)
+6. [Få åtkomst till hello-webbtjänsten](machine-learning-walkthrough-6-access-web-service.md)
 
 - - -
-För att utveckla en förutsägelsemodell för kreditrisk behöver vi data som vi kan använda för att träna och testa modellen. Den här genomgången använder vi ”UCI Statlog (tyska kredit Data) datauppsättningen” från UC Irvine Machine Learning-databasen. Du hittar den här:  
+toodevelop en förutsägelsemodell för kreditrisk vi behöver data att vi kan använda tootrain och testa hello modellen. Den här genomgången använder vi hello ”UCI Statlog (tyska kredit Data) datauppsättning” från hello UC Irvine Machine Learning-databasen. Du hittar den här:  
 <a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://Archive.ICS.uci.edu/ml/DataSets/Statlog+(German+Credit+data)</a>
 
-Vi använder den fil som heter **german.data**. Hämta den här filen till den lokala hårddisken.  
+Vi använder hello-fil med namnet **german.data**. Hämta den här filen tooyour lokala hårddisken.  
 
-Den **german.data** datamängden innehåller rader med 20 variabler för 1000 senaste ansöker om kredit. Variablerna 20 representerar den dataset uppsättning funktioner (den *funktionen vector*), vilket möjliggör identifieringsegenskaper för varje kredit sökanden. Ytterligare en kolumn i varje rad representerar sökandens beräknade kreditrisk med 700 sökanden identifieras som en låg kreditrisk och 300 som en hög risk.
+Hej **german.data** datamängden innehåller rader med 20 variabler för 1000 senaste ansöker om kredit. Variablerna 20 representerar hello dataset uppsättning funktioner (hello *funktionen vector*), vilket möjliggör identifieringsegenskaper för varje kredit sökanden. Ytterligare en kolumn i varje rad representerar hello sökandens beräknade kreditrisk med 700 sökanden identifieras som en låg kreditrisk och 300 som en hög risk.
 
-UCI webbplatser som innehåller en beskrivning av attribut för funktionen vektorn för dessa data. Detta inkluderar finansiell information, kredithistorik, anställningsstatus och personlig information. För varje ansökan har en binär klassificering angivna som anger om de är låg eller hög kredit risk. 
+hello UCI webbplatser som innehåller en beskrivning av hello attribut för hello funktionen-vektor för dessa data. Detta inkluderar finansiell information, kredithistorik, anställningsstatus och personlig information. För varje ansökan har en binär klassificering angivna som anger om de är låg eller hög kredit risk. 
 
-Vi använder informationen för att träna en förutsägelseanalysmodell. När det är klart ska vår modell kunna acceptera en funktionen-vektor för en ny person och förutsäga om han eller hon är en låg eller hög kreditrisk.  
+Vi använder den här data tootrain en förutsägelseanalysmodell. När det är klart bör vår modell kunna tooaccept en funktionen-vektor för en ny person och förutsäga om han eller hon är en låg eller hög kreditrisk.  
 
-Här är en intressant snodd. Beskrivning av datamängden på webbplatsen UCI nämns vad det kostar om vi misclassify kreditrisken för en person.
-Om modellen beräknar en hög kreditrisken för en person som är faktiskt en låg kreditrisk, har modellen gjort en felklassificering.
-Men omvänd felklassificering är fem gånger dyrare att finansinstitutet: om modellen beräknar en låg kreditrisken för en person som är faktiskt en hög kreditrisk.
+Här är en intressant snodd. Hej beskrivning av hello dataset i hello UCI webbplats nämns vad det kostar om vi misclassify kreditrisken för en person.
+Om hello modellen beräknar en hög kreditrisken för en person som är faktiskt en låg kreditrisk, har hello modellen gjort en felklassificering.
+Men hello omvänd felklassificering är fem gånger dyraste toohello finansinstitut: om hello modellen beräknar en låg kreditrisken för en person som är faktiskt en hög kreditrisk.
 
-Därför vill vi träna vår modell så att kostnaden för den här senare typen av felklassificering är fem gånger större än misclassifying på andra sätt.
-Det är ett enkelt sätt att göra detta när träna modellen i vårt experiment genom att duplicera (fem gånger) transaktioner som representerar någon med en hög kreditrisk. Sedan om modellen felaktigt någon som en låg kreditrisk klassificerar när de är faktiskt en hög risk, har modellen den samma felklassificering fem gånger, en gång för varje kopia. Detta ökar kostnaden för det här felet i utbildning resultaten.
+Så vill vi tootrain vår modell så att hello kostnaden för den här senare typen av felklassificering är fem gånger större än misclassifying hello andra sätt.
+Ett enkelt sätt toodo detta när hello modell i vårt experiment är genom att duplicera (fem gånger) transaktioner som representerar någon med en hög kreditrisk. Sedan om hello modellen felaktigt någon som en låg kreditrisk klassificerar när de är faktiskt en hög risk, har hello modellen den samma felklassificering fem gånger en gång för varje kopia. Detta ökar hello kostnaden för det här felet i hello utbildning resultat.
 
 
-## <a name="convert-the-dataset-format"></a>Konvertera dataset-format
-Den ursprungliga datauppsättningen används ett tomt kommaavgränsade format. Machine Learning Studio fungerar bättre med en fil med kommaavgränsade värden (CSV), så att det kommer att konvertera datauppsättningen genom att ersätta blanksteg med kommatecken.  
+## <a name="convert-hello-dataset-format"></a>Konvertera hello dataset-format
+hello ursprungliga datauppsättningen används ett tomt kommaavgränsade format. Machine Learning Studio fungerar bättre med en fil med kommaavgränsade värden (CSV), så att det kommer att konvertera hello datauppsättningen genom att ersätta blanksteg med kommatecken.  
 
-Det finns många sätt att omvandla data. Ett sätt är med hjälp av följande Windows PowerShell-kommando:   
+Det finns många sätt tooconvert dessa data. Ett sätt är med hjälp av hello följande Windows PowerShell-kommando:   
 
     cat german.data | %{$_ -replace " ",","} | sc german.csv  
 
-Ett annat sätt är med hjälp av kommandot sed Unix:  
+Ett annat sätt är med hello Unix sed kommando:  
 
     sed 's/ /,/g' german.data > german.csv  
 
-I båda fallen kan vi har skapat en CSV-version av data i en fil med namnet **german.csv** som vi kan använda i vårt experiment.
+I båda fallen kan vi har skapat en CSV-version av hello data i en fil med namnet **german.csv** som vi kan använda i vårt experiment.
 
-## <a name="upload-the-dataset-to-machine-learning-studio"></a>Ladda upp datauppsättningen till Machine Learning Studio
-När data har konverterats till CSV-format, som vi behöver överföra den till Machine Learning Studio. 
+## <a name="upload-hello-dataset-toomachine-learning-studio"></a>Överför hello dataset tooMachine Learning Studio
+När hello data har konverterade tooCSV format, behöver vi tooupload till Machine Learning Studio. 
 
-1. Öppna startsidan för Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)). 
+1. Öppna hello Machine Learning Studio-startsidan ([https://studio.azureml.net](https://studio.azureml.net)). 
 
-2. Klicka på menyn ![menyn][1] i det övre vänstra hörnet i fönstret klickar du på **Azure Machine Learning**väljer **Studio**, och logga in.
+2. Klicka på hello ![menyn][1] i hello övre vänstra hörnet av hello klickar du på **Azure Machine Learning**väljer **Studio**, och logga in.
 
-3. Klicka på **+ ny** längst ned i fönstret.
+3. Klicka på **+ ny** längst hello hello-fönstret.
 
 4. Välj **DATASET**.
 
@@ -78,21 +78,21 @@ När data har konverterats till CSV-format, som vi behöver överföra den till 
 
     ![Lägg till en datamängd från en lokal fil][2]
 
-6. I den **ladda upp en ny datamängd** dialogrutan klickar du på **Bläddra** och Sök efter den **german.csv** fil som du skapade.
+6. I hello **ladda upp en ny datamängd** dialogrutan klickar du på **Bläddra** och hitta hello **german.csv** fil som du skapade.
 
-7. Ange ett namn för datamängden. Anropa den ”UCI tyska kreditkortdata” i den här genomgången.
+7. Ange ett namn för hello dataset. Anropa den ”UCI tyska kreditkortdata” i den här genomgången.
 
 8. Datatypen, Välj **generiska CSV-filen utan rubrik (. nh.csv)**.
 
 9. Lägg till en beskrivning om du vill ha.
 
-10. Klicka på den **OK** är markerat.  
+10. Klicka på hello **OK** är markerat.  
 
-    ![Ladda upp datauppsättningen][3]
+    ![Överför hello dataset][3]
 
-Detta överför data i en dataset-modul som vi kan använda i ett experiment.
+Detta filöverföringar hello data i en dataset-modul som vi kan använda i ett experiment.
 
-Du kan hantera datauppsättningar som du har överfört till Studio genom att klicka på den **DATAUPPSÄTTNINGAR** fliken till vänster i fönstret Studio.
+Du kan hantera datauppsättningar som du har överfört tooStudio genom att klicka på hello **DATAUPPSÄTTNINGAR** fliken toohello vänsterkant hello Studio-fönstret.
 
 ![Hantera datamängder][4]
 

@@ -1,5 +1,5 @@
 ---
-title: "Översikt över Mobile Engagement | Microsoft Docs"
+title: "aaaMobile Engagement översikt | Microsoft Docs"
 description: "Översikt över Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/04/2016
 ms.author: piyushjo;matt-gibbs
-ms.openlocfilehash: 42b50685b854cabe8906f42aac81ab82c63f8a94
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8892d5c57a2311a0b11da7313e2e5eaca1b6ae8e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-mobile-engagement-overview"></a>Översikt över Azure Mobile Engagement
 Azure Mobile Engagement är en plattform som erbjuder programvara som en tjänst (Software-as-a-Service, SaaS). Den främjar interaktion med användare, tillhandahåller datadriven statistik för appanvändning, användarsegmentering i realtid, sammanhangskänsliga push-meddelanden och meddelanden i appen.
@@ -28,24 +28,24 @@ Azure Mobile Engagement är en plattform som erbjuder programvara som en tjänst
 > 
 > 
 
-Med Azure Mobile Engagement kan programutgivare och marknadsföringspersonal få en bättre förståelse för hur appanvändarna tänker och interagera med dem på ett bättre sätt.
+Med Azure Mobile Engagement kan kan programutgivare och Marknadsföringspersonal bättre förstå och använda hello app-användare.
 
-## <a name="real-time-actionable-analytics-to-maximize-return-on-investment"></a>Realtidsanalys med handlingsbarhet ger maximal avkastning på investeringen
-Utlös scenarier med interaktion utifrån användarbeteenden och demografi genom att kombinera insamling av `big data` med meddelandebehandling i realtid. Mobile Engagement kan besvara i princip alla frågor som är relevanta för dina specifika affärsbehov. Du kan till exempel skapa anpassade instrumentpaneler för att mäta KPI:er (Key Performance Indicators), snabbt hitta och åtgärda flaskhalsar i ett användarflöde, registrera kvarhållning och användarens varaktighet och på så sätt avgöra vilka kampanjer som ger högsta avkastning på investeringen. Tack vare Mobile Engagements 360-gradersvy av användarsökvägen blir det möjligt att kontinuerligt förenkla och optimera användarupplevelsen samt att förlänga kvarhållningsperioden och öka appanvändningen.
+## <a name="real-time-actionable-analytics-toomaximize-return-on-investment"></a>Analys i realtid tillämplig toomaximize avkastning på investeringen
+Utlös scenarier med interaktion enligt toouser beteende och demografi genom att kombinera `big data` samling med meddelandebehandling i realtid. Mobile Engagement kan besvara nästan alla fråga relevanta tooyour specifika affärsbehov. Exempelvis kan du skapa anpassade instrumentpaneler toomeasure nyckeltal (KPI: er), snabbt hitta och korrigera flaskhalsar i ett användarflöde spåra kvarhållning och användarens varaktighet och på så sätt avgöra vilka kampanjer som ger hello högsta avkastning på investeringar. Mobile Engagement 360-gradersvy av användarsökvägen blir du tooeasily och kontinuerligt förbättra och optimera hello användarupplevelsen – kör högre kvarhållningsgrad och öka appanvändningen.
 
 ## <a name="value-added-push-and-communications-platform"></a>Plattform med push-meddelanden och kommunikation som skapar mervärde
-Mobile Engagement tillhandahåller meddelandefunktioner i appen och fungerar sömlöst med interna gateways för push-meddelanden, som Google GCM, Apple APNS och Microsoft MPNS. Dessutom får du möjlighet att skapa riktade kampanjer genom att analysera användarbeteenden och identifiera unika kundsegment.
+Mobile Engagement tillhandahåller meddelandefunktioner i appen och fungerar sömlöst med interna gateways för push-meddelanden, som Google GCM, Apple APNS och Microsoft MPNS. Och det är mer omfattande än toogive du hello power toocreate riktade kampanjer genom att analysera användaren beteenden tooidentify unika kundsegment.
 
 Det här är goda nyheter för apputvecklare som vill nå sina kunder på ett effektivt sätt som inte känns påträngande för mottagarna.
 
 ## <a name="open-apis-and-ease-of-integration"></a>Öppna API:er och enkel integrering
-Genom att tillhandahålla öppna API:er och SDK:er som förenklar integreringen kan du använda informationen från dina befintliga CRM-, CMS- eller andra serverdelssystem. På så sätt kan du förfina dina målgrupper ytterligare och skydda dina investeringar.
+Genom att tillhandahålla öppna API:er och SDK:er som förenklar integreringen kan du använda informationen från dina befintliga CRM-, CMS- eller andra serverdelssystem. Detta gör att du toofurther förfina dina målgrupper och skydda dina investeringar.
 
-## <a name="data-protection--privacy-across-the-globe"></a>Globalt dataskydd och sekretess
-Microsoft bedriver ett långsiktigt sekretessarbete eftersom integritet utgör en viktig beståndsdel av våra produkter och tjänster under hela livscykeln. Vi strävar efter att vara transparenta i vårt sekretessarbete, erbjuda kunderna meningsfulla sekretessalternativ och att hantera de data vi lagrar på ett ansvarsfullt sätt. Mobile Engagement följer samma principer som alla andra Azure-tjänster – vi varken delar eller säljer information som härrör från kundernas egendom. Mobile Engagement är tillgängligt globalt, men respekterar självklart regionala och landsspecifika datasekretesslagar.
+## <a name="data-protection--privacy-across-hello-globe"></a>Dataskydd och sekretess hello jordglob
+Microsoft har en långsiktigt åtagande tooprivacy som är en integrerad del av våra produkter och tjänster livscykel. Vi arbetar toobe transparenta i vårt sekretessarbete, erbjuda kunderna meningsfulla Sekretessalternativ och hantera ansvarsfullt hello data lagras. Mobile Engagement följer samma principer som alla andra Azure-tjänster – vi varken delar eller säljer information som härrör från kundernas egendom. Mobile Engagement är tillgängligt globalt, vilket ger regionala och landsspecifika sekretess lagar toobe datasekretesslagar.
 
 ### <a name="next-steps"></a>Nästa steg:
-[Bästa praxis och processer för Mobile Engagement](mobile-engagement-getting-started-best-practices.md)
+[Bästa praxis och bearbeta toocreate Mobile Engagement](mobile-engagement-getting-started-best-practices.md)
 
 [Komma igång](/index.md)
 

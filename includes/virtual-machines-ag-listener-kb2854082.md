@@ -1,13 +1,13 @@
-Sedan om alla servrar i klustret kör Windows Server 2008 R2 eller Windows Server 2012 kan du verifiera att snabbkorrigeringen [KB2854082](http://support.microsoft.com/kb/2854082) är installerad på alla lokala servrar eller virtuella Azure-datorer som ingår i klustret. En server eller virtuell dator som är i klustret, men inte i tillgänglighetsgruppen, bör ha den här snabbkorrigeringen.
+Om alla servrar på hello klustret kör Windows Server 2008 R2 eller Windows Server 2012, du måste kontrollera att snabbkorrigeringen hello [KB2854082](http://support.microsoft.com/kb/2854082) installeras på varje hello lokala servrar eller virtuella Azure-datorer som ingår i hello kluster. En server eller virtuell dator som är i hello kluster, men inte i hello tillgänglighetsgruppen bör ha den här snabbkorrigeringen.
 
-Hämtar i fjärrskrivbords-sessionen för var och en av klusternoderna, [KB2854082](http://support.microsoft.com/kb/2854082) till en lokal katalog. Sedan kan installera snabbkorrigeringen på varje klusternod sekventiellt. Om klustertjänsten körs på noden i klustret, startas servern i slutet av installationen av snabbkorrigeringen.
+Hämtar i hello värdserver för fjärrskrivbordssession för varje hello klusternoder, [KB2854082](http://support.microsoft.com/kb/2854082) tooa lokal katalog. Installera sedan hello snabbkorrigeringen på varje klusternod sekventiellt. Om hello klustertjänsten körs på hello klusternod, startas hello server hello slutet av installationen av hello snabbkorrigeringen.
 
 > [!WARNING]
-> Stoppa klustertjänsten eller starta om servern påverkar kvorum hälsotillståndet för klustret och tillgänglighetsgruppen och kan leda till att klustret att försättas i offlineläge. För att upprätthålla en hög tillgänglighet på klustret under installationen, se till att:
+> Stoppa klustertjänsten hello eller hello-servern startas om påverkar hello kvorum hälsotillståndet för tillgänglighetsgruppen klustret och hello och kan leda till att ditt kluster toogo offline. toomaintain hello hög tillgänglighet på klustret under installationen, se till att:
 > 
-> * Klustret är i optimala kvorum hälsa. 
-> * Innan du installerar snabbkorrigeringen på alla noder är alla noder i klustret online.
-> * Innan du installerar snabbkorrigeringen på en annan nod i klustret, kan installationen av snabbkorrigeringen kan köras klart på en nod, inklusive fullständigt omstart av servern.
+> * hello klustret är i optimala kvorum hälsa. 
+> * Innan du installerar snabbkorrigeringen hello på någon nod, är alla noder i klustret online.
+> * Innan du installerar snabbkorrigeringen hello på en annan nod i klustret hello Tillåt hello snabbkorrigeringen installation toorun toocompletion på en nod, inklusive fullständigt hello-servern startas om.
 > 
 > 
 

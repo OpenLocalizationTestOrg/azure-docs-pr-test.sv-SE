@@ -1,15 +1,15 @@
 
-Skapa en [API-app](../articles/app-service-api/app-service-api-apps-why-best-platform.md) i `myAppServicePlan` App Service-planen med kommandot [az webapp create](/cli/azure/appservice/web#create). 
+Skapa en [API-app](../articles/app-service-api/app-service-api-apps-why-best-platform.md) i hello `myAppServicePlan` App Service-plan med hello [az webapp skapa](/cli/azure/appservice/web#create) kommando. 
 
-Webbappen ger dig ett lagringsutrymme för ditt API och du får en URL så att du kan visa den distribuerade appen.
+hello webbprogrammet här värd för ditt API och ger en URL tooview hello distribuerad app.
 
-Ersätt *\<app_name>* med ett unikt namn i följande kommando. Om `<app_name>` inte är unikt får du ett felmeddelande om att webbplatsen med det angivna namnet <app_name> redan finns. Standardwebbadressen för webbappen är `https://<app_name>.azurewebsites.net`. 
+Följande kommando, Ersätt i hello  *\<appnamn >* med ett unikt namn. Om `<app_name>` är inte unikt felmeddelande hello ”webbplats med namnet < programnamn > finns redan”. Hej standard webbadressen hello webbprogrammet `https://<app_name>.azurewebsites.net`. 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
-När webbappen har skapats visar Azure CLI information liknande den i följande exempel:
+När hello webbprogrammet har skapats, visar hello Azure CLI information liknande toohello följande exempel:
 
 ```json
 {

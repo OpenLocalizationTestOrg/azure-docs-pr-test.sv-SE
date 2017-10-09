@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions Service Bus-utlösare och bindningar | Microsoft Docs"
-description: "Förstå hur du använder Azure Service Bus-utlösare och bindningar i Azure Functions."
+title: "aaaAzure funktioner Service Bus utlösare och bindningar | Microsoft Docs"
+description: "Förstå hur toouse Azure Service Bus utlösare och bindningar i Azure Functions."
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: glenga
-ms.openlocfilehash: b3ee306cd37ebf88dc9369ccc2dc6c670557fd5a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: dff9e89bd3840b8c11f91cae41e13502afc7aa60
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-service-bus-bindings"></a>Azure Functions Service Bus-bindningar
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Den här artikeln beskriver hur du konfigurerar och arbetar med Azure Service Bus-bindningar i Azure Functions. 
+Den här artikeln förklarar hur tooconfigure och arbeta med Azure Service Bus-bindningar i Azure Functions. 
 
 Azure Functions stöder utlösa och utgående bindningar för Service Bus-köer och ämnen.
 
@@ -34,18 +34,18 @@ Azure Functions stöder utlösa och utgående bindningar för Service Bus-köer 
 <a name="trigger"></a>
 
 ## <a name="service-bus-trigger"></a>Service Bus-utlösare
-Använda Service Bus-utlösaren ska svara på meddelanden från en Service Bus-kö eller ett ämne. 
+Använda Service Bus hello utlösaren toorespond toomessages från en Service Bus-kö eller ett ämne. 
 
-Service Bus-kö och avsnittet utlösare definieras av följande JSON-objekt i den `bindings` matris med function.json:
+hello Service Bus-kö och avsnittet utlösare definieras av hello följande JSON-objekt i hello `bindings` matris med function.json:
 
 * *kön* utlösare:
 
     ```json
     {
         "name" : "<Name of input parameter in function signature>",
-        "queueName" : "<Name of the queue>",
+        "queueName" : "<Name of hello queue>",
         "connection" : "<Name of app setting that has your queue's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>",
+        "accessRights" : "<Access rights for hello connection string - see below>",
         "type" : "serviceBusTrigger",
         "direction" : "in"
     }
@@ -56,48 +56,48 @@ Service Bus-kö och avsnittet utlösare definieras av följande JSON-objekt i de
     ```json
     {
         "name" : "<Name of input parameter in function signature>",
-        "topicName" : "<Name of the topic>",
-        "subscriptionName" : "<Name of the subscription>",
+        "topicName" : "<Name of hello topic>",
+        "subscriptionName" : "<Name of hello subscription>",
         "connection" : "<Name of app setting that has your topic's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>",
+        "accessRights" : "<Access rights for hello connection string - see below>",
         "type" : "serviceBusTrigger",
         "direction" : "in"
     }
     ```
 
-Observera följande:
+Observera följande hello:
 
-* För `connection`, [skapa en appinställningen i appen funktionen](functions-how-to-use-azure-function-app-settings.md) som innehåller anslutningssträngen till Service Bus-namnrymd, ange namnet på appinställningen i den `connection` egenskap i utlösaren. Du hämta anslutningssträngen genom att följa stegen som visas vid [hämta autentiseringsuppgifter för hantering](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials).
-  Anslutningssträngen måste vara för Service Bus-namnrymd inte begränsat till en särskild kö eller ett ämne.
-  Om du lämnar `connection` tom utlösaren förutsätter att en standard Service Bus-anslutningssträng har angetts i en app inställning med namnet `AzureWebJobsServiceBus`.
-* För `accessRights`, tillgängliga värden är `manage` och `listen`. Standardvärdet är `manage`, vilket indikerar att den `connection` har den **hantera** behörighet. Om du använder en anslutningssträng som inte har den **hantera** , behörighetsgrupp `accessRights` till `listen`. Annars kan hantera funktionerna runtime misslyckas försöker att utföra åtgärder som kräver rättigheter.
+* För `connection`, [skapa en appinställningen i appen funktionen](functions-how-to-use-azure-function-app-settings.md) som innehåller hello anslutning sträng tooyour Service Bus-namnrymd, ange hello namnet på hello appinställningen i hello `connection` egenskap i utlösaren. Du hämta hello anslutningssträng genom att följa hello stegen som visas vid [hämta autentiseringsuppgifter för hantering av hello](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials).
+  hello anslutningssträngen måste vara för en Service Bus-namnrymd, inte begränsat tooa särskild kö eller avsnittet.
+  Om du lämnar `connection` tom hello utlösaren förutsätter att en standard Service Bus-anslutningssträng har angetts i en app inställning med namnet `AzureWebJobsServiceBus`.
+* För `accessRights`, tillgängliga värden är `manage` och `listen`. hello standardvärdet är `manage`, vilket anger att hello `connection` har hello **hantera** behörighet. Om du använder en anslutningssträng som inte har hello **hantera** , behörighetsgrupp `accessRights` för`listen`. Annars hello Functions-runtime kan hantera misslyckas försöker toodo åtgärder som kräver rättigheter.
 
 ## <a name="trigger-behavior"></a>Utlösaren beteende
-* **Single-threading** – som standard funktioner runtime processer flera meddelanden samtidigt. För att dirigera runtime att bearbeta en enskild kö eller ett ämne meddelande i taget ange `serviceBus.maxConcurrentCalls` 1 i *host.json*. 
+* **Single-threading** – som standard hello funktioner runtime processer flera meddelanden samtidigt. toodirect hello runtime tooprocess bara ett enda kö eller ett ämne meddelande samtidigt, ange `serviceBus.maxConcurrentCalls` too1 i *host.json*. 
   Information om *host.json*, se [mappstrukturen](functions-reference.md#folder-structure) och [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
 * **Hantering av förgiftade meddelanden** -Service Bus har sin egen hantering av skadligt meddelande som inte styrs eller konfigurerats i Azure Functions konfiguration eller kod. 
-* **PeekLock beteende** -Functions-runtime tar emot ett meddelande i [ `PeekLock` läge](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode) och anropar `Complete` på meddelandet om funktionen slutförs eller samtal `Abandon` om misslyckas åtgärden. 
-  Om funktionen körs längre än den `PeekLock` timeout låset förnyas automatiskt.
+* **PeekLock beteende** -hello Functions-runtime tar emot ett meddelande i [ `PeekLock` läge](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode) och anropar `Complete` på hello-meddelande om hello funktionen slutförs eller samtal `Abandon` om hello misslyckas åtgärden. 
+  Om Hej funktionen körs längre än hello `PeekLock` timeout hello Lås förnyas automatiskt.
 
 <a name="triggerusage"></a>
 
 ## <a name="trigger-usage"></a>Utlösaren användning
-Det här avsnittet visar hur du använder Service Bus-utlösare i funktionskoden. 
+Det här avsnittet visar hur toouse Service Bus utlösa i funktionskoden. 
 
-I C# och F #, kan Service Bus utlösaren meddelandet avserialiseras till någon av följande typer av inkommande:
+I C# och F # kan hälsningsmeddelande Service Bus-utlösare vara avserialiserat tooany av hello följande indatatyper:
 
 * `string`-användbart för sträng meddelanden
 * `byte[]`-användbart för binära data
 * Alla [objekt](https://msdn.microsoft.com/library/system.object.aspx) – det är användbart för JSON-serialiserade data.
-  Om du exempelvis deklarera en anpassad Indatatyp `CustomType`, Azure Functions görs ett försök att deserialisera JSON-data till den angivna typen.
-* `BrokeredMessage`– ger dig avserialiserat meddelandet med den [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx) metod.
+  Om du exempelvis deklarera en anpassad Indatatyp `CustomType`, Azure Functions försöker toodeserialize hello JSON-data till den angivna typen.
+* `BrokeredMessage`-ger du hello avserialiseras meddelande med hello [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx) metod.
 
-I Node.js skickas Service Bus utlösaren meddelandet till funktionen som en sträng eller en JSON-objekt.
+I Node.js skickas hello Service Bus utlösaren meddelande till funktionen hello som en sträng eller en JSON-objekt.
 
 <a name="triggersample"></a>
 
 ## <a name="trigger-sample"></a>Utlösaren exempel
-Anta att du har följande function.json:
+Anta att du har följande function.json hello:
 
 ```json
 {
@@ -114,7 +114,7 @@ Anta att du har följande function.json:
 }
 ```
 
-Se exemplet språkspecifika som bearbetar ett meddelande för Service Bus-kö.
+Se hello språkspecifika prov som bearbetar ett meddelande för Service Bus-kö.
 
 * [C#](#triggercsharp)
 * [F#](#triggerfsharp)
@@ -154,16 +154,16 @@ module.exports = function(context, myQueueItem) {
 <a name="output"></a>
 
 ## <a name="service-bus-output-binding"></a>Service Bus-utdatabindning
-Service Bus-kö och avsnittet utdata för en funktion använder följande JSON-objekt i den `bindings` matris med function.json:
+hello Service Bus-kö och avsnittet utdata för en funktion använder hello följande JSON-objekt i hello `bindings` matris med function.json:
 
 * *kön* utdata:
 
     ```json
     {
         "name" : "<Name of output parameter in function signature>",
-        "queueName" : "<Name of the queue>",
+        "queueName" : "<Name of hello queue>",
         "connection" : "<Name of app setting that has your queue's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>",
+        "accessRights" : "<Access rights for hello connection string - see below>",
         "type" : "serviceBus",
         "direction" : "out"
     }
@@ -173,41 +173,41 @@ Service Bus-kö och avsnittet utdata för en funktion använder följande JSON-o
     ```json
     {
         "name" : "<Name of output parameter in function signature>",
-        "topicName" : "<Name of the topic>",
-        "subscriptionName" : "<Name of the subscription>",
+        "topicName" : "<Name of hello topic>",
+        "subscriptionName" : "<Name of hello subscription>",
         "connection" : "<Name of app setting that has your topic's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>",
+        "accessRights" : "<Access rights for hello connection string - see below>",
         "type" : "serviceBus",
         "direction" : "out"
     }
     ```
 
-Observera följande:
+Observera följande hello:
 
-* För `connection`, [skapa en appinställningen i appen funktionen](functions-how-to-use-azure-function-app-settings.md) som innehåller anslutningssträngen till Service Bus-namnrymd, ange namnet på appinställningen i den `connection` egenskapen i utdata-bindning. Du hämta anslutningssträngen genom att följa stegen som visas vid [hämta autentiseringsuppgifter för hantering](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials).
-  Anslutningssträngen måste vara för Service Bus-namnrymd inte begränsat till en särskild kö eller ett ämne.
-  Om du lämnar `connection` tom utdata bindningen förutsätter att en standard Service Bus-anslutningssträng har angetts i en app inställning med namnet `AzureWebJobsServiceBus`.
-* För `accessRights`, tillgängliga värden är `manage` och `listen`. Standardvärdet är `manage`, vilket indikerar att den `connection` har den **hantera** behörighet. Om du använder en anslutningssträng som inte har den **hantera** , behörighetsgrupp `accessRights` till `listen`. Annars kan hantera funktionerna runtime misslyckas försöker att utföra åtgärder som kräver rättigheter.
+* För `connection`, [skapa en appinställningen i appen funktionen](functions-how-to-use-azure-function-app-settings.md) som innehåller hello anslutning sträng tooyour Service Bus-namnrymd, ange hello namnet på hello appinställningen i hello `connection` egenskap i din utdata bindning. Du hämta hello anslutningssträng genom att följa hello stegen som visas vid [hämta autentiseringsuppgifter för hantering av hello](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials).
+  hello anslutningssträngen måste vara för en Service Bus-namnrymd, inte begränsat tooa särskild kö eller avsnittet.
+  Om du lämnar `connection` tom hello utdata bindning förutsätter att en standard Service Bus-anslutningssträng har angetts i en app inställning med namnet `AzureWebJobsServiceBus`.
+* För `accessRights`, tillgängliga värden är `manage` och `listen`. hello standardvärdet är `manage`, vilket anger att hello `connection` har hello **hantera** behörighet. Om du använder en anslutningssträng som inte har hello **hantera** , behörighetsgrupp `accessRights` för`listen`. Annars hello Functions-runtime kan hantera misslyckas försöker toodo åtgärder som kräver rättigheter.
 
 <a name="outputusage"></a>
 
 ## <a name="output-usage"></a>Användning av utdata
-I C# och F #, kan Azure Functions skapa ett Service Bus-kö-meddelande från någon av följande typer:
+Azure Functions kan skapa ett Service Bus-kömeddelande från någon av följande typer hello i C# och F #:
 
 * Alla [objekt](https://msdn.microsoft.com/library/system.object.aspx) -parameterdefinitionen ser ut som `out T paramName` (C#).
-  Funktioner deserializes objektet till en JSON-meddelande. Om värdet är null när funktionen avslutas skapar funktioner meddelandet med ett null-objekt.
-* `string`-Parameterdefinitionen ser ut som `out string paraName` (C#). Om parametervärdet är icke-null när funktionen avslutas, skapar ett meddelande i funktioner.
-* `byte[]`-Parameterdefinitionen ser ut som `out byte[] paraName` (C#). Om parametervärdet är icke-null när funktionen avslutas, skapar ett meddelande i funktioner.
-* `BrokeredMessage`Parameterdefinitionen ser ut som `out BrokeredMessage paraName` (C#). Om parametervärdet är icke-null när funktionen avslutas, skapar ett meddelande i funktioner.
+  Funktioner deserializes hello objekt i ett JSON-meddelande. Om hello värdet är null när hello funktionen avslutas skapar funktioner hello-meddelande med ett null-objekt.
+* `string`-Parameterdefinitionen ser ut som `out string paraName` (C#). Om hello parametervärdet är icke-null när hello funktionen avslutas, skapar ett meddelande i funktioner.
+* `byte[]`-Parameterdefinitionen ser ut som `out byte[] paraName` (C#). Om hello parametervärdet är icke-null när hello funktionen avslutas, skapar ett meddelande i funktioner.
+* `BrokeredMessage`Parameterdefinitionen ser ut som `out BrokeredMessage paraName` (C#). Om hello parametervärdet är icke-null när hello funktionen avslutas, skapar ett meddelande i funktioner.
 
-Du kan använda för att skapa flera meddelanden i en C#-funktion, `ICollector<T>` eller `IAsyncCollector<T>`. Skapa ett meddelande när du anropar den `Add` metoden.
+Du kan använda för att skapa flera meddelanden i en C#-funktion, `ICollector<T>` eller `IAsyncCollector<T>`. Skapa ett meddelande när du anropar hello `Add` metod.
 
-I Node.js, du kan tilldela en sträng, en bytematris eller ett Javascript-objekt (deserialisera till JSON) `context.binding.<paramName>`.
+I Node.js, kan du tilldela en sträng, en bytematris eller ett Javascript-objekt (deserialisera till JSON) för`context.binding.<paramName>`.
 
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>Exempel på utdata
-Anta att du har följande function.json, som definierar en Service Bus-kö utdata:
+Anta att du har följande function.json som definierar en Service Bus-kö utdata hello:
 
 ```json
 {
@@ -231,7 +231,7 @@ Anta att du har följande function.json, som definierar en Service Bus-kö utdat
 }
 ```
 
-Finns det språkspecifika exempel som skickar ett meddelande till service bus-kö.
+Se hello språkspecifika prov som skickar ett meddelande toohello service bus-kö.
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
@@ -250,7 +250,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQu
 }
 ```
 
-Eller skapa flera meddelanden:
+Eller toocreate flera meddelanden:
 
 ```cs
 public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> outputSbQueue)
@@ -286,7 +286,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Eller skapa flera meddelanden:
+Eller toocreate flera meddelanden:
 
 ```javascript
 module.exports = function (context, myTimer) {

@@ -1,6 +1,6 @@
 ---
-title: "Rollbaserad åtkomstkontroll med REST - Azure AD | Microsoft Docs"
-description: "Hantera rollbaserad åtkomstkontroll med REST API"
+title: "aaaRole-baserad åtkomstkontroll med REST - Azure AD | Microsoft Docs"
+description: "Hantera rollbaserad åtkomstkontroll med hello REST API"
 services: active-directory
 documentationcenter: na
 author: andredm7
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: andredm
-ms.openlocfilehash: a5c19fd87ce1ae3e199bf1dfc8cf82f5653baac2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ccd402fd4fe4583288076cac23753dd067694681
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-role-based-access-control-with-the-rest-api"></a>Hantera rollbaserad åtkomstkontroll med REST API
+# <a name="manage-role-based-access-control-with-hello-rest-api"></a>Hantera rollbaserad åtkomstkontroll med hello REST API
 > [!div class="op_single_selector"]
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 > * [REST-API](role-based-access-control-manage-access-rest.md)
 
-Rollbaserad åtkomstkontroll (RBAC) i Azure-portalen och Azure Resource Manager API hjälper dig att hantera åtkomst till din prenumeration och resurser på en detaljerad nivå. Med den här funktionen kan du bevilja åtkomst för Active Directory-användare, grupper eller tjänstens huvudnamn genom att tilldela vissa roller till dem för ett visst område.
+Rollbaserad åtkomstkontroll (RBAC) i hello Azure-portalen och Azure Resource Manager API kan du hantera åtkomst tooyour prenumeration och resurser på en detaljerad nivå. Med den här funktionen kan du bevilja åtkomst för användare, grupper eller tjänstens huvudnamn i Active Directory genom att tilldela vissa roller toothem för ett visst område.
 
 ## <a name="list-all-role-assignments"></a>Visa en lista med alla rolltilldelningar
-Listar alla rolltilldelningar i definitionsområdet och subscopes.
+Visar alla hello rolltilldelningar på hello angetts omfång och subscopes.
 
-Att lista rolltilldelningar, måste du ha tillgång till `Microsoft.Authorization/roleAssignments/read` åtgärden definitionsområdet. Inbyggda roller beviljas åtkomst till den här åtgärden. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
+toolist rolltilldelningar, måste du ha tillgång för`Microsoft.Authorization/roleAssignments/read` åtgärden hello definitionsområdet. Alla hello inbyggda roller beviljas åtkomst toothis igen. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Förfrågan
-Använd den **hämta** metoden med följande URI:
+Använd hello **hämta** metod med hello följande URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&$filter={filter}
 
-Gör följande ersättningar att anpassa din begäran inom URI:
+Inom hello URI, gör du följande ersättningar toocustomize hello din begäran:
 
-1. Ersätt *{scope}* med den omfattning som du vill visa en lista över rolltilldelningarna. Följande exempel visar hur du kan ange omfång för olika nivåer:
+1. Ersätt *{scope}* med hello scope som du vill toolist hello rolltilldelningar. hello som följande exempel visar hur toospecify hello omfång för olika nivåer:
 
    * Prenumerationen: /subscriptions/ {prenumerations-id}  
    * Resursgrupp: /subscriptions/ {prenumerations-id} / resursgrupper/myresourcegroup1  
    * Resurs: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Ersätt *{api-version}* med 2015-07-01.
-3. Ersätt *{filter}* med villkor som du vill tillämpa för att filtrera listan rollen tilldelning:
+3. Ersätt *{filter}* med hello villkor som du vill tilldelningslista för tooapply toofilter hello roll:
 
-   * Lista rolltilldelningar för endast det angivna omfånget, exklusive rolltilldelningar på subscopes:`atScope()`    
+   * Lista rolltilldelningar för endast hello angiven omfång, exklusive hello rolltilldelningar på subscopes:`atScope()`    
    * Lista rolltilldelningar för en viss användare, grupp eller ett program:`principalId%20eq%20'{objectId of user, group, or service principal}'`  
    * Visa en lista med rolltilldelningar för en viss användare, inklusive de som ärvts från grupper |`assignedTo('{objectId of user}')`
 
@@ -79,23 +79,23 @@ Statuskod: 200
 ```
 
 ## <a name="get-information-about-a-role-assignment"></a>Hämta information om en rolltilldelning
-Hämtar information om en enda rolltilldelning som anges av rollen tilldelning identifierare.
+Hämtar information om en enda rolltilldelning som anges av hello rollen tilldelning identifierare.
 
-Om du vill få information om en rolltilldelning måste du ha tillgång till `Microsoft.Authorization/roleAssignments/read` igen. Inbyggda roller beviljas åtkomst till den här åtgärden. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
+tooget information om en rolltilldelning, måste du ha tillgång för`Microsoft.Authorization/roleAssignments/read` igen. Alla hello inbyggda roller beviljas åtkomst toothis igen. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Förfrågan
-Använd den **hämta** metoden med följande URI:
+Använd hello **hämta** metod med hello följande URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-Gör följande ersättningar att anpassa din begäran inom URI:
+Inom hello URI, gör du följande ersättningar toocustomize hello din begäran:
 
-1. Ersätt *{scope}* med den omfattning som du vill visa en lista över rolltilldelningarna. Följande exempel visar hur du kan ange omfång för olika nivåer:
+1. Ersätt *{scope}* med hello scope som du vill toolist hello rolltilldelningar. hello som följande exempel visar hur toospecify hello omfång för olika nivåer:
 
    * Prenumerationen: /subscriptions/ {prenumerations-id}  
    * Resursgrupp: /subscriptions/ {prenumerations-id} / resursgrupper/myresourcegroup1  
    * Resurs: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Ersätt *{roll-tilldelning-id}* med GUID-identifierare för rolltilldelningen.
+2. Ersätt *{roll-tilldelning-id}* med hello GUID-identifierare för hello rolltilldelning.
 3. Ersätt *{api-version}* med 2015-07-01.
 
 ### <a name="response"></a>Svar
@@ -120,26 +120,26 @@ Statuskod: 200
 ```
 
 ## <a name="create-a-role-assignment"></a>Skapa en rolltilldelning
-Skapa en rolltilldelning i det specificerade omfånget för det angivna huvudnamnet bevilja den angivna rollen.
+Skapa en roll tilldelning vid hello specificerat omfånget för hello ange huvudnamn beviljande hello angivna rollen.
 
-Om du vill skapa en rolltilldelning måste du ha tillgång till `Microsoft.Authorization/roleAssignments/write` igen. I de inbyggda rollerna, endast *ägare* och *administratör för användaråtkomst* beviljas åtkomst till den här åtgärden. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
+toocreate en rolltilldelning måste du ha tillgång för`Microsoft.Authorization/roleAssignments/write` igen. I hello inbyggda roller, endast *ägare* och *administratör för användaråtkomst* beviljas åtkomst toothis igen. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Förfrågan
-Använd den **PLACERA** metoden med följande URI:
+Använd hello **PLACERA** metod med hello följande URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-Gör följande ersättningar att anpassa din begäran inom URI:
+Inom hello URI, gör du följande ersättningar toocustomize hello din begäran:
 
-1. Ersätt *{scope}* med den omfattning som du vill skapa rolltilldelningen. När du skapar en rolltilldelning på en överordnad omfattning, ärver alla underordnade omfång samma rolltilldelning. Följande exempel visar hur du kan ange omfång för olika nivåer:
+1. Ersätt *{scope}* med hello scope som du vill toocreate hello rolltilldelningar. När du skapar en rolltilldelning på en överordnad omfattning, ärver alla underordnade omfång hello samma rolltilldelning. hello som följande exempel visar hur toospecify hello omfång för olika nivåer:
 
    * Prenumerationen: /subscriptions/ {prenumerations-id}  
    * Resursgrupp: /subscriptions/ {prenumerations-id} / resursgrupper/myresourcegroup1   
    * Resurs: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Ersätt *{roll-tilldelning-id}* med en ny GUID som blir GUID-identifierare för ny rolltilldelning.
+2. Ersätt *{roll-tilldelning-id}* med en ny GUID som blir hello GUID-identifierare för hello ny rolltilldelning.
 3. Ersätt *{api-version}* med 2015-07-01.
 
-För begärantext, anger du värden i följande format:
+Ange hello värden i hello följande format för hello begärantext:
 
 ```
 {
@@ -153,8 +153,8 @@ För begärantext, anger du värden i följande format:
 
 | Elementnamn | Krävs | Typ | Beskrivning |
 | --- | --- | --- | --- |
-| roleDefinitionId |Ja |Sträng |Identifierare för rollen. Formatet på identifieraren är:`{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
-| principalId |Ja |Sträng |objectId av Azure AD är säkerhetsobjekt (användare, grupp eller tjänstens huvudnamn) som har tilldelats rollen. |
+| roleDefinitionId |Ja |Sträng |hello identifierare för hello roll. hello identifierare hello format är:`{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| principalId |Ja |Sträng |objectId av hello Azure AD-säkerhetsobjekt (användare, grupp eller tjänstens huvudnamn) toowhich hello roll har tilldelats. |
 
 ### <a name="response"></a>Svar
 Statuskod: 201
@@ -178,23 +178,23 @@ Statuskod: 201
 ```
 
 ## <a name="delete-a-role-assignment"></a>Ta bort en rolltilldelning
-Ta bort en rolltilldelning i det specificerade omfånget.
+Ta bort en rolltilldelning i hello angetts omfång.
 
-Om du vill ta bort en rolltilldelning måste du ha åtkomst till den `Microsoft.Authorization/roleAssignments/delete` igen. I de inbyggda rollerna, endast *ägare* och *administratör för användaråtkomst* beviljas åtkomst till den här åtgärden. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
+toodelete en rolltilldelning måste du ha åtkomst toohello `Microsoft.Authorization/roleAssignments/delete` igen. I hello inbyggda roller, endast *ägare* och *administratör för användaråtkomst* beviljas åtkomst toothis igen. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Förfrågan
-Använd den **ta bort** metoden med följande URI:
+Använd hello **ta bort** metod med hello följande URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-Gör följande ersättningar att anpassa din begäran inom URI:
+Inom hello URI, gör du följande ersättningar toocustomize hello din begäran:
 
-1. Ersätt *{scope}* med den omfattning som du vill skapa rolltilldelningen. Följande exempel visar hur du kan ange omfång för olika nivåer:
+1. Ersätt *{scope}* med hello scope som du vill toocreate hello rolltilldelningar. hello som följande exempel visar hur toospecify hello omfång för olika nivåer:
 
    * Prenumerationen: /subscriptions/ {prenumerations-id}  
    * Resursgrupp: /subscriptions/ {prenumerations-id} / resursgrupper/myresourcegroup1  
    * Resurs: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Ersätt *{roll-tilldelning-id}* med rollen tilldelnings-id GUID.
+2. Ersätt *{roll-tilldelning-id}* med hello tilldelnings-id GUID.
 3. Ersätt *{api-version}* med 2015-07-01.
 
 ### <a name="response"></a>Svar
@@ -219,27 +219,27 @@ Statuskod: 200
 ```
 
 ## <a name="list-all-roles"></a>Visa en lista över alla roller
-Listar de roller som är tillgängliga för tilldelning i det specificerade omfånget.
+Listar alla hello-roller som är tillgängliga för tilldelning i hello angivna omfattningen.
 
-Lista roller måste du ha tillgång till `Microsoft.Authorization/roleDefinitions/read` åtgärden definitionsområdet. Inbyggda roller beviljas åtkomst till den här åtgärden. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
+toolist roller, måste du ha tillgång för`Microsoft.Authorization/roleDefinitions/read` åtgärden hello definitionsområdet. Alla hello inbyggda roller beviljas åtkomst toothis igen. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Förfrågan
-Använd den **hämta** metoden med följande URI:
+Använd hello **hämta** metod med hello följande URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&$filter={filter}
 
-Gör följande ersättningar att anpassa din begäran inom URI:
+Inom hello URI, gör du följande ersättningar toocustomize hello din begäran:
 
-1. Ersätt *{scope}* med den omfattning som du vill visa en lista över roller. Följande exempel visar hur du kan ange omfång för olika nivåer:
+1. Ersätt *{scope}* med hello scope som du vill toolist hello roller. hello som följande exempel visar hur toospecify hello omfång för olika nivåer:
 
    * Prenumerationen: /subscriptions/ {prenumerations-id}  
    * Resursgrupp: /subscriptions/ {prenumerations-id} / resursgrupper/myresourcegroup1  
    * Resursen /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Ersätt *{api-version}* med 2015-07-01.
-3. Ersätt *{filter}* med villkor som du vill använda för att filtrera listan över roller:
+3. Ersätt *{filter}* med hello villkor som du vill tooapply toofilter hello lista över roller:
 
-   * Lista roller som är tillgängliga för tilldelning i det specificerade omfånget och alla dess underordnade omfattningar:`atScopeAndBelow()`
-   * Sök efter en roll med exakt visningsnamn: `roleName%20eq%20'{role-display-name}'`. Använd URL-kodade formatet exakt visningsnamnet för rollen. Till exempel`$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
+   * Lista roller som är tillgängliga för tilldelning på hello ange omfånget och alla dess underordnade omfattningar:`atScopeAndBelow()`
+   * Sök efter en roll med exakt visningsnamn: `roleName%20eq%20'{role-display-name}'`. Använd hello URL-kodade hello exakt visningsnamn hello roll. Till exempel`$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
 ### <a name="response"></a>Svar
 Statuskod: 200
@@ -251,7 +251,7 @@ Statuskod: 200
       "properties": {
         "roleName": "Virtual Machine Contributor",
         "type": "BuiltInRole",
-        "description": "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they\u2019re connected to.",
+        "description": "Lets you manage virtual machines, but not access toothem, and not hello virtual network or storage account they\u2019re connected to.",
         "assignableScopes": [
           "/"
         ],
@@ -302,23 +302,23 @@ Statuskod: 200
 ```
 
 ## <a name="get-information-about-a-role"></a>Hämta information om en roll
-Hämtar information om en enda roll som anges av rollen definition identifierare. För information om en roll med hjälp av dess namn, se [lista över alla roller för](role-based-access-control-manage-access-rest.md#list-all-roles).
+Hämtar information om en enda roll som anges av hello identifierare för rollen. tooget information om en roll med hjälp av dess visningsnamn finns [lista över alla roller för](role-based-access-control-manage-access-rest.md#list-all-roles).
 
-Om du vill få information om en roll måste du ha tillgång till `Microsoft.Authorization/roleDefinitions/read` igen. Inbyggda roller beviljas åtkomst till den här åtgärden. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
+tooget information om en roll, måste du ha tillgång för`Microsoft.Authorization/roleDefinitions/read` igen. Alla hello inbyggda roller beviljas åtkomst toothis igen. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Förfrågan
-Använd den **hämta** metoden med följande URI:
+Använd hello **hämta** metod med hello följande URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-Gör följande ersättningar att anpassa din begäran inom URI:
+Inom hello URI, gör du följande ersättningar toocustomize hello din begäran:
 
-1. Ersätt *{scope}* med den omfattning som du vill visa en lista över rolltilldelningarna. Följande exempel visar hur du kan ange omfång för olika nivåer:
+1. Ersätt *{scope}* med hello scope som du vill toolist hello rolltilldelningar. hello som följande exempel visar hur toospecify hello omfång för olika nivåer:
 
    * Prenumerationen: /subscriptions/ {prenumerations-id}  
    * Resursgrupp: /subscriptions/ {prenumerations-id} / resursgrupper/myresourcegroup1  
    * Resurs: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Ersätt *{roll-definition-id}* med GUID-identifierare för rolldefinitionen.
+2. Ersätt *{roll-definition-id}* med hello GUID-identifierare för hello rolldefinitionen.
 3. Ersätt *{api-version}* med 2015-07-01.
 
 ### <a name="response"></a>Svar
@@ -331,7 +331,7 @@ Statuskod: 200
       "properties": {
         "roleName": "Virtual Machine Contributor",
         "type": "BuiltInRole",
-        "description": "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they\u2019re connected to.",
+        "description": "Lets you manage virtual machines, but not access toothem, and not hello virtual network or storage account they\u2019re connected to.",
         "assignableScopes": [
           "/"
         ],
@@ -384,24 +384,24 @@ Statuskod: 200
 ## <a name="create-a-custom-role"></a>Skapa en anpassad roll
 Skapa en anpassad roll.
 
-Om du vill skapa en anpassad roll måste du ha tillgång till `Microsoft.Authorization/roleDefinitions/write` igen på alla de `AssignableScopes`. I de inbyggda rollerna, endast *ägare* och *administratör för användaråtkomst* beviljas åtkomst till den här åtgärden. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
+toocreate en anpassad roll måste du ha tillgång för`Microsoft.Authorization/roleDefinitions/write` åtgärden på alla hello `AssignableScopes`. I hello inbyggda roller, endast *ägare* och *administratör för användaråtkomst* beviljas åtkomst toothis igen. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Förfrågan
-Använd den **PLACERA** metoden med följande URI:
+Använd hello **PLACERA** metod med hello följande URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-Gör följande ersättningar att anpassa din begäran inom URI:
+Inom hello URI, gör du följande ersättningar toocustomize hello din begäran:
 
-1. Ersätt *{scope}* med först *AssignableScope* av den anpassade rollen. Följande exempel visar hur du kan ange omfång för olika nivåer.
+1. Ersätt *{scope}* med hello första *AssignableScope* av hello anpassad roll. hello som följande exempel visar hur toospecify hello omfång för olika nivåer.
 
    * Prenumerationen: /subscriptions/ {prenumerations-id}  
    * Resursgrupp: /subscriptions/ {prenumerations-id} / resursgrupper/myresourcegroup1  
    * Resurs: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Ersätt *{roll-definition-id}* med en ny GUID som blir GUID-identifierare för den nya anpassa rollen.
+2. Ersätt *{roll-definition-id}* med en ny GUID som blir hello GUID-identifierare för hello ny anpassad roll.
 3. Ersätt *{api-version}* med 2015-07-01.
 
-För begärantext, anger du värden i följande format:
+Ange hello värden i hello följande format för hello begärantext:
 
 ```
 {
@@ -436,13 +436,13 @@ För begärantext, anger du värden i följande format:
 
 | Elementnamn | Krävs | Typ | Beskrivning |
 | --- | --- | --- | --- |
-| namn |Ja |Sträng |GUID-identifierare för den anpassade rollen. |
-| properties.roleName |Ja |Sträng |Visningsnamn för den anpassade rollen. Maximal storlek 128 tecken. |
-| Properties.Description |Nej |Sträng |Beskrivning av anpassad roll. Maximal storlek 1024 tecken. |
-| Properties.Type |Ja |Sträng |Ange till ”CustomRole”. |
-| Properties.permissions.Actions |Ja |String] |En strängmatris åtgärd anger de åtgärder som tilldelats av den anpassade rollen. |
-| properties.permissions.notActions |Nej |String] |En strängmatris åtgärd anger åtgärderna som ska undantas från de åtgärder som tilldelats av den anpassade rollen. |
-| properties.assignableScopes |Ja |String] |En matris med scope där den anpassade rollen som kan användas. |
+| namn |Ja |Sträng |GUID-identifierare för hello anpassad roll. |
+| properties.roleName |Ja |Sträng |Visningsnamnet för hello anpassad roll. Maximal storlek 128 tecken. |
+| Properties.Description |Nej |Sträng |Beskrivning av anpassad hello-roll. Maximal storlek 1024 tecken. |
+| Properties.Type |Ja |Sträng |Ställa in också ”CustomRole”. |
+| Properties.permissions.Actions |Ja |String] |En matris med åtgärden strängar åtgärder för att ange hello beviljat hello anpassad roll. |
+| properties.permissions.notActions |Nej |String] |En strängmatris åtgärd att ange hello operations tooexclude från hello-åtgärder som tilldelats av hello anpassad roll. |
+| properties.assignableScopes |Ja |String] |En matris med omfattningar i vilka hello anpassad roll kan användas. |
 
 ### <a name="response"></a>Svar
 Statuskod: 201
@@ -487,24 +487,24 @@ Statuskod: 201
 ## <a name="update-a-custom-role"></a>Uppdatera en anpassad roll
 Ändra en anpassad roll.
 
-Om du vill ändra en anpassad roll måste du ha tillgång till `Microsoft.Authorization/roleDefinitions/write` igen på alla de `AssignableScopes`. I de inbyggda rollerna, endast *ägare* och *administratör för användaråtkomst* beviljas åtkomst till den här åtgärden. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
+toomodify en anpassad roll måste du ha tillgång för`Microsoft.Authorization/roleDefinitions/write` åtgärden på alla hello `AssignableScopes`. I hello inbyggda roller, endast *ägare* och *administratör för användaråtkomst* beviljas åtkomst toothis igen. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Förfrågan
-Använd den **PLACERA** metoden med följande URI:
+Använd hello **PLACERA** metod med hello följande URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-Gör följande ersättningar att anpassa din begäran inom URI:
+Inom hello URI, gör du följande ersättningar toocustomize hello din begäran:
 
-1. Ersätt *{scope}* med först *AssignableScope* av den anpassade rollen. Följande exempel visar hur du kan ange omfång för olika nivåer:
+1. Ersätt *{scope}* med hello första *AssignableScope* av hello anpassad roll. hello som följande exempel visar hur toospecify hello omfång för olika nivåer:
 
    * Prenumerationen: /subscriptions/ {prenumerations-id}  
    * Resursgrupp: /subscriptions/ {prenumerations-id} / resursgrupper/myresourcegroup1  
    * Resurs: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Ersätt *{roll-definition-id}* med GUID-identifierare för den anpassade rollen.
+2. Ersätt *{roll-definition-id}* med hello GUID-identifierare för hello anpassad roll.
 3. Ersätt *{api-version}* med 2015-07-01.
 
-För begärantext, anger du värden i följande format:
+Ange hello värden i hello följande format för hello begärantext:
 
 ```
 {
@@ -539,13 +539,13 @@ För begärantext, anger du värden i följande format:
 
 | Elementnamn | Krävs | Typ | Beskrivning |
 | --- | --- | --- | --- |
-| namn |Ja |Sträng |GUID-identifierare för den anpassade rollen. |
-| properties.roleName |Ja |Sträng |Visningsnamn för den anpassade rollen som är uppdaterade. |
-| Properties.Description |Nej |Sträng |Beskrivning av den anpassade rollen som är uppdaterade. |
-| Properties.Type |Ja |Sträng |Ange till ”CustomRole”. |
-| Properties.permissions.Actions |Ja |String] |En strängmatris åtgärd anger de åtgärder som den uppdaterade anpassade rollen som ger åtkomst. |
-| properties.permissions.notActions |Nej |String] |En strängmatris åtgärd anger åtgärderna som ska undantas från de åtgärder som den anpassade rollen som uppdaterade ger. |
-| properties.assignableScopes |Ja |String] |En matris med scope där uppdaterade anpassad roll kan användas. |
+| namn |Ja |Sträng |GUID-identifierare för hello anpassad roll. |
+| properties.roleName |Ja |Sträng |Visningsnamn för hello uppdaterade anpassad roll. |
+| Properties.Description |Nej |Sträng |Beskrivning av hello uppdatera anpassad roll. |
+| Properties.Type |Ja |Sträng |Ställa in också ”CustomRole”. |
+| Properties.permissions.Actions |Ja |String] |En strängmatris åtgärd att ange hello operations toowhich hello uppdatera anpassade roll som beviljar åtkomst. |
+| properties.permissions.notActions |Nej |String] |En matris med åtgärden strängar att ange hello operations tooexclude från hello operations vilka hello uppdateras ger anpassad roll. |
+| properties.assignableScopes |Ja |String] |En matris med omfattningar i vilka hello uppdaterade anpassad roll kan användas. |
 
 ### <a name="response"></a>Svar
 Statuskod: 201
@@ -590,21 +590,21 @@ Statuskod: 201
 ## <a name="delete-a-custom-role"></a>Ta bort en anpassad roll
 Ta bort en anpassad roll.
 
-Om du vill ta bort en anpassad roll måste du ha tillgång till `Microsoft.Authorization/roleDefinitions/delete` igen på alla de `AssignableScopes`. I de inbyggda rollerna, endast *ägare* och *administratör för användaråtkomst* beviljas åtkomst till den här åtgärden. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
+toodelete en anpassad roll måste du ha tillgång för`Microsoft.Authorization/roleDefinitions/delete` åtgärden på alla hello `AssignableScopes`. I hello inbyggda roller, endast *ägare* och *administratör för användaråtkomst* beviljas åtkomst toothis igen. Mer information om rolltilldelningar och hantera åtkomst till Azure-resurser finns [rollbaserad åtkomstkontroll i](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Förfrågan
-Använd den **ta bort** metoden med följande URI:
+Använd hello **ta bort** metod med hello följande URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-Gör följande ersättningar att anpassa din begäran inom URI:
+Inom hello URI, gör du följande ersättningar toocustomize hello din begäran:
 
-1. Ersätt *{scope}* med den omfattning som du vill ta bort rolldefinitionen. Följande exempel visar hur du kan ange omfång för olika nivåer:
+1. Ersätt *{scope}* med hello scope som du vill att toodelete hello rolldefinitionen. hello som följande exempel visar hur toospecify hello omfång för olika nivåer:
 
    * Prenumerationen: /subscriptions/ {prenumerations-id}  
    * Resursgrupp: /subscriptions/ {prenumerations-id} / resursgrupper/myresourcegroup1  
    * Resurs: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Ersätt *{roll-definition-id}* med ID: t för GUID rollen definitionen av den anpassade rollen.
+2. Ersätt *{roll-definition-id}* med hello GUID rolldefinitions-ID: hello anpassad roll.
 3. Ersätt *{api-version}* med 2015-07-01.
 
 ### <a name="response"></a>Svar

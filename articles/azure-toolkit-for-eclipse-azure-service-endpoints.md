@@ -1,6 +1,6 @@
 ---
-title: "Azure-Tjänsteslutpunkter"
-description: "Beskriver Azure tjänstslutpunkten inställningarna i Azure-verktygen för Eclipse."
+title: aaaAzure slutpunkter
+description: "Beskriver hello Azure tjänstslutpunkten inställningar i hello Azure Toolkit för Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,57 +14,57 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 6059c292c2687f1bf3d9be04c03aaaaf6adde945
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 357aa56409a894719077f2c8f302575c8ebb6883
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-service-endpoints"></a>Azure-Tjänsteslutpunkter
-Azure-Tjänsteslutpunkter bestämma om programmet distribueras till och hanteras av globala Azure-plattformen, Azure som drivs av 21Vianet i Kina eller en privat Azure-plattformen. Den **Tjänsteslutpunkter** dialogrutan kan du ange vilka Tjänsteslutpunkter som du vill använda. Öppna den **Tjänsteslutpunkter** dialogrutan i Eclipse klickar du på **fönstret**, klickar du på **inställningar**, expandera **Azure**, och klicka sedan på **Tjänsteslutpunkter**. Ange den **Active ange** bestämmer vilka Azure-Tjänsteslutpunkter som ska användas för Azure projekten i din aktuella arbetsytan.
+Azure-Tjänsteslutpunkter avgör om ditt program är distribuerade tooand som hanteras av hello globala Azure-plattformen, Azure som drivs av 21Vianet i Kina eller en privat Azure-plattformen. Hej **Tjänsteslutpunkter** dialogrutan kan du toospecify som tjänstens slutpunkter som du vill toouse. tooopen hello **Tjänsteslutpunkter** dialogrutan i Eclipse klickar du på **fönstret**, klickar du på **inställningar**, expandera **Azure**, och klicka sedan på **Tjänstens slutpunkter**. Inställningen hello **Active ange** bestämmer vilka Azure-tjänsten slutpunkter som ska användas för hello Azure projekt i din aktuella arbetsytan.
 
-I följande visas den **Tjänsteslutpunkter** dialogrutan.
+hello följande visar hello **Tjänsteslutpunkter** dialogrutan.
 
 ![][ic719493]
 
-## <a name="to-set-the-service-endpoints"></a>Ange Tjänsteslutpunkter
-I den **Tjänsteslutpunkter** dialogrutan, utför något av följande åtgärder:
+## <a name="tooset-hello-service-endpoints"></a>tooset hello slutpunkter
+I hello **Tjänsteslutpunkter** dialogrutan, utför något av hello följande åtgärder:
 
-* Om du vill använda globala Azure-plattformen, från den **Active ange** listrutan, Välj **windowsazure.com** och på **OK**.
+* Om du vill toouse hello globala Azure-plattformen, från hello **Active ange** listrutan, Välj **windowsazure.com** och på **OK**.
 
-* Om du vill använda Azure drivs av 21Vianet i Kina, från den **Active ange** listrutan, Välj **windowsazure.cn (Kina)** och på **OK**.
+* Om du vill toouse Azure drivs av 21Vianet i Kina, från hello **Active ange** listrutan, Välj **windowsazure.cn (Kina)** och på **OK**.
 
-* Om du vill använda en privat Azure-plattformen:
+* Om du vill toouse privat Azure-plattformen:
 
   1. Klicka på **Redigera**.
 
-  2. Öppnas en dialogruta som talar om som den **Tjänsteslutpunkter** dialogrutan stängs och inställningar anger filen öppnas. Klicka på **OK**.
+  2. Öppnas en dialogruta som talar om att hello **Tjänsteslutpunkter** dialogrutan stängs och hello konfigurationsfil anger öppnas. Klicka på **OK**.
 
-  3. Skapa en ny i filen preferencesets.xml `preferenceset` element. Den här nya element, skapa `name`, `blob`, `management`, `portalURL` och `publishsettings` attribut och lägga till värden för dem som är kopplade till ditt privata Azure-plattformen. Du kan använda de angivna värdena för den befintliga `preferenceset` element som en mall. **Obs**: det värde som används för den `blob` attributet måste innehålla text ”blob” i Webbadressen.
+  3. Skapa en ny i hello preferencesets.xml filen `preferenceset` element. Den här nya element, skapa `name`, `blob`, `management`, `portalURL` och `publishsettings` attribut och lägga till värden för dem som motsvarar tooyour privat Azure-plattformen. Du kan använda hello värden för hello befintliga `preferenceset` element som en mall. **Obs**: hello värde som används för hello `blob` attributet måste innehålla hello text ”blob” hello-URL.
 
   4. Spara och Stäng preferencesets.xml.
 
-  5. Öppna den **Tjänsteslutpunkter** dialogrutan.
+  5. Öppna hello **Tjänsteslutpunkter** dialogrutan.
 
-  6. Från den **Active ange** listrutan, Välj aktivt ange som du skapat och klicka på **OK**.
+  6. Från hello **Active ange** listrutan, Välj hello active ange som du skapat och klicka på **OK**.
 
-  7. När du har skapat din privata Azure-plattformen `preferenceset` element som du kan ändra värdena för den genom att klicka på den **redigera** knappen i den **Services-ändpunkten** dialogrutan. Du kan också skapa flera privat Azure-plattformen `preferenceset` element, om du vill ha.
+  7. När du har skapat din privata Azure-plattformen `preferenceset` element, kan du ändra hello värden som har tilldelats tooit genom att klicka på hello **redigera** knapp i hello **Services-ändpunkten** dialogrutan. Du kan också skapa flera privat Azure-plattformen `preferenceset` element, om du vill ha.
 
 ## <a name="see-also"></a>Se även
 [Azure Toolkit för Eclipse][Azure Toolkit for Eclipse]
 
-[Installera Azure Toolkit för Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Installera hello Azure Toolkit för Eclipse][Installing hello Azure Toolkit for Eclipse] 
 
 [Skapa ett Hello World-program för Azure i Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
-Mer information om hur du använder Azure med Java finns det [Azure Java Developer Center][Azure Java Developer Center].
+Mer information om hur du använder Azure med Java finns hello [Azure Java Developer Center][Azure Java Developer Center].
 
 <!-- URL List -->
 
 [Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
 [Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Installing hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 

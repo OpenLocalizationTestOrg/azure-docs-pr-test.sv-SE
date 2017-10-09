@@ -1,5 +1,5 @@
 ---
-title: "Hantera virtuella datorer i en Skaluppsättning för virtuell dator | Microsoft Docs"
+title: "aaaManage virtuella datorer i en virtuell dator Skaluppsättning | Microsoft Docs"
 description: Hantera virtuella datorer i en virtuell dator-skala med Azure PowerShell.
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
-ms.openlocfilehash: d09a020b903e5f43afe03b86c675bcc1eb536cbc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7d848729c0fc708bd596b61feb528cf4bf4bafd4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-virtual-machines-in-a-virtual-machine-scale-set"></a>Hantera virtuella datorer i en skaluppsättning för virtuell dator
-Använd uppgifterna i den här artikeln för att hantera virtuella datorer i din skaluppsättning för virtuell dator.
+Använd hello aktiviteter i denna artikel toomanage virtuella datorer i din skaluppsättning för virtuell dator.
 
-De flesta av de uppgifter som rör hantering av en virtuell dator i en skaluppsättning kräver att du vet instans-ID för den dator som du vill hantera. Du kan använda [resursutforskaren Azure](https://resources.azure.com) att hitta instans-ID för en virtuell dator i en skaluppsättning. Du kan också använda Resursläsaren för att kontrollera statusen för de aktiviteter som du är klar.
+De flesta av hello aktiviteter som rör hantering av en virtuell dator i en skaluppsättning kräver att du vet hello instans-ID för hello datorn som du vill toomanage. Du kan använda [resursutforskaren Azure](https://resources.azure.com) toofind hello instans-ID för en virtuell dator i en skaluppsättning. Du kan också använda Resursläsaren tooverify hello status för hello uppgifter som du är klar.
 
-Se [Installera och konfigurera Azure PowerShell](/powershell/azure/overview) för information om hur du installerar den senaste versionen av Azure PowerShell, väljer din prenumeration och loggar in på ditt konto.
+Se [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview) information om installation hello senaste versionen av Azure PowerShell, välja din prenumeration och loggar in tooyour konto.
 
 ## <a name="display-information-about-a-scale-set"></a>Visa information om en skaluppsättning
-Du kan hämta allmän information om en skalningsuppsättning som också kallas instansvyn. Eller så kan du få mer specifik information, till exempel information om resurser i skaluppsättning.
+Du kan hämta allmän information om en skalningsuppsättning som också är refererad tooas hello-instansvyn. Eller så kan du få mer specifik information, till exempel information om hello resurser i hello skaluppsättning.
 
-Ersätt angiven värdena med namnet eller resursgrupp och skala ange och sedan köra kommandot:
+Ersätt hello citattecken värden med hello namn eller din resursgrupp och skala ange och kör hello-kommando:
 
     Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
 
@@ -91,7 +91,7 @@ Den returnerar ungefär så här:
         Settings                                : {"xmlCfg":"...","storageAccount":"astore"}
     ProvisioningState                           : Succeeded
 
-Ersätt angiven värdena med namnet på din resursuppsättningen för gruppen och skala. Ersätt  *#*  med den virtuella dator som du vill ha information om och sedan köra den instans-ID:
+Ersätt hello citattecken värden med hello namnet på din resursuppsättningen för gruppen och skala. Ersätt  *#*  med hello instans-ID hello virtuella dator du vill ha tooget information om och sedan köra den:
 
     Get-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
@@ -145,11 +145,11 @@ Den returnerar något som liknar det här exemplet:
       ProvisioningState           : Succeeded
 
 ## <a name="start-a-virtual-machine-in-a-scale-set"></a>Starta en virtuell dator i en skaluppsättning
-Ersätt angiven värdena med namnet på din resursuppsättningen för gruppen och skala. Ersätt  *#*  med identifieraren för den virtuella datorn som du vill starta och köra den:
+Ersätt hello citattecken värden med hello namnet på din resursuppsättningen för gruppen och skala. Ersätt  *#*  med hello virtuella dator du vill toostart och sedan köra den hello-ID:
 
     Start-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-I Resursläsaren, kan vi se att status för instansen är **kör**:
+I Resursläsaren, kan vi se att hello status för hello-instansen är **kör**:
 
     "statuses": [
       {
@@ -165,14 +165,14 @@ I Resursläsaren, kan vi se att status för instansen är **kör**:
       }
     ]
 
-Du kan starta alla virtuella datorer i skaluppsättningen genom att inte använda - InstanceId-parameter.
+Du kan starta alla hello virtuella datorer i hello skaluppsättningen genom att inte använda hello - InstanceId-parameter.
 
 ## <a name="stop-a-virtual-machine-in-a-scale-set"></a>Stoppa en virtuell dator i en skaluppsättning
-Ersätt angiven värdena med namnet på din resursuppsättningen för gruppen och skala. Ersätt  *#*  med identifieraren för den virtuella datorn som du vill stoppa och sedan köra den:
+Ersätt hello citattecken värden med hello namnet på din resursuppsättningen för gruppen och skala. Ersätt  *#*  med hello virtuella dator du vill toostop och sedan köra den hello-ID:
 
     Stop-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-I Resursläsaren, kan vi se att status för instansen är **frigjorts**:
+I Resursläsaren, kan vi se att hello status för hello-instansen är **frigjorts**:
 
     "statuses": [
       {
@@ -188,28 +188,28 @@ I Resursläsaren, kan vi se att status för instansen är **frigjorts**:
       }
     ]
 
-Använd parametern - StayProvisioned om du vill stoppa en virtuell dator och inte frigör den. Du kan stoppa alla virtuella datorer i uppsättningen med hjälp av parametern - InstanceId inte.
+toostop en virtuell dator och frigör den inte kan använda hello StayProvisioned - parametern. Du kan stoppa alla hello virtuella datorer i hello som inte använder hello InstanceId - parameter.
 
 ## <a name="restart-a-virtual-machine-in-a-scale-set"></a>Starta om en virtuell dator i en skaluppsättning
-Ersätt värdet inom citattecken med namnet på resursgruppen och skaluppsättning. Ersätt  *#*  med identifieraren för den virtuella datorn som du vill starta om och kör det:
+Ersätt hello citattecken värden med hello namnet på resursen grupp och hello skaluppsättning. Ersätt  *#*  med hello virtuella dator du vill toorestart och sedan köra den hello-ID:
 
     Restart-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-Du kan starta om alla virtuella datorer i uppsättningen genom att inte använda - InstanceId-parameter.
+Du kan starta om alla hello virtuella datorer i hello som inte använder hello InstanceId - parameter.
 
 ## <a name="remove-a-virtual-machine-from-a-scale-set"></a>Ta bort en virtuell dator från en skaluppsättning
-Ersätt värdet inom citattecken med namnet på resursgruppen och skaluppsättning. Ersätt  *#*  med identifieraren för den virtuella datorn som du vill ta bort och sedan köra den:  
+Ersätt hello citattecken värden med hello namnet på resursen grupp och hello skaluppsättning. Ersätt  *#*  med hello virtuella dator du vill tooremove och sedan köra den hello-ID:  
 
     Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name" -InstanceId #
 
-Du kan ta bort virtuella datorns skaluppsättning samtidigt genom att inte använda - InstanceId-parameter.
+Du kan ta bort hello virtuella datorns skaluppsättning samtidigt genom att inte använda hello - InstanceId-parameter.
 
-## <a name="change-the-capacity-of-a-scale-set"></a>Ändra kapaciteten för en skaluppsättning
-Du kan lägga till eller ta bort virtuella datorer genom att ändra uppsättningen kapacitet. Hämta skaluppsättning som du vill ändra, ange kapaciteten som du vill att den ska vara och uppdatera skaluppsättningen med den nya kapaciteten. I de här kommandona ersätter du noterade värden med namnet på resursgruppen och dess skala.
+## <a name="change-hello-capacity-of-a-scale-set"></a>Ändra hello kapacitet för en skaluppsättning
+Du kan lägga till eller ta bort virtuella datorer genom att ändra hello kapacitet för hello mängd. Hämta skaluppsättning för hello som du vill toochange set hello kapacitet toowhat du vill toobe och sedan uppdatera hello skaluppsättning med hello ny kapacitet. I de här kommandona Ersätt hello citattecken värden med hello namnet på resursen grupp och hello skaluppsättning.
 
     $vmss = Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
     $vmss.sku.capacity = 5
     Update-AzureRmVmss -ResourceGroupName "resource group name" -Name "scale set name" -VirtualMachineScaleSet $vmss 
 
-Om du tar bort virtuella datorer från skaluppsättning tas de virtuella datorerna med de högsta ID bort först.
+Om du tar bort virtuella datorer från hello skaluppsättning tas hello virtuella datorer med hello högsta-ID: n bort först.
 

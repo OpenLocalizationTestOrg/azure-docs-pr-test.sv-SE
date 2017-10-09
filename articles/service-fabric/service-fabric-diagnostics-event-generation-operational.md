@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric operativa kanalen | Microsoft Docs
-description: "Omfattande lista över loggar som genereras i operativa kanalen av Azure Service Fabric-kluster."
+title: aaaAzure Service Fabric Operational kanal | Microsoft Docs
+description: "Omfattande lista över loggar som genereras i hello operativa kanalen av Azure Service Fabric-kluster."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: dekapur
-ms.openlocfilehash: 934719868ab9968db352db2b440014d35dbc0274
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 358782420ed62b202d6a89fe0f200b5ef0384c9c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="operational-channel"></a>Operativa kanalen 
 
-Den operativa kanalen består av loggar från övergripande åtgärder som utförs av Service Fabric på noderna och klustret. När ”-diagnostik är aktiverat för ett kluster, Azure-diagnostik-agent har distribuerats på klustret och är som standard konfigurerad för att läsa i loggar från den operativa kanalen. Läs mer om hur du konfigurerar den [Azure Diagnostics agent](service-fabric-diagnostics-event-aggregation-wad.md) att ändra konfigurationen för diagnostik av klustret för att hämta mer loggar eller prestandaräknare. 
+hello operativa kanalen består av loggar från övergripande åtgärder som utförs av Service Fabric på noderna och klustret. När ”-diagnostik är aktiverat för ett kluster, hello Azure Diagnostics agent har distribuerats på klustret och är som standard konfigurerade tooread loggar från hello operativa kanalen. Läs mer om hur du konfigurerar hello [Azure Diagnostics agent](service-fabric-diagnostics-event-aggregation-wad.md) toomodify hello diagnostik konfigurationen av din klustret toopick in flera loggar eller prestandaräknare. 
 
 ## <a name="operational-channel-logs"></a>Operativa kanalen loggar 
 
-Här är en omfattande lista över loggarna som tillhandahålls av Service Fabric i den operativa kanalen. 
+Här är en omfattande lista över loggarna som tillhandahålls av Service Fabric i hello operativa kanalen. 
 
 | Händelse-ID | Namn | Källa (aktivitet) | Nivå |
 | --- | --- | --- | --- |
@@ -56,6 +56,6 @@ Här är en omfattande lista över loggarna som tillhandahålls av Service Fabri
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om övergripande [händelse genereras på nivån plattform](service-fabric-diagnostics-event-generation-infra.md) i Service Fabric
-* Ändra din [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) konfiguration för att samla in mer loggar
-* [Konfigurera Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) att se din Operational kanaler loggar
+* Mer information om övergripande [händelse genereras på hello plattformsnivå](service-fabric-diagnostics-event-generation-infra.md) i Service Fabric
+* Ändra din [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) configuration toocollect fler loggar
+* [Konfigurera Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) toosee operativa kanalen loggar

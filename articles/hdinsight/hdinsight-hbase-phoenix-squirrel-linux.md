@@ -1,6 +1,6 @@
 ---
-title: "Använda Apache Phoenix och SQuirreL med HBase - Azure HDInsight | Microsoft Docs"
-description: "Lär dig hur du använder Apache Phoenix i HDInsight och hur du installerar och konfigurerar SQuirreL på din arbetsstation för att ansluta till ett HBase-kluster i HDInsight."
+title: aaaUse Apache Phoenix och SQuirreL med HBase - Azure HDInsight | Microsoft Docs
+description: "Lär dig hur toouse Apache Phoenix i HDInsight, och hur tooinstall och konfigurera SQuirreL på din arbetsstation tooconnect tooan HBase-kluster i HDInsight."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -15,47 +15,47 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/26/2017
 ms.author: jgao
-ms.openlocfilehash: 13d17083bbe26fa9745ce4c5fef9f56859243c2e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a63e8c8212b7a992453ec94fa638ec3863a0ede3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-apache-phoenix-with-linux-based-hbase-clusters-in-hdinsight"></a>Använda Apache Phoenix med Linux-baserade HBase-kluster i HDInsight
-Lär dig hur du använder [Apache Phoenix](http://phoenix.apache.org/) i HDInsight och hur du använder SQLLine. Läs mer om Phoenix [Phoenix i 15 minuter eller mindre](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Phoenix-grammatik finns [Phoenix grammatik](http://phoenix.apache.org/language/index.html).
+Lär dig hur toouse [Apache Phoenix](http://phoenix.apache.org/) i HDInsight, och hur toouse SQLLine. Läs mer om Phoenix [Phoenix i 15 minuter eller mindre](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Hello Phoenix grammatik, se [Phoenix grammatik](http://phoenix.apache.org/language/index.html).
 
 > [!NOTE]
-> Phoenix versionsinformation i HDInsight, se [vad är nytt i Hadoop-klusterversioner som tillhandahålls av HDInsight?](hdinsight-component-versioning.md).
+> Hello Phoenix versionsinformation i HDInsight, se [vad är nytt i hello Hadoop-klusterversioner som tillhandahålls av HDInsight?](hdinsight-component-versioning.md).
 >
 >
 
 ## <a name="use-sqlline"></a>Använd SQLLine
-[SQLLine](http://sqlline.sourceforge.net/) är ett kommandoradsverktyg för att köra SQL.
+[SQLLine](http://sqlline.sourceforge.net/) är ett kommandoradsverktyg tooexecute SQL.
 
 ### <a name="prerequisites"></a>Krav
-Innan du kan använda SQLLine, måste du ha följande:
+Innan du kan använda SQLLine, måste du ha hello följande:
 
 * **Ett HBase-kluster i HDInsight**. Mer information om etablera HBase-kluster, se [Kom igång med Apache HBase i HDInsight][hdinsight-hbase-get-started].
-* **Ansluta till HBase-kluster via remote desktop protocol**. Instruktioner finns i [hantera Hadoop-kluster i HDInsight med hjälp av Azure portal][hdinsight-manage-portal].
+* **Ansluta toohello HBase-kluster via hello Fjärrskrivbordsprotokollet**. Instruktioner finns i [hantera Hadoop-kluster i HDInsight med hjälp av hello Azure-portalen][hdinsight-manage-portal].
 
-När du ansluter till ett HBase-kluster, måste du ansluta till en Zookeepers. Varje HDInsight-kluster har tre Zookeepers.
+När du ansluter tooan HBase-kluster måste tooconnect tooone av hello Zookeepers. Varje HDInsight-kluster har tre Zookeepers.
 
-**Ta reda på Zookeeper-värdnamn**
+**toofind ut hello Zookeeper-värdnamn**
 
-1. Öppna Ambari genom att bläddra till **https://<ClusterName>. azurehdinsight.net**.
-2. Ange HTTP (kluster)-användarnamn och lösenord för inloggning.
-3. Klicka på **ZooKeeper** i den vänstra menyn. Du ser tre **ZooKeeper-Server** visas.
-4. Klicka på någon av de **ZooKeeper-Server** visas. I rutan Sammanfattning hitta den **värdnamn**. Den liknar *zk1 jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
+1. Öppna Ambari genom att bläddra för**https://<ClusterName>. azurehdinsight.net**.
+2. Ange hello HTTP (kluster) användarnamn och lösenord toologin.
+3. Klicka på **ZooKeeper** hello vänstra menyn. Du ser tre **ZooKeeper-Server** visas.
+4. Klicka på någon av hello **ZooKeeper-Server** visas. Hitta hello på hello sammanfattningsfönstret, **värdnamn**. Det är liknande för*zk1 jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
 
-**Att använda SQLLine**
+**toouse SQLLine**
 
-1. Ansluta till klustret med SSH. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
+1. Ansluta toohello kluster med SSH. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
 
-2. Kör följande kommandon för att köra SQLLine från SSH:
+2. Från SSH kör du följande kommandon toorun SQLLine hello:
 
         cd /usr/hdp/2.2.9.1-7/phoenix/bin
         ./sqlline.py <ClusterName>:2181:/hbase-unsecure
-3. Kör följande kommandon för att skapa en HBase-tabell och infoga data:
+3. Kör följande kommandon toocreate hello HBase-tabellen och infoga data:
 
         CREATE TABLE Company (COMPANY_ID INTEGER PRIMARY KEY, NAME VARCHAR(225));
 
@@ -70,12 +70,12 @@ När du ansluter till ett HBase-kluster, måste du ansluta till en Zookeepers. V
 Mer information finns i [SQLLine manuell](http://sqlline.sourceforge.net/#manual) och [Phoenix grammatik](http://phoenix.apache.org/language/index.html).
 
 ## <a name="next-steps"></a>Nästa steg
-I den här artikeln har du lärt dig hur du använder Apache Phoenix i HDInsight.  Du kan läsa mer här:
+I den här artikeln har du lärt dig hur toouse Apache Phoenix i HDInsight.  Det finns fler toolearn:
 
 * [HDInsight HBase-översikt][hdinsight-hbase-overview]: HBase är en NoSQL-databas av Apachetyp med öppen källkod som bygger på Hadoop och som ger direktåtkomst och stark konsekvens för stora mängder ostrukturerade och semistrukturerade data.
-* [Etablera HBase-kluster i Azure Virtual Network][hdinsight-hbase-provision-vnet]: med virtuell nätverksintegration HBase-kluster kan bara distribueras till samma virtuella nätverk som dina program så att program kan kommunicera med HBase direkt.
-* [Konfigurera HBase-replikering i HDInsight](hdinsight-hbase-replication.md): Lär dig att konfigurera HBase-replikering mellan två Azure-datacenter.
-* [Analysera Twitter-åsikter med HBase i HDInsight][hbase-twitter-sentiment]: Lär dig hur du gör realtid [sentiment analysis](http://en.wikipedia.org/wiki/Sentiment_analysis) av stordata med HBase i ett Hadoop-kluster i HDInsight.
+* [Etablera HBase-kluster i Azure Virtual Network][hdinsight-hbase-provision-vnet]: med virtuell nätverksintegration HBase-kluster kan vara distribuerade toohello samma virtuella nätverk som dina program så att program kan kommunicera med HBase direkt.
+* [Konfigurera HBase-replikering i HDInsight](hdinsight-hbase-replication.md): Lär dig hur tooconfigure HBase-replikering mellan två Azure-datacenter.
+* [Analysera Twitter-åsikter med HBase i HDInsight][hbase-twitter-sentiment]: Lär dig hur toodo realtid [sentiment analysis](http://en.wikipedia.org/wiki/Sentiment_analysis) av stordata med HBase i ett Hadoop-kluster i HDInsight.
 
 [azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT

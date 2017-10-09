@@ -2,7 +2,7 @@
 
 
 
-När du skickar meddelanden om mallar du behöver bara ange en uppsättning egenskaper, i vårt fall skickar vi en uppsättning egenskaper som innehåller den lokaliserade versionen av den aktuella nyheten, till exempel:
+När du skickar meddelanden om mallar behöver du bara tooprovide en uppsättning egenskaper, i vårt fall skickar hello uppsättning egenskaper som innehåller hello lokaliserad version av hello aktuella nyheter, till exempel:
 
     {
         "News_English": "World News in English!",
@@ -11,22 +11,22 @@ När du skickar meddelanden om mallar du behöver bara ange en uppsättning egen
     }
 
 
-Det här avsnittet visas hur du skickar meddelanden med hjälp av en konsolapp
+Det här avsnittet visas hur toosend meddelanden med hjälp av en konsolapp
 
-Inkluderade koden skickar till Windows Store- och iOS-enheter, eftersom serverdelen kan skicka till någon av enheterna som stöds.
+hello med kod sändningar tooboth Windows Store och iOS-enheter eftersom hello serverdel kan skicka tooany hello stöds enheter.
 
-### <a name="to-send-notifications-using-a-c-console-app"></a>Att skicka meddelanden med en C#-konsolapp
-Ändra den `SendTemplateNotificationAsync` metoden i konsolen appen som du skapade tidigare med följande kod. Observera hur i det här fallet finns inget behov av att skicka flera meddelanden för olika språk och plattformar.
+### <a name="toosend-notifications-using-a-c-console-app"></a>toosend meddelanden med en C#-konsolapp
+Ändra hello `SendTemplateNotificationAsync` metod i hello konsolprogram som du skapade tidigare med hello följande kod. Observera hur i det här fallet finns inget behov av toosend flera meddelanden för olika språk och plattformar.
 
         private static async void SendTemplateNotificationAsync()
         {
-            // Define the notification hub.
+            // Define hello notification hub.
             NotificationHubClient hub = 
                 NotificationHubClient.CreateClientFromConnectionString(
                     "<connection string with full access>", "<hub name>");
 
-            // Sending the notification as a template notification. All template registrations that contain 
-            // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 
+            // Sending hello notification as a template notification. All template registrations that contain 
+            // "messageParam" or "News_<local selected>" and hello proper tags will receive hello notifications. 
             // This includes APNS, GCM, WNS, and MPNS template registrations.
             Dictionary<string, string> templateParams = new Dictionary<string, string>();
 
@@ -52,10 +52,10 @@ Inkluderade koden skickar till Windows Store- och iOS-enheter, eftersom serverde
         }
 
 
-Observera att det här enkla anropet levererar lokaliserade typ av nyheterna till **alla** dina enheter, oavsett plattformen som din Meddelandehubb bygger och ger korrekt interna nyttolasten för alla enheter som prenumererar på en specifik taggen.
+Observera att det här enkla anropet levererar hello lokaliserade typ av Nyheter för**alla** dina enheter, oavsett hello plattform som din Meddelandehubb bygger och levererar hello rätt interna nyttolast tooall hello enheter prenumererar på tooa specifik tagg.
 
-### <a name="sending-the-notification-with-mobile-services"></a>Skicka meddelanden med Mobile Services
-Du kan använda följande skript i din Mobiltjänst Schemaläggaren:
+### <a name="sending-hello-notification-with-mobile-services"></a>Skicka hello-meddelande med Mobile Services
+Du kan använda hello följande skript i din Mobiltjänst Schemaläggaren:
 
     var azure = require('azure');
     var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string with full access>');

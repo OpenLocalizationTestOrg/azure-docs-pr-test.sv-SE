@@ -1,6 +1,6 @@
 ---
-title: "Notification Hubs lokaliserade senaste nyheterna självstudiekursen"
-description: "Lär dig hur du använder Azure Notification Hubs för att skicka lokaliserade senaste nyheterna meddelanden."
+title: "aaaNotification lokaliserade bryta nyheter kurs om Händelsehubbar"
+description: "Lär dig hur toouse Azure Notification Hubs toosend lokaliserade senaste nyheterna meddelanden."
 services: notification-hubs
 documentationcenter: windows
 author: ysxu
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: e864e832b4c50644bf4062dee29d34ff9fe2774e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d273a6b384df311dea7b76ca83ccd94d9a989c4e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-notification-hubs-to-send-localized-breaking-news"></a>Använda Notification Hubs för att skicka lokaliserade senaste nyheterna
+# <a name="use-notification-hubs-toosend-localized-breaking-news"></a>Använda Notification Hubs toosend lokaliserade senaste nyheterna
 > [!div class="op_single_selector"]
 > * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
@@ -28,26 +28,26 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="overview"></a>Översikt
-Det här avsnittet visar hur du använder den **mallen** funktion i Azure Notification Hubs för att sända senaste nyheterna meddelanden som har översatts av språk och enheten. I den här kursen börjar du med Windows Store-app som skapats i [använda Notification Hubs för att skicka de senaste nyheterna]. När du är klar kommer du att kunna registrera för kategorier som du vill, ange ett språk som ska ta emot meddelanden och får endast push-meddelanden i valda kategorier på det språket.
+Det här avsnittet beskrivs hur du toouse hello **mallen** funktion i Azure Notification Hubs toobroadcast bryter nyheter meddelanden som har översatts av språk och enheten. I den här kursen börjar du med hello Windows Store-app som skapats i [använda Notification Hubs toosend senaste nytt]. När du är klar, kommer du att kunna tooregister kategorier som du är intresserad av att ange ett språk i vilka tooreceive hello meddelanden och ta emot endast push-meddelanden för hello valda kategorier på det språket.
 
-Det finns två delar i det här scenariot:
+Det finns två delar toothis scenariot:
 
-* Windows Store-appen kan klienten enheter för att ange ett språk och prenumerera på olika senaste nyheterna kategorier.
-* backend-skickar meddelanden med hjälp av den **taggen** och **mallen** feautres i Azure Notification Hubs.
+* hello Windows Store-app kan klienten enheter toospecify ett språk och toosubscribe toodifferent bryter nyhetskategorier.
+* hello backend-sänder hello-meddelanden med hjälp av hello **taggen** och **mallen** feautres i Azure Notification Hubs.
 
 ## <a name="prerequisites"></a>Krav
-Du måste redan har slutfört den [använda Notification Hubs för att skicka de senaste nyheterna] självstudier och har kod som är tillgängliga, eftersom den här kursen bygger direkt på koden.
+Du måste redan har slutfört hello [använda Notification Hubs toosend senaste nytt] självstudier och ha hello-kod som är tillgängliga, eftersom den här kursen bygger direkt på koden.
 
 Du måste också Visual Studio 2012 eller senare.
 
 ## <a name="template-concepts"></a>Mall-begrepp
-I [använda Notification Hubs för att skicka de senaste nyheterna] du skapat en app som används för **taggar** att prenumerera på meddelanden om nyheterna i olika kategorier.
-Många appar dock mål flera marknader och kräver lokalisering. Detta innebär att innehållet i meddelandena själva måste lokaliserade och levereras till rätt uppsättning enheter.
-I det här avsnittet visar vi hur du använder den **mallen** funktion i Notification Hubs för att leverera enkelt lokaliserade senaste nyheterna meddelanden.
+I [använda Notification Hubs toosend senaste nytt] du skapat en app som används för **taggar** toosubscribe toonotifications för olika nyhetskategorier.
+Många appar dock mål flera marknader och kräver lokalisering. Detta innebär att hello hello meddelanden själva innehållet har toobe lokaliserade och levererat toohello korrigera uppsättning enheter.
+I det här avsnittet visas hur toouse hello **mallen** funktion i Notification Hubs tooeasily leverera lokaliserade senaste nyheterna meddelanden.
 
-Obs: ett sätt att skicka lokaliserade meddelanden är att skapa flera versioner av varje tagg. Till exempel för att stödja engelska, franska och Mandarin, vi behöver tre olika taggar för world news: ”world_en”, ”world_fr” och ”world_ch”. Vi har sedan skicka en lokaliserad version av world nyheter till var och en av dessa taggar. Vi använder mallar för att undvika alltför många taggar och kravet flera meddelanden i det här avsnittet.
+Obs: enkelriktade toosend lokaliserade meddelanden är toocreate flera versioner av varje tagg. Till exempel toosupport engelska, franska och Mandarin kan vi behöver tre olika taggar för world news: ”world_en”, ”world_fr” och ”world_ch”. Vi har sedan toosend en lokaliserad version av hello world news tooeach taggar. I det här avsnittet använder vi mallar tooavoid hello spridning av taggar och hello krav flera meddelanden.
 
-Mallar är ett sätt att ange hur en specifik enhet bör få ett meddelande på en hög nivå. Mallen anger exakt nyttolastformatet genom att referera till egenskaper som ingår i meddelandet som skickas av din appens serverdel. I vårt fall skickar vi ett språkvariant-oberoende meddelande som innehåller alla språk som stöds:
+På en hög nivå mallar är ett sätt toospecify hur en specifik enhet bör få ett meddelande. hello mallen anger hello exakt nyttolastformatet genom att referera tooproperties som ingår i hello-meddelande som skickas av din appens serverdel. I vårt fall skickar vi ett språkvariant-oberoende meddelande som innehåller alla språk som stöds:
 
     {
         "News_English": "...",
@@ -55,7 +55,7 @@ Mallar är ett sätt att ange hur en specifik enhet bör få ett meddelande på 
         "News_Mandarin": "..."
     }
 
-Vi kommer sedan att säkerställa att registrera enheter med en mall som refererar till egenskapen korrekt. Till exempel registrerar en Windows Store-app som du vill få ett enkelt popup-meddelande för följande mall med en motsvarande taggar:
+Vi kommer sedan att säkerställa att registrera enheter med en mall som refererar rätt toohello-egenskapen. Till exempel en Windows Store-app som vill tooreceive ett enkelt popup-meddelande registreras för hello följande mall med en motsvarande taggar:
 
     <toast>
       <visual>
@@ -69,12 +69,12 @@ Vi kommer sedan att säkerställa att registrera enheter med en mall som referer
 
 Mallar är en mycket kraftfull funktion kan du läsa mer om i vår [mallar](notification-hubs-templates-cross-platform-push-messages.md) artikel. 
 
-## <a name="the-app-user-interface"></a>Användargränssnittet för app
-Vi kommer nu att ändra bryta nyheter appen som du skapade i avsnittet [använda Notification Hubs för att skicka de senaste nyheterna] att skicka lokaliserade senaste nytt med hjälp av mallar.
+## <a name="hello-app-user-interface"></a>användargränssnittet för hello app
+Vi kommer nu att ändra hello bryta nyheter app som du skapade i avsnittet hello [använda Notification Hubs toosend senaste nytt] toosend lokaliserade senaste nyheterna med hjälp av mallar.
 
 I Windows Store-appen:
 
-Ändra din MainPage.xaml om du vill inkludera en combobox språk:
+Ändra din MainPage.xaml tooinclude en combobox språk:
 
     <Grid Margin="120, 58, 120, 80"  
             Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
@@ -105,8 +105,8 @@ I Windows Store-appen:
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
 
-## <a name="building-the-windows-store-client-app"></a>Skapa Windows Store-klientappen
-1. Klassen meddelanden, lägga till en språkvariantparameter till din *StoreCategoriesAndSubscribe* och *SubscribeToCateories* metoder.
+## <a name="building-hello-windows-store-client-app"></a>Skapa hello Windows Store-klientappen
+1. Klassen meddelanden, lägga till ett språk parametern tooyour *StoreCategoriesAndSubscribe* och *SubscribeToCateories* metoder.
    
         public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
         {
@@ -125,23 +125,23 @@ I Windows Store-appen:
             }
    
             // Using a template registration. This makes supporting notifications across other platforms much easier.
-            // Using the localized tags based on locale selected.
+            // Using hello localized tags based on locale selected.
             string templateBodyWNS = String.Format("<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(News_{0})</text></binding></visual></toast>", locale);
    
             return await hub.RegisterTemplateAsync(channel.Uri, templateBodyWNS, "localizedWNSTemplateExample", categories);
         }
    
-    Observera att i stället för att anropa den *RegisterNativeAsync* metoden som vi kallar *RegisterTemplateAsync*: vi registrerar ett visst meddelande format där mallen beror på språket. Vi kan också ange ett namn för mallen (”localizedWNSTemplateExample”), eftersom det kan vara bra att registrera mer än en mall (till exempel en för popup-meddelanden) och en för paneler och behöver ge dem för att kunna uppdatera eller ta bort dem.
+    Observera att i stället för att anropa hello *RegisterNativeAsync* metoden som vi kallar *RegisterTemplateAsync*: vi registrerar formatet specifika meddelanden i vilka hello mallen beror på hello språk. Vi också ange ett namn för mallen hello (”localizedWNSTemplateExample”), eftersom det kan vara bra tooregister mer än en mall (till exempel en för popup-meddelanden) och en för paneler och vi behöver tooname dem i ordning toobe kan tooupdate eller tar bort dem.
    
-    Observera att om en enhet registrerar flera mallar med samma tagg, ett inkommande meddelande mål som tagg leder till flera meddelanden levereras till enheten (en för varje mall). Detta är användbart när samma logiska meddelande måste resultera i flera visuella meddelanden, till exempel visar både en Aktivitetsikon och ett popup-meddelande i en Windows Store-programmet.
-2. Lägg till följande metod för att hämta lagrade språk:
+    Observera att om en enhet registrerar flera mallar med hello samma tagg, ett inkommande meddelande som mål att taggen resulterar i flera meddelanden levereras toohello enhet (en för varje mall). Detta är användbart när hello samma logiska meddelande har tooresult i flera visuella meddelanden, till exempel visar både en Aktivitetsikon och ett popup-meddelande i en Windows Store-programmet.
+2. Lägg till hello följa metoden tooretrieve hello lagrade språk:
    
         public string RetrieveLocale()
         {
             var locale = (string) ApplicationData.Current.LocalSettings.Values["locale"];
             return locale != null ? locale : "English";
         }
-3. Uppdatera din knapp i din MainPage.xaml.cs på hanterare av hämtar det aktuella värdet för kombinationsrutan språk och att anropet till klassen meddelanden som visas:
+3. Uppdatera din knapp i din MainPage.xaml.cs klickar du på hanteraren genom att hämta hello aktuellt värde för kombinationsruta för hello språk och den toohello anropet toohello meddelanden klassen enligt:
    
         private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -163,13 +163,13 @@ I Windows Store-appen:
             dialog.Commands.Add(new UICommand("OK"));
             await dialog.ShowAsync();
         }
-4. Slutligen i filen App.xaml.cs, se till att uppdatera din `InitNotificationsAsync` metoden för att hämta språk och använda den när prenumerera:
+4. Kontrollera slutligen att tooupdate i filen App.xaml.cs, din `InitNotificationsAsync` metoden tooretrieve hello nationella inställningar och använda den när du prenumererar:
    
         private async void InitNotificationsAsync()
         {
             var result = await notifications.SubscribeToCategories(notifications.RetrieveLocale());
    
-            // Displays the registration ID so you know it was successful
+            // Displays hello registration ID so you know it was successful
             if (result.RegistrationId != null)
             {
                 var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
@@ -183,8 +183,8 @@ I Windows Store-appen:
 
 <!-- Anchors. -->
 [Template concepts]: #concepts
-[The app user interface]: #ui
-[Building the Windows Store client app]: #building-client
+[hello app user interface]: #ui
+[Building hello Windows Store client app]: #building-client
 [Send notifications from your back-end]: #send
 [Next Steps]:#next-steps
 
@@ -194,7 +194,7 @@ I Windows Store-appen:
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
 [Notify users with Notification Hubs: Mobile Services]: /manage/services/notification-hubs/notify-users
-[använda Notification Hubs för att skicka de senaste nyheterna]: /manage/services/notification-hubs/breaking-news-dotnet
+[använda Notification Hubs toosend senaste nytt]: /manage/services/notification-hubs/breaking-news-dotnet
 
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
@@ -203,11 +203,11 @@ I Windows Store-appen:
 [Get started with data]: /develop/mobile/tutorials/get-started-with-data-dotnet
 [Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet
 [Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-dotnet
-[Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-app-users-dotnet
+[Push notifications tooapp users]: /develop/mobile/tutorials/push-notifications-to-app-users-dotnet
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
-[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs How-toofor iOS]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs How-toofor Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx

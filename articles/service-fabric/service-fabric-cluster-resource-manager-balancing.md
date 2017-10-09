@@ -1,6 +1,6 @@
 ---
-title: Balansera Azure Service Fabric-kluster | Microsoft Docs
-description: En introduktion till NLB-klustret med Service Fabric klustret Resource Manager.
+title: aaaBalance Azure Service Fabric-kluster | Microsoft Docs
+description: "En introduktion toobalancing klustret med hello resurshanteraren för Service Fabric-klustret."
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 34eacb29f324025c1d2803c9690600227d3ec457
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5f7ad2f5cf4cfb3751a860f5293b03d2d5266d99
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>NLB service fabric-kluster
-Service Fabric klustret Resource Manager stöder dynamisk ändringar reagera på tillägg eller borttagning av noder eller tjänster. Den korrigerar också automatiskt begränsningen överträdelser och balanserar proaktivt klustret. Hur ofta dessa åtgärder vidtas för men vad utlöser dem?
+hello resurshanteraren för Service Fabric-klustret har stöd för dynamisk ändringar, korsreagerande tooadditions eller borttagningar av noder eller tjänster. Den korrigerar också automatiskt begränsningen överträdelser och balanserar proaktivt hello klustret. Hur ofta dessa åtgärder vidtas för men vad utlöser dem?
 
-Det finns tre olika kategorier av arbete som utförs av klustret Resource Manager. De är:
+Det finns tre olika kategorier av arbete som hello klustret Resource Manager utför. De är:
 
 1. Placering – det här steget behandlar placera alla tillståndskänslig repliker eller tillståndslösa instanser som saknas. Placering innehåller både nya tjänster och hanterar tillståndskänslig repliker eller tillståndslösa instanser som har misslyckats. Ta bort och släppa repliker eller instanser hanteras här.
-2. Begränsningen kontrollerar – det här steget kontrollerar och korrigerar överträdelser av olika placeringen (regler) i systemet. Exempel på regler är till exempel att säkerställa att noderna inte är överbelastade och att en tjänst placeringen är uppfyllda.
-3. Belastningsutjämning – det här steget kontrollerar om det finns ombalansering nödvändiga baserat på konfigurerad önskad tjänstnivå balansera för olika mått. I så fall försök görs att hitta en ordning i klustret som är mer balanserad.
+2. Begränsningen kontrollerar – det här steget kontrollerar och korrigerar brott mot hello olika placeringen (regler) inom hello system. Exempel på regler är till exempel att säkerställa att noderna inte är överbelastade och att en tjänst placeringen är uppfyllda.
+3. Belastningsutjämning – det här steget kontrollerar toosee om ombalansering behövs baserat på konfigurerad hello önskad nivå av balansera för olika mått. I så fall försöker toofind en ordning i hello kluster som är mer belastningsutjämnade.
 
 ## <a name="configuring-cluster-resource-manager-timers"></a>Konfigurera Timers för hanteraren för filserverresurser
-Den första uppsättningen kontroller runt belastningsutjämning är en uppsättning timers. Dessa timers styr hur ofta klustret Resource Manager undersöker klustret och tar korrigerande åtgärder.
+hello första uppsättning kontroller runt belastningsutjämning är en uppsättning timers. Dessa timers styr hur ofta hello klustret Resource Manager undersöker hello klustret och tar korrigerande åtgärder.
 
-Var och en av dessa olika typer av klustret Resource Manager kan göra korrigeringar styrs av en annan timer som styr frekvensen. När varje timer utlöses har uppgiften schemalagts. Som standard Resource Manager:
+Var och en av dessa olika typer av korrigeringar hello klustret Resource Manager kan göra styrs av en annan timer som styr frekvensen. När varje timer utlöses schemaläggs hello. Hej Resource Manager som standard:
 
 * genomsöker dess tillstånd och tillämpar uppdateringar (till exempel inspelningen som en nod nedåt) var 1/10 sekunder
-* Anger att kontrollera placering 
-* Anger att begränsningen kontrollera varje sekund
-* ställer in flaggan belastningsutjämning var femte sekund.
+* Anger hello placering Kontrollera flagga 
+* Anger att hello begränsningen kontrollera varje sekund
+* Anger hello NLB flaggan var femte sekund.
 
-Exempel på konfigurationen för de här räknarna är nedan:
+Exempel på hello configuration styr dessa timers är nedan:
 
 ClusterManifest.xml:
 
@@ -80,16 +80,16 @@ värdbaserade kluster via ClusterConfig.json för fristående distributioner ell
 ]
 ```
 
-Idag utför klustret Resource Manager endast en av dessa åtgärder samtidigt, sekventiellt. Det är därför vi refererar till dessa timers som ”minsta intervall” och de åtgärder som får vidtas när timers går som ”inställningen flaggor”. Till exempel sköter klustret Resource Manager väntande begäranden om att skapa tjänster innan NLB-klustret. Som du ser standard tidsintervall som angetts skannar Cluster Resource Manager för allt som behövs för att göra ofta. Detta innebär normalt att uppsättning ändringar som gjorts under varje steg är liten. Ändrar mindre ofta kan klustret Resource Manager kunna svara när saker i klustret. Standard-timers ange vissa batchbearbetning eftersom många av samma typ av händelser tenderar att ske samtidigt. 
+Idag utför hello klustret Resource Manager endast en av dessa åtgärder samtidigt, sekventiellt. Det är därför vi finns toothese timers som ”minsta intervall” och hello åtgärder som hämta vidtas när hello timers går som ”inställningen flaggor”. Hello klustret Resource Manager sköter väntande begäranden till exempel toocreate services innan NLB hello klustret. Som du ser hello standard tidsintervall som angetts söker hello klustret Resource Manager efter något den behov toodo ofta. Detta innebär normalt att hello uppsättning ändringar som gjorts under varje steg är liten. Att göra små ändringar ofta tillåter hello klustret Resource Manager toobe responsiv när saker i hello kluster. hello standard timers ange vissa batchbearbetning eftersom många hello samma typer av händelser tenderar toooccur samtidigt. 
 
-Till exempel när noder misslyckas de kan göra så att hela feldomäner i taget. Alla dessa fel avbildas under nästa tillstånd uppdatera efter den *PLBRefreshGap*. Korrigeringarna som fastställs under placeringen begränsningen kontroll och belastningsutjämning körs. Som standard klustret Resource Manager inte genomsöka via timmar för ändringar i klustret och försök att åtgärda alla ändringar på en gång. Detta leder till belastning av omsättning.
+Till exempel när noder misslyckas de kan göra så att hela feldomäner i taget. Alla dessa fel avbildas under hello nästa tillstånd uppdatera efter hello *PLBRefreshGap*. hello korrigeringar fastställs under hello efter placering, kontroll-begränsning, och NLB körs. Som standard hello klustret Resource Manager inte skanna via timmar för ändringar i hello kluster och försök tooaddress alla ändringar på en gång. Det skulle kunna leda toobursts av omsättning.
 
-Resurshanteraren för klustret måste också ytterligare information för att avgöra om klustret imbalanced. Som vi har två delar i konfigurationen: *BalancingThresholds* och *ActivityThresholds*.
+hello klustret Resource Manager måste också toodetermine vissa ytterligare information om hello kluster imbalanced. Som vi har två delar i konfigurationen: *BalancingThresholds* och *ActivityThresholds*.
 
 ## <a name="balancing-thresholds"></a>NLB tröskelvärden
-Ett tröskelvärde för belastningsutjämning är den viktigaste kontrollen för att utlösa ombalansering. NLB tröskelvärdet för ett mått är ett _förhållandet_. Om belastningen för ett mått på noden mest inlästa dividerat med mängden belastningen på noden minst inlästa överskrider den måtten *BalancingThreshold*, då är imbalanced klustret. Som ett resultat av nätverksbelastning utlöses nästa gång klustret Resource Manager kontrollerar. Den *MinLoadBalancingInterval* timer definierar hur ofta klustret Resource Manager ska kontrollera om ombalansering krävs. Kontrollera innebär inte att något händer. 
+Ett tröskelvärde för NLB är hello huvudsakliga kontroll för att utlösa ombalansering. hello NLB tröskelvärdet för ett mått är ett _förhållandet_. Om hello belastning för ett mått på hello mest inläst nod dividerat med hello mängden belastningen på hello minst inlästa nod överskrider den måtten *BalancingThreshold*, och sedan hello klustret är imbalanced. Därför är utlösta hello nästa gång hello klustret Resource Manager kontrollerar. Hej *MinLoadBalancingInterval* timer definierar hur ofta hello klustret Resource Manager ska kontrollera om ombalansering krävs. Kontrollera innebär inte att något händer. 
 
-Tröskelvärden för belastningsutjämning definieras på grundval av per mått som en del av definitionen för klustret. Mer information om mått kolla [i den här artikeln](service-fabric-cluster-resource-manager-metrics.md).
+Tröskelvärden för belastningsutjämning definieras på grundval av per mått som en del av hello klustret definition. Mer information om mått kolla [i den här artikeln](service-fabric-cluster-resource-manager-metrics.md).
 
 ClusterManifest.xml
 
@@ -124,30 +124,30 @@ värdbaserade kluster via ClusterConfig.json för fristående distributioner ell
 ![Belastningsutjämning tröskelvärde-exempel][Image1]
 </center>
 
-I det här exemplet förbrukar en enhet av vissa mått för varje tjänst. I exemplet högsta maximala belastningen på en nod är fem och minst är två. Anta att tröskelvärdet för belastningsutjämning för det här måttet är tre. Eftersom förhållandet i klustret är 5/2 = 2,5 och som är mindre än det angivna tröskelvärdet på tre, klustret är belastningsutjämnat. Ingen belastningsutjämning utlöses när klustret Resource Manager kontrollerar.
+I det här exemplet förbrukar en enhet av vissa mått för varje tjänst. I hello översta exempelvis hello belastningen på en nod är fem och hello minsta är två. Anta att hello NLB tröskelvärdet för det här måttet är tre. Eftersom hello förhållandet i hello kluster är 5/2 = 2,5 och som är mindre än hello angivet tröskelvärde i tre, hello-kluster är belastningsutjämnat. Ingen belastningsutjämning utlöses när hello klustret Resource Manager kontrollerar.
 
-I exemplet längst ned är maximala belastningen på en nod 10, medan minst två, vilket resulterar i ett förhållande på fem. Fem är större än tröskelvärdet för avsedda belastningsutjämning på tre för att mått. Detta innebär är en ombalansering kör schemalagda nästa gång belastningsutjämning timern utlöses. I den här situationen är vanligtvis vissa belastningen distribueras till Nod3. Eftersom Service Fabric klustret Resource Manager inte använder en girig metod, kan även vissa belastningen distribueras till nod 2. 
+I hello ned exempel är hello belastningen på en nod 10, medan hello minst två, vilket resulterar i ett förhållande på fem. Fem är större än hello avsedda belastningsutjämning tröskelvärdet på tre för den måtten. Detta innebär att en rebalancing kör schemalagda nästa gång hello NLB timer utlöses. I den här situationen är vissa belastningen vanligtvis distribuerade tooNode3. Eftersom hello resurshanteraren för Service Fabric-klustret inte använder en girig metod, kan vissa belastningen också vara distribuerade tooNode2. 
 
 <center>
 ![Belastningsutjämning tröskelvärdet exempel åtgärder][Image2]
 </center>
 
 > [!NOTE]
-> ”NLB” hanterar två olika strategier för att hantera belastningen i klustret. Standard-strategin som klustret Resource Manager använder är att fördela belastningen över noderna i klustret. Strategin som helst är [defragmentering](service-fabric-cluster-resource-manager-defragmentation-metrics.md). Defragmentering utförs under samma fördelningen kör. Belastningsutjämning och defragmentering strategier kan användas för olika mått i samma kluster. En tjänst kan ha belastningsutjämning och defragmentering mått. Förhållandet mellan belastningar i klustret för defragmentering mått utlöser ombalansering när det är _nedan_ tröskelvärdet för belastningsutjämning. 
+> ”NLB” hanterar två olika strategier för att hantera belastningen i klustret. hello standard strategi som hello hanteraren för filserverresurser använder är toodistribute belastningen över hello noder i klustret hello. hello andra strategin är [defragmentering](service-fabric-cluster-resource-manager-defragmentation-metrics.md). Defragmentering utförs under hello kör samma belastningsutjämning. hello belastningsutjämning och defragmentering strategier kan användas för olika mått i hello samma kluster. En tjänst kan ha belastningsutjämning och defragmentering mått. För defragmentering mätvärden hello förhållandet mellan hello läses in i hello klustret utlösare ombalansering när det är _nedan_ hello NLB tröskelvärdet. 
 >
 
-Hämta under tröskelvärdet för belastningsutjämning är inte en explicit målet. Tröskelvärden för belastningsutjämning är bara en *utlösaren*. När NLB körs avgör klustret Resource Manager vilka förbättringar som det kan göra eventuella. Bara för att en belastningsutjämning sökning har inletts innebär inte något flyttas. Ibland är klustringen imbalanced men begränsad för att åtgärda. Alternativt förbättringar kräver förflyttningar för [kostsamma](service-fabric-cluster-resource-manager-movement-cost.md)).
+Hämta nedan hello NLB tröskelvärdet är inte en explicit målet. Tröskelvärden för belastningsutjämning är bara en *utlösaren*. När NLB körs avgör hello klustret Resource Manager vilka förbättringar som det kan göra eventuella. Bara för att en belastningsutjämning sökning har inletts innebär inte något flyttas. Ibland är hello klustret imbalanced men för begränsad toocorrect. Alternativt hello förbättringar kräver förflyttningar för [kostsamma](service-fabric-cluster-resource-manager-movement-cost.md)).
 
 ## <a name="activity-thresholds"></a>Tröskelvärden för aktiviteten
-Ibland, men noder är relativt imbalanced den *totala* belastningen i klustret är låg. Bristen på belastning kan vara tillfälliga dip eller eftersom klustret är ny och bara hämtning startade. I båda fallen kan du inte vill ägna tid NLB klustret eftersom det är onödigt att. Om klustret genomgått belastningsutjämning, du ägnar åt nätverket och beräkna resurser för att flytta runt objekt utan att göra några stora *absolut* skillnaden. För att undvika flyttar onödiga, det finns en annan kontroll kallas tröskelvärden för aktiviteten. Aktiviteten tröskelvärden kan du ange en absolut nedre gräns för aktiviteten. Om ingen nod är över tröskeln, är inte belastningsutjämning utlösas även om tröskelvärdet för NLB är uppfyllt.
+Ibland men noder är relativt imbalanced, hello *totala* belastningen i hello kluster är låg. hello bristande belastning kan vara tillfälliga dip eller eftersom hello kluster är ny och bara hämtning startade. I båda fallen kan du inte vill toospend tid NLB hello klustret eftersom det finns lite toobe erfarenheter. Om hello klustret genomgått belastningsutjämning, skulle du ägnar åt nätverket och beräkna resurser toomove runt saker och ting utan att göra några stora *absolut* skillnaden. tooavoid onödiga flyttar det finns en annan kontroll kallas tröskelvärden för aktiviteten. Aktiviteten tröskelvärden kan toospecify vissa absolut undre gränsvärde för aktiviteten. Om ingen nod är över tröskeln, utlösas belastningsutjämning inte även om hello NLB tröskelvärdet har uppnåtts.
 
-Anta att vi behåller våra tröskelvärdet för belastningsutjämning av tre för det här måttet. Anta också att vi har ett tröskelvärde för aktiviteten på 1536. I det första fallet när klustret är imbalanced per NLB tröskelvärdet som det finns uppfyller ingen nod att tröskelvärdet för aktiviteten så händer ingenting. I exemplet längst ned är Nod1 över tröskelvärdet för aktiviteten. NLB har schemalagts eftersom både tröskelvärdet för belastningsutjämning och aktivitet tröskelvärdet för måttet överskrids. Exempelvis ska vi titta på följande diagram: 
+Anta att vi behåller våra tröskelvärdet för belastningsutjämning av tre för det här måttet. Anta också att vi har ett tröskelvärde för aktiviteten på 1536. I hello första fallet medan hello klustret är imbalanced per hello NLB tröskelvärdet det är ingen nod uppfyller aktivitet gränsen, så ingenting händer. I hello nedre exempelvis är Nod1 över hello aktivitet tröskelvärdet. Eftersom både hello tröskelvärdet för belastningsutjämning och hello aktivitet tröskelvärdet för hello mått överskrids, har belastningsutjämning schemalagts. Exempelvis ska vi titta på hello följande diagram: 
 
 <center>
 ![Aktiviteten tröskelvärdet exempel][Image3]
 </center>
 
-Precis som tröskelvärden för NLB är aktiviteten tröskelvärden definierade per-mått via definitionen för klustret:
+Precis som tröskelvärden för NLB är aktiviteten tröskelvärden definierade per-mått via hello klustret definition:
 
 ClusterManifest.xml
 
@@ -173,12 +173,12 @@ värdbaserade kluster via ClusterConfig.json för fristående distributioner ell
 ]
 ```
 
-Tröskelvärden för belastningsutjämning och aktivitet är både knutna till ett specifikt mått - belastningsutjämning aktiveras bara om både NLB tröskelvärde och aktivitet tröskelvärde har överskridits för samma mått.
+Tröskelvärden för belastningsutjämning och aktivitet är bundet tooa specifikt mått - belastningsutjämning utlöses endast om båda hello tröskelvärdet för belastningsutjämning och aktivitet tröskelvärde har överskridits för hello samma mått.
 
 ## <a name="balancing-services-together"></a>NLB tjänster tillsammans
-Om klustret är imbalanced eller inte är ett hela beslut. Hur vi gå om hur du löser det flyttas enskild tjänst repliker och instanser runt. Det låter väl logiskt, rätt? Om minnet är Staplad på en nod, kan flera repliker eller instanser bidra till den. Åtgärda obalansen kan behöva flytta alla tillståndskänslig repliker och tillståndslösa instanser som använder imbalanced mått.
+Om hello klustret är imbalanced eller inte är ett hela beslut. Hello sätt vi gå om hur du löser det flyttas enskild tjänst repliker och instanser runt. Det låter väl logiskt, rätt? Om minnet är Staplad på en nod, kan flera repliker eller instanser bidra tooit. Åtgärdar hello obalans kan det krävas flytta hello tillståndskänslig repliker eller tillståndslösa instanser som använder hello imbalanced mått.
 
-Ibland om en tjänst som inte är själva imbalanced flyttas (Kom ihåg diskussion av lokala och globala viktas tidigare). Varför skulle en tjänst flyttas när allt som tjänstens mått har balanserade? Låt oss se ett exempel:
+Ibland om en tjänst som inte är själva imbalanced flyttas (Kom ihåg hello diskussion av lokala och globala viktas tidigare). Varför skulle en tjänst flyttas när allt som tjänstens mått har balanserade? Låt oss se ett exempel:
 
 - Anta att det finns fyra tjänster, Service1, plats2, tjänst3 och Service4. 
 - Service1 rapporterar mått Metric1 och Metric2. 
@@ -192,18 +192,18 @@ Du kan visserligen se där vi här: det finns en kedja! Vi har inte fyra oberoen
 ![NLB tjänster tillsammans][Image4]
 </center>
 
-På grund av kedjan är det möjligt att obalans i mått 1-4 kan orsaka repliker eller instanser som tillhör services 1-3 för att flytta. Vi vet att en obalans i mått 1, 2 eller 3 kan orsaka förflyttningar i Service4. Det är ingen sedan flytta replikerna eller instanser som tillhör Service4 runt kan absolut ingenting om du vill påverka balans mellan mått 1-3.
+På grund av kedjan är det möjligt att obalans i mått 1-4 kan orsaka repliker eller instanser som tillhör tooservices 1-3 toomove runt. Vi vet att en obalans i mått 1, 2 eller 3 kan orsaka förflyttningar i Service4. Det skulle inte finns några sedan flytta hello repliker eller instanser som tillhör tooService4 runt kan gör absolut ingenting tooimpact hello balans mellan mått 1-3.
 
-Klustret Resource Manager siffror automatiskt reda på vilka tjänster som är relaterade. Lägga till, ta bort eller ändra måtten för tjänster som kan påverka deras relationer. Till exempel kan mellan två körningar av belastningsutjämning plats2 ha uppdaterats för att ta bort Metric2. Detta innebär att kedjan mellan Service1 och plats2. Nu i stället för två grupper av relaterade tjänster finns tre:
+hello klustret Resource Manager siffror automatiskt reda på vilka tjänster som är relaterade. Lägga till, ta bort eller ändra hello mått för tjänster kan påverka deras relationer. Till exempel kan mellan två körningar av belastningsutjämning plats2 ha varit uppdaterade tooremove Metric2. Detta innebär att hello kedjan mellan Service1 och plats2. Nu i stället för två grupper av relaterade tjänster finns tre:
 
 <center>
 ![NLB tjänster tillsammans][Image5]
 </center>
 
 ## <a name="next-steps"></a>Nästa steg
-* Mått är hur Service Fabric-kluster Resource Manager hanterar förbrukning och kapacitet i klustret. Mer information om mått och hur du konfigurerar dem kolla [den här artikeln](service-fabric-cluster-resource-manager-metrics.md)
-* Förflyttningskostnad är ett sätt att signalering till klustret Resource Manager att vissa tjänster är dyrare att flytta än andra. Mer information om förflyttningskostnad avser [i den här artikeln](service-fabric-cluster-resource-manager-movement-cost.md)
-* Klustret Resource Manager har flera begränsningar som du kan konfigurera långsammare kärnan i klustret. De inte normalt krävs, men om du behöver dem kan du läsa om dem [här](service-fabric-cluster-resource-manager-advanced-throttling.md)
+* Mått är hur hello Service Fabric-kluster Resource Manager hanterar förbrukning och kapacitet i hello klustret. Mer om mått toolearn och hur tooconfigure dem, kolla [den här artikeln](service-fabric-cluster-resource-manager-metrics.md)
+* Förflyttningskostnad är ett sätt att signalering toohello klustret Resource Manager att vissa tjänster är dyrare toomove än andra. Mer information om förflyttningskostnad finns för[i den här artikeln](service-fabric-cluster-resource-manager-movement-cost.md)
+* hello klustret Resource Manager har flera begränsningar som du kan konfigurera tooslow ned omsättningen i hello kluster. De inte normalt krävs, men om du behöver dem kan du läsa om dem [här](service-fabric-cluster-resource-manager-advanced-throttling.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

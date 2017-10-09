@@ -1,6 +1,6 @@
 ---
-title: "Så här konfigurerar du federerad enkel inloggning för ett program för Azure AD-galleriet | Microsoft Docs"
-description: "Hur du konfigurerar federerad enkel inloggning för ett befintligt program i Azure AD-galleriet och använda självstudier för att komma igång snabbare"
+title: "aaaHow tooconfigure federerad enkel inloggning för ett program för Azure AD-galleriet | Microsoft Docs"
+description: "Hur tooconfigure federerad enkel inloggning för en befintlig Azure AD-galleriet program och Använd självstudier tooget igång snabbare"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,204 +13,204 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 1b1d00718981b2c7d11f5b88428d02e16dd0b34d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a93de021fddd253e4fe663c221b822d12625fd54
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Så här konfigurerar du federerad enkel inloggning för ett program för Azure AD-galleriet
+# <a name="how-tooconfigure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Hur tooconfigure federerad enkel inloggning för ett program för Azure AD-galleriet
 
-Alla program i Azure AD-galleriet aktiverad med Enterprise enkel inloggning kapaciteten har en stegvis självstudiekurs som är tillgängliga. Du kan komma åt den [lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) detaljerade stegvisa instruktioner.
+Alla program i hello Azure AD-galleriet aktiverad med Enterprise enkel inloggning kapaciteten har en stegvis självstudiekurs som är tillgängliga. Du kan komma åt hello [lista över självstudier om hur toointegrate SaaS-appar med Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) detaljerade stegvisa instruktioner.
 
 ## <a name="overview-of-steps-required"></a>Översikt över steg som krävs
-Så här konfigurerar du ett program från Azure AD-galleriet som du behöver:
+tooconfigure ett program från hello Azure AD-galleriet måste du:
 
--   [Lägga till ett program från Azure AD-galleriet](#add-an-application-from-the-azure-ad-gallery)
+-   [Lägga till ett program från hello Azure AD-galleriet](#add-an-application-from-the-azure-ad-gallery)
 
--   [Konfigurera programmets metadatavärden i Azure AD (logga in på URL: en identifierare, Reply URL)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
+-   [Konfigurera hello programmets metadatavärden i Azure AD (logga in på URL: en identifierare, Reply URL)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
--   [Välj användar-ID och Lägg till användarattribut ska skickas till programmet](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
+-   [Välj användar-ID och Lägg till attribut toobe skickas toohello-användarprogram](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [Hämta Azure AD-metadata och certifikat](#download-the-azure-ad-metadata-or-certificate)
 
--   [Konfigurera Azure AD metadatavärden i programmet (logga in på URL: en, utfärdare, logga ut URL-Adressen och certifikatet)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
+-   [Konfigurera Azure AD metadatavärden i programmet hello (logga in på URL: en, utfärdare, logga ut URL-Adressen och certifikatet)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
--   [Tilldela användare till programmet](#assign-users-to-the-application)
+-   [Tilldela användare toohello program](#assign-users-to-the-application)
 
-## <a name="add-an-application-from-the-azure-ad-gallery"></a>Lägga till ett program från Azure AD-galleriet
+## <a name="add-an-application-from-hello-azure-ad-gallery"></a>Lägga till ett program från hello Azure AD-galleriet
 
-Följ stegen nedan om du vill lägga till ett program från galleriet Azure AD:
+tooadd ett program från hello Azure AD-galleriet så hello nedan:
 
-1.  Öppna den [Azure Portal](https://portal.azure.com) och logga in som en **Global administratör** eller **medadministratör**
+1.  Öppna hello [Azure Portal](https://portal.azure.com) och logga in som en **Global administratör** eller **medadministratör**
 
-2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på den **Lägg till** knappen i det övre högra hörnet på de **företagsprogram** bladet.
+5.  Klicka på hello **Lägg till** längst hello övre högra hörnet på hello **företagsprogram** bladet.
 
-6.  I den **anger du ett namn** textruta från den **Lägg till från galleriet** avsnittet, skriver du namnet på programmet.
+6.  I hello **anger du ett namn** textruta från hello **Lägg till från galleriet hello** avsnitt, hello-typnamn för hello program.
 
-7.  Välj det program som du vill konfigurera för enkel inloggning.
+7.  Välj hello-program som du vill använda tooconfigure för enkel inloggning.
 
-8.  Innan du lägger till programmet, kan du ändra dess namn från den **namn** textruta.
+8.  Innan du lägger till programmet hello kan du ändra dess namn från hello **namn** textruta.
 
-9.  Klicka på **Lägg till** för att lägga till programmet.
+9.  Klicka på **Lägg till** knappen tooadd hello program.
 
-Efter en kort tidsperiod kunna du se programmets konfiguration bladet.
+Efter en kort tidsperiod anges kan toosee hello programmets konfiguration bladet.
 
-## <a name="configure-single-sign-on-for-an-application-from-the-azure-ad-gallery"></a>Konfigurera enkel inloggning för ett program från Azure AD-galleriet
+## <a name="configure-single-sign-on-for-an-application-from-hello-azure-ad-gallery"></a>Konfigurera enkel inloggning för ett program från hello Azure AD-galleriet
 
-Följ stegen nedan om du vill konfigurera enkel inloggning för ett program:
+tooconfigure enkel inloggning för ett program gör hello nedan:
 
-1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **medadministratör**.
+1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **medadministratör**.
 
-2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** att visa en lista över alla program.
+5.  Klicka på **alla program** tooview en lista över alla program.
 
-   * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
+   * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för **Alla program.**
 
-6.  Välj det program som du vill konfigurera enkel inloggning.
+6.  Välj hello-program som du vill tooconfigure enkel inloggning.
 
-7.  När programmet läses in klickar du på den **enkel inloggning** från programmets vänstra navigeringsmenyn.
+7.  När programmet hello läses in klickar du på hello **enkel inloggning** från hello programmet vänstra navigeringsmenyn.
 
-8.  Välj **SAML-baserade inloggning** från den **läge** listrutan.
+8.  Välj **SAML-baserade inloggning** från hello **läge** listrutan.
 
-9.  Ange obligatoriska värden i **domän och URL: er.** Du bör få värdena från leverantören av tillämpningsprogrammet.
+9.  Ange hello krävs värden i **domän och URL: er.** Du bör få värdena från hello programvaruleverantören.
 
-   1. Det är ett obligatoriskt värde för att konfigurera programmet som SP-initierad SSO URL: en inloggning. Identifieraren är också ett obligatoriskt värde för vissa program.
+   1. tooconfigure hello program som SP-initierad SSO hello logga på URL: en är ett obligatoriskt värde. Hello identifierare är också ett obligatoriskt värde för vissa program.
 
-   2. Det är ett obligatoriskt värde för att konfigurera programmet som IdP-initierad SSO Reply-URL. Identifieraren är också ett obligatoriskt värde för vissa program.
+   2. tooconfigure hello program som IdP-initierad SSO hello Reply-URL som det är ett obligatoriskt värde. Hello identifierare är också ett obligatoriskt värde för vissa program.
 
-10. **Valfritt:** klickar du på **visa avancerade inställningar för URL: en** om du vill se värdena som inte krävs.
+10. **Valfritt:** klickar du på **visa avancerade inställningar för URL: en** om du vill toosee hello icke obligatoriska värden.
 
-11. I den **användarattribut**, Välj den unika identifieraren för användarna i den **användar-ID** listrutan.
+11. I hello **användarattribut**, Välj hello Unik identifierare för användarna i hello **användar-ID** listrutan.
 
-12. **Valfritt:** klickar du på **visa och redigera andra användarattribut** Redigera attribut som ska skickas till programmet i SAML-token när användaren loggar in.
+12. **Valfritt:** klickar du på **visa och redigera andra användarattribut** tooedit hello attribut toobe skickas toohello programmet hello SAML-token när användaren loggar in.
 
-  Lägg till ett attribut:
+  tooadd ett attribut:
    
-   1. Klicka på **Lägg till attributet**. Ange den **namn** och välj den **värdet** i listrutan.
+   1. Klicka på **Lägg till attributet**. Ange hello **namn** och hello väljer hello **värdet** hello listrutan.
 
-   1. Klicka på **spara.** Du kan se det nya attributet i tabellen.
+   1. Klicka på **spara.** Du kan se hello nytt attribut i hello tabell.
 
-13. Klicka på **konfigurera &lt;programnamn&gt;**  åtkomst dokumentationen om hur du konfigurerar enkel inloggning i programmet. Dessutom har du metadata URL: er och certifikat som krävs för att konfigurera enkel inloggning med programmet.
+13. Klicka på **konfigurera &lt;programnamn&gt;**  tooaccess-dokumentationen om tooconfigure enkel inloggning i hello program. Du har dessutom hello metadata URL: er och certifikat som krävs för toosetup SSO med hello program.
 
-14. Klicka på **spara** att spara konfigurationen.
+14. Klicka på **spara** toosave hello konfiguration.
 
-15. Tilldela användare till programmet.
+15. Tilldela användare toohello program.
 
-## <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Välj användar-ID och Lägg till användarattribut ska skickas till programmet
+## <a name="select-user-identifier-and-add-user-attributes-toobe-sent-toohello-application"></a>Välj användar-ID och Lägg till attribut toobe skickas toohello-användarprogram
 
-Följ stegen nedan om du vill markera användar-ID eller lägga till användarattribut:
+tooselect hello användar-ID och lägga till användarattribut, hello följande sätt:
 
-1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
+1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
 
-2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** att visa en lista över alla program.
+5.  Klicka på **alla program** tooview en lista över alla program.
 
-   * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
+   * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för **Alla program.**
 
-6.  Välj det program som du har konfigurerat för enkel inloggning.
+6.  Välj hello-program som du har konfigurerat för enkel inloggning.
 
-7.  När programmet läses in klickar du på den **enkel inloggning** från programmets vänstra navigeringsmenyn.
+7.  När programmet hello läses in klickar du på hello **enkel inloggning** från hello programmet vänstra navigeringsmenyn.
 
-8.  Under den **användarattribut** väljer du den unika identifieraren för användarna i den **användar-ID** listrutan. Det valda alternativet måste matcha det förväntade värdet i programmet för att autentisera användaren.
+8.  Under hello **användarattribut** väljer hello Unik identifierare för användarna i hello **användar-ID** listrutan. hello måste markerade alternativet toomatch hello förväntat värde i hello programanvändare tooauthenticate hello.
 
   >[!NOTE] 
-  >Azure AD-Välj format för attributet NameID (användar-ID) baserat på värdet valt eller formatet programmet har begärt i SAML-AuthRequest. Mer information finns i artikeln [enkel inloggning SAML protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) under avsnittet NameIDPolicy.
+  >Azure AD väljer hello format för hello NameID attribut (användar-ID) baserat på valda hello värdet eller hello format som begärs av programmet hello i hello SAML AuthRequest. Mer information finns i artikeln hello [enkel inloggning SAML protokoll](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) under hello avsnittet NameIDPolicy.
   >
   >
 
-9.  Lägg till användarattribut, klicka på **visa och redigera andra användarattribut** Redigera attribut som ska skickas till programmet i SAML-token när användaren loggar in.
+9.  tooadd användarattribut klickar du på **visa och redigera andra användarattribut** tooedit hello attribut toobe skickas toohello programmet hello SAML-token när användaren loggar in.
 
-   Lägg till ett attribut:
+   tooadd ett attribut:
   
-   1. Klicka på **Lägg till attributet**. Ange den **namn** och välj den **värdet** i listrutan.
+   1. Klicka på **Lägg till attributet**. Ange hello **namn** och hello väljer hello **värdet** hello listrutan.
 
-   2. Klicka på **Spara**. Du kan se det nya attributet i tabellen.
+   2. Klicka på **Spara**. Du kan se hello nytt attribut i hello tabell.
 
-## <a name="download-the-azure-ad-metadata-or-certificate"></a>Hämta metadata för Azure AD eller certifikat
+## <a name="download-hello-azure-ad-metadata-or-certificate"></a>Hämta metadata för hello Azure AD eller certifikat
 
-Följ stegen nedan för att ladda ned programmetadata eller certifikat från Azure AD:
+toodownload hello programmetadata eller certifikat från Azure AD gör hello nedan:
 
-1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
+1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
 
-2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** att visa en lista över alla program.
+5.  Klicka på **alla program** tooview en lista över alla program.
 
-  *  Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla Program**.
+  *  Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för **Alla program**.
 
-6.  Välj det program som du har konfigurerat för enkel inloggning.
+6.  Välj hello-program som du har konfigurerat för enkel inloggning.
 
-7.  När programmet läses in klickar du på den **enkel inloggning** från programmets vänstra navigeringsmenyn.
+7.  När programmet hello läses in klickar du på hello **enkel inloggning** från hello programmet vänstra navigeringsmenyn.
 
-8.  Gå till **SAML-signeringscertifikat** avsnittet och klicka sedan på **hämta** värde i kolumnen. Beroende på vilka programmet kräver att konfigurera enkel inloggning, finns antingen alternativet för att hämta Metadata XML eller certifikatet.
+8.  Gå för**SAML-signeringscertifikat** avsnittet och klicka sedan på **hämta** värde i kolumnen. Beroende på vilka hello-programmet kräver Konfigurera enkel inloggning, kan du se antingen hello alternativet toodownload hello XML-Metadata eller hello certifikat.
 
-Azure AD Ange inte en URL för att hämta metadata. Metadata kan endast hämtas som en XML-fil.
+Azure AD Ange inte en URL tooget hello metadata. hello metadata kan endast hämtas som en XML-fil.
 
-## <a name="assign-users-to-the-application"></a>Tilldela användare till programmet
+## <a name="assign-users-toohello-application"></a>Tilldela användare toohello program
 
-Följ stegen nedan om du vill tilldela en eller flera användare till ett program direkt:
+tooassign en eller flera användare tooan programmet direkt, gör hello nedan:
 
-1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör.**
+1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör.**
 
-2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** att visa en lista över alla program.
+5.  Klicka på **alla program** tooview en lista över alla program.
 
-  * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
+  * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för **Alla program.**
 
-6.  Välj det program som du vill tilldela en användare i listan.
+6.  Välj hello-program som du vill tooassign en toofrom hello-användarlistan.
 
-7.  När programmet läses in klickar du på **användare och grupper** från programmets vänstra navigeringsmenyn.
+7.  När programmet hello läses in klickar du på **användare och grupper** från hello programmet vänstra navigeringsmenyn.
 
-8.  Klicka på den **Lägg till** knappen ovanpå den **användare och grupper** att öppna den **Lägg uppdrag** bladet.
+8.  Klicka på hello **Lägg till** knappen ovanpå hello **användare och grupper** lista tooopen hello **Lägg uppdrag** bladet.
 
-9.  Klicka på den **användare och grupper** selector från den **Lägg uppdrag** bladet.
+9.  Klicka på hello **användare och grupper** selector från hello **Lägg uppdrag** bladet.
 
-10. Ange den **fullständigt namn** eller **e-postadress** för den användare som du vill tilldela till den **Sök efter namn eller e-postadress** sökrutan.
+10. Typen i hello **fullständigt namn** eller **e-postadress** för hello-användare som du vill tilldela till hello **Sök efter namn eller e-postadress** sökrutan.
 
-11. Hovra över den **användare** i listan för att visa en **kryssrutan**. Klicka på kryssrutan bredvid användarens profilfoto eller logotyp som du vill lägga till användaren till den **valda** lista.
+11. Hovra över hello **användare** i hello listan tooreveal en **kryssrutan**. Klicka på hello kryssrutan nästa toohello användarens profil foto eller logotypen tooadd användaren-toohello **valda** lista.
 
-12. **Valfritt:** om du vill **lägga till fler än en användare**, typ i en annan **fullständigt namn** eller **e-postadress** till den **Sök efter namn eller e-postadress** sökrutan och klicka på kryssrutan för att lägga till användaren till den **valda** lista.
+12. **Valfritt:** om du vill ha för**lägga till fler än en användare**, typ i en annan **fullständigt namn** eller **e-postadress** till hello **Sök efter namn eller e-postadress** sökrutan och klicka på hello kryssrutan tooadd den här användaren toohello **valda** lista.
 
-13. När du har valt användare klickar du på den **Välj** för att lägga till dem i listan över användare och grupper som tilldelas till programmet.
+13. När du har valt användare klickar du på hello **Välj** knappen tooadd dem toohello lista över användare och grupper toobe tilldelat toohello program.
 
-14. **Valfritt:** klickar du på den **Välj roll** Väljaren i den **Lägg uppdrag** bladet Välj en roll att tilldela användare som du har valt.
+14. **Valfritt:** klickar du på hello **Välj roll** Väljaren i hello **Lägg uppdrag** bladet tooselect en roll tooassign toohello användare som du har valt.
 
-15. Klicka på den **tilldela** för att tilldela program till de valda användarna.
+15. Klicka på hello **tilldela** knappen tooassign hello programmet toohello markerade användare.
 
-Användare som du har valt att kunna starta dessa program med hjälp av de metoder som beskrivs i avsnittet lösning beskrivning efter en kort tidsperiod.
+Efter en kort tidsperiod att hello användare som du har valt kan toolaunch dessa program med hjälp av hello metoder som beskrivs under hello lösning beskrivning.
 
-## <a name="customizing-the-saml-claims-sent-to-an-application"></a>Anpassa SAML-anspråk som skickas till ett program
+## <a name="customizing-hello-saml-claims-sent-tooan-application"></a>Anpassa hello SAML anspråk skickas tooan program
 
-Information om hur du anpassar SAML attributet anspråk som skickas till ditt program finns [anspråk mappning i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) för mer information.
+toolearn hur toocustomize hello SAML attributet anspråk skickas tooyour program finns i [anspråk mappning i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) för mer information.
 
 ## <a name="next-steps"></a>Nästa steg
-[Tillhandahålla enkel inloggning till dina appar med Application Proxy](active-directory-application-proxy-sso-using-kcd.md)
+[Tillhandahålla enkel inloggning tooyour appar med Application Proxy](active-directory-application-proxy-sso-using-kcd.md)
 
 
 

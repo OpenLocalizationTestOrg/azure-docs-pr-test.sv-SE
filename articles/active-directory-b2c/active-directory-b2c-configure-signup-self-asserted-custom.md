@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C: Ändra logga in i anpassade principer och konfigurera självbetjäningsportalen vars provider"
-description: "En genomgång för att lägga till anspråk som ska logga och konfigurera användarindata"
+description: "En genomgång för att lägga till anspråk toosign in och konfigurera hello användarindata"
 services: active-directory-b2c
 documentationcenter: 
 author: rojasja
@@ -14,30 +14,30 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/29/2017
 ms.author: joroja
-ms.openlocfilehash: 64b9d904d7d070052e125b479f4719d208c9ff85
-ms.sourcegitcommit: b0af2a2cf44101a1b1ff41bd2ad795eaef29612a
+ms.openlocfilehash: c31d737263fef3e771bdf451b809b0ca522c8fe0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: Ändra logga in för att lägga till nya anspråk och konfigurera indata från användaren.
+# <a name="azure-active-directory-b2c-modify-sign-up-tooadd-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: Ändra tooadd nya anspråk-registrering och konfigurera indata från användaren.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-I den här artikeln, ska du lägga till en ny post för användare som har angetts (ett anspråk) din anmälan användaren resa.  Du kan konfigurera posten som en listrutan och definiera om det behövs.
+I den här artikeln får du lägga till en ny anges av användaren post (ett anspråk) tooyour signup användaren-resa.  Du kan konfigurera hello-posten som en listrutan och definiera om det behövs.
 
-Redigera Sipi att utlösa handoff för testet.
+Redigera Sipi tootrigger test handoff.
 
 ## <a name="prerequisites"></a>Krav
 
-* Utför stegen i artikeln [komma igång med principer för anpassade](active-directory-b2c-get-started-custom.md).  Testa signup/inloggning användaren resa till registreringen ett nytt lokalt konto innan du fortsätter.
+* Fullständig hello stegen i artikeln hello [komma igång med principer för anpassade](active-directory-b2c-get-started-custom.md).  Testa hello signup/inloggning användaren resa toosignup ett nytt lokalt konto innan du fortsätter.
 
 
-Första datainsamlingen från användarna uppnås via signup/inloggning.  Ytterligare anspråk kan samlas in senare via profil Redigera användare resor. När Azure AD B2C samlar in information direkt från användaren interaktivt, identitet upplevelse Framework använder dess `selfasserted provider`. Stegen nedan tillämpas när den här providern används.
+Första datainsamlingen från användarna uppnås via signup/inloggning.  Ytterligare anspråk kan samlas in senare via profil Redigera användare resor. När Azure AD B2C samlar in information direkt från hello användaren interaktivt, hello identitet upplevelse Framework använder dess `selfasserted provider`. hello stegen nedan tillämpas när den här providern används.
 
 
-## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>Definiera anspråket, dess namn och användaren Indatatyp
-Kan be användaren för sina ort.  Lägg till följande elementet så att den `<ClaimsSchema>` element i filen TrustFrameWorkExtensions princip:
+## <a name="define-hello-claim-its-display-name-and-hello-user-input-type"></a>Definiera hello anspråk, dess namn och hello användarindata typ
+Kan be hello användare om deras stad.  Lägg till följande element toohello hello `<ClaimsSchema>` element i hello TrustFrameWorkExtensions principfil:
 
 ```xml
 <ClaimType Id="city">
@@ -47,13 +47,13 @@ Kan be användaren för sina ort.  Lägg till följande elementet så att den `<
   <UserInputType>TextBox</UserInputType>
 </ClaimType>
 ```
-Det finns ytterligare alternativ som du gör här anpassa anspråket.  En fullständig schemat finns i den **identitet upplevelse Framework teknisk referenshandbok**.  Den här guiden kommer att publiceras snart i referensavsnittet.
+Det finns ytterligare alternativ kan du här toocustomize hello anspråk.  En fullständig schemat finns toohello **identitet upplevelse Framework teknisk referenshandbok**.  Den här guiden kommer att publiceras snart i hello referensavsnitt.
 
-* `<DisplayName>`är en sträng som definierar användarinriktade *etikett*
+* `<DisplayName>`är en sträng som definierar hello användarinriktad *etikett*
 
-* `<UserHelpText>`hjälper användaren att förstå vad som krävs
+* `<UserHelpText>`hjälper hello användaren förstå vad som krävs
 
-* `<UserInputType>`innehåller följande fyra alternativ markerade nedan:
+* `<UserInputType>`innehåller hello följande fyra alternativ markerade nedan:
     * `TextBox`
 ```xml
 <ClaimType Id="city">
@@ -78,7 +78,7 @@ Det finns ytterligare alternativ som du gör här anpassa anspråket.  En fullst
 </ClaimType>
 ```
 
-    * `DropdownSingleSelect`-Du kan välja endast giltigt värde.
+    * `DropdownSingleSelect`-Kan hello val av endast giltigt värde.
 
 ![Skärmbild som visar dropdown alternativet](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
@@ -97,7 +97,7 @@ Det finns ytterligare alternativ som du gör här anpassa anspråket.  En fullst
 ```
 
 
-* `CheckboxMultiSelect`Gör det möjligt för att välja ett eller flera värden.
+* `CheckboxMultiSelect`Tillåter hello val av ett eller flera värden.
 
 ![Skärmbild av multiselect alternativet](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
@@ -115,9 +115,9 @@ Det finns ytterligare alternativ som du gör här anpassa anspråket.  En fullst
 </ClaimType>
 ```
 
-## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a>Lägga till anspråk till inloggningssidan upp/logga in användaren resa
+## <a name="add-hello-claim-toohello-sign-upsign-in-user-journey"></a>Lägg till hello anspråk toohello logga upp/logga in användaren resa
 
-1. Lägga till anspråk som en `<OutputClaim ClaimTypeReferenceId="city"/>` till TechnicalProfile `LocalAccountSignUpWithLogonEmail` (hittas i principfilen TrustFrameworkBase).  Observera att den här TechnicalProfile använder SelfAssertedAttributeProvider.
+1. Lägg till hello anspråk som en `<OutputClaim ClaimTypeReferenceId="city"/>` toohello TechnicalProfile `LocalAccountSignUpWithLogonEmail` (hittas i hello TrustFrameworkBase princip-fil).  Observera att den här TechnicalProfile använder hello SelfAssertedAttributeProvider.
 
   ```xml
   <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -142,7 +142,7 @@ Det finns ytterligare alternativ som du gör här anpassa anspråket.  En fullst
       <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
       <OutputClaim ClaimTypeReferenceId="authenticationSource" />
       <OutputClaim ClaimTypeReferenceId="newUser" />
-      <!-- Optional claims, to be collected from the user -->
+      <!-- Optional claims, toobe collected from hello user -->
       <OutputClaim ClaimTypeReferenceId="givenName" />
       <OutputClaim ClaimTypeReferenceId="surName" />
       <OutputClaim ClaimTypeReferenceId="city"/>
@@ -154,7 +154,7 @@ Det finns ytterligare alternativ som du gör här anpassa anspråket.  En fullst
   </TechnicalProfile>
   ```
 
-2. Lägga till anspråk till AAD-UserWriteUsingLogonEmail som en `<PersistedClaim ClaimTypeReferenceId="city" />` att skriva anspråk till AAD-katalogen efter insamling från användaren. Du kan hoppa över det här steget om du inte vill bevara anspråk i katalogen för framtida användning.
+2. Lägg till hello anspråk toohello AAD-UserWriteUsingLogonEmail som en `<PersistedClaim ClaimTypeReferenceId="city" />` toowrite hello anspråk toohello AAD-katalogen efter insamling från hello användare. Du kan hoppa över det här steget om du föredrar att inte toopersist hello anspråk i hello directory för framtida användning.
 
   ```xml
   <!-- Technical profiles for local accounts -->
@@ -190,14 +190,14 @@ Det finns ytterligare alternativ som du gör här anpassa anspråket.  En fullst
   </TechnicalProfile>
   ```
 
-3. Lägga till anspråk till TechnicalProfile som läser från katalogen när en användare loggar in som en`<OutputClaim ClaimTypeReferenceId="city" />`
+3. Lägg till hello anspråk toohello TechnicalProfile som läser från hello katalog när en användare loggar in som en`<OutputClaim ClaimTypeReferenceId="city" />`
 
   ```xml
   <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
     <Metadata>
       <Item Key="Operation">Read</Item>
       <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-      <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
+      <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for hello provided user ID.</Item>
     </Metadata>
     <IncludeInSso>false</IncludeInSso>
     <InputClaims>
@@ -218,7 +218,7 @@ Det finns ytterligare alternativ som du gör här anpassa anspråket.  En fullst
   </TechnicalProfile>
   ```
 
-4. Lägg till den `<OutputClaim ClaimTypeReferenceId="city" />` filen SignUporSignIn.xml till RP principen så att denna begäran skickas till programmet i token efter en lyckad användaren resa.
+4. Lägg till hello `<OutputClaim ClaimTypeReferenceId="city" />` toohello RP principfil SignUporSignIn.xml så att denna begäran skickas toohello program i hello token efter en lyckad användaren resa.
 
   ```xml
   <RelyingParty>
@@ -240,17 +240,17 @@ Det finns ytterligare alternativ som du gör här anpassa anspråket.  En fullst
   </RelyingParty>
   ```
 
-## <a name="test-the-custom-policy-using-run-now"></a>Testa den anpassade principen med hjälp av ”kör nu”
+## <a name="test-hello-custom-policy-using-run-now"></a>Testa hello anpassad princip med ”Kör nu”
 
-1. Öppna den **Azure AD B2C bladet** och gå till **identitet upplevelse Framework > anpassade principer**.
-2. Välj den anpassade principen som du överfört och klicka på den **kör nu** knappen.
-3. Du ska kunna logga med en e-postadress.
+1. Öppna hello **Azure AD B2C bladet** och navigera för**identitet upplevelse Framework > anpassade principer**.
+2. Välj hello anpassad princip som du överfört och klicka på hello **kör nu** knappen.
+3. Du ska kunna toosign med en e-postadress.
 
-Skärmen registreringen i testläge bör se ut ungefär så här:
+hello signup skärm i testläge bör se ut ungefär toothis:
 
 ![Skärmbild av alternativ för ändrade anmälan](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-  Token tillbaka till ditt program innehåller nu den `city` anspråk som visas nedan
+  hello token tillbaka tooyour programmet nu omfattar hello `city` anspråk som visas nedan
 ```json
 {
   "exp": 1493596822,
@@ -273,16 +273,16 @@ Skärmen registreringen i testläge bör se ut ungefär så här:
 
 ## <a name="optional-remove-email-verification-from-signup-journey"></a>Valfritt: Ta bort e-Postverifiering från registreringen resa
 
-Om du vill hoppa över e-Postverifiering princip författaren kan du ta bort `PartnerClaimType="Verified.Email"`. E-postadressen kommer krävs men inte kontrolleras, såvida inte ”krävs” = true tas bort.  Du noga överväga om det här alternativet är rätt för din användningsfall!
+tooskip e-Postverifiering hello princip författaren kan välja tooremove `PartnerClaimType="Verified.Email"`. hello e-postadress kommer att krävs men inte kontrolleras, såvida inte ”krävs” = true tas bort.  Du noga överväga om det här alternativet är rätt för din användningsfall!
 
-Verifiera e-post är aktiverat som standard i den `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` TrustFrameworkBase principfilen i starter pack:
+Verifiera e-post är aktiverat som standard i hello `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` i hello TrustFrameworkBase principfil hello startpaket:
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lägga till nya anspråk till flödena för sociala inloggningsnamn genom att ändra TechnicalProfiles nedan. Dessa används av sociala/federerad inloggningsnamn för att skriva och läsa informationen med hjälp av alternativeSecurityId som positioneraren.
+Lägg till hello nya anspråk toohello flöden sociala inloggningsnamn genom att ändra hello TechnicalProfiles nedan. Dessa används av sociala/federerat konto inloggningar toowrite och läsa hello användardata med hello alternativeSecurityId som hello lokaliserare.
 ```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">

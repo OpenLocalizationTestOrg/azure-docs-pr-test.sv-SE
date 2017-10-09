@@ -1,6 +1,6 @@
 ---
-title: "Tillförlitliga WCF Services kommunikation stack | Microsoft Docs"
-description: "Inbyggda WCF kommunikation stacken i Service Fabric ger-klienttjänsten WCF-kommunikation för Reliable Services."
+title: aaaReliable WCF Services kommunikation stack | Microsoft Docs
+description: "hello inbyggda WCF kommunikation stacken i Service Fabric ger-klienttjänsten WCF-kommunikation för Reliable Services."
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7037620ebdc26a9f18531064bf45d058f5060e39
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7feebef4d46a6ae66d05129f47f9b5911e82aec9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>WCF-baserad kommunikation stacken för Reliable Services
-Reliable Services framework kan tjänsten författare välja stacken kommunikation som de vill använda för den här tjänsten. De kan ansluta kommunikation stacken valfri via den **ICommunicationListener** returnerades från den [CreateServiceReplicaListeners eller CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metoder. Ramen tillhandahåller en implementering av kommunikation stacken baserat på Windows Communication Foundation (WCF) för tjänsten programutvecklare som vill använda WCF-baserad kommunikation.
+hello Reliable Services framework kan författarna toochoose hello kommunikation stack som de vill toouse för service-tjänsten. De kan ansluta hello kommunikation stack valfri via hello **ICommunicationListener** returnerades från hello [CreateServiceReplicaListeners eller CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metoder. hello framework tillhandahåller en implementering av hello kommunikation stack baserat på hello Windows Communication Foundation (WCF) för tjänsten programutvecklare som vill toouse WCF-baserad kommunikation.
 
 ## <a name="wcf-communication-listener"></a>Lyssnare för WCF-kommunikation
-WCF-specifika implementeringen av **ICommunicationListener** tillhandahålls av den **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** klass.
+hello WCF-specifika implementering av **ICommunicationListener** tillhandahålls av hello **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** klass.
 
 Att ange Säg har vi ett servicekontrakt av typen`ICalculator`
 
@@ -37,7 +37,7 @@ public interface ICalculator
 }
 ```
 
-Vi kan skapa en lyssnare för WCF-kommunikation i tjänsten på följande sätt.
+Vi kan skapa en lyssnare för WCF-kommunikation i hello service hello följande sätt.
 
 ```csharp
 
@@ -48,13 +48,13 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
             wcfServiceObject:this,
             serviceContext:context,
             //
-            // The name of the endpoint configured in the ServiceManifest under the Endpoints section
-            // that identifies the endpoint that the WCF ServiceHost should listen on.
+            // hello name of hello endpoint configured in hello ServiceManifest under hello Endpoints section
+            // that identifies hello endpoint that hello WCF ServiceHost should listen on.
             //
             endpointResourceName: "WcfServiceEndpoint",
 
             //
-            // Populate the binding information that you want the service to use.
+            // Populate hello binding information that you want hello service toouse.
             //
             listenerBinding: WcfUtility.CreateTcpListenerBinding()
         )
@@ -63,8 +63,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ```
 
-## <a name="writing-clients-for-the-wcf-communication-stack"></a>Skrivning av klienter för stacken för WCF-kommunikation
-För att skriva klienter att kommunicera med tjänster med hjälp av WCF ramen innehåller **WcfClientCommunicationFactory**, vilket är WCF-specifika implementering av [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).
+## <a name="writing-clients-for-hello-wcf-communication-stack"></a>Skrivning av klienter för hello WCF kommunikation stack
+För att skriva klienter toocommunicate med tjänster med hjälp av WCF hello framework ger **WcfClientCommunicationFactory**, vilket är hello WCF-specifika implementering av [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).
 
 ```csharp
 
@@ -76,7 +76,7 @@ public WcfCommunicationClientFactory(
     object callback = null);
 ```
 
-Kommunikationskanalen WCF kan nås från den **WcfCommunicationClient** skapas av den **WcfCommunicationClientFactory**.
+hello WCF kommunikationskanalen kan nås från hello **WcfCommunicationClient** skapas av hello **WcfCommunicationClientFactory**.
 
 ```csharp
 
@@ -90,7 +90,7 @@ public class WcfCommunicationClient : ServicePartitionClient<WcfCommunicationCli
 
 ```
 
-Klientkoden kan använda den **WcfCommunicationClientFactory** tillsammans med den **WcfCommunicationClient** som implementerar **ServicePartitionClient** att avgöra den tjänsten endpoint och kommunicera med tjänsten.
+Klientkoden kan använda hello **WcfCommunicationClientFactory** tillsammans med hello **WcfCommunicationClient** som implementerar **ServicePartitionClient** toodetermine Hej tjänstslutpunkten och kommunicera med hello-tjänsten.
 
 ```csharp
 // Create binding
@@ -102,7 +102,7 @@ var wcfClientFactory = new WcfCommunicationClientFactory<ICalculator>
     (clientBinding: binding, servicePartitionResolver: partitionResolver);
 
 //
-// Create a client for communicating with the ICalculator service that has been created with the
+// Create a client for communicating with hello ICalculator service that has been created with the
 // Singleton partition scheme.
 //
 var calculatorServiceCommunicationClient =  new WcfCommunicationClient(
@@ -111,14 +111,14 @@ var calculatorServiceCommunicationClient =  new WcfCommunicationClient(
                 ServicePartitionKey.Singleton);
 
 //
-// Call the service to perform the operation.
+// Call hello service tooperform hello operation.
 //
 var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
                 client => client.Channel.Add(2, 3)).Result;
 
 ```
 > [!NOTE]
-> Standard ServicePartitionResolver förutsätter att klienten körs i samma kluster som för tjänsten. Om det inte är fallet, skapa ett ServicePartitionResolver-objekt och ange klustret anslutningens slutpunkter.
+> hello standard ServicePartitionResolver förutsätter att hello-klienten körs i samma kluster som hello-tjänst. Om så är inte hello fallet, skapa ett ServicePartitionResolver-objekt och ange hello slutpunkter för klustret.
 > 
 > 
 

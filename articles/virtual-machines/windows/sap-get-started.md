@@ -1,5 +1,5 @@
 ---
-title: "Komma igång med SAP på virtuella Windows-datorer i Azure | Microsoft Docs"
+title: "aaaGetting igång med SAP på virtuella Windows-datorer i Azure | Microsoft Docs"
 description: "Lär dig mer om SAP-lösningar som körs på virtuella datorer (VM) i Microsoft Azure"
 services: virtual-machines-windows
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ebe420ea5105fb15e42ff32ad7e8d9d8b27d8b06
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 678770955ecc78bf1d39c193c833ae4e11912fe4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-sap-on-azure-windows-virtual-machines-vms"></a>Med hjälp av SAP på Windows Azure virtuella datorer (VM)
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -304,14 +304,14 @@ ms.lasthandoff: 07/11/2017
 [xplat-cli]:../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../xplat-cli-azure-resource-manager.md
 
-Genom att välja Microsoft Azure som partnern SAP redo molnet kommer du att kunna tillförlitligt köra dina verksamhetskritiska SAP arbetsbelastningar på en scaaleable kompatibla, och enterprise-beprövade plattform.  Hämta som, flexability, och besparingar i Azure. Med utökade samarbetet mellan Microsoft och SAP, du kan köra SAP-program över scenarier för utveckling och testning och produktion i azure - och har fullt stöd. Från SAP NetWeaver till SAP S4/HANA, Linux till Windows, SAP HANA till SQL – vi ger dig support. 
+Genom att välja Microsoft Azure som partnern SAP redo molnet kommer du att kunna tooreliably kör din verksamhetskritiska SAP arbetsbelastningar på en scaaleable kompatibla, och enterprise-beprövade plattform.  Hämta hello som, flexability, och besparingar i Azure. Med hello expanderas partnerskap mellan Microsoft och SAP, du kan köra SAP-program över scenarier för utveckling och testning och produktion i azure - och har fullt stöd. Vi har du omfattas från SAP NetWeaver tooSAP S4/HANA Linux tooWindows, SAP HANA tooSQL. 
 
-Microsoft erbjuder med Microsoft Azure-tjänster för virtuella datorer och SAP HANA på Azure-stora instanser, en heltäckande plattform för infrastruktur som en tjänst (IaaS). Eftersom en bred SAP-lösningar stöds i Azure, detta ”komma igång dokumentet fungerar som en innehållsförteckning för våra aktuella SAP-dokument. Eftersom flera titlar läggs till vår dokumentbibliotek - ser du dem här. 
+Microsoft erbjuder med Microsoft Azure-tjänster för virtuella datorer och SAP HANA på Azure-stora instanser, en heltäckande plattform för infrastruktur som en tjänst (IaaS). Eftersom en bred SAP-lösningar stöds i Azure, detta ”komma igång dokumentet fungerar som en innehållsförteckning för våra aktuella SAP-dokument. Eftersom flera titlar läggs tooour dokumentbibliotek - ser du dem här. 
 
 ## <a name="sap-hana-certifications-on-microsoft-azure"></a>SAP HANA-certifieringar på Microsoft Azure
 | SAP-produkt | OS som stöds | Azure-erbjudanden |
 | --- | --- | --- |
-| SAP HANA Developer Edition (inklusive klientprogrammet HANA består av SQLODBC, ODBO Windows endast, ODBC, JDBC-drivrutiner, HANA studio och HANA-databas) |Red Hat Enterprise Linux, SUSE Linux Enterprise |A7, A8 |
+| SAP HANA Developer Edition (inklusive hello HANA klientprogrammet består av SQLODBC, ODBO Windows endast, ODBC, JDBC-drivrutiner, HANA studio och HANA-databas) |Red Hat Enterprise Linux, SUSE Linux Enterprise |A7, A8 |
 | MHANA en |Red Hat Enterprise Linux, SUSE Linux Enterprise |DS14_v2 (vid allmän tillgänglighet) |
 | SAP S/4HANA |Red Hat Enterprise Linux, SUSE Linux Enterprise |Kontrollerade tillgänglighet för GS5, SAP HANA i Azure (stora instanser) |
 | Programsvit på HANA, OLTP |Red Hat Enterprise Linux, SUSE Linux Enterprise |SAP HANA på Azure (stora instanser) |
@@ -319,73 +319,73 @@ Microsoft erbjuder med Microsoft Azure-tjänster för virtuella datorer och SAP 
 | SAP BW/4HANA |Red Hat Enterprise Linux, SUSE Linux Enterprise |GS5 för enskild nod distributioner SAP HANA i Azure (stora instanser) |
 
 ## <a name="sap-netweaver-certifications"></a>SAP NetWeaver certifieringar
-Microsoft Azure har certifierats för följande SAP-produkter, med fullständig support från Microsoft och SAP.
+Microsoft Azure är certifierad för hello följande SAP-produkter, med fullständig support från Microsoft och SAP.
 
 | SAP-produkt | Gäst-OS | RDBMS | Typer av virtuella datorer |
 | --- | --- | --- | --- |
-| SAP Business Suite-program |Windows, SUSE Linux Enterprise Red Hat Enterprise Linux |SQLServer, Oracle (endast Windows), DB2, SAP ASE |A5 till A11, D11 till D14, DS11 till DS14, GS1 till GS5 |
-| SAP Business All-in-One |Windows, SUSE Linux Enterprise Red Hat Enterprise Linux |SQLServer, Oracle (endast Windows), DB2, SAP ASE |A5 till A11, D11 till D14, DS11 till DS14, GS1 till GS5 |
-| SAP BusinessObjects BI |Windows |Saknas |A5 till A11, D11 till D14, DS11 till DS14, GS1 till GS5 |
-| SAP NetWeaver |Windows, SUSE Linux Enterprise Red Hat Enterprise Linux |SQLServer, Oracle (endast Windows), DB2, SAP ASE |A5 till A11, D11 till D14, DS11 till DS14, GS1 till GS5 |
+| SAP Business Suite-program |Windows, SUSE Linux Enterprise Red Hat Enterprise Linux |SQLServer, Oracle (endast Windows), DB2, SAP ASE |A5 tooA11, D11 tooD14, DS11 tooDS14, GS1 tooGS5 |
+| SAP Business All-in-One |Windows, SUSE Linux Enterprise Red Hat Enterprise Linux |SQLServer, Oracle (endast Windows), DB2, SAP ASE |A5 tooA11, D11 tooD14, DS11 tooDS14, GS1 tooGS5 |
+| SAP BusinessObjects BI |Windows |Saknas |A5 tooA11, D11 tooD14, DS11 tooDS14, GS1 tooGS5 |
+| SAP NetWeaver |Windows, SUSE Linux Enterprise Red Hat Enterprise Linux |SQLServer, Oracle (endast Windows), DB2, SAP ASE |A5 tooA11, D11 tooD14, DS11 tooDS14, GS1 tooGS5 |
 
 ## <a name="getting-started-with-sap-hana-on-azure"></a>Komma igång med SAP HANA på Azure
-Rubrik: Snabbstartsguide till manuell installation av SAP HANA på Azure Virtual Machines
+Rubrik: aaaQuickstart guide för manuell installation av SAP HANA på Azure Virtual Machines
 
-Sammanfattning: Den här snabbstartsguide hjälper för att ställa in en eninstanskategori SAP HANA prototyp/demo system på Azure Virtual Machines genom en manuell installation av SAP NetWeaver 7.5 och SAP HANA SP12. Guiden förutsätter att läsaren är bekant med grundläggande Azure IaaS som hur du distribuerar virtuella datorer eller virtuella nätverk, antingen via Azure-portalen eller Powershell/CLI, inklusive möjligheten att använda json-mallar. Dessutom förväntas att läsaren är bekant med SAP HANA, SAP NetWeaver och hur du installerar det lokalt.
+Sammanfattning: Den här snabbstartsguide hjälper tooset single instance SAP HANA prototyp/demo system på virtuella Azure-datorer med en manuell installation av SAP NetWeaver 7.5 och SAP HANA SP12. hello handboken förutsätter att hello läsaren är bekant med grundläggande Azure IaaS som hur toodeploy virtuella datorer eller virtuella nätverk, antingen via hello Azure-portalen eller Powershell/CLI inklusive hello alternativet toouse json-mallarna. Dessutom förväntas att hello läsaren är bekant med SAP HANA, SAP NetWeaver och hur tooinstall det lokalt.
 
 Uppdaterad: September 2016
 
 [Den här guiden hittar du här](../virtual-machines-linux-sap-hana-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quickstart-guide-for-netweaver-on-suse-linux-on-azure"></a>Snabbstartsguide för NetWeaver på SUSE Linux på Azure
-Rubrik: Testa SAP NetWeaver på Microsoft Azure SUSE Linux virtuella datorer 
+Rubrik: aaaTesting SAP NetWeaver på Microsoft Azure SUSE Linux virtuella datorer 
 
-Sammanfattning: Den här artikeln beskrivs olika saker att tänka på när du kör SAP NetWeaver på Microsoft Azure SUSE Linux virtuella datorer (VM). Kan 19 2016 stöds officiellt SAP NetWeaver på SUSE Linux virtuella datorer i Azure. All information om Linux-versionerna, SAP kernel-versioner och så vidare kan hittas i SAP Obs 1928533 ”SAP-program i Azure: produkter som stöds och Azure VM typer”.
+Sammanfattning: Den här artikeln beskrivs olika saker tooconsider när du kör SAP NetWeaver på Microsoft Azure SUSE Linux virtuella datorer (VM). Kan 19 2016 stöds officiellt SAP NetWeaver på SUSE Linux virtuella datorer i Azure. All information om Linux-versionerna, SAP kernel-versioner och så vidare kan hittas i SAP Obs 1928533 ”SAP-program i Azure: produkter som stöds och Azure VM typer”.
 
 Uppdaterad: September 2016
 
 [Den här guiden hittar du här](../virtual-machines-linux-sap-on-suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="deploying-sap-ides-ehp7-sp3-for-sap-erp-60-on-microsoft-azure"></a>Distribuera SAP IDES EHP7 SP3 för SAP ERP 6.0 på Microsoft Azure
-Rubrik: Snabbstartsguide till manuell installation av SAP HANA på Azure Virtual Machines
+Rubrik: aaaQuickstart guide för manuell installation av SAP HANA på Azure Virtual Machines
 
-Sammanfattning: Den här artikeln beskriver hur du distribuerar SAP IDES körs med SQL Server och Windows-Operativsystemet på Microsoft Azure via SAP molnet installation biblioteket 3.0. 
+Sammanfattning: Den här artikeln beskriver hur toodeploy SAP IDES körs med SQL Server och Windows-Operativsystemet på Microsoft Azure via SAP molnet installation biblioteket 3.0. 
 
 Uppdaterad: September 2016
 
 [Den här guiden hittar du här](sap-cal-ides-erp6-ehp7-sp3-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>Planering och genomförande
-Rubrik: SAP NetWeaver på virtuella Azure-datorer (VM) – planera Implementeringsguide och
+Rubrik: aaaSAP NetWeaver på Azure Virtual Machines (virtuella datorer) – planering och Implementation Guide
 
-Sammanfattning: Starta med det här dokumentet om du funderar på att köra SAP NetWeaver i virtuella Azure-datorer. Den här planerings- och implementeringsguiden hjälper dig att utvärdera om ett befintligt eller planerat SAP NetWeaver-baserat system kan distribueras till en miljö för virtuella Azure-datorer. Den omfattar flera SAP NetWeaver distributionsscenarier och innehåller SAP-konfigurationer som är specifika för Azure. Pappret listar och beskriver all nödvändig konfigurationsinformation som du behöver på SAP/Azure-sidan för att köra ett SAP-hybridlandskap. Åtgärder som du kan vidta för att garantera hög tillgänglighet för SAP NetWeaver-baserade system på IaaS omfattas också.
+Sammanfattning: Detta är hello papper toostart med om du tänker köra SAP NetWeaver i Azure Virtual Machines. Den här guiden för planering och implementering hjälper dig att utvärdera om en befintlig eller planerade SAP NetWeaver-dator kan vara distribuerade tooan virtuella datorer i Azure-miljö. Den omfattar flera SAP NetWeaver distributionsscenarier och innehåller SAP-konfigurationer som är specifika tooAzure. hello papper listas och beskrivs alla hello nödvändig konfigurationsinformation måste på hello SAP-/ Azure sida toorun hybrid SAP liggande. Åtgärder som du kan vidta tooensure hög tillgänglighet för SAP NetWeaver-baserade system på IaaS omfattas också.
 
 Uppdaterad: Augusti 2016
 
 [Den här guiden hittar du här][planning-guide]
 
 ## <a name="6aadadd2-76b5-46d8-8713-e8d63630e955"></a>Distribution
-Rubrik: SAP NetWeaver på virtuella Azure-datorer (VM) – Distributionsguide
+Rubrik: aaaSAP NetWeaver på Azure Virtual Machines (virtuella datorer) – Distributionsguide
 
-Sammanfattning: Det här dokumentet innehåller riktlinjer för distribution av programvara för SAP NetWeaver till virtuella datorer i Azure. Det här dokumentet fokuserar på tre specifika distributionsscenarier med betoning på att aktivera Azure Monitoring-tillägg för SAP, inklusive felsökningsrekommendationer för Azure Monitoring-tillägget för SAP. Det här dokumentet förutsätter att du har läst planerings- och implementeringsguiden.
+Sammanfattning: I detta dokument ger procedurvägledning för distribution SAP NetWeaver programvara toovirtual datorer i Azure. Det här dokumentet fokuserar på tre specifika distributionsscenarier med betoning på Aktivera hello Azure övervakning tillägg för SAP, inklusive Felsökningsrekommendationer för hello Azure övervakning tillägg för SAP. Det här dokumentet förutsätter att du har läst hello planering och implementering guide.
 
 Uppdaterad: December 2016
 
 [Den här guiden hittar du här][deployment-guide]
 
 ## <a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS Distributionsguide
-Rubrik: SAP NetWeaver på virtuella Azure-datorer (VM) – DBMS Distributionsguide
+Rubrik: aaaSAP NetWeaver på Azure Virtual Machines (virtuella datorer) – DBMS Deployment Guide
 
-Sammanfattning: Det här dokumentet beskriver planerings- och implementeringsöverväganden för DBMS system som ska köras tillsammans med SAP. I den första delen listas och presenteras allmänna överväganden. Följande delar av papperet avser distributioner av olika DBMS i Azure som stöds av SAP. Olika DBMS som visas är SQL Server, SAP ASE och Oracle. I de specifika delarna diskuteras de överväganden du behöver beakta när du kör SAP system på Azure tillsammans med de olika DBMS. Ämnen som vilka metoder för säkerhetskopiering och hög tillgänglighet som stöds av olika DBMS på Azure presenteras för användning med SAP-program.
+Sammanfattning: Det här dokumentet beskrivs planering och implementering överväganden för hello DBMS system som ska köras tillsammans med SAP. Hello första delen, visas och presenteras allmänna överväganden. hello handlar följande delar av hello dokumentet om toodeployments i olika DBMS i Azure som stöds av SAP. Olika DBMS som visas är SQL Server, SAP ASE och Oracle. I de specifika delarna beskrivs överväganden som du har tooaccount för när du kör SAP-system på Azure tillsammans med dessa DBMS. Ämnen som metoder för säkerhetskopiering och hög tillgänglighet som stöds av hello olika DBMS på Azure presenteras för hello användning med SAP-program.
 
 Uppdaterad: Augusti 2016
 
 [Den här guiden hittar du här][dbms-guide]
 
 ## <a name="63dab028-2c4f-4636-8f99-90bbb264eaba"></a>Distributionsguide för hög tillgänglighet
-Rubrik: SAP NetWeaver på virtuella Azure-datorer (VM) – Distributionsguide för hög tillgänglighet
+Rubrik: aaaSAP NetWeaver på Azure Virtual Machines (virtuella datorer) – Distributionsguide för hög tillgänglighet
 
-Sammanfattning: Det här dokumentet beskriver hur du kan skydda SAP enda åtkomstpunkt för fel komponenter som SAP ASCS/SCS och DBMS i Azure. Komponenter för SAP ASCS/SCS, DBMS och programmet servrar är av yttersta vikt för funktionerna i SAP NetWeaver system, t.ex. SAP NetWeaver ABAP, SAP NetWeaver Java, SAP NetWeaver ABAP + Java-system. Funktioner för hög tillgänglighet måste placeras på plats för att se till att dessa komponenter kan klara av fel på en server eller en virtuell dator som görs med Windows-kluster konfigurationer för bare metal- och Hyper-V-miljöer.
+Sammanfattning: Det här dokumentet beskriver hur du kan skydda SAP enda åtkomstpunkt för fel komponenter som hello SAP ASCS/SCS och DBMS i Azure. Komponenter hello SAP ASCS/SCS, DBMS och programmet servrar som är viktiga för hello funktionerna för SAP NetWeaver system, t.ex. SAP NetWeaver ABAP, SAP NetWeaver Java, SAP NetWeaver ABAP + Java-system. Funktioner för hög tillgänglighet måste toobe placeras i placera därför toomake till att dessa komponenter kan klara av fel på en server eller en virtuell dator som görs med Windows-kluster konfigurationer för bare metal- och Hyper-V-miljöer.
 
 Uppdaterad: December 2016
 

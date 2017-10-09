@@ -1,6 +1,6 @@
 ---
-title: "Kryptera diskar på en Linux-VM med Azure CLI 1.0 | Microsoft Docs"
-description: "Hur du krypterar diskar på en Linux VM som använder Azure CLI 1.0 och Resource Manager-distributionsmodellen"
+title: "aaaEncrypt diskar på en Linux-VM med hello Azure CLI 1.0 | Microsoft Docs"
+description: "Hur tooencrypt diskar på en Linux VM som använder hello Azure CLI 1.0 och hello Resource Manager-distributionsmodellen"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,47 +15,47 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/06/2017
 ms.author: iainfou
-ms.openlocfilehash: b436f2d43c41000f4385889edb3fa3983d4a8c66
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 68a0394d366c3c6941e2c6db0d4263123f951946
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="encrypt-disks-on-a-linux-vm-using-the-azure-cli-10"></a>Kryptera diskar på en Linux VM som använder Azure CLI 1.0
-För förbättrad virtuell dator (VM) säkerhet och efterlevnad, kan virtuella diskar i Azure krypteras i vila. Diskar krypteras med kryptografiska nycklar som skyddas i ett Azure Key Vault. Du styr dessa kryptografiska nycklar och granska deras användning. Den här artikeln beskrivs hur du krypterar virtuella diskar på en Linux VM som använder Azure CLI 1.0 och Resource Manager-distributionsmodellen.
+# <a name="encrypt-disks-on-a-linux-vm-using-hello-azure-cli-10"></a>Kryptera diskar på en Linux VM som använder hello Azure CLI 1.0
+För förbättrad virtuell dator (VM) säkerhet och efterlevnad, kan virtuella diskar i Azure krypteras i vila. Diskar krypteras med kryptografiska nycklar som skyddas i ett Azure Key Vault. Du styr dessa kryptografiska nycklar och granska deras användning. Den här artikeln beskrivs hur tooencrypt virtuella diskar på en Linux VM som använder hello Azure CLI 1.0 och hello Resource Manager-modellen.
 
-## <a name="cli-versions-to-complete-the-task"></a>CLI-versioner för att slutföra uppgiften
-Du kan slutföra uppgiften med någon av följande CLI-versioner:
+## <a name="cli-versions-toocomplete-hello-task"></a>CLI versioner toocomplete hello aktivitet
+Du kan göra hello med hjälp av något av följande versioner av CLI hello:
 
-- [Azure CLI 1.0](#quick-commands) – våra CLI för klassisk och resurs management på distributionsmodeller (den här artikeln)
-- [Azure CLI 2.0](encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – vår nästa generations CLI för distributionsmodellen resurshantering
+- [Azure CLI 1.0](#quick-commands) – våra CLI för hello klassisk och resurs management distributionsmodeller (den här artikeln)
+- [Azure CLI 2.0](encrypt-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) -vår nästa generations CLI för hello resursdistributionsmodell för hantering
 
 ## <a name="quick-commands"></a>Snabbkommandon
-Om du behöver utföra aktiviteten följande avsnittet beskriver grundläggande kommandon för att kryptera virtuella diskar på den virtuella datorn. Mer detaljerad information och kontext för varje steg finns resten av dokumentet [startar här](#overview-of-disk-encryption).
+Om du behöver tooquickly utföra hello uppgiften, hello följande avsnitt information hello grundläggande kommandon tooencrypt virtuella diskar på den virtuella datorn. Mer detaljerad information och kontext för varje steg finns hello resten av dokumentet hello [startar här](#overview-of-disk-encryption).
 
-Du behöver den [senaste Azure CLI 1.0](../../xplat-cli-install.md) installerad och logga in med Resource Manager-läget på följande sätt:
+Du behöver hello [senaste Azure CLI 1.0](../../xplat-cli-install.md) installerad och logga in med hello Resource Manager-läge på följande sätt:
 
 ```azurecli
 azure config mode arm
 ```
 
-Ersätt exempel parameternamn med egna värden i följande exempel. Exempel parameternamn inkluderar `myResourceGroup`, `myKeyVault`, och `myVM`.
+Följande exempel Ersätt exempel parameternamn i hello med egna värden. Exempel parameternamn inkluderar `myResourceGroup`, `myKeyVault`, och `myVM`.
 
-Först aktivera Azure Key Vault-providern i din Azure-prenumeration och skapa en resursgrupp. I följande exempel skapas ett Resursgruppsnamn `myResourceGroup` i den `WestUS` plats:
+Först aktivera hello Azure Key Vault-providern i din Azure-prenumeration och skapa en resursgrupp. hello följande exempel skapas ett Resursgruppsnamn `myResourceGroup` i hello `WestUS` plats:
 
 ```azurecli
 azure provider register Microsoft.KeyVault
 azure group create myResourceGroup --location WestUS
 ```
 
-Skapa ett Azure Key Vault. I följande exempel skapas ett Nyckelvalv med namnet `myKeyVault`:
+Skapa ett Azure Key Vault. hello följande exempel skapas ett Nyckelvalv med namnet `myKeyVault`:
 
 ```azurecli
 azure keyvault create --vault-name myKeyVault --resource-group myResourceGroup \
   --location WestUS
 ```
 
-Skapa en kryptografisk nyckel i ditt Nyckelvalv och aktivera kryptering. I följande exempel skapas en nyckel som heter `myKey`:
+Skapa en kryptografisk nyckel i ditt Nyckelvalv och aktivera kryptering. hello följande exempel skapas en nyckel som heter `myKey`:
 
 ```azurecli
 azure keyvault key create --vault-name myKeyVault --key-name myKey \
@@ -64,7 +64,7 @@ azure keyvault set-policy --vault-name myKeyVault --resource-group myResourceGro
   --enabled-for-disk-encryption true
 ```
 
-Skapa en slutpunkt som använder Azure Active Directory för att hantera autentisering och byta ut kryptografiska nycklar från Nyckelvalvet. Den `--home-page` och `--identifier-uris` inte behöver vara faktiska dirigerbara adresser. Högsta möjliga säkerhetsnivå ska klienthemlighet användas i stället för lösenord. Azure CLI generera inte för närvarande klienthemlighet. Klienthemlighet kan bara skapas i Azure-portalen. I följande exempel skapas en Azure Active Directory-slutpunkt med namnet `myAADApp` och använder ett lösenord på `myPassword`. Ange ditt eget lösenord på följande sätt:
+Skapa en slutpunkt som använder Azure Active Directory för att hantera hello autentisering och byta ut kryptografiska nycklar från Nyckelvalvet. Hej `--home-page` och `--identifier-uris` behöver inte toobe faktiska dirigerbara adresser. Hello högsta säkerhetsnivå, ska klienthemlighet användas i stället för lösenord. hello Azure CLI generera inte för närvarande klienthemlighet. Klienthemlighet kan bara skapas i hello Azure-portalen. hello följande exempel skapas en Azure Active Directory-slutpunkt med namnet `myAADApp` och använder ett lösenord på `myPassword`. Ange ditt eget lösenord på följande sätt:
 
 ```azurecli
 azure ad app create --name myAADApp \
@@ -73,7 +73,7 @@ azure ad app create --name myAADApp \
   --password myPassword
 ```
 
-Observera den `applicationId` visas i utdata från kommandot ovan. Program-ID används i följande steg:
+Obs hello `applicationId` visas i hello utdata från hello föregående kommando. Program-ID används i hello följande steg:
 
 ```azurecli
 azure ad sp create --applicationId myApplicationID
@@ -81,14 +81,14 @@ azure keyvault set-policy --vault-name myKeyVault --spn myApplicationID \
   --perms-to-keys [\"all\"] --perms-to-secrets [\"all\"]
 ```
 
-Lägg till en datadisk till en befintlig virtuell dator. I följande exempel läggs en datadisk till en virtuell dator med namnet `myVM`:
+Lägg till en befintlig virtuell dator i data disk tooan. hello följande exempel lägger till en data disk tooa virtuella datorn med namnet `myVM`:
 
 ```azurecli
 azure vm disk attach-new --resource-group myResourceGroup --vm-name myVM \
   --size-in-gb 5
 ```
 
-Granska informationen för Key Vault och den nyckel som du skapade. Key Vault-ID, URI och nyckel måste URL: en i det sista steget. I följande exempel granskar detaljerna för ett Nyckelvalv med namnet `myKeyVault` och nyckel som heter `myKey`:
+Granska hello detaljer för din Key Vault och hello nyckel som du skapade. Du behöver hello Key Vault-ID, URI och nyckel URL: en i hello sista steget. hello följande exempel granskar hello information för ett Nyckelvalv med namnet `myKeyVault` och nyckel som heter `myKey`:
 
 ```azurecli
 azure keyvault show myKeyVault
@@ -107,7 +107,7 @@ azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
   --volume-type Data
 ```
 
-Azure CLI anger inte utförlig fel under krypteringsprocessen. Ytterligare felsökningsinformation `/var/log/azure/Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux/0.x.x.x/extension.log`. Som föregående kommando har många variabler och kan ge mycket uppgift om varför processen misslyckas, är ett exempel på fullständiga kommandot på följande sätt:
+hello Azure CLI anger inte utförlig fel under hello krypteringsprocessen. Ytterligare felsökningsinformation `/var/log/azure/Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux/0.x.x.x/extension.log`. Föregående kommando har många variabler som hello och kan ge mycket uppgift som toowhy hello misslyckas, blir fullständiga exemplet som följer:
 
 ```azurecli
 azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
@@ -120,76 +120,76 @@ azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
   --volume-type Data
 ```
 
-Slutligen granska krypteringsstatus igen för att bekräfta att din virtuella diskar nu har krypterats. I följande exempel kontrollerar status för en virtuell dator med namnet `myVM` i den `myResourceGroup` resursgrupp:
+Slutligen granska hello krypteringsstatus igen tooconfirm virtuella diskarna har nu krypterats. hello följande exempel kontrollerar hello status för en virtuell dator med namnet `myVM` i hello `myResourceGroup` resursgrupp:
 
 ```azurecli
 azure vm show-disk-encryption-status --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="overview-of-disk-encryption"></a>Översikt över diskkryptering
-Virtuella diskar på virtuella Linux-datorer krypteras på resten med hjälp av [dm-crypt](https://wikipedia.org/wiki/Dm-crypt). Det är gratis för kryptering av virtuella diskar i Azure. Kryptografiska nycklar lagras i Azure Key Vault med skydd av programvara eller du kan importera eller generera dina nycklar i Maskinvarusäkerhetsmoduler (HSM) certifierade FIPS 140-2 level 2-standarder. Du behålla kontrollen över dessa kryptografiska nycklar och granska deras användning. Dessa kryptografiska nycklar används för att kryptera och dekryptera virtuella diskar som är anslutna till den virtuella datorn. En slutpunkt för Azure Active Directory ger en säker mekanism för att utfärda de kryptografiska nycklarna som virtuella datorer är igång på och stänga av.
+Virtuella diskar på virtuella Linux-datorer krypteras på resten med hjälp av [dm-crypt](https://wikipedia.org/wiki/Dm-crypt). Det är gratis för kryptering av virtuella diskar i Azure. Kryptografiska nycklar lagras i Azure Key Vault med skydd av programvara eller du kan importera eller generera dina nycklar i Maskinvarusäkerhetsmoduler (HSM) certifierade tooFIPS 140-2 level 2-standarder. Du behålla kontrollen över dessa kryptografiska nycklar och granska deras användning. Dessa kryptografiska nycklar används tooencrypt och dekryptera virtuella diskar anslutna tooyour VM. En slutpunkt för Azure Active Directory ger en säker mekanism för att utfärda de kryptografiska nycklarna som virtuella datorer är igång på och stänga av.
 
-Processen för att kryptera en virtuell dator är följande:
+hello-processen för att kryptera en virtuell dator är som följer:
 
 1. Skapa en kryptografisk nyckel i en Azure Key Vault.
-2. Konfigurera den kryptografiska nyckeln som kan användas för att kryptera diskar.
-3. Skapa en slutpunkt som använder Azure Active Directory med rätt behörighet för att läsa den kryptografiska nyckeln från Azure Key Vault.
-4. Utfärda kommandot för att kryptera din virtuella diskar, Azure Active Directory-slutpunkten och lämpliga kryptografiska nyckel som ska användas.
-5. Azure Active Directory-slutpunkten begär den kryptografiska nyckeln som krävs från Azure Key Vault.
-6. De virtuella diskarna krypteras med den angivna kryptografiska nyckeln.
+2. Konfigurera hello kryptografiska nyckel toobe kan användas för att kryptera diskar.
+3. tooread hello krypteringsnyckeln från hello Azure Key Vault skapa en slutpunkt som använder Azure Active Directory med hello lämpliga behörigheter.
+4. Utfärda hello kommandot tooencrypt din virtuella diskar, att ange hello Azure Active Directory-slutpunkten och lämpliga kryptografiska nyckel toobe används.
+5. hello Azure Active Directory endpoint begär hello nödvändig kryptografiska nyckel från Azure Key Vault.
+6. hello virtuella diskar krypteras med hello tillhandahålls kryptografisk nyckel.
 
 ## <a name="supporting-services-and-encryption-process"></a>Stöd för tjänster och kryptering
-Kryptering är beroende av följande ytterligare komponenter:
+Kryptering är beroende av hello följande ytterligare komponenter:
 
-* **Azure Key Vault** – används för att skydda krypteringsnycklar och hemligheter som används för kryptering/dekryptering processen disk.
-  * Om det finns ett kan du använda en befintlig Azure Key Vault. Du har inte kryptera diskar för ett Nyckelvalv.
-  * Du kan skapa ett dedikerat Nyckelvalv för att avgränsa administrativa gränser och viktiga synlighet.
-* **Azure Active Directory** -hanterar säker utbyte av kryptografiska nycklar som krävs och autentisering för begärda åtgärder.
+* **Azure Key Vault** -används toosafeguard kryptografiska nycklar och hemligheter som används för hello disk kryptering/dekryptering process.
+  * Om det finns ett kan du använda en befintlig Azure Key Vault. Du har inte toodedicate en Key Vault tooencrypting diskar.
+  * Du kan skapa ett dedikerat Nyckelvalv tooseparate administrativa gränser och viktiga synlighet.
+* **Azure Active Directory** - referenser hello säker utbyte av kryptografiska nycklar som krävs och autentisering för begärt åtgärder.
   * Vanligtvis kan du använda en befintlig instans av Azure Active Directory för ditt program.
-  * Programmet är av en slutpunkt för Nyckelvalvet och virtuella datorn att begära och hämta utfärdade lämpliga kryptografiska nycklar. Du utvecklar inte ett verkligt program som integreras med Azure Active Directory.
+  * hello program är en slutpunkt för hello Nyckelvalvet och virtuella services toorequest och hämta utfärdade hello lämpliga kryptografiska nycklar. Du utvecklar inte ett verkligt program som integreras med Azure Active Directory.
 
 ## <a name="requirements-and-limitations"></a>Krav och begränsningar
 Krav för diskkryptering och scenarier som stöds:
 
-* Följande Linux-servern SKU - Ubuntu, CentOS, SUSE och SUSE Linux Enterprise Server (SLES) och Red Hat Enterprise Linux.
-* Alla resurser (till exempel Nyckelvalv lagringskonto och VM) måste finnas i samma Azure-region och prenumeration.
+* hello följande Linux server SKU - Ubuntu, CentOS, SUSE och SUSE Linux Enterprise Server (SLES) och Red Hat Enterprise Linux.
+* Alla resurser (till exempel Nyckelvalv lagringskonto och VM) måste vara i hello samma Azure-region och prenumeration.
 * Standard A, D, DS, G och GS-serien virtuella datorer.
 
-Diskkryptering stöds inte i följande scenarier:
+Diskkryptering stöds inte för närvarande i hello följande scenarier:
 
 * Grundnivån virtuella datorer.
-* Virtuella datorer skapas med den klassiska distributionsmodellen.
+* Virtuella datorer skapas med hello klassiska distributionsmodellen.
 * Om du inaktiverar kryptering för OS-disk på virtuella Linux-datorer.
-* Uppdaterar de kryptografiska nycklarna på en redan krypterade Linux-VM.
+* Uppdaterar hello Kryptografiska nycklar på en redan krypterade Linux-VM.
 
-## <a name="create-the-azure-key-vault-and-keys"></a>Skapa Azure Key Vault och nycklar
-Slutför resten av den här guiden, måste den [senaste Azure CLI 1.0](../../xplat-cli-install.md) installerad och logga in med Resource Manager-läget på följande sätt:
+## <a name="create-hello-azure-key-vault-and-keys"></a>Skapa hello Azure Key Vault och nycklar
+toocomplete hello resten av den här guiden, måste hello [senaste Azure CLI 1.0](../../xplat-cli-install.md) installerad och logga in med hello Resource Manager-läge på följande sätt:
 
 ```azurecli
 azure config mode arm
 ```
 
-Ersätt alla exempel parametrar med egna namn, plats och nyckelvärden under hela kommandoexempel. I följande exempel används en konvention för `myResourceGroup`, `myKeyVault`, `myAADApp`osv.
+Ersätt alla exempel parametrar med egna namn, plats och nyckelvärden i hela hello kommandoexempel. hello följande exempel används en konvention för `myResourceGroup`, `myKeyVault`, `myAADApp`osv.
 
-Det första steget är att skapa en Azure Key Vault för att lagra kryptografiska nycklar. Azure Key Vault kan lagra nycklar, hemligheter eller lösenord som gör det möjligt att implementera dem på ett säkert sätt i dina program och tjänster. För virtuell diskkryptering använder du Key Vault för att lagra en krypteringsnyckel som används för att kryptera eller dekryptera din virtuella diskar.
+hello första steget är toocreate ett Azure Key Vault toostore kryptografiska nycklar. Azure Key Vault kan lagra nycklar, hemligheter, eller lösenord som gör att du toosecurely implementeras i dina program och tjänster. För virtuell diskkryptering, använda Key Vault toostore en krypteringsnyckel som används tooencrypt eller dekryptera din virtuella diskar.
 
-Aktivera Azure Key Vault-providern i din Azure-prenumeration och sedan skapa en resursgrupp. I följande exempel skapas en resursgrupp med namnet `myResourceGroup` i den `WestUS` plats:
+Aktivera hello Azure Key Vault-providern i din Azure-prenumeration och sedan skapa en resursgrupp. hello följande exempel skapar en resursgrupp med namnet `myResourceGroup` i hello `WestUS` plats:
 
 ```azurecli
 azure provider register Microsoft.KeyVault
 azure group create myResourceGroup --location WestUS
 ```
 
-Azure Key Vault som innehåller kryptografiska nycklar och associerade beräkningsresurser som lagring och Virtuellt datorn måste finnas i samma region. I följande exempel skapas en Azure Key Vault som heter `myKeyVault`:
+hello Azure Key Vault som innehåller hello krypteringsnycklar och associerade beräkning resurser, till exempel lagring och hello Virtuella datorn måste finnas i hello samma region. hello följande exempel skapas en Azure Key Vault som heter `myKeyVault`:
 
 ```azurecli
 azure keyvault create --vault-name myKeyVault --resource-group myResourceGroup \
   --location WestUS
 ```
 
-Du kan lagra kryptografiska nycklar med hjälp av programvara eller maskinvara säkerhet modellen (HSM)-skydd. Använda en HSM kräver en premium Key Vault. Det finns en extra kostnad för att skapa en premium Key Vault snarare än standard Key Vault som lagrar programvara-skyddade nycklar. När du skapar en premium Key Vault i föregående steg till `--sku Premium` i kommandot. I följande exempel används programvaruskyddad nycklar eftersom vi har skapat ett Nyckelvalv som standard.
+Du kan lagra kryptografiska nycklar med hjälp av programvara eller maskinvara säkerhet modellen (HSM)-skydd. Använda en HSM kräver en premium Key Vault. Det finns ett extra kostnad toocreating bidrag Key Vault snarare än standard Key Vault som lagrar programvara-skyddade nycklar. toocreate lägga till en premium Key Vault i föregående steg hello `--sku Premium` toohello kommando. hello följande exempel används programvaruskyddad nycklar eftersom vi har skapat ett Nyckelvalv som standard.
 
-För båda modellerna skydd måste Azure-plattformen beviljas åtkomst för att begära kryptografiska nycklar när den virtuella datorn startas för att dekryptera virtuella diskar. Skapa en krypteringsnyckel i ditt Nyckelvalv och sedan aktivera den för användning med virtuell diskkryptering. I följande exempel skapas en nyckel som heter `myKey` och gör det möjligt för diskkryptering:
+För båda modellerna skydd måste hello Azure-plattformen toobe beviljas åtkomst toorequest hello Kryptografiska nycklar när hello VM startas toodecrypt hello virtuella diskar. Skapa en krypteringsnyckel i ditt Nyckelvalv och sedan aktivera den för användning med virtuell diskkryptering. hello följande exempel skapas en nyckel som heter `myKey` och gör det möjligt för diskkryptering:
 
 ```azurecli
 azure keyvault key create --vault-name myKeyVault --key-name myKey \
@@ -199,12 +199,12 @@ azure keyvault set-policy --vault-name myKeyVault --resource-group myResourceGro
 ```
 
 
-## <a name="create-the-azure-active-directory-application"></a>Skapa Azure Active Directory-program
-När virtuella diskar krypteras och dekrypteras, använder du en slutpunkt för att hantera autentisering och byta ut kryptografiska nycklar från Nyckelvalvet. Den här slutpunkten måste ett Azure Active Directory-program kan Azure-plattformen begära lämpliga kryptografiska nycklar för den virtuella datorn. En standardinstans för Azure Active Directory finns i din prenumeration, även om många organisationer har särskilda Azure Active Directory-kataloger.
+## <a name="create-hello-azure-active-directory-application"></a>Skapa hello Azure Active Directory-program
+När virtuella diskar krypteras och dekrypteras, använder du en slutpunkt toohandle hello autentisering och byta ut kryptografiska nycklar från Nyckelvalvet. Den här slutpunkten måste ett Azure Active Directory-program kan hello Azure-plattformen toorequest hello lämpliga krypteringsnycklar uppdrag hello VM. En standardinstans för Azure Active Directory finns i din prenumeration, även om många organisationer har särskilda Azure Active Directory-kataloger.
 
-När du inte skapar en fullständig Azure Active Directory-program i `--home-page` och `--identifier-uris` parametrar i följande exempel behöver inte vara faktiska dirigerbara adresser. I följande exempel anger också en lösenordsbaserad hemlighet i stället för att nycklarna från i Azure-portalen. Som den här tiden kan kan generera nycklar inte utföras från Azure CLI.
+Eftersom du inte skapar en fullständig Azure Active Directory-programmet hello `--home-page` och `--identifier-uris` parametrar i följande exempel hello behöver inte toobe faktiska dirigerbara adresser. hello anger följande exempel också en lösenordsbaserad hemlighet i stället för att nycklarna från i hello Azure-portalen. Som den här tiden kan kan generera nycklar inte utföras från hello Azure CLI.
 
-Skapa Azure Active Directory-program. I följande exempel skapas ett program med namnet `myAADApp` och använder ett lösenord på `myPassword`. Ange ditt eget lösenord på följande sätt:
+Skapa Azure Active Directory-program. hello följande exempel skapar ett program med namnet `myAADApp` och använder ett lösenord på `myPassword`. Ange ditt eget lösenord på följande sätt:
 
 ```azurecli
 azure ad app create --name myAADApp \
@@ -213,9 +213,9 @@ azure ad app create --name myAADApp \
   --password myPassword
 ```
 
-Anteckna den `applicationId` som returneras i utdata från kommandot ovan. Program-ID används i vissa av stegen. Skapa sedan en tjänstens huvudnamn (SPN) så att programmet är tillgänglig i din miljö. För att kunna kryptera eller dekryptera virtuella diskar, måste behörigheter på den kryptografiska nyckel som lagras i Nyckelvalvet anges för att tillåta Azure Active Directory-programmet att läsa nycklarna.
+Anteckna hello `applicationId` som returneras i hello utdata från hello föregående kommando. Program-ID används i vissa hello återstående steg. Skapa sedan en tjänstens huvudnamn (SPN) så att programmet hello är tillgänglig i din miljö. toosuccessfully kryptera eller dekryptera virtuella diskar, behörigheter på hello kryptografiska nyckel som lagras i Nyckelvalvet måste vara set toopermit hello Azure Active Directory application tooread hello nycklar.
 
-Skapa ett SPN och ange de behörigheter som krävs på följande sätt:
+Skapa hello SPN och ange hello lämpliga behörigheter på följande sätt:
 
 ```azurecli
 azure ad sp create --applicationId myApplicationID
@@ -225,14 +225,14 @@ azure keyvault set-policy --vault-name myKeyVault --spn myApplicationID \
 
 
 ## <a name="add-a-virtual-disk-and-review-encryption-status"></a>Lägg till en virtuell disk och granska krypteringsstatus
-Att faktiskt kryptera vissa virtuella diskar, kan du lägga till en disk i en befintlig virtuell dator. Lägg till en disk på 5Gb data till en befintlig virtuell dator på följande sätt:
+tooactually kryptera vissa virtuella diskar, kan du lägga till en disk tooan befintliga VM. Lägg till 5Gb data disk tooan befintlig virtuell dator på följande sätt:
 
 ```azurecli
 azure vm disk attach-new --resource-group myResourceGroup --vm-name myVM \
   --size-in-gb 5
 ```
 
-De virtuella diskarna krypteras inte. Granska aktuella krypteringsstatus för den virtuella datorn på följande sätt:
+hello virtuella diskar krypteras inte. Granska hello aktuella krypteringsstatus för den virtuella datorn på följande sätt:
 
 ```azurecli
 azure vm show-disk-encryption-status --resource-group myResourceGroup --name myVM
@@ -240,21 +240,21 @@ azure vm show-disk-encryption-status --resource-group myResourceGroup --name myV
 
 
 ## <a name="encrypt-virtual-disks"></a>Kryptera virtuella diskar
-För att kryptera nu virtuella diskar, samordnar du tidigare komponenter:
+toonow kryptera hello virtuella diskar, du samordnar alla hello tidigare komponenter:
 
-1. Ange Azure Active Directory-program och lösenord.
-2. Ange Nyckelvalv för att lagra metadata för krypterade diskarna.
-3. Ange de kryptografiska nycklarna som ska användas för den faktiska kryptering och dekryptering.
-4. Ange om du vill kryptera OS-disk, datadiskar eller alla.
+1. Ange hello Azure Active Directory-program och lösenord.
+2. Ange hello Key Vault toostore hello metadata för krypterade diskarna.
+3. Ange hello krypteringsnycklar toouse för hello faktiska kryptering och dekryptering.
+4. Ange om du vill tooencrypt hello OS-disk, hello datadiskar eller alla.
 
-Kan granska informationen för Azure Key Vault och den nyckel som du skapade när du behöver Key Vault ID URI, och ange sedan URL det sista steget:
+Kan granska hello detaljer för din Azure Key Vault och hello nyckel som du skapade när du behöver hello Key Vault-ID, URI, och ange sedan URL hello sista steget:
 
 ```azurecli
 azure keyvault show myKeyVault
 azure keyvault key show myKeyVault myKey
 ```
 
-Kryptera din virtuella diskar med hjälp av utdata från den `azure keyvault show` och `azure keyvault key show` kommandon på följande sätt:
+Kryptera din virtuella diskar med hjälp av hello utdata från hello `azure keyvault show` och `azure keyvault key show` kommandon på följande sätt:
 
 ```azurecli
 azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
@@ -266,7 +266,7 @@ azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
   --volume-type Data
 ```
 
-Som det föregående kommandot har många variabler, är följande exempel det fullständiga kommandot referens:
+Som hello föregående kommando har många variabler, hello följande exempel är hello fullständiga kommandot referens:
 
 ```azurecli
 azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
@@ -279,9 +279,9 @@ azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
   --volume-type Data
 ```
 
-Azure CLI anger inte utförlig fel under krypteringsprocessen. Ytterligare felsökningsinformation `/var/log/azure/Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux/0.x.x.x/extension.log` på den virtuella datorn du krypterar.
+hello Azure CLI anger inte utförlig fel under hello krypteringsprocessen. Ytterligare felsökningsinformation `/var/log/azure/Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux/0.x.x.x/extension.log` på hello VM som du krypterar.
 
-Slutligen kan du granska krypteringsstatus igen för att bekräfta att din virtuella diskar nu har krypterats:
+Slutligen kan granska hello krypteringsstatus igen tooconfirm virtuella diskarna har nu krypterats:
 
 ```azurecli
 azure vm show-disk-encryption-status --resource-group myResourceGroup --name myVM
@@ -289,16 +289,16 @@ azure vm show-disk-encryption-status --resource-group myResourceGroup --name myV
 
 
 ## <a name="add-additional-data-disks"></a>Lägg till ytterligare datadiskar
-När du har krypterade datadiskarna kan du också kryptera dem senare lägga till ytterligare virtuella diskar till den virtuella datorn. När du kör den `azure vm enable-disk-encryption` kommandot, öka sekvens version använder den `--sequence-version` parameter. Den här aktivitetssekvensen versionsparametern kan du utföra upprepade åtgärder på samma virtuella dator.
+När du har krypterade datadiskarna kan du också kryptera dem senare lägga till ytterligare virtuella diskar tooyour VM. När du kör hello `azure vm enable-disk-encryption` kommandot, öka hello sekvens version med hello `--sequence-version` parameter. Den här aktivitetssekvensen versionsparametern kan du tooperform upprepade åtgärder på hello samma virtuella dator.
 
-Exempelvis kan du lägga till en andra virtuell disk till den virtuella datorn på följande sätt:
+Exempelvis kan du lägga till en andra virtuell disk tooyour VM enligt följande:
 
 ```azurecli
 azure vm disk attach-new --resource-group myResourceGroup --vm-name myVM \
   --size-in-gb 5
 ```
 
-Kör kommandot för att kryptera de virtuella diskarna denna tid att lägga till den `--sequence-version` parameter och öka värdet från våra första gången du kör på följande sätt:
+Kör hello kommandot tooencrypt hello virtuella diskar, nu lägga till hello `--sequence-version` parameter och ökar hello värde från våra första kör på följande sätt:
 
 ```azurecli
 azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
@@ -314,4 +314,4 @@ azure vm enable-disk-encryption --resource-group myResourceGroup --name myVM \
 
 ## <a name="next-steps"></a>Nästa steg
 * Läs mer om hur du hanterar Azure Key Vault, inklusive ta bort krypteringsnycklarna och valv, [hantera Key Vault med hjälp av CLI](../../key-vault/key-vault-manage-with-cli2.md).
-* Läs mer om diskkryptering, till exempel förbereda en krypterad anpassade VM att överföra till Azure, [Azure Disk Encryption](../../security/azure-security-disk-encryption.md).
+* Läs mer om diskkryptering, till exempel förbereda en krypterad anpassade VM tooupload tooAzure, [Azure Disk Encryption](../../security/azure-security-disk-encryption.md).

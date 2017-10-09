@@ -1,5 +1,5 @@
 ---
-title: "Ansluta Intel Edison (C) till Azure IoT - felsökning | Microsoft Docs"
+title: "Connect Intel EDISON (C) tooAzure IoT - felsökning | Microsoft Docs"
 description: "Felsökning för Intel modern C-upplevelse"
 services: iot-hub
 documentationcenter: 
@@ -17,41 +17,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: dd6338ad29e0bb858c33e5bb24b8f41d3c22575a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c4a71983e3906cfc5ce7c832cf858852b9bd744a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting"></a>Felsökning
 ## <a name="hardware-issues"></a>Problem med maskinvara
-Information om hur du löser vanliga problem på Intel modern finns i [officiella felsökning sidan](https://software.intel.com/en-us/node/637974).
+Information om hur du löser vanliga problem på Intel modern finns hello [officiella felsökning sidan](https://software.intel.com/en-us/node/637974).
 
 ## <a name="nodejs-package-issues"></a>Problem med node.js-paket
 ### <a name="no-response-during-gulp-tasks"></a>Inget svar under gulp uppgifter
-Om du får problem med att köra gulp uppgifter, kan du lägga till den `--verbose` alternativet för felsökning. Försöker avsluta aktuella gulp uppgifter med hjälp av `Ctrl + C`, och kör sedan följande kommando i din konsolfönster Se felsökningsmeddelanden. Du kan visa detaljerade felmeddelanden i konsolens utdata. 
+Om du stöter på problem med att köra gulp uppgifter kan du lägga till hello `--verbose` alternativet för felsökning. Försök tooterminate aktuella gulp uppgifter med hjälp av `Ctrl + C`, och sedan kör hello följande kommando i konsolen för fönstret toosee felsökningsmeddelanden. Du kan visa detaljerade felmeddelanden i konsolens utdata. 
 
 ```bash
 gulp --verbose
 ```
 
 ### <a name="npm-issues"></a>NPM-problem
-Försök att uppdatera NPM-paket med följande kommando:
+Försök tooupdate NPM-paketet med hello följande kommando:
 
 ```bash
 npm install -g npm
 ```
 
-Om problemet kvarstår lämna kommentarer i slutet av den här artikeln eller skapa ett GitHub-problem i våra [exempel databasen][sample-repository].
+Om hello problemet fortfarande kvarstår lämna kommentarer hello slutet av den här artikeln eller skapa ett GitHub-problem i våra [exempel databasen][sample-repository].
 
 ## <a name="azure-cli-issues"></a>Problem med Azure CLI
-Azure-kommandoradsgränssnittet (Azure CLI) är en förhandsversionen. Leta efter en lösning i den [Preview installera guiden](https://github.com/Azure/azure-cli/blob/master/doc/preview_install_guide.md) att söka efter lösningar. Försök att uppgradera Azure cli till senaste versionen när kommandon inte fungerar som förväntat.
+hello Azure-kommandoradsgränssnittet (Azure CLI) är en förhandsversionen. Leta efter en lösning i hello [Preview installera guiden](https://github.com/Azure/azure-cli/blob/master/doc/preview_install_guide.md) tooseek lösningar. Försök tooupgrade Azure cli toolatest version när kommandon inte fungerar som förväntat.
 
-Om det uppstår några fel med verktyget filen ett [problemet](https://github.com/Azure/azure-cli/issues) i den **problem** avsnitt i GitHub-lagringsplatsen.
+Om det uppstår några buggar med hello verktyget filen ett [problemet](https://github.com/Azure/azure-cli/issues) i hello **problem** avsnitt i GitHub-repo-hello.
 
-Hjälp med att felsöka vanliga problem, kontrollera den [viktigt](https://github.com/Azure/azure-cli/blob/master/README.rst).
+För hjälp med att felsöka vanliga problem, kontrollera hello [viktigt](https://github.com/Azure/azure-cli/blob/master/README.rst).
 
-Kör följande kommando för att uppgradera pip till senaste versionen om du uppfyller ”det gick inte att hitta en version som uppfyller krav”.
+Om du uppfyller ”det gick inte att hitta en version som uppfyller krav på hello”, ange kommando hello kör följande tooupgrade pip toolastest version.
 
 ```bash
 python -m pip install --upgrade pip
@@ -59,7 +59,7 @@ python -m pip install --upgrade pip
 
 ## <a name="python-installation-issues"></a>Problem med installation av Python
 ### <a name="legacy-installation-issues-macos"></a>Äldre installationsproblem (macOS)
-När du installerar **pip**, en behörighet felmeddelande när äldre paket som är installerade med **su** behörigheter. Detta inträffar eftersom en tidigare installation av Python med brew (macOS) inte har avinstallerats helt. Vissa **pip** paket från en tidigare installation har skapats av rot, som orsakar felet behörighet. Lösningen är att ta bort de paket som installerats av roten. Använd följande steg för att slutföra den här aktiviteten:
+När du installerar **pip**, en behörighet felmeddelande när äldre paket som är installerade med **su** behörigheter. Detta inträffar eftersom en tidigare installation av Python med brew (macOS) inte har avinstallerats helt. Vissa **pip** paket från en tidigare installation har skapats av roten, vilket gör att hello behörighetsfel. Hej lösningen är tooremove de paket som installerats av roten. Använd följande steg toocomplete hello den här aktiviteten:
 
 1. Gå till: /usr/local/lib/python2.7/site-packages
 2. Lista paket skapa av roten:`ls -l | grep root`
@@ -67,42 +67,42 @@ När du installerar **pip**, en behörighet felmeddelande när äldre paket som 
 4. Installera om Python.
 
 ## <a name="azure-iot-hub-issues"></a>Azure IoT-hubb-problem
-Om du har etablerats dina Azure IoT-hubb med `azure-cli`, och du behöver ett verktyg för att hantera enheter som ansluter till din IoT-hubb kan du prova följande verktyg:
+Om du har etablerats dina Azure IoT-hubb med `azure-cli`, och du behöver en verktyget toomanage hello enheter som ansluter tooyour IoT hub, försök hello följande verktyg:
 
 ### <a name="device-explorer"></a>Enheten Explorer
-[Enheten Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) körs på den lokala Windows-datorn och ansluter till din IoT-hubb i Azure. Den kommunicerar med följande [IoT-hubbslutpunkter](iot-hub-devguide.md):
+[Enheten Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) körs på den lokala Windows-datorn och ansluter tooyour IoT-hubb i Azure. Den kommunicerar med hello följande [IoT-hubbslutpunkter](iot-hub-devguide.md):
 
-- _Enheten Identitetshantering_ att etablera och hantera enheter som registrerats med IoT-hubben.
-- _Ta emot enhet till moln_ så att du kan övervaka meddelanden som skickas från enheten till din IoT-hubb.
-- _Skicka moln till enhet_ så att du kan skicka meddelanden till dina enheter från din IoT-hubb.
+- _Enheten Identitetshantering_ tooprovision och hantera enheter som registrerats med IoT-hubben.
+- _Ta emot enhet till moln_ så att du kan övervaka meddelanden som skickas från din enhet tooyour IoT-hubb.
+- _Skicka moln till enhet_ så att du kan skicka meddelanden tooyour enheter från din IoT-hubb.
 
-Konfigurera din `IoT hub connection string` i det här verktyget och använda dess funktioner.
+Konfigurera din `IoT hub connection string` i det här verktyget toouse dess funktioner.
 
 ### <a name="iot-hub-explorer"></a>IoT-hubb Explorer
-[IoT-hubb Explorer](https://github.com/Azure/iothub-explorer) är ett exempel flera plattformar CLI verktyg för att hantera klienter. Du kan använda verktyget för att hantera enheter i identitetsregistret, övervaka meddelanden från enhet till moln och skicka kommandon moln till enhet.
+[IoT-hubb Explorer](https://github.com/Azure/iothub-explorer) är ett exempel flera plattformar CLI toomanage enhetsklienter. Du kan använda hello verktyget toomanage hello enheter i hello identitetsregistret, övervaka meddelanden från enhet till moln och skicka kommandon moln till enhet.
 
-För att installera den senaste (förhandsversion) versionen av verktyget iothub explorer, kör du följande kommando i Kommandotolken miljön:
+tooinstall hello senaste () förhandsversion av hello iothub explorer verktyg, kör följande kommando i Kommandotolken miljön hello:
 
 ```bash
 npm install -g iothub-explorer@latest
 ```
 
-Du kan använda följande kommando för att få ytterligare hjälp om alla iothub explorer kommandon och deras parametrar:
+Du kan använda följande kommando tooget mer hjälp om alla hello iothub explorer kommandon och deras parametrar hello:
 
 ```bash
 iothub-explorer help
 ```
 
 ### <a name="azure-portal"></a>Azure Portal
-En fullständig CLI-upplevelse hjälper dig att skapa och hantera alla dina Azure-resurser. Du kanske också vill använda den [Azure-portalen](../azure-portal-overview.md) för att etablera, hantera och felsöka Azure-resurser.
+En fullständig CLI-upplevelse hjälper dig att skapa och hantera alla dina Azure-resurser. Du kan också toouse hello [Azure-portalen](../azure-portal-overview.md) toohelp etablera, hantera och felsöka Azure-resurser.
 
 ## <a name="azure-storage-issues"></a>Problem med Azure-lagring
-[Microsoft Azure Lagringsutforskaren (förhandsversion)](http://storageexplorer.com) är en fristående app från Microsoft som du kan använda för att arbeta med [Azure Storage](https://azure.microsoft.com/en-us/services/storage/) data på Windows-, macOS- och Linux. Med det här verktyget kan du ansluta till din tabell och visa data i den. Du kan använda det här verktyget för att felsöka problem med ditt Azure Storage.
+[Microsoft Azure Lagringsutforskaren (förhandsversion)](http://storageexplorer.com) är en fristående app från Microsoft som du kan använda toowork med [Azure Storage](https://azure.microsoft.com/en-us/services/storage/) data på Windows-, macOS- och Linux. Med det här verktyget kan du ansluta tooyour tabell och se hello data i den. Du kan använda det här verktyget tootroubleshoot Azure Storage-problem.
 
 ## <a name="next-steps"></a>Nästa steg
-Den här sidan innehåller bara de vanligaste problemen med Intel modern kit. Du kan också lämna kommentarer längst ned och rapportera problem felsökningsinformation.
+Den här sidan innehåller endast hello de vanligaste problemen med Intel modern kit. Du kan också lämna kommentarer längst ned tooreport problem för felsökningsinformation.
 
-Gå tillbaka till [Kom igång med Intel Edison (C)](iot-hub-intel-edison-kit-c-get-started.md)
+Gå tillbaka för[Kom igång med Intel Edison (C)](iot-hub-intel-edison-kit-c-get-started.md)
 
 <!-- Images and links -->
 

@@ -1,6 +1,6 @@
 ---
-title: "Lägga till användare från andra kataloger eller partnerföretag i Azure Active Directory | Microsoft Docs"
-description: "Beskriver hur du lägger till användare eller ändrar användarinformation i Azure Active Directory, inklusive externa användare och gästanvändare."
+title: "aaaAdd användare från andra kataloger eller partnerföretag i Azure Active Directory | Microsoft Docs"
+description: "Förklarar hur tooadd användare eller ändrar användarinformation i Azure Active Directory, inklusive externa användare och gästanvändare."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -16,66 +16,66 @@ ms.date: 07/25/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.openlocfilehash: 399230584d01986dd0f793a6ff8245ef2b4f8fb1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 92099e5792365c307b0f3d4f2dff5dd8424aeab4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory"></a>Lägga till användare från andra kataloger eller partnerföretag i Azure Active Directory
 
-Den här artikeln förklarar hur du lägger till användare från andra kataloger i Azure Active Directory och hur du lägger till användare från partnerföretag. Information om hur du lägger till nya användare i din organisation och hur du lägger till användare som har Microsoft-konton finns i [Lägga till nya användare i Azure Active Directory](active-directory-create-users.md). 
+Den här artikeln förklarar hur tooadd användare från andra kataloger i Azure Active Directory eller lägga till användare från partnerföretag. Information om att lägga till nya användare i din organisation och lägga till användare som har Microsoft-konton finns [lägga till nya användare tooAzure Active Directory](active-directory-create-users.md). 
 
 > [!IMPORTANT]
-> Microsoft rekommenderar att du hanterar Azure AD via [Azure AD administratörscenter](https://aad.portal.azure.com) på Azure Portal istället för via den klassiska Azure-portalen som nämns i den här artikeln. Information om hur du lägger till gästanvändare för B2B-samarbete i Azure AD administratörscenter finns i [What is Azure AD B2B collaboration?](active-directory-b2b-what-is-azure-ad-b2b.md) (Vad är Azure AD B2B-samarbetet)
+> Microsoft rekommenderar att du hanterar Azure AD med hjälp av hello [administrationscentret för Azure AD](https://aad.portal.azure.com) i hello Azure-portalen istället för att använda hello klassiska Azure-portalen som hänvisas till i den här artikeln. Hur tooadd B2B-samarbete gästanvändare i hello Azure AD admin center finns [vad är Azure AD B2B-samarbete?](active-directory-b2b-what-is-azure-ad-b2b.md)
 
-Tillagda användare har inte administratörsbehörighet som standard, men du kan tilldela roller till dem när som helst.
+Tillagda användare har inte administratörsbehörighet som standard, men du kan tilldela roller toothem när som helst.
 
 ## <a name="add-a-user"></a>Lägga till en användare
-1. Logga in på [den klassiska Azure-portalen](https://manage.windowsazure.com) med ett konto som är en global administratör för katalogen.
+1. Logga in toohello [klassiska Azure-portalen](https://manage.windowsazure.com) med ett konto som är en global administratör för hello-katalogen.
 2. Välj **Active Directory** och öppna katalogen.
-3. Välj fliken **Användare** och sedan **Lägg till användare** i kommandofältet.
-4. På sidan **Berätta om den här användaren** under **Typ av användare** väljer du antingen:
+3. Välj hello **användare** fliken och markera i kommandofältet hello **Lägg till användare**.
+4. På hello **berätta om den här användaren** sidan under **typ av användare**, väljer du antingen:
 
-   * **Användare i en annan Azure AD-katalog** – lägger till ett användarkonto i katalogen som kommer från en annan Azure AD-katalog. Du kan bara välja en användare i en annan katalog om du är medlem i den katalogen.
-   * **Användare i partnerföretag** – om du vill bjuda in och lägga till användare från ett partnerföretag i din katalog (se [Azure Active Directory B2B-samarbete](active-directory-b2b-what-is-azure-ad-b2b.md)). Du måste [ladda upp en CSV-fil med e-postadresser](active-directory-b2b-references-csv-file-format.md).
-5. På användarens **profilsida** anger du ett för- och efternamn, ett användarvänligt namn och en användarroll från listan **Roller**. Mer information om användar- och administratörsroller finns i [Tilldela administratörsroller i Azure AD](active-directory-assign-admin-roles.md). Ange om du vill **aktivera Multi-Factor Authentication** för användaren.
-6. På sidan **Skaffa tillfälligt lösenord** väljer du **Skapa**.
+   * **Användare i en annan Azure AD-katalog** – lägger till en användarens konto tooyour katalog som kommer från en annan Azure AD-katalog. Du kan bara välja en användare i en annan katalog om du är medlem i den katalogen.
+   * **Användare i partnerföretag** -tooinvite och auktorisera partner företagets användare tooyour katalog (se [Azure Active Directory B2B-samarbete](active-directory-b2b-what-is-azure-ad-b2b.md)). Du behöver för[överför en CSV-fil med e-postadresser](active-directory-b2b-references-csv-file-format.md).
+5. Hello användaren **profil** anger du ett första och sista namn, ett användarvänligt namn och en användarroll från hello **roller** lista. Mer information om användar- och administratörsroller finns i [Tilldela administratörsroller i Azure AD](active-directory-assign-admin-roles.md). Ange om för**aktivera Multifaktorautentisering** för hello användare.
+6. På hello **skaffa tillfälligt lösenord** väljer **skapa**.
 
 > [!IMPORTANT]
-> Om din organisation använder mer än en domän bör du vara medveten om följande problem när du lägger till ett användarkonto:
+> Om din organisation använder mer än en domän, bör du känna till om hello följande problem när du lägger till ett användarkonto:
 >
-> * Om du vill lägga till användarkonton med samma UPN (användarens huvudnamn) i olika domäner lägger du **först** till exempelvis geoffgrisso@contoso.onmicrosoft.com, **följt av** geoffgrisso@contoso.com.
+> * tooadd användarkonton med hello samma användarens huvudnamn (UPN) över domäner, **första** lägga till, till exempel geoffgrisso@contoso.onmicrosoft.com, **följt av** geoffgrisso@contoso.com.
 > * Lägg **inte** till geoffgrisso@contoso.com innan du lägger till geoffgrisso@contoso.onmicrosoft.com.
 >
 
-Om du ändrar informationen för en användare vars identitet synkroniseras med din lokala Active Directory-tjänst kan du inte ändra användarinformation på den klassiska Azure-portalen. Om du vill ändra användarinformationen använder du de lokala Active Directory-hanteringsverktygen.
+Om du ändrar informationen för en användare vars identitet synkroniseras med din lokala Active Directory-tjänst kan du inte ändra hello användarinformation i hello klassiska Azure-portalen. toochange Hej användarinformation, använda din lokala Active Directory-hanteringsverktyg.
 
 ## <a name="add-external-users"></a>Lägga till externa användare
-Du kan också lägga till användare från en annan Azure AD-katalog som du tillhör, eller från partnerföretag genom att ladda upp en CSV-fil. Om du vill lägga till en extern användare väljer du **Användare i en annan Microsoft Azure AD-katalog** eller **Användare i partnerföretag** för **Typ av användare**.
+Du kan också lägga till användare från en annan Azure AD directory toowhich som du tillhör, eller från partnerföretag genom att ladda upp en CSV-fil. tooadd en extern användare för **typ av användare**, ange **användare i en annan Microsoft Azure AD-katalog** eller **användare i partnerföretag**.
 
-Båda typer av användare kommer från en annan katalog och läggs till som **externa användare**. Externa användare kan samarbeta med andra användare i en katalog utan att nya konton och autentiseringsuppgifter behöver läggas till. Externa användare autentiseras med deras hemkatalog när de loggar in och autentiseringen fungerar med alla andra kataloger som de har lagts till i.
+Båda typer av användare kommer från en annan katalog och läggs till som **externa användare**. Externa användare kan samarbeta med andra användare i en katalog utan några krav tooadd nya konton och autentiseringsuppgifter. Externa användare autentiseras med deras hemkatalog när de loggar in och autentiseringen fungerar med alla andra kataloger toowhich de har lagts till.
 
 ## <a name="external-user-management-and-limitations"></a>Extern användarhantering och begränsningar
-När du lägger till en användare från en annan katalog till din katalog är den användaren en extern användare i din katalog. Visningsnamnet och användarnamnet kopieras från hemkatalogen och används för den externa användaren i din katalog. Därefter är egenskaperna för det externa användarkontot helt oberoende. Om egenskapsändringar görs för användaren i dennes hemkatalog sprids inte dessa ändringar till det externa användarkontot i din katalog.
+När du lägger till en användare från en annan katalog tooyour katalog är som användaren en extern användare i din katalog. hello visningsnamnet och användarnamnet kopieras från hemkatalogen och används för hello extern användare i din katalog. Därefter är egenskaperna för hello externa användarkontot helt oberoende. Om egenskapsändringar görs toohello användaren i dennes hemkatalog, sprids inte dessa ändringar toohello externa användarkontot i din katalog.
 
-Den enda kopplingen mellan de två kontona är att användaren alltid autentiseras mot hans eller hennes hemkatalog eller Microsoft-konto. Det är därför du inte ser något alternativ för att återställa lösenordet eller aktivera Multi-Factor Authentication för en extern användare. För närvarande är autentiseringsprincipen för hemkatalogen eller Microsoft-kontot det enda som utvärderas när användaren loggar in.
+hello enda kopplingen mellan hello två konton är hello användaren alltid autentiseras mot sin hemkatalog eller med sitt Microsoft-konto. Det är därför du inte ser ett alternativet tooreset hello lösenord eller aktivera multifaktorautentisering för en extern användare. Hej autentiseringsprincipen för hello hemkatalog eller Microsoft-konto är för närvarande hello enda som utvärderas när hello användaren loggar in.
 
 > [!NOTE]
-> Du kan dock inaktivera den externa användaren i katalogen, vilket blockerar åtkomsten till din katalog.
+> Du kan dock inaktivera hello extern användare i hello directory som blockerar åtkomst tooyour directory.
 >
 >
 
-Om en användare tas bort i sin hemkatalog eller om användaren säger upp sitt Microsoft-konto finns den externa användaren fortfarande kvar i din katalog. Dock kan användare i katalogen inte komma åt resurser eftersom de inte kan autentiseras med en hemkatalog eller ett Microsoft-konto.
+Om en användare tas bort i sin hemkatalog eller om användaren säger upp sitt Microsoft-konto, kvar hello externa användaren fortfarande i din katalog. Emellertid hello användare i katalogen inte komma åt resurser eftersom de inte kan autentiseras med en hemkatalog eller Microsoft-konto.
 
 ### <a name="services-that-currently-support-access-by-azure-ad-external-users"></a>Tjänster som för närvarande stöder åtkomst av externa Azure AD-användare
-* **Den klassiska Azure-portalen**: Om en extern användare är administratör för flera kataloger kan han eller hon hantera alla dessa kataloger här.
-* **SharePoint Online**: Om extern delning är aktiverat kan en extern användare komma åt tillåtna resurser i SharePoint Online.
-* **Dynamics CRM**: Om användaren är licensierad via PowerShell kan en extern användare komma åt tillåtna resurser i Dynamics CRM.
-* **Dynamics AX**: Om användaren är licensierad via PowerShell kan en extern användare komma åt tillåtna resurser i Dynamics CRM. Begränsningarna för [externa Azure AD-användare](#known-limitations-of-azure-ad-external-users) gäller även för externa användare i Dynamics AX.
+* **Klassiska Azure-portalen**: gör att en extern användare är administratör för flera kataloger toomanage varje dessa kataloger.
+* **SharePoint Online**: om extern delning är aktiverat kan en extern användare tooaccess SharePoint Online auktoriserad personal.
+* **Dynamics CRM**: om hello användaren är licensierad via PowerShell kan en extern användare tooaccess behörighet resurser i Dynamics CRM.
+* **Dynamics AX**: om hello användaren är licensierad via PowerShell kan en extern användare tooaccess behörighet resurser i Dynamics AX. Hej begränsningar för [externa Azure AD-användare](#known-limitations-of-azure-ad-external-users) gäller tooexternal användare i Dynamics AX samt.
 
 ## <a name="next-steps"></a>Nästa steg
-* [Lägga till nya användare i Azure Active Directory](active-directory-create-users.md)
+* [Lägga till nya användare tooAzure Active Directory](active-directory-create-users.md)
 * [Administrera Azure AD](active-directory-administer.md)
 * [Hantera lösenord i Azure AD](active-directory-manage-passwords.md)
 * [Hantera grupper i Azure AD](active-directory-manage-groups.md)

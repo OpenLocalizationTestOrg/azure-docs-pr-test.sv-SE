@@ -1,6 +1,6 @@
 ---
-title: "Utveckla för Azure File storage med Java | Microsoft Docs"
-description: "Lär dig hur du utvecklar Java-program och tjänster som använder Azure File storage för att lagra fildata."
+title: "aaaDevelop för Azure File storage med Java | Microsoft Docs"
+description: "Lär dig hur toodevelop Java-program och tjänster som använder Azure File storage toostore fildata."
 services: storage
 documentationcenter: java
 author: robinsh
@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: robinsh
-ms.openlocfilehash: 16924599e49990265e07f7a58613756d93c46942
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b50703815daf2c829e7e9a9a4196c31a2b8727e9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="develop-for-azure-file-storage-with-java"></a>Utveckla för Azure File storage med Java
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/03/2017
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
 ## <a name="about-this-tutorial"></a>Om den här självstudiekursen
-Den här kursen visar grunderna i Java för att utveckla program eller tjänster som använder Azure File storage för att lagra fildata. I den här kursen ska vi skapa ett enkelt konsolprogram och visar hur du utför grundläggande åtgärder med Java och Azure File storage:
+Den här kursen visar hello grunderna i toodevelop Java-program eller tjänster som använder Azure File storage toostore fildata. I den här kursen ska vi skapa ett enkelt konsolprogram och visa hur tooperform grundläggande åtgärder med Java och Azure File storage:
 
 * Skapa och ta bort Azure-filresurser
 * Skapa och ta bort kataloger
@@ -34,25 +34,25 @@ Den här kursen visar grunderna i Java för att utveckla program eller tjänster
 * Ladda upp, hämta och ta bort en fil
 
 > [!Note]  
-> Eftersom Azure File storage kan nås över SMB, är det möjligt att skriva enkla program som har åtkomst till Azure filresursen med standard Java-i/o-klasser. Den här artikeln beskriver hur du skriver program som använder Azure Storage Java SDK, som använder den [Azure File storage REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) tala med Azure File storage.
+> Eftersom Azure File storage kan nås över SMB, är det möjligt toowrite enkla program som har åtkomst till hello Azure filresurs med hjälp av hello standard Java-i/o-klasser. Den här artikeln beskriver hur toowrite program som använder hello Azure Storage Java SDK, som använder hello [Azure File storage REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) tootalk tooAzure File storage.
 
 ## <a name="create-a-java-application"></a>Skapa ett Java-program
-Du behöver för att skapa exemplen Java Development Kit (JDK) och [Azure Storage-SDK för Java] [-]. Du bör också har skapat ett Azure storage-konto.
+toobuild hello prover måste hello Java Development Kit (JDK) och hello [Azure Storage-SDK för Java] []. Du bör också har skapat ett Azure storage-konto.
 
-## <a name="setup-your-application-to-use-azure-file-storage"></a>Konfigurera programmet att använda Azure File storage
-Lägg till följande uttryck överst i Java-filen där du vill komma åt tjänsten storage från om du vill använda Azure storage API: er.
+## <a name="setup-your-application-toouse-azure-file-storage"></a>Konfigurera ditt program toouse Azure File storage
+toouse hello Azure storage-API: er, lägga till hello följande instruktion toohello överkant hello Java-fil där du ska tooaccess hello lagringstjänsten från.
 
 ```java
-// Include the following imports to use blob APIs.
+// Include hello following imports toouse blob APIs.
 import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.file.*;
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Ställ in en anslutningssträng för Azure storage
-Du måste ansluta till Azure storage-konto om du vill använda Azure File storage. Det första steget är att konfigurera en anslutningssträng som vi använder för att ansluta till ditt lagringskonto. Definiera en statisk variabel för att göra det.
+toouse Azure File storage måste tooconnect tooyour Azure storage-konto. hello första steget är tooconfigure en anslutningssträng som vi använder tooconnect tooyour storage-konto. Definiera en statisk variabel toodo som.
 
 ```java
-// Configure the connection-string with your values
+// Configure hello connection-string with your values
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account_name;" +
@@ -60,40 +60,40 @@ public static final String storageConnectionString =
 ```
 
 > [!NOTE]
-> Ersätt your_storage_account_name och your_storage_account_key med de faktiska värdena för ditt lagringskonto.
+> Ersätt your_storage_account_name och your_storage_account_key med hello faktiska värden för ditt lagringskonto.
 > 
 > 
 
-## <a name="connecting-to-an-azure-storage-account"></a>Ansluta till ett Azure storage-konto
-För att ansluta till ditt lagringskonto, måste du använda den **CloudStorageAccount** objekt som passerar en anslutningssträng för dess **parsa** metod.
+## <a name="connecting-tooan-azure-storage-account"></a>Ansluta tooan Azure storage-konto
+tooconnect tooyour storage-konto behöver du toouse hello **CloudStorageAccount** objekt som passerar en anslutning sträng tooits **parsa** metod.
 
 ```java
-// Use the CloudStorageAccount object to connect to your storage account
+// Use hello CloudStorageAccount object tooconnect tooyour storage account
 try {
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 } catch (InvalidKeyException invalidKey) {
-    // Handle the exception
+    // Handle hello exception
 }
 ```
 
-**CloudStorageAccount.parse** utlöser ett InvalidKeyException så måste du placera den i ett försök/catch-block.
+**CloudStorageAccount.parse** returnerar ett InvalidKeyException måste tooput den inuti en trycatch blockera.
 
 ## <a name="create-an-azure-file-share"></a>Skapa en filresurs på Azure
-Alla filer och kataloger i Azure File storage finns i en behållare som kallas en **resursen**. Storage-konto kan ha så mycket resurser som gör att din kapacitet. Du måste använda en Azure File storage-klient för att få åtkomst till en resurs och dess innehåll.
+Alla filer och kataloger i Azure File storage finns i en behållare som kallas en **resursen**. Storage-konto kan ha så mycket resurser som gör att din kapacitet. tooobtain åtkomst tooa resursen och dess innehåll måste toouse en Azure File storage-klient.
 
 ```java
-// Create the Azure File storage client.
+// Create hello Azure File storage client.
 CloudFileClient fileClient = storageAccount.createCloudFileClient();
 ```
 
-Med Azure File storage client kan hämta du sedan en referens till en resurs.
+Med hello Azure File storage client kan hämta du sedan en referens tooa resurs.
 
 ```java
-// Get a reference to the file share
+// Get a reference toohello file share
 CloudFileShare share = fileClient.getShareReference("sampleshare");
 ```
 
-Använd för att skapa resursen faktiskt den **createIfNotExists** -metoden i CloudFileShare-objektet.
+tooactually skapa hello resurs använder hello **createIfNotExists** -metoden i hello CloudFileShare objektet.
 
 ```java
 if (share.createIfNotExists()) {
@@ -101,10 +101,10 @@ if (share.createIfNotExists()) {
 }
 ```
 
-Nu **dela** innehåller en referens till en resurs med namnet **sampleshare**.
+Nu **dela** innehåller en referens tooa resurs med namnet **sampleshare**.
 
 ## <a name="delete-an-azure-file-share"></a>Ta bort en Azure-filresurs
-Om du tar bort en resurs görs genom att anropa den **deleteIfExists** metod på ett CloudFileShare-objekt. Här är exempelkod som gör detta.
+Om du tar bort en resurs görs genom att anropa hello **deleteIfExists** metod på ett CloudFileShare-objekt. Här är exempelkod som gör detta.
 
 ```java
 try
@@ -112,10 +112,10 @@ try
     // Retrieve storage account from connection-string.
     CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the file client.
+    // Create hello file client.
    CloudFileClient fileClient = storageAccount.createCloudFileClient();
 
-   // Get a reference to the file share
+   // Get a reference toohello file share
    CloudFileShare share = fileClient.getShareReference("sampleshare");
 
    if (share.deleteIfExists()) {
@@ -127,13 +127,13 @@ try
 ```
 
 ## <a name="create-a-directory"></a>Skapa en katalog
-Du kan även sortera lagring genom att lägga till filer i underkataloger i stället för att alla i rotkatalogen. Azure File storage kan du skapa så mycket kataloger som ditt konto tillåter. Koden nedan för att skapa en underkatalog med namnet **sampledir** under rotkatalogen.
+Du kan även sortera lagring genom att lägga till filer i underkataloger i stället för att alla i hello rotkatalog. Azure File storage kan toocreate som mycket kataloger som ditt konto kommer tillåta. hello koden nedan skapar en underkatalog med namnet **sampledir** under hello rotkatalog.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-//Get a reference to the sampledir directory
+//Get a reference toohello sampledir directory
 CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
 
 if (sampleDir.createIfNotExists()) {
@@ -147,23 +147,23 @@ if (sampleDir.createIfNotExists()) {
 Om du tar bort en katalog är ganska enkel aktivitet, men det bör noteras att du inte kan ta bort en katalog som fortfarande innehåller filer eller andra kataloger.
 
 ```java
-// Get a reference to the root directory for the share.
+// Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-// Get a reference to the directory you want to delete
+// Get a reference toohello directory you want toodelete
 CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
 
-// Delete the directory
+// Delete hello directory
 if ( containerDir.deleteIfExists() ) {
     System.out.println("Directory deleted");
 }
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Räkna upp filer och kataloger i en filresurs på Azure
-Hämtar en lista över filer och kataloger i en resurs görs enkelt genom att anropa **listFilesAndDirectories** för en CloudFileDirectory-referens. Metoden returnerar en lista över ListFileItem-objekt som du kan söka på. Exempelvis följande kod visar en lista över filer och kataloger i rotkatalogen.
+Hämtar en lista över filer och kataloger i en resurs görs enkelt genom att anropa **listFilesAndDirectories** för en CloudFileDirectory-referens. hello-metoden returnerar en lista över ListFileItem-objekt som du kan söka på. Exempelvis hello följande kod visar en lista över filer och kataloger i rotkatalogen för hello.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
 for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
@@ -172,19 +172,19 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 ```
 
 ## <a name="upload-a-file"></a>Överför en fil
-Resursen innehåller minst en Azure-fil, en rotkatalog där filer kan finnas. I det här avsnittet lär du dig hur du överför en fil från lokal lagring till rotkatalogen för en resurs.
+Resursen innehåller på hello mycket minst en Azure-fil, en rotkatalog där filer kan finnas. I det här avsnittet lär du dig hur tooupload en fil från lokal lagring på hello rotkatalogen för en resurs.
 
-Det första steget i att överföra en fil är att hämta en referens till katalogen där det ska finnas. Du kan göra detta genom att anropa den **getRootDirectoryReference** metod för att dela objekt.
+hello första steget i att överföra en fil är tooobtain en referens toohello katalog där det ska finnas. Det gör du genom att anropa hello **getRootDirectoryReference** metod för hello dela objekt.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 ```
 
-Nu när du har en referens till rotkatalogen för resursen kan överföra du en fil till den med hjälp av följande kod.
+Nu när du har en referens toohello rotkatalog hello-resursen kan överföra du en fil till den med hjälp av följande kod hello.
 
 ```java
-        // Define the path to a local file.
+        // Define hello path tooa local file.
         final String filePath = "C:\\temp\\Readme.txt";
     
         CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
@@ -192,30 +192,30 @@ Nu när du har en referens till rotkatalogen för resursen kan överföra du en 
 ```
 
 ## <a name="download-a-file"></a>Hämta en fil
-En av oftare åtgärder du ska utföra mot Azure File storage är att hämta filer. I följande exempel koden hämtar SampleFile.txt och dess innehåll visas.
+En av hello mer frekventa åtgärder du ska utföra mot Azure File storage är toodownload filer. I följande exempel hello, hello kod hämtar SampleFile.txt och dess innehåll visas.
 
 ```java
-//Get a reference to the root directory for the share.
+//Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-//Get a reference to the directory that contains the file
+//Get a reference toohello directory that contains hello file
 CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
 
-//Get a reference to the file you want to download
+//Get a reference toohello file you want toodownload
 CloudFile file = sampleDir.getFileReference("SampleFile.txt");
 
-//Write the contents of the file to the console.
+//Write hello contents of hello file toohello console.
 System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>Ta bort en fil
-En annan vanliga Azure File storage-åtgärd är filborttagning. Följande kod tar bort en fil med namnet SampleFile.txt som lagrats i en katalog med namnet **sampledir**.
+En annan vanliga Azure File storage-åtgärd är filborttagning. hello följande kod tar bort en fil med namnet SampleFile.txt som lagrats i en katalog med namnet **sampledir**.
 
 ```java
-// Get a reference to the root directory for the share.
+// Get a reference toohello root directory for hello share.
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 
-// Get a reference to the directory where the file to be deleted is in
+// Get a reference toohello directory where hello file toobe deleted is in
 CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
 
 String filename = "SampleFile.txt"
@@ -228,7 +228,7 @@ if ( file.deleteIfExists() ) {
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Följa dessa länkar om du vill lära dig mer om andra Azure storage-API: er.
+Om du vill ha mer information om andra Azure storage-API: er toolearn följa dessa länkar.
 
 * [Java-utvecklingscenter](http://azure.microsoft.com/develop/java/)
 * [Azure Storage SDK för Java](https://github.com/azure/azure-storage-java)
@@ -236,4 +236,4 @@ Följa dessa länkar om du vill lära dig mer om andra Azure storage-API: er.
 * [Referens för Azure Storage Client SDK](http://dl.windowsazure.com/storage/javadoc/)
 * [REST-API för Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Storage Teamblogg](http://blogs.msdn.com/b/windowsazurestorage/)
-* [Överföra data med kommandoradsverktyget AzCopy](storage-use-azcopy.md)
+* [Överföra data med kommandoradsverktyget Azcopy hello](storage-use-azcopy.md)

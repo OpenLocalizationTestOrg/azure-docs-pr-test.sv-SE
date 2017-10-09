@@ -1,5 +1,5 @@
 ---
-title: Automatisera Azure Application Insights med PowerShell | Microsoft Docs
+title: aaaAutomate Azure Application Insights med PowerShell | Microsoft Docs
 description: "Automatisera skapar resursen, aviseringen och tillgänglighet tester i PowerShell med en Azure Resource Manager-mall."
 services: application-insights
 documentationcenter: 
@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: bwren
-ms.openlocfilehash: 88dbb9515300f847789bc889911cdeff5f5bdb53
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: ebd336eafba58a690a0e8ffbd1c74f7e93dbb682
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Skapa Application Insights-resurser med hjälp av PowerShell
-Den här artikeln visar hur du automatisera skapandet och uppdatering av [Programinsikter](app-insights-overview.md) resurser automatiskt med Azure Resource Manager. Du kan till exempel göra det som en del av en build-process. Tillsammans med grundläggande Application Insights-resursen kan du skapa [tillgänglighet webbtester](app-insights-monitor-web-app-availability.md), Ställ in [aviseringar](app-insights-alerts.md), ange den [priser schemat](app-insights-pricing.md), och skapa andra Azure-resurser .
+Den här artikeln visar hur tooautomate hello skapande och uppdatering av [Programinsikter](app-insights-overview.md) resurser automatiskt med Azure Resource Manager. Du kan till exempel göra det som en del av en build-process. Tillsammans med hello grundläggande Application Insights-resurs, kan du skapa [tillgänglighet webbtester](app-insights-monitor-web-app-availability.md), Ställ in [aviseringar](app-insights-alerts.md), Ställ in hello [priser schemat](app-insights-pricing.md), och skapa andra Azure resurser.
 
-Nyckeln till att skapa dessa resurser är JSON-mallar för [Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md). I kort sagt kan proceduren är: hämta JSON-definitioner av befintliga resurser. parameterstyra vissa värden, till exempel namn. och kör sedan mallen när du vill skapa en ny resurs. Du kan även paketera flera resurser tillsammans, för att skapa dem i ett går alla - till exempel en app Övervakare med tillgänglighetstester, aviseringar och lagring för löpande export. Det finns vissa detaljerad och nyansrik till vissa av parameterizations som beskrivs här.
+Hej viktiga toocreating resurserna är JSON-mallar för [Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md). I kort sagt kan hello proceduren är: hämta hello JSON definitioner av befintliga resurser. parameterstyra vissa värden, till exempel namn. och kör sedan hello mallen när du vill toocreate en ny resurs. Du kan paketera flera resurser tillsammans, toocreate dem i en Gå - till exempel, en app Övervakare med tillgänglighetstester, aviseringar och lagring för löpande export. Det finns vissa detaljerad och nyansrik toosome av hello parameterizations som beskrivs här.
 
 ## <a name="one-time-setup"></a>Enstaka installationen
 Om du inte har använt PowerShell med din Azure-prenumeration innan du:
 
-Installera Azure Powershell-modulen på datorn där du vill köra skript:
+Installera hello Azure Powershell-modulen på hello datorn där du vill att toorun hello skript:
 
 1. Installera [Microsoft Web Platform Installer (v5 eller högre)](http://www.microsoft.com/web/downloads/platform.aspx).
-2. Använd den för att installera Microsoft Azure Powershell.
+2. Använd den tooinstall Microsoft Azure Powershell.
 
 ## <a name="create-an-azure-resource-manager-template"></a>Skapa en Azure Resource Manager-mall
 Skapa en ny fil i JSON - vi anropa den `template1.json` i det här exemplet. Kopiera innehållet till den:
@@ -43,7 +43,7 @@ Skapa en ny fil i JSON - vi anropa den `template1.json` i det här exemplet. Kop
             "appName": {
                 "type": "string",
                 "metadata": {
-                    "description": "Enter the application name."
+                    "description": "Enter hello application name."
                 }
             },
             "appType": {
@@ -56,7 +56,7 @@ Skapa en ny fil i JSON - vi anropa den `template1.json` i det här exemplet. Kop
                     "other"
                 ],
                 "metadata": {
-                    "description": "Enter the application type."
+                    "description": "Enter hello application type."
                 }
             },
             "appLocation": {
@@ -69,7 +69,7 @@ Skapa en ny fil i JSON - vi anropa den `template1.json` i det här exemplet. Kop
                     "North Europe"
                 ],
                 "metadata": {
-                    "description": "Enter the application location."
+                    "description": "Enter hello application location."
                 }
             },
             "priceCode": {
@@ -95,7 +95,7 @@ Skapa en ny fil i JSON - vi anropa den `template1.json` i det här exemplet. Kop
                 "type": "int",
                 "defaultValue": 24,
                 "metadata": {
-                    "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
+                    "description": "Enter daily quota reset hour in UTC (0 too23). Values outside hello range will get a random reset hour."
                 }
             },
             "warningThreshold": {
@@ -104,7 +104,7 @@ Skapa en ny fil i JSON - vi anropa den `template1.json` i det här exemplet. Kop
                 "minValue": 1,
                 "maxValue": 100,
                 "metadata": {
-                    "description": "Enter the % value of daily quota after which warning mail to be sent. "
+                    "description": "Enter hello % value of daily quota after which warning mail toobe sent. "
                 }
             }
         },
@@ -153,7 +153,7 @@ Skapa en ny fil i JSON - vi anropa den `template1.json` i det här exemplet. Kop
 
 
 ## <a name="create-application-insights-resources"></a>Skapa Application Insights-resurser
-1. Logga in på Azure i PowerShell:
+1. Logga in tooAzure i PowerShell:
    
     `Login-AzureRmAccount`
 2. Kör ett kommando som detta:
@@ -166,14 +166,14 @@ Skapa en ny fil i JSON - vi anropa den `template1.json` i det här exemplet. Kop
 
     ``` 
    
-   * `-ResourceGroupName`är gruppen som du vill skapa nya resurser.
-   * `-TemplateFile`måste inträffa innan anpassade parametrar.
-   * `-appName`Namnet på resursen som ska skapas.
+   * `-ResourceGroupName`är hello grupp där du vill att toocreate hello nya resurser.
+   * `-TemplateFile`måste inträffa innan hello anpassade parametrar.
+   * `-appName`hello namnet på hello resurs toocreate.
 
-Du kan lägga till andra parametrar - hittar du beskrivningar i avsnittet parametrar i mallen.
+Du kan lägga till andra parametrar - hittar du beskrivningar under hello parametrar i hello mallen.
 
-## <a name="to-get-the-instrumentation-key"></a>Att hämta nyckeln instrumentation
-När du skapar en resurs för programmet, vill du instrumentation nyckeln: 
+## <a name="tooget-hello-instrumentation-key"></a>tooget hello instrumentation nyckel
+När du skapar en resurs för programmet, vill du hello instrumentation nyckel: 
 
 ```PS
     $resource = Find-AzureRmResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
@@ -183,11 +183,11 @@ När du skapar en resurs för programmet, vill du instrumentation nyckeln:
 
 
 <a id="price"></a>
-## <a name="set-the-price-plan"></a>Ange pris planen
+## <a name="set-hello-price-plan"></a>Ange hello prisplan
 
-Du kan ange den [prisplan](app-insights-pricing.md).
+Du kan ange hello [prisplan](app-insights-pricing.md).
 
-Skapa en resurs i appen med pris företagsplan, med den här mallen ovan:
+toocreate en appresursen med hello Enterprise prisplan med hello mallen ovan:
 
 ```PS
         New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
@@ -201,16 +201,16 @@ Skapa en resurs i appen med pris företagsplan, med den här mallen ovan:
 |1|Basic|
 |2|Enterprise|
 
-* Om du endast vill använda baspris standardplanen kan du utelämna CurrentBillingFeatures resursen från mallen.
-* Om du vill ändra pris planen när komponenten resursen har skapats kan du använda en mall som utesluter resursen ”microsoft.insights/components”. Dessutom utelämna den `dependsOn` noden från resursen för fakturering. 
+* Om du bara vill toouse hello baspris standardplanen kan du utelämna hello CurrentBillingFeatures resurs från hello mallen.
+* Om du vill toochange hello pris när hello komponenten resursen har skapats, kan du använda en mall som utesluter hello ”microsoft.insights/components” resurs. Dessutom utelämna hello `dependsOn` nod från hello fakturering resurs. 
 
-Kontrollera uppdaterade priset planen genom att titta på den ”funktioner + pris” bladet i webbläsaren. **Uppdatera webbläsaren vyn** så att du kan se det aktuella tillståndet.
+tooverify Hej uppdaterade prisplan, titta på bladet hello ”funktioner + pris” i hello webbläsare. **Uppdatera hello webbläsaren visa** toomake som du kan se hello senaste tillstånd.
 
 
 
 ## <a name="add-a-metric-alert"></a>Lägg till ett mått varning
 
-Koppla koden så här om du vill konfigurera en avisering om mått samtidigt som din app resurs till mallfilen:
+tooset upp ett mått varning vid hello samma tid som din app resurs merge kod så här i hello mallfilen:
 
 ```JSON
 {
@@ -236,7 +236,7 @@ Koppla koden så här om du vill konfigurera en avisering om mått samtidigt som
       "type": "Microsoft.Insights/alertrules",
       "apiVersion": "2014-04-01",
       "location": "[parameters('appLocation')]",
-      // Ensure this resource is created after the app resource:
+      // Ensure this resource is created after hello app resource:
       "dependsOn": [
         "[resourceId('Microsoft.Insights/components', parameters('appName'))]"
       ],
@@ -272,22 +272,22 @@ Koppla koden så här om du vill konfigurera en avisering om mått samtidigt som
 }
 ```
 
-När du anropar mallen kan du lägga till den här parametern:
+När du anropar hello mallen du om du vill lägga till den här parametern:
 
     `-responseTime 2`
 
 Du kan självklart parameterstyra andra fält. 
 
-Om du vill ta reda på namn och konfigurationsinformation för andra Varningsregler kan manuellt skapa en regel och kontrollera sedan i [Azure Resource Manager](https://resources.azure.com/). 
+toofind hello typnamn och konfigurationsinformation för andra Varningsregler manuellt skapa en regel och kontrollera sedan i [Azure Resource Manager](https://resources.azure.com/). 
 
 
 ## <a name="add-an-availability-test"></a>Lägg till ett tillgänglighetstest
 
-Det här exemplet är för en ping-testet (att testa en enstaka sida).  
+Det här exemplet är för ping-testet (tootest en enstaka sida).  
 
-**Det finns två delar** i ett tillgänglighetstest: testet sig själv och den avisering som meddelar dig om fel.
+**Det finns två delar** i ett tillgänglighetstest: hello test sig själv och hello varning som meddelar dig om fel.
 
-Sammanfoga följande kod till mallfilen som skapar appen.
+Sammanfoga hello följande kod i hello mallfilen som skapar hello app.
 
 ```JSON
 {
@@ -301,13 +301,13 @@ Sammanfoga följande kod till mallfilen som skapar appen.
     },
     resources: { ... // existing resources here ...
     { //
-      // Availability test: part 1 configures the test
+      // Availability test: part 1 configures hello test
       //
       "name": "[variables('pingTestName')]",
       "type": "Microsoft.Insights/webtests",
       "apiVersion": "2014-04-01",
       "location": "[parameters('appLocation')]",
-      // Ensure this is created after the app resource:
+      // Ensure this is created after hello app resource:
       "dependsOn": [
         "[resourceId('Microsoft.Insights/components', parameters('appName'))]"
       ],
@@ -334,7 +334,7 @@ Sammanfoga följande kod till mallfilen som skapar appen.
           }
         ],
         "Configuration": {
-          "WebTest": "[concat('<WebTest   Name=\"', variables('pingTestName'), '\"   Enabled=\"True\"         CssProjectStructure=\"\"    CssIteration=\"\"  Timeout=\"120\"  WorkItemIds=\"\"         xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\"         Description=\"\"  CredentialUserName=\"\"  CredentialPassword=\"\"         PreAuthenticate=\"True\"  Proxy=\"default\"  StopOnError=\"False\"         RecordedResultFile=\"\"  ResultsLocale=\"\">  <Items>  <Request Method=\"GET\"    Version=\"1.1\"  Url=\"', parameters('Url'),   '\" ThinkTime=\"0\"  Timeout=\"300\" ParseDependentRequests=\"True\"         FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\"         ResponseTimeGoal=\"0\"  Encoding=\"utf-8\"  ExpectedHttpStatusCode=\"200\"         ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" />        </Items>  <ValidationRules> <ValidationRule  Classname=\"Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleFindText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a\" DisplayName=\"Find Text\"         Description=\"Verifies the existence of the specified text in the response.\"         Level=\"High\"  ExectuionOrder=\"BeforeDependents\">  <RuleParameters>        <RuleParameter Name=\"FindText\" Value=\"',   parameters('pingText'), '\" />  <RuleParameter Name=\"IgnoreCase\" Value=\"False\" />  <RuleParameter Name=\"UseRegularExpression\" Value=\"False\" />  <RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />  </RuleParameters> </ValidationRule>  </ValidationRules>  </WebTest>')]"
+          "WebTest": "[concat('<WebTest   Name=\"', variables('pingTestName'), '\"   Enabled=\"True\"         CssProjectStructure=\"\"    CssIteration=\"\"  Timeout=\"120\"  WorkItemIds=\"\"         xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\"         Description=\"\"  CredentialUserName=\"\"  CredentialPassword=\"\"         PreAuthenticate=\"True\"  Proxy=\"default\"  StopOnError=\"False\"         RecordedResultFile=\"\"  ResultsLocale=\"\">  <Items>  <Request Method=\"GET\"    Version=\"1.1\"  Url=\"', parameters('Url'),   '\" ThinkTime=\"0\"  Timeout=\"300\" ParseDependentRequests=\"True\"         FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\"         ResponseTimeGoal=\"0\"  Encoding=\"utf-8\"  ExpectedHttpStatusCode=\"200\"         ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" />        </Items>  <ValidationRules> <ValidationRule  Classname=\"Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleFindText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a\" DisplayName=\"Find Text\"         Description=\"Verifies hello existence of hello specified text in hello response.\"         Level=\"High\"  ExectuionOrder=\"BeforeDependents\">  <RuleParameters>        <RuleParameter Name=\"FindText\" Value=\"',   parameters('pingText'), '\" />  <RuleParameter Name=\"IgnoreCase\" Value=\"False\" />  <RuleParameter Name=\"UseRegularExpression\" Value=\"False\" />  <RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />  </RuleParameters> </ValidationRule>  </ValidationRules>  </WebTest>')]"
         },
         "SyntheticMonitorId": "[variables('pingTestName')]"
       }
@@ -342,7 +342,7 @@ Sammanfoga följande kod till mallfilen som skapar appen.
 
     {
       //
-      // Availability test: part 2, the alert rule
+      // Availability test: part 2, hello alert rule
       //
       "name": "[variables('pingAlertRuleName')]",
       "type": "Microsoft.Insights/alertrules",
@@ -384,39 +384,39 @@ Sammanfoga följande kod till mallfilen som skapar appen.
 }
 ```
 
-Identifiera koderna för andra test platser eller automatisera skapandet av mer komplexa webbtester, skapa ett exempel manuellt och sedan parameterstyra koden från [Azure Resource Manager](https://resources.azure.com/).
+toodiscover hello koder för andra test platser eller tooautomate hello skapa mer komplexa webbtester, skapa ett exempel manuellt och parameterstyra hello kod från [Azure Resource Manager](https://resources.azure.com/).
 
 ## <a name="add-more-resources"></a>Lägg till fler resurser
 
-Om du vill automatisera skapandet av någon annan resurs av något slag, skapa ett exempel manuellt kopiera och parameterstyra dess kod från [Azure Resource Manager](https://resources.azure.com/). 
+tooautomate hello skapandet av någon annan resurs av något slag, skapa ett exempel manuellt och sedan kopiera och parameterstyra dess kod från [Azure Resource Manager](https://resources.azure.com/). 
 
-1. Öppna [Azure Resource Manager](https://resources.azure.com/). Bläddra nedåt i `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`, program-resurs. 
+1. Öppna [Azure Resource Manager](https://resources.azure.com/). Bläddra nedåt i `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`, tooyour programresursen. 
    
     ![Navigering i Azure Resursläsaren](./media/app-insights-powershell/01.png)
    
-    *Komponenter* är de grundläggande Application Insights-resurserna för att visa program. Det finns olika resurser för associerade Varningsregler och tillgänglighetstester för webbprogram.
-2. Kopiera JSON av komponenten till lämplig plats i `template1.json`.
+    *Komponenter* är hello grundläggande Application Insights-resurser för att visa program. Det finns separata resurser för hello associerade Varningsregler och tillgänglighetstester för webbprogram.
+2. Kopiera hello JSON för hello-komponenten i hello lämplig plats i `template1.json`.
 3. Ta bort dessa egenskaper:
    
    * `id`
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. Öppna avsnitten webtests och alertrules och kopiera JSON för enskilda objekt i mallen. (Inte kopiera från webtests eller alertrules noder: Gå till posterna under dem.)
+4. Öppna hello webtests och alertrules avsnitt och kopiera hello JSON för enskilda objekt i mallen. (Inte kopiera från hello webtests eller alertrules noder: Gå till hello posterna under dem.)
    
-    Varje webbtest har en associerad aviseringsregel, så du måste kopiera båda.
+    Varje webbtest har en associerad aviseringsregel så att du har toocopy båda av dessa.
    
     Du kan även inkludera aviseringar på mått. [Tjänstmåttets namn](app-insights-powershell-alerts.md#metric-names).
 5. Infoga raden i varje resurs:
    
     `"apiVersion": "2015-05-01",`
 
-### <a name="parameterize-the-template"></a>Parameterstyra mallen
-Nu har du ersätta de specifika namn med parametrar. Att [parameterstyra en mall](../azure-resource-manager/resource-group-authoring-templates.md), du kan skriva uttryck med en [uppsättning Hjälpfunktioner](../azure-resource-manager/resource-group-template-functions.md). 
+### <a name="parameterize-hello-template"></a>Parameterstyra hello mall
+Nu har du tooreplace hello specifika namn med parametrar. för[parameterstyra en mall](../azure-resource-manager/resource-group-authoring-templates.md), du kan skriva uttryck med en [uppsättning Hjälpfunktioner](../azure-resource-manager/resource-group-template-functions.md). 
 
-Du kan inte parameterstyra bara en del av en sträng, så Använd `concat()` att skapa strängar.
+Du kan inte parameterstyra bara en del av en sträng, så Använd `concat()` toobuild strängar.
 
-Här följer exempel på ersättningar som du vill se. Det finns flera förekomster av varje ersättning. Du kan behöva andra i mallen. Dessa exempel används parametrar och variabler som vi har definierat överst i mallen.
+Här följer exempel på hello ersättningar ska du toomake. Det finns flera förekomster av varje ersättning. Du kan behöva andra i mallen. Dessa exempel används hello parametrar och variabler som vi har definierat hello överst i hello mallen.
 
 | hitta | Ersätt med |
 | --- | --- |
@@ -429,13 +429,13 @@ Här följer exempel på ersättningar som du vill se. Det finns flera förekoms
 | `"myappname"`(gemen) |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>` Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Ta bort Guid och -Id. |
 
-### <a name="set-dependencies-between-the-resources"></a>Ange beroenden mellan resurser
-Azure bör ställa in resurser i strikt ordning. Lägg till beroende rader om du vill kontrollera en installationen har slutförts innan nästa börjar:
+### <a name="set-dependencies-between-hello-resources"></a>Ange beroenden mellan hello resurser
+Azure bör ställa in hello resurser i strikt ordning. toomake till filen som installationsprogrammet slutförs innan nästa börjar hello Lägg till beroende rader:
 
-* Testa resurs i tillgänglighet:
+* Testa resurs i hello tillgänglighet:
   
     `"dependsOn": ["[resourceId('Microsoft.Insights/components', parameters('appName'))]"],`
-* I aviseringen resursen för ett tillgänglighetstest:
+* I hello avisering resurs för ett tillgänglighetstest:
   
     `"dependsOn": ["[resourceId('Microsoft.Insights/webtests', variables('testName'))]"],`
 
@@ -447,7 +447,7 @@ Andra automation-artiklar:
 * [Skapa en resurs för Application Insights](app-insights-powershell-script-create-resource.md) -snabb metod utan att använda en mall.
 * [Konfigurera aviseringar](app-insights-powershell-alerts.md)
 * [Skapa webbtester](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
-* [Skicka Azure Diagnostics-data till Application Insights](app-insights-powershell-azure-diagnostics.md)
-* [Distribuera till Azure från GitHub](http://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
+* [Skicka Azure Diagnostics tooApplication insikter](app-insights-powershell-azure-diagnostics.md)
+* [Distribuera tooAzure från GitHub](http://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [Skapa versionen anteckningar](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

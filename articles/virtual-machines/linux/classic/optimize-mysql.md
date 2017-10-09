@@ -1,6 +1,6 @@
 ---
-title: "Optimera prestanda för MySQL på Linux | Microsoft Docs"
-description: "Lär dig hur du optimerar MySQL som körs på en Azure-dator (VM) kör Linux."
+title: "aaaOptimize MySQL prestanda på Linux | Microsoft Docs"
+description: "Lär dig hur toooptimize MySQL körs på en Azure-dator (VM) kör Linux."
 services: virtual-machines-linux
 documentationcenter: 
 author: NingKuang
@@ -15,37 +15,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: ningk
-ms.openlocfilehash: 8f2ec884fa98e989448ac11675e71f39aa21fa7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9e6458723233721e06f30b9de33635d403eefcba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="optimize-mysql-performance-on-azure-linux-vms"></a>Optimera MySQL prestanda på virtuella Azure Linux-datorer
 Det finns många faktorer som påverkar prestanda MySQL på Azure, både i val av virtuell maskinvara och konfiguration av programvara. Den här artikeln fokuserar på optimera prestanda via lagring, system och konfigurationer för databasen.
 
 > [!IMPORTANT]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Azure Resource Manager](../../../resource-manager-deployment-model.md) och klassisk. Den här artikeln beskriver den klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder Resource Manager-modellen. Information om Linux VM optimeringar med Resource Manager-modellen finns [optimera din Linux VM på Azure](../optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Azure Resource Manager](../../../resource-manager-deployment-model.md) och klassisk. Den här artikeln täcker hello klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen. Information om Linux VM optimeringar med hello Resource Manager-modellen finns [optimera din Linux VM på Azure](../optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="utilize-raid-on-an-azure-virtual-machine"></a>Använda RAID på en virtuell Azure-dator
-Lagring är avgörande som påverkar databasprestanda i miljöer i molnet. Jämfört med en enskild disk ger RAID snabbare åtkomst via samtidighet. Mer information finns i [Standard RAID-nivåer](http://en.wikipedia.org/wiki/Standard_RAID_levels).   
+Lagring är hello viktiga faktor som påverkar databasprestanda i miljöer i molnet. Jämfört med tooa enskild disk RAID ger snabbare åtkomst via samtidighet. Mer information finns i [Standard RAID-nivåer](http://en.wikipedia.org/wiki/Standard_RAID_levels).   
 
-I/o-genomflöde och svarstid för i/o i Azure kan förbättras genom RAID. Våra tester visar att i/o-genomflöde kan vara dubblerad och i/o-svarstid kan reduceras med halvt i genomsnitt när antalet RAID-diskar fördubblas (från två till fyra, fyra till åtta osv.). Se [bilaga A](#AppendixA) mer information.  
+I/o-genomflöde och svarstid för i/o i Azure kan förbättras genom RAID. Våra tester visar att i/o-genomflöde kan vara dubblerad och i/o-svarstid kan reduceras med hälften i genomsnitt när fördubblas hello antalet RAID-diskar (från två toofour, fyra tooeight osv.). Se [bilaga A](#AppendixA) mer information.  
 
-Utöver disk-i/o förbättras MySQL prestanda om du ökar RAID-nivå.  Se [bilaga B](#AppendixB) mer information.  
+Dessutom toodisk i/o, MySQL prestanda förbättras om du ökar hello RAID-nivå.  Se [bilaga B](#AppendixB) mer information.  
 
-Du kanske också vill överväga segmentstorleken. I allmänhet när du har en större segmentstorlek kan hämta du lägre omkostnader, särskilt för stora skrivningar. Om segmentstorleken är för stor, kan det dock lägga till ytterligare kostnader som hindrar dig från att dra nytta av RAID. Den aktuella standardstorleken är 512 KB som visat sig vara optimala för mest allmänna produktionsmiljöer. Se [bilaga C](#AppendixC) mer information.   
+Du kan också tooconsider hello segmentstorleken. I allmänhet när du har en större segmentstorlek kan hämta du lägre omkostnader, särskilt för stora skrivningar. När hello segmentstorleken är för stor, kan det dock lägga till ytterligare kostnader som hindrar dig från att dra nytta av RAID. hello aktuella standardstorleken är 512 KB som bevisas toobe som är optimala för mest allmänna produktionsmiljöer. Se [bilaga C](#AppendixC) mer information.   
 
-Det finns begränsningar på hur många diskar som du kan lägga till för olika virtuella typer. Dessa värden beskrivs i [storlekar för virtuella datorer och moln för Azure](http://msdn.microsoft.com/library/azure/dn197896.aspx). Du behöver fyra bifogade datadiskar till RAID-exempel i den här artikeln, men du kan välja att ställa in RAID med färre diskar.  
+Det finns begränsningar på hur många diskar som du kan lägga till för olika virtuella typer. Dessa värden beskrivs i [storlekar för virtuella datorer och moln för Azure](http://msdn.microsoft.com/library/azure/dn197896.aspx). Du behöver fyra anslutna diskar toofollow hello RAID exempel på data i den här artikeln, men du kan välja tooset in RAID med färre diskar.  
 
-Den här artikeln förutsätter att du redan har skapat en virtuell Linux-dator och ha MYSQL installeras och konfigureras. Mer information om att komma igång finns i hur du installerar MySQL på Azure.  
+Den här artikeln förutsätter att du redan har skapat en virtuell Linux-dator och ha MYSQL installeras och konfigureras. Mer information om att komma igång, se hur tooinstall MySQL på Azure.  
 
 ### <a name="set-up-raid-on-azure"></a>Ställ in RAID på Azure
-Följande steg visar hur du skapar RAID på Azure med hjälp av Azure portal. Du kan också ställa in RAID med hjälp av Windows PowerShell-skript.
+hello följande steg visar hur toocreate RAID på Azure med hjälp av hello Azure-portalen. Du kan också ställa in RAID med hjälp av Windows PowerShell-skript.
 I det här exemplet ska vi konfigurera RAID 0 med fyra diskar.  
 
-#### <a name="add-a-data-disk-to-your-virtual-machine"></a>Lägg till en datadisk till den virtuella datorn
-Gå till instrumentpanelen i Azure-portalen och välj den virtuella dator som du vill lägga till en datadisk. I det här exemplet är den virtuella datorn mysqlnode1.  
+#### <a name="add-a-data-disk-tooyour-virtual-machine"></a>Lägg till en data disk tooyour virtuell dator
+Gå toohello instrumentpanelen och välj hello virtuella toowhich som du vill tooadd en datadisk i hello Azure-portalen. I det här exemplet är hello virtuella mysqlnode1.  
 
 <!--![Virtual machines][1]-->
 
@@ -53,51 +53,51 @@ Klicka på **diskar** och klicka sedan på **bifoga nya**.
 
 ![Virtuella datorer lägger du till disk](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-Disks-option.png)
 
-Skapa en ny 500 GB disk. Se till att **värden Cache inställningar** är inställd på **ingen**.  När du är klar klickar du på **OK**.
+Skapa en ny 500 GB disk. Se till att **värden Cache inställningar** har angetts för**ingen**.  När du är klar klickar du på **OK**.
 
 ![Anslut tom disk](media/optimize-mysql/virtual-machines-linux-optimize-mysql-perf-attach-empty-disk.png)
 
 
 Detta lägger till en tom disk i den virtuella datorn. Upprepa detta steg tre gånger så att du har fyra datadiskar för RAID.  
 
-Du kan se enheterna som har lagts till i den virtuella datorn genom att titta på kernel message-loggen. Till exempel om du vill se detta på Ubuntu, använder du följande kommando:  
+Du kan se hello läggas till enheter i hello virtuell dator genom att titta på hello kernel message-loggen. Till exempel toosee detta på Ubuntu, Använd hello följande kommando:  
 
     sudo grep SCSI /var/log/dmesg
 
-#### <a name="create-raid-with-the-additional-disks"></a>Skapa RAID med ytterligare diskar
-Följande steg beskriver hur du [konfigurera programvarubaserad RAID på Linux](../configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+#### <a name="create-raid-with-hello-additional-disks"></a>Skapa RAID med hello ytterligare diskar
+hello följande steg beskriver hur för[konfigurera programvarubaserad RAID på Linux](../configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 > [!NOTE]
-> Om du använder filsystemet XFS, kör du följande steg när du har skapat RAID.
+> Om du använder hello XFS filsystem, köra hello följande steg när du har skapat RAID.
 >
 >
 
-Om du vill installera XFS på Debian och Ubuntu Linux myntverket, använder du följande kommando:  
+tooinstall XFS på Debian och Ubuntu Linux myntverket Använd hello följande kommando:  
 
     apt-get -y install xfsprogs  
 
-Om du vill installera XFS på Fedora, CentOS eller RHEL, använder du följande kommando:  
+tooinstall XFS på Fedora, CentOS eller RHEL, Använd hello följande kommando:  
 
     yum -y install xfsprogs  xfsdump
 
 
 #### <a name="set-up-a-new-storage-path"></a>Ställ in en ny lagringssökväg
-Använd följande kommando för att ställa in en ny lagringssökväg som:  
+Använd hello följande kommando tooset in sökvägen till en ny lagring:  
 
     root@mysqlnode1:~# mkdir -p /RAID0/mysql
 
-#### <a name="copy-the-original-data-to-the-new-storage-path"></a>Kopiera den ursprungliga informationen till den nya sökvägen för lagring
-Använd följande kommando för att kopiera data till den nya sökvägen för lagring:  
+#### <a name="copy-hello-original-data-toohello-new-storage-path"></a>Kopiera hello ursprungliga toohello ny lagring datasökväg
+Använd följande kommando toocopy toohello ny lagring datasökväg hello:  
 
     root@mysqlnode1:~# cp -rp /var/lib/mysql/* /RAID0/mysql/
 
-#### <a name="modify-permissions-so-mysql-can-access-read-and-write-the-data-disk"></a>Ändra behörigheter så att MySQL kan komma åt (läsning och skrivning) datadisken
-Använd följande kommando för att ändra behörigheter:  
+#### <a name="modify-permissions-so-mysql-can-access-read-and-write-hello-data-disk"></a>Ändra behörigheter så att MySQL kan komma åt (läsning och skrivning) hello datadisk
+Använd följande kommando toomodify behörigheter hello:  
 
     root@mysqlnode1:~# chown -R mysql.mysql /RAID0/mysql && chmod -R 755 /RAID0/mysql
 
 
-## <a name="adjust-the-disk-io-scheduling-algorithm"></a>Justera den schemaläggning algoritmen för disk-i/o
+## <a name="adjust-hello-disk-io-scheduling-algorithm"></a>Justera hello disk i/o schemaläggning algoritm
 Linux implementerar fyra typer av i/o schemaläggning algoritmer:  
 
 * NOOP algoritmen (åtgärden kan Nej)
@@ -105,26 +105,26 @@ Linux implementerar fyra typer av i/o schemaläggning algoritmer:
 * Helt verkliga MSMQ-algoritmen (CFQ)
 * Budget period algoritmen (Anticipatory)  
 
-Du kan välja olika i/o-planeringsprogram under olika scenarier att optimera prestanda. I en miljö med helt direktåtkomst finns det inte en betydande skillnader mellan CFQ och tidsgräns algoritmer för prestanda. Vi rekommenderar att du ställer in MySQL-databasmiljön tidsgräns för stabilitet. Om det är mycket sekventiella i/o, kan CFQ minska diskens i/o-prestanda.   
+Du kan välja olika i/o-planeringsprogram under olika scenarier toooptimize prestanda. I en miljö med helt direktåtkomst finns det inte en betydande skillnader mellan hello CFQ och tidsgräns algoritmer för prestanda. Vi rekommenderar att du ställer in hello MySQL-databas miljö tooDeadline för stabilitet. Om det är mycket sekventiella i/o, kan CFQ minska diskens i/o-prestanda.   
 
-NOOP eller tidsgräns kan få bättre prestanda än standard Schemaläggaren för SSD och annan utrustning.   
+NOOP eller tidsgräns kan få bättre prestanda än hello standard scheduler för SSD och annan utrustning.   
 
-Standard-i/o schemaläggning algoritmen är innan kernel 2.5 tidsgräns. Från och med kernel 2.6.18 blev CFQ standard-i/o schemaläggning algoritmen.  Du kan ange den här inställningen när datorn startas i kernel eller ändra den här inställningen dynamiskt när systemet körs.  
+Tidigare toohello kernel 2.5 hello standard i/o schemaläggning algoritmen är tidsgräns. Från och med hello kernel 2.6.18 blev CFQ hello standard-i/o: schemaläggning-algoritmen.  Du kan ange den här inställningen när datorn startas i kernel eller ändra den här inställningen dynamiskt när hello system körs.  
 
-Exemplet nedan visar hur du kontrollerar och ange standard Schemaläggaren till algoritmen NOOP i familjen Debian distribution.  
+hello som följande exempel visar hur toocheck och ange hello standard scheduler toohello NOOP algoritmen i hello Debian distribution familj.  
 
-### <a name="view-the-current-io-scheduler"></a>Visa aktuella i/o-Schemaläggaren
-Visa scheduler kör följande kommando:  
+### <a name="view-hello-current-io-scheduler"></a>Visa hello aktuella i/o-Schemaläggaren
+tooview hello scheduler kör hello följande kommando:  
 
     root@mysqlnode1:~# cat /sys/block/sda/queue/scheduler
 
-Visas följande utdata som visar aktuella Schemaläggaren:  
+Du kommer se följande utdata som visar hello aktuella Schemaläggaren:  
 
     noop [deadline] cfq
 
 
-### <a name="change-the-current-device-devsda-of-the-io-scheduling-algorithm"></a>Ändra den aktuella enheten (/ dev/sda) schemaläggning i/o-algoritmen
-Kör följande kommandon för att ändra den aktuella enheten:  
+### <a name="change-hello-current-device-devsda-of-hello-io-scheduling-algorithm"></a>Ändra hello aktuell enhet (/ dev/sda) av schemaläggning hello i/o-algoritm
+Kör följande kommandon toochange hello aktuell enhet hello:  
 
     azureuser@mysqlnode1:~$ sudo su -
     root@mysqlnode1:~# echo "noop" >/sys/block/sda/queue/scheduler
@@ -132,11 +132,11 @@ Kör följande kommandon för att ändra den aktuella enheten:
     root@mysqlnode1:~# update-grub
 
 > [!NOTE]
-> Ange detta för /dev/sda enbart är inte användbar. Det måste anges på alla datadiskar där databasen finns.  
+> Ange detta för /dev/sda enbart är inte användbar. Det måste anges på alla datadiskar där hello databasen finns.  
 >
 >
 
-Du bör se följande utdata, som anger att grub.cfg har återskapats och som standard Schemaläggaren har uppdaterats till NOOP:  
+Du bör se hello följande utdata, vilket visar att grub.cfg har återskapats och den hello standard Schemaläggaren har uppdaterats tooNOOP:  
 
     Generating grub configuration file ...
     Found linux image: /boot/vmlinuz-3.13.0-34-generic
@@ -147,28 +147,28 @@ Du bör se följande utdata, som anger att grub.cfg har återskapats och som sta
     Found memtest86+ image: /memtest86+.bin
     done
 
-Red Hat distribution-familjen behöver du följande kommando:
+För hello Red Hat distribution familj, behöver du bara hello följande kommando:
 
     echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 
 ## <a name="configure-system-file-operations-settings"></a>Konfigurera systeminställningar filen operations
-Ett bra tips är att inaktivera den *atime* loggningsfunktionen i filsystemet. Atime är den senaste åtkomsttid för fil. När en fil används registrerar filsystemet i loggen. Men används den här informationen sällan. Du kan inaktivera den om du inte behöver den, vilket minskar övergripande disktid åtkomst.  
+Ett bra tips är toodisable hello *atime* loggningsfunktionen i hello-filsystemet. Atime är hello senaste åtkomsttid för fil. När en fil används hello hello poster tidsstämpel i hello-loggen. Men används den här informationen sällan. Du kan inaktivera den om du inte behöver den, vilket minskar övergripande disktid åtkomst.  
 
-Om du vill inaktivera atime loggning måste du ändra filen system configuration filen/etc / fstab och lägga till den **noatime** alternativet.  
+toodisable atime loggning av du behöver toomodify hello filen system configuration filen/etc / fstab och lägga till hello **noatime** alternativet.  
 
-Till exempel redigera vim /etc/fstab filen, lägga till noatime som visas i följande exempel:  
+Till exempel redigera hello vim /etc/fstab filen till hello noatime som visas i följande exempel hello:  
 
-    # CLOUD_IMG: This file was created/modified by the Cloud Image build process
+    # CLOUD_IMG: This file was created/modified by hello Cloud Image build process
     UUID=3cc98c06-d649-432d-81df-6dcd2a584d41       /        ext4   defaults,discard        0 0
-    #Add the “noatime” option below to disable atime logging
+    #Add hello “noatime” option below toodisable atime logging
     UUID="431b1e78-8226-43ec-9460-514a9adf060e"     /RAID0   xfs   defaults,nobootwait, noatime 0 0
     /dev/sdb1       /mnt    auto    defaults,nobootwait,comment=cloudconfig 0       2
 
-Sedan återansluta filsystem med följande kommando:  
+Sedan återansluta hello filsystem med hello följande kommando:  
 
     mount -o remount /RAID0
 
-Testa ändrade resultatet. När du ändrar Testfilen uppdateras inte den åtkomst-tid. Följande exempel visar hur koden ser ut före och efter ändring.
+Testa hello ändrade resultat. När du ändrar hello testfil uppdateras hello åtkomsttid inte. Hej följande exempel visar vilka hello koden ser ut före och efter ändring.
 
 Innan:        
 
@@ -178,77 +178,77 @@ Efter:
 
 ![Kod efter åtkomst ändring][6]
 
-## <a name="increase-the-maximum-number-of-system-handles-for-high-concurrency"></a>Öka det maximala antalet system handtag för hög samtidighet
-MySQL är en hög concurrency-databas. Standardvärdet för antalet samtidiga handtag är 1024 för Linux som räcker inte alltid. Använd följande steg för att öka i systemet för att stödja hög samtidighet på MySQL maximala samtidiga handtag.
+## <a name="increase-hello-maximum-number-of-system-handles-for-high-concurrency"></a>Öka hello maximala tillåtna antalet system handtag för hög samtidighet
+MySQL är en hög concurrency-databas. hello standardantalet samtidiga referenser är 1024 för Linux som räcker inte alltid. Använd följande steg tooincrease hello maximala samtidiga i handtag hello system toosupport hög samtidighet på MySQL hello.
 
-### <a name="modify-the-limitsconf-file"></a>Ändra filen limits.conf
-Lägg till följande fyra rader i filen /etc/security/limits.conf för att öka de maximala tillåtna samtidiga referenser. Observera att 65536 är det maximala antal som har stöd för systemet.   
+### <a name="modify-hello-limitsconf-file"></a>Ändra hello limits.conf filen
+tooincrease hello högsta tillåtna samtidiga handtag, Lägg till hello följande fyra rader i hello /etc/security/limits.conf fil. Observera att 65536 hello maximalt antal hello-system kan stödja.   
 
     * mjuka nofile 65536
     * hårda nofile 65536
     * mjuka nproc 65536
     * hårda nproc 65536
 
-### <a name="update-the-system-for-the-new-limits"></a>Uppdatera systemet för de nya gränserna
-Kör följande kommandon för att uppdatera systemet:  
+### <a name="update-hello-system-for-hello-new-limits"></a>Uppdatera hello system för hello nya gränser
+tooupdate hello system kör hello följande kommandon:  
 
     ulimit -SHn 65536
     ulimit -SHu 65536
 
-### <a name="ensure-that-the-limits-are-updated-at-boot-time"></a>Se till att gränserna som har uppdaterats vid start
-Placera följande startkommandon i filen /etc/rc.local så börjar gälla när datorn startas.  
+### <a name="ensure-that-hello-limits-are-updated-at-boot-time"></a>Se till att hello gränser uppdateras vid start
+Placera hello följande startkommandon i hello /etc/rc.local filen så att den börjar gälla när datorn startas.  
 
     echo “ulimit -SHn 65536” >>/etc/rc.local
     echo “ulimit -SHu 65536” >>/etc/rc.local
 
 ## <a name="mysql-database-optimization"></a>MySQL-databas optimering
-För att konfigurera MySQL på Azure, kan du använda samma prestandajustering strategin du använder på en lokal dator.  
+tooconfigure MySQL på Azure som du kan använda hello samma prestandajustering strategi som du använder på en lokal dator.  
 
-De huvudsakliga i/o optimering reglerna är:   
+hello huvudsakliga i/o optimering reglerna är:   
 
-* Öka cachestorleken.
+* Öka hello cachestorlek.
 * Minska i/o-svarstid.  
 
-Du kan uppdatera filen my.cnf, som är standardkonfigurationsfilen för både servern och klientdatorerna för att optimera MySQL-serverinställningar.  
+toooptimize MySQL-serverinställningar, kan du uppdatera hello my.cnf fil som är hello standardkonfigurationsfilen för både servern och klientdatorerna.  
 
-För följande konfigurationsobjekt är de viktigaste faktorerna som påverkar prestanda MySQL:  
+hello är följande konfigurationsobjekt hello viktigaste faktorerna som påverkar prestanda MySQL:  
 
-* **innodb_buffer_pool_size**: buffertpoolen innehåller buffrade data och index. Det här värdet vanligtvis 70 procent av det fysiska minnet.
-* **innodb_log_file_size**: Detta är gör om loggfilens storlek. Du kan använda gör om-loggarna för att säkerställa att skrivåtgärder snabb, tillförlitlig och återställas efter en krasch. Detta är inställt på 512 MB, vilket ger tillräckligt med utrymme för att logga skrivåtgärder.
-* **max_connections**: ibland program Stäng inte anslutningar korrekt. Ett större värde får servern längre tid att återvinna inaktiv anslutningar. Det maximala antalet anslutningar är 10 000, men det rekommenderade maximala antalet är 5 000.
-* **Innodb_file_per_table**: den här inställningen aktiverar eller inaktiverar InnoDB möjlighet att lagra tabeller i separata filer. Aktivera alternativet så att flera avancerade administration-åtgärder kan användas effektivt. Ur en prestanda, den påskynda överföringen tabell utrymme och optimera prestanda för skräp management. Den rekommenderade inställningen för det här alternativet är Aktiverat.</br></br>
-Standardinställningen är ON, så ingen åtgärd krävs från MySQL 5.6. Standardinställningen är för tidigare versioner av. Inställningen måste ändras innan data läses eftersom endast nya tabeller påverkas.
-* **innodb_flush_log_at_trx_commit**: standardvärdet är 1, med den omfattning som anges som 0 ~ 2. Standardvärdet är det lämpligaste alternativet för fristående MySQL-databas. Inställningen av 2 kan de flesta dataintegriteten och lämpar sig för Master i MySQL-kluster. 0 inställningen dataförluster som kan påverka tillförlitlighet (i vissa fall med bättre prestanda) och lämpar sig för underordnade i MySQL-kluster.
-* **Innodb_log_buffer_size**: Loggningsbufferten kan transaktioner ska köras utan att rensa loggen på disken innan du genomför transaktionerna. Om det finns stora binära objekt eller textfältet, cachen används snabbt och ofta disk-i/o ska utlösas. Det är bättre öka buffertstorleken om Innodb_log_waits tillstånd variabeln inte är 0.
-* **query_cache_size**: det bästa alternativet är att inaktivera redan från början. Query_cache_size 0 (detta är standardinställningen i MySQL 5.6) och använda andra metoder för att påskynda frågor.  
+* **innodb_buffer_pool_size**: hello buffertpool innehåller buffrade data och hello index. Det här värdet vanligtvis too70 procent av fysiskt minne.
+* **innodb_log_file_size**: Detta är hello gör om loggfilens storlek. Du kan använda gör om loggar tooensure att skrivåtgärder är snabb, tillförlitlig och återställas efter en krasch. Detta är inställt too512 MB, vilket ger tillräckligt med utrymme för att logga skrivåtgärder.
+* **max_connections**: ibland program Stäng inte anslutningar korrekt. Ett större värde ger hello server mer tid toorecycle inaktiv anslutningar. hello maximalt antal anslutningar är 10 000 men hello rekommenderade maximala antalet är 5 000.
+* **Innodb_file_per_table**: den här inställningen aktiverar eller inaktiverar hello möjligheten för InnoDB toostore tabeller i separata filer. Aktivera hello alternativet tooensure att flera avancerade administration-åtgärder kan användas effektivt. Ur en prestanda, den påskynda hello tabell utrymme överföring och optimera hello skräp hantering prestanda. hello bör inställning för det här alternativet är Aktiverat.</br></br>
+Från MySQL 5.6 är hello standardinställningen ON, så ingen åtgärd krävs. För tidigare versioner är hello standardinställningen AVSTÄNGD. hello inställningen ska ändras innan data har lästs in, eftersom endast nya tabeller påverkas.
+* **innodb_flush_log_at_trx_commit**: hello standardvärdet är 1, med hello scope too0 ~ 2. hello standardvärdet är hello alternativ som passar för fristående MySQL-databas. hello inställningen av 2 aktiverar hello de flesta dataintegritet och lämpar sig för Master i MySQL-kluster. hello inställningen 0 dataförluster som kan påverka tillförlitlighet (i vissa fall med bättre prestanda) och lämpar sig för underordnade i MySQL-kluster.
+* **Innodb_log_buffer_size**: hello loggen buffert kan transaktioner toorun utan tooflush hello loggen toodisk innan hello transaktioner genomförande. Om det finns stora binära objekt eller textfältet, hello cache används snabbt och ofta disk-i/o ska utlösas. Det är bättre öka hello buffertstorlek om Innodb_log_waits tillstånd variabeln inte är 0.
+* **query_cache_size**: hello bästa alternativet är toodisable från hello början. Ange query_cache_size too0 (detta är standardinställningen för hello i MySQL 5.6) och använda andra metoder toospeed frågor.  
 
-Se [bilaga D](#AppendixD) för en jämförelse av prestanda före och efter optimeringen.
+Se [bilaga D](#AppendixD) för en jämförelse av prestanda före och efter hello optimering.
 
-## <a name="turn-on-the-mysql-slow-query-log-for-analyzing-the-performance-bottleneck"></a>Aktivera MySQL långsam frågeloggen för att analysera flaskhals
-MySQL långsam fråga loggen kan hjälpa dig identifiera långsamma frågor för MySQL. Du kan använda MySQL-verktyg som när du har aktiverat MySQL långsam frågeloggen **mysqldumpslow** att identifiera flaskhals.  
+## <a name="turn-on-hello-mysql-slow-query-log-for-analyzing-hello-performance-bottleneck"></a>Aktivera hello MySQL långsam frågeloggen för att analysera hello flaskhalsar
+hello MySQL långsam fråga loggen kan hjälpa dig identifiera hello långsam frågor för MySQL. Du kan använda MySQL-verktyg som när du har aktiverat hello MySQL långsam frågeloggen **mysqldumpslow** tooidentify hello flaskhalsar.  
 
-Som standard är detta inte aktiverat. Aktivera långsam frågeloggen kan använda vissa processorresurser. Vi rekommenderar att du aktiverar detta tillfälligt för felsökning av flaskhalsar. Aktivera långsam frågeloggen:
+Som standard är detta inte aktiverat. Aktivera hello långsam frågeloggen kan använda vissa processorresurser. Vi rekommenderar att du aktiverar detta tillfälligt för felsökning av flaskhalsar. tooturn hello långsam fråga logga in:
 
-1. Ändra my.cnf-filen genom att lägga till följande rader i slutet:
+1. Ändra hello my.cnf-filen genom att lägga till hello efter rader toohello:
 
         long_query_time = 2
         slow_query_log = 1
         slow_query_log_file = /RAID0/mysql/mysql-slow.log
 
-2. Starta om MySQL-servern.
+2. Starta om hello MySQL-servern.
 
         service  mysql  restart
 
-3. Kontrollera om inställningen börjar gälla med hjälp av den **visa** kommando.
+3. Kontrollera om hello inställningen börjar gälla med hjälp av hello **visa** kommando.
 
 ![Långsamma frågeloggen ON][7]   
 
 ![Långsamma frågeloggen resultat][8]
 
-I det här exemplet ser du att funktionen långsam fråga har aktiverats. Du kan sedan använda den **mysqldumpslow** verktyg för att fastställa prestandaflaskhalsar och optimera prestanda, till exempel lägga till index.
+I det här exemplet kan du se hello långsam fråga funktionen har aktiverats. Du kan sedan använda hello **mysqldumpslow** verktyget toodetermine prestandaflaskhalsar och optimera prestanda, till exempel lägga till index.
 
 ## <a name="appendices"></a>Tilläggen
-Följande är exempel test prestandadata framställs i labbmiljö riktade. De ger grundläggande på prestanda data trend med olika metoder för prestandajustering. Resultatet kan variera under olika versioner av miljö eller produkt.
+hello följande är exempel test prestandadata framställs i labbmiljö riktade. De ger grundläggande på hello prestanda data trend med olika metoder för prestandajustering. hello resultat kan variera under olika versioner av miljö eller produkt.
 
 ### <a name="AppendixA"></a>Bilaga A  
 **Diskprestanda (IOPS) med olika RAID-nivåer**
@@ -260,7 +260,7 @@ Följande är exempel test prestandadata framställs i labbmiljö riktade. De ge
     fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=5G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite
 
 > [!NOTE]
-> Arbetsbelastningen för det här testet använder 64 trådar, försöker komma åt den övre gränsen för RAID.
+> hello arbetsbelastningen för det här testet använder 64 trådar, försök tooreach hello övre gränsen för RAID.
 >
 >
 
@@ -293,7 +293,7 @@ Följande är exempel test prestandadata framställs i labbmiljö riktade. De ge
     fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=30G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite
     fio -filename=/path/test -iodepth=64 -ioengine=libaio -direct=1 -rw=randwrite -bs=4k -size=1G -numjobs=64 -runtime=30 -group_reporting -name=test-randwrite  
 
-Filstorlekarna som används för detta test är 30 och 1 GB respektive, med RAID 0 (4 diskar) XFS filsystem.
+hello filstorlekar som används för detta test är 30 och 1 GB respektive, med RAID 0 (4 diskar) XFS filsystem.
 
 ### <a name="AppendixD"></a>Bilaga D  
 **MySQL prestanda (dataflöde) jämförelse före och efter optimering**  
@@ -305,7 +305,7 @@ Filstorlekarna som används för detta test är 30 och 1 GB respektive, med RAID
 
     mysqlslap -p0ps.123 --concurrency=2 --iterations=1 --number-int-cols=10 --number-char-cols=10 -a --auto-generate-sql-guid-primary --number-of-queries=10000 --auto-generate-sql-load-type=write –engine=innodb,misam
 
-**Konfigurationsinställning för standard och optimering är följande:**
+**hello konfigurationsinställning för standard och optimering är följande:**
 
 | Parametrar | Standard | Optimering |
 | --- | --- | --- |
@@ -317,7 +317,7 @@ Filstorlekarna som används för detta test är 30 och 1 GB respektive, med RAID
 | **innodb_log_buffer_size** |8 MB |128 MB |
 | **query_cache_size** |16 MB |0 |
 
-Mer detaljerad [optimering konfigurationsparametrar](http://dev.mysql.com/doc/refman/5.6/en/innodb-configuration.html), referera till den [MySQL officiella instruktioner](http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_flush_method).  
+Mer detaljerad [optimering konfigurationsparametrar](http://dev.mysql.com/doc/refman/5.6/en/innodb-configuration.html), se toohello [MySQL officiella instruktioner](http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html#sysvar_innodb_flush_method).  
 
   **Testmiljö**  
 

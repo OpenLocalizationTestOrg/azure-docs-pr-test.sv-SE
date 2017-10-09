@@ -1,6 +1,6 @@
 ---
-title: Kontinuerlig leverans med Git och Visual Studio Team Services i Azure | Microsoft Docs
-description: "Lär dig hur du konfigurerar din Visual Studio Team Services grupprojekt att använda Git för att automatiskt skapa och distribuera till funktionen Web App i Azure App Service eller cloud services."
+title: aaaContinuous leverans med Git och Visual Studio Team Services i Azure | Microsoft Docs
+description: "Lär dig hur tooconfigure din Visual Studio Team Services team projekt toouse Git tooautomatically skapa och distribuera toohello webbprogram funktion i Azure App Service eller cloud services."
 services: cloud-services
 documentationcenter: .net
 author: mlearned
@@ -14,178 +14,178 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: mlearned
-ms.openlocfilehash: f4f5f231536bc381d17898ff2c592be821168a65
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 936c42194f45be55597a77f9a3a6deb4480ed94b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="continuous-delivery-to-azure-using-visual-studio-team-services-and-git"></a>Kontinuerlig leverans till Azure med Visual Studio Team Services och Git
-Du kan använda Visual Studio Team Services grupprojekt att vara värd för en Git-lagringsplats för din källkod och automatiskt skapa och distribuera till Azure-webbappar eller molntjänster när du skickar ett genomförande till lagringsplatsen.
+# <a name="continuous-delivery-tooazure-using-visual-studio-team-services-and-git"></a>Kontinuerlig leverans tooAzure med hjälp av Visual Studio Team Services och Git
+Du kan använda Visual Studio Team Services team projekt toohost en Git-lagringsplats för din källkod och automatiskt skapa och distribuera tooAzure webbprogram eller molntjänster när du överför en commit toohello databas.
 
-Du behöver Visual Studio 2013 och Azure SDK om du installerade. Om du inte redan har Visual Studio 2013 kan du hämta det genom att välja den **Kom igång gratis** länka när [www.visualstudio.com](http://www.visualstudio.com). Installera Azure SDK från [här](http://go.microsoft.com/fwlink/?LinkId=239540).
+Du behöver Visual Studio 2013 och hello Azure SDK är installerat. Om du inte redan har Visual Studio 2013 kan du hämta det genom att välja hello **Kom igång gratis** länka när [www.visualstudio.com](http://www.visualstudio.com). Installera hello Azure SDK från [här](http://go.microsoft.com/fwlink/?LinkId=239540).
 
 > [!NOTE]
-> Du behöver ett Visual Studio Team Services-konto för att slutföra den här självstudiekursen: du kan [öppnar ett Visual Studio Team Services-konto gratis](http://go.microsoft.com/fwlink/p/?LinkId=512979).
+> Du behöver ett Visual Studio Team Services-konto toocomplete självstudierna: du kan [öppnar ett Visual Studio Team Services-konto gratis](http://go.microsoft.com/fwlink/p/?LinkId=512979).
 > 
 > 
 
-Följ dessa steg om du vill konfigurera en molntjänst för att automatiskt skapa och distribuera till Azure med hjälp av Visual Studio Team Services.
+tooset upp en cloud service tooautomatically skapa och distribuera tooAzure med hjälp av Visual Studio Team Services, Följ dessa steg.
 
 ## <a name="1-create-a-git-repository"></a>1: skapa en Git-lagringsplats
-1. Om du inte redan har en Visual Studio Team Services-konto kan du skaffa ett [här](http://go.microsoft.com/fwlink/?LinkId=397665). När du skapar ditt team projekt, Välj Git som ditt källkontrollsystem. Följ instruktionerna för att ansluta Visual Studio till ditt team projekt.
-2. I **Team Explorer**, Välj den **klona lagringsplatsen** länk.
+1. Om du inte redan har en Visual Studio Team Services-konto kan du skaffa ett [här](http://go.microsoft.com/fwlink/?LinkId=397665). När du skapar ditt team projekt, Välj Git som ditt källkontrollsystem. Följ hello instruktioner tooconnect Visual Studio tooyour team projekt.
+2. I **Team Explorer**, Välj hello **klona lagringsplatsen** länk.
    
     ![][3]
-3. Ange platsen för den lokala kopian och välj sedan den **klona** knappen.
+3. Anger hello plats hello lokal kopia och sedan välja hello **klona** knappen.
 
-## <a name="2-create-a-project-and-commit-it-to-the-repository"></a>2: skapa ett projekt och överför den till databasen
-1. I **Team Explorer**i den **lösningar** väljer du den **ny** länken för att skapa ett nytt projekt i lokal databas.
+## <a name="2-create-a-project-and-commit-it-toohello-repository"></a>2: skapa ett projekt och genomför den toohello databasen
+1. I **Team Explorer**, i hello **lösningar** väljer hello **ny** länka toocreate ett nytt projekt i hello lokal databas.
    
     ![][4]
-2. Du kan distribuera en webbapp eller en tjänst i molnet (Azure-program) genom att följa stegen i den här genomgången. Skapa ett nytt Azure Cloud Service-projekt, eller ett nytt ASP.NET MVC-projekt. Se till att projektet riktar sig till .NET Framework 4 eller senare. Om du skapar ett molntjänstprojekt kan du lägga till en ASP.NET MVC-webbroll och en arbetsroll.
-   Om du vill skapa en webbapp, välja den **ASP.NET-webbprogram** projektmall och välj sedan **MVC**. Se [skapa en ASP.NET-webbapp i Azure App Service](../app-service-web/app-service-web-get-started-dotnet.md) för mer information.
-3. Öppna snabbmenyn för lösningen och välj **genomför**.
+2. Du kan distribuera en webbapp eller en tjänst i molnet (Azure-program) med följande hello steg i den här genomgången. Skapa ett nytt Azure Cloud Service-projekt, eller ett nytt ASP.NET MVC-projekt. Se till att hello projektet mål hello .NET Framework 4 eller senare. Om du skapar ett molntjänstprojekt kan du lägga till en ASP.NET MVC-webbroll och en arbetsroll.
+   Om du vill toocreate ett webbprogram väljer hello **ASP.NET-webbprogram** projektmall och välj sedan **MVC**. Se [skapa en ASP.NET-webbapp i Azure App Service](../app-service-web/app-service-web-get-started-dotnet.md) för mer information.
+3. Öppna hello snabbmenyn för hello lösning och välj **genomför**.
    
     ![][7]
-4. Om du har använt Git i Visual Studio Team Services måste du ange information för att identifiera dig i Git. I den **väntande ändringar** område i **Team Explorer**, ange ditt användarnamn och e-postadress. Skriv en kommentar för genomförandet och välj sedan den **Commit** knappen.
+4. Om detta är hello första gången som du har använt Git i Visual Studio Team Services behöver du tooprovide vissa information tooidentify själv i Git. I hello **väntande ändringar** område i **Team Explorer**, ange ditt användarnamn och e-postadress. Ange en kommentar för hello genomförande och välj hello **Commit** knappen.
    
     ![][8]
-5. Observera de alternativ som ska tas med eller undanta specifika ändringar när du checkar in. Om ändringarna är undantagna väljer **inkluderar alla**.
-6. Du har nu genomfört ändringarna i den lokala kopian av databasen. Sedan synkronisera ändringarna med servern genom att välja den **Sync** länk.
+5. Observera hello alternativ tooinclude med eller undanta specifika ändringar när du checkar in. Om hello ändringar du vill utesluts, väljer **inkluderar alla**.
+6. Du har nu allokerade hello ändringar i den lokala kopian av hello-databasen. Sedan synkronisera ändringarna med hello server genom att välja hello **Sync** länk.
 
-## <a name="3-connect-the-project-to-azure"></a>3: Anslut projektet till Azure
-1. Nu när du har en Git-lagringsplats i Visual Studio Team Services med vissa källkod i den är du redo att ansluta git-lagringsplatsen till Azure.  I den [klassiska Azure-portalen](http://go.microsoft.com/fwlink/?LinkID=213885), Välj din cloud service eller web app eller skapa en ny genom att välja den + -ikonen längst ned vänster och välja **Molntjänsten** eller **Web App** och sedan **Snabbregistrering**.
+## <a name="3-connect-hello-project-tooazure"></a>3: Anslut hello projekt tooAzure
+1. Nu när du har en Git-lagringsplats i Visual Studio Team Services med vissa källkod i den är du redo tooconnect tooAzure din git-lagringsplatsen.  I hello [klassiska Azure-portalen](http://go.microsoft.com/fwlink/?LinkID=213885), Välj din cloud service eller web app eller skapa en ny genom att välja hello + längst hello nedre vänstra hörnet och välja **Molntjänsten** eller **webbprogrammet**och sedan **Snabbregistrering**.
    
     ![][9]
-2. Molntjänster, Välj den **Konfigurera publicering med Visual Studio Team Services** länk. Webbappar, Välj den **konfigurera distribution från källkontroll** länk.
+2. Välj hello för molntjänster, **Konfigurera publicering med Visual Studio Team Services** länk. Välj hello för web apps **konfigurera distribution från källkontroll** länk.
    
     ![][10]
-3. I guiden anger du namnet på ditt konto i Visual Studio Team Services i textrutan och välj den **auktorisera nu** länk. Du kan uppmanas att logga in.
+3. Hello i guiden anger hello namnet på ditt konto i Visual Studio Team Services hello textrutan med och välj hello **auktorisera nu** länk. Du kan uppmanas toosign i.
    
     ![][11]
-4. I den **anslutningsbegäran** popup-fönstret, Välj **acceptera** att auktorisera Azure konfigurera ditt team projekt i Visual Studio Team Services.
+4. I hello **anslutningsbegäran** popup-fönstret, Välj **acceptera** tooauthorize Azure tooconfigure ditt team projekt i Visual Studio Team Services.
    
     ![][12]
-5. När tillståndet lyckas visas en listruta som innehåller din Visual Studio Team Services grupprojekt.  Välj namnet på grupprojekt som du skapade i föregående steg och välj guidens markering.
+5. När tillståndet lyckas visas en listruta som innehåller din Visual Studio Team Services grupprojekt.  Välj hello grupprojekt som du skapade i föregående steg i hello och välj hello guiden markering.
    
     ![][13]
    
-    Nästa gång du skicka ett genomförande till lagringsplatsen, Visual Studio Team Services skapar och distribuera projektet till Azure.
+    hello nästa gång som du överför en commit tooyour databas, Visual Studio Team Services skapar och distribuerar ditt projekt tooAzure.
 
 ## <a name="4-trigger-a-rebuild-and-redeploy-your-project"></a>4: utlösa en återskapning och omdistribuera ditt projekt
-1. Öppna en fil och ändra den i Visual Studio. Till exempel ändra filen `_Layout.cshtml` under vyerna\\delad mapp i en MVC-webbroll.
+1. Öppna en fil och ändra den i Visual Studio. Till exempel ändra hello filen `_Layout.cshtml` under hello vyer\\delad mapp i en MVC-webbroll.
    
     ![][17]
-2. Redigera sidfotstexten för platsen och spara filen.
+2. Redigera hello sidfotstexten för hello plats och spara hello-filen.
    
     ![][18]
-3. I **Solution Explorer**, öppna snabbmenyn för noden lösning, projektnoden eller filen du ändras och välj sedan **genomför**.
+3. I **Solution Explorer**, öppna hello snabbmenyn för hello lösning nod, projektnoden eller hello-filen som du har ändrats och välj sedan **genomför**.
 4. Ange en kommentar och välj **genomför**.
    
     ![][20]
-5. Välj den **Sync** länk.
+5. Välj hello **Sync** länk.
    
     ![][38]
-6. Välj den **Push** länk trycka på din genomförande till lagringsplatsen i Visual Studio Team Services. (Du kan också använda den **Sync** för att kopiera ditt incheckningar till databasen. Skillnaden är att **Sync** också tar emot de senaste ändringarna från databasen.)
+6. Välj hello **Push** länka toopush commit toohello databasen i Visual Studio Team Services. (Du kan också använda hello **Sync** knappen toocopy incheckningar toohello databasen. hello skillnaden är att **Sync** också hämtar hello senaste ändringarna från databasen hello.)
    
     ![][39]
-7. Välj den **hem** vill gå tillbaka till den **Team Explorer** startsidan.
+7. Välj hello **hem** knappen tooreturn toohello **Team Explorer** startsidan.
    
     ![][21]
-8. Välj **bygger** att visa versionerna pågår.
+8. Välj **bygger** tooview hello bygger pågår.
    
     ![][22]
    
     **Teamet Explorer** visar att en version har utlösts för din incheckning.
    
     ![][23]
-9. Om du vill visa detaljerade loggfil när build fortlöper, dubbelklicka på namnet på build pågår.
-10. Versionen är pågående, ta en titt på build-definition som skapades när du använde guiden för att länka till Azure.  Öppna snabbmenyn för build-definition och välj **redigera skapa Definition**.
+9. tooview detaljerade loggfil som hello skapa fortlöper, dubbelklickar du på hello namnet på hello build pågår.
+10. Hello build är pågående, ta en titt på hello build definition som skapades när du använde hello guiden toolink tooAzure.  Öppna hello snabbmenyn för hello build definition och välj **redigera skapa Definition**.
     
     ![][25]
-11. I den **utlösaren** fliken visas build-definition anges att bygga på varje incheckning, som standard. (För en molnbaserad tjänst bör Visual Studio Team Services skapar och distribuerar mastergrenen till mellanlagringsmiljön automatiskt. Du måste göra ett manuellt steg att distribuera liveplatsen. För en webbapp som inte har mellanlagring miljö distribuerar mastergrenen direkt till webbplatsen live.
+11. I hello **utlösaren** fliken ser du att hello build definition anges toobuild på varje incheckning, som standard. (För en molnbaserad tjänst bör Visual Studio Team Services skapar och distribuerar hello mastergrenen toohello mellanlagring miljö automatiskt. Du har fortfarande toodo en manuell åtgärd toodeploy toohello drift. För en webbapp som inte har mellanlagring miljön distribueras hello mastergrenen direkt toohello live plats.
     
     ![][26]
-12. I den **processen** fliken visas distributionsmiljö har angetts till namnet på din cloud service eller web app.
+12. I hello **processen** fliken visas hello distributionsmiljö anges toohello namnet på din cloud service eller web app.
     
      ![][27]
-13. Ange värden för egenskaper om du vill att andra värden än standardinställningarna. Egenskaperna för Azure-publicering finns i den **distribution** avsnitt, och du kan också behöva ange MSBuild-parametrar. Till exempel i ett moln service-projekt att ange en tjänstkonfiguration än ”moln” ange MSbuild parametrarna för `/p:TargetProfile=[YourProfile]` där *[YourProfile]* matchar en tjänstkonfigurationsfil med namnet ServiceConfiguration. *YourProfile*.cscfg.
+13. Ange värden för hello egenskaper om du vill att andra värden än hello standardvärden. hello egenskaper för Azure publicering finns i hello **distribution** avsnitt, och du kanske också tooset MSBuild-parametrar. Till exempel i molntjänstprojektet toospecify en tjänstkonfiguration än ”moln” och ange hello MSbuild-parametrar för`/p:TargetProfile=[YourProfile]` där *[YourProfile]* matchar en tjänstkonfigurationsfil med namnet ServiceConfiguration. *YourProfile*.cscfg.
     
-     I följande tabell visas de tillgängliga egenskaperna i den **distribution** avsnitt:
+     hello följande tabell visar hello tillgängliga egenskaper i hello **distribution** avsnitt:
     
     | Egenskap | Standardvärde |
     | --- | --- |
     | Tillåt ej betrodda certifikat |Om värdet är false måste SSL-certifikat signeras av en rotcertifikatutfärdare. |
-    | Tillåt uppgradering |Gör att distributionen ska uppdatera en befintlig distribution i stället för att skapa en ny. Bevarar den IP-adressen. |
+    | Tillåt uppgradering |Tillåter hello distribution tooupdate en befintlig distribution i stället för att skapa en ny. Bevarar hello IP-adress. |
     | Ta inte bort |Om värdet är true, Skriv inte över en befintlig orelaterade distribution (uppgraderingen tillåts). |
-    | Sökvägen till distributionsinställningar |Sökvägen till filen .pubxml för en webbapp i förhållande till rotmappen på lagringsplatsen. Ignoreras för molntjänster. |
-    | SharePoint-miljön för distribution |Samma som namnet på tjänsten. |
-    | Av Azure-distributionsmiljö |Web app eller molnet tjänstnamnet. |
+    | Sökvägen tooDeployment inställningar |hello sökväg tooyour .pubxml fil för en webbapp, relativa toohello rotmapp hello lagringsplatsen. Ignoreras för molntjänster. |
+    | SharePoint-miljön för distribution |Hej samma som hello tjänstnamn. |
+    | Av Azure-distributionsmiljö |hello web app eller molnet tjänstnamn. |
 14. Vid den tidpunkten ska din build slutföras.
     
      ![][28]
-15. Om du dubbelklickar på build-namnet, Visual Studio visas en **skapa sammanfattning**, inklusive alla resultat från associerade testprojekt.
+15. Om du dubbelklickar på hello build namn, Visual Studio visas en **skapa sammanfattning**, inklusive alla resultat från associerade testprojekt.
     
      ![][29]
-16. I den [klassiska Azure-portalen](http://go.microsoft.com/fwlink/?LinkID=213885), du kan visa den associerade distributionen på de **distributioner** fliken när mellanlagringsmiljön är markerad.
+16. I hello [klassiska Azure-portalen](http://go.microsoft.com/fwlink/?LinkID=213885), du kan visa hello associerad distribution på hello **distributioner** fliken när hello mellanlagring miljön är markerad.
     
      ![][30]
-17. Gå till webbplatsens URL. Välj bara för en webbapp i **Bläddra** knappen i portalen. För en tjänst i molnet, väljer du URL-Adressen i den **snabb i korthet** avsnitt i den **instrumentpanelen** sidan som visar mellanlagringsmiljön.
+17. Bläddra tooyour webbplatsens URL. För en webbapp väljer hello **Bläddra** knappen hello-portalen. Välj hello URL för en molntjänst i hello **snabb i korthet** avsnitt i hello **instrumentpanelen** sidan som visar hello mellanlagringsmiljön.
     
-    Distributioner från kontinuerlig integration för molntjänster publiceras till mellanlagringsmiljön som standard. Du kan ändra detta genom att ange den **alternativa Molntjänstmiljö** egenskapen **produktion**. Här är där webbplatsens URL på den molntjänst instrumentpanelssida.
+    Distributioner från kontinuerlig integration för molntjänster är publicerade toohello mellanlagringsmiljön som standard. Du kan ändra detta genom att ange hello **alternativa Molntjänstmiljö** egenskapen för**produktion**. Här är där hello Webbadress på hello molnbaserad tjänst instrumentpanelssida.
     
     ![][31]
     
-    En ny webbläsarflik öppnas för att visa webbplatsen körs.
+    En ny webbläsarflik öppnas tooreveal webbplatsen körs.
     
     ![][32]
-18. Om du gör andra ändringar i ditt projekt bygger mer du utlösare och du samlar flera distributioner. Den senaste som har markerats som aktiv.
+18. Om du gör andra ändringar tooyour projekt och du utlösaren bygger mer du samlar flera distributioner. hello senaste en är markerad som aktiv.
     
     ![][33]
 
 ## <a name="5-redeploy-an-earlier-build"></a>5: Distribuera om en tidigare version
-Det här steget är valfritt. Välj en tidigare distribution i den klassiska Azure-portalen och väljer **omdistribuera** till spola platsen till en tidigare incheckning. Observera att detta utlöser en ny version i TFS och skapa en ny post i distributionshistoriken.
+Det här steget är valfritt. I hello klassiska Azure-portalen, Välj en tidigare distribution och **omdistribuera** toorewind din webbplats tooan tidigare incheckning. Observera att detta utlöser en ny version i TFS och skapa en ny post i distributionshistoriken.
 
 ![][34]
 
-## <a name="6-change-the-production-deployment"></a>6: ändra produktionsdistributionen
-När du är klar kan du befordra mellanlagringsmiljön till produktionsmiljön genom att välja **växla** i den klassiska Azure-portalen. Nyligen distribuerade mellanlagringsmiljön höjs till produktionen och föregående produktionsmiljön, eventuella blir en mellanlagringsmiljön. Aktiv distribution kan vara olika för produktions- och Mellanlagringsmiljöer, men distributionshistoriken för senare versioner är detsamma oavsett miljö.
+## <a name="6-change-hello-production-deployment"></a>6: ändra hello Produktionsdistribution
+När du är klar kan du befordra hello mellanlagring toohello produktionsmiljön genom att välja **växla** i hello klassiska Azure-portalen. hello tidigare produktionsmiljö eventuella blir en mellanlagringsmiljön hello nyligen distribuerade mellanlagringsmiljön är upphöjt tooProduction. hello aktiv distribution kan vara olika för hello produktions- och mellanlagringsmiljöer, men hello distributionshistoriken för senare versioner är hello samma oavsett miljö.
 
 ![][35]
 
 ## <a name="7-deploy-from-a-working-branch"></a>7: Distribuera från en arbetsgren.
-När du använder Git du vanligtvis göra ändringar i en arbetsgren och integrera i mastergrenen när du utvecklar når slutfört tillstånd. Under utvecklingsfasen av ett projekt ska du vill skapa och distribuera arbetsgren till Azure.
+När du använder Git du vanligtvis göra ändringar i en arbetsgren och integrera i hello mastergrenen när du utvecklar når slutfört tillstånd. Under hello utvecklingsfasen av ett projekt du vill toobuild och distribuera hello fungerande gren tooAzure.
 
-1. I **Team Explorer**, Välj den **Start** knappen och välj sedan den **filialer** knappen.
+1. I **Team Explorer**, Välj hello **Start** knappen och välj sedan hello **filialer** knappen.
    
     ![][40]
-2. Välj den **ny gren** länk.
+2. Välj hello **ny gren** länk.
    
     ![][41]
-3. Ange namnet på grenen, till exempel ”arbetar” och välj **skapa gren**. Detta skapar en ny lokal gren.
+3. Ange hello namnet på hello gren, till exempel ”arbetar” och välj **skapa gren**. Detta skapar en ny lokal gren.
    
     ![][42]
-4. Publicera grenen. Välj filialen namn i **Opublicerat filialer**, och välj **publicera**.
+4. Publicera hello grenen. Välj hello gren namn i **Opublicerat filialer**, och välj **publicera**.
    
     ![][44]
-5. Som standard utlösa endast ändringar till mastergrenen en kontinuerlig version. Ställ in kontinuerlig build för en arbetsgren genom att välja den **bygger** sidan i **Team Explorer**, och välj **redigera skapa Definition**.
-6. Öppna den **inställningar för datakälla** fliken. Under **övervakas grenar för kontinuerlig integrering och bygga**, Välj **Klicka här om du vill lägga till en ny rad**.
+5. Som standard bara ändras toohello mastergrenen utlösaren en kontinuerlig version. tooset in kontinuerlig build för en arbetsgren, Välj hello **bygger** sidan i **Team Explorer**, och välj **redigera skapa Definition**.
+6. Öppna hello **inställningar för datakälla** fliken. Under **övervakas grenar för kontinuerlig integrering och bygga**, Välj **Klicka här tooadd en ny rad**.
    
     ![][47]
-7. Ange grenen som du skapat, till exempel refs, huvuden/fungerande.
+7. Ange hello grenen som du skapat, till exempel refs, huvuden/fungerande.
    
     ![][48]
-8. Gör en ändring i koden, öppna snabbmenyn för den ändrade filen och välj sedan **genomför**.
+8. Gör en ändring i hello kod, öppna hello snabbmenyn för hello ändras filen och välj sedan **genomför**.
    
     ![][43]
-9. Välj den **osynkroniserade incheckningar** länka och välj den **Sync** knappen eller **Push** länken för att kopiera ändringarna till kopian av arbetsgren i Visual Studio Team Services.
+9. Välj hello **osynkroniserade incheckningar** länka och välj hello **Sync** knapp eller hello **Push** länk toocopy hello ändras toohello kopia av hello arbetsgren i Visual Studio Team Services.
    
    ![][45]
-10. Navigera till den **bygger** visa och Sök efter den version som precis har utlösts för arbetsgren.
+10. Navigera toohello **bygger** visa och hitta hello-version som precis har utlösts för hello arbetsgren.
 
 ## <a name="next-steps"></a>Nästa steg
-Läs mer tips om att använda Git med Visual Studio Team Services i [utveckla och dela din kod i Git med Visual Studio](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs-2017) och för information om hur du använder en Git-lagringsplats som inte hanteras av Visual Studio Team Services att publicera till Azure, se [kontinuerlig distribution till Azure App Service](../app-service-web/app-service-continuous-deployment.md). Mer information om Visual Studio Team Services finns [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861).
+toolearn mer tips om att använda Git med Visual Studio Team Services, se [utveckla och dela din kod i Git med Visual Studio](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs-2017) och för information om hur du använder en Git-lagringsplats som inte hanteras av Visual Studio Team Services toopublish tooAzure, se [kontinuerlig distribution tooAzure Apptjänst](../app-service-web/app-service-continuous-deployment.md). Mer information om Visual Studio Team Services finns [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861).
 
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateTeamProjectInGit.PNG

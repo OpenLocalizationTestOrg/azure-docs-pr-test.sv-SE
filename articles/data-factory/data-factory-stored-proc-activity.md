@@ -1,6 +1,6 @@
 ---
-title: SQLServer lagrade Proceduraktiviteten
-description: "Lär dig hur du kan använda lagrade Proceduraktiviteten för SQL Server för att anropa en lagrad procedur i en Azure SQL Database eller Azure SQL Data Warehouse från Data Factory-pipelinen."
+title: aaaSQL Server lagrade Proceduraktiviteten
+description: "Lär dig hur du kan använda hello lagrade Proceduraktiviteten i SQL Server-tooinvoke en lagrad procedur i en Azure SQL Database eller Azure SQL Data Warehouse från Data Factory-pipelinen."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: spelluru
-ms.openlocfilehash: 6505d9aa2c7ae003bd928e2fa82cd923a9615394
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9116f80eefc59d95e866b2ba1de2feb1bdc4b1d4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQLServer lagrade Proceduraktiviteten
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -34,25 +34,25 @@ ms.lasthandoff: 08/03/2017
 > * [Anpassad aktivitet för .NET](data-factory-use-custom-activities.md)
 
 ## <a name="overview"></a>Översikt
-Du kan använda data transformation aktiviteter i en Datafabrik [pipeline](data-factory-create-pipelines.md) att transformera och bearbeta rådata till förutsägelser och insikter. Den lagrade Proceduraktiviteten är en av omvandling av aktiviteter som har stöd för Data Factory. Den här artikeln bygger på den [data transformation aktiviteter](data-factory-data-transformation-activities.md) artikel som presenterar en allmän översikt över data transformation och stöds omvandling aktiviteter i Data Factory.
+Du kan använda data transformation aktiviteter i en Datafabrik [pipeline](data-factory-create-pipelines.md) tootransform och bearbeta rådata i förutsägelser och insikter. hello är lagrade Proceduraktiviteten en av hello omvandling av aktiviteter som har stöd för Data Factory. Den här artikeln bygger på hello [data transformation aktiviteter](data-factory-data-transformation-activities.md) artikel som presenterar en allmän översikt över data transformation och hello stöd för omvandling av aktiviteter i Data Factory.
 
-Du kan använda den lagrade Proceduraktiviteten för att anropa en lagrad procedur i någon av följande datalager i ditt företag eller på ett Azure-dator (VM): 
+Du kan använda hello lagrade Proceduraktiviteten tooinvoke en lagrad procedur i någon av hello följande data lagras i företaget, eller på en Azure-dator (VM): 
 
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- SQL Server-databas.  Om du använder SQL Server, installera Data Management Gateway på samma dator som värd för databasen eller på en separat dator som har åtkomst till databasen. Data Management Gateway är en komponent som ansluter datakällor på lokala/på virtuella Azure-datorn med molntjänster i en säker och hanterad sätt. Se [Data Management Gateway](data-factory-data-management-gateway.md) artikeln för information.
+- SQL Server-databas.  Om du använder SQL Server, installera Data Management Gateway på hello samma datorn att värdar hello databas eller på en separat dator som har åtkomst till toohello databas. Data Management Gateway är en komponent som ansluter datakällor på lokala/på virtuella Azure-datorn med molntjänster i en säker och hanterad sätt. Se [Data Management Gateway](data-factory-data-management-gateway.md) artikeln för information.
 
 > [!IMPORTANT]
-> När du kopierar data till Azure SQL Database eller SQL Server, kan du konfigurera den **SqlSink** i en Kopieringsaktivitet att anropa en lagrad procedur med hjälp av den **sqlWriterStoredProcedureName** egenskapen. Mer information finns i [anropa lagrade procedur från kopieringsaktiviteten](data-factory-invoke-stored-procedure-from-copy-activity.md). Mer information om egenskapen Se följande artiklar för koppling: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Anropa en lagrad procedur vid kopiering av data till en Azure SQL Data Warehouse med hjälp av en kopieringsaktiviteten stöds inte. Men du kan använda aktiviteten lagrad procedur för att anropa en lagrad procedur i en SQL Data Warehouse. 
+> När du kopierar data till Azure SQL Database eller SQL Server, kan du konfigurera hello **SqlSink** i kopiera aktiviteten tooinvoke en lagrad procedur med hjälp av hello **sqlWriterStoredProcedureName** egenskapen. Mer information finns i [anropa lagrade procedur från kopieringsaktiviteten](data-factory-invoke-stored-procedure-from-copy-activity.md). Information om hello egenskapen finns i följande artiklar för koppling: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Anropa en lagrad procedur vid kopiering av data till en Azure SQL Data Warehouse med hjälp av en kopieringsaktiviteten stöds inte. Men du kan använda hello lagrade proceduren aktiviteten tooinvoke en lagrad procedur i en SQL Data Warehouse. 
 >  
-> När du kopierar data från Azure SQL Database eller SQL Server eller Azure SQL Data Warehouse, kan du konfigurera **SqlSource** i en Kopieringsaktivitet att anropa en lagrad procedur för att läsa data från källdatabasen med hjälp av den  **sqlReaderStoredProcedureName** egenskapen. Mer information finns i följande artiklar för koppling: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
+> När du kopierar data från Azure SQL Database eller SQL Server eller Azure SQL Data Warehouse, kan du konfigurera **SqlSource** i kopiera aktiviteten tooinvoke en lagrad procedur tooread data från hello källdatabasen med hjälp av hello  **sqlReaderStoredProcedureName** egenskapen. Mer information finns i hello följande artiklar för koppling: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
 
 
-Den här genomgången använder aktiviteten lagrad procedur i en pipeline för att anropa en lagrad procedur i en Azure SQL database. 
+hello följande genomgången använder hello lagrade Proceduraktiviteten i pipeline-tooinvoke en lagrad procedur i en Azure SQL database. 
 
 ## <a name="walkthrough"></a>Genomgång
 ### <a name="sample-table-and-stored-procedure"></a>Exempel på en tabell och lagrade procedurer
-1. Skapa följande **tabellen** i Azure SQL-databasen med hjälp av SQL Server Management Studio eller andra verktyg som du är nöjd med. Kolumnen datetimestamp är datum och tid när motsvarande ID har genererats.
+1. Skapa följande hello **tabellen** i Azure SQL-databasen med hjälp av SQL Server Management Studio eller andra verktyg som du är nöjd med. Hej datetimestamp kolumnen är hello datum och tid när motsvarande hello-ID har genererats.
 
     ```SQL
     CREATE TABLE dbo.sampletable
@@ -65,12 +65,12 @@ Den här genomgången använder aktiviteten lagrad procedur i en pipeline för a
     CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
     GO
     ```
-    ID är unikt identifieras och datetimestamp kolumnen är datum och tid när motsvarande ID har genererats.
+    ID är hello unika identifieras och hello datetimestamp kolumnen är hello datum och tid när motsvarande hello-ID har genererats.
     
     ![Exempeldata](./media/data-factory-stored-proc-activity/sample-data.png)
 
-    I det här exemplet är den lagrade proceduren i en Azure SQL Database. Om den lagrade proceduren finns i en Azure SQL Data Warehouse och SQL Server-databas, liknar tillvägagångssättet. SQL Server-databas måste du installera en [Data Management Gateway](data-factory-data-management-gateway.md).
-2. Skapa följande **lagrade proceduren** som infogar data i den **sampletable**.
+    I det här exemplet är hello lagrad procedur i en Azure SQL Database. Om hello lagrade proceduren finns i en Azure SQL Data Warehouse och SQL Server-databas, liknar hello-metoden. SQL Server-databas måste du installera en [Data Management Gateway](data-factory-data-management-gateway.md).
+2. Skapa följande hello **lagrade proceduren** som infogar data i toohello **sampletable**.
 
     ```SQL
     CREATE PROCEDURE sp_sample @DateTime nvarchar(127)
@@ -83,53 +83,53 @@ Den här genomgången använder aktiviteten lagrad procedur i en pipeline för a
     ```
 
    > [!IMPORTANT]
-   > **Namnet** och **skiftläge** för parametern (DateTime i det här exemplet) måste matcha parameter som anges i pipeline/aktivitet JSON. I den lagrade proceduren definitionen, kontrollerar du att  **@**  används som ett prefix för parametern.
+   > **Namnet** och **skiftläge** av hello parametern (DateTime i det här exemplet) måste matcha parameter som anges i hello pipeline/aktivitets-JSON. I hello lagrade Procedurdefinition, se till att  **@**  används som ett prefix för hello-parametern.
 
 ### <a name="create-a-data-factory"></a>Skapa en datafabrik
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. Klicka på **ny** på den vänstra menyn klickar du på **Intelligence + analys**, och klicka på **Data Factory**.
+1. Logga in för[Azure-portalen](https://portal.azure.com/).
+2. Klicka på **ny** på hello vänstra menyn **Intelligence + analys**, och klicka på **Data Factory**.
 
     ![Nya data factory](media/data-factory-stored-proc-activity/new-data-factory.png)    
-3. I den **nya datafabriken** bladet ange **SProcDF** för namnet. Azure Data Factory-namn är **globalt unika**. Du behöver Prefixnamn datafabriken med ditt namn, aktivera fabriken har skapats.
+3. I hello **nya datafabriken** bladet ange **SProcDF** för hello namn. Azure Data Factory-namn är **globalt unika**. Du måste tooprefix hello namn i hello data factory med ditt namn, tooenable hello har skapats av hello fabriken.
 
    ![Nya data factory](media/data-factory-stored-proc-activity/new-data-factory-blade.png)         
 4. Välj din **Azure-prenumeration**.
-5. För **resursgruppen**, gör du något av följande steg:
-   1. Klicka på **Skapa nytt** och ange ett namn för resursgruppen.
+5. För **resursgruppen**, gör du något av följande hello:
+   1. Klicka på **Skapa nytt** och ange ett namn för hello resursgrupp.
    2. Klicka på **använda befintliga** och välj en befintlig resursgrupp.  
-6. Välj **plats** för datafabriken.
-7. Välj **fäst på instrumentpanelen** så att du kan se datafabriken på instrumentpanelen nästa gång du loggar in.
-8. Klicka på **Skapa** på bladet **Ny datafabrik**.
-9. Du ser datafabriken som skapas i den **instrumentpanelen** på Azure-portalen. När datafabriken har skapats visas datafabrikssidan med innehållet i datafabriken.
+6. Välj hello **plats** för hello data factory.
+7. Välj **PIN-kod toodashboard** så att du kan se hello data factory på hello instrumentpanelen nästa gång du loggar in.
+8. Klicka på **skapa** på hello **nya data factory** bladet.
+9. Du ser hello data factory som skapas i hello **instrumentpanelen** av hello Azure-portalen. När hello datafabriken har skapats, visas hello data factory sidan som visar hello innehållet i hello data factory.
 
    ![Data Factory-startsida](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>Skapa en Azure SQL-länkade tjänst
-Efter att datafabriken kan du skapa en Azure SQL länkade tjänst som länkar din Azure SQL-databasen, som innehåller sampletable tabellen och sp_sample lagrade proceduren till din data factory.
+När du har skapat hello data factory, kan du skapa en Azure SQL-länkade tjänst som länkar din Azure SQL-databas som innehåller hello sampletable tabell och sp_sample lagrad procedur, tooyour data factory.
 
-1. Klicka på **författare och distribuera** på den **Datafabriken** bladet för **SProcDF** att starta Data Factory-redigeraren.
-2. Klicka på **Nytt datalager** på kommandoraden och välj **Azure SQL Database**. Du bör se JSON-skript för att skapa en Azure SQL-länkade tjänst i redigeraren.
+1. Klicka på **författare och distribuera** på hello **Datafabriken** bladet för **SProcDF** toolaunch hello Data Factory-redigeraren.
+2. Klicka på **Nytt datalager** hello kommandofältet och välj **Azure SQL Database**. Du bör se hello JSON-skript för att skapa en Azure SQL länkade tjänsten i hello-redigeraren.
 
    ![Nytt datalager](media/data-factory-stored-proc-activity/new-data-store.png)
-3. Gör följande ändringar i JSON-skript:
+3. Gör följande ändringar hello i hello JSON-skript:
 
-   1. Ersätt `<servername>` med namnet på din Azure SQL Database-server.
-   2. Ersätt `<databasename>` med den databas som du skapade i tabell och den lagrade proceduren.
-   3. Ersätt `<username@servername>` med det användarkonto som har åtkomst till databasen.
-   4. Ersätt `<password>` med lösenordet för användarkontot.
+   1. Ersätt `<servername>` med hello namnet på din Azure SQL Database-server.
+   2. Ersätt `<databasename>` med hello-databas som du skapade hello tabell och hello lagrad procedur.
+   3. Ersätt `<username@servername>` med hello-användarkonto som har åtkomst till toohello databas.
+   4. Ersätt `<password>` med hello lösenordet för användarkontot för hello.
 
       ![Nytt datalager](media/data-factory-stored-proc-activity/azure-sql-linked-service.png)
-4. Om du vill distribuera den länkade tjänsten klickar du på **distribuera** i kommandofältet. Bekräfta att du ser AzureSqlLinkedService i trädvyn till vänster.
+4. toodeploy hello länkade tjänsten klickar du på **distribuera** i hello kommandofält. Bekräfta att du ser hello AzureSqlLinkedService i hello trädet visa hello vänster.
 
     ![trädvy för länkad tjänst](media/data-factory-stored-proc-activity/tree-view.png)
 
 ### <a name="create-an-output-dataset"></a>Skapa en datauppsättning för utdata
-Du måste ange en datamängd för utdata för en lagrad procedur aktivitet, även om den lagrade proceduren inte skapar några data. Det beror på att den är datamängd för utdata som enheter schemat för aktiviteten (hur ofta aktiviteten körs - varje timme, varje dag, etc.). Datamängd för utdata måste använda en **länkade tjänsten** som refererar till en Azure SQL Database eller ett Azure SQL Data Warehouse eller en SQL Server-databas som du vill använda den lagrade proceduren för att köra. Datamängd för utdata kan fungera som ett sätt att skicka resultatet av den lagrade proceduren för senare bearbetning av en annan aktivitet ([länkning aktiviteter](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) i pipelinen. Dock skriver Data Factory inte automatiskt utdata från en lagrad procedur denna DataSet. Det är den lagrade proceduren som skriver till en SQLtabell som datamängd för utdata som pekar på. I vissa fall datamängd för utdata kan vara en **dummy dataset** (en datamängd som pekar på en tabell som inte innehåller utdata från den lagrade proceduren verkligen). Den här dummy datauppsättningen används bara för att ange schemat för att köra aktiviteten lagrad procedur. 
+Du måste ange en datamängd för utdata för en lagrad procedur aktivitet även om hello lagrade proceduren inte skapar några data. Det beror på att dess hello utdatauppsättningen som enheter hello schemat för hello aktivitet (hur ofta hello aktiviteten körs - varje timme, varje dag, etc.). Hej utdatauppsättningen måste använda en **länkade tjänsten** som refererar tooan Azure SQL Database eller ett Azure SQL Data Warehouse eller en SQL Server-databas som du vill hello lagrade proceduren toorun. Hej utdatauppsättningen kan fungera som ett sätt toopass hello resultat hello lagrade proceduren för senare bearbetning av en annan aktivitet ([länkning aktiviteter](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) i hello pipeline. Data Factory kan dock inte automatiskt skriva hello utdata från en lagrad procedur toothis dataset. Det är hello lagrad procedur som skrivningar tooa SQL-tabell som hello utdata dataset pekar på. I vissa fall hello utdatauppsättningen kan vara en **dummy dataset** (en datamängd som pekar tooa tabell som inte innehåller utdata från hello verkligen lagrade proceduren). Den här dummy datauppsättningen används bara för toospecify hello schema för att köra hello lagrade proceduraktiviteten. 
 
-1. Klicka på **... Flera** i verktygsfältet klickar du på **ny datamängd**, och klicka på **Azure SQL**. **Ny datamängd** i kommandofältet och välj **Azure SQL**.
+1. Klicka på **... Flera** på hello verktygsfältet **ny datamängd**, och klicka på **Azure SQL**. **Ny datamängd** på hello kommandot och välj **Azure SQL**.
 
     ![trädvy för länkad tjänst](media/data-factory-stored-proc-activity/new-dataset.png)
-2. Kopiera och klistra in följande JSON-skript i JSON-redigeringsprogrammet.
+2. Kopiera och klistra in hello följande JSON-skript i toohello JSON-redigerare.
 
     ```JSON
     {                
@@ -147,21 +147,21 @@ Du måste ange en datamängd för utdata för en lagrad procedur aktivitet, äve
         }
     }
     ```
-3. Om du vill distribuera datauppsättningen klickar du på **distribuera** i kommandofältet. Bekräfta att du ser dataset i trädvyn.
+3. toodeploy Hej dataset, klickar du på **distribuera** i hello kommandofält. Bekräfta att du ser hello datauppsättning i hello trädvyn.
 
     ![Trädvy med länkade tjänster](media/data-factory-stored-proc-activity/tree-view-2.png)
 
 ### <a name="create-a-pipeline-with-sqlserverstoredprocedure-activity"></a>Skapa en pipeline med SqlServerStoredProcedure aktivitet
 Nu ska vi skapa en pipeline med en lagrad procedur-aktivitet. 
 
-Observera följande egenskaper: 
+Observera hello följande egenskaper: 
 
-- Den **typen** egenskap är inställd på **SqlServerStoredProcedure**. 
-- Den **storedProcedureName** i typen egenskaper har angetts till **sp_sample** (namnet på den lagrade proceduren).
-- Den **storedProcedureParameters** avsnittet innehåller en parameter med namnet **DataTime**. Namn och skiftläge för parametern i JSON måste matcha namnet och versaler och gemener i parametern i definitionen för lagrade proceduren. Om du behöver lägga till null för en parameter, använder du syntax: `"param1": null` (gemener).
+- Hej **typen** egenskapen för**SqlServerStoredProcedure**. 
+- Hej **storedProcedureName** i typen ange egenskaper för**sp_sample** (namnet på hello lagrade proceduren).
+- Hej **storedProcedureParameters** avsnittet innehåller en parameter med namnet **DataTime**. Namn och skiftläge för hello-parametern i JSON måste matcha hello namn och versaler och gemener i hello-parametern i hello lagrade Procedurdefinition. Om du behöver lägga till null för en parameter, använder hello syntax: `"param1": null` (gemener).
  
-1. Klicka på **... Flera** i kommandofältet och på **ny pipeline**.
-2. Kopiera och klistra in följande kodutdrag JSON:   
+1. Klicka på **... Flera** hello kommandofältet och klicka på **ny pipeline**.
+2. Kopiera och klistra in följande JSON-fragment hello:   
 
     ```JSON
     {
@@ -194,32 +194,32 @@ Observera följande egenskaper:
         }
     }
     ```
-3. Om du vill distribuera pipeline, klickar du på **distribuera** i verktygsfältet.  
+3. toodeploy hello pipeline, klickar du på **distribuera** hello i verktygsfältet.  
 
-### <a name="monitor-the-pipeline"></a>Övervaka pipeline
-1. Klicka på **X** för att stänga bladen i Data Factory-redigeraren och för att gå tillbaka till Data Factory-bladet och klicka på **Diagram**.
+### <a name="monitor-hello-pipeline"></a>Övervakaren hello pipeline
+1. Klicka på **X** tooclose Data Factory-redigeraren blad toonavigate tillbaka toohello Data Factory-bladet och på **Diagram**.
 
     ![Diagram över sida vid sida](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
-2. I **diagramvyn** visas en översikt över pipelines och datauppsättningar som används i den här självstudien.
+2. I hello **diagramvyn**du se en översikt över hello pipelines och datauppsättningar som används i den här kursen.
 
     ![Diagram över sida vid sida](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
-3. Dubbelklicka på datauppsättningen i diagramvyn `sprocsampleout`. Du ser segment i tillståndet Ready. Det bör finnas fem segment eftersom ett segment skapas för varje timme mellan start- och sluttid från JSON.
+3. Dubbelklicka på hello dataset i hello diagramvyn, `sprocsampleout`. Du ser hello segment i tillståndet Ready. Det bör finnas fem segment eftersom ett segment skapas för varje timme mellan hello starttid och sluttid från hello JSON.
 
     ![Diagram över sida vid sida](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. När ett segment är i **klar** tillstånd, kör en `select * from sampletable` frågan mot Azure SQL-databasen för att verifiera att data har infogas i tabellen av den lagrade proceduren.
+4. När ett segment är i **klar** tillstånd, kör en `select * from sampletable` frågan mot hello Azure SQL database tooverify som hello data infogades i tabellen toohello av hello lagrade proceduren.
 
    ![utdata](./media/data-factory-stored-proc-activity/output.png)
 
-   Se [övervaka pipeline](data-factory-monitor-manage-pipelines.md) detaljerad information om hur du övervakar Azure Data Factory pipelines.  
+   Se [övervakaren hello pipeline](data-factory-monitor-manage-pipelines.md) detaljerad information om hur du övervakar Azure Data Factory pipelines.  
 
 
 ## <a name="specify-an-input-dataset"></a>Ange en inkommande datauppsättning
-I den här genomgången har lagrade proceduraktiviteten inte några inkommande datauppsättningar. Om du anger en inkommande datauppsättning körs inte aktiviteten lagrad procedur tills segment av inkommande dataset är tillgänglig (i tillståndet Ready). Dataset kan vara en externa datauppsättningen (som inte tillverkas av en annan aktivitet i samma rörledning) eller en intern datauppsättning som produceras av en överordnad aktivitet (den aktivitet som körs före den här aktiviteten). Du kan ange flera indatauppsättningar för aktiviteten lagrad procedur. Om du gör det körs lagrade proceduraktiviteten bara när alla inkommande dataset-segment (i tillståndet Ready). Inkommande dataset kan inte användas i den lagrade proceduren som en parameter. Den används endast för att kontrollera beroendet innan du startar aktiviteten lagrad procedur.
+I hello genomgången har lagrade proceduraktiviteten inte några inkommande datauppsättningar. Om du anger en inkommande datauppsättning hello lagrade proceduraktiviteten körs inte förrän hello segment av inkommande dataset är tillgänglig (i tillståndet Ready). hello dataset kan vara en externa datauppsättningen (som inte tillverkas av en annan aktivitet i hello samma rörledning) eller en intern datauppsättning som produceras av en överordnad aktivitet (hello aktivitet som körs före den här aktiviteten). Du kan ange flera indatauppsättningar för hello lagrade proceduraktiviteten. Om du gör det hello lagrade proceduraktiviteten körs bara när alla hello inkommande dataset-segment är tillgängliga (statusen Ready). hello inkommande dataset kan inte användas i hello lagrade procedur som en parameter. Det är bara använda toocheck hello beroende innan start hello lagrade proceduraktiviteten.
 
 ## <a name="chaining-with-other-activities"></a>Länkning med andra aktiviteter
-Ange utdata från den överordnade aktiviteten som indata för den här aktiviteten om du vill att en överordnad aktivitet med den här aktiviteten. När du gör det fungerar inte aktiviteten lagrad procedur tills den överordnade aktiviteten har slutförts och datamängd för utdata för den överordnade aktiviteten är tillgänglig (i redo status). Du kan ange utdata-datauppsättningar på flera överordnade aktiviteter som indatauppsättningar för aktiviteten lagrad procedur. När du gör det körs lagrade proceduraktiviteten bara när alla inkommande dataset-segment är tillgängliga.  
+Ange hello utdata från hello uppströmsaktivitet som indata för den här aktiviteten om du vill toochain en överordnad aktivitet med den här aktiviteten. När du gör det hello lagrade proceduraktiviteten körs inte förrän hello överordnade aktiviteten har slutförts och hello utdatauppsättningen hello överordnad aktivitet är tillgänglig (i redo status). Du kan ange utdata-datauppsättningar på flera överordnade aktiviteter som inkommande datauppsättningar på hello lagrade proceduraktiviteten. När du gör det hello lagrade proceduraktiviteten körs bara när alla hello inkommande dataset-segment är tillgängliga.  
 
-I följande exempel utdata från kopieringsaktiviteten är: OutputDataset som utgör indata för aktiviteten lagrad procedur. Aktiviteten lagrad procedur körs därför inte förrän kopieringsaktiviteten har slutförts och OutputDataset sektorn är tillgänglig (i tillståndet Ready). Om du anger flera indatauppsättningar körs aktiviteten lagrad procedur inte förrän alla indata dataset-segment är tillgängliga (statusen Ready). Inkommande datauppsättningar kan inte användas direkt som parametrar för aktiviteten lagrad procedur. 
+I följande exempel hello, hello utdata från hello kopieringsaktiviteten är: OutputDataset som utgör indata för hello lagrade proceduraktiviteten. Därför hello lagrade proceduraktiviteten körs inte förrän hello kopieringsaktiviteten har slutförts och hello OutputDataset sektorn är tillgänglig (i tillståndet Ready). Om du anger flera indatauppsättningar hello lagrade proceduraktiviteten körs inte förrän alla hello inkommande dataset-segment är tillgängliga (statusen Ready). Hej indatauppsättningar kan inte användas direkt som parametrar toohello lagrade proceduraktiviteten. 
 
 Mer information om länkning aktiviteter finns [flera aktiviteter i en pipeline](data-factory-create-pipelines.md#multiple-activities-in-a-pipeline)
 
@@ -228,7 +228,7 @@ Mer information om länkning aktiviteter finns [flera aktiviteter i en pipeline]
 
     "name": "ADFTutorialPipeline",
     "properties": {
-        "description": "Copy data from a blob to blob",
+        "description": "Copy data from a blob tooblob",
         "activities": [
             {
                 "type": "Copy",
@@ -274,15 +274,15 @@ Mer information om länkning aktiviteter finns [flera aktiviteter i en pipeline]
 }
 ```
 
-På liknande sätt att länka en aktivitet för store-procedur med **underordnade aktiviteter** (aktiviteter som körs när aktiviteten lagrad procedur har slutförts), ange datamängd för utdata för aktiviteten lagrad procedur som indata för den underordnad aktivitet i pipelinen.
+På liknande sätt toolink hello store proceduraktiviteten med **underordnade aktiviteter** (hello aktiviteter som körs efter hello lagrade proceduraktiviteten har slutförts), ange hello datamängd för utdata för hello lagrade proceduraktiviteten som en Ange hello underordnad aktivitet i hello pipeline.
 
 > [!IMPORTANT]
-> När du kopierar data till Azure SQL Database eller SQL Server, kan du konfigurera den **SqlSink** i en Kopieringsaktivitet att anropa en lagrad procedur med hjälp av den **sqlWriterStoredProcedureName** egenskapen. Mer information finns i [anropa lagrade procedur från kopieringsaktiviteten](data-factory-invoke-stored-procedure-from-copy-activity.md). Mer information om egenskapen finns i följande artiklar för koppling: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties).
+> När du kopierar data till Azure SQL Database eller SQL Server, kan du konfigurera hello **SqlSink** i kopiera aktiviteten tooinvoke en lagrad procedur med hjälp av hello **sqlWriterStoredProcedureName** egenskapen. Mer information finns i [anropa lagrade procedur från kopieringsaktiviteten](data-factory-invoke-stored-procedure-from-copy-activity.md). Mer information om hello egenskap finns hello följande artiklar för koppling: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties).
 >  
-> När du kopierar data från Azure SQL Database eller SQL Server eller Azure SQL Data Warehouse, kan du konfigurera **SqlSource** i en Kopieringsaktivitet att anropa en lagrad procedur för att läsa data från källdatabasen med hjälp av den  **sqlReaderStoredProcedureName** egenskapen. Mer information finns i följande artiklar för koppling: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
+> När du kopierar data från Azure SQL Database eller SQL Server eller Azure SQL Data Warehouse, kan du konfigurera **SqlSource** i kopiera aktiviteten tooinvoke en lagrad procedur tooread data från hello källdatabasen med hjälp av hello  **sqlReaderStoredProcedureName** egenskapen. Mer information finns i hello följande artiklar för koppling: [Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties), [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)          
 
 ## <a name="json-format"></a>JSON-format
-Här är JSON-format för att definiera en lagrade Proceduraktiviteten:
+Här är hello JSON-format för att definiera en lagrade Proceduraktiviteten:
 
 ```JSON
 {
@@ -293,7 +293,7 @@ Här är JSON-format för att definiera en lagrade Proceduraktiviteten:
     "outputs":  [ { "name": "outputtable" } ],
     "typeProperties":
     {
-        "storedProcedureName": "<name of the stored procedure>",
+        "storedProcedureName": "<name of hello stored procedure>",
         "storedProcedureParameters":  
         {
             "param1": "param1Value"
@@ -303,20 +303,20 @@ Här är JSON-format för att definiera en lagrade Proceduraktiviteten:
 }
 ```
 
-I följande tabell beskrivs egenskaperna JSON:
+hello följande tabell beskrivs egenskaperna JSON:
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| namn | Namnet på aktiviteten |Ja |
-| Beskrivning |Text som beskriver aktiviteten är det som används för |Nej |
+| namn | Namnet på hello-aktivitet |Ja |
+| description |Text som beskriver vilka hello-aktivitet används för |Nej |
 | typ | Måste anges till: **SqlServerStoredProcedure** | Ja |
-| Indata | Valfri. Om du anger en inkommande datauppsättning, måste det vara tillgänglig (statusen ”klar”) för aktiviteten lagrad procedur att köra. Inkommande dataset kan inte användas i den lagrade proceduren som en parameter. Den används endast för att kontrollera beroendet innan du startar aktiviteten lagrad procedur. |Nej |
-| utdata | Du måste ange en datamängd för utdata för en lagrad procedur-aktivitet. Utdatauppsättningen anger den **schema** för aktiviteten lagrad procedur (varje timme, varje vecka, månad, etc.). <br/><br/>Datamängd för utdata måste använda en **länkade tjänsten** som refererar till en Azure SQL Database eller ett Azure SQL Data Warehouse eller en SQL Server-databas som du vill använda den lagrade proceduren för att köra. <br/><br/>Datamängd för utdata kan fungera som ett sätt att skicka resultatet av den lagrade proceduren för senare bearbetning av en annan aktivitet ([länkning aktiviteter](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) i pipelinen. Dock skriver Data Factory inte automatiskt utdata från en lagrad procedur denna DataSet. Det är den lagrade proceduren som skriver till en SQLtabell som datamängd för utdata som pekar på. <br/><br/>I vissa fall datamängd för utdata kan vara en **dummy dataset**, som används bara för att ange schemat för att köra aktiviteten lagrad procedur. |Ja |
-| storedProcedureName |Ange namnet på den lagrade proceduren i Azure SQL database eller Azure SQL Data Warehouse eller SQL Server-databas som representeras av den länkade tjänst som använder utdatatabellen. |Ja |
-| storedProcedureParameters |Ange värden för parametrarna för lagrade procedurer. Om du måste överföra null för en parameter, använder du syntax: ”param1”: null (alla gemen). Se följande exempel mer information om hur du använder den här egenskapen. |Nej |
+| Indata | Valfri. Om du anger en inkommande datauppsättning, måste det vara tillgänglig (statusen ”klar”) för hello lagrade proceduren aktiviteten toorun. hello inkommande dataset kan inte användas i hello lagrade procedur som en parameter. Det är bara använda toocheck hello beroende innan start hello lagrade proceduraktiviteten. |Nej |
+| utdata | Du måste ange en datamängd för utdata för en lagrad procedur-aktivitet. Utdatauppsättningen anger hello **schema** för hello lagrade proceduraktiviteten (varje timme, varje vecka, månad, etc.). <br/><br/>Hej utdatauppsättningen måste använda en **länkade tjänsten** som refererar tooan Azure SQL Database eller ett Azure SQL Data Warehouse eller en SQL Server-databas som du vill hello lagrade proceduren toorun. <br/><br/>Hej utdatauppsättningen kan fungera som ett sätt toopass hello resultat hello lagrade proceduren för senare bearbetning av en annan aktivitet ([länkning aktiviteter](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) i hello pipeline. Data Factory kan dock inte automatiskt skriva hello utdata från en lagrad procedur toothis dataset. Det är hello lagrad procedur som skrivningar tooa SQL-tabell som hello utdata dataset pekar på. <br/><br/>I vissa fall hello utdatauppsättningen kan vara en **dummy dataset**, som används för endast toospecify hello schema för att köra hello lagrade proceduraktiviteten. |Ja |
+| storedProcedureName |Ange hello namnet på hello lagrade procedur i hello Azure SQL database eller Azure SQL Data Warehouse eller SQL Server-databas som representeras av hello länkade tjänst som hello utdata tabellen använder. |Ja |
+| storedProcedureParameters |Ange värden för parametrarna för lagrade procedurer. Om du behöver toopass null för en parameter, Använd hello syntax: ”param1”: null (alla gemen). Se följande exempel toolearn om hur du använder den här egenskapen hello. |Nej |
 
 ## <a name="passing-a-static-value"></a>Skicka ett statiskt värde
-Nu ska vi Överväg att lägga till en annan kolumn med namnet 'Scenariot' i tabellen som innehåller ett statiskt värde med namnet 'Dokumentera exempel'.
+Nu ska vi Överväg att lägga till en annan kolumn med namnet 'Scenariot' i hello tabell som innehåller ett statiskt värde med namnet 'Dokumentera exempel'.
 
 ![Exempeldata 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
 
@@ -347,7 +347,7 @@ BEGIN
 END
 ```
 
-Nu kan skicka den **scenariot** och värdet från aktiviteten lagrad procedur. Den **typeProperties** avsnitt i föregående exempel ser ut som följande utdrag:
+Nu kan skicka hello **scenariot** värde för parametern och hello från hello lagrade proceduraktiviteten. Hej **typeProperties** avsnitt i föregående exempel ser ut som följande fragment hello hello:
 
 ```JSON
 "typeProperties":

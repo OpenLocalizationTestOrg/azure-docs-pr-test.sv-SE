@@ -1,6 +1,6 @@
 ---
-title: "Skapa en VM-tillgänglighetsuppsättning i Azure | Microsoft Docs"
-description: "Lär dig hur du skapar en tillgänglighetsuppsättning för hanterade eller ohanterade tillgänglighetsuppsättning för dina virtuella datorer med Azure PowerShell eller portalen i Resource Manager-distributionsmodellen."
+title: "aaaCreate en VM-tillgänglighet som i Azure | Microsoft Docs"
+description: "Lär dig hur toocreate en hanterad tillgänglighet ange eller ohanterad tillgänglighet för dina virtuella datorer med Azure PowerShell eller hello portalen i hello Resource Manager-distributionsmodellen."
 keywords: "Tillgänglighetsuppsättning"
 services: virtual-machines-windows
 documentationcenter: 
@@ -17,56 +17,56 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e813ade8e105169f21138ed8a8eafda1ff39f42e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eadcdfcd28bb2fa21a4647f207b390c33e022ef1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="increase-vm-availability-by-creating-an-azure-availability-set"></a>Öka VM tillgänglighet genom att skapa en Azure tillgänglighetsuppsättning 
-Tillgänglighetsuppsättningar ger redundans till ditt program. Vi rekommenderar att du grupperar två eller flera virtuella datorer i en tillgänglighetsuppsättning. Den här konfigurationen garanterar att under antingen en planerad eller oplanerad underhållshändelse, minst en virtuell dator ska vara tillgänglig och uppfyller 99,95% SLA för Azure. Mer information finns i [Serviceavtal för Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
+Tillgänglighetsuppsättningar ger redundans tooyour program. Vi rekommenderar att du grupperar två eller flera virtuella datorer i en tillgänglighetsuppsättning. Den här konfigurationen garanterar att under antingen en planerad eller oplanerad underhållshändelse, minst en virtuell dator blir tillgänglig och uppfyller hello 99,95% SLA för Azure. Mer information finns i hello [SLA för virtuella datorer](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
 
 > [!IMPORTANT]
-> Virtuella datorer måste skapas i samma resursgrupp som tillgänglighetsuppsättningen.
+> Virtuella datorer måste skapas i hello samma resursgrupp som hello tillgänglighetsuppsättning.
 > 
 
-Om du vill att den virtuella datorn ska ingå i en tillgänglighetsuppsättning, måste du skapa tillgänglighetsuppsättning först eller när du skapar din första virtuella datorn i uppsättningen. Om den virtuella datorn kommer att använda hanterade diskar, skapas tillgänglighetsuppsättningen som en hanterad tillgänglighetsuppsättning.
+Om du vill VM toobe-tillhör en tillgänglighetsuppsättning, du behöver toocreate hello tillgänglighet Ange första eller när du skapar din första virtuella datorn i hello uppsättningen. Om den virtuella datorn kommer att använda hanterade diskar, skapas hello tillgänglighetsuppsättning som en hanterad tillgänglighetsuppsättning.
 
-Läs mer om hur du skapar och använder tillgänglighetsuppsättningar [hantera tillgängligheten för virtuella datorer](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Läs mer om hur du skapar och använder tillgänglighetsuppsättningar [hantera hello tillgängligheten för virtuella datorer](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="use-the-portal-to-create-an-availability-set-before-creating-your-vms"></a>Använda portalen för att skapa en tillgänglighetsuppsättning innan du skapar dina virtuella datorer
-1. Klicka på hubbmenyn, **Bläddra** och välj **tillgänglighetsuppsättningar**.
-2. På den **tillgänglighetsuppsättningar bladet**, klickar du på **Lägg till**.
+## <a name="use-hello-portal-toocreate-an-availability-set-before-creating-your-vms"></a>Använd hello portal toocreate en tillgänglighetsuppsättning innan du skapar dina virtuella datorer
+1. Hej hubbmenyn, klicka på **Bläddra** och välj **tillgänglighetsuppsättningar**.
+2. På hello **tillgänglighetsuppsättningar bladet**, klickar du på **Lägg till**.
    
-    ![Skärmbild som visar knappen Lägg till för att skapa en ny tillgänglighet anges.](./media/create-availability-set/add-availability-set.png)
-3. På den **skapa tillgänglighetsuppsättning** bladet slutföra information för din uppsättning.
+    ![Skärmbild som visar hello lägga till knappen för att skapa en ny tillgänglighetsuppsättning.](./media/create-availability-set/add-availability-set.png)
+3. På hello **skapa tillgänglighetsuppsättning** bladet, fullständig hello information för din uppsättning.
    
-    ![Skärmbild som visar informationen du behöver ange för att skapa tillgänglighetsuppsättningen.](./media/create-availability-set/create-availability-set.png)
+    ![Skärmbild som visar hello information du behöver tooenter toocreate hello tillgänglighet anges.](./media/create-availability-set/create-availability-set.png)
    
-   * **Namnet** -namnet ska vara 1 – 80 tecken som består av siffror, bokstäver, punkter, understreck och bindestreck. Det första tecknet måste vara en bokstav eller siffra. Det sista tecknet måste vara en bokstav, siffra eller understreck.
-   * **Fault domäner** -feldomäner definiera grupp med virtuella datorer som delar en gemensam käll- och strömbrytare. Som standard de virtuella datorerna separeras över upp till tre feldomäner och kan ändras till mellan 1 och 3.
-   * **Uppdatera domäner** – fem update domäner tilldelas som standard och det kan anges mellan 1 och 20. Uppdatera domäner ange grupper av virtuella datorer och underliggande fysiska maskinvara som kan startas på samma gång. Till exempel om vi anger fem uppdatera domäner, när fler än fem virtuella datorer är konfigurerade i en enda Tillgänglighetsuppsättning sjätte virtuella datorn placeras i samma uppdateringsdomän som den första virtuella datorn, sjunde i samma UD som den andra virtuella och så vidare. Ordningen på omstarter kanske inte sekventiell, men kommer att startas om endast en uppdateringsdomän i taget.
-   * **Prenumerationen** – Välj prenumerationen som ska användas om du har fler än en.
-   * **Resursgruppen** -Välj en befintlig resursgrupp genom att klicka på pilen och välja en resursgrupp i nedrullningsbara ned. Du kan också skapa en ny resursgrupp genom att skriva in ett namn. Namnet kan innehålla något av följande tecken: bokstäver, siffror, punkter, bindestreck, understreck och inledande eller avslutande parentes. Namnet får inte sluta med en punkt. Alla virtuella datorer i tillgänglighetsgruppen måste skapas i samma resursgrupp som tillgänglighetsuppsättningen.
-   * **Plats** -Välj en plats från listrutan.
-   * **Hanterad** – Välj *Ja* att skapa en hanterad tillgänglighetsuppsättning för att använda med virtuella datorer som använder hanterade diskar för lagring. Välj **nr** om de virtuella datorerna som ska ingå i uppsättningen använder ohanterade diskar i ett lagringskonto.
+   * **Namnet** -hello namnet ska vara 1 – 80 tecken som består av siffror, bokstäver, punkter, understreck och bindestreck. hello första tecknet måste vara en bokstav eller siffra. hello sista tecknet måste vara en bokstav, siffra eller understreck.
+   * **Fault domäner** -feldomäner definiera hello grupp virtuella datorer som delar en gemensam käll- och strömbrytare. Som standard hello VMs separeras över in toothree feldomäner och kan vara ändrade toobetween 1 och 3.
+   * **Uppdatera domäner** – fem update domäner tilldelas som standard och du kan ange toobetween 1 och 20. Uppdatera domäner ange grupper av virtuella datorer och underliggande fysiska maskinvara som kan startas på hello samtidigt. Till exempel om vi anger fem update domäner, när fler än fem virtuella datorer är konfigurerade i en enda Tillgänglighetsuppsättning, hello sjätte virtuella datorn placeras i hello samma uppdateringsdomän som hello första virtuella datorn hello sjunde i hello samma UD som hello andra virtuella datorer och så vidare. hello ordning hello omstarter kanske inte sekventiell, men kommer att startas om endast en uppdateringsdomän i taget.
+   * **Prenumerationen** -Välj hello prenumeration toouse om du har mer än ett.
+   * **Resursgruppen** -Välj en befintlig resursgrupp genom att klicka på pilen hello och välja en resursgrupp hello listrutan. Du kan också skapa en ny resursgrupp genom att skriva in ett namn. hello kan innehålla något av följande tecken hello: bokstäver, siffror, punkter, bindestreck, understreck och inledande eller avslutande parentes. hello namn får inte sluta med en punkt. Alla hello virtuella datorer i hello tillgänglighetsgrupp behöver toobe som skapats i hello samma resursgrupp som hello tillgänglighetsuppsättning.
+   * **Plats** -Välj en plats hello i listrutan.
+   * **Hanterad** – Välj *Ja* toocreate en hanterad tillgänglighet ange toouse med virtuella datorer som använder hanterade diskar för lagring. Välj **nr** om hello virtuella datorer som ska finnas i uppsättning hello använda ohanterade diskar i ett lagringskonto.
    
-4. När du är klar att lägga till information, klickar du på **skapa**. 
+4. När du är klar att mata in hello information klickar du på **skapa**. 
 
-## <a name="use-the-portal-to-create-a-virtual-machine-and-an-availability-set-at-the-same-time"></a>Använda portalen för att skapa en virtuell dator och en tillgänglighetsuppsättning på samma gång
-Du kan också skapa en ny tillgänglighetsuppsättning för den virtuella datorn när du skapar den första virtuella datorn i uppsättningen om du skapar en ny virtuell dator med hjälp av portalen. Om du väljer att använda hanterade diskar för den virtuella datorn skapas en hanterad tillgänglighetsuppsättning.
+## <a name="use-hello-portal-toocreate-a-virtual-machine-and-an-availability-set-at-hello-same-time"></a>Använd hello portal toocreate en virtuell dator och en tillgänglighet ange på hello samma tid
+Om du skapar en ny virtuell dator med hjälp av hello portal, du kan också skapa en ny tillgänglighetsuppsättning för hello VM, när du skapar hello första virtuella datorn i hello uppsättningen. Om du väljer toouse hanteras diskarna för den virtuella datorn skapas en hanterad tillgänglighetsuppsättning.
 
-![Skärmbild som visar processen för att skapa en ny tillgänglighetsuppsättning när du skapar den virtuella datorn.](./media/create-availability-set/new-vm-avail-set.png)
+![Skärmbild som visar hello processen för att skapa en ny tillgänglighetsuppsättning när du skapar hello VM.](./media/create-availability-set/new-vm-avail-set.png)
 
-## <a name="add-a-new-vm-to-an-existing-availability-set-in-the-portal"></a>Lägg till en ny virtuell dator i en befintlig tillgänglighetsuppsättning i portalen
-Se till att du skapar den i samma för varje ytterligare VM som du skapar som ska tillhöra i uppsättningen **resursgruppen** och välj sedan den befintliga tillgänglighetsuppsättning i steg3. 
+## <a name="add-a-new-vm-tooan-existing-availability-set-in-hello-portal"></a>Lägg till en ny VM tooan befintliga tillgänglighetsuppsättning i hello-portalen
+För varje ytterligare VM som du skapar som bör tillhör hello set, bör du skapa den i hello samma **resursgruppen** och sedan väljer hello befintliga tillgänglighetsuppsättning i steg3. 
 
-![Skärmbild som visar hur du väljer en befintlig tillgänglighetsuppsättning för den virtuella datorn.](./media/create-availability-set/add-vm-to-set.png)
+![Skärmbild som visar hur tooselect en befintlig tillgänglighetsuppsättning ange toouse för den virtuella datorn.](./media/create-availability-set/add-vm-to-set.png)
 
-## <a name="use-powershell-to-create-an-availability-set"></a>Använd PowerShell för att skapa en tillgänglighetsuppsättning
-Det här exemplet skapar en tillgänglighetsuppsättning namngivna **myAvailabilitySet** i den **myResourceGroup** resursgrupp i den **västra USA** plats. Detta måste göras innan du skapar den första virtuella dator som ska ingå i uppsättningen.
+## <a name="use-powershell-toocreate-an-availability-set"></a>Använd PowerShell toocreate tillgänglighet ange
+Det här exemplet skapar en tillgänglighetsuppsättning namngivna **myAvailabilitySet** i hello **myResourceGroup** resursgrupp i hello **västra USA** plats. Detta måste toobe klar innan du skapar hello första virtuella dator som ska ingå i hello uppsättningen.
 
-Innan du börjar bör du kontrollera att du har den senaste versionen av AzureRM.Compute PowerShell-modulen. Kör följande kommando för att installera den.
+Innan du börjar bör du kontrollera att du har hello senaste versionen av hello AzureRM.Compute PowerShell-modulen. Kör följande kommando tooinstall hello den.
 
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
@@ -91,8 +91,8 @@ Om du använder egna storage-konton för dina virtuella datorer, skriver du:
 Mer information finns i [ny AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset).
 
 ## <a name="troubleshooting"></a>Felsökning
-* När du skapar en virtuell dator, om det inte finns i den nedrullningsbara listan i portalen tillgänglighetsuppsättningen som du vill kan du skapade den i en annan resursgrupp. Om du inte vet resursgruppen för din tillgänglighet ange, gå till hubbmenyn och klicka på Bläddra > tillgänglighetsuppsättningar för att se en lista över dina tillgänglighetsuppsättningar, och resursgrupper som de tillhör.
+* När du skapar kanske en virtuell dator, om hello tillgänglighetsuppsättningen som du vill använda inte finns i hello listrutan i hello portal du har skapat den i en annan resursgrupp. Om du inte vet hello resursgrupp för ditt tillgänglighet ange, gå toohello hubbmenyn och klicka på Bläddra > tillgänglighetsuppsättningar toosee anger en lista över din tillgänglighet och vilka resursgrupper som de tillhör.
 
 ## <a name="next-steps"></a>Nästa steg
-Lägga till ytterligare lagringsutrymme till den virtuella datorn genom att lägga till ytterligare [datadisk](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Lägga till ytterligare lagringsutrymme tooyour VM genom att lägga till ytterligare [datadisk](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

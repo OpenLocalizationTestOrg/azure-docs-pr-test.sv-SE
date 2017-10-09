@@ -1,16 +1,16 @@
-#### <a name="to-stop-and-start-a-virtual-device"></a>Stoppa och starta en virtuell enhet
-Om du vill stoppa en virtuell enhet, klickar du på namnet och klickar sedan på **Stäng av**. När den virtuella enheten stängs av, är dess status **Stoppar**. När den virtuella enheten har stängts av, är dess status **Stoppad**.
+#### <a name="toostop-and-start-a-virtual-device"></a>toostop och starta en virtuell enhet
+toostop en virtuell enhet klickar du på namnet och klicka sedan på **avstängning**. Medan hello virtuella enheten stängs av, är dess status **stoppar**. När hello virtuella enheten har avbrutits dess status är **stoppad**.
 
-Du kan använda följande cmdletar för att stoppa och starta en virtuell enhet.
+Använd följande cmdlet: ar toostop hello och starta en virtuell enhet.
 
 `Stop-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
 `Start-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
-#### <a name="to-restart-a-virtual-device"></a>Starta om en virtuell enhet
-När en virtuell enhet är igång och du vill starta om den, klickar du på dess namn och klickar sedan på **Starta om**. Medan den virtuella enheten startas om är dess status **Startar om**. När den virtuella enheten är klar för användning, är dess status **Igång**.
+#### <a name="toorestart-a-virtual-device"></a>toorestart en virtuell enhet
+När en virtuell enhet är igång och du vill toorestart, klickar du på namnet och klickar sedan på **starta om**. Hello virtuella enheten startas om är dess status är **omstart**. När hello virtuell enhet är redo för du toouse, är dess status **kör**.
 
-Du kan använda följande cmdletar för att starta om en virtuell enhet.
+Använd hello följande cmdlet toorestart en virtuell enhet.
 
 `Restart-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 

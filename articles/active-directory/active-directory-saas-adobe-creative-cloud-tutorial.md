@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Adobe kreativa molntjänster | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Adobe kreativa moln."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Adobe kreativa moln."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,137 +13,137 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 3d13608612c77236346b0e98551d7fc427d602e1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5e66255e9785465974a23cd3ef79c24e28c0250f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Självstudier: Azure Active Directory-integrering med Adobe kreativa moln
 
-I kursen får lära du att integrera Adobe kreativa moln med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate Adobe kreativa moln med Azure Active Directory (AD Azure).
 
-Integrera Adobe kreativa moln med Azure AD ger dig följande fördelar:
+Integrera Adobe kreativa moln med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till Adobe kreativa moln
-- Du kan aktivera användarna att automatiskt hämta loggat in på Adobe kreativa molnet (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - till Azure-hanteringsportalen
+- Du kan styra i Azure AD som har åtkomst tooAdobe kreativa moln
+- Du kan aktivera din användare tooautomatically get inloggade tooAdobe kreativa molnet (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure Management portal
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med Adobe kreativa molnet, behöver du följande:
+tooconfigure Azure AD-integrering med Adobe kreativa molnet, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En Adobe kreativa molnet enkel inloggning på aktiverade prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Du bör inte använda produktionsmiljön, om det inte är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion av en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Adobe kreativa moln från galleriet
+1. Lägga till Adobe kreativa moln från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>Att lägga till Adobe kreativa moln från galleriet
-Du måste lägga till Adobe kreativa moln från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Adobe kreativa moln i Azure AD.
+## <a name="adding-adobe-creative-cloud-from-hello-gallery"></a>Lägga till Adobe kreativa moln från hello-galleriet
+tooconfigure hello integrering av Adobe kreativa moln i Azure AD, behöver du tooadd Adobe kreativa molnet hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till Adobe kreativa moln från galleriet:**
+**tooadd Adobe kreativa moln från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-hanteringsportalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-hanteringsportalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Klicka på **Lägg till** knappen överst i dialogrutan.
+3. Klicka på **Lägg till** hello längst upp i hello dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **Adobe kreativa molnet**.
+4. Skriv i sökrutan hello **Adobe kreativa molnet**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_000.png)
 
-5. Välj i resultatpanelen **Adobe kreativa molnet**, och klicka sedan på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **Adobe kreativa molnet**, och klicka sedan på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_0001.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Adobe kreativa molnet baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till motsvarande användaren i Adobe kreativa molnet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk mellan en Azure AD-användare och relaterade användaren i Adobe kreativa molnet upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Adobe kreativa molnet är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användaren i Adobe kreativa molnet toobe upprätta.
 
-Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i Adobe kreativa molnet.
+Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i Adobe kreativa molnet.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med Adobe kreativa molnet, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med Adobe kreativa molnet, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Adobe kreativa molnet](#creating-an-adobe-creative-cloud-test-user)**  – du har en motsvarighet för Britta Simon i Adobe kreativa moln som är kopplad till Azure AD-representation av henne.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Adobe kreativa molnet](#creating-an-adobe-creative-cloud-test-user)**  -toohave en motsvarighet för Britta Simon i Adobe kreativa moln som är länkade toohello Azure AD-representation av henne.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-hanteringsportalen och konfigurera enkel inloggning i tillämpningsprogrammet Adobe kreativa molnet.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure Management portal och konfigurera enkel inloggning i tillämpningsprogrammet Adobe kreativa molnet.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med Adobe kreativa molnet:**
+**tooconfigure Azure AD enkel inloggning med Adobe kreativa moln, utför följande steg hello:**
 
-1. I Azure-hanteringsportalen på den **Adobe kreativa molnet** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure Management portal på hello **Adobe kreativa molnet** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** dialogrutan som **läge** Välj **SAML-baserade inloggning** att aktivera enkel inloggning på.
+2. På hello **enkel inloggning** dialogrutan som **läge** Välj **SAML-baserade inloggning** tooenable för enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_01.png)
 
-3. På den **Adobe kreativa molnet domän och URL: er** avsnittet, utför följande steg om du vill konfigurera programmet i **IDP** initierade läge:
+3. På hello **Adobe kreativa molnet domän och URL: er** avsnittet, utför följande steg om du inte vill tooconfigure hello programmet hello **IDP** initierade läge:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_url1.png)
 
-    a. I den **identifierare** textruta Skriv värdet som:`https://www.okta.com/saml2/service-provider/<token>`
+    a. I hello **identifierare** textruta hello TYPVÄRDE som:`https://www.okta.com/saml2/service-provider/<token>`
 
-    b. I den **Reply URL** textruta Skriv en URL med följande mönster:`https://<company name>.okta.com/auth/saml20/accauthlinktest`
+    b. I hello **Reply URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<company name>.okta.com/auth/saml20/accauthlinktest`
 
     > [!NOTE] 
-    > Observera att detta inte är verkliga värden. Du måste uppdatera dessa värden med de faktiska identifierare och Reply-URL. Här rekommenderar vi att du om du vill använda det unika värdet på strängen i identifieraren. Om du behöver skapa en användare manuellt måste du kontakta supportteamet Adobe kreativa molnet.
+    > Observera att detta inte är hello verkliga värden. Du har tooupdate dessa värden med hello faktiska identifierare och svars-URL. Vi rekommenderar här du toouse hello unikt värde i strängen i hello identifierare. Om du behöver toocreate en användare manuellt, måste toocontact hello Adobe kreativa molnet supportteamet.
 
-4. På den **Adobe kreativa molnet domän och URL: er** avsnittet, utför följande steg om du vill konfigurera programmet i **SP** initierade läge:
+4. På hello **Adobe kreativa molnet domän och URL: er** avsnittet, utför följande steg om du inte vill tooconfigure hello programmet hello **SP** initierade läge:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_url2.png)
 
-    a. Klicka på den **visa avancerade inställningar för URL: en** alternativet
+    a. Klicka på hello **visa avancerade inställningar för URL: en** alternativet
 
-    b. I den **inloggnings-URL** textruta Skriv värdet som:`https://adobe.com`
+    b. I hello **inloggnings-URL** textruta hello TYPVÄRDE som:`https://adobe.com`
 
-5. På den **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara certifikatfilen på datorn.
+5. På hello **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara sedan hello certifikat på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_05.png) 
 
-6. På den **Adobe kreativa Molnkonfigurationen** klickar du på **Konfigurera Adobe kreativa molnet** att öppna **konfigurera inloggning** fönster. Kopiera den **SAML enhets-Id** och **URL för SAML SSO-Service** från Snabbreferens avsnitt.
+6. På hello **Adobe kreativa Molnkonfigurationen** klickar du på **Konfigurera Adobe kreativa molnet** tooopen **konfigurera inloggning** fönster. Kopiera hello **SAML enhets-Id** och **URL för SAML SSO-Service** från Snabbreferens avsnitt.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_06.png) 
 
-7. I en annan webbläsarfönster inloggning till Adobe kreativa moln-klient som administratör.
+7. I en annan webbläsarfönstret, inloggning tooyour Adobe kreativa molnet klient som administratör.
 
-8.  Gå till **identitet** i det vänstra navigeringsfönstret och klicka på din domän. Utför följande steg på **enkel inloggning på konfiguration krävs** avsnitt.
+8.  Gå för**identitet** hello vänstra navigeringsfönstret och klicka på din domän. Utför följande steg hello **enkel inloggning på konfiguration krävs** avsnitt.
 
     ![Inställningar för](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_001.png "inställningar")
 
-9. Klicka på **Bläddra** hämtade certifikatet från Azure AD för att överföra **IDP certifikat**.
+9. Klicka på **Bläddra** tooupload hello hämtat certifikat från Azure AD för**IDP certifikat**.
 
-10. I den **IDP utfärdaren** textruta, ange värdet för **SAML enhets-Id** som du kopierade från **konfigurera inloggning** avsnitt i Azure-portalen.
+10. I hello **IDP utfärdaren** textruta placera hello värdet för **SAML enhets-Id** som du kopierade från **konfigurera inloggning** avsnitt i Azure-portalen.
 
-11. I den **IDP inloggnings-URL** textruta, ange värdet för **URL för SAML SSO-Service** som du kopierade från **konfigurera inloggning** avsnitt i Azure-portalen.
+11. I hello **IDP inloggnings-URL** textruta placera hello värdet för **URL för SAML SSO-Service** som du kopierade från **konfigurera inloggning** avsnitt i Azure-portalen.
 
 12. Välj **HTTP - omdirigering** som **IDP bindning**.
 
@@ -151,55 +151,55 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-hanteringsportal
  
 14. Klicka på **spara** knappen.
 
-15. Instrumentpanelen visas nu XML **”hämta Metadata”** filen. Den innehåller Adobe EntityDescriptor Webbadressen och AssertionConsumerService. Öppna filen och konfigurera dem i Azure AD-program.
+15. hello instrumentpanelen visas nu hello XML **”hämta Metadata”** filen. Den innehåller Adobe EntityDescriptor Webbadressen och AssertionConsumerService. Öppna hello-filen och konfigurera dem i hello Azure AD-program.
 
     ![Konfigurera enkel inloggning på App-sida](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_002.png)
 
     ![Konfigurera enkel inloggning på App-sida](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
-    a. Använd EntityDescriptor värdet Adobe för **identifierare** på den **konfigurera Appinställningar** dialogrutan.
+    a. Använd hello EntityDescriptor värdet Adobe tillhandahålls för **identifierare** på hello **konfigurera Appinställningar** dialogrutan.
 
-    b. Använd AssertionConsumerService värdet Adobe för **Reply URL** på den **konfigurera Appinställningar** dialogrutan.
+    b. Använd hello AssertionConsumerService värdet Adobe tillhandahålls för **Reply URL** på hello **konfigurera Appinställningar** dialogrutan.
  
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i Azure Management portal kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure Management portal kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-hanteringsportalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-hanteringsportalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_01.png) 
 
-2. Gå till **användare och grupper** och på **alla användare** att visa en lista över användare.
+2. Gå för**användare och grupper** och på **alla användare** toodisplay hello lista över användare.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_02.png) 
 
-3. Klicka på överst i dialogrutan **Lägg till** att öppna den **användaren** dialogrutan.
+3. Hello överst i dialogrutan hello klickar du på **Lägg till** tooopen hello **användaren** dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**. 
 
 ### <a name="creating-an-adobe-creative-cloud-test-user"></a>Skapa en testanvändare Adobe kreativa moln
 
-För att aktivera Azure AD-användare att logga in på Adobe kreativa molnet, måste de etableras i Adobe kreativa moln.  
-Adobe kreativa moln är etablering en manuell aktivitet.
+I ordning tooenable Azure AD-användare toolog i Adobe kreativa moln, måste de etableras i Adobe kreativa moln.  
+I hello fallet med Adobe kreativa moln är etablering en manuell aktivitet.
 
-**Utför följande steg för att etablera en användarkonton:**
+**tooprovision användarkonton, utföra hello följande steg:**
 
-1. Logga in på webbplatsen Adobe kreativa molnet företag som administratör.
+1. Logga in tooyour Adobe kreativa molnet företagets platsen som en administratör.
 
 2. Klicka på **personer**.
 
@@ -209,34 +209,34 @@ Adobe kreativa moln är etablering en manuell aktivitet.
 
     ![Bjuda in användare](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_002.png "bjuda in användare")
 
-4. På den **bjuda in personer** dialogrutan utför följande steg:
+4. På hello **bjuda in personer** dialogrutan utför hello följande steg:
 
     ![Bjuda in](./media/active-directory-saas-adobe-creative-cloud-tutorial/create_aaduser_003.png "bjuda in")
 
-    a. I den **e-post** textruta skriver Britta Simon konto e-postadress.
+    a. I hello **e-post** textruta typen hello e-postadress för Britta Simon konto.
     
     b. Klicka på **bjuda in**.
 
     > [!NOTE]
-    > Innehavaren för Azure Active Directory-konto ett e-postmeddelande och länken för att bekräfta sina konton innan den aktiveras.
+    > hello Azure Active Directory-konto innehavaren kommer ett e-postmeddelande och följ en länk tooconfirm sitt konto innan den aktiveras.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning med sin åtkomst beviljas till Adobe kreativa moln.
+I det här avsnittet Aktivera Britta Simon toouse Azure enkel inloggning genom att ge sina access tooAdobe kreativa molnet.
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela Adobe kreativa molnet Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooAdobe kreativa moln, utför hello följande steg:**
 
-1. Öppna vyn program i Azure-hanteringsportalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure Management portal öppnar du hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **Adobe kreativa molnet**.
+2. Välj i listan med program hello **Adobe kreativa molnet**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_50.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -244,7 +244,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -252,14 +252,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen Adobe kreativa molnet på åtkomstpanelen du bör få automatiskt inloggade i tillämpningsprogrammet Adobe kreativa molnet.
+När du klickar på hello Adobe kreativa molnet panelen i hello åtkomstpanelen får automatiskt inloggade tooyour Adobe kreativa molnapp.
 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

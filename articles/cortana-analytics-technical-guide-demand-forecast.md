@@ -1,6 +1,6 @@
 ---
-title: "Kräver prognos i energi tekniska Guide | Microsoft Docs"
-description: "En teknisk guide till Lösningsmall med Microsoft Cortana Intelligence för begäran vid en prognos i energiförbrukning."
+title: aaaDemand prognos i energi Technical Guide | Microsoft Docs
+description: "En teknisk guide toohello Lösningsmall med Microsoft Cortana Intelligence för begäran vid en prognos i energiförbrukning."
 services: cortana-analytics
 documentationcenter: 
 author: yijichen
@@ -14,225 +14,225 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
-ms.openlocfilehash: c3bbef8fee018dc54e7d3edb86e3f9434999bdae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c97b7c19c9e3a317aecc329e61a0692d2f1ec53e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Teknisk guide till Cortana Intelligence lösning mallen för begäran vid en prognos i energi
+# <a name="technical-guide-toohello-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Tekniska guide toohello Cortana Intelligence Lösningsmall för begäran vid en prognos i energi
 ## <a name="overview"></a>**Översikt**
-Lösningsmallar är avsedda att skynda på processen för att skapa en E2E demo ovanpå Cortana Intelligence Suite. En mall för distribuerade ska etablera din prenumeration med nödvändiga Cortana Intelligence-komponenten och skapa relationer mellan. Det lägger också pipeline data med exempeldata komma genereras från ett simuleringen program. Hämta data simulatorn från länken och installera den på den lokala datorn, finns i Viktigt.txt anvisningar om hur du använder simulatorn. Data som genereras av simulatorn kommer hydrate i data pipeline och starta genererar machine learning förutsägelse som kan sedan visualiserade på Power BI-instrumentpanelen.
+Lösningsmallar är utformade tooaccelerate hello processen för att skapa en E2E demo ovanpå Cortana Intelligence Suite. En mall för distribuerade etablera din prenumeration med nödvändiga Cortana Intelligence-komponenten och bygga hello relationer mellan. Det lägger också hello data pipeline med exempeldata komma genereras från ett simuleringen program. Hämta hello data simulator från hello länken och installera den på din lokala dator finns i Viktigt.txt toohello anvisningar om hur du använder hello simulatorn. Data som genereras från hello simulator kommer hydrate hello data pipeline och börja generera machine learning förutsägelse som kan sedan visualiserade på hello Power BI-instrumentpanelen.
 
-Mallen lösning hittar [här](https://gallery.cortanaintelligence.com/SolutionTemplate/Demand-Forecasting-for-Energy-1)
+Hej lösningsmall hittar [här](https://gallery.cortanaintelligence.com/SolutionTemplate/Demand-Forecasting-for-Energy-1)
 
-Distributionsprocessen vägleder dig igenom flera steg för att ställa in autentiseringsuppgifterna lösning. Kontrollera att du registrera dessa autentiseringsuppgifter, till exempel lösningens namn, användarnamn och lösenord som du anger under distributionen.
+hello distributionsprocessen vägleder dig igenom flera steg tooset in autentiseringsuppgifterna lösning. Kontrollera att du registrera dessa autentiseringsuppgifter, till exempel lösningens namn, användarnamn och lösenord som du anger under distributionen av hello.
 
-Målet med det här dokumentet är att förklara Referensarkitektur och olika komponenter som har etablerats i din prenumeration som en del av den här lösningen mallen. Dokumentet också talar om hur du ersätter exempeldata, med verkliga data egen för att kunna se insikter/förutsägelser från du vann data. Dessutom kan de dokumentet pratar om delar av Lösningsmall som behöver ändras om du vill anpassa lösningen med dina egna data. Instruktioner om hur du skapar Power BI-instrumentpanelen för den här lösningen mallen finns i slutet.
+hello syftet med det här dokumentet är tooexplain hello-Referensarkitektur och olika komponenter som har etablerats i din prenumeration som en del av den här lösningen mallen. hello dokumentet berättar också om hur tooreplace hello exempeldata med verkliga data i din egen toobe kan toosee insikter/förutsägelser som du vann data. Dessutom hello dokumentet pratar om hello delar av hello Lösningsmall som behöver toobe ändras om du vill toocustomize hello-lösningen med dina egna data. Anvisningar om hur toobuild hello Power BI-instrumentpanel för den här lösningen mallen tillhandahålls hello slutet.
 
 ## <a name="big-picture"></a>**Stor bild**
 ![](media/cortana-analytics-technical-guide-demand-forecast/ca-topologies-energy-forecasting.png)
 
 ### <a name="architecture-explained"></a>Arkitekturen beskrivs
-När lösningen har distribuerats kan olika Azure-tjänster i Cortana Analytics Suite aktiveras (*dvs.* Event Hub, Stream Analytics, HDInsight, Data Factory Maskininlärning *etc.*). För arkitekturdiagrammet ovan visas på en hög nivå hur begäran prognoser för energi Lösningsmall är uppbyggd från slutpunkt till slutpunkt. Du kommer att kunna granska dessa tjänster genom att klicka på dem på lösningen mallen diagram som skapats med distributionen av lösningen. I följande avsnitt beskrivs varje del.
+När hello-lösningen distribueras olika Azure-tjänster i Cortana Analytics Suite aktiveras (*dvs.* Event Hub, Stream Analytics, HDInsight, Data Factory Maskininlärning *etc.*). hello arkitekturdiagrammet ovan visas på en hög nivå hur hello begäran prognoser för energi Lösningsmall är uppbyggd från slutpunkt till slutpunkt. Du kommer att kunna tooinvestigate tjänsterna genom att klicka på dem på hello lösning mallen diagram som skapats med hello distribution av hello lösning. hello följande avsnitt beskrivs varje del.
 
 ## <a name="data-source-and-ingestion"></a>**Datakällan och införandet**
 ### <a name="synthetic-data-source"></a>Syntetiska datakälla
-Datakällan som används genereras från ett program som du kan hämta och kör lokalt efter slutförd distribution för den här mallen. Du hittar instruktioner för att hämta och installera det här programmet i fältet egenskaper när du väljer den första noden som kallas energi prognoser Data Simulator i lösningen mallen diagrammet. Det här programmet feeds den [Azure Event Hub](#azure-event-hub) med datapunkter, eller händelser som ska användas i resten av flödet lösning.
+För den här mallen hello data genereras källa används från ett program som du kan hämta och kör lokalt efter slutförd distribution. Du hittar hello instruktioner toodownload och installera det här programmet i fält för hello egenskaper när du väljer hello första noden uppmanade hello lösning mallen diagram energi prognoser Data simulatorn. Det här programmet feeds hello [Azure Event Hub](#azure-event-hub) med datapunkter, eller händelser som ska användas i hello resten av hello lösning flödet.
 
-Händelsen generation programmet kommer att fylla i Azure-Händelsehubb endast när det körs på datorn.
+hello händelse generation program kommer att fylla i hello Azure Event Hub endast när det körs på datorn.
 
 ### <a name="azure-event-hub"></a>Azure Event Hub
-Den [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) service är mottagaren av indata som angetts av syntetiska datakällan som beskrivs ovan.
+Hej [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) service är hello mottagaren av hello indata hello syntetiska datakälla som beskrivs ovan.
 
 ## <a name="data-preparation-and-analysis"></a>**Förberedelse av data och analys**
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
-Den [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) används för att tillhandahålla nästan analys i realtid på Indataströmmen från den [Azure Event Hub](#azure-event-hub) tjänst och publicera resultatet till en [Power BI](https://powerbi.microsoft.com) instrumentpanelen som arkiverar alla rådata inkommande händelser till den [Azure Storage](https://azure.microsoft.com/services/storage/) tjänsten för senare bearbetning av den [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) service.
+Hej [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) tjänsten är används tooprovide nära analys i realtid på hello Indataströmmen från hello [Azure Event Hub](#azure-event-hub) tjänst och publicera resultatet till en [Power BI](https://powerbi.microsoft.com) instrumentpanelen som arkiverar alla rådata inkommande händelser toohello [Azure Storage](https://azure.microsoft.com/services/storage/) tjänsten för senare bearbetning av hello [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) service.
 
 ### <a name="hd-insights-custom-aggregation"></a>HD insikter anpassade aggregering
-Tjänsten Azure HD Insight används för att köra [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript (styrd av Azure Data Factory) att tillhandahålla aggregeringar för raw-händelser som har arkiverats med Azure Stream Analytics-tjänsten.
+hello Azure HD Insight service är används toorun [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript (styrd av Azure Data Factory) tooprovide aggregeringar på raw hello-händelser som har arkiverats hello Azure Stream Analytics-tjänsten.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-Den [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) tjänsten används (styrd av Azure Data Factory) så att prognosens på framtida energiförbrukningen för en viss region angivna indata som tagits emot.
+Hej [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) tjänsten används (styrd av Azure Data Factory) toomake prognos på framtida energiförbrukningen för en viss region anges hello indata togs emot.
 
 ## <a name="data-publishing"></a>**Publicering av data**
 ### <a name="azure-sql-database-service"></a>Azure SQL Database-tjänsten
-Den [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) används för att lagra (hanteras av Azure Data Factory) förutsägelser som tagits emot av tjänsten Azure Machine Learning som ska användas i den [Power BI](https://powerbi.microsoft.com) instrumentpanelen.
+Hej [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) tjänsten är används toostore (hanteras av Azure Data Factory) hello förutsägelser som tagits emot av hello Azure Machine Learning-tjänst som ska användas i hello [Power BI](https://powerbi.microsoft.com) instrumentpanelen.
 
 ## <a name="data-consumption"></a>**Användning av data**
 ### <a name="power-bi"></a>Power BI
-Den [Power BI](https://powerbi.microsoft.com) används för att visa en instrumentpanel som innehåller aggregeringar som tillhandahålls av den [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) tjänsten samt begäran prognos resultat lagras i [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) som skapas med hjälp av den [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) service. Anvisningar om hur du skapar Power BI-instrumentpanelen för den här lösningen-mallen finns i avsnittet nedan.
+Hej [Power BI](https://powerbi.microsoft.com) tjänsten är används tooshow en instrumentpanel som innehåller aggregeringar som tillhandahålls av hello [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) tjänsten samt begäran prognos resultat lagras i [Azure SQL Databasen](https://azure.microsoft.com/services/sql-database/) som skapas med hjälp av hello [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) service. Anvisningar om hur toobuild hello Power BI-instrumentpanel för den här lösningen-mallen finns i toohello nedan.
 
-## <a name="how-to-bring-in-your-own-data"></a>**Hur du hanterar i dina egna data**
-Det här avsnittet beskrivs hur du hanterar dina egna data till Azure och vilka områden kräver ändringar för de data du sätta i den här arkitekturen.
+## <a name="how-toobring-in-your-own-data"></a>**Hur toobring i dina egna data**
+Det här avsnittet beskrivs hur toobring tooAzure egna data och vilka områden kräver ändringar för hello data du sätta i den här arkitekturen.
 
-Det är inte troligt att alla dataset som du kan aktivera matchar datamängden som används för den här lösningen mallen. Förstå dina data och kraven kommer att vara avgörande i hur du ändrar den här mallen för att arbeta med dina egna data. Om det här är din första exponeringen till tjänsten Azure Machine Learning, kan du få en introduktion till den med hjälp av exemplet i [skapa ditt första experiment](machine-learning/machine-learning-create-experiment.md).
+Det är inte troligt att alla dataset som du kan aktivera matchar hello dataset används för den här lösningen mallen. Förstå dina data och kraven kommer att vara avgörande i hur du ändrar den här mallen toowork med dina egna data. Om det här är din första exponering toohello tjänsten Azure Machine Learning du får en introduktion tooit med hjälp av hello exemplet i [hur toocreate ditt första experiment](machine-learning/machine-learning-create-experiment.md).
 
-I följande avsnitt beskrivs i avsnitt på den mall som kräver ändringar när en ny datamängd införs.
+hello följande avsnitt innehåller information om hello avsnitt av hello-mall som kräver ändringar när en ny datamängd införs.
 
 ### <a name="azure-event-hub"></a>Azure Event Hub
-Den [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) tjänsten är mycket allmänna, så att data kan vara upp till hubben i CSV- eller JSON-format. Ingen särskild bearbetning sker i Azure-Händelsehubb, men det är viktigt att du förstår de data som matas in.
+Hej [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) tjänsten är mycket allmänna, så att data kan läggas upp toohello hubb i CSV- eller JSON-format. Ingen särskild bearbetning sker i hello Azure Event Hub, men det är viktigt att du förstår hello data som matas in.
 
-Det här dokumentet beskriver inte hur att mata in data, men ett enkelt skicka händelser eller data till en Azure-Händelsehubb med hjälp av den [Event Hub API](event-hubs/event-hubs-programming-guide.md).
+Det här dokumentet beskriver inte hur tooingest dina data, men en enkelt skicka händelser eller data tooan Azure Event Hub med hello [Event Hub API](event-hubs/event-hubs-programming-guide.md).
 
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
-Den [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) används för att tillhandahålla nästan analys i realtid genom att läsa från dataströmmar och skickar data till flera källor.
+Hej [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) tjänsten är används tooprovide nära analys i realtid genom att läsa från dataströmmar och mata ut data tooany antal källor.
 
-Den begäran prognoser för energi Lösningsmall består Azure Stream Analytics-fråga av två underfrågor varje förbrukar händelser från Azure Event Hub-tjänsten som indata och utdata behöver två olika platser. Dessa utdata består av en Power BI datauppsättning och en Azure-lagringsplats.
+Hello begäran prognoser för energi Lösningsmall består hello Azure Stream Analytics-fråga av två underfrågor varje förbrukar händelser från hello Azure Event Hub-tjänsten som indata och utdata tootwo olika platser med. Dessa utdata består av en Power BI datauppsättning och en Azure-lagringsplats.
 
-Den [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) fråga kan hittas av:
+Hej [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) fråga kan hittas av:
 
-* Logga in på den [Azure-hanteringsportalen](https://manage.windowsazure.com/)
-* Hitta stream analytics-jobb ![](media/cortana-analytics-technical-guide-demand-forecast/icon-stream-analytics.png) som genererades när lösningen har distribuerats. En för att skicka data till blob storage (t.ex. mytest1streaming432822asablob) och den andra är för att skicka data till Power BI (t.ex. mytest1streaming432822asapbi).
+* Logga in på hello [Azure-hanteringsportalen](https://manage.windowsazure.com/)
+* Hitta hello stream analytics-jobb ![](media/cortana-analytics-technical-guide-demand-forecast/icon-stream-analytics.png) som genererades när hello lösningen har distribuerats. En är för push-överföring tooblob datalagring (t.ex. mytest1streaming432822asablob) och hello andra en är push-överföring av data tooPower BI (t.ex. mytest1streaming432822asapbi).
 * Att välja
 
-  * ***INDATA*** kan du se frågan indata
-  * ***FRÅGAN*** kan du se frågan sig själv
-  * ***Matar ut*** att visa olika utdata
+  * ***INDATA*** tooview hello frågan indata
+  * ***FRÅGAN*** tooview hello själva frågan
+  * ***Matar ut*** tooview hello olika utdata
 
-Information om Azure Stream Analytics query konstruktionen kan hittas i den [referens för Stream Analytics Query](https://msdn.microsoft.com/library/azure/dn834998.aspx) på MSDN.
+Information om Azure Stream Analytics query konstruktionen kan hittas i hello [referens för Stream Analytics Query](https://msdn.microsoft.com/library/azure/dn834998.aspx) på MSDN.
 
-I den här lösningen tillhandahålls Azure Stream Analytics-jobbet som matar ut datamängd med nästan realtidsanalys information om den inkommande dataströmmen till en Power BI-instrumentpanel som en del av den här lösningen mallen. Eftersom det är implicit kunskap om dataformatet för inkommande, skulle de här frågorna behöva ändras baserat på din dataformat.
+Hello Azure Stream Analytics-jobb som matar ut datamängd med nästan realtidsanalys information om hello inkommande data dataströmmen tooa Power BI-instrumentpanel som har angetts som en del av den här lösningen mallen i den här lösningen. Eftersom implicit kunskap om hello format för inkommande data behöver de här frågorna toobe ändras baserat på dataformat.
 
-Andra Azure Stream Analytics-jobbet matar ut alla [Händelsehubb](https://azure.microsoft.com/services/event-hubs/) händelser till [Azure Storage](https://azure.microsoft.com/services/storage/) och därför kräver inga ändringar oavsett din dataformat som fullständig händelseinformation strömmas till lagring.
+hello andra Azure Stream Analytics-jobbet matar ut alla [Händelsehubb](https://azure.microsoft.com/services/event-hubs/) händelser till [Azure Storage](https://azure.microsoft.com/services/storage/) och därför kräver inga ändringar oavsett format för dina data som strömmas hello fullständig händelseinformation toostorage.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
-Den [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) service samordnar rörelser och bearbetning av data. I begäran prognoser för energi Lösningsmall datafabriken består av tolv [pipelines](data-factory/data-factory-create-pipelines.md) att flytta och bearbeta de data som använder olika tekniker.
+Hej [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) service samordnar hello rörelser och bearbetning av data. I hello begäran prognoser för energi Lösningsmall hello data factory består av tolv [pipelines](data-factory/data-factory-create-pipelines.md) att flytta och bearbeta hello data med olika teknologier.
 
-  Du kan komma åt din data factory genom att öppna noden Data Factory längst ned i lösningen mallen diagram som skapats med distributionen av lösningen. Detta leder till datafabriken på Azure-hanteringsportalen. Om du ser fel under dina datauppsättningar kan ignorera du de som de är på grund av datafabriken som distribueras innan datagenerator startades. Dessa fel förhindrar inte din data factory från att fungera.
+  Du kan komma åt din data factory genom att öppna hello Data Factory nod längst hello hello lösning mallen diagram som skapats med hello distribution av hello lösning. Detta tar du toohello data factory på Azure-hanteringsportalen. Om du ser fel under dina datauppsättningar kan du ignorera de som de är på grund av toodata fabriken som distribueras innan hello datagenerator startades. Dessa fel förhindrar inte din data factory från att fungera.
 
-Det här avsnittet beskrivs nödvändiga [pipelines](data-factory/data-factory-create-pipelines.md) och [aktiviteter](data-factory/data-factory-create-pipelines.md) som ingår i den [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/). Nedan visas diagramvyn av lösningen.
+Det här avsnittet beskrivs nödvändiga hello [pipelines](data-factory/data-factory-create-pipelines.md) och [aktiviteter](data-factory/data-factory-create-pipelines.md) i hello [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/). Nedan visas hello diagramvyn hello lösning.
 
 ![](media/cortana-analytics-technical-guide-demand-forecast/ADF2.png)
 
-Fem pipelines i den här fabriken innehåller [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript som används för att partitionera och aggregera data. När anges är skript kommer att finnas i den [Azure Storage](https://azure.microsoft.com/services/storage/) konto som skapades under installationen. Deras plats: demandforecasting\\\\skriptet\\\\hive\\ \\ (eller https://[Your lösning name].blob.core.windows.net/demandforecasting).
+Fem hello pipelines i den här fabriken innehåller [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript som används toopartition och sammanställd hello data. När anges hello skript kommer att finnas i hello [Azure Storage](https://azure.microsoft.com/services/storage/) konto som skapades under installationen. Deras plats: demandforecasting\\\\skriptet\\\\hive\\ \\ (eller https://[Your lösning name].blob.core.windows.net/demandforecasting).
 
-Liknar den [Azure Stream Analytics](#azure-stream-analytics-1) frågor, den [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript har implicit kunskap om dataformatet för inkommande, de här frågorna behöver ändras baserat på din dataformat och [egenskapsval](machine-learning/machine-learning-feature-selection-and-engineering.md) krav.
+Liknande toohello [Azure Stream Analytics](#azure-stream-analytics-1) frågor, den [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript har implicit kunskap om hello format för inkommande data, måste de här frågorna toobe ändras baserat på dina dataformat och [egenskapsval](machine-learning/machine-learning-feature-selection-and-engineering.md) krav.
 
 #### <a name="aggregatedemanddatato1hrpipeline"></a>*AggregateDemandDataTo1HrPipeline*
-Detta [pipeline](data-factory/data-factory-create-pipelines.md) pipelinen innehåller en enskild aktivitet – en [HDInsightHive](data-factory/data-factory-hive-activity.md) med en [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) som kör en [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript för att sammanställa var 10 sekunder strömmas i begäran data i omformaren nivå till varje timme regionnivå och placera i [Azure Storage](https://azure.microsoft.com/services/storage/) via Azure Stream Analytics-jobbet.
+Detta [pipeline](data-factory/data-factory-create-pipelines.md) pipelinen innehåller en enskild aktivitet – en [HDInsightHive](data-factory/data-factory-hive-activity.md) med en [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) som kör en [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)skript tooaggregate hello var 10: e sekund strömmas i begäran data i omformaren nivå toohourly regionsnivån och placera i [Azure Storage](https://azure.microsoft.com/services/storage/) via hello Azure Stream Analytics-jobbet.
 
 Den [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript för uppgiften partitionering är ***AggregateDemandRegion1Hr.hql***
 
 #### <a name="loadhistorydemanddatapipeline"></a>*LoadHistoryDemandDataPipeline*
 Detta [pipeline](data-factory/data-factory-create-pipelines.md) innehåller två aktiviteter:
 
-* [HDInsightHive](data-factory/data-factory-hive-activity.md) med en [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) som kör en Hive-skript för att sammanställa timvis historik begäran data i omformaren nivå till varje timme regionnivå och placera i Azure Storage under Azure Stream Analytics-jobbet
-* [Kopiera](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivitet som flyttar sammanställda data från Azure Storage blob till Azure SQL-databas som har etablerats som en del av installationen mallen.
+* [HDInsightHive](data-factory/data-factory-hive-activity.md) med en [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) som kör en Hive skript tooaggregate hello timvis begäran historikdata i omformaren nivå toohourly regionsnivån och placera i Azure Storage under hello Azure Stream Analytics-jobbet
+* [Kopiera](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivitet som flyttar hello aggregerade data från Azure Storage blob toohello Azure SQL-databas som har etablerats som en del av hello lösning mallen installation.
 
-Den [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript för den här uppgiften är ***AggregateDemandHistoryRegion.hql***.
+Hej [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript för den här uppgiften är ***AggregateDemandHistoryRegion.hql***.
 
 #### <a name="mlscoringregionxpipeline"></a>*MLScoringRegionXPipeline*
-Dessa [pipelines](data-factory/data-factory-create-pipelines.md) innehåller flera aktiviteter och vars slutresultatet är poängsatta förutsägelser från Azure Machine Learning-experiment som är associerade med den här lösningen mallen. De är nästan identisk förutom dem endast hanterar annan region som görs av olika RegionID som skickades i ADF-pipeline och hive-skript för varje region.  
-Aktiviteter i det här är:
+Dessa [pipelines](data-factory/data-factory-create-pipelines.md) innehåller flera aktiviteter och vars slutresultatet hello beräknas förutsägelser från hello Azure Machine Learning-experiment som är associerade med den här lösningen mallen. De är nästan identisk förutom dem endast hanterar hello annan region som görs av olika RegionID som skickades i hello ADF pipeline och hello hive-skript för varje region.  
+hello aktiviteter i det här är:
 
-* [HDInsightHive](data-factory/data-factory-hive-activity.md) med en [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) som kör en Hive-skript för att utföra aggregeringar och egenskapsval som krävs för Azure Machine Learning-experiment. Hive-skript för den här uppgiften är respektive ***PrepareMLInputRegionX.hql***.
-* [Kopiera](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivitet som flyttar resultaten från den [HDInsightHive](data-factory/data-factory-hive-activity.md) aktivitet till en enda Azure Storage blob som kan vara åtkomst av den [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) aktivitet.
-* [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) aktivitet som anropar Azure Machine Learning experiment som resulterar i resultatet som placeras i en enda Azure Storage blob.
+* [HDInsightHive](data-factory/data-factory-hive-activity.md) med en [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) som kör en Hive skript tooperform aggregeringar och egenskapsval som krävs för hello Azure Machine Learning-experiment. hello Hive-skript för den här uppgiften är respektive ***PrepareMLInputRegionX.hql***.
+* [Kopiera](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivitet som flyttar hello resultat från hello [HDInsightHive](data-factory/data-factory-hive-activity.md) aktiviteten tooa enda Azure Storage blob som kan vara åtkomst av hello [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) aktivitet.
+* [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) aktivitet som anropar hello Azure Machine Learning-experiment som resulterar i hello resultat som placeras i en enda Azure Storage blob.
 
 #### <a name="copyscoredresultregionxpipeline"></a>*CopyScoredResultRegionXPipeline*
-Dessa [pipelines](data-factory/data-factory-create-pipelines.md) innehåller en enskild aktivitet – en [kopiera](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivitet som flyttar resultatet av Azure Machine Learning-experiment från respektive ***MLScoringRegionXPipeline*** till Azure SQL-databas som har etablerats som en del av installationen mallen.
+Dessa [pipelines](data-factory/data-factory-create-pipelines.md) innehåller en enskild aktivitet – en [kopiera](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivitet som flyttar hello resultaten av hello Azure Machine Learning-experiment från hello respektive ***MLScoringRegionXPipeline *** toohello Azure SQL-databas som har etablerats som en del av hello lösning mallen installation.
 
 #### <a name="copyaggdemandpipeline"></a>*CopyAggDemandPipeline*
-Detta [pipelines](data-factory/data-factory-create-pipelines.md) innehåller en enskild aktivitet – en [kopiera](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivitet som flyttar data aggregerade pågående begäran från ***LoadHistoryDemandDataPipeline*** till Azure SQL-databas som har etablerats som en del av installationen mallen.
+Detta [pipelines](data-factory/data-factory-create-pipelines.md) innehåller en enskild aktivitet – en [kopiera](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivitet som flyttar hello samman pågående begäran data från ***LoadHistoryDemandDataPipeline*** toohello Azure SQL-databas som har etablerats som en del av hello lösning mallen installation.
 
 #### <a name="copyregiondatapipeline-copysubstationdatapipeline-copytopologydatapipeline"></a>*CopyRegionDataPipeline CopySubstationDataPipeline, CopyTopologyDataPipeline*
-Dessa [pipelines](data-factory/data-factory-create-pipelines.md) innehåller en enskild aktivitet – en [kopiera](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivitet som flyttar referensdata för Topologygeo-Region/understation som överförs till Azure Storage blob som en del av installationen mallen till Azure SQL-databas som har etablerats som en del av installationen mallen.
+Dessa [pipelines](data-factory/data-factory-create-pipelines.md) innehåller en enskild aktivitet – en [kopiera](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivitet som flyttar hello referensdata för Topologygeo-Region/understation som har överförts tooAzure Storage blob som en del av hello lösning mallen installation toohello Azure SQL-databas som har etablerats som en del av hello lösning mallen installation.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-Den [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentera används för den här lösningen mallen innehåller förutsägelser av begäran av region. Experimentet är specifik för den datamängd som används och därför kräver ändras eller ersättas som är specifika för de data som tas i.
+Hej [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentera används för den här lösningen mallen innehåller hello förutsägelser av begäran av region. hello experiment är särskilda toohello datamängden som förbrukats och därför kräver ändras eller ersättas specifika toohello data som tas i.
 
 ## <a name="monitor-progress"></a>**Övervaka förloppet**
-När Data Generator har startats pipeline börjar hämta ur och de olika komponenterna i din lösning starta lanseras i åtgärden följande kommandon från Data Factory. Det finns två sätt som du kan övervaka pipeline.
+När hello Datagenerator har startats hello pipeline börjar tooget ur och hello olika komponenterna i din lösning starta lanseras i åtgärden följande hello-kommandon som utfärdats av hello Data Factory. Det finns två sätt som du kan övervaka hello pipeline.
 
-1. Kontrollera om data från Azure Blob Storage.
+1. Kontrollera hello data från Azure Blob Storage.
 
-    En av Stream Analytics-jobbet skriver inkommande rådata till blob storage. Om du klickar på **Azure Blob Storage** komponent i lösningen från skärmen du distribuera lösningen och klicka sedan på **öppna** i den högra panelen, tar du det [Azure-hanteringsportalen](https://portal.azure.com). När det, klickar du på på **Blobbar**. Nästa panelen visas en lista över behållare. Klicka på **”energysadata”**. I panelen nästa visas de **”demandongoing”** mapp. I mappen \data visas en mapp med namn som datum = 2016-01-28 osv. Om du ser dessa mappar, betyder det att rådata är korrekt som genereras på datorn och lagras i blob storage. Du bör se filer som ska ha begränsad storlek i MB i mapparna.
-2. Kontrollera om data från Azure SQL Database.
+    En av hello Stream Analytics-jobbet skriver hello rådata inkommande tooblob datalagring. Om du klickar på **Azure Blob Storage** komponent i din lösning från hello skärmen har distribuerats hello lösningen och klicka sedan på **öppna** i hello högra panelen, tar du toohello [Azure-hanteringsportalen](https://portal.azure.com). När det, klickar du på på **Blobbar**. Nästa hello på panelen visas en lista över behållare. Klicka på **”energysadata”**. Nästa hello på panelen visas hello **”demandongoing”** mapp. I hello \data mapp visas en mapp med namn som datum = 2016-01-28 osv. Om du ser dessa mappar, betyder det att hello rådata är korrekt som genereras på datorn och lagras i blob storage. Du bör se filer som ska ha begränsad storlek i MB i mapparna.
+2. Kontrollera hello data från Azure SQL Database.
 
-    Det sista steget i pipeline är att skriva data (t.ex. förutsägelser från maskininlärning) i SQL-databasen. Du kan behöva vänta högst 2 timmar för data som visas i SQL-databas. Ett sätt att övervaka hur mycket data som är tillgängliga i SQL-databasen är via [Azure-hanteringsportalen](https://manage.windowsazure.com/). Leta reda på SQL-databaser på den vänstra panelen![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png) och klicka på den. Leta upp din databas (d.v.s. demo123456db) och klicka på den sedan. På nästa sida under **”ansluta till databasen”** klickar du på **”kör Transact-SQL-frågor mot din SQL-databas”**.
+    hello sista steget i hello pipeline är toowrite data (t.ex. förutsägelser från maskininlärning) till SQL-databas. Du kanske toowait högst 2 timmar för hello data tooappear i SQL-databas. Enkelriktade toomonitor hur mycket data är tillgängliga i SQL-databasen är via [Azure-hanteringsportalen](https://manage.windowsazure.com/). Leta reda på SQL-databaser på hello vänstra panelen![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png) och klicka på den. Leta upp din databas (d.v.s. demo123456db) och klicka på den sedan. På nästa sida du hello under **”Anslut tooyour databas”** klickar du på **”kör Transact-SQL-frågor mot din SQL-databas”**.
 
-    Här kan du klicka på ny fråga och fråga för hur många rader (t.ex. ”Välj count(*) från DemandRealHourly)” att län, öka antalet rader i tabellen.)
-3. Kontrollera om data från Power BI-instrumentpanelen.
+    Här kan du klicka på ny fråga och fråga för hello antal rader (t.ex. ”Välj count(*) från DemandRealHourly)” län, hello antalet rader i tabellen hello ska öka.)
+3. Kontrollera hello data från Power BI-instrumentpanelen.
 
-    Du kan ställa in Power BI-instrumentpanel varm sökvägen att övervaka inkommande rådata. Följ anvisningarna i avsnittet ”Power BI-instrumentpanel”.
+    Du kan ställa in Power BI varm sökväg instrumentpanelen toomonitor hello inkommande rådata. Följ hello instruktion hello ”Power BI-instrumentpanel” avsnittet.
 
 ## <a name="power-bi-dashboard"></a>**Power BI-instrumentpanel**
 ### <a name="overview"></a>Översikt
-Det här avsnittet beskrivs hur du ställer in Power BI-instrumentpanel att visualisera dina realtidsdata från Azure stream analytics (varm sökväg) samt prognos resultat från Azure machine learning (kalla sökväg).
+Det här avsnittet beskrivs hur tooset in Power BI dashboard toovisualize dina realtidsdata från Azure strömma analytics (varm sökväg), som också som prognosen resultat från Azure machine learning (kalla sökväg).
 
 ### <a name="setup-hot-path-dashboard"></a>Installationsprogrammet varm sökväg instrumentpanelen
-Följande steg vägleder dig hur du visualisera data i realtid från Stream Analytics-jobb som genererades vid tidpunkten för lösningsdistribution av. En [Power BI online](http://www.powerbi.com/) konto krävs för att utföra följande steg. Om du inte har ett konto kan du [skapar du en](https://powerbi.microsoft.com/pricing).
+hello följande steg vägleder dig hur toovisualize realtidsdata utdata från Stream Analytics jobb som genererades under hello tidpunkten för lösningsdistribution av. En [Power BI online](http://www.powerbi.com/) konto är obligatoriskt tooperform hello följande steg. Om du inte har ett konto kan du [skapar du en](https://powerbi.microsoft.com/pricing).
 
 1. Lägga till Power BI-utdata i Azure Stream Analytics (ASA).
 
-   * Måste du följa instruktionerna i [Azure Stream Analytics & Power BI: en analys i realtid instrumentpanel för realtid synligheten för strömmande data](stream-analytics/stream-analytics-power-bi-dashboard.md) att ställa in utdata för din Azure Stream Analytics-jobb som Power BI-instrumentpanel.
-   * Leta upp stream analytics-jobbet i din [Azure-hanteringsportalen](https://manage.windowsazure.com). Namnet på jobbet bör vara: YourSolutionName + ”streamingjob” + slumpmässiga nummer + ”asapbi” (d.v.s. demostreamingjob123456asapbi).
-   * Lägga till en PowerBI-utdata för jobbet ASA. Ange den **utdata Alias** som **'PBIoutput'**. Ange din **Dataset-namnet** och **tabellnamn** som **'EnergyStreamData'**. När du har lagt till utdata, klickar du på **”Start”** längst ned på sidan för att starta Stream Analytics-jobbet. Du bör få ett bekräftelsemeddelande (*t.ex.*, ”Start stream analytics-jobbet myteststreamingjob12345asablob lyckades”).
-2. Logga in på [Power BI online](http://www.powerbi.com)
+   * Du behöver toofollow hello instruktionerna i [Azure Stream Analytics & Power BI: en analys i realtid instrumentpanel för realtid synligheten för strömmande data](stream-analytics/stream-analytics-power-bi-dashboard.md) tooset in hello utdata för din Azure Stream Analytics-jobb som din Power BI-instrumentpanelen.
+   * Leta upp hello stream analytics-jobbet i din [Azure-hanteringsportalen](https://manage.windowsazure.com). hello namnet på hello jobb bör vara: YourSolutionName + ”streamingjob” + slumpmässiga nummer + ”asapbi” (d.v.s. demostreamingjob123456asapbi).
+   * Lägga till en PowerBI-utdata för hello ASA jobbet. Ange hello **Utdataalias** som **'PBIoutput'**. Ange din **Dataset-namnet** och **tabellnamn** som **'EnergyStreamData'**. När du har lagt till hello utdata, klickar du på **”Start”** längst hello hello sidan toostart hello Stream Analytics-jobbet. Du bör få ett bekräftelsemeddelande (*t.ex.*, ”Start stream analytics-jobbet myteststreamingjob12345asablob lyckades”).
+2. Logga in för[Power BI online](http://www.powerbi.com)
 
-   * På den vänstra panelen datauppsättningar avsnitt i Min arbetsyta, bör du kunna se en ny datamängd som visar på den vänstra panelen i Power BI. Det här är den strömmande data du flyttas från Azure Stream Analytics i föregående steg.
-   * Kontrollera att den ***visualiseringar*** fönstret är öppet och visas på höger sida av skärmen.
-3. Skapa panelen ”begäran av tidsstämpel”:
+   * På vänster panel datauppsättningar sektion i Min arbetsyta hello, bör du kunna toosee en ny datamängd som visar på hello vänstra panelen i Power BI. Detta är hello strömmande data du flyttas från Azure Stream Analytics i hello föregående steg.
+   * Se till att hello ***visualiseringar*** fönstret är öppet och visas på höger sida av hello-skärmen.
+3. Skapa hello ”begäran av tidsstämpel” panelen:
 
-   * Klicka på dataset **'EnergyStreamData'** på den vänstra panelen datauppsättningar avsnitt.
+   * Klicka på dataset **'EnergyStreamData'** på hello vänster panel datauppsättningar.
    * Klicka på **”linjediagram”** ikonen ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic8.png).
    * Klicka på 'EnergyStreamData' i **fält** panelen.
    * Klicka på **”tidsstämpel”** och kontrollera att den visar under ”axel”. Klicka på **”belastningen”** och se till att det visas under ”värden”.
-   * Klicka på **spara** högst upp och namn för rapporten som ”EnergyStreamDataReport”. Rapporten med namnet ”EnergyStreamDataReport” visas i rapporter i fönstret Navigator vänster.
-   * Klicka på **”PIN-kod Visual”** ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) ikon i övre högra hörnet av den här linjediagram, ett ”PIN-kod till instrumentpanel” fönster kan visas som du kan välja en instrumentpanel. Välj ”EnergyStreamDataReport” och klicka på ”Pin”.
-   * Placera markören över den här panelen på instrumentpanelen, klicka på ”Redigera”-ikonen i övre högra hörnet för att ändra dess namn som ”begäran av tidsstämpel”
-4. Skapa andra instrumentpaneler baserat på lämplig datauppsättningar. Den slutliga instrumentpanelsvyn visas nedan.
+   * Klicka på **spara** hello upp och namn på rapporten hello som ”EnergyStreamDataReport”. hello rapport med namnet ”EnergyStreamDataReport” visas i rapporter i hello Navigator rutan vänster.
+   * Klicka på **”PIN-kod Visual”** ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) ikon i övre högra hörnet av den här linjediagram, ett ”PIN-kod tooDashboard” fönster kan visas för du toochoose en instrumentpanel. Välj ”EnergyStreamDataReport” och klicka på ”Pin”.
+   * Hovra hello muspekaren över den här panelen på hello instrumentpanelen klickar du på ”Redigera”-ikonen i övre högra hörnet toochange rubrik som ”begäran av tidsstämpel”
+4. Skapa andra instrumentpaneler baserat på lämplig datauppsättningar. hello slutliga instrumentpanelsvy visas nedan.
      ![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
 
 ### <a name="setup-cold-path-dashboard"></a>Installationsprogrammet Cold sökväg instrumentpanelen
-I cold sökväg data pipeline är väsentliga målet att hämta begäran prognosen för varje region. Powerbi ansluter till en Azure SQL database som datakälla, där förutsägelse resultatet lagras.
+I cold sökväg data pipeline är hello väsentliga målet tooget hello begäran vid en prognos av varje region. Powerbi ansluter tooan Azure SQL-databas som datakälla, där hello förutsägelse resultat lagras.
 
 > [!NOTE]
-> 1) Det tar flera timmar att samla in tillräckligt prognosen resultat för instrumentpanelen. Vi rekommenderar att du startar processen 2 – 3 timmar efter att du lunch generatorn data. 2) i det här steget i förutsättning är att hämta och installera den kostnadsfria programvaran [Power BI desktop](https://powerbi.microsoft.com/desktop).
+> 1) Det tar några timmar toocollect tillräckligt prognosen resultat för hello instrumentpanelen. Vi rekommenderar att du startar processen 2 – 3 timmar efter att du lunch hello datagenerator. 2) i det här steget hello förutsättning är toodownload och installera hello kostnadsfri programvara [Power BI desktop](https://powerbi.microsoft.com/desktop).
 >
 >
 
-1. Hämta autentiseringsuppgifterna på databasen.
+1. Hämta hello Databasautentiseringsuppgifter.
 
-   Du behöver **databasen servernamn, databasnamn, användarnamn och lösenord** innan du fortsätter till nästa steg. Här följer stegen för att hjälpa dig hur du hittar dem.
+   Du behöver **databasen servernamn, databasnamn, användarnamn och lösenord** innan du flyttar toonext steg. Här följer hello steg tooguide du hur toofind dem.
 
-   * En gång **”Azure SQL Database”** på din lösningsmall diagram blir grön, klickar du på den och klicka sedan på **”öppen”**. Får du hjälp att Azure-hanteringsportalen och databasen informationssidan öppnas också.
-   * Du kan hitta ett ”databas” avsnitt på sidan. Den visar databasen som du har skapat. Namnet på din databas bör vara **”din lösningsnamn slumpmässiga nummer + 'db'”** (t.ex. ”mytest12345db”).
-   * Klicka på din databas i den nya pop ut panelen du hittar din Databasservernamnet högst upp. Databasservernamn bör vara **”din lösningsnamn slumpmässiga nummer + 'database.windows.net,1433'”** (t.ex. ”mytest12345.database.windows.net,1433”).
-   * Databasen **användarnamn** och **lösenord** är samma som användarnamnet och lösenordet tidigare registreras under distributionen av lösningen.
-2. Uppdatera datakällan för cold sökväg Power BI-fil
+   * En gång **”Azure SQL Database”** på din lösningsmall diagram blir grön, klickar du på den och klicka sedan på **”öppen”**. Kommer du att den interaktiva tooAzure hanteringsportalen och databasen informationssidan öppnas också.
+   * Du kan hitta ett avsnitt ”databas” hello på sidan. Den visar ut hello-databasen som du har skapat. hello namnet på din databas bör vara **”din lösningsnamn slumpmässiga nummer + 'db'”** (t.ex. ”mytest12345db”).
+   * Klicka på din databas i hello nya pop ut Kontrollpanelen, du kan hitta din Databasservernamnet hello längst upp. Databasservernamn bör vara **”din lösningsnamn slumpmässiga nummer + 'database.windows.net,1433'”** (t.ex. ”mytest12345.database.windows.net,1433”).
+   * Databasen **användarnamn** och **lösenord** hello samma som hello användarnamn och lösenord registreras tidigare under distributionen av hello lösning.
+2. Uppdatera hello datakällan hello cold sökväg Power BI-fil
 
-   * Kontrollera att du har installerat den senaste versionen av [Power BI desktop](https://powerbi.microsoft.com/desktop).
-   * I den **”DemandForecastingDataGeneratorv1.0”** mapp som du laddat ned och dubbelklicka på den **'Power BI Template\DemandForecastPowerBI.pbix'** fil. Inledande visualiseringar baseras på falska data. **Obs:** om du ser felet massage, kontrollera att du har installerat den senaste versionen av Power BI Desktop.
+   * Kontrollera att du har installerat hello senaste versionen av [Power BI desktop](https://powerbi.microsoft.com/desktop).
+   * I hello **”DemandForecastingDataGeneratorv1.0”** mapp som du har hämtat, dubbelklicka på hello **'Power BI Template\DemandForecastPowerBI.pbix'** fil. hello inledande grafik baserad på falska data. **Obs:** om du ser felet massage, kontrollera att du har installerat hello senaste versionen av Power BI Desktop.
 
-     När du öppnar den överst i filen, klickar du på **redigera frågor**. I pop ut fönstret dubbelklickar du på **'Source'** i den högra rutan.
+     När du öppnar den hello längst upp i hello-fil klickar du på **redigera frågor**. Hello ut fönster, dubbelklicka på **'Source'** på hello högra panelen.
      ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic1.png)
-   * Ersätt i pop ut fönstret **”Server”** och **”databas”** med dina egna och databasnamn, och klicka sedan på **”OK”**. Kontrollera att du anger porten 1433 för servernamn (**YourSolutionName.database.windows.net 1433**). Ignorera varningsmeddelanden som visas på skärmen.
-   * I nästa pop ut fönstret ser du två alternativ i det vänstra fönstret (**Windows** och **databasen**). Klicka på **”databas”**, Fyll i din **”användarnamn”** och **”Password”** (detta är det användarnamn och lösenord som du angav när du distribuerade lösningen och skapa en Azure SQL database). I ***Välj vilken datanivå att inställningarna ska***, kontrollera nivån databasalternativet. Klicka på **”Anslut”**.
-   * Stäng fönstret när du är interaktiv tillbaka till föregående sida. Ett meddelande visas out - Klicka **tillämpa**. Klicka slutligen på den **spara** för att spara ändringarna. Power BI-fil har nu upprätta anslutningen till servern. Om din visualiseringar är tomma, kontrollera att du radera markeringarna på visualiseringar visualisera alla data genom att klicka på ikonen Radera i det övre högra hörnet av förklaringar. Använd uppdateringsknappen för att reflektera nya data i visualiseringar. Först visas bara seed-data på din visualiseringar som data factory kommer att uppdatera var 3: e timme. Efter 3 timmar visas nya förutsägelser som visas i din visualiseringar när du uppdaterar data.
-3. (Valfritt) Publicera instrumentpanelen cold sökväg till [Power BI online](http://www.powerbi.com/). Observera att det här steget behöver ett Power BI-konto (eller Office 365-konto).
+   * Ersätt i hello ut fönster, **”Server”** och **”databas”** med dina egna och databasnamn, och klicka sedan på **”OK”**. Kontrollera att du anger hello-port 1433 för servernamn (**YourSolutionName.database.windows.net 1433**). Ignorera hello varningsmeddelanden som visas på hello-skärmen.
+   * I hello nästa pop ut fönster, ser du två alternativ hello vänster (**Windows** och **databasen**). Klicka på **”databas”**, Fyll i din **”användarnamn”** och **”Password”** (detta är hello användarnamn och lösenord som du angav när du distribuerade hello lösning och skapat en Azure SQL database). I ***Välj vilken nivå tooapply inställningarna ska***, kontrollera nivån databasalternativet. Klicka på **”Anslut”**.
+   * Stäng hello-fönstret när du är interaktiv tillbaka toohello föregående sida. Ett meddelande visas out - Klicka **tillämpa**. Klicka slutligen på hello **spara** knappen toosave hello ändras. Power BI-fil har nu upprätta anslutningen toohello server. Om din visualiseringar är tomma, kontrollera att du avmarkerar hello val på hello visualiseringar toovisualize alla hello data genom att klicka på hello Radera ikon på hello övre högra hörnet av hello förklaringar. Använd hello uppdatera knappen tooreflect nya data på hello visualiseringar. Först visas bara hello fördefiniera data på din visualiseringar hello data factory är schemalagda toorefresh var 3: e timme. Efter 3 timmar visas nya förutsägelser som visas i din visualiseringar när du uppdaterar hello data.
+3. (Valfritt) Publicera hello cold sökväg instrumentpanelen för[Power BI online](http://www.powerbi.com/). Observera att det här steget behöver ett Power BI-konto (eller Office 365-konto).
 
-   * Klicka på **”publicera”** senare några sekunder visas ett fönster visas ”publicering till Power BI lyckades”! med en grön bock. Klicka på länken nedan ”öppna demoprediction.pbix i Powerbi”. Detaljerade anvisningar finns i [publicera från Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
-   * Att skapa en ny instrumentpanel: Klicka på den  **+**  logga bredvid den **instrumentpaneler** avsnitt i det vänstra fönstret. Ange namnet ”begäran prognoser Demo” för den här nya instrumentpanelen.
-   * När du öppnar rapporten klickar du på ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) fästa alla visualiseringar på instrumentpanelen. Detaljerade anvisningar finns i [fästa panelen till en Power BI-instrumentpanel från en rapport](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
-     Gå till instrumentpanelssidan och justera storleken och platsen för din visualiseringar och redigera sin rubriker. Du hittar detaljerade anvisningar om hur du redigerar dina paneler [redigera en sida vid sida - storlek, flytta, Byt namn, PIN-kod, ta bort, lägga till hyperlänk](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Här är ett exempel instrumentpanel med vissa cold sökväg visualiseringar fäst på den.
+   * Klicka på **”publicera”** senare några sekunder visas ett fönster med ”publicera tooPower BI lyckades”! med en grön bock. Klicka på hello länkarna ”öppna demoprediction.pbix i Powerbi”. toofind detaljerade instruktioner, se [publicera från Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
+   * toocreate en ny instrumentpanel: Klicka på hello  **+**  logga nästa toothe **instrumentpaneler** avsnittet hello vänster. Ange hello namn ”begäran prognoser Demo” för den här nya instrumentpanelen.
+   * När du öppnar hello rapport, klickar du på ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) toopin alla visualiseringar tooyour infopanelen. toofind detaljerade instruktioner, se [fästa en panel tooa Power BI-instrumentpanel från en rapport](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
+     Gå toohello instrumentpanelens sida och justera hello storlek och plats för din visualiseringar och redigera sin titlar. toofind detaljerade instruktioner om hur tooedit dina paneler Se [redigera en sida vid sida - storlek, flytta, Byt namn, PIN-kod, ta bort, lägga till hyperlänk](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Här är ett exempel instrumentpanel med vissa cold sökväg visualiseringar Fäst tooit.
 
      ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic7.png)
-4. (Valfritt) Schemalägga en uppdatering av datakällan.
+4. (Valfritt) Schemalägga en uppdatering av hello-datakälla.
 
-   * Att schemalägga en uppdatering av data, håller du muspekaren över den **EnergyBPI-slutlig** dataset, klickar du på ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic3.png) och välj sedan **Uppdatera schema**.
-     **Obs:** om du ser en varning massage, klickar du på **redigera autentiseringsuppgifter** och se till att dina autentiseringsuppgifter på databasen är samma som de som beskrivs i steg 1.
+   * tooschedule uppdatering av hello data håller muspekaren över hello **EnergyBPI-slutlig** dataset, klickar du på ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic3.png) och välj sedan **Uppdatera schema**.
+     **Obs:** om du ser en varning massage, klickar du på **redigera autentiseringsuppgifter** och se till att dina autentiseringsuppgifter på databasen är hello samma som de som beskrivs i steg 1.
 
      ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic4.png)
-   * Expandera den **Uppdatera schema** avsnitt. Aktivera ”hålla data uppdaterade”.
-   * Schemalägga en uppdatering baserat på dina behov. Mer information finns i [uppdatering av Data i Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/).
+   * Expandera hello **Uppdatera schema** avsnitt. Aktivera ”hålla data uppdaterade”.
+   * Hello schemauppdatering baserat på dina behov. toofind mer information finns i [uppdatering av Data i Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/).
 
-## <a name="how-to-delete-your-solution"></a>**Hur du tar bort din lösning**
-Se till att du avbryter datagenerator när inte aktivt med lösningen som kör datagenerator påförs högre kostnader. Ta bort lösningen om du inte använder den. Om din lösning tas bort alla komponenter som har etablerats i din prenumeration när du distribuerade lösningen. Om du vill ta bort lösningen klickar du på din lösningens namn i den vänstra panelen av lösningsmall och klicka på Ta bort.
+## <a name="how-toodelete-your-solution"></a>**Hur toodelete din lösning**
+Se till att stoppa hello datagenerator när du använder inte aktivt hello lösning som kör hello datagenerator orsakar högre kostnader. Ta bort hello lösning om du inte använder den. Din lösning bort tas alla hello-komponenter som etablerats i din prenumeration när du distribuerade hello lösning. toodelete hello lösningen klickar du på din lösningsnamn hello vänstra panelen i hello lösningsmall och klicka på Ta bort.
 
 ## <a name="cost-estimation-tools"></a>**Kostnad uppskattning verktyg**
-Följande två verktyg är tillgängliga för att hjälpa dig att bättre förstå totala kostnaderna för kör begäran prognoser för energi Lösningsmall i din prenumeration:
+hello är följande två verktyg tillgängliga toohelp bättre förstå totala kostnaderna för körs hello begäran prognoser för energi Lösningsmall i din prenumeration:
 
 * [Microsoft Azure kostnaden exteriörbedömning-verktyget (online)](https://azure.microsoft.com/pricing/calculator/)
 * [Microsoft Azure kostnaden exteriörbedömning Tool (stationär dator)](http://www.microsoft.com/download/details.aspx?id=43376)

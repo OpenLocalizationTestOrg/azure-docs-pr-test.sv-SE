@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect flera domäner"
+title: "aaaAzure AD ansluta flera domäner"
 description: "Det här dokumentet beskriver hur du konfigurerar och konfigurera flera domäner på toppnivå med O365 och Azure AD."
 services: active-directory
 documentationcenter: 
@@ -14,144 +14,144 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 8e3f496c2868cc3430e0efd47805aec2205168aa
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 91d87875ceacee4e34f132938e4bb0294fb954e1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Stöd för flera domäner för federering med Azure AD
-Följande dokumentation innehåller information om hur du använder flera domäner på toppnivå och underdomäner när federering med Office 365 eller Azure AD-domäner.
+hello följande dokumentation innehåller information om hur toouse flera domäner på toppnivå och underdomäner när federering med Office 365 eller Azure AD-domäner.
 
 ## <a name="multiple-top-level-domain-support"></a>Stöd för flera toppdomäner
 Federering flera domäner på toppnivå med Azure AD kräver ytterligare konfiguration som inte krävs när federerar med en toppnivådomän.
 
-När en domän är federerat med Azure AD, ange flera egenskaper på domänen i Azure.  Ett är viktigt IssuerUri.  Det här är en URI som används av Azure AD för att identifiera den domän som token som är associerad med.  URI: N behöver inte matcha till något annat än det måste vara en giltig URI.  Standard Azure AD anger detta till värdet för federationstjänstidentifieraren i din lokala AD FS konfiguration.
+När en domän är federerat med Azure AD kan flera egenskaper anges på hello domän i Azure.  Ett är viktigt IssuerUri.  Detta är en URI som används av Azure AD tooidentify hello-domän som hello token som är associerad med.  hello URI behöver inte tooresolve tooanything men det måste vara en giltig URI.  Standard Azure AD anger toohello värdet för hello federationstjänstidentifierare i din lokala AD FS konfiguration.
 
 > [!NOTE]
-> Identifierare för federation service är en URI som unikt identifierar en federationstjänst.  Federationstjänsten är en instans av AD FS som fungerar som säkerhetstokentjänsten. 
+> Hej federationstjänstidentifierare är en URI som unikt identifierar en federationstjänst.  hello federationstjänsten är en instans av AD FS som fungerar som hello säkerhetstokentjänsten. 
 > 
 > 
 
-Du kan visa IssuerUri med hjälp av PowerShell-kommando `Get-MsolDomainFederationSettings -DomainName <your domain>`.
+Du kan visa IssuerUri med hello PowerShell-kommandot `Get-MsolDomainFederationSettings -DomainName <your domain>`.
 
 ![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/MsolDomainFederationSettings.png)
 
-Ett problem uppstår när vi vill lägga till fler än en toppnivådomän.  Till exempel anta att du har installationen federation mellan Azure AD och din lokala miljö.  Jag använder bmcontoso.com för det här dokumentet.  Nu jag har lagt till en andra, på den översta nivån domän, bmfabrikam.com.
+Ett problem uppstår när vi vill tooadd mer än en toppnivådomän.  Till exempel anta att du har installationen federation mellan Azure AD och din lokala miljö.  Jag använder bmcontoso.com för det här dokumentet.  Nu jag har lagt till en andra, på den översta nivån domän, bmfabrikam.com.
 
 ![Domäner](./media/active-directory-multiple-domains/domains.png)
 
-När vi försöker konvertera vår bmfabrikam.com domän ska vara federerad får vi ett felmeddelande.  Anledningen är Azure AD har en begränsning som inte tillåter att egenskapen IssuerUri ska ha samma värde för fler än en domän.  
+När vi försöker tooconvert våra bmfabrikam.com domän toobe federerad felmeddelande vi ett.  hello anledningen är Azure AD har en begränsning som inte tillåter hello IssuerUri egenskapen toohave hello samma värde för fler än en domän.  
 
 ![Federation fel](./media/active-directory-multiple-domains/error.png)
 
 ### <a name="supportmultipledomain-parameter"></a>SupportMultipleDomain Parameter
-För att lösa detta, behöver vi lägga till en annan IssuerUri som kan göras med hjälp av den `-SupportMultipleDomain` parameter.  Den här parametern används tillsammans med följande cmdlets:
+tooworkaround detta, behöver vi tooadd en annan IssuerUri som kan göras med hjälp av hello `-SupportMultipleDomain` parameter.  Den här parametern används med hello följande cmdlets:
 
 * `New-MsolFederatedDomain`
 * `Convert-MsolDomaintoFederated`
 * `Update-MsolFederatedDomain`
 
-Denna parameter gör Azure AD som konfigurerar IssuerUri så att den är baserad på namnet på domänen.  Detta är unik i kataloger i Azure AD.  Med hjälp av parametern kan PowerShell-kommandot ska slutföras.
+Denna parameter gör Azure AD konfigurera hello IssuerUri så att den är baserad på hello namnet på hello domän.  Detta är unik i kataloger i Azure AD.  Med hjälp av parametern hello kan hello PowerShell-kommandot toocomplete har.
 
 ![Federation fel](./media/active-directory-multiple-domains/convert.png)
 
-Tittar på inställningarna på vår nya bmfabrikam.com domänen som du kan se följande:
+Tittar på hello inställningar på vår nya bmfabrikam.com domänen som du kan se hello följande:
 
 ![Federation fel](./media/active-directory-multiple-domains/settings.png)
 
-Observera att `-SupportMultipleDomain` ändras inte de andra slutpunkterna som fortfarande är konfigurerade för att peka till vår federationstjänsten på adfs.bmcontoso.com.
+Observera att `-SupportMultipleDomain` ändras inte hello slutpunkter som är fortfarande konfigurerade toopoint tooour federationstjänsten på adfs.bmcontoso.com.
 
-En annan sak som `-SupportMultipleDomain` har är det garanterar att AD FS-system innehåller värdet för rätt utfärdaren i token som utfärdats för Azure AD. Detta åstadkoms genom att använda den som domändel av användarna UPN och inställningar som domänen i IssuerUri, d.v.s. https://{upn suffix} / adfs-services-förtroendet. 
+En annan sak som `-SupportMultipleDomain` har är det garanterar att hello AD FS system innehåller hello rätt utfärdaren värdet i token som utfärdats för Azure AD. Detta åstadkoms genom att använda hello domän delen av hello användare UPN och ange detta som hello domän i hello IssuerUri, d.v.s. https://{upn suffix} / adfs-services-förtroendet. 
 
-Därmed under autentiseringen till Azure AD eller Office 365, elementet IssuerUri i användarens token som används för att leta upp domänen i Azure AD.  Om en matchning inte hittas autentiseringen misslyckas. 
+Under autentiseringen tooAzure AD eller Office 365 är hello IssuerUri element i hello användartoken därför används toolocate hello domän i Azure AD.  Om en matchning inte hittas hello autentiseringen misslyckas. 
 
-Till exempel om en användares UPN är bsimon@bmcontoso.com, elementet IssuerUri i token AD FS problem kommer att ställas in http://bmcontoso.com/adfs/services/trust. Detta motsvarar Azure AD-konfigurationen och autentiseringen lyckas.
+Till exempel om en användares UPN är bsimon@bmcontoso.com, hello IssuerUri element i hello token AD FS problem anges toohttp://bmcontoso.com/adfs/services/trust. Detta kommer att matcha hello Azure AD-konfiguration och autentiseringen lyckas.
 
-Följande är anpassade anspråksregeln som implementerar denna logik:
+hello följer hello anpassad anspråksregel som implementerar denna logik:
 
     c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
 
 
 > [!IMPORTANT]
-> För att kunna använda växeln - SupportMultipleDomain när du försöker lägga till nya eller konvertera redan lagts till domäner, som du behöver ha installationsprogrammet din federerat förtroende som ursprungligen stöder dessa.  
+> I ordning toouse hello - SupportMultipleDomain växla vid försök tooadd som är nya eller konvertera redan lagts till domäner, måste du toohave installationsprogrammet federerat förtroende-toosupport dem ursprungligen.  
 > 
 > 
 
-## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>Så här uppdaterar du förtroende mellan AD FS och Azure AD
-Om du inte konfigurera federerat förtroende mellan AD FS och din instans av Azure AD, kan du behöva återskapa förtroendet.  Detta beror på att när den är ursprungligen installationen utan den `-SupportMultipleDomain` parameter, IssuerUri anges med standardvärdet.  I skärmbilden nedan du ser IssuerUri är inställd på https://adfs.bmcontoso.com/adfs/services/trust.
+## <a name="how-tooupdate-hello-trust-between-ad-fs-and-azure-ad"></a>Hur tooupdate hello förtroende mellan AD FS och Azure AD
+Om du inte konfigurera hello federerat förtroende mellan AD FS och din instans av Azure AD, måste du kanske toore-skapa förtroendet.  Detta beror på att när den är ursprungligen installationen utan hello `-SupportMultipleDomain` parametern hello IssuerUri anges med hello standardvärdet.  I hello ser skärmbilden nedan du hello IssuerUri anges toohttps://adfs.bmcontoso.com/adfs/services/trust.
 
-Så nu, om vi har lagt till en ny domän i Azure AD-portalen och försök sedan att konvertera den med hjälp av `Convert-MsolDomaintoFederated -DomainName <your domain>`, vi använder följande felmeddelande.
+Så om vi har lagt till en ny domän i hello Azure AD-portalen och försök sedan tooconvert nu den med hjälp av `Convert-MsolDomaintoFederated -DomainName <your domain>`, vi hämta hello följande fel.
 
 ![Federation fel](./media/active-directory-multiple-domains/trust1.png)
 
-Om du försöker lägga till den `-SupportMultipleDomain` växel som vi får du följande felmeddelande:
+Om du försöker tooadd hello `-SupportMultipleDomain` växel som vi får hello följande fel:
 
 ![Federation fel](./media/active-directory-multiple-domains/trust2.png)
 
-Bara försöker köra `Update-MsolFederatedDomain -DomainName <your domain> -SupportMultipleDomain` på den ursprungliga domänen också resulterar i ett fel.
+Bara försök toorun `Update-MsolFederatedDomain -DomainName <your domain> -SupportMultipleDomain` på hello ursprungliga domänen också resulterar i ett fel.
 
 ![Federation fel](./media/active-directory-multiple-domains/trust3.png)
 
-Följ anvisningarna nedan för att lägga till en ytterligare toppnivådomän.  Om du redan har lagt till en domän och inte har använt den `-SupportMultipleDomain` parametern börjar med stegen för att ta bort och uppdatera din ursprungliga domän.  Om du inte har lagt till en toppnivådomän kan ännu du med steg för att lägga till en domän med hjälp av PowerShell för Azure AD Connect.
+Använd hello steg nedan tooadd en ytterligare toppnivådomän.  Om du redan har lagt till en domän och inte har använt hello `-SupportMultipleDomain` parametern start med hello steg för att ta bort och uppdatera din ursprungliga domän.  Om du inte har lagt till en toppnivådomän kan än du starta med hello steg för att lägga till en domän med hjälp av PowerShell för Azure AD Connect.
 
-Använd följande steg för att ta bort Microsoft Online-förtroende och uppdatera din ursprungliga domän.
+Använd följande steg tooremove hello Microsoft Online förtroende hello och uppdatera din ursprungliga domän.
 
 1. På din AD FS-federationsserver öppna **AD FS-hantering.** 
-2. Till vänster, expandera **förtroenden** och **förtroende för förlitande part**
-3. Ta bort till höger i **Identitetsplattformen för Microsoft Office 365** post.
+2. Hello vänster, expandera **förtroenden** och **förtroende för förlitande part**
+3. I högra hello, tar du bort hello **Identitetsplattformen för Microsoft Office 365** post.
    ![Ta bort Microsoft Online](./media/active-directory-multiple-domains/trust4.png)
-4. På en dator som har [Azure Active Directory-modulen för Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) installerad kör du följande: `$cred=Get-Credential`.  
-5. Ange användarnamn och lösenord för en global administratör för Azure AD-domänen du federerar med
+4. På en dator som har [Azure Active Directory-modulen för Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) installerad kör hello följande: `$cred=Get-Credential`.  
+5. Ange hello användarnamn och lösenord för en global administratör för hello Azure AD-domän du federerar med
 6. Ange i PowerShell`Connect-MsolService -Credential $cred`
-7. Ange i PowerShell `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain`.  Detta är den ursprungliga domänen.  Det med hjälp av ovanstående domäner som den skulle ha:`Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
+7. Ange i PowerShell `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain`.  Detta är hello ursprungliga domän.  Det med hjälp av hello över domäner som den skulle ha:`Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
 
-Använd följande steg för att lägga till den nya översta domänen med hjälp av PowerShell
+Använd hello följande steg tooadd hello ny domän på toppnivå med hjälp av PowerShell
 
-1. På en dator som har [Azure Active Directory-modulen för Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) installerad kör du följande: `$cred=Get-Credential`.  
-2. Ange användarnamn och lösenord för en global administratör för Azure AD-domänen du federerar med
+1. På en dator som har [Azure Active Directory-modulen för Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) installerad kör hello följande: `$cred=Get-Credential`.  
+2. Ange hello användarnamn och lösenord för en global administratör för hello Azure AD-domän du federerar med
 3. Ange i PowerShell`Connect-MsolService -Credential $cred`
 4. Ange i PowerShell`New-MsolFederatedDomain –SupportMultipleDomain –DomainName`
 
-Använd följande steg för att lägga till den nya översta domänen med Azure AD Connect.
+Använd hello följande steg tooadd hello ny domän på toppnivå med Azure AD Connect.
 
-1. Starta Azure AD Connect från skrivbordet eller start-menyn
+1. Starta Azure AD Connect från hello skrivbordet eller start-menyn
 2. Välj ”Lägg till en ytterligare Azure AD-domän” ![Lägg till en Azure AD-domän](./media/active-directory-multiple-domains/add1.png)
 3. Ange din Azure AD och Active Directory-autentiseringsuppgifter
-4. Välj den andra domänen som du vill konfigurera för federation.
+4. Välj andra hello domän som du vill tooconfigure för federation.
    ![Lägg till en Azure AD-domän](./media/active-directory-multiple-domains/add2.png)
 5. Klicka på Installera
 
-### <a name="verify-the-new-top-level-domain"></a>Kontrollera den nya översta domänen
-Med hjälp av PowerShell-kommando `Get-MsolDomainFederationSettings -DomainName <your domain>`du kan visa den uppdaterade IssuerUri.  Skärmbilden nedan visar federationen inställningarna har uppdaterats i vår ursprungliga domän http://bmcontoso.com/adfs/services/trust
+### <a name="verify-hello-new-top-level-domain"></a>Kontrollera hello nya toppnivådomänen
+Med hjälp av PowerShell-kommando för hello `Get-MsolDomainFederationSettings -DomainName <your domain>`kan du visa hello uppdateras IssuerUri.  hello skärmbilden nedan visar hello federation inställningarna har uppdaterats i vår ursprungliga domän http://bmcontoso.com/adfs/services/trust
 
 ![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/MsolDomainFederationSettings.png)
 
-Och IssuerUri på vår nya domänen har ställts in på https://bmfabrikam.com/adfs/services/trust
+Och hello IssuerUri på vår nya domänen har ställts in toohttps://bmfabrikam.com/adfs/services/trust
 
 ![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/settings2.png)
 
 ## <a name="support-for-sub-domains"></a>Stöd för underordnade domäner
-När du lägger till en underordnad domän, på grund av hur Azure AD hanterade domäner ärver den inställningarna för överordnat.  Det innebär att IssuerUri måste matcha överordnade.
+När du lägger till en underordnad domän på grund av hello sätt Azure AD hanterade domäner, ärver den hello inställningar för hello överordnade.  Det innebär att hello IssuerUri måste toomatch hello överordnade.
 
-Så kan anta till exempel att jag har bmcontoso.com och Lägg sedan till corp.bmcontoso.com.  Det innebär att IssuerUri för en användare från corp.bmcontoso.com måste vara **http://bmcontoso.com/adfs/services/trust.**  Men standard regeln implementerats ovan för Azure AD, genererar en token med en utfärdare som **http://corp.bmcontoso.com/adfs/services/trust.** som inte matchar domänens krävs värdet och autentiseringen misslyckas.
+Så kan anta till exempel att jag har bmcontoso.com och Lägg sedan till corp.bmcontoso.com.  Det innebär att hello IssuerUri för en användare från corp.bmcontoso.com måste toobe **http://bmcontoso.com/adfs/services/trust.**  Men hello standard regeln implementeras ovan för Azure AD ska generera en token med en utfärdare som **http://corp.bmcontoso.com/adfs/services/trust.** som inte matchar hello domän obligatoriskt värde och autentiseringen misslyckas.
 
-### <a name="how-to-enable-support-for-sub-domains"></a>Så här aktiverar du stöd för underordnade domäner
-Förlitande part för Microsoft Online måste uppdateras för att komma runt detta AD FS.  Om du vill göra detta måste konfigurera du en anpassad anspråksregel så att den tar ut alla underordnade domäner från användarens UPN-suffixet när man skapar anpassade utfärdaren värdet. 
+### <a name="how-tooenable-support-for-sub-domains"></a>Hur tooenable stöd för underordnade domäner
+I ordning toowork runt den här hello måste AD FS förtroende för förlitande part för Microsoft Online toobe uppdateras.  toodo, måste du konfigurera en anpassad anspråksregel så att den tar ut alla underordnade domäner från hello användarens UPN-suffixet vid hello anpassat utfärdaren värde. 
 
-Följande anspråk kommer att göra det:
+hello följande anspråk kommer att göra det:
 
     c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
 
 [!NOTE]
-Det sista numret i det reguljära uttrycket ange hur många överordnade domäner som finns i rotdomänen. Här finns i bmcontoso.com så att två överordnade domäner krävs. Om tre överordnade domäner har hållas (d.v.s.: corp.bmcontoso.com), och sedan antalet skulle ha varit tre. Eventualy kan ett intervall anges matchningen görs alltid att matcha maximalt antalet domäner. {2,3}-matchar två till tre domäner (d.v.s.: bmfabrikam.com och corp.bmcontoso.com).
+hello sista nummer i hello reguljärt uttryck ange hello hur många överordnade domäner finns i rotdomänen. Här finns i bmcontoso.com så att två överordnade domäner krävs. Om tre överordnade domäner har toobe behålls (d.v.s.: corp.bmcontoso.com), och sedan hello nummer skulle ha varit tre. Eventualy en intervallet kan anges, hello matchar görs alltid toomatch hello maximalt domäner. {2,3}-matchar två toothree domäner (d.v.s.: bmfabrikam.com och corp.bmcontoso.com).
 
-Använd följande steg om du vill lägga till ett anpassat anspråk för att stödja underdomäner.
+Använd följande steg tooadd hello ett anpassat anspråk toosupport underordnade domäner.
 
 1. Öppna AD FS-hantering
-2. Högerklicka på Microsoft Online RP-förtroende och väljer Redigera anspråksregler
-3. Välj den tredje anspråksregeln och Ersätt ![redigera anspråk](./media/active-directory-multiple-domains/sub1.png)
-4. Ersätt det aktuella anspråket:
+2. Högerklicka på hello Microsoft Online RP förtroende och väljer Redigera anspråksregler
+3. Välj hello tredje anspråksregel och Ersätt ![redigera anspråk](./media/active-directory-multiple-domains/sub1.png)
+4. Ersätt hello aktuella anspråk:
    
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
    

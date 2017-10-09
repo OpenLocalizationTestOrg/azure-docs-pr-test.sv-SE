@@ -1,5 +1,5 @@
 ---
-title: "Guide för att använda PolyBase i SQL Data Warehouse | Microsoft Docs"
+title: "aaaGuide för att använda PolyBase i SQL Data Warehouse | Microsoft Docs"
 description: "Riktlinjer och rekommendationer för att använda PolyBase i SQL Data Warehouse-scenarier."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,36 +15,36 @@ ms.workload: data-services
 ms.date: 6/5/2016
 ms.custom: loading
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 6938b92d8e5b46d908dc5b2155bdfdc89bb1dc8c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b05e4c5d528f2fe1c60d6855b5333065f0c908ab
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="guide-for-using-polybase-in-sql-data-warehouse"></a>Guide för att använda PolyBase i SQL Data Warehouse
 Den här handboken innehåller praktisk information för att använda PolyBase i SQL Data Warehouse.
 
-Om du vill komma igång finns det [Läs in data med PolyBase] [ Load data with PolyBase] kursen.
+tooget igång, se hello [Läs in data med PolyBase] [ Load data with PolyBase] kursen.
 
 ## <a name="rotating-storage-keys"></a>Rotera lagringsnycklar
-Då kommer du vill ändra åtkomstnyckeln för till blob-lagring av säkerhetsskäl.
+Från tid tootime ska toochange hello access key tooyour blob-lagring av säkerhetsskäl.
 
-Det mest elegant sättet att utföra den här uppgiften är att följa en process som kallas ”rotera nycklarna”. Kanske såg du att du har två lagringsnycklar för blob storage-konto. Detta är så att du kan överföra
+Hej mest elegant sätt tooperform uppgiften är toofollow en process som kallas ”rotera nycklar hello”. Kanske såg du att du har två lagringsnycklar för blob storage-konto. Detta är så att du kan överföra
 
 Rotera dina nycklar för Azure storage-konto är tre enkla steg
 
-1. Skapa andra omfång databasautentiseringsuppgiften baserat på den sekundära lagringsåtkomstnyckel
+1. Skapa andra omfång databasautentiseringsuppgiften baserat på hello sekundära lagringsåtkomstnyckel
 2. Skapa extern datakälla baserat på den här nya autentiseringsuppgifter
-3. Ta bort och skapa den externa tabeller som pekar på den externa datakällan
+3. Ta bort och skapa hello externa tabeller pekar toohello nya extern datakälla
 
-När du har migrerat alla externa tabeller till den externa datakällan och sedan kan du utföra rensningen uppgifter:
+När du har migrerat alla externa tabeller toohello nya externa datakällan och sedan kan du utföra hello Rensa uppgifter:
 
 1. Släpp första extern datakälla
-2. Släpp första databas-omfattande autentisering baserat på den primära lagringsåtkomstnyckel
-3. Logga in på Azure och återskapa den primära åtkomstnyckeln som är redo för nästa gång
+2. Släpp första databas-omfattande autentisering baserat på hello primära lagringsåtkomstnyckel
+3. Logga in på Azure och återskapa hello primärnyckeln redo för hello nästa gång
 
 ## <a name="query-azure-blob-storage-data"></a>Frågan Azure blob storage-data
-Frågor mot externa tabeller Använd bara tabellnamnet som om det var en relationella tabell.
+Frågor mot externa tabeller Använd bara hello tabellnamn som om det var en relationella tabell.
 
 ```sql
 -- Query Azure storage resident data via external table.
@@ -53,21 +53,21 @@ SELECT * FROM [ext].[CarSensor_Data]
 ```
 
 > [!NOTE]
-> En fråga på en extern tabell kan misslyckas med fel *”frågan avbröts--avvisa den maximala tröskelvärdet nåddes vid läsning från en extern källa”*. Detta anger att externa data innehåller *felaktig* poster. ”Felaktig' anses vara en post om de faktiska data typer/antalet kolumner inte matchar kolumndefinitioner för extern tabell eller om data inte överensstämmer med det angivna externa filformatet. Kontrollera att din extern tabell och definitioner för externa filformat är korrekta och externa data överensstämmer med dessa definitioner för att åtgärda detta. Om en delmängd av externa dataposter är inaktuella kan du avvisa posterna för dina frågor genom att använda avvisa i Skapa extern tabell DDL.
+> En fråga på en extern tabell kan misslyckas med hello fel *”frågan avbröts--hello avvisa den maximala tröskelvärdet nåddes vid läsning från en extern källa”*. Detta anger att externa data innehåller *felaktig* poster. ”Felaktig' anses vara en post om hello faktiska data typer/antal kolumner inte matchar hello kolumndefinitioner för hello extern tabell eller om hello data stämmer inte överens toohello angivna externa filformatet. toofix, se till att en extern tabell och definitioner för externa filformat är korrekta och externa data överensstämmer toothese definitioner. Om en delmängd av externa dataposter är inaktuella kan du välja tooreject posterna för dina frågor med hello avvisa Skapa extern tabell DDL.
 > 
 > 
 
 ## <a name="load-data-from-azure-blob-storage"></a>Läsa in data från Azure Blob Storage
-Det här exemplet läser data från Azure blob storage till SQL Data Warehouse-databas.
+Det här exemplet läser in data från Azure blob storage tooSQL Data Warehouse-databas.
 
-Lagra data direkt tar bort dataöverföringstid för frågor. Lagra data med ett columnstore-index förbättrar prestanda för analys av upp till 10 x.
+Lagra data direkt tar bort hello dataöverföringstid för frågor. Lagra data med ett columnstore-index förbättrar prestanda för analys av in too10x.
 
-Det här exemplet använder CREATE TABLE AS SELECT-instruktion för att läsa in data. Den nya tabellen ärver kolumnerna som namnges i frågan. Datatyperna för kolumnerna ärver från den externa tabelldefinitionen.
+Det här exemplet använder hello CREATE TABLE AS SELECT-instruktionen tooload data. hello ny tabell ärver hello kolumnerna som namnges i frågan hello. Hello datatyperna för kolumnerna ärver från hello externa tabelldefinitionen.
 
-CREATE TABLE AS SELECT är en hög performant Transact-SQL-uttryck som läser in data i parallellt datornoderna för ditt SQL Data Warehouse.  Den ursprungligen utvecklades för massivt parallell bearbetning (MPP) motorn i Analytics Platform System och är nu i SQL Data Warehouse.
+CREATE TABLE AS SELECT är en hög performant Transact-SQL-uttryck som läser in hello data i parallella tooall hello compute-noder i SQL Data Warehouse.  Den ursprungligen utvecklades för hello massivt parallell bearbetning (MPP) motorn i Analytics Platform System och är nu i SQL Data Warehouse.
 
 ```sql
--- Load data from Azure blob storage to SQL Data Warehouse
+-- Load data from Azure blob storage tooSQL Data Warehouse
 
 CREATE TABLE [dbo].[Customer_Speed]
 WITH
@@ -84,7 +84,7 @@ FROM   [ext].[CarSensor_Data]
 Se [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)].
 
 ## <a name="create-statistics-on-newly-loaded-data"></a>Skapa statistik på nyinlästa data
-SQL Data Warehouse stöder inte än automatiskt skapande eller uppdatering av statistik.  För att få bästa möjliga prestanda från dina frågor, är det viktigt att statistik skapas på alla kolumner i alla tabeller efter den första inläsningen eller vid betydande dataändringar.  En detaljerad förklaring av statistik finns i ämnet [Statistik][Statistics] i ämnesgruppen Utveckla.  Nedan visas ett enkelt exempel på hur du skapar statistik på tabellerna som lästs in i det här exemplet.
+SQL Data Warehouse stöder inte än automatiskt skapande eller uppdatering av statistik.  I ordning tooget hello bästa prestanda från dina frågor, är det viktigt att statistik skapas på alla kolumner i alla tabeller efter hello första inläsningen eller vid betydande dataändringar i hello data.  En detaljerad förklaring av statistik finns hello [statistik] [ Statistics] -avsnittet i hello ämnesgruppen.  Nedan visas ett enkelt exempel på hur toocreate statistik hello fram läses in i det här exemplet.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -94,10 +94,10 @@ create statistics [Speed] on [Customer_Speed] ([Speed]);
 create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 ```
 
-## <a name="export-data-to-azure-blob-storage"></a>Exportera data till Azure blob storage
-Det här avsnittet visar hur du exporterar data från SQL Data Warehouse till Azure blob storage. Det här exemplet använder skapa externa TABLE AS SELECT som är en hög performant Transact-SQL-instruktionen för att exportera data parallellt från compute-noder.
+## <a name="export-data-tooazure-blob-storage"></a>Exportera data tooAzure blob-lagring
+Det här avsnittet visar hur tooexport data från SQL Data Warehouse tooAzure blob storage. Det här exemplet använder skapa externa TABLE AS SELECT som är en hög performant Transact-SQL-instruktionen tooexport hello data parallellt från alla hello compute-noder.
 
-I följande exempel skapas en extern tabell Weblogs2014 med kolumndefinitionerna och data från dbo. Webbloggar tabell. Den externa tabelldefinitionen lagras i SQL Data Warehouse och resultatet av SELECT-instruktionen exporteras till katalogen ”/ Arkivera/log2014 /” i blob-behållaren som anges av datakällan. Data exporteras i formatet angiven text.
+hello skapas följande exempel en extern tabell Weblogs2014 med kolumndefinitionerna och data från dbo. Webbloggar tabell. hello externa tabelldefinitionen lagras i SQL Data Warehouse och hello hello SELECT-instruktionen är exporterade toohello ”/ Arkivera/log2014 /” katalog under hello blob-behållare som angavs av hello datakällan. hello data exporteras i hello angiven text-format.
 
 ```sql
 CREATE EXTERNAL TABLE Weblogs2014 WITH
@@ -118,21 +118,21 @@ WHERE
     AND DateRequested < '01/01/2015';
 ```
 ## <a name="isolate-loading-users"></a>Isolera läsa in användare
-Det är ofta behöver flera användare som kan läsa in data i en SQL DW. Eftersom den [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] kräver behörighet på databasen, du kommer att få flera användare med åtkomst kontroll över alla scheman. Du kan använda instruktionen NEKA kontroll för att begränsa detta.
+Det är ofta en toohave behovet av flera användare som kan läsa in data i en SQL DW. Eftersom hello [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] kräver behörighet av hello databasen du kommer att få flera användare med behörighet över alla scheman. toolimit, du kan använda hello NEKA kontroll.
 
 Exempel: Överväg att databasen scheman schema_A för Avd A och schema_B för Avd B låt databasen användare user_A och user_B vara användare för PolyBase läser in i Avd A och B, respektive. De båda ha beviljats behörighet för databasen.
-Skapare av A och B nu schemalås ned sina scheman med NEKA:
+hello skapare av A och B nu låsa deras scheman med NEKA-schemat:
 
 ```sql
-   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
-   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
+   DENY CONTROL ON SCHEMA :: schema_A toouser_B;
+   DENY CONTROL ON SCHEMA :: schema_B toouser_A;
 ```   
- Med den här, bör user_A och user_B nu utelåst från andra Avd schema.
+ Med den här, user_A och user_B bör nu vara utelåst från hello andra Avd schemat.
  
 
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om hur du flyttar data till SQL Data Warehouse finns i [översikt över datamigrering][data migration overview].
+toolearn mer om att flytta data tooSQL datalagret finns hello [översikt över datamigrering][data migration overview].
 
 <!--Image references-->
 

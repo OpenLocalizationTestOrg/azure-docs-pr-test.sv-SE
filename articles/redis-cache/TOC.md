@@ -33,18 +33,18 @@
 ###[Sessionstillståndsprovider](cache-aspnet-session-state-provider.md)
 ###[Utdatacacheprovider](cache-aspnet-output-cache-provider.md)
 ## Hantera
-###[Konfigurera i portalen](cache-configure.md)
+###[Konfigurera i hello-portalen](cache-configure.md)
 ###[Konfigurera geo-replikering](cache-how-to-geo-replication.md)
 ###[Importera/exportera data](cache-how-to-import-export-data.md)
 ###[Starta om](cache-administration.md#reboot)
 ###[Schemauppdateringar](cache-administration.md#schedule-updates)
 ## Övervaka och felsök
-###[Övervaka i portalen](cache-how-to-monitor.md)
+###[Övervaka hello-portalen](cache-how-to-monitor.md)
 ###[Felsök cacheproblem](cache-how-to-troubleshoot.md)
 ###[Ställ in aviseringar för undantag](cache-how-to-monitor.md#operations-and-alerts)
 ## Skala
-###[Uppdatera till en annan storlek och nivå](cache-how-to-scale.md)
-###[Använd Redis-kluster för att skala in och ut](cache-how-to-premium-clustering.md)
+###[Uppdatera tooa annan storlek och nivå](cache-how-to-scale.md)
+###[Använd Redis cluster tooscale in/ut](cache-how-to-premium-clustering.md)
 ## Integrera med Spring Boot
 ###[Använd en Spring Boot-initieringsapp med Redis Cache](cache-java-spring-boot-initializer-with-redis-cache.md)
 

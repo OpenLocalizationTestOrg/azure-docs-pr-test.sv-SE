@@ -1,5 +1,5 @@
 ---
-title: "Med SAP på Linux-datorer | Microsoft Docs"
+title: "aaaUsing SAP på Linux-datorer | Microsoft Docs"
 description: "Läs om att använda SAP på virtuella Linux-datorer (VM:ar) i Microsoft Azure"
 services: virtual-machines-linux,virtual-network,storage
 documentationcenter: saponazure
@@ -16,23 +16,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
-ms.openlocfilehash: 66eb53f99ce4b30ec283243deb3649c9ca897a2b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fd4aad83d99ef5286488aaab6552fd67a5e35a4a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>Med hjälp av SAP på Linux-datorer i Azure
-Cloud Computing är en välanvänd term som ökat i vikt inom IT-branschen, från småföretag upp till stora multinationella bolag. Microsoft Azure är Microsofts molntjänstplattform som erbjuder ett brett utbud av nya möjligheter. Kunder kan snabbt etablera och avetablera program som molntjänster så att de inte behöver hålla tillbaka på grund av tekniska eller budgetbegränsningar. Istället för att investera tid och budget i maskinvaruinfrastruktur, kan företag fokusera på programmet, verksamhetsprocesserna och dess fördelar för kunder och användare.
+Molntjänster är en term som används mycket som har blivit mer och mer betydelse inom hello IT-branschen, från små företag upp toolarge och multinationella företag. Microsoft Azure är hello Molnplattform tjänster från Microsoft, vilket ger ett brett spektrum av nya möjligheter. Nu är kunder kan toorapidly etablera och avinstallation etablera program som molntjänster, så att de inte är begränsad tootechnical eller budgetering begränsningar. I stället för investera tid och budget i infrastrukturen för maskinvara, kan företag fokuserar på hello program, processer och dess fördelar för kunder och användare.
 
-Microsoft erbjuder ett omfattande infrastruktur som en tjänst (IaaS)-plattform med Microsoft Azure-datorer. SAP NetWeaver-baserade program stöds på virtuella Azure-datorer (IaaS). Faktablad nedan beskrivs hur du planerar och implementerar SAP NetWeaver baserat program på Windows-datorer i Azure. Du kan också implementeras SAP NetWeaver baserat program på [virtuella Windows-datorer](../../virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Microsoft erbjuder ett omfattande infrastruktur som en tjänst (IaaS)-plattform med Microsoft Azure-datorer. SAP NetWeaver-baserade program stöds på virtuella Azure-datorer (IaaS). hello whitepapers nedan beskrivs hur tooplan och implementera SAP NetWeaver baserade program på Windows-datorer i Azure. Du kan också implementeras SAP NetWeaver baserat program på [virtuella Windows-datorer](../../virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-sap-get-started](../../../../includes/virtual-machines-common-classic-sap-get-started.md)]
 
 ## <a name="sap-netweaver-on-azure-suse-linux-virtual-machines"></a>SAP NetWeaver på Azure SUSE Linux virtuella datorer
-Rubrik: Testa SAP NetWeaver på Microsoft Azure SUSE Linux virtuella datorer
+Rubrik: aaaTesting SAP NetWeaver på Microsoft Azure SUSE Linux virtuella datorer
 
-Sammanfattning: Det finns inget officiella SAP-stöd för att köra SAP NetWeaver på virtuella Azure Linux-datorer vid denna tidpunkt. Dock kanske vill göra vissa tester kunder eller överväga för att köra SAP demo eller utbildningssystem på virtuella Azure Linux-datorer så länge som det ingen behövs för att kontakta supporten för SAP. Den här artikeln bör hjälp med att konfigurera Azure SUSE Linux virtuella datorer för att köra SAP och ger vissa grundläggande tips för att undvika vanliga fallgropar.
+Sammanfattning: Det finns inget officiella SAP-stöd för att köra SAP NetWeaver på virtuella Azure Linux-datorer vid denna tidpunkt. Dock kanske vill toodo vissa testning kunder eller överväga toorun SAP demo eller utbildning system på virtuella Azure Linux-datorer som behöver för att kontakta supporten för SAP. Den här artikeln bör hjälp med att konfigurera Azure SUSE Linux virtuella datorer för att köra SAP och ger vissa grundläggande tips i ordning tooavoid vanliga fallgropar.
 
 Uppdaterad: December 2015
 

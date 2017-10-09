@@ -1,6 +1,6 @@
 ---
-title: "Skapa en Node.js-webbapp för Azure Cosmos DB | Microsoft Docs"
-description: "Den här självstudien om Node.js utforskar hur du använder Microsoft Azure Cosmos DB för att lagra och komma åt data från en Node.js Express-webbapp på Azure Websites."
+title: "aaaBuild en Node.js-webbapp för Azure Cosmos DB | Microsoft Docs"
+description: "Den här självstudien om Node.js utforskar hur toouse Microsoft Azure Cosmos DB toostore och komma åt data från Node.js Express webbprogram finns på Azure Websites."
 keywords: "Programutveckling, database-Självstudier lär dig använda node.js, självstudie om node.js"
 services: cosmos-db
 documentationcenter: nodejs
@@ -15,11 +15,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: mimig
-ms.openlocfilehash: 1a98509a98bcd2a5de593eb006f905766fe72966
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 31194dccf37eef69d2219b0d8328a88d434f79b9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="_Toc395783175"></a>Skapa ett Node.js-webbprogram med Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.lasthandoff: 08/18/2017
 > 
 > 
 
-Den här självstudien om Node.js beskrivs hur du använder Azure Cosmos DB och DocumentDB-API för att lagra och komma åt data från ett node.Ja Express-program på Azure Websites. Du bygger ett enkelt webbaserat aktivitetshanteringsprogram, en ToDo-app, där du kan skapa, hämta och slutföra aktiviteter. Uppgifterna lagras som JSON-dokument i Azure Cosmos DB. Den här självstudien vägleder dig genom skapandet och distributionen av appen och förklarar vad som händer i varje kodfragment.
+Den här självstudien om Node.js beskrivs hur toouse Azure Cosmos DB och hello DocumentDB API toostore och komma åt data från ett node.Ja Express-program finns på Azure Websites. Du bygger ett enkelt webbaserat aktivitetshanteringsprogram, en ToDo-app, där du kan skapa, hämta och slutföra aktiviteter. hello uppgifter lagras som JSON-dokument i Azure Cosmos DB. Den här självstudiekursen vägleder dig genom hello skapande och distribution av hello appen och förklarar vad som händer i varje fragment.
 
-![Skärmdump av programmet My Todo List som skapas genom stegen i den här självstudien om Node.js](./media/documentdb-nodejs-application/cosmos-db-node-js-mytodo.png)
+![Skärmbild som visar hello My Todo List-program som skapats i den här självstudien om Node.js](./media/documentdb-nodejs-application/cosmos-db-node-js-mytodo.png)
 
-Har du inte tid att gå igenom självstudien, men vill ha hela lösningen? Inga problem, du kan hämta den fullständiga exempellösningen från [GitHub][GitHub]. Läs bara [Viktigt](https://github.com/Azure-Samples/documentdb-node-todo-app/blob/master/README.md)-filen för instruktioner om hur du kör appen.
+Inte har tid toocomplete hello självstudier och bara vill tooget hello komplett lösning? Inga problem, du kan hämta hello fullständiga exempellösningen från [GitHub][GitHub]. Bara läsa hello [viktigt](https://github.com/Azure-Samples/documentdb-node-todo-app/blob/master/README.md) filen anvisningar för hur toorun hello app.
 
 ## <a name="_Toc395783176"></a>Förhandskrav
 > [!TIP]
@@ -42,30 +42,30 @@ Har du inte tid att gå igenom självstudien, men vill ha hela lösningen? Inga 
 > 
 > 
 
-Innan du följer anvisningarna i den här artikeln bör du se till att du har följande:
+Innan du följer hello anvisningarna i den här artikeln bör du kontrollera att du har hello följande:
 
 * Ett aktivt Azure-konto. Om du inte har något konto kan du skapa ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information finns i [kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
 
    ELLER
 
-   En lokal installation av den [Azure Cosmos DB emulatorn](local-emulator.md) (endast Windows).
+   En lokal installation av hello [Azure Cosmos DB emulatorn](local-emulator.md) (endast Windows).
 * [Node.js][Node.js] version v0.10.29 eller högre.
 * [Express generator](http://www.expressjs.com/starter/generator.html) (kan installeras via `npm install express-generator -g`)
 * [Git][Git].
 
 ## <a name="_Toc395637761"></a>Steg 1: Skapa ett Azure Cosmos DB-databaskonto
-Vi ska börja med att skapa ett Azure Cosmos DB-konto. Om du redan har ett konto eller om du använder Azure Cosmos DB-emulatorn för den här kursen kan du gå vidare till [Steg 2: Skapa ett nytt Node.js-program](#_Toc395783178).
+Vi ska börja med att skapa ett Azure Cosmos DB-konto. Om du redan har ett konto eller om du använder hello Azure Cosmos DB-emulatorn för den här kursen kan du hoppa över för[steg 2: skapa ett nytt Node.js-program](#_Toc395783178).
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 [!INCLUDE [cosmos-db-keys](../../includes/cosmos-db-keys.md)]
 
 ## <a name="_Toc395783178"></a>Steg 2: Skapa ett nytt Node.js-program
-Nu ska vi skapa ett grundläggande Hello World Node.js-projekt med [Express](http://expressjs.com/)-ramverket.
+Nu ska vi ett grundläggande Hello World Node.js-projekt med hello Läs toocreate [Express](http://expressjs.com/) framework.
 
-1. Öppna din favoritterminal, till exempel Node.js-kommandotolken.
-2. Navigera till den katalog där du vill lagra det nya programmet.
-3. Skapa ett nytt program kallat **todo** med hjälp av Express Generator.
+1. Öppna valfri terminal, till exempel hello Node.js-kommandotolk.
+2. Navigera toohello katalog där du vill att toostore hello nytt program.
+3. Använd hello express generator toogenerate ett nytt program kallas **todo**.
    
         express todo
 4. Öppna din nya **todo**-katalog och installera beroenden.
@@ -75,22 +75,22 @@ Nu ska vi skapa ett grundläggande Hello World Node.js-projekt med [Express](htt
 5. Kör det nya programmet.
    
         npm start
-6. Du kan visa det nya programmet genom att öppna [http://localhost:3000](http://localhost:3000) i webbläsaren.
+6. Du kan visa det nya programmet genom att navigera din webbläsare för[http://localhost: 3000](http://localhost:3000).
    
-    ![Lär dig använda Node.js – Skärmdump av programmet Hello World i ett webbläsarfönster](./media/documentdb-nodejs-application/cosmos-db-node-js-express.png)
+    ![Lär dig använda Node.js – skärmdump av hello programmet Hello World i ett webbläsarfönster](./media/documentdb-nodejs-application/cosmos-db-node-js-express.png)
 
-    Därefter, för att stoppa programmet, trycker du på CTRL+C i terminalfönstret och klickar sedan på **y** för att avbryta batch-jobbet.
+    Sedan toostop hello program, tryck på CTRL + C i hello terminalfönster och klicka sedan på **y** tooterminate hello batch-jobbet.
 
 ## <a name="_Toc395783179"></a>Steg 3: Installera ytterligare moduler
-Filen **package.json** är en av filerna som skapas i projektets rot. Den här filen innehåller en lista över ytterligare moduler som krävs för Node.js-programmet. Senare, när du distribuerar programmet till Azure Websites används den här filen för att avgöra vilka moduler måste installeras på Azure som stöd för ditt program. Vi behöver installera två paket till för den här självstudien.
+Hej **package.json** är en av hello-filer som skapas i hello rot hello projektet. Den här filen innehåller en lista över ytterligare moduler som krävs för Node.js-programmet. Senare, när du distribuerar det här programmet tooAzure webbplatser, är filen används toodetermine vilka moduler måste toobe installerad på Azure toosupport ditt program. Vi behöver du fortfarande tooinstall två paket för den här självstudiekursen.
 
-1. Gå tillbaka till terminalen och installera modulen **async** via npm.
+1. Tillbaka i hello terminal, installera hello **asynkrona** modul via npm.
    
         npm install async --save
-2. Installera modulen **documentdb** via npm. Det här är modulen där alla Azure DB som Cosmos-magin händer.
+2. Installera hello **documentdb** modul via npm. Detta är hello-modulen där alla hello Azure Cosmos DB magin händer.
    
         npm install documentdb --save
-3. En snabb kontroll av filen **package.json** i appen bör visa ytterligare moduler. Den här filen talar om för Azure vilka paket som ska laddas ned och installeras när du kör programmet. Det bör likna exemplet nedan.
+3. En snabb kontroll av hello **package.json** -filen för programmet hello ska visa hello ytterligare moduler. Den här filen ska berätta för Azure vilka paket toodownload och installera när du kör programmet. Det bör likna hello exemplet nedan.
    
         {
           "name": "todo",
@@ -114,14 +114,14 @@ Filen **package.json** är en av filerna som skapas i projektets rot. Den här f
    
     Det här visar för Node (och senare Azure) att ditt program är beroende av de här ytterligare modulerna.
 
-## <a name="_Toc395783180"></a>Steg 4: Använda Azure Cosmos DB-tjänsten i ett nodprogram
-Nu när vi har slutfört den första installationen och konfigurationen är det dags att ta itu med vårt verkliga syfte: att skriva kod med Azure Cosmos DB.
+## <a name="_Toc395783180"></a>Steg 4: Använda hello Azure DB som Cosmos-tjänsten i en node-App
+Som tar hand om alla hello installationen och konfigurationen är vi get ned toowhy vi här och som är toowrite vissa kod som använder Azure Cosmos DB.
 
-### <a name="create-the-model"></a>Skapa modellen
-1. Skapa en ny katalog i projektkatalogen med namnet **models**, i samma katalog som package.json-filen.
-2. I katalogen **models** skapar du en ny fil med namnet **taskDao.js**. Den här filen innehåller modellen för de aktiviteter som skapats av vårt program.
-3. I samma **models**-katalog skapar du ytterligare en ny fil med namnet **docdbUtils.js**. Den här filen innehåller användbar och återanvändbar kod som vi ska använda i programmet. 
-4. Kopiera följande kod till **docdbUtils.js**
+### <a name="create-hello-model"></a>Skapa hello modell
+1. Skapa en ny katalog med namnet i hello projektkatalogen **modeller** i hello samma katalog som hello package.json filen.
+2. I hello **modeller** directory, skapa en ny fil med namnet **taskDao.js**. Den här filen innehåller hello modellen för hello aktiviteter som skapats av vårt program.
+3. Hej i samma **modeller** directory, skapa ytterligare en ny fil med namnet **docdbUtils.js**. Den här filen innehåller användbar och återanvändbar kod som vi ska använda i programmet. 
+4. Kopiera hello med följande kod för**docdbUtils.js**
    
         var DocumentDBClient = require('documentdb').DocumentClient;
    
@@ -189,12 +189,12 @@ Nu när vi har slutfört den första installationen och konfigurationen är det 
    
         module.exports = DocDBUtils;
    
-5. Spara och stäng filen **docdbUtils.js**.
-6. I början av filen **taskDao.js** lägger du till följande kod för att referera till **DocumentDBClient** och **docdbUtils.js** som vi skapade ovan:
+5. Spara och Stäng hello **docdbUtils.js** fil.
+6. Hello början av hello **taskDao.js** lägger du till följande kod tooreference hello hello **DocumentDBClient** och hello **docdbUtils.js** vi skapade ovan:
    
         var DocumentDBClient = require('documentdb').DocumentClient;
         var docdbUtils = require('./docdbUtils');
-7. Sedan lägger du till kod för att definiera och exportera aktivitetsobjektet. Den ansvarar för att initiera vårt aktivitetsobjekt och konfigurera databasen och dokumentsamlingen som vi ska använda.
+7. Därefter måste du lägga till kod toodefine och exportera aktivitetsobjektet hello. Detta är ansvarig för att initiera vårt aktivitetsobjekt och konfigurera hello databasen och dokumentsamlingen som vi ska använda.
    
         function TaskDao(documentDBClient, databaseId, collectionId) {
           this.client = documentDBClient;
@@ -206,7 +206,7 @@ Nu när vi har slutfört den första installationen och konfigurationen är det 
         }
    
         module.exports = TaskDao;
-8. Lägg sedan till följande kod för att definiera ytterligare metoder för aktivitetsobjektet, som gör att det går att interagera med data som lagras i Azure Cosmos DB.
+8. Lägg till hello följande kod toodefine fler metoder på hello aktivitetsobjektet som tillåter samverkan med data som lagras i Azure Cosmos DB.
    
         TaskDao.prototype = {
             init: function (callback) {
@@ -301,11 +301,11 @@ Nu när vi har slutfört den första installationen och konfigurationen är det 
                 });
             }
         };
-9. Spara och stäng filen **taskDao.js**. 
+9. Spara och Stäng hello **taskDao.js** fil. 
 
-### <a name="create-the-controller"></a>Skapa styrningen
-1. I projektets **routes**-katalog skapar du en ny fil med namnet **tasklist.js**. 
-2. Lägg till följande kod i **tasklist.js**. Den läser in DocumentDBClient och async-moduler som används av **tasklist.js**. Detta definieras även i funktionen **TaskList**, som mottar en instans av **Task**-objektet som vi definierade tidigare:
+### <a name="create-hello-controller"></a>Skapa hello-styrenhet
+1. I hello **vägar** katalogen för ditt projekt, skapa en ny fil med namnet **tasklist.js**. 
+2. Lägg till följande kod för hello**tasklist.js**. Den läser in hello DocumentDBClient och async-moduler som används av **tasklist.js**. Detta definieras även hello **TaskList** funktion, som mottar en instans av hello **aktivitet** objektet som vi definierade tidigare:
    
         var DocumentDBClient = require('documentdb').DocumentClient;
         var async = require('async');
@@ -315,7 +315,7 @@ Nu när vi har slutfört den första installationen och konfigurationen är det 
         }
    
         module.exports = TaskList;
-3. Fortsätt att lägga till kod i filen **tasklist.js** genom att lägga till metoderna **showTasks, addTask** och **completeTasks**:
+3. Fortsätt att lägga till toohello **tasklist.js** filen genom att lägga till hello-metoder som används för**showTasks, addTask**, och **completeTasks**:
    
         TaskList.prototype = {
             showTasks: function (req, res) {
@@ -375,38 +375,38 @@ Nu när vi har slutfört den första installationen och konfigurationen är det 
                 });
             }
         };
-4. Spara och stäng filen **tasklist.js**.
+4. Spara och Stäng hello **tasklist.js** fil.
 
 ### <a name="add-configjs"></a>Lägg till config.js
 1. Skapa en ny fil med namnet **config.js** i projektkatalogen.
-2. Lägg till följande i **config.js**. Det definierar konfigurationsinställningar och värden som behövs i appen.
+2. Lägg till följande hello för**config.js**. Det definierar konfigurationsinställningar och värden som behövs i appen.
    
         var config = {}
    
-        config.host = process.env.HOST || "[the URI value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
-        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
+        config.host = process.env.HOST || "[hello URI value from hello Azure Cosmos DB Keys blade on http://portal.azure.com]";
+        config.authKey = process.env.AUTH_KEY || "[hello PRIMARY KEY value from hello Azure Cosmos DB Keys blade on http://portal.azure.com]";
         config.databaseId = "ToDoList";
         config.collectionId = "Items";
    
         module.exports = config;
-3. I filen **config.js** uppdaterar du värdet för HOST och AUTH_KEY med värdena på bladet Nycklar för ditt Azure Cosmos DB-konto på [Microsoft Azure Portal](https://portal.azure.com).
-4. Spara och stäng filen **config.js**.
+3. I hello **config.js** -fil, uppdatera hello värden för HOST och AUTH_KEY med hello värdena i hello nycklar bladet för din Azure DB som Cosmos-konto i hello [Microsoft Azure-portalen](https://portal.azure.com).
+4. Spara och Stäng hello **config.js** fil.
 
 ### <a name="modify-appjs"></a>Ändra app.js
-1. Öppna filen **app.js** i projektkatalogen. Den här filen skapades tidigare när Express-webbappen skapades.
-2. Lägg till följande kod högst upp i **app.js**
+1. Öppna hello i hello projektkatalogen **app.js** fil. Den här filen skapades tidigare när hello Express-webbappen skapades.
+2. Lägg till följande kod toohello överkant hello **app.js**
    
         var DocumentDBClient = require('documentdb').DocumentClient;
         var config = require('./config');
         var TaskList = require('./routes/tasklist');
         var TaskDao = require('./models/taskDao');
-3. Den här koden definierar vilken konfigurationsfil som ska användas och läser sedan värden från denna fil till några variabler som vi snart ska använda.
-4. Ersätt följande två rader i filen **app.js**:
+3. Den här koden definierar hello config-fil toobe används, och fortsätter tooread värden från denna fil till några variabler som vi snart ska använda.
+4. Ersätt följande två rader i hello **app.js** fil:
    
         app.use('/', index);
         app.use('/users', users); 
    
-      med följande utdrag:
+      med följande kodavsnitt hello:
    
         var docDbClient = new DocumentDBClient(config.host, {
             masterKey: config.authKey
@@ -419,14 +419,14 @@ Nu när vi har slutfört den första installationen och konfigurationen är det 
         app.post('/addtask', taskList.addTask.bind(taskList));
         app.post('/completetask', taskList.completeTask.bind(taskList));
         app.set('view engine', 'jade');
-5. Dessa rader definierar en ny instans av **TaskDao**-objektet med en ny anslutning till Azure Cosmos DB (med de värden som lästs in från **config.js**), initierar aktivitetsobjektet och binder formuläråtgärder till metoder i **TaskList**-styrenheten. 
-6. Avsluta med att spara och stänga filen **app.js**. Vi är nästan klara.
+5. Dessa rader definierar en ny instans av vårt **TaskDao** objekt med en ny anslutning tooAzure Cosmos DB (med hjälp av hello värden läsa från hello **config.js**), initiera hello aktivitetsobjektet och Binder formuläråtgärder toomethods på vår **TaskList** domänkontrollant. 
+6. Slutligen, spara och Stäng hello **app.js** fil, vi är nästan klara.
 
 ## <a name="_Toc395783181"></a>Steg 5: Skapa ett användargränssnitt
-Nu är det dags att skapa användargränssnittet, så att användaren faktiskt kan samverka med vår app. Express-appen som vi skapade använder **Jade** som visningsmotor. Mer information om Jade finns på [http://jade-lang.com/](http://jade-lang.com/).
+Nu dags användargränssnittet våra uppmärksamhet toobuilding hello så att användaren faktiskt kan samverka med vår App. Hej Express-appen som vi skapade använder **Jade** som hello visningsmotor. Mer information om Jade finns för[http://jade-lang.com/](http://jade-lang.com/).
 
-1. Filen **layout.jade** i katalogen **views** används som en global mall för andra **.jade**-filer. I det här steget ändrar du den så att den använder [Twitter Bootstrap](https://github.com/twbs/bootstrap), vilket är en verktygslåda som gör det enkelt att utforma en snygg webbplats. 
-2. Öppna filen **layout.jade** i mappen **views** och ersätt innehållet med följande:
+1. Hej **layout.jade** filen i hello **vyer** directory används som en global mall för andra **.jade** filer. I det här steget ändrar du den toouse [Twitter Bootstrap](https://github.com/twbs/bootstrap), vilket är en verktygslåda som gör det enkelt toodesign en snygg webbplats. 
+2. Öppna hello **layout.jade** filen hittas i hello **vyer** mapp och Ersätt hello innehållet med hello följande:
 
     ```
     doctype html
@@ -444,11 +444,11 @@ Nu är det dags att skapa användargränssnittet, så att användaren faktiskt k
         script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
     ```
 
-    Det säger åt **Jade**-motorn att rendera en del HTML för vårt program och skapar ett **block** kallat **content** där vi kan tillhandahålla layout för våra innehållssidor.
+    Det säger hello **Jade** motorn toorender del HTML för vårt program och skapar en **block** kallas **innehåll** där vi kan tillhandahålla hello layout för våra innehåll sidor.
 
     Spara och stäng filen **layout.jade**.
 
-3. Öppna nu filen **index.jade**, den vy som ska användas av vårt program, och ersätt innehållet i filen med följande:
+3. Öppna hello **index.jade** fil, hello vy som ska användas av vårt program och Ersätt hello innehållet hello-filen med hello följande:
    
         extends layout
         block content
@@ -490,52 +490,52 @@ Nu är det dags att skapa användargränssnittet, så att användaren faktiskt k
              button.btn(type="submit") Add item
    
 
-Det utökar layouten och ger innehåll för platshållaren **content** som vi såg i filen **layout.jade**.
+Det utökar layouten och ger innehåll för hello **innehåll** platshållare som vi såg i hello **layout.jade** filen tidigare.
    
 I den här layouten skapade vi två HTML-formulär.
 
-Det första formuläret innehåller en tabell för våra data och en knapp som gör att vi kan uppdatera objekt genom att publicera till metoden **/completetask** i styrningen.
+hello första formuläret innehåller en tabell för våra data och en knapp som gör att vi tooupdate objekt genom att publicera för**/completetask** metod i styrningen.
     
-Det andra formuläret innehåller två inmatningsfält och en knapp som gör att vi kan skapa ett nytt objekt genom att publicera till metoden **/addtask** i styrningen.
+hello andra formuläret innehåller två inmatningsfält och en knapp som gör att vi toocreate ett nytt objekt genom att publicera för**/addtask** metod i styrningen.
 
-Det här ska vara allt som behövs för att appen ska fungera.
+Detta bör vara allt som behövs för vårt program toowork.
 
 ## <a name="_Toc395783181"></a>Steg 6: Kör ditt program lokalt
-1. Om du vill testa programmet på din lokala dator kör du `npm start` i terminalen för att starta programmet, uppdatera därefter din [http://localhost:3000](http://localhost:3000)-webbläsarsida. Sidan ska nu se ut som på bilden nedan:
+1. tootest hello programmet på din lokala dator kör `npm start` i hello terminal toostart ditt program och uppdatera sedan din [http://localhost: 3000](http://localhost:3000) Webbläsarsida. hello sidan bör nu se ut så hello bilden nedan:
    
-    ![Skärmdump av programmet MyTodo List i ett webbläsarfönster](./media/documentdb-nodejs-application/cosmos-db-node-js-localhost.png)
+    ![Skärmbild av hello programmet MyTodo List i ett webbläsarfönster](./media/documentdb-nodejs-application/cosmos-db-node-js-localhost.png)
 
     > [!TIP]
-    > Om du får ett felmeddelande om indraget i layout.jade-filen eller index.jade-filen, säkerställ att de två första raderna i båda filerna är vänsterjusterade, utan blanksteg. Om det finns blanksteg före de två första raderna, ta bort dem, spara filerna och uppdatera sedan webbläsarfönstret. 
+    > Om du får ett felmeddelande om hello indrag i hello layout.jade fil eller hello index.jade säkerställa att hello två första raderna i filer som är kvar berättigade, utan blanksteg. Om det finns blanksteg före hello två första raderna, ta bort dem, spara filer och sedan uppdatera webbläsarfönstret. 
 
-2. Använd fälten Objekt, Objektnamn och Kategori och klicka sedan på **Lägg till objekt**. När du gör det skapas ett dokument i Azure Cosmos DB med dessa egenskaper. 
-3. Sidan bör uppdateras och visa det nya objektet i ToDo-listan.
+2. Hello objekt, objektnamn och kategori fält tooenter en ny uppgift och klicka sedan på **Lägg till objekt**. När du gör det skapas ett dokument i Azure Cosmos DB med dessa egenskaper. 
+3. hello sidan bör uppdateras toodisplay hello nyligen skapade objektet i hello ToDo-listan.
    
-    ![Skärmdump av programmet med ett nytt objekt i ToDo-listan](./media/documentdb-nodejs-application/cosmos-db-node-js-added-task.png)
-4. Du slutför en aktivitet genom att markera kryssrutan i kolumnen Complete och sedan klicka på **Update tasks**. Detta uppdaterar det dokument som du redan har skapat.
+    ![Skärmdump av programmet hello med ett nytt objekt i hello göra-lista](./media/documentdb-nodejs-application/cosmos-db-node-js-added-task.png)
+4. toocomplete en aktivitet bara kryssrutan hello i hello fullständig kolumnen och klicka sedan på **uppdatera aktiviteter**. Detta uppdaterar hello-dokument som du redan har skapat.
 
-5. För att stoppa programmet trycker du på CTRL+C i terminalfönstret och klickar sedan på **Y** för att avbryta batch-jobbet.
+5. toostop hello program, tryck på CTRL + C i hello terminalfönster och klicka sedan på **Y** tooterminate hello batch-jobbet.
 
-## <a name="_Toc395783182"></a>Steg 7: Distribuera ditt programutvecklingsprojekt till Azure Websites
-1. Om du inte redan gjort det aktiverar du en git-databas för Azure-webbplatsen. Information om hur du gör det finns i artikeln [Lokal Git-distribuering på Azure App Service](../app-service-web/app-service-deploy-local-git.md).
+## <a name="_Toc395783182"></a>Steg 7: Distribuera ditt program development projektet tooAzure webbplatser
+1. Om du inte redan gjort det aktiverar du en git-databas för Azure-webbplatsen. Du hittar anvisningar om hur toodo detta i hello [lokal Git-distribution tooAzure Apptjänst](../app-service-web/app-service-deploy-local-git.md) avsnittet.
 2. Lägg till Azure-webbplatsen som en fjärransluten git.
    
         git remote add azure https://username@your-azure-website.scm.azurewebsites.net:443/your-azure-website.git
-3. Distribuera genom att pusha till fjärranslutningen.
+3. Distribuera genom att trycka på toohello fjärråtkomst.
    
         git push azure master
 4. I några sekunder har git publicerat din webbapp och öppnar en webbläsare där du kan se ditt arbete som körs i Azure!
 
-    Grattis! Du har skapat ditt första Node.js Express-webbprogram med Azure Cosmos DB och publicerat det på Azure Websites.
+    Grattis! Du har precis skapat din första Node.js Express webbprogram med hjälp av Azure Cosmos DB och publicerat den tooAzure webbplatser.
 
-    Om du vill hämta eller referera till det färdiga referensprogrammet för den här självstudien kan det hämtas från [GitHub][GitHub].
+    Om du vill toodownload eller referera toohello fullständiga referens program för den här kursen kan hämta från [GitHub][GitHub].
 
 ## <a name="_Toc395637775"></a>Nästa steg
 
-* Vill du testa skalning och prestanda med Azure Cosmos DB? Mer information finns i avsnittet om hur du [testar prestanda och skalning med Azure Cosmos DB](performance-testing.md)
-* Lär dig hur du [övervakar ett Azure Cosmos DB-konto](monitor-accounts.md).
-* Kör frågor mot vår exempeldatauppsättning i [Query Playground](https://www.documentdb.com/sql/demo).
-* Utforska [Azure Cosmos DB-dokumentationen](https://docs.microsoft.com/azure/documentdb/).
+* Vill tooperform skala och prestandatester med Azure Cosmos DB? Mer information finns i avsnittet om hur du [testar prestanda och skalning med Azure Cosmos DB](performance-testing.md)
+* Lär dig hur för[övervaka ett konto i Azure Cosmos DB](monitor-accounts.md).
+* Kör frågor mot vår exempeldatauppsättning i hello [Query Playground](https://www.documentdb.com/sql/demo).
+* Utforska hello [Azure Cosmos DB dokumentationen](https://docs.microsoft.com/azure/documentdb/).
 
 [Node.js]: http://nodejs.org/
 [Git]: http://git-scm.com/

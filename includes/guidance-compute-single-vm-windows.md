@@ -1,4 +1,4 @@
-Den här artikeln beskrivs en uppsättning beprövade metoder för att köra en Windows-dator (VM) på Azure, med hänsyn till skalbarhet, tillgänglighet, hanterbarhet och säkerhet.
+Den här artikeln beskrivs en uppsättning beprövade metoder för att köra en Windows-dator (VM) på Azure, betalar uppmärksamhet tooscalability, tillgänglighet, hanterbarhet och säkerhet.
 
 > [!NOTE]
 > Azure har två olika distributionsmodeller: [Azure Resource Manager] [ resource-manager-overview] och klassisk. Den här artikeln använder Resurshanteraren, som Microsoft rekommenderar för nya distributioner.
@@ -9,36 +9,36 @@ Du bör inte använda en enskild virtuell dator för verksamhetskritiska arbetsb
 
 ## <a name="architecture-diagram"></a>Arkitekturdiagram
 
-Att etablera en virtuell dator i Azure innebär att flytta fler delar än bara själva det virtuella nätverket. Det finns beräkning, nätverk och lagring-element.
+Etablera en virtuell dator i Azure omfattar fler rörliga delar än bara hello Virtuella datorn. Det finns beräkning, nätverk och lagring-element.
 
-> Ett Visio-dokument som innehåller det här arkitekturdiagrammet finns tillgängligt för hämtning från [Microsofts hämtningscenter][visio-download]. Det här diagrammet finns på sidan ”Beräkna – enskild virtuell dator”.
+> Ett Visio-dokument som innehåller den här Arkitekturdiagram är tillgängliga för nedladdning från hello [Microsoft download center][visio-download]. Det här diagrammet är på hello ”beräknings - enskild VM” sidan.
 >
 >
 
 ![[0]][0]
 
-* **Resursgrupp.** En [*resursgrupp*][resource-manager-overview] är en behållare som innehåller närliggande resurser. Skapa en resursgrupp för att lagra resurser för den här virtuella datorn.
-* **Virtuell dator**. Du kan etablera en virtuell dator från en lista över publicerade avbildningar eller från en virtuell hårddiskfil (VHD) som du överför till Azure Blob Storage.
-* **OS-disk.** OS-disken är en virtuell hårddisk som lagras i [Azure Storage][azure-storage]. Det innebär att den finns kvar även om värddatorn stängs av.
-* **Tillfällig disk.** Den virtuella datorn skapas med en tillfälliga disk (den `D:` Windows-enheten). Den här disken lagras på en fysisk enhet på värddatorn. Det sparas *inte* i Azure Storage och kan tas bort under omstarter och andra livscykelhändelser för virtuella datorer. Använd enbart den här disken för tillfälliga data, till exempel växlingsfiler.
-* **Datadiskar.** En [datadisk][data-disk] är en permanent virtuell hårddisk för programdata. Datadiskar lagras i Azure Storage, som OS-disken.
+* **Resursgrupp.** En [*resursgrupp*][resource-manager-overview] är en behållare som innehåller närliggande resurser. Skapa en resurs gruppera toohold hello resurser för den här virtuella datorn.
+* **Virtuell dator**. Du kan etablera en virtuell dator från en lista över publicerade bilder eller från en virtuell hårddisk (VHD)-fil som du överför tooAzure Blob storage.
+* **OS-disk.** hello OS-disken är en virtuell Hårddisk som lagrats i [Azure Storage][azure-storage]. Det innebär den kvarstår även om hello värddatorn kraschar.
+* **Tillfällig disk.** hello VM har skapats med en tillfälliga disk (hello `D:` Windows-enheten). Den här disken är lagrade på en fysisk enhet på hello värddatorn. Det sparas *inte* i Azure Storage och kan tas bort under omstarter och andra livscykelhändelser för virtuella datorer. Använd enbart den här disken för tillfälliga data, till exempel växlingsfiler.
+* **Datadiskar.** En [datadisk][data-disk] är en permanent virtuell hårddisk för programdata. Datadiskar som lagras i Azure Storage som hello OS-disk.
 * **Virtuellt nätverk och undernät.** Varje virtuell dator i Azure distribueras till ett virtuellt nätverk som delas upp ytterligare i undernät.
-* **Offentlig IP-adress.** En offentlig IP-adress behövs för att kommunicera med den virtuella datorn&mdash;till exempel via fjärrskrivbord (RDP).
-* **Nätverksgränssnitt**. Nätverkskortet som gör det möjligt för den virtuella datorn att kommunicera med det virtuella nätverket.
-* **Nätverkssäkerhetsgrupp (NSG)**. [NSG][nsg] används för att tillåta/neka nätverkstrafik till undernätet. Du kan associera en NSG med ett enskilt nätverkskort eller ett undernät. Om du kopplar den till ett undernät gäller NSG-reglerna för alla virtuella datorer i det här undernätet.
-* **Diagnostik.** Diagnostisk loggning är avgörande för att hantera och felsöka den virtuella datorn.
+* **Offentlig IP-adress.** En offentlig IP-adress är nödvändiga toocommunicate med hello VM&mdash;till exempel via fjärrskrivbord (RDP).
+* **Nätverksgränssnitt**. hello NIC kan hello VM toocommunicate med hello virtuellt nätverk.
+* **Nätverkssäkerhetsgrupp (NSG)**. Hej [NSG] [ nsg] är används tooallow/neka trafik toohello undernät. Du kan associera en NSG med ett enskilt nätverkskort eller ett undernät. Om du kopplar den till ett undernät tillämpas hello NSG-regler tooall virtuella datorer i undernätet.
+* **Diagnostik.** Diagnostikloggning är avgörande för att hantera och felsöka hello VM.
 
 ## <a name="recommendations"></a>Rekommendationer
 
-Följande rekommendationer gäller för de flesta scenarier. Följ dessa rekommendationer om du inte har ett visst krav som åsidosätter dem.
+hello följande rekommendationer gäller för de flesta scenarier. Följ dessa rekommendationer om du inte har ett visst krav som åsidosätter dem.
 
 ### <a name="vm-recommendations"></a>Rekommendationer för virtuella datorer
 
-Azure erbjuder många olika virtuella datorstorlekar, men vi rekommenderar DS - och GS-serien eftersom dessa datorstorlekar har stöd för [Premium Storage][premium-storage]. Välj en av dessa datorer såvida du inte har en särskild arbetsbelastning som databehandling med höga prestanda. Mer information finns i [Storlekar för virtuella datorer][virtual-machine-sizes].
+Azure erbjuder många olika virtuella datorstorlekar, men vi rekommenderar hello DS - och GS-serien eftersom dessa datorstorlekar stöder [Premiumlagring][premium-storage]. Välj en av dessa datorer såvida du inte har en särskild arbetsbelastning som databehandling med höga prestanda. Mer information finns i [Storlekar för virtuella datorer][virtual-machine-sizes].
 
-Om du flyttar en befintlig arbetsbelastning till Azure börjar du med den virtuella datorstorlek som närmast motsvarar dina lokala servrar. Mät sedan prestanda hos din faktiska arbetsbelastning med avseende på processor, minne, och i/o-åtgärder för disken per sekund (IOPS) och justera storleken om det behövs. Om du behöver flera nätverkskort för den virtuella datorn måste du vara medveten om att det högsta antalet nätverkskort är en funktion av den [virtuella datorstorleken][vm-size-tables].   
+Om du flyttar en befintlig arbetsbelastning tooAzure starta med hello VM-storlek som är hello närmaste matchar tooyour lokala servrar. Måttet hello prestandan för din faktiska arbetsbelastning med respektera tooCPU, minne och disk-i/o-åtgärder per sekund (IOPS) och sedan justera hello storlek vid behov. Om du behöver flera nätverkskort för den virtuella datorn kan vara medveten om att hello maximalt antal nätverkskort som är en funktion av hello [VM-storlek][vm-size-tables].   
 
-När du etablerar den virtuella datorn och andra resurser måste du ange en region. Vanligtvis väljer du en region som är närmast dina interna användare eller kunder. Inte alla VM-storlekar kan dock finnas tillgänglig i alla regioner. Mer information finns i [tjänster efter region][services-by-region]. Om du vill se en lista över storlek på Virtuella datorer finns i en viss region, kör du följande kommando för Azure-kommandoradsgränssnittet (CLI):
+När du etablerar hello VM och andra resurser, måste du ange en region. I allmänhet väljer region närmaste tooyour interna användare eller kunder. Inte alla VM-storlekar kan dock finnas tillgänglig i alla regioner. Mer information finns i [tjänster efter region][services-by-region]. toosee en lista över hello VM storlekar som finns tillgängliga i en viss region, kör följande kommando för Azure-kommandoradsgränssnittet (CLI) hello:
 
 ```
 azure vm sizes --location <location>
@@ -48,113 +48,113 @@ Information om hur du väljer en publicerad virtuell datoravbildning finns [navi
 
 ### <a name="disk-and-storage-recommendations"></a>Disk- och lagringsrekommendationer
 
-För bästa diskprestanda-i/o, rekommenderar vi [Premiumlagring][premium-storage], som lagrar data på solid state-hårddiskar (SSD). Kostnaden baseras på storleken på den allokerade disken. IOPS och genomströmning beror också på diskutrymme, så när du etablerar en disk, Tänk alla tre (kapacitet, IOPS och genomströmning).
+För bästa diskprestanda-i/o, rekommenderar vi [Premiumlagring][premium-storage], som lagrar data på solid state-hårddiskar (SSD). Kostnaden är baserad på hello storleken på hello allokerad disk. IOPS och genomströmning beror också på diskutrymme, så när du etablerar en disk, Tänk alla tre (kapacitet, IOPS och genomströmning).
 
-Skapa separata Azure-lagringskonton för varje virtuell dator för att lagra de virtuella hårddiskarna (VHD) för att undvika att IOPS-gränserna för lagringskonton överskrids.
+Skapa separata Azure storage-konton för varje VM toohold hello virtuella hårddiskar (VHD) i ordning tooavoid träffa hello IOPS-gränser för lagringskonton.
 
-Lägg till en eller flera datadiskar. När du skapar en ny virtuell Hårddisk är den oformaterade. Logga in på den virtuella datorn att formatera disken. Om du har ett stort antal datadiskar bör du tänka på de totala i/o-gränserna för lagringskontot. Mer information finns i [diskgränser för virtuella datorer][vm-disk-limits].
+Lägg till en eller flera datadiskar. När du skapar en ny virtuell Hårddisk är den oformaterade. Logga in på hello VM tooformat hello disk. Om du har ett stort antal datadiskar vara medveten om hello total i/o-gränserna för hello storage-konto. Mer information finns i [diskgränser för virtuella datorer][vm-disk-limits].
 
-När det är möjligt ska du installera program på en datadisk, inte OS-disken. Vissa äldre program kan behöva installera komponenterna på enhet C:. I så fall kan du [ändra storleken på operativsystemdisken] [ resize-os-disk] med hjälp av PowerShell.
+När det är möjligt ska du installera program på en datadisk, inte hello OS-disken. Vissa äldre program kan dock behöva tooinstall komponenter på hello C:-enheten. I så fall kan du [ändra storlek på hello OS-disk] [ resize-os-disk] med hjälp av PowerShell.
 
-Skapa ett separat lagringskonto för diagnostikloggar för bästa prestanda. Ett standardkonto för lokalt redundant lagring (LRS) är tillräckligt för diagnostikloggar.
+För bästa prestanda bör du skapa ett separat lagringskonto toohold diagnostikloggar. Ett standardkonto för lokalt redundant lagring (LRS) är tillräckligt för diagnostikloggar.
 
 ### <a name="network-recommendations"></a>Nätverksrekommendationer
 
-Den offentliga IP-adressen kan vara dynamisk eller statisk. Standardvärdet är dynamiskt.
+hello offentliga IP-adressen kan vara dynamiska eller statiska. hello standardvärdet är dynamisk.
 
-* Reservera en [statisk IP-adress][static-ip] om du behöver en fast IP-adress som inte ändras &mdash; till exempel, om du behöver skapa en A-post i DNS eller behöver lägga till IP-adressen i listan över säkra adresser.
-* Du kan också skapa ett fullständigt domännamn (FQDN) för IP-adressen. Du kan sedan registrera en [CNAME-post][cname-record] i DNS som pekar på det fullständiga domännamnet. Mer information finns i [Skapa ett fullständigt domännamn i Azure Portal][fqdn].
+* Reservera en [statisk IP-adress] [ static-ip] om du behöver en fast IP-adress som inte ändras &mdash; till exempel om du behöver toocreate en A registreras i DNS, eller behöver hello IP-adress toobe tillagda tooa listan över säkra.
+* Du kan också skapa ett fullständigt kvalificerat domännamn (FQDN) för hello IP-adress. Du kan sedan registrera en [CNAME-post] [ cname-record] i DNS som pekar toohello FQDN. Mer information finns i [skapa ett fullständigt kvalificerat domännamn i hello Azure-portalen][fqdn].
 
-Alla nätverkssäkerhetsgrupper innehåller en uppsättning [standardregler][nsg-default-rules], inklusive en regel som blockerar all inkommande Internettrafik. Standardreglerna kan inte tas bort, men andra regler kan åsidosätta dem. Om du vill aktivera Internettrafik skapar du regler som tillåter inkommande trafik till specifika portar &mdash; till exempel port 80 för HTTP.  
+Alla nätverkssäkerhetsgrupper innehåller en uppsättning [standardregler][nsg-default-rules], inklusive en regel som blockerar all inkommande Internettrafik. hello standardreglerna kan inte tas bort, men andra regler kan åsidosätta dem. tooenable Internet-trafik skapar regler som tillåter inkommande trafik toospecific portar &mdash; till exempel port 80 för HTTP.  
 
-Lägg till en NSG-regel som tillåter inkommande trafik till TCP-port 3389 för att aktivera RDP.
+tooenable RDP, Lägg till en NSG-regel som tillåter inkommande trafik tooTCP port 3389.
 
 ## <a name="scalability-considerations"></a>Skalbarhetsöverväganden
 
-Du kan skala en VM uppåt eller nedåt genom [ändrar storlek på Virtuella](../articles/virtual-machines/windows/sizes.md). Om du vill skala ut vågrätt placerar du två eller flera virtuella datorer i en tillgänglighetsuppsättning bakom en belastningsutjämnare. Mer information finns i [flera virtuella datorer som körs på Azure för skalbarhet och tillgänglighet][multi-vm].
+Du kan skala en VM uppåt eller nedåt genom [ändrar hello VM-storlek](../articles/virtual-machines/windows/sizes.md). tooscale ut vågrätt, placera två eller flera virtuella datorer i en tillgänglighetsuppsättning bakom en belastningsutjämnare. Mer information finns i [flera virtuella datorer som körs på Azure för skalbarhet och tillgänglighet][multi-vm].
 
 ## <a name="availability-considerations"></a>Överväganden för tillgänglighet
 
 Distribuera flera virtuella datorer i en tillgänglighetsuppsättning om du vill ha högre tillgänglighet. Det ger också en högre [servicenivåavtal] [ vm-sla] (SLA).
 
-Din virtuella dator kan påverkas av [planerat underhåll] [ planned-maintenance] eller [oplanerat underhåll][manage-vm-availability]. Du kan använda [omstartsloggarna för virtuella datorer][reboot-logs] för att bedöma om en omstart av en virtuell dator orsakades av planerat underhåll.
+Din virtuella dator kan påverkas av [planerat underhåll] [ planned-maintenance] eller [oplanerat underhåll][manage-vm-availability]. Du kan använda [VM omstart loggar] [ reboot-logs] toodetermine om en virtuell dator startas om orsakades av planerat underhåll.
 
 Virtuella hårddiskar lagras i [Azure Storage][azure-storage], och Azure-lagringsutrymmet replikeras för hållbarhet och tillgänglighet.
 
-För att skydda mot dataförluster under normal drift (t.ex, på grund av fel från användarens sida), bör du även implementera säkerhetskopieringar vid vissa tidpunkter med [blob-ögonblicksbilder][blob-snapshot] eller något annat verktyg.
+tooprotect mot oavsiktlig dataförlust under normal drift (t.ex, på grund av fel), bör du också implementera point-in-time-säkerhetskopior, använda [blob ögonblicksbilder] [ blob-snapshot] eller något annat verktyg.
 
 ## <a name="manageability-considerations"></a>Överväganden för hantering
 
-**Resursgrupper.** Placera direkt kopplade resurser som delar samma livscykel i samma [resursgruppen][resource-manager-overview]. Resursgrupper kan du distribuera och övervaka resurser som en grupp och dyker upp fakturering kostnader med resursgrupp. Du kan också ta bort resurser som en uppsättning, vilket är mycket användbart vid testdistributioner. Ge resurserna meningsfulla namn. Detta gör det lättare att hitta en specifik resurs och att förstå dess roll. Se [Rekommenderade namnkonventioner för Azure-resurser][naming conventions].
+**Resursgrupper.** Placera direkt kopplade resurser som resursen hello samma livslängd växla till hello samma [resursgruppen][resource-manager-overview]. Resursgrupper kan du toodeploy och övervaka resurser som en grupp och dyker upp fakturering kostnader med resursgrupp. Du kan också ta bort resurser som en uppsättning, vilket är mycket användbart vid testdistributioner. Ge resurserna meningsfulla namn. Som gör det enklare toolocate en specifik resurs och förstå dess roll. Se [Rekommenderade namnkonventioner för Azure-resurser][naming conventions].
 
-**Diagnostik av virtuella datorer.** Aktivera övervakning och diagnostik, inklusive grundläggande hälsomätvärden, diagnostikinfrastrukturloggar och [startdiagnostik][boot-diagnostics]. Startdiagnostikinställningar hjälper dig att diagnostisera ett startfel om den virtuella datorn hämtar i ett tillstånd kan. Mer information finns i [Aktivera övervakning och diagnostik][enable-monitoring]. Använd den [Azure Logginsamling] [ log-collector] tillägg för att samla in loggar för Azure-plattformen och överföra dem till Azure-lagring.   
+**Diagnostik av virtuella datorer.** Aktivera övervakning och diagnostik, inklusive grundläggande hälsomätvärden, diagnostikinfrastrukturloggar och [startdiagnostik][boot-diagnostics]. Startdiagnostikinställningar hjälper dig att diagnostisera ett startfel om den virtuella datorn hämtar i ett tillstånd kan. Mer information finns i [Aktivera övervakning och diagnostik][enable-monitoring]. Använd hello [Azure Logginsamling] [ log-collector] tillägget toocollect Azure-plattformen loggar och överför dem tooAzure lagring.   
 
-Följande CLI-kommando aktiverar diagnostik:
+hello följande CLI kommando aktiverar diagnostik:
 
 ```
 azure vm enable-diag <resource-group> <vm-name>
 ```
 
-**Stoppa en virtuell dator.** Azure gör skillnad mellan tillståndet ”stoppad” och tillståndet ”frigjord”. Du debiteras när den virtuella datorns status stoppas, men inte när den virtuella datorn frigörs.
+**Stoppa en virtuell dator.** Azure gör skillnad mellan tillståndet ”stoppad” och tillståndet ”frigjord”. Du debiteras när hello VM-statusen har stoppats, men inte när hello VM har frigjorts.
 
-Du kan använda följande CLI-kommando för att frigöra en virtuell dator:
+Använd hello följande CLI kommandot toodeallocate en virtuell dator:
 
 ```
 azure vm deallocate <resource-group> <vm-name>
 ```
 
-I Azure-portalen tar knappen **Stoppa** bort den virtuella datorn. Om du stänger av via operativsystemet när du är inloggad stoppas den virtuella datorn, men frigörs dock *inte*, så du kommer fortfarande att debiteras.
+I hello Azure-portalen, hello **stoppa** knappen tar bort hello VM. Men om du stänger av via hello OS medan du är inloggad hello VM stoppas men *inte* frigjorts, så att du kommer fortfarande att debiteras.
 
-**Ta bort en virtuell dator.** Om du tar bort en virtuell dator, tas inte de virtuella hårddiskarna bort. Det innebär att du kan ta bort den virtuella datorn på ett säkert sätt utan att förlora data. Men kommer du fortfarande att debiteras för lagring. Ta bort den virtuella hårddisken genom att ta bort filen från [Blob Storage][blob-storage].
+**Ta bort en virtuell dator.** Om du tar bort en virtuell dator, raderas inte hello virtuella hårddiskar. Det innebär att du kan ta bort hello VM utan att förlora data. Men kommer du fortfarande att debiteras för lagring. toodelete hello virtuell Hårddisk, ta bort hello-filen från [Blob storage][blob-storage].
 
-Om du vill förhindra oavsiktlig borttagning använder du ett [resurslås] [resource-lock] och låser hela resursgruppen eller enskilda resurser, till exempel den virtuella datorn.
+tooprevent oavsiktlig borttagning, Använd en [resurslås] [ resource-lock] toolock hello hela resursen grupp eller Lås enskilda resurser, till exempel hello VM.
 
 ## <a name="security-considerations"></a>Säkerhetsöverväganden
 
-Använd [Azure Security Center] [ security-center] att hämta en central vy av säkerhetstillståndet hos dina Azure-resurser. Security Center övervakar potentiella säkerhetsproblem och ger en heltäckande bild av säkerhetshälsa för din distribution. Security Center konfigureras per Azure-prenumeration. Aktivera insamling av säkerhet som beskrivs i [använda Security Center]. När datainsamling har aktiverats, söker Security Center automatiskt alla virtuella datorer som skapades under den prenumerationen.
+Använd [Azure Security Center] [ security-center] tooget en central vy över hello säkerhetstillståndet hos dina Azure-resurser. Security Center övervakar potentiella säkerhetsproblem och ger en heltäckande bild av hello säkerhetshälsa för din distribution. Security Center konfigureras per Azure-prenumeration. Aktivera insamling av säkerhet som beskrivs i [använda Security Center]. När datainsamling har aktiverats, söker Security Center automatiskt alla virtuella datorer som skapades under den prenumerationen.
 
-**Uppdateringshantering.** Om aktiverad, kontrollerar Security Center om säkerhetsuppdateringar och viktiga uppdateringar saknas. Använd [grupprincipinställningar] [ group-policy] på den virtuella datorn att aktivera Automatiska uppdateringar.
+**Uppdateringshantering.** Om aktiverad, kontrollerar Security Center om säkerhetsuppdateringar och viktiga uppdateringar saknas. Använd [grupprincipinställningar] [ group-policy] hello VM tooenable automatiska uppdateringar.
 
-**Program mot skadlig kod.** Om aktiverad, kontrollerar Security Center om program mot skadlig kod har installerats. Du kan också använda Security Center för att installera program mot skadlig kod från i Azure-portalen.
+**Program mot skadlig kod.** Om aktiverad, kontrollerar Security Center om program mot skadlig kod har installerats. Du kan också använda Security Center tooinstall program mot skadlig kod från inuti hello Azure-portalen.
 
-**Åtgärder.** Använd [rollbaserad åtkomstkontroll] [ rbac] (RBAC) för att kontrollera åtkomsten till de Azure-resurser som du distribuerar. Med RBAC kan du tilldela medlemmarna i DevOps-gruppen auktoriseringsroller. Till exempel kan den som har rollen Läsare visa Azure-resurser, men inte skapa, hantera eller ta bort dem. Vissa roller är specifika för vissa Azure-resurstyper. Till exempel kan virtuella deltagarrollen starta om eller frigöra en virtuell dator, återställa lösenord, skapa en ny virtuell dator och så vidare. Andra [inbyggda RBAC-roller][rbac-roles] som kan vara användbara för denna referensarkitektur är bland annat [DevTest Labs-användare] [rbac-devtest] och [Nätverksdeltagare][rbac-network]. En användare kan tilldelas till flera roller och du kan skapa egna roller för ännu mer detaljerade behörigheter.
+**Åtgärder.** Använd [rollbaserad åtkomstkontroll] [ rbac] (RBAC) toocontrol åtkomst toohello Azure resurser som du distribuerar. RBAC kan du tilldela auktorisering roller toomembers för DevOps-team. Till exempel kan rollen för hello läsare visa Azure-resurser men inte skapa, hantera eller ta bort dem. Vissa roller är särskilda tooparticular Azure resurstyper. Till exempel kan hello virtuella deltagarrollen starta om eller frigöra en virtuell dator, återställa hello administratörslösenordet, skapa en ny virtuell dator och så vidare. Andra [inbyggda RBAC-roller][rbac-roles] som kan vara användbara för denna referensarkitektur är bland annat [DevTest Labs-användare] [rbac-devtest] och [Nätverksdeltagare][rbac-network]. En användare kan tilldelas toomultiple roller och du kan skapa anpassade roller för ännu mer detaljerade behörigheter.
 
 > [!NOTE]
-> RBAC begränsar inte de åtgärder som en användare som är inloggad på en virtuell dator kan utföra. Dessa behörigheter avgörs av kontotypen i gästoperativsystemet.   
+> RBAC begränsar inte hello-åtgärder som en användare som har loggat in på en virtuell dator kan utföra. Dessa behörigheter bestäms av hello kontotyp på hello gästoperativsystemet.   
 >
 >
 
-Om du vill återställa det lokala administratörslösenordet, kör den `vm reset-access` Azure CLI-kommando.
+tooreset hello lokala administratörslösenordet, kör hello `vm reset-access` Azure CLI-kommando.
 
 ```
 azure vm reset-access -u <user> -p <new-password> <resource-group> <vm-name>
 ```
 
-Använd [granskningsloggar][audit-logs] om du vill visa etableringsåtgärder och andra virtuella datorhändelser.
+Använd [granskningsloggar] [ audit-logs] toosee etablering åtgärder och andra VM-händelser.
 
-**Kryptering av data.** Överväg att använda [Azure Disk Encryption][disk-encryption] om du behöver kryptera operativsystemet och datadiskarna.
+**Kryptering av data.** Överväg att [Azure Disk Encryption] [ disk-encryption] om du behöver tooencrypt hello OS- och datadiskar.
 
 ## <a name="solution-deployment"></a>Lösningsdistribution
 
-En distribution för denna Referensarkitektur är tillgängligt på [GitHub][github-folder]. Den innehåller ett virtuellt nätverk, NSG och en enda virtuell dator. Följ anvisningarna nedan om du vill distribuera arkitekturen:
+En distribution för denna Referensarkitektur är tillgängligt på [GitHub][github-folder]. Den innehåller ett virtuellt nätverk, NSG och en enda virtuell dator. toodeploy Hej arkitektur, gör du följande:
 
-1. Högerklicka på knappen nedan och välj antingen ”Öppna länk i ny flik” eller ”Öppna länk i nytt fönster”.  
-   [![Distribuera till Azure](../articles/guidance/media/blueprints/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fguidance-compute-single-vm%2Fazuredeploy.json)
-2. När länken har öppnats i Azure-portalen måste du ange värden för vissa inställningar:
+1. Högerklicka på hello knappen nedan och välj antingen ”öppna länken i ny flik” eller ”öppna länk i nytt fönster”.  
+   [![Distribuera tooAzure](../articles/guidance/media/blueprints/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmspnp%2Freference-architectures%2Fmaster%2Fguidance-compute-single-vm%2Fazuredeploy.json)
+2. När hello länk har öppnats i hello Azure-portalen, måste du ange värden för vissa hello inställningar:
 
-   * Namnet **Resursgrupp** har redan definierats i parameterfilen så välj **Skapa nytt** och ange `ra-single-vm-rg` i textrutan.
-   * Välj region från den listrutan **Plats**.
-   * Redigera inte textrutorna för **mallrots-URI** eller **parameterrots-URI**.
-   * Välj **windows** i den **Os-typen** listrutan.
-   * Granska villkoren och klicka sedan i kryssrutan **Jag godkänner villkoren ovan**.
-   * Klicka på **Köp**.
-3. Vänta tills distributionen har slutförts.
-4. Parameterfilerna i omfattar en hårdkodad administratörsanvändarnamn och lösenord och vi rekommenderar starkt att du direkt ändra båda. Klicka på den virtuella datorn med namnet `ra-single-vm0 ` i Azure Portal. Klicka på **Återställ lösenord** i den **stöd + felsökning** bladet. Välj **Återställ lösenord** i listrutan **Läge** och välj sedan ett nytt **Användarnamn** och **Lösenord**. Klicka på **Uppdatera** för att spara det nya användarnamnet och lösenordet.
+   * Hej **resursgruppen** namn har redan definierats i hello parameterfil, så du väljer **Skapa nytt** och ange `ra-single-vm-rg` i hello textruta.
+   * Välj hello region från hello **plats** listrutan.
+   * Redigera inte hello **mall rot Uri** eller hello **parametern rot Uri** textrutor.
+   * Välj **windows** i hello **Os-typen** listrutan.
+   * Granska hello villkoren och klicka sedan på hello **acceptera toohello villkoren ovan** kryssrutan.
+   * Klicka på hello **inköp** knappen.
+3. Vänta tills hello distribution toocomplete.
+4. hello parametern filer innehåller ett hårdkodat administratörsanvändarnamn och lösenord och vi rekommenderar starkt att du direkt ändra båda. Klicka på hello virtuella datorn med namnet `ra-single-vm0 `i hello Azure-portalen. Klicka på **Återställ lösenord** i hello **stöd + felsökning** bladet. Välj **Återställ lösenord** i hello **läge** nedrullningsbara rutan, välj sedan en ny **användarnamn** och **lösenord**. Klicka på hello **uppdatering** knappen toopersist hello nytt användarnamn och lösenord.
 
-Information om ytterligare sätt att distribuera den här referensen för arkitekturen finns i filen Viktigt i den [vägledning enskild vm][github-folder]] GitHub-mappen.
+Information om ytterligare sätt toodeploy denna referera arkitekturen, finns hello filen readme hello [vägledning enskild vm][github-folder]] GitHub-mappen.
 
-## <a name="customize-the-deployment"></a>Anpassa distributionen
-Om du behöver ändra distributionen för att matcha dina behov, följ instruktionerna i den [viktigt][github-folder].
+## <a name="customize-hello-deployment"></a>Anpassa hello-distribution
+Om du behöver toochange hello distribution toomatch dina behov, följer du anvisningarna för hello i hello [viktigt][github-folder].
 
 ## <a name="next-steps"></a>Nästa steg
 Distribuera två eller flera virtuella datorer bakom en belastningsutjämnare för högre tillgänglighet. Mer information finns i [Köra flera virtuella datorer på Azure][multi-vm].

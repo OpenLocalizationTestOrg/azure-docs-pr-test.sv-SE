@@ -14,69 +14,69 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.openlocfilehash: 72514dabf3af0b282d1bb49c542c13f7095e03d8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8a64bd8f7c6eba8f6490e10fa62bef195b6b3d5f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>Distributionsscenarier och användningsfall
 I det här avsnittet ska titta vi på några scenarier och användningsområden som är undantagna från Azure Active Directory (AD) Domain Services.
 
 ## <a name="secure-easy-administration-of-azure-virtual-machines"></a>Säker, enkel administration av virtuella Azure-datorer
-Du kan använda Azure Active Directory Domain Services för att hantera dina Azure virtuella datorer på ett effektivt sätt. Virtuella Azure-datorer kan anslutas till den hanterade domänen, vilket gör att du kan använda AD företagets inloggningsuppgifter för att logga in. Den här metoden hjälper till att undvika autentiseringsuppgifter management problem, till exempel underhålla lokala administratörskonton på var och en av dina virtuella Azure-datorer.
+Du kan använda Azure Active Directory Domain Services toomanage Azure virtuella datorer på ett effektivt sätt. Virtuella Azure-datorer kan vara domänansluten toohello hanterade domän, vilket gör att du toouse företagets Annonsen autentiseringsuppgifter toolog i. Den här metoden hjälper till att undvika autentiseringsuppgifter management problem, till exempel underhålla lokala administratörskonton på var och en av dina virtuella Azure-datorer.
 
-Server-datorer som är anslutna till den hanterade domänen kan också hanteras och skyddas med en Grupprincip. Du kan använda baslinjer krävs säkerhet för dina virtuella Azure-datorer och låsa dem i enlighet med företagets riktlinjer. Du kan till exempel använda funktioner för hantering av grupp-policy för att begränsa vilka typer av program som kan startas på dessa virtuella datorer.
+Servern virtuella datorer som är kopplade toohello hanterad domän kan också hanteras och skyddas med en Grupprincip. Du kan tillämpa obligatoriska säkerhet baslinjer tooyour Azure virtuella datorer och låsa dem i enlighet med företagets riktlinjer. Exempelvis kan du använda gruppen policy management funktioner toorestrict hello typer av program som kan startas på dessa virtuella datorer.
 
 ![Effektiv administration av virtuella Azure-datorer](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
 
-Som når slutet av livslängd för servrar och annan infrastruktur, flyttar Contoso många program som finns lokalt till molnet. Deras aktuella IT-standarden kräver att servrarna som är värd för företagets program måste vara domänanslutna och hanterad med hjälp av en Grupprincip. Contosos IT-administratören föredrar att domänen ansluta till virtuella datorer i Azure, så att det blir enklare administration. Detta innebär att administratörer och användare kan logga in med sina företagsuppgifter. Datorer kan konfigureras för att uppfylla baslinjer för krävs säkerhet med hjälp av en Grupprincip på samma gång. Contoso föredrar att inte ska distribuera, övervaka och hantera domänkontrollanter i Azure för att skydda virtuella Azure-datorer. Därför Azure AD Domain Services är ett bra val för den här användningsfall.
+Som når slutet av livslängd för servrar och annan infrastruktur, flyttar Contoso många program som finns på lokalt toohello i molnet. Deras aktuella IT-standarden kräver att servrarna som är värd för företagets program måste vara domänanslutna och hanterad med hjälp av en Grupprincip. Contosos föredrar toodomain ansluta till virtuella datorer i Azure, toomake administration lättare för IT-administratören. Detta innebär att administratörer och användare kan logga in med sina företagsuppgifter. Vid hello samtidigt datorer kan vara konfigurerade toocomply med baslinjer för krävs säkerhet med hjälp av en Grupprincip. Contoso föredrar inte toohave toodeploy, övervaka och hantera domänkontrollanter i Azure toosecure virtuella Azure-datorer. Därför Azure AD Domain Services är ett bra val för den här användningsfall.
 
 **Distributionsanteckningar**
 
-Tänk på följande viktiga för det här distributionsscenariot:
+Överväg följande viktiga punkter för det här distributionsscenariot hello:
 
-* Hanterade domäner som tillhandahålls av Azure AD Domain Services ger en enda flat OU (organisationsenhet)-struktur som standard. Alla domänanslutna datorer placeras i en enda flat Organisationsenhet. Du kan dock välja att skapa anpassade organisationsenheter.
-* Azure AD Domain Services har stöd för enkla Grupprincip i form av ett inbyggda GPO varje för användare och datorer som behållare. Du kan skapa anpassade grupprincipobjekt och rikta dem till anpassade organisationsenheter.
-* Azure AD Domain Services stöder grundläggande AD datorn objektet schemat. Du kan inte utöka schemat för det datorobjekt.
+* Hanterade domäner som tillhandahålls av Azure AD Domain Services ger en enda flat OU (organisationsenhet)-struktur som standard. Alla domänanslutna datorer placeras i en enda flat Organisationsenhet. Du kan dock välja toocreate anpassade organisationsenheter.
+* Azure AD Domain Services har stöd för enkla Grupprincip i hello form av ett inbyggda GPO varje för hello-användare och datorer behållare. Du kan skapa anpassade grupprincipobjekt och rikta dem toocustom organisationsenheter.
+* Azure AD Domain Services stöder hello grundläggande AD datorn objektet schemat. Du kan inte utöka schemat hello datorobjekt.
 
-## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-bind-authentication-to-azure-infrastructure-services"></a>Lift och SKIFT ett lokalt program som använder LDAP bind autentisering till Azure Infrastructure Services
+## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-bind-authentication-tooazure-infrastructure-services"></a>Lift och SKIFT ett lokalt program som använder LDAP bind autentisering tooAzure infrastrukturtjänster
 ![LDAP-bindning](./media/active-directory-domain-services-scenarios/ldap-bind.png)
 
-Contoso har ett lokalt program som köpts från en ISV många år sedan. Programmet är för närvarande i underhållsläge ISV: er och begär ändringar i programmet är orimligt hög för Contoso. Det här programmet har en webbaserad klientdel som samlar in autentiseringsuppgifter med hjälp av ett webbformulär och autentiserar användare genom att utföra en LDAP-bindning till företagets Active Directory. Contoso vill flytta programmet till Azure Infrastructure Services. Det är önskvärt att programmet fungerar som är utan ändringar. Dessutom kan användare ska kunna autentiseras med hjälp av sina befintliga företagsuppgifter och utan att behöva träna om användare för att göra saker på olika sätt. Med andra ord slutanvändare bör vara oblivious av där programmet körs och migreringen ska vara transparent för dem.
+Contoso har ett lokalt program som köpts från en ISV många år sedan. hello programmet är i underhållsläge hello ISV och begärda ändringar toohello programmet är orimligt hög för Contoso. Det här programmet har en klientdel som samlar in autentiseringsuppgifter med hjälp av ett webbformulär och autentiserar användare genom att utföra en LDAP-bindning toohello webbaserade företagets Active Directory. Contoso vill toomigrate det här programmet tooAzure infrastrukturtjänster. Det är önskvärt att hello programmet fungerar som är utan ändringar. Dessutom kan ska användare vara kan tooauthenticate med sina befintliga företagsuppgifter och utan att ha tooretrain användare toodo saker på olika sätt. Med andra ord slutanvändare bör vara oblivious av där programmet hello körs och hello migreringen ska vara transparent toothem.
 
 **Distributionsanteckningar**
 
-Tänk på följande viktiga för det här distributionsscenariot:
+Överväg följande viktiga punkter för det här distributionsscenariot hello:
 
-* Se till att programmet inte behöver ändra/skrivning till katalogen. LDAP-skrivåtkomst till hanterade domäner som tillhandahålls av Azure AD Domain Services stöds inte.
-* Det går inte att ändra lösenord direkt mot den hanterade domänen. Användare kan ändra sina lösenord antingen med hjälp av Azure AD självbetjäning lösenord ändra mekanism eller i förhållande till den lokala katalogen. Dessa ändringar är automatiskt synkroniserats och finns tillgängliga i den hanterade domänen.
+* Se till att programmet hello inte behöver toomodify/skrivning toohello directory. LDAP-skrivbehörighet toomanaged domäner som tillhandahålls av Azure AD Domain Services stöds inte.
+* Det går inte att ändra lösenord direkt mot hello hanterade domän. Användare kan ändra sina lösenord antingen med hjälp av Azure AD självbetjäning lösenord ändra mekanism eller mot hello lokala katalog. Dessa ändringar är automatiskt synkroniserats och finns tillgängliga i hello hanterade domän.
 
-## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-read-to-access-the-directory-to-azure-infrastructure-services"></a>Lift och SKIFT ett lokalt program som använder LDAP läsa för att få åtkomst till katalogen till Azure Infrastructure Services
-Contoso har ett lokalt branschspecifika (LOB)-program som har utvecklats nästan tio år sedan. Det här programmet är directory medveten och har utformats för att fungera med Windows Server AD. Programmet använder LDAP (Lightweight Directory Access Protocol) för att läsa information/attribut om användare från Active Directory. Programmet inte ändra attribut eller på annat sätt skriva till katalogen. Contoso vill migrera programmet till Azure Infrastructure Services och dra tillbaka åldern lokal maskinvara som för närvarande är värd för det här programmet. Programmet kan inte skrivas över om du vill använda moderna directory API: er som REST-baserad Azure AD Graph API. Därför är ett alternativ för lift och SKIFT önskade innebär att programmet kan migreras om du vill köra i molnet, utan att ändra koden eller skriva om programmet.
+## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-read-tooaccess-hello-directory-tooazure-infrastructure-services"></a>Lift och SKIFT ett lokalt program som använder LDAP läsa tooaccess hello directory tooAzure infrastrukturtjänster
+Contoso har ett lokalt branschspecifika (LOB)-program som har utvecklats nästan tio år sedan. Det här programmet är medveten om katalog och var utformad toowork med Windows Server AD. hello programmet använder LDAP (Lightweight Directory Access Protocol) tooread information/attribut om användare från Active Directory. hello-programmet inte ändra attribut och annat skriva toohello directory. Contoso vill toomigrate det här programmet tooAzure infrastrukturtjänster och pensionera hello åldern på lokal maskinvara som för närvarande är värd för det här programmet. hello-programmet kan inte vara omskrivet toouse moderna directory API: er, till exempel hello REST-baserad Azure AD Graph API. Därför är ett alternativ för lift och SKIFT önskade där programmet hello kan vara migrerade toorun i hello moln, utan att ändra koden eller skriva om programmet hello.
 
 **Distributionsanteckningar**
 
-Tänk på följande viktiga för det här distributionsscenariot:
+Överväg följande viktiga punkter för det här distributionsscenariot hello:
 
-* Se till att programmet inte behöver ändra/skrivning till katalogen. LDAP-skrivåtkomst till hanterade domäner som tillhandahålls av Azure AD Domain Services stöds inte.
-* Se till att programmet inte behöver en anpassad utökat Active Directory-schemat. Schematillägg stöds inte i Azure AD Domain Services.
+* Se till att programmet hello inte behöver toomodify/skrivning toohello directory. LDAP-skrivbehörighet toomanaged domäner som tillhandahålls av Azure AD Domain Services stöds inte.
+* Se till att programmet hello inte behöver en anpassad utökat Active Directory-schemat. Schematillägg stöds inte i Azure AD Domain Services.
 
-## <a name="migrate-an-on-premises-service-or-daemon-application-to-azure-infrastructure-services"></a>Migrera en lokal tjänst eller daemon programmet till Azure Infrastructure Services
-Vissa program består av flera nivåer där någon av nivåerna behöver utföra autentiserade anrop till en backend-nivå, till exempel en databasnivå. Active Directory-tjänstkonton används ofta för dessa användningsområden. Du kan lift och SKIFT sådana program på Azure Infrastructure Services och använda Azure AD Domain Services för identitet måste dessa program. Du kan välja att använda samma konto som ska synkroniseras från din lokala katalog till Azure AD. Alternativt kan du först skapa en anpassad Organisationsenhet och sedan skapa ett separat tjänstkonto i denna Organisationsenhet för att distribuera dessa program.
+## <a name="migrate-an-on-premises-service-or-daemon-application-tooazure-infrastructure-services"></a>Migrera en lokal tjänst eller daemon programmet tooAzure infrastrukturtjänster
+Vissa program består av flera nivåer där en av hello nivåer måste tooperform autentiserade anrop tooa backend-nivå, till exempel en databasnivå. Active Directory-tjänstkonton används ofta för dessa användningsområden. Du kan lift och SKIFT sådana program tooAzure infrastrukturtjänster och Använd Azure AD Domain Services för hello identitet måste dessa program. Du kan välja toouse hello samma konto som ska synkroniseras från din lokala katalog tooAzure AD. Alternativt kan du först skapa en anpassad Organisationsenhet och sedan skapa ett separat tjänstkonto i denna Organisationsenhet toodeploy sådana program.
 
 ![Tjänstkonto som använder WIA](./media/active-directory-domain-services-scenarios/wia-service-account.png)
 
-Contoso har ett specialbyggt valvet program som innehåller en frontwebb, en SQLServer och backend FTP-servern. Windows-integrerad autentisering av tjänstkonton används för att autentisera frontwebb till FTP-servern. Webbklientservern har konfigurerats att köras som ett tjänstkonto. Backend-servern är konfigurerad för att tillåta åtkomst från kontot för frontwebben. Contoso föredrar att inte ska distribuera domain controller virtuell dator i molnet för att flytta programmet till Azure Infrastructure Services. Contosos IT-administratör kan distribuera servrarna där frontwebben, SQLServer och FTP-servern till Azure virtuella datorer. Dessa datorer ansluts sedan till en Azure AD Domain Services-hanterad domän. De kan sedan använda samma tjänstkonto i sina lokala kataloger för appens autentisering. Tjänstkontot synkroniseras till Azure AD Domain Services-hanterad domän och är tillgängliga för användning.
+Contoso har ett specialbyggt valvet program som innehåller en frontwebb, en SQLServer och backend FTP-servern. Windows-integrerad autentisering för tjänstkonton är används tooauthenticate hello toohello FTP frontwebbserver. hello frontwebb ställs in toorun som ett tjänstkonto. hello backend-servern är konfigurerad tooauthorize åtkomst från hello-tjänstkontot för hello frontwebb. Contoso föredrar inte toohave toodeploy en domain controller virtuell dator i hello molnet toomove det här programmet tooAzure infrastrukturtjänster. Contosos IT-administratör kan distribuera hello-servrar som hyser hello frontwebb, SQLServer och hello FTP server tooAzure virtuella datorer. De här datorerna är anslutna tooan Azure AD Domain Services hanterade domän. De kan sedan använda hello samma tjänstkonto i sina lokala kataloger för hello app autentisering. Tjänstkontot är synkroniserade toohello Azure AD Domain Services-hanterad domän och är tillgängliga för användning.
 
 **Distributionsanteckningar**
 
-Tänk på följande viktiga för det här distributionsscenariot:
+Överväg följande viktiga punkter för det här distributionsscenariot hello:
 
-* Kontrollera att programmet använder användarnamn/lösenord för autentisering. Certifikat/smartkort-baserad autentisering stöds inte av Azure AD Domain Services.
-* Det går inte att ändra lösenord direkt mot den hanterade domänen. Användare kan ändra sina lösenord antingen med hjälp av Azure AD självbetjäning lösenord ändra mekanism eller i förhållande till den lokala katalogen. Dessa ändringar är automatiskt synkroniserats och finns tillgängliga i den hanterade domänen.
+* Kontrollera att programmet hello använder användarnamn/lösenord för autentisering. Certifikat/smartkort-baserad autentisering stöds inte av Azure AD Domain Services.
+* Det går inte att ändra lösenord direkt mot hello hanterade domän. Användare kan ändra sina lösenord antingen med hjälp av Azure AD självbetjäning lösenord ändra mekanism eller mot hello lokala katalog. Dessa ändringar är automatiskt synkroniserats och finns tillgängliga i hello hanterade domän.
 
 ## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Windows Server Remote desktop services-distributioner i Azure
-Du kan använda Azure AD Domain Services för att ge hanterad AD DS till din fjärrskrivbordsservrar som distribueras i Azure.
+Du kan använda Azure AD Domain Services tooprovide hanteras AD DS tooyour fjärrskrivbordsservrar distribuerade i Azure.
 
-Mer information om det här distributionsscenariot finns så [integrera Azure AD Domain Services med RDS-distribution](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-azure-adds).
+Mer information om det här distributionsscenariot se hur för[integrera Azure AD Domain Services med RDS-distribution](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-azure-adds).

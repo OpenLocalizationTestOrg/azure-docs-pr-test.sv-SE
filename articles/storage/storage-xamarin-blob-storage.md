@@ -1,6 +1,6 @@
 ---
-title: "Hur du använder Blob Storage från Xamarin | Microsoft Docs"
-description: "Azure Storage-klientbibliotek för Xamarin kan utvecklare skapa iOS, Android och Windows Store-appar med sina ursprungliga användargränssnitt. Den här kursen visar hur du skapar ett program som använder Azure Blob storage med hjälp av Xamarin."
+title: "aaaHow toouse Blob Storage från Xamarin | Microsoft Docs"
+description: "hello Azure Storage-klientbibliotek för Xamarin kan utvecklare toocreate iOS, Android och Windows Store-appar med sina ursprungliga användargränssnitt. Den här kursen visar hur toouse Xamarin toocreate ett program som använder Azure Blob storage."
 services: storage
 documentationcenter: xamarin
 author: michaelhauss
@@ -14,36 +14,36 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.openlocfilehash: 0952c0e7189dd360098744a7e19b04cd330cb617
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 751f66d1d2392c8bcf6e5f8d1b185af73582fab3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-blob-storage-from-xamarin"></a>Hur du använder Blob Storage från Xamarin
+# <a name="how-toouse-blob-storage-from-xamarin"></a>Hur toouse Blob Storage från Xamarin
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 ## <a name="overview"></a>Översikt
-Xamarin kan utvecklare att använda en delad C# kodbas för att skapa iOS, Android och Windows Store-appar med sina ursprungliga användargränssnitt. Den här kursen visar hur du använder Azure Blob storage med en Xamarin-App. Om du vill veta mer om Azure Storage innan du dyker in i koden Se [introduktion till Microsoft Azure Storage](storage-introduction.md).
+Xamarin kan utvecklare toouse delade C# codebase toocreate iOS, Android och Windows Store-appar med sina ursprungliga användargränssnitt. De här självstudierna visar hur toouse Azure Blob storage med en Xamarin-App. Om du vill toolearn mer om Azure Storage innan du dyker in hello koden Se [introduktion tooMicrosoft Azure Storage](storage-introduction.md).
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 [!INCLUDE [storage-mobile-authentication-guidance](../../includes/storage-mobile-authentication-guidance.md)]
 
 ## <a name="create-a-new-xamarin-application"></a>Skapa en ny Xamarin-App
-Den här kursen ska vi skapa en app som riktar sig till Android, iOS och Windows. Den här appen kommer bara att skapa en behållare och ladda upp en blobb till den här behållaren. Vi ska använda Visual Studio i Windows, men samma learnings kan användas när du skapar en app med Xamarin Studio på macOS.
+Den här kursen ska vi skapa en app som riktar sig till Android, iOS och Windows. Den här appen kommer bara att skapa en behållare och ladda upp en blobb till den här behållaren. Vi ska använda Visual Studio i Windows, men samma learnings kan användas när du skapar en app med Xamarin Studio på macOS hello.
 
-Följ dessa steg för att skapa programmet:
+Följ dessa steg toocreate ditt program:
 
 1. Om du inte redan har gjort ladda ned och installera [Xamarin för Visual Studio](https://www.xamarin.com/download).
 2. Öppna Visual Studio och skapa en tom App (intern bärbara): **fil > Nytt > Projekt > plattformsoberoende > tom App(Native Portable)**.
-3. Högerklicka på lösningen i Solution Explorer-fönstret och välj **hantera NuGet-paket för lösningen**. Sök efter **WindowsAzure.Storage** och installera den senaste säkra versionen för alla projekt i din lösning.
+3. Högerklicka på lösningen i hello Solution Explorer-fönstret och välj **hantera NuGet-paket för lösningen**. Sök efter **WindowsAzure.Storage** och installera hello senaste stabil version tooall projekten i din lösning.
 4. Skapa och köra projektet.
 
-Du bör nu ha ett program som gör att du kan klicka på en knapp som ökar en räknare.
+Du bör nu ha ett program som gör att du tooclick en knapp som ökar en räknare.
 
 ## <a name="create-container-and-upload-blob"></a>Skapa en behållare och ladda upp blob
-Sedan under din `(Portable)` projekt, ska du lägga till kod till `MyClass.cs`. Den här koden skapar en behållare och laddar upp en blob till den här behållaren. `MyClass.cs`bör se ut ungefär så här:
+Sedan under din `(Portable)` projekt, ska du lägga till kod för`MyClass.cs`. Den här koden skapar en behållare och laddar upp en blob till den här behållaren. `MyClass.cs`bör se ut hello följande:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -63,28 +63,28 @@ namespace XamarinApp
             // Retrieve storage account from connection string.
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here");
 
-            // Create the blob client.
+            // Create hello blob client.
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-            // Retrieve reference to a previously created container.
+            // Retrieve reference tooa previously created container.
             CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-            // Create the container if it doesn't already exist.
+            // Create hello container if it doesn't already exist.
             await container.CreateIfNotExistsAsync();
 
-            // Retrieve reference to a blob named "myblob".
+            // Retrieve reference tooa blob named "myblob".
             CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
 
-            // Create the "myblob" blob with the text "Hello, world!"
+            // Create hello "myblob" blob with hello text "Hello, world!"
             await blockBlob.UploadTextAsync("Hello, world!");
         }
     }
 }
 ```
 
-Se till att ersätta ”your_account_name_here” och ”your_account_key_here” med faktiska kontonamn och kontonyckel. 
+Kontrollera att tooreplace ”your_account_name_here” och ”your_account_key_here” med faktiska kontonamn och kontonyckel. 
 
-IOS-, Android- och Windows Phone-projekt som alla har referenser till projektet bärbara - vilket innebär att du kan skriva all delad kod i något placera och använda det för alla dina projekt. Du kan nu lägga till följande kodrad varje projekt för att starta utnyttjar:`MyClass.performBlobOperation()`
+Din iOS-, Android och Windows Phone-projekt som alla har referenser tooyour bärbar projekt – vilket innebär att du kan skriva all delad kod i något placera och använda det för alla dina projekt. Du kan nu lägga till följande rad med kod tooeach projekt toostart dra fördel hello:`MyClass.performBlobOperation()`
 
 ### <a name="xamarinappdroid--mainactivitycs"></a>XamarinApp.Droid > MainActivity.cs
 
@@ -104,11 +104,11 @@ namespace XamarinApp.Droid
         {
             base.OnCreate (bundle);
 
-            // Set our view from the "main" layout resource
+            // Set our view from hello "main" layout resource
             SetContentView (Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
+            // Get our button from hello layout resource,
+            // and attach an event tooit
             Button button = FindViewById<Button> (Resource.Id.myButton);
 
             button.Click += delegate {
@@ -149,7 +149,7 @@ namespace XamarinApp.iOS
             public override async void ViewDidLoad ()
             {
                 base.ViewDidLoad ();
-                // Perform any additional setup after loading the view, typically from a nib.
+                // Perform any additional setup after loading hello view, typically from a nib.
                 Button.AccessibilityIdentifier = "myButton";
                 Button.TouchUpInside += delegate {
                     var title = string.Format ("{0} clicks!", count++);
@@ -175,12 +175,12 @@ namespace XamarinApp.iOS
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+// hello Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
 namespace XamarinApp.WinPhone
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated toowithin a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
     {
@@ -194,10 +194,10 @@ namespace XamarinApp.WinPhone
         }
 
         /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
+        /// Invoked when this page is about toobe displayed in a Frame.
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
+        /// This parameter is typically used tooconfigure hello page.</param>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             int count = 1;
@@ -210,18 +210,18 @@ namespace XamarinApp.WinPhone
             }
 
             /// <summary>
-            /// Invoked when this page is about to be displayed in a Frame.
+            /// Invoked when this page is about toobe displayed in a Frame.
             /// </summary>
             /// <param name="e">Event data that describes how this page was reached.
-            /// This parameter is typically used to configure the page.</param>
+            /// This parameter is typically used tooconfigure hello page.</param>
             protected override async void OnNavigatedTo(NavigationEventArgs e)
             {
                 // TODO: Prepare page for display here.
 
                 // TODO: If your application contains multiple pages, ensure that you are
-                // handling the hardware Back button by registering for the
+                // handling hello hardware Back button by registering for the
                 // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-                // If you are using the NavigationHelper provided by some templates,
+                // If you are using hello NavigationHelper provided by some templates,
                 // this event is handled for you.
                 Button.Click += delegate {
                     var title = string.Format("{0} clicks!", count++);
@@ -235,13 +235,13 @@ namespace XamarinApp.WinPhone
 }
 ```
 
-## <a name="run-the-application"></a>Köra programmet
-Du kan nu köra det här programmet i en Android eller Windows Phone-emulatorn. Du kan också köra det här programmet i en iOS-emulatorn, men detta kräver en Mac. För specifika instruktioner om hur du gör detta, Läs i dokumentationen för [ansluter Visual Studio till en Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
+## <a name="run-hello-application"></a>Kör programmet hello
+Du kan nu köra det här programmet i en Android eller Windows Phone-emulatorn. Du kan också köra det här programmet i en iOS-emulatorn, men detta kräver en Mac. Specifika anvisningar för hur toodo, se dokumentationen hello för [ansluter Visual Studio tooa Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/)
 
-När du kör din app kommer att skapas i behållaren `mycontainer` i ditt lagringskonto. Den ska innehålla blob, `myblob`, som innehåller text, `Hello, world!`. Du kan kontrollera detta genom att använda den [Microsoft Azure Lagringsutforskaren](http://storageexplorer.com/).
+När du kör din app kommer att skapas hello behållaren `mycontainer` i ditt lagringskonto. Den ska innehålla hello blob `myblob`, som har hello text `Hello, world!`. Du kan kontrollera detta genom att använda hello [Microsoft Azure Lagringsutforskaren](http://storageexplorer.com/).
 
 ## <a name="next-steps"></a>Nästa steg
-I kursen får du har lärt dig hur du skapar ett program för flera plattformar i Xamarin som använder Azure Storage, särskilt fokusera på ett scenario i Blob Storage. Men kan du göra mycket mer med inte bara Blob Storage, utan även med tabell-, fil- och Queue Storage. Läs följande artiklar om du vill veta mer:
+I kursen får du lärt dig hur toocreate ett plattformsoberoende program i Xamarin som använder Azure Storage, särskilt fokusera på ett scenario i Blob Storage. Men kan du göra mycket mer med inte bara Blob Storage, utan även med tabell-, fil- och Queue Storage. Läs följande artiklar toolearn mer hello:
 
 * [Komma igång med Azure Blob Storage med hjälp av .NET](storage-dotnet-how-to-use-blobs.md)
 * [Komma igång med Azure Table Storage med hjälp av .NET](storage-dotnet-how-to-use-tables.md)

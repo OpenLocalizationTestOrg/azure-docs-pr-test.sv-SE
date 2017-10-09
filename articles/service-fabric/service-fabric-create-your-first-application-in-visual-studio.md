@@ -1,5 +1,5 @@
 ---
-title: "Skapa en tillförlitlig tjänst för Azure Service Fabric med C#"
+title: "aaaCreate en tillförlitlig Azure Service Fabric-tjänsten med C#"
 description: "Skapa, distribuera och felsöka ett tillförlitligt tjänstprogram som bygger på Azure Service Fabric med Visual Studio."
 services: service-fabric
 documentationcenter: .net
@@ -14,120 +14,120 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/28/2017
 ms.author: ryanwi
-ms.openlocfilehash: f93298e6483fd8c9dfda835964aeebd1a430af69
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 740c866da6e639219b529fe92ed63cbeaa702a35
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Skapa ditt första tillståndskänsliga tillförlitliga C# Service Fabric-program
 
-Lär dig hur du distribuerar ditt första Service Fabric-program för .NET i Windows på bara några minuter. När du är klar har du ett lokala kluster som körs med ett tillförlitligt tjänstprogram.
+Lär dig hur toodeploy ditt första Service Fabric-program för .NET i Windows på bara några minuter. När du är klar har du ett lokala kluster som körs med ett tillförlitligt tjänstprogram.
 
 ## <a name="prerequisites"></a>Krav
 
-Du måste [konfigurera utvecklingsmiljön](service-fabric-get-started.md) innan du börjar. Detta innefattar hur du installerar Service Fabric-SDK och Visual Studio 2017 eller 2015.
+Du måste [konfigurera utvecklingsmiljön](service-fabric-get-started.md) innan du börjar. Detta omfattar att installera hello Service Fabric-SDK och Visual Studio 2017 eller 2015.
 
-## <a name="create-the-application"></a>Skapa programmet
+## <a name="create-hello-application"></a>Skapa hello program
 
 Starta Visual Studio som **administratör**.
 
 Skapa ett projekt med `CTRL`+`SHIFT`+`N`
 
-Klicka på **Moln > Service Fabric-program** i dialogrutan **Nytt projekt**.
+I hello **nytt projekt** dialogrutan Välj **molntjänster > Fabric tjänstprogrammet**.
 
-Ge programmet namnet **MyApplication** och tryck på **OK**.
+Namnge programmet hello **MyApplication** och tryck på **OK**.
 
    
 ![Dialogrutan Nytt projekt i Visual Studio][1]
 
-Du kan skapa alla typer av Service Fabric-program från nästa dialogruta. För den här snabbstarten, väljer du **Tillståndskänslig tjänst**.
+Du kan skapa Service Fabric-program från hello nästa dialogruta. För den här snabbstarten, väljer du **Tillståndskänslig tjänst**.
 
-Namnge tjänsten **MyStatefulService** och tryck på **OK**.
+Namnge hello service **MyStatefulService** och tryck på **OK**.
 
 ![Dialogrutan Ny tjänst i Visual Studio][2]
 
 
-Visual Studio skapar programprojektet och det tillståndskänsliga tjänstprojektet och visar dem i Solution Explorer.
+Visual Studio skapar hello programmet projektet och hello tillståndskänslig service och visar dem i Solution Explorer.
 
 ![Solution Explorer när ett program med en tillståndskänslig tjänst har skapats][3]
 
-Programprojektet (**MyApplication**) innehåller ingen direkt kod. I stället refererar det till en uppsättning tjänstprojekt. Dessutom innehåller det tre andra typer av innehåll:
+hello projektet (**MyApplication**) innehåller inte någon kod direkt. I stället refererar det till en uppsättning tjänstprojekt. Dessutom innehåller det tre andra typer av innehåll:
 
 * **Publicera profiler**  
-Profiler för att distribuera till olika miljöer.
+Profiler för att distribuera toodifferent miljöer.
 
 * **Skript**  
 PowerShell-skript för distribution/uppgradering av program.
 
 * **Programdefinition**  
-Innehåller filen ApplicationManifest.xml under *ApplicationPackageRoot* som beskriver ditt programs sammansättning. Associerade programfiler för parametern är *ApplicationParameters*, som kan användas för att ange miljöspecifikt parametrar. Visual Studio väljer en programparameterfil som anges i den tillhörande publikationsprofilen vid distribution till en specifik miljö.
+Innehåller hello ApplicationManifest.xml fil under *ApplicationPackageRoot* som beskriver ditt programs sammansättning. Associerade programfiler för parametern är *ApplicationParameters*, vilket kan vara används toospecify miljö-specifika parametrar. Visual Studio väljer en programfil parameter som anges i hello associerade publiceringsprofil under distributionen tooa specifika miljö.
     
-En översikt över innehållet i tjänstprojektet finns i [Komma igång med Reliable Services](service-fabric-reliable-services-quick-start.md).
+En översikt över hello innehållet i hello service-projekt, se [komma igång med Reliable Services](service-fabric-reliable-services-quick-start.md).
 
-## <a name="deploy-and-debug-the-application"></a>Distribuera och felsöka programmet
+## <a name="deploy-and-debug-hello-application"></a>Distribuera och felsöka hello program
 
 Nu när du har ett program kan du prova att köra det.
 
-Tryck på `F5` i Visual Studio för att distribuera programmet för felsökning.
+I Visual Studio trycker du på `F5` toodeploy hello program för felsökning.
 
 >[!NOTE]
->Första gången du kör och distribuerar programmet lokalt, skapar Visual Studio ett lokalt kluster för felsökning. Det kan ta lite tid. Statusen för klustergenereringen visas i utdatafönstret i Visual Studio.
+>hello skapar första gången du kör och distribuera hello programmet lokalt, Visual Studio ett lokala kluster för felsökning. Det kan ta lite tid. hello klustret Skapandestatus visas i utdatafönstret för hello Visual Studio.
 
-När klustret är klart får du ett meddelande från programmet Local Cluster Manager i systemfältet som ingår i SDK.
+När hello klustret är klar, kan du få ett meddelande från hello lokala klustret fack manager systemprogram medföljer hello SDK.
    
 ![Meddelande från Local Cluster Manager i systemfältet][4]
 
-När programmet startar visas loggboken **Diagnostik automatiskt**, där du kan se spårningsinformation från tjänsten.
+En gång hello programmet startar Visual Studio automatiskt öppnar hello **diagnostik Loggboken**, där du kan se spårningsutdata från dina tjänster.
    
 ![Loggboken Diagnostik][5]
 
-Om du använder mallen för tillståndskänsliga tjänster visar meddelandena bara antalet som ökar i metoden `RunAsync` i **MyStatefulService.cs**.
+hello tillståndskänslig tjänstmall som vi använde visas endast en räknare värde ökar i hello `RunAsync` metod för **MyStatefulService.cs**.
 
-Expandera någon av händelserna om du vill visa mer information, inklusive noden där koden körs. I det här fallet är det \_Node\_2, men det kan skilja sig på din dator.
+Expandera en hello händelser toosee mer information, inklusive hello-nod där hello kod körs. I det här fallet är det \_Node\_2, men det kan skilja sig på din dator.
    
 ![Detaljer från loggboken Diagnostik][6]
 
-Det lokala klustret innehåller fem noder som finns på en enda dator. Varje nod finns på en distinkt fysisk eller virtuell dator i en produktionsmiljö. Nu ska vi ta bort en av noderna i det lokala klustret för att simulera förlusten av en dator och passa på att använda Visual Studio-felsökaren.
+hello lokala kluster innehåller fem noder som finns på en enskild dator. Varje nod finns på en distinkt fysisk eller virtuell dator i en produktionsmiljö. toosimulate hello förlust av en dator när utöva hello Visual Studio för felsökning på hello samma tid, ska vi ta bort en av noderna hello på hello lokala klustret.
 
-I fönster **Solution Explorer** öppnar du **MyStatefulService.cs**. 
+I hello **Solution Explorer** fönster, **MyStatefulService.cs**. 
 
-Hitta `RunAsync`-metoden och ange en brytpunkt på den första raden i metoden.
+Hitta hello `RunAsync` metod och ange en brytpunkt på hello första raden i hello-metoden.
 
 ![Brytpunkt i den tillståndskänsliga tjänstens RunAsync-metod][7]
 
-Högerklicka på **Local Cluster Manager** i systemfältet och välj **Hantera lokalt kluster** för att starta verktyget **Service Fabric Explorer**.
+Starta hello **Service Fabric Explorer** verktyget genom att högerklicka på hello **lokala Klusterhanterare** fack systemprogram och välj **hantera lokala klustret**.
 
-![Starta Service Fabric Explorer från Local Cluster Manager][systray-launch-sfx]
+![Starta Service Fabric Explorer från hello Klusterhanterare för lokala][systray-launch-sfx]
 
-[**Service Fabric Explorer**](service-fabric-visualizing-your-cluster.md) visar en bild av ett kluster. Den innehåller en uppsättning program som distribueras till den och en uppsättning fysiska noder den består av.
+[**Service Fabric Explorer**](service-fabric-visualizing-your-cluster.md) visar en bild av ett kluster. Det innehåller hello uppsättning program som distribueras tooit och hello uppsättning fysiska noder som utgör den.
 
-I den vänstra rutan expanderar du **Kluster > Noder** och letar upp noden där koden körs.
+I hello till vänster och expanderar **kluster > noder** och hitta hello nod där din kod körs.
 
-Klicka på **Åtgärder > Inaktivera (omstart)** för att simulera omstarten av en dator.
+Klicka på **åtgärder > Inaktivera (omstart)** toosimulate en datorn startas om.
 
 ![Stoppa en nod i Service Fabric Explorer][sfx-stop-node]
 
-Under ett ögonblick kan du se din brytpunkt i Visual Studio när beräkningen som du gjorde på en nod smidigt växlar över till en annan.
+Tillfälligt, bör du se din brytpunkt träffar i Visual Studio som hello beräkning som du gjorde på en nod sömlöst växlar tooanother.
 
 
-Gå sedan tillbaka till loggboken Diagnostik och notera meddelandena. Räknaren har fortsatt att öka, även om händelserna egentligen kommer från en annan nod.
+Sedan returnera toohello diagnostiska Loggboken och se hälsningsmeddelande. hello räknare har blivit ökar, även om hello händelser faktiskt kommer från en annan nod.
 
 ![Loggboken Diagnostik efter en redundansväxling][diagnostic-events-viewer-detail-post-failover]
 
-## <a name="cleaning-up-the-local-cluster-optional"></a>Rensa det lokala klustret (valfritt)
+## <a name="cleaning-up-hello-local-cluster-optional"></a>Rensa hello lokala klustret (valfritt)
 
-Kom ihåg att det här lokala klustret är verkligt. Om du stoppar felsökningen tar du bort din instans av programmet och avregistrerar programtypen. Klustret fortsätter dock att köras i bakgrunden. När du är redo att stoppa det lokala klustret finns det några alternativ.
+Kom ihåg att det här lokala klustret är verkligt. Stoppa hello felsökare tar bort din programinstansen och Avregistrerar hello programtyp. Hello klustret fortsätter dock toorun i hello bakgrund. När du är klar toostop hello lokala klustret, finns det några alternativ.
 
 ### <a name="keep-application-and-trace-data"></a>Bibehåll program- och spårningsdata
 
-Högerklicka på **Local Cluster Manager** i systemfältet och välj **Stäng lokalt kluster** för att stänga det lokala klustret.
+Stäng hello klustret genom att högerklicka på hello **lokala Klusterhanterare** fack systemprogram och välj sedan **stoppa lokala klustret**.
 
-### <a name="delete-the-cluster-and-all-data"></a>Ta bort klustret och alla data
+### <a name="delete-hello-cluster-and-all-data"></a>Ta bort hello kluster och alla data
 
-Högerklicka på **Local Cluster Manager** i systemfältet och välj **Ta bort lokalt kluster** för att ta bort det lokala klustret. 
+Ta bort hello klustret genom att högerklicka på hello **lokala Klusterhanterare** fack systemprogram och välj sedan **ta bort lokala klustret**. 
 
-Om du väljer det här alternativet, distribuerar Visual Studio klustret nästa gång du kör programmet. Använd bara det här alternativet om du inte planerar att använda det lokala klustret under en tid eller om du behöver frigöra resurser.
+Om du väljer det här alternativet, kommer Visual Studio omdistribuera hello klustret hello nästa gång som din kör hello program. Välj det här alternativet om du inte avser toouse hello lokala kluster under en viss tid eller om du behöver tooreclaim resurser.
 
 ## <a name="next-steps"></a>Nästa steg
 Mer information om [Reliable Services](service-fabric-reliable-services-introduction.md).

@@ -1,6 +1,6 @@
 ---
-title: Konfigurera Azure Key Vault slutpunkt till slutpunkt viktiga rotation och granskning | Microsoft Docs
-description: "Använd den här anvisningar som hjälper dig att börja arbeta med viktiga rotation och övervakning nyckelvalv loggar."
+title: aaaSet in Azure Key Vault slutpunkt till slutpunkt viktiga rotation och granskning | Microsoft Docs
+description: "Använd den här hur tootoohelp du att börja arbeta med viktiga rotation och övervakning nyckelvalv loggar."
 services: key-vault
 documentationcenter: 
 author: swgriffith
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: 38c342802ed687985ac6f84f5a590a1a0dcc6c6a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e0c393873077e3b91adc9fa7f39128bc1b6abe26
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Konfigurera Azure Key Vault med nyckelgranskning och -rotation från slutpunkt till slutpunkt
 ## <a name="introduction"></a>Introduktion
-När du har skapat ditt nyckelvalv kommer du att kunna börja använda det valvet för att lagra dina nycklar och hemligheter. Dina program inte längre behöver spara dina nycklar och hemligheter, utan i stället begär dem från nyckelvalvet efter behov. På så sätt kan du uppdatera nycklar och hemligheter utan att påverka beteendet för programmet, vilket öppnar ett brett möjligheter runt din nyckel och hemliga hantering.
+När du har skapat nyckelvalvet, kommer du att kunna toostart använder den valvet toostore dina nycklar och hemligheter. Dina program inte längre behöver toopersist dina nycklar och hemligheter, men i stället begär dem från hello nyckelvalv efter behov. Detta ger dig tooupdate nycklar och hemligheter utan att påverka hello beteendet för programmet, vilket öppnar ett brett möjligheter runt din nyckel och hemliga hantering.
 
-Den här artikeln beskriver hur ett exempel på hur Azure Key Vault för att lagra en hemlighet i det här fallet en nyckel för Azure Storage-konto som används av ett program. Här visas också implementering av en schemalagd rotation av den lagringskontonyckel. Slutligen går den igenom en demonstration av hur du övervakar nyckelvalv granskningsloggar och generera aviseringar när oväntat begäranden som görs.
+Den här artikeln beskriver hur ett exempel på hur Azure Key Vault toostore en hemlighet i det här fallet en nyckel för Azure Storage-konto som används av ett program. Här visas också implementering av en schemalagd rotation av den lagringskontonyckel. Slutligen går den igenom en demonstration av hur toomonitor hello nyckelvalv granskningsloggar och generera aviseringar när oväntat begäranden som görs.
 
 > [!NOTE]
-> Den här kursen är inte avsedd som förklarar i detalj installationen av nyckelvalvet. Den här informationen finns i [Komma igång med Azure Key Vault](key-vault-get-started.md). Plattformsoberoende kommandoradsgränssnittet instruktioner finns i [hantera Key Vault med hjälp av CLI](key-vault-manage-with-cli2.md).
+> Den här kursen är inte avsedda tooexplain i detalj hello installationen av nyckelvalvet. Den här informationen finns i [Komma igång med Azure Key Vault](key-vault-get-started.md). Plattformsoberoende kommandoradsgränssnittet instruktioner finns i [hantera Key Vault med hjälp av CLI](key-vault-manage-with-cli2.md).
 >
 >
 
 ## <a name="set-up-key-vault"></a>Konfigurera Key Vault
-Om du vill aktivera ett program att hämta en hemlighet från Nyckelvalvet, måste du först skapa hemligheten och överföra den till ditt valv. Detta kan åstadkommas genom att starta en Azure PowerShell-session och logga in på ditt Azure-konto med följande kommando:
+tooenable ett program tooretrieve en hemlighet från Nyckelvalvet, måste du först skapa hello hemlighet och överföra den tooyour valvet. Detta kan åstadkommas genom att starta en Azure PowerShell-session och logga in tooyour Azure-konto med hello följande kommando:
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-Ange användarnamnet och lösenordet för ditt Azure-konto i popup-fönstret i webbläsaren. PowerShell får alla prenumerationer som är associerade med det här kontot. PowerShell använder den första som standard.
+Ange ditt användarnamn för Azure-konto och lösenord i hello popup-webbläsarfönstret. PowerShell får alla hello-prenumerationer som är associerade med det här kontot. PowerShell använder hello förstnämnda som standard.
 
-Om du har flera prenumerationer kan behöva du ange det konto som användes för att skapa nyckelvalvet. Ange följande om du vill visa prenumerationer för ditt konto:
+Om du har flera prenumerationer kanske toospecify hello ett som har använt toocreate nyckelvalvet. Ange hello följande toosee hello prenumerationer för ditt konto:
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Ange om du vill ange den prenumeration som är kopplad till nyckelvalvet du loggar:
+toospecify hello prenumeration som är kopplad till hello nyckelvalv som du loggar, ange:
 
 ```powershell
 Set-AzureRmContext -SubscriptionId <subscriptionID>
@@ -58,56 +58,56 @@ Eftersom den här artikeln visar lagra en lagringskontonyckel som en hemlighet, 
 Get-AzureRmStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
-När du har hämtat ditt hemliga (i det här fallet din lagringskontonyckel), måste du konvertera som till en säker sträng och sedan skapa en hemlighet som har värdet i nyckelvalvet.
+Efter hämtning av ditt hemliga (i det här fallet din lagringskontonyckel), måste du konvertera den tooa säker strängen och sedan skapa en hemlighet som har värdet i nyckelvalvet.
 
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 
 Set-AzureKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
-Hämta sedan URI: N för den hemlighet som du skapade. Detta används i ett senare steg när du anropar nyckelvalvet att hämta ditt hemliga. Kör följande PowerShell-kommando och anteckna ID-värde, som är den hemliga URI:
+Hämta sedan hello URI för hello hemlighet som du skapade. Detta används i ett senare steg när du anropar hello nyckelvalv tooretrieve ditt hemliga. Kör följande PowerShell-kommando hello och anteckna hello ID-värde som är hello hemlighet URI:
 
 ```powershell
 Get-AzureKeyVaultSecret –VaultName <vaultName>
 ```
 
-## <a name="set-up-the-application"></a>Konfigurera programmet
-Du kan använda koden för att hämta och använda den nu när du har en hemlighet som lagras. Det finns några steg som krävs för att uppnå detta. Det första och viktigaste steget registrera ditt program med Azure Active Directory och sedan uppmanar Key Vault information om programmet så att den kan tillåta förfrågningar från ditt program.
+## <a name="set-up-hello-application"></a>Ställ in hello program
+Nu när du har en hemlighet som lagras, kan du använda koden tooretrieve och använda den. Det finns några steg krävs tooachieve detta. hello är första och viktigaste steget registrera ditt program med Azure Active Directory och sedan uppmanar Key Vault information om programmet så att den kan tillåta förfrågningar från ditt program.
 
 > [!NOTE]
-> Programmet måste skapas på samma Azure Active Directory-klientorganisation som ditt nyckelvalv.
+> Programmet måste skapas på hello samma Azure Active Directory-klient som ditt nyckelvalv.
 >
 >
 
-Öppna fliken program i Azure Active Directory.
+Öppna fliken för hello-program för Azure Active Directory.
 
 ![Öppna program i Azure Active Directory](./media/keyvault-keyrotation/AzureAD_Header.png)
 
-Välj **Lägg till** att lägga till ett program till Azure Active Directory.
+Välj **lägga till** tooadd ett program tooyour Azure Active Directory.
 
 ![Välj Lägg till](./media/keyvault-keyrotation/Azure_AD_AddApp.png)
 
-Lämna programtyp som **WEB APPLICATION och/eller webb-API** och namnge ditt program.
+Lämna hello programtyp som **WEB APPLICATION och/eller webb-API** och namnge ditt program.
 
-![Ett namn för programmet](./media/keyvault-keyrotation/AzureAD_NewApp1.png)
+![Namnet hello program](./media/keyvault-keyrotation/AzureAD_NewApp1.png)
 
 Ge programmet en **SIGN-ON-URL** och en **APP-ID URI**. Dessa kan vara vad du vill använda för den här demon och de kan ändras senare om det behövs.
 
 ![Ange nödvändiga URL: er](./media/keyvault-keyrotation/AzureAD_NewApp2.png)
 
-När programmet har lagts till Azure Active Directory, kommer du till sidan program. Klicka på den **konfigurera** fliken och leta sedan reda på och kopiera den **klient-ID** värde. Anteckna klient-ID för senare steg.
+När programmet hello läggs tooAzure Active Directory, kommer du till sidan för hello-programmet. Klicka på hello **konfigurera** fliken och leta sedan reda på och kopiera hello **klient-ID** värde. Anteckna hello klient-ID för senare steg.
 
-Generera en nyckel för tillämpningsprogrammet bredvid, så den kan interagera med Azure Active Directory. Du kan skapa det under den **nycklar** i avsnittet den **Configuration** fliken. Anteckna den nyligen skapade nyckeln från Azure Active Directory-program för användning i ett senare steg.
+Generera en nyckel för tillämpningsprogrammet bredvid, så den kan interagera med Azure Active Directory. Du kan skapa det under hello **nycklar** avsnitt i hello **Configuration** fliken. Anteckna hello nya nyckeln från Azure Active Directory-program för användning i ett senare steg.
 
 ![Azure Active Directory App nycklar](./media/keyvault-keyrotation/Azure_AD_AppKeys.png)
 
-Innan du upprättar ett anrop från ditt program i nyckelvalvet, måste du se nyckelvalvet om programmet och dess behörighet. Följande kommando tar valvnamnet och klient-ID från din app i Azure Active Directory och ger **hämta** åtkomst till nyckelvalvet för programmet.
+Innan du upprättar varje anrop från ditt program i hello nyckelvalv måste du se hello nyckelvalv om programmet och dess behörighet. hello följande kommando tar hello valvnamnet och hello klient-ID från din app i Azure Active Directory och ger **hämta** åtkomst tooyour nyckelvalv för hello program.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
-Du är nu redo att börja bygga program-anrop. I ditt program måste du installera NuGet-paket som krävs för att interagera med Azure Key Vault och Azure Active Directory. Ange följande kommandon från Visual Studio Package Manager-konsolen. Den aktuella versionen av Azure Active Directory-paketet är 3.10.305231913, så du kanske vill bekräfta den senaste versionen och uppdateras vid skrivning av den här artikeln.
+Nu är du redo toostart bygga program-anrop. Du måste installera nödvändiga toointeract för hello NuGet-paket med Azure Key Vault och Azure Active Directory i ditt program. Ange hello följande kommandon från hello Visual Studio Package Manager-konsolen. Hello aktuella versionen av hello Azure Active Directory-paketet är 3.10.305231913, så att du kanske vill tooconfirm hello senaste versionen och uppdateras vid hello skrivning i den här artikeln.
 
 ```powershell
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.305231913
@@ -115,13 +115,13 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-Skapa en klass för att lagra metoden för Azure Active Directory-autentisering i din programkod. I det här exemplet är klassen kallas **verktyg för webbplatsuppgradering**. Lägg till följande med instruktionen:
+Skapa en klass toohold hello metod för din Azure Active Directory-autentisering i din programkod. I det här exemplet är klassen kallas **verktyg för webbplatsuppgradering**. Lägg till hello följande med instruktionen:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Lägg till följande metod för att hämta JWT-token från Azure Active Directory. Underhålla, kanske du vill flytta hårdkodade strängvärden till webb- eller konfigurationen.
+Lägg till följande metod tooretrieve hello JWT-token från Azure Active Directory hello. Du kanske vill toomove hello hårdkodade strängvärden till webb- eller konfigurationen för underhålla.
 
 ```csharp
 public async static Task<string> GetToken(string authority, string resource, string scope)
@@ -134,19 +134,19 @@ public async static Task<string> GetToken(string authority, string resource, str
 
     if (result == null)
 
-    throw new InvalidOperationException("Failed to obtain the JWT token");
+    throw new InvalidOperationException("Failed tooobtain hello JWT token");
 
     return result.AccessToken;
 }
 ```
 
-Lägg till den kod som behövs för att anropa Key Vault och hämta det hemliga värdet. Först måste du lägga till följande med instruktionen:
+Lägg till hello nödvändig kod toocall Key Vault och hämta det hemliga värdet. Först måste du lägga till hello följande med instruktionen:
 
 ```csharp
 using Microsoft.Azure.KeyVault;
 ```
 
-Lägg till metodanrop att anropa Key Vault och hämta ditt hemliga. I den här metoden kan ange du hemlighet URI som du sparade i föregående steg. Observera användningen av den **GetToken** metod från den **verktyg för webbplatsuppgradering** klassen som skapade tidigare.
+Lägg till hello metoden anrop tooinvoke Key Vault och hämta ditt hemliga. I den här metoden kan ange du hello hemlighet URI som du sparade i föregående steg. Observera hello användning av hello **GetToken** metod från hello **verktyg för webbplatsuppgradering** klassen som skapade tidigare.
 
 ```csharp
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
@@ -154,16 +154,16 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetT
 var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 ```
 
-När du kör ditt program nu bör du autentiserar till Azure Active Directory och sedan hämta din hemligt värde från Azure Key Vault.
+När du kör programmet bör du nu autentisera tooAzure Active Directory och sedan hämta din hemligt värde från Azure Key Vault.
 
 ## <a name="key-rotation-using-azure-automation"></a>Viktiga rotation med hjälp av Azure Automation
-Det finns olika alternativ för att implementera en rotation strategi för värden som du lagrar som Azure Key Vault hemligheter. Hemligheter kan roteras som en del av en manuell process, de kan roteras programmässigt med hjälp av API-anrop eller kan roteras med ett Automation-skript. Vid tillämpningen av den här artikeln kommer du att använda Azure PowerShell tillsammans med Azure Automation för att ändra snabbtangent Azure Storage-konto. Sedan uppdaterar du en hemlighet i nyckelvalvet med den nya nyckeln.
+Det finns olika alternativ för att implementera en rotation strategi för värden som du lagrar som Azure Key Vault hemligheter. Hemligheter kan roteras som en del av en manuell process, de kan roteras programmässigt med hjälp av API-anrop eller kan roteras med ett Automation-skript. Hello enligt den här artikeln, du kan använda Azure PowerShell tillsammans med Azure Automation toochange snabbtangent Azure Storage-konto. Sedan uppdaterar du en hemlighet i nyckelvalvet med den nya nyckeln.
 
-Om du vill tillåta Azure Automation att ställa in hemliga värden i nyckelvalvet, måste du hämta klient-ID för anslutningen med namnet AzureRunAsConnection som skapades när du har etablerat Azure Automation-instans. Du hittar det här ID genom att välja **tillgångar** från Azure Automation-instans. Därifrån kan du välja **anslutningar** och välj sedan den **AzureRunAsConnection** tjänsten principen. Anteckna den **program-ID**.
+tooallow Azure Automation tooset hemliga värden i nyckelvalvet, måste du hämta hello klient-ID för hello anslutningen med namnet AzureRunAsConnection som skapades när du har etablerat Azure Automation-instans. Du hittar det här ID genom att välja **tillgångar** från Azure Automation-instans. Därifrån kan du välja **anslutningar** och välj sedan hello **AzureRunAsConnection** tjänsten principen. Anteckna hello **program-ID**.
 
 ![Azure Automation-klient-ID](./media/keyvault-keyrotation/Azure_Automation_ClientID.png)
 
-I **tillgångar**, Välj **moduler**. Från **moduler**väljer **galleriet**, och sök sedan efter och **importera** uppdaterade versioner av vart och ett av följande moduler:
+I **tillgångar**, Välj **moduler**. Från **moduler**väljer **galleriet**, och sök sedan efter och **importera** uppdaterade versioner av vart och ett av följande moduler hello:
 
     Azure
     Azure.Storage
@@ -174,30 +174,30 @@ I **tillgångar**, Välj **moduler**. Från **moduler**väljer **galleriet**, oc
 
 
 > [!NOTE]
-> Vid skrivning av den här artikeln behövs endast modulerna som tidigare meddelanden som ska uppdateras i följande skript. Om du tycker att ditt automation-jobb inte fungerar kan du bekräfta att du har importerat alla moduler som krävs och deras beroenden.
+> Vid hello skrivning av den här artikeln, hello tidigare noterats moduler som krävs för toobe uppdateras bara efter Hej följande skript. Om du tycker att ditt automation-jobb inte fungerar kan du bekräfta att du har importerat alla moduler som krävs och deras beroenden.
 >
 >
 
-När du har hämtat program-ID för Azure Automation-anslutning, måste du se nyckelvalvet att det här programmet har åtkomst till uppdatera hemligheter i ditt valv. Detta kan åstadkommas med följande PowerShell-kommando:
+När du har hämtat hello program-ID för Azure Automation-anslutning, måste du se nyckelvalvet som det här programmet har åtkomst tooupdate hemligheter i ditt valv. Detta kan åstadkommas med hello följande PowerShell-kommando:
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
-Välj därefter **Runbooks** under din Azure Automation-instans och välj sedan **lägga till en Runbook**. Välj **Snabbregistrering**. Din runbook och välj **PowerShell** som runbook-typen. Du har möjlighet att lägga till en beskrivning. Klicka slutligen på **skapa**.
+Välj därefter **Runbooks** under din Azure Automation-instans och välj sedan **lägga till en Runbook**. Välj **Snabbregistrering**. Din runbook och välj **PowerShell** som hello runbooktyp. Du har hello alternativet tooadd en beskrivning. Klicka slutligen på **skapa**.
 
 ![Skapa runbook](./media/keyvault-keyrotation/Create_Runbook.png)
 
-Klistra in följande PowerShell-skript i fönstret Redigeraren för din nya runbook:
+Klistra in följande PowerShell-skript i hello editor-fönstret för din nya runbook hello:
 
 ```powershell
 $connectionName = "AzureRunAsConnection"
 try
 {
-    # Get the connection "AzureRunAsConnection "
+    # Get hello connection "AzureRunAsConnection "
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
-    "Logging in to Azure..."
+    "Logging in tooAzure..."
     Add-AzureRmAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
@@ -216,13 +216,13 @@ catch {
     }
 }
 
-#Optionally you may set the following as parameters
+#Optionally you may set hello following as parameters
 $StorageAccountName = <storageAccountName>
 $RGName = <storageAccountResourceGroupName>
 $VaultName = <keyVaultName>
 $SecretName = <keyVaultSecretName>
 
-#Key name. For example key1 or key2 for the storage account
+#Key name. For example key1 or key2 for hello storage account
 New-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
 $SAKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
 
@@ -231,12 +231,12 @@ $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
-Editor-fönstret Välj **Test fönstret** Testa skriptet. När skriptet körs utan fel, kan du välja **publicera**, och du kan koppla ett schema för runbook tillbaka i fönstret runbook konfiguration.
+Hello editor-fönstret, Välj **Test fönstret** tootest skriptet. När hello skriptet körs utan fel, kan du välja **publicera**, och du kan koppla ett schema för hello runbook tillbaka i hello runbook configuration rutan.
 
 ## <a name="key-vault-auditing-pipeline"></a>Key Vault granskning pipeline
-När du ställer in ett nyckelvalv som du kan aktivera granskning för att samla in loggar på åtkomstbegäranden som görs till nyckelvalvet. Dessa loggar lagras i ett avsedda Azure Storage-konto och kan hämtas, övervakas och analyseras. Följande scenario använder Azure functions, Azure logikappar och nyckelvalv granskningsloggar för att skapa en pipeline för att skicka ett e-postmeddelande när en app som matchar det app-ID för webbappen hämtar hemligheter från valvet.
+När du ställer in ett nyckelvalv som du kan aktivera granskningsloggar toocollect på toohello nyckelvalv för av åtkomstbegäranden. Dessa loggar lagras i ett avsedda Azure Storage-konto och kan hämtas, övervakas och analyseras. hello använder följande scenario Azure functions, Azure logikappar och nyckelvalv granska loggarna toocreate pipeline-toosend ett e-postmeddelande när en app som matchar hello app-ID för hello webbapp hämtar hemligheter från hello-valvet.
 
-Först måste du aktivera loggning på nyckelvalvet. Detta kan göras via följande PowerShell-kommandon (fullständig information kan visas vid [key vault loggning](key-vault-logging.md)):
+Först måste du aktivera loggning på nyckelvalvet. Detta kan göras via hello följande PowerShell-kommandon (fullständig information kan visas vid [key vault loggning](key-vault-logging.md)):
 
 ```powershell
 $sa = New-AzureRmStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
@@ -244,29 +244,29 @@ $kv = Get-AzureRmKeyVault -VaultName '<vaultName>'
 Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
 ```
 
-När den är aktiverad, granskningsloggar start insamling till avsedda storage-konto. Dessa loggar innehålla händelser om hur och när ditt nyckelvalv kan nås och av vem.
+När den är aktiverad, granskningsloggar start samla i hello avses storage-konto. Dessa loggar innehålla händelser om hur och när ditt nyckelvalv kan nås och av vem.
 
 > [!NOTE]
-> Du kan komma åt din loggningsinformation 10 minuter efter nyckelvalv igen. Det kommer vanligtvis vara snabbare än så.
+> Du kan komma åt din loggningsinformation 10 minuter efter hello nyckelvalv igen. Det kommer vanligtvis vara snabbare än så.
 >
 >
 
-Nästa steg är att [skapa en Azure Service Bus-kö](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). Detta är där nyckelvalv granskningsloggar push. När granskningsloggmeddelanden i kön logikappen hämtar dem och fungerar på dem.. Skapa en service bus med följande steg:
+hello nästa steg är för[skapa en Azure Service Bus-kö](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). Detta är där nyckelvalv granskningsloggar push. När hello granskningsloggmeddelanden hello kön, hello logikapp hämtar dem och fungerar på dem.. Skapa en service bus med hello följande steg:
 
-1. Skapa en Service Bus-namnrymd (om du redan har en som du vill använda för detta, hoppar du till steg 2).
-2. Bläddra till service bus i Azure-portalen och markera det namnområde som du vill skapa kön i.
-3. Välj **ny** och välj **Service Bus > kön** och ange nödvändig information.
-4. Välj information för Service Bus-anslutning genom att välja namnområdet och klicka på **anslutningsinformationen**. Du behöver den här informationen för nästa avsnitt.
+1. Skapa ett namnområde för Service Bus (om du redan har en som du vill toouse för det här hoppa över tooStep 2).
+2. Bläddra toohello service bus i hello Azure-portalen och väljer hello namnområde som du vill toocreate hello kön i.
+3. Välj **ny** och välj **Service Bus > kön** och ange information om hello krävs.
+4. Markerar hello anslutningsinformationen för Service Bus genom att välja hello namnområde **anslutningsinformationen**. Du behöver den här informationen för hello nästa avsnitt.
 
-Nästa [skapa en Azure-funktion](../azure-functions/functions-create-first-azure-function.md) att avsöka nyckelvalv loggar i lagringskontot och hämta nya händelser. Det här är en funktion som utlöses enligt ett schema.
+Nästa [skapa en Azure-funktion](../azure-functions/functions-create-first-azure-function.md) toopoll nyckelvalvet i hello storage-konto och hämta nya händelser. Det här är en funktion som utlöses enligt ett schema.
 
-Om du vill skapa en Azure-funktion, Välj **New > Funktionsapp** i Azure-portalen. Du kan använda en befintlig värd plan eller skapa en ny vid skapandet. Du kan också välja dynamisk värd. Mer information om funktionen som värd för alternativ finns på [så här skalar du Azure Functions](../azure-functions/functions-scale.md).
+Välj toocreate en Azure-funktion **New > Funktionsapp** i hello Azure-portalen. Du kan använda en befintlig värd plan eller skapa en ny vid skapandet. Du kan också välja dynamisk värd. Mer information om funktionen som värd för alternativ finns på [hur tooscale Azure Functions](../azure-functions/functions-scale.md).
 
-När funktionen Azure skapas, navigera till den och väljer en timer funktionen och C\#. Klicka på **skapa den här funktionen**.
+När hello Azure-funktion skapas navigerar tooit och väljer en timer funktionen och C\#. Klicka på **skapa den här funktionen**.
 
 ![Azure Functions starta bladet](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
-På den **utveckla** fliken ersätter run.csx koden med följande:
+På hello **utveckla** fliken ersätter hello run.csx kod med hello följande:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -304,7 +304,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
         else
         {
             dtPrev = DateTime.UtcNow;
-            log.Verbose($"Sync point file didnt have a date. Setting to now.");
+            log.Verbose($"Sync point file didnt have a date. Setting toonow.");
         }
     }
 
@@ -339,7 +339,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
 
             dynamic dynJson = JsonConvert.DeserializeObject(text);
 
-            //required to order by time as they may not be in the file
+            //required tooorder by time as they may not be in hello file
             var results = ((IEnumerable<dynamic>) dynJson.records).OrderBy(p => p.time);
 
             foreach (var jsonItem in results)
@@ -350,7 +350,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
                     log.Info($"{jsonItem.ToString()}");
 
                     var payloadStream = new MemoryStream(Encoding.UTF8.GetBytes(jsonItem.ToString()));
-                    //When sending to ServiceBus, use the payloadStream and set keeporiginal to true
+                    //When sending tooServiceBus, use hello payloadStream and set keeporiginal tootrue
                     var message = new BrokeredMessage(payloadStream, true);
                     sbClient.Send(message);
                     dtPrev = dt;
@@ -369,23 +369,23 @@ static string GetContainerSasUri(CloudBlockBlob blob)
     sasConstraints.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24);
     sasConstraints.Permissions = SharedAccessBlobPermissions.Read;
 
-    //Generate the shared access signature on the container, setting the constraints directly on the signature.
+    //Generate hello shared access signature on hello container, setting hello constraints directly on hello signature.
     string sasBlobToken = blob.GetSharedAccessSignature(sasConstraints);
 
-    //Return the URI string for the container, including the SAS token.
+    //Return hello URI string for hello container, including hello SAS token.
     return blob.Uri + sasBlobToken;
 }
 ```
 
 
 > [!NOTE]
-> Se till att ersätta variabler i föregående kod så att den pekar till ditt lagringskonto där nyckelvalv loggarna skrivs, service bus som du skapade tidigare och sökvägen till nyckelvalvet lagring loggar.
+> Se till att tooreplace hello variabler i föregående kod toopoint tooyour storage-konto där hello nyckelvalv loggarna skrivs hello hello service bus som du skapade tidigare, och hello angiven sökväg toohello nyckelvalv lagring loggar.
 >
 >
 
-Funktionen hämtar senaste loggfilen från lagringskontot där nyckelvalv loggarna skrivs, hämtar de senaste händelserna från filen och skickar dem till en Service Bus-kö. Eftersom en enda fil kan ha flera händelser, bör du skapa en sync.txt-fil som funktionen också kontrollerar för att fastställa tidsstämpeln för den senaste händelse som hämtades. Detta säkerställer att du inte push samma händelse flera gånger. Sync.txt filen innehåller en tidsstämpel för senaste påträffade händelsen. Loggar, vid lästs in, måste sorteras utifrån tidsstämpel så de sorteras på rätt sätt.
+hello funktionen hämtar hello senaste loggfilen från hello lagringskonto där hello nyckelvalv loggarna skrivs, grabs hello senaste händelser från filen, och skickar dem tooa Service Bus-kö. Eftersom en enda fil kan ha flera händelser, bör du skapa en sync.txt-fil som hello funktionen kontrollerar också toodetermine hello tidsstämpel hello senaste händelse som hämtades. Detta säkerställer att du inte push hello flera gånger för samma händelse. Sync.txt filen innehåller en tidsstämpel för senaste påträffade hello-händelse. hello loggar när har lästs in, har toobe sorteras utifrån hello tidsstämpel tooensure de sorteras på rätt sätt.
 
-För den här funktionen referera vi några ytterligare bibliotek som inte är tillgängliga direkt i Azure Functions. Om du vill inkludera dessa måste Azure Functions kan hämta dem med hjälp av NuGet. Välj den **visa filer** alternativet.
+För den här funktionen referera vi några ytterligare bibliotek som inte är tillgängliga för out of box hello i Azure Functions. tooinclude, behöver vi Azure Functions toopull dem med hjälp av NuGet. Välj hello **visa filer** alternativet.
 
 ![Visa filer](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
 
@@ -403,37 +403,37 @@ Och Lägg till en fil som heter project.json med följande innehåll:
        }
     }
 ```
-Vid **spara**, Azure Functions laddar ned nödvändiga binärfiler.
+Vid **spara**, Azure Functions hämtar hello krävs binärfiler.
 
-Växla till den **integrera** fliken och ge parametern timer ett beskrivande namn för att användas i funktionen. I föregående kod den förväntar sig timern anropas *myTimer*. Ange en [CRON-uttryck](../app-service-web/web-sites-create-web-jobs.md#CreateScheduledCRON) enligt följande: 0 \* \* \* \* \* för timer som gör att funktionen ska köras en gång i minuten.
+Växla toohello **integrera** fliken och ge hello timer parametern ett beskrivande namn toouse i hello-funktion. Hello föregående kod, den förväntar sig hello timer toobe kallas *myTimer*. Ange en [CRON-uttryck](../app-service-web/web-sites-create-web-jobs.md#CreateScheduledCRON) enligt följande: 0 \* \* \* \* \* för hello timer som gör att hello funktionen toorun en gång i minuten.
 
-På samma **integrera** lägger du till indata av typen **Azure Blob Storage**. Detta att peka sync.txt-fil som innehåller tidsstämpel för senaste händelsen tittat på av funktionen. Det här är tillgängliga i funktionen av parameternamnet. I föregående kod Azure Blob Storage-indata förväntar parameternamnet ska *inputBlob*. Väljer det lagringskonto där sync.txt-filen ska placeras (det kan vara samma eller ett annat lagringskonto). I sökvägsfältet, ange sökvägen där filen finns i formatet {container-name}/path/to/sync.txt.
+Hej på samma **integrera** lägger du till indata av typen hello **Azure Blob Storage**. Detta kommer att peka toohello sync.txt-fil som innehåller hello tidsstämpel för hello sista händelsen granskats av hello-funktionen. Det här är tillgängliga i hello-funktion av hello parameternamnet. Hello föregående kod, hello Azure Blob Storage indata förväntar sig hello parametern name toobe *inputBlob*. Välj hello storage-konto där hello sync.txt filen ska placeras (det kan vara hello samma eller ett annat lagringskonto). Ange i hello sökvägsfältet hello sökväg där filen hello bor i hello formatet {container-name}/path/to/sync.txt.
 
-Lägga till utdata av typen *Azure Blob Storage* utdata. Detta peka mot sync.txt-filen som du har definierat i indata. Detta används av funktionen för att skriva tidsstämpel för senaste händelsen tittar på. Föregående kod förväntar sig att den här parametern anropas *outputBlob*.
+Lägga till utdata av hello typen *Azure Blob Storage* utdata. Detta kommer att peka toohello sync.txt filen som du har definierat i hello indata. Detta används av hello funktionen toowrite hello tidsstämpel för hello sista händelsen tittar på. hello föregående kod förväntar sig den här parametern toobe kallas *outputBlob*.
 
-Funktionen är nu klar. Se till att växla tillbaka till den **utveckla** fliken och spara koden. Kontrollera utdatafönstret för några kompileringsfel och korrigera dem i enlighet med detta. Om koden kompilerar ska koden nu kontrollerar nyckelvalv loggar varje minut och därefter överföra alla nya händelser till definierade Service Bus-kö. Du bör se loggningsinformation skriva till loggfönstret varje gång funktionen utlöses.
+Hello funktion är nu klar. Se till att tooswitch tillbaka toohello **utveckla** fliken och spara hello kod. Kontrollera hello utdatafönstret för några kompileringsfel och korrigera dem i enlighet med detta. Om hello kod kompileras hello koden ska nu kontrollera hello nyckelvalv loggar varje minut och trycka på alla nya händelser till hello definierats Service Bus-kö. Du bör se loggningsinformation skriva ut toohello fönstret varje gång hello funktionen utlöses.
 
 ### <a name="azure-logic-app"></a>Azure logikapp
-Nu måste du skapa ett Azure logikappen som hämtar händelser att funktionen är push-installation till Service Bus-kö, tolkar innehållet och skickar ett e-post baserat på ett villkor som matchas.
+Nu måste du skapa ett Azure logikappen som hämtar hello händelser att hello funktion gör att toohello Service Bus-kö Parsar hello innehåll och skickar ett e-post baserat på ett villkor som matchas.
 
-[Skapa en logikapp](../logic-apps/logic-apps-create-a-logic-app.md) genom att gå till **New > Logikapp**.
+[Skapa en logikapp](../logic-apps/logic-apps-create-a-logic-app.md) genom att gå för**New > Logikapp**.
 
-När logikappen har skapats, navigera till den och välj **redigera**. I Redigeraren för logik-app väljer **Service Bus-kö** och ange dina autentiseringsuppgifter för Service Bus för att ansluta till kön.
+När du har skapat hello logikapp navigerar tooit och väljer **redigera**. Hello logik app Editor väljer **Service Bus-kö** och ange dina autentiseringsuppgifter för Service Bus-tooconnect den toohello kön.
 
 ![Logik för Azure App Service Bus](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
-Välj nästa **Lägg till ett villkor**. Växla till redigeraren i villkoret och ange följande kod, ersätta APP_ID med den faktiska APP_ID av ditt webbprogram:
+Välj nästa **Lägg till ett villkor**. Växla toohello Avancerad redigerare i hello villkor och ange hello följande kod, ersätta APP_ID med hello faktiska APP_ID av ditt webbprogram:
 
 ```
 @equals('<APP_ID>', json(decodeBase64(triggerBody()['ContentData']))['identity']['claim']['appid'])
 ```
 
-Det här uttrycket returnerar i stort sett **FALSKT** om den *appid* från inkommande händelse (vilket är Service Bus-postmeddelandets brödtext) är inte den *appid* av appen.
+Det här uttrycket returnerar i stort sett **FALSKT** om hello *appid* från hello inkommande händelse (vilket är hello hello Service Bus meddelandets text) är inte hello *appid* av hello App.
 
 Nu ska du skapa en åtgärd under **om Nej, gör ingenting**.
 
 ![Azure Logikapp välja åtgärd](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
 
-Åtgärden, Välj **Office 365 – skicka e-post**. Fyll i fälten för att skapa ett e-postmeddelande ska skickas när det definierade villkoret returnerar **FALSKT**. Om du inte har Office 365 kan du titta på alternativ för att uppnå samma resultat.
+Hello-åtgärd, Välj **Office 365 – skicka e-post**. Fyll i hello fält toocreate toosend en e-post när hello definierade villkoret returnerar **FALSKT**. Om du inte har Office 365 kan du titta på alternativ tooachieve hello samma resultat.
 
-Nu har du en slutpunkt till slutpunkt-pipeline som söker efter nya nyckelvalv granskningsloggar en gång i minuten. Den skickar nya loggar påträffas till en service bus-kö. Logikappen utlöses när ett nytt meddelande hamnar i kön. Om den *appid* i händelsen inte matchar det app-ID för det anropande programmet, skickas ett e-postmeddelande.
+Du har nu en end tooend pipeline som söker efter nya nyckelvalv granskningsloggar en gång i minuten. Den skickar nya loggar påträffas tooa service bus-kö. Hej logikapp utlöses när ett nytt meddelande hamnar i hello kön. Om hello *appid* inom hello matchar inte händelse hello app-ID för hello anropar programmet, skickas ett e-postmeddelande.

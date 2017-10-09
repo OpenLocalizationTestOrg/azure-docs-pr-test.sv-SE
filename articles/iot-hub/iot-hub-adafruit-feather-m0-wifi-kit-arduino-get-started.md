@@ -1,6 +1,6 @@
 ---
-title: 'M0 till molnet: ansluta ludd M0 WiFi till Azure IoT Hub | Microsoft Docs'
-description: "Lär dig hur du ställer in och ansluta Adafruit ludd M0 WiFi till Azure IoT-hubb för att skicka data till Azure-molnplattform i den här självstudiekursen."
+title: 'M0 toocloud: ansluta ludd M0 WiFi tooAzure IoT-hubb | Microsoft Docs'
+description: "Lär dig hur tooset upp och ansluta Adafruit ludd M0 WiFi tooAzure IoT-hubb toosend data toohello Azure cloud-plattformen i den här självstudiekursen."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,49 +15,49 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/16/2017
 ms.author: xshi
-ms.openlocfilehash: 0dcf6b46a4c6c743c713d24ce7844e801b278dcf
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 6aabeb961a50ba5d3934f77eb1ccda4af1bf64c8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-adafruit-feather-m0-wifi-to-azure-iot-hub-in-the-cloud"></a>Ansluta Adafruit ludd M0 WiFi till Azure IoT-hubb i molnet
+# <a name="connect-adafruit-feather-m0-wifi-tooazure-iot-hub-in-hello-cloud"></a>Ansluta Adafruit ludd M0 WiFi tooAzure IoT-hubb i hello moln
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
 ![Anslutning mellan en BME280 och ludd M0 WiFi IoT-hubb](media/iot-hub-adafruit-feather-m0-wifi-get-started/1_connection-m0-feather-m0-iot-hub.png)
 
-I den här kursen kan du börja genom att lära dig grunderna i att arbeta med Arduino-kort. Du lär dig sedan sömlöst ansluter enheterna till molnet med hjälp av [Azure IoT Hub](iot-hub-what-is-iot-hub.md).
+I den här självstudiekursen börjar du med learning hello grunderna i att arbeta med Arduino-kort. Du lär dig hur tooseamlessly ansluta enheter toohello molnet med hjälp av [Azure IoT Hub](iot-hub-what-is-iot-hub.md).
 
 ## <a name="what-you-do"></a>Vad du gör
 
-Ansluta Adafruit ludd M0 WiFi till en IoT-hubb som du skapar. Sedan kör du ett exempelprogram på M0 WiFi samla in data för temperatur- och fuktighetskonsekvens från en BME280. Slutligen kan du skicka dessa sensordata för din IoT-hubb.
+Ansluta Adafruit ludd M0 WiFi tooan IoT-hubb som du skapar. Sedan kör du ett exempelprogram på M0 WiFi toocollect hello temperatur- och fuktighetskonsekvens data från en BME280. Slutligen kan skicka du hello sensor data tooyour IoT-hubb.
 
 
 ## <a name="what-you-learn"></a>Detta får du får lära dig
 
-* Hur du skapar en IoT-hubb och registrera en enhet för Ludd M0 WiFi
-* Så här ansluter du ludd M0 WiFi med sensorn och datorn
-* Hur du samlar in sensordata genom att köra ett exempelprogram på ludd M0 WiFi
-* Hur du skickar dessa sensordata till din IoT-hubb
+* Hur toocreate en IoT-hubb och registrera en enhet för Ludd M0 WiFi
+* Hur tooconnect ludd M0 WiFi med hello sensor och datorn
+* Hur toocollect sensordata genom att köra ett exempelprogram på ludd M0 WiFi
+* Hur toosend hello sensor data tooyour IoT-hubb
 
 ## <a name="what-you-need"></a>Vad du behöver
 
-![Delar som behövs för kursen](media/iot-hub-adafruit-feather-m0-wifi-get-started/2_parts-needed-for-the-tutorial.png)
+![delar som behövs för hello självstudiekursen](media/iot-hub-adafruit-feather-m0-wifi-get-started/2_parts-needed-for-the-tutorial.png)
 
-För att slutföra den här åtgärden behöver du följande delar från din startpaket för Ludd M0 Wi-Fi:
+toocomplete den här åtgärden måste hello följande delar från din startpaket för Ludd M0 Wi-Fi:
 
-* Ludd M0 WiFi-kort
-* En Micro USB till typ A USB-kabel
+* hello ludd M0 WiFi-kort
+* Micro USB-tooType en USB-kabel
 
-Du måste också följande saker för din utvecklingsmiljö:
+Du måste också följande saker för din utvecklingsmiljö hello:
 
 * En aktiv Azure-prenumeration. Om du inte har ett Azure-konto [skapa ett kostnadsfritt Azure konto](https://azure.microsoft.com/free/) i bara några minuter.
 * En Mac eller en dator som kör Windows eller Ubuntu.
-* Ett trådlöst nätverk för Ludd M0 WiFi att ansluta till.
-* En Internet-anslutning att hämta verktyget configuration.
-* [Arduino IDE](https://www.arduino.cc/en/main/software) version 1.6.8 eller senare. Tidigare versioner fungerar inte med Azure IoT Hub-biblioteket.
+* Ett trådlöst nätverk för Ludd M0 WiFi tooconnect till.
+* En Internet-anslutning toodownload hello-konfigurationsverktyget.
+* [Arduino IDE](https://www.arduino.cc/en/main/software) version 1.6.8 eller senare. Tidigare versioner fungerar inte med hello Azure IoT Hub-biblioteket.
 
-Om du inte har en sensor är följande objekt valfria. Du har också möjlighet att använda simulerade sensordata:
+Om du inte har en sensor är hello följande objekt valfria. Du kan också ha hello möjlighet att använda simulerade sensordata:
 
 * En BME280 temperatur- och fuktighetskonsekvens sensor
 * En breadboard
@@ -65,17 +65,17 @@ Om du inte har en sensor är följande objekt valfria. Du har också möjlighet 
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## <a name="connect-feather-m0-wifi-with-the-sensor-and-your-computer"></a>Anslut ludd M0 WiFi med sensorn och din dator
-I det här avsnittet kan ansluta du sensorerna till kortets. Sedan ansluta du enheten till din dator för framtida användning.
+## <a name="connect-feather-m0-wifi-with-hello-sensor-and-your-computer"></a>Anslut ludd M0 WiFi med hello sensor och din dator
+I det här avsnittet kan du ansluta hello sensorer tooyour kort. Sedan ansluter du enheten tooyour datorn för framtida användning.
 
-### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-feather-m0-wifi"></a>Ansluta en DHT22 temperatur- och fuktighetskonsekvens sensor till ludd M0 WiFi
+### <a name="connect-a-dht22-temperature-and-humidity-sensor-toofeather-m0-wifi"></a>Ansluta en DHT22 temperatur- och fuktighetskonsekvens sensor tooFeather M0 WiFi
 
-Använd breadboard och omkopplare kablar för att ansluta. Om du inte har en sensor hoppa över det här avsnittet, eftersom du kan använda simulerade sensordata i stället.
+Använd hello breadboard och omkopplare kablar toomake hello-anslutning. Om du inte har en sensor hoppa över det här avsnittet, eftersom du kan använda simulerade sensordata i stället.
 
 ![Referens för anslutningar](media/iot-hub-adafruit-feather-m0-wifi-get-started/3_connections_on_breadboard.png)
 
 
-Använd följande-kablar för sensor PIN:
+För sensor PIN-koder, använder du följande kablar hello:
 
 
 | Start (sensor)           | END (moderkort)            | Kabel färg   |
@@ -95,88 +95,88 @@ Ludd M0 Wi-Fi bör nu vara ansluten med en fungerar sensor.
 
 ![Anslut DHT22 med ludd Huzzah](media/iot-hub-adafruit-feather-m0-wifi-get-started/4_connect-bme280-feather-m0-wifi.png)
 
-### <a name="connect-feather-m0-wifi-to-your-computer"></a>Ansluta ludd M0 WiFi till din dator
+### <a name="connect-feather-m0-wifi-tooyour-computer"></a>Ansluta ludd M0 WiFi tooyour dator
 
-Använda Micro USB till typ A USB-kabel för att ansluta ludd M0 WiFi till datorn, som visas:
+Använd hello Micro USB tooType en USB-kabel tooconnect ludd M0 WiFi tooyour dator, som visas:
 
-![Ansluta ludd Huzzah till din dator](media/iot-hub-adafruit-feather-m0-wifi-get-started/5_connect-feather-m0-wifi-computer.png)
+![Ansluta ludd Huzzah tooyour dator](media/iot-hub-adafruit-feather-m0-wifi-get-started/5_connect-feather-m0-wifi-computer.png)
 
 ### <a name="add-serial-port-permissions-ubuntu-only"></a>Lägg till behörigheter för seriell port (Ubuntu)
 
-Om du använder Ubuntu, kontrollera att du har behörighet att fungera på den USB-port för Ludd M0 WiFi. Följ dessa steg för att lägga till behörigheter för seriell port:
+Om du använder Ubuntu, kontrollera att du har hello behörigheter toooperate på hello USB-port för Ludd M0 WiFi. tooadd serieport behörigheter så här:
 
 
-1. Kör följande kommandon i en terminal:
+1. Kör hello följande kommandon i en terminal:
 
    ```bash
    ls -l /dev/ttyUSB*
    ls -l /dev/ttyACM*
    ```
 
-   Du får ett av följande utdata:
+   Du får ett av hello följande utdata:
 
    * crw-rw---1 rot uucp xxxxxxxx
    * crw-rw---1 rot antingen xxxxxxxx
 
-   Observera att i utdata, `uucp` eller `dialout` är gruppnamn för ägare av USB-port.
+   Hello utdata och notera att `uucp` eller `dialout` är hello ägare gruppnamn hello USB-port.
 
-2. Lägg till användaren i gruppen genom att köra följande kommando:
+2. tooadd hello toohello användargruppen, kör hello följande kommando:
 
    ```bash
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   I föregående steg, som du fick ägare gruppnamnet `<group-owner-name>`. Användarnamnet Ubuntu är `<username>`.
+   I föregående steg hello du fick hello gruppnamn ägare `<group-owner-name>`. Användarnamnet Ubuntu är `<username>`.
 
-3. Logga ut från Ubuntu och loggar sedan in igen för att ändringen ska visas.
+3. Logga ut från Ubuntu för hello ändra tooappear och loggar sedan in igen.
 
-## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>Samla in sensordata och skicka den till din IoT-hubb
+## <a name="collect-sensor-data-and-send-it-tooyour-iot-hub"></a>Samla in sensordata och skicka den tooyour IoT-hubb
 
-I det här avsnittet, distribuera och köra ett exempelprogram på ludd M0 WiFi. Exempelprogrammet gör Indikator blinka på ludd M0 WiFi. Därefter skickas temperatur- och fuktighetskonsekvens data som samlas in från BME280 sensor till din IoT-hubb.
+I det här avsnittet, distribuera och köra ett exempelprogram på ludd M0 WiFi. hello exempelprogrammet gör hello Indikator blinka på ludd M0 WiFi. Skickar sedan hello temperatur och fuktighet data som samlas in från hello BME280 sensor tooyour IoT-hubb.
 
-### <a name="get-the-sample-application-from-github-and-prepare-the-arduino-ide"></a>Hämta exempelprogrammet från GitHub och förbereda Arduino IDE
+### <a name="get-hello-sample-application-from-github-and-prepare-hello-arduino-ide"></a>Hämta exempelprogrammet hello från GitHub och förbereda hello Arduino IDE
 
-Exempelprogrammet finns på GitHub. Klona lagringsplatsen prov som innehåller exempelprogrammet från GitHub. Följ dessa steg om du vill klona databasen exempel:
+hello exempelprogrammet finns på GitHub. Klona hello exempel lagringsplats som innehåller hello exempelprogrammet från GitHub. tooclone hello exempel lagringsplatsen, gör du följande:
 
 1. Öppna en kommandotolk eller ett terminalfönster.
 
-2. Gå till en mapp där du vill att exempelprogrammet ska lagras.
-3. Kör följande kommando:
+2. Gå tooa mappen där du vill att hello exempel programmet toobe lagras.
+3. Kör följande kommando hello:
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-Feather-M0-WiFi-client-app.git
    ```
 
-### <a name="install-the-package-for-feather-m0-wifi-in-the-arduino-ide"></a>Installera paketet för Ludd M0 WiFi i Arduino IDE
+### <a name="install-hello-package-for-feather-m0-wifi-in-hello-arduino-ide"></a>Installera hello paketet för Ludd M0 WiFi i hello Arduino IDE
 
-1. Öppna mappen där exempelprogrammet lagras.
+1. Öppna hello mappen där hello exempelprogrammet lagras.
 
-2. Öppna filen app.ino i mappen app i Arduino IDE.
+2. Öppna hello app.ino filen i mappen för hello-app i hello Arduino IDE.
 
-   ![Öppna exempelprogrammet i Arduino IDE](media/iot-hub-adafruit-feather-m0-wifi-get-started/6_arduino-ide-open-sample-app.png)
+   ![Öppna hello exempelprogrammet i Arduino IDE](media/iot-hub-adafruit-feather-m0-wifi-get-started/6_arduino-ide-open-sample-app.png)
 
 
-1. Klicka på **filen** > **inställningar** (Windows-/ Linux) eller **Arduino** > **inställningar** (Mac) och kopiera och Klistra in en länk nedan i den **ytterligare anslagstavlor Manager URL: er** alternativet i Arduino IDE-inställningar.
+1. Klicka på **filen** > **inställningar** (Windows-/ Linux) eller **Arduino** > **inställningar** (Mac) och kopiera och Klistra in hello länk nedan i hello **ytterligare anslagstavlor Manager URL: er** alternativet i hello Arduino IDE-inställningar.
    
    ```
    https://adafruit.github.io/arduino-board-index/package_adafruit_index.json, https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
    ```
 
-1. Klicka på **verktyg** > **Hanteringsstyrenhetens** > **anslagstavlor Manager**, och sedan installera den `Arduino SAMD Boards` version `1.6.2` eller senare. 
+1. Klicka på **verktyg** > **Hanteringsstyrenhetens** > **anslagstavlor Manager**, och sedan installera hello `Arduino SAMD Boards` version `1.6.2` eller senare. 
 
-1. Installera sedan i fönstret samma `Adafruit SAMD Boards` paket för att lägga till kort definitioner.
+1. I Hej samma fönster, installera `Adafruit SAMD Boards` paketet tooadd hello board definitioner.
 
-   ![Esp8266 paketet har installerats](media/iot-hub-adafruit-feather-m0-wifi-get-started/7_arduino-ide-package-url.png)
+   ![Hej esp8266 paketet har installerats](media/iot-hub-adafruit-feather-m0-wifi-get-started/7_arduino-ide-package-url.png)
 
 4. Klicka på **verktyg** > **Hanteringsstyrenhetens** > **Adafruit M0 WiFi**.
 
-5. Installera drivrutiner (för Windows). När du ansluter ludd M0 WiFi, kan du behöva installera en drivrutin. Klicka på [länken på webbsidan](https://github.com/adafruit/Adafruit_Windows_Drivers/releases/download/1.1/adafruit_drivers.exe) att hämta installationsprogrammet för drivrutinen. Följ stegen för att installera drivrutiner som du vill använda.
+5. Installera drivrutiner (för Windows). När du ansluter ludd M0 WiFi kan behöva du tooinstall en drivrutin. Klicka på [hello hämtningslänken på webbsidan hello](https://github.com/adafruit/Adafruit_Windows_Drivers/releases/download/1.1/adafruit_drivers.exe) toodownload hello drivrutinen installer. Följ hello steg tooinstall hello drivrutiner som du vill använda.
 
 ### <a name="install-necessary-libraries"></a>Installera nödvändiga bibliotek
 
-1. I Arduino IDE, klickar du på **skiss** > **innehåller biblioteket** > **Hantera bibliotek**.
+1. I hello Arduino IDE, klickar du på **skiss** > **innehåller biblioteket** > **Hantera bibliotek**.
 
-2. Sök efter följande biblioteket namn i taget. Klicka på för alla bibliotek som du hittar **installera**:
+2. Sök efter hello efter namn på biblioteket i taget. Klicka på för alla bibliotek som du hittar **installera**:
 
    * `RTCZero`
    * `NTPClient`
@@ -187,55 +187,55 @@ Exempelprogrammet finns på GitHub. Klona lagringsplatsen prov som innehåller e
    * `Adafruit BME280 Library`
    * `Adafruit Unified Sensor`
 
-3. Installera manuellt `Adafruit_WINC1500`. Gå till [webbplatsen](https://github.com/adafruit/Adafruit_WINC1500) och på **kloning eller hämta** > **hämta ZIP**. Gå till i din Arduino IDE **skiss** > **innehåller biblioteket** > **lägger du till .zip biblioteket** och Lägg till zip-filen.
+3. Installera manuellt `Adafruit_WINC1500`. Gå för[webbplatsen](https://github.com/adafruit/Adafruit_WINC1500) och på **kloning eller hämta** > **hämta ZIP**. Sedan gå för i din Arduino IDE**skiss** > **innehåller biblioteket** > **lägger du till .zip biblioteket** och Lägg till hello zip-filen.
 
-### <a name="use-the-sample-application-if-you-dont-have-a-real-bme280-sensor"></a>Använd exempelprogrammet om du inte har en verklig BME280 sensor
+### <a name="use-hello-sample-application-if-you-dont-have-a-real-bme280-sensor"></a>Använd hello exempelprogrammet om du inte har en verklig BME280 sensor
 
-Om du inte har en verklig BME280 sensor simulera exempelprogrammet temperatur- och fuktighetskonsekvens data. Följ dessa steg om du vill konfigurera exempelprogrammet använda simulerade data:
+Om du inte har en verklig BME280 sensor simulera hello exempelprogrammet temperatur- och fuktighetskonsekvens data. tooset in hello programmet toouse simulerade exempeldata, Följ dessa steg:
 
-1. Öppna den `config.h` filen i den `app` mapp.
+1. Öppna hello `config.h` filen i hello `app` mapp.
 
-2. Leta upp följande kodrad och ändrar du värdet från `false` till `true`:
+2. Leta upp följande kodrad hello och ändrar hello-värdet från `false` för`true`:
 
    ```c
    define SIMULATED_DATA true
    ```
-   ![Konfigurera exempelprogrammet använda simulerade data](media/iot-hub-adafruit-feather-m0-wifi-get-started/8_arduino-ide-configure-app-use-simulated-data.png)
+   ![Konfigurera hello exempeldata programmet toouse simulerade](media/iot-hub-adafruit-feather-m0-wifi-get-started/8_arduino-ide-configure-app-use-simulated-data.png)
 
-3. Spara filen med `Control-s`.
+3. Spara hello-filen med `Control-s`.
 
-### <a name="deploy-the-sample-application-to-feather-m0-wifi"></a>Distribuera exempelprogrammet till ludd M0 WiFi
+### <a name="deploy-hello-sample-application-toofeather-m0-wifi"></a>Distribuera hello exempel programmet tooFeather M0 WiFi
 
-1. Klicka i IDE Arduino **verktyget** > **Port**, och klicka sedan på den seriella porten för Ludd M0 WiFi.
+1. Klicka på hello Arduino IDE **verktyget** > **Port**, och klicka sedan på hello seriell port för Ludd M0 WiFi.
 
-2. Klicka på **skiss** > **överför** att skapa och distribuera exempelprogrammet till ludd M0 WiFi.
+2. Klicka på **skiss** > **överför** toobuild och distribuera hello exempel programmet tooFeather M0 WiFi.
 
 ### <a name="enter-your-credentials"></a>Ange autentiseringsuppgifter
 
-När överföringen är klar följer du stegen nedan för att ange dina autentiseringsuppgifter:
+När hello överföringen är klar följer du dessa steg tooenter dina autentiseringsuppgifter:
 
-1. Klicka i IDE Arduino **verktyg** > **seriella övervakaren**.
+1. Klicka på hello Arduino IDE **verktyg** > **seriella övervakaren**.
 
-2. I det nedre högra hörnet i fönstret seriella väljer **ingen rad avslutas** i den nedrullningsbara listan till vänster.
-3. Välj **115200 baud** i den nedrullningsbara listan till höger.
-4. Ange följande information i textrutan längst upp om du uppmanas att ange den och klicka på **skicka**:
+2. Markera i hello nedre högra hörnet av hello seriella övervakaren **ingen rad avslutas** i listrutan för hello hello vänster.
+3. Välj **115200 baud** i hello listrutan på hello rätt.
+4. Ange hello följande information om du är i hello-textrutan hello överst och tooprovide och klicka på **skicka**:
 
    * Wi-Fi SSID
    * Wi-Fi-lösenord
    * Anslutningssträngen för enhet
 
 > [!Note]
-> Information om autentiseringsuppgifter lagras i EEPROM av ludd M0 WiFi. Om du klickar på återställningsknappen på ludd M0 WiFi-kort frågar exempelprogrammet om du vill radera informationen. Ange `Y` att radera informationen. Du uppmanas att ange informationen som en andra gång.
+> information om hello autentiseringsuppgifter lagras i hello EEPROM av ludd M0 WiFi. Om du klickar på hello Återställ-knappen i hello ludd M0 WiFi-kort frågar hello exempelprogrammet om du vill ha tooerase hello information. Ange `Y` tooerase hello information. Du uppmanas tooprovide hello information en gång.
 
-### <a name="verify-that-the-sample-application-is-running-successfully"></a>Kontrollera att exempelprogrammet körts
+### <a name="verify-that-hello-sample-application-is-running-successfully"></a>Kontrollera att hello exempelprogrammet körts
 
-Om du ser i följande utdata från den seriella övervakningsfönstret och blinkande Indikator på ludd M0 WiFi exempelprogrammet körts:
+Om du ser hello följande utdata från hello seriella övervakningsfönstret och hello blinka Indikator på ludd M0 WiFi, hello exempelprogrammet körts:
 
 ![Slutversionen i Arduino IDE](media/iot-hub-adafruit-feather-m0-wifi-get-started/9_arduino-ide-final-output.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har anslutna ludd M0 WiFi till din IoT-hubb och skickas avbildade sensordata till din IoT-hubb. 
+Du har anslutit ludd M0 WiFi tooyour IoT-hubb och skickas hello avbildas sensor data tooyour IoT-hubb. 
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 

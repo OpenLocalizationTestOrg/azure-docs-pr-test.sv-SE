@@ -1,6 +1,6 @@
 ---
-title: "Skapa privat Docker-register – Azure Portal | Microsoft-dokument"
-description: "Kom igång med att skapa och hantera privata Docker-behållarregister med Azure Portal"
+title: aaaCreate privata Docker register - Azure-portalen | Microsoft Docs
+description: "Börja skapa och hantera privata Docker behållare register med hello Azure-portalen"
 services: container-registry
 documentationcenter: 
 author: neilpeterson
@@ -17,57 +17,57 @@ ms.workload: na
 ms.date: 07/11/2017
 ms.author: nepeters
 ms.custom: na
-ms.openlocfilehash: 560aee42b0c5a61c37c594d7937f833ab7183d49
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: cf3ce0dcf3036d0e9cd1eaf01721deccb00248d2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-managed-container-registry-using-the-azure-portal"></a>Skapa ett hanterat behållarregister med hjälp av Azure Portal
+# <a name="create-a-managed-container-registry-using-hello-azure-portal"></a>Skapa en hanterad behållaren registret med hjälp av hello Azure-portalen
 
-Azure Container Registry är en hanterad Docker-behållarregistertjänst som används för att lagra privata Docker-behållaravbildningar. Den här guiden beskriver hur du skapar en hanterad Azure Container Registry-instans med hjälp av Azure Portal.
+Azure Container Registry är en hanterad Docker-behållarregistertjänst som används för att lagra privata Docker-behållaravbildningar. Den här guiden information hur du skapar en hanterad Azure Container registret-instans med hello Azure-portalen.
 
 Hanterade Azure-behållarregister finns endast som förhandsversion och är inte tillgängliga i alla regioner.
 
-## <a name="log-in-to-azure"></a>Logga in på Azure
+## <a name="log-in-tooazure"></a>Logga in tooAzure
 
-Logga in på Azure Portal på http://portal.azure.com.
+Logga in toohello Azure-portalen på http://portal.azure.com.
 
 ## <a name="create-a-container-registry"></a>Skapa ett behållarregister
 
-1. Klicka på knappen **New** (Nytt) i det övre vänstra hörnet i Azure Portal.
+1. Klicka på hello **ny** knappen hittades på hello övre vänstra hörnet av hello Azure-portalen.
 
-2. Sök efter och välj **Azure Container Registry** på Marketplace.
+2. Sök hello marketplace för **Azure-behållaren registret** och markera den.
 
-3. Klicka på **Skapa** så att bladet för att skapa ACR öppnas.
+3. Klicka på **skapa** som öppnas hello ACR skapa blad.
 
     ![Inställningar för behållarregister](./media/container-registry-get-started-portal/managed-container-registry-settings.png)
 
-4. Ange informationen nedan på bladet **Azure Container Registry**. Klicka på **Skapa** när du är klar.
+4. I hello **Azure Container registret** bladet ange hello följande information. Klicka på **Skapa** när du är klar.
 
-    a. **Registernamn**: Ett globalt unikt domännamn på den översta nivån för ditt specifika register. I det här exemplet är registernamnet *myAzureContainerRegistry1*, men du kan ersätta namnet med ett eget unikt namn. Namnet får bara innehålla bokstäver och siffror.
+    a. **Registernamn**: Ett globalt unikt domännamn på den översta nivån för ditt specifika register. I det här exemplet är hello registret namnet *myAzureContainerRegistry1*, men i stället använda ett unikt namn för din egen. hello namn får bara innehålla bokstäver och siffror.
 
-    b. **Resursgrupp**: Välj en befintlig [resursgrupp](../azure-resource-manager/resource-group-overview.md#resource-groups) eller skriv namnet på en ny resursgrupp.
+    b. **Resursgruppen**: Välj en befintlig [resursgruppen](../azure-resource-manager/resource-group-overview.md#resource-groups) eller hello-typnamn för en ny.
 
-    c. **Plats**: Välj en plats för ett Azure-datacenter där tjänsten är [tillgänglig](https://azure.microsoft.com/regions/services/), t.ex. **USA, södra centrala**.
+    c. **Plats**: Välj en plats för Azure-datacenter där hello-tjänsten är [tillgängliga](https://azure.microsoft.com/regions/services/), som **södra centrala USA**.
 
-    d. **Administratörsanvändarnamn**: Om du vill ger du en administratörsanvändare åtkomst till registret. Du kan ändra den här inställningen när du har skapat registret.
+    d. **Administratören**: Om du vill aktivera en admin tooaccess hello registerinställningar. Du kan ändra den här inställningen när du har skapat hello registret.
 
-    e. **Använd hanterat register**: Välj Ja om du vill hantera registerlagring automatiskt med ACR, använda webhooks och använda AAD-autentisering.
+    e. **Använd hanterade registret**: väljer du Ja toohave ACR automatiskt hantera hello registret lagring, använder webhooks och Använd AAD-autentisering.
 
     f. **Prisnivå**: Välj en prisnivå. Här visas mer information om ACR-priser.
 
-## <a name="log-in-to-acr-instance"></a>Logga in på ACR-instansen
+## <a name="log-in-tooacr-instance"></a>Logga in tooACR instans
 
-Innan du skickar och hämtar behållaravbildningar måste du logga in på ACR-instansen. 
+Innan push-installation och dra behållaren bilder, måste du logga in toohello ACR-instans. 
 
-Det gör du med Azure CLI 2.0. Först loggar du in på Azure med kommandot [az login](/cli/azure/#login), om det behövs. 
+toodo så Använd hello Azure CLI 2.0. Först om det behövs, logga in på Azure med hjälp av hello [az inloggningen](/cli/azure/#login) kommando. 
 
 ```azurecli
 az login
 ```
 
-Sedan använder du kommandot [az acr login](/cli/azure/acr#login) för att logga in på Azure Container Registry.
+Använd sedan hello [az acr inloggning](/cli/azure/acr#login) kommandot toolog i toohello Azure Container registret.
 
 ```azurecli-interactive
 az acr login --name myAzureContainerRegistry1
@@ -77,14 +77,14 @@ az acr login --name myAzureContainerRegistry1
 
 ### <a name="list-container-images"></a>Visa lista över behållaravbildningar
 
-Använd `az acr` CLI-kommandona för att skicka frågor mot avbildningarna och taggarna på en lagringsplats.
+Använd hello `az acr` CLI-kommandon tooquery hello bilder och taggar i en databas.
 
 > [!NOTE]
-> För närvarande stöder inte Container Registry `docker search`-kommandot för att hämta information om avbildningar och taggar.
+> Behållaren registret stöder för närvarande inte hello `docker search` kommandot tooquery för avbildningar och etiketter.
 
 ### <a name="list-repositories"></a>Visa en lista över lagringsplatser
 
-Följande exempel visar en lista över lagringsplatser i ett register, i JSON-format (JavaScript Object Notation):
+hello visar följande exempel hello databaser i ett register i JSON (JavaScript Object Notation)-format:
 
 ```azurecli
 az acr repository list -n myContainerRegistry1 -o json
@@ -92,7 +92,7 @@ az acr repository list -n myContainerRegistry1 -o json
 
 ### <a name="list-tags"></a>Visa en lista över taggar
 
-Följande exempel visar en lista med taggarna som används för **samples/nginx**-lagringsplatsen, i JSON-format:
+hello följande exempel visar hello taggar på hello **exempel/nginx** databasen i JSON-format:
 
 ```azurecli
 az acr repository show-tags -n myContainerRegistry1 --repository samples/nginx -o json
@@ -100,7 +100,7 @@ az acr repository show-tags -n myContainerRegistry1 --repository samples/nginx -
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabbstarten har du skapat en hanterad Azure Container Registry-instans med hjälp av Azure Portal.
+Du har skapat en hanterad Azure Container registret-instans med hello Azure-portalen i den här snabbstartsguide.
 
 > [!div class="nextstepaction"]
-> [Skicka din första avbildning med hjälp av Docker CLI](container-registry-get-started-docker-cli.md)
+> [Push-en avbildning med hjälp av hello Docker CLI](container-registry-get-started-docker-cli.md)

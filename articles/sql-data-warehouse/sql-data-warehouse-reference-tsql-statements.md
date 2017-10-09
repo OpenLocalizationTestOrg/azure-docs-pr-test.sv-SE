@@ -1,6 +1,6 @@
 ---
-title: SQL Data Warehouse Transact-SQL referens | Microsoft Docs
-description: "Länkar till Referensinnehåll för Transact-SQL-information som används av SQL Data Warehouse."
+title: aaaSQL Data Warehouse Transact-SQL referens | Microsoft Docs
+description: "Länkar tooreference innehåll för hello Transact-SQL-information som används av SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: d6ad9db8eae0dc35580194f2ffbf02eeab6b70d2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b4b3c6cf666e9572a910784c39fd1f7c473d8821
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transact-sql-topics"></a>Transact-SQL-avsnitt
 ## <a name="data-definition-language-ddl-statements"></a>Uttryck för data Definition Language (DDL)

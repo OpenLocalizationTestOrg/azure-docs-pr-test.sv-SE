@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2 iOS komma igång - Använd | Microsoft Docs"
+title: "aaaAzure AD v2 iOS komma igång - Använd | Microsoft Docs"
 description: "Hur iOS (Swift)-program kan anropa ett API som kräver åtkomst-token i Azure Active Directory v2 slutpunkten"
 services: active-directory
 documentationcenter: dev-center-name
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
-ms.openlocfilehash: 2ac1117a31a101705539a1f75520ce8de43809a2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 22e67850e2e0b14b6d68815d8f23e18ce2e878ac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Använd Microsoft Authentication Library (MSAL) för att hämta en token för Microsoft Graph API
+## <a name="use-hello-microsoft-authentication-library-msal-tooget-a-token-for-hello-microsoft-graph-api"></a>Använd hello Microsoft Authentication Library (MSAL) tooget en token för hello Microsoft Graph API
 
-Öppna `ViewController.swift` och Ersätt Koden med:
+Öppna `ViewController.swift` och Ersätt hello kod med:
 
 ```swift
 import UIKit
@@ -42,16 +42,16 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
     @IBOutlet weak var loggingText: UITextView!
     @IBOutlet weak var signoutButton: UIButton!
 
-     // This button will invoke the call to the Microsoft Graph API. It uses the
-     // built in Swift libraries to create a connection.
+     // This button will invoke hello call toohello Microsoft Graph API. It uses the
+     // built in Swift libraries toocreate a connection.
     
     @IBAction func callGraphButton(_ sender: UIButton) {
         
         
         do {
             
-            // We check to see if we have a current logged in user. If we don't, then we need to sign someone in.
-            // We throw an interactionRequired so that we trigger the interactive signin.
+            // We check toosee if we have a current logged in user. If we don't, then we need toosign someone in.
+            // We throw an interactionRequired so that we trigger hello interactive signin.
             
             if  try self.applicationContext.users().isEmpty {
                 throw NSError.init(domain: "MSALErrorDomain", code: MSALErrorCode.interactionRequired.rawValue, userInfo: nil)
@@ -77,8 +77,8 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
             }
         }  catch let error as NSError {
             
-            // interactionRequired means we need to ask the user to sign-in. This usually happens
-            // when the user's Refresh Token is expired or if the user has changed their password
+            // interactionRequired means we need tooask hello user toosign-in. This usually happens
+            // when hello user's Refresh Token is expired or if hello user has changed their password
             // among other possible reasons.
             
             if error.code == MSALErrorCode.interactionRequired.rawValue {
@@ -99,9 +99,9 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
             
         } catch {
             
-            // This is the catch all error.
+            // This is hello catch all error.
             
-            self.loggingText.text = "Unable to acquire token. Got error: \(error)"
+            self.loggingText.text = "Unable tooacquire token. Got error: \(error)"
             
         }
     }
@@ -113,7 +113,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
              // Initialize a MSALPublicClientApplication with a given clientID and authority
             self.applicationContext = try MSALPublicClientApplication.init(clientId: kClientID, authority: kAuthority)
         } catch {
-            self.loggingText.text = "Unable to create Application Context. Error: \(error)"
+            self.loggingText.text = "Unable toocreate Application Context. Error: \(error)"
         }
     }
 
@@ -135,33 +135,33 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 <!--start-collapse-->
 ### <a name="more-information"></a>Mer information
 #### <a name="getting-a-user-token-interactively"></a>Hämta token för en användare interaktivt
-Anropar den `acquireToken` metoden resulterar i ett webbläsarfönster som uppmanar användaren att logga in. Program kräver vanligen en användare att logga in interaktivt första gången de behöver för att få åtkomst till en skyddad resurs, eller när en tyst åtgärd att hämta en token misslyckas (t.ex. användarens lösenord har upphört att gälla).
+Anropar hello `acquireToken` metoden resulterar i en webbläsare fönstret fråga hello användaren toosign i. Program kräver vanligen en användare toosign i interaktivt hello första gången som de behöver tooaccess en skyddad resurs eller när en tyst åtgärden tooacquire en token misslyckas (t.ex. hello användarens lösenord har upphört att gälla).
 
 #### <a name="getting-a-user-token-silently"></a>Hämta token för en användare tyst
-Den `acquireTokenSilent` metoden hanterar token förvärv av organisationer och förnyelse utan någon användarinteraktion. Efter `acquireToken` körs för första gången `acquireTokenSilent` är den metod som används ofta för att hämta token som används för att komma åt skyddade resurser för efterföljande anrop - eftersom anrop till begära eller förnya token görs tyst.
+Hej `acquireTokenSilent` metoden hanterar token förvärv av organisationer och förnyelse utan någon användarinteraktion. Efter `acquireToken` för hello körs första gången `acquireTokenSilent` hello metod som används ofta tooobtain tokens som används för tooaccess skyddade resurser för efterföljande anrop - som anropar toorequest eller förnya token görs tyst.
 
-Slutligen `acquireTokenSilent` misslyckas – t.ex. användaren har loggat ut eller har ändrat sitt lösenord på en annan enhet. När MSAL upptäcker att problemet kan lösas genom att kräva en interaktiv åtgärd, den utlöses en `MSALErrorCode.interactionRequired` undantag. Programmet kan hantera det här undantaget på två sätt:
+Slutligen `acquireTokenSilent` misslyckas – t.ex. hello användaren har loggat ut eller har ändrat sitt lösenord på en annan enhet. När MSAL känner av att hello problemet kan lösas genom att kräva en interaktiv åtgärd den utlöses en `MSALErrorCode.interactionRequired` undantag. Programmet kan hantera det här undantaget på två sätt:
 
-1.  Gör ett anrop mot `acquireToken` direkt, vilket innebär att användaren uppmanas att logga in. Det här mönstret används vanligtvis i Onlineprogram där det finns inget offline innehåll i programmet för användaren. Exempelprogrammet som genererats av den här interaktiv installation använder det här mönstret: du kan se den i åtgärden första gången du kör programmet. Eftersom ingen användare har använt programmet, `applicationContext.users().first` innehåller ett null-värde och ett ` MSALErrorCode.interactionRequired ` undantag. Koden i exemplet hanterar undantaget genom att anropa `acquireToken` ledde till att användaren uppmanas att logga in.
+1.  Gör ett anrop mot `acquireToken` omedelbart, vilket resulterar i att fråga hello användaren toosign i. Det här mönstret används vanligtvis i Onlineprogram där det finns inget offline innehåll i hello program tillgängliga för hello användare. hello exempelprogrammet som genererats av den här interaktiv installation använder det här mönstret: du kan se den i åtgärden hello första gången du kör programmet hello. Eftersom ingen användare har använt hello programmet `applicationContext.users().first` innehåller ett null-värde och ett ` MSALErrorCode.interactionRequired ` undantag. Hej koden i hello exempel sedan handtag hello undantag genom att anropa `acquireToken` vilket resulterar i att fråga hello användaren toosign i.
 
-2.  Program kan också göra en indikering för användaren som en interaktiv inloggning krävs, så att användaren kan välja att logga in rätt tidpunkt eller programmet kan försöka `acquireTokenSilent` vid ett senare tillfälle. Detta används vanligtvis när användaren kan använda andra funktioner i programmet utan att något stör – t.ex, det finns offline innehåll i programmet. I det här fallet användaren kan välja när de vill logga in till den skydda resursen eller uppdatera inaktuell information eller ditt program kan välja att försök `acquireTokenSilent` när nätverket återställs efter att ha tillfälligt otillgänglig.
+2.  Program kan också göra en indikering toohello användare som en interaktiv inloggning krävs, så hello användaren kan välja hello rätt tidpunkt toosign i eller hello program kan försöka `acquireTokenSilent` vid ett senare tillfälle. Detta används vanligtvis när hello användare kan använda andra funktioner i programmet hello utan något stör – t.ex, det finns innehåll offline i hello program. I det här fallet hello användare kan bestämma när de vill toosign i tooaccess hello skyddade resursen toorefresh hello inaktuell information eller ditt program kan bestämma tooretry `acquireTokenSilent` när nätverket återställs efter att ha tillfälligt otillgänglig.
 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Anropa använder token som du precis har köpt Microsoft Graph API
+## <a name="call-hello-microsoft-graph-api-using-hello-token-you-just-obtained"></a>Anropa hello Microsoft Graph API använder du bara fick hello-token
 
-Lägg till den nya metoden nedan till `ViewController.swift`. Den här metoden används för att göra en `GET` begäran mot Microsoft Graph API med hjälp av en *HTTP Authorization-huvud*:
+Lägg till hello nya metoden nedan för`ViewController.swift`. Den här metoden är att använda toomake en `GET` begäran mot hello Microsoft Graph API med hjälp av en *HTTP Authorization-huvud*:
 
 ```swift
 func getContentWithToken() {
     
     let sessionConfig = URLSessionConfiguration.default
     
-    // Specify the Graph API endpoint
+    // Specify hello Graph API endpoint
     let url = URL(string: kGraphURI)
     var request = URLRequest(url: url!)
     
-    // Set the Authorization header for the request. We use Bearer tokens, so we specify Bearer + the token we got from the result
+    // Set hello Authorization header for hello request. We use Bearer tokens, so we specify Bearer + hello token we got from hello result
     request.setValue("Bearer \(self.accessToken)", forHTTPHeaderField: "Authorization")
     let urlSession = URLSession(configuration: sessionConfig, delegate: self, delegateQueue: OperationQueue.main)
     
@@ -178,20 +178,20 @@ func getContentWithToken() {
 <!--start-collapse-->
 ### <a name="making-a-rest-call-against-a-protected-api"></a>Att göra ett REST-anrop mot ett skyddade API
 
-I det här exempelprogrammet i `getContentWithToken()` metoden används för att en HTTP `GET` begäran mot en skyddad resurs som kräver ett token och returnera innehållet till anroparen. Den här metoden lägger till anskaffats token i den *HTTP Authorization-huvud*. Resursen för det här exemplet är Microsoft Graph API *mig* slutpunkt – som visar information om användarens profil.
+I det här exempelprogrammet hello `getContentWithToken()` metod är att använda toomake HTTP `GET` begäran mot en skyddad resurs som kräver en token och sedan returnera hello innehåll toohello anropare. Den här metoden lägger till hello hämta token i hello *HTTP Authorization-huvud*. För det här exemplet hello resursen är hello Microsoft Graph API *mig* slutpunkt – som visar hello användarens profilinformation.
 <!--end-collapse-->
 
 ## <a name="set-up-sign-out"></a>Ställ in utloggning
 
-Lägg till följande metod för att `ViewController.swift` logga ut användaren:
+Lägg till följande metod för hello`ViewController.swift` toosign ut hello användare:
 
 ```swift 
 @IBAction func signoutButton(_ sender: UIButton) {
 
     do {
         
-        // Removes all tokens from the cache for this application for the provided user
-        // first parameter:   The user to remove from the cache
+        // Removes all tokens from hello cache for this application for hello provided user
+        // first parameter:   hello user tooremove from hello cache
         
         try self.applicationContext.remove(self.applicationContext.users().first)
         self.signoutButton.isEnabled = false;
@@ -204,14 +204,14 @@ Lägg till följande metod för att `ViewController.swift` logga ut användaren:
 <!--start-collapse-->
 ### <a name="more-info-on-sign-out"></a>Mer information om utloggning
 
-Den `signoutButton` metoden tar bort användaren från användarcachen MSAL – detta effektivt talar MSAL att glömma den aktuella användaren, så en framtida begäran om att hämta en token lyckas bara om det görs för att interaktivt.
+Hej `signoutButton` metoden tar bort hello användaren från hello MSAL användarcachen – detta effektivt talar MSAL tooforget hello aktuell användare så att en begäran om framtida tooacquire en token lyckas bara om det görs toobe interaktiva.
 
-Även om programmet i det här exemplet har stöd för en enskild användare, stöder MSAL scenarier där flera konton kan logga in på samma gång – ett exempel är ett e-postprogram där en användare har flera konton.
+Hello-programmet i det här exemplet stöder en enskild användare, MSAL har stöd för scenarier där flera konton kan logga in på hello samtidigt – ett exempel är ett e-postprogram där en användare har flera konton.
 <!--end-collapse-->
 
-## <a name="register-the-callback"></a>Registrera återanropet
+## <a name="register-hello-callback"></a>Registrera hello motringning
 
-När användaren autentiseras omdirigeras användaren till programmet i webbläsaren. Följ stegen nedan för att registrera den här motringning:
+När hello användare autentiseras omdirigerar hello webbläsare hello tillbaka toohello användarprogram. Gör hello nedan tooregister denna motringning:
 
 1.  Öppna `AppDelegate.swift` och importera MSAL:
 
@@ -221,13 +221,13 @@ import MSAL
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>
-Lägg till följande metod för att din <code>AppDelegate</code> klassen för att hantera återanrop:
+Lägg till följande metod tooyour hello <code>AppDelegate</code> klassen toohandle återanrop:
 </li>
 </ol>
 
 ```swift
-// @brief Handles inbound URLs. Checks if the URL matches the redirect URI for a pending AppAuth
-// authorization request and if so, will look for the code in the response.
+// @brief Handles inbound URLs. Checks if hello URL matches hello redirect URI for a pending AppAuth
+// authorization request and if so, will look for hello code in hello response.
 
 func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
     

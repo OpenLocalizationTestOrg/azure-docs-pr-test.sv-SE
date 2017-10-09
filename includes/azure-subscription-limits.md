@@ -12,7 +12,7 @@
 | [Tillhörighetsgrupper](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) per prenumeration |256 |256 |
 | Varningsregler per prenumeration |250 |250 |
 
-<sup>1</sup>extra liten instanser antal som en vanlig mot core gränsen trots med hjälp av en partiell kärna.
+<sup>1</sup>extra liten instanser antal som en vanlig mot hello core gränsen trots med hjälp av en partiell kärna.
 
-<sup>2</sup>Detta gäller både Standard- och Premium-lagringskonton. Om du behöver mer än 200 lagringskonton skickar du en begäran via [Azure-supporten](https://azure.microsoft.com/support/faq/). Azure Storage-teamet granskar ditt affärsfall och kan godkänna upp till 250 lagringskonton. 
+<sup>2</sup>Detta gäller både Standard- och Premium-lagringskonton. Om du behöver mer än 200 lagringskonton skickar du en begäran via [Azure-supporten](https://azure.microsoft.com/support/faq/). hello Azure Storage-teamet kommer granska ditt företag fall och godkänna in too250 storage-konton. 
 

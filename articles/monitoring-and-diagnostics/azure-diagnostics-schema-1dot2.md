@@ -1,5 +1,5 @@
 ---
-title: Azure Diagnostics 1.2 Konfigurationsschemat | Microsoft Docs
+title: aaaAzure diagnostik 1.2 Konfigurationsschemat | Microsoft Docs
 description: "Detta gäller endast om du använder Azure SDK 2.5 med Azure virtuella datorer, virtuella datorer, Service Fabric eller molntjänster."
 services: monitoring-and-diagnostics
 documentationcenter: .net
@@ -14,23 +14,23 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: 1e9cc6d0950945df8c4fba74d8e1f6196be224f0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 31559317b696556a64b51b58800b176ade9a4679
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Azure Diagnostics 1.2 Konfigurationsschemat
 > [!NOTE]
-> Azure Diagnostics är en komponent som används för att samla in prestandaräknare och annan statistik från Azure virtuella datorer, virtuella datorer, Service Fabric och Cloud Services.  Den här sidan gäller endast om du använder någon av dessa tjänster.
+> Azure Diagnostics är hello komponent som används för toocollect prestandaräknare och annan statistik från Azure virtuella datorer, virtuella datorer, Service Fabric och Cloud Services.  Den här sidan gäller endast om du använder någon av dessa tjänster.
 >
 
 Azure Diagnostics används tillsammans med andra produkter från Microsoft diagnostics som Azure-Monitor, Application Insights och logganalys.
 
-Det här schemat definierar de möjliga värdena som du kan använda för att initiera diagnostiska konfigurationsinställningar när diagnostik monitor startar.  
+Det här schemat definierar hello möjliga värden som du kan använda inställningar för diagnostik tooinitialize när hello diagnostik monitor startar.  
 
 
- Hämta schemadefinitionen offentliga konfiguration filen genom att köra följande PowerShell-kommando:  
+ Hämta hello offentliga konfiguration filen schemadefinition genom att köra följande PowerShell-kommando hello:  
 
 ```PowerShell  
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
@@ -38,8 +38,8 @@ Det här schemat definierar de möjliga värdena som du kan använda för att in
 
  Mer information om hur du använder Azure-diagnostik finns [aktiverar diagnostik i Azure Cloud Services](http://azure.microsoft.com/documentation/articles/cloud-services-dotnet-diagnostics/).  
 
-## <a name="example-of-the-diagnostics-configuration-file"></a>Exempel på konfigurationsfilen diagnostik  
- I följande exempel visas en typisk diagnostik konfigurationsfil:  
+## <a name="example-of-hello-diagnostics-configuration-file"></a>Exempel på hello diagnostik-konfigurationsfil  
+ hello som följande exempel visar en typisk diagnostik konfigurationsfil:  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -91,116 +91,116 @@ Det här schemat definierar de möjliga värdena som du kan använda för att in
 ```  
 
 ## <a name="diagnostics-configuration-namespace"></a>Diagnostik Configuration Namespace  
- XML-namnområdet för diagnostik-konfigurationsfilen är:  
+ hello XML-namnområdet för hello diagnostik konfigurationsfil är:  
 
 ```  
 http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
 ```  
 
 ## <a name="publicconfig-element"></a>PublicConfig Element  
- Det översta elementet i konfigurationsfilen diagnostik. I följande tabell beskrivs elementen i konfigurationsfilen.  
+ Det översta elementet i hello diagnostik konfigurationsfil. hello beskrivs följande tabell hello element hello konfigurationsfil.  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**WadCfg**|Krävs. Konfigurationsinställningar för telemetridata ska samlas in.|  
-|**StorageAccount**|Namnet på Azure Storage-konto för att lagra data i. Detta kan också anges som en parameter när du kör cmdlet Set-AzureServiceDiagnosticsExtension.|  
-|**LocalResourceDirectory**|Katalogen på den virtuella datorn som ska användas av Monitoring Agent för lagring av händelsedata. Om inte, standardkatalogen används:<br /><br /> För en arbetare/webbroll:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> För en virtuell dator:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Obligatoriska attribut är:<br /><br /> -                      **sökvägen** -katalogen på system som ska användas av Azure-diagnostik.<br /><br /> -                      **expandEnvironment** -styr om expanderas miljövariabler i sökvägen.|  
+|**WadCfg**|Krävs. Konfigurationsinställningar för hello telemetri data toobe samlas in.|  
+|**StorageAccount**|hello namnet på hello Azure Storage-konto toostore hello data i. Detta kan också anges som en parameter när du kör cmdlet hello Set-AzureServiceDiagnosticsExtension.|  
+|**LocalResourceDirectory**|hello katalog på hello virtuella toobe används av hello Monitoring Agent toostore händelsedata. Om inte, hello standardkatalogen används:<br /><br /> För en arbetare/webbroll:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> För en virtuell dator:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Obligatoriska attribut är:<br /><br /> -                      **sökvägen** - hello på hello system toobe används av Azure-diagnostik.<br /><br /> -                      **expandEnvironment** -styr om miljövariabler expanderas i hello sökvägsnamn.|  
 
 ## <a name="wadcfg-element"></a>WadCFG Element  
-Definierar konfigurationsinställningar för telemetridata ska hämtas. I följande tabell beskrivs underordnade element:  
+Definierar konfigurationsinställningar för hello telemetri data toobe samlas in. hello i den följande tabellen beskrivs underordnade element:  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**DiagnosticMonitorConfiguration**|Krävs. Valfria attribut är:<br /><br /> -                     **overallQuotaInMB** -maximal mängd lokalt diskutrymme som kan användas av de olika typerna av diagnostiska data som samlas in av Azure-diagnostik. Standardinställningen är 5 120 MB.<br /><br /> -                     **useProxyServer** -konfigurera Azure-diagnostik att använda inställningarna för proxyservern som angetts i Internet Explorer-inställningar.|  
-|**CrashDumps**|Aktivera insamling av krascher Dumpar. Valfria attribut är:<br /><br /> -                     **containerName** -namnet på blob-behållaren i Azure Storage-konto som används för att lagra krascher Dumpar.<br /><br /> -                     **crashDumpType** -Dumpar konfigurerar Azure Diagnostics för att samla in Mini eller fullständig kraschar.<br /><br /> -                     **directoryQuotaPercentage**-konfigurerar procentandelen av **overallQuotaInMB** som ska reserveras för kraschdumpar på den virtuella datorn.|  
-|**DiagnosticInfrastructureLogs**|Aktivera insamling av loggar som genereras av Azure-diagnostik. Infrastruktur för diagnostiska loggar är användbara för att felsöka systemets diagnostik. Valfria attribut är:<br /><br /> -                     **scheduledTransferLogLevelFilter** -konfigurerar lägsta allvarlighetsgrad för loggar samlas in.<br /><br /> -                     **scheduledTransferPeriod** -intervallet mellan schemalagda överföringar till lagring avrundat uppåt till närmaste minut. Värdet är en [XML ”varaktighet datatyp”.](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
-|**Kataloger**|Aktiverar insamlingen av innehållet i en katalog, IIS kunde inte åtkomstloggar för begäran och/eller IIS-loggar. Valfria attribut:<br /><br /> **scheduledTransferPeriod** -intervallet mellan schemalagda överföringar till lagring avrundat uppåt till närmaste minut. Värdet är en [XML ”varaktighet datatyp”.](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
+|**DiagnosticMonitorConfiguration**|Krävs. Valfria attribut är:<br /><br /> -                     **overallQuotaInMB** -hello maximal mängd lokalt diskutrymme som kan användas av hello olika typer av diagnostiska data samlas in av Azure-diagnostik. hello standardinställningen är 5 120 MB.<br /><br /> -                     **useProxyServer** -konfigurera Azure-diagnostik toouse hello inställningarna för proxyservern som angetts i Internet Explorer-inställningar.|  
+|**CrashDumps**|Aktivera insamling av krascher Dumpar. Valfria attribut är:<br /><br /> -                     **containerName** -hello namnet hello blob-behållaren i ditt Azure Storage-konto toobe används toostore krashdumpar.<br /><br /> -                     **crashDumpType** -Dumpar konfigurerar Azure Diagnostics toocollect Mini eller fullständig kraschar.<br /><br /> -                     **directoryQuotaPercentage**-konfigurerar hello procentandelen av **overallQuotaInMB** toobe reserverad för kraschdumpar på hello VM.|  
+|**DiagnosticInfrastructureLogs**|Aktivera insamling av loggar som genereras av Azure-diagnostik. hello diagnostiska infrastruktur loggarna är användbar vid felsökning av hello diagnostik själva systemet. Valfria attribut är:<br /><br /> -                     **scheduledTransferLogLevelFilter** -konfigurerar hello lägsta allvarlighetsgrad hello loggar samlas in.<br /><br /> -                     **scheduledTransferPeriod** -hello intervallet mellan schemalagda överföringar toostorage avrundat toohello närmast minuter. hello-värdet är en [XML ”varaktighet datatyp”.](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
+|**Kataloger**|Aktiverar hello samling hello innehållet i en katalog, IIS kunde inte begäran åtkomstloggar och/eller IIS-loggar. Valfria attribut:<br /><br /> **scheduledTransferPeriod** -hello intervallet mellan schemalagda överföringar toostorage avrundat toohello närmast minuter. hello-värdet är en [XML ”varaktighet datatyp”.](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 |**EtwProviders**|Konfigurerar samling ETW-händelser från EventSource och/eller ETW Manifest baserade providers.|  
-|**Mått**|Det här elementet kan du generera en prestandaräknaren tabell som är optimerad för snabb frågor. Varje prestandaräknare som definieras i den **PerformanceCounters** element lagras i tabellen mått förutom tabellen prestandaräknaren. Obligatoriskt attribut:<br /><br /> **resourceId** -detta är resurs-ID för den virtuella datorn som du distribuerar till Azure-diagnostik. Hämta den **resourceID** från den [Azure-portalen](https://portal.azure.com). Välj **Bläddra** -> **resursgrupper** -> **< namn\>**. Klicka på den **egenskaper** panelen och kopiera värdet från den **ID** fältet.|  
-|**PerformanceCounters**|Aktiverar insamlingen av prestandaräknare. Valfria attribut:<br /><br /> **scheduledTransferPeriod** -intervallet mellan schemalagda överföringar till lagring avrundat uppåt till närmaste minut. Värdet är en [XML ”varaktighet datatyp”.](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
-|**WindowsEventLog**|Aktiverar insamlingen av Windows-händelseloggar. Valfria attribut:<br /><br /> **scheduledTransferPeriod** -intervallet mellan schemalagda överföringar till lagring avrundat uppåt till närmaste minut. Värdet är en [XML ”varaktighet datatyp”.](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
+|**Mått**|Det här elementet låter dig toogenerate en prestandaräknaren tabell som är optimerad för snabb frågor. Varje prestandaräknare som definieras i hello **PerformanceCounters** element lagras i hello mått tabellen i tillägg toohello prestandaräknaren tabell. Obligatoriskt attribut:<br /><br /> **resourceId** -detta är hello resurs-ID för hello virtuell dator som du distribuerar till Azure-diagnostik. Hämta hello **resourceID** från hello [Azure-portalen](https://portal.azure.com). Välj **Bläddra** -> **resursgrupper** -> **< namn\>**. Klicka på hello **egenskaper** panelen och kopiera hello värdet från hello **ID** fältet.|  
+|**PerformanceCounters**|Aktiverar hello insamling av prestandaräknare. Valfria attribut:<br /><br /> **scheduledTransferPeriod** -hello intervallet mellan schemalagda överföringar toostorage avrundat toohello närmast minuter. Värdet är en [XML ”varaktighet datatyp”.](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
+|**WindowsEventLog**|Aktiverar hello insamling av Windows-händelseloggar. Valfria attribut:<br /><br /> **scheduledTransferPeriod** -hello intervallet mellan schemalagda överföringar toostorage avrundat toohello närmast minuter. Värdet är en [XML ”varaktighet datatyp”.](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 
 ## <a name="crashdumps-element"></a>CrashDumps Element  
- Aktiverar krascher Dumpar samling. I följande tabell beskrivs underordnade element:  
+ Aktiverar krascher Dumpar samling. hello i den följande tabellen beskrivs underordnade element:  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**CrashDumpConfiguration**|Krävs. Obligatoriskt attribut:<br /><br /> **Processnamn** -namnet på processen som du vill att Azure-diagnostik för att samla in en krasch-dump för.|  
-|**crashDumpType**|Konfigurerar Azure-diagnostik för att samla in Dumpar mini eller fullständig kraschar.|  
-|**directoryQuotaPercentage**|Konfigurerar procentandelen av **overallQuotaInMB** som ska reserveras för kraschdumpar på den virtuella datorn.|  
+|**CrashDumpConfiguration**|Krävs. Obligatoriskt attribut:<br /><br /> **Processnamn** - hello namn på hello process som du vill använda Azure-diagnostik toocollect krasch-dump för.|  
+|**crashDumpType**|Konfigurerar Azure Diagnostics toocollect mini eller fullständig kraschar Dumpar.|  
+|**directoryQuotaPercentage**|Konfigurerar hello procentandelen av **overallQuotaInMB** toobe reserverad för kraschdumpar på hello VM.|  
 
 ## <a name="directories-element"></a>Kataloger Element  
- Aktiverar insamlingen av innehållet i en katalog, IIS kunde inte åtkomstloggar för begäran och/eller IIS-loggar. I följande tabell beskrivs underordnade element:  
+ Aktiverar hello samling hello innehållet i en katalog, IIS kunde inte begäran åtkomstloggar och/eller IIS-loggar. hello i den följande tabellen beskrivs underordnade element:  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**Datakällor**|En lista över kataloger om du vill övervaka.|  
-|**FailedRequestLogs**|Inklusive det här elementet i konfigurationen möjliggör insamling av loggar för misslyckade begäranden till en IIS-webbplats eller program. Du måste även aktivera spårningsalternativ under **system. Webbserver** i **Web.config**.|  
-|**IISLogs**|Inkludera det här elementet i konfigurationen aktiverar insamlingen av IIS-loggar:<br /><br /> **containerName** -namnet på blob-behållaren i Azure Storage-konto som används för att lagra IIS-loggarna.|  
+|**Datakällor**|En lista över kataloger toomonitor.|  
+|**FailedRequestLogs**|Inklusive det här elementet i hello konfiguration gör det möjligt för insamling av loggar för misslyckade begäranden tooan IIS-webbplatsen eller programmet. Du måste även aktivera spårningsalternativ under **system. Webbserver** i **Web.config**.|  
+|**IISLogs**|Inkludera det här elementet i hello konfiguration kan hello samling av IIS-loggar:<br /><br /> **containerName** -hello namnet hello blob-behållaren i ditt Azure Storage-konto toobe används toostore hello IIS-loggar.|  
 
 ## <a name="datasources-element"></a>Datakällor Element  
- En lista över kataloger om du vill övervaka. I följande tabell beskrivs underordnade element:  
+ En lista över kataloger toomonitor. hello i den följande tabellen beskrivs underordnade element:  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**DirectoryConfiguration**|Krävs. Obligatoriskt attribut:<br /><br /> **containerName** -namnet på blob-behållaren i Azure Storage-konto som används för att lagra loggfilerna.|  
+|**DirectoryConfiguration**|Krävs. Obligatoriskt attribut:<br /><br /> **containerName** -hello namnet på hello blob-behållaren i Azure Storage-konto toobe används toostore hello loggfiler.|  
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration Element  
- **DirectoryConfiguration** kan innehålla antingen den **absolut** eller **LocalResource** element, men inte båda. I följande tabell beskrivs underordnade element:  
+ **DirectoryConfiguration** kan innehålla antingen hello **absolut** eller **LocalResource** element, men inte båda. hello i den följande tabellen beskrivs underordnade element:  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**Absolut**|Den absoluta sökvägen till katalogen som ska övervakas. Det krävs följande attribut:<br /><br /> -                     **Sökvägen** -den absoluta sökvägen till katalogen som ska övervakas.<br /><br /> -                      **expandEnvironment** -anger om miljövariabler i sökvägen expanderas.|  
-|**LocalResource**|Sökväg i förhållande till en lokal resurs för att övervaka. Obligatoriska attribut är:<br /><br /> -                     **Namnet** – den lokala resursen som innehåller katalogen som ska övervakas<br /><br /> -                     **relativePath** -sökväg i förhållande till namn som innehåller katalogen som ska övervakas|  
+|**Absolut**|hello absolut sökväg toohello directory toomonitor. Det krävs hello följande attribut:<br /><br /> -                     **Sökvägen** -hello absolut sökväg toohello directory toomonitor.<br /><br /> -                      **expandEnvironment** -anger om miljövariabler i sökvägen expanderas.|  
+|**LocalResource**|hello sökväg relativa tooa lokala resursen toomonitor. Obligatoriska attribut är:<br /><br /> -                     **Namnet** -hello lokal resurs som innehåller hello directory toomonitor<br /><br /> -                     **relativePath** -hello relativa sökvägen tooName som innehåller hello directory toomonitor|  
 
 ## <a name="etwproviders-element"></a>EtwProviders Element  
- Konfigurerar samling ETW-händelser från EventSource och/eller ETW Manifest baserade providers. I följande tabell beskrivs underordnade element:  
+ Konfigurerar samling ETW-händelser från EventSource och/eller ETW Manifest baserade providers. hello i den följande tabellen beskrivs underordnade element:  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Konfigurerar insamling av händelser som genereras från [EventSource klassen](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Obligatoriskt attribut:<br /><br /> **Providern** -klassnamnet för händelsen EventSource.<br /><br /> Valfria attribut är:<br /><br /> -                     **scheduledTransferLogLevelFilter** -lägsta allvarlighetsgrad att överföra till ditt lagringskonto.<br /><br /> -                     **scheduledTransferPeriod** -intervallet mellan schemalagda överföringar till lagring avrundat uppåt till närmaste minut. Värdet är en [XML-datatypen för varaktighet](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
-|**EtwManifestProviderConfiguration**|Obligatoriskt attribut:<br /><br /> **Providern** -GUID av Händelseprovidern<br /><br /> Valfria attribut är:<br /><br /> - **scheduledTransferLogLevelFilter** -lägsta allvarlighetsgrad att överföra till ditt lagringskonto.<br /><br /> -                     **scheduledTransferPeriod** -intervallet mellan schemalagda överföringar till lagring avrundat uppåt till närmaste minut. Värdet är en [XML-datatypen för varaktighet](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
+|**EtwEventSourceProviderConfiguration**|Konfigurerar insamling av händelser som genereras från [EventSource klassen](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Obligatoriskt attribut:<br /><br /> **Providern** -hello klassnamnet för hello EventSource händelse.<br /><br /> Valfria attribut är:<br /><br /> -                     **scheduledTransferLogLevelFilter** -hello lägsta allvarlighetsgrad nivå tootransfer tooyour storage-konto.<br /><br /> -                     **scheduledTransferPeriod** -hello intervallet mellan schemalagda överföringar toostorage avrundat toohello närmast minuter. Värdet är en [XML-datatypen för varaktighet](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
+|**EtwManifestProviderConfiguration**|Obligatoriskt attribut:<br /><br /> **Providern** -hello GUID för hello-Händelseprovidern<br /><br /> Valfria attribut är:<br /><br /> - **scheduledTransferLogLevelFilter** -hello lägsta allvarlighetsgrad nivå tootransfer tooyour storage-konto.<br /><br /> -                     **scheduledTransferPeriod** -hello intervallet mellan schemalagda överföringar toostorage avrundat toohello närmast minuter. Värdet är en [XML-datatypen för varaktighet](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
- Konfigurerar insamling av händelser som genereras från [EventSource klassen](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). I följande tabell beskrivs underordnade element:  
+ Konfigurerar insamling av händelser som genereras från [EventSource klassen](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). hello i den följande tabellen beskrivs underordnade element:  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**DefaultEvents**|Valfria attribut:<br /><br /> **eventDestination** -namnet på tabellen för att lagra händelser i|  
-|**Händelse**|Obligatoriskt attribut:<br /><br /> **ID** -id för händelsen.<br /><br /> Valfria attribut:<br /><br /> **eventDestination** -namnet på tabellen för att lagra händelser i|  
+|**DefaultEvents**|Valfria attribut:<br /><br /> **eventDestination** - hello namn på tabellen hello toostore hello händelser i|  
+|**Händelse**|Obligatoriskt attribut:<br /><br /> **ID** -hello-id för hello-händelse.<br /><br /> Valfria attribut:<br /><br /> **eventDestination** - hello namn på tabellen hello toostore hello händelser i|  
 
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration Element  
- I följande tabell beskrivs underordnade element:  
+ hello i den följande tabellen beskrivs underordnade element:  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**DefaultEvents**|Valfria attribut:<br /><br /> **eventDestination** -namnet på tabellen för att lagra händelser i|  
-|**Händelse**|Obligatoriskt attribut:<br /><br /> **ID** -id för händelsen.<br /><br /> Valfria attribut:<br /><br /> **eventDestination** -namnet på tabellen för att lagra händelser i|  
+|**DefaultEvents**|Valfria attribut:<br /><br /> **eventDestination** - hello namn på tabellen hello toostore hello händelser i|  
+|**Händelse**|Obligatoriskt attribut:<br /><br /> **ID** -hello-id för hello-händelse.<br /><br /> Valfria attribut:<br /><br /> **eventDestination** - hello namn på tabellen hello toostore hello händelser i|  
 
 ## <a name="metrics-element"></a>Mått Element  
- Kan du generera en prestandaräknaren tabell som är optimerad för snabb frågor. I följande tabell beskrivs underordnade element:  
+ Låter dig toogenerate en prestandaräknaren tabell som är optimerad för snabb frågor. hello i den följande tabellen beskrivs underordnade element:  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**MetricAggregation**|Obligatoriskt attribut:<br /><br /> **scheduledTransferPeriod** -intervallet mellan schemalagda överföringar till lagring avrundat uppåt till närmaste minut. Värdet är en [XML-datatypen för varaktighet](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
+|**MetricAggregation**|Obligatoriskt attribut:<br /><br /> **scheduledTransferPeriod** -hello intervallet mellan schemalagda överföringar toostorage avrundat toohello närmast minuter. Värdet är en [XML-datatypen för varaktighet](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters elementet  
- Aktiverar insamlingen av prestandaräknare. I följande tabell beskrivs underordnade element:  
+ Aktiverar hello insamling av prestandaräknare. hello i den följande tabellen beskrivs underordnade element:  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**PerformanceCounterConfiguration**|Det krävs följande attribut:<br /><br /> -                     **counterSpecifier** -namnet på prestandaräknaren. Till exempel `\Processor(_Total)\% Processor Time`. För att hämta en lista över prestanda räknare på din värd kör kommandot `typeperf`.<br /><br /> -                     **sampleRate** -hur ofta räknaren ska samlas in.<br /><br /> Valfria attribut:<br /><br /> **enhet** -enheten för räknaren.|  
+|**PerformanceCounterConfiguration**|Det krävs hello följande attribut:<br /><br /> -                     **counterSpecifier** - hello namn för hello prestandaräknare. Till exempel `\Processor(_Total)\% Processor Time`. tooget en lista över prestandaräknare på din värd som kör hello kommando `typeperf`.<br /><br /> -                     **sampleRate** -hur ofta hello räknaren ska samlas in.<br /><br /> Valfria attribut:<br /><br /> **enhet** -hello måttenhet hello räknaren.|  
 
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration Element  
- I följande tabell beskrivs underordnade element:  
+ hello i den följande tabellen beskrivs underordnade element:  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**anteckningen**|Obligatoriskt attribut:<br /><br /> **displayName** -visningsnamnet för räknaren<br /><br /> Valfria attribut:<br /><br /> **språk** -språket som ska användas för att visa räknarnamnet|  
+|**anteckningen**|Obligatoriskt attribut:<br /><br /> **displayName** -hello visningsnamn för hello räknare<br /><br /> Valfria attribut:<br /><br /> **språk** -hello språk toouse när du visar hello räknarens namn|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element  
- I följande tabell beskrivs underordnade element:  
+ hello i den följande tabellen beskrivs underordnade element:  
 
 |Elementnamn|Beskrivning|  
 |------------------|-----------------|  
-|**DataSource**|Windows-händelseloggar att samla in. Obligatoriskt attribut:<br /><br /> **namnet** - XPath-frågan som beskriver de windows-händelserna som ska hämtas. Exempel:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Om du vill samla in alla händelser, ange ”*”.|
+|**DataSource**|Hej toocollect för Windows-händelseloggar. Obligatoriskt attribut:<br /><br /> **namnet** -hello XPath-fråga som beskriver hello windows händelser toobe samlas in. Exempel:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Ange om toocollect alla händelser ”*”.|

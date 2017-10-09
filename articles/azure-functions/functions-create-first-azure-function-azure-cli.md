@@ -1,6 +1,6 @@
 ---
-title: "Skapa din första funktion med Azure CLI | Microsoft Docs"
-description: "Lär dig hur du skapar din första Azure-funktion för serverfri körning med Azure CLI."
+title: "aaaCreate din första funktionen från hello Azure CLI | Microsoft Docs"
+description: "Lär dig hur toocreate ditt första Azure fungerar för serverlösa körning med hello Azure CLI."
 services: functions
 keywords: 
 author: ggailey777
@@ -12,21 +12,21 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: erikre
-ms.openlocfilehash: 8bd3e4bb7423db44c48b04f25edcf1074e6ea0bd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5feed0045d4998b88b0e1bb50996cb7bb42b0822
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-your-first-function-using-the-azure-cli"></a>Skapa din första funktion med Azure CLI
+# <a name="create-your-first-function-using-hello-azure-cli"></a>Skapa din första funktion med hjälp av hello Azure CLI
 
-I den här snabbstartsguiden får du hjälp att skapa din första funktion i Azure Functions. Du kan använda Azure CLI till att skapa en funktionsapp, som är den serverfria infrastruktur som är värd för funktionen. Själva funktionskoden distribueras från en GitHub-exempellagringsplats.    
+Den här snabbstartsguide går igenom hur toouse Azure Functions toocreate din första funktion. Du kan använda hello Azure CLI toocreate en funktionsapp är hello serverlösa infrastruktur som är värd för din funktion. hello Funktionskoden själva distribueras från en exempel GitHub-databas.    
 
-Du kan följa stegen nedan på en Mac-, Windows- eller Linux-dator. 
+Du kan följa hello stegen nedan använder en Mac, Windows eller Linux-dator. 
 
 ## <a name="prerequisites"></a>Krav 
 
-Innan du kör exemplet måste du ha följande:
+Innan du kör det här exemplet måste du ha hello följande:
 
 + Ett aktivt [GitHub](https://github.com)-konto. 
 + En aktiv Azure-prenumeration.
@@ -35,14 +35,14 @@ Innan du kör exemplet måste du ha följande:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kräver i det här avsnittet att du kör hello Azure CLI version 2.0 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#create). En Azure-resursgrupp är en logisk behållare som Azure-resurser (t.ex. funktionsappar, databaser och lagringskonton) distribueras och hanteras i.
+Skapa en resursgrupp med hello [az gruppen skapa](/cli/azure/group#create). En Azure-resursgrupp är en logisk behållare som Azure-resurser (t.ex. funktionsappar, databaser och lagringskonton) distribueras och hanteras i.
 
-I följande exempel skapas en resursgrupp med namnet `myResourceGroup`.  
+hello följande exempel skapar en resursgrupp med namnet `myResourceGroup`.  
 Om du inte använder Cloud Shell måste du först logga in med `az login`.
 
 ```azurecli-interactive
@@ -52,15 +52,15 @@ az group create --name myResourceGroup --location westeurope
 
 ## <a name="create-an-azure-storage-account"></a>Skapa ett Azure Storage-konto
 
-I funktioner används ett Azure Storage-konto till att lagra status och annan information om dina funktioner. Skapa ett lagringskonto i resursgruppen du skapade med hjälp av kommandot [az storage account create](/cli/azure/storage/account#create).
+Funktioner som använder ett Azure Storage-konto toomaintain tillstånd och annan information om dina funktioner. Skapa ett lagringskonto i hello resursgrupp som du skapat med hjälp av hello [az storage-konto skapar](/cli/azure/storage/account#create) kommando.
 
-I följande kommando infogar du ditt globalt unika lagringskontonamn istället för platshållaren `<storage_name>`. Namnet på ett lagringskonto måste vara mellan 3 och 24 tecken långt och får endast innehålla siffror och gemener.
+I hello följande kommando, ersätta egna globalt unik lagringskontonamnet där du ser hello `<storage_name>` platshållare. Namnet på ett lagringskonto måste vara mellan 3 och 24 tecken långt och får endast innehålla siffror och gemener.
 
 ```azurecli-interactive
 az storage account create --name <storage_name> --location westeurope --resource-group myResourceGroup --sku Standard_LRS
 ```
 
-När lagringskontot har skapats visas information som liknar följande exempel i Azure CLI:
+När hello storage-konto har skapats, visar hello Azure CLI information liknande toohello följande exempel:
 
 ```json
 {
@@ -82,17 +82,17 @@ När lagringskontot har skapats visas information som liknar följande exempel i
 
 ## <a name="create-a-function-app"></a>Skapa en funktionsapp
 
-Du måste ha en funktionsapp som värd för körning av dina funktioner. Funktionsappen är en miljö för serverfri körning av funktionskoden. Där kan du gruppera funktioner som en logisk enhet så att det blir enklare att hantera, distribuera och dela resurser. Skapa en funktionsapp med kommandot [az functionapp create](/cli/azure/functionapp#create). 
+Du måste ha en funktion app toohost hello körningen av dina funktioner. Hej funktionsapp är en miljö där serverlösa körningen av funktionskoden. Där kan du gruppera funktioner som en logisk enhet så att det blir enklare att hantera, distribuera och dela resurser. Skapa en funktionsapp med hjälp av hello [az functionapp skapa](/cli/azure/functionapp#create) kommando. 
 
-I följande kommando infogar du ditt unika funktionsappnamn istället för platshållaren `<app_name>` och lagringskontonamnet istället för `<storage_name>`. `<app_name>` används som DNS-standarddomän för funktionsappen. Därför måste namnet vara unikt bland alla appar i Azure. 
+I hello följande kommando, ersätta dina egna unika funktionen appnamn där du ser hello `<app_name>` platshållare och hello lagringskontonamnet för `<storage_name>`. Hej `<app_name>` används som hello DNS standarddomän för hello funktionsapp och så hello namn måste toobe unikt över alla program i Azure. 
 
 ```azurecli-interactive
 az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
 --consumption-plan-location westeurope
 ```
-Som standard skapas en funktionsapp med värdplanen Consumption, vilket innebär att resurser läggs till dynamiskt när de behövs i dina funktioner och att du bara betalar när funktionerna körs. Mer information finns i [Välja rätt värdplan](functions-scale.md). 
+Som standard skapas en funktionsapp med hello förbrukning värd plan, vilket innebär att resurser läggs till dynamiskt som krävs av dina funktioner och du betalar endast när funktioner som körs. Mer information finns i [Välj hello rätt värd plan](functions-scale.md). 
 
-När funktionsappen har skapats visas information som liknar följande exempel i Azure CLI:
+När hello funktionsapp har skapats, visar hello Azure CLI information liknande toohello följande exempel:
 
 ```json
 {
@@ -112,18 +112,18 @@ När funktionsappen har skapats visas information som liknar följande exempel i
 }
 ```
 
-Nu när du har en funktionsapp kan du distribuera den faktiska funktionskoden från GitHub-exempellagringsplatsen.
+Nu när du har en funktionsapp, kan du distribuera hello faktiska Funktionskoden från exemplet hello GitHub-lagringsplatsen.
 
 ## <a name="deploy-your-function-code"></a>Distribuera din funktionskod  
 
-Det finns flera sätt att skapa funktionskoden i din nya funktionsapp. I det här ämnet ansluter vi till en exempellagringsplats i GitHub. Precis som tidigare ersätter du platshållaren `<app_name>` med namnet på den funktionsapp du skapade. 
+Det finns flera sätt toocreate Funktionskoden i din nya funktionsapp. Det här avsnittet ansluter tooa exempel lagringsplatsen i GitHub. Som tidigare i hello följande kod ersätter hello `<app_name>` med hello namnet på hello funktionsapp som du skapade. 
 
 ```azurecli-interactive
 az functionapp deployment source config --name <app_name> --resource-group myResourceGroup --branch master \
 --repo-url https://github.com/Azure-Samples/functions-quickstart \
 --manual-integration 
 ```
-När distributionskällan har angetts visas information som liknar följande exempel i Azure CLI (nullvärden är borttagna för att öka läsbarheten):
+Efter distributionen hello har källa angetts måste hello Azure CLI visar information liknande toohello följande exempel (null-värden bort för att läsa):
 
 ```json
 {
@@ -140,9 +140,9 @@ När distributionskällan har angetts visas information som liknar följande exe
 }
 ```
 
-## <a name="test-the-function"></a>Testa funktionen
+## <a name="test-hello-function"></a>Testa hello-funktionen
 
-Använd cURL till att testa den distribuerade funktionen på en Mac- eller Linux-dator, eller Bash i Windows. Kör följande cURL-kommando och ersätt platshållaren `<app_name>` med namnet på din funktionsapp. Lägg till frågesträngen `&name=<yourname>` i webbadressen.
+Funktionen cURL tootest hello distribueras på en Mac- eller Linux-dator eller med Bash i Windows. Kör följande cURL-kommando och ersätter hello hello `<app_name>` med hello namnet på din funktionsapp. Lägg till hello frågesträngen `&name=<yourname>` toohello URL.
 
 ```bash
 curl http://<app_name>.azurewebsites.net/api/HttpTriggerJS1?name=<yourname>
@@ -150,7 +150,7 @@ curl http://<app_name>.azurewebsites.net/api/HttpTriggerJS1?name=<yourname>
 
 ![Funktionssvaret visas i en webbläsare.](./media/functions-create-first-azure-function-azure-cli/functions-azure-cli-function-test-curl.png)  
 
-Om du inte har cURL tillgängligt på kommandoraden anger du samma webbadress i webbläsarens adressfält. På samma sätt ersätter du platshållaren `<app_name>` med namnet på funktionsappen och lägger till frågesträngen `&name=<yourname>` i webbadressen. 
+Om du inte har cURL som är tillgängliga i kommandoraden ange hello samma URL i hello-adress i webbläsaren. Igen och Ersätt hello `<app_name>` med hello namnet på appen funktionen och Lägg till hello frågesträngen `&name=<yourname>` toohello URL och utföra hello-begäran. 
 
     http://<app_name>.azurewebsites.net/api/HttpTriggerJS1?name=<yourname>
    
@@ -158,7 +158,7 @@ Om du inte har cURL tillgängligt på kommandoraden anger du samma webbadress i 
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-De andra snabbstarterna i den här samlingen bygger på den här snabbstarten. Om du planerar att fortsätta att arbeta med efterföljande snabbstarter eller med självstudierna ska du inte rensa resurserna som skapas i denna snabbstart. Om du inte planerar att fortsätta kan du använda kommandona nedan för att ta bort alla resurser som har skapats i den här snabbstarten:
+De andra snabbstarterna i den här samlingen bygger på den här snabbstarten. Om du planerar toocontinue på toowork med efterföljande Snabbstart eller hello självstudier inte rensa hello resurser som skapats i denna Snabbstart. Om du inte planerar toocontinue använder du följande kommando toodelete hello alla resurser som skapats av denna Snabbstart:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

@@ -15,6 +15,6 @@
 
 (\* -Alla utlösare har associerat indata)
 
-(\**-HTTP-utdatabindning kräver en HTTP-utlösare)
+(\**-hello HTTP utdata bindningen kräver en HTTP-utlösare)
 
 

@@ -1,5 +1,5 @@
 ---
-title: "(föråldrad) Binomialfördelningen Suite - Azure | Microsoft Docs"
+title: "aaa(deprecated) binomialfördelningen Suite - Azure | Microsoft Docs"
 description: "(föråldrad) Binomialfördelningen Suite"
 services: machine-learning
 documentationcenter: 
@@ -16,67 +16,67 @@ ms.date: 01/06/2017
 ms.author: ireiter
 ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-redirect_document_id: TRUE
-ms.openlocfilehash: 6f0a6d06e7401c8360a92a707a0552f41ff3657c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 6f94436cd19abeb518d179f340c8d4f43fcf4520
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deprecated-binomial-distribution-suite"></a>(föråldrad) Binomialfördelningen Suite
 
 > [!NOTE]
-> Microsoft DataMarket dras och detta API är inaktuell. 
+> hello Microsoft DataMarket dras och detta API är inaktuell. 
 > 
-> Du hittar många användbara exempel experiment och API: er i den [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Mer information om galleriet finns [resursen och identifiera resurser i Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md).
+> Du hittar många användbara exempel experiment och API: er i hello [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Mer information om hello galleriet finns [resursen och identifiera resurser i hello Cortana Intelligence Gallery](machine-learning-gallery-how-to-use-contribute-publish.md).
 
-Binomialfördelningen Suite är en uppsättning exempel webbtjänster ([Binomial Generator](https://datamarket.azure.com/dataset/aml_labs/bdg5), [sannolikhet Kalkylatorn](https://datamarket.azure.com/dataset/aml_labs/bdp4), [Quantile Kalkylatorn](https://datamarket.azure.com/dataset/aml_labs/bdq5)) som hjälp i genererar och Hantera binomial distributioner. Tjänster kan generera en binomialfördelningen sekvens med en längd som beräknar quantiles av angiven sannolikhet och beräkning av sannolikheten från en viss quantile. Varje tjänst skickar annan utdata baserat på den valda tjänsten (se nedan). Programsviten binomialfördelningen baseras på R funktioner qbinom, rbinom och pbinom, som ingår i paketet för R-statistik. 
+hello binomialfördelningen Suite är en uppsättning exempel webbtjänster ([Binomial Generator](https://datamarket.azure.com/dataset/aml_labs/bdg5), [sannolikhet Kalkylatorn](https://datamarket.azure.com/dataset/aml_labs/bdp4), [Quantile Kalkylatorn](https://datamarket.azure.com/dataset/aml_labs/bdq5)) som hjälp i genererar och Hantera binomial distributioner. hello tjänster kan generera en binomialfördelningen sekvens med en längd som beräknar quantiles av angiven sannolikhet och beräkning av sannolikheten från en viss quantile. Var och en av hello-tjänster skickar olika utdata baserat på valda hello-tjänsten (se nedan). hello binomialfördelningen Suite baseras på hello R funktioner qbinom rbinom och pbinom, som ingår i statistik hello R-paket. 
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-> Dessa webbtjänster kan användas av användare – potentiellt direkt på marketplace via en mobil app via en webbplats eller på en lokal dator, till exempel. Men syftet med webbtjänsten är också som fungerar som ett exempel på hur Azure Machine Learning kan användas för att skapa webbtjänster ovanpå R-koden. Med bara några få rader med kod för R och klickar på en knapp i Azure Machine Learning Studio, ett experiment skapas med R-koden och publiceras som en webbtjänst. Webbtjänsten kan sedan publiceras på Azure Marketplace och används av användare och enheter över hela världen – krävs inga infrastrukturinställningar av författaren till webbtjänsten.
+> Dessa webbtjänster kan användas av användare – potentiellt direkt på hello marketplace via en mobil app via en webbplats eller på en lokal dator, till exempel. Men hello syftet hello-webbtjänsten är också tooserve som ett exempel på hur Azure Machine Learning kan vara används toocreate webbtjänster ovanpå R-koden. Med bara några få rader med kod för R och klickar på en knapp i Azure Machine Learning Studio, ett experiment skapas med R-koden och publiceras som en webbtjänst. hello-webbtjänsten kan sedan publicerade toohello Azure Marketplace och används av användare och enheter över hello world – inga infrastrukturinställningar hello författare av hello web service krävs.
 > 
 > 
 
 ## <a name="consumption-of-web-service"></a>Användning av web service
-Programsviten binomialfördelningen innehåller följande 3.
+hello binomialfördelningen Suite innehåller hello följande 3 tjänster.
 
 ### <a name="binomial-distribution-quantile-calculator"></a>Binomialfördelningen Quantile Kalkylatorn
-Den här tjänsten accepterar 4 argument för en normal distribution och beräknar associerade quantile.
-De angivna argumenten är:
+Den här tjänsten accepterar 4 argument för en normal distribution och beräknar hello associerade quantile.
+hello-indataargument är:
 
 * p - en enda samman sannolikheten för flera försök.  
-* storlek - antalet försök.
-* SANNOLIKHET - sannolikheten att lyckas i en utvärderingsversion.
-* Sida - L för lägre sida av distribution, U för övre delen av distributionen. 
+* storlek - hello antalet försök.
+* sannolikhet - hello sannolikheten att lyckas i en utvärderingsversion.
+* Sida - L för hello lägre sida av hello distribution, U för hello övre delen av hello-distribution. 
 
-Utdata från tjänsten är beräknade quantile som är associerad med den angivna sannolikheten.
+hello utdata från hello-tjänsten är hello beräknade quantile som är associerad med hello angivna sannolikhet.
 
 ### <a name="binomial-distribution-probability-calculator"></a>Binomialfördelningen sannolikhet Kalkylatorn
-Den här tjänsten accepterar 4 argument för en binomialfördelningen och beräknar associerade sannolikheten.
-De angivna argumenten är:
+Den här tjänsten accepterar 4 argument för en binomialfördelningen och beräknar hello associerade sannolikhet.
+hello-indataargument är:
 
 * q - en enda quantile av en händelse med binomialfördelningen. 
-* storlek - antalet försök.
-* SANNOLIKHET - sannolikheten att lyckas i en utvärderingsversion.
-* sida - L för distribution, U för övre delen av distribution eller E som är lika med ett enda antal lyckade nedre del.
+* storlek - hello antalet försök.
+* sannolikhet - hello sannolikheten att lyckas i en utvärderingsversion.
+* sida - L för hello lägre sida av hello distribution, U för hello övre delen av hello distribution eller E som är lika tooa enda antalet lyckade försök.
 
-Utdata från tjänsten är beräknade sannolikheten som är associerad med den angivna quantile.
+hello utdata från hello-tjänsten är hello beräknade sannolikhet som associeras med hello angivna quantile.
 
 ### <a name="binomial-distribution-generator"></a>Binomialfördelningen Generator
-Den här tjänsten accepterar 3 argument för en binomialfördelningen och genererar en slumpmässig sekvens av siffror som binomially distribueras. Följande argument måste tillhandahållas till den i begäran:
+Den här tjänsten accepterar 3 argument för en binomialfördelningen och genererar en slumpmässig sekvens av siffror som binomially distribueras. hello måste följande argument tillhandahållas tooit inom hello begäran:
 
 * n - antal observationer. 
 * storlek - antalet försök.
 * SANNOLIKHET - sannolikheten att lyckas.
 
-Utdata från tjänsten är en sekvens med längden n med en binomialfördelningen baserat på storleken och sannolikhet argument.
+hello utdata från hello service är en sekvens med längden n med en binomialfördelningen baserat på hello storlek och sannolikhet argument.
 
-> Den här tjänsten, är som finns på Azure Marketplace en OData-tjänst. Dessa kan anropas via POST eller GET-metoder. 
+> Den här tjänsten, är som finns på hello Azure Marketplace en OData-tjänst. Dessa kan anropas via POST eller GET-metoder. 
 > 
 > 
 
-Det finns flera olika sätt att använda tjänsten automatiskt (exempel appar finns här: [Generator](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionGenerator.aspx), [sannolikhet Kalkylatorn](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionProbabilityCalculator.aspx), [Quantile Kalkylatorn](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionQuantileCalculator)). 
+Det finns flera olika sätt att konsumera hello service automatiskt (exempel appar finns här: [Generator](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionGenerator.aspx), [sannolikhet Kalkylatorn](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionProbabilityCalculator.aspx), [Quantile Kalkylatorn](http://microsoftazuremachinelearning.azurewebsites.net/BinomialDistributionQuantileCalculator)). 
 
 ### <a name="starting-c-code-for-web-service-consumption"></a>Startar C#-kod för web service användning:
 ### <a name="binomial-distribution-quantile-calculator"></a>Binomialfördelningen Quantile Kalkylatorn
@@ -174,7 +174,7 @@ Det finns flera olika sätt att använda tjänsten automatiskt (exempel appar fi
 
 
 ## <a name="creation-of-web-service"></a>Skapandet av web service
-> Den här webbtjänsten har skapats med Azure Machine Learning. För en kostnadsfri utvärderingsversion som inledande videoklipp om hur du skapar experiment och [publicering webbtjänster](machine-learning-publish-a-machine-learning-web-service.md), se [azure.com/ml](http://azure.com/ml). Nedan visas en skärmbild av experiment som skapade web service och exempel koden för alla moduler i experimentet.
+> Den här webbtjänsten har skapats med Azure Machine Learning. För en kostnadsfri utvärderingsversion som inledande videoklipp om hur du skapar experiment och [publicering webbtjänster](machine-learning-publish-a-machine-learning-web-service.md), se [azure.com/ml](http://azure.com/ml). Nedan visas en skärmbild av hello experiment som skapade hello web service och exempel-kod för varje hello moduler i hello experiment.
 > 
 > 
 
@@ -184,7 +184,7 @@ Det finns flera olika sätt att använda tjänsten automatiskt (exempel appar fi
 #### <a name="module-1"></a>Modul 1:
     #data schema with example data (replaced with data from web service)
     data.set=data.frame(p=0.1,size=10,prob=.5,side='L');
-    maml.mapOutputPort("data.set"); #send data to output port
+    maml.mapOutputPort("data.set"); #send data toooutput port
 #### <a name="module-2"></a>Modulen 2:
     dataset1 <- maml.mapInputPort(1) # class: data.frame
     param = dataset1
@@ -220,7 +220,7 @@ Det finns flera olika sätt att använda tjänsten automatiskt (exempel appar fi
 
     output = as.data.frame(quantile)
 
-    # Select data.frame to be sent to the output Dataset port
+    # Select data.frame toobe sent toohello output Dataset port
     maml.mapOutputPort("output");
 
 
@@ -230,7 +230,7 @@ Det finns flera olika sätt att använda tjänsten automatiskt (exempel appar fi
 #### <a name="module-1"></a>Modul 1:
     #data schema with example data (replaced with data from web service)
     data.set=data.frame(q=5,size=10,prob=.5,side='L');
-    maml.mapOutputPort("data.set"); #send data to output port
+    maml.mapOutputPort("data.set"); #send data toooutput port
 
 
 #### <a name="module-2"></a>Modulen 2:
@@ -256,7 +256,7 @@ Det finns flera olika sätt att använda tjänsten automatiskt (exempel appar fi
 
     output = as.data.frame(prob)
 
-    # Select data.frame to be sent to the output Dataset port
+    # Select data.frame toobe sent toohello output Dataset port
     maml.mapOutputPort("output");
 
 ### <a name="binomial-distribution-generator"></a>Binomialfördelningen Generator
@@ -265,7 +265,7 @@ Det finns flera olika sätt att använda tjänsten automatiskt (exempel appar fi
 #### <a name="module-1"></a>Modul 1:
     #data schema with example data (replaced with data from web service)
     data.set=data.frame(n=50,size=10,p=.5);
-    maml.mapOutputPort("data.set"); #send data to output port
+    maml.mapOutputPort("data.set"); #send data toooutput port
 
 #### <a name="module-2"></a>Modulen 2:
     dataset1 <- maml.mapInputPort(1) # class: data.frame
@@ -274,14 +274,14 @@ Det finns flera olika sätt att använda tjänsten automatiskt (exempel appar fi
 
     output = as.data.frame(t(dist))
 
-    # Select data.frame to be sent to the output Dataset port
+    # Select data.frame toobe sent toohello output Dataset port
     maml.mapOutputPort("output");
 
 ## <a name="limitations"></a>Begränsningar
-Dessa är väldigt enkelt exempel runt binomialfördelningen. Lite fel fånga har implementerats som kan ses från exempelkoden ovan.
+Dessa är väldigt enkelt exempel omgivande hello binomialfördelningen. Lite fel fånga har implementerats som kan ses från hello exempelkod ovan.
 
 ## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
-Vanliga frågor om förbrukningen av webbtjänst eller publicering på Azure Marketplace finns [här](machine-learning-marketplace-faq.md).
+Vanliga frågor om förbrukningen av hello webbtjänst eller publishing toohello Azure Marketplace finns [här](machine-learning-marketplace-faq.md).
 
 [1]: ./media/machine-learning-r-csharp-binomial-distribution/binomial_1.png
 

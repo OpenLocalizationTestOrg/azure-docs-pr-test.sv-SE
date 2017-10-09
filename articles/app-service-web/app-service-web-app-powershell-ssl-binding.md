@@ -1,6 +1,6 @@
 ---
-title: SSL-certifikat-bindning med PowerShell
-description: "Lär dig mer om att binda SSL-certifikat till ditt webbprogram med hjälp av PowerShell."
+title: "aaaSSL certifikat-bindning med hjälp av PowerShell"
+description: "Lär dig hur toobind SSL-certifikat tooyour webbprogram med hjälp av PowerShell."
 services: app-service\web
 documentationcenter: 
 author: ahmedelnably
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2016
 ms.author: aelnably
-ms.openlocfilehash: a1fcc618fb0c68778e39cc227368a60b008f9401
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 82f0e7c796da99ab50f69f3638ef64d55a94fc8e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-app-service-ssl-certificate-binding-using-powershell"></a>Azure App Service SSL-Certifikatbindning med hjälp av PowerShell
-Med versionen av Microsoft Azure PowerShell version 1.1.0 en ny cmdlet lagts till som skulle ge användaren möjlighet att binda befintliga eller nya SSL-certifikat till en befintlig Webbapp.
+Hello-versionen av Microsoft Azure PowerShell version 1.1.0 har lagts till en ny cmdlet som ger hello användaren hello möjlighet toobind befintliga eller nya SSL-certifikat tooan befintliga Web App.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-Läs om hur du använder Azure Resource Manager baserade Azure PowerShell-cmdlets för att hantera ditt webbprogram Kontrollera [Azure Resource Manager baserat PowerShell-kommandon för Azure Web App](app-service-web-app-azure-resource-manager-powershell.md)
+toolearn om hur du använder Azure Resource Manager baserat Azure PowerShell-cmdlets toomanage Web Apps-Kontrollera [Azure Resource Manager baserat PowerShell-kommandon för Azure Web App](app-service-web-app-azure-resource-manager-powershell.md)
 
 ## <a name="uploading-and-binding-a-new-ssl-certificate"></a>Ladda upp och binda ett nytt SSL-certifikat
-Scenario: Användaren vill binda ett SSL-certifikat till en av sina webbprogram.
+Scenario: hello användaren vill toobind ett SSL-certifikat tooone av sin webbprogram.
 
-Veta resursgruppens namn som innehåller webbappen, webbprogramnamnet, certifikat PFX sökvägen till filen på användarens dator, lösenordet för certifikatet och det anpassade värdnamnet kan vi använda följande PowerShell-kommando för att skapa den SSL-bindningen:
+Veta hello resursgruppens namn som innehåller hello webbprogram, hello webbprogrammets namn, hello certifikat PFX sökväg på hello användaren datorn hello lösenordet för hello certifikatet och hello anpassade värdnamnet kan vi använda hello följande PowerShell-kommandot toocreate som SSL-bindning:
 
     New-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -CertificateFilePath PathToPfxFile -CertificatePassword PlainTextPwd -Name www.contoso.com
 
-Observera att du måste ha ett värdnamn (anpassad domän) som redan har konfigurerats för att innan du lägger till en SSL-bindning till en webbapp. Om värdnamnet inte har konfigurerats så att du får ett fel 'hostname' inte finns när du kör New-AzureRmWebAppSSLBinding. Du kan lägga till ett värdnamn direkt från portalen eller med hjälp av Azure PowerShell. Följande PowerShell-fragment kan vara att konfigurera värdnamnet innan du kör New-AzureRmWebAppSSLBinding.   
+Observera att du, innan du lägger till en SSL-bindning tooa webbapp måste ha ett värdnamn (anpassad domän) som redan har konfigurerats. Om hello värdnamn inte är konfigurerad så att du får ett fel 'hostname' inte finns när du kör New-AzureRmWebAppSSLBinding. Du kan lägga till ett värdnamn direkt från hello-portalen eller med hjälp av Azure PowerShell. hello kan följande PowerShell-fragment vara tooconfigure hello värdnamn innan du kör New-AzureRmWebAppSSLBinding.   
 
     $webApp = Get-AzureRmWebApp -Name mytestapp -ResourceGroupName myresourcegroup  
     $hostNames = $webApp.HostNames  
     $HostNames.Add("www.contoso.com")  
     Set-AzureRmWebApp -Name mytestapp -ResourceGroupName myresourcegroup -HostNames $HostNames   
 
-Det är viktigt att förstå att cmdlet Set-AzureRmWebApp skriver över värdnamn för webbprogrammet. Därför ovan PowerShell fragment att lägga till i den befintliga listan med värdnamn för webbprogrammet.  
+Det är viktigt toounderstand som hello cmdlet Set-AzureRmWebApp skriver över hello värdnamn för hello webbprogrammet. Därför hello ovan PowerShell fragment att lägga till toohello befintlig lista över hello värdnamn för hello webbprogrammet.  
 
 ## <a name="uploading-and-binding-an-existing-ssl-certificate"></a>Ladda upp och binda ett SSL-certifikat
-Scenario: Användaren vill binda ett tidigare överförda SSL-certifikat till en av sina webbprogram.
+Scenario: hello användaren vill toobind tooone för en tidigare överförda SSL-certifikatet av sin webbprogram.
 
-Vi kan hämta listan över certifikat som redan har överförts till en viss resursgrupp med hjälp av följande kommando
+Vi kan ha hello listan över certifikat redan överförda tooa specifika resursgrupp med hjälp av följande kommando hello
 
     Get-AzureRmWebAppCertificate -ResourceGroupName myresourcegroup
 
-Observera att certifikat som är lokala för en specifik plats och resursgruppen, användaren behöver ladda upp certifikatet igen om det konfigurerade webbprogrammet finns på en annan plats och resursgrupp andra som som nödvändiga certifikat 
+Observera att hello certifikat är lokala tooa specifik plats och grupp, hello användare behöver toore-överföringen hello certifikat om hello konfigurerade webbprogram finns på en annan plats och resursgrupp andra som som hello behövs certifikat 
 
-Veta resursgruppens namn som innehåller webbappen, webbprogramnamnet, tumavtrycket för certifikatet och det anpassade värdnamnet kan vi använda följande PowerShell-kommando för att skapa den SSL-bindningen:
+Veta hello resursgruppens namn som innehåller hello webbapp hello webbprogrammets namn, hello tumavtryck för certifikat och hello anpassade värdnamnet kan vi använda hello följande PowerShell-kommandot toocreate som SSL-bindning:
 
     New-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Thumbprint <certificate thumbprint> -Name www.contoso.com
 
 ## <a name="deleting-an-existing-ssl-binding"></a>Om du tar bort en befintlig SSL-bindning
-Scenario: Användaren vill ta bort en befintlig SSL-bindning.
+Scenario: hello användaren vill toodelete en befintlig SSL-bindning.
 
-Vi vet resursgruppens namn som innehåller webbappen, webbprogramnamnet och det anpassade värdnamnet, kan du använda följande PowerShell-kommando att ta bort den SSL-bindningen:
+Veta hello resursgruppens namn som innehåller hello webbapp hello webbprogrammets namn och hello anpassade värdnamnet kan vi använda hello följande PowerShell-kommandot tooremove som SSL-bindning:
 
     Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com
 
-Observera att om den borttagna SSL-bindningen har den senaste bindning med certifikatet i den plats som standard certifikatet kommer att tas bort, om användaren vill behålla det certifikat som han kan använda alternativet DeleteCertificate att certifikatet
+Observera att om hello bort SSL-bindning har hello senast bindning med certifikatet på den platsen kan som standard hello certifikat tas bort, om hello användaren vill tookeep hello certifikatet han kan använda hello DeleteCertificate alternativet tookeep hello certifikat
 
     Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com -DeleteCertificate $false
 
 ### <a name="references"></a>Referenser
 * [Azure Resource Manager baserat PowerShell-kommandon för Azure Web App](app-service-web-app-azure-resource-manager-powershell.md)
-* [Introduktion till App Service-miljöer](app-service-app-service-environment-intro.md)
+* [Introduktion tooApp-miljö](app-service-app-service-environment-intro.md)
 * [Använda Azure PowerShell med Azure Resource Manager](../powershell-azure-resource-manager.md)
 

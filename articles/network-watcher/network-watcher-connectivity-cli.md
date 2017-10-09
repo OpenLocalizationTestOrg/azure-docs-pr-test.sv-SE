@@ -1,6 +1,6 @@
 ---
-title: "Kontrollera anslutningen till Azure Nätverksbevakaren - Azure CLI 2.0 | Microsoft Docs"
-description: "Den här sidan förklarar hur du använder anslutning kontroll med hjälp av Azure CLI 2.0 Nätverksbevakaren"
+title: "aaaCheck anslutningen till Azure Nätverksbevakaren - Azure CLI 2.0 | Microsoft Docs"
+description: "Den här sidan förklarar hur toouse anslutningen kontrolleras med hjälp av Azure CLI 2.0 Nätverksbevakaren"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: gwallace
-ms.openlocfilehash: c1deaa40bfda0bf3858ad56d3d6a90df34351278
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e94e0fad03fd36ebf4e1fdf9e3cfee934b289deb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="check-connectivity-with-azure-network-watcher-using-azure-cli-20"></a>Kontrollera anslutningen med Azure Nätverksbevakaren använder Azure CLI 2.0
 
@@ -26,24 +26,24 @@ ms.lasthandoff: 08/18/2017
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure REST-API](network-watcher-connectivity-rest.md)
 
-Lär dig använda anslutningen för att kontrollera om en direkt TCP-anslutning från en virtuell dator till en viss slutpunkt kan upprättas.
+Lär dig hur toouse anslutning tooverify om en direkt TCP-anslutning från en virtuell dator tooa angivna slutpunkten kan upprättas.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Den här artikeln förutsätter att du har följande resurser:
+Den här artikeln förutsätter att du har hello följande resurser:
 
-* En instans av Nätverksbevakaren i regionen som du vill kontrollera anslutningen.
+* En instans Nätverksbevakaren i hello region som du vill toocheck anslutning.
 
-* Virtuella datorer om du vill kontrollera anslutningen med.
+* Virtuella datorer toocheck anslutningsmöjligheter med.
 
 [!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 > [!IMPORTANT]
-> Kontrollera anslutningen kräver ett tillägg för virtuell dator `AzureNetworkWatcherExtension`. Installera tillägget på en Windows VM finns [tillägg för virtuell dator i Azure Network Watcher Agent för Windows](../virtual-machines/windows/extensions-nwa.md) och för Linux VM besöka [tillägg för virtuell dator i Azure Network Watcher Agent för Linux](../virtual-machines/linux/extensions-nwa.md).
+> Kontrollera anslutningen kräver ett tillägg för virtuell dator `AzureNetworkWatcherExtension`. Installera hello tillägg på en Windows VM finns [tillägg för virtuell dator i Azure Network Watcher Agent för Windows](../virtual-machines/windows/extensions-nwa.md) och för Linux VM besöka [tillägg för virtuell dator i Azure Network Watcher Agent för Linux](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="register-the-preview-capability"></a>Registrera funktionen för förhandsgranskning 
+## <a name="register-hello-preview-capability"></a>Registrera hello preview kapaciteten 
 
-Kontrollera anslutningen är för närvarande i förhandsversion att använda den här funktionen måste vara registrerad. Gör detta genom att köra följande CLI exemplet
+Kontrollera anslutningen är för närvarande i förhandsversion, toouse funktionen toobe registrerade måste. toodo detta, kör hello följande CLI-exempel
 
 ```azurecli 
 az feature register --namespace Microsoft.Network --name AllowNetworkWatcherConnectivityCheck
@@ -51,13 +51,13 @@ az feature register --namespace Microsoft.Network --name AllowNetworkWatcherConn
 az provider register --namespace Microsoft.Network 
 ``` 
 
-Kontrollera registreringen lyckades, kör du kommandot CLI:
+tooverify hello registreringen har slutförts, kör följande kommando CLI hello:
 
 ```azurecli
 az feature show --namespace Microsoft.Network --name AllowNetworkWatcherConnectivityCheck 
 ```
 
-Om funktionen har registrerats korrekt, bör dina utdata motsvara följande: 
+Om hello-funktionen har registrerats korrekt bör hello utdata motsvara hello följande: 
 
 ```json
 {
@@ -70,9 +70,9 @@ Om funktionen har registrerats korrekt, bör dina utdata motsvara följande:
 }
 ``` 
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Kontrollera anslutningen till en virtuell dator
+## <a name="check-connectivity-tooa-virtual-machine"></a>Kontrollera anslutningen tooa virtuell dator
 
-Det här exemplet kontrollerar anslutningen till en virtuell dator för målet via port 80.
+Det här exemplet kontrollerar anslutningen tooa virtuella måldatorn via port 80.
 
 ### <a name="example"></a>Exempel
 
@@ -82,7 +82,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Svar
 
-Följande svar är från föregående exempel.  I det här svaret på `ConnectionStatus` är **inte åtkomlig**. Du kan se att alla avsökningar skickas misslyckades. Anslutningen misslyckades på den virtuella installationen på grund av ett användardefinierat `NetworkSecurityRule` med namnet **UserRule_Port80**, konfigurerad för att blockera inkommande trafik på port 80. Den här informationen kan användas för att utreda problem med anslutningen.
+hello efter svar är från hello föregående exempel.  I det här svaret hello `ConnectionStatus` är **inte åtkomlig**. Du kan se alla hello avsökningar skickas misslyckades. hello-anslutningen misslyckades på hello virtuell installation på grund av tooa användardefinierat `NetworkSecurityRule` med namnet **UserRule_Port80**, konfigurerad tooblock inkommande trafik på port 80. Den här informationen kan vara problem med anslutningen används tooresearch.
 
 ```json
 {
@@ -153,7 +153,7 @@ Nic0/ipConfigurations/ipconfig1",
 
 ## <a name="validate-routing-issues"></a>Validera routning problem
 
-Exemplet kontrollerar anslutningen mellan en virtuell dator och en fjärrslutpunkten.
+hello exempel kontrollerar anslutningen mellan en virtuell dator och en fjärrslutpunkten.
 
 ### <a name="example"></a>Exempel
 
@@ -163,7 +163,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Svar
 
-I följande exempel visas den `connectionStatus` visas som **inte åtkomlig**. I den `hops` information hittar du `issues` som trafiken har blockerats på grund av en `UserDefinedRoute`.
+I följande exempel hello, hello `connectionStatus` visas som **inte åtkomlig**. I hello `hops` information hittar du `issues` att hello trafik har blockerats på grund av tooa `UserDefinedRoute`.
 
 ```json
 {
@@ -211,7 +211,7 @@ pNic0/ipConfigurations/ipconfig1",
 
 ## <a name="check-website-latency"></a>Kontrollera svarstid för webbplats
 
-I följande exempel kontrollerar anslutningen till en webbplats.
+hello kontrollerar följande exempel hello anslutningen tooa webbplats.
 
 ### <a name="example"></a>Exempel
 
@@ -221,7 +221,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Svar
 
-I följande svar, kan du se den `connectionStatus` visas som **nåbar**. När en anslutning lyckas tillhandahålls svarstider.
+I hello efter svar, kan du se hello `connectionStatus` visas som **nåbar**. När en anslutning lyckas tillhandahålls svarstider.
 
 ```json
 {
@@ -255,9 +255,9 @@ pNic0/ipConfigurations/ipconfig1",
 }
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Kontrollera anslutningen till en slutpunkt för lagring
+## <a name="check-connectivity-tooa-storage-endpoint"></a>Kontrollera anslutningen tooa lagring slutpunkt
 
-I följande exempel kontrollerar anslutningen från en virtuell dator till en blogg storage-konto.
+hello kontrollerar följande exempel hello anslutning från ett lagringskonto för virtuell dator tooa blogg.
 
 ### <a name="example"></a>Exempel
 
@@ -267,7 +267,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Svar
 
-Följande json är exempel svaret från att köra cmdlet tidigare. När kontrollen är lyckas den `connectionStatus` egenskapen visas som **nåbar**.  Information om antalet hopp som krävs för att nå lagringsblob och fördröjning finns.
+hello är följande json hello exempelsvar körs hello föregående cmdlet. Eftersom hello kontrollera lyckade hello `connectionStatus` egenskapen visas som **nåbar**.  Hello information om hello antal hopp krävs tooreach hello storage-blob och svarstid finns.
 
 ```json
 {
@@ -302,6 +302,6 @@ Följande json är exempel svaret från att köra cmdlet tidigare. När kontroll
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig att automatisera insamlingar paket med virtuella aviseringar genom att visa [skapar en avisering utlösta paketinsamling](network-watcher-alert-triggered-packet-capture.md)
+Lär dig hur fångar tooautomate paket med virtuella aviseringar genom att visa [skapar en avisering utlösta paketinsamling](network-watcher-alert-triggered-packet-capture.md)
 
 Hitta om vissa trafik tillåts i eller utanför den virtuella datorn genom att besöka [Kontrollera Kontrollera IP-flöde](network-watcher-check-ip-flow-verify-portal.md)

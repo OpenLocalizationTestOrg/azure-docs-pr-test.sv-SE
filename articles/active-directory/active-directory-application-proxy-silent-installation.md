@@ -1,6 +1,6 @@
 ---
-title: Tyst installation Azure AD App Proxy connector | Microsoft Docs
-description: "Beskriver hur du utför en obevakad installation av Azure AD Application Proxy Connector att tillhandahålla säker fjärråtkomst till lokala appar."
+title: aaaSilent installera Azure AD App Proxy connector | Microsoft Docs
+description: "Beskriver hur tooperform en obevakad installation av Azure AD Application Proxy Connector tooprovide säker fjärråtkomst tooyour lokala appar."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,51 +15,51 @@ ms.date: 08/10/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 9e28c89d8f64f0ae3d4150017ca544e606075c45
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ce796ff45a65ba7d5f0f63c02085bdc6af494548
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="silently-install-the-azure-ad-application-proxy-connector"></a>Installera Azure AD Application Proxy Connector
-Du vill kunna skicka ett skript för installation på flera Windows-servrar eller på Windows-servrar som inte har aktiverat användargränssnittet. Det här avsnittet hjälper dig att skapa en Windows PowerShell-skript som aktiverar obevakad installation och registrering för din Azure AD Application Proxy Connector.
+# <a name="silently-install-hello-azure-ad-application-proxy-connector"></a>Obevakad installation hello Azure AD Application Proxy Connector
+Vill du toobe kan toosend en installation skript toomultiple Windows eller tooWindows servrar som inte har aktiverat användargränssnittet. Det här avsnittet hjälper dig att skapa en Windows PowerShell-skript som aktiverar obevakad installation och registrering för din Azure AD Application Proxy Connector.
 
 Den här funktionen är användbar när du vill:
 
-* Installera connector på datorer utan användargränssnitt skikt eller när det går inte att RDP till datorn.
+* Installera hello connector på datorer utan användargränssnitt skikt eller när det går inte att RDP toohello datorn.
 * Installera och registrera många kopplingar på samma gång.
-* Integrera kopplingsinstallationen och registrering som en del av en annan procedur.
-* Skapa en standard serveravbildning som innehåller connector bitar men har inte registrerats.
+* Integrera hello connector installation och registrering som en del av en annan procedur.
+* Skapa en standard serveravbildning som innehåller hello connector bitar men har inte registrerats.
 
-Programproxy fungerar genom att installera en smidig Windows Server-tjänsten som kallas kopplingen i nätverket. Application Proxy Connector fungerar den har i registreras med Azure AD-katalogen med en global administratör och lösenord. Den här informationen anges normalt under installationen av koppling i en dialogruta. Du kan dock använda Windows PowerShell för att skapa ett autentiseringsuppgiftobjekt för att ange din registreringsinformation. Eller skapa egna token och använda den för att ange din registreringsinformation.
+Programproxy fungerar genom att installera en smidig Windows Server-tjänsten som kallas hello Connector i ditt nätverk. Hello Application Proxy Connector toowork har toobe registrerad med Azure AD-katalogen med en global administratör och lösenord. Den här informationen anges normalt under installationen av koppling i en dialogruta. Du kan dock använda Windows PowerShell toocreate en autentiseringsuppgift objektet tooenter registreringsinformationen. Du kan skapa egna token och använda den tooenter registreringsinformationen.
 
-## <a name="install-the-connector"></a>Installera connector
-Installera Connector-MSI: er utan att registrera kopplingen på följande sätt:
+## <a name="install-hello-connector"></a>Installera hello connector
+Installera hello Connector MSI: er utan att registrera hello Connector på följande sätt:
 
 1. Öppna en kommandotolk.
-2. Kör följande kommando där /q innebär tyst installation - uppmanas installationen inte att godkänna licensavtalet.
+2. Kör följande kommando i vilka hello /q innebär tyst installation hello - hello installationen uppmanas inte tooaccept hello licensavtal (EULA).
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## <a name="register-the-connector-with-azure-ad"></a>Registrera anslutningsverktyget med Azure AD
-Det finns två metoder som du kan använda för att registrera anslutningsverktyget:
+## <a name="register-hello-connector-with-azure-ad"></a>Registrera hello connector med Azure AD
+Det finns två metoder som du kan använda tooregister hello anslutningen:
 
-* Registrera anslutningsverktyget med hjälp av Windows PowerShell-autentiseringsobjekt
-* Registrera anslutningsverktyget med hjälp av en token som skapats offline
+* Registrera hello connector med hjälp av Windows PowerShell-autentiseringsobjekt
+* Registrera hello connector med hjälp av en token som skapats offline
 
-### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Registrera anslutningsverktyget med hjälp av Windows PowerShell-autentiseringsobjekt
-1. Skapa Windows PowerShell-autentiseringsuppgifter objektet genom att köra det här kommandot. Ersätt  *\<användarnamn\>*  och  *\<lösenord\>*  med användarnamn och lösenord för din katalog:
+### <a name="register-hello-connector-using-a-windows-powershell-credential-object"></a>Registrera hello connector med hjälp av Windows PowerShell-autentiseringsobjekt
+1. Skapa hello Windows PowerShell-autentiseringsuppgifter objekt genom att köra det här kommandot. Ersätt  *\<användarnamn\>*  och  *\<lösenord\>*  med hello användarnamn och lösenord för din katalog:
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. Gå till **C:\Program Files\Microsoft AAD App Proxy Connector** och kör skriptet med hjälp av PowerShell autentiseringsuppgifter objekt du har skapat. Ersätt *$cred* med namnet på PowerShell autentiseringsuppgifter objekt du har skapat:
+2. Gå för**C:\Program Files\Microsoft AAD App Proxy Connector** och köra hello skript med hello PowerShell autentiseringsuppgifter objekt du har skapat. Ersätt *$cred* med hello namnet hello PowerShell autentiseringsuppgifter objekt du har skapat:
    
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
 
-### <a name="register-the-connector-using-a-token-created-offline"></a>Registrera anslutningsverktyget med hjälp av en token som skapats offline
-1. Skapa en offline-token med hjälp av klassen AuthenticationContext med hjälp av värdena i kodfragmentet:
+### <a name="register-hello-connector-using-a-token-created-offline"></a>Registrera hello connector med hjälp av en token som skapats offline
+1. Skapa en offline-token med hello värden i hello kodstycke hello AuthenticationContext-klassen:
 
         using System;
         using System.Diagnostics;
@@ -69,22 +69,22 @@ Det finns två metoder som du kan använda för att registrera anslutningsverkty
         {
         #region constants
         /// <summary>
-        /// The AAD authentication endpoint uri
+        /// hello AAD authentication endpoint uri
         /// </summary>
         static readonly Uri AadAuthenticationEndpoint = new Uri("https://login.microsoftonline.com/common/oauth2/token?api-version=1.0");
 
         /// <summary>
-        /// The application ID of the connector in AAD
+        /// hello application ID of hello connector in AAD
         /// </summary>
         static readonly string ConnectorAppId = "55747057-9b5d-4bd4-b387-abf52a8bd489";
 
         /// <summary>
-        /// The reply address of the connector application in AAD
+        /// hello reply address of hello connector application in AAD
         /// </summary>
         static readonly Uri ConnectorRedirectAddress = new Uri("urn:ietf:wg:oauth:2.0:oob");
 
         /// <summary>
-        /// The AppIdUri of the registration service in AAD
+        /// hello AppIdUri of hello registration service in AAD
         /// </summary>
         static readonly Uri RegistrationServiceAppIdUri = new Uri("https://proxy.cloudwebappproxy.net/registerapp");
 
@@ -115,11 +115,11 @@ Det finns två metoder som du kan använda för att registrera anslutningsverkty
         }
 
 
-2. När du har en token kan skapa en SecureString med token:
+2. När du har hello token kan skapa en SecureString använder hello-token:
 
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 
-3. Kör följande Windows PowerShell-kommando ersätter \<klient GUID\> med katalog-ID:
+3. Kör hello följande Windows PowerShell-kommandot, ersätter \<klient GUID\> med katalog-ID:
 
    `RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID>`
 

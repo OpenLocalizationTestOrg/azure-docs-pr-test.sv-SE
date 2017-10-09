@@ -1,6 +1,6 @@
 ---
-title: "Hur du gör ett telefonsamtal från Twilio (PHP) | Microsoft Docs"
-description: "Lär dig att ringa ett telefonsamtal och skicka ett SMS-meddelande med Twilio-API-tjänsten på Azure. Exempel är för PHP-program."
+title: "aaaHow toomake ett telefonsamtal från Twilio (PHP) | Microsoft Docs"
+description: "Lär dig hur toomake ett telefonsamtal och skicka ett SMS-meddelandet med hello Twilio API-tjänsten på Azure. Exempel är för PHP-program."
 documentationcenter: php
 services: 
 author: devinrader
@@ -14,25 +14,25 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: f35450ace02727ddf392dbbe857b934a45ee022a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e6fecc345bf9ae787d14d533bd8d96b175c2453b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Hur du gör ett telefonsamtal med Twilio i ett PHP-program på Azure
-I följande exempel visas hur du kan använda Twilio ringa ett samtal från en PHP-webbplats finns i Azure. Exempelprogrammet uppmanas användaren för telefonsamtal värden som visas i följande skärmbild visar.
+# <a name="how-toomake-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Hur tooMake ett telefonsamtal med Twilio i ett PHP-program på Azure
+hello följande exempel visar hur du kan använda Twilio toomake ett samtal från en PHP-webbplats finns i Azure. hello resulterande program frågar hello användaren för telefonsamtal värden som visas i följande skärmbild som visar hello.
 
 ![Azure anropet formuläret med hjälp av Twilio och PHP][twilio_php]
 
-Du behöver göra följande för att använda koden i det här avsnittet:
+Du behöver toodo hello följande toouse hello koden i det här avsnittet:
 
-1. Skaffa ett Twilio-konto och autentisering-token från din [Twilio konsolen][twilio_console]. Kom igång med Twilio, utvärdera priser på [http://www.twilio.com/pricing][twilio_pricing]. Du kan registrera dig för ett utvärderingskonto på [https://www.twilio.com/try-twilio][try_twilio].
-2. Hämta den [Twilio-biblioteket för PHP](https://github.com/twilio/twilio-php) eller installera den som ett PÄRONTRÄD paket. Mer information finns i [Readme-filen](https://github.com/twilio/twilio-php/blob/master/README.md).
-3. Installera Azure SDK för PHP. En översikt över SDK och anvisningar om hur du installerar den finns [ställa in Azure SDK för PHP](app-service-web/web-sites-php-mysql-deploy-use-git.md)
+1. Skaffa ett Twilio-konto och autentisering-token från din [Twilio konsolen][twilio_console]. tooget igång med Twilio, utvärdera priser på [http://www.twilio.com/pricing][twilio_pricing]. Du kan registrera dig för ett utvärderingskonto på [https://www.twilio.com/try-twilio][try_twilio].
+2. Hämta hello [Twilio-biblioteket för PHP](https://github.com/twilio/twilio-php) eller installera den som ett PÄRONTRÄD paket. Mer information finns i hello [Readme-filen](https://github.com/twilio/twilio-php/blob/master/README.md).
+3. Installera hello Azure SDK för PHP. En översikt över hello SDK och instruktioner om hur du installerar den finns [konfigurera hello Azure SDK för PHP](app-service-web/web-sites-php-mysql-deploy-use-git.md)
 
 ## <a name="create-a-web-form-for-making-a-call"></a>Skapa ett webbformulär för ett samtal
-Följande HTML-kod visar hur du skapar en webbsida (**callform.html**) som hämtar användardata för ett samtal:
+hello följande HTML kod visas hur toobuild en webbsida (**callform.html**) som hämtar användardata för ett samtal:
 
 ```html
 <!DOCTYPE html>
@@ -55,7 +55,7 @@ Följande HTML-kod visar hur du skapar en webbsida (**callform.html**) som hämt
       </tr>
       <tr>
         <td>Call message:</td>
-        <td><input name="callText" size="100" type="text" value="Hello. This is the call text. Good bye."></td>
+        <td><input name="callText" size="100" type="text" value="Hello. This is hello call text. Good bye."></td>
       </tr>
       <tr>
         <td colspan="2"><input type="submit" value="Make this call"></td>
@@ -66,8 +66,8 @@ Följande HTML-kod visar hur du skapar en webbsida (**callform.html**) som hämt
 </html>
 ```
 
-## <a name="create-the-code-to-make-the-call"></a>Skapa koden för att göra anrop
-Följande kod visar hur du skapar **makecall.php**, som anropas när användaren skickar formuläret som visas av **callform.html**. Koden nedan skapar anropet meddelandet och genererar anropet. Dessutom måste du använda dina Twilio-konto och autentisering-token från den [Twilio konsolen] [ twilio_console] i stället för platshållarvärdena för **$sid** och  **$token** i koden nedan.
+## <a name="create-hello-code-toomake-hello-call"></a>Skapa hello kod toomake hello anrop
+Hej följande kod visar hur toobuild **makecall.php**, som anropas när hello användaren skickar hello formuläret som visas av **callform.html**. hello koden nedan skapar anropet hälsningsmeddelande och genererar hello-anrop. Dessutom vara säker på att toouse ditt Twilio-konto och autentisering token från hello [Twilio konsolen] [ twilio_console] i stället för hello platshållare för värden som har tilldelats för**$sid** och **$token** i hello koden nedan.
 
 ```html
 <html>
@@ -100,27 +100,27 @@ echo "URI resource: " . $call->uri . "<br />";
 </html>
 ```
 
-Förutom att göra anropet **makecall.php** visar vissa anrop metadata, som visas i bilden nedan. Mer information om anropet metadata finns [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties].
+Dessutom toomaking hello-anrop **makecall.php** visar vissa anrop metadata, som visas i hello bilden nedan. Mer information om anropet metadata finns [https://www.twilio.com/docs/api/rest/call#instance-properties][twilio_call_properties].
 
 ![Azure anropet svaret med hjälp av Twilio och PHP][twilio_php_response]
 
-## <a name="run-the-application"></a>Köra programmet
-Nästa steg är att distribuera programmet till Azure Websites. I följande artiklar innehåller information för att skapa en webbplats och distribuera din kod med Git, FTP eller WebMatrix (om inte all information i varje artikel relevanta):
+## <a name="run-hello-application"></a>Kör programmet hello
+hello nästa steg är toodeploy ditt program tooAzure webbplatser. hello innehåller följande artiklar hello information för att skapa en webbplats och distribuera din kod med Git, FTP eller WebMatrix (om inte all information i varje artikel relevanta):
 
 * [Skapa en PHP-MySQL Azure-webbplats och distribuera med Git](app-service-web/web-sites-php-mysql-deploy-use-git.md)
 * [Skapa en PHP-MySQL Azure-webbplats och distribuera med FTP](app-service-web/web-sites-php-mysql-deploy-use-ftp.md)
 
 ## <a name="next-steps"></a>Nästa steg
-Den här koden har angetts för att visa grundläggande funktioner med Twilio i PHP i Azure. Innan du distribuerar till Azure i produktion, kanske du vill lägga till flera felhantering eller andra funktioner. Exempel:
+Den här koden har angetts tooshow du grundläggande funktioner med Twilio i PHP i Azure. Du kanske vill tooadd mer felhantering eller andra funktioner innan du distribuerar tooAzure i produktion. Exempel:
 
-* Istället för att använda ett webbformulär, kunde du använda Azure storage-blobbar eller SQL-databas för att lagra telefonnummer och anropa text. Information om hur du använder Azure storage-blobbar i PHP finns [med hjälp av Azure Storage med PHP-program][howto_blob_storage_php]. Information om hur du använder SQL-databas i PHP finns [med hjälp av SQL-databas med PHP-program][howto_sql_azure_php].
-* Den **makecall.php** kod använder Twilio-tillhandahållna URL ([http://twimlets.com/message][twimlet_message_url]) att tillhandahålla ett Twilio Markup Language (TwiML)-svar som informerar Twilio hur till Fortsätt med anropet. Till exempel TwiML som returneras kan innehålla en `<Say>` verb som resulterar i text som talas till mottagaren anrop. I stället för med den angivna Twilio-URL, kan du skapa tjänsten för att svara på Twilios begäran. Mer information finns i [så Använd Twilio för röst- och SMS-funktionerna i PHP][howto_twilio_voice_sms_php]. Mer information om TwiML kan hittas på [http://www.twilio.com/docs/api/twiml][twiml], och mer information om `<Say>` och andra Twilio-verb kan hittas på [http:// www.twilio.com/docs/API/twiml/Say][twilio_say].
-* Läs Twilio-riktlinjer för säkerhet på [https://www.twilio.com/docs/security][twilio_docs_security].
+* Istället för att använda ett webbformulär, kan du använda Azure storage-blobbar eller SQL-databas toostore telefonnummer och anropa text. Information om hur du använder Azure storage-blobbar i PHP finns [med hjälp av Azure Storage med PHP-program][howto_blob_storage_php]. Information om hur du använder SQL-databas i PHP finns [med hjälp av SQL-databas med PHP-program][howto_sql_azure_php].
+* Hej **makecall.php** kod använder Twilio-tillhandahållna URL ([http://twimlets.com/message][twimlet_message_url]) tooprovide svaret Twilio Markup Language (TwiML) som informerar Twilio hur tooproceed med hello-anrop. Till exempel hello TwiML som returneras kan innehålla en `<Say>` verb som resulterar i texten är talade toohello anrop mottagaren. Istället för att använda hello Twilio-tillhandahållna URL kan du bygga egna service toorespond tooTwilio begäran. Mer information finns i [hur tooUse Twilio för röst- och SMS-funktionerna i PHP][howto_twilio_voice_sms_php]. Mer information om TwiML kan hittas på [http://www.twilio.com/docs/api/twiml][twiml], och mer information om `<Say>` och andra Twilio-verb kan hittas på [http:// www.twilio.com/docs/API/twiml/Say][twilio_say].
+* Läsa hello Twilio säkerhetsriktlinjer på [https://www.twilio.com/docs/security][twilio_docs_security].
 
 Mer information om Twilio finns [https://www.twilio.com/docs][twilio_docs].
 
 ## <a name="see-also"></a>Se även
-* [Hur du använder Twilio för röst- och SMS-funktionerna i PHP](partner-twilio-php-how-to-use-voice-sms.md)
+* [Hur tooUse Twilio för röst- och SMS-funktionerna i PHP](partner-twilio-php-how-to-use-voice-sms.md)
 
 [twilio_console]: https://www.twilio.com/console
 [twilio_pricing]: http://www.twilio.com/pricing

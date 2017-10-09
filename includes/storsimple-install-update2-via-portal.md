@@ -1,36 +1,36 @@
 <!--author=alkohli last changed: 02/06/17-->
 
-#### <a name="to-install-an-update-from-the-azure-portal"></a>Installera en uppdatering från Azure Portal
+#### <a name="tooinstall-an-update-from-hello-azure-portal"></a>tooinstall en uppdatering från hello Azure-portalen
 
-1. Välj enheten på tjänstesidan StorSimple. Gå till **Enheter** > **Underhåll**.
-2. Klicka på **Genomsök uppdateringar** längst ned på sidan. Det skapas ett jobb för att söka efter tillgängliga uppdateringar. Du meddelas när jobbet har slutförts.
-3. I avsnittet **Programuppdateringar** på samma sida finns nya programuppdateringar tillgängliga. Vi rekommenderar att du läser den viktiga informationen innan du installerar en uppdatering på enheten.
-4. Klicka på **Installera uppdateringar** längst ned på listan och klicka sedan på **OK**.
-5. I dialogrutan **Installera uppdateringar** kontrollerar du att du har följt rekommendationerna och väljer sedan **Jag är införstådd med kravet ovan och är redo att uppgradera enheten** och klickar på knappen med en bock.
+1. Välj enheten hello StorSimple-tjänsten på sidan. Navigera för**enheter** > **Underhåll**.
+2. Hello längst hello-sidan, klickar du på **Sök efter uppdateringar**. Ett jobb skapas tooscan efter uppdateringar. Du meddelas när hello jobbet slutförs ordentligt.
+3. I hello **programuppdateringar** avsnittet hello samma sidan hello nya programuppdateringar är tillgängliga. Vi rekommenderar att du läser hello viktig information innan du installerar en uppdatering på enheten.
+4. Hello längst hello-sidan, klickar du på **installera uppdateringar**, och sedan **OK**.
+5. I hello **installera uppdateringar** dialogrutan, se till att du har följt hello rekommendationer och välj sedan **jag förstår hello ovan krav och är redo tooupgrade enheten** och klicka på Kontrollera hello knappen.
    
     ![Bekräftelsemeddelande](./media/storsimple-install-update2-via-portal/InstallUpdate12_2M.png)
 6. En uppsättning nödvändiga kontrollerar startar. Dessa kontroller omfattar följande:
    
-   * **Hälsokontroller av styrenheten** för att verifiera att båda styrenheterna är felfria och online.
-   * **Hälsokontroller för maskinvarukomponenter** för att verifiera att alla maskinvarukomponenter på StorSimple-enheten är felfria.
-   * **DATA 0-kontroller** för att verifiera att DATA 0 är aktiverat på enheten. Om inte det här gränssnittet är aktiverat måste du aktivera det och sedan försöka igen.
-   * **DATA 2- och 3 DATA-kontroller** för att verifiera att DATA 2- och DATA 3-nätverksgränssnitten inte är aktiverade. Om dessa gränssnitt är aktiverade måste du inaktivera dem och sedan försöka uppdatera din enhet. Den här kontrollen utförs enbart om du uppdaterar från en enhet som kör GA-programvara. Enheter som kör versionerna 0.1, 0.2 eller 0.3 behöver inte den här kontrollen.
-   * **Gatewaykontroll** på en enhet som kör en version före Uppdatering 1. Den här kontrollen utförs på alla enheter som kör föruppdatering 1-programvara, men inte på enheter som har en gateway konfigurerad för ett annat nätverksgränssnitt än DATA 0.
+   * **Domänkontrollanten hälsokontroller** tooverify både hello styrenheter är felfri och online.
+   * **Maskinvara komponenten hälsokontroller** tooverify alla hello maskinvarukomponenter på StorSimple-enheten är felfria.
+   * **DATA 0 kontrollerar** tooverify att DATA 0 är aktiverad på enheten. Om inte det här gränssnittet är aktiverat måste du aktivera det och sedan försöka igen.
+   * **DATA 2 och DATA 3 kontrollerar** tooverify att nätverksgränssnitten DATA 2 och DATA 3 inte har aktiverats. Om dessa gränssnitt är aktiverade, måste du inaktivera de här och försök sedan tooupdate din enhet. Den här kontrollen utförs enbart om du uppdaterar från en enhet som kör GA-programvara. Enheter som kör versionerna 0.1, 0.2 eller 0.3 behöver inte den här kontrollen.
+   * **Gateway-Kontrollera** på alla enheter som kör en tidigare tooUpdate för version 1. Den här kontrollen utförs på alla hello-enhet som kör före uppdateringen 1 programvara men misslyckas på hello-enheter som har en gateway som konfigurerats för ett nätverksgränssnitt än DATA 0.
      
-     Uppdateringen tillämpas om alla kontroller har slutförts. Du får ett meddelande när kontrollerna pågår.
+     hello uppdateringen har genomförts om alla kontroller har slutförts. Du meddelas när hello kontrollerar pågår.
      
      ![Förkontrollsmeddelande](./media/storsimple-install-update2-via-portal/InstallUpdate12_3M.png)
      
-     Följande är ett exempel där kontrollerna misslyckades. Du måste kontrollera att båda styrenheterna är felfria och online. Du måste också kontrollera maskinvarukomponenternas hälsotillstånd. I det här exemplet behöver komponenterna i Styrenhet 0 och Styrenhet 1 åtgärdas. Du kan behöva kontakta Microsofts support om du inte kan lösa dessa problem själv.
+     hello följande är ett exempel där hello kontroller misslyckades. Du måste kontrollera att båda hello-styrenheter är felfri och online. Du måste också toocheck hello hälsotillstånd hello maskinvarukomponenter. I det här exemplet behöver komponenterna i Styrenhet 0 och Styrenhet 1 åtgärdas. Du kanske måste toocontact Microsoft-supporten om du kan lösa dessa problem själv.
      
        ![Kontrollerna misslyckades](./media/storsimple-install-update2-via-portal/HCS_PreUpgradeChecksFailed-include.png)
-7. När kontrollerna är klara skapas ett uppdateringsjobb. Du får ett meddelande när uppdateringsjobbet har skapats.
+7. När hello kontroller har slutförts, skapas ett uppdateringsjobb. Du meddelas när hello Uppdateringsjobbet har skapats.
    
     ![Uppdatera skapande av jobb](./media/storsimple-install-update2-via-portal/InstallUpdate12_44M.png)
    
-    Uppdateringen tillämpas sedan på enheten.
+    hello uppdateringen tillämpas sedan på enheten.
     
-8. Klicka på **Visa jobb** om du vill övervaka förloppet för uppdateringsjobbet. På sidan **Jobb** kan du följa uppdateringsförloppet.
-9. Uppdateringen tar några timmar att slutföra. Markera uppdateringsjobbet och klicka på **Information** så kan du visa information om jobbet när som helst.
-10. När jobbet har slutförts navigerar du till sidan **Underhåll** och rullar ned till **Programuppdateringar**.
+8. toomonitor hello fortskrider hello uppdateringsjobb, klicka på **visa jobb**. På hello **jobb** sidan som du kan se hello uppdatera status.
+9. Det tar några timmar toocomplete hello uppdatering. Välj hello Uppdateringsjobbet och klicka på **information** tooview hello informationen om hello jobb när som helst.
+10. När hello jobbet har slutförts, går toohello **Underhåll** sidan och rulla ned för**programuppdateringar**.
 

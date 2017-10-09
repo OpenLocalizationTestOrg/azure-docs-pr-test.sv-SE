@@ -1,6 +1,6 @@
 ---
-title: "Kopiera eller flytta data till Azure Storage med AzCopy på Linux | Microsoft Docs"
-description: "Använd AzCopy på Linux-verktyget för att flytta eller kopiera data till och från blob- och innehåll. Kopiera data till Azure Storage från lokala filer eller kopiera data inom eller mellan lagringskonton. Enkelt migrera dina data till Azure Storage."
+title: "aaaCopy eller flytta data tooAzure lagring med AzCopy på Linux | Microsoft Docs"
+description: "Använd hello AzCopy på Linux-verktyget toomove eller kopiera data tooor från blob- och innehåll. Kopiera data tooAzure lagring från lokala filer eller kopiera data inom eller mellan lagringskonton. Enkelt migrera dina data tooAzure lagring."
 services: storage
 documentationcenter: 
 author: seguler
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: seguler
-ms.openlocfilehash: d17f63dcee590529756d48d699f78b3fb30f973c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dccb03c9e8cc3ea661494e7834f307b0e3e30cb9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Överföra data med AzCopy på Linux
-AzCopy på Linux är ett kommandoradsverktyg som utformats för att kopiera data till och från Microsoft Azure-Blob och fillagring med enkla kommandon med optimal prestanda. Du kan kopiera data från ett objekt till en annan inom ditt lagringskonto eller mellan lagringskonton.
+AzCopy på Linux är ett kommandoradsverktyg som utformats för att kopiera data tooand från Microsoft Azure-Blob och fillagring med enkla kommandon med optimal prestanda. Du kan kopiera data från en objektet tooanother inom ditt lagringskonto eller mellan lagringskonton.
 
 Det finns två versioner av AzCopy som du kan hämta. AzCopy på Linux är byggd med .NET Core Framework, som riktar sig till Linux-plattformar som erbjuder POSIX format kommandoradsalternativ. [AzCopy på Windows](storage-use-azcopy.md) har skapats med .NET Framework och erbjuder kommandoradsalternativ för Windows-formatet. Den här artikeln beskriver AzCopy på Linux.
 
 ## <a name="download-and-install-azcopy"></a>Hämta och installera AzCopy
 ### <a name="installation-on-linux"></a>Installation på Linux
 
-AzCopy på Linux kräver .NET Core framework på plattformen. Finns i installationsanvisningarna på den [.NET Core](https://www.microsoft.com/net/core#linuxubuntu) sidan.
+AzCopy på Linux kräver .NET Core framework på hello-plattformen. Se hello installationsinstruktioner på hello [.NET Core](https://www.microsoft.com/net/core#linuxubuntu) sidan.
 
-Exempelvis kan vi installera .NET Core på Ubuntu 16,10. Senaste installationsguiden finns [.NET Core på Linux](https://www.microsoft.com/net/core#linuxubuntu) installationssidan.
+Exempelvis kan vi installera .NET Core på Ubuntu 16,10. Hello senaste installationsguiden finns [.NET Core på Linux](https://www.microsoft.com/net/core#linuxubuntu) installationssidan.
 
 
 ```bash
@@ -48,7 +48,7 @@ tar -xf azcopy.tar.gz
 sudo ./install.sh
 ```
 
-Du kan ta bort de extraherade filerna när AzCopy på Linux har installerats. Du kan också om du inte har superanvändare, kan du också köra AzCopy med kommandoskript 'azcopy' i den extraherade mappen. 
+Du kan ta bort hello extraherade filer när AzCopy på Linux har installerats. Du kan också om du inte har superanvändare, kan du också köra AzCopy med hello kommandoskript 'azcopy' i hello extraherade mappen. 
 
 ### <a name="alternative-installation-on-ubuntu"></a>Alternativ Installation på Ubuntu
 
@@ -122,13 +122,13 @@ sudo apt-get install azcopy
 ```
 
 ## <a name="writing-your-first-azcopy-command"></a>Skriva ditt första AzCopy-kommandot
-Den grundläggande syntaxen för AzCopy kommandon är:
+grundläggande hello-syntaxen för AzCopy kommandon är:
 
 ```azcopy
 azcopy --source <source> --destination <destination> [Options]
 ```
 
-Följande exempel visar olika scenarier för att kopiera data till och från Microsoft Azure-BLOB och filer. Referera till den `azcopy --help` menyn för en detaljerad förklaring av de parametrar som används i varje prov.
+hello som följande exempel visar olika scenarier för att kopiera data tooand från Microsoft Azure-BLOB och filer. Se toohello `azcopy --help` menyn för en detaljerad förklaring av hello parametrar som används i varje prov.
 
 ## <a name="blob-download"></a>BLOB: ladda ned
 ### <a name="download-single-blob"></a>Hämta en enda blob
@@ -141,7 +141,7 @@ azcopy \
     --include "abc.txt"
 ```
 
-Om mappen `/mnt/myfiles` finns inte, AzCopy skapar den och hämtar `abc.txt ` till den nya mappen.
+Om hello mappen `/mnt/myfiles` finns inte, AzCopy skapar den och hämtar `abc.txt ` till hello ny mapp.
 
 ### <a name="download-single-blob-from-secondary-region"></a>Hämta en enda blob från sekundär region
 
@@ -165,7 +165,7 @@ azcopy \
     --recursive
 ```
 
-Anta följande blobbar finns i den angivna behållaren:  
+Anta hello följande blobbar finns i angivna hello-behållaren:  
 
 ```
 abc.txt
@@ -175,7 +175,7 @@ vd1/a.txt
 vd1/abcd.txt
 ```
 
-När hämtningen katalogen `/mnt/myfiles` innehåller följande filer:
+Efter hello hämtningen hello directory `/mnt/myfiles` innehåller hello följande filer:
 
 ```
 /mnt/myfiles/abc.txt
@@ -198,7 +198,7 @@ azcopy \
     --recursive
 ```
 
-Anta att följande blobbar finns i den angivna behållaren. Alla blobbar som börjar med prefixet `a` hämtas.
+Anta hello följande blobbar finns i hello angivna behållaren. Alla blobbar som börjar med prefixet hello `a` hämtas.
 
 ```
 abc.txt
@@ -209,7 +209,7 @@ vd1\a.txt
 vd1\abcd.txt
 ```
 
-När hämtningen mappen `/mnt/myfiles` innehåller följande filer:
+Efter hello hämtningen hello mappen `/mnt/myfiles` innehåller hello följande filer:
 
 ```
 /mnt/myfiles/abc.txt
@@ -217,9 +217,9 @@ När hämtningen mappen `/mnt/myfiles` innehåller följande filer:
 /mnt/myfiles/abc2.txt
 ```
 
-Prefixet som gäller för den virtuella katalogen, som utgör den första delen av blobbnamnet. I exemplet ovan, matchar den virtuella katalogen inte det angivna prefixet, så inga blob hämtas. Dessutom, om alternativet `--recursive` anges AzCopy inte hämta alla blobbar.
+hello prefix gäller toohello virtuella katalogen, som utgör hello första delen av hello blob-namnet. I hello exemplet ovan matchar hello virtuella katalogen inte hello angivna prefix, så inga blob hämtas. Dessutom, om hello alternativet `--recursive` anges AzCopy inte hämta alla blobbar.
 
-### <a name="set-the-last-modified-time-of-exported-files-to-be-same-as-the-source-blobs"></a>Ange last-modified-tid med exporterade filer som ska vara densamma som källan BLOB
+### <a name="set-hello-last-modified-time-of-exported-files-toobe-same-as-hello-source-blobs"></a>Ange hello modifierades senast av exporterade filerna toobe samma som hello källa blobbar
 
 ```azcopy
 azcopy \
@@ -229,7 +229,7 @@ azcopy \
     --preserve-last-modified-time
 ```
 
-Du kan också utesluta blobbar från hämtningen baserat på deras tid för senaste ändring. Till exempel om du vill undanta blobbar vars senast ändrad är samma som eller nyare än målfilen och lägga till den `--exclude-newer` alternativ:
+Du kan också utesluta blobbar från hello hämtningen baserat på deras tid för senaste ändring. Till exempel om du vill tooexclude blobbar vars senaste ändringstiden är hello samma eller en senare än hello målfilen, lägga till hello `--exclude-newer` alternativ:
 
 ```azcopy
 azcopy \
@@ -240,7 +240,7 @@ azcopy \
     --exclude-newer
 ```
 
-Eller om du vill undanta blobbar vars senast ändrad är samma eller äldre än målfilen och lägga till den `--exclude-older` alternativ:
+Eller om du vill tooexclude blobbar vars senaste ändringstiden är hello samma eller äldre än hello målfilen, lägger du till hello `--exclude-older` alternativ:
 
 ```azcopy
 azcopy \
@@ -262,9 +262,9 @@ azcopy \
     --include "abc.txt"
 ```
 
-Om den angivna Målbehållaren inte finns, skapar den AzCopy och överför filen till den.
+Om hello angivna målbehållare inte finns, AzCopy skapar den och överföringar hello filen till den.
 
-### <a name="upload-single-file-to-virtual-directory"></a>Överför en fil till virtuell katalog
+### <a name="upload-single-file-toovirtual-directory"></a>Överför en fil toovirtual directory
 
 ```azcopy
 azcopy \
@@ -274,7 +274,7 @@ azcopy \
     --include "abc.txt"
 ```
 
-Om den angivna virtuella katalogen inte finns, AzCopy överför filen så att den virtuella katalogen i blob-namnet (*t.ex.*, `vd/abc.txt` i exemplet ovan).
+Om hello angivna virtuella katalogen inte finns, överför AzCopy hello filen tooinclude hello virtuell katalog på hello blobbnamnet (*t.ex.*, `vd/abc.txt` i hello-exemplet ovan).
 
 ### <a name="upload-all-files"></a>Ladda upp alla filer
 
@@ -286,7 +286,7 @@ azcopy \
     --recursive
 ```
 
-Om du anger alternativet `--recursive` Överför innehållet i den angivna katalogen till Blob storage rekursivt, vilket innebär att alla undermappar och filer överförs också. Anta exempelvis att följande filer finns i mappen `/mnt/myfiles`:
+Om du anger alternativet `--recursive` överföringar hello innehållet i hello angetts directory tooBlob lagring rekursivt, vilket innebär att alla undermappar och filer överförs också. Anta exempelvis att hello följande filer finns i mappen `/mnt/myfiles`:
 
 ```
 /mnt/myfiles/abc.txt
@@ -296,7 +296,7 @@ Om du anger alternativet `--recursive` Överför innehållet i den angivna katal
 /mnt/myfiles/subfolder/abcd.txt
 ```
 
-När överföringen innehåller behållaren följande filer:
+Efter hello överföringen innehåller hello behållaren hello följande filer:
 
 ```
 abc.txt
@@ -306,7 +306,7 @@ subfolder/a.txt
 subfolder/abcd.txt
 ```
 
-När alternativet `--recursive` anges endast följande tre filer överförs:
+När hello alternativet `--recursive` anges endast hello följande tre filer överförs:
 
 ```
 abc.txt
@@ -325,7 +325,7 @@ azcopy \
     --recursive
 ```
 
-Anta att följande filer finns i mappen `/mnt/myfiles`:
+Anta hello följande filer finns i mappen `/mnt/myfiles`:
 
 ```
 /mnt/myfiles/abc.txt
@@ -336,7 +336,7 @@ Anta att följande filer finns i mappen `/mnt/myfiles`:
 /mnt/myfiles/subfolder/abcd.txt
 ```
 
-När överföringen innehåller behållaren följande filer:
+Efter hello överföringen innehåller hello behållaren hello följande filer:
 
 ```
 abc.txt
@@ -346,7 +346,7 @@ subfolder/a.txt
 subfolder/abcd.txt
 ```
 
-När alternativet `--recursive` anges AzCopy hoppar över filer som finns i underkataloger:
+När hello alternativet `--recursive` anges AzCopy hoppar över filer som finns i underkataloger:
 
 ```
 abc.txt
@@ -354,8 +354,8 @@ abc1.txt
 abc2.txt
 ```
 
-### <a name="specify-the-mime-content-type-of-a-destination-blob"></a>Ange MIME content-type för en mål-blob
-Som standard anges AzCopy innehållstypen för en mål-blob till `application/octet-stream`. Du kan dock uttryckligen ange content-type via alternativet `--set-content-type [content-type]`. Den här syntaxen anger content-type för alla blobbar i en överföringen.
+### <a name="specify-hello-mime-content-type-of-a-destination-blob"></a>Ange hello MIME content-type för en mål-blob
+Som standard AzCopy anger hello innehållstypen för en mål-blob för`application/octet-stream`. Du kan dock uttryckligen ange hello innehållstyp via hello alternativet `--set-content-type [content-type]`. Den här syntaxen anger hello content-type för alla blobbar i en överföringen.
 
 ```azcopy
 azcopy \
@@ -366,7 +366,7 @@ azcopy \
     --set-content-type "video/mp4"
 ```
 
-Om alternativet `--set-content-type` anges utan värde, och sedan AzCopy anger varje blob eller filens innehållstyp enligt dess filnamnstillägg.
+Om hello alternativet `--set-content-type` anges utan värde, och sedan AzCopy anger varje blob eller en fil vars innehållstyp enligt tooits filnamnstillägg.
 
 ```azcopy
 azcopy \
@@ -404,7 +404,7 @@ azcopy \
 
 När du kopierar en blobb utan--synkroniserad kopia alternativet en [serversidan kopiera](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) åtgärden utförs.
 
-### <a name="copy-single-blob-from-secondary-region-to-primary-region"></a>Kopiera enda blob från sekundär region till primär region
+### <a name="copy-single-blob-from-secondary-region-tooprimary-region"></a>Kopiera enda blob från sekundär region tooprimary region
 
 ```azcopy
 azcopy \
@@ -429,7 +429,7 @@ azcopy \
     --include-snapshot
 ```
 
-Efter kopieringen innehåller Målbehållaren blob och dess ögonblicksbilder. Behållaren innehåller följande blob och dess ögonblicksbilder:
+Efter hello kopieringen innehåller hello Målbehållaren hello blob och dess ögonblicksbilder. hello behållaren omfattar hello följande blob och dess ögonblicksbilder:
 
 ```
 abc.txt
@@ -438,9 +438,9 @@ abc (2014-02-21 150331).txt
 ```
 
 ### <a name="synchronously-copy-blobs-across-storage-accounts"></a>Kopiera synkront blobar på lagringskonton
-AzCopy som standard kopierar data mellan två slutpunkter för lagring asynkront. Kopiera åtgärden körs i bakgrunden med hjälp av ledig bandbreddskapacitet som har inga SLA vad gäller hur snabbt en blob kopieras. 
+AzCopy som standard kopierar data mellan två slutpunkter för lagring asynkront. Därför kopieras hello Kopiera åtgärden körs i hello bakgrunden med hjälp av ledig bandbreddskapacitet som har inga SLA vad gäller hur snabbt en blob. 
 
-Den `--sync-copy` alternativet ser du till att kopieringen hämtar konsekvent hastighet. AzCopy utför synkron kopian genom att hämta blobbarna att kopiera från den angivna källan till lokalt minne och överför dem till Blob-lagringsplats.
+Hej `--sync-copy` alternativet ser du till att hello kopieringsåtgärden hämtar konsekvent hastighet. AzCopy utför hello synkron kopia genom att hämta hello blobbar toocopy från hello anges källa toolocal minne, och överföra dem toohello Blob-lagringsplats.
 
 ```azcopy
 azcopy \
@@ -452,7 +452,7 @@ azcopy \
     --sync-copy
 ```
 
-`--sync-copy`kan skapa ytterligare utgång kostnaden jämfört med asynkron kopia. Den rekommenderade metoden är att använda det här alternativet i en Azure VM, som finns i samma region som ditt källa storage-konto för att undvika kostnader för utgående trafik.
+`--sync-copy`kan skapa ytterligare utgång kostnaden jämfört med tooasynchronous kopia. hello rekommenderade metoden är toouse det här alternativet i en Azure VM i hello samma region som din datakälla konto tooavoid utgång lagringskostnaden.
 
 ## <a name="file-download"></a>Fil: ladda ned
 ### <a name="download-single-file"></a>Hämta en fil
@@ -465,7 +465,7 @@ azcopy \
     --include "abc.txt"
 ```
 
-Om den angivna källan är en Azure-filresurs och sedan måste du antingen ange det exakta filnamnet (*t.ex.* `abc.txt`) att hämta en fil eller ange alternativet `--recursive` att ladda ned alla filer i resursen rekursivt. Försök att ange både filmönstret och alternativet `--recursive` tillsammans resulterar i ett fel.
+Om hello anges källan är en Azure-filresurs, måste du antingen ange hello exakta filnamnet (*t.ex.* `abc.txt`) toodownload en enskild fil, eller ange alternativet `--recursive` toodownload alla filer i hello resurs rekursivt. Försök toospecify både filmönstret och alternativet `--recursive` tillsammans resulterar i ett fel.
 
 ### <a name="download-all-files"></a>Hämta alla filer
 
@@ -526,7 +526,7 @@ azcopy \
 ```
 När du kopierar en fil på filresurser, en [serversidan kopiera](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) åtgärden utförs.
 
-### <a name="copy-from-file-share-to-blob"></a>Kopiera från filresursen till blob
+### <a name="copy-from-file-share-tooblob"></a>Kopiera från filen resursen tooblob
 
 ```azcopy
 azcopy \ 
@@ -536,9 +536,9 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-När du kopierar en fil från filresursen till blob, en [serversidan kopiera](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) åtgärden utförs.
+När du kopierar en fil från filen resursen tooblob en [serversidan kopiera](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) åtgärden utförs.
 
-### <a name="copy-from-blob-to-file-share"></a>Kopiera från blob till filresurs
+### <a name="copy-from-blob-toofile-share"></a>Kopiera från blob toofile resurs
 
 ```azcopy
 azcopy \
@@ -548,10 +548,10 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-När du kopierar en fil från blob till filresurs, en [serversidan kopiera](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) åtgärden utförs.
+När du kopierar en fil från blob toofile resurs, en [serversidan kopiera](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) åtgärden utförs.
 
 ### <a name="synchronously-copy-files"></a>Synkront kopiera filer
-Du kan ange den `--sync-copy` alternativet för att kopiera data från lagring av filer till File Storage, från fillagring till Blob Storage och från Blob Storage till File Storage synkront. AzCopy körs åtgärden genom att hämta källdata till lokalt minne och överföra den till målet. I det här fallet gäller standard utgång kostnaden.
+Du kan ange hello `--sync-copy` alternativet toocopy data från fillagring tooFile lagring, File Storage tooBlob lagring och Blob Storage tooFile lagring synkront. AzCopy körs åtgärden genom att hämta hello källa data toolocal minne och överföra den toodestination. I det här fallet gäller standard utgång kostnaden.
 
 ```azcopy
 azcopy \
@@ -563,13 +563,13 @@ azcopy \
     --sync-copy
 ```
 
-När du kopierar från fillagring till Blob Storage blob standardtypen är blockblob, kan användaren ange alternativet `/BlobType:page` att ändra typen av mål-blob.
+När du kopierar från fillagring tooBlob lagring hello standard blob-datatyp är blockblob, kan användaren ange alternativet `/BlobType:page` toochange hello blob måltypen.
 
-Observera att `--sync-copy` kan skapa ytterligare utgång kostnad jämföra den asynkrona kopia. Den rekommenderade metoden är att använda det här alternativet i en Azure VM, som finns i samma region som ditt källa storage-konto för att undvika kostnader för utgående trafik.
+Observera att `--sync-copy` kan skapa ytterligare utgång kostnad jämför tooasynchronous kopia. hello rekommenderade metoden är toouse det här alternativet i en Azure VM i hello samma region som din datakälla konto tooavoid utgång lagringskostnaden.
 
 ## <a name="other-azcopy-features"></a>Andra AzCopy-funktioner
-### <a name="only-copy-data-that-doesnt-exist-in-the-destination"></a>Endast kopiera data som inte finns i målet
-Den `--exclude-older` och `--exclude-newer` parametrar kan du exkludera resurser som tidigare eller senare från att kopieras respektive. Om du bara vill kopiera käll-resurser som inte finns i målet kan du ange båda parametrarna i AzCopy-kommandot:
+### <a name="only-copy-data-that-doesnt-exist-in-hello-destination"></a>Endast kopiera data som inte finns i hello mål
+Hej `--exclude-older` och `--exclude-newer` parametrar kan du tooexclude äldre eller nyare resurser från att kopieras respektive. Om du bara vill toocopy källa resurser som inte finns i hello målet kan du ange båda parametrarna i hello AzCopy-kommandot:
 
     --source http://myaccount.blob.core.windows.net/mycontainer --destination /mnt/myfiles --source-key <sourcekey> --recursive --exclude-older --exclude-newer
 
@@ -577,15 +577,15 @@ Den `--exclude-older` och `--exclude-newer` parametrar kan du exkludera resurser
 
     --source http://myaccount.blob.core.windows.net/mycontainer --destination http://myaccount.blob.core.windows.net/mycontainer1 --source-key <sourcekey> --dest-key <destkey> --recursive --exclude-older --exclude-newer
 
-### <a name="use-a-configuration-file-to-specify-command-line-parameters"></a>Använd en konfigurationsfil för att ange kommandoradsparametrar
+### <a name="use-a-configuration-file-toospecify-command-line-parameters"></a>Använd en fil toospecify kommandoradsverktyget konfigurationsparametrar
 
 ```azcopy
 azcopy --config-file "azcopy-config.ini"
 ```
 
-Du kan inkludera eventuella kommandoradsparametrar för AzCopy i en konfigurationsfil. AzCopy bearbetar parametrarna i filen som om de hade angetts på kommandoraden, utför en direkt ersättning med innehållet i filen.
+Du kan inkludera eventuella kommandoradsparametrar för AzCopy i en konfigurationsfil. AzCopy processer hello parametrar i hello-filen som om de hade angetts på kommandoraden för hello utför en direkt ersättning med hello innehållet i hello-fil.
 
-Anta en fil med namnet `copyoperation`, som innehåller följande rader. Varje AzCopy-parameter kan anges på en enda rad.
+Anta en fil med namnet `copyoperation`, som innehåller hello följande rader. Varje AzCopy-parameter kan anges på en enda rad.
 
     --source http://myaccount.blob.core.windows.net/mycontainer --destination /mnt/myfiles --source-key <sourcekey> --recursive --quiet
 
@@ -597,7 +597,7 @@ eller på separata rader:
     --recursive
     --quiet
 
-AzCopy misslyckas om du vill dela parametern på två rader som visas här för den `--source-key` parameter:
+AzCopy misslyckas om du vill dela hello parametern på två rader som visas här för hello `--source-key` parameter:
 
     http://myaccount.blob.core.windows.net/mycontainer
     /mnt/myfiles
@@ -617,7 +617,7 @@ azcopy \
     --include abc.txt
 ```
 
-Du kan också ange en SAS för URI-behållaren:
+Du kan också ange en SAS för hello behållaren URI:
 
 ```azcopy
 azcopy \
@@ -626,14 +626,14 @@ azcopy \
     --recursive
 ```
 
-Observera att AzCopy stöder för närvarande endast den [kontots SAS](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1).
+Observera att AzCopy för närvarande endast stöder hello [kontots SAS](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1).
 
 ### <a name="journal-file-folder"></a>Ändringsjournalen mapp
-Varje gång du utfärda ett kommando till AzCopy, kontrollerar den om en journal-fil finns i standardmappen eller om den finns i en mapp som du har angett via det här alternativet. Om journalfilen inte finns på någon plats, behandlar åtgärden som nya AzCopy och genererar en ny journalfil.
+Varje gång du utfärda ett kommando tooAzCopy kontrollerar den om en journal-fil finns i hello standardmappen eller om den finns i en mapp som du har angett via det här alternativet. Om hello journalfilen inte finns på någon plats, behandlar hello åtgärden som nya AzCopy och genererar en ny journalfil.
 
-Om journalfilen finns kontrollerar AzCopy om den kommandorad som du matar in matchar kommandoraden i journal-fil. Om två kommandorader matchar återupptar AzCopy ofullständiga igen. Om de inte matchar uppmanas AzCopy användaren att antingen skriva över journalfilen att starta en ny åtgärd eller Avbryt den aktuella åtgärden.
+Om hello journalfilen finns kontrollerar AzCopy om hello-kommandoraden som du matar in matchar hello kommandoraden i hello journal-fil. Om hello två kommandorader matchar återupptar AzCopy hello ofullständiga igen. Om de inte matchar uppmanas AzCopy användaren tooeither överskrivning hello journal filen toostart en ny åtgärd eller toocancel hello den aktuella åtgärden.
 
-Om du vill använda standardplatsen för journalfilen:
+Om du vill toouse hello standardplatsen för hello journal-fil:
 
 ```azcopy
 azcopy \
@@ -643,9 +643,9 @@ azcopy \
     --resume
 ```
 
-Om du utelämnar alternativet `--resume`, eller ange alternativet `--resume` utan sökvägen till mappen som du ser ovan, AzCopy journalfilen skapas i standardplatsen, som är `~\Microsoft\Azure\AzCopy`. Om ändringsjournalen filen redan finns återupptas AzCopy igen baserat på journal-fil.
+Om du utelämnar alternativet `--resume`, eller ange alternativet `--resume` utan hello mappsökvägen, enligt ovan, AzCopy skapar hello journal-fil i hello standardplatsen, som är `~\Microsoft\Azure\AzCopy`. Om hello journalfilen redan finns återupptas AzCopy hello-åtgärden utifrån hello journal-fil.
 
-Om du vill ange en anpassad plats för journalfilen:
+Om du vill toospecify en egen placering för hello journal-fil:
 
 ```azcopy
 azcopy \
@@ -655,12 +655,12 @@ azcopy \
     --resume "/mnt/myjournal"
 ```
 
-Det här exemplet skapar journal-fil om den inte redan finns. Om den finns, återupptar AzCopy igen baserat på journal-fil.
+Det här exemplet skapar hello journal-filen om den inte redan finns. Om den finns, återupptar AzCopy hello-åtgärden utifrån hello journal-fil.
 
-Upprepa samma kommando om du vill fortsätta AzCopy. AzCopy på Linux sedan uppmanas att bekräfta:
+Om du vill tooresume en AzCopy-åtgärd, upprepa hello samma kommando. AzCopy på Linux sedan uppmanas att bekräfta:
 
 ```azcopy
-Incomplete operation with same command line detected at the journal directory "/home/myaccount/Microsoft/Azure/AzCopy", do you want to resume the operation? Choose Yes to resume, choose No to overwrite the journal to start a new operation. (Yes/No)
+Incomplete operation with same command line detected at hello journal directory "/home/myaccount/Microsoft/Azure/AzCopy", do you want tooresume hello operation? Choose Yes tooresume, choose No toooverwrite hello journal toostart a new operation. (Yes/No)
 ```
 
 ### <a name="output-verbose-logs"></a>Detaljerade loggarna för utdata
@@ -673,31 +673,31 @@ azcopy \
     --verbose
 ```
 
-### <a name="specify-the-number-of-concurrent-operations-to-start"></a>Ange antalet samtidiga åtgärder att starta
-Alternativet `--parallel-level` anger antalet samtidiga kopieringsåtgärd. Som standard startar AzCopy antalet samtidiga åtgärder att öka genomflödet data transfer. Antalet samtidiga åtgärder är lika åtta gånger antalet processorer som du har. Om du använder AzCopy över ett nätverk med låg bandbredd, kan du ange ett lägre värde--parallell-nivå för att undvika misslyckades på grund av konkurrens om resurser.
+### <a name="specify-hello-number-of-concurrent-operations-toostart"></a>Ange hello antalet samtidiga åtgärder toostart
+Alternativet `--parallel-level` anger hello antalet samtidiga kopieringsåtgärd. Som standard startar AzCopy antalet samtidiga åtgärder tooincrease hello data transfer genomflöde. hello antalet samtidiga åtgärder är lika åtta gånger hello antal processorer som du har. Om du använder AzCopy över ett nätverk med låg bandbredd, kan du ange ett lägre värde--parallell nivå tooavoid misslyckades på grund av konkurrens om resurser.
 
 [!TIP]
->Om du vill visa en fullständig lista över AzCopy parametrar kolla 'azcopy--Hjälp-menyn.
+>fullständig lista över tooview hello av AzCopy-parametrar, kolla 'azcopy--Hjälp-menyn.
 
 ## <a name="known-issues-and-best-practices"></a>Kända problem och bästa praxis
-### <a name="error-net-core-is-not-found-in-the-system"></a>Fel: .NET Core finns inte i systemet.
-Om du får ett felmeddelande om att .NET Core inte är installerat i systemet, SÖKVÄGEN till .NET Core binär `dotnet` kanske saknas.
+### <a name="error-net-core-is-not-found-in-hello-system"></a>Fel: .NET Core finns inte i hello system.
+Om du får ett felmeddelande om att .NET Core inte är installerat i systemet hello hello SÖKVÄGEN toohello .NET Core binär `dotnet` kanske saknas.
 
-Hitta .NET Core binära i systemet för att lösa problemet:
+I ordning tooaddress problemet, hitta hello .NET Core binary i hello system:
 ```bash
 sudo find / -name dotnet
 ```
 
-Detta returnerar sökvägen till dotnet binär. 
+Detta returnerar hello sökvägen toohello dotnet binär. 
 
     /opt/rh/rh-dotnetcore11/root/usr/bin/dotnet
     /opt/rh/rh-dotnetcore11/root/usr/lib64/dotnetcore/dotnet
     /opt/rh/rh-dotnetcore11/root/usr/lib64/dotnetcore/shared/Microsoft.NETCore.App/1.1.2/dotnet
 
-Lägg nu till denna sökväg i PATH-variabeln. För sudo, redigera secure_path innehåller sökvägen till den binära dotnet:
+Nu ska du lägga till den här sökvägen toohello PATH-variabeln. För sudo, redigera secure_path toocontain hello sökvägen toohello dotnet binära:
 ```bash 
 sudo visudo
-### Append the path found in the preceding example to 'secure_path' variable
+### Append hello path found in hello preceding example too'secure_path' variable
 ```
 
 I det här exemplet läser secure_path variabeln som:
@@ -706,10 +706,10 @@ I det här exemplet läser secure_path variabeln som:
 secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/rh/rh-dotnetcore11/root/usr/bin/
 ```
 
-Redigera.bash_profile/.profile om du vill ta med sökvägen till dotnet binära i PATH-variabeln för den aktuella användaren 
+Redigera.bash_profile/.profile tooinclude hello sökvägen toohello dotnet binära i PATH-variabeln för hello aktuell användare 
 ```bash
 vi ~/.bash_profile
-### Append the path found in the preceding example to 'PATH' variable
+### Append hello path found in hello preceding example too'PATH' variable
 ```
 
 Kontrollera att .NET Core finns i SÖKVÄGEN:
@@ -719,7 +719,7 @@ sudo which dotnet
 ```
 
 ### <a name="error-installing-azcopy"></a>Fel vid installation av AzCopy
-Om du får problem med installation av AzCopy kan du försöker köra AzCopy använda bash-skript på den extraherade `azcopy` mapp.
+Om du får problem med installation av AzCopy försök toorun AzCopy använda hello bash-skript på hello extraherade `azcopy` mapp.
 
 ```bash
 cd azcopy
@@ -727,25 +727,25 @@ cd azcopy
 ```
 
 ### <a name="limit-concurrent-writes-while-copying-data"></a>Begränsa samtidiga skrivningar vid kopiering av data
-När du kopierar blobar eller filer med AzCopy, Tänk på att ett annat program kan ändra data när du kopierar den. Kontrollera om det är möjligt att du kopierar data inte ändras under kopieringen. Till exempel när du kopierar en virtuell Hårddisk som är kopplad till en virtuell Azure-dator, kontrollera att inga andra program för tillfället skrivning till den virtuella Hårddisken. Ett bra sätt att göra detta är genom leasing resurs som ska kopieras. Alternativt kan du skapa en ögonblicksbild av den virtuella Hårddisken först och sedan kopiera ögonblicksbilden.
+När du kopierar blobar eller filer med AzCopy, Tänk på att ett annat program kanske ändra hello data när du kopierar den. Kontrollera om det är möjligt att hello data som du kopierar inte ändras under hello kopieringen. Till exempel när du kopierar en virtuell Hårddisk som är kopplad till en virtuell Azure-dator, kontrollera att inga andra program för närvarande skriver toohello VHD. Ett bra sätt toodo denna genom leasing hello resurs toobe kopieras. Alternativt kan du skapa en ögonblicksbild av hello VHD först och sedan kopiera hello ögonblicksbild.
 
-Om du inte hindra andra program från att skriva till filer eller blobbar när de kopieras sedan Kom ihåg att när jobbet har slutförts, kopiera resurserna kan inte längre har fullständig paritet med resurserna som källa.
+Om du inte hindra andra program från att skriva tooblobs eller filer när de kopieras och Kom ihåg att av hello hello jobbet har slutförts kan hello kopiera resurserna inte längre ha fullständig paritet med hello källa resurser.
 
 ### <a name="run-one-azcopy-instance-on-one-machine"></a>Köra en AzCopy-instans på en dator.
-AzCopy är utformat för att maximera användningen av din datorresurser som påskyndar dataöverföringen rekommenderar vi du kör endast en AzCopy-instans på en dator och ange alternativet `--parallel-level` om du behöver fler samtidiga åtgärder. Mer information skriver du `AzCopy --help parallel-level` på kommandoraden.
+AzCopy är utformad toomaximize hello användning av din dator resurs tooaccelerate hello dataöverföring, rekommenderar vi du kör endast en AzCopy-instans på en dator och ange hello alternativet `--parallel-level` om du behöver fler samtidiga åtgärder. Mer information, Skriv `AzCopy --help parallel-level` hello-kommandoraden.
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om Azure Storage och AzCopy finns i följande resurser:
+Mer information om Azure Storage och AzCopy finns hello följande resurser:
 
 ### <a name="azure-storage-documentation"></a>Azure Storage-dokumentation:
-* [Introduktion till Azure Storage](storage-introduction.md)
+* [Introduktion tooAzure lagring](storage-introduction.md)
 * [Skapa ett lagringskonto](storage-create-storage-account.md)
 * [Hantera blobbar med Lagringsutforskaren](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs)
-* [Med hjälp av Azure CLI 2.0 med Azure Storage](storage-azure-cli.md)
-* [Hur du använder Blob storage från C++](storage-c-plus-plus-how-to-use-blobs.md)
-* [Använda Blob Storage från Java](storage-java-how-to-use-blob-storage.md)
-* [Använda Blob Storage från Node.js](storage-nodejs-how-to-use-blob-storage.md)
-* [Använda Blob Storage från Python](storage-python-how-to-use-blob-storage.md)
+* [Med Azure Storage hello Azure CLI 2.0](storage-azure-cli.md)
+* [Hur toouse Blob storage från C++](storage-c-plus-plus-how-to-use-blobs.md)
+* [Hur toouse Blob storage från Java](storage-java-how-to-use-blob-storage.md)
+* [Hur toouse Blob storage från Node.js](storage-nodejs-how-to-use-blob-storage.md)
+* [Hur toouse Blob storage från Python](storage-python-how-to-use-blob-storage.md)
 
 ### <a name="azure-storage-blog-posts"></a>Azure Storage blogginlägg:
 * [Om AzCopy på Linux-Preview](https://azure.microsoft.com/en-in/blog/announcing-azcopy-on-linux-preview/)

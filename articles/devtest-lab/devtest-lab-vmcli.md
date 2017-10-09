@@ -1,6 +1,6 @@
 ---
-title: Skapa och hantera virtuella datorer i DevTest Labs med Azure CLI | Microsoft Docs
-description: "Lär dig hur du använder Azure DevTest Labs för att skapa och hantera virtuella datorer med Azure CLI 2.0"
+title: aaaCreate och hantera virtuella datorer i DevTest Labs med Azure CLI | Microsoft Docs
+description: "Lär dig hur toouse Azure DevTest Labs toocreate och hantera virtuella datorer med Azure CLI 2.0"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: lisawong19
@@ -13,34 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: liwong
-ms.openlocfilehash: 42b0448c1bcdfa909715abd5075353d63cab8389
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 98ea3aa7b2489bff61971573aaf584984cd811e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Skapa och hantera virtuella datorer med DevTest Labs med hjälp av Azure CLI
+# <a name="create-and-manage-virtual-machines-with-devtest-labs-using-hello-azure-cli"></a>Skapa och hantera virtuella datorer med DevTest Labs med hello Azure CLI
 Den här snabbstartsguide vägleder dig genom att skapa, starta, ansluta, uppdaterar och rensar en utvecklingsdator i labbet. 
 
 Innan du börjar:
 
 * Om ett labb som inte har skapats anvisningar finns [här](devtest-lab-create-lab.md).
 
-* [Installera CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Starta, köra az in för att skapa en anslutning med Azure. 
+* [Installera CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). toostart kör az inloggningen toocreate en anslutning till Azure. 
 
-## <a name="create-and-verify-the-virtual-machine"></a>Skapa och kontrollera den virtuella datorn 
+## <a name="create-and-verify-hello-virtual-machine"></a>Skapa och verifiera hello virtuella datorn 
 Skapa en virtuell dator från en marketplace-avbildning med ssh autentisering.
 ```azurecli
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 > [!NOTE]
-> Placera den **resursgrupp för labbets** i--resursgrupp parametern.
+> Placera hello **resursgrupp för labbets** i hello--resursgrupp parametern.
 >
 
-Om du vill skapa en virtuell dator med en formel, Använd--formeln parametern i [az lab vm skapa](https://docs.microsoft.com/cli/azure/lab/vm#create).
+Om du vill toocreate en virtuell dator med en formel, använda hello--formeln parameter i [az lab vm skapa](https://docs.microsoft.com/cli/azure/lab/vm#create).
 
 
-Kontrollera att den virtuella datorn är tillgänglig.
+Kontrollera att hello VM är tillgänglig.
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand 'properties($expand=ComputeVm,NetworkInterface)' --query '{status: computeVm.statuses[0].displayStatus, fqdn: fqdn, ipAddress: networkInterface.publicIpAddress}'
 ```
@@ -52,22 +52,22 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 }
 ```
 
-## <a name="start-and-connect-to-the-virtual-machine"></a>Starta och Anslut till den virtuella datorn
+## <a name="start-and-connect-toohello-virtual-machine"></a>Starta och Anslut toohello virtuell dator
 Starta en virtuell dator.
 ```azurecli
 az lab vm start --lab-name sampleLabName --name sampleVMName --resource-group sampleLabResourceGroup
 ```
 > [!NOTE]
-> Placera den **resursgrupp för labbets** i--resursgrupp parametern.
+> Placera hello **resursgrupp för labbets** i hello--resursgrupp parametern.
 >
 
-Ansluta till en virtuell dator: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) eller [fjärrskrivbord](../virtual-machines/windows/connect-logon.md).
+Ansluta tooa VM: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) eller [fjärrskrivbord](../virtual-machines/windows/connect-logon.md).
 ```bash
 ssh userName@ipAddressOrfqdn 
 ```
 
-## <a name="update-the-virtual-machine"></a>Uppdatera den virtuella datorn
-Tillämpa artefakter för en virtuell dator.
+## <a name="update-hello-virtual-machine"></a>Uppdatera hello virtuell dator
+Tillämpa artefakter tooa VM.
 ```azurecli
 az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resource-group sampleResourceGroup  --artifacts @/artifacts.json
 ```
@@ -102,7 +102,7 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 ]
 ```
 
-Lista artefakter i labbet.
+Lista artefakter i hello labbet.
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand "properties(\$expand=artifacts)" --query 'artifacts[].{artifactId: artifactId, status: status}'
 ```
@@ -113,7 +113,7 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 }
 ```
 
-## <a name="stop-and-delete-the-virtual-machine"></a>Stoppa och ta bort den virtuella datorn    
+## <a name="stop-and-delete-hello-virtual-machine"></a>Stoppa och ta bort hello virtuell dator    
 Stoppa en virtuell dator.
 ```azurecli
 az lab vm stop --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup

@@ -1,6 +1,6 @@
 ---
-title: "Auktorisera developer konton med hjälp av Azure Active Directory B2C - Azure API Management | Microsoft Docs"
-description: "Lär dig mer om att auktorisera användare med hjälp av Azure Active Directory B2C i API-hantering."
+title: "aaaAuthorize developer konton med hjälp av Azure Active Directory B2C - Azure API Management | Microsoft Docs"
+description: "Lär dig hur tooauthorize användare med hjälp av Azure Active Directory B2C i API-hantering."
 services: api-management
 documentationcenter: API Management
 author: miaojiang
@@ -14,101 +14,101 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: eb7deb1a79d9db9ac5cfbea69b8d3c564eb55577
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 28f7cae53138938dbbc848b4afcbf08b72690e37
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Så här auktoriserar developer konton med hjälp av Azure Active Directory B2C i Azure API Management
+# <a name="how-tooauthorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Hur tooauthorize developer användarkonton med Azure Active Directory B2C i Azure API Management
 ## <a name="overview"></a>Översikt
-Azure Active Directory B2C är en cloud lösning för Identitetshantering för konsumentinriktade webb- och mobilprogram. Du kan använda den för att hantera åtkomst till developer-portalen. Den här guiden visar den konfiguration som krävs i din API Management-tjänsten för att integrera med Azure Active Directory B2C. Information om hur du aktiverar åtkomst till developer-portalen med hjälp av den klassiska Azure Active Directory finns i [så att auktorisera developer konton med hjälp av Azure Active Directory].
+Azure Active Directory B2C är en cloud lösning för Identitetshantering för konsumentinriktade webb- och mobilprogram. Du kan använda den toomanage åtkomst tooyour developer-portalen. Den här guiden innehåller du hello konfiguration som krävs i din API Management-tjänsten toointegrate med Azure Active Directory B2C. Information om hur du aktiverar åtkomst toohello developer-portalen med hjälp av den klassiska Azure Active Directory finns i [hur tooauthorize developer användarkonton med Azure Active Directory].
 
 > [!NOTE]
-> Du måste ha en Azure Active Directory B2C-klient för att skapa ett program i för att slutföra stegen i den här guiden. Du måste också ha registrering och inloggning principer som är redo. Mer information finns i [översikt över Azure Active Directory B2C].
+> toocomplete hello stegen i den här guiden, du måste först ha en Azure Active Directory B2C-klient toocreate ett program. Du måste också toohave principer för registrering och inloggning redo. Mer information finns i [översikt över Azure Active Directory B2C].
 
 ## <a name="authorize-developer-accounts-by-using-azure-active-directory-b2c"></a>Auktorisera developer konton med hjälp av Azure Active Directory B2C
 
-1. Kom igång genom att klicka på **Publisher portal** i Azure-portalen för API Management-tjänsten. När du gör det kommer du till utgivarportalen för API Management.
+1. tooget har startats klickar du på **Publisher portal** i hello Azure-portalen för API Management-tjänsten. Då kommer du toohello API Management publisher portal.
 
    ![Utgivarportalen][api-management-management-console]
 
    > [!NOTE]
-   > Om du inte har skapat en instans för API Management-tjänsten, se [skapa en instans för API Management-tjänsten] [ Create an API Management service instance] i den [Kom igång med Azure API Management kursen][Get started with Azure API Management].
+   > Om du inte har skapat en instans för API Management-tjänsten, se [skapa en instans för API Management-tjänsten] [ Create an API Management service instance] i hello [Kom igång med Azure API Management kursen][Get started with Azure API Management].
 
-2. På den **API Management** -menyn klickar du på **säkerhet**. På den **identiteter** , Välj **Azure Active Directory B2C**.
+2. På hello **API Management** -menyn klickar du på **säkerhet**. På hello **identiteter** , Välj **Azure Active Directory B2C**.
 
   ![Externa identiteter 1][api-management-howto-aad-b2c-security-tab]
 
-3. Anteckna den **omdirigerings-URL** och växla till Azure Active Directory B2C i Azure-portalen.
+3. Anteckna hello **omdirigerings-URL** och växla över tooAzure Active Directory B2C i hello Azure-portalen.
 
   ![Externa identiteter 2][api-management-howto-aad-b2c-security-tab-reply-url]
 
-4. Klicka på den **program** knappen.
+4. Klicka på hello **program** knappen.
 
   ![Registrera ett nytt program 1][api-management-howto-aad-b2c-portal-menu]
 
-5. Klicka på den **Lägg till** för att skapa ett nytt program för Azure Active Directory B2C.
+5. Klicka på hello **Lägg till** knappen toocreate en ny Azure Active Directory B2C-programmet.
 
   ![Registrera ett nytt program 2][api-management-howto-aad-b2c-add-button]
 
-6. I den **nytt program** bladet anger du ett namn för programmet. Välj **Ja** under **Web App/Web API**, och välj **Ja** under **Tillåt implicita flödet**. Kopiera den **omdirigerings-URL** från den **Azure Active Directory B2C** avsnitt i den **identiteter** i portalen för utgivaren och klistrar in det i den **Reply URL** textruta.
+6. I hello **nytt program** bladet anger du ett namn för programmet hello. Välj **Ja** under **Web App/Web API**, och välj **Ja** under **Tillåt implicita flödet**. Och sedan kopiera hello **omdirigerings-URL** från hello **Azure Active Directory B2C** avsnitt i hello **identiteter** i hello publisher portal och klistra in den i hello **Reply URL** textruta.
 
   ![Registrera ett nytt program 3][api-management-howto-aad-b2c-app-details]
 
-7. Klicka på knappen **Skapa**. När programmet har skapats visas den i den **program** bladet. Klicka på namnet på programmet vill visa information.
+7. Klicka på hello **skapa** knappen. När programmet hello har skapats visas den i hello **program** bladet. Klicka på hello programmet namnet toosee information.
 
   ![Registrera ett nytt program 4][api-management-howto-aad-b2c-app-created]
 
-8. Från den **egenskaper** bladet, kopiera den **program-ID** till Urklipp.
+8. Från hello **egenskaper** bladet, kopiera hello **program-ID** toohello Urklipp.
 
   ![Program-ID 1][api-management-howto-aad-b2c-app-id]
 
-9. Växla tillbaka till publisher-portalen och klistra in ID i den **klient-Id** textruta.
+9. Växla tillbaka toohello publisher portal och klistra in hello-ID i hello **klient-Id** textruta.
 
   ![Program-ID 2][api-management-howto-aad-b2c-client-id]
 
-10. Gå tillbaka till Azure-portalen, klicka på den **nycklar** knappen och klicka sedan på **skapa nycklar**. Klicka på **spara** att spara konfigurationen och visa den **appkey**. Kopiera nyckeln till Urklipp.
+10. Växla tillbaka toohello Azure-portalen klickar du på hello **nycklar** knappen och klicka sedan på **skapa nycklar**. Klicka på **spara** toosave hello konfiguration och visa hello **appkey**. Kopiera hello viktiga toohello Urklipp.
 
   ![Appkey 1][api-management-howto-aad-b2c-app-key]
 
-11. Växla tillbaka till publisher-portalen och klistra in nyckeln till den **Klienthemlighet** textruta.
+11. Växla tillbaka toohello publisher portal och klistra in hello nyckeln till hello **Klienthemlighet** textruta.
 
   ![Appkey 2][api-management-howto-aad-b2c-client-secret]
 
-12. Ange domännamnet för Azure Active Directory B2C-klient i **tillåtna klient**.
+12. Ange hello domännamn för hello Azure Active Directory B2C-klient i **tillåtna klient**.
 
   ![Tillåtna klient][api-management-howto-aad-b2c-allowed-tenant]
 
-13. Ange den **Signup princip** och **inloggning princip**. Alternativt kan du kan också tillhandahålla den **redigera Profilprincip** och **princip för lösenordsåterställning**.
+13. Ange hello **Signup princip** och **inloggning princip**. Alternativt kan du också ange hello **redigera Profilprincip** och **princip för lösenordsåterställning**.
 
   ![Principer][api-management-howto-aad-b2c-policies]
 
   > [!NOTE]
   > Mer information om principer finns i [Azure Active Directory B2C: utökningsbart principramverk].
 
-14. När du har angett önskad konfiguration, klickar du på **spara**.
+14. När du har angett hello önskad konfiguration, klickar du på **spara**.
 
-  När ändringarna har sparats kommer utvecklare att kunna skapa nya konton och logga in på developer-portalen med hjälp av Azure Active Directory B2C.
+  När hello ändringarna har sparats kommer utvecklare att kunna toocreate nya konton och logga in toohello developer-portalen med hjälp av Azure Active Directory B2C.
 
 ## <a name="sign-up-for-a-developer-account-by-using-azure-active-directory-b2c"></a>Registrera dig för ett utvecklarkonto med hjälp av Azure Active Directory B2C
 
-1. Om du vill registrera dig för ett utvecklarkonto med hjälp av Azure Active Directory B2C, öppna ett nytt webbläsarfönster och gå till developer-portalen. Klicka på den **registrering** knappen.
+1. toosign för ett utvecklarkonto med hjälp av Azure Active Directory B2C, öppna ett nytt webbläsarfönster och gå toohello developer-portalen. Klicka på hello **registrering** knappen.
 
    ![Developer-portalen 1][api-management-howto-aad-b2c-dev-portal]
 
-2. Välja att logga med **Azure Active Directory B2C**.
+2. Välj toosign upp med **Azure Active Directory B2C**.
 
    ![Developer-portalen 2][api-management-howto-aad-b2c-dev-portal-b2c-button]
 
-3. Du ska omdirigeras till registreringen principen som du konfigurerade i föregående avsnitt. Välja att registrera dig med din e-postadress eller en av dina befintliga sociala konton.
+3. Du är omdirigerade toohello signup princip som du konfigurerade i hello föregående avsnitt. Välj toosign upp genom att använda din e-postadress eller ett av dina befintliga sociala konton.
 
    > [!NOTE]
-   > Om Azure Active Directory B2C är det enda alternativet som är aktiverad på den **identiteter** fliken i publisher-portal du ska omdirigeras till registreringen principen direkt.
+   > Om Azure Active Directory B2C är hello endast alternativ som är aktiverat på hello **identiteter** fliken i hello publisher portal kommer du att omdirigerade toohello signup principen direkt.
 
    ![Utvecklarportalen][api-management-howto-aad-b2c-dev-portal-b2c-options]
 
-   När registreringen är klar, är du omdirigeras till developer-portalen. Du är nu inloggad på developer-portalen för din API Management service-instans.
+   När hello registreringen är klar, är du omdirigerade tillbaka toohello developer-portalen. Du är nu inloggad toohello developer-portalen för din API Management service-instans.
 
     ![Registreringen har slutförts][api-management-registration-complete]
 
@@ -172,10 +172,10 @@ Azure Active Directory B2C är en cloud lösning för Identitetshantering för k
 [api-management-groups]: ./media/api-management-howto-aad/api-management-groups.png
 [api-management-edit-group]: ./media/api-management-howto-aad/api-management-edit-group.png
 
-[How to add operations to an API]: api-management-howto-add-operations.md
-[How to add and publish a product]: api-management-howto-add-products.md
+[How tooadd operations tooan API]: api-management-howto-add-operations.md
+[How tooadd and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
-[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Add APIs tooa product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: api-management-get-started.md
 [API Management policy reference]: api-management-policy-reference.md
@@ -184,9 +184,9 @@ Azure Active Directory B2C är en cloud lösning för Identitetshantering för k
 
 [http://oauth.net/2/]: http://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Accessing the Graph API]: http://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
+[Accessing hello Graph API]: http://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 [översikt över Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
-[så att auktorisera developer konton med hjälp av Azure Active Directory]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
+[hur tooauthorize developer användarkonton med Azure Active Directory]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
 [Azure Active Directory B2C: utökningsbart principramverk]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
 [Använd ett Microsoft-konto som en identitetsleverantör i Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app
 [Använd ett Google-konto som en identitetsleverantör i Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-goog-app
@@ -195,8 +195,8 @@ Azure Active Directory B2C är en cloud lösning för Identitetshantering för k
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1
-[Configure an API to use OAuth 2.0 user authorization]: #step2
-[Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
+[Configure an API toouse OAuth 2.0 user authorization]: #step2
+[Test hello OAuth 2.0 user authorization in hello Developer Portal]: #step3
 [Next steps]: #next-steps
 
-[Log in to the Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
+[Log in toohello Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account

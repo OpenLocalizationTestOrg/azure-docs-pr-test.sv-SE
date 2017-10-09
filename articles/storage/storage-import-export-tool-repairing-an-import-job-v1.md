@@ -1,6 +1,6 @@
 ---
-title: Reparera ett Azure Import/Export-importjobb - v1 | Microsoft Docs
-description: "Lär dig mer om att reparera ett importjobb som har skapats och att köras med tjänsten Azure Import/Export."
+title: aaaRepairing ett Azure Import/Export-importjobb - v1 | Microsoft Docs
+description: "Lär dig hur toorepair ett importjobb som har skapats och att köras med hello Azure Import/Export service."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: b374eabcbafa6ffe64c639fb6c89be857ecfc221
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a9ed81f50cffd8ae6e0cb21b25a04815c2b51ee5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="repairing-an-import-job"></a>Reparera ett importjobb
-Microsoft Azure Import/Export-tjänsten kanske inte kan kopiera vissa av dina filer eller delar av en fil till Windows Azure Blob-tjänsten. Vissa fel anledningar:  
+hello Microsoft Azure Import/Export-tjänsten kanske inte toocopy vissa av dina filer eller delar av en fil toohello Windows Azure Blob-tjänsten. Vissa fel anledningar:  
   
 -   Skadade filer  
   
 -   Skadade enheter  
   
--   Lagringskontots åtkomstnyckel ändras när filen överfördes.  
+-   Hej lagringskontonyckel ändras medan hello fil överfördes.  
   
-Du kan köra verktyget Microsoft Azure Import/Export med importen jobbets kopiera loggfiler och verktyget kommer att överföra filer som saknas (eller delar av en fil) till Windows Azure storage-konto att slutföra importen.  
+Du kan köra hello Microsoft Azure Import/Export-verktyget med hello importen jobbets kopiera loggfiler och hello verktyget kommer att överföra hello saknade filer (eller delar av en fil) tooyour Windows Azure storage-konto toocomplete importjobbet.  
   
 ## <a name="repairimport-parameters"></a>RepairImport parametrar
 
-Följande parametrar kan anges med **RepairImport**: 
+hello följande parametrar kan anges med **RepairImport**: 
   
 |||  
 |-|-|  
-|**/ r:**< RepairFile\>|**Krävs.** Sökvägen till filen reparation, som spårar förloppet för att reparera och gör att du kan återuppta en avbruten reparation. Varje enhet måste ha en repair-fil. När du startar en reparation för en viss enhet skickar du i sökvägen till en repair-fil som ännu inte finns. Om du vill återuppta ett avbryts reparation, överför du namnet på en befintlig fil för reparation. Reparera filen motsvarar målenheten måste alltid anges.|  
-|**/logdir:**< LogDirectory\>|**Valfritt.** Loggkatalogen. Utförlig loggfilerna skrivs till den här katalogen. Om inga loggkatalogen anges, används den aktuella katalogen som loggkatalogen.|  
-|**/ d:**< TargetDirectories\>|**Krävs.** En eller flera semikolonavgränsad kataloger som innehåller de ursprungliga filerna som har importerats. Importera enheten kan också användas, men är inte nödvändigt om alternativa platser för ursprungliga filerna är tillgängliga.|  
-|**/BK:**< BitLockerKey\>|**Valfritt.** Du bör ange BitLocker-nyckel om du vill använda verktyget för att låsa upp en krypterad enhet där de ursprungliga filerna är tillgängliga.|  
-|**/SN:**< StorageAccountName\>|**Krävs.** Namnet på lagringskontot för importjobbet.|  
-|**/Sk:**< StorageAccountKey\>|**Krävs** endast om en behållare SAS inte har angetts. Kontonyckel för lagringskontot för importjobbet.|  
-|**/csas:**< ContainerSas\>|**Krävs** om lagringskontots åtkomstnyckel inte har angetts. Behållaren SAS för att komma åt blobar som är associerad med importjobbet.|  
-|**/ CopyLogFile:**< DriveCopyLogFile\>|**Krävs.** Sökvägen till loggfilen för enheten kopia (antingen utförlig loggen eller fel logga). Filen har genererats av Windows Azure Import/Export-tjänsten och kan hämtas från blob storage som är associerat med jobbet. Kopiera loggfilen innehåller information om misslyckade blobbar eller filer som är repareras.|  
-|**/ PathMapFile:**< DrivePathMapFile\>|**Valfritt.** Sökväg till en textfil som kan användas för att lösa tvetydigheter om du har flera filer med samma namn som du importerar i samma jobb. Första gången verktyget körs kan det fylla i den här filen med alla tvetydigt namn. Efterföljande körningar av verktyget använder den här filen för att lösa tvetydigheter.|  
+|**/ r:**< RepairFile\>|**Krävs.** Sökvägen toohello reparera filen som spårar hello fortskrider hello reparation och låter dig tooresume en avbruten reparation. Varje enhet måste ha en repair-fil. När du startar en reparation för en viss enhet skickar hello sökvägen tooa reparera filen inte finns ännu. tooresume en avbruten reparation, överför du i hello namnet på en befintlig fil för reparation. hello reparera filen-målenheten med motsvarande toohello måste alltid anges.|  
+|**/logdir:**< LogDirectory\>|**Valfritt.** hello loggkatalogen. Utförlig loggfilerna skrivs toothis directory. Om inga loggkatalogen anges används hello katalogen som hello loggkatalogen.|  
+|**/ d:**< TargetDirectories\>|**Krävs.** En eller flera semikolonavgränsad kataloger som innehåller hello ursprungliga filer som har importerats. hello importera enheten kan också användas, men är inte nödvändigt om alternativa platser för ursprungliga filerna är tillgängliga.|  
+|**/BK:**< BitLockerKey\>|**Valfritt.** Du bör ange hello BitLocker-nyckel om du vill att hello verktyget toounlock en krypterad enhet där hello ursprungliga filerna är tillgängliga.|  
+|**/SN:**< StorageAccountName\>|**Krävs.** hello namnet på hello storage-konto för hello importera jobbet.|  
+|**/Sk:**< StorageAccountKey\>|**Krävs** endast om en behållare SAS inte har angetts. Hej kontonyckel hello storage-konto för hello importera jobbet.|  
+|**/csas:**< ContainerSas\>|**Krävs** om hello lagringskontonyckel inte har angetts. hello behållare SAS för att komma åt hello blobbar som är associerade med hello importjobbet.|  
+|**/ CopyLogFile:**< DriveCopyLogFile\>|**Krävs.** Sökvägen toohello enhet kopiera loggfilen (utförlig loggen eller felloggen). hello filen har genererats av hello Windows Azure Import/Export service och kan hämtas från hello blob storage som är associerade med hello jobb. hello kopiera loggfilen innehåller information om misslyckade blobbar eller filer som är toobe repareras.|  
+|**/ PathMapFile:**< DrivePathMapFile\>|**Valfritt.** Sökvägen tooa textfil som kan användas för tooresolve tvetydigheter om du har flera filer med samma namn som du importerar i hello hello samma jobb. hello första gången hello verktyget körs, den kan fylla i den här filen med alla hello tvetydiga namn. Efterföljande körningar av hello verktyget kommer att använda den här filen tooresolve hello tvetydigheter.|  
   
-## <a name="using-the-repairimport-command"></a>Med hjälp av kommandot RepairImport  
-Om du vill reparera importera data med strömmande data över nätverket, måste du ange de kataloger som innehåller de ursprungliga filerna som du importerar med hjälp av den `/d` parameter. Du måste också ange kopiera loggfilen som du hämtade från ditt lagringskonto. Det ser ut som en typisk kommandoraden för att reparera ett importjobb med partiellt fel:  
+## <a name="using-hello-repairimport-command"></a>Hej kommandot RepairImport  
+toorepair importera data av strömmande hello data över hello nätverk måste du ange hello kataloger som innehåller ursprungliga hello filerna som du importerar med hello `/d` parameter. Du måste också ange hello kopiera loggfilen som du hämtade från ditt lagringskonto. En typisk kommandoraden toorepair ett importjobb med partiellt fel ser ut:  
   
 ```  
 WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bob\Pictures;X:\BobBackup\photos /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C2V.log  
 ```  
   
-Följande är ett exempel på en loggfil för kopia. I det här fallet en 64 K del av en fil är skadad på enheten som levererades för importjobbet. Eftersom detta är endast felet anges resten av blobbar i jobbet har importerats.  
+hello följande är ett exempel på en loggfil för kopia. I det här fallet en 64 K del av en fil är skadad på hello-enhet som har levererats för hello importjobbet. Eftersom det är hello endast fel anges hello resten av hello blobbar i hello-jobbet har importerats.  
   
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -73,39 +73,39 @@ Följande är ett exempel på en loggfil för kopia. I det här fallet en 64 K d
 </DriveLog>  
 ```
   
-När den här loggfilen kopia skickas till verktyget Azure Import/Export försöker verktyget Slutför import för den här filen genom att kopiera saknas innehållet över nätverket. Följande exempel ovan, verktyget söker efter den ursprungliga filen `\animals\koala.jpg` i de två katalogerna `C:\Users\bob\Pictures` och `X:\BobBackup\photos`. Om filen `C:\Users\bob\Pictures\animals\koala.jpg` finns verktyget Azure Import/Export saknas dataområdet kopieras till motsvarande blob `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`.  
+När kopiera loggen skickas toohello Azure Import/Export-verktyget, försöker hello verktyget toofinish hello import för den här filen genom att kopiera hello saknas innehållet över hello nätverk. Följande hello-exemplet ovan, hello verktyget söker efter hello originalfilen `\animals\koala.jpg` i hello två kataloger `C:\Users\bob\Pictures` och `X:\BobBackup\photos`. Om hello filen `C:\Users\bob\Pictures\animals\koala.jpg` finns hello Azure Import/Export verktyget kopierar hello saknas mängd data toohello motsvarande blob `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`.  
   
 ## <a name="resolving-conflicts-when-using-repairimport"></a>Lösa konflikter när du använder RepairImport  
-I vissa situationer kan verktyget kanske inte kan hitta eller öppna filen behövs för en av följande orsaker: gick inte att hitta filen, filen är inte tillgänglig, filnamnet är tvetydigt eller innehållet i filen är inte korrekta längre.  
+I vissa situationer hello kanske inte kan toofind eller öppna hello nödvändig fil för en av följande orsaker hello: hello filen kunde inte hittas, hello-filen är inte tillgänglig, hello filnamn är tvetydigt eller hello innehållet hello-filen är inte korrekta längre.  
   
-Ett tvetydigt fel kan inträffa om verktyget försöker hitta `\animals\koala.jpg` och det finns en fil med detta namn under både `C:\Users\bob\pictures` och `X:\BobBackup\photos`. Det vill säga både `C:\Users\bob\pictures\animals\koala.jpg` och `X:\BobBackup\photos\animals\koala.jpg` finns på import jobbet enheter.  
+Ett tvetydigt fel kan inträffa om hello verktyget försöker toolocate `\animals\koala.jpg` och det finns en fil med detta namn under både `C:\Users\bob\pictures` och `X:\BobBackup\photos`. Det vill säga både `C:\Users\bob\pictures\animals\koala.jpg` och `X:\BobBackup\photos\animals\koala.jpg` finns på hello importera jobbet enheter.  
   
-Den `/PathMapFile` alternativ tillåter dig att lösa dessa problem. Du kan ange namnet på filen som ska innehåller en lista över filer som verktyget går inte att identifiera. Följande är ett exempel kommandorad som ska fylla `9WM35C2V_pathmap.txt`:  
+Hej `/PathMapFile` alternativet Tillåt tooresolve felen. Du kan ange hello namnet på hello-fil som ska innehåller hello lista över filer som hello verktyget inte kunde identifiera toocorrectly. hello följande är ett exempel kommandorad som ska fylla `9WM35C2V_pathmap.txt`:  
   
 ```
 WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bob\Pictures;X:\BobBackup\photos /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C2V.log /PathMapFile:C:\WAImportExport\9WM35C2V_pathmap.txt  
 ```
   
-Verktyget kommer sedan skriva problematiska sökvägarna till `9WM35C2V_pathmap.txt`, ett på varje rad. Filen kan exempelvis innehålla följande poster efter körning av kommandot:  
+hello verktyget kommer sedan att skriva hello problematiska sökvägar för`9WM35C2V_pathmap.txt`, ett på varje rad. Hello filen kan exempelvis innehålla hello följande poster när du har kört kommandot hello:  
  
 ```
 \animals\koala.jpg  
 \animals\kangaroo.jpg  
 ```
   
- För varje fil i listan, bör du försöka hitta och öppna filen för att säkerställa att den är tillgänglig för verktyget. Du kan ändra sökvägen mappningsfilen och Lägg till sökvägen till varje fil på samma rad, avgränsade med semikolon fliken om du vill berätta verktyget uttryckligen var du hittar en fil:  
+ För varje fil i listan hello bör du försöka toolocate och öppna hello filen tooensure det är tillgängligt toohello verktyg. Om du inte vill tootell hello verktyget uttryckligen där toofind en fil som du kan ändra hello sökväg mappa filen och Lägg till fil vid hello-tooeach på hello samma rad, avgränsade med semikolon fliken:  
   
 ```
 \animals\koala.jpg           C:\Users\bob\Pictures\animals\koala.jpg  
 \animals\kangaroo.jpg        X:\BobBackup\photos\animals\kangaroo.jpg  
 ```
   
-Efter att göra nödvändiga filer tillgängliga för verktyget eller uppdatering av mappningsfilen sökväg, kan du köra verktyget för att slutföra importen.  
+Efter att hello nödvändiga filer tillgängliga toohello verktyg och uppdaterar hello sökväg mappningsfilen, kan du köra hello verktyget toocomplete hello importen.  
   
 ## <a name="next-steps"></a>Nästa steg
  
-* [Konfigurera verktyget Azure Import/Export](storage-import-export-tool-setup-v1.md)   
+* [Ställa in hello Azure Import/Export-verktyget](storage-import-export-tool-setup-v1.md)   
 * [Förbereda hårddiskar för ett importjobb](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Granska jobbstatus med kopiera loggfiler](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Reparera ett exportjobb](storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [Felsökning av Azures import-/exportverktyg](storage-import-export-tool-troubleshooting-v1.md)
+* [Felsöka hello Azure Import/Export-verktyget](storage-import-export-tool-troubleshooting-v1.md)

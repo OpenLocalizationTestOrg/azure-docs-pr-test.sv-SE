@@ -1,5 +1,5 @@
 ---
-title: "Distribuera Windows beräkningsresurser med Azure Resource Manager-mallar | Microsoft Docs"
+title: aaaDeploying Windows Compute resurser med Azure Resource Manager-mallar | Microsoft Docs
 description: "Virtuella Azure-datorn DotNet grundläggande självstudierna"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,24 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a8b888195e52ea9669922a6a00a873025f3c375
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dee228a492b08053713829e156e5b5ba304d7588
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-architecture-with-azure-resource-manager-templates-for-windows-vms"></a>Programarkitektur med Azure Resource Manager-mallar för virtuella Windows-datorer
 
-När du utvecklar en Azure Resource Manager-distribution för att beräkna krav måste mappas till Azure-resurser och tjänster. Om ett program består av flera http-slutpunkter, en databas och en data cachelagring service, Azure-resurser som är värdar för varje för dessa komponenter måste vara rationaliserad. Musik Store exempelprogrammet innehåller exempelvis ett webbprogram som är värd för en virtuell dator och en SQL-databas, som finns i Azure SQL-databas. 
+När du utvecklar en Azure Resource Manager-distribution måste behov toobe mappas tooAzure resurser och tjänster. Om ett program består av flera http-slutpunkter, en databas och en data cachelagring service, hello Azure-resurser som är värdar för var och en av dessa komponenter måste toobe rationaliserad. Hello musik Store exempelprogrammet innehåller exempelvis ett webbprogram som är värd för en virtuell dator och en SQL-databas, som finns i Azure SQL-databas. 
 
-Det här dokumentet beskriver hur beräkningsresurser musik Store har konfigurerats i Azure Resource Manager exempelmall. Alla beroenden och unika konfigurationer är markerade. Distribuera en instans av lösningen till din Azure-prenumeration och fungerar tillsammans med Azure Resource Manager-mall för bästa resultat. Fullständig mallen hittar du här – [musik Store distributionen på Windows](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
+Det här dokumentet beskriver hur hello musik Store beräkningsresurser konfigureras i hello Azure Resource Manager exempelmall. Alla beroenden och unika konfigurationer är markerade. Distribuera en instans av hello lösning tooyour Azure-prenumeration och fungerar tillsammans med hello Azure Resource Manager-mall för hello bästa möjliga resultat. hello fullständig mallen hittar du här – [musik Store distributionen på Windows](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
 
 ## <a name="virtual-machine"></a>Virtuell dator
-Musik Store-programmet innehåller ett webbprogram där kunder kan bläddra bland och köpa musik. Det finns flera Azure-tjänster som kan vara värd för webbprogram i det här exemplet används en virtuell dator. Med mallen musik Store exempel kan en virtuell dator distribueras, installera en webbserver och musik Store webbplats installeras och konfigureras. För den här artikeln beskrivs bara distributionen av virtuella datorer. Konfigurationen av webbservern och programmet beskrivs i en senare artikel.
+hello musik Store-programmet innehåller ett webbprogram där kunder kan bläddra bland och köpa musik. Det finns flera Azure-tjänster som kan vara värd för webbprogram i det här exemplet används en virtuell dator. Använder hello exempelmall musik Store, en virtuell dator distribueras, installera en webbserver och hello musik Store webbplats installeras och konfigureras. För hello ut i den här artikeln beskrivs bara distributionen av hello virtuella datorer. hello konfigurationen av hello webbservern och hello program beskrivs i en senare artikel.
 
-En virtuell dator kan läggas till en mall med hjälp av Visual Studio Lägg till ny resurs-guiden eller genom att infoga giltig JSON i mallen för distribution. När du distribuerar en virtuell dator krävs också flera relaterade resurser. Om du använder Visual Studio för att skapa mallen, är dessa resurser skapas. Om hur du manuellt skapar mallen, måste dessa resurser infogas och konfigureras.
+En virtuell dator kan läggas till tooa mallen med hjälp av hello Visual Studio Lägg till ny resurs guiden, eller genom att infoga giltig JSON i hello Distributionsmall. När du distribuerar en virtuell dator krävs också flera relaterade resurser. Om du använder Visual Studio toocreate hello mall skapas dessa resurser. Om manuellt konstruera hello mall, måste dessa resurser toobe infogas och konfigurerats.
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [virtuella JSON](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L285).
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [virtuella JSON](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L285).
 
 ```json
 {
@@ -62,14 +62,14 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [virtuella
 }
 ```
 
-Distribution kan kan egenskaperna för virtuella datorn ses i Azure-portalen.
+När har distribuerats, kan hello egenskaper för virtuell dator ses i hello Azure-portalen.
 
 ![Virtuell dator](./media/dotnet-core-2-architecture/vm-win.png)
 
-## <a name="storage-account"></a>Storage-konto
-Storage-konton har många lagringsalternativ och funktioner. Ett lagringskonto innehåller virtuella hårddiskar på den virtuella datorn och eventuella ytterligare hårddiskar i kontexten av Azure virtuella datorer. Musik Store-exempel innehåller ett lagringskonto för att lagra den virtuella hårddisken på varje virtuell dator i distributionen. 
+## <a name="storage-account"></a>Lagringskonto
+Storage-konton har många lagringsalternativ och funktioner. Hello-kontexten av Azure virtuella datorer innehåller ett lagringskonto hello virtuella hårddiskar för hello virtuell dator och eventuella ytterligare hårddiskar. hello musik Store exempel innehåller en lagring konto toohold hello virtuella hårddisken på varje virtuell dator i hello-distribution. 
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Lagringskonto](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L98).
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [Lagringskonto](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L98).
 
 ```json
 {
@@ -86,9 +86,9 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Lagringsk
 }
 ```
 
-Ett lagringskonto är associerat med en virtuell dator i Resource Manager mallen deklarationen av den virtuella datorn. 
+Ett lagringskonto är associerat med en virtuell dator i hello Resource Manager-mall deklarationen av hello virtuell dator. 
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [virtuella datorn och Storage-konto associationen](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L321).
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [virtuella datorn och Storage-konto associationen](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L321).
 
 ```json
 "osDisk": {
@@ -101,20 +101,20 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [virtuella
 }
 ```
 
-Efter distributionen kan storage-konto visas i Azure-portalen.
+Efter distributionen kan hello storage-konto visas i hello Azure-portalen.
 
-![Storage-konto](./media/dotnet-core-2-architecture/storacct-win.png)
+![Lagringskonto](./media/dotnet-core-2-architecture/storacct-win.png)
 
-Klicka i lagringsblobbehållare för kontot visas virtuell hårddiskfil för varje virtuell dator distribueras med hjälp av mallen.
+Klicka i hello lagringsblobbehållare för kontot visas hello virtuell hårddiskfil för varje virtuell dator distribueras med hello mallen.
 
 ![Virtuella hårddiskar](./media/dotnet-core-2-architecture/vhd-win.png)
 
 Mer information om Azure Storage finns [Azure Storage-dokumentationen](https://azure.microsoft.com/documentation/services/storage/).
 
 ## <a name="virtual-network"></a>Virtual Network
-Om en virtuell dator kräver interna nätverk, till exempel möjligheten att kommunicera med andra virtuella datorer och Azure-resurser, krävs ett Azure Virtual Network.  Ett virtuellt nätverk gör inte den virtuella datorn tillgänglig via internet. Anslutning för offentliga kräver en offentlig IP-adress som beskrivs senare i den här serien.
+Om en virtuell dator kräver interna nätverk, till exempel hello möjlighet toocommunicate med andra virtuella datorer och Azure-resurser, krävs ett Azure Virtual Network.  Ett virtuellt nätverk gör inte hello virtuella datorn nås över hello internet. Anslutning för offentliga kräver en offentlig IP-adress som beskrivs senare i den här serien.
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [virtuella nätverk och undernät](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L126).
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [virtuella nätverk och undernät](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L126).
 
 ```json
 {
@@ -149,14 +149,14 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [virtuella
 }
 ```
 
-Från Azure-portalen virtuellt nätverk ser ut som följande bild. Observera att alla virtuella datorer som distribueras med hjälp av mallen är anslutna till det virtuella nätverket.
+Från hello Azure-portalen, hello virtuellt nätverk ser ut som hello följande bild. Observera att alla virtuella datorer som distribueras med hello mallen är anslutna toohello virtuellt nätverk.
 
 ![Virtual Network](./media/dotnet-core-2-architecture/vnet-win.png)
 
 ## <a name="network-interface"></a>Nätverksgränssnitt
- Ett nätverksgränssnitt ansluter en virtuell dator till ett virtuellt nätverk, mer specifikt till ett undernät som har definierats i det virtuella nätverket. 
+ Ett nätverksgränssnitt ansluter en virtuell dator tooa virtuellt nätverk, mer specifikt tooa undernät som har definierats i hello virtuellt nätverk. 
 
- Följ länken för att se JSON-exemplet i Resource Manager-mallen – [nätverksgränssnittet](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L156).
+ Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [nätverksgränssnittet](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L156).
 
 ```json
 {
@@ -203,9 +203,9 @@ Från Azure-portalen virtuellt nätverk ser ut som följande bild. Observera att
 }
 ```
 
-Varje virtuell datorresurs innehåller en nätverksprofil. Nätverksgränssnittet är kopplat till den virtuella datorn i den här profilen.  
+Varje virtuell datorresurs innehåller en nätverksprofil. hello nätverksgränssnittet är kopplat till hello virtuell dator i den här profilen.  
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [virtuella nätverksprofil](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L330).
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [virtuella nätverksprofil](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L330).
 
 ```json
 "networkProfile": {
@@ -217,18 +217,18 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [virtuella
 }
 ```
 
-Från Azure-portalen nätverksgränssnittet ser ut som följande bild. Den interna IP-adressen och virtuella associationen kan ses på gränssnittet nätverksresurs.
+Från hello Azure-portalen, hello nätverksgränssnittet ser ut som hello följande bild. hello interna IP-adress och hello virtuella koppling kan ses på hello nätverksresurs gränssnitt.
 
 ![Nätverksgränssnitt](./media/dotnet-core-2-architecture/nic-win.png)
 
 Mer information om virtuella Azure-nätverk finns [dokumentation för Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/).
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
-Förutom en virtuell dator som värd för webbplatsen musik Store distribueras en Azure SQL Database som värd för musik Store-databasen. Fördelen med att använda Azure SQL Database här är att en annan uppsättning virtuella datorer är inte obligatoriska och tillgänglighet och skala är inbyggd i tjänsten.
+Dessutom är tooa virtuella datorn är värd för hello musik Store webbplats, Azure SQL-databas distribuerade toohost hello musik Store-databas. hello fördelen med att använda Azure SQL Database här är att en annan uppsättning virtuella datorer är inte obligatoriska och tillgänglighet och skala är inbyggd i hello-tjänsten.
 
-En Azure SQL database kan läggas till med Visual Studio lägga till nya resursen guiden, eller genom att infoga giltig JSON i en mall. SQL Server-resurs innehåller ett användarnamn och lösenord som har beviljats administratörsbehörighet på SQL-instansen. Dessutom läggs en resurs för SQL-brandväggen. Som standard är program som finns i Azure kan ansluta till SQL-instansen. Sådana en SQL Server Management studio att ansluta till SQL-instansen brandväggen måste konfigureras för att tillåta externa program. Standardkonfigurationen är bra för enkelhetens musik Store-demonstrationen. 
+En Azure SQL database kan läggas till med hello Visual Studio Lägg till ny resurs guiden, eller genom att infoga giltig JSON i en mall. hello SQL Server-resurs innehåller ett användarnamn och lösenord som har beviljats administratörsbehörighet på hello SQL-instansen. Dessutom läggs en resurs för SQL-brandväggen. Som standard är program som finns i Azure kan tooconnect med hello SQL-instans. tooallow externt program sådana en SQL Server Management studio tooconnect toohello SQL-instans, hello brandvägg måste toobe konfigurerats. Hello standardkonfigurationen är bra för hello musik Store demo hello ut. 
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L379).
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-windows/azuredeploy.json#L379).
 
 ```json
 {
@@ -262,7 +262,7 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Azure SQL
 }
 ```
 
-En vy av SQLServer och MusicStore databas som visas i Azure-portalen.
+En vy över hello SQLServer- och MusicStore som visas i hello Azure-portalen.
 
 ![SQL Server](./media/dotnet-core-2-architecture/sql-win.png)
 

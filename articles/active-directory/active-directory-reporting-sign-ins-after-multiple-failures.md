@@ -1,5 +1,5 @@
 ---
-title: Inloggningar efter flera fel
+title: aaaSign moduler efter flera fel
 description: "En rapport som visar användare som har loggat in efter flera efterföljande misslyckade logga inloggningsförsök."
 services: active-directory
 documentationcenter: 
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/04/2016
 ms.author: saah;kenhoff
-ms.openlocfilehash: e55e0145adbdb1f41a8b8753d5555f20e96bf161
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 48d137dc3abf65287cb3b9ba8a6ff10340f6741f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sign-ins-after-multiple-failures"></a>Inloggningar efter flera fel
 Den här rapporten visar användare som har loggat in efter flera efterföljande misslyckade logga inloggningsförsök. Möjliga orsaker är:
 
-* Användaren har glömt sitt lösenord</li><li>Användaren är drabbade lyckade lösenord för att gissa brute force attack
+* Användaren har glömt sitt lösenord</li><li>Användaren är hello offer för en lyckad nyckelsökningsangrepp att gissa lösenord
 
-Resultaten från den här rapporten visar antalet misslyckade försök i följd inloggning gjorda innan den lyckas inloggningen och en tidsstämpel som är associerade med den första lycka inloggningen.
+Resultaten från den här rapporten visar hello av antalet misslyckade försök i följd inloggning gjorts tidigare toohello lyckad inloggning och en tidsstämpel som är associerade med hello första lyckade inloggning.
 
-**Rapportera inställningar**: du kan konfigurera det minsta antalet på varandra följande loggar för misslyckade inloggningsförsök som måste inträffa innan den kan visas i rapporten. När du gör ändringar i den här inställningen är det viktigt att notera att inte tillämpas dessa ändringar till alla befintliga Misslyckad inloggning moduler som för närvarande visas i den befintliga rapporten. De kommer att användas för alla framtida inloggningar. I den här rapporten kan bara ändras av licensierade administratörer.
+**Rapportera inställningar**: du kan konfigurera hello minsta antal på varandra följande loggar för misslyckade inloggningsförsök som måste inträffa innan den kan visas i hello rapporten. När du ändrar toothis som du anger är viktiga toonote att ändringarna inte tillämpade tooany befintliga misslyckade inloggningar som för närvarande visas i den befintliga rapporten. De kommer dock tillämpade tooall framtida inloggningar. Rapport om toothis kan endast göras av licensierade administratörer.
 
 ![Inloggningar efter flera fel](./media/active-directory-reporting-sign-ins-after-multiple-failures/signInsAfterMultipleFailures.PNG)
 

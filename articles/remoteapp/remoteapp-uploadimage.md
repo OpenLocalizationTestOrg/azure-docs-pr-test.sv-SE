@@ -1,6 +1,6 @@
 ---
-title: "Ladda upp en anpassad avbildning för Azure RemoteApp | Microsoft Docs"
-description: "Lär dig hur du laddar upp en anpassad avbildning för Azure RemoteApp"
+title: "aaaUpload en anpassad avbildning för Azure RemoteApp | Microsoft Docs"
+description: "Lär dig hur tooupload en anpassad avbildning för Azure RemoteApp"
 services: remoteapp
 documentationcenter: 
 author: ericorman
@@ -13,44 +13,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: ericor
-ms.openlocfilehash: 5a235fac88d6e95ea294bda197641108acb4a09f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6ad40fe58795ece37f4c7900be01bc713938da87
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="upload-a-custom-image-for-azure-remoteapp"></a>Ladda upp en anpassad avbildning för Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs [meddelandet](https://go.microsoft.com/fwlink/?linkid=821148) för mer information.
+> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs hello [meddelande](https://go.microsoft.com/fwlink/?linkid=821148) mer information.
 > 
 > 
 
-Nu när du har skapat en egeninställd mallavbildning eller har uppdaterats med ändringar som du behöver överför avbildningen till din Azure RemoteApp-bildbibliotek. Följ dessa steg.
+Nu när du har skapat en egeninställd mallavbildning eller har uppdaterats med ändringar, måste du tooupload bildbibliotek det bild tooyour Azure RemoteApp. Följ dessa steg.
 
 ## <a name="before-you-start"></a>Innan du börjar
-1. Verifiera den anpassade avbildningen uppfyller de [bildkrav](remoteapp-imagereqs.md) och [programkrav](remoteapp-appreqs.md).
-2. Installera den [Azure PowerShell-modulen](/powershell/azure/overview).
+1. Verifiera den anpassade avbildningen uppfyller hello [bildkrav](remoteapp-imagereqs.md) och [programkrav](remoteapp-appreqs.md).
+2. Installera hello [Azure PowerShell-modulen](/powershell/azure/overview).
 
-## <a name="step-by-step-on-how-to-upload-custom-image"></a>Steg för steg om hur du överför anpassad avbildning
-1. Öppna Azure-hanteringsportalen och gå till sidan RemoteApp.
-2. På den **mallavbildningarna** klickar du på **överför** längst ned på sidan.
-3. Ange ett eget namn för bilden och ange kontot lagringsplatsen. Se till att platsen är samma plats som RemoteApp-samling eller en plats där du vill skapa en.
-4. När du uppmanas, hämta skriptet till din lokala dator.
-5. Kopiera kommandoparametrarna i textrutan till Urklipp.
+## <a name="step-by-step-on-how-tooupload-custom-image"></a>Steg för steg om hur tooupload anpassad avbildning
+1. Öppna Azure-hanteringsportalen och navigera toohello RemoteApp-sidan.
+2. På hello **mallavbildningarna** klickar du på **överför** på hello hello sidans nederkant.
+3. Ange ett eget namn för bilden och ange hello lagringskontoplatsen. Kontrollera hello plats är hello samma plats som RemoteApp-samling eller en plats där du vill toocreate en.
+4. När du uppmanas att hämta hello skriptet tooyour lokala dator.
+5. Kopiera hello parametrar i hello text rutan tooyour Urklipp.
 6. Öppna en kommandotolk med Windows PowerShell.
-7. Gå till samma katalog där du har hämtat skriptet från en upphöjd Windows PowerShell-fönstret.
-8. Klistra in den kopierade kommando och tryck på **RETUR**.
+7. Utökade Windows PowerShell-fönstret från hello navigera toohello samma katalog där du hämtade hello skript.
+8. Klistra in hello kopieras kommando och tryck på **RETUR**.
    
-   Överföringen startar och varaktighet beror på många faktorer, inklusive nätverkshastigheten och storlek
-9. Om överföra misslyckas på grund av avbrott i nätverket eller saker som de som kan du alltid återuppta överföringen du började. Kör skriptet igen med samma kommandorad för att återuppta en överföring.
+   hello överföringen startar och varaktighet beror på många faktorer, inklusive nätverkshastigheten och hello-bild
+9. Om överföra misslyckas på grund av avbrott i nätverket eller saker som de som kan du alltid återuppta hello överföringsprocessen du började. tooresume en överföring kör hello skriptet igen med hello samma kommandorad.
 
 > [!WARNING]
-> Ändra aldrig överföringsskriptet. Specifika kontroller har genomförts för att säkerställa att avbildningen uppfyller avbildningen kraven och programkrav.
+> Ändra aldrig hello överför skript. Specifika kontroller har implementerat tooensure som hello avbildningen uppfyller hello avbildningen krav och programkrav.
 > 
 > 
 
 ## <a name="common-problems"></a>Vanliga problem
-* Kontrollera att du använder Windows PowerShell, inte Azure PowerShell. Du måste installera Azure PowerShell-modulen eftersom vissa moduler behövs under överföringen.
-* Ändra aldrig skriptet, verifieringar finns det för din bekvämlighet.
-* Om vhd-filen hämtar utelåst under överföring, kopiera filen eller flytta den till en ny överför plats och försök igen. Det kan finnas vissa Windows-process som hindrar överföringen.  
+* Kontrollera att du använder Windows PowerShell, inte Azure PowerShell. Du behöver tooinstall hello Azure PowerShell-modulen eftersom vissa moduler behövs under hello överföringen.
+* Ändra aldrig hello skript, verifieringar finns det för din bekvämlighet.
+* Om hello vhd-filen hämtar utelåst under överföring, kopiera hello filen eller flytta den överför för tooa ny plats och försök igen. Det kan finnas vissa Windows-process som hindrar överföringen.  
 

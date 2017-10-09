@@ -1,5 +1,5 @@
 ---
-title: Azure Automation DSC kontinuerlig distribution med Chocolatey | Microsoft Docs
+title: aaaAzure Automation DSC kontinuerlig distribution med Chocolatey | Microsoft Docs
 description: "DevOps kontinuerlig distribution med Azure Automation DSC och Chocolatey Pakethanteraren.  Exempel med fullständig JSON ARM-mallen och PowerShell-källa."
 services: automation
 documentationcenter: 
@@ -14,84 +14,84 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/29/2016
 ms.author: golive
-ms.openlocfilehash: f23d7374a8954a0a95853fa9e00b54a8d9c468c4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 60af52af5f834fd48e3a0dc4677919397b53f0f4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Exempel på användning: Kontinuerlig distribution till virtuella datorer med hjälp av Automation DSC och Chocolatey
-I en DevOps-värld finns många verktyg för att hjälpa till med olika punkter i pipeline för kontinuerlig Integration.  Azure Automation önskat tillståndskonfigurationen (DSC) är en Välkommen nya tillägg till de alternativ som DevOps team kan använda.  Den här artikeln visar inställningen in kontinuerlig distribution (CD) för en Windows-dator.  Du kan enkelt utöka tekniken för att inkludera så många Windows-datorer som behövs i roll (till exempel en webbplats), och därifrån samt ytterligare roller.
+# <a name="usage-example-continuous-deployment-toovirtual-machines-using-automation-dsc-and-chocolatey"></a>Exempel på användning: Kontinuerlig distribution tooVirtual datorer med hjälp av Automation DSC och Chocolatey
+Det finns många verktyg tooassist med olika punkter i hello kontinuerlig Integration pipeline i en DevOps-värld.  Konfigurationen för Azure Automation önskade tillstånd (DSC) är en Välkommen nya tillägg toohello alternativ DevOps team kan använda.  Den här artikeln visar inställningen in kontinuerlig distribution (CD) för en Windows-dator.  Du kan enkelt utöka hello tekniken tooinclude så många Windows-datorer som behövs i hello roll (till exempel en webbplats) och från tooadditional roller samt.
 
 ![Kontinuerlig distribution för IaaS-VM](./media/automation-dsc-cd-chocolatey/cdforiaasvm.png)
 
 ## <a name="at-a-high-level"></a>På en hög nivå
 Det finns lite som pågår, men som tur är det kan delas i två huvudsakliga processer: 
 
-* Skriva kod och testa det, skapar och publicerar installationspaket för högre och lägre versioner av systemet. 
-* Skapa och hantera virtuella datorer som ska installera och köra koden i paket.  
+* Skriva kod och testa det, skapar och publicerar installationspaket för högre och lägre version av hello system. 
+* Skapa och hantera virtuella datorer som ska installera och köra hello kod i hello-paket.  
 
-När båda dessa kärnprocesser är på plats är det ett kort steg för att automatiskt uppdatera paket som körs på en viss virtuell dator som nya versioner skapas och distribueras.
+När båda dessa kärnprocesser är på plats är det ett kort steg tooautomatically hello uppdateringspaket som körs på en viss VM nya versioner skapas och distribueras.
 
 ## <a name="component-overview"></a>Översikt över komponenten
-Paketet chefer som [lgh get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) är ganska välkända i Linux-världen, men inte så mycket i Windows-världen.  [Chocolatey](https://chocolatey.org/) sådana sak och Scott Hanselman [blogg](http://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) på avsnittet är en bra introduktion.  I kort sagt kan kan Chocolatey du installera paket från en central databas av paket i en Windows-dator med hjälp av kommandoraden.  Du kan skapa och hantera egna databasen och Chocolatey kan installera paket från valfritt antal databaser som du har angett.
+Paketet chefer som [lgh get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) är ganska välkända i Linux hälsningsmeddelande, men inte så mycket i Windows hälsningsmeddelande.  [Chocolatey](https://chocolatey.org/) sådana sak och Scott Hanselman [blogg](http://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) på hello avsnittet är en bra introduktion.  I kort sagt kan kan Chocolatey du tooinstall paket från en central databas av paket i en Windows-dator med hjälp av kommandoraden hello.  Du kan skapa och hantera egna databasen och Chocolatey kan installera paket från valfritt antal databaser som du har angett.
 
-Desired Configuration tillstånd (DSC) ([översikt](https://technet.microsoft.com/library/dn249912.aspx)) är ett PowerShell-verktyg som hjälper dig att deklarera den konfiguration som du vill använda för en dator.  Anta exempelvis att du kan, ”jag vill Chocolatey installerad, jag vill att IIS har installerats, jag vill öppna port 80, jag vill 1.0.0 på webbplatsen installerade versionen”.  DSC lokala Configuration Manager (MGM) implementerar denna konfiguration. En DSC Pull-Server innehåller en databas av konfigurationer för dina datorer. MGM på varje dator kontrollerar regelbundet om dess konfiguration matchar den lagrade konfigurationen. Det kan rapportera status eller försök att göra datorn justering till den lagrade konfigurationen. Du kan redigera den lagrade konfigurationen på pull-servern att starta en dator eller en uppsättning datorer att komma i justering med ändrade konfigurationen.
+Desired Configuration tillstånd (DSC) ([översikt](https://technet.microsoft.com/library/dn249912.aspx)) är ett PowerShell-verktyg som gör att du toodeclare hello konfiguration som du vill använda för en dator.  Anta exempelvis att du kan, ”jag vill Chocolatey installerad, jag vill att IIS har installerats, jag vill öppna port 80, jag vill 1.0.0 på webbplatsen installerade versionen”.  hello DSC Local Configuration Manager implementerar (MGM) denna konfiguration. En DSC Pull-Server innehåller en databas av konfigurationer för dina datorer. hello MGM på varje dator kontrollerar i regelbundet toosee om dess konfiguration matchar hello lagrade konfigurationen. Det kan rapportera status eller försök toobring hello datorn tillbaka till anpassningen hello lagrade konfigurationen. Du kan redigera hello lagrade konfigurationen på hello pull server toocause en dator eller en uppsättning datorer toocome till justering med hello ändrat konfigurationen.
 
-Azure Automation är en hanterad tjänst i Microsoft Azure som gör det möjligt att automatisera olika uppgifter med hjälp av runbooks, noder, autentiseringsuppgifter, resurser och resurser, t.ex scheman och globala variabler. Azure Automation DSC utökar funktionen automation för att inkludera PowerShell DSC-verktyg.  Här är en bra [översikt](automation-dsc-overview.md).
+Azure Automation är en hanterad tjänst i Microsoft Azure som gör att du tooautomate olika uppgifter med hjälp av runbooks, noder, autentiseringsuppgifter, resurser och resurser, t.ex scheman och globala variabler. Azure Automation DSC utökar denna automatisering kapaciteten tooinclude PowerShell DSC-verktyg.  Här är en bra [översikt](automation-dsc-overview.md).
 
-En DSC-resurs är en modul av kod som har specifika funktioner, t.ex hantering av nätverk, Active Directory eller SQL Server.  Resursen Chocolatey DSC vet hur man åtkomst till en NuGet-Server (bland annat), ladda ned paket, installera paket och så vidare.  Det finns många andra DSC-resurser i den [PowerShell-galleriet](http://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title).  Dessa moduler är installerade i Azure Automation DSC Pull-servern (av du) så att de kan användas av dina konfigurationer.
+En DSC-resurs är en modul av kod som har specifika funktioner, t.ex hantering av nätverk, Active Directory eller SQL Server.  Hej Chocolatey DSC-resurs vet hur tooaccess en NuGet-Server (bland annat) ladda ned paket, installera paket och så vidare.  Det finns många andra DSC-resurser i hello [PowerShell-galleriet](http://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title).  Dessa moduler är installerade i Azure Automation DSC Pull-servern (av du) så att de kan användas av dina konfigurationer.
 
-Resource Manager-mallar tillhandahåller en deklarativ metod för att skapa din infrastruktur – till exempel nätverk, undernät, nätverkssäkerhet och routning, läsa in belastningsutjämning, nätverkskort, virtuella datorer och så vidare.  Här är en [artikel](../azure-resource-manager/resource-manager-deployment-model.md) som jämför den Resource Manager-distributionsmodellen (deklarativ) med Azure Service Management (ASM eller klassisk) distribution modellen (tvingande) och beskriver core resursproviders, beräkning, lagring och nätverk.
+Resource Manager-mallar tillhandahåller en deklarativ metod för att skapa din infrastruktur – till exempel nätverk, undernät, nätverkssäkerhet och routning, läsa in belastningsutjämning, nätverkskort, virtuella datorer och så vidare.  Här är en [artikel](../azure-resource-manager/resource-manager-deployment-model.md) att jämför hello Resource Manager-modellen (deklarativ) med hello Azure Service Management (ASM eller klassisk) distribution modellen (tvingande) och beskriver hello core resurs providers, beräkning, lagring och nätverk.
 
-En nyckelfunktion i Resource Manager-mall är möjligheten att installera en VM-tillägget i den virtuella datorn eftersom den har etablerats.  En VM-tillägget har specifika funktioner, till exempel använda ett anpassat skript, installera antivirusprogram eller ett DSC-konfigurationsskript.  Det finns många andra typer av VM-tillägg.
+En nyckelfunktion i Resource Manager-mall är dess möjlighet tooinstall VM-tillägget i hello VM eftersom den har etablerats.  En VM-tillägget har specifika funktioner, till exempel använda ett anpassat skript, installera antivirusprogram eller ett DSC-konfigurationsskript.  Det finns många andra typer av VM-tillägg.
 
-## <a name="quick-trip-around-the-diagram"></a>Snabb kommunikation runt diagrammet
-Början uppifrån, du skriva koden, skapa, testa och sedan skapa ett installationspaket.  Chocolatey kan hantera olika typer av installationspaket, till exempel MSI MSU, ZIP.  Och du har alla fördelar med PowerShell göra verklig installation om Chocolateys inbyggda funktioner som inte är helt upp till den.  Placera paketet i okänd nås – en paket-databas.  Det här exemplet användning använder en offentlig mapp i ett Azure blob storage-konto, men det kan finnas var som helst.  Chocolatey fungerar internt med NuGet-servrar och några andra för hantering av paketmetadata.  [Den här artikeln](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) beskrivs alternativen.  Det här exemplet användning använder NuGet.  En Nuspec är metadata om dina paket.  Nuspec ”kompileras” till Nupkgs och lagras i en NuGet-server.  När konfigurationen av begäranden i ett paket med namnet och refererar till en NuGet-server, hämtar paketet Chocolatey DSC-resursen (nu på den virtuella datorn) och installerar du.  Du kan också begära en viss version av ett paket.
+## <a name="quick-trip-around-hello-diagram"></a>Snabb kommunikation runt hello diagram
+Startar hello överst du skriva koden, skapa, testa och sedan skapa ett installationspaket.  Chocolatey kan hantera olika typer av installationspaket, till exempel MSI MSU, ZIP.  Och du har hello alla fördelar med PowerShell toodo hello verklig installation om Chocolateys inbyggda funktioner som inte är helt upp tooit.  Placera hello paketet i okänd nås – en paket-databas.  Det här exemplet användning använder en offentlig mapp i ett Azure blob storage-konto, men det kan finnas var som helst.  Chocolatey fungerar internt med NuGet-servrar och några andra för hantering av paketmetadata.  [Den här artikeln](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) beskrivs hello alternativ.  Det här exemplet användning använder NuGet.  En Nuspec är metadata om dina paket.  Hej Nuspec ”kompileras” till Nupkgs och lagras i en NuGet-server.  När konfigurationen av begäranden i ett paket med namnet och refererar till en NuGet-server, hämtar hello paketet hello Chocolatey DSC-resurs (nu på hello VM) och installerar du.  Du kan också begära en viss version av ett paket.
 
-I det nedre vänstra hörnet av bilden finns en mall för Azure Resource Manager (ARM).  I det här exemplet användning registrerar VM-tillägget den virtuella datorn med Azure Automation DSC Pull-servern (det vill säga en pull-server) som en nod.  Konfigurationen har sparats i pull-server.  Faktiskt, lagras två gånger: en gång i klartext och när kompilerats som en MOF-fil (för de vet om sådant.)  I portalen är MOF en ”nodkonfiguration” (i stället för bara ”configuration”).  Det är den artefakt som är associerad med en nod, så noden vet dess konfiguration.  Informationen nedan visar hur du tilldelar nodkonfigurationen till noden.
+Hello nedre vänstra hörnet i hello bild finns det en mall för Azure Resource Manager (ARM).  I det här exemplet användning registrerar hello VM-tillägget hello VM med hello Hämtningsservern för Azure Automation DSC (det vill säga en pull-server) som en nod.  hello konfigurationen lagras i hello pull-server.  Faktiskt, lagras två gånger: en gång i klartext och när kompilerats som en MOF-fil (för de vet om sådant.)  Hello-portalen är hello MOF ”nodkonfiguration” (som skillnad från toosimply ”configuration”).  Dess hello artefakt som är associerad med en nod så hello nod vet dess konfiguration.  Informationen nedan visar hur tooassign hello nod configuration toohello nod.
 
-Du utför förmodligen redan bitars längst upp eller de flesta av den.  Skapa nuspec, kompilering och lagra det i en NuGet-server är en liten sak.  Och du hanterar redan virtuella datorer.  Ta nästa steg att kontinuerlig distribution kräver ställer in pull-server (en gång), registrerar noderna med den (en gång), och skapa och lagra det (först).  Uppdatera sedan som paket uppgraderas och distribueras till databasen, konfiguration och konfiguration av noden i pull-servern (Upprepa efter behov).
+Förmodligen gör du redan hello bitars hello överst eller de flesta av den.  Skapa hello nuspec, kompilering och lagra det i en NuGet-server är en liten sak.  Och du hanterar redan virtuella datorer.  Tar hello nästa steg toocontinuous distribution kräver ställer in hello pull-server (en gång), registrerar noderna med den (en gång), och skapa och lagra det hello-konfiguration (först).  Uppdatera sedan som paket som uppgraderas och distribueras toohello databasen hello konfiguration och konfiguration av noden i hello pull-server (Upprepa efter behov).
 
-Om du inte behöver börja med en ARM-mall, är det också OK.  Det finns PowerShell-cmdlets som utformats för att hjälpa dig att registrera dina virtuella datorer med pull-server och alla övriga. Mer information finns i den här artikeln: [Onboarding datorer för hantering av Azure Automation DSC](automation-dsc-onboarding.md)
+Om du inte behöver börja med en ARM-mall, är det också OK.  Det finns PowerShell cmdlets som är utformade toohelp du registrera dina virtuella datorer med hello pull-server och alla hello rest. Mer information finns i den här artikeln: [Onboarding datorer för hantering av Azure Automation DSC](automation-dsc-onboarding.md)
 
-## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>Steg 1: Konfigurera kontot för pull-servern och automatisering
-Vid en autentiserad (Add-AzureRmAccount) PowerShell-kommandorad: (kan ta några minuter innan den pull-servern har konfigurerats)
+## <a name="step-1-setting-up-hello-pull-server-and-automation-account"></a>Steg 1: Konfigurera hello pull-servern och automation-konto
+Vid en autentiserad (Add-AzureRmAccount) PowerShell-kommandorad: (kan ta några minuter innan hello pull-server har konfigurerats)
 
     New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
     New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT 
 
-Du kan placera ditt automation-konto till någon av följande regioner (aka plats): östra USA 2, södra centrala USA, oss Gov Virginia, Västeuropa, Sydostasien, östra, centrala Indien och Australien-sydost, Kanada Central, Norra Europa.
+Du kan placera ditt automation-konto till någon av hello följande regioner (aka plats): östra USA 2, södra centrala USA, oss Gov Virginia, Västeuropa, Sydostasien, östra, centrala Indien och Australien-sydost, Kanada Central, Norra Europa.
 
-## <a name="step-2-vm-extension-tweaks-to-the-arm-template"></a>Steg 2: VM-tillägget justeringar för ARM-mallen
-Informationen för VM-registrering (med PowerShell DSC VM-tillägget) i det här [Azure Quickstart mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver).  Det här steget registrerar den nya virtuella datorn med den pull-servern i listan över DSC-noder.  En del av denna registrering är anger nodkonfiguration ska tillämpas på noden.  Konfiguration av den här noden är inte finns än i pull-servern så att det är OK steg 4 är där detta görs för första gången.  Men här i steg 2 behöver du har valt namnet på noden och namnet på konfigurationen.  Noden är 'isvbox' i detta exempel användning och konfigurationen är 'ISVBoxConfig'.  Nodkonfigurationsnamnet (måste anges i DeploymentTemplate.json) är därför 'ISVBoxConfig.isvbox'.  
+## <a name="step-2-vm-extension-tweaks-toohello-arm-template"></a>Steg 2: VM-tillägget justeringar toohello ARM-mall
+Information för VM-registrering (med hello PowerShell DSC VM-tillägget) i det här [Azure Quickstart mallen](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver).  Det här steget registrerar den nya virtuella datorn med hello hämtningsservern i hello lista över DSC-noder.  En del av denna registrering är att ange hello nod configuration toobe tillämpas toohello nod.  Konfiguration av den här noden inte redan har tooexist i hello pull-servern så att det är OK steg 4 är där detta är klar för hello första gången.  Men här i steg 2 behöver toohave bestämt hello namn för hello nod och hello på hello konfiguration.  I det här exemplet användning hello nod är 'isvbox' och hello konfigurationen är 'ISVBoxConfig'.  Hej nodkonfigurationsnamnet (toobe anges i DeploymentTemplate.json) är därför 'ISVBoxConfig.isvbox'.  
 
-## <a name="step-3-adding-required-dsc-resources-to-the-pull-server"></a>Steg 3: Lägga till nödvändiga DSC-resurser på pull-servern
-PowerShell-galleriet instrumenterats om du vill installera DSC-resurser i Azure Automation-konto.  Navigera till den resurs du vill använda och klicka på knappen ”distribuera till Azure Automation”.
+## <a name="step-3-adding-required-dsc-resources-toohello-pull-server"></a>Steg 3: Lägga till nödvändiga resurser toohello hämtningsservern DSC
+hello PowerShell-galleriet är instrumenterade tooinstall DSC-resurser i Azure Automation-konto.  Navigera toohello resurs du vill använda och klicka på hello ”distribuera tooAzure Automation”.
 
 ![PowerShell-galleriet exempel](./media/automation-dsc-cd-chocolatey/xNetworking.PNG)
 
-En annan metod som nyligen har lagts till i Azure-portalen kan du dra in nya moduler eller uppdatera befintliga moduler. Klicka på resursen Automation-konto, panelen tillgångar och slutligen panelen moduler.  Ikonen Bläddra galleriet kan du se en lista med moduler i galleriet, detaljnivån information och slutligen importera till ditt Automation-konto. Detta är ett bra sätt att hålla dina moduler uppdaterade då. Och importfunktionen kontrollerar beroenden med andra moduler så att du vet ingenting synkroniserat.
+En annan metod nyligen lagt till toohello Azure-portalen kan du toopull i nya moduler eller uppdatera befintliga moduler. Klicka dig igenom hello Automation-konto resurs hello tillgångar panelen och slutligen hello moduler panelen.  hello Bläddra galleriet ikonen kan du toosee hello lista med moduler i hello-galleriet, detaljnivån information och slutligen importera till ditt Automation-konto. Detta är ett bra sätt tookeep modulerna in toodate från tid tootime. Och hello importfunktionen kontrollerar beroenden med andra moduler tooensure ingenting hämtar synkroniserad.
 
-Eller så har den manuella metoden.  Mappstruktur för en PowerShell-modul för integrering för en Windows-dator skiljer sig något från mappstrukturen som förväntas av Azure Automation.  Detta kräver lite modifiera från din sida.  Men det är inte svårt och det görs bara en gång per resurs (om du vill uppgradera den i framtiden.)  Mer information om redigering av PowerShell integreringsmoduler finns i den här artikeln: [redigering integreringsmoduler för Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
+Eller så har hello manuell metod.  hello mappstruktur för en PowerShell-modul för integrering för en Windows-dator skiljer sig något från hello mappstrukturen förväntades av hello Azure Automation.  Detta kräver lite modifiera från din sida.  Men det är inte svårt och det görs bara en gång per resurs (såvida du inte vill tooupgrade den i framtiden.)  Mer information om redigering av PowerShell integreringsmoduler finns i den här artikeln: [redigering integreringsmoduler för Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
 
-* Installera modulen som du behöver på din arbetsstation enligt följande:
+* Installera hello-modul som du behöver på din arbetsstation, enligt följande:
   * Installera [Windows Management Framework, v5](http://aka.ms/wmf5latest) (behövs inte för Windows 10)
-  * `Install-Module –Name MODULE-NAME`< – hämtar modulen från PowerShell-galleriet 
-* Kopiera mappen modul från `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` till en tillfällig mapp 
-* Ta bort exempel och dokumentation från mappen huvudsakliga 
-* ZIP-mappen huvudsakliga naming ZIP-filen exakt samma sätt som mappen 
-* Placera ZIP-filen i en HTTP-plats som kan nås, till exempel blob-lagring i Azure Storage-konto.
+  * `Install-Module –Name MODULE-NAME`< – grabs hello modul från hello PowerShell-galleriet 
+* Kopiera hello modulen mapp från `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` tooa tillfällig mapp 
+* Ta bort exempel och dokumentation från hello huvudsakliga mappen 
+* Komprimerad hello huvudsakliga mapp hello naming hello ZIP-filen exakt samma som hello mapp 
+* Placera hello ZIP-filen i en HTTP-plats som kan nås, till exempel blob-lagring i Azure Storage-konto.
 * Kör följande PowerShell:
   
       New-AzureRmAutomationModule `
           -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
           -Name MODULE-NAME –ContentLink "https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip"
 
-Inkluderade exempel utför de här stegen för cChoco och xNetworking. Finns det [anteckningar](#notes) för särskild hantering för cChoco.
+hello ingår exempel utför de här stegen för cChoco och xNetworking. Se hello [anteckningar](#notes) för särskild hantering för cChoco.
 
-## <a name="step-4-adding-the-node-configuration-to-the-pull-server"></a>Steg 4: Lägga till nodkonfigurationen på pull-servern
-Det finns inget särskilt om första gången du importera konfigurationen till den pull-server och kompilera.  Alla efterföljande import/kompilerar med samma konfiguration är exakt lika.  Varje gång du uppdaterar paketet och behöver skicka ut den till produktion göra du det här steget när du har säkerställt konfigurationsfilen är korrekt – inklusive den nya versionen av paketet.  Här är konfigurationsfilen och PowerShell:
+## <a name="step-4-adding-hello-node-configuration-toohello-pull-server"></a>Steg 4: Lägga till hello nod configuration toohello pull-server
+Det finns inget särskilt om hello första gången du importera konfigurationen till hello hämtningsservern och kompilering.  Alla efterföljande import/kompilerar av hello samma konfiguration utseende exakt hello samma.  Varje gång du uppdaterar paketet och behöver toopush ut tooproduction du göra det här steget när du har säkerställt hello konfigurationsfilen är korrekt – inklusive hello ny version av paketet.  Här är hello konfigurationsfilen och PowerShell:
 
 ISVBoxConfig.ps1:
 
@@ -155,20 +155,20 @@ Nya-ConfigurationScript.ps1:
         -ResourceGroupName MY-AUTOMATION-RG –AutomationAccountName MY-AUTOMATION-ACCOUNT ` 
         -Id $compilationJobId
 
-Dessa steg resultera i en ny konfiguration av noden med namnet ”ISVBoxConfig.isvbox” på den pull-servern.  Namnet på konfigurationsnod bygger som ”configurationName.nodeName”.
+Dessa steg resultera i en ny konfiguration av noden med namnet ”ISVBoxConfig.isvbox” Hej hämtningsservern placeras.  namn på konfigurationsnod hello bygger som ”configurationName.nodeName”.
 
 ## <a name="step-5-creating-and-maintaining-package-metadata"></a>Steg 5: Skapa och underhålla paketmetadata
-För varje paket du föra in paketdatabasen, behöver du en nuspec som beskriver den.  Den nuspec måste kompileras och lagras i NuGet-server. Den här processen beskrivs [här](http://docs.nuget.org/create/creating-and-publishing-a-package).  Du kan använda MyGet.org som en NuGet-server.  De sälja den här tjänsten, men har en starter SKU som är ledigt.  Vid NuGet.org hittar du anvisningar om hur du installerar en egen NuGet-server för dina privata paket.
+För varje paket du föra in hello paketdatabasen, behöver du en nuspec som beskriver den.  Den nuspec måste kompileras och lagras i NuGet-server. Den här processen beskrivs [här](http://docs.nuget.org/create/creating-and-publishing-a-package).  Du kan använda MyGet.org som en NuGet-server.  De sälja den här tjänsten, men har en starter SKU som är ledigt.  Vid NuGet.org hittar du anvisningar om hur du installerar en egen NuGet-server för dina privata paket.
 
 ## <a name="step-6-tying-it-all-together"></a>Steg 6: Binda alla ihop
-Varje gång en version skickar QA och har godkänts för distribution, skapas paketet nuspec och nupkg uppdateras och distribueras till NuGet-servern.  Dessutom måste du uppdatera konfigurationen (steg 4 ovan) för att komma överens med det nya versionsnumret.  Det måste skickas till den pull-servern och kompileras.  Från den punkten på är det upp till de virtuella datorerna som är beroende av att konfigurationen för att hämta uppdateringen och installera den.  Var och en av de här uppdateringarna är enkla - bara en eller två rader i PowerShell.  Några av dem är inkapslade i build-uppgifter som kan sammankopplas i en version för Visual Studio Team Services.  Detta [artikel](https://www.visualstudio.com/en-us/docs/alm-devops-feature-index#continuous-delivery) innehåller mer information.  Detta [GitHub-repo](https://github.com/Microsoft/vso-agent-tasks) beskrivs de olika tillgängliga build-uppgifterna.
+Varje gång en version skickar QA och har godkänts för distribution, hello paketet skapas, nuspec och nupkg uppdateras och distribuerat toohello NuGet-servern.  Hello konfigurationen (steg 4 ovan) måste dessutom vara uppdaterade tooagree med hello nytt versionsnummer.  Det måste skickas toohello hämtningsservern och kompileras.  Från den punkten på är det toohello virtuella datorer som är beroende av att konfigurationen toopull hello update och installera den.  Var och en av de här uppdateringarna är enkla - bara en eller två rader i PowerShell.  Några av dem är inkapslade i build-uppgifter som kan sammankopplas i en version i Visual Studio Team Services hello fallet.  Detta [artikel](https://www.visualstudio.com/en-us/docs/alm-devops-feature-index#continuous-delivery) innehåller mer information.  Detta [GitHub-repo-](https://github.com/Microsoft/vso-agent-tasks) information hello olika tillgängliga build-uppgifter.
 
 ## <a name="notes"></a>Anteckningar
-Det här exemplet för användning som börjar med en virtuell dator från en allmän Windows Server 2012 R2-avbildning från Azure-galleriet.  Du kan starta från en lagrad bild och sedan justera därifrån med DSC-konfigurationen.  Ändra konfiguration som är inbyggd i en bild är dock mycket svårare än dynamiskt uppdaterar konfigurationen med DSC.
+Det här exemplet för användning som börjar med en virtuell dator från en allmän Windows Server 2012 R2-avbildning från hello Azure-galleriet.  Du kan starta från en lagrad bild och sedan justera därifrån med hello DSC-konfigurationen.  Ändra konfiguration som är inbyggd i en bild är dock mycket svårare än hello-konfiguration som använder DSC uppdateras dynamiskt.
 
-Du behöver inte använda en ARM-mall och tillägg för virtuell dator för att använda den här metoden med dina virtuella datorer.  Och dina virtuella datorer behöver inte vara på Azure ska vara CD: N hanteras.  Allt som behövs är att Chocolatey installeras MGM som konfigurerats på den virtuella datorn så att den vet där pull-server är.  
+Du har inte toouse en ARM-mall och hello VM-tillägget toouse den här tekniken med dina virtuella datorer.  Och dina virtuella datorer har inte toobe på Azure toobe CD: N hanteras.  Allt som krävs är att Chocolatey installeras och hello MGM konfigurerats på hello VM så att den vet var hello hämtningsservern finns.  
 
-Naturligtvis när du uppdaterar ett paket på en virtuell dator som är i produktion, måste du ta den virtuella datorn utanför rotation när uppdateringen har installerats.  Hur du gör detta varierar mycket.  Till exempel med en virtuell dator bakom en belastningsutjämnare i Azure, du kan lägga till en anpassad avsökning.  När du uppdaterar den virtuella datorn ha avsökningen slutpunkten returnera en 400.  Justera krävs för att göra den här ändringen kan ingå i din konfiguration kan justera om du vill växla tillbaka till returnera en 200 när uppdateringen är klar.
+Naturligtvis när du uppdaterar ett paket på en virtuell dator som är i produktion, måste tootake den virtuella datorn utanför rotation medan hello uppdateringen är installerad.  Hur du gör detta varierar mycket.  Till exempel med en virtuell dator bakom en belastningsutjämnare i Azure, du kan lägga till en anpassad avsökning.  När du uppdaterar hello VM har hello avsökningen endpoint returnera en 400.  hello justera nödvändiga toocause den här ändringen kan vara i din konfiguration som kan hello justera tooswitch tillbaka tooreturning en 200 när hello uppdateringen är klar.
 
 Fullständig källan för det här exemplet för användning finns i [Visual Studio-projekt](https://github.com/sebastus/ARM/tree/master/CDIaaSVM) på GitHub.
 

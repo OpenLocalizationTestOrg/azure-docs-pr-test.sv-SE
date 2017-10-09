@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> SCP.Net-versionen som används i ditt projekt måste matcha versionen Storm på HDInsight-kluster. Använd följande tabell för att avgöra vilken version som du bör använda:
+> Hej SCP.Net version som används i ditt projekt måste matcha hello Storm-version finns på ditt HDInsight-kluster. Använd följande tabell toodetermine vilken version som du bör använda hello:
 > 
 > | HDInsight-version | Apache Storm-version | SCP.NET version | Monoljud standardversion |
 > |:---:|:---:|:---:|:---:|

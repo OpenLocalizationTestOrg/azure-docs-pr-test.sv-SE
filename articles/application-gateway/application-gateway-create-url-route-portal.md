@@ -1,6 +1,6 @@
 ---
-title: "Skapa en regel för sökväg-baserade - Azure Application Gateway - Azure-portalen | Microsoft Docs"
-description: "Lär dig hur du skapar en sökväg-baserade regler för en Programgateway med hjälp av portalen"
+title: "en sökväg-baserad aaaCreate regel - Azure Application Gateway - Azure-portalen | Microsoft Docs"
+description: "Lär dig hur hello toocreate en sökväg-baserade regler för en Programgateway med hjälp av portalen"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
@@ -15,76 +15,76 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: gwallace
-ms.openlocfilehash: c184e94a04cfbdedcae70ed154aeb7dd134d1baf
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 21cb52c426ca5f7dfedf07a96e87fbc85d243647
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-path-based-rule-for-an-application-gateway-by-using-the-portal"></a>Skapa en sökväg-baserade regel för en Programgateway med hjälp av portalen
+# <a name="create-a-path-based-rule-for-an-application-gateway-by-using-hello-portal"></a>Skapa en sökväg-baserade regel för en Programgateway med hello-portalen
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-create-url-route-portal.md)
 > * [PowerShell och Azure Resource Manager](application-gateway-create-url-route-arm-ps.md)
 > * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 
-URL-sökväg-baserad routning kan du associera rutter baserat på en URL-sökväg för Http-begäran. Den kontrollerar om det finns en väg till en backend-adresspool som konfigurerats för den URL som visas i Programgatewayen och skickar nätverkstrafiken till definierade backend-poolen. Ett vanligt användningsområde för URL-baserade routning är att belastningsutjämna förfrågningar för olika typer av innehåll till olika backend-serverpooler.
+URL-sökväg-baserade routning kan du tooassociate rutter baserat på hello URL-sökvägen för Http-begäran. Den kontrollerar om det finns en väg tooa backend-adresspool för hello-URL som anges i hello Programgateway och skickar hello nätverket trafik toohello definierats backend-adresspool. Ett vanligt användningsområde för URL-baserade routning är tooload begäranden för olika typer av innehåll toodifferent backend-serverpooler.
 
-URL-baserade routning introducerar en ny regeltyp av i Programgateway. Programgateway har två regeltyper: basic och sökväg-baserade regler. Grundläggande regeltypen resursallokering tjänst för backend-pooler när sökväg-baserade regler förutom resursallokering (round robin), också beaktas sökvägar för den begärda Webbadressen när du väljer rätt serverdelspoolen.
+URL-baserade routning introducerar en ny regel typen tooapplication gateway. Programgateway har två regeltyper: basic och sökväg-baserade regler. Hej grundläggande regeltyp, tillhandahåller resursallokering tjänst för hello backend-pooler när sökvägen regler dessutom tooround robin distribution, också beaktas sökvägar för hello URL-begäran vid val hello lämpliga serverdelspool.
 
 ## <a name="scenario"></a>Scenario
 
-Följande scenario genomgår skapar en sökväg-baserade regel i en befintlig gateway för programmet.
-Scenariot förutsätter att du redan har följt stegen för att [skapa en Programgateway](application-gateway-create-gateway-portal.md).
+hello genomgår följande scenario skapar en sökväg-baserade regel i en befintlig gateway för programmet.
+hello scenariot förutsätter att du har redan följt hello stegen för[skapa en Programgateway](application-gateway-create-gateway-portal.md).
 
 ![URL-väg][scenario]
 
-## <a name="createrule"></a>Skapa regel sökväg-baserade
+## <a name="createrule"></a>Skapa hello sökväg-baserade regel
 
-En sökväg-baserade regel kräver sin egen lyssnare, innan du skapar regeln bör du kontrollera du ha en lyssnare som är tillgängliga att använda.
+En sökväg-baserade regel kräver sin egen lyssnare, innan du skapar hello regeln vara att tooverify som du har en tillgänglig lyssnare toouse.
 
 ### <a name="step-1"></a>Steg 1
 
-Navigera till den [Azure-portalen](http://portal.azure.com) och välj en befintlig gateway för programmet. Klicka på **regler**
+Navigera toohello [Azure-portalen](http://portal.azure.com) och välj en befintlig gateway för programmet. Klicka på **regler**
 
 ![Översikt över Application Gateway][1]
 
 ### <a name="step-2"></a>Steg 2
 
-Klicka på **sökväg-baserade** för att lägga till en ny sökväg-baserade regel.
+Klicka på **sökväg-baserade** knappen tooadd en ny sökväg-baserade regel.
 
 ### <a name="step-3"></a>Steg 3
 
-Den **Lägg till sökväg-baserade regler** bladet innehåller två avsnitt. Det första avsnittet är där du har definierat lyssnaren, namnet på regeln och standardinställningarna för sökvägen. Standardinställningarna för sökvägen är för vägar som inte omfattas av anpassade sökväg-baserade vägen. Det andra avsnittet av den **Lägg till sökväg-baserade regler** bladet är där du kan definiera regler baserat på sökvägen sig själva.
+Hej **Lägg till sökväg-baserade regler** bladet innehåller två avsnitt. hello första avsnittet är där du har definierat hello lyssnare, hello namnet på regeln för hello och hello standardinställningarna för sökvägen. hello standardinställningarna för sökvägen är för vägar som inte omfattas av hello dirigering av anpassade sökväg-baserad. Hej andra avsnittet av hello **Lägg till sökväg-baserade regler** bladet är där du definierar hello sökväg-baserade regler för sig själva.
 
 **Grundläggande inställningar**
 
-* **Namnet** -värdet är ett eget namn för regeln som är tillgänglig i portalen.
-* **Lyssnare** -värdet är lyssnare som används för regeln.
-* **Standard serverdelspool** -inställningen är den inställning som definierar backend som ska användas för Standardregeln
-* **Standardinställningarna för HTTP-** -inställningen är den inställning som definierar HTTP-inställningar som ska användas för Standardregeln.
+* **Namnet** -värdet är ett eget namn toohello regeln som är tillgänglig i hello portal.
+* **Lyssnare** -värdet är hello lyssnare som används för hello regeln.
+* **Standard serverdelspool** -inställningen är hello-inställning som definierar hello backend-toobe används för hello standardregel
+* **Standardinställningarna för HTTP-** -inställningen är hello-inställning som definierar hello HTTP inställningar toobe används för hello Standardregeln.
 
 **Sökväg-baserade regler**
 
-* **Namnet** -värdet är ett eget namn för regeln för sökväg-baserade.
-* **Sökvägar** -den här inställningen definierar sökvägen regeln söker efter när vidarebefordrar trafik
-* **Serverdelspool** -inställningen är den inställning som definierar backend som ska användas för regeln
-* **HTTP-inställningen** -inställningen är den inställning som definierar HTTP-inställningar som ska användas för regeln.
+* **Namnet** -värdet är ett eget namn toopath-baserade regler.
+* **Sökvägar** -inställningen definierar hello sökväg hello regeln söker efter när vidarebefordrar trafik
+* **Serverdelspool** -inställningen är hello-inställning som definierar hello backend-toobe används för hello regel
+* **HTTP-inställningen** -inställningen är hello-inställning som definierar hello HTTP inställningar toobe används för hello regeln.
 
 > [!IMPORTANT]
-> Sökvägar: Listan över sökvägen mönster som matchar. Var och en måste börja med / och endast en ”\*” tillåts i slutet. Giltiga exempel är /xyz, /xyz* eller/xyz / *.  
+> Sökvägar: hello lista över sökvägen mönster toomatch. Var och en måste börja med / och hello endast placera en ”\*” tillåts är hello slutet. Giltiga exempel är /xyz, /xyz* eller/xyz / *.  
 
 ![Lägg till sökväg-baserade regler bladet med information som har fyllt i][2]
 
-Lägger till en sökväg-baserade regel i en befintlig Programgateway är en enkel process via portalen. När en sökväg-baserade regler har skapats kan redigeras den för att lägga till ytterligare regler. 
+Lägga till en sökväg-baserade regler tooan är befintliga Programgateway en enkel process hello-portalen. När en sökväg-baserade regler har skapats, kan det vara redigerade tooadd ytterligare regler. 
 
 ![lägga till ytterligare sökväg-baserade regler][3]
 
-Det här steget konfigurerar en väg baserat på sökvägen. Det är viktigt att förstå som begär inte anges som begäran kommer i Programgateway inspektera begäran och basic i url-mönster skickar en begäran till lämplig serverdel.
+Det här steget konfigurerar en väg baserat på sökvägen. Det är viktigt toounderstand att begäranden inte skrivas om, som begäran kommer i Programgateway inspektera hello begäran och basic på hello url mönster skickar hello begäran toohello lämplig backend.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du konfigurerar SSL-avlastning med Azure Programgateway finns [Konfigurera SSL-avlastning](application-gateway-ssl-portal.md)
+hur tooconfigure SSL-avlastning med Azure Application Gateway, se toolearn [Konfigurera SSL-avlastning](application-gateway-ssl-portal.md)
 
 [1]: ./media/application-gateway-create-url-route-portal/figure1.png
 [2]: ./media/application-gateway-create-url-route-portal/figure2.png

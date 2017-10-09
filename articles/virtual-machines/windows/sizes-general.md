@@ -1,6 +1,6 @@
 ---
-title: Azure Windows VM-storlekar - generella | Microsoft Docs
-description: "Listar de olika generella storlekarna tillgänglig för Windows-datorer i Azure."
+title: aaaAzure Windows VM-storlekar - generella | Microsoft Docs
+description: "Visar hello olika generella storlekar som finns tillgängliga för Windows-datorer i Azure."
 services: virtual-machines-windows
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: 0c4a72f1dfa9c9ef1b2d430887681f644d608842
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8c5a9cf1f73516bfde665bbc34abec561aea939c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="general-purpose"></a>Generellt syfte
 

@@ -1,6 +1,6 @@
 ---
-title: "Hantering av .NET SDK för Azure Stream Analytics | Microsoft Docs"
-description: "Kom igång med Stream Analytics Management .NET SDK. Lär dig hur du ställer in och kör analytics-jobb. Skapa ett projekt, indata, utdata och transformationer."
+title: "aaaManagement .NET SDK för Azure Stream Analytics | Microsoft Docs"
+description: "Kom igång med Stream Analytics Management .NET SDK. Lär dig hur tooset upp och kör analytics-jobb. Skapa ett projekt, indata, utdata och transformationer."
 keywords: .NET SDK, analytics API
 services: stream-analytics
 documentationcenter: 
@@ -15,53 +15,53 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/06/2017
 ms.author: jeffstok
-ms.openlocfilehash: f9aa812e6e82cc0f72d0cd1fe63058e53f794775
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 507c11938bc5bf2249a2e41f6bcc076db8ead3f6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Hantering av .NET SDK: Konfigurera och köra analytics-jobb med hjälp av Azure Stream Analytics-API: et för .NET
-Lär dig hur du ställer in och kör analytics-jobb med hjälp av Stream Analytics-API för .NET med hantering av .NET SDK. Ställ in ett projekt, skapa inkommande och utgående källor, omvandlingar och starta och stoppa jobb. För analytics-jobb kan du strömma data från Blob-lagring eller från en händelsehubb.
+# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-hello-azure-stream-analytics-api-for-net"></a>Hantering av .NET SDK: Konfigurera och köra analytics-jobb med hello Azure Stream Analytics API för .NET
+Lär dig hur tooset in och kör analytics-jobb med hello Stream Analytics-API för att använda .NET hello Management .NET SDK. Ställ in ett projekt, skapa inkommande och utgående källor, omvandlingar och starta och stoppa jobb. För analytics-jobb kan du strömma data från Blob-lagring eller från en händelsehubb.
 
-Finns det [management referensdokumentationen för Stream Analytics-API för .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).
+Se hello [management i referensdokumentationen för hello Stream Analytics-API för .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).
 
-Azure Stream Analytics är en helt hanterad tjänst som tillhandahåller låg latens, hög tillgänglighet, skalbarhet, komplexa händelsebearbetning över strömmande data i molnet. Stream Analytics ger kunder möjlighet att konfigurera direktuppspelningsjobb för att analysera dataströmmar, vilket gör att enheten nära analys i realtid.  
+Azure Stream Analytics är en helt hanterad tjänst som tillhandahåller låg latens, hög tillgänglighet, skalbarhet, komplexa händelsebearbetning över strömmande data i hello molnet. Stream Analytics gör att kunder tooset in strömning jobb tooanalyze dataströmmar och låter dem toodrive nära analys i realtid.  
 
 > [!NOTE]
-> Vi har uppdaterat exempelkoden i den här artikeln med Azure Stream Analytics Management .NET SDK v2.x version. Exempelkod med SDK-version använder lagecy (1.x), se [använder Management .NET SDK-v1.x för Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
+> Vi har uppdaterat hello exempelkoden i den här artikeln med Azure Stream Analytics Management .NET SDK v2.x version. För exempelkod med hello använder lagecy (1.x) SDK-version, se [använder hello Management .NET SDK v1.x för Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
 
 ## <a name="prerequisites"></a>Krav
-Innan du påbörjar den här artikeln måste du ha:
+Du måste ha hello följande innan du börjar den här artikeln:
 
 * Installera Visual Studio 2017 eller 2015.
 * Hämta och installera [Azure .NET SDK](https://azure.microsoft.com/downloads/).
-* Skapa en Azure-resursgrupp i din prenumeration. Följande är ett exempel Azure PowerShell-skript. Azure PowerShell information finns i [installera och konfigurera Azure PowerShell](/powershell/azure/overview);  
+* Skapa en Azure-resursgrupp i din prenumeration. hello följande är ett exempel Azure PowerShell-skript. Azure PowerShell information finns i [installera och konfigurera Azure PowerShell](/powershell/azure/overview);  
 
-        # Log in to your Azure account
+        # Log in tooyour Azure account
         Add-AzureAccount
 
-        # Select the Azure subscription you want to use to create the resource group
+        # Select hello Azure subscription you want toouse toocreate hello resource group
         Select-AzureSubscription -SubscriptionName <subscription name>
 
-            # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the Register-AzureRMProvider cmdlet to register the provider namespace
+            # If Stream Analytics has not been registered toohello subscription, remove hello remark symbol (#) toorun hello Register-AzureRMProvider cmdlet tooregister hello provider namespace
             #Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 
         # Create an Azure resource group
         New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
-* Konfigurera ett inkommande käll- och utdata för användning. Mer information finns i [lägga till indata](stream-analytics-add-inputs.md) att ställa in en Exempelindata och [lägga till utdata](stream-analytics-add-outputs.md) att ställa in ett exempel på utdata.
+* Ställ in ingen källa och mål toouse utdata. Mer information finns i [lägga till indata](stream-analytics-add-inputs.md) tooset upp en Exempelindata och [lägga till utdata](stream-analytics-add-outputs.md) tooset upp ett exempel på utdata.
 
 ## <a name="set-up-a-project"></a>Ställ in ett projekt
-Använd Stream Analytics-API för .NET, först konfigurera ditt projekt för att skapa analytics-jobbet.
+toocreate analytics-jobbet använda hello Stream Analytics-API för .NET, först ställa in projektet.
 
 1. Skapa ett konsolprogram i Visual Studio C# .NET.
-2. Kör följande kommandon för att installera NuGet-paket i Package Manager-konsolen. Den första är Azure Stream Analytics Management .NET SDK. Den andra är för Azure klientautentisering.
+2. Kör hello följande kommandon i hello Package Manager-konsolen, tooinstall hello NuGet-paket. hello först är en hello Azure Stream Analytics Management .NET SDK. hello är andra för Azure klientautentisering.
    
         Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 2.0.0
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.3.1
-3. Lägg till följande **appSettings** avsnitt i filen App.config:
+3. Lägg till följande hello **appSettings** avsnittet toohello App.config-fil:
    
         <appSettings>
           <add key="ClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
@@ -70,15 +70,15 @@ Använd Stream Analytics-API för .NET, först konfigurera ditt projekt för att
           <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
         </appSettings>
 
-    Ersätt värdena för **SubscriptionId** och **ActiveDirectoryTenantId** med din Azure-prenumeration och klient-ID: N. Du kan hämta dessa värden genom att köra följande Azure PowerShell-cmdlet:
+    Ersätt värdena för **SubscriptionId** och **ActiveDirectoryTenantId** med din Azure-prenumeration och klient-ID: N. Du kan hämta dessa värden genom att köra hello följande Azure PowerShell-cmdlet:
 
         Get-AzureAccount
 
-4. Lägg till följande referens i filen .csproj:
+4. Lägg till följande referens i filen .csproj hello:
 
         <Reference Include="System.Configuration" />
 
-5. Lägg till följande **med** instruktioner till källfilen (Program.cs) i projektet:
+5. Lägg till följande hello **med** instruktioner toohello källfilen (Program.cs) i hello-projektet:
    
         using System;
         using System.Collections.Generic;
@@ -103,9 +103,9 @@ Använd Stream Analytics-API för .NET, först konfigurera ditt projekt för att
    ```
 
 ## <a name="create-a-stream-analytics-management-client"></a>Skapa ett Stream Analytics management-klienten
-En **StreamAnalyticsManagementClient** objektet kan du hantera jobbet och jobbet-komponenter, till exempel indata, utdata och omvandling.
+En **StreamAnalyticsManagementClient** objektet kan du toomanage hello jobbet och hello jobbet komponenter, till exempel indata, utdata och omvandling.
 
-Lägg till följande kod i början av den **Main** metoden:
+Lägg till följande kod toohello början av hello hello **Main** metoden:
 
    ```
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
@@ -126,14 +126,14 @@ Lägg till följande kod i början av den **Main** metoden:
     };
    ```
 
-Den **resourceGroupName** variabelns värde ska vara samma som namnet på resursgruppen som du har skapat eller plockats i förkraven.
+Hej **resourceGroupName** variabelns värde ska vara detsamma som namnet på hello hello resurs gruppen du har skapats eller plockats i hello förkraven hello.
 
-Om du vill automatisera autentiseringsuppgifter presentation aspekt av skapa jobb, referera till [autentiserar ett huvudnamn för tjänsten med Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+tooautomate hello autentiseringsuppgifter presentation aspekt av skapandet finns för[autentiserar ett huvudnamn för tjänsten med Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
-De återstående avsnitten i den här artikeln förutsätter att den här koden är i början av den **Main** metod.
+hello återstående avsnitten i den här artikeln förutsätter att den här koden är hello början av hello **Main** metod.
 
 ## <a name="create-a-stream-analytics-job"></a>Skapa ett Stream Analytics-jobb
-Följande kod skapar en Stream Analytics-jobbet under den resursgrupp som du har definierat. Du lägger till indata, utdata och omvandling i jobbet senare.
+hello skapar följande kod en Stream Analytics-jobbet under hello resursgrupp som du har definierat. Du lägger till ett jobb för indata, utdata och omvandling toohello senare.
 
    ```
    // Create a streaming job
@@ -160,7 +160,7 @@ Följande kod skapar en Stream Analytics-jobbet under den resursgrupp som du har
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>Skapa en inkommande Stream Analytics-källa
-Följande kod skapar en Stream Analytics-Indatakällan med Indatakällan blobbtypen och CSV-serialisering. Så här skapar du en hub inkommande händelsekälla **EventHubStreamInputDataSource** i stället för **BlobStreamInputDataSource**. På liknande sätt kan du anpassa serialisering typ av Indatakällan.
+hello skapar följande kod en Stream Analytics indatakälla hello blob indatakälla typ och CSV-serialisering. toocreate en hub inkommande händelsekälla, Använd **EventHubStreamInputDataSource** i stället för **BlobStreamInputDataSource**. På liknande sätt kan du anpassa hello serialiseringstyp av indatakälla hello.
 
    ```
    // Create an input
@@ -192,20 +192,20 @@ Följande kod skapar en Stream Analytics-Indatakällan med Indatakällan blobbty
    Input createInputResult = streamAnalyticsManagementClient.Inputs.CreateOrReplace(input, resourceGroupName, streamingJobName, inputName);
    ```
 
-Indatakällor, som från Blob-lagring eller en händelsehubb är knutna till ett visst jobb. Om du vill använda samma Indatakällan för olika jobb, måste du anropa metoden igen och ange ett annat jobbnamn.
+Indatakällor, är från Blob-lagring eller en händelsehubb bundet tooa specifikt jobb. toouse Hej samma källa för olika jobb, måste du anropa metoden hello igen och ange ett annat jobbnamn.
 
 ## <a name="test-a-stream-analytics-input-source"></a>Testa en Stream Analytics indatakälla
-Den **TestConnection** metoden testar om Stream Analytics-jobbet är ansluta till Indatakällan samt andra aspekter som är specifika för inkommande källtypen. Till exempel i blob Indatakällan du skapade tidigare, kontrollerar metoden att lagringskontonamn och nyckel kan användas för att ansluta till lagringskontot samt kontrollera att den angivna behållaren finns.
+Hej **TestConnection** metoden tester om hello Stream Analytics-jobbet är kan tooconnect toohello Ange källa samt andra aspekter specifika toohello ange typen av datakälla. Till exempel i hello blob indatakälla du skapade tidigare, kontrollerar hello metoden att hello lagringskontonamn och en nyckel kan vara används tooconnect toohello lagringskonto samt kontrollera den angivna hello-behållaren finns.
 
    ```
-   // Test the connection to the input
+   // Test hello connection toohello input
    ResourceTestStatus testInputResult = streamAnalyticsManagementClient.Inputs.Test(resourceGroupName, streamingJobName, inputName);
    ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>Skapa ett mål för Stream Analytics-utdata
-Skapa ett mål för utdata liknar att skapa ett Stream Analytics-Indatakällan. Som indatakällor, är utdata mål knutna till ett visst jobb. Om du vill använda samma utdata mål för olika jobb, måste du anropa metoden igen och ange ett annat jobbnamn.
+Att skapa ett mål för utdata är mycket lik toocreating en Stream Analytics-Indatakällan. Precis som indatakällor är utdata mål bundet tooa specifikt jobb. toouse Hej samma utdata mål för olika jobb, måste du anropa metoden hello igen och ange ett annat jobbnamn.
 
-Följande kod skapar ett utgående mål (Azure SQL database). Du kan anpassa utdata målets datatyp och/eller serialiseringstyp.
+hello följande kod skapar ett utgående mål (Azure SQL database). Du kan anpassa hello utdata mål datatyp och/eller serialiseringstyp.
 
    ```
    // Create an output
@@ -224,32 +224,32 @@ Följande kod skapar ett utgående mål (Azure SQL database). Du kan anpassa utd
    ```
 
 ## <a name="test-a-stream-analytics-output-target"></a>Testa ett mål för Stream Analytics-utdata
-Ett Stream Analytics utdata mål har även den **TestConnection** metod för att testa anslutningar.
+Ett Stream Analytics utdata mål har också hello **TestConnection** metod för att testa anslutningar.
 
    ```
-   // Test the connection to the output
+   // Test hello connection toohello output
    ResourceTestStatus testOutputResult = streamAnalyticsManagementClient.Outputs.Test(resourceGroupName, streamingJobName, outputName);
    ```
 
 ## <a name="create-a-stream-analytics-transformation"></a>Skapa Stream Analytics
-Följande kod skapar en Stream Analytics-omvandling med frågan ”Välj * från indata” och anger om du vill allokera en strömmande enhet för Stream Analytics-jobbet. Läs mer om hur du justerar strömningsenheter [skala Azure Stream Analytics-jobb](stream-analytics-scale-jobs.md).
+hello följande kod skapar en Stream Analytics-omvandling med hello frågan ”Välj * från indata” och anger tooallocate en enhet för strömning hello Stream Analytics-jobbet. Läs mer om hur du justerar strömningsenheter [skala Azure Stream Analytics-jobb](stream-analytics-scale-jobs.md).
 
    ```
    // Create a transformation
    Transformation transformation = new Transformation()
    {
-       Query = "Select Id, Name from <your input name>", // '<your input name>' should be replaced with the value you put for the 'inputName' variable above or in a previous step
+       Query = "Select Id, Name from <your input name>", // '<your input name>' should be replaced with hello value you put for hello 'inputName' variable above or in a previous step
        StreamingUnits = 1
    };
    Transformation createTransformationResult = streamAnalyticsManagementClient.Transformations.CreateOrReplace(transformation, resourceGroupName, streamingJobName, transformationName);
    ```
 
-En omvandling är även kopplad till specifika Stream Analytics-jobbet den skapades under som indata och utdata.
+En omvandling är också bundet toohello specifika Stream Analytics-jobbet den skapades under som indata och utdata.
 
 ## <a name="start-a-stream-analytics-job"></a>Starta ett Stream Analytics-jobb
-När du har skapat ett Stream Analytics-jobb och dess input(s), utdata och omvandling av du startar jobbet genom att anropa den **starta** metod.
+När du har skapat ett Stream Analytics-jobb och dess input(s), utdata och omvandling av du kan starta hello jobbet genom att anropa hello **starta** metod.
 
-Följande exempel kod startar ett Stream Analytics-jobb med anpassade utdata starttid inställd på 12 December 2012 12:12:12 UTC:
+hello följande exempelkod startar en Stream Analytics-jobbet med en anpassad utdata start tid set tooDecember 12, 2012, 12:12:12 UTC:
 
    ```
    // Start a streaming job
@@ -262,7 +262,7 @@ Följande exempel kod startar ett Stream Analytics-jobb med anpassade utdata sta
    ```
 
 ## <a name="stop-a-stream-analytics-job"></a>Stoppa ett Stream Analytics-jobb
-Du kan stoppa ett Stream Analytics-jobb som körs genom att anropa den **stoppa** metod.
+Du kan stoppa ett Stream Analytics-jobb som körs med anropa hello **stoppa** metod.
 
    ```
    // Stop a streaming job
@@ -270,7 +270,7 @@ Du kan stoppa ett Stream Analytics-jobb som körs genom att anropa den **stoppa*
    ```
 
 ## <a name="delete-a-stream-analytics-job"></a>Ta bort ett Stream Analytics-jobb
-Den **ta bort** metoden tar bort jobbet samt de underliggande underordnade resurser, inklusive input(s), utdata och omvandling av jobbet.
+Hej **ta bort** metoden tar bort hello projekt samt hello underliggande underordnade resurser, inklusive input(s), utdata och omvandling av hello jobb.
 
    ```
    // Delete a streaming job
@@ -281,9 +281,9 @@ Den **ta bort** metoden tar bort jobbet samt de underliggande underordnade resur
 För ytterligare hjälp försök vår [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nästa steg
-Du har lärt dig grunderna i att använda en .NET SDK för att skapa och köra analytics-jobb. Läs mer i:
+Du har lärt dig hello grunderna i en .NET SDK-toocreate och kör analytics-jobb. toolearn finns fler hello följande:
 
-* [Introduktion till Azure Stream Analytics](stream-analytics-introduction.md)
+* [Introduktion tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Komma igång med Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skala Azure Stream Analytics-jobb](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics Management .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).

@@ -1,6 +1,6 @@
 ---
-title: "Ansluta till Azure Database för MySQL med Node.js | Microsoft Docs"
-description: "I den här snabbstarten finns flera kodexempel i Node.js som du kan använda för att ansluta till och fråga efter data från Azure Database för MySQL."
+title: "Ansluta tooAzure databas för MySQL från Node.js | Microsoft Docs"
+description: "Denna Snabbstart innehåller flera Node.js-kodexempel du kan använda tooconnect och fråga efter data från Azure-databas för MySQL."
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,32 +11,32 @@ ms.custom: mvc
 ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 07/17/2017
-ms.openlocfilehash: 0c0bd4b707c114d2991e5f0473a4bfbe9e463e3c
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: ed9a39b5ab003e8216cef1c0f6a95a75c3db8458
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>Azure Database för MySQL: Använda Node.js för att ansluta och fråga efter data
-Den här snabbstarten visar hur du ansluter till en Azure Database för MySQL med hjälp av ett [Node.js](https://nodejs.org/)-program från plattformar med Windows, Ubuntu Linux och Mac. Den visar hur du använder SQL-instruktioner för att fråga, infoga, uppdatera och ta bort data i databasen. I den här artikeln förutsätter vi att du har kunskaper om Node.js och att du inte har arbetat med Azure Database för MySQL tidigare.
+# <a name="azure-database-for-mysql-use-nodejs-tooconnect-and-query-data"></a>Azure-databas för MySQL: Använd Node.js tooconnect och fråga data
+Den här snabbstarten visar hur tooconnect tooan Azure-databas för att använda MySQL [Node.js](https://nodejs.org/) från Windows, Ubuntu Linux och Mac-plattformar. Den visar hur toouse SQL-instruktioner tooquery infoga, uppdatera och ta bort data i hello-databas. hello förutsätter stegen i den här artikeln att du är bekant med att utveckla med Node.js och att du är ny tooworking med Azure-databas för MySQL.
 
 ## <a name="prerequisites"></a>Krav
-I den här snabbstarten används de resurser som skapades i någon av följande guider som utgångspunkt:
+Denna Snabbstart använder hello resurser som skapades i någon av dessa guider som utgångspunkt:
 - [Skapa en Azure Database för MySQL med Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Skapa en Azure Database för MySQL-server med Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 Du måste också:
-- Installera [Node.js](https://nodejs.org) runtime.
-- Installera [mysql2](https://www.npmjs.com/package/mysql2)-paketet för att ansluta till MySQL från Node.js-program. 
+- Installera hello [Node.js](https://nodejs.org) runtime.
+- Installera [mysql2](https://www.npmjs.com/package/mysql2) paketet tooconnect tooMySQL från hello Node.js-program. 
 
-## <a name="install-nodejs-and-the-mysql-connector"></a>Installera Node.js och MySQL Connector
-Följ instruktionerna för att installera Node.js beroende på din plattform. Använd npm för att installera paketet mysql2 och dess beroenden i projektmappen.
+## <a name="install-nodejs-and-hello-mysql-connector"></a>Installera Node.js och hello MySQL-koppling
+Följ hello lämpliga instruktioner tooinstall Node.js beroende på din plattform. Använd npm tooinstall hello mysql2 paket och dess beroenden i projektmappen.
 
 ### <a name="windows"></a>**Windows**
-1. Besök [hämtningssidan för Node.js ](https://nodejs.org/en/download/) och välj önskat alternativ för Windows installeringsverktyg.
+1. Besök hello [Node.js hämtar sidan](https://nodejs.org/en/download/) och välj din önskade alternativ för Windows installer.
 2. Skapa en lokal projektmapp som till exempel `nodejsmysql`. 
-3. Starta Kommandotolken och cd i projektmappen, till exempel `cd c:\nodejsmysql\`
-4. Kör verktyget NPM om du vill installera mysql2-biblioteket i projektmappen.
+3. Starta CD-skivan och hello Kommandotolken i hello projektmappen som`cd c:\nodejsmysql\`
+4. Kör hello NPM tooinstall hello mysql2 biblioteket i hello projektmappen.
 
    ```cmd
    cd c:\nodejsmysql\
@@ -44,16 +44,16 @@ Följ instruktionerna för att installera Node.js beroende på din plattform. An
    "C:\Program Files\nodejs\npm" list
    ```
 
-5. Verifiera installationen genom att kontrollera `npm list`-utdatatexten för `mysql2@1.3.5`.
+5. Kontrollera installationen av hello hello `npm list` utdata text för `mysql2@1.3.5`.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
-1. Ange följande kommandon för att installera **npm** och **Node.js**, en användarvänlig pakethanterare för Node.js.
+1. Kör hello följande kommandon tooinstall **Node.js** och **npm** hello package manager för Node.js.
 
    ```bash
    sudo apt-get install -y nodejs npm
    ```
 
-2. Kör följande kommandon för att skapa en projektmapp `mysqlnodejs` och installera mysql2-paketet till mappen.
+2. Kör följande kommandon toomake hello en projektmapp `mysqlnodejs` och installera hello mysql2 paketet till mappen.
 
    ```bash
    mkdir nodejsmysql
@@ -61,16 +61,16 @@ Följ instruktionerna för att installera Node.js beroende på din plattform. An
    npm install --save mysql2
    npm list
    ```
-3. Verifiera installationen genom att kontrollera npm-listans utdatatext för `mysql2@1.3.5`.
+3. Kontrollera hello installationen genom att kontrollera npm lista resultattexten för `mysql2@1.3.5`.
 
 ### <a name="mac-os"></a>**Mac OS**
-1. Ange följande kommandon för att installera **brew**, en användarvänlig pakethanterare för Mac OS X och **Node.js**.
+1. Ange följande kommandon tooinstall hello **brew**, ett enkelt att använda package manager för Mac OS X och **Node.js**.
 
    ```bash
    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
    brew install node
    ```
-2. Kör följande kommandon för att skapa en projektmapp `mysqlnodejs` och installera mysql2-paketet till mappen.
+2. Kör följande kommandon toomake hello en projektmapp `mysqlnodejs` och installera hello mysql2 paketet till mappen.
 
    ```bash
    mkdir nodejsmysql
@@ -79,30 +79,30 @@ Följ instruktionerna för att installera Node.js beroende på din plattform. An
    npm list
    ```
 
-3. Verifiera installationen genom att kontrollera `npm list`-utdatatexten för `mysql2@1.3.6`. Versionsnumret kan variera när nya korrigeringsfiler blir tillgängliga.
+3. Kontrollera installationen av hello hello `npm list` utdata text för `mysql2@1.3.6`. hello kan versionsnumret variera när nya korrigeringsfiler blir tillgängliga.
 
 ## <a name="get-connection-information"></a>Hämta anslutningsinformation
-Skaffa den information som du behöver för att ansluta till Azure Database för MySQL. Du behöver det fullständiga servernamnet och inloggningsuppgifter.
+Hämta hello anslutning information som behövs för tooconnect toohello Azure-databas för MySQL. Du måste hello server fullständigt kvalificerade namnet och autentiseringsuppgifterna för inloggning.
 
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. I den vänstra rutan klickar du på **alla resurser** och söker sedan efter servern som du skapade (till exempel **myserver4demo**).
-3. Klicka på servernamnet **myserver4demo**.
-4. Välj sidan **Egenskaper** för servern. Anteckna **servernamn** och **inloggningsnamnet för serveradministratören**.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com/).
+2. Hello vänster klickar du på **alla resurser**, och sök sedan efter hello-server som du har skapat (till exempel **myserver4demo**).
+3. Klicka på servernamnet för hello **myserver4demo**.
+4. Välj hello server **egenskaper** sidan. Anteckna hello **servernamn** och **serverinloggningsnamnet för admin**.
  ![Azure Database för MySQL – inloggning för serveradministratör](./media/connect-nodejs/1_server-properties-name-login.png)
-5. Om du glömmer inloggningsinformationen för servern öppnar du sidan **Översikt** för att se inloggningsnamnet för serveradministratören. Om det behövs kan du återställa lösenordet.
+5. Om du glömmer bort inloggningsinformationen server navigera toohello **översikt** sidan tooview hello admin serverinloggningsnamnet och, om nödvändigt återställa hello lösenord.
 
-## <a name="running-the-javascript-code-in-nodejs"></a>Kör JavaScript-kod i Node.js
-1. Klistra in JavaScript-koden i en textfil och spara filen till en projektmapp med filnamnstillägget .js, till exempel C:\nodejsmysql\createtable.js eller /home/username/nodejsmysql/createtable.js
-2. Om du vill köra koden startar du kommandotolken eller bash-gränssnittet. Ändra katalog till din projektmapp, till exempel `cd nodejsmysql`.
-3. Skriv node-kommandot följt av filnamnet, till exempel `node createtable.js`, för att köra programmet.
-4. I Windows, om node-programmet inte finns på sökvägen för miljövariabeln, kan du behöva använda den fullständiga sökvägen för att starta nodprogrammet, till exempel `"C:\Program Files\nodejs\node.exe" createtable.js`
+## <a name="running-hello-javascript-code-in-nodejs"></a>Kör hello JavaScript-kod i Node.js
+1. Klistra in hello JavaScript-kod i textfiler och spara i en projektmapp med filen tillägget .js, till exempel C:\nodejsmysql\createtable.js eller /home/username/nodejsmysql/createtable.js
+2. Starta Kommandotolken hello eller bash shell. Ändra katalog till din projektmapp, till exempel `cd nodejsmysql`.
+3. toorun hello programmet skriver hello nod kommandot följt av hello filnamn, som `node createtable.js`.
+4. I Windows, om hello nod programmet inte finns i din miljö variabeln sökväg måste toouse hello fullständig sökväg toolaunch hello noden program som`"C:\Program Files\nodejs\node.exe" createtable.js`
 
 ## <a name="connect-create-table-and-insert-data"></a>Ansluta, skapa tabell och infoga data
-Använd följande kod för att ansluta och läsa in data med hjälp av SQL-instruktionerna **CREATE TABLE** och **INSERT**.
+Använd hello följande kod tooconnect och läsa in hello data med hjälp av **CREATE TABLE** och **INSERT INTO** SQL-instruktioner.
 
-Metoden [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) används som gränssnitt med MySQL-servern. Funktionen [connect()](https://github.com/mysqljs/mysql#establishing-connections) används för att etablera anslutningen till servern. Funktionen [query()](https://github.com/mysqljs/mysql#performing-queries) används för att köra SQL-frågor mot en MySQL-databas. 
+Hej [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) metod är att använda toointerface med hello MySQL-servern. Hej [connect()](https://github.com/mysqljs/mysql#establishing-connections) funktionen är används tooestablish hello anslutning toohello server. Hej [query()](https://github.com/mysqljs/mysql#performing-queries) funktionen är används tooexecute hello SQL-fråga mot MySQL-databas. 
 
-Ersätt parametrarna `host`, `user`, `password` och `database` med de värden som du angav när du skapade servern och databasen.
+Ersätt hello `host`, `user`, `password`, och `database` parametrar med hello värden som du angav när du skapade hello-server och databas.
 
 ```javascript
 const mysql = require('mysql2');
@@ -165,11 +165,11 @@ function queryDatabase(){
 ```
 
 ## <a name="read-data"></a>Läsa data
-Använd följande kod för att ansluta och läsa data med en **SELECT**-SQL-instruktion. 
+Använd hello följande kod tooconnect och läsa hello data med hjälp av en **Välj** SQL-instruktionen. 
 
-Metoden [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) används som gränssnitt med MySQL-servern. Metoden [connect()](https://github.com/mysqljs/mysql#establishing-connections) används för att etablera anslutningen till servern. Metoden [query()](https://github.com/mysqljs/mysql#performing-queries) används för att köra SQL-frågor mot en MySQL-databas. Resultatmatrisen används för resultat från frågan.
+Hej [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) metod är att använda toointerface med hello MySQL-servern. Hej [connect()](https://github.com/mysqljs/mysql#establishing-connections) metoden är används tooestablish hello anslutning toohello server. Hej [query()](https://github.com/mysqljs/mysql#performing-queries) metod är att använda tooexecute hello SQL-fråga mot MySQL-databas. hello resultat matrisen är används toohold hello resultaten av hello-frågan.
 
-Ersätt parametrarna `host`, `user`, `password` och `database` med de värden som du angav när du skapade servern och databasen.
+Ersätt hello `host`, `user`, `password`, och `database` parametrar med hello värden som du angav när du skapade hello-server och databas.
 
 ```javascript
 const mysql = require('mysql2');
@@ -217,11 +217,11 @@ function readData(){
 ```
 
 ## <a name="update-data"></a>Uppdatera data
-Använd följande kod för att ansluta och läsa data med en **UPDATE**-SQL-instruktion. 
+Använd hello följande kod tooconnect och läsa hello data med hjälp av en **uppdatering** SQL-instruktionen. 
 
-Metoden [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) används som gränssnitt med MySQL-servern. Metoden [connect()](https://github.com/mysqljs/mysql#establishing-connections) används för att etablera anslutningen till servern. Metoden [query()](https://github.com/mysqljs/mysql#performing-queries) används för att köra SQL-frågor mot en MySQL-databas. 
+Hej [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) metod är att använda toointerface med hello MySQL-servern. Hej [connect()](https://github.com/mysqljs/mysql#establishing-connections) metoden är används tooestablish hello anslutning toohello server. Hej [query()](https://github.com/mysqljs/mysql#performing-queries) metod är att använda tooexecute hello SQL-fråga mot MySQL-databas. 
 
-Ersätt parametrarna `host`, `user`, `password` och `database` med de värden som du angav när du skapade servern och databasen.
+Ersätt hello `host`, `user`, `password`, och `database` parametrar med hello värden som du angav när du skapade hello-server och databas.
 
 ```javascript
 const mysql = require('mysql2');
@@ -265,11 +265,11 @@ function updateData(){
 ```
 
 ## <a name="delete-data"></a>Ta bort data
-Använd följande kod för att ansluta och läsa data med en **DELETE**-SQL-instruktion. 
+Använd hello följande kod tooconnect och läsa hello data med hjälp av en **ta bort** SQL-instruktionen. 
 
-Metoden [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) används som gränssnitt med MySQL-servern. Metoden [connect()](https://github.com/mysqljs/mysql#establishing-connections) används för att etablera anslutningen till servern. Metoden [query()](https://github.com/mysqljs/mysql#performing-queries) används för att köra SQL-frågor mot en MySQL-databas. 
+Hej [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) metod är att använda toointerface med hello MySQL-servern. Hej [connect()](https://github.com/mysqljs/mysql#establishing-connections) metoden är används tooestablish hello anslutning toohello server. Hej [query()](https://github.com/mysqljs/mysql#performing-queries) metod är att använda tooexecute hello SQL-fråga mot MySQL-databas. 
 
-Ersätt parametrarna `host`, `user`, `password` och `database` med de värden som du angav när du skapade servern och databasen.
+Ersätt hello `host`, `user`, `password`, och `database` parametrar med hello värden som du angav när du skapade hello-server och databas.
 
 ```javascript
 const mysql = require('mysql2');

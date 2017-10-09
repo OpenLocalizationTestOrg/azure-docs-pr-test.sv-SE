@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory reporting granska API samples | Microsoft Docs
-description: "Hur du kommer igång med Azure Active Directory Reporting API"
+title: aaaAzure Active Directory reporting granska API samples | Microsoft Docs
+description: "Hur tooget igång med hello Azure Active Directory Reporting API"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,30 +15,30 @@ ms.workload: identity
 ms.date: 08/02/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6e3e127fbdc228ff0535be64fe4a4a696731a897
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 6ada8a7184d7baacaba5ba9c1b9130653b1cf7fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-reporting-audit-api-samples"></a>Azure Active Directory reporting audit API-exempel
-Det här avsnittet är en del av en samling ämnen om Azure Active Directory reporting API.  
-Azure AD-rapportering ger dig en API som gör att du kan komma åt granskningsdata via kod eller relaterade verktyg.
-Omfattningen av det här avsnittet är att ge dig exempelkod för den **granska API**.
+Det här avsnittet är en del av en samling ämnen om hello Azure Active Directory reporting API.  
+Azure AD-rapportering ger dig en API som gör att du tooaccess granskningsdata via kod eller relaterade verktyg.
+hello omfånget för det här avsnittet är tooprovide som till exempel koden för hello **granska API**.
 
 Se:
 
 * [Granskningsloggar](active-directory-reporting-azure-portal.md#activity-reports) mer information
-* [Komma igång med Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) för mer information om reporting API.
+* [Komma igång med hello Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) mer information om hello reporting API.
 
 För frågor, frågor eller kommentarer, kontakta [AAD Reporting hjälper](mailto:aadreportinghelp@microsoft.com).
 
 
 ## <a name="prerequisites"></a>Krav
-Innan du kan använda exemplen i det här avsnittet, måste du slutföra de [krav för att få åtkomst till Azure AD reporting API](active-directory-reporting-api-prerequisites.md).  
+Innan du kan använda hello prover i det här avsnittet, behöver du toocomplete hello [krav tooaccess hello Azure AD reporting API](active-directory-reporting-api-prerequisites.md).  
 
 ## <a name="known-issue"></a>Kända problem
-Appen Auth fungerar inte om din klient är i EU-region. Använd autentisering av användare för att komma åt granska API som en tillfällig lösning förrän vi lösa problemet. 
+Appen Auth fungerar inte om din klient är i hello EU-region. Använd autentisering av användare för att komma åt hello granska API som en tillfällig lösning förrän vi åtgärda hello problemet. 
 
 ## <a name="powershell-script"></a>PowerShell-skript
     # This script will require registration of a Web Application in Azure Active Directory (see https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)
@@ -49,14 +49,14 @@ Appen Auth fungerar inte om din klient är i EU-region. Använd autentisering av
     $loginURL       = "https://login.microsoftonline.com"     # AAD Instance; for example https://login.microsoftonline.com
     $tenantdomain   = "your-tenant-domain.onmicrosoft.com"    # AAD Tenant; for example, contoso.onmicrosoft.com
     $resource       = "https://graph.windows.net"             # Azure AD Graph API resource URI
-    $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
+    $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' toodecrement minutes, for example
     Write-Output "Searching for events starting $7daysago"
 
     # Create HTTP header, get an OAuth2 access token based on client id, secret and tenant domain
     $body       = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
     $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body
 
-    # Parse audit report items, save output to file(s): auditX.json, where X = 0 thru n for number of nextLink pages
+    # Parse audit report items, save output toofile(s): auditX.json, where X = 0 thru n for number of nextLink pages
     if ($oauth.access_token -ne $null) {   
         $i=0
         $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
@@ -64,15 +64,15 @@ Appen Auth fungerar inte om din klient är i EU-region. Använd autentisering av
 
         # loop through each query page (1 through n)
         Do{
-            # display each event on the console window
+            # display each event on hello console window
             Write-Output "Fetching data using Uri: $url"
             $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
             foreach ($event in ($myReport.Content | ConvertFrom-Json).value) {
                 Write-Output ($event | ConvertTo-Json)
             }
 
-            # save the query page to an output file
-            Write-Output "Save the output to a file audit$i.json"
+            # save hello query page tooan output file
+            Write-Output "Save hello output tooa file audit$i.json"
             $myReport.Content | Out-File -FilePath audit$i.json -Force
             $url = ($myReport.Content | ConvertFrom-Json).'@odata.nextLink'
             $i = $i+1
@@ -81,14 +81,14 @@ Appen Auth fungerar inte om din klient är i EU-region. Använd autentisering av
         Write-Host "ERROR: No Access Token"
         }
 
-    Write-Host "Press any key to continue ..."
+    Write-Host "Press any key toocontinue ..."
     $x = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 
-### <a name="executing-the-powershell-script"></a>Kör PowerShell-skript
-När du har redigerat skriptet körs och kontrollera att de förväntade data från revision loggar rapporten returneras.
+### <a name="executing-hello-powershell-script"></a>Kör hello PowerShell-skript
+När du hello skriptet är klar, kör den och verifiera att hello förväntade data från hello loggar kontrollrapport returneras.
 
-Skriptet returnerar utdata från rapporten i JSON-format. Det skapar också en `audit.json` fil med samma utdata. Du kan experimentera genom att ändra skriptet för att returnera data från andra rapporter och kommentera ut utdataformat som du inte behöver.
+hello skriptet returnerar utdata från hello audit rapport i JSON-format. Det skapar också ett `audit.json` filen med hello samma utdata. Du kan experimentera genom att ändra hello skriptet tooreturn data från andra rapporter och kommentera ut hello utdataformat som du inte behöver.
 
 ## <a name="bash-script"></a>Bash-skript
     #!/bin/bash
@@ -121,7 +121,7 @@ Skriptet returnerar utdata från rapporten i JSON-format. Det skapar också en `
 ## <a name="python-script"></a>Python-skriptet
     # Author: Michael McLaughlin (michmcla@microsoft.com)
     # Date: January 20, 2016
-    # This requires the Python Requests module: http://docs.python-requests.org
+    # This requires hello Python Requests module: http://docs.python-requests.org
 
     import requests
     import datetime
@@ -147,7 +147,7 @@ Skriptet returnerar utdata från rapporten i JSON-format. Det skapar också en `
         print "ERROR: Couldn't get access token"
         sys.exit(1)
 
-    # Use the access token to make the API request
+    # Use hello access token toomake hello API request
     yesterday = datetime.date.strftime(datetime.date.today() - datetime.timedelta(days=1), '%Y-%m-%d')
 
     header_params = {'Authorization': token_type + ' ' + access_token}
@@ -164,7 +164,7 @@ Skriptet returnerar utdata från rapporten i JSON-format. Det skapar också en `
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Vill du anpassa exemplen i det här avsnittet? Kolla in den [Azure Active Directory audit API-referens för](active-directory-reporting-api-audit-reference.md). 
-* Om du vill se en fullständig översikt över med Azure Active Directory reporting API, se [komma igång med Azure Active Directory reporting API](active-directory-reporting-api-getting-started.md).
-* Om du vill veta mer om Azure Active Directory reporting finns i [Azure Active Directory Reporting Guide](active-directory-reporting-guide.md).  
+* Vill du toocustomize hello prover i det här avsnittet? Kolla in hello [Azure Active Directory audit API-referens för](active-directory-reporting-api-audit-reference.md). 
+* Om du vill toosee en fullständig översikt över användning av hello Azure Active Directory reporting API, se [komma igång med hello Azure Active Directory reporting API](active-directory-reporting-api-getting-started.md).
+* Om du vill toofind mer information om Azure Active Directory reporting finns hello [Azure Active Directory Reporting Guide](active-directory-reporting-guide.md).  
 

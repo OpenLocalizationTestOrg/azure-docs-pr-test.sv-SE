@@ -1,6 +1,6 @@
 ---
-title: "Skapa nätverkssäkerhetsgrupper - Azure CLI 1.0 | Microsoft Docs"
-description: "Lär dig hur du skapar och distribuerar nätverkssäkerhetsgrupper som använder Azure CLI 1.0."
+title: "aaaCreate nätverkssäkerhetsgrupper - Azure CLI 1.0 | Microsoft Docs"
+description: "Lär dig hur toocreate och distribuera nätverkssäkerhetsgrupper med hello Azure CLI 1.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,53 +15,53 @@ ms.workload: infrastructure-services
 ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca8c182651e3c9f2f1f3a85b94361755d8e638d4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eeb7feedab959d92659e03c5c46d93fdfc08faea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-network-security-groups-using-the-azure-cli-10"></a>Skapa nätverk med hjälp av Azure CLI 1.0-säkerhetsgrupper
+# <a name="create-network-security-groups-using-hello-azure-cli-10"></a>Skapa nätverk med hjälp av hello Azure CLI 1.0-säkerhetsgrupper
 
 
-## <a name="cli-versions-to-complete-the-task"></a>CLI-versioner för att slutföra uppgiften 
+## <a name="cli-versions-toocomplete-hello-task"></a>CLI versioner toocomplete hello aktivitet 
 
-Du kan slutföra uppgiften med någon av följande CLI-versioner: 
+Du kan göra hello med hjälp av något av följande versioner av CLI hello: 
 
-- [Azure CLI 1.0](#how-to-create-the-nsg-for-the-front-end-subnet) – våra CLI för klassisk och resurs management på distributionsmodeller (den här artikeln)
-- [Azure CLI 2.0](virtual-networks-create-nsg-arm-cli.md) -vår nästa generations CLI för resursdistributionsmodell för hantering 
+- [Azure CLI 1.0](#how-to-create-the-nsg-for-the-front-end-subnet) – våra CLI för hello klassisk och resurs management distributionsmodeller (den här artikeln)
+- [Azure CLI 2.0](virtual-networks-create-nsg-arm-cli.md) -vår nästa generations CLI för hello resursdistributionsmodell för hantering 
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Den här artikeln beskriver Resource Manager-distributionsmodellen. Du kan också [skapa NSG: er i den klassiska distributionsmodellen](virtual-networks-create-nsg-classic-cli.md).
+Den här artikeln beskriver hello Resource Manager-modellen. Du kan också [skapa NSG: er i hello klassiska distributionsmodellen](virtual-networks-create-nsg-classic-cli.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-Exemplet Azure CLI-kommandona nedan förväntar sig en enkel miljö som redan har skapats baserat på scenariot ovan. 
+hello exempel Azure CLI-kommandona nedan förväntar sig en enkel miljö som redan har skapats utifrån hello scenariot ovan. 
 
-## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>Hur du skapar NSG för undernätet frontend
-Om du vill skapa en NSG som heter heter *NSG-klientdel* baserat på scenariot ovan, Följ stegen nedan.
+## <a name="how-toocreate-hello-nsg-for-hello-front-end-subnet"></a>Hur toocreate hello NSG för hello klientdelens undernät
+toocreate en NSG med namnet med namnet *NSG-klientdel* utifrån hello scenariot ovan gör hello nedan.
 
-1. Om du aldrig har använt Azure CLI, se [installera och konfigurera Azure CLI](../cli-install-nodejs.md) och följ instruktionerna upp till den punkt där du väljer Azure-konto och prenumeration.
-2. Kör kommandot **azure config mode** för att växla till Resource Manager-läge, som det visas nedan.
+1. Om du aldrig har använt Azure CLI, se [installera och konfigurera hello Azure CLI](../cli-install-nodejs.md) och följer instruktionerna för hello in toohello punkt där du väljer Azure-konto och prenumeration.
+2. Kör hello **azure config mode** kommandot tooswitch tooResource Manager-läge enligt nedan.
    
         azure config mode arm
    
     Förväntad utdata:
    
         info:    New mode is arm
-3. Kör den **azure-nätverk nsg skapa** kommando för att skapa en NSG.
+3. Kör hello **azure-nätverk nsg skapa** kommandot toocreate en NSG.
    
         azure network nsg create -g TestRG -l westus -n NSG-FrontEnd
    
     Förväntad utdata:
    
         info:    Executing command network nsg create
-        info:    Looking up the network security group "NSG-FrontEnd"
+        info:    Looking up hello network security group "NSG-FrontEnd"
         info:    Creating a network security group "NSG-FrontEnd"
-        info:    Looking up the network security group "NSG-FrontEnd"
+        info:    Looking up hello network security group "NSG-FrontEnd"
         data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd
         data:    Name                            : NSG-FrontEnd
         data:    Type                            : Microsoft.Network/networkSecurityGroups
@@ -80,10 +80,10 @@ Om du vill skapa en NSG som heter heter *NSG-klientdel* baserat på scenariot ov
    
     Parametrar:
    
-   * **-g (eller --resource-group)**. Namnet på resursgruppen där NSG: N kommer att skapas. I vårt exempel, *TestRG*.
-   * **-l (eller --location)**. Azure-region där den nya NSG kommer att skapas. I vårt scenario, *westus*.
-   * **-n (eller --name)**. Namn på ny NSG: N. I vårt scenario, *NSG-klientdel*.
-4. Kör den **azure-nätverk nsg regeln skapa** kommando för att skapa en regel som tillåter åtkomst till port 3389 (RDP) från Internet.
+   * **-g (eller --resource-group)**. Namnet på hello resursgruppen där hello NSG kommer att skapas. I vårt exempel, *TestRG*.
+   * **-l (eller --location)**. Azure-region där hello ny NSG kommer att skapas. I vårt scenario, *westus*.
+   * **-n (eller --name)**. Namn för hello ny NSG. I vårt scenario, *NSG-klientdel*.
+4. Kör hello **azure-nätverk nsg regeln skapa** kommandot toocreate en regel som tillåter åtkomst tooport 3389 (RDP) från hello Internet.
    
         azure network nsg rule create -g TestRG -a NSG-FrontEnd -n rdp-rule -c Allow -p Tcp -r Inbound -y 100 -f Internet -o * -e * -u 3389
    
@@ -91,9 +91,9 @@ Om du vill skapa en NSG som heter heter *NSG-klientdel* baserat på scenariot ov
    
         info:    Executing command network nsg rule create
         warn:    Using default direction: Inbound
-        info:    Looking up the network security rule "rdp-rule"
+        info:    Looking up hello network security rule "rdp-rule"
         info:    Creating a network security rule "rdp-rule"
-        info:    Looking up the network security group "NSG-FrontEnd"
+        info:    Looking up hello network security group "NSG-FrontEnd"
         data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd/securityRules/rdp
         -rule
         data:    Name                            : rdp-rule
@@ -111,26 +111,26 @@ Om du vill skapa en NSG som heter heter *NSG-klientdel* baserat på scenariot ov
    
     Parametrar:
    
-   * **-a (eller--nsg-namn)**. Namnet på NSG: N som regeln ska skapas. I vårt scenario, *NSG-klientdel*.
-   * **-n (eller --name)**. Namnet på den nya regeln. I vårt scenario, *rdp-regel*.
-   * **-c (eller--åtkomst)**. Åtkomstnivå för regeln (Tillåt eller neka).
-   * **-p (eller--protocol)**. Protocol (Tcp, Udp eller *) för regeln.
+   * **-a (eller--nsg-namn)**. Namnet på hello NSG vilka hello regel kommer att skapas. I vårt scenario, *NSG-klientdel*.
+   * **-n (eller --name)**. Namn på hello nya regeln. I vårt scenario, *rdp-regel*.
+   * **-c (eller--åtkomst)**. Åtkomstnivå för hello regel (Tillåt eller neka).
+   * **-p (eller--protocol)**. Protocol (Tcp, Udp eller *) för hello regeln.
    * **-r (eller--riktning)**. Riktning för anslutning (inkommande eller utgående).
-   * **-y (eller--prioritet)**. Prioritet för regeln.
+   * **-y (eller--prioritet)**. Prioritet för hello regeln.
    * **-f (eller--källadress-prefix)**. Källadress-prefix i CIDR- eller använda standardtaggar.
    * **-o (eller--Källportintervall-)**. Källport eller portintervall.
    * **-e (eller--mål adressprefixet)**. Måladress-prefix i CIDR- eller använda standardtaggar.
    * **-u (eller--Målportintervall-)**. Målport eller portintervall.    
-5. Kör den **azure-nätverk nsg regeln skapa** kommando för att skapa en regel som tillåter åtkomst till port 80 (HTTP) från Internet.
+5. Kör hello **azure-nätverk nsg regeln skapa** kommandot toocreate en regel som tillåter åtkomst tooport 80 (HTTP) från hello Internet.
    
         azure network nsg rule create -g TestRG -a NSG-FrontEnd -n web-rule -c Allow -p Tcp -r Inbound -y 200 -f Internet -o * -e * -u 80
    
     Förväntade putput:
    
         info:    Executing command network nsg rule create
-        info:    Looking up the network security rule "web-rule"
+        info:    Looking up hello network security rule "web-rule"
         info:    Creating a network security rule "web-rule"
-        info:    Looking up the network security group "NSG-FrontEnd"
+        info:    Looking up hello network security group "NSG-FrontEnd"
         data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
         networkSecurityGroups/NSG-FrontEnd/securityRules/web-rule
         data:    Name                            : web-rule
@@ -145,17 +145,17 @@ Om du vill skapa en NSG som heter heter *NSG-klientdel* baserat på scenariot ov
         data:    Access                          : Allow
         data:    Priority                        : 200
         info:    network nsg rule create command OK
-6. Kör den **azure network vnet undernät set** kommando för att länka NSG: N till klientdelens undernät.
+6. Kör hello **azure network vnet undernät set** kommandot toolink hello NSG toohello klientdelens undernät.
    
         azure network vnet subnet set -g TestRG -e TestVNet -n FrontEnd -o NSG-FrontEnd
    
     Förväntad utdata:
    
         info:    Executing command network vnet subnet set
-        info:    Looking up the subnet "FrontEnd"
-        info:    Looking up the network security group "NSG-FrontEnd"
+        info:    Looking up hello subnet "FrontEnd"
+        info:    Looking up hello network security group "NSG-FrontEnd"
         info:    Setting subnet "FrontEnd"
-        info:    Looking up the subnet "FrontEnd"
+        info:    Looking up hello subnet "FrontEnd"
         data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
         virtualNetworks/TestVNet/subnets/FrontEnd
         data:    Type                            : Microsoft.Network/virtualNetworks/subnets
@@ -171,19 +171,19 @@ Om du vill skapa en NSG som heter heter *NSG-klientdel* baserat på scenariot ov
         data:    
         info:    network vnet subnet set command OK
 
-## <a name="how-to-create-the-nsg-for-the-back-end-subnet"></a>Hur du skapar NSG för backend-undernät
-Om du vill skapa en NSG som heter heter *NSG BackEnd* baserat på scenariot ovan, Följ stegen nedan.
+## <a name="how-toocreate-hello-nsg-for-hello-back-end-subnet"></a>Hur toocreate hello NSG för hello tillbaka avslutas undernät
+toocreate en NSG med namnet med namnet *NSG BackEnd* utifrån hello scenariot ovan gör hello nedan.
 
-1. Kör den **azure-nätverk nsg skapa** kommando för att skapa en NSG.
+1. Kör hello **azure-nätverk nsg skapa** kommandot toocreate en NSG.
    
         azure network nsg create -g TestRG -l westus -n NSG-BackEnd
    
     Förväntad utdata:
    
         info:    Executing command network nsg create
-        info:    Looking up the network security group "NSG-BackEnd"
+        info:    Looking up hello network security group "NSG-BackEnd"
         info:    Creating a network security group "NSG-BackEnd"
-        info:    Looking up the network security group "NSG-BackEnd"
+        info:    Looking up hello network security group "NSG-BackEnd"
         data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
         networkSecurityGroups/NSG-BackEnd
         data:    Name                            : NSG-BackEnd
@@ -200,16 +200,16 @@ Om du vill skapa en NSG som heter heter *NSG BackEnd* baserat på scenariot ovan
         data:    AllowInternetOutBound          *                  *            Internet        *                 *         Outbound   Allow   65001   
         data:    DenyAllOutBound                *                  *            *               *                 *         Outbound   Deny    65500   
         info:    network nsg create command OK
-2. Kör den **azure-nätverk nsg regeln skapa** kommando för att skapa en regel som tillåter åtkomst till port 1433 (SQL) från klientdelens undernät.
+2. Kör hello **azure-nätverk nsg regeln skapa** kommandot toocreate en regel som tillåter åtkomst tooport 1433 (SQL) från hello klientdelens undernät.
    
         azure network nsg rule create -g TestRG -a NSG-BackEnd -n sql-rule -c Allow -p Tcp -r Inbound -y 100 -f 192.168.1.0/24 -o * -e * -u 1433
    
     Förväntad utdata:
    
         info:    Executing command network nsg rule create
-        info:    Looking up the network security rule "sql-rule"
+        info:    Looking up hello network security rule "sql-rule"
         info:    Creating a network security rule "sql-rule"
-        info:    Looking up the network security group "NSG-BackEnd"
+        info:    Looking up hello network security group "NSG-BackEnd"
         data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
         networkSecurityGroups/NSG-BackEnd/securityRules/sql-rule
         data:    Name                            : sql-rule
@@ -224,16 +224,16 @@ Om du vill skapa en NSG som heter heter *NSG BackEnd* baserat på scenariot ovan
         data:    Access                          : Allow
         data:    Priority                        : 100
         info:    network nsg rule create command OK
-3. Kör den **azure-nätverk nsg regeln skapa** kommando för att skapa en regel som nekar åtkomst till Internet från.
+3. Kör hello **azure-nätverk nsg regeln skapa** kommandot toocreate en regel som nekar åtkomst toohello Internet från.
    
         azure network nsg rule create -g TestRG -a NSG-BackEnd -n web-rule -c Deny -p * -r Outbound -y 200 -f * -o * -e Internet -u *
    
     Förväntade putput:
    
         info:    Executing command network nsg rule create
-        info:    Looking up the network security rule "web-rule"
+        info:    Looking up hello network security rule "web-rule"
         info:    Creating a network security rule "web-rule"
-        info:    Looking up the network security group "NSG-BackEnd"
+        info:    Looking up hello network security group "NSG-BackEnd"
         data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
         networkSecurityGroups/NSG-BackEnd/securityRules/web-rule
         data:    Name                            : web-rule
@@ -248,17 +248,17 @@ Om du vill skapa en NSG som heter heter *NSG BackEnd* baserat på scenariot ovan
         data:    Access                          : Deny
         data:    Priority                        : 200
         info:    network nsg rule create command OK
-4. Kör den **azure network vnet undernät set** kommando för att länka NSG: N till backend-undernät.
+4. Kör hello **azure network vnet undernät set** kommandot toolink hello NSG toohello tillbaka avslutas undernät.
    
         azure network vnet subnet set -g TestRG -e TestVNet -n BackEnd -o NSG-BackEnd
    
     Förväntad utdata:
    
         info:    Executing command network vnet subnet set
-        info:    Looking up the subnet "BackEnd"
-        info:    Looking up the network security group "NSG-BackEnd"
+        info:    Looking up hello subnet "BackEnd"
+        info:    Looking up hello network security group "NSG-BackEnd"
         info:    Setting subnet "BackEnd"
-        info:    Looking up the subnet "BackEnd"
+        info:    Looking up hello subnet "BackEnd"
         data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/
         virtualNetworks/TestVNet/subnets/BackEnd
         data:    Type                            : Microsoft.Network/virtualNetworks/subnets

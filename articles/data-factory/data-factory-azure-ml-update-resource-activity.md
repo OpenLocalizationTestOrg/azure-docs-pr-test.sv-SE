@@ -1,6 +1,6 @@
 ---
-title: "Uppdatera Machine Learning-modeller med hjälp av Azure Data Factory | Microsoft Docs"
-description: "Beskriver hur du skapar skapa förutsägande pipelines med hjälp av Azure Data Factory och Azure Machine Learning"
+title: "aaaUpdate Machine Learning-modeller med hjälp av Azure Data Factory | Microsoft Docs"
+description: "Beskriver hur toocreate skapar förutsägbara pipelines med hjälp av Azure Data Factory och Azure Machine Learning"
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
-ms.openlocfilehash: e31a7a59d14de4382190b39bd70f3ddf6cf673ea
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6e5e4d2cfd245c7a9ed3bb9cdacca1f7f82b9620
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Uppdatera Azure Machine Learning-modeller med Uppdateringsresursaktivitet
 
@@ -33,36 +33,36 @@ ms.lasthandoff: 07/11/2017
 > * [Data Lake Analytics U-SQL-aktivitet](data-factory-usql-activity.md)
 > * [Anpassad aktivitet för .NET](data-factory-use-custom-activities.md)
 
-Den här artikeln kompletterar den huvudsakliga version av Azure Data Factory - Azure Machine Learning integration artikel: [skapa förutsägande pipelines med hjälp av Azure Machine Learning och Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Om du inte redan har gjort granska huvudsakliga artikeln innan du läser igenom den här artikeln. 
+Den här artikeln kompletterar hello huvudsakliga Azure Data Factory - Azure Machine Learning integration artikel: [skapa förutsägande pipelines med hjälp av Azure Machine Learning och Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Om du inte redan har gjort granska hello Huvudartikel innan du läser igenom den här artikeln. 
 
 ## <a name="overview"></a>Översikt
-Förutsägelsemodeller i Azure ML bedömningen experiment måste vara retrained med nya indatauppsättningar med tiden. När du är klar med omtränings som du vill uppdatera bedömningsprofil webbtjänsten med retrained ML-modell. Vanliga åtgärder för att aktivera omtränings och uppdaterar Azure ML-modeller via webbtjänster är:
+Över tiden måste hello förutsägelsemodeller i hello Azure ML bedömningsprofil experiment toobe retrained med nya indatauppsättningar. När du är klar med omtränings vill du tooupdate hello bedömningen webbtjänst med hello retrained ML-modell. hello typiska steg tooenable omtränings och uppdaterar Azure ML-modeller via webbtjänster är:
 
 1. Skapa ett experiment i [Azure ML Studio](https://studio.azureml.net).
-2. När du är nöjd med modellen, använda Azure ML Studio för att publicera webbtjänster för både den **träningsexperiment** och poängsättning /**prediktivt experiment**.
+2. När du är nöjd med hello modellen, använder du Azure ML Studio toopublish webbtjänster för båda hello **träningsexperiment** och poängsättning /**prediktivt experiment**.
 
-I följande tabell beskrivs de webbtjänster som används i det här exemplet.  Se [träna om Machine Learning-modeller via programmering](../machine-learning/machine-learning-retrain-models-programmatically.md) mer information.
+hello beskrivs följande tabell hello webbtjänster som används i det här exemplet.  Se [träna om Machine Learning-modeller via programmering](../machine-learning/machine-learning-retrain-models-programmatically.md) mer information.
 
-- **Utbildning webbtjänsten** – tar emot träningsdata och producerar tränade modeller. Utdata från den omtränings är en .ilearner-fil i ett Azure Blob storage. Den **standard endpoint** skapas automatiskt för dig när du publicerar utbildningen experiment som en webbtjänst. Du kan skapa flera slutpunkter, men i exemplet används endast standardslutpunkten.
-- **Bedömningen webbtjänsten** – tar emot exempel omärkta data och gör förutsägelser. Utdata för förutsägelse kan ha olika former, till exempel en CSV-fil eller rader i en Azure SQL database, beroende på konfigurationen av experimentet. Standardslutpunkten skapas automatiskt för dig när du publicerar prediktivt experiment som en webbtjänst. 
+- **Utbildning webbtjänsten** – tar emot träningsdata och producerar tränade modeller. hello utdata från hello omtränings är en .ilearner-fil i ett Azure Blob storage. Hej **standard endpoint** skapas automatiskt för dig när du publicerar hello utbildning experiment som en webbtjänst. Du kan skapa flera slutpunkter men hello exemplet används endast hello standardslutpunkten.
+- **Bedömningen webbtjänsten** – tar emot exempel omärkta data och gör förutsägelser. hello utdata för förutsägelse kan ha olika former, till exempel en CSV-fil eller rader i en Azure SQL database, beroende på hello konfiguration av hello experiment. hello standardslutpunkten skapas automatiskt för dig när du publicerar hello prediktivt experiment som en webbtjänst. 
 
-Följande bild visar relationen mellan utbildning och poängberäkningen slutpunkter i Azure ML.
+hello visar följande bild hello förhållandet mellan utbildning och poängberäkningen slutpunkter i Azure ML.
 
 ![Webbtjänster](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-Du kan anropa den **utbildning webbtjänsten** med hjälp av den **Azure ML-Batchkörningsaktivitet**. Anropa en webbtjänst för utbildning är samma som anropar en Azure ML-webbtjänst (bedömningen webbtjänsten) för bedömningsprofil data. I föregående avsnitt beskriver hur du anropa en Azure ML-webbtjänst från ett Azure Data Factory-pipelinen i detalj. 
+Du kan anropa hello **utbildning webbtjänsten** med hjälp av hello **Azure ML-Batchkörningsaktivitet**. Anropa en webbtjänst för utbildning är samma som anropar en Azure ML-webbtjänst (bedömningen webbtjänsten) för bedömningsprofil data. Hej föregående avsnitt omfattar hur tooinvoke en Azure ML-webbtjänst från ett Azure Data Factory pipeline i detalj. 
 
-Du kan anropa den **bedömningen webbtjänsten** med hjälp av den **Azure ML uppdatera resurs aktiviteten** uppdatera webbtjänsten med den nyligen tränade modellen. I följande exempel innehåller definitioner av länkade tjänsten: 
+Du kan anropa hello **bedömningen webbtjänsten** med hjälp av hello **Azure ML-Uppdateringsresursaktivitet** tooupdate hello-webbtjänst med hello nyligen tränade modellen. hello följande exempel innehåller definitioner av länkade tjänsten: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>Bedömningen webbtjänst är en klassiska webbtjänst
-Om bedömningsprofil webbtjänsten är en **klassiska webbtjänsten**, skapa andra **inte är standard och uppdateras endpoint** med hjälp av den [Azure-portalen](https://manage.windowsazure.com). Se [skapa slutpunkter](../machine-learning/machine-learning-create-endpoint.md) artikel anvisningar. När du har skapat icke-uppdateringsbar standardslutpunkten gör du följande steg:
+Om hello bedömningen webbtjänst är en **klassiska webbtjänsten**, skapa hello andra **inte är standard och uppdateras endpoint** med hjälp av hello [Azure-portalen](https://manage.windowsazure.com). Se [skapa slutpunkter](../machine-learning/machine-learning-create-endpoint.md) artikel anvisningar. När du har skapat hello icke-uppdateringsbar standardslutpunkten hello följande:
 
-* Klicka på **BATCH EXECUTION** att hämta URI-värdet för den **mlEndpoint** JSON-egenskapen.
-* Klicka på **uppdatering resurs** länken för att visa URI-värdet för den **updateResourceEndpoint** JSON-egenskapen. API-nyckeln finns på sidan endpoint sig själv (i det nedre högra hörnet).
+* Klicka på **BATCH EXECUTION** tooget hello URI värde för hello **mlEndpoint** JSON-egenskapen.
+* Klicka på **uppdatering resurs** länka tooget hello URI-värde för hello **updateResourceEndpoint** JSON-egenskapen. hello API-nyckeln finns på hello endpoint själva sidan (i hello längst ned till höger).
 
 ![Uppdatera slutpunkten](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
 
-Följande exempel visar ett exempel JSON-definitionen för länkad AzureML-tjänst. Den länkade tjänsten använder apiKey för autentisering.  
+hello följande exempel innehåller ett exempel JSON-definitionen för hello länkad AzureML-tjänst. hello länkade tjänsten använder hello apiKey för autentisering.  
 
 ```json
 {
@@ -79,20 +79,20 @@ Följande exempel visar ett exempel JSON-definitionen för länkad AzureML-tjän
 ```
 
 ## <a name="scoring-web-service-is-azure-resource-manager-web-service"></a>Bedömningen webbtjänsten är Azure Resource Manager-webbtjänst 
-Om webbtjänsten är den nya typen av webbtjänsten som Exponerar en Azure Resource Manager-slutpunkt, behöver du inte lägga till andra **icke-förvalt** slutpunkt. Den **updateResourceEndpoint** i den länkade tjänsten är i formatet: 
+Om hello-webbtjänsten är hello ny typ av webbtjänsten som Exponerar en Azure Resource Manager-slutpunkt, du behöver inte tooadd hello andra **icke-förvalt** slutpunkt. Hej **updateResourceEndpoint** i hello länkad tjänst har hello format: 
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-Du kan hämta värden för platshållare i Webbadressen när du frågar webbtjänsten på den [Azure Machine Learning Web Services-portalen](https://services.azureml.net/). Ny typ av uppdatering resurs slutpunkten kräver ett token för AAD (Azure Active Directory). Ange **servicePrincipalId** och **servicePrincipalKey**i AzureML länkade tjänsten. Se [så att skapa tjänstens huvudnamn och tilldela behörigheter för att hantera Azure-resurs](../azure-resource-manager/resource-group-create-service-principal-portal.md). Här är ett exempel på en länkad AzureML-tjänstedefinition: 
+Du kan hämta värden för platshållare i hello URL när du frågar hello webbtjänst på hello [Azure Machine Learning Web Services-portalen](https://services.azureml.net/). hello ny typ av uppdatering resurs slutpunkten kräver ett token för AAD (Azure Active Directory). Ange **servicePrincipalId** och **servicePrincipalKey**i AzureML länkade tjänsten. Se [hur toocreate huvudnamn och tilldela behörigheter toomanage Azure-resurs](../azure-resource-manager/resource-group-create-service-principal-portal.md). Här är ett exempel på en länkad AzureML-tjänstedefinition: 
 
 ```json
 {
     "name": "AzureMLLinkedService",
     "properties": {
         "type": "AzureML",
-        "description": "The linked service for AML web service.",
+        "description": "hello linked service for AML web service.",
         "typeProperties": {
             "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/0000000000000000000000000000000000000/services/0000000000000000000000000000000000000/jobs?api-version=2.0",
             "apiKey": "xxxxxxxxxxxx",
@@ -105,22 +105,22 @@ Du kan hämta värden för platshållare i Webbadressen när du frågar webbtjä
 }
 ```
 
-Följande scenario visar mer information. Det finns ett exempel för omtränings och uppdatera Azure ML modeller från ett Azure Data Factory-pipelinen.
+hello visar följande scenario mer information. Det finns ett exempel för omtränings och uppdatera Azure ML modeller från ett Azure Data Factory-pipelinen.
 
 ## <a name="scenario-retraining-and-updating-an-azure-ml-model"></a>Scenario: omtränings och uppdaterar en Azure ML-modell
-Det här avsnittet innehåller en exempel-pipeline som använder den **Azure ML-batchkörning aktiviteten** att träna om en modell. Pipeline använder också den **Azure ML uppdatera resurs aktiviteten** att uppdatera modellen i bedömningsprofil webbtjänsten. Avsnittet innehåller också kodstycken JSON för alla länkade tjänster, datauppsättningar och pipeline i exemplet.
+Det här avsnittet innehåller en exempel-pipeline som använder hello **Azure ML-batchkörning aktiviteten** tooretrain en modell. hello pipeline använder också hello **Azure ML-uppdatering resurshanteraren aktiviteten** tooupdate hello modell i hello poängsättning av webbtjänsten. hello avsnittet ger också JSON kodavsnitt för alla hello länkade tjänster, datauppsättningar och pipeline i hello exempel.
 
-Här är diagramvyn för exempel pipeline. Som du kan se Azure ML-Batchkörningsaktivitet tar utbildning indata och skapar en utbildning utdata (iLearner-fil). Azure ML-Uppdateringsresursaktivitet tar den här utbildning utdata och uppdaterar modellen i bedömningsprofil webbtjänstslutpunkt. Den Uppdateringsresursaktivitet genererar inga utdata. PlaceholderBlob är bara en dummy datamängd för utdata som krävs av Azure Data Factory-tjänsten för att köra pipelinen.
+Här är hello diagramvyn för hello exempel pipeline. Som du ser hello Azure ML-Batchkörningsaktivitet tar hello utbildning indata och skapar en utbildning utdata (iLearner-fil). hello Azure ML-Uppdateringsresursaktivitet tar den här utbildning utdata och uppdateringar hello modell i hello bedömningen webbtjänstslutpunkt. hello-Uppdateringsresursaktivitet inte producerar några utdata. Hej placeholderBlob är bara en dummy datamängd för utdata som krävs av hello Azure Data Factory-tjänsten toorun hello pipeline.
 
 ![Pipeline-diagram](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 
 ### <a name="azure-blob-storage-linked-service"></a>Azure Blob storage länkade tjänsten:
-Azure Storage innehåller följande information:
+hello Azure Storage innehåller hello följande data:
 
-* utbildningsdata. Indata för webbtjänsten Azure ML utbildning.  
-* iLearner-fil. Utdata från Azure ML utbildning webbtjänsten. Den här filen är också indata till aktiviteten uppdatera resurs.  
+* utbildningsdata. hello indata för webbtjänsten för hello Azure ML-utbildning.  
+* iLearner-fil. hello utdata från hello Azure ML utbildning-webbtjänsten. Den här filen är också hello inkommande toohello uppdatering resurs aktiviteten.  
 
-Här är exempel JSON-definitionen för den länkade tjänsten:
+Här är hello exempel JSON-definitionen av hello länkade tjänsten:
 
 ```JSON
 {
@@ -135,7 +135,7 @@ Här är exempel JSON-definitionen för den länkade tjänsten:
 ```
 
 ### <a name="training-input-dataset"></a>Utbildning inkommande datauppsättningen:
-Följande datauppsättningen representerar inkommande utbildning data för webbtjänsten Azure ML utbildning. Azure ML-batchkörning aktiviteten tar den här datauppsättningen som indata.
+hello representerar följande datauppsättning hello inkommande träningsdata för webbtjänsten för hello Azure ML-utbildning. hello Azure ML-batchkörning aktiviteten tar den här datauppsättningen som indata.
 
 ```JSON
 {
@@ -166,7 +166,7 @@ Följande datauppsättningen representerar inkommande utbildning data för webbt
 ```
 
 ### <a name="training-output-dataset"></a>Utbildning datamängd för utdata:
-Följande datauppsättningen representerar iLearner utdatafilen från Azure ML utbildning webbtjänsten. Azure ML-Batchkörningsaktivitet ger denna dataset. Den här datauppsättningen är också indata till aktiviteten Azure ML Update resurs.
+hello representerar följande datauppsättning hello iLearner utdatafilen från hello Azure ML utbildning webbtjänsten. hello Azure ML-Batchkörningsaktivitet ger denna dataset. Den här datauppsättningen är också hello inkommande toohello Azure ML-uppdatering resurshanteraren aktivitet.
 
 ```JSON
 {
@@ -190,7 +190,7 @@ Följande datauppsättningen representerar iLearner utdatafilen från Azure ML u
 ```
 
 ### <a name="linked-service-for-azure-ml-training-endpoint"></a>Länkad tjänst för Azure ML utbildning slutpunkt
-Följande JSON-fragment definierar en Azure Machine Learning länkade tjänst som pekar på standardslutpunkten av utbildning web service.
+hello följande JSON-fragment definierar en Azure Machine Learning länkade tjänst som pekar toohello standardslutpunkten av hello utbildning web service.
 
 ```JSON
 {    
@@ -205,16 +205,16 @@ Följande JSON-fragment definierar en Azure Machine Learning länkade tjänst so
 }
 ```
 
-I **Azure ML Studio**, gör följande för att hämta värden för **mlEndpoint** och **apiKey**:
+I **Azure ML Studio**, hello följande tooget värden för **mlEndpoint** och **apiKey**:
 
-1. Klicka på **WEB SERVICES** på den vänstra menyn.
-2. Klicka på den **utbildning webbtjänsten** i listan över webbtjänster.
-3. Klicka på Kopiera bredvid **API-nyckel** textruta. Klistra in nyckeln i Urklipp i Data Factory JSON-redigerare.
-4. I den **Azure ML studio**, klickar du på **BATCH EXECUTION** länk.
-5. Kopiera den **Begärd URI** från den **begära** avsnittet och klistra in den i Data Factory JSON-redigerare.   
+1. Klicka på **WEB SERVICES** på hello vänstra menyn.
+2. Klicka på hello **utbildning webbtjänsten** i hello lista över webbtjänster.
+3. Klicka på Kopiera bredvid för**API-nyckel** textruta. Klistra in hello nyckel i hello Urklipp i hello Data Factory JSON-redigerare.
+4. I hello **Azure ML studio**, klickar du på **BATCH EXECUTION** länk.
+5. Kopiera hello **Begärd URI** från hello **begära** avsnittet och klistra in den i hello Data Factory JSON-redigerare.   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Länkad tjänst för Azure ML uppdateras bedömningsprofil slutpunkt:
-Följande JSON-fragment definierar en Azure Machine Learning länkade tjänst som pekar på icke-uppdateras standardslutpunkten av webbtjänsten för bedömningsprofil.  
+hello följande JSON-fragment definierar en Azure Machine Learning länkade tjänst som pekar toohello icke-standard uppdateras slutpunkten för hello poängsättning av webbtjänsten.  
 
 ```JSON
 {
@@ -234,7 +234,7 @@ Följande JSON-fragment definierar en Azure Machine Learning länkade tjänst so
 ```
 
 ### <a name="placeholder-output-dataset"></a>Platshållare för utdatauppsättningen:
-Azure ML-uppdatering resurshanteraren aktiviteten genererar inte inga utdata. Azure Data Factory kräver dock en datamängd för utdata för att ge schemat för en pipeline. Därför kan använder vi en datamängd dummy/platshållare i det här exemplet.  
+hello Azure ML-uppdatering resurshanteraren aktivitet genererar inga utdata. Azure Data Factory kräver dock en utdata dataset toodrive hello schemat för en pipeline. Därför kan använder vi en datamängd dummy/platshållare i det här exemplet.  
 
 ```JSON
 {
@@ -257,7 +257,7 @@ Azure ML-uppdatering resurshanteraren aktiviteten genererar inte inga utdata. Az
 ```
 
 ### <a name="pipeline"></a>Pipeline
-Pipelinen har två aktiviteter: **AzureMLBatchExecution** och **AzureMLUpdateResource**. Azure ML-batchkörning aktiviteten hämtar utbildning data som indata och genererar en iLearner-fil som utdata. Aktiviteten anropar webbtjänsten utbildning (träningsexperiment visas som en webbtjänst) med data som indata utbildning och tar emot den ilearner-fil från den här webbtjänsten. PlaceholderBlob är bara en dummy datamängd för utdata som krävs av Azure Data Factory-tjänsten för att köra pipelinen.
+hello pipeline har två aktiviteter: **AzureMLBatchExecution** och **AzureMLUpdateResource**. hello Azure ML-batchkörning aktiviteten tar hello utbildningsdata som indata och genererar en iLearner-fil som utdata. hello-aktivitet anropar hello utbildning webbtjänst (träningsexperiment visas som en webbtjänst) med hello indata utbildning data och tar emot hello ilearner-fil från hello-webbtjänsten. Hej placeholderBlob är bara en dummy datamängd för utdata som krävs av hello Azure Data Factory-tjänsten toorun hello pipeline.
 
 ![Pipeline-diagram](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "Service Fabric och distribuera behållare | Microsoft Docs"
-description: "Service Fabric och användning av behållare för att distribuera mikrotjänster program. Den här artikeln beskriver de funktioner som Service Fabric ger för behållare och hur du distribuerar en Windows-avbildning för behållare i ett kluster."
+title: "aaaService infrastrukturen och distribuera behållare | Microsoft Docs"
+description: "Service Fabric och hello användning av behållare toodeploy mikrotjänster program. Den här artikeln beskriver hello-funktioner med Service Fabric för behållare och hur toodeploy en behållare för Windows image i ett kluster."
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -14,86 +14,86 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/16/2017
 ms.author: msfussell
-ms.openlocfilehash: 25d6b056421e71fa70ed20a39589f77dbbc25c69
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8b6540579641474f21b8712b56049c7d177bec26
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-windows-container-to-service-fabric"></a>Distribuera en Windows-behållare till Service Fabric
+# <a name="deploy-a-windows-container-tooservice-fabric"></a>Distribuera en Windows-behållaren tooService Fabric
 > [!div class="op_single_selector"]
 > * [Distribuera Windows-behållare](service-fabric-deploy-container.md)
 > * [Distribuera Dockerbehållare](service-fabric-deploy-container-linux.md)
 > 
 > 
 
-Den här artikeln vägleder dig genom processen att bygga av tjänster i Windows-behållare.
+Den här artikeln vägleder dig genom hello processen att bygga av tjänster i Windows-behållare.
 
 Service Fabric har flera funktioner som hjälper dig med att skapa program som består av mikrotjänster som körs i behållare. 
 
-Funktionerna inkluderar:
+hello funktioner omfattar:
 
 * Distribution av avbildningar för behållaren och aktivering
 * Resurs-styrning
 * Autentisering för databasen
 * Portmappning för behållaren port-till-värd
 * Identifiering av behållare till en annan och kommunikation
-* Möjligheten att konfigurera och ange miljövariabler
+* Möjlighet tooconfigure och ange miljövariabler
 
-Nu ska vi titta på hur var och en av funktionerna fungerar när du paketerar ett container service ska tas med i ditt program.
+Nu ska vi titta på hur var och en av funktionerna fungerar när du paketerar ett container service-toobe som ingår i ditt program.
 
 ## <a name="package-a-windows-container"></a>Paketet en Windows-behållare
-När du paketerar en behållare kan du använda antingen en projektmall för Visual Studio eller [skapa programpaketet manuellt](#manually).  När du använder Visual Studio skapas application paketet struktur och manifest-filer av mallen nytt projekt.
+När du paketerar en behållare kan du välja toouse antingen en projektmall för Visual Studio eller [skapa hello programpaket manuellt](#manually).  När du använder Visual Studio hello programmet paketet struktur och manifest-filer skapas av hello nytt projekt mallen.
 
 > [!TIP]
-> Det enklaste sättet att paketera en befintlig behållare-avbildning till en tjänst är att använda Visual Studio.
+> hello enklaste sättet toopackage en befintlig behållare avbildning till en tjänst är toouse Visual Studio.
 
-## <a name="use-visual-studio-to-package-an-existing-container-image"></a>Använda Visual Studio för att paketera en befintlig avbildning i behållaren
-Visual Studio har ett Service Fabric-tjänstmall som hjälper dig att distribuera en behållare till ett Service Fabric-kluster.
+## <a name="use-visual-studio-toopackage-an-existing-container-image"></a>Använd Visual Studio toopackage en befintlig avbildning i behållaren
+Visual Studio har ett Service Fabric service mallen toohelp du distribuerar en behållare tooa Service Fabric-klustret.
 
 1. Välj **filen** > **nytt projekt**, och skapa ett Service Fabric-program.
-2. Välj **gäst behållaren** som tjänstmallen.
-3. Välj **avbildningsnamn** och ange sökvägen till bilden i behållaren databasen. Till exempel `myrepo/myimage:v1` i https://hub.docker.com
+2. Välj **gäst behållaren** som mall för hello-tjänster.
+3. Välj **avbildningsnamn** och ange hello sökvägen toohello bilden i lagringsplatsen för behållaren. Till exempel `myrepo/myimage:v1` i https://hub.docker.com
 4. Namnge tjänsten och klicka på **OK**.
-5. Om av tjänsten måste en slutpunkt för kommunikation, du kan nu lägga till protokollet, porten och typ ServiceManifest.xml-filen. Exempel: 
+5. Om av tjänsten måste en slutpunkt för kommunikation, kan du nu lägga till hello-protokollet, porten och typen toohello ServiceManifest.xml fil. Exempel: 
      
     `<Endpoint Name="MyContainerServiceEndpoint" Protocol="http" Port="80" UriScheme="http" PathSuffix="myapp/" Type="Input" />`
     
-    Genom att tillhandahålla den `UriScheme`, Service Fabric automatiskt registrerar behållaren slutpunkten med tjänsten Naming för synlighet. Porten kan vara antingen fasta (som visas i föregående exempel) eller dynamiskt allokerade. Om du inte anger en port är den dynamiskt allokerade från portintervall program (som skulle hända med alla service).
-    Du måste också konfigurera värden portmappning behållaren genom att ange en `PortBinding` princip i programmanifestet. Mer information finns i [konfigurera behållare till värden portmappning](#Portsection).
+    Genom att tillhandahålla hello `UriScheme`, Service Fabric automatiskt registrerar hello behållaren slutpunkt med hello Naming service för synlighet. hello porten kan vara fast (som visas i föregående exempel hello) eller dynamiskt allokerade. Om du inte anger en port är den dynamiskt allokerade från hello programmet portintervall (som skulle hända med alla service).
+    Du måste också tooconfigure hello behållaren toohost portmappning genom att ange en `PortBinding` princip i hello programmanifestet. Mer information finns i [konfigurera behållaren toohost portmappning](#Portsection).
 6. Om din behållaren måste resursen styrning och lägger till en `ResourceGovernancePolicy`.
-8. Om behållaren behöver autentiseras med en privat lagringsplats lägger du till `RepositoryCredentials`.
-7. Om du kör på en Windows Server 2016-dator med aktiverat stöd för behållare, kan du använda paketet och publicera åtgärder för att distribuera till det lokala klustret. 
-8. När du är klar kan du publicera program till ett kluster eller kontrollera i lösningen till källkontroll. 
+8. Om din behållaren måste tooauthenticate med en privat databas, Lägg sedan till `RepositoryCredentials`.
+7. Om du kör på en Windows Server 2016-dator med aktiverat stöd för behållare, kan du använda hello paketet och publicera åtgärd toodeploy tooyour lokala klustret. 
+8. När du är klar kan du publicera programmet hello tooa fjärrkluster eller kontrollera hello lösning toosource kontrollen. 
 
-Ett exempel checka ut den [kodexempel för Service Fabric-behållare på GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+Ett exempel utcheckningen hello [kodexempel för Service Fabric-behållare på GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
 ## <a name="creating-a-windows-server-2016-cluster"></a>Skapa ett kluster för Windows Server 2016
-Om du vill distribuera av programmet, måste du skapa ett kluster som kör Windows Server 2016 med aktiverat stöd för behållaren. Klustret kan köras lokalt eller distribueras via Azure Resource Manager i Azure. 
+toodeploy av programmet, du behöver toocreate aktiverad i ett kluster som kör Windows Server 2016 med stöd för behållaren. Klustret kan köras lokalt eller distribueras via Azure Resource Manager i Azure. 
 
-Om du vill distribuera ett kluster med Azure Resource Manager, Välj den **Windows Server 2016 med behållare** bild-alternativet i Azure. Se artikeln [skapa ett Service Fabric-kluster med hjälp av Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Kontrollera att du använder följande Azure Resource Manager-inställningar:
+toodeploy ett kluster med Azure Resource Manager, Välj hello **Windows Server 2016 med behållare** bild-alternativet i Azure. Se artikeln hello [skapa ett Service Fabric-kluster med hjälp av Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Kontrollera att du använder hello följande Azure Resource Manager-inställningar:
 
 ```xml
 "vmImageOffer": { "type": "string","defaultValue": "WindowsServer"     },
 "vmImageSku": { "defaultValue": "2016-Datacenter-with-Containers","type": "string"     },
 "vmImageVersion": { "defaultValue": "latest","type": "string"     },  
 ```
-Du kan också använda den [fem nod Azure Resource Manager-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) att skapa ett kluster. Du kan också läsa en grupp [blogginlägget](https://loekd.blogspot.com/2017/01/running-windows-containers-on-azure.html) med hjälp av Service Fabric- och Windows-behållare.
+Du kan också använda hello [fem nod Azure Resource Manager-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) toocreate ett kluster. Du kan också läsa en grupp [blogginlägget](https://loekd.blogspot.com/2017/01/running-windows-containers-on-azure.html) med hjälp av Service Fabric- och Windows-behållare.
 
 <a id="manually"></a>
 
 ## <a name="manually-package-and-deploy-a-container-image"></a>Paketera och distribuera en avbildning för behållaren manuellt
-Manuellt paketera container service baseras på följande:
+hello processen manuellt paketera container service baseras på hello följande steg:
 
-1. Publicera behållarna i databasen.
-2. Skapa katalogstrukturen paketet.
-3. Redigera service manifest-filen.
-4. Redigera programmanifestfilen.
+1. Publicera hello behållare tooyour databasen.
+2. Skapa hello paketet katalogstruktur.
+3. Redigera hello service manifest-filen.
+4. Redigera hello programmanifestfilen.
 
 ## <a name="deploy-and-activate-a-container-image"></a>Distribuera och aktivera en avbildning av behållare
-I Service Fabric [programmodell](service-fabric-application-model.md), en behållare representerar en programvärd i vilken flera tjänst repliker placeras. Om du vill distribuera och aktiverar en behållare, placerar du namnet på behållaren avbildningen till en `ContainerHost` element i service manifest.
+I hello Service Fabric [programmodell](service-fabric-application-model.md), en behållare representerar en programvärd i vilken flera tjänst repliker placeras. toodeploy och aktivera en behållare, placera hello namnet på hello behållaren bilden i en `ContainerHost` element i hello service manifest.
 
-Tjänstmanifestet, lägga till en `ContainerHost` för startpunkten. Ange den `ImageName` namnet på behållaren databasen och image. Följande partiella manifestet visar ett exempel på hur du distribuerar behållare som kallas `myimage:v1` från en databas som heter `myrepo`:
+Hello tjänstmanifestet, lägga till en `ContainerHost` för hello startpunkt. Därefter uppsättning hello `ImageName` toobe hello namnet på hello behållaren databasen och image. hello följande partiella manifestet visar ett exempel på hur toodeploy hello behållaren kallas `myimage:v1` från en databas som heter `myrepo`:
 
 ```xml
     <CodePackage Name="Code" Version="1.0">
@@ -106,10 +106,10 @@ Tjänstmanifestet, lägga till en `ContainerHost` för startpunkten. Ange den `I
     </CodePackage>
 ```
 
-Du kan ange valfri kommandon som ska köras vid start av behållare under den `Commands` element. För flera kommandon, komma-avgränsa dem. 
+Du kan ange ytterligare kommandon toorun vid start av hello behållare under hello `Commands` element. För flera kommandon, komma-avgränsa dem. 
 
 ## <a name="understand-resource-governance"></a>Förstå resource-styrning
-Resurs-styrning är en funktion på behållaren som begränsar de resurser som behållaren kan använda på värden. Den `ResourceGovernancePolicy`, som har angetts i applikationsmanifestet används för att deklarera gränserna för ett paket för service-kod. Gränserna kan anges för följande resurser:
+Resurs-styrning är en funktion för hello-behållare som begränsar hello resurser som hello behållare kan använda på hello värden. Hej `ResourceGovernancePolicy`, som har angetts i hello programmanifestet är används toodeclare gränserna för ett paket för service-kod. Resursen gränser kan anges för hello följande resurser:
 
 * Minne
 * MemorySwap
@@ -133,7 +133,7 @@ Resurs-styrning är en funktion på behållaren som begränsar de resurser som b
 ```
 
 ## <a name="authenticate-a-repository"></a>Autentisera en databas
-Du kan behöva ange inloggningsuppgifter i behållaren databasen om du vill hämta en behållare. Logga in autentiseringsuppgifter anges i programmanifestet, används för att ange inloggningsinformation eller SSH-nyckeln för att ladda ned avbildningen behållare från avbildningslagringsplatsen. I följande exempel visas ett konto som heter *TestUser* tillsammans med lösenordet i klartext (*inte* rekommenderas):
+Du kan ha tooprovide inloggningsuppgifter toohello behållare databasen toodownload en behållare. hello inloggningsuppgifter, anges i hello programmanifestet är används toospecify hello inloggningsinformation eller SSH-nyckeln för att ladda ned hello behållaren avbildningen från hello avbildningslagringsplatsen. hello följande exempel visas ett konto som heter *TestUser* tillsammans med hello lösenord i klartext (*inte* rekommenderas):
 
 ```xml
     <ServiceManifestImport>
@@ -146,11 +146,11 @@ Du kan behöva ange inloggningsuppgifter i behållaren databasen om du vill häm
     </ServiceManifestImport>
 ```
 
-Vi rekommenderar att du krypterar lösenordet genom att använda ett certifikat som har distribuerats till datorn.
+Vi rekommenderar att du krypterar hello lösenord med hjälp av ett certifikat som har distribuerats toohello datorn.
 
-I följande exempel visas ett konto som heter *TestUser*, där lösenordet som har krypterats med ett certifikat som kallas *MyCert*. Du kan använda den `Invoke-ServiceFabricEncryptText` PowerShell-kommando för att skapa den hemliga chiffertext för lösenordet. Mer information finns i artikeln [hantera hemligheter i Service Fabric program](service-fabric-application-secret-management.md).
+hello följande exempel visas ett konto som heter *TestUser*, där hello lösenord har krypterats med ett certifikat som kallas *MyCert*. Du kan använda hello `Invoke-ServiceFabricEncryptText` PowerShell-kommandot toocreate hello hemliga chiffertext hello lösenord. Mer information finns i artikeln hello [hantera hemligheter i Service Fabric program](service-fabric-application-secret-management.md).
 
-Den privata nyckeln för certifikatet som används för att dekryptera lösenordet måste distribueras till den lokala datorn i en out-of-band-metod. (Den här metoden är Azure Resource Manager i Azure.) När Service Fabric distribuerar tjänstepaketet till datorn, kan det sedan dekryptera hemligheten. Med hjälp av hemlighet tillsammans med namnet på kontot kan den autentisera med behållaren lagringsplatsen.
+hello privat nyckel för hello-certifikat som har använt toodecrypt hello lösenord måste vara distribuerad toohello lokal dator i en out-of-band-metod. (Den här metoden är Azure Resource Manager i Azure.) När Service Fabric distribuerar hello paketet toohello maskin, kan den sedan dekryptera hello hemlighet. Med hjälp av hello hemlighet tillsammans med hello kontonamn kan den autentisera med hello behållaren databasen.
 
 ```xml
     <ServiceManifestImport>
@@ -163,8 +163,8 @@ Den privata nyckeln för certifikatet som används för att dekryptera lösenord
     </ServiceManifestImport>
 ```
 
-## <a name ="Portsection"></a>Konfigurera behållare för att värden portmappning
-Du kan konfigurera en värd-port som används för att kommunicera med behållaren genom att ange en `PortBinding` i programmanifestet. Portbindningen mappar den port som tjänsten lyssnar i behållare till en port på värden.
+## <a name ="Portsection"></a>Konfigurera mappning för behållaren toohost port
+Du kan konfigurera en toocommunicate för porten som används av värden med hello behållare genom att ange en `PortBinding` i hello programmanifestet. hello port bindning maps hello port toowhich hello tjänsten lyssnar inuti hello behållaren tooa port på hello värden.
 
 ```xml
     <ServiceManifestImport>
@@ -178,7 +178,7 @@ Du kan konfigurera en värd-port som används för att kommunicera med behållar
 ```
 
 ## <a name="configure-container-to-container-discovery-and-communication"></a>Konfigurera identifiering av behållare till en annan och kommunikation
-Du kan använda den `PortBinding` element att mappa en behållare-port till en slutpunkt i service manifest. I följande exempel slutpunkten `Endpoint1` och anger en fast port 8905. Det kan också ange ingen port, och då en slumpmässigt vald port från klustrets programmet portintervallet är valt.
+Du kan använda hello `PortBinding` elementet toomap en behållare port tooan slutpunkt i hello service manifest. I följande exempel hello, hello endpoint `Endpoint1` och anger en fast port 8905. Det kan också ange ingen port, och då en slumpmässigt vald port från portintervall för hello kluster programmet är valt.
 
 
 ```xml
@@ -191,14 +191,14 @@ Du kan använda den `PortBinding` element att mappa en behållare-port till en s
         </Policies>
     </ServiceManifestImport>
 ```
-Om du anger en slutpunkt med hjälp av den `Endpoint` tagg i tjänstmanifestet av en gäst-behållare, Service Fabric kan automatiskt publicera den här slutpunkten till Naming service. Andra tjänster som körs i klustret kan därför att identifiera den här behållaren med hjälp av REST-frågor för att lösa.
+Om du anger en slutpunkt med hello `Endpoint` tagg i hello tjänstmanifestet av en gäst-behållare, Service Fabric kan automatiskt publicera den här slutpunkten toohello Naming service. Andra tjänster som körs i klustret hello kan därför att identifiera den här behållaren med hjälp av hello REST-frågor för att lösa.
 
-Genom att registrera med Naming service kan du utföra behållare till en annan kommunikation i en behållare med den [omvänd proxy](service-fabric-reverseproxy.md). Kommunikation utförs genom att tillhandahålla omvänd proxy http-lyssningsporten och namnet på de tjänster som du vill kommunicera med som miljövariabler. Mer information finns i nästa avsnitt. 
+Genom att registrera med hello Naming service kan du utföra behållare till en annan kommunikation i en behållare med hello [omvänd proxy](service-fabric-reverseproxy.md). Kommunikation utförs genom att tillhandahålla omvänd proxy hello http lyssningsport och hello namn hello-tjänster som du vill använda toocommunicate med som miljövariabler. Mer information finns i hello nästa avsnitt. 
 
 ## <a name="configure-and-set-environment-variables"></a>Konfigurera och ange miljövariabler
-Miljövariabler kan anges för varje kodpaketet i tjänstmanifestet. Den här funktionen är tillgänglig för alla tjänster oavsett om de har distribueras som behållare eller processer, eller körbara gäster. Du kan åsidosätta värden för miljövariabler i applikationsmanifestet eller ange dem under distributionen som programparametrar.
+Miljövariabler kan anges för varje kodpaketet i hello service manifest. Den här funktionen är tillgänglig för alla tjänster oavsett om de har distribueras som behållare eller processer, eller körbara gäster. Du kan åsidosätta miljövariabeln värden i hello application manifest eller ange dem under distributionen som parametrar för programmet.
 
-Följande XML-kodfragment i tjänstmanifestet visar ett exempel på hur du anger miljövariabler för ett kodpaket:
+hello följande service manifest XML-fragment visar ett exempel på hur toospecify miljövariabler för ett paket med koden:
 
 ```xml
     <ServiceManifest Name="FrontendServicePackage" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -221,7 +221,7 @@ Följande XML-kodfragment i tjänstmanifestet visar ett exempel på hur du anger
     </ServiceManifest>
 ```
 
-De här miljövariablerna kan åsidosättas på programnivå manifest:
+De här miljövariablerna kan åsidosättas på hello manifestet programnivå:
 
 ```xml
     <ServiceManifestImport>
@@ -233,11 +233,11 @@ De här miljövariablerna kan åsidosättas på programnivå manifest:
     </ServiceManifestImport>
 ```
 
-I föregående exempel vi angav ett explicit värde för den `HttpGateway` miljövariabeln (19000), medan vi anger du värdet för `BackendServiceName` parametern via den `[BackendSvc]` program-parametern. De här inställningarna kan du ange värdet för `BackendServiceName`värde när du distribuerar programmet och inte har ett fast värde i manifestet.
+I föregående exempel hello vi angav ett explicit värde för hello `HttpGateway` miljövariabeln (19000), medan vi ordnar hello värde för `BackendServiceName` parametern via hello `[BackendSvc]` program-parametern. Dessa inställningar kan du toospecify hello värdet för `BackendServiceName`värde när du distribuerar hello program och inte har ett fast värde i hello manifest.
 
 ## <a name="configure-isolation-mode"></a>Konfigurera isoleringsläge
 
-Windows stöder två arbetslägen för behållare - processen och Hyper-V.  Om processisoleringsläget används delar alla behållare som körs på samma värddator kärna med värden. Om Hyper-V-isoleringsläget används isoleras kärnorna mellan varje Hyper-V-behållare och behållarvärden. Isoleringsläge har angetts i den `ContainerHostPolicies` tagg i programmanifestfilen.  Isoleringslägena som kan anges är `process`, `hyperv` och `default`. Den `default` isoleringsläge som standard `process` på Windows Server-värdar och standardvärdet är `hyperv` på Windows 10-värdar.  Följande kodfragment visar hur isoleringsläget har angetts i applikationsmanifestfilen.
+Windows stöder två arbetslägen för behållare - processen och Hyper-V.  Med hello arbetsprocesser hello alla hello-behållare som körs på samma värd datorn resursen hello kernel med hello-värden. Med hello Hyper-V-isoleringsläge isoleras hello kärnor mellan varje Hyper-V-behållaren och hello behållaren värden. hello isoleringsläge har angetts i hello `ContainerHostPolicies` tagg i hello programmanifestfilen.  hello arbetslägen som kan anges är `process`, `hyperv`, och `default`. Hej `default` isoleringsläge standardvärden för`process` på Windows Server är värd för, och är som standard för`hyperv` på Windows 10-värdar.  hello följande utdrag visar hur hello isoleringsläge har angetts i hello programmanifestfilen.
 
 ```xml
    <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="hyperv">
@@ -272,7 +272,7 @@ Ett exempel programmanifest följande:
     </ApplicationManifest>
 ```
 
-Ett exempel tjänstmanifestet (anges i föregående programmanifestet) visas nedan:
+Ett exempel tjänstmanifestet (anges i föregående programmanifestet hello) visas nedan:
 
 ```xml
     <ServiceManifest Name="FrontendServicePackage" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -303,7 +303,7 @@ Ett exempel tjänstmanifestet (anges i föregående programmanifestet) visas ned
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har använt ett container service lär du dig hur du hanterar livscykeln genom att läsa [Service Fabric application livscykel](service-fabric-application-lifecycle.md).
+Nu när du har använt ett container service lära dig hur toomanage livscykeln genom att läsa [Service Fabric application livscykel](service-fabric-application-lifecycle.md).
 
 * [Översikt över Service Fabric och behållare](service-fabric-containers-overview.md)
 * Ett exempel utcheckningen [kodexempel för Service Fabric-behållare på GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-containers)

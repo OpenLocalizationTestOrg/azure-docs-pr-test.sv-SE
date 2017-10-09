@@ -16,5 +16,5 @@
 
 
 > [!WARNING] 
-> Installation av tredjepartsprogramvara på Red Hat-produkter kan påverka supportvillkoren för Red Hat. Läs [Knowledgebase-artikeln om Red Hat](https://access.redhat.com/articles/1067).
+> Installationen av programvaran på Red Hat produkter kan påverka hello supportvillkor för Red Hat. Se hello [Red Hat Knowledge Base-artikel](https://access.redhat.com/articles/1067).
 >

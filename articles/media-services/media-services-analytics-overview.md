@@ -1,5 +1,5 @@
 ---
-title: "Media Analytics på plattformen Media Services | Microsoft Docs"
+title: "aaaMedia Analytics på hello Media Services plattform | Microsoft Docs"
 description: "Översikt över förhandsversion av Media Analytics, en samling tal- och vision tjänster på företagsnivå, kompatibilitet, säkerhet och globalt omfattande"
 services: media-services
 documentationcenter: 
@@ -14,52 +14,52 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: c0bbe6f80370515fa783b12757434897fe2221b6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7545f0532d7618164ebe65e2f4232c5f63453cfd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics på plattformen Media Services
+# <a name="media-analytics-on-hello-media-services-platform"></a>Media Analytics på hello Media Services-plattformen
 ## <a name="overview"></a>Översikt
-Flera organisationer använder video som önskade normal träna sina anställda, engagera kunderna och dokumentera funktionerna. Molnet är ett sätt att lagra strömma och komma åt dessa stora mediefiler. Men eftersom ett bibliotek med videoinnehåll växer måste ett lika effektivt sätt att extrahera insikter från innehållet. 
+Flera organisationer använder video som hello prioriterade medelhög tootrain sina anställda, engagera sina kunder och IT-funktioner på dokumentet. Molnet innehåller en sätt toostore strömma och komma åt dessa stora mediefiler. Men eftersom ett bibliotek med videoinnehåll växer måste ett lika effektivt sätt att extrahera insikter från hello innehåll. 
 
-Azure Media Services erbjuder Azure Media Analytics för att tillgodose det växande behovet. Media Analytics är en samling tal- och visionskomponenter som gör det enklare för organisationer och företag att härleda insikter som det går att direkt agera utifrån från sina videofiler. Inbyggda med hjälp av Media Services-plattformen kärnkomponenter kan Media Analytics hantera media bearbetning i stor skala på dagen.
+tooaddress detta växande behov Azure Media Services erbjuder Azure Media Analytics. Media Analytics är en samling tal-och visionskomponenter som gör det enklare för organisationer och företag tooderive tillämplig insikter från sina videofiler. Inbyggda med hjälp av hello kärnkomponenter Media Services-plattformen kan Media Analytics hantera media bearbetning i stor skala på dagen.
 
-Med Media Analytics sätta utvecklare snabbt avancerade video funktionerna i program. Det ger företagsmiljöer full skala, kompatibilitet, säkerhet och globalt omfattande krävs för stora organisationer.
+Med Media Analytics sätta utvecklare snabbt avancerade video funktionerna i program. Det ger företagsmiljöer hello full skala, kompatibilitet, säkerhet och globalt omfattande krävs för stora organisationer.
 
-Följande diagram visar Media Analytics och andra viktiga delar i plattformen Media Services. 
+hello följande diagram visar Media Analytics och andra viktiga delar av hello Media Services-plattformen. 
 
 ![VoD-arbetsflöde](./media/media-services-analytics-overview/media-services-analytics-overview01.png)
 
-Media Analytics-medieprocessorer producerar MP4-filer eller JSON-filer. Om en medieprocessor producerar MP4-fil, kan du hämta filen progressivt. Om en medieprocessor producerar en JSON-fil, kan du hämta filen från Azure Blob storage. 
+Media Analytics-medieprocessorer producerar MP4-filer eller JSON-filer. Om en medieprocessor producerar MP4-fil, kan du progressivt hämta hello-fil. Om en medieprocessor producerar en JSON-fil, kan du ladda ned hello filen från Azure Blob storage. 
 
 ## <a name="media-analytics-services"></a>Media Analytics-tjänster
 
 ### <a name="indexer"></a>Indexerare
-Med Azure Media Indexer ska göra du innehåll sökbara och generera-textning spår. Azure Media Indexer 2 Preview har jämfört med den tidigare versionen stöd för snabbare indexering och bredare språk. Språk som stöds är engelska, spanska, franska, tyska, italienska, kinesiska, portugisiska och arabiska. Mer detaljerad information och exempel finns [bearbeta videor med Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
+Med Azure Media Indexer ska göra du innehåll sökbara och generera-textning spår. Toohello jämfört med tidigare version, Azure Media Indexer 2 Preview har stöd för snabbare indexering och bredare språk. Språk som stöds är engelska, spanska, franska, tyska, italienska, kinesiska, portugisiska och arabiska. Mer detaljerad information och exempel finns [bearbeta videor med Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
 ### <a name="hyperlapse"></a>Videostabilisering
-Microsoft Hyperlapse kombinerar videostabiliserings och tidsfördröjning möjlighet att snabbt skapa konsumeras videor från långa-innehåll. Förutom att skapa tidsfördröjning video kan använda du Videostabilisera för att skapa stabila videor från shaky videor som hämtats via mobiltelefoner och kameror. Mer detaljerad information och exempel finns [Videostabilisera mediefiler med Azure Media Hyperlapse](media-services-hyperlapse-content.md).
+Microsoft Hyperlapse kombinerar videostabiliserings och tidsfördröjning kapaciteten toocreate snabbt och använda videor från långa-innehåll. Förutom att skapa tidsfördröjning video kan använda du Videostabilisera toocreate stabil videor från shaky videor som hämtats via mobiltelefoner och kameror. Mer detaljerad information och exempel finns [Videostabilisera mediefiler med Azure Media Hyperlapse](media-services-hyperlapse-content.md).
 ### <a name="motion-detector"></a>Rörelsedetektor
-Du kan använda rörelsedetektor för att identifiera rörelse i en video med stilla bakgrund. Detta gör det möjligt att söka efter falska positiva identifieringar på rörelse händelser som identifieras av övervakningskameror. Mer detaljerad information och exempel finns [Rörelseidentifiering för Azure Media Analytics](media-services-motion-detection.md).
+Du kan använda rörelsedetektor toodetect rörelse i en video med stilla bakgrund. Detta gör det möjligt toocheck för falska positiva identifieringar på rörelse händelser som identifieras av övervakningskameror. Mer detaljerad information och exempel finns [Rörelseidentifiering för Azure Media Analytics](media-services-motion-detection.md).
 ### <a name="face-detector"></a>Ansiktsigenkänning
 Med hjälp av framsidan detektor, kan du identifiera personer ytor och deras emotikoner, inklusive lycka, sadness och oväntat. Detta har flera användbara branschspecifika program, beskrivs senare, inklusive aggregering och analys av reaktion på personer som deltar i en händelse. Mer detaljerad information och exempel finns [Ansikts- och känslo identifiering för Azure Media Analytics](media-services-face-and-emotion-detection.md).
 ### <a name="video-summarization"></a>Sammanfattning av video
-Sammanfattning av video kan hjälpa dig skapa sammanfattningar av långa videor automatiskt genom att intressanta kodavsnitt från källvideo. Den här möjligheten är användbart när du vill ge en snabb överblick över vad som händer i en lång video. Mer detaljerad information och exempel finns [Använd Azure Media Video miniatyrer för att skapa sammanfattning av video](media-services-video-summarization.md).
+Sammanfattning av video kan hjälpa dig skapa sammanfattningar av långa videor automatiskt genom att intressanta kodavsnitt från hello källa video. Den här möjligheten är användbart när du vill tooprovide en snabb överblick över vilka tooexpect i en lång video. Mer detaljerad information och exempel finns [sammanfattning av video Använd Azure Media Video-miniatyrer toocreate](media-services-video-summarization.md).
 ### <a name="optical-character-recognition"></a>Optisk teckenigenkänning
-Du kan konvertera textinnehåll i videofiler till redigerbar, sökbara digitala text med Azure Media OCR (OCR). Sedan kan du automatisera extrahering av beskrivande metadata från media video signalen.
+Du kan konvertera textinnehåll i videofiler till redigerbar, sökbara digitala text med Azure Media OCR (OCR). Sedan kan du automatisera hello extrahering av beskrivande metadata från hello video signal medieinnehåll.
 ### <a name="scalable-face-redaction"></a>Skalbar ansikte bortredigering
-Azure Media Redactor är en Media Analytics medieprocessor som erbjuder skalbara ansikte bortredigering i molnet. Du kan ändra videon om du vill minska ytor valda personer med hjälp av framsidan bortredigering. Du kanske vill använda tjänsten ansikte bortredigering i Nyheter media eller allmän säkerhet ingår. Några minuter med material som innehåller flera ytor kan ta timmar att redigera bort manuellt, men med den här tjänsten ansikte bortredigering tar bara några få enkla steg. Mer information finns i [redigera bort personerna bakom Azure Media Analytics](media-services-face-redaction.md) artikel.
+Azure Media Redactor är en Media Analytics medieprocessor som erbjuder skalbara ansikte bortredigering i hello molnet. Du kan ändra din video tooblur ytor valda personer med hjälp av framsidan bortredigering. Du kanske vill toouse hello ansikte bortredigering tjänst i Nyheter media eller allmän säkerhet ingår. Några minuter med material som innehåller flera ytor kan ta timmar tooredact manuellt, men med den här tjänsten ansikte bortredigering tar bara några få enkla steg. Mer information finns i hello [redigera bort personerna bakom Azure Media Analytics](media-services-face-redaction.md) artikel.
 
 ## <a name="common-scenarios"></a>Vanliga scenarier
 Media Analytics hjälper organisationer och företag glean nya insikter från video och mer hantera effektivt stora volymer av videoinnehåll. Här följer några scenarier:
 
-* **Anropa Datacenter**. Även med ankomsten av sociala medier underlätta kunden call Center fortfarande en stor del av kundservice transaktioner. Kodning i den här ljuddata är en stor mängd kundinformation som kan analyseras för att uppnå högre nöjda. Med hjälp av Media indexeraren organisationer extrahera text och skapa sökindex och instrumentpaneler. De kan sedan extrahera intelligence runt vanligt klagomål, källor klagomål och andra relevanta data.
-* **Användargenererade innehåll avbrottsmoderering**. Många organisationer har från nyheter media uttag till polis avdelningar, offentliga portaler som accepterar användargenererade media, till exempel videoklipp och bilder. Mängden innehåll kan ökar på grund av oväntade händelser. I dessa fall är det svårt att genomföra effektiva manuell granskning av innehållet för lämplighet. Kunder kan förlitar sig på tjänsten innehåll avbrottsmoderering att fokusera på innehåll som är lämpligt.
-* **Övervakning**. Kommer en växande inventering av övervakning video med IP-kameror tillväxt används. Manuell granskning övervakning video är tid intensiv och risken för mänskliga fel är stor. Media Analytics tillhandahåller tjänster som rörelseidentifiering, står inför identifiering och Videostabilisera att processen för granskning, hantera och skapa derivat enklare.
+* **Anropa Datacenter**. Även om hello ankomsten av sociala medier underlätta kunden call Center fortfarande en stor del av kundservice transaktioner. Kodning i den här ljuddata är en stor mängd kundinformation som kan vara analyseras tooachieve högre nöjda. Med hjälp av Media indexeraren organisationer extrahera text och skapa sökindex och instrumentpaneler. De kan sedan extrahera intelligence runt vanligt klagomål, källor klagomål och andra relevanta data.
+* **Användargenererade innehåll avbrottsmoderering**. Många organisationer har offentliga portaler som accepterar användargenererade media, till exempel videoklipp och bilder från nyheter media uttag toopolice avdelningar. hello mängd innehåll kan ökar på grund av toounexpected händelser. I dessa scenarier är det svårt tooconduct effektiva manuell granskning av innehållet för lämplighet. Kunder kan förlita dig på hello innehåll avbrottsmoderering service toofocus på innehåll som är lämpligt.
+* **Övervakning**. Med hello kommer tillväxt används av IP-kameror en växande inventering av övervakning video. Manuell granskning övervakning video är intensiv och felbenägna toohuman fel. Media Analytics tillhandahåller tjänster som rörelseidentifiering, står inför identifiering och Videostabilisera toomake hello processen för granskning, hantera och skapa derivat enklare.
 
 ## <a name="media-analytics-media-processors"></a>Media Analytics-medieprocessorer
-Det här avsnittet listar Media Analytics-medieprocessorer och visar hur du använder .NET eller REST för att hämta objektet en media-processor (HP).
+Detta avsnitt visar hello Media Analytics-medieprocessorer och visar hur toouse .NET eller REST tooget objektet en media-processor (HP).
 
 ### <a name="mp-names"></a>HP-namn
 * Azure Media Indexer 2 Preview
@@ -71,7 +71,7 @@ Det här avsnittet listar Media Analytics-medieprocessorer och visar hur du anv�
 * Azure Media OCR
 
 ### <a name="net"></a>.NET
-Följande funktion använder ett av de angivna MP-namn och returnerar ett HP-objekt.
+hello följande tar en av hello angetts MP namn och returnerar ett HP-objekt.
 
     static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {

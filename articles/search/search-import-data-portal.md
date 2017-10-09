@@ -1,6 +1,6 @@
 ---
-title: Importera data till Azure Search i portalen | Microsoft Docs
-description: "Använd Azure Search i guiden Importera data i Azure Portal för att uppdatera Azure-data från NoSQL Azure Cosmos DB, Blob Storage, Table Storage, SQL Database och SQL Server på virtuella Azure-datorer."
+title: aaaImport data till Azure Search hello-portalen | Microsoft Docs
+description: "Använd hello Azure Search i guiden Importera Data i hello Azure Portal toocrawl Azure data från NoSQL Azure Cosmos DB, Blob storage, tabellagring, SQL Database och SQL Server på virtuella Azure-datorer."
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -15,30 +15,30 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 00b0e59594560c0cdaea748df196518e9fba3834
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="import-data-to-azure-search-using-the-portal"></a>Importera data till Azure Search med hjälp av portalen
-Med guiden **Importera data** i instrumentpanelen för Azure Search på Azure Portal kan du läsa in data i ett index. 
+# <a name="import-data-tooazure-search-using-hello-portal"></a>Importera data tooAzure Sök med hjälp av hello portal
+hello Azure-portalen innehåller en **dataimport** guiden på hello Azure Search-instrumentpanelen för att läsa in data i ett index. 
 
-  ![Importera data i kommandofältet][1]
+  ![Importera Data i hello kommandofält][1]
 
-Internt konfigurerar och aktiverar guiden en *indexerare*, vilket automatiserar flera steg i indexeringsprocessen: 
+Internt hello guiden konfigurerar och anropar en *indexeraren*, automatisera flera steg i hello indexering processen: 
 
-* Anslut till en extern datakälla i samma Azure-prenumeration
-* Generera ett ändringsbart indexschema baserat på källdatastrukturen
-* Läs in JSON-dokument i ett index med en raduppsättning som hämtats från datakällan
+* Ansluta tooan extern datakälla i hello samma Azure-prenumeration
+* Generera en ändringsbar indexeringsschema baserat på hello datastruktur för källa
+* Läsa in JSON-dokument i ett index med hjälp av en raduppsättning som hämtats från hello-datakälla
 
-Du kan testa det här arbetsflödet med exempeldata i Azure Cosmos DB. Om du behöver anvisningar läser du [Komma igång med Azure Search i Azure Portal](search-get-started-portal.md).
+Du kan testa det här arbetsflödet med exempeldata i Azure Cosmos DB. Besök [Kom igång med Azure Search i hello Azure Portal](search-get-started-portal.md) anvisningar.
 
 > [!NOTE]
-> Du kan starta guiden **Importera data** från Azure Cosmos DB-instrumentpanelen för att förenkla indexeringen för datakällan. Välj **Samlingar** > **Lägg till Azure Search** i navigeringsfältet till vänster för att komma igång.
+> Du kan starta hello **dataimport** guiden från hello Azure Cosmos DB instrumentpanelen toosimplify indexering för datakällan. I det vänstra navigationsfältet gå för**samlingar** > **lägga till Azure Search** tooget igång.
 
-## <a name="data-sources-supported-by-the-import-data-wizard"></a>Datakällor som stöds av guiden Importera data
-Guiden Importera Data stöder följande datakällor: 
+## <a name="data-sources-supported-by-hello-import-data-wizard"></a>Datakällor som stöds av hello guiden Importera Data
+hello importera Data guiden stöder hello följande datakällor: 
 
 * Azure SQL Database
 * SQL Server-relationsdata på en virtuell Azure-dator
@@ -46,71 +46,71 @@ Guiden Importera Data stöder följande datakällor:
 * Azure Blob Storage
 * Azure Table Storage
 
-En utjämnad datauppsättning är en obligatorisk inmatning. Du kan bara importera från en enskild tabell, databasvy eller likvärdig datastruktur. Innan du kör guiden bör du skapa den här datastrukturen.
+En utjämnad datauppsättning är en obligatorisk inmatning. Du kan bara importera från en enskild tabell, databasvy eller likvärdig datastruktur. Innan du kör guiden hello bör du skapa den här datastrukturen.
 
-## <a name="connect-to-your-data"></a>Ansluta till data
-1. Logga in på [Azure Portal](https://portal.azure.com) och öppna instrumentpanelen för tjänsten. Du kan klicka på **Fler tjänster** i index om du vill söka efter befintliga söktjänster i nuvarande prenumeration. 
-2. Klicka på **Importera data** i kommandofältet för att öppna bladet Importera data.  
-3. Klicka på **Anslut till dina data** för att ange en definition för datakällan som används av en indexerare. Vid datakällor inom prenumerationen kan guiden vanligtvis identifiera och läsa anslutningsinformationen, vilket minimerar de allmänna konfigurationskraven.
+## <a name="connect-tooyour-data"></a>Ansluta tooyour data
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) och öppna hello service instrumentpanel. Du kan klicka på **fler tjänster** i hello hopp fältet toosearch för befintliga ”söktjänster” i hello nuvarande prenumeration. 
+2. Klicka på **importera Data** på hello i kommandofältet tooslide öppna hello importera Data bladet.  
+3. Klicka på **ansluta tooyour data** toospecify en definition av datakällan används av en indexerare. För intra-prenumeration datakällor hello guiden vanligtvis identifiera och läsa anslutningsinformationen, minimera övergripande konfigurationskrav.
 
 |  |  |
 | --- | --- |
 | **Befintlig datakälla** |Om du redan har definierat indexerare i söktjänsten, kan du välja en definition av en befintlig datakälla för en annan import. |
-| **Azure SQL Database** |Tjänstens namn, autentiseringsuppgifterna för en databasanvändare med läsbehörighet och ett databasnamn kan anges på sidan eller via en ADO.NET-anslutningssträng. Välj alternativet för anslutningssträngar till att visa eller anpassa egenskaperna. <br/><br/>Tabellen eller vyn som visar raduppsättningen måste anges på sidan. Det här alternativet visas när anslutningen lyckats, med en listruta där du kan välja det du behöver. |
-| **SQL Server på virtuella Azure-datorer** |Ange ett fullständigt tjänstnamn, användar-ID och lösenord, samt databasen som en anslutningssträng. Om du vill använda den här datakällan måste du tidigare ha installerat ett certifikat i det lokala arkiv som krypterar anslutningen. Instruktioner finns i [SQL VM-anslutning till Azure Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Tabellen eller vyn som visar raduppsättningen måste anges på sidan. Det här alternativet visas när anslutningen lyckats, med en listruta där du kan välja det du behöver. |
-| **Azure Cosmos DB** |Kraven innefattar konto, databas och samling. Alla dokument i samlingen kommer att ingå i indexet. Du kan definiera en fråga för att utjämna eller filtrera raduppsättningen, eller identifiera ändrade dokument för efterföljande datauppdateringar. |
-| **Azure Blob Storage** |Kraven innefattar lagringskonto och en behållare. Om blob-namnet följer en virtuell namngivningskonvention i grupperingssyfte, kan du också ange den virtuella katalogdelen av namnet som en mapp under behållaren. Se [Indexera Blob Storage](search-howto-indexing-azure-blob-storage.md) för mer information. |
-| **Azure Table Storage** |Kraven innefattar lagringskontot och ett tabellnamn. Du kan också ange en fråga för att hämta en delmängd av tabellerna. Se [Indexera Table Storage](search-howto-indexing-azure-tables.md) för mer information. |
+| **Azure SQL Database** |Namn och autentiseringsuppgifter för en databasanvändare med läsbehörighet och ett databasnamn kan anges på sidan hello eller via en ADO.NET-anslutningssträngen. Välj hello anslutning sträng alternativet tooview eller anpassa egenskaper. <br/><br/>hello tabell eller vy som innehåller hello raduppsättningen måste anges på hello-sidan. Det här alternativet visas när hello anslutningen lyckas, vilket ger en listrutan så att du kan göra en markering. |
+| **SQL Server på virtuella Azure-datorer** |Ange ett fullständigt tjänstnamn, användar-ID och lösenord, samt databasen som en anslutningssträng. toouse denna datakälla måste du ha tidigare installerat ett certifikat i hello lokala arkivet som krypterar hello-anslutning. Instruktioner finns i [SQL VM anslutning tooAzure Sök](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>hello tabell eller vy som innehåller hello raduppsättningen måste anges på hello-sidan. Det här alternativet visas när hello anslutningen lyckas, vilket ger en listrutan så att du kan göra en markering. |
+| **Azure Cosmos DB** |Krav på innehåller hello kontot, databas och samling. Alla dokument i hello samlingen tas med i hello index. Du kan definiera en fråga tooflatten eller filtrera hello raduppsättningen eller toodetect ändrats dokument för efterföljande datauppdateringsåtgärderna. |
+| **Azure Blob Storage** |Krav på innehåller hello storage-konto och en behållare. (Valfritt) om blobbnamnen följer en virtuell namngivningskonvention för gruppering ändamål, kan du ange hello virtuell katalog delen av hello namn som en mapp i behållaren. Se [Indexera Blob Storage](search-howto-indexing-azure-blob-storage.md) för mer information. |
+| **Azure Table Storage** |Krav på innehåller hello storage-konto och ett tabellnamn. Du kan ange en fråga tooretrieve en delmängd av hello tabeller. Se [Indexera Table Storage](search-howto-indexing-azure-tables.md) för mer information. |
 
 ## <a name="customize-target-index"></a>Anpassa målindex
-Ett preliminärt index är vanligtvis härlett från datauppsättningen. Lägga till, redigera eller ta bort fält för att slutföra schemat. Du kan dessutom ange attributen på fältnivå för att fastställa dess efterföljande sökbeteenden.
+En preliminär index är vanligtvis härleda från hello dataset. Lägga till, redigera eller ta bort fält toocomplete hello schema. Dessutom ange attribut i hello fältet nivån toodetermine dess efterföljande Sök beteenden.
 
-1. I **Anpassa målindex** anger du namnet och en **nyckel** som ska användas för att identifiera varje dokument. Nyckeln måste vara en sträng. Om fältvärdena innehåller mellanslag eller tankstreck måste du ange avancerade alternativ i **Importera dina data** för att utelämna valideringskontrollen av dessa tecken.
-2. Granska och ändra återstående fält. Fältnamnet och typen fylls vanligtvis i automatiskt. Du kan ändra datatypen fram till dess att indexet har skapats. Om du ändrar datatypen efter detta måste indexet återskapas.
+1. I **anpassa målindexet**, ange hello namn och en **nyckeln** används toouniquely identifierar varje dokument. hello nyckel måste vara en sträng. Om fältvärden innehålla mellanslag eller tankstreck Kontrollera tooset avancerade alternativ i **importera dina data** toosuppress hello valideringskontrollen för dessa tecken.
+2. Granska och ändra hello återstående fälten. Fältnamnet och typen fylls vanligtvis i automatiskt. Du kan ändra hello tills hello indexet har skapats. Om du ändrar datatypen efter detta måste indexet återskapas.
 3. Ange indexattribut för varje fält:
    
-   * Hämtningsbar returnerar fältet i sökresultatet.
-   * Filtrerbar gör att du kan referera till fältet i filteruttryck.
-   * Sorterbar gör att fältet kan användas i en sortering.
-   * Fasettbar gör att fältet kan användas för fasetterad navigering.
+   * Strängfält returnerar hello-fältet i sökresultaten.
+   * Filtrera kan hello fältet toobe som refereras i filteruttryck.
+   * Sorterbar kan hello fältet toobe används i en sortering.
+   * Facetable kan hello-fältet för fasetterad navigering.
    * Sökbar gör att du kan använda fulltextsökning.
-4. Klicka på fliken **Analyzer** om du vill ange ett språkanalysverktyg på fältnivå. Det går endast att ange språkanalysverktyg för närvarande. Om du använder ett anpassat analysverktyg eller en icke-språkanalys som t.ex. nyckelord, mönster och så vidare, kommer kod att krävas.
+4. Klicka på hello **Analyzer** fliken om du vill toospecify ett språk analyzer på hello fältnivå. Det går endast att ange språkanalysverktyg för närvarande. Om du använder ett anpassat analysverktyg eller en icke-språkanalys som t.ex. nyckelord, mönster och så vidare, kommer kod att krävas.
    
-   * Klicka på **Sökbara** för att använda fulltextsökning i fältet och aktivera listrutan Analyzer.
-   * Välj det analysverktyg som du vill använda. Mer information finns i [Skapa ett index för dokument på flera språk](search-language-support.md).
-5. Klicka på **Förslagsställare** för att aktivera frågeifyllningsförslag i markerade fält.
+   * Klicka på **sökbara** toodesignate fulltext söka i hello fält och aktivera hello Analyzer nedrullningsbara listan.
+   * Välj hello analyzer som du vill använda. Mer information finns i [Skapa ett index för dokument på flera språk](search-language-support.md).
+5. Klicka på hello **Förslagsställarens** tooenable typ-ahead frågeförslag på markerade fälten.
 
 ## <a name="import-your-data"></a>Importera dina data
-1. I **Importera dina data** anger du ett namn på indexeraren. Kom ihåg att produkten från guiden Importera data är en indexerare. Om du senare vill visa eller redigera den måste du välja den från portalen i stället för att köra guiden igen. 
-2. Ange det schema som är baserat på den nationella tidszonen där tjänsten har etablerats.
-3. Ställ in avancerade alternativ för att ange tröskelvärden där indexeringen kan fortsätta om ett dokument tas bort. Dessutom kan du ange om fältet **Nyckel** får innehålla blanksteg och snedstreck.  
-4. Klicka på **OK** för att skapa indexet och importera data.
+1. I **importera dina data**, ange ett namn för hello indexeraren. Återkalla hello produkten av hello importera Data guiden är en indexerare. Senare, om du vill tooview eller redigera den, väljer du det från hello-portal i stället för genom att köra guiden hello. 
+2. Schemalägg hello, som baseras på hello regionala tidszonen som hello-tjänsten har etablerats.
+3. Ange avancerade alternativ toospecify tröskelvärden för indexeringen kan om fortsätta om ett dokument har släppts. Du kan också ange om **nyckeln** fält tillåts toocontain blanksteg och snedstreck.  
+4. Klicka på **OK** toocreate hello index och importera hello data.
 
-Du kan övervaka indexeringen i portalen. Under tiden dokumenten läses in ökar antalet dokument för det index som du har definierat. Ibland kan det ta några minuter för portalsidan att hämta de senaste uppdateringarna.
+Du kan övervaka indexering hello-portalen. När dokument laddas att växa hello dokumentantal för hello index som du har definierat. Ibland tar det några minuter för hello Portalsida toopick hello senaste uppdateringar.
 
-Så snart alla dokument har lästs in kan du köra frågor mot indexet.
+hello index är klar tooquery som alla hello dokument har lästs in.
 
 ## <a name="query-an-index-using-search-explorer"></a>Köra frågor mot ett index med hjälp av Sökutforskaren
 
-Portalen innehåller **Sökutforskaren** så att du kan köra frågor mot ett index utan att behöva skriva kod. Du kan använda [Sökutforskaren](search-explorer.md) för valfritt index.
+hello portal innehåller **Sök Explorer** så att du kan fråga efter ett index utan att behöva toowrite någon kod. Du kan använda [Sökutforskaren](search-explorer.md) för valfritt index.
 
-Sökupplevelsen baseras på standardinställningar, t.ex. [enkel syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) och searchMode-standardfrågeparametern (https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+hello sökinställningar är baserat på standardinställningarna, till exempel hello [enkel syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) och standard [searchMode frågeparameter (https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
-Resultaten returneras i JSON (i ett utförligt format) så att du kan gå igenom hela dokumentet.
+Resultaten returneras i JSON, i formatet utförlig så att du kan inspektera hello hela dokumentet.
 
 ## <a name="edit-an-existing-indexer"></a>Redigera en befintlig indexerare
-Guiden Importera data skapar som sagt en **indexerare**, som du kan ändra som en fristående konstruktion i portalen.
+Enligt nedanstående hello i guiden Importera data skapas en **indexeraren**, som du kan ändra som en fristående konstruktion hello-portalen.
 
-Dubbelklicka på panelen Indexerare på instrumentpanelen för tjänsten för att visa en lista med alla indexerare som skapats för din prenumeration. Dubbelklicka på en av indexerarna för att köra, redigera eller ta bort den. Du kan ersätta indexet med ett annat befintligt index, ändra datakällan och ange alternativ för tröskelvärden för fel vid indexering.
+Dubbelklicka på hello indexeraren panelen tooslide en lista med alla indexerare som skapats för din prenumeration i instrumentpanelen för hello-tjänsten. Dubbelklicka på en av hello indexerare toorun, redigera eller ta bort den. Du kan ersätta hello index med en annan befintlig, ändra hello datakälla och ange alternativ för feltrösklarna under indexeringen.
 
 ## <a name="edit-an-existing-index"></a>Redigera ett befintligt index
-Guiden skapade även ett **index**. Om det görs strukturella uppdateringar av ett index måste indexet återskapas i Azure Search. Vid återskapandet tas indexet bort och skapas på nytt med ett reviderat schema som har de ändringar du vill ha, och data läses in på nytt. Strukturella uppdateringar innebär att man ändrar datatypen och byter namn på eller tar bort ett fält.
+hello guiden skapas också en **index**. I Azure Search kräver strukturella uppdateringar tooan index en återskapa indexet. Återskapning av en innebär att ta bort hello index, återskapa hello index med hjälp av en ändrad schema som innehåller hello ändringar som du vill och ladda om informationen. Strukturella uppdateringar innebär att man ändrar datatypen och byter namn på eller tar bort ett fält.
 
 Ändringar som inte kräver att indexet återskapas omfattar att lägga till ett nytt fält, ändra bedömningsprofil, ändra förslagsställare eller ändra språkanalys. Mer information finns i [Uppdatera index](https://msdn.microsoft.com/library/azure/dn800964.aspx).
 
 
 ## <a name="next-steps"></a>Nästa steg
-Använd dessa länkar om du vill veta mer om indexerare:
+Granska dessa länkar toolearn mer om indexerare:
 
 * [Indexera Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Indexera Azure Cosmos DB](search-howto-index-documentdb.md)

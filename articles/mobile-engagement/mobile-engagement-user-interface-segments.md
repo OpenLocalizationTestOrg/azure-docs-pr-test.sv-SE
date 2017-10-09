@@ -1,6 +1,6 @@
 ---
-title: "Användargränssnittet för Azure Mobile Engagement - segment"
-description: "Lär dig att skapa och hantera användarsegment för att identifiera användningsmönster med Azure Mobile Engagement"
+title: "aaaAzure användargränssnitt för Mobile Engagement - segment"
+description: "Lär dig hur toocreate och hantera segment av användare tooidentify användningsmönster med Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 087f4a1fef420abe9669f8dfe2b84c7a847ce263
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bb214c45d05ebfbf243978658a7e331d4a7c6e0e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-and-manage-segments-of-users-to-identify-usage-patterns"></a>Skapa och hantera användarsegment för att identifiera användningsmönster
-Den här artikeln beskriver den **segment** för den **Mobile Engagement** portal. Du använder den **Mobile Engagement** portalen för att övervaka och hantera dina mobila appar.
+# <a name="how-toocreate-and-manage-segments-of-users-tooidentify-usage-patterns"></a>Hur toocreate och hantera segment av användare tooidentify användningsmönster
+Den här artikeln beskriver hello **segment** för hello **Mobile Engagement** portal. Du använder hello **Mobile Engagement** portal toomonitor och hantera dina mobila appar.
 
-Avsnittet segment i Användargränssnittet kan du arbeta på segmentera dina användare baserat på olika beteenden och analyser som du kan hämta från programmet och kan också komma åt via API segment. Segment beräknas först 24 timmar efter att de skapas och de recomputed per dygn baserat på den senaste informationen om analytics. När ett segment beräknas, visas ett ”Day dag tidigare” diagram varje dag.
+hello segment avsnittet av hello Användargränssnittet kan du toowork på segmentera dina användare baserat på hello olika beteenden och analyser som du kan hämta från hello programmet och kan också komma åt via hello segment API. Segment beräknas först 24 timmar efter att de skapas och de recomputed per dygn baserat på hello senaste analytics informationen. När ett segment beräknas visar ett diagram med ”dag tooday historik” varje dag.
 
 > [!NOTE]
-> Många avsnitt i den **Mobile Engagement** portal Användargränssnittet innehåller den **Visa hjälp** knappen. Tryck på knappen för att få mer information om ett avsnitt.
+> Många avsnitt av hello **Mobile Engagement** portalens användargränssnitt innehåller hello **Visa hjälp** knappen. Tryck på den här knappen tooget mer detaljerad information om ett avsnitt.
 > 
 > 
 
 ## <a name="create-segments"></a>Skapa segment
-Du kan skapa ett segment baserat på upp till 10 kriterier på en viss period upp till 60 dagar bakåt i tiden från avsnittet analytics. Du kan till exempel skapa ett segment baserat på de personer som har visat vissa sidor eller söka efter vissa innehållstyper i appen under de senaste 10 dagarna. Den här informationen finns i avsnittet analytics. Så är fallet bör använda du den för att skapa ett segment och sedan skapa ett push-meddelande för vilka den här delmängd av alla användare ska få dem att gå tillbaka till programmet. 
+Du kan skapa ett segment baserat på too10 kriterier i en viss period in too60 dagar i hello tidigare från hello analytics avsnitt. Du kan till exempel skapa ett segment baserat på hello personer som har visat vissa sidor eller söka efter vissa innehållstyper i din app i hello senaste 10 dagarna. Den här informationen finns i avsnittet för hello analytics. Så du kan använda den toocreate ett segment och sedan konfigurera tootarget en push-meddelanden med den här delmängden av användare tooget dem toocome tillbaka toohello program. 
 
 > [!NOTE]
-> När ett segment har beräknats kan inte redigeras; Det kan bara klona (kopierade) eller förstörs (borttagna). Ett segment kan klonas i samma program (med samma AppID) och även kan klonas i andra program (med en annan AppID). 
+> När ett segment har beräknats kan inte redigeras; Det kan bara klona (kopierade) eller förstörs (borttagna). Ett segment kan klonas i hello samma program (med hello samma AppID), och även kan klonas i andra program (med en annan AppID). 
 
  ![segments1][35] 
 
 ## <a name="examples-segments"></a>Exempel segment
  ![segments2][36]
 
-Segment kan du segmentera slutanvändare av ditt program.
-Segmentera dina användare är en viktig marknadsföringsstrategi. Azure Mobile Engagement kan du hämta historiska data och skapa anpassade segment. Detta kraftfulla verktyg kan du vill veta mer om kundernas upplevelse i ditt program. Du kan enkelt analysera segmenten och använda segment som push-mål.
-Ett vanligt användningsfall är att du vill skicka ett push ett meddelande om att uppmana slutanvändarna att bedöma ditt program i arkivet. Du kan skapa ett segment som anger bara användare som har använt ditt program varje dag för den senaste månaden och har haft en bra användarmiljö i stället för att skicka ett meddelande till alla dina slutanvändare. När du skickar färre, avgränsade push-meddelanden får du en bättre avkastning på investeringen.
+Segment kan du toosegment hello slutanvändare av ditt program.
+Segmentera dina användare är en viktig marknadsföringsstrategi. Azure Mobile Engagement kan du tooget historiska data och skapa anpassade segment. Detta kraftfulla verktyg kan du toolearn om kundernas upplevelse i ditt program. Du kan enkelt analysera segmenten och använda segment som push-mål.
+Är ett vanligt användningsfall som du vill toosend push tooencourage ett meddelande som dina slutanvändare toorate ditt program i hello store. I stället för att skicka ett meddelande tooall slutanvändarna kan skapa du ett segment som anger enbart användare som har använt ditt program varje dag för hello förra månaden och har haft en bra användarmiljö. När du skickar färre, avgränsade push-meddelanden får du en bättre avkastning på investeringen.
 
  ![segments3][37]
 
-### <a name="segments-you-can-create-based-on-the-major-azure-mobile-engagement-elements"></a>Du kan skapa segment baserat på viktiga Azure Mobile Engagement-element:
-* Händelse: skapa ett segment som är riktad mot en specifika händelser för det program som har hänt fler än två gånger per vecka. 
-* Sessionen: skapa ett segment med användare som har använt programmet mer än 5 gånger föregående vecka.
+### <a name="segments-you-can-create-based-on-hello-major-azure-mobile-engagement-elements"></a>Du kan skapa segment baserat på hello viktiga Azure Mobile Engagement-element:
+* Händelse: skapa ett segment som är riktad mot en specifika händelser för hello-program som har hänt fler än två gånger per vecka. 
+* Sessionen: skapa ett segment med användare som har använt hello programmet mer än 5 gånger föregående vecka.
 * Aktiviteten: skapa ett segment med användare som har använt en sida eller innehåll mer eller mindre än 10 tid senaste månaden.
 * Jobbet: skapa ett segment med användare som har slutfört ett jobb som är mer än två gånger om dagen.
-* Krasch: skapa ett segment för alla användare som har fått en krasch fler än 10 gånger föregående vecka. (Du kan push segmentet med en apology eller även om kuponger!)
-* Fel: skapa ett segment med alla användare som har ett fel uppstått mer än 100 gånger senaste tre dagarna.
-* App-Info: skapa ett segment som riktar sig till en anpassad App-Info som inträffade under de senaste 25 dagarna.
+* Krasch: skapa ett segment med alla hello-användare som har fått en krasch fler än 10 gånger föregående vecka. (Du kan push segmentet med en apology eller även om kuponger!)
+* Fel: skapa ett segment med alla hello-användare som har ett fel uppstått mer än 100 gånger senaste tre dagarna.
+* App-Info: skapa ett segment som riktar sig till en anpassad App-Info som inträffade under hello senaste 25 dagarna.
   
   ![segments4][38]
 
-Om du vill använda Segment optimalt, måste du har gjort en anpassad integrering av SDK i ditt program med en märkning plan för ”App-Info”-taggar.
-Gå sedan till sidan för gränssnittet, Markera programmet som du vill använda och klicka på avsnittet ”segment”.
+toouse Segment optimalt, du måste har gjort en anpassad integrering av hello SDK i ditt program med en märkning plan för ”App-Info”-taggar.
+Gå sedan toohello startsidan för hello-gränssnittet, Välj hello program du vill använda och klicka på hello ”segment” avsnittet.
 
-1. Välj avsnittet ”segment”.
-2. Klicka på ”nytt segment” för att skapa ett nytt segment.
+1. Markera hello ”segment”.
+2. Klicka på hello ”nytt segment” knappen toocreate ett nytt segment.
 
 ## <a name="real-life-example-create-a-simple-segment-based-on-session-information"></a>Den verkliga livslängd exempel: Skapa ett enkelt segment baserat på ”sessionsinformation”
-Skapa ett segment av slutanvändare som har använt appen minst 50 gånger under den senaste veckan. Hitta de slutanvändare som har använt minst 30 sekunder i din app per session därifrån. Det här alternativet visas alla slutanvändare som har en positiv upplevelse i din app. Segmentet som har skapats kan sedan användas för att skicka ett meddelande till dessa slutanvändarna kan be dem att betygsätta appen i store.
+Skapa ett segment av alla hello slutanvändare som har använt appen minst 50 gånger i hello föregående vecka. Hitta endast hello slutanvändare som har använt minst 30 sekunder i din app per session därifrån. Det här alternativet visas alla hello slutanvändare som har en positiv upplevelse i din app. Sedan hello segment skapas kunde använda toopush ett meddelande toothese slutanvändare tooask dem toorate din app i hello lagra.
 
  ![segments5][39]
 
-1. Namnge ditt segment för att snabbt hitta dem i listan ”Segment”.
-2. Klicka på knappen ”Skapa”.
+1. Namnge ditt segment i ordning toofind det snabbt i hello ”Segment”-listan.
+2. Klicka på hello ”skapa”.
    
    ![segments6][40]
 
@@ -78,34 +78,34 @@ Markera Session.
 
  ![segments7][41]
 
-1. Välj perioden för ”senaste veckan”.
+1. Välj hello period för ”senaste veckan”.
 2. Klicka på Nästa.
    
    ![segments8][42]
-3. Väljer du den Operator som är relevant i listan: =; ≥ ≤.
-4. Ange det antal som du vill.
-5. Välj den förekomsten som du vill använda. 
+3. Välj hello Operator som är relevant hello listan: =; ≥ ≤.
+4. Ange hello antal som du vill använda.
+5. Välj hello förekomsten som du vill använda. 
 6. Klicka på Nästa.
-   Det här exemplet anges så som under den senaste veckan matchar användare som har gjort minst 50 sessioner.
+   Det här exemplet är inställd så att över hello förra veckan matchar användare som har gjort minst 50 sessioner.
    
    ![segments9][43]
 
-Du kan välja längden sessioner som villkor för Session-segmentering.
+Hello Session segmentering du hello längd sessioner som ett villkor.
 
-1. Välj operatorn i listan.
-2. Ange längden per session.
+1. Välj hello operatorn hello-listan.
+2. Ange hello längd per session.
 3. Klicka på Nästa.
-   I det här exemplet står det att över alla sessioner som har varit segmenterade i avsnittet förekomsten, väljer du de användare som har använt mer än 30 sekunder per session.
+   I det här exemplet står det att över alla hello sessioner som har varit segmenterade på hello förekomsten avsnittet väljer endast hello-användare som har använt mer än 30 sekunder per session.
    
    ![segments10][44]
 
-Namnge ditt kriterium för att hämta i fullständig tratten och klicka på Slutför.
+Namnge ditt kriterium i ordning tooretrieve i hello slutföra tratt och klicka på Slutför.
 
  ![segments11][45]
 
-När du har konfigurerat dina villkor, visas den i segmentet tratten.
+När du har konfigurerat dina villkor, visas den i hello segment tratten.
 Eftersom ett segment är baserat på analysdata, beräknas segment en gång per dag.
-I det här exemplet 47,7% av totalt slutanvändarna matchade kriteriet. De ska vara de användare som har haft en bra upplevelse och kommer sannolikt att tillhandahålla en högre klassificering om du överför ett meddelande som ber dem att betygsätta appen i butiken.
+I det här exemplet 47,7% av totalt hello-slutanvändare matchade hello kriterium. De bör vara hello-användare som har haft en bra upplevelse och kommer troligen tooprovide en högre klassificeringen om du överför ett meddelande frågar dem toorate hello app i hello store.
 
 ## <a name="see-also"></a>Se även
 * [Begrepp][Link 6]

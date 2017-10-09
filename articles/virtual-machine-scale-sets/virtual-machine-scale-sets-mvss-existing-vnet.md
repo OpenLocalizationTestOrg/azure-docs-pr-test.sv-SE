@@ -1,6 +1,6 @@
 ---
 title: "Referera till ett befintligt virtuellt nätverk i en mall för Azure skala | Microsoft Docs"
-description: "Lär dig hur du lägger till ett virtuellt nätverk i en befintlig mall för Azure Virtual Machine Scale Set"
+description: "Lär dig hur tooadd ett virtuellt nätverk tooan befintlig Azure Virtual Machine Scale Set-mall"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: negat
-ms.openlocfilehash: 28117d467b491704aed8d45e5eba42530579dfa2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c3034b577e17abc4643dc26d7c38ad643fa26322
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Lägg till referens till ett befintligt virtuellt nätverk i en mall för Azure skala
+# <a name="add-reference-tooan-existing-virtual-network-in-an-azure-scale-set-template"></a>Lägg till referens tooan befintligt virtuellt nätverk i en mall för Azure skala
 
-Den här artikeln visar hur du ändrar den [lägsta lönsam skala ange mall](./virtual-machine-scale-sets-mvss-start.md) att distribuera till ett befintligt virtuellt nätverk i stället för att skapa en ny.
+Den här artikeln visar hur toomodify hello [lägsta lönsam skala ange mall](./virtual-machine-scale-sets-mvss-start.md) toodeploy till ett befintligt virtuellt nätverk i stället för att skapa en ny.
 
-## <a name="change-the-template-definition"></a>Ändra malldefinitionen
+## <a name="change-hello-template-definition"></a>Ändra hello malldefinitionen
 
-Mall för våra lägsta lönsam skala kan ses [här](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), och våra mallen för distribution av skalan i ett befintligt virtuellt nätverk kan ses [här](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json). Låt oss nu undersöka diff som används för att skapa den här mallen (`git diff minimum-viable-scale-set existing-vnet`) bit för bit:
+Mall för våra lägsta lönsam skala kan ses [här](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), och våra mallen för distribution av hello skala till ett befintligt virtuellt nätverk kan ses [här](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json). Låt oss nu undersöka hello diff används toocreate mallen (`git diff minimum-viable-scale-set existing-vnet`) bit för bit:
 
-Först måste vi lägga till en `subnetId` parameter. Den här strängen skickas till skala ange konfiguration så att skaluppsättningen att identifiera om du vill distribuera virtuella datorer i förväg skapade undernätet. Strängen måste vara i formatet: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`. Ange till exempel att distribuera skalan i ett befintligt virtuellt nätverk med namnet `myvnet`, undernät `mysubnet`, resursgrupp `myrg`, och prenumeration `00000000-0000-0000-0000-000000000000`, subnetId skulle vara: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
+Först måste vi lägga till en `subnetId` parameter. Den här strängen skickas till hello skala ange konfiguration så att hello skaluppsättning tooidentify hello förskapade undernät toodeploy virtuella datorer i. Den här strängen måste ha formatet hello: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`. Till exempel toodeploy hello skalningsuppsättningen i ett befintligt virtuellt nätverk med namnet `myvnet`, undernät `mysubnet`, resursgrupp `myrg`, och prenumeration `00000000-0000-0000-0000-000000000000`, hello subnetId skulle vara: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
 
 ```diff
      },
@@ -42,7 +42,7 @@ Först måste vi lägga till en `subnetId` parameter. Den här strängen skickas
    },
 ```
 
-Nu ska vi kan ta bort resursen virtuellt nätverk från den `resources` matrisen eftersom vi använder ett befintligt virtuellt nätverk och behöver inte distribuera en ny.
+Vi kan sedan ta bort hello virtuella nätverksresurs från hello `resources` matrisen eftersom vi använder ett befintligt virtuellt nätverk och behöver inte toodeploy en ny.
 
 ```diff
    "variables": {},
@@ -70,7 +70,7 @@ Nu ska vi kan ta bort resursen virtuellt nätverk från den `resources` matrisen
 -    },
 ```
 
-Det virtuella nätverket redan innan mallen har distribuerats, så inte behöver du ange en dependsOn-sats från skaluppsättningen till det virtuella nätverket. Därför vi ta bort dessa rader:
+hello virtuella nätverk finns redan innan hello mallen distribueras, så det finns inget behov av toospecify dependsOn-satsen från hello skala anger toohello virtuellt nätverk. Därför vi ta bort dessa rader:
 
 ```diff
      {
@@ -86,7 +86,7 @@ Det virtuella nätverket redan innan mallen har distribuerats, så inte behöver
          "capacity": 2
 ```
 
-Slutligen kan vi skicka in den `subnetId` parameter har angetts av användaren (istället för att använda `resourceId` för att hämta id för ett vnet i samma distribution, vilket är vad den lägsta lönsam skalan ange mall har).
+Slutligen vi skicka in hello `subnetId` parameteruppsättning av hello användare (istället för att använda `resourceId` tooget hello-id för ett virtuellt nätverk i hello har samma-distribution är vilka hello lägsta lönsam skala ange mall).
 
 ```diff
                        "name": "myIpConfig",

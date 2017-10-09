@@ -1,6 +1,6 @@
 ---
-title: Hur man administrerar Azure Redis-Cache | Microsoft Docs
-description: "Lär dig att utföra administrationsuppgifter, till exempel omstart och schema-uppdateringar för Azure Redis-Cache"
+title: aaaHow tooadminister Azure Redis-Cache | Microsoft Docs
+description: "Lär dig hur tooperform administrationsuppgifter som omstart och Schemalägg uppdateringar för Azure Redis-Cache"
 services: redis-cache
 documentationcenter: na
 author: steved0x
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: sdanie
-ms.openlocfilehash: 3352fec59d7dfbfab9b0416992a60f11d0ec2402
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eb24668a3f6264444e7d4daf1ac43b41b12dfe66
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-administer-azure-redis-cache"></a>Hur man administrerar Azure Redis-Cache
-Det här avsnittet beskriver hur du utför administrationsuppgifter som [omstart](#reboot) och [schemalägga uppdateringar](#schedule-updates) för Azure Redis-Cache-instanser.
+# <a name="how-tooadminister-azure-redis-cache"></a>Hur tooadminister Azure Redis-Cache
+Det här avsnittet beskrivs hur tooperform administrativa uppgifter som [omstart](#reboot) och [schemalägga uppdateringar](#schedule-updates) för Azure Redis-Cache-instanser.
 
 ## <a name="reboot"></a>Starta om
-Den **omstart** bladet kan du starta om en eller flera noder i ditt cacheminne. Den här funktionen för omstart kan du testa ditt program för återhämtning om det finns ett fel i en cachenod.
+Hej **omstart** bladet kan du tooreboot en eller flera noder i ditt cacheminne. Den här funktionen för omstart kan du tootest ditt program för återhämtning om det finns ett fel i en cachenod.
 
 ![Starta om](./media/cache-administration/redis-cache-administration-reboot.png)
 
-Markera noderna för att starta om och klickar på **omstart**.
+Välj hello noder tooreboot och klicka på **omstart**.
 
 ![Starta om](./media/cache-administration/redis-cache-reboot.png)
 
-Om du har en premium-cache med aktiverad klustring, kan du välja vilka delar av cacheminnet för att starta om.
+Om du har en premium-cache med aktiverad klustring, kan du välja vilka delar av hello cache tooreboot.
 
 ![Starta om](./media/cache-administration/redis-cache-reboot-cluster.png)
 
-Starta om en eller flera noder i ditt cacheminne, Välj önskade noder och sedan **omstart**. Om du har en premium-cache med aktiverad klustring, Välj önskade shards omstart och klicka sedan på **omstart**. Efter några minuter tillbaka på valda noderna omstart och är online några minuter senare.
+tooreboot en eller flera noder i ditt cacheminne, Välj önskad hello noder och klicka på **omstart**. Om du har en premium-cache med aktiverad klustring, Välj önskad hello shards tooreboot och klicka sedan på **omstart**. Hej valda noderna omstart efter några minuter och är tillbaka online och ett par minuter senare.
 
-Påverkan på klientprogram som varierar beroende på vilka noder att du startar om.
+hello inverkan på klientprogram som varierar beroende på vilka noder att du startar om.
 
-* **Master** - när Huvudnoden är omstartad, Azure Redis-Cache misslyckas till noden replik och främjar till huvudservern. Under den här redundansen kan det finnas ett kort intervall där anslutningar kan misslyckas till cachen.
-* **Underordnade** – när den underordnade noden startas påverkas vanligtvis inte till cacheklienter.
-* **Huvud- och underordnade** -när både cachenoder startas om försvinner alla data i cacheminnet och anslutningar till cachen misslyckas tills den primära noden är online igen. Om du har konfigurerat [-datapersistence](cache-how-to-premium-persistence.md), den senaste aktuell säkerhetskopia återställs när cachen är online igen, men alla cache-skrivningar som gjorts efter den senaste säkerhetskopieringen går förlorade.
-* **Noder i ett premium-cache med aktiverad klustring** – när du startar om en eller flera noder i premium-cache med aktiverad, klustring beteendet för de valda noderna är densamma som när du startar om motsvarande nod eller noder i en icke-klustrade cache.
+* **Master** – när hello Huvudnoden är omstartad, Azure Redis-Cache misslyckas över toohello replik nod och främjar den toomaster. Under den här redundansen kan det finnas ett kort intervall där anslutningar kan misslyckas toohello cache.
+* **Underordnade** – när hello underordnade nod startas är vanligtvis ingen påverkan toocache klienter.
+* **Huvud- och underordnade** – när båda cachenoderna startas om, försvinner alla data i hello cache och anslutningar toohello cache misslyckas tills hello primära noden är online igen. Om du har konfigurerat [-datapersistence](cache-how-to-premium-persistence.md), senaste säkerhetskopian av hello återställs när hello cache är online igen, men alla cache-skrivningar som uppstått efter hello den senaste säkerhetskopieringen går förlorade.
+* **Noder i ett premium-cache med aktiverad klustring** – när du startar om en eller flera noder i premium-cache med kluster aktiverad hello beteende för hello valda noder är hello densamma som när du startar om hello motsvarande nod eller noder i en icke-klustrad cache.
 
 > [!IMPORTANT]
 > Starta om datorn är nu tillgänglig för alla prisnivåer.
@@ -51,73 +51,73 @@ Påverkan på klientprogram som varierar beroende på vilka noder att du startar
 > 
 
 ## <a name="reboot-faq"></a>Starta om vanliga frågor och svar
-* [Vilken nod bör jag startas om för att testa Mina program?](#which-node-should-i-reboot-to-test-my-application)
-* [Kan jag startar om cachen om du vill rensa klientanslutningar?](#can-i-reboot-the-cache-to-clear-client-connections)
+* [Vilken nod bör jag startar om tootest mitt program?](#which-node-should-i-reboot-to-test-my-application)
+* [Kan jag startar om hello cache tooclear klientanslutningar?](#can-i-reboot-the-cache-to-clear-client-connections)
 * [Jag förlorar data från min cachen om jag göra en omstart?](#will-i-lose-data-from-my-cache-if-i-do-a-reboot)
 * [Kan jag startar om min cacheminne med hjälp av PowerShell, CLI eller andra hanteringsverktyg?](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
-* [Priser för vilka nivåer kan använda funktionen omstart?](#what-pricing-tiers-can-use-the-reboot-functionality)
+* [Priser för vilka nivåer kan använda hello omstart funktioner?](#what-pricing-tiers-can-use-the-reboot-functionality)
 
-### <a name="which-node-should-i-reboot-to-test-my-application"></a>Vilken nod bör jag startas om för att testa Mina program?
-Om du vill testa återhämtningen för ditt program mot fel på den primära noden för ditt cacheminne, starta om den **Master** nod. Om du vill testa återhämtningen för ditt program mot fel på den sekundära noden måste starta om den **slavserver** nod. Om du vill testa återhämtning av programmet mot totalt cachens omstart **både** noder.
+### <a name="which-node-should-i-reboot-tootest-my-application"></a>Vilken nod bör jag startar om tootest mitt program?
+tootest hello återhämtning för ditt program mot fel för hello primära noden till ditt cacheminne omstart hello **Master** nod. tootest hello återhämtning för ditt program mot fel på hello sekundära noden omstart hello **slavserver** nod. tootest hello återhämtning av programmet mot totalt hello-cache, omstart **både** noder.
 
-### <a name="can-i-reboot-the-cache-to-clear-client-connections"></a>Kan jag startar om cachen om du vill rensa klientanslutningar?
-Ja, om du startar om cachen alla klientanslutningar avmarkerad. Omstart kan vara användbart i fall där alla klientanslutningar används på grund av ett logiskt fel eller ett programfel i klientprogrammet. Varje prisnivå har olika [klienten anslutningsgränser](cache-configure.md#default-redis-server-configuration) inga fler klientanslutningar accepteras för olika storlekar och när dessa gränser har uppnåtts. Starta om cachen kan du rensa alla klientanslutningar.
+### <a name="can-i-reboot-hello-cache-tooclear-client-connections"></a>Kan jag startar om hello cache tooclear klientanslutningar?
+Ja, om du startar om hello cache alla klientanslutningar avmarkerad. Omstart kan vara användbart i hello fall där alla klientanslutningar används på grund av tooa logikfel eller ett programfel i hello-klientprogrammet. Varje prisnivå har olika [klienten anslutningsgränser](cache-configure.md#default-redis-server-configuration) för hello olika storlekar och inga fler klientanslutningar accepteras när dessa gränser har uppnåtts. Omstart hello cachen innehåller en sätt tooclear alla klientanslutningar.
 
 > [!IMPORTANT]
-> Om du startar om ditt cacheminne om du vill rensa klientanslutningar återansluter StackExchange.Redis automatiskt när Redis-noden är online igen. Om det underliggande problemet kvarstår fortsätta klientanslutningarna för att användas.
+> Om du startar om din cache tooclear klientanslutningar återansluter StackExchange.Redis automatiskt när hello Redis noden är online igen. Om hello underliggande problem kvarstår kan hello klientanslutningar fortsätta toobe in.
 > 
 > 
 
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Jag förlorar data från min cachen om jag göra en omstart?
-Om du startar om både den **Master** och **slavserver** noder, alla data i cacheminnet (eller i den Fragmentera om du använder en premium-cache med aktiverad klustring) går förlorade. Om du har konfigurerat [-datapersistence](cache-how-to-premium-persistence.md), den senaste aktuell säkerhetskopia kommer att återställas när cachen är online igen, men alla cache-skrivningar som har inträffat när säkerhetskopieringen gjordes går förlorade.
+Om du startar om båda hello **Master** och **slavserver** noder, alla data i cacheminnet hello (eller i den Fragmentera om du använder en premium-cache med aktiverad klustring) går förlorade. Om du har konfigurerat [-datapersistence](cache-how-to-premium-persistence.md), hello senaste säkerhetskopian ska återställas när hello cache är online igen, men alla cache-skrivningar som har inträffat när hello säkerhetskopieringen gjordes går förlorade.
 
-Om du startar om en av noderna data är inte vanligtvis förlorade, men det kan fortfarande vara. Till exempel om huvudnoden startas om och en cache-skrivning pågår, data från cache-write är förlorade. Ett annat scenario för dataförlust skulle vara om du startar om en nod och den andra noden händer gå nedåt på grund av ett fel på samma gång. Mer information om möjliga orsaker till förlust av data finns [vad hände med data i Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
+Om du startar om en av noderna hello data försvinner inte normalt, men det kan fortfarande vara. Till exempel om hello huvudnoden startas om och en cache-skrivning pågår, hello data från hello cache write är förlorade. Ett annat scenario för dataförlust skulle vara om du vill starta om en nod och hello andra nod händer toogo ned på grund av tooa fel i hello samtidigt. Mer information om möjliga orsaker till förlust av data finns [vad hände toomy data i Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Kan jag startar om min cacheminne med hjälp av PowerShell, CLI eller andra hanteringsverktyg?
-Ja, PowerShell instruktioner finns i [att starta om ett Redis-cache](cache-howto-manage-redis-cache-powershell.md#to-reboot-a-redis-cache).
+Ja, PowerShell instruktioner finns i [tooreboot Redis-cache](cache-howto-manage-redis-cache-powershell.md#to-reboot-a-redis-cache).
 
-### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>Priser för vilka nivåer kan använda funktionen omstart?
+### <a name="what-pricing-tiers-can-use-hello-reboot-functionality"></a>Priser för vilka nivåer kan använda hello omstart funktioner?
 Starta om datorn är tillgänglig för alla prisnivåer.
 
 ## <a name="schedule-updates"></a>Schemauppdateringar
-Den **schemalägga uppdateringar** bladet låter dig ange en underhållsperiod för ditt cacheminne för Premium-nivån. När underhållsfönstret har angetts görs alla uppdateringar för Redis-servern under den här perioden. 
+Hej **schemalägga uppdateringar** bladet kan du toodesignate en underhållsperiod för ditt cacheminne för Premium-nivån. När hello underhållsperiod har angetts görs alla uppdateringar för Redis-servern under den här perioden. 
 
 > [!NOTE] 
-> Underhållsfönstret gäller endast för Redis-serveruppdateringar och inte till någon Azure-uppdateringar eller uppdateringar för operativsystemet på de virtuella datorerna som är värdar för cachen.
+> Hej underhållsperioden gäller endast uppdateringar för tooRedis server och inte tooany Azure uppdaterar eller uppdaterar toohello operativsystemet hello virtuella datorer som är värdar för hello cache.
 > 
 > 
 
 ![Schemauppdateringar](./media/cache-administration/redis-schedule-updates.png)
 
-Om du vill ange en underhållsperiod de önskade dagarna och ange Starttimme för underhåll fönster för varje dag och klickar på **OK**. Observera att fönstret Underhåll i UTC. 
+toospecify en underhållsperiod hello önskad dagar och ange hello fönstret starttid för underhåll för varje dag och klickar på **OK**. Observera att hello underhållsfönstertiden i UTC. 
 
 > [!NOTE]
-> Standardunderhållsfönstret för uppdateringar är fem timmar. Det här värdet kan inte konfigureras från Azure-portalen, men du kan konfigurera i PowerShell med hjälp av den `MaintenanceWindow` parameter för den [ny AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) cmdlet. Mer information finns i [kan jag hantera schemalagda uppdateringar med hjälp av PowerShell, CLI eller andra hanteringsverktyg?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
+> Hej standardunderhållsfönstret för uppdateringar är fem timmar. Det här värdet kan inte konfigureras från hello Azure-portalen, men du kan konfigurera i PowerShell använder hello `MaintenanceWindow` parametern för hello [ny AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) cmdlet. Mer information finns i [kan jag hantera schemalagda uppdateringar med hjälp av PowerShell, CLI eller andra hanteringsverktyg?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
 > 
 > 
 
 ## <a name="schedule-updates-faq"></a>Schemalägg uppdateringar vanliga frågor och svar
-* [När uppdateringar, sker om jag inte använder schema-uppdateringar?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)
-* [Vilken typ av uppdateringar har gjorts under den schemalagda underhållsperioden?](#what-type-of-updates-are-made-during-the-scheduled-maintenance-window)
+* [När uppdateringar, sker om jag inte använder hello schema-uppdateringar?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)
+* [Vilken typ av uppdateringar som görs under hello schemalagda underhållsperiod?](#what-type-of-updates-are-made-during-the-scheduled-maintenance-window)
 * [Kan jag hantera schemalagda uppdateringar med hjälp av PowerShell, CLI eller andra hanteringsverktyg?](#can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools)
-* [Priser för vilka nivåer kan använda funktionen för schema-uppdateringar?](#what-pricing-tiers-can-use-the-schedule-updates-functionality)
+* [Priser för vilka nivåer kan använda funktionen för hello schema-uppdateringar?](#what-pricing-tiers-can-use-the-schedule-updates-functionality)
 
-### <a name="when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature"></a>När uppdateringar, sker om jag inte använder schema-uppdateringar?
+### <a name="when-do-updates-occur-if-i-dont-use-hello-schedule-updates-feature"></a>När uppdateringar, sker om jag inte använder hello schema-uppdateringar?
 Om du inte anger en underhållsperiod kan uppdateringar göras när som helst.
 
-### <a name="what-type-of-updates-are-made-during-the-scheduled-maintenance-window"></a>Vilken typ av uppdateringar har gjorts under den schemalagda underhållsperioden?
-Endast Redis-server uppdateringar har gjorts under den schemalagda underhållsperioden. Underhållsfönstret gäller inte för Azure-uppdateringar eller uppdateringar av operativsystemet VM.
+### <a name="what-type-of-updates-are-made-during-hello-scheduled-maintenance-window"></a>Vilken typ av uppdateringar som görs under hello schemalagda underhållsperiod?
+Endast Redis-server uppdateringar görs under hello schemalagda underhållsperiod. Hej underhållsfönstret gäller inte tooAzure uppdateringar eller uppdaterar toohello VM-operativsystemet.
 
 ### <a name="can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools"></a>Kan jag hanterade schemalagda uppdateringar med hjälp av PowerShell, CLI eller andra hanteringsverktyg?
-Ja, kan du hantera din schemalagda uppdateringar med följande PowerShell-cmdlets:
+Ja, kan du hantera din schemalagda uppdateringar med hjälp av hello följande PowerShell-cmdlets:
 
 * [Get-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/get-azurermrediscachepatchschedule)
 * [Ny AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/new-azurermrediscachepatchschedule)
 * [Ny AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry)
 * [Ta bort AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/remove-azurermrediscachepatchschedule)
 
-### <a name="what-pricing-tiers-can-use-the-schedule-updates-functionality"></a>Priser för vilka nivåer kan använda funktionen för schema-uppdateringar?
-Den **schemalägga uppdateringar** funktionen är endast tillgänglig i premium-prisnivån.
+### <a name="what-pricing-tiers-can-use-hello-schedule-updates-functionality"></a>Priser för vilka nivåer kan använda funktionen för hello schema-uppdateringar?
+Hej **schemalägga uppdateringar** funktionen är endast tillgänglig i hello premium-prisnivån.
 
 ## <a name="next-steps"></a>Nästa steg
 * Utforska mer [Azure Redis-Cache premium-nivån](cache-premium-tier-intro.md) funktioner.

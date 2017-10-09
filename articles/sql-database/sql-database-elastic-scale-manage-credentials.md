@@ -1,6 +1,6 @@
 ---
-title: "Hantera autentiseringsuppgifter i klientbibliotek för elastisk databas | Microsoft Docs"
-description: "Hur du anger rätt nivå av autentiseringsuppgifter, admin till skrivskyddat läge, för appar för elastisk databas"
+title: "aaaManaging autentiseringsuppgifter i hello klientbibliotek för elastisk databas | Microsoft Docs"
+description: "Hur tooset hello rätt nivå av autentiseringsuppgifter, admin tooread endast för appar för elastisk databas"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 46908be2846062a0520d21e06db3091a4d711b0b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 218783ca2a07e3c0a4b089aa92634f32c41386e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Autentiseringsuppgifter som används för att komma åt klientbibliotek för elastisk databas
-Den [klientbibliotek för elastisk databas](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) använder tre olika typer av autentiseringsuppgifter för åtkomst till den [Fragmentera kartan manager](sql-database-elastic-scale-shard-map-management.md). Beroende på behov, använda autentiseringsuppgifter med den lägsta nivån av åtkomst som möjligt.
+# <a name="credentials-used-tooaccess-hello-elastic-database-client-library"></a>Autentiseringsuppgifterna används tooaccess hello-klientbibliotek för elastisk databas
+Hej [klientbibliotek för elastisk databas](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) använder tre olika typer av autentiseringsuppgifter tooaccess hello [Fragmentera kartan manager](sql-database-elastic-scale-shard-map-management.md). Beroende på hello behovet att använda hello credential med hello lägsta nivå av möjliga åtkomst.
 
-* **Hantering av autentiseringsuppgifter**: för att skapa eller ändra en Fragmentera kartan manager. (Se den [ordlista](sql-database-elastic-scale-glossary.md).) 
-* **Åtkomst till autentiseringsuppgifterna för**: åtkomst till en befintlig Fragmentera kartan manager för att få information om hur du delar.
-* **Autentiseringsuppgifter för anslutning**: att ansluta till delar. 
+* **Hantering av autentiseringsuppgifter**: för att skapa eller ändra en Fragmentera kartan manager. (Se hello [ordlista](sql-database-elastic-scale-glossary.md).) 
+* **Åtkomst till autentiseringsuppgifterna för**: tooaccess en befintlig Fragmentera mappa manager tooobtain information om hur du delar.
+* **Autentiseringsuppgifter för anslutning**: tooconnect tooshards. 
 
 Se även [hantera databaser och inloggningar i Azure SQL Database](sql-database-manage-logins.md). 
 
 ## <a name="about-management-credentials"></a>Om hantering av autentiseringsuppgifter
-Hantering av autentiseringsuppgifter används för att skapa en [ **ShardMapManager** ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) objekt för program som hanterar Fragmentera maps. (Till exempel se [att lägga till en Fragmentera med elastiska Databasverktyg](sql-database-elastic-scale-add-a-shard.md) och [Data beroende routning](sql-database-elastic-scale-data-dependent-routing.md)) användaren av klientbiblioteket elastisk skalbarhet skapar SQL-användare och SQL-inloggningar och ser till att varje beviljas Läs-/ skrivbehörigheter på globala Fragmentera kartan databasen och alla Fragmentera databaser samt. Dessa autentiseringsuppgifter används för att underhålla globala Fragmentera kartan och lokala Fragmentera maps när ändringar i kartan Fragmentera utförs. Till exempel använda autentiseringsuppgifter hantering för att skapa Fragmentera kartan manager-objekt (med hjälp av [ **GetSqlShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx): 
+Hantering av autentiseringsuppgifter är används toocreate en [ **ShardMapManager** ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) objekt för program som hanterar Fragmentera maps. (Till exempel se [att lägga till en Fragmentera med elastiska Databasverktyg](sql-database-elastic-scale-add-a-shard.md) och [Data beroende routning](sql-database-elastic-scale-data-dependent-routing.md)) hello användare av klientbiblioteket för hello elastisk skalbarhet skapar hello SQL-användare och SQL-inloggningar och ser till att varje är hello Skriv-och läsbehörighet på hello globala Fragmentera mappa beviljas databasen och alla Fragmentera databaser samt. Autentiseringsuppgifterna är används toomaintain hello globala Fragmentera kartan och hello lokala Fragmentera maps när ändringar toohello Fragmentera mappningen ska utföras. Till exempel använda hello autentiseringsuppgifter toocreate hello Fragmentera kartan manager hanteringsobjektet (med hjälp av [ **GetSqlShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx): 
 
     // Obtain a shard map manager. 
     ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager( 
@@ -39,14 +39,14 @@ Hantering av autentiseringsuppgifter används för att skapa en [ **ShardMapMana
             ShardMapManagerLoadPolicy.Lazy 
     ); 
 
-Variabeln **smmAdminConnectionString** är en anslutningssträng som innehåller autentiseringsuppgifter för hantering. Användar-ID och lösenord ger läsning och skrivning åtkomst till både Fragmentera kartan databas och enskilda delar. Management-anslutningssträngen innehåller också servernamnet och databasnamnet att identifiera globala Fragmentera kartan databasen. Här är en typisk anslutningssträng för detta ändamål:
+hello variabeln **smmAdminConnectionString** är en anslutningssträng som innehåller autentiseringsuppgifter för hantering av hello. ger läsning och skrivning åtkomst tooboth Fragmentera kartan databasen och enskilda delar hello användar-ID och lösenord. hello management-anslutningssträngen innehåller också hello namnet och databasen namn tooidentify hello globala Fragmentera kartan serverdatabasen. Här är en typisk anslutningssträng för detta ändamål:
 
      "Server=<yourserver>.database.windows.net;Database=<yourdatabase>;User ID=<yourmgmtusername>;Password=<yourmgmtpassword>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;” 
 
-Använd inte värden i form av ”username@server”, i stället använda värdet ”användarnamn”.  Det beror på att autentiseringsuppgifter måste arbeta mot både Fragmentera kartan manager-databasen och enskilda delar som kan vara på olika servrar.
+Använd inte värden i hello form av ”username@server”, i stället använda hello ”användarnamn” värde.  Det beror på att autentiseringsuppgifter måste arbeta mot både hello Fragmentera kartan manager-databasen och enskilda delar som kan vara på olika servrar.
 
 ## <a name="access-credentials"></a>Autentiseringsuppgifter
-När du skapar en Fragmentera kartan manager i ett program som inte administrerar Fragmentera maps Använd autentiseringsuppgifter som har skrivskyddad behörighet på kartan globala Fragmentera. Informationen som hämtas från global Fragmentera kartan under dessa autentiseringsuppgifter används för [data beroende routning](sql-database-elastic-scale-data-dependent-routing.md) och för att fylla i Fragmentera kartan cachen på klienten. Autentiseringsuppgifterna som tillhandahålls via samma mönster för anrop till **GetSqlShardMapManager** som ovan: 
+När du skapar en Fragmentera kartan manager i ett program som inte administrerar Fragmentera maps Använd autentiseringsuppgifter som har skrivskyddad behörighet på hello globala Fragmentera karta. hello information som hämtas från hello globala Fragmentera kartan under dessa autentiseringsuppgifter används för [data beroende routning](sql-database-elastic-scale-data-dependent-routing.md) och toopopulate hello Fragmentera mappa cache på hello-klienten. hello autentiseringsuppgifter tillhandahålls via hello samma anropa mönster för**GetSqlShardMapManager** som ovan: 
 
     // Obtain shard map manager. 
     ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager( 
@@ -54,19 +54,19 @@ När du skapar en Fragmentera kartan manager i ett program som inte administrera
             ShardMapManagerLoadPolicy.Lazy
     );  
 
-Observera användningen av den **smmReadOnlyConnectionString** återspeglar användningen av olika autentiseringsuppgifter för åtkomst på uppdrag av **icke-administratörer** användare: autentiseringsuppgifterna bör inte ge skrivbehörighet för globala Fragmentera kartan. 
+Observera hello användning av hello **smmReadOnlyConnectionString** tooreflect hello använder olika autentiseringsuppgifter för åtkomst på uppdrag av **icke-administratörer** användare: autentiseringsuppgifterna bör inte ge skrivning behörigheter på hello globala Fragmentera karta. 
 
 ## <a name="connection-credentials"></a>Autentiseringsuppgifter för anslutning
-Ytterligare autentiseringsuppgifter behövs när du använder den [ **OpenConnectionForKey** ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) metod för att komma åt en Fragmentera som är associerade med en nyckel för horisontell partitionering. Dessa autentiseringsuppgifter måste du ange behörigheter för skrivskyddad åtkomst till lokala Fragmentera kartan tabellerna som finns på Fragmentera. Detta behövs för att utföra anslutningsverifiering för omdirigering av data beroende på Fragmentera. Det här kodstycket tillåter åtkomst till data i samband med data beroende routning: 
+Ytterligare autentiseringsuppgifter behövs när du använder hello [ **OpenConnectionForKey** ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) metoden tooaccess en Fragmentera som är associerade med en nyckel för horisontell partitionering. Dessa autentiseringsuppgifter måste tooprovide behörigheter för skrivskyddad åtkomst toohello lokala Fragmentera kartan tabeller på hello Fragmentera. Det här är nödvändig tooperform anslutningsverifiering för data-beroende routning på hello Fragmentera. Det här kodstycket tillåter åtkomst till data i hello gäller data beroende routing: 
 
     using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>( 
     targetWarehouse, smmUserConnectionString, ConnectionOptions.Validate)) 
 
-I det här exemplet **smmUserConnectionString** innehåller anslutningssträngen för autentiseringsuppgifter. Här är en typisk anslutningssträng för autentiseringsuppgifter för Azure SQL DB: 
+I det här exemplet **smmUserConnectionString** innehåller hello anslutningssträngen för hello användarens autentiseringsuppgifter. Här är en typisk anslutningssträng för autentiseringsuppgifter för Azure SQL DB: 
 
     "User ID=<yourusername>; Password=<youruserpassword>; Trusted_Connection=False; Encrypt=True; Connection Timeout=30;”  
 
-Precis som med administratörsautentiseringsuppgifter, inte värden i form av ”username@server”. Använd ”användarnamn” istället bara.  Observera också att anslutningssträngen inte innehåller ett servernamn och databasnamn. Det beror på den **OpenConnectionForKey** anropet kommer automatiskt att dirigera anslutningen till rätt Fragmentera baserat på nyckeln. Därför tillhandahålls inte databasnamnet och namn på servern. 
+Precis som med hello administratörsautentiseringsuppgifter inte värden i hello form av ”username@server”. Använd ”användarnamn” istället bara.  Observera också att hello anslutningssträngen inte innehåller ett servernamn och databasnamn. Det beror på hello **OpenConnectionForKey** anropet kommer automatiskt att dirigera hello anslutning toohello rätt Fragmentera baserat på hello nyckel. Därför tillhandahålls inte hello databasens namn och namn på servern. 
 
 ## <a name="see-also"></a>Se även
 [Hantera databaser och inloggningar i Azure SQL Database](sql-database-manage-logins.md)

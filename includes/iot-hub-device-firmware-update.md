@@ -1,25 +1,25 @@
 ## <a name="create-a-simulated-device-app"></a>Skapa en simulerad enhetsapp
 I det här avsnittet får du:
 
-* Skapa en Node.js-konsolapp som svarar på en direkt metod som anropas via molnet
+* Skapa en Node.js-konsolprogram som svarar tooa direkta metoden anropas av hello moln
 * Utlösa en simulerad uppdatering av inbyggd programvara
-* Använda rapporterade egenskaper för att aktivera enhetstvillingfrågor för att identifiera enheter och ta reda på när de senast slutfört en uppdatering av en inbyggd programvara
+* Använd hello rapporterade egenskaper tooenable enheter dubbla frågor tooidentify enheter och när de senast slutförda en firmware-uppdatering
 
-Steg 1: Skapa en tom mapp som kallas **manageddevice**.  I mappen **manageddevice** skapar du en package.json-fil med hjälp av följande kommando i Kommandotolken. Acceptera alla standardvärden:
+Steg 1: Skapa en tom mapp som kallas **manageddevice**.  I hello **manageddevice** mapp, skapa en package.json-fil med hello följande kommando vid en kommandotolk. Acceptera alla standardvärden för hello:
    
     ```
     npm init
     ```
 
-Steg 2: vid en kommandotolk i den **manageddevice** mapp, kör följande kommando för att installera den **azure iot-enhet** och **azure-iot-enhet – mqtt** enheten SDK paket:
+Steg 2: vid en kommandotolk i hello **manageddevice** mapp, kör följande kommando tooinstall hello hello **azure iot-enhet** och **azure-iot-enhet – mqtt** enhet SDK-paket:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-Steg 3: Använd en textredigerare och skapa en **dmpatterns_fwupdate_device.js** filen i den **manageddevice** mapp.
+Steg 3: Använd en textredigerare och skapa en **dmpatterns_fwupdate_device.js** filen i hello **manageddevice** mapp.
 
-Steg 4: Lägg till följande 'krävs, instruktioner i början av den **dmpatterns_fwupdate_device.js** fil:
+Steg 4: Lägg till följande hello 'krävs, instruktioner hello början av hello **dmpatterns_fwupdate_device.js** fil:
    
     ```
     'use strict';
@@ -27,14 +27,14 @@ Steg 4: Lägg till följande 'krävs, instruktioner i början av den **dmpattern
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-Steg 5: Lägg till en **connectionString** variabel och använda den för att skapa en **klienten** instans. Ersätt platshållaren `{yourdeviceconnectionstring}` med den anslutningssträng som du noterade tidigare i avsnittet Skapa en enhetsidentifitet:
+Steg 5: Lägg till en **connectionString** variabel och använda den toocreate en **klienten** instans. Ersätt hello `{yourdeviceconnectionstring}` med hello anslutningssträngen som du tidigare antecknade i hello ”skapa en enhetsidentitet” tidigare:
    
     ```
     var connectionString = '{yourdeviceconnectionstring}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-Steg 6: Lägg till följande funktion som används för att uppdatera rapporterade egenskaper:
+Steg 6: Lägg till hello följande funktion används tooupdate rapporterade egenskaper:
    
     ```
     var reportFWUpdateThroughTwin = function(twin, firmwareUpdateValue) {
@@ -51,7 +51,7 @@ Steg 6: Lägg till följande funktion som används för att uppdatera rapportera
     };
     ```
 
-Steg 7: Lägg till följande funktioner som simulerar hämtar och inbyggd programvara avbildning tillämpas:
+Steg 7: Lägg till följande funktioner som simulerar hämta och tillämpa hello firmware avbildning hello:
    
     ```
     var simulateDownloadImage = function(imageUrl, callback) {
@@ -74,7 +74,7 @@ Steg 7: Lägg till följande funktioner som simulerar hämtar och inbyggd progra
     }
     ```
 
-Steg 8: Lägg till följande funktion som uppdaterar uppdateringsstatus för inbyggd programvara via egenskaperna rapporterade att **väntar på**. Normalt informeras enheter när en uppdatering är tillgänglig och när en princip som en administaratör har definierat börjar ladda ned och tillämpa uppdateringen. Logiken för att aktivera principen ska köras i den här funktionen. För enkelhetens skull väntar exemplet på fyra sekunder innan du fortsätter att ladda ned firmware-avbildningen:
+Steg 8: Lägg till följande funktion att uppdateringar hello firmware uppdateringsstatus via hello rapporterat egenskaper för hello**väntar på**. Normalt informeras enheter om en tillgänglig uppdatering och en administratör som definierats princip orsakar hello enheten toostart hämtar och installerar hello uppdateringen. Den här funktionen är där hello logik tooenable som principen ska köras. För enkelhetens skull hello exempel som väntar på fyra sekunder innan du fortsätter toodownload hello firmware avbildningen:
    
     ```
     var waitToDownload = function(twin, fwPackageUriVal, callback) {
@@ -90,7 +90,7 @@ Steg 8: Lägg till följande funktion som uppdaterar uppdateringsstatus för inb
     };
     ```
 
-Steg 9: Lägg till följande funktion som uppdaterar uppdateringsstatus för inbyggd programvara via egenskaperna rapporterade att **hämtar**. Funktionen simulerar sedan en nedladdning av den inbyggda programvaran och uppdaterar slutligen uppdateringsstatusen för den inbyggda programvaran till antingen **downloadFailed** (nedladdningen misslyckades) eller **downloadComplete** (nedladdningen har slutförts):
+Steg 9: Lägg till följande funktion att uppdateringar hello firmware uppdateringsstatus via hello rapporterat egenskaper för hello**hämtar**. hello funktionen sedan simulerar en hämtning av inbyggd programvara och slutligen uppdateringar hello firmware update status tooeither **downloadFailed** eller **downloadComplete**:
    
     ```
     var downloadImage = function(twin, fwPackageUriVal, callback) {
@@ -128,7 +128,7 @@ Steg 9: Lägg till följande funktion som uppdaterar uppdateringsstatus för inb
     }
     ```
 
-Steg 10: Lägg till följande funktion som uppdaterar uppdateringsstatus för inbyggd programvara via egenskaperna rapporterade att **tillämpa**. Funktionen simulerar sedan tillämpning av avbildningen för den inbyggda programvaran och uppdaterar slutligen uppdateringsstatusen för den inbyggda programvaran till antingen **applyFailed** (tillämpningen misslyckades) eller **applyComplete** (tillämpningen har slutförts):
+Steg 10: Lägg till följande funktion att uppdateringar hello firmware uppdateringsstatus via hello rapporterat egenskaper för hello**tillämpa**. hello funktionen sedan simulerar använder hello firmware avbildningen och slutligen uppdateringar hello firmware update status tooeither **applyFailed** eller **applyComplete**:
     
     ```
     var applyImage = function(twin, imageData, callback) {
@@ -166,31 +166,31 @@ Steg 10: Lägg till följande funktion som uppdaterar uppdateringsstatus för in
     }
     ```
 
-Steg 11: Lägg till följande funktion som hanterar den **firmwareUpdate** direkta metoden och initierar bearbeta flera steg firmware-uppdatering:
+Steg 11: Lägg till följande hello fungera som hanterar hello **firmwareUpdate** direkta metoden och initierar hello flera steg firmware uppdatera process:
     
     ```
     var onFirmwareUpdate = function(request, response) {
     
-      // Respond the cloud app for the direct method
+      // Respond hello cloud app for hello direct method
       response.send(200, 'FirmwareUpdate started', function(err) {
         if (!err) {
           console.error('An error occured when sending a method response:\n' + err.toString());
         } else {
-          console.log('Response to method \'' + request.methodName + '\' sent successfully.');
+          console.log('Response toomethod \'' + request.methodName + '\' sent successfully.');
         }
       });
     
-      // Get the parameter from the body of the method request
+      // Get hello parameter from hello body of hello method request
       var fwPackageUri = request.payload.fwPackageUri;
     
-      // Obtain the device twin
+      // Obtain hello device twin
       client.getTwin(function(err, twin) {
         if (err) {
           console.error('Could not get device twin.');
         } else {
           console.log('Device twin acquired.');
     
-          // Start the multi-stage firmware update
+          // Start hello multi-stage firmware update
           waitToDownload(twin, fwPackageUri, function() {
             downloadImage(twin, fwPackageUri, function(imageData) {
               applyImage(twin, imageData, function() {});    
@@ -202,14 +202,14 @@ Steg 11: Lägg till följande funktion som hanterar den **firmwareUpdate** direk
     }
     ```
 
-Steg 12: Slutligen lägger du till följande kod som ansluter till din IoT-hubb:
+Steg 12: Slutligen lägger du till hello efter koden som ansluter tooyour IoT-hubb:
     
     ```
     client.open(function(err) {
       if (err) {
-        console.error('Could not connect to IotHub client');
+        console.error('Could not connect tooIotHub client');
       }  else {
-        console.log('Client connected to IoT Hub.  Waiting for firmwareUpdate direct method.');
+        console.log('Client connected tooIoT Hub.  Waiting for firmwareUpdate direct method.');
       }
     
       client.onDeviceMethod('firmwareUpdate', onFirmwareUpdate);
@@ -217,6 +217,6 @@ Steg 12: Slutligen lägger du till följande kod som ansluter till din IoT-hubb:
     ```
 
 > [!NOTE]
-> För att göra det så enkelt som möjligt implementerar vi ingen princip för omförsök i den här självstudiekursen. I produktionskod, bör du implementera försök principer (till exempel en exponentiell backoff) enligt förslaget i MSDN-artikel [hantering av tillfälliga fel](https://msdn.microsoft.com/library/hh675232.aspx).
+> enkel tookeep saker, den här självstudiekursen implementerar inte några återförsöksprincip. I produktionskod, bör du implementera försök principer (till exempel en exponentiell backoff) enligt förslaget i hello MSDN-artikel [hantering av tillfälliga fel](https://msdn.microsoft.com/library/hh675232.aspx).
 > 
 > 

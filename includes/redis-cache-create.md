@@ -1,4 +1,4 @@
-Om du vill skapa ett cacheminne loggar du först in på [Azure Portal](https://portal.azure.com) och klickar på **Ny** > **Databaser** > **Redis Cache**.
+toocreate en cache först logga in toohello [Azure-portalen](https://portal.azure.com), och klicka på **ny** > **databaser** > **Redis-Cache**.
 
 > [!NOTE]
 > Om du inte har något Azure-konto så kan du [registrera ett kostnadsfritt Azure-konto](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero) på bara några minuter.
@@ -8,29 +8,29 @@ Om du vill skapa ett cacheminne loggar du först in på [Azure Portal](https://p
 ![Nytt cacheminne](media/redis-cache-create/redis-cache-new-cache-menu.png)
 
 > [!NOTE]
-> Förutom att skapa cacheminnen i Azure Portal, kan du också skapa dem med hjälp av Resource Manager-mallar, PowerShell eller Azure CLI.
+> Dessutom toocreating cachelagrar i hello Azure-portalen kan du också skapa dem med hjälp av Resource Manager-mallar, PowerShell eller Azure CLI.
 > 
-> * Information om att skapa ett cacheminne med hjälp av Resource Manager-mallar finns i[Skapa ett Redis-cache med hjälp av en mall](../articles/redis-cache/cache-redis-cache-arm-provision.md).
-> * Information om att skapa ett cacheminne med hjälp av Azure PowerShell finns i[Hantera Azure Redis-cache med hjälp av Azure PowerShell](../articles/redis-cache/cache-howto-manage-redis-cache-powershell.md).
-> * Information om att skapa ett cacheminne med hjälp av Azure CLI finns i [Skapa och hantera Azure Redis-cache med hjälp av Azure-kommandoradsgränssnittet (Azure CLI)](../articles/redis-cache/cache-manage-cli.md).
+> * toocreate en cache med Resource Manager-mallar finns [skapa ett Redis-cache med hjälp av en mall](../articles/redis-cache/cache-redis-cache-arm-provision.md).
+> * toocreate en cache med Azure PowerShell finns [hantera Azure Redis-Cache med Azure PowerShell](../articles/redis-cache/cache-howto-manage-redis-cache-powershell.md).
+> * toocreate en cache med Azure CLI, se [hur toocreate och hantera Azure Redis-Cache med hjälp av hello Azure-kommandoradsgränssnittet (Azure CLI)](../articles/redis-cache/cache-manage-cli.md).
 > 
 > 
 
-På **Nytt Redis-cache**-bladet, anger du önskad konfiguration för cacheminnet.
+I hello **nytt Redis-Cache** bladet anger hello önskad konfiguration för hello-cachen.
 
 ![Skapa ett cacheminne](media/redis-cache-create/redis-cache-cache-create.png) 
 
-* I **Dns-namn** anger du ett unikt cachenamn att använda för cache-slutpunkten. Cachenamnet måste vara en sträng mellan 1 och 63 tecken och får endast innehålla siffror, bokstäver och `-`-tecknet. Cachenamnet får inte inledas eller avslutas med `-`-tecknet eller ha flera `-`-tecken i följd.
-* Som **prenumeration** anger du den Azure-prenumeration som du vill använda för cacheminnet. Om ditt konto bara har en prenumeration, kommer den att väljas automatiskt och listrutan **Prenumeration** visas inte.
-* I **Resursgrupp** väljer eller skapar du en resursgrupp för ditt cacheminne. Mer information finns i [Använda resursgrupper för att hantera Azure-resurser](../articles/azure-resource-manager/resource-group-overview.md). 
-* Använd **Plats** för att ange den geografiska plats där du vill ha ditt cacheminne. För bästa prestanda rekommenderar Microsoft att du skapar cacheminnet i samma region som cacheklientprogrammet.
-* Använd **Prisnivå** för att välja önskad cachestorlek och funktioner.
-* **Redis-kluster** låter dig skapa cacheminnen större än 53 GB och fragmentera data över flera Redis-noder. Mer information finns i [Konfigurera klustring för premium Azure Redis-cache](../articles/redis-cache/cache-how-to-premium-clustering.md).
-* **Redis-persistence** låter dig spara ditt cacheminne till ett Azure Storage-konto. Instruktioner om hur du konfigurerar persistence finns i [Konfigurera persistence för premium Azure Redis-cache](../articles/redis-cache/cache-how-to-premium-persistence.md).
-* **Virtuella nätverk** ger förbättrad säkerhet och isolering genom att begränsa åtkomsten till cacheminnet till de klienter som befinner sig inom angivet Azure Virtual Network. Du kan använda alla VNet-funktioner, till exempel undernät, principer för åtkomstkontroll och andra funktioner för att ytterligare begränsa åtkomsten till Redis. Mer information finns i [Konfigurera Virtual Network-stöd för premium Azure Redis-cache](../articles/redis-cache/cache-how-to-premium-vnet.md).
-* Som standard är icke-SSL-åtkomst inaktiverad för nya cacheminnen. Om du vill aktivera icke-SSL-porten markerar du **Avblockera port 6379 (inte SSL-krypterad)**.
+* I **Dns-namnet**, ange ett unikt cache namnet toouse för hello cache-slutpunkten. Hej cachenamnet måste vara en sträng mellan 1 och 63 tecken och innehålla endast siffror, bokstäver och hello `-` tecken. Hej cachenamnet får inte inledas eller avslutas med hello `-` tecken och efterföljande `-` tecken är inte giltiga.
+* För **prenumeration**, Välj hello Azure-prenumeration som du vill toouse för hello-cachen. Om ditt konto bara har en prenumeration, den väljs automatiskt och hello **prenumeration** listrutan visas inte.
+* I **Resursgrupp** väljer eller skapar du en resursgrupp för ditt cacheminne. Mer information finns i [med resursgrupper toomanage resurserna i Azure](../articles/azure-resource-manager/resource-group-overview.md). 
+* Använd **plats** toospecify hello geografisk plats som är värd för ditt cacheminne. För hello bästa prestanda rekommenderar Microsoft att du skapar hello-cache i hello samma region som cacheklientprogrammet hello.
+* Använd **prisnivå** tooselect hello önskad cachestorlek och funktioner.
+* **Redis-kluster** kan du toocreate cacheminnen större än 53 GB och tooshard data över flera Redis-noder. Mer information finns i [hur tooconfigure klustring för Premium Azure Redis-Cache](../articles/redis-cache/cache-how-to-premium-clustering.md).
+* **Redis-persistence** erbjuder hello möjlighet toopersist din cache tooan Azure Storage-konto. Anvisningar om hur du konfigurerar persistence finns [hur tooconfigure persistence för Premium Azure Redis-Cache](../articles/redis-cache/cache-how-to-premium-persistence.md).
+* **Virtuellt nätverk** ger förbättrad säkerhet och isolering genom att begränsa åtkomst tooyour cache tooonly dessa klienter inom hello angetts Azure Virtual Network. Du kan använda alla hello funktioner för virtuella nätverk som undernät, principer för åtkomstkontroll och andra funktioner toofurther begränsa åtkomst tooRedis. Mer information finns i [hur tooconfigure virtuella nätverket har stöd för Premium Azure Redis-Cache](../articles/redis-cache/cache-how-to-premium-vnet.md).
+* Som standard är icke-SSL-åtkomst inaktiverad för nya cacheminnen. tooenable hello icke-SSL-porten, kontrollera **avblockera port 6379 (inte SSL-krypterade)**.
 
-När de nya cachealternativen har konfigurerats klickar du på **Skapa**. Det kan ta några minuter för cacheminnet att skapas. Du kan kontrollera statusen genom att övervaka förloppet på Startsidan. När cachen har skapats, har ditt nya cacheminne statusen **Körs** och är redo för användning med [standardinställningarna](../articles/redis-cache/cache-configure.md#default-redis-server-configuration).
+När hello nya cachealternativen har konfigurerats, klickar du på **skapa**. Det kan ta några minuter för hello cache toobe skapas. Du kan övervaka hello förloppet på startsidan hello toocheck hello status. När hello cachen har skapats, ditt nya cacheminne har en **kör** status och är redo för användning med [standardinställningar](../articles/redis-cache/cache-configure.md#default-redis-server-configuration).
 
 ![Cachen har skapats](media/redis-cache-create/redis-cache-cache-created.png)
 

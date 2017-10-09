@@ -1,6 +1,6 @@
 ---
-title: Skapa och hantera Azure SQL-servrar och databaser | Microsoft Docs
-description: "Lär dig mer om Azure SQL Database-server och databasbegrepp och skapa och hantera servrar och databaser med hjälp av Azure portal, PowerShell, Azure CLI, Transact-SQL och REST-API."
+title: aaaCreate & Hantera Azure SQL-servrar och databaser | Microsoft Docs
+description: "Lär dig mer om Azure SQL Database-server och databasbegrepp och skapa och hantera servrar och databaser med hjälp av hello Azure-portalen, PowerShell, hello Azure CLI, Transact-SQL och hello REST API."
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/05/2017
 ms.author: carlrab
-ms.openlocfilehash: ef61aa610957024d85f4231d957869858fd545c5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0f526e388a5a620349f5a14e8d57a8355ac451ee
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Skapa och hantera Azure SQL Database-servrar och databaser
 
@@ -38,20 +38,20 @@ En Azure SQL database kan vara:
 > För giltiga databasnamn, se [databasidentifierare](https://docs.microsoft.com/en-us/sql/relational-databases/databases/database-identifiers). 
 >
  
-- Standarddatabassorteringen som används av Microsoft Azure SQL Database är **SQL_LATIN1_GENERAL_CP1_CI_AS**, där **LATIN1_GENERAL** är engelska (USA), **CP1** är teckentabell 1252, **CI** är skiftlägeskänslig och **AS** är accentkänslig. Mer information om hur du konfigurerar sorteringen finns i [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx).
+- hello databasen Standardsortering används av Microsoft Azure SQL Database är **SQL_LATIN1_GENERAL_CP1_CI_AS**, där **LATIN1_GENERAL** är engelska (USA) **CP1** är teckentabellen 1252, **CI** är skiftlägeskänslig, och **AS** är accentkänsliga. Mer information om hur tooset hello sortering finns [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx).
 - Microsoft Azure SQL Database stöder tabelldata dataström (TDS) protokollet klientversionen 7.3 eller senare.
 - TCP/IP-anslutningar tillåts.
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Vad är en logisk Azure SQL-server?
 
-En logisk server som fungerar som en central administrativ plats för flera databaser, inklusive [SQL elastiska pooler](sql-database-elastic-pool.md) [inloggningar](sql-database-manage-logins.md), [regler i brandväggen](sql-database-firewall-configure.md), [granskning regler](sql-database-auditing.md), [hot principer](sql-database-threat-detection.md), och [redundans grupper](sql-database-geo-replication-overview.md). En logisk server kan vara i en annan region än dess resursgruppen. Den logiska servern måste finnas innan du kan skapa Azure SQL-databas. Alla databaser på en server som skapas i samma region som den logiska servern. 
+En logisk server som fungerar som en central administrativ plats för flera databaser, inklusive [SQL elastiska pooler](sql-database-elastic-pool.md) [inloggningar](sql-database-manage-logins.md), [regler i brandväggen](sql-database-firewall-configure.md), [granskning regler](sql-database-auditing.md), [hot principer](sql-database-threat-detection.md), och [redundans grupper](sql-database-geo-replication-overview.md). En logisk server kan vara i en annan region än dess resursgruppen. hello logisk server måste finnas innan du kan skapa hello Azure SQL-databas. Alla databaser på en server som skapas i hello samma region som hello logisk server. 
 
 
 > [!IMPORTANT]
-> I SQL Database är en server en logisk konstruktion som skiljer sig från en SQL Server-instans, som du kanske är bekant med i den lokala miljön. Mer specifikt ger SQL Database-tjänsten inga garantier avseende platsen för databaserna i förhållande till deras logiska servrar och exponerar inga funktioner eller åtkomst på instansnivå.
+> En server är en logisk konstruktion som skiljer sig från en SQL Server-instans som du kanske känner till lokala hälsningsmeddelande i SQL-databas. Mer specifikt hello SQL Database-tjänsten ger inga garantier om platsen för hello databaser i relationen tootheir logiska servrar och visar inga instansnivå åtkomst eller funktioner.
 > 
 
-När du skapar en logisk server kan ange du en server inloggningskonto och lösenord som har administrativ behörighet till master-databasen på den servern och alla databaser som skapas på servern. Det här första kontot är ett konto för SQL-inloggning. Azure SQL Database stöder SQL-autentisering och Azure Active Directory-autentisering för autentisering. Information om inloggning och autentisering finns [hantera databaser och inloggningar i Azure SQL Database](sql-database-manage-logins.md). Windows-autentisering stöds inte. 
+När du skapar en logisk server kan ange du en server inloggningskonto och lösenord som har administrativa rättigheter toohello master-databasen på den servern och alla databaser som skapas på servern. Det här första kontot är ett konto för SQL-inloggning. Azure SQL Database stöder SQL-autentisering och Azure Active Directory-autentisering för autentisering. Information om inloggning och autentisering finns [hantera databaser och inloggningar i Azure SQL Database](sql-database-manage-logins.md). Windows-autentisering stöds inte. 
 
 > [!TIP]
 > Giltig resurs grupp- och servernamnen finns [namngivning av regler och begränsningar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
@@ -59,68 +59,68 @@ När du skapar en logisk server kan ange du en server inloggningskonto och löse
 
 En logisk Azure Database-server:
 
-- Skapas i en Azure-prenumeration, men kan flyttas till en annan prenumeration tillsammans med de resurser som den innehåller.
-- Är den överordnade resursen för databaser, elastiska pooler och informationslager.
+- Skapas i en Azure-prenumeration, men kan flyttas med befintliga resurser tooanother prenumerationen
+- Är hello överordnade resurs för databaser och elastiska pooler datalager
 - Ger ett namnområde för databaser och elastiska pooler datalager
-- Är en logisk behållare med starka livstid semantik - ta bort en server och tar bort den inneslutna databaser och elastiska pooler datalager
-- Deltar i [Azure rollbaserad åtkomstkontroll (RBAC)](/active-directory/role-based-access-control-what-is) -databaser och elastiska pooler datalager i en server ärver behörigheter från servern
-- Är ett högsta element för identiteten för databaser och elastiska pooler datalager för Azure-resurs hanteringsändamål (se URL-schemat för databaser och pooler)
+- En logisk behållare med starka livstid semantik - ta bort en server och tar bort är hello inneslutna databaser och elastiska pooler datalager
+- Deltar i [Azure rollbaserad åtkomstkontroll (RBAC)](/active-directory/role-based-access-control-what-is) -databaser och elastiska pooler datalager på en server ärver behörigheter från hello-server
+- Är ett högsta-element för hello identiteten för databaser och elastiska pooler datalager för Azure-resurs hanteringsändamål (se hello URL-schema för databaser och pooler)
 - Samlar resurser i en region.
 - Tillhandahåller en anslutningsslutpunkt för databasåtkomst (<serverName>.database.windows.net)
-- Ger åtkomst till metadata för inneslutna resurser via DMV:er genom att ansluta till en huvuddatabas. 
-- Ger omfång för principer för hantering som gäller för dess databaser - inloggningar, brandvägg, granska, hot identifiering osv. 
-- Begränsas av en kvot i den överordnade prenumerationen (sex servrar per prenumeration som standard - [finns prenumeration begränsar här](../azure-subscription-service-limits.md))
-- Innehåller omfattningen för databaskvoten och DTU-kvot för de resurser som den innehåller (till exempel 45 000 DTU)
-- Är versionshantering omfånget för funktioner på befintliga resurser 
+- Tillhandahåller åtkomst toometadata om befintliga resurser via av DMV: er av anslutande tooa master-databasen 
+- Ger hello omfång för principer för hantering som gäller tooits databaser - inloggningar, brandvägg, granska, hot identifiering osv. 
+- Begränsas av en kvot i hello överordnade prenumerationen (sex servrar per prenumeration som standard - [finns prenumeration begränsar här](../azure-subscription-service-limits.md))
+- Ger hello Omfattningen för databaskvoten och DTU-kvot för hello resurser som den innehåller (till exempel 45 000 DTU)
+- Är hello versionshantering omfattning för funktioner på befintliga resurser 
 - Huvudkontoinloggningar på servernivå kan hantera alla databaser på en server.
-- Kan innehålla inloggningar som liknar de i instanser av SQL Server i din lokala miljö som har åtkomst till en eller flera databaser på servern, samt kan beviljas begränsade administrativa rättigheter. Mer information finns i avsnittet om [inloggningar](sql-database-manage-logins.md).
+- Kan innehålla inloggningar liknande toothose i instanser av SQL Server på din lokala som beviljas åtkomst tooone eller flera databaser med hello server och kan vara begränsad beviljas administratörsbehörighet. Mer information finns i avsnittet om [inloggningar](sql-database-manage-logins.md).
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>Azure SQL-databaser som skyddas av Brandvägg för SQL-databas
 
-För att skydda dina data, en [SQL Database-brandvägg](sql-database-firewall-configure.md) förhindrar all åtkomst till databasservern eller någon av dess databaser från utanför din anslutning till servern direkt via Azure-prenumeration anslutningen. Om du vill aktivera ytterligare anslutningar måste du [skapa brandväggsregler för en eller flera](sql-database-firewall-configure.md#creating-and-managing-firewall-rules). Skapa och hantera SQL elastiska pooler finns [elastiska pooler](sql-database-elastic-pool.md).
+toohelp skydda dina data, en [SQL Database-brandvägg](sql-database-firewall-configure.md) förhindrar alla åtkomst tooyour database-server eller någon av dess databaser från utanför din anslutning toohello server direkt via Azure-prenumeration anslutningen. tooenable ytterligare anslutningar, måste du [skapa brandväggsregler för en eller flera](sql-database-firewall-configure.md#creating-and-managing-firewall-rules). Skapa och hantera SQL elastiska pooler finns [elastiska pooler](sql-database-elastic-pool.md).
 
-## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Hantera Azure SQL-servrar, databaser och brandväggar med Azure-portalen
+## <a name="manage-azure-sql-servers-databases-and-firewalls-using-hello-azure-portal"></a>Hantera Azure SQL-servrar, databaser och brandväggar med hello Azure-portalen
 
-Du kan skapa resursgrupp i Azure SQL-databasen i förväg eller när du skapar du själva servern. Det finns flera metoder för att hämta till ett nytt SQL server-format, antingen genom att skapa en ny SQLServer eller som en del av att skapa en ny databas. 
+Du kan skapa hello Azure SQL database resursgrupp i förväg eller när du skapar hello-servern. Det finns flera metoder för att hämta tooa nya SQL server formuläret, antingen genom att skapa en ny SQLServer eller som en del av att skapa en ny databas. 
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>Skapa en tom SQLServer (logisk server)
 
-Skapa en Azure SQL Database-server (utan en databas) med den [Azure-portalen](https://portal.azure.com), navigera till ett tomt formulär för SQL server (logisk server). Följande skärmbild visar en metod för att öppna ett formulär för att skapa en tom logisk SQLServer. 
+en Azure SQL Database-server (utan en databas) med hjälp av toocreate hello [Azure-portalen](https://portal.azure.com), navigera tooa tomt SQL server (logisk server) formulär. hello följande skärmbild visar en metod för att öppna ett formulär toocreate en tom logisk SQL-server. 
 
    ![Skapa logisk server slutförts formulär](./media/sql-database-migrate-your-sql-server-database/logical-server-create-completed.png)
 
-Om du kommer till det här formuläret med en annan metod är informationen i formuläret identiska.
+Om du får toothis formuläret med hjälp av en annan metod är hello information på formuläret hello identiska.
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>Skapa en tom eller exempel SQL-databas
 
-Skapa en Azure SQL database med hjälp av den [Azure-portalen](https://portal.azure.com), navigera till ett tomt formulär för SQL-databasen och ange den begärda informationen. Du kan skapa Azure SQL-databas resursgrupp och logisk server i förväg eller när du skapar själva databasen. Du kan skapa en tom databas eller skapa en exempeldatabas baserat på Adventure Works med 
+en Azure SQL database med toocreate hello [Azure-portalen](https://portal.azure.com), navigera tooa tomt formulär för SQL-databas och tillhandahålla hello information som efterfrågas. Du kan skapa hello Azure SQL database resursgruppen och logiska server i förväg eller när du skapar själva hello-databasen. Du kan skapa en tom databas eller skapa en exempeldatabas baserat på Adventure Works med 
 
   ![skapa databas-1](./media/sql-database-get-started-portal/create-database-1.png)
 
-> [VIKTIGA] Information om hur du väljer prisnivå för din databas finns [tjänstnivåer](sql-database-service-tiers.md).
+> [VIKTIGA] Information om hur du väljer hello prisnivån för din databas finns [tjänstnivåer](sql-database-service-tiers.md).
 >
 
 ### <a name="manage-an-existing-sql-server"></a>Hantera en befintlig SQLServer
 
-Om du vill hantera en befintlig server navigerar du till servern med ett antal metoder - exempel från och med den specifika SQL-databas i **SQL-servrar** sidan eller **alla resurser** sidan. Följande skärmbild visar hur du börjar konfigurera en brandvägg servernivå från den **översikt** sida för en server. 
+toomanage en befintlig server navigera toohello servern med hjälp av ett antal metoder - exempel från och med den specifika SQL-databas, hello **SQL-servrar** sida eller hello **alla resurser** sidan. följande skärmbild visar hur hello toobegin inställning en brandvägg på servernivå från hello **översikt** sida för en server. 
 
    ![Översikt över logisk server](./media/sql-database-migrate-your-sql-server-database/logical-server-overview.png)
 
-Om du vill hantera en befintlig databas, gå till den **SQL-databaser** och klicka på den databas du vill hantera. Följande skärmbild visar hur du börjar ställa in en servernivå Brandvägg för en databas från den **översikt** sida för en databas. 
+toomanage en befintlig databas går toohello **SQL-databaser** och klickar på hello-databasen som du vill toomanage. följande skärmbild visar hur hello toobegin inställning servernivå Brandvägg för en databas från hello **översikt** sida för en databas. 
 
    ![brandväggsregler för server](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
 > [!IMPORTANT]
-> Om du vill konfigurera egenskaper för prestanda för en databas finns [tjänstnivåer](sql-database-service-tiers.md).
+> tooconfigure prestanda egenskaper för en databas finns [tjänstnivåer](sql-database-service-tiers.md).
 >
 
 > [!TIP]
-> En självstudiekurs i Azure portal Snabbstart finns [skapa en Azure SQL database i Azure portal](sql-database-get-started-portal.md).
+> En självstudiekurs i Azure portal Snabbstart finns [skapa en Azure SQL database i hello Azure-portalen](sql-database-get-started-portal.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Hantera Azure SQL-servrar, databaser och brandväggar med PowerShell
 
-Använd följande PowerShell-cmdlets för att skapa och hantera Azure SQL server-databaser och brandväggar med Azure PowerShell. Om du behöver installera eller uppgradera PowerShell, se [installera Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps). Skapa och hantera SQL elastiska pooler finns [elastiska pooler](sql-database-elastic-pool.md).
+toocreate och hantera Azure SQL server, databaser och brandväggar med Azure PowerShell, Använd hello följande PowerShell-cmdlets. Om du behöver tooinstall eller uppgradera PowerShell Se [installera Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps). Skapa och hantera SQL elastiska pooler finns [elastiska pooler](sql-database-elastic-pool.md).
 
 | Cmdlet | Beskrivning |
 | --- | --- |
@@ -139,12 +139,12 @@ Använd följande PowerShell-cmdlets för att skapa och hantera Azure SQL server
 |[Remove-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/remove-azurermsqlserverfirewallrule)|Tar bort en brandväggsregel från en server.|
 
 > [!TIP]
-> En PowerShell Snabbstartsguide finns [skapa en enda Azure SQL-databas med hjälp av PowerShell](sql-database-get-started-portal.md). PowerShell-exempelskript, se [Använd PowerShell för att skapa en Azure SQL-databas och konfigurera en brandväggsregel](scripts/sql-database-create-and-configure-database-powershell.md) och [Övervakare och skala en enskild SQL-databas med hjälp av PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> En PowerShell Snabbstartsguide finns [skapa en enda Azure SQL-databas med hjälp av PowerShell](sql-database-get-started-portal.md). PowerShell-exempelskript, finns [toocreate Använd PowerShell en enda Azure SQL-databas och konfigurera en brandväggsregel](scripts/sql-database-create-and-configure-database-powershell.md) och [Övervakare och skala en enskild SQL-databas med hjälp av PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
 >
 
-## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Hantera Azure SQL-servrar, databaser och brandväggar med Azure CLI
+## <a name="manage-azure-sql-servers-databases-and-firewalls-using-hello-azure-cli"></a>Hantera Azure SQL-servrar, databaser och brandväggar med hello Azure CLI
 
-Skapa och hantera Azure SQL server-databaser och brandväggar med den [Azure CLI](/cli/azure/overview), Använd följande [Azure CLI SQL Database](/cli/azure/sql/db) kommandon. Använd [Cloud Shell](/azure/cloud-shell/overview) för att köra CLI i webbläsaren eller [installera](/cli/azure/install-azure-cli) det på macOS, Linux eller Windows. Skapa och hantera SQL elastiska pooler finns [elastiska pooler](sql-database-elastic-pool.md).
+toocreate och hantera Azure SQL server-databaser och brandväggar med hello [Azure CLI](/cli/azure/overview), använder hello följande [Azure CLI SQL Database](/cli/azure/sql/db) kommandon. Använd hello [moln Shell](/azure/cloud-shell/overview) toorun hello CLI i webbläsaren eller [installera](/cli/azure/install-azure-cli) på macOS, Linux och Windows. Skapa och hantera SQL elastiska pooler finns [elastiska pooler](sql-database-elastic-pool.md).
 
 | Cmdlet | Beskrivning |
 | --- | --- |
@@ -163,18 +163,18 @@ Skapa och hantera Azure SQL server-databaser och brandväggar med den [Azure CLI
 |[AZ sql server-uppdatering](/cli/azure/sql/server#update)|Uppdaterar en server|
 |[ta bort AZ sql-server](/cli/azure/sql/server#delete)|Tar bort en server|
 |[Skapa AZ sql server-brandväggsregel](/cli/azure/sql/server/firewall-rule#create)|Skapar en brandväggsregel|
-|[AZ sql server-brandväggsregel lista](/cli/azure/sql/server/firewall-rule#list)|Visar en lista över brandväggsregler på en server|
-|[AZ sql server-brandväggsregel visa](/cli/azure/sql/server/firewall-rule#show)|Visar information om en brandväggsregel|
+|[AZ sql server-brandväggsregel lista](/cli/azure/sql/server/firewall-rule#list)|Visar hello brandväggsregler på en server|
+|[AZ sql server-brandväggsregel visa](/cli/azure/sql/server/firewall-rule#show)|Visar hello detaljer för en brandväggsregel|
 |[uppdatering av AZ sql server-brandväggsregel](/cli/azure/sql/server/firewall-rule#update)|Uppdaterar en brandväggsregel|
 |[ta bort AZ sql server-brandväggsregel](/cli/azure/sql/server/firewall-rule#delete)|Tar bort en brandväggsregel|
 
 > [!TIP]
-> Läs en Azure CLI Snabbstartsguide [skapa en enda Azure SQL-databas med hjälp av Azure CLI](sql-database-get-started-cli.md). Azure CLI exempelskript finns [Använd CLI för att skapa en Azure SQL-databas och konfigurera en brandväggsregel](scripts/sql-database-create-and-configure-database-cli.md) och [Använd CLI för att övervaka och skala en enskild SQL-databas](scripts/sql-database-monitor-and-scale-database-cli.md).
+> Läs en Azure CLI Snabbstartsguide [skapar en enda Azure SQL-databas med hello Azure CLI](sql-database-get-started-cli.md). Azure CLI exempelskript finns [Använd CLI toocreate en enda Azure SQL-databas och konfigurera en brandväggsregel](scripts/sql-database-create-and-configure-database-cli.md) och [Använd CLI toomonitor och skala en enskild SQL-databas](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-transact-sql"></a>Hantera Azure SQL-servrar, databaser och brandväggar med Transact-SQL
 
-Använd följande T-SQL-kommandon för att skapa och hantera Azure SQL server-databaser och brandväggar med Transact-SQL. Du kan skicka dessa kommandon med hjälp av Azure portal [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs), eller andra program som kan ansluta till en Azure SQL Database-server och skicka Transact-SQL-kommandon. För att hantera SQL elastiska pooler finns [elastiska pooler](sql-database-elastic-pool.md).
+toocreate och hantera Azure SQL server, databaser och brandväggar med Transact-SQL, använda hello följande T-SQL-kommandon. Du kan skicka dessa kommandon använder hello Azure-portalen [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs), eller andra program som kan ansluta tooan Azure SQL Database-server och skicka Transact-SQL kommandon. För att hantera SQL elastiska pooler finns [elastiska pooler](sql-database-elastic-pool.md).
 
 > [!IMPORTANT]
 > Du kan inte skapa eller ta bort en server med hjälp av Transact-SQL.
@@ -182,33 +182,33 @@ Använd följande T-SQL-kommandon för att skapa och hantera Azure SQL server-da
 
 | Kommando | Beskrivning |
 | --- | --- |
-|[Skapa databas (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Skapar en ny databas. Du måste vara ansluten till huvuddatabasen för att skapa en ny databas.|
+|[Skapa databas (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Skapar en ny databas. Du måste vara anslutna toohello huvuddatabasen toocreate en ny databas.|
 | [ALTER DATABASE (Azure SQL-databas)](/sql/t-sql/statements/alter-database-azure-sql-database) |Ändrar en Azure SQL database. |
 |[ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Ändrar ett Azure SQL Data Warehouse.|
 |[Ta bort databasen (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Tar bort en databas.|
-|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Returnerar edition (tjänstnivån), tjänstmålet (prisnivån) och namn på elastisk pool, för en Azure SQL-databas eller ett Azure SQL Data Warehouse. Returnerar information om alla databaser om inloggad på master-databasen i en Azure SQL Database-server. För Azure SQL Data Warehouse, måste du vara ansluten till master-databasen.|
-|[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Returnerar förbrukning av CPU, i/o och minne för en Azure SQL Database-databas. Det finns en rad för var 15: e sekund, även om det finns ingen aktivitet i databasen.|
-|[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Returnerar CPU-användning och lagring data för en Azure SQL Database. Data som samlas in och sammanställs inom fem-minuters mellanrum.|
+|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Returnerar hello edition (tjänstnivån), tjänstmålet (prisnivån) och namn på elastisk pool, för en Azure SQL-databas eller ett Azure SQL Data Warehouse. Returnerar information om alla databaser om inloggad toohello master-databasen i en Azure SQL Database-server. Du måste vara anslutna toohello huvuddatabasen för Azure SQL Data Warehouse.|
+|[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Returnerar förbrukning av CPU, i/o och minne för en Azure SQL Database-databas. Det finns en rad för var 15: e sekund, även om det inte sker i hello-databasen.|
+|[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Returnerar CPU-användning och lagring data för en Azure SQL Database. hello data som samlas in och sammanställs inom fem-minuters mellanrum.|
 |[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Innehåller statistik för SQL Database connectivity databashändelser, ger en översikt av databasen anslutning framgångar och misslyckanden. |
-|[sys.event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Returnerar lyckade Azure SQL Database-databasanslutningar anslutningsfel och deadlocks. Du kan använda den här informationen för att övervaka och felsöka din Databasaktivitet med SQL-databas.|
-|[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Skapar eller uppdaterar servernivå brandväggsinställningar för SQL Database-server. Den här lagrade proceduren är endast tillgänglig i master-databasen till den huvudsaklig inloggningen på servernivå. En brandväggsregel på servernivå kan bara skapas med hjälp av Transact-SQL efter den första brandväggsregeln på servernivå har skapats av en användare med Azure-behörighet|
-|[sys.firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Returnerar information om servernivå brandväggsinställningar som är associerade med Microsoft Azure SQL Database.|
-|[sp_delete_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Tar bort servernivå brandväggsinställningar från din SQL Database-server. Den här lagrade proceduren är endast tillgänglig i master-databasen till den huvudsaklig inloggningen på servernivå.|
-|[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Skapar eller uppdaterar databasnivå brandväggsregler för din Azure SQL Database eller SQL Data Warehouse. Databasens brandväggsregler kan konfigureras för master-databasen och databaserna på SQL-databas. Databasens brandväggsregler är användbara när du använder finns databasanvändare. |
-|[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Returnerar information om databasnivå brandväggsinställningar som är associerade med Microsoft Azure SQL Database. |
+|[sys.event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Returnerar lyckade Azure SQL Database-databasanslutningar anslutningsfel och deadlocks. Du kan använda denna information tootrack eller felsöka din Databasaktivitet med SQL-databas.|
+|[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Skapar eller uppdaterar hello servernivå brandväggsinställningar för SQL Database-server. Den här lagrade proceduren finns bara i huvudsaklig inloggning på servernivå hello huvuddatabasen toohello. En brandväggsregel på servernivå kan bara skapas med hjälp av Transact-SQL efter hello första servernivå brandväggsregel har skapats av en användare med Azure-behörighet|
+|[sys.firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Returnerar information om hello servernivå brandväggsinställningar som är associerade med Microsoft Azure SQL Database.|
+|[sp_delete_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Tar bort servernivå brandväggsinställningar från din SQL Database-server. Den här lagrade proceduren finns bara i huvudsaklig inloggning på servernivå hello huvuddatabasen toohello.|
+|[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Skapar eller uppdaterar hello databasnivå brandväggsregler för din Azure SQL Database eller SQL Data Warehouse. Databasens brandväggsregler kan konfigureras för hello master-databasen och databaserna på SQL-databas. Databasens brandväggsregler är användbara när du använder finns databasanvändare. |
+|[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Returnerar information om hello databasnivå brandväggsinställningar som är associerade med Microsoft Azure SQL Database. |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Tar bort databasnivå brandväggsinställningen från din Azure SQL Database eller SQL Data Warehouse. |
 
 
 > [!TIP]
-> Snabbstartsguide med SQL Server Management Studio på Microsoft Windows, se [Azure SQL Database: Använd SQL Server Management Studio för att ansluta och fråga efter data](sql-database-connect-query-ssms.md). En självstudiekurs med hjälp av Visual Studio-koden i macOS, Linux eller Windows, se [Azure SQL Database: Använd Visual Studio Code kan ansluta och fråga efter data](sql-database-connect-query-vscode.md).
+> Snabbstartsguide med SQL Server Management Studio på Microsoft Windows, se [Azure SQL Database: Använd SQL Server Management Studio tooconnect och fråga data](sql-database-connect-query-ssms.md). En självstudiekurs med Visual Studio-koden på hello macOS, Linux eller Windows, se [Azure SQL Database: Använd Visual Studio Code tooconnect och fråga data](sql-database-connect-query-vscode.md).
 
-## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Hantera Azure SQL-servrar, databaser och brandväggar med hjälp av REST-API
+## <a name="manage-azure-sql-servers-databases-and-firewalls-using-hello-rest-api"></a>Hantera Azure SQL-servrar, databaser och brandväggar med hello REST API
 
-Om du vill skapa och hantera Azure SQL server-databaser och brandväggar med hjälp av REST-API, se [Azure SQL Database REST API](/rest/api/sql/).
+toocreate och hantera Azure SQL server, databaser och brandväggar med hello REST-API, se [Azure SQL Database REST API](/rest/api/sql/).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs om poolning databaser med SQL elastiska pooler i [elastiska pooler](sql-database-elastic-pool.md).
-- Information om Azure SQL Database-tjänsten finns [vad är SQL Database?](sql-database-technical-overview.md).
-- Läs om hur du migrerar en SQL Server-databas till Azure i [migrera till Azure SQL Database](sql-database-cloud-migrate.md).
+- toolearn om poolning databaser med SQL elastiska pooler, se [elastiska pooler](sql-database-elastic-pool.md).
+- Information om hello Azure SQL Database-tjänsten finns [vad är SQL Database?](sql-database-technical-overview.md).
+- toolearn om att migrera en SQL Server-databasen tooAzure finns [migrera tooAzure SQL-databas](sql-database-cloud-migrate.md).
 - Information om vilka funktioner som stöds finns i avsnittet [Funktioner](sql-database-features.md).

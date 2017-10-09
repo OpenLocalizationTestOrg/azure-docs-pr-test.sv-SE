@@ -1,6 +1,6 @@
 ---
-title: "Förstå Azure IoT Hub-kvoter och begränsning | Microsoft Docs"
-description: "Utvecklarhandbok - beskrivning av kvoter som gäller för IoT-hubb och bandbreddsbegränsning förväntat beteende."
+title: "aaaUnderstand Azure IoT Hub kvoter och begränsning | Microsoft Docs"
+description: "Utvecklarhandbok - beskrivning av hello kvoter som gäller tooIoT hubb och hello förväntat bandbreddsbegränsning."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: dfe06ee6b8fadfe6d34397661c974181f870239e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 023fa29bfbfb1de35708d6d121a1c56b50adfed9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referens - IoT-hubb kvoter och begränsning
 
 ## <a name="quotas-and-throttling"></a>Kvoter och begränsningar
 Varje Azure-prenumeration kan ha högst 10 IoT-hubbar och högst 1 ledigt hubb.
 
-Varje IoT-hubben har etablerats med ett visst antal enheter i en specifik SKU (Mer information finns i [priser för Azure IoT-hubb][lnk-pricing]). Bestämmer dagliga maxkvoten av meddelanden som du kan skicka SKU och antalet enheter.
+Varje IoT-hubben har etablerats med ett visst antal enheter i en specifik SKU (Mer information finns i [priser för Azure IoT-hubb][lnk-pricing]). hello SKU och antalet enheter avgör hello dagliga maxkvoten av meddelanden som du kan skicka.
 
-SKU: N avgör också bandbreddsbegränsning gränserna som IoT-hubb tillämpar på alla åtgärder.
+hello SKU avgör också hello begränsning gränser som IoT-hubb tillämpar på alla åtgärder.
 
 ## <a name="operation-throttles"></a>Åtgärden begränsningar
-Åtgärden begränsningar har begränsningar för hastighet som används i minuters intervall och är avsedda att förhindra missbruk. IoT-hubben försöker att undvika att fel när det är möjligt, men den startar returnerar undantag om begränsningen överskrids för länge.
+Åtgärden begränsas finns hastighet begränsningar som tillämpas i hello minuters intervall och är avsedd tooavoid missbruk. IoT-hubben försöker tooavoid returnerar fel när det är möjligt, men den startar returnerar undantag om hello begränsning är bruten för länge.
 
-I följande tabell visas de tvingande begränsas. Värden finns i en enskild hubb.
+följande tabell visar hello hello tillämpas begränsningar. Värden finns tooan enskilda hubb.
 
 | Begränsning | Ledigt och S1 NAV | S2-hubbar | S3-hubbar | 
 | -------- | ------- | ------- | ------- |
@@ -48,14 +48,14 @@ I följande tabell visas de tvingande begränsas. Värden finns i en enskild hub
 | Jobbåtgärder <br/> (skapa, uppdatera, visa, ta bort) | 1.67/sec/Unit (unit-100/min) | 1.67/sec/Unit (unit-100/min) | 83.33/sec/Unit (unit-5000/min) |
 | Jobb per enhetsåtgärd, dataflöde | 10 per sekund | Högst 10 per sekund eller 1/sek/enhet | 50/sek/enhet |
 
-Det är viktigt att tydliggöra att den *enhetsanslutningar* begränsning styr den hastighet som den nya enhetsanslutningar kan upprättas med en IoT-hubb. Den *enhetsanslutningar* begränsning inte styr det maximala antalet samtidigt anslutna enheter. Begränsningen beror på antalet enheter som tillhandahålls för IoT-hubb.
+Det är viktigt tooclarify som hello *enhetsanslutningar* begränsning styr hello hastighet som den nya enhetsanslutningar kan upprättas med en IoT-hubb. Hej *enhetsanslutningar* begränsning reglerar inte hello maxantalet samtidigt anslutna enheter. hello begränsningen beror på hello antalet enheter som har etablerats för hello IoT-hubb.
 
-Till exempel om du köper en S1 enhet kan få du en begränsning av 100 anslutningar per sekund. Det kan därför tar minst 1 000 sekunder (cirka 16 minuter) för att ansluta 100 000 enheter. Du kan dock ha så många samtidigt anslutna enheter som du har enheter som har registrerats i identitetsregistret.
+Till exempel om du köper en S1 enhet kan få du en begränsning av 100 anslutningar per sekund. Därför tooconnect 100 000 enheter, tar minst 1 000 sekunder (cirka 16 minuter). Du kan dock ha så många samtidigt anslutna enheter som du har enheter som har registrerats i identitetsregistret.
 
-En detaljerad beskrivning av IoT-hubb begränsning beteende, finns i bloggposten [IoT-hubb begränsning och du][lnk-throttle-blog].
+En detaljerad beskrivning av IoT-hubb begränsning beteende, finns i bloggposten hello [IoT-hubb begränsning och du][lnk-throttle-blog].
 
 > [!NOTE]
-> Det är möjligt att öka kvoter eller begränsning gränser genom att öka antalet etablerade enheter i en IoT-hubb vid en given tidpunkt.
+> Vid en given tidpunkt, det är möjligt tooincrease kvoter eller begränsa gränser genom att öka hello antalet etablerade enheter i en IoT-hubb.
 > 
 > [!IMPORTANT]
 > Identitet registret operations är avsedda för körning i hantering av enheter och etablerar scenarier. Läsning eller uppdatering av ett stort antal enheter identiteter stöds via [importera och exportera jobben][lnk-importexport].
@@ -69,7 +69,7 @@ IoT-hubb tillämpar andra begränsningar:
 | Åtgärd | Gräns |
 | --------- | ----- |
 | Ladda upp filen URI: er | 10000 SAS URI: er kan vara ut för ett lagringskonto i taget. <br/> 10 SAS URI:er/enheten kan vara ute vid ett och samma tillfälle. |
-| Jobb | Jobbhistorik sparas upp till 30 dagar <br/> Maximal samtidiga jobb är 1 (för kostnadsfria och S1 5 (för S2), 10 (S3). |
+| Jobb | Jobbhistorik sparas in too30 dagar <br/> Maximal samtidiga jobb är 1 (för kostnadsfria och S1 5 (för S2), 10 (S3). |
 | Ytterligare slutpunkter | Betald SKU har NAV 10 ytterligare slutpunkter. Ledigt SKU-hubbar kanske en ytterligare slutpunkt. |
 | Regler för routning av meddelanden | Betald SKU har NAV 100 routningsregler. Ledigt SKU-hubbar kan ha fem regler för routning. |
 | Meddelanden enhet till moln | Maximal meddelandestorlek på 256 KB |
@@ -77,14 +77,14 @@ IoT-hubb tillämpar andra begränsningar:
 | Meddelanden moln till enhet | Maximalt antal väntande meddelanden för leverans är 50 |
 
 > [!NOTE]
-> Det maximala antalet enheter som du kan ansluta till en enda IoT-hubben är för närvarande 500 000. Om du vill höja denna gräns Kontakta [Microsoft-supporten](https://azure.microsoft.com/support/options/).
+> För närvarande hello maximalt antal enheter som du kan ansluta tooa enda IoT-hubben är 500 000. Om du vill tooincrease den här gränsen kan kontakta [Microsoft-supporten](https://azure.microsoft.com/support/options/).
 
 ## <a name="latency"></a>Svarstid
-IoT-hubb strävar efter att tillhandahålla låg latens för alla åtgärder. På grund av nätverksproblem och andra oväntade faktorer kan inte den garantera en maximal fördröjning. När du utformar din lösning bör du:
+IoT-hubb strävar efter tooprovide låg latens för alla åtgärder. På grund av toonetwork villkor och andra oväntade faktorer kan inte den garantera en maximal fördröjning. När du utformar din lösning bör du:
 
-* Undvik att göra några antaganden om den maximala svarstiden för alla IoT-hubb-åtgärder.
-* Etablera din IoT-hubb i Azure-region närmast dina enheter.
-* Överväg att använda Azure IoT kant utföra känslig för fördröjningar åtgärder på enheten eller på en gateway nära enheten.
+* Undvik att göra några antaganden om hello maximal svarstid för alla IoT-hubb-åtgärder.
+* Etablera din IoT-hubb i hello Azure-region närmaste tooyour enheter.
+* Överväg att använda Azure IoT kant tooperform känslig för fördröjningar åtgärder på hello enhet eller på en Stäng toohello gateway-enhet.
 
 Flera IoT Hub-enheter påverkar begränsning som beskrivits ovan, men ger inte några ytterligare fördröjning fördelar eller garantier.
 Om du ser oväntat ökar i åtgärden latens Kontakta [Microsoft-supporten](https://azure.microsoft.com/support/options/).

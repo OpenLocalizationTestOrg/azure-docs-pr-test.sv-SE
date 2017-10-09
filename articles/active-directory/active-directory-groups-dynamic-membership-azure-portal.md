@@ -1,6 +1,6 @@
 ---
-title: Attributbaserad dynamiskt medlemskap i Azure Active Directory | Microsoft Docs
-description: "Så att skapa avancerade regler för dynamisk gruppmedlemskap inklusive stöds uttryck regeln operatorer och parametrar."
+title: aaaAttribute-baserade dynamiskt medlemskap i Azure Active Directory | Microsoft Docs
+description: "Hur toocreate avancerade regler för dynamiska gruppmedlemskap, inklusive stöds uttryck regeln operatorer och parametrar."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -16,65 +16,65 @@ ms.date: 08/18/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4d9a08551d616ff98bc8734cbeec01d6e0d04ca
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8cd06ed70433eff65401c67d7351d5dcc12a9dd5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Skapa attributbaserade regler för dynamiska gruppmedlemskap i Azure Active Directory
-Du kan skapa avancerade regler för att aktivera avancerade attributbaserad dynamiskt medlemskap för grupper i Azure Active Directory (AD Azure). Den här artikeln beskrivs de attribut och syntax för att skapa regler för dynamiskt medlemskap för användare eller enheter.
+I Azure Active Directory (Azure AD), kan du skapa avancerade regler tooenable komplexa attributbaserad dynamiskt medlemskap för grupper. Den här artikeln beskrivs hello attribut och syntax toocreate dynamiskt medlemskapsregler för användare eller enheter.
 
-När alla attribut för en användare eller enhet ändrar utvärderar systemet alla dynamisk gruppregler i en katalog att se om ändringen skulle leda till valfri grupp lägger till eller tar bort. Om en användare eller enhet uppfyller en regel för en grupp, läggs de som medlem i gruppen. Om de inte längre uppfyller regeln tas bort.
+När alla attribut för användare eller enhet hello utvärderas alla dynamisk gruppregler i en katalog toosee om hello ändringen skulle leda till valfri grupp lägger till eller tar bort. Om en användare eller enhet uppfyller en regel för en grupp, läggs de som medlem i gruppen. Om de inte längre uppfyller hello regeln tas bort.
 
 > [!NOTE]
 > - Du kan skapa en regel för dynamiskt medlemskap för säkerhetsgrupper eller Office 365-grupper.
 >
-> - Den här funktionen kräver en Azure AD Premium P1-licens för varje användare som ingår i minst en dynamisk grupp.
+> - Den här funktionen kräver en Azure AD Premium P1-licens för varje medlem tillagda tooat åtminstone en dynamisk grupp.
 >
 > - Du kan skapa en dynamisk grupp för enheter eller användare, men du kan inte skapa en regel som innehåller både användare och enhetsobjekt.
 
-> - För tillfället går inte att skapa en enhetsgrupp baserat på det ägande användarens attribut. Medlemskapsregler för enheten kan bara referera omedelbar attribut för enhetsobjekt i katalogen.
+> - Hello tillfället är det inte möjligt toocreate en enhetsgrupp baserat på det ägande användarens attribut. Medlemskapsregler för enheten kan bara referens omedelbar attribut enhetsobjekt i hello directory.
 
-## <a name="to-create-an-advanced-rule"></a>Skapa en avancerad regel
-1. Logga in på den [administrationscentret för Azure AD](https://aad.portal.azure.com) med ett konto som är en global administratör eller en användare kontoadministratör.
+## <a name="toocreate-an-advanced-rule"></a>toocreate en avancerad regel
+1. Logga in toohello [administrationscentret för Azure AD](https://aad.portal.azure.com) med ett konto som är en global administratör eller en användare kontoadministratör.
 2. Välj **användare och grupper**.
 3. Välj **alla grupper**.
 
-   ![Öppna bladet grupper](./media/active-directory-groups-dynamic-membership-azure-portal/view-groups-blade.png)
+   ![Öppna hello grupper bladet](./media/active-directory-groups-dynamic-membership-azure-portal/view-groups-blade.png)
 4. I **alla grupper**väljer **ny grupp**.
 
    ![Lägg till ny grupp](./media/active-directory-groups-dynamic-membership-azure-portal/add-group-type.png)
-5. På den **grupp** bladet, ange ett namn och beskrivning för den nya gruppen. Välj en **medlemskapstypen** antingen **dynamiska användaren** eller **dynamisk enhet**, beroende på om du vill skapa en regel för användare eller enheter, och välj sedan **Lägg till dynamiska frågan**. Attribut som används för enheten regler, se [använda attribut för att skapa regler för enhetsobjekt](#using-attributes-to-create-rules-for-device-objects).
+5. På hello **grupp** bladet, ange ett namn och beskrivning för hello nya. Välj en **medlemskapstypen** antingen **dynamiska användaren** eller **dynamisk enhet**, beroende på om du vill toocreate en regel för användare eller enheter och välj sedan **Lägg till dynamiska frågan**. Hello-attribut som används för enheten regler, se [med attribut toocreate regler för enhetsobjekt](#using-attributes-to-create-rules-for-device-objects).
 
    ![Lägg till regel för dynamiskt medlemskap](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
-6. På den **dynamiskt medlemskapsregler** bladet, ange din regel i den **Lägg till dynamiskt medlemskap avancerade regeln** , tryck på RETUR och välj sedan **skapa** längst ned i den bladet.
-7. Välj **skapa** på den **grupp** bladet för att skapa gruppen.
+6. På hello **dynamiskt medlemskapsregler** bladet, ange din regel i hello **Lägg till dynamiskt medlemskap avancerade regeln** , tryck på RETUR och välj sedan **skapa** längst hello hello-bladet.
+7. Välj **skapa** på hello **grupp** bladet toocreate hello grupp.
 
-## <a name="constructing-the-body-of-an-advanced-rule"></a>Hur du skapar innehållet i en avancerad regel
-Avancerade regeln som du kan skapa för dynamiskt medlemskap för grupper är i grunden en binär uttryck som består av tre delar och resulterar i ett true eller false resultat. Det finns tre delar:
+## <a name="constructing-hello-body-of-an-advanced-rule"></a>Hur du skapar hello brödtexten i en avancerad regel
+hello avancerade regeln som du kan skapa för hello dynamiskt medlemskap för grupper är i grunden en binär uttryck som består av tre delar och resulterar i ett true eller false resultat. hello tre delar är:
 
 * Vänster parametern
 * Binär operator
 * Höger konstant
 
-En fullständig avancerade regeln ser ut ungefär så här: (leftParameter binaryOperator ”RightConstant”), där inledande och avslutande parentes är valfria för hela binära uttrycket, dubbla citattecken är valfria, krävs för den högra konstanten bara När det är sträng och syntaxen för parametern vänstra är user.property. En avancerad regel kan bestå av fler än en binär uttryck avgränsade med- och- eller, och - inte logiska operatorer.
+En fullständig avancerade regeln ser ut ungefär toothis: (leftParameter binaryOperator ”RightConstant”), där hello inledande och avslutande parentes är valfria för hello hela binära uttrycket dubbla citattecken är valfria, krävs för hello rätt bara konstant när det är sträng och hello syntaxen för hello vänstra parametern är user.property. En avancerad regel kan bestå av fler än en binär uttryck avgränsade med hello- och- eller, och - inte logiska operatorer.
 
-Följande är exempel på ett korrekt angivet avancerad regel:
+hello följande är exempel på ett korrekt angivet avancerad regel:
 ```
 (user.department -eq "Sales") -or (user.department -eq "Marketing")
 (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
 ```
-Fullständig lista över parametrar som stöds och uttryck regeln operatorer, finns i avsnitten nedan. Attribut som används för enheten regler, se [använda attribut för att skapa regler för enhetsobjekt](#using-attributes-to-create-rules-for-device-objects).
+Hello fullständig lista över parametrar som stöds och uttryck regeln operatorer, finns i avsnitten nedan. Hello-attribut som används för enheten regler, se [med attribut toocreate regler för enhetsobjekt](#using-attributes-to-create-rules-for-device-objects).
 
-Den totala längden på innehållet i avancerade regeln får inte överskrida 2048 tecken.
+hello totala hello brödtexten i avancerade regeln kan inte vara längre än 2048 tecken.
 
 > [!NOTE]
 > Sträng och regex åtgärder är inte skiftlägeskänsliga. Du kan också utföra Null-kontroller, till exempel med $null som en konstant, user.department - eq $null.
 > Strängar som innehåller citattecken ”ska avgränsas med-tecken, till exempel user.department - eq \`” försäljning ”.
 
 ## <a name="supported-expression-rule-operators"></a>Stöds uttryck regeln operatorer
-I följande tabell visas alla operatorer för stöds uttryck-regeln och deras syntax som ska användas i brödtexten för avancerad regel:
+hello följande tabell visas alla operatorer i hello stöds uttryck regeln och deras syntax toobe som används i hello brödtext hello avancerade regeln:
 
 | Operatorn | Syntax |
 | --- | --- |
@@ -91,7 +91,7 @@ I följande tabell visas alla operatorer för stöds uttryck-regeln och deras sy
 
 ## <a name="operator-precedence"></a>Operatorer
 
-Nedan visas alla operatorer per prioritet från lägre till högre. Operatorer på samma rad har samma prioritet:
+Nedan visas alla operatorer per prioritet från lägre toohigher. Operatorer på samma rad har samma prioritet:
 ````
 -any -all
 -or
@@ -99,7 +99,7 @@ Nedan visas alla operatorer per prioritet från lägre till högre. Operatorer p
 -not
 -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
 ````
-Alla operatorer kan användas med eller utan prefixet bindestreck. Parenteser krävs bara när prioritet inte uppfyller dina krav.
+Alla operatorer kan användas med eller utan hello bindestreck prefix. Parenteser krävs bara när prioritet inte uppfyller dina krav.
 Exempel:
 ```
    user.department –eq "Marketing" –and user.country –eq "US"
@@ -108,28 +108,28 @@ motsvarar:
 ```
    (user.department –eq "Marketing") –and (user.country –eq "US")
 ```
-## <a name="using-the--in-and--notin-operators"></a>Med-i och - notIn operatorer
+## <a name="using-hello--in-and--notin-operators"></a>Med hjälp av hello - i och - notIn operatorer
 
-Om du vill jämföra värdet för ett användarattribut mot ett antal olika värden kan du använda-i eller notIn - operatorer. Här är ett exempel med-i-operatorn:
+Om du vill toocompare hello värdet för ett användarattribut mot ett antal olika värden kan du använda hello - i eller notIn - operatorer. Här är ett exempel med hjälp av hello - i-operatorn:
 ```
     user.department -In [ "50001", "50002", "50003", “50005”, “50006”, “50007”, “50008”, “50016”, “50020”, “50024”, “50038”, “50039”, “51100” ]
 ```
-Observera användningen av den ”[” och ”]” i början och slutet av listan med värden. Det här villkoret utvärderas till True för värdet user.department är lika med ett av värdena i listan.
+Observera hello användning av hello ”[” och ”]” i hello början och slutet av hello lista med värden. Det här villkoret utvärderar tooTrue värdets hello user.department är lika med en av hello värdena i hello lista.
 
 
 ## <a name="query-error-remediation"></a>Frågan fel reparation
-I följande tabell visas eventuella fel och åtgärda dem om de sker
+hello följande tabell visas eventuella fel och hur toocorrect dem om de sker
 
 | Parsningsfel i frågan | Fel-användning | Korrigerade användning |
 | --- | --- | --- |
-| Fel: Attribut stöds inte. |(user.invalidProperty - eq ”värde”) |(user.department - eq ”värde”)<br/>Egenskapen ska matcha någon från den [lista över egenskaper som stöds](#supported-properties). |
-| Fel: Operatorn stöds inte i attributet. |(user.accountEnabled-innehåller true) |(user.accountEnabled - eq SANT)<br/>Egenskapen är av typen boolean. Använd stöds operatorer (-eq eller - n) för boolesk typ från listan ovan. |
-| Fel: Frågekompileringsfel. |(user.department - eq ”försäljning”)- och (user.department - eq ”marknadsföring”) (user.userPrincipalName-matchning ”*@domain.ext”) |(user.department - eq ”försäljning”)- och (user.department - eq ”marknadsföring”)<br/>Logisk operator måste matcha en från listan egenskaper som stöds. (user.userPrincipalName-matchar ”. *@domain.ext”) eller (user.userPrincipalName-matchar ”@domain.ext$”) i reguljära uttryck. |
+| Fel: Attribut stöds inte. |(user.invalidProperty - eq ”värde”) |(user.department - eq ”värde”)<br/>-Egenskap måste matcha en från hello [lista över egenskaper som stöds](#supported-properties). |
+| Fel: Operatorn stöds inte i attributet. |(user.accountEnabled-innehåller true) |(user.accountEnabled - eq SANT)<br/>Egenskapen är av typen boolean. Använda hello stöds operatorer (-eq eller - n) för boolesk typ från hello ovanför listan. |
+| Fel: Frågekompileringsfel. |(user.department - eq ”försäljning”)- och (user.department - eq ”marknadsföring”) (user.userPrincipalName-matchning ”*@domain.ext”) |(user.department - eq ”försäljning”)- och (user.department - eq ”marknadsföring”)<br/>Logisk operator måste matcha en hello stöds egenskaper listan ovan. (user.userPrincipalName-matchar ”. *@domain.ext”) eller (user.userPrincipalName-matchar ”@domain.ext$”) i reguljära uttryck. |
 | Fel: Binära uttrycket är inte i rätt format. |(user.department-eq ”försäljning”) (user.department - eq ”försäljning”) (user.department-eq ”försäljning”) |(user.accountEnabled - eq SANT)- och (user.userPrincipalName-innehåller ”alias@domain”)<br/>Frågan har flera fel. En parentes som inte rätt plats. |
 | Fel: Okänt fel uppstod under konfigurerar dynamiskt medlemskap. |(user.accountEnabled - eq ”True” och user.userPrincipalName-innehåller ”alias@domain”) |(user.accountEnabled - eq SANT)- och (user.userPrincipalName-innehåller ”alias@domain”)<br/>Frågan har flera fel. En parentes som inte rätt plats. |
 
 ## <a name="supported-properties"></a>Egenskaper som stöds
-Följande är alla användaregenskaper som du kan använda i din avancerade regel:
+hello följande är hello användaregenskaper som du kan använda i din avancerade regel:
 
 ### <a name="properties-of-type-boolean"></a>Egenskaper av typen boolean
 Tillåtna operatörer
@@ -166,11 +166,11 @@ Tillåtna operatörer
 | facsimileTelephoneNumber |Ett string-värde eller $null |(user.facsimileTelephoneNumber - eq ”värde”) |
 | givenName |Ett string-värde eller $null |(user.givenName - eq ”värde”) |
 | Befattning |Ett string-värde eller $null |(user.jobTitle - eq ”värde”) |
-| E-post |Alla strängvärde eller $null (SMTP-adressen för användaren) |(user.mail - eq ”värde”) |
-| mailNickName |Ett värde (e postalias för användaren) |(user.mailNickName - eq ”värde”) |
+| E-post |Alla strängvärde eller $null (SMTP-adress för hello användare) |(user.mail - eq ”värde”) |
+| mailNickName |Ett värde (e postalias för hello användare) |(user.mailNickName - eq ”värde”) |
 | mobila |Ett string-värde eller $null |(user.mobile - eq ”värde”) |
-| objekt-ID |GUID för användarobjektet |(user.objectId - eq ”1111111-1111-1111-1111-111111111111”) |
-| onPremisesSecurityIdentifier | Lokalt säkerhetsidentifierare (SID) för användare som har synkroniserats från lokalt till molnet. |(user.onPremisesSecurityIdentifier - eq ”S-1-1-11-1111111111-1111111111-1111111111-1111111”) |
+| objekt-ID |GUID för användarobjektet hello |(user.objectId - eq ”1111111-1111-1111-1111-111111111111”) |
+| onPremisesSecurityIdentifier | Lokala säkerhetsidentifierare (SID) för användare som har synkroniserats från lokala toohello moln. |(user.onPremisesSecurityIdentifier - eq ”S-1-1-11-1111111111-1111111111-1111111111-1111111”) |
 | passwordPolicies |Ingen DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies - eq ”DisableStrongPassword”) |
 | physicalDeliveryOfficeName |Ett string-värde eller $null |(user.physicalDeliveryOfficeName - eq ”värde”) |
 | Postnummer |Ett string-värde eller $null |(user.postalCode - eq ”värde”) |
@@ -198,34 +198,34 @@ Tillåtna operatörer
 ## <a name="multi-value-properties"></a>Egenskaper för flera värden
 Tillåtna operatörer
 
-* -alla (uppfyllt när minst ett objekt i samlingen matchar villkoret)
-* -alla (uppfyllt när alla objekt i samlingen matchar villkoret)
+* -alla (nöjd när minst ett objekt i samlingen hello matchar hello villkor)
+* -alla (uppfyllt när alla objekt i samlingen hello matchar hello villkor)
 
 | Egenskaper | Värden | Användning |
 | --- | --- | --- |
-| assignedPlans |Varje objekt i samlingen visar egenskaperna för följande sträng: capabilityStatus, tjänst, servicePlanId |user.assignedPlans-alla (assignedPlan.servicePlanId - eq ”efb87545-963c-4e0d-99df-69c6916d9eb0”- och assignedPlan.capabilityStatus - eq ”aktiverad”) |
+| assignedPlans |Varje objekt i samlingen hello visar hello följande strängegenskaper: capabilityStatus, tjänst, servicePlanId |user.assignedPlans-alla (assignedPlan.servicePlanId - eq ”efb87545-963c-4e0d-99df-69c6916d9eb0”- och assignedPlan.capabilityStatus - eq ”aktiverad”) |
 
-Egenskaper för flera värden är samlingar av objekt av samma typ. Du kan använda - alla och -alla operatörer att tillämpa ett villkor på en eller alla objekt i samlingen, respektive. Exempel:
+Egenskaper för flera värden är samlingar av objekt i hello samma typ. Du kan använda - alla och -alla operatorer tooapply ett villkor tooone eller alla hello objekt i hello samling respektive. Exempel:
 
-assignedPlans är en egenskap för flera värden med en lista över alla serviceplaner för användaren. Den nedan uttryck Välj användare med Exchange Online (Plan 2) service-plan som även är i aktiverat läge:
+assignedPlans är en egenskap för flera värden med en lista över alla serviceplaner tilldelad toohello användare. hello nedan uttrycket väljer användare som har hello Exchange Online (Plan 2) service-plan som även är i aktiverat läge:
 
 ```
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-(Guid-identifierare identifierar serviceplan för Exchange Online (Plan 2).)
+(hello Guid-identifierare identifierar hello Exchange Online (Plan 2) service-plan.)
 
 > [!NOTE]
-> Detta är användbart om du vill identifiera alla användare som en Office 365 (eller andra Microsoft-onlinetjänst) kapaciteten har aktiverats, till exempel för att rikta dem med en viss uppsättning principer.
+> Detta är användbart om du vill tooidentify alla användare som en Office 365 (eller andra Microsoft-onlinetjänst) kapaciteten har aktiverats för exempel tootarget dem med en viss uppsättning principer.
 
-Följande uttryck väljer alla användare som har alla service-plan som är associerad med Intune-tjänsten (som identifieras av tjänstnamn ”SCO”):
+hello väljer följande uttryck alla användare som har alla service-plan som är associerad med hello Intune-tjänsten (som identifieras av tjänstnamn ”SCO”):
 ```
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
 ## <a name="use-of-null-values"></a>Null-värden
 
-Du kan använda ”null” eller $null om du vill ange ett null-värde i en regel. Exempel:
+toospecify ett null-värde i en regel kan du använda ”null” eller $null. Exempel:
 ```
    user.mail –ne null
 ```
@@ -237,29 +237,29 @@ motsvarar
 ## <a name="extension-attributes-and-custom-attributes"></a>Tilläggsattribut och anpassade attribut
 Tilläggsattribut och anpassade attribut stöds i regler för dynamiskt medlemskap.
 
-Tilläggsattribut synkroniseras från lokala Windows Server AD och vidta formatet ”ExtensionAttributeX”, där X är lika med 1 och 15.
+Tilläggsattribut synkroniseras från lokala Windows Server AD och vidta hello format ”ExtensionAttributeX”, där X är lika med 1 och 15.
 Ett exempel på en regel som använder ett tillägg-attribut är
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
-Anpassade attribut som synkroniseras från lokala Windows Server AD eller från ett anslutet SaaS-program och format ”user.extension_[GUID]\__ [attribut]”, där [GUID] är den unika identifieraren i AAD för det program som skapats i attributet i AAD och [attribut] är namnet på attributet som det skapades.
+Anpassade attribut som synkroniseras från lokala Windows Server AD eller från en ansluten SaaS-program och hello hello formatering av ”user.extension_[GUID]\__ [attribut]”, där [GUID] är hello Unik identifierare i AAD för hello program som skapade hello-attributet i AAD och [attribut] är hello hello attributets namn som det skapades.
 Är ett exempel på en regel som använder ett anpassat attribut
 ```
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
 ```
-Anpassade attributets namn finns i katalogen genom att fråga användaren attributet diagrammet Utforskaren och söker efter attributets namn.
+hello anpassade attributets namn finns i hello directory genom att fråga användaren attributet diagrammet Utforskaren och söker efter hello attributets namn.
 
 ## <a name="direct-reports-rule"></a>Regeln ”direktrapporter”
-Du kan skapa en grupp som innehåller alla direktrapporter för en chef. När den manager direktrapporter ändras i framtiden, justeras gruppens medlemskap automatiskt.
+Du kan skapa en grupp som innehåller alla direktrapporter för en chef. När hello manager direktrapporter ändras i framtida hello, ska hello gruppmedlemskap justeras automatiskt.
 
 > [!NOTE]
-> 1. Kontrollera att regeln ska fungera för den **ID Manager** egenskapen är korrekt inställda på användare i din klient. Du kan kontrollera det aktuella värdet för en användare på deras **fliken profil**.
-> 2. Den här regeln har bara stöd för **direkt** rapporter. Det går för närvarande inte att skapa en grupp för en kapslad hierarki, t.ex. en grupp som innehåller direktrapporter och deras rapporter.
+> 1. Se till att hello för hello regeln toowork **ID Manager** egenskapen är korrekt inställda på användare i din klient. Du kan kontrollera hello aktuellt värde för en användare på deras **fliken profil**.
+> 2. Den här regeln har bara stöd för **direkt** rapporter. Det är för närvarande inte möjligt toocreate en grupp för en kapslad hierarki, t.ex. en grupp som innehåller direktrapporter och deras rapporter.
 
-**Konfigurera gruppen**
+**tooconfigure hello grupp**
 
-1. Följ steg 1-5 från avsnittet [att skapa avancerade regeln](#to-create-the-advanced-rule), och välj en **medlemskapstypen** av **dynamiska användaren**.
-2. På den **dynamiskt medlemskapsregler** bladet ange regeln med följande syntax:
+1. Följ steg 1-5 från avsnittet [toocreate hello avancerade regeln](#to-create-the-advanced-rule), och välj en **medlemskapstypen** av **dynamiska användaren**.
+2. På hello **dynamiskt medlemskapsregler** bladet ange hello regeln med hello följande syntax:
 
     *Direktrapporter för ”{obectID_of_manager}”*
 
@@ -267,11 +267,11 @@ Du kan skapa en grupp som innehåller alla direktrapporter för en chef. När de
 ```
                     Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 ```
-    where “62e19b97-8b3d-4d4a-a106-4ce66896a863” is the objectID of the manager. The object ID can be found on manager's **Profile tab**.
-3. När du har sparat regeln läggs alla användare med det angivna värdet för ID Manager till i gruppen.
+    where “62e19b97-8b3d-4d4a-a106-4ce66896a863” is hello objectID of hello manager. hello object ID can be found on manager's **Profile tab**.
+3. När du har sparat hello regel anges alla användare med hello Manager ID-värde läggs toohello grupp.
 
-## <a name="using-attributes-to-create-rules-for-device-objects"></a>Använda attribut för att skapa regler för enhetsobjekt
-Du kan också skapa en regel som väljer enhetsobjekten för medlemskap i en grupp. Du kan använda följande attribut för enheten.
+## <a name="using-attributes-toocreate-rules-for-device-objects"></a>Med attribut toocreate regler för enhetsobjekt
+Du kan också skapa en regel som väljer enhetsobjekten för medlemskap i en grupp. hello följande attribut för enheten kan användas.
 
  Attribut för enheten  | Värden | Exempel
  ----- | ----- | ----------------
@@ -286,8 +286,8 @@ Du kan också skapa en regel som väljer enhetsobjekten för medlemskap i en gru
  Domännamn | Ett värde | (device.domainName - eq ”contoso.com”)
  enrollmentProfileName | Profilnamn för Apple enheten registreringen | (device.enrollmentProfileName - eq ”DEP iPhone”)
  isRooted | SANT FALSKT | (device.isRooted - eq SANT)
- managementType | MDM (för mobila enheter)<br>PC (för datorer som hanteras av Intune PC-agent) | (device.managementType - eq ”MDM”)
- OrganizationalUnit | valfritt strängvärde som matchar namnet på den organisationsenhet som angetts av en lokal Active Directory | (device.organizationalUnit - eq ”USA datorer”)
+ managementType | MDM (för mobila enheter)<br>PC (för datorer som hanteras av hello Intune PC-agent) | (device.managementType - eq ”MDM”)
+ OrganizationalUnit | ett värde matchar hello namnet på hello organisationsenhet som angetts av en lokal Active Directory | (device.organizationalUnit - eq ”USA datorer”)
  deviceId | en giltig enhets-ID för Azure AD | (device.deviceId - eq ”d4fe7726-5966-431c-b3b8-cddc8fdb717d”)
  objekt-ID | en giltig Azure AD-objekt-ID |  (device.objectId - eq 76ad43c9-32c5-45e8-a272-7b58b58f596d ”)
 

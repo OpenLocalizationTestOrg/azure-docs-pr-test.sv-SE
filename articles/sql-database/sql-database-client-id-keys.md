@@ -1,5 +1,5 @@
 ---
-title: "Hämta värden för app - autentisering i Azure SQL Database | Microsoft Docs"
+title: "aaaGet värden för app - autentisering i Azure SQL Database | Microsoft Docs"
 description: "Skapa ett huvudnamn för tjänsten för att komma åt SQL-databas från kod."
 services: sql-database
 documentationcenter: 
@@ -16,30 +16,30 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/30/2016
 ms.author: sstein
-ms.openlocfilehash: ec6256e9c5bb0d9c8d15d0f673cea70b3915eb34
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b57dc075ec9e679da9f2f5fa53e02312539cdf07
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Hämta värden som krävs för att verifiera ett program för att komma åt SQL-databas från kod
-Om du vill skapa och hantera SQL-databas från kod måste du registrera din app i Azure Active Directory (AAD)-domän i prenumerationen där resurserna i Azure har skapats.
+# <a name="get-hello-required-values-for-authenticating-an-application-tooaccess-sql-database-from-code"></a>Hämta hello krävs värden för att autentisera en programmet tooaccess SQL-databas från kod
+toocreate och hantera SQL-databas från kod måste du registrera din app i hello Azure Active Directory (AAD)-domän i hello prenumeration där resurserna i Azure har skapats.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Skapa en tjänstens huvudnamn för åtkomst av resurser från ett program
-Du måste ha senast [Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) installerad och körs. Mer information finns i [Så här installerar och konfigurerar du Azure PowerShell](/powershell/azureps-cmdlets-docs).
+## <a name="create-a-service-principal-tooaccess-resources-from-an-application"></a>Skapa en service principal tooaccess resurser från ett program
+Du behöver toohave hello senaste [Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) installerad och körs. Detaljerad information finns i [hur tooinstall och konfigurera Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
-Följande PowerShell-skript skapar Active Directory-programmet (AD) och tjänstobjektet som vi behöver för att autentisera vår C#-app. Skriptet matar ut värden som vi behöver för det föregående C#-exemplet. Detaljerad information finns i [Skapa ett tjänstobjekt med Azure PowerShell för att komma åt resurser](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+hello skapar följande PowerShell-skript hello Active Directory (AD) och en hello tjänst huvudnamn vi behöver tooauthenticate våra C#-appen. hello skript matar ut värden som vi behöver för hello föregående C# exempel. Detaljerad information finns i [Använd Azure PowerShell toocreate ett huvudnamn för tjänsten tooaccess resurser](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
-    # Sign in to Azure.
+    # Sign in tooAzure.
     Add-AzureRmAccount
 
-    # If you have multiple subscriptions, uncomment and set to the subscription you want to work with.
+    # If you have multiple subscriptions, uncomment and set toohello subscription you want toowork with.
     #$subscriptionId = "{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}"
     #Set-AzureRmContext -SubscriptionId $subscriptionId
 
     # Provide these values for your new AAD app.
-    # $appName is the display name for your app, must be unique in your directory.
-    # $uri does not need to be a real uri.
+    # $appName is hello display name for your app, must be unique in your directory.
+    # $uri does not need toobe a real uri.
     # $secret is a password you create.
 
     $appName = "{app-name}"
@@ -49,19 +49,19 @@ Följande PowerShell-skript skapar Active Directory-programmet (AD) och tjänsto
     # Create a AAD app
     $azureAdApplication = New-AzureRmADApplication -DisplayName $appName -HomePage $Uri -IdentifierUris $Uri -Password $secret
 
-    # Create a Service Principal for the app
+    # Create a Service Principal for hello app
     $svcprincipal = New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
-    # To avoid a PrincipalNotFound error, I pause here for 15 seconds.
+    # tooavoid a PrincipalNotFound error, I pause here for 15 seconds.
     Start-Sleep -s 15
 
-    # If you still get a PrincipalNotFound error, then rerun the following until successful. 
+    # If you still get a PrincipalNotFound error, then rerun hello following until successful. 
     $roleassignment = New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
 
-    # Output the values we need for our C# application to successfully authenticate
+    # Output hello values we need for our C# application toosuccessfully authenticate
 
-    Write-Output "Copy these values into the C# sample app"
+    Write-Output "Copy these values into hello C# sample app"
 
     Write-Output "_subscriptionId:" (Get-AzureRmContext).Subscription.SubscriptionId
     Write-Output "_tenantId:" (Get-AzureRmContext).Tenant.TenantId
@@ -73,5 +73,5 @@ Följande PowerShell-skript skapar Active Directory-programmet (AD) och tjänsto
 
 ## <a name="see-also"></a>Se även
 * [Skapa en SQL-databas med C#](sql-database-get-started-csharp.md)
-* [Ansluter till SQL-databas med hjälp av Azure Active Directory-autentisering](sql-database-aad-authentication.md)
+* [Ansluta tooSQL databasen med hjälp av Azure Active Directory-autentisering](sql-database-aad-authentication.md)
 

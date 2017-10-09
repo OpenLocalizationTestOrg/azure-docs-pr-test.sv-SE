@@ -1,6 +1,6 @@
 ---
-title: Konfigurera uppgraderingen av ett Service Fabric-program | Microsoft Docs
-description: "Lär dig hur du konfigurerar inställningar för att uppgradera ett Service Fabric-program med hjälp av Microsoft Visual Studio."
+title: aaaConfigure hello uppgradering av ett Service Fabric-program | Microsoft Docs
+description: "Lär dig hur tooconfigure hello inställningar för att uppgradera ett Service Fabric-program med hjälp av Microsoft Visual Studio."
 services: service-fabric
 documentationcenter: na
 author: mikkelhegn
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 314b29a56e4651222822f40a116af97a7372ff2c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8ca50aa9d911f3c98f017490c8fe29011e8d80cd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurera uppgraderingen av ett Service Fabric-program i Visual Studio
-Visual Studio tools för Azure Service Fabric stödja uppgradering för publicering till lokal eller fjärransluten kluster. Det finns tre scenarier som du vill uppgradera ditt program till en nyare version i stället för att ersätta program under testning och felsökning:
+# <a name="configure-hello-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurera hello uppgradering av ett Service Fabric-program i Visual Studio
+Visual Studio tools för Azure Service Fabric stödja uppgradera publicerar toolocal eller fjärr-kluster. Det finns tre scenarier där du vill tooupgrade dina program tooa nyare version i stället för att ersätta hello program under testning och felsökning:
 
-* Programmet data förloras inte under uppgraderingen.
-* Tillgänglighet fortfarande hög så det finns inte några avbrott i tjänsten under uppgraderingen, om det finns tillräckligt med instanser av tjänsten sprids uppgraderingsdomäner.
+* Programdata går inte förlorade under hello uppgraderingen.
+* Tillgänglighet förblir hög så att det inte går eventuella avbrott i tjänsten under hello uppgraderingen, om det finns tillräckligt med instanser av tjänsten sprids uppgraderingsdomäner.
 * Du kan köra testerna mot ett program medan den uppgraderas.
 
-## <a name="parameters-needed-to-upgrade"></a>Parametrar som behövs för att uppgradera
-Du kan välja mellan två typer av distribution: regelbundna eller uppgradering. En vanlig distribution raderas alla tidigare distributionsinformation och data på klustret, medan en uppgradering distribution bevarar den. Du måste ange parametrar för uppgradering av program och hälsa kontrollera principer när du uppgraderar ett Service Fabric-program i Visual Studio. Uppgradera parametrar för program för att förhindra uppgraderingen vid kontroll av hälsoprinciper fastställa om uppgraderingen lyckades. Se [uppgradering av Service Fabric-programmet: Uppgraderingsparametrar](service-fabric-application-upgrade-parameters.md) för mer information.
+## <a name="parameters-needed-tooupgrade"></a>Parametrar krävs tooupgrade
+Du kan välja mellan två typer av distribution: regelbundna eller uppgradering. En vanlig distribution raderas alla tidigare distributionsinformation och data på hello kluster, medan en uppgradering distribution bevarar den. När du uppgraderar ett Service Fabric-program i Visual Studio, behöver du uppgradera parametrar för tooprovide program och kontrollera hälsoprinciper. Uppgradering av programmet parametrar för att styra hello uppgradering vid kontroll av hälsoprinciper fastställa om hello uppgraderingen lyckades. Se [uppgradering av Service Fabric-programmet: Uppgraderingsparametrar](service-fabric-application-upgrade-parameters.md) för mer information.
 
 Det finns tre uppgradera lägen: *övervakade*, *UnmonitoredAuto*, och *UnmonitoredManual*.
 
-* En uppgradering av övervakade automatiserar uppgraderingen och hälsokontrollen för programmet.
-* Uppgradering UnmonitoredAuto automatiserar uppgraderingen, men hoppar över hälsokontrollen för programmet.
-* När du gör en uppgradering UnmonitoredManual som du behöver uppgradera manuellt varje domän.
+* En uppgradering av övervakade automatiserar hello uppgradering och programmet hälsokontroll.
+* Uppgradering UnmonitoredAuto automatiserar hello uppgraderingen, men hoppar över hello hälsokontrollen för programmet.
+* När du gör en uppgradering UnmonitoredManual toomanually måste uppgradera varje domän.
 
-Varje Uppgraderingsläge kräver olika uppsättningar med parametrar. Se [uppgradera applikationsparametrarna](service-fabric-application-upgrade-parameters.md) vill veta mer om alternativen för uppgradering.
+Varje Uppgraderingsläge kräver olika uppsättningar med parametrar. Se [uppgradera applikationsparametrarna](service-fabric-application-upgrade-parameters.md) toolearn mer om hello tillgängliga alternativ för uppgradering.
 
 ## <a name="upgrade-a-service-fabric-application-in-visual-studio"></a>Uppgradera ett Service Fabric-program i Visual Studio
-Om du använder Visual Studio Service Fabric-verktyg för att uppgradera ett Service Fabric-program kan du ange en Publicera process för att vara en uppgradering i stället för en vanlig distribution genom att kontrollera den **uppgradera programmet** kryssrutan.
+Om du använder hello Visual Studio Service Fabric verktyg tooupgrade ett Service Fabric-program, kan du ange en publicera processen toobe en uppgradering i stället för en vanlig distribution genom att kontrollera hello **uppgradera hello program** Kontrollera ruta.
 
-### <a name="to-configure-the-upgrade-parameters"></a>Att konfigurera parametrar för uppgradering
-1. Klicka på den **inställningar** knappen bredvid kryssrutan. Den **redigera uppgradera parametrar** dialogrutan visas. Den **redigera uppgradera parametrar** dialogrutan stöder uppgradering lägen övervakade, UnmonitoredAuto och UnmonitoredManual.
-2. Välj Uppgraderingsläge som du vill använda och sedan fylla i parametern rutnätet.
+### <a name="tooconfigure-hello-upgrade-parameters"></a>uppgradera tooconfigure hello-parametrar
+1. Klicka på hello **inställningar** knappen Nästa toohello kryssruta. Hej **redigera uppgradera parametrar** dialogrutan visas. Hej **redigera uppgradera parametrar** dialogrutan stöder hello övervakade och UnmonitoredAuto UnmonitoredManual uppgradera lägen.
+2. Välj hello Uppgraderingsläge som du vill använda toouse och fyller sedan hello parametern rutnätet.
 
-    Varje parameter har standardvärden. Den valfria parametern *DefaultServiceTypeHealthPolicy* tar en hash-tabell inmatning. Här är ett exempel på hash-tabell Indataformatet för *DefaultServiceTypeHealthPolicy*:
+    Varje parameter har standardvärden. Hej valfri parameter *DefaultServiceTypeHealthPolicy* tar en hash-tabell inmatning. Här är ett exempel på hello hash-tabell Indataformatet för *DefaultServiceTypeHealthPolicy*:
 
     ```
     @{ ConsiderWarningAsError = "false"; MaxPercentUnhealthyDeployedApplications = 0; MaxPercentUnhealthyServices = 0; MaxPercentUnhealthyPartitionsPerService = 0; MaxPercentUnhealthyReplicasPerPartition = 0 }
     ```
 
-    *ServiceTypeHealthPolicyMap* är en annan valfri parameter som tar en hash-tabell indata i följande format:
+    *ServiceTypeHealthPolicyMap* är en annan valfri parameter som använder en hash-tabell inmatning hello följande format:
 
     ```    
     @ {"ServiceTypeName" : "MaxPercentUnhealthyPartitionsPerService,MaxPercentUnhealthyReplicasPerPartition,MaxPercentUnhealthyServices"}
@@ -62,15 +62,15 @@ Om du använder Visual Studio Service Fabric-verktyg för att uppgradera ett Ser
     ```
     @{ "ServiceTypeName01" = "5,10,5"; "ServiceTypeName02" = "5,5,5" }
     ```
-3. Om du väljer UnmonitoredManual Uppgraderingsläge, måste du starta en PowerShell-konsol för att fortsätta och Slutför uppgraderingen manuellt. Referera till [uppgradering av Service Fabric-programmet: avancerade alternativ](service-fabric-application-upgrade-advanced.md) att lära dig hur manuell uppgradering fungerar.
+3. Om du väljer UnmonitoredManual Uppgraderingsläge måste du manuellt starta toocontinue en PowerShell-konsolen och slutför hello uppgraderingsprocessen. Se för[uppgradering av Service Fabric-programmet: avancerade alternativ](service-fabric-application-upgrade-advanced.md) toolearn hur manuell uppgradering fungerar.
 
 ## <a name="upgrade-an-application-by-using-powershell"></a>Uppgradera ett program med hjälp av PowerShell
-Du kan använda PowerShell-cmdlets för att uppgradera ett Service Fabric-program. Se [Service Fabric uppgradera självstudien](service-fabric-application-upgrade-tutorial.md) och [Start ServiceFabricApplicationUpgrade](https://msdn.microsoft.com/library/mt125975.aspx) detaljerad information.
+Du kan använda PowerShell-cmdlets tooupgrade ett Service Fabric-program. Se [Service Fabric uppgradera självstudien](service-fabric-application-upgrade-tutorial.md) och [Start ServiceFabricApplicationUpgrade](https://msdn.microsoft.com/library/mt125975.aspx) detaljerad information.
 
-## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>Ange en hälsoprincip för kontrollen i programmanifestfilen
-Varje tjänst i ett Service Fabric-program kan ha sin egen parametrar för hälsotillstånd som åsidosätter standardinställningarna. Du kan ange dessa parametervärden i programmanifestfilen.
+## <a name="specify-a-health-check-policy-in-hello-application-manifest-file"></a>Ange en hälsoprincip för kontrollen i hello programmanifestfilen
+Varje tjänst i ett Service Fabric-program kan ha sin egen parametrar för hälsotillstånd som åsidosätter hello standardvärden. Du kan ange dessa parametervärden i hello programmanifestfilen.
 
-I följande exempel visar hur du kan tillämpa en princip för kontroll av unikt hälsotillstånd för varje tjänst i programmanifestet.
+hello följande exempel visas hur tooapply unikt hälsotillstånd Kontrollera princip för varje tjänst i hello programmanifestet.
 
 ```xml
 <Policies>

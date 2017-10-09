@@ -1,53 +1,53 @@
 <!--author=alkohli last changed: 01/18/17 -->
 
-#### <a name="to-install-updates-via-the-azure-portal"></a>Installera uppdateringar via Azure Portal
+#### <a name="tooinstall-updates-via-hello-azure-portal"></a>tooinstall uppdateringar via hello Azure-portalen
 
-1. Gå till din StorSimple-enhetshanterare och välj **Enheter**. Välj i listan över enheter som är anslutna till tjänsten och klicka på den enhet som du vill uppdatera. 
+1. Gå tooyour StorSimple Enhetshanteraren och välj **enheter**. Välj hello lista över enheter anslutna tooyour tjänsten, och klicka på hello enheten tooupdate. 
 
     ![uppdatera enhet](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
 
-2. I bladet **Inställningar** klickar du på **Enhetsuppdateringar**. 
+2. I hello **inställningar** bladet, klickar du på **enhetsuppdateringar**. 
 
     ![uppdatera enhet](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate2m.png)  
 
-3. Du ser ett meddelande om programuppdateringar är tillgängliga. Du kan också klicka på **Scan** (Sök).
+3. Du ser ett meddelande om hello programuppdateringar är tillgängliga. toocheck för uppdateringar, du kan också klicka på **skanna**.
 
     ![uppdatera enhet](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate3m1.png)
 
-    Du meddelas när genomsökningen startar och slutförs.
+    Du meddelas när hello genomsökningen startar och slutförs.
 
     ![uppdatera enhet](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate5m.png)
 
-4. När uppdateringarna har genomsökts klickar du på alternativet för att **hämta uppdateringar**. 
+4. När uppdateringar hello genomsöks, klickar du på **hämta uppdateringar**. 
 
     ![uppdatera enhet](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate6m.png)
 
-5. På bladet **Nya uppdateringar** går du igenom informationen som kommer när uppdateringarna har hämtats, och du måste bekräfta installationen. Klicka på **OK**.
+5. I hello **nya uppdateringar** bladet granska hello information som du behöver tooconfirm hello installationen när hello uppdateringarna laddas ned. Klicka på **OK**.
 
     ![uppdatera enhet](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate7m.png)
 
-6. Du meddelas när överföringen startar och slutförs.
+6. Du meddelas när hello överföringen startar och slutförs.
 
      ![uppdatera enhet](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate8m.png)
 
-5. På bladet **Enhetsuppdateringar** klickar du på **Installera**.
+5. I hello **enhetsuppdateringar** bladet, klickar du på **installera**.
 
      ![uppdatera enhet](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate11m1.png)   
 
-6. På bladet **Nya uppdateringar** får du en varning om att uppdateringen är störande. En virtuell matris är en enhet med en enda nod. Enheten startas om när den har uppdaterats. Detta avbryter pågående IO. Klicka på **OK** för att installera uppdateringarna. 
+6. I hello **nya uppdateringar** bladet varnas du hello uppdateringen är störande. Som det virtuella matrisen är en enskild nod-enhet, hello enheten startas om när den har uppdaterats. Detta avbryter pågående IO. Klicka på **OK** tooinstall hello uppdateringar. 
 
     ![uppdatera enhet](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate12m.png) 
 
-7. Du får ett meddelande när installationen startar. 
+7. Du meddelas när hello installera jobbet startar. 
 
     ![uppdatera enhet](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate13m.png)
 
-8.  När installationen är klar klickar du på länken **Visa jobb** på bladet **Enhetsuppdateringar** för att övervaka installationen. 
+8.  När hello installera jobbet är klar klickar du på **visa jobb** länken i hello **enhetsuppdateringar** bladet toomonitor hello installation. 
 
     ![uppdatera enhet](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate15m1.png)
 
-    Du kommer då till bladet **Installera uppdateringar**. Du kan visa detaljerad information om jobbet här.
+    Detta tar toohello **installera uppdateringar** bladet. Du kan visa detaljerad information om här hello-jobbet.
 
     ![uppdatera enhet](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate16m1.png)
 
-9. När uppdateringarna har installerats ser du ett meddelande om detta på bladet **Enhetsuppdateringar**. 
+9. När hello uppdateringar har installerats, visas ett meddelande toothis effekt i hello **enhetsuppdateringar** bladet. 

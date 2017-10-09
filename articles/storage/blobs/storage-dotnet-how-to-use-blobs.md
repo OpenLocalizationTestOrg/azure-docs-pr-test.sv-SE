@@ -1,6 +1,6 @@
 ---
-title: "Komma igång med Azure Blob Storage (objektlagring) med hjälp av .NET | Microsoft Docs"
-description: Lagra ostrukturerade data i molnet med Azure Blob Storage (objektlagring).
+title: "aaaGet igång med Azure Blob storage (objektlagring) med hjälp av .NET | Microsoft Docs"
+description: Lagra Ostrukturerade data i hello moln med Azure Blob storage (objektlagring).
 services: storage
 documentationcenter: .net
 author: mmacy
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: marsma
-ms.openlocfilehash: 70c7d6a5e1b9aa9a13481893e0baa56538be097c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3df0cf14b69d85cdc2f62cc3c8b901be102fa026
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-blob-storage-using-net"></a>Komma igång med Azure Blob Storage med hjälp av .NET
 
@@ -26,10 +26,10 @@ ms.lasthandoff: 08/29/2017
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
-Azure Blob Storage är en tjänst som lagrar ostrukturerade data i molnet som objekt/blobbar. Blob Storage kan lagra alla slags textdata eller binära data, till exempel ett dokument, en mediefil eller ett installationsprogram. Blob Storage kallas även för objektlagring.
+Azure Blob storage är en tjänst som lagrar Ostrukturerade data i hello molnet som objekt/blobbar. Blob Storage kan lagra alla slags textdata eller binära data, till exempel ett dokument, en mediefil eller ett installationsprogram. BLOB storage är också hänvisade tooas objektlagring.
 
 ### <a name="about-this-tutorial"></a>Om den här självstudiekursen
-I den här kursen lär du dig hur du skriver .NET-kod för några vanliga scenarier med hjälp av Azure Blob Storage. I kursen beskrivs scenarier där du laddar upp, visar en lista över, laddar ned och tar bort blobbar.
+Den här kursen visar hur toowrite .NET kod för några vanliga scenarier som använder Azure Blob storage. I kursen beskrivs scenarier där du laddar upp, visar en lista över, laddar ned och tar bort blobbar.
 
 **Krav:**
 
@@ -41,7 +41,7 @@ I den här kursen lär du dig hur du skriver .NET-kod för några vanliga scenar
 [!INCLUDE [storage-dotnet-client-library-version-include](../../../includes/storage-dotnet-client-library-version-include.md)]
 
 ### <a name="more-samples"></a>Fler exempel
-Ytterligare exempel med Blob Storage finns i [Komma igång med Azure Blob Storage i .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/). Du kan ladda ned exempelprogrammet och köra det eller bläddra i koden på GitHub.
+Ytterligare exempel med Blob Storage finns i [Komma igång med Azure Blob Storage i .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/). Du kan ladda ned exempelprogrammet hello och kör den, eller bläddra hello koden på GitHub.
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
@@ -50,7 +50,7 @@ Ytterligare exempel med Blob Storage finns i [Komma igång med Azure Blob Storag
 [!INCLUDE [storage-development-environment-include](../../../includes/storage-development-environment-include.md)]
 
 ### <a name="add-using-directives"></a>Lägga till med hjälp av direktiv
-Lägg till följande **using**-direktiv längst upp i filen `Program.cs`:
+Lägg till följande hello **med** direktiven toohello överkant hello `Program.cs` fil:
 
 ```csharp
 using Microsoft.WindowsAzure; // Namespace for CloudConfigurationManager
@@ -58,89 +58,89 @@ using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
 using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 ```
 
-### <a name="parse-the-connection-string"></a>Parsa anslutningssträngen
+### <a name="parse-hello-connection-string"></a>Parsa anslutningssträngen för hello
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
-### <a name="create-the-blob-service-client"></a>Skapa klient för Blob-tjänst
-Med **CloudBlobClient** kan du hämta behållare och blobbar som lagras i Blob Storage. Här är ett sätt att skapa tjänstklienten:
+### <a name="create-hello-blob-service-client"></a>Skapa hello Blob-klienten
+Hej **CloudBlobClient** klassen kan du tooretrieve behållare och blobbar som lagras i Blob storage. Här är ett sätt toocreate hello-klienten:
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
-Nu är det dags att skriva kod som läser data från och skriver data till Blob Storage.
+Nu är du redo toowrite kod som läser data från och skriver tooBlob datalagring.
 
 ## <a name="create-a-container"></a>Skapa en behållare
 [!INCLUDE [storage-container-naming-rules-include](../../../includes/storage-container-naming-rules-include.md)]
 
-Det här exemplet visas hur du skapar en behållare om den inte redan finns:
+Det här exemplet illustrerar hur toocreate en behållare om den inte redan finns:
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve a reference to a container.
+// Retrieve a reference tooa container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Create the container if it doesn't already exist.
+// Create hello container if it doesn't already exist.
 container.CreateIfNotExists();
 ```
 
-Som standard är den nya behållaren privat, vilket innebär att du måste ange din lagringsåtkomstnyckel för att ladda ned blobbar från den här behållaren. Om du vill göra filerna i behållaren tillgängliga för alla kan du ange att behållaren ska vara offentlig med hjälp av följande kod:
+Som standard är hello nya behållaren privat, vilket innebär att du måste ange lagring få åtkomst till viktiga toodownload blobbar från den här behållaren. Om du vill toomake hello filer i hello behållaren tillgängliga tooeveryone, kan du ange hello behållaren toobe offentliga med hello följande kod:
 
 ```csharp
 container.SetPermissions(
     new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 ```
 
-Alla på Internet kan se blobbar i en offentlig behållare. Du kan dock bara ändra eller ta bort dem om du har rätt kontoåtkomstnyckel eller signatur för delad åtkomst.
+Vem som helst på hello Internet kan se blobbar i en offentlig behållare. Du kan ändra eller ta bort dem bara om du har hello lämpligt konto åtkomst till nyckeln eller en signatur för delad åtkomst.
 
 ## <a name="upload-a-blob-into-a-container"></a>Ladda upp en blobb till en behållare
-Azure Blob Storage stöder blockblobbar och sidblobbar.  I de flesta fall är blockblob den rekommenderade typen.
+Azure Blob Storage stöder blockblobbar och sidblobbar.  I de flesta fall är blockblob hello rekommenderade typen toouse.
 
-Om du vill ladda upp en fil till en blockblobb hämtar du en referens för behållaren och använder den för att hämta en referens för blockblobben. När du har en blobbreferens kan du ladda upp en dataström till den genom att anropa metoden **UploadFromStream**. Den här åtgärden skapar blobben om den inte redan fanns, eller skriver över den om den finns.
+tooupload en fil tooa blockblob, hämta en referens för behållaren och använder det tooget en blockblobben. När du har en blobbreferens kan du ladda upp en dataström data tooit genom att anropa hello **UploadFromStream** metod. Den här åtgärden skapar hello blob om det inte fanns tidigare, eller skrivs över om den finns.
 
-Följande exempel visar hur du laddar upp en blobb till en behållare och förutsätter att behållaren redan hade skapats.
+följande exempel visar hur hello tooupload en blobb till en behållare och förutsätter hello behållaren har redan skapats.
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Retrieve reference to a blob named "myblob".
+// Retrieve reference tooa blob named "myblob".
 CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob");
 
-// Create or overwrite the "myblob" blob with contents from a local file.
+// Create or overwrite hello "myblob" blob with contents from a local file.
 using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
 {
     blockBlob.UploadFromStream(fileStream);
 }
 ```
 
-## <a name="list-the-blobs-in-a-container"></a>Visa en lista över blobbarna i en behållare
-Om du vill visa blobbar i en behållare börjar du med att hämta en referens för behållaren. Sedan kan du använda behållarens **ListBlobs**-metod för att hämta blobbarna och/eller katalogerna i den. För att komma åt den omfattande uppsättningen med egenskaper och metoder för en returnerad **IListBlobItem**-metod måste du skicka den till ett **CloudBlockBlob**-, **CloudPageBlob**- eller **CloudBlobDirectory**-objekt. Om typen är okänd kan du använda en typkontroll för att avgöra till vilket objekt den ska skickas. Följande kod visar hur du hämtar och returnerar URI:n för varje objekt i _photos_-behållaren:
+## <a name="list-hello-blobs-in-a-container"></a>Lista hello blobbar i en behållare
+toolist hello blobbar i en behållare först hämta en referens för behållaren. Du kan sedan använda hello behållaren **ListBlobs** metoden tooretrieve hello blobbarna och/eller katalogerna i den. tooaccess hello omfattande uppsättning egenskaper och metoder för en returnerad **IListBlobItem**, måste du skicka den tooa **CloudBlockBlob**, **CloudPageBlob**, eller  **CloudBlobDirectory** objekt. Om hello typen är okänd, kan du använda en typ av kontroll toodetermine vilka toocast den. hello följande kod visar hur tooretrieve och utdata hello URI: N för varje objekt i hello _foton_ behållare:
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("photos");
 
-// Loop over items within the container and output the length and URI.
+// Loop over items within hello container and output hello length and URI.
 foreach (IListBlobItem item in container.ListBlobs(null, false))
 {
     if (item.GetType() == typeof(CloudBlockBlob))
@@ -166,9 +166,9 @@ foreach (IListBlobItem item in container.ListBlobs(null, false))
 }
 ```
 
-Genom att ta med information om sökvägen i blobbnamnen kan du skapa en virtuell katalogstruktur som du kan ordna och bläddra i på samma sätt som ett traditionellt filsystem. Katalogstrukturen är bara virtuell – de enda tillgängliga resurserna i Blob Storage är behållare och blobbar. Klientbiblioteket tillhandahåller dock ett **CloudBlobDirectory**-objekt för att referera till en virtuell katalog och förenkla arbetet med blobbar som är ordnade på det här sättet.
+Genom att ta med information om sökvägen i blobbnamnen kan du skapa en virtuell katalogstruktur som du kan ordna och bläddra i på samma sätt som ett traditionellt filsystem. hello katalogstrukturen är virtuell endast--hello endast tillgängliga resurserna i Blob storage är behållare och blobbar. Dock hello klientbiblioteket tillhandahåller en **CloudBlobDirectory** objekt toorefer tooa virtuell katalog och förenkla processen hello arbetet med blobbar som är ordnade på det här sättet.
 
-Titta exempelvis på följande uppsättning blockblobbar i en behållare med namnet *photos*:
+Tänk dig följande uppsättning blockblobbar i en behållare med namnet hello *foton*:
 
 ```
 photo1.jpg
@@ -181,7 +181,7 @@ photo1.jpg
 2011/photo7.jpg
 ```
 
-När du anropar **ListBlobs** i *photos*-behållaren (som i föregående kodfragment) returneras en hierarkisk lista. Den innehåller både **CloudBlobDirectory**  och **CloudBlockBlob**objekt, som representerar kataloger respektive blobbar i behållaren. Resultatet ser ut så här:
+När du anropar **ListBlobs** på hello *foton* behållare (som hello som föregående kodfragment IT-avdelning), returneras en hierarkiskt ordnad lista. Den innehåller både **CloudBlobDirectory** och **CloudBlockBlob** objekt, som representerar hello kataloger respektive blobbar i hello-behållaren. hello resultatet ser ut så:
 
 ```
 Directory: https://<accountname>.blob.core.windows.net/photos/2010/
@@ -189,17 +189,17 @@ Directory: https://<accountname>.blob.core.windows.net/photos/2011/
 Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 ```
 
-Om du vill kan du ange parametern **UseFlatBlobListing** för **ListBlobs**-metoden till **True**. I detta fall returneras varje blobb i behållaren som ett **CloudBlockBlob**-objekt. Anropet till **ListBlobs** för att returnera en platt lista ser ut så här:
+Du kan ange hello **UseFlatBlobListing** parametern för hello **ListBlobs** metod för att **SANT**. I detta fall returneras varje blobb i behållaren hello som en **CloudBlockBlob** objekt. Hej anrop för**ListBlobs** tooreturn en platt lista ser ut så här:
 
 ```csharp
-// Loop over items within the container and output the length and URI.
+// Loop over items within hello container and output hello length and URI.
 foreach (IListBlobItem item in container.ListBlobs(null, true))
 {
     ...
 }
 ```
 
-och resultatet ser ut så här:
+och hello resultatet ser ut så här:
 
 ```
 Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2010/architecture/description.txt
@@ -213,43 +213,43 @@ Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/
 ```
 
 ## <a name="download-blobs"></a>Ladda ned blobbar
-Om du vill ladda ned blobbar börjar du med att hämta en blobbreferens och anropar sedan **DownloadToStream**-metoden. I följande exempel används metoden **DownloadToStream** för att överföra blobbinnehållet till ett dataströmsobjekt som du sedan kan spara till en lokal fil.
+toodownload blobbar först hämta en blobbreferens och sedan anropa hello **DownloadToStream** metod. hello följande exempel används hello **DownloadToStream** metoden tootransfer hello blob innehållet tooa stream-objektet som du sedan kan spara tooa lokal fil.
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Retrieve reference to a blob named "photo1.jpg".
+// Retrieve reference tooa blob named "photo1.jpg".
 CloudBlockBlob blockBlob = container.GetBlockBlobReference("photo1.jpg");
 
-// Save blob contents to a file.
+// Save blob contents tooa file.
 using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 {
     blockBlob.DownloadToStream(fileStream);
 }
 ```
 
-Du kan också använda metoden **DownloadToStream** för att ladda ned innehållet i en blobb som en textsträng.
+Du kan också använda hello **DownloadToStream** metoden toodownload hello innehållet i en blob som en textsträng.
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Retrieve reference to a blob named "myblob.txt"
+// Retrieve reference tooa blob named "myblob.txt"
 CloudBlockBlob blockBlob2 = container.GetBlockBlobReference("myblob.txt");
 
 string text;
@@ -261,48 +261,48 @@ using (var memoryStream = new MemoryStream())
 ```
 
 ## <a name="delete-blobs"></a>Ta bort blobbar
-Om du vill ta bort en blobb börjar du med att hämta en blobbreferens och anropar sedan metoden **Delete** för den.
+toodelete blob först hämta en blobbreferens och anropar sedan den **ta bort** metod på den.
 
 ```csharp
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-// Create the blob client.
+// Create hello blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Retrieve reference to a previously created container.
+// Retrieve reference tooa previously created container.
 CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-// Retrieve reference to a blob named "myblob.txt".
+// Retrieve reference tooa blob named "myblob.txt".
 CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.txt");
 
-// Delete the blob.
+// Delete hello blob.
 blockBlob.Delete();
 ```
 
 ## <a name="list-blobs-in-pages-asynchronously"></a>Visa en lista över blobbar på sidor asynkront
-Om du visar ett stort antal blobbar, eller om du vill styra hur många resultat som returneras i samma åtgärd, kan du visa blobbar på resultatsidor. Det här exemplet illustrerar hur du returnerar resultat på sidor asynkront, så att körningen inte blockeras när ett stort antal resultat väntar på att returneras.
+Om du visar ett stort antal blobbar eller om du vill toocontrol hello antalet resultat som returneras i samma åtgärd, kan du visa blobbar på resultatsidor. Det här exemplet visar hur tooreturn resultat på sidor asynkront, så att körningen inte blockeras medan du väntar på tooreturn ett stort antal resultat.
 
-I det här exemplet returneras en platt blobblista, men du kan också visa en hierarkiskt ordnad lista genom att ange _useFlatBlobListing_-parametern för **ListBlobsSegmentedAsync**-metoden till _false_.
+Det här exemplet illustrerar en platt blob lista, men du kan också utföra en hierarkiskt ordnad lista genom att ange hello _useFlatBlobListing_ parametern för hello **ListBlobsSegmentedAsync** metoden too_false_.
 
-Eftersom exempelmetoden anropar en asynkron metod måste den föregås av nyckelordet _async_ och returnera ett **Task**-objekt. Nyckelordet await som angetts för **ListBlobsSegmentedAsync**-metoden pausar körningen av exempelmetoden tills listuppgiften har slutförts.
+Eftersom hello exempelmetoden anropar en asynkron metod, den måste föregås hello _asynkrona_ nyckelord och det måste returnera en **aktivitet** objekt. Hej await nyckelord som angetts för hello **ListBlobsSegmentedAsync** metoden pausar körningen av hello exempelmetoden tills listuppgiften hello har slutförts.
 
 ```csharp
 async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer container)
 {
-    //List blobs to the console window, with paging.
+    //List blobs toohello console window, with paging.
     Console.WriteLine("List blobs in pages:");
 
     int i = 0;
     BlobContinuationToken continuationToken = null;
     BlobResultSegment resultSegment = null;
 
-    //Call ListBlobsSegmentedAsync and enumerate the result segment returned, while the continuation token is non-null.
-    //When the continuation token is null, the last page has been returned and execution can exit the loop.
+    //Call ListBlobsSegmentedAsync and enumerate hello result segment returned, while hello continuation token is non-null.
+    //When hello continuation token is null, hello last page has been returned and execution can exit hello loop.
     do
     {
-        //This overload allows control of the page size. You can return all remaining results by passing null for the maxResults parameter,
+        //This overload allows control of hello page size. You can return all remaining results by passing null for hello maxResults parameter,
         //or by calling a different overload.
         resultSegment = await container.ListBlobsSegmentedAsync("", true, BlobListingDetails.All, 10, continuationToken, null, null);
         if (resultSegment.Results.Count<IListBlobItem>() > 0) { Console.WriteLine("Page {0}:", ++i); }
@@ -312,39 +312,39 @@ async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer cont
         }
         Console.WriteLine();
 
-        //Get the continuation token.
+        //Get hello continuation token.
         continuationToken = resultSegment.ContinuationToken;
     }
     while (continuationToken != null);
 }
 ```
 
-## <a name="writing-to-an-append-blob"></a>Skriva till en tilläggsblobb
-En tilläggsblobb är optimerad för tilläggsåtgärder, t.ex loggning. Precis som en blockblobb består en tilläggsblobb av block, men när du lägger till ett nytt block till en tilläggsblobb läggs det alltid till sist i blobben. Du kan inte uppdatera eller ta bort ett befintligt block i en tilläggsblobb. En tilläggsblobbs block-ID:n exponeras inte som de gör för en blockblobb.
+## <a name="writing-tooan-append-blob"></a>Skrivning tooan lägga till blob
+En tilläggsblobb är optimerad för tilläggsåtgärder, t.ex loggning. Som en blockblobb består en tilläggsblobb av block, men när du lägger till en ny tilläggsblobb för block tooan det är alltid tillagda toohello slutet av hello-blob. Du kan inte uppdatera eller ta bort ett befintligt block i en tilläggsblobb. hello block ID för en tilläggsblobb exponeras inte eftersom de är för en blockblob.
 
-Blocken i en tilläggsblobb kan ha olika storlek, upp till högst 4 MB, och en tilläggsblobb kan innehålla högst 50 000 block. Den största storleken på en tilläggsblobb är alltså strax över 195 GB (4 MB × 50 000 block).
+Varje block i en tilläggsblobb kan ha olika storlek, upp tooa högst 4 MB och en tilläggsblobb kan innehålla högst 50 000 block. hello maximal storlek på en tilläggsblobb är därför lite över 195 GB (4 MB × 50 000 block).
 
-I exemplet nedan skapar vi en ny tilläggsblobb och lägger till vissa data i den för att simulera en enkel loggningsåtgärd.
+hello exemplet nedan skapar en ny tilläggsblobb och lägger till vissa data tooit, simulera en enkel loggningsåtgärd.
 
 ```csharp
-//Parse the connection string for the storage account.
+//Parse hello connection string for hello storage account.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-//Create service client for credentialed access to the Blob service.
+//Create service client for credentialed access toohello Blob service.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-//Get a reference to a container.
+//Get a reference tooa container.
 CloudBlobContainer container = blobClient.GetContainerReference("my-append-blobs");
 
-//Create the container if it does not already exist.
+//Create hello container if it does not already exist.
 container.CreateIfNotExists();
 
-//Get a reference to an append blob.
+//Get a reference tooan append blob.
 CloudAppendBlob appendBlob = container.GetAppendBlobReference("append-blob.log");
 
-//Create the append blob. Note that if the blob already exists, the CreateOrReplace() method will overwrite it.
-//You can check whether the blob exists to avoid overwriting it by using CloudAppendBlob.Exists().
+//Create hello append blob. Note that if hello blob already exists, hello CreateOrReplace() method will overwrite it.
+//You can check whether hello blob exists tooavoid overwriting it by using CloudAppendBlob.Exists().
 appendBlob.CreateOrReplace();
 
 int numBlocks = 10;
@@ -354,41 +354,41 @@ Random rnd = new Random();
 byte[] bytes = new byte[numBlocks];
 rnd.NextBytes(bytes);
 
-//Simulate a logging operation by writing text data and byte data to the end of the append blob.
+//Simulate a logging operation by writing text data and byte data toohello end of hello append blob.
 for (int i = 0; i < numBlocks; i++)
 {
     appendBlob.AppendText(String.Format("Timestamp: {0:u} \tLog Entry: {1}{2}",
         DateTime.UtcNow, bytes[i], Environment.NewLine));
 }
 
-//Read the append blob to the console window.
+//Read hello append blob toohello console window.
 Console.WriteLine(appendBlob.DownloadText());
 ```
 
-Mer information om skillnaderna mellan de tre typerna av blobbar finns i [Förstå blockblobbar, sidblobbar och tilläggsblobbar](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs).
+Se [förstå Blockblobbar, Sidblobbar och Tilläggsblobbar](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) för mer information om hello skillnaderna mellan hello tre typer av blobbar.
 
 ## <a name="managing-security-for-blobs"></a>Hantera säkerheten för blobbar
-Som standard skyddar Azure Storage dina data genom att begränsa åtkomsten till endast kontoägaren, som har tillgång till åtkomstnycklarna för kontot. När du behöver dela blobbdata i ditt lagringskonto är det viktigt att du gör det utan att äventyra åtkomstnycklarnas säkerhet. Du kan också kryptera blobbdata så att de är skyddade under kabelöverföringar och i Azure Storage.
+Standard skydda Azure Storage dina data genom att begränsa åtkomst toohello kontoägaren, som innehar hello åtkomstnycklarna för kontot. När du behöver tooshare blob-data i ditt lagringskonto är det viktigt toodo så utan att kompromissa med hello säkerheten för åtkomstnycklarna för ditt konto. Dessutom kan du kryptera blob data tooensure som de är skyddade över hello överföring och i Azure Storage.
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-### <a name="controlling-access-to-blob-data"></a>Kontrollera åtkomsten till blobbdata
-Som standard är blobbdata i ett lagringskonto endast tillgängliga för lagringskontoägaren. För autentisering av förfrågningar mot Blob Storage krävs åtkomstnyckeln för kontot som standard. Dock kanske du vill göra vissa blobbdata tillgängliga för andra användare. Du kan välja mellan två alternativ:
+### <a name="controlling-access-tooblob-data"></a>Hur du styr åtkomst till tooblob data
+Hello blob-data i ditt lagringskonto är tillgänglig endast toostorage kontoägaren som standard. Autentisering av förfrågningar mot Blob storage krävs åtkomstnyckeln hello som standard. Dock gärna toomake vissa blob-data tillgängliga tooother användare. Du kan välja mellan två alternativ:
 
-* **Anonym åtkomst:** Du kan göra en behållare eller dess blobbar offentligt tillgängliga för anonym åtkomst. Mer information finns i [Hantera anonym läsbehörighet till behållare och blobbar](storage-manage-access-to-resources.md).
-* **Signaturer för delad åtkomst:** Du kan ge klienterna en signatur för delad åtkomst (SAS), som ger delegerad åtkomst till en resurs i ditt lagringskonto, med behörigheter som du anger och under den period som du anger. Mer information finns i [Använda signaturer för delad åtkomst (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+* **Anonym åtkomst:** Du kan göra en behållare eller dess blobbar offentligt tillgängliga för anonym åtkomst. Se [Hantera anonym läsbehörighet toocontainers och blobbar](storage-manage-access-to-resources.md) för mer information.
+* **Signaturer för delad åtkomst:** du kan ge klienterna en signatur för delad åtkomst (SAS), som ger delegerad åtkomst tooa resurs i ditt lagringskonto med behörigheter som du anger och under den period som du anger. Mer information finns i [Använda signaturer för delad åtkomst (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="encrypting-blob-data"></a>Kryptera blobbdata
-Azure Storage har stöd för kryptering av blobbdata både på klienten och på servern:
+Azure Storage har stöd för kryptering av blobbdata både på hello klient och server hello:
 
-* **Kryptering på klientsidan:** Storage-klientbiblioteket för .NET har stöd för kryptering av data i klientprogram före överföringen till Azure Storage, och dekryptering av data under nedladdningen till klienten. Biblioteket stöder även integrering med Azure Key Vault för hantering av nycklar för lagringskonton. Mer information finns i [Kryptering på klientsidan med .NET för Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Se även [Självstudier: Kryptera och dekryptera blobbar i Microsoft Azure Storage med hjälp av Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md).
+* **Kryptering på klientsidan:** hello Storage-klientbibliotek för .NET har stöd för kryptering av data i klientprogram före överföringen tooAzure lagring och dekryptera data vid hämtning av toohello klienten. hello biblioteket stöder även integrering med Azure Key Vault storage-konto för hantering av nycklar. Mer information finns i [Kryptering på klientsidan med .NET för Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Se även [Självstudier: Kryptera och dekryptera blobbar i Microsoft Azure Storage med hjälp av Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md).
 * **Kryptering på serversidan**: Nu stöder Azure Storage kryptering på serversidan. Mer information finns i [Azure Storage Service-kryptering av vilande data (förhandsgranskning)](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har lärt dig grunderna om Blob Storage kan du följa dessa länkar om du vill veta mer.
+Nu när du har lärt dig grunderna hello i Blob storage följa dessa länkar toolearn mer.
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
-* [Microsoft Azure Storage Explorer (MASE)](../../vs-azure-tools-storage-manage-with-storage-explorer.md) är en kostnadsfri, fristående app från Microsoft som gör det möjligt att arbeta visuellt med Azure Storage-data i Windows, Mac OS och Linux.
+* [Microsoft Azure Storage Explorer (MASE)](../../vs-azure-tools-storage-manage-with-storage-explorer.md) är en gratis, fristående app från Microsoft som möjliggör toowork visuellt med Azure Storage-data i Windows, macOS och Linux.
 
 ### <a name="blob-storage-samples"></a>Exempel på Blob Storage (förhandsversion)
 * [Komma igång med Azure Blob Storage i .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)
@@ -398,6 +398,6 @@ Nu när du har lärt dig grunderna om Blob Storage kan du följa dessa länkar o
 * [REST API-referens](/rest/api/storageservices/azure-storage-services-rest-api-reference)
 
 ### <a name="conceptual-guides"></a>Begreppsorienterade guider
-* [Överföra data med kommandoradsverktyget AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Överföra data med hello kommandoradsverktyget azcopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Komma igång med File Storage för .NET](../files/storage-dotnet-how-to-use-files.md)
-* [Använda Azure Blob Storage med WebJobs SDK](../../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
+* [Hur toouse Azure blob storage med hello WebJobs SDK](../../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)

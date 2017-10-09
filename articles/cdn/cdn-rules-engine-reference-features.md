@@ -1,5 +1,5 @@
 ---
-title: Azure CDN regler motorn funktioner | Microsoft Docs
+title: aaaAzure CDN regler motorn funktioner | Microsoft Docs
 description: "I referensdokumentationen för Azure CDN regler motorn matchar villkoren och funktioner."
 services: cdn
 documentationcenter: 
@@ -14,80 +14,80 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 6703247aa8b4a6d53ff22ea2d4f22eb4a746e370
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c10b8ef58e3d209b12fbb0ac2173e1ca51ff7538
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Azure CDN regler motorn funktioner
-Det här avsnittet innehåller detaljerade beskrivningar av tillgängliga funktioner för Azure Content Delivery Network (CDN) [regelmotor](cdn-rules-engine.md).
+Det här avsnittet innehåller detaljerade beskrivningar av hello tillgängliga funktioner för Azure Content Delivery Network (CDN) [regelmotor](cdn-rules-engine.md).
 
-Den tredje delen av en regel är en funktion. En funktion som definierar typ av åtgärd som ska användas för typ av begäran med en uppsättning villkor för matchning.
+hello tredje del av en regel är hello-funktion. En funktion definierar hello typ av åtgärd som ska tillämpas toohello typ av begäran med en uppsättning villkor för matchning.
 
 ## <a name="access"></a>Åtkomst
 
-Dessa funktioner är utformade för att styra åtkomsten till innehåll.
+Dessa funktioner är utformade toocontrol åtkomst toocontent.
 
 
 Namn | Syfte
 -----|--------
 Neka åtkomst | Anger om alla begäranden avvisas med ett 403 förbjuden svar.
-Token Auth | Anger om tokenbaserad autentisering tillämpas på en begäran.
-Token Auth DOS-kod | Anger typ av svar som returneras till en användare när en begäran nekades på grund av Token-baserad autentisering.
+Token Auth | Anger om Token-baserad autentisering ska vara tillämpade tooa begäran.
+Token Auth DOS-kod | Anger hello typ av svar som ska returneras tooa användare när en begäran nekas på grund av tooToken-baserad autentisering.
 Token Auth Ignorera skiftläge för URL | Anger om URL: en jämförelser av Token-baserad autentisering ska vara skiftlägeskänslig.
-Tokenparameter Auth | Anger om tokenbaserad autentisering frågesträngparametern ska ändras.
+Tokenparameter Auth | Anger om hello-tokenbaserad autentisering frågesträngparametern ska ändras.
 
 ### <a name="deny-access"></a>Neka åtkomst
 **Syfte**: Anger om alla begäranden avvisas med ett 403 förbjuden svar.
 
 Värde | Resultat
 ------|-------
-Enabled| Gör att alla begäranden som uppfyller kriterierna som matchande avvisas med ett 403 förbjuden svar.
-Disabled| Återställer standardbeteendet. Standardinställningen är att den ursprungliga servern att avgöra vilken typ av svar som ska returneras.
+Enabled| Gör att alla begäranden som uppfyller hello matchande kriterier toobe nekas med ett 403 förbjuden svar.
+Disabled| Återställer hello standardbeteendet. hello standardbeteendet är tooallow hello ursprung toodetermine hello servertyp av svar som ska returneras.
 
 **Standardbeteende**: inaktiverad
 
 > [!TIP]
-   > En möjlig användning för den här funktionen är att associera den med begäran sidhuvud matchar villkoret att blockera åtkomst till HTTP-referenter som använder infogade länkar till ditt innehåll.
+   > En möjlig användning för den här funktionen är tooassociate den med ett huvud för begäran matchar villkoret tooblock åtkomst tooHTTP referenter som använder infogade länkar tooyour innehåll.
 
 ### <a name="token-auth"></a>Token Auth
-**Syfte:** avgör om tokenbaserad autentisering tillämpas på en begäran.
+**Syfte:** anger om Token-baserad autentisering ska vara tillämpade tooa begäran.
 
-Om Token-baserad autentisering är aktiverad hanteras endast begäranden som tillhandahåller en krypterad token och uppfyller de krav som anges av säkerhetstoken.
+Om Token-baserad autentisering är aktiverad hanteras endast begäranden som tillhandahåller en krypterad token och uppfyller toohello krav som anges av säkerhetstoken.
 
-Den krypteringsnyckel som används för att kryptera och dekryptera token värden bestäms av den primärnyckeln och alternativ för säkerhetskopiering nyckel på sidan Token Auth. Tänk på att krypteringsnycklarna är plattformsspecifika.
+hello krypteringsnyckel som kommer att använda tooencrypt och dekryptera token värdena bestäms av den primärnyckeln och alternativ för säkerhetskopiering nyckel på sidan Token Auth. Tänk på att krypteringsnycklarna är plattformsspecifika.
 
 Värde | Resultat
 ------|---------
-Enabled | Skyddar det begärda innehållet med Token-baserad autentisering. Endast begäranden från klienter som anger en giltig token och uppfyller dess krav att användas. FTP-transaktioner är undantagna från Token-baserad autentisering.
-Disabled| Återställer standardbeteendet. Standardinställningen är att konfigurationen tokenbaserad autentisering att avgöra om en begäran ska skyddas.
+Enabled | Skyddar hello begärt innehåll med Token-baserad autentisering. Endast begäranden från klienter som anger en giltig token och uppfyller dess krav att användas. FTP-transaktioner är undantagna från Token-baserad autentisering.
+Disabled| Återställer hello standardbeteendet. Hej standardbeteendet är tooallow din Token-baserad autentisering configuration toodetermine om en begäran som ska skyddas.
 
 **Standardbeteende:** inaktiverad.
 
 ###<a name="token-auth-denial-code"></a>Token Auth DOS-kod
-**Syfte:** avgör vilken typ av svar som returneras till en användare när en begäran nekades på grund av Token-baserad autentisering.
+**Syfte:** anger hello typ av svar som ska returneras tooa användare när en begäran nekas på grund av tooToken-baserad autentisering.
 
-Tillgängliga svarskoder visas nedan.
+hello tillgängliga svarskoder visas nedan.
 
 Svarskod|Svaret namn|Beskrivning
 ----------------|-----------|--------
-301|Flytta permanent|Den här statuskoden omdirigerar obehöriga användare till den URL som anges i huvudet plats.
-302|Hitta|Den här statuskoden omdirigerar obehöriga användare till den URL som anges i huvudet plats. Den här statuskoden är branschstandard standardmetoden för att utföra en omdirigering.
-307|Tillfällig omdirigering|Den här statuskoden omdirigerar obehöriga användare till den URL som anges i huvudet plats.
-401|Behörighet saknas|Kombinera den här statuskoden med de svar WWW-Authenticate-huvud kan du be en användare för autentisering.
-403|Tillåts inte|Detta är standard 403 förbjuden statusmeddelandet som en obehörig användare kan se när du försöker komma åt skyddat innehåll.
-404|Filen hittades inte|Den här statusen indikerar att HTTP-klienten kunde kommunicera med servern, men det gick inte att hitta det begärda innehållet.
+301|Flytta permanent|Den här statuskoden omdirigerar obehöriga användare toohello URL som anges i huvudet plats.
+302|Hitta|Den här statuskoden omdirigerar obehöriga användare toohello URL som anges i huvudet plats. Den här statuskoden är hello standardmetod för att utföra en omdirigering.
+307|Tillfällig omdirigering|Den här statuskoden omdirigerar obehöriga användare toohello URL som anges i huvudet plats.
+401|Behörighet saknas|Kombinera den här statuskoden med de svar WWW-Authenticate-huvud kan du tooprompt en användare för autentisering.
+403|Tillåts inte|Detta är standard 403 förbjuden status hälsningsmeddelande att en obehörig användare kommer att se när försök tooaccess skyddat innehåll.
+404|Filen hittades inte|Den här statuskoden anger att hello HTTP-klienten har kan toocommunicate med hello server men hello begärda innehållet inte hittades.
 
 #### <a name="url-redirection"></a>URL-omdirigering
 
-Den här funktionen har stöd för URL: en omdirigering till en användardefinierad URL när den är konfigurerad för att returnera en 3xx statuskod. URL: en användardefinierad kan anges genom att utföra följande steg:
+Den här funktionen har stöd för användardefinierade URL-URL: en omdirigering tooa när den är konfigurerad tooreturn statuskod 3xx. URL: en användardefinierad kan anges genom att utföra hello följande steg:
 
-1. Välj en 3xx svarskod för funktionen Token Auth DOS-kod.
+1. Välj en 3xx svarskod för hello Auth Denial Tokenkod funktion.
 2. Välj alternativet för valfritt namn för huvudet ”plats”.
-3. Ange valfria huvudvärde till önskad URL.
+3. Ange URL: en valfri huvudvärde alternativet toohello som önskas.
 
-Om en URL inte har definierats för en 3xx statuskod, returneras sidan standard svar för en 3xx statuskod till användaren.
+Om en URL inte har definierats för en 3xx statuskod, sedan returneras hello standard svar sida för en 3xx statuskod toohello användare.
 
 URL-omdirigering gäller endast för 3xx svarskoder.
 
@@ -95,20 +95,20 @@ Alternativet valfritt huvudvärde stöder alfanumeriska tecken, citattecken och 
 
 #### <a name="authentication"></a>Autentisering
 
-Den här funktionen stöder möjligheten att inkludera WWW-Authenticate-huvud när svarar på en obehörig begäran för innehåll som skyddas av Token-baserad autentisering. Om WWW-Authenticate-huvud har ställts in på ”basic” i konfigurationen, och sedan en obehörig användare tillfrågas om autentiseringsuppgifter.
+Den här funktionen stöder hello kapaciteten tooinclude WWW-autentisera huvud när svarar tooan otillåten begäran om innehåll som skyddas av Token-baserad autentisering. Om WWW-Authenticate-huvud har ställts in för ”basic” i konfigurationen, uppmanas hello obehöriga användare för autentiseringsuppgifter.
 
-Konfigurationen ovan kan uppnås genom att utföra följande steg:
+hello ovan konfiguration kan uppnås genom att utföra hello följande steg:
 
-1. Välj ”401” som svarskoden för funktionen Token Auth DOS-kod.
+1. Välj ”401” som hello svarskod hello Tokenkod för Auth-DOS-funktionen.
 2. Välj ”WWW autentisera” alternativet valfria huvudets namn.
-3. Ange alternativet valfria huvudvärde till ”basic”.
+3. Ange alternativ för valfritt värde för ”grundläggande”.
 
 WWW-Authenticate-huvud gäller endast för 401 svarskoder.
 
 ### <a name="token-auth-ignore-url-case"></a>Token Auth Ignorera skiftläge för URL
 **Syfte:** anger om URL: en jämförelser av Token-baserad autentisering ska vara skiftlägeskänslig.
 
-De parametrar som påverkas av den här funktionen är:
+hello-parametrar som påverkas av den här funktionen är:
 
 - ec_url_allow
 - ec_ref_allow
@@ -118,90 +118,90 @@ Giltiga värden är:
 
 Värde|Resultat
 ---|----
-Enabled|Gör att vår edge-server att Ignorera skiftläge vid jämförelse av URL: er för tokenbaserad autentiseringsparametrar.
-Disabled|Återställer standardbeteendet. Standardinställningen är för URL: en jämförelser för Token-autentisering ska vara skiftlägeskänslig.
+Enabled|Gör våra gränsservern tooignore fallet när URL: er för tokenbaserad autentiseringsparametrar.
+Disabled|Återställer hello standardbeteendet. hello standardbeteendet är för URL: en jämförelse för Tokenautentisering toobe skiftlägeskänsligt.
 
 **Standardbeteende:** inaktiverad.
  
 ### <a name="token-auth-parameter"></a>Tokenparameter Auth
-**Syfte:** avgör om tokenbaserad autentisering frågesträngparametern ska ändras.
+**Syfte:** avgör om hello-tokenbaserad autentisering frågesträngparametern ska ändras.
 
 Viktig information:
 
-- Alternativet värde definierar den parameternamn för frågesträng som en token kan anges.
-- Alternativet värde kan inte anges till ”ec_token”.
-- Kontrollera att namnet du angett i alternativet värde 
+- Alternativet värde definierar hello parameternamn för frågesträng som en token kan anges.
+- Alternativet värde kan inte anges för ”ec_token”.
+- Kontrollera att hello namn har definierats i alternativet värde 
 - innehåller giltiga tecken i URL: en.
 
 Värde|Resultat
 ----|----
-Enabled|Alternativet värde definierar den parameternamn för frågesträng som token ska definieras.
-Disabled|En token kan anges som ett odefinierat frågesträngparametern i begärande-URL.
+Enabled|Alternativet värde definierar hello parameternamn för frågesträng som token ska definieras.
+Disabled|En token kan anges som ett odefinierat frågesträngparametern i hello begärd URL.
 
-**Standardbeteende:** inaktiverad. En token kan anges som ett odefinierat frågesträngparametern i begärande-URL.
+**Standardbeteende:** inaktiverad. En token kan anges som ett odefinierat frågesträngparametern i hello begärd URL.
 
 ## <a name="caching"></a>Cachelagring
 
-Dessa funktioner är utformade för att anpassa när och hur innehållet cachelagras.
+Dessa funktioner är utformade toocustomize när och hur innehållet cachelagras.
 
 Namn | Syfte
 -----|--------
 Parametrar för bandbredd | Anger om bandbreddsbegränsning parametrarna (d.v.s. ec_rate och ec_prebuf) ska vara aktiv.
-Begränsning av bandbredd | Begränsar bandbredd för svar som tillhandahålls av våra edge-servrar.
-Kringgå Cache | Anger om begäran kan utnyttja våra teknik för cachelagring.
-Cache-Control sidhuvud behandling | Styr generering av Cache-Control-huvuden av gränsservern när externa maximal ålder funktionen är aktiv.
-Cachenyckel frågesträng | Anger om cache-nyckel ska inkludera eller exkludera frågan string-parametrar som är associerade med en begäran.
-Omarbetning av cache-nyckel | Skriver om cache-nyckeln som associeras med en begäran.
+Begränsning av bandbredd | Begränsar hello bandbredd för hello-svar som tillhandahålls av våra edge-servrar.
+Kringgå Cache | Anger om hello begäran kan utnyttja våra teknik för cachelagring.
+Cache-Control sidhuvud behandling | Kontroller hello generering av Cache-Control-huvuden av hello edge-server när externa maximal ålder funktionen är aktiv.
+Cachenyckel frågesträng | Anger om hello cachenyckel ska inkludera eller exkludera frågan string-parametrar som är associerade med en begäran.
+Omarbetning av cache-nyckel | Skriver om hello cache-nyckeln som associeras med en begäran.
 Slutföra Cache Fill | Anger vad som händer när en begäran resulterar i en partiell cache-miss på edge-server.
-Komprimera filtyper | Definierar de filformat som ska komprimeras på servern.
-Internt Max-åldern som standard | Anger maximal ålder standardintervallet för edge-server till ursprunget server Cachevalidering.
-Upphör att gälla sidhuvud behandling | Styr generering av Expires-huvuden genom en gränsserver när funktionen externa maximal ålder är aktiv.
-Externa maximal ålder | Anger intervallet för maximal ålder för webbläsaren edge server Cachevalidering.
-Tvinga inre maximal ålder | Anger intervallet för maximal ålder för edge-server till ursprunget server Cachevalidering.
-H.264-stöd (http-progressiv nedladdning) | Avgör vilka typer av H.264 som kan användas för att strömma innehåll.
-Kontrollera No-Cache-begäran | Anger om en HTTP-klientens no-cache-begäranden ska vidarebefordras till den ursprungliga servern.
+Komprimera filtyper | Definierar hello-filformat som ska komprimeras på hello-servern.
+Internt Max-åldern som standard | Anger hello maximal ålder för standardintervallet för edge server tooorigin server Cachevalidering.
+Upphör att gälla sidhuvud behandling | Kontroller hello generering av Expires-huvuden genom en gränsserver när hello externa maximal ålder funktionen är aktiv.
+Externa maximal ålder | Anger intervallet för hello maximal ålder för webbläsaren tooedge server Cachevalidering.
+Tvinga inre maximal ålder | Anger intervallet för hello maximal ålder för edge server tooorigin server Cachevalidering.
+H.264-stöd (http-progressiv nedladdning) | Anger hello typer av H.264 filformat som kanske används toostream innehåll.
+Kontrollera No-Cache-begäran | Anger om en HTTP-klientens no-cache-begäranden ska vidarebefordras toohello ursprungsservern.
 Ignorera ursprung No-Cache | Anger om våra CDN ignoreras vissa direktiv som hanteras från en ursprungsservern.
-Ignorera Unsatisfiable intervall | Anger svaret som returneras till klienter när en förfrågan genererar statuskod 416 begärt intervall inte kunde hanteras.
-Internt Max-inaktuell | Styr hur länge tidigare normala förfallotiden cachelagrade tillgång kan hanteras från en gränsserver när edge-servern inte kan verifiera den cachelagra tillgången med den ursprungliga servern.
+Ignorera Unsatisfiable intervall | Anger hello-svar som ska returneras tooclients när en förfrågan genererar statuskod 416 begärt intervall inte kunde hanteras.
+Internt Max-inaktuell | Anger hur länge tidigare hello normal förfallotid cachelagrade tillgång kan hanteras från en gränsserver när hello edge-server är toorevalidate hello cachelagrade tillgång med hello ursprungsservern.
 Partiell Cache delning | Anger om en begäran kan generera delvis cachelagrat innehåll.
 Prevalidate cachelagrat innehåll | Anger om cachelagrat innehåll ska vara tillämplig för tidig validering innan TTL-upphör att gälla.
 Uppdatera noll Byte cachefiler | Anger hur en HTTP-klientens begäran för en tillgång 0 byte cache hanteras av våra edge-servrar.
-Ange Cacheable ställs statuskoder | Definierar de statuskoder som kan resultera i cachelagrat innehåll.
-Inaktuella leverans av innehåll vid fel | Avgör om upphört att gälla cachelagrat innehåll levereras när ett fel uppstår under Cachevalidering eller när det begärda innehållet hämtas från ursprungsservern kunden.
-Inaktuella när Revalidate | Förbättrar prestandan genom att tillåta att våra servrar för att hantera inaktuell klient till beställaren samtidigt Omverifiering sker.
-Kommentar | Kommentar-funktionen kan en kommentar som ska läggas till i en regel.
+Ange Cacheable ställs statuskoder | Definierar hello statuskoder som kan resultera i cachelagrat innehåll.
+Inaktuella leverans av innehåll vid fel | Avgör om upphört att gälla cachelagrat innehåll levereras när ett fel uppstår under Cachevalidering eller när hämtning hello begär innehåll från hello kunden ursprungsservern.
+Inaktuella när Revalidate | Förbättrar prestanda genom att tillåta att våra servrar kant tooserve inaktuell klient toohello beställaren medan Omverifiering äger rum.
+Kommentar | hello kommentarfunktionen kan en anteckning toobe som lagts till i en regel.
 
 ###<a name="bandwidth-parameters"></a>Parametrar för bandbredd
 **Syfte:** anger om bandbreddsbegränsning parametrarna (d.v.s. ec_rate och ec_prebuf) ska vara aktiv.
 
-Bandbredd bandbreddsbegränsning parametrarna avgör om hastigheten för dataöverföringen för en klientbegäran begränsas till en egen takt.
+Bandbredd bandbreddsbegränsning parametrarna avgör om hello överföringshastighet för begäran om en klient ska vara begränsad tooa anpassade hastighet.
 
 Värde|Resultat
 --|--
-Enabled|Gör att våra servrar för att respektera bandbredd bandbreddsbegränsning begäranden.
-Disabled|Gör att våra servrar för att ignorera bandbreddsbegränsning parametrar för bandbredd. Det begärda innehållet visas normalt (d.v.s. utan begränsning av bandbredd).
+Enabled|Tillåter våra servrar edge toohonor bandbreddsbegränsning begäranden.
+Disabled|Gör att våra servrar edge tooignore bandbreddsbegränsning parametrar. hello begärt innehållet ska tillhandahållas normalt (d.v.s. utan begränsning av bandbredd).
 
 **Standardbeteende:** aktiverat.
 
 ###<a name="bandwidth-throttling"></a>Begränsning av bandbredd
-**Syfte:** begränsar bandbredd för svar som tillhandahålls av våra edge-servrar.
+**Syfte:** begränsas hello bandbredd för hello-svar som tillhandahålls av våra edge-servrar.
 
-Båda av följande alternativ måste definieras för att ange korrekt bandbreddsbegränsning.
+Båda av följande alternativ för hello måste vara definierade tooproperly konfigurera begränsning av bandbredd.
 
 Alternativ|Beskrivning
 --|--
-Kilobyte per sekund|Ange maximal bandbredd (Kb per sekund) som kan användas för att leverera svaret.
-Prebuf sekunder|Ange detta alternativ för hur många sekunder som våra servrar edge väntar tills bandbreddsbegränsning bandbredd. Syftet med den här tidsperioden obegränsad bandbredd är att förhindra att en media player har hackigt eller buffring problem på grund av begränsad bandbredd.
+Kilobyte per sekund|Ange det här alternativet toohello Maximal bandbredd (Kb per sekund) som kanske används toodeliver hello svar.
+Prebuf sekunder|Ange det här alternativet toohello antalet sekunder som våra servrar edge väntar tills bandbreddsbegränsning bandbredd. hello syftet med den här tidsperioden obegränsad bandbredd är tooprevent mediaspelare från problem hackar eller buffring problem på grund av toobandwidth begränsning.
 
 **Standardbeteende:** inaktiverad.
 
 ###<a name="bypass-cache"></a>Kringgå Cache
-**Syfte:** avgör om begäran kan utnyttja våra teknik för cachelagring.
+**Syfte:** avgör om hello begäran kan utnyttja våra teknik för cachelagring.
 
 Värde|Resultat
 --|--
-Enabled|Gör att alla förfrågningar till faller till den ursprungliga servern, även om innehållet har tidigare cachelagrats på edge-servrar.
-Disabled|Servrar för orsaker att cache tillgångar enligt princip som definierats i dess svarshuvuden.
+Enabled|Gör alla begäranden toofall via toohello ursprungsservern, även om hello innehåll var tidigare cachelagrats på edge-servrar.
+Disabled|Gör edge servrar toocache tillgångar enligt toohello princip som definierats i dess svarshuvuden.
 
 **Standardbeteende:**
 
@@ -212,16 +212,16 @@ Disabled|Servrar för orsaker att cache tillgångar enligt princip som definiera
 --->
 
 ###<a name="cache-control-header-treatment"></a>Cache-kontrollen sidhuvud behandling
-**Syfte:** styr generering av Cache-Control-huvuden av gränsservern när externa maximal ålder funktionen är aktiv.
+**Syfte:** styr hello generering av Cache-Control-huvuden av hello edge-server när externa maximal ålder funktionen är aktiv.
 
-Det enklaste sättet att uppnå den här typen av konfiguration är att placera den externa maximal åldern och funktionerna för Cache-Control sidhuvud behandling i samma instruktion.
+Hej enklaste sättet tooachieve denna typ av konfiguration är tooplace hello externa maximal ålder och hello Cache-Control sidhuvud behandling funktioner i hello samma instruktion.
 
 Värde|Resultat
 --|--
-Skriv över|Garanterar att följande åtgärder utförs:<br/> -Skriver över Cache-Control-huvudet som genererats av den ursprungliga servern. <br/>-Lägger till Cache-Control-huvudet som genereras av funktionen externa maximal ålder för svaret.
-Skicka vidare|Garanterar att Cache-Control-huvudet som genereras av funktionen externa maximal ålder aldrig har lagts till svaret. <br/> Om den ursprungliga servern producerar en Cache-Control-rubrik, kommer den genomströmning till slutanvändaren. <br/> Om den ursprungliga servern inte ger ett Cache-Control-huvud, kan det här alternativet orsaka svarshuvud inte innehålla en Cache-Control-rubrik.
-Lägg till om de saknas|Om en Cache-Control-huvudet inte togs emot från den ursprungliga servern, läggs det här alternativet Cache-Control-huvudet som genereras av funktionen externa maximal ålder. Det här alternativet är användbart för att säkerställa att alla tillgångar tilldelas en Cache-Control-rubrik.
-Ta bort| Det här alternativet innebär en Cache-Control-huvudet inte är ingår i huvud-svaret. Om en Cache-Control-rubrik har redan tilldelats och sedan rensas från huvud-svaret.
+Skriv över|Garanterar att hello följande åtgärder utförs:<br/> -Skriver över Cache-Control-huvudet som genererats av hello ursprungsservern. <br/>-Lägger till Cache-Control-huvudet som produceras av hello externa maximal ålder funktionen toohello svar.
+Skicka vidare|Garanterar att Cache-Control-huvudet som produceras av hello externa maximal ålder funktionen aldrig har lagts till toohello svar. <br/> Om hello ursprungsservern producerar en Cache-Control-rubrik, skickas den via toohello slutanvändaren. <br/> Om hello ursprungsservern inte ger ett Cache-Control-huvud och sedan det här alternativet kan orsak hello svar huvud toonot innehålla en Cache-Control-rubrik.
+Lägg till om de saknas|Om en Cache-Control-huvudet inte togs emot från hello ursprungsservern, läggs det här alternativet Cache-Control-huvudet som genereras av funktionen för hello externa maximal ålder. Det här alternativet är användbart för att säkerställa att alla tillgångar tilldelas en Cache-Control-rubrik.
+Ta bort| Det här alternativet innebär att ett Cache-Control-huvud inte ingår hello huvudsvar. Om en Cache-Control-rubrik har redan tilldelats, sedan rensas den från hello huvudsvar.
 
 **Standardbeteende:** skrivas över.
 
@@ -231,22 +231,22 @@ Ta bort| Det här alternativet innebär en Cache-Control-huvudet inte är ingår
 Viktig information:
 
 - Ange en eller flera frågan sträng parametern namn. Varje parameternamn måste avgränsas med ett blanksteg.
-- Den här funktionen avgör om frågesträngparametrar ska inkluderas eller uteslutas från cache-nyckel. Ytterligare information har angetts för varje alternativ nedan.
+- Den här funktionen avgör om frågesträngparametrar ska inkluderas eller uteslutas från hello cache-nyckel. Ytterligare information har angetts för varje alternativ nedan.
 
 Typ|Beskrivning
 --|--
- Inkludera|  Anger att varje angiven parameter ska tas med i cache-nyckel. En unik cachenyckel genereras för varje begäran som innehåller ett unikt värde för en frågesträngsparameter som definierats i den här funktionen. 
- Omfatta alla  |Anger att en unik cachenyckel kommer att skapas för varje begäran till en tillgång som innehåller en unik frågesträng. Den här typen av konfiguration rekommenderas inte normalt eftersom det kan leda till en liten procentandel träffar i cache. Detta ökar belastningen på den ursprungliga servern eftersom den måste hantera flera begäranden. Den här konfigurationen duplicerar cachelagringsbeteendet kallas ”unik-cachen” på sidan cachelagring av frågesträng. 
- Exkludera | Anger att endast den angivna parametrar kommer att uteslutas från cache-nyckel. Alla andra sträng frågeparametrar inkluderas i cache-nyckel. 
- Undanta alla  |Anger att alla frågeparametrar sträng kommer att uteslutas från cache-nyckeln. Den här konfigurationen duplicerar standard cachelagring av frågesträngar som kallas ”standard-cachen” på sidan cachelagring av frågesträng. 
+ Inkludera|  Anger att varje angiven parameter ska tas med i hello cache-nyckel. En unik cachenyckel genereras för varje begäran som innehåller ett unikt värde för en frågesträngsparameter som definierats i den här funktionen. 
+ Omfatta alla  |Anger att en unik cachenyckel kommer att skapas för varje begäran tooan tillgång som innehåller en unik frågesträng. Denna typ av konfiguration rekommenderas vanligtvis inte eftersom det kan leda tooa liten procentandel cacheträffar. Detta ökar hello belastningen på hello ursprungsservern eftersom den har tooserve fler begäranden. Den här konfigurationen duplicerar hello cachelagring av frågesträngar som kallas ”unik-cachen” på sidan cachelagring av frågesträng. 
+ Exkludera | Anger att endast hello angivna parametrar kommer att uteslutas från hello cache-nyckel. Alla andra frågan string-parametrar ska inkluderas i hello cache-nyckel. 
+ Undanta alla  |Anger att alla frågeparametrar sträng kommer att uteslutas från hello cache-nyckel. Den här konfigurationen duplicerar hello standard cachelagring av frågesträngar som kallas ”standard-cache” på sidan cachelagring av frågesträng. 
 
-Kraften i regelmotor för HTTP kan du anpassa det sätt som cachelagring av frågesträngar i fråga har implementerats. Du kan till exempel ange att frågan cachelagring av frågesträngar bara utföras på vissa platser eller filtyper.
+hello kraften hos regelmotor för HTTP kan du toocustomize hello sätt där cachelagring av frågesträngar i fråga har implementerats. Du kan till exempel ange att frågan cachelagring av frågesträngar bara utföras på vissa platser eller filtyper.
 
-Om du vill duplicera frågesträngen cachelagring av frågesträngar som kallas ”no-cache” på sidan cachelagring av frågesträng måste skapa en regel som innehåller ett URL-frågan med jokertecken matchar villkor och en kringgå Cache-funktion. URL: en fråga med jokertecken matchar villkoret ska anges till en asterisk (*).
+Om du vill att tooduplicate hello cachelagring av frågesträng beteendet kallas ”no-cache” på sidan cachelagring av frågesträng, behöver du toocreate en regel som innehåller en URL-frågan med jokertecken matchar villkor och en kringgå Cache-funktion. hello med jokertecken URL-frågan matchar villkoret ska anges tooan asterisk (*).
 
 #### <a name="sample-scenarios"></a>Exempelscenarier
 
-Exempel för den här funktionen tillhandahålls nedan. Ett exempel på begäran och standard-cachenyckel tillhandahålls nedan.
+Exempel för den här funktionen tillhandahålls nedan. Ett exempel på begäran och hello standard cache-nyckeln tillhandahålls nedan.
 
 - **Exempel på begäran:** http://wpc.0001.&lt; Domän&gt;/800001/Origin/folder/asset.htm?sessionid=1234 och språk = EN & userid = 01
 - **Standard cachenyckel:** /800001/Origin/folder/asset.htm
@@ -258,7 +258,7 @@ Exempel på konfiguration:
 - **Typ:** inkluderar
 - **Parametrar:** språk
 
-Den här typen av konfiguration skulle generera följande fråga sträng parametern cache-nyckel:
+Den här typen av konfiguration skulle generera hello följande fråga sträng parametern cache-nyckel:
 
     /800001/Origin/folder/asset.htm?language=EN
 
@@ -268,7 +268,7 @@ Exempel på konfiguration:
 
 - **Typ:** omfattar alla
 
-Den här typen av konfiguration skulle generera följande fråga sträng parametern cache-nyckel:
+Den här typen av konfiguration skulle generera hello följande fråga sträng parametern cache-nyckel:
 
     /800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
 
@@ -279,7 +279,7 @@ Exempel på konfiguration:
 - **Typ:** undanta
 - **Parametrar:** sessionid användar-ID
 
-Den här typen av konfiguration skulle generera följande fråga sträng parametern cache-nyckel:
+Den här typen av konfiguration skulle generera hello följande fråga sträng parametern cache-nyckel:
 
     /800001/Origin/folder/asset.htm?language=EN
 
@@ -289,47 +289,47 @@ Exempel på konfiguration:
 
 - **Typ:** utesluta alla
 
-Den här typen av konfiguration skulle generera följande fråga sträng parametern cache-nyckel:
+Den här typen av konfiguration skulle generera hello följande fråga sträng parametern cache-nyckel:
 
     /800001/Origin/folder/asset.htm
 
 ###<a name="cache-key-rewrite"></a>Omarbetning av cache-nyckel
-**Syfte:** skriver om cache-nyckeln som associeras med en begäran.
+**Syfte:** omskrivningar hello cachenyckel som är associerade med en begäran.
 
-En cachenyckel måste den relativa sökvägen som identifierar en tillgång för cachelagring. Våra servrar kommer med andra ord, söka efter en cachelagrad version av en tillgång enligt dess sökväg som definierats av dess cache-nyckel.
+En cachenyckel är hello relativ sökväg som identifierar en tillgång för hello cachelagring. Våra servrar kommer med andra ord att söka efter en cachelagrad version av en tillgång enligt tooits sökväg som definierats av dess cache-nyckel.
 
-Konfigurera den här funktionen genom att definiera båda av följande alternativ:
+Konfigurera den här funktionen genom att definiera både hello följande alternativ:
 
 Alternativ|Beskrivning
 --|--
-Ursprungliga sökväg| Definiera den relativa sökvägen till typerna av begäranden vars cachenyckel ska skrivas. En relativ sökväg kan definieras genom att välja en grundläggande ursprungssökväg och sedan definiera ett mönster för reguljärt uttryck.
-Ny sökväg|Definiera den relativa sökvägen för den nya cache-nyckeln. En relativ sökväg kan definieras genom att välja en grundläggande ursprungssökväg och sedan definiera ett mönster för reguljärt uttryck. Den här relativa sökvägen kan konstrueras dynamiskt genom att använda HTTP-variabler
-**Standardbeteende:** en begäran cachenyckel bestäms av URI-begäran.
+Ursprungliga sökväg| Definiera hello relativ sökväg toohello typer av begäranden vars cachenyckel ska skrivas. En relativ sökväg kan definieras genom att välja en grundläggande ursprungssökväg och sedan definiera ett mönster för reguljärt uttryck.
+Ny sökväg|Definiera hello relativ sökväg för hello ny cache-nyckel. En relativ sökväg kan definieras genom att välja en grundläggande ursprungssökväg och sedan definiera ett mönster för reguljärt uttryck. Den här relativa sökvägen kan konstrueras dynamiskt via hello användning av HTTP-variabler
+**Standardbeteende:** en begäran cachenyckel bestäms av hello URI-begäran.
 
 ###<a name="complete-cache-fill"></a>Slutföra Cache Fill
 **Syfte:** avgör vad som händer när en begäran resulterar i en partiell cache-miss på edge-server.
 
-En partiell cache-miss beskriver Cachestatus för en tillgång som inte hämtades helt till en edge-server. Om en tillgång endast delvis cachelagras på edge-server, sedan vidarebefordras nästa begäran om tillgången igen till den ursprungliga servern.
+En partiell cache-miss beskriver hello Cachestatus för en tillgång som inte är helt hämtade tooan edge-server. Om en tillgång endast delvis cachelagras på edge-server, sedan vidarebefordras hello nästa begäran om tillgången igen toohello ursprungsservern.
 <!---
-This feature is not available for the ADN platform. The typical traffic on this platform consists of relatively small assets. The size of the assets served through these platforms helps mitigate the effects of partial cache misses, since the next request will typically result in the asset being cached on that POP.
+This feature is not available for hello ADN platform. hello typical traffic on this platform consists of relatively small assets. hello size of hello assets served through these platforms helps mitigate hello effects of partial cache misses, since hello next request will typically result in hello asset being cached on that POP.
 --->
-En partiell cache-miss inträffar vanligtvis när en användare avbryter en hämtning eller för tillgångar som begärs endast med hjälp av HTTP-begäranden för intervallet. Den här funktionen är mest användbara för stora tillgångar där användare inte normalt att hämta dem från början till slut (t.ex. videor). Därför kan aktiveras den här funktionen som standard på stora HTTP-plattformen. Den är inaktiverad på alla plattformar.
+En partiell cache-miss inträffar vanligtvis när en användare avbryter en hämtning eller för tillgångar som begärs endast med hjälp av HTTP-begäranden för intervallet. Den här funktionen är mest användbara för stora tillgångar där användare kommer inte vanligtvis hämta dem från start toofinish (t.ex. videor). Därför kan aktiveras den här funktionen som standard på hello stora http-plattformen. Den är inaktiverad på alla plattformar.
 
-Det rekommenderas att lämna standardkonfigurationen för stora HTTP-plattformen, eftersom den minska belastningen på din kund ursprungsservern och öka hastigheten som dina kunder hämta ditt innehåll.
+Det rekommenderas tooleave hello standardkonfigurationen för hello HTTP stora plattform, eftersom det minskar hello belastning på servern kunden ursprung och öka hello hastighet som dina kunder hämta ditt innehåll.
 
-På grund av det sätt som i vilken cache inställningar spåras den här funktionen kan inte associeras med följande matchar: Edge Cname, begär sidhuvud Literal, begär huvud med jokertecken, URL-frågan Literal och URL: en fråga med jokertecken.
+På grund av toohello sätt i vilken cache inställningar spåras, den här funktionen kan inte associeras med hello följande matchar villkor: Edge Cname, begär sidhuvud Literal, begär huvud med jokertecken, URL-frågan Literal och URL: en fråga med jokertecken.
 
 Värde|Resultat
 --|--
-Enabled|Återställer standardbeteendet. Standardinställningen är att tvinga edge-server för att initiera en bakgrundshämtning tillgångens från den ursprungliga servern. Efter som tillgången ska vara i det lokala cacheminnet i edge-server.
-Disabled|Förhindrar att en gränsserver utför en bakgrundshämtning för tillgången. Detta innebär att nästa begäran om tillgången från den regionen resulterar i edge-server att begära från den ursprungliga servern för kunden.
+Enabled|Återställer hello standardbeteendet. hello standardbeteendet är tooforce hello edge server tooinitiate bakgrundshämtning hello tillgångsinformation från hello ursprungsservern. Efter vilken, hello tillgång ska vara i hello edge-serverns lokala cacheminne.
+Disabled|Förhindrar att en gränsserver utför en bakgrundshämtning för hello tillgång. Det innebär att nästa hello-begäran för tillgången från den regionen kommer en kant server toorequest från hello kunden ursprungsservern.
 
 **Standardbeteende:** aktiverat.
 
 ###<a name="compress-file-types"></a>Komprimera filtyper
-**Syfte:** definierar format som ska komprimeras på servern.
+**Syfte:** definierar hello-filformat som ska komprimeras på hello-servern.
 
-Ett filformat kan anges med hjälp av dess Internet medietyp (d.v.s. Content-Type). Internet medietyp är plattformsoberoende metadata som gör att våra servrar för att identifiera formatet för en viss tillgång. En lista över vanliga Internet medietyper finns nedan.
+Ett filformat kan anges med hjälp av dess Internet medietyp (d.v.s. Content-Type). Internet medietyp är plattformsoberoende metadata som gör att våra servrar tooidentify hello filformat för en viss tillgång. En lista över vanliga Internet medietyper finns nedan.
 
 Internet-medietyp|Beskrivning
 --|--
@@ -344,23 +344,23 @@ Viktig information:
 - Den här funktionen Komprimera endast tillgångar vars storlek är mindre än 1 MB. Kommer inte att komprimera större tillgångar våra servrar.
 - Vissa typer av innehåll, till exempel bilder, video och ljud tillgångar (t.ex., JPG, MP3, MP4, etc.) redan har komprimerats. Ytterligare komprimering på dessa typer av tillgångar kommer inte försämras avsevärt, filstorlek. Därför rekommenderas det att du inte aktivera komprimering på dessa typer av tillgångar.
 - Jokertecken, till exempel asterisker stöds inte.
-- Se till att ange alternativet inaktiverat komprimering på sidan komprimering för den plattform som den här regeln används innan du lägger till den här funktionen till en regel.
+- Kontrollera att tooset alternativet inaktiverat komprimering på sidan komprimering för hello plattform toowhich regeln tillämpas innan du lägger till den här funktionen tooa regeln.
 
 ###<a name="default-internal-max-age"></a>Internt Max-åldern som standard
-**Syfte:** Anger standardintervallet för maximal ålder för edge-server till ursprunget server Cachevalidering. Med andra ord tidsperiod som ska förflyta innan en gränsserver kontrollerar om en cachelagrad tillgång matchar den tillgång som lagras på den ursprungliga servern.
+**Syfte:** avgör hello standardintervallet maximal ålder för edge server tooorigin server Cachevalidering. Med andra ord hello mängden tid som ska gå innan en gränsserver kontrollerar om en cachelagrad tillgång matchar hello-tillgångar lagras på hello ursprungsservern.
 
 Viktig information:
 
 - Den här åtgärden tar bara för svar från en ursprungsserver som inte tilldelar en beteckning maximal ålder i Cache-Control eller Expires-huvudet.
 - Den här åtgärden kommer inte ske för tillgångar som inte anses Cacheable ställs.
-- Den här åtgärden påverkar inte webbläsaren edge server cache revalidations. Dessa typer av revalidations bestäms av Cache-Control eller Expires-huvuden som skickas till webbläsaren, som kan anpassas med funktionen externa maximal ålder.
-- Resultatet av den här åtgärden har inte en synliga effekt på svarshuvuden och innehållet som har returnerats från kant-servrar för ditt innehåll, men det kan påverka mängden Omverifiering trafik som skickas från kant-servrar till din ursprungsservern.
+- Den här åtgärden påverkar inte webbläsaren tooedge server cache revalidations. Dessa typer av revalidations bestäms av Cache-Control eller Expires-huvuden skickas toohello webbläsare, som kan anpassas med funktionen externa maximal ålder.
+- hello resultaten av den här åtgärden har inte synliga påverkar hello svarshuvuden och hello innehåll som returneras från kant-servrar för ditt innehåll, men det kan påverka hello mängden Omverifiering av trafik som skickas från servrar tooyour ursprung gränsservern.
 - Konfigurera den här funktionen genom att:
-    - Att välja statuskoden som en intern max-åldern som standard kan tillämpas.
-    - Ange ett heltalsvärde och sedan välja önskad tidsenhet (d.v.s. sekunder, minuter, timmar, etc.). Det här värdet definierar interna maximal ålder standardintervallet.
+    - Att välja hello statuskod som en intern max-åldern som standard kan tillämpas.
+    - Ange ett heltalsvärde och sedan välja hello önskad tidsenhet (d.v.s. sekunder, minuter, timmar, etc.). Det här värdet definierar hello interna maximal ålder standardintervallet.
 
-- Anger tidsenheten till ”av” tilldelar interna maximal ålder standardintervallet 7 dagar för begäranden som inte har tilldelats en maximal ålder indikation i Cache-Control eller Expires-huvudet.
-- Den här funktionen kan inte associeras med följande matchar villkor på grund av det sätt som i vilken cache inställningar spåras: 
+- Inställningen hello tidsenhet för tilldelar ”Off” interna maximal ålder standardintervallet 7 dagar för begäranden som inte har tilldelats en maximal ålder indikation i sin Cache-Control eller Expires-huvudet.
+- På grund av toohello sätt i vilken cache inställningar spåras, kan den här funktionen inte associeras med hello följande matchar villkor: 
     - Kant 
     - CNAME-post
     - Begäran sidhuvud Literal
@@ -372,47 +372,47 @@ Viktig information:
 **Standardvärde:** 7 dagar
 
 ###<a name="expires-header-treatment"></a>Upphör att gälla sidhuvud behandling
-**Syfte:** styr generering av Expires-huvuden genom en gränsserver när funktionen externa maximal ålder är aktiv.
+**Syfte:** styr hello generering av Expires-huvuden genom en gränsserver när funktionen externa maximal ålder är aktiv.
 
-Det enklaste sättet att uppnå den här typen av konfiguration är att placera den externa maximal åldern och upphör att gälla sidhuvud behandling funktioner i samma instruktion.
+Hej enklaste sättet tooachieve denna typ av konfiguration är tooplace hello externa maximal ålder och hello upphör att gälla sidhuvud behandling funktioner i hello samma instruktion.
 
 Värde|Resultat
 --|--
-Skriv över|Garanterar att följande åtgärder utförs:<br/>-Skriver över Expires-huvudet som genererats av den ursprungliga servern.<br/>-Lägger till Expires-huvudet som genereras av funktionen externa maximal ålder för svaret.
-Skicka vidare|Garanterar att Expires-huvudet som genereras av funktionen externa maximal ålder aldrig har lagts till svaret. <br/> Om den ursprungliga servern producerar Expires-rubriken, kommer den genomströmning till slutanvändaren. <br/>Om den ursprungliga servern inte ger Expires-rubriken, kan det här alternativet orsaka svarshuvud inte innehålla Expires-rubriken.
-Lägg till om de saknas| Om Expires-rubriken inte togs emot från den ursprungliga servern, läggs det här alternativet Expires-huvudet som genereras av funktionen externa maximal ålder. Det här alternativet är användbart för att säkerställa att alla tillgångar tilldelas Expires-rubriken.
-Ta bort| Garanterar att Expires-rubriken inte ingår sidhuvud svaret. Om Expires-rubriken har redan tilldelats, sedan rensas den från huvud-svaret.
+Skriv över|Garanterar att hello följande åtgärder utförs:<br/>-Skriver över Expires-huvudet som genererats av hello ursprungsservern.<br/>-Lägger till Expires-huvudet som produceras av hello externa maximal ålder funktionen toohello svar.
+Skicka vidare|Garanterar att Expires-huvudet som produceras av hello externa maximal ålder funktionen aldrig har lagts till toohello svar. <br/> Om hello ursprungsservern producerar Expires-rubriken, skickas de via toohello slutanvändaren. <br/>Om hello ursprungsservern inte ger Expires-rubriken och sedan det här alternativet kan orsak hello svar huvud toonot innehålla Expires-rubriken.
+Lägg till om de saknas| Om Expires-rubriken inte togs emot från hello ursprungsservern, läggs det här alternativet Expires-huvudet som genereras av funktionen för hello externa maximal ålder. Det här alternativet är användbart för att säkerställa att alla tillgångar tilldelas Expires-rubriken.
+Ta bort| Garanterar att Expires-rubriken inte ingår hello huvudsvar. Om Expires-rubriken har redan tilldelats, sedan rensas den från hello huvudsvar.
 
 **Standardbeteende:** skriva över
 
 ###<a name="external-max-age"></a>Externa maximal ålder
-**Syfte:** bestämmer intervallet maximal ålder för webbläsaren edge server Cachevalidering. Hur lång tid som ska förflyta innan en webbläsare kan med andra ord att söka efter en ny version av en tillgång från en gränsserver.
+**Syfte:** avgör hello maximal ålder intervall för webbläsaren tooedge server Cachevalidering. Med andra ord hello mängden tid som ska gå innan en webbläsare kan söka efter en ny version av en tillgång från en edge-server.
 
-Den här funktionen aktiveras genererar Cache-Control: max-ålder och upphör att gälla meddelandehuvuden från våra servrar kant och skicka dem till HTTP-klienten. Dessa huvuden skriver över de som skapats i den ursprungliga servern. Dock användas behandling för Cache-Control-huvudet och upphör att gälla sidhuvud behandling funktioner beteendet.
+Den här funktionen aktiveras genererar Cache-Control: max-ålder och upphör att gälla meddelandehuvuden från våra servrar kant och skicka dem toohello HTTP-klienten. Dessa huvuden skriver över de som skapats i hello ursprungsservern. Cache-Control sidhuvud behandling och upphör att gälla behandling-huvud-funktioner kan du emellertid att använda tooalter problemet.
 
 Viktig information:
 
-- Den här åtgärden påverkar inte edge-server till ursprunget server cache revalidations. Dessa typer av revalidations bestäms av Cache-Control/Expires-huvuden togs emot från den ursprungliga servern och kan anpassas med standard interna Max-ålder och funktionerna för inre Tvingad maximal-ålder.
-- Konfigurera den här funktionen genom att ange ett heltalsvärde och välja önskad tidsenhet (d.v.s. sekunder, minuter, timmar, etc.).
-- Ställa in den här funktionen med ett negativt värde leder våra servrar för att skicka en Cache-Control: no-cache och en Expires-tid som anges i förflutna med varje svar till webbläsaren. Även om HTTP-klienter inte kommer cachelagrar svaret, i den här inställningen påverkar inte våra edge servrar möjligheten att cachelagra svaret från den ursprungliga servern.
-- Tidsenhet till ”av” inaktiveras den här funktionen. Expires-Cache-Control-huvuden cachelagrat svar för den ursprungliga servern passerar genom till webbläsaren.
+- Den här åtgärden påverkar inte edge server tooorigin server cache revalidations. Dessa typer av revalidations bestäms av Expires-Cache-Control-huvuden som togs emot från hello ursprungsservern och kan anpassas med standard interna Max-ålder och funktionerna för inre Tvingad maximal-ålder.
+- Konfigurera den här funktionen genom att ange ett heltalsvärde och välja hello önskad tidsenhet (d.v.s. sekunder, minuter, timmar, etc.).
+- Ställa in den här funktionen tooa negativt värde leder vår edge servrar toosend en Cache-Control: no-cache och en Expires-tid som anges i hello tidigare med varje svar toohello webbläsare. Även om HTTP-klienter inte kommer att cachelagra hello svar, påverkar inte den här inställningen våra edge servrar möjlighet toocache hello svar från hello ursprungsservern.
+- Inställningen hello tidsenhet för inaktiveras ”Off” den här funktionen. Expires-Cache-Control-huvuden cachelagras med hello ursprungsservern hello svar skickas via toohello webbläsare.
 
 **Standardbeteende:** ut
 
 ###<a name="force-internal-max-age"></a>Tvinga inre maximal ålder
-**Syfte:** bestämmer intervallet maximal ålder för edge-server till ursprunget server Cachevalidering. Med andra ord tidsperiod som ska förflyta innan en gränsserver kan kontrollera om en cachelagrad tillgång matchar den tillgång som lagras på den ursprungliga servern.
+**Syfte:** avgör hello maximal ålder intervall för edge server tooorigin server Cachevalidering. Med andra ord hello mängden tid som ska gå innan en gränsserver kan kontrollera om en cachelagrad tillgång matchar hello-tillgångar lagras på hello ursprungsservern.
 
 Viktig information:
 
-- Den här funktionen åsidosätter maximal ålder intervallet som definierats i Cache-Control eller Expires-huvuden som genereras från en ursprungsservern.
-- Webbläsaren edge server cache revalidations påverkas inte av den här funktionen. Dessa typer av revalidations bestäms av Cache-Control eller Expires-huvuden som skickas till webbläsaren.
-- Den här funktionen har inte en synliga effekt i svaret som levereras av en gränsserver till beställaren. Det kan dock ha en effekt på mängden Omverifiering av trafik som skickas från våra servrar kant till den ursprungliga servern.
+- Den här funktionen åsidosätter hello maximal ålder intervall som anges i Cache-Control eller Expires-huvuden som genereras från en ursprungsservern.
+- Webbläsaren tooedge server cache revalidations påverkas inte av den här funktionen. Dessa typer av revalidations bestäms av Cache-Control eller Expires-huvuden skickas toohello webbläsare.
+- Den här funktionen har inte synliga påverka hello-svar som levereras av en kant server toohello beställaren. Det kan dock ha en effekt på hello mängden Omverifiering av trafik som skickas från våra servrar toohello ursprung gränsservern.
 - Konfigurera den här funktionen genom att:
-    - Att välja statuskoden som en intern maximal ålder tillämpas.
-    - Ange ett heltalsvärde och välja önskad tidsenhet (d.v.s. sekunder, minuter, timmar, etc.). Det här värdet definierar begäran maximal ålder intervall.
+    - Att välja hello statuskod som en intern maximal ålder tillämpas.
+    - Ange ett heltalsvärde och välja hello önskad tidsenhet (d.v.s. sekunder, minuter, timmar, etc.). Det här värdet definierar hello begäran maximal ålder intervall.
 
-- Tidsenhet till ”av” inaktiveras den här funktionen. Ett internt maximal ålder intervall kommer inte att tilldela begärda tillgångar. Om det ursprungliga huvudet inte innehåller instruktioner för cachelagring, cachelagras tillgången enligt inställningen active i funktionen standard interna Max-ålder.
-- Den här funktionen kan inte associeras med följande matchar villkor på grund av det sätt som i vilken cache inställningar spåras: 
+- Inställningen hello tidsenhet för inaktiverar ”Off” den här funktionen. Ett internt maximal ålder intervall kommer inte att tilldela toorequested tillgångar. Om hello ursprungliga huvudet inte innehåller instruktioner för cachelagring, sedan cachelagras hello tillgången enligt toohello active inställningen i funktionen standard interna Max-ålder.
+- På grund av toohello sätt i vilken cache inställningar spåras, kan den här funktionen inte associeras med hello följande matchar villkor: 
     - Kant 
     - CNAME-post
     - Begäran sidhuvud Literal
@@ -424,33 +424,33 @@ Viktig information:
 **Standardbeteende:** ut
 
 ###<a name="h264-support-http-progressive-download"></a>H.264-stöd (http-progressiv nedladdning)
-**Syfte:** avgör vilka typer av H.264 filformat som kan användas för att strömma innehåll.
+**Syfte:** avgör hello typer av H.264 filformat som kanske används toostream innehåll.
 
 Viktig information:
 
-- Definiera en blankstegsavgränsad tillåtna H.264 filename tillägg i alternativet filnamnstillägg. Alternativet filnamnstillägg att åsidosätta standardbeteendet. Att stöda MP4 och F4V genom att inkludera dessa filnamnstillägg när det här alternativet. 
-- Se till att inkludera en period när du anger varje filnamnstillägg (t.ex. .mp4 .f4v).
+- Definiera en blankstegsavgränsad tillåtna H.264 filename tillägg i alternativet filnamnstillägg. Alternativet filnamnstillägg åsidosätter hello standardbeteendet. Att stöda MP4 och F4V genom att inkludera dessa filnamnstillägg när det här alternativet. 
+- Se till att tooinclude en tid när du anger varje filnamnstillägg (t.ex. .mp4 .f4v).
 
 **Standardbeteende:** HTTP progressiv nedladdning stöder MP4 och F4V media som standard.
 
 ###<a name="honor-no-cache-request"></a>Kontrollera no-cache-begäran
-**Syfte:** avgör om en HTTP-klient har no-cache begäranden ska vidarebefordras till den ursprungliga servern.
+**Syfte:** avgör om en HTTP-klientens no-cache-begäranden ska vidarebefordras toohello ursprungsservern.
 
-En begäran om no-cache inträffar när HTTP-klienten skickar en Cache-Control: no-cache och/eller Pragma:no-cache-huvud i HTTP-begäran.
+En begäran om no-cache inträffar när hello HTTP-klienten skickar en Cache-Control: no-cache och/eller Pragma:no-cache-huvud i hello HTTP-begäran.
 
 Värde|Resultat
 --|--
-Enabled|Kan en HTTP-klientens no-cache-begäranden ska vidarebefordras till den ursprungliga servern och den ursprungliga servern returnerar svarshuvuden och brödtext via gränsservern tillbaka till HTTP-klienten.
-Disabled|Återställer standardbeteendet. Standardinställningen är att förhindra no-cache-begäranden från att vidarebefordras till den ursprungliga servern.
+Enabled|Gör ett HTTP-klientens no-cache begär toobe vidarebefordrade toohello ursprungsservern och hello ursprungsservern returnerar hello svarshuvuden och hello brödtext via hello gränsservern tillbaka toohello HTTP-klienten.
+Disabled|Återställer hello standardbeteendet. hello standardbeteendet är tooprevent no-cache-begäranden från att vidarebefordras toohello ursprungsservern.
 
-För all trafik för produktion rekommenderas att lämna den här funktionen i inaktiverad standardtillståndet. Ursprungliga servrarna kommer annars inte att skärma från slutanvändare som oavsiktligt utlösa många no-cache-begäranden när du uppdaterar webbsidor eller från många vanliga mediespelare som är kodade för att skicka ett no-cache-huvud med varje video begäran. Den här funktionen kan dock vara praktiskt att tillämpas på vissa icke-produktion mellanlagring och testning kataloger, för att tillåta nytt innehåll som ska hämtas på begäran från den ursprungliga servern.
+För all trafik för produktion, är det mycket rekommenderas tooleave funktionen i inaktiverad standardtillståndet. Annars kommer inte att skärma ursprung servrar från slutanvändare som oavsiktligt utlösa många no-cache-begäranden när du uppdaterar webbsidor eller från hello många vanliga mediespelare som är kodat toosend no-cache-huvud med varje video begäran. Dock den här funktionen kan vara användbar tooapply toocertain icke-produktion eller testa kataloger, i ordning tooallow ny innehåll toobe hämtas på begäran från hello ursprungsservern.
 
-Cachestatus som rapporteras för en begäran ska kunna vidarebefordras till ett ursprungsservern på grund av den här funktionen är TCP_Client_Refresh_Miss. Rapporten Cache status som är tillgänglig i Core reporting modulen ger statistisk information genom att Cachestatus. På så sätt kan du spåra antalet och procentandelen förfrågningar som vidarebefordras till en ursprungsserver på grund av den här funktionen.
+hello Cachestatus som rapporteras för en begäran tillåts toobe vidarebefordras tooan ursprungsservern på grund av toothis funktionen är TCP_Client_Refresh_Miss. Rapporten status för Cache som är tillgängliga i hello Core rapportmodulen, ger statistisk information genom att Cachestatus. Detta ger dig tootrack hello antalet och procentandelen förfrågningar som vidarebefordras tooan ursprungsservern på grund av toothis-funktionen.
 
 **Standardbeteende:** inaktiverad.
 
 ###<a name="ignore-origin-no-cache"></a>Ignorera ursprung no-cache
-**Syfte:** avgör om våra CDN ignoreras följande direktiv hanteras från en ursprungsservern:
+**Syfte:** avgör om våra CDN kommer att ignorera hello följande direktiv som hanteras från en ursprungsservern:
 
 - Cache-Control: privat
 - Cache-Control: no-store
@@ -459,10 +459,10 @@ Cachestatus som rapporteras för en begäran ska kunna vidarebefordras till ett 
 
 Viktig information:
 
-- Konfigurera den här funktionen genom att definiera en mellanslags-avgränsad lista över statuskoder som ovannämnda direktiv kommer att ignoreras.
-- Uppsättningen koder för giltig status för den här funktionen är: 200, 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504, och 505.
-- Inaktivera funktionen genom att ange ett tomt värde.
-- Den här funktionen kan inte associeras med följande matchar villkor på grund av det sätt som i vilken cache inställningar spåras: 
+- Konfigurera den här funktionen genom att definiera en mellanslags-avgränsad lista över statuskoder som hello ovan direktiven kommer att ignoreras.
+- hello uppsättning koder för giltig status för den här funktionen är: 200, 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504, och 505.
+- Inaktivera funktionen genom att ange det värde som tooa är tomt.
+- På grund av toohello sätt i vilken cache inställningar spåras, kan den här funktionen inte associeras med hello följande matchar villkor: 
     - Kant 
     - CNAME-post
     - Begäran sidhuvud Literal
@@ -471,39 +471,39 @@ Viktig information:
     - URL-frågan Literal
     - URL: en fråga med jokertecken
 
-**Standardbeteende:** standardbeteendet är ta hänsyn till ovannämnda direktiv.
+**Standardbeteende:** standardbeteendet är toohonor hello ovan direktiven.
 
 ###<a name="ignore-unsatisfiable-ranges"></a>Ignorera Unsatisfiable intervall 
-**Syfte:** bestämmer svaret som returneras till klienter när en förfrågan genererar statuskod 416 begärt intervall inte kunde hanteras.
+**Syfte:** anger hello-svar som ska returneras tooclients när en förfrågan genererar statuskod 416 begärt intervall inte kunde hanteras.
 
-Som standard returneras statuskoden när den angivna byte-intervall begäranden inte kan tillgodoses av en gränsserver och huvudfältet ett intervall om begäran har inte angetts.
+Som standard returneras statuskoden när hello angivna byte-intervall begäran inte kan tillgodoses av en gränsserver och huvudfältet ett intervall om begäran har inte angetts.
 
 Värde|Resultat
 -|-
-Enabled|Förhindrar att våra edge-servrar svarar på en ogiltig byteintervall begäran med statuskod 416 begärt intervall inte kunde hanteras. Våra servrar kommer i stället leverera begärda tillgången och returnera ett 200 OK till klienten.
-Disabled|Återställer standardbeteendet. Standardinställningen är att respektera 416 begärt intervall inte kunde hanteras statuskoden.
+Enabled|Förhindrar att våra edge-servrar svarar tooan ogiltig byteintervall begäran med statuskod 416 begärt intervall inte kunde hanteras. Våra servrar kommer i stället leverera hello begärda tillgången och returnera ett 200 OK till hello-klienten.
+Disabled|Återställer hello standardbeteendet. hello standardbeteendet är toohonor 416 begärt intervall inte kunde hanteras statuskoden.
 
 **Standardbeteende:** inaktiverad.
 
 ###<a name="internal-max-stale"></a>Internt Max-inaktuell
-**Syfte:** styr hur länge tidigare normala förfallotiden cachelagrade tillgång kan hanteras från en gränsserver när edge-servern inte kan verifiera den cachelagra tillgången med den ursprungliga servern.
+**Syfte:** styr hur länge senaste hello normal förfallotiden för en cachelagrad tillgång kan hanteras från en gränsserver när hello edge-server är toorevalidate hello cachelagras tillgång med hello ursprungsservern.
 
-Normalt när en tillgång maximal ålder tiden går ut skickar edge-servern en begäran om förnyelse till den ursprungliga servern. Ursprung servern kommer sedan svara med antingen 304 inte har ändrats ge gränsservern en ny låna ut på den cachelagra tillgången eller med 200 OK för att ange edge-server med en uppdaterad version av cachelagrade tillgången.
+När en tillgång maximal ålder tiden går ut normalt skickar hello edge-server en Omverifiering begäran toohello ursprungsservern. hello ursprungsservern sedan svarar med antingen en 304 inte har ändrats ge hello edge-server en ny lån på hello cachelagrade tillgång eller med 200 OK för att ange hello edge-server med en uppdaterad version av hello cachelagrade tillgång.
 
-Om edge-server kan inte upprätta en anslutning till den ursprungliga servern vid försök sådana Omverifiering kontroller funktionen interna Max-föråldrade för om och för hur länge kanten server fortsätta att fungera nu föråldrade tillgången.
+Om hello edge-server är tooestablish en anslutning med hello ursprungsservern vid försök sådana Omverifiering, kontroller interna Max-föråldrade funktionen för om och hur länge hello edge-server kan fortsätta tooserve hello nu föråldrade tillgången.
 
-Observera att detta tidsintervall startar när tillgångens max-ålder upphör att gälla, inte när misslyckade Omverifiering inträffar. Därför är den längsta tid under vilken en tillgång kan hanteras utan lyckad validering tidsperiod som angetts av kombinationen av maximal ålder plus max inaktuell. Till exempel om en tillgång cachelagrades 9:00 med en maximal ålder på 30 minuter och max-inaktuell 15 minuter skulle sedan Omverifiering av misslyckade försöket 9:44 resultera i en slutanvändare som tar emot inaktuella cachelagrade tillgången, medan en misslyckad validering försöket 9:46 skulle leda till e ND användare tar emot en 504 Gateway-Timeout.
+Observera att detta tidsintervall startar när hello tillgången max-ålder upphör att gälla, inte när hello misslyckade Omverifiering inträffar. Därför är hello längsta tid under vilken en tillgång kan hanteras utan lyckad validering hello mängden tid som anges av hello kombination av maximal ålder plus max inaktuell. Till exempel om en tillgång cachelagrades 9:00 med en maximal ålder på 30 minuter och max-inaktuell 15 minuter, därefter en misslyckad validering försöka på skulle 9:44 resultera i en slutanvändare mottagande hello inaktuella cachelagrade tillgång, medan en misslyckad validering försöket 9:46 skulle resultera i hello slutanvändaren en 504 Gateway-Timeout.
 
-Ett värde som konfigurerats för den här funktionen har ersatts av Cache-Control: måste-verifiera eller cachelagra-kontroll: proxy-verifiera huvuden som togs emot från den ursprungliga servern. Om någon av dessa huvuden tas emot från den ursprungliga servern när en tillgång till en början cachelagras, fungerar en inaktuella cachelagrade tillgång inte i edge-server. I så fall, om edge-servern inte kan verifiera med ursprung när tillgångens maximal ålder intervall har upphört att gälla, returnerar edge-servern en 504 Gateway-Timeout.
+Ett värde som konfigurerats för den här funktionen har ersatts av Cache-Control: måste-verifiera eller cachelagra-kontroll: proxy-verifiera huvuden som togs emot från hello ursprungsservern. Om någon av dessa huvuden tas emot från hello ursprungsservern när en tillgång till en början cachelagras, kommer hello edge-server inte att uppfylla en inaktuella cachelagrade tillgång. I så fall, om hello edge-server är toorevalidate med hello ursprung när hello tillgången maximal ålder intervall har upphört att gälla, returnerar hello gränsservern en 504 Gateway-Timeout.
 
 Viktig information:
 
 - Konfigurera den här funktionen genom att:
-    - Att välja statuskoden som en aktuell max tillämpas.
-    - Ange ett heltalsvärde och sedan välja önskad tidsenhet (d.v.s. sekunder, minuter, timmar, etc.). Det här värdet anger den interna max aktuell som ska användas.
+    - Att välja hello statuskod som en aktuell max tillämpas.
+    - Ange ett heltalsvärde och sedan välja hello önskad tidsenhet (d.v.s. sekunder, minuter, timmar, etc.). Det här värdet definierar hello interna max aktuell som ska användas.
 
-- Tidsenhet till ”av” inaktiveras den här funktionen. En cachelagrad tillgång hanteras inte utöver dess normala förfallotid.
-- Den här funktionen kan inte associeras med följande matchar villkor på grund av det sätt som i vilken cache inställningar spåras: 
+- Inställningen hello tidsenhet för inaktiveras ”Off” den här funktionen. En cachelagrad tillgång hanteras inte utöver dess normala förfallotid.
+- På grund av toohello sätt i vilken cache inställningar spåras, kan den här funktionen inte associeras med hello följande matchar villkor: 
     - Kant 
     - CNAME-post
     - Begäran sidhuvud Literal
@@ -517,25 +517,25 @@ Viktig information:
 ###<a name="partial-cache-sharing"></a>Partiell Cache delning
 **Syfte:** avgör om en begäran kan generera delvis cachelagrat innehåll.
 
-Partiell cacheminnet kan sedan användas för att uppfylla nya begäranden för innehållet tills det begärda innehållet cachelagras fullständigt.
+Partiell cacheminnet kanske sedan används toofulfill nya begäranden för innehållet tills hello begärt innehåll cachelagras fullständigt.
 
 Värde|Resultat
 -|-
 Enabled|Begäranden kan generera delvis cachelagrat innehåll.
-Disabled|Begäranden kan bara skapa en fullständigt cachelagrad version av det begärda innehållet.
+Disabled|Begäranden kan bara generera fullständigt cachelagrade versionen av hello begärda innehållet.
 
 **Standardbeteende:** inaktiverad.
 
 ###<a name="prevalidate-cached-content"></a>Prevalidate cachelagrat innehåll
 **Syfte:** anger om cachelagrat innehåll ska vara tillämplig för tidig validering innan TTL-upphör att gälla.
 
-Ange hur lång tid innan den upphör att gälla för det begärda innehållet TTL under vilken den är aktuell för tidig validering.
+Definiera hello mängden tid som tidigare toohello gälla hello begärde innehållets TTL-värdet under vilken den är aktuell för tidig validering.
 
 Viktig information:
 
-- Att välja ”Off” som tidsenheten kräver validering efter det cachelagrade innehållet TTL-värde har gått ut. Tid anges inte och kommer att ignoreras.
+- Välja ”Off” som hello tidsenhet kräver validering tootake plats när hello cachelagrat innehåll TTL har gått ut. Tid anges inte och kommer att ignoreras.
 
-**Standardbeteende:** ut. Validering kan endast utföras när det cachelagrade innehållet TTL har gått ut.
+**Standardbeteende:** ut. Validering kan endast utföras efter hello cachelagrat innehåll TTL har upphört att gälla.
 
 ###<a name="refresh-zero-byte-cache-files"></a>Uppdatera cachefiler noll Byte
 **Syfte:** bestämmer hur ett HTTP-klientens begäran om en 0 byte cache tillgång hanteras av vår edge-servrar.
@@ -544,93 +544,93 @@ Giltiga värden är:
 
 Värde|Resultat
 --|--
-Enabled|Gör att vår edge-servern att hämta nytt tillgången från den ursprungliga servern.
-Disabled|Återställer standardbeteendet. Standardbeteendet är att hantera upp giltig cache tillgångar på begäran.
-Den här funktionen krävs inte för rätt cachelagring och leverans av innehåll, men kan användas som en lösning. Dynamiskt innehåll generatorer på ursprung servrar kan till exempel oavsiktligt resultera i 0 byte-svar som skickas till Microsoft edge-servrar. Dessa typer av svar cachelagras vanligtvis av våra edge-servrar. Om du vet att 0 byte svar inte är ett giltigt svar 
+Enabled|Gör att vår edge server toore fetch hello tillgångsinformation från hello ursprungsservern.
+Disabled|Återställer hello standardbeteendet. hello standardbeteendet är tooserve in giltig cache tillgångar på begäran.
+Den här funktionen krävs inte för rätt cachelagring och leverans av innehåll, men kan användas som en lösning. Dynamiskt innehåll generatorer på ursprung servrar kan till exempel oavsiktligt resultera i 0 byte svar skickas toohello kant-servrar. Dessa typer av svar cachelagras vanligtvis av våra edge-servrar. Om du vet att 0 byte svar inte är ett giltigt svar 
 
-för sådana innehåll, sedan den här funktionen kan förhindra att dessa typer av tillgångar hanteras till dina klienter.
+för sådana innehåll, sedan den här funktionen kan förhindra att dessa typer av tillgångar hanteras tooyour klienter.
 
 **Standardbeteende:** inaktiverad.
 
 ###<a name="set-cacheable-status-codes"></a>Ange Cacheable ställs statuskoder
-**Syfte:** definierar en uppsättning statuskoder som kan resultera i cachelagrat innehåll.
+**Syfte:** definierar hello statuskoder som kan resultera i cachelagrat innehåll.
 
 Som standard är cachelagring endast aktiverad för 200 OK svar.
 
-Definiera en blankstegsavgränsad önskade statuskoder.
+Definiera en blankstegsavgränsad hello önskad statuskoder.
 
 Viktig information:
 
 - Aktivera funktionen Ignorera ursprung No-Cache också. Om funktionen inte är aktiverad kan inte 200 OK svar cachelagras.
-- Uppsättningen koder för giltig status för den här funktionen är: 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504, och 505.
-- Den här funktionen kan inte användas för att inaktivera cachelagring för svar som genererar en 200 OK statuskod.
+- hello uppsättning koder för giltig status för den här funktionen är: 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504, och 505.
+- Den här funktionen kan inte vara används toodisable cachelagring för svar som genererar en 200 OK statuskod.
 
 **Standardbeteende:** cachelagring är endast aktiverad för svar som genererar en 200 OK statuskod.
 ###<a name="stale-content-delivery-on-error"></a>Inaktuella leverans av innehåll vid fel
 **Syfte:** 
 
-Avgör om upphört att gälla cachelagrat innehåll levereras när ett fel uppstår under Cachevalidering eller när det begärda innehållet hämtas från ursprungsservern kunden.
+Avgör om upphört att gälla cachelagrat innehåll levereras när ett fel uppstår under Cachevalidering eller när hämtning hello begär innehåll från hello kunden ursprungsservern.
 
 Värde|Resultat
 -|-
-Enabled|Inaktuella innehållet ska tillhandahållas till beställaren när ett fel uppstår under en anslutning till en ursprungsserver som.
-Disabled|Den ursprungliga servern fel vidarebefordras till beställaren.
+Enabled|Inaktuella innehållet ska tillhandahållas toohello beställaren när ett fel uppstår under en anslutning tooan ursprungsservern.
+Disabled|hello ursprungsserver-fel vidarebefordras toohello beställaren.
 
 **Standardbeteende:** inaktiverad
 
 ###<a name="stale-while-revalidate"></a>Inaktuella när Revalidate
-**Syfte:** förbättrar prestanda genom att tillåta att våra servrar för att hantera inaktuella innehåll till beställaren medan Omverifiering äger rum.
+**Syfte:** förbättrar prestanda genom att tillåta att våra servrar edge tooserve inaktuella innehåll toohello beställaren samtidigt Omverifiering sker.
 
 Viktig information:
 
-- Den här funktionen fungerar beror enligt den valda enheten.
-    - **Tidsenhet:** anger hur lång tid och välja en tidsenhet (t.ex. sekunder, minuter, timmar, etc.) så att inaktuella leverans av innehåll. Den här typen av installationsprogrammet tillåter CDN att utöka tidslängd som det kan leverera innehåll innan du kräver verifiering enligt följande formel:**TTL** + **inaktuella medan verifiera tid** 
-    - **Av:** väljer ”av” till att kräva validering innan en begäran för inaktuella innehåll kan hanteras.
+- hello-funktionen för den här funktionen varierar bl.a toohello valda tidsenhet.
+    - **Tidsenhet:** ange hur lång tid och välj en tid enheten (t.ex. sekunder, minuter, timmar, etc.) tooallow inaktuella leverans av innehåll. Den här typen av installationsprogrammet tillåter hello CDN tooextend hello lång tid som den kan leverera innehåll innan du kräver verifiering enligt toohello följande formel:**TTL** + **inaktuella medan verifiera tid** 
+    - **Av:** väljer ”Off” toorequire validering innan en begäran för inaktuella innehåll kan hanteras.
         - Ange hur lång tid eftersom den är och kommer att ignoreras.
 
-**Standardbeteende:** ut. Validering måste utföras innan det begärda innehållet kan hanteras.
+**Standardbeteende:** ut. Validering måste utföras innan hello begärt innehåll kan hanteras.
 
 ###<a name="comment"></a>Kommentar
-**Syfte:** tillåter en kommentar som ska läggas till i en regel.
+**Syfte:** tillåter en anteckning toobe som lagts till i en regel.
 
-En används för den här funktionen för att tillhandahålla ytterligare information om generella av en regel eller varför en viss matchar villkoret eller funktionen har lagts till i regeln.
+Ett sätt att använda för den här funktionen är tooprovide ytterligare information om hello generella i en regel eller varför en viss matchar villkoret eller funktion har lagts till toohello regeln.
 
 Viktig information:
 
 - Högst 150 tecken kan anges.
-- Se till att bara använda alfanumeriska tecken.
-- Den här funktionen påverkar inte beteendet för regeln. Det är endast avsedda att ge ett område där du kan ange information för framtida bruk eller som kan hjälpa vid felsökning av regeln.
+- Se till att tooonly använder alfanumeriska tecken.
+- Hello funktionssätt hello regel påverkas inte av den här funktionen. Det är enbart avsedd tooprovide ett område där du kan ange information för framtida bruk eller som kan bidra till att när du felsöker hello regeln.
  
 ## <a name="headers"></a>Rubriker
 
-Dessa funktioner är utformade för att lägga till, ändra eller ta bort rubriker från begäran eller svar.
+Dessa funktioner är utformade tooadd, ändra eller ta bort rubriker från hello begäran eller ett svar.
 
 Namn | Syfte
 -----|--------
-Ålder svarshuvud | Anger om en ålder svarshuvud ska inkluderas i svaret som skickas till beställaren.
-Felsöka Cache-svarshuvuden | Anger om ett svar kan innehålla rubriken X EC Debug som innehåller information om cacheprincipen för den begärda tillgången.
+Ålder svarshuvud | Anger om en ålder svarshuvud ska inkluderas i hello toohello beställaren för svaret.
+Felsöka Cache-svarshuvuden | Anger om ett svar kan omfatta hello X EC Debug-Svarsrubrik som innehåller information om hello princip för hello begärda tillgång.
 Ändra klienten huvudet i begäran | Skriver över, lägger till eller tar bort en rubrik i en begäran.
 Ändra klienten svarshuvud | Skriver över, lägger till eller tar bort ett sidhuvud från ett svar.
-Ange klientens IP-anpassad rubrik | Tillåter den IP-adressen för den begärande klienten som ska läggas till på begäran som en anpassad begärandehuvudet.
+Ange klientens IP-anpassad rubrik | Tillåter hello hello begärande klientens IP-adress toobe tillagda toohello begäran som en anpassad begärandehuvudet.
 
 ###<a name="age-response-header"></a>Ålder svarshuvud
-**Syfte**: avgör om en ålder svarshuvud ska inkluderas i svaret som skickas till beställaren.
+**Syfte**: avgör om en ålder svarshuvud ska tas med i hello svaret toohello beställaren.
 Värde|Resultat
 --|--
-Enabled | Rubriken ålder inkluderas i svaret som skickas till beställaren.
-Disabled | Rubriken ålder utesluts från svaret som skickas till beställaren.
+Enabled | hello ålder svarshuvud inkluderas i hello toohello beställaren för svaret.
+Disabled | hello ålder svarshuvud kommer att uteslutas från hello toohello beställaren för svaret.
 
 **Standardbeteende**: inaktiverad.
 
 ###<a name="debug-cache-response-headers"></a>Felsöka Cache-svarshuvuden
-**Syfte:** avgör om ett svar kan innehålla rubriken X EC Debug som innehåller information om cacheprincipen för den begärda tillgången.
+**Syfte:** avgör om ett svar kan innehålla rubriken X EC Debug som innehåller information om hello princip för hello begärda tillgång.
 
-Felsöka cachesvar huvuden som ska inkluderas i svaret när båda av följande villkor uppfylls:
+Felsöka cachesvar huvuden som ska inkluderas i hello svar när båda hello följande är sant:
 
-- Felsöka Cache svar huvuden funktionen har aktiverats på den önskade begäranden.
-- Begäran definierar en uppsättning debug cache-svarshuvuden som ska inkluderas i svaret.
+- hello Debug svar huvuden cachefunktionen har aktiverats på önskad hello-begäran.
+- hello ovan begäran definierar hello debug cache-svarshuvuden som ska tas med i hello-svar.
 
-Felsöka cachesvar huvuden kan begäras genom att inkludera följande huvud och önskade direktiven i förfrågan:
+Felsöka cachesvar huvuden kan begäras genom att inkludera följande huvud hello och hello önskade direktiven i hello begäran:
 
 X-EC-Debug: _Directive1_,_Directive2_,_DirectiveN_
 
@@ -641,36 +641,36 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 Värde|Resultat
 -|-
 Enabled|Begäranden för debug cache-svarshuvuden returnerar ett svar som innehåller X EC Debug-huvudet.
-Disabled|Rubriken X EC Debug utesluts från svaret.
+Disabled|Rubriken X EC Debug utesluts från hello svar.
 
 **Standardbeteende:** inaktiverad.
 
 ###<a name="modify-client-response-header"></a>Ändra klienten svarshuvud
 **Syfte:** varje begäran innehåller en uppsättning [begärandehuvuden]() som beskriver den. Den här funktionen kan antingen:
 
-- Lägg till eller skriva över värdet som tilldelas ett huvud. Om det angivna begärandehuvudet inte finns, sedan den här funktionen lägger till det på begäran.
-- Ta bort ett huvud i begäran.
+- Lägg till eller skriva över hello-värdet som tilldelas tooa huvudet i begäran. Om hello angivna begärandehuvudet inte finns, sedan den här funktionen lägger till det toohello begäran.
+- Ta bort ett huvud från hello-begäran.
 
-Begäranden som vidarebefordras till en ursprungsservern visar de ändringar som gjorts av den här funktionen.
+Begäranden som vidarebefordras tooan ursprungsservern visar hello ändringar som gjorts av den här funktionen.
 
-En av följande åtgärder kan utföras på ett huvud:
+En av hello följande åtgärder kan utföras på ett huvud:
 
 Alternativ|Beskrivning|Exempel
 -|-|-
-Lägg till|Det angivna värdet läggs toend av befintliga begäran huvudets värde.|**Begära huvudvärde (klient):**Value1 <br/> **Begära huvudvärde (regelmotor HTTP):** Value2 <br/>**Ny begäran huvudvärde:** Value1Value2
-Skriv över|Begäran huvudvärde sätts till det angivna värdet.|**Begära huvudvärde (klient):**Value1 <br/>**Begära huvudvärde (regelmotor HTTP):** Value2 <br/>**Ny begäran huvudvärde:** Value2 <br/>
-Ta bort|Tar bort det angivna begärandehuvudet.|**Begära huvudvärde (klient):**Value1 <br/> **Ändra konfigurationen för klienten begärandehuvudet:** ta bort begärandehuvudet i fråga. <br/>**Resultat:** det angivna begärandehuvudet inte vidarebefordras till den ursprungliga servern.
+Lägg till|hello anges värdet kommer att läggas till toend av huvudvärde hello befintliga begäran.|**Begära huvudvärde (klient):**Value1 <br/> **Begära huvudvärde (regelmotor HTTP):** Value2 <br/>**Ny begäran huvudvärde:** Value1Value2
+Skriv över|hello begäran huvudvärde kommer att ange toohello specifika värdet.|**Begära huvudvärde (klient):**Value1 <br/>**Begära huvudvärde (regelmotor HTTP):** Value2 <br/>**Ny begäran huvudvärde:** Value2 <br/>
+Ta bort|Tar bort hello angivna begärandehuvudet.|**Begära huvudvärde (klient):**Value1 <br/> **Ändra konfigurationen för klienten begärandehuvudet:** Delete hello huvudet i begäran i fråga. <br/>**Resultat:** hello angivna huvudet i begäran inte vidarebefordras toohello ursprungsservern.
 
 Viktig information:
 
-- Se till att värdet som anges i alternativet är en exakt matchning för begärandehuvudet önskade.
-- Om beaktas inte vid identifiering av ett sidhuvud. Till exempel kan någon av följande variationer av Cache-Control huvudets namn användas för att identifiera den:
+- Se till att hello-värdet som anges i alternativet är en exakt matchning för hello önskade begärandehuvudet.
+- Om beaktas inte i hello syftet att identifiera en rubrik. Något av hello följande variationer av Cache-Control huvudets namn kan till exempel vara används tooidentify den:
     - cache-control
     - CACHE-CONTROL
     - cachE-Control
-- Se till att bara använda alfanumeriska tecken, bindestreck och understreck när du anger ett huvudnamn.
-- Om du tar bort ett sidhuvud förhindras från att vidarebefordras till en ursprungsserver av vår edge-servrar.
-- Följande huvuden är reserverade och kan inte ändras av den här funktionen:
+- Se till att tooonly använda alfanumeriska tecken, bindestreck och understreck när du anger ett huvudnamn.
+- Om du tar bort ett sidhuvud förhindras från att vidarebefordras tooan ursprungsservern av vår edge-servrar.
+- hello följande huvuden är reserverade och kan inte ändras av den här funktionen:
     - vidarebefordras
     - värden
     - via
@@ -681,28 +681,28 @@ Viktig information:
 ###<a name="modify-client-response-header"></a>Ändra klienten svarshuvud
 Varje svar innehåller en uppsättning [svarshuvuden]() som beskriver den. Den här funktionen kan antingen:
 
-- Lägg till eller skriva över värdet som tilldelas en Svarsrubrik. Om det angivna begärandehuvudet inte finns, sedan den här funktionen lägger till det i svaret.
-- Ta bort en svarshuvud från svaret.
+- Lägg till eller skriva över hello-värdet som tilldelas tooa Svarsrubrik. Om hello angivna begärandehuvudet inte finns, sedan den här funktionen lägger till det toohello svar.
+- Ta bort en svarshuvud från hello svar.
 
 Som standard definieras svar huvudvärden genom en ursprungsservern och våra edge-servrar.
 
-En av följande åtgärder kan utföras på en svarshuvud:
+En av hello följande åtgärder kan utföras på en svarshuvud:
 
 Alternativ|Beskrivning|Exempel
 -|-|-
-Lägg till|Det angivna värdet läggs toend av befintliga begäran huvudets värde.|**Svaret huvudvärde (klient):**Value1 <br/> **Svaret huvudvärde (regelmotor HTTP):** Value2 <br/>**Ny svar huvudvärde:** Value1Value2
-Skriv över|Begäran huvudvärde sätts till det angivna värdet.|**Svaret huvudvärde (klient):**Value1 <br/>**Svaret huvudvärde (regelmotor HTTP):** Value2 <br/>**Ny svar huvudvärde:** Value2 <br/>
-Ta bort|Tar bort det angivna begärandehuvudet.|**Begära huvudvärde (klient):** Value1 <br/> **Ändra konfigurationen för klienten begär huvud:** ta bort rubriken i fråga. <br/>**Resultat:** det angivna svarshuvudet inte vidarebefordras till beställaren.
+Lägg till|hello anges värdet kommer att läggas till toend av huvudvärde hello befintliga begäran.|**Svaret huvudvärde (klient):**Value1 <br/> **Svaret huvudvärde (regelmotor HTTP):** Value2 <br/>**Ny svar huvudvärde:** Value1Value2
+Skriv över|hello begäran huvudvärde kommer att ange toohello specifika värdet.|**Svaret huvudvärde (klient):**Value1 <br/>**Svaret huvudvärde (regelmotor HTTP):** Value2 <br/>**Ny svar huvudvärde:** Value2 <br/>
+Ta bort|Tar bort hello angivna begärandehuvudet.|**Begära huvudvärde (klient):** Value1 <br/> **Ändra konfigurationen för klienten begär huvud:** Delete hello svarshuvud i fråga. <br/>**Resultat:** hello angivna svarshuvudet inte vidarebefordras toohello beställaren.
 
 Viktig information:
 
-- Se till att värdet som anges i alternativet är en exakt matchning för det önskade svarshuvudet. 
-- Om beaktas inte vid identifiering av ett sidhuvud. Till exempel kan någon av följande variationer av Cache-Control huvudets namn användas för att identifiera den:
+- Se till att hello-värdet som anges i alternativet är en exakt matchning för hello önskade Svarsrubrik. 
+- Om beaktas inte i hello syftet att identifiera en rubrik. Något av hello följande variationer av Cache-Control huvudets namn kan till exempel vara används tooidentify den:
     - cache-control
     - CACHE-CONTROL
     - cachE-Control
-- Om du tar bort ett sidhuvud förhindras från att vidarebefordras till beställaren.
-- Följande huvuden är reserverade och kan inte ändras av den här funktionen:
+- Om du tar bort ett sidhuvud förhindras från att vidarebefordras toohello beställaren.
+- hello följande huvuden är reserverade och kan inte ändras av den här funktionen:
     - Acceptera-kodning
     - ålder
     - anslutning
@@ -720,13 +720,13 @@ Viktig information:
     - Alla huvud-namn som börjar med ”x ec” är reserverade.
 
 ###<a name="set-client-ip-custom-header"></a>Ange klientens IP-anpassad rubrik
-**Syfte:** lägger till en anpassad rubrik som identifierar den begärande klienten med IP-adress på begäran.
+**Syfte:** lägger till en anpassad rubrik som identifierar hello begärande klienten med IP-adress toohello begäran.
 
-Alternativet huvudet definierar namnet på det anpassa begärandehuvudet där klientens IP-adress ska lagras.
+Alternativet huvudet definierar hello namn hello anpassade begärandehuvudet där hello klientens IP-adress ska lagras.
 
-Den här funktionen kan en kund ursprungsservern ta reda på klient-IP-adresser via ett anpassat huvud. Om begäran skickades från cache, kommer den ursprungliga servern inte informeras om klientens IP-adress. Därför rekommenderas det att den här funktionen användas med ADN eller tillgångar som cachelagras.
+Den här funktionen kan en kund ursprung server toofind ut klienternas IP-adresser via ett anpassat huvud. Om hello begäran skickades från cache, kommer inte hello ursprungsservern informeras om hello klientens IP-adress. Därför rekommenderas det att den här funktionen användas med ADN eller tillgångar som cachelagras.
 
-Kontrollera att det angivna huvudnamnet inte matchar något av följande:
+Kontrollera att det angivna huvud hello-namnet inte matchar något av följande hello:
 
 - Standard begäran sidhuvud namn. En lista över standard sidhuvud namn finns i [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 - Namn på reserverade huvud:
@@ -740,21 +740,21 @@ Kontrollera att det angivna huvudnamnet inte matchar något av följande:
  
 ## <a name="logs"></a>Logs
 
-Dessa funktioner är utformade för att anpassa de data som lagras i raw loggfiler.
+Dessa funktioner är utformade toocustomize hello data som lagras i raw loggfiler.
 
 Namn | Syfte
 -----|--------
-Anpassad logg fält 1 | Anger formatet och det innehåll som ska tilldelas fältet anpassad logg i en rå loggfil.
-Loggen frågesträng | Anger om en frågesträng lagras tillsammans med URL-Adressen i åtkomstloggar.
+Anpassad logg fält 1 | Anger hello format och hello-innehåll som ska tilldelas toohello anpassad logg fält i en binär loggfil.
+Loggen frågesträng | Anger om en frågesträng lagras tillsammans med hello URL: en i åtkomstloggar.
 
 ###<a name="custom-log-field-1"></a>Anpassad logg fält 1
-**Syfte:** anger formatet och det innehåll som ska tilldelas fältet anpassad logg i en rå loggfil.
+**Syfte:** anger hello format och hello-innehåll som ska tilldelas toohello anpassad logg fält i en binär loggfil.
 
-Huvudsyftet bakom anpassade fältet är så att du kan bestämma vilka begäran och svar huvudvärden kommer att lagras i loggfilerna.
+hello Huvudsyftet bakom anpassade fältet är tooallow toodetermine som värden i huvudet förfrågan och svar kommer att lagras i loggfilerna.
 
-Som standard kallas anpassad loggfältet ”x-ec_custom-1”. Men namnet på det här fältet kan anpassa den [Raw Logginställningar sidan]().
+Som standard kallas hello anpassad loggfältet ”x-ec_custom-1”. Dock hello namnet på det här fältet kan anpassa den [Raw Logginställningar sidan]().
 
-Den formatering som du ska använda för att ange begärande- och svarshuvuden definieras nedan.
+hello formatering som du bör använda toospecify begärande- och svarshuvuden definieras nedan.
 
 Rubriktyp|Format|Exempel
 -|-|-
@@ -764,98 +764,98 @@ Svarshuvud|%{[ResponseHeader]()}[o]()| % {Ålder} o <br/> % {Content-Type} o <br
 Viktig information:
 
 - En anpassad logg-fältet kan innehålla en kombination av namn på huvudfält och oformaterad text.
-- Giltiga tecken för det här fältet är följande: alfanumeriska (d.v.s. 0-9, a-z eller A-Z), bindestreck, kolon, semikolon, apostrofer, kommatecken, punkter, understreck, likhetstecken, parenteser, hakparenteser och blanksteg. Procentandel symbolen och klammerparenteser tillåts endast när används för att ange en huvudfält.
-- Stavningen för varje fält angivna huvudet måste matcha huvudnamnet som önskade begäran och svar.
-- Om du vill ange flera huvuden är vi rekommenderar att du använder en avgränsare för att ange varje sidhuvud. Du kan exempelvis använda en förkortning för varje rubrik. Exempelsyntax finns nedan.
+- Giltiga tecken för det här fältet innehåller följande hello: alfanumeriska (d.v.s. 0-9, a-z eller A-Z), bindestreck, kolon, semikolon, apostrofer, kommatecken, punkter, understreck, likhetstecken, parenteser, hakparenteser och blanksteg. hello procentandel symbolen och klammerparenteser tillåts endast när används toospecify en huvudfält.
+- hello stavning för varje fält angivna huvudet måste matcha hello önskade begäran och svar huvudets namn.
+- Om du vill toospecify rekommenderas flera huvuden, då att du använder en avgränsare tooindicate varje sidhuvud. Du kan exempelvis använda en förkortning för varje rubrik. Exempelsyntax finns nedan.
     - AE: % {acceptera-Encoding} i A: % {auktorisering} i Datafält: % {Content-Type} o 
 
 **Standardvärde:** -
 
 ###<a name="log-query-string"></a>Loggen frågesträng
-**Syfte:** avgör om en frågesträng lagras tillsammans med URL-Adressen i åtkomstloggar.
+**Syfte:** avgör om en frågesträng lagras tillsammans med hello URL: en i åtkomstloggar.
 
 Värde|Resultat
 -|-
-Enabled|Tillåter lagring av frågesträngar när du registrerar URL: er i en åtkomst-loggen. Om en URL inte innehåller en frågesträng, har en effekt inte i det här alternativet.
-Disabled|Återställer standardbeteendet. Standardinställningen är att ignorera frågesträngar när du registrerar URL: er i en åtkomst-loggen.
+Enabled|Tillåter hello lagring av frågesträngar när du registrerar URL: er i en åtkomst-loggen. Om en URL inte innehåller en frågesträng, har en effekt inte i det här alternativet.
+Disabled|Återställer hello standardbeteendet. hello standardbeteendet är tooignore frågesträngar när du registrerar URL: er i en åtkomst-loggen.
 
 **Standardbeteende:** inaktiverad.
 
 <!---
 ## Optimize
 
-These features determine whether a request will undergo the optimizations provided by Edge Optimizer.
+These features determine whether a request will undergo hello optimizations provided by Edge Optimizer.
 
 Name | Purpose
 -----|--------
-Edge Optimizer | Determines whether Edge Optimizer can be applied to a request.
-Edge Optimizer – Instantiate Configuration | Instantiates or activates the Edge Optimizer configuration associated with a site.
+Edge Optimizer | Determines whether Edge Optimizer can be applied tooa request.
+Edge Optimizer – Instantiate Configuration | Instantiates or activates hello Edge Optimizer configuration associated with a site.
 
 ###Edge Optimizer
-**Purpose:** Determines whether Edge Optimizer can be applied to a request.
+**Purpose:** Determines whether Edge Optimizer can be applied tooa request.
 
-If this feature has been enabled, then the following criteria must also be met before the request will be processed by Edge Optimizer:
+If this feature has been enabled, then hello following criteria must also be met before hello request will be processed by Edge Optimizer:
 
-- The requested content must use an edge CNAME URL.
-- The edge CNAME referenced in the URL must correspond to a site whose configuration has been activated in a rule.
+- hello requested content must use an edge CNAME URL.
+- hello edge CNAME referenced in hello URL must correspond tooa site whose configuration has been activated in a rule.
 
-This feature requires the ADN platform and the Edge Optimizer feature.
+This feature requires the ADN platform and hello Edge Optimizer feature.
 
 Value|Result
 -|-
-Enabled|Indicates that the request is eligible for Edge Optimizer processing.
-Disabled|Restores the default behavior. The default behavior is to deliver content over the ADN platform without any additional processing.
+Enabled|Indicates that hello request is eligible for Edge Optimizer processing.
+Disabled|Restores hello default behavior. hello default behavior is toodeliver content over the ADN platform without any additional processing.
 
 **Default Behavior:** Disabled
  
 
 ###Edge Optimizer - Instantiate Configuration
-**Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
+**Purpose:** Instantiates or activates hello Edge Optimizer configuration associated with a site.
 
-This feature requires the ADN platform and the Edge Optimizer feature.
+This feature requires the ADN platform and hello Edge Optimizer feature.
 
 Key information:
 
-- Instantiation of a site configuration is required before requests to the corresponding edge CNAME can be processed by Edge Optimizer.
-- This instantiation only needs to be performed a single time per site configuration. A site configuration that has been instantiated will remain in that state until the Edge Optimizer – Instantiate Configuration feature that references it is removed from the rule.
-- The instantiation of a site configuration does not mean that all requests to the corresponding edge CNAME will automatically be processed by Edge Optimizer. The Edge Optimizer feature determines whether an individual request will be processed.
+- Instantiation of a site configuration is required before requests toohello corresponding edge CNAME can be processed by Edge Optimizer.
+- This instantiation only needs toobe performed a single time per site configuration. A site configuration that has been instantiated will remain in that state until hello Edge Optimizer – Instantiate Configuration feature that references it is removed from hello rule.
+- hello instantiation of a site configuration does not mean that all requests toohello corresponding edge CNAME will automatically be processed by Edge Optimizer. The Edge Optimizer feature determines whether an individual request will be processed.
 
-If the desired site does not appear in the list, then you should edit its configuration and verify that the Active option has been marked.
+If hello desired site does not appear in hello list, then you should edit its configuration and verify that the Active option has been marked.
 
 **Default Behavior:** Site configurations are inactive by default.
 --->
 
 ## <a name="origin"></a>Ursprung
 
-Dessa funktioner är utformade för att styra hur CDN kommunicerar med en ursprungsservern.
+Dessa funktioner är utformade toocontrol hur hello CDN kommunicerar med en ursprungsservern.
 
 Namn | Syfte
 -----|--------
-Högsta antal Keep-Alive-begäranden | Definierar det maximala antalet begäranden för en Keep-Alive-anslutning innan den är stängd.
-Proxy särskilda rubriker | Definierar en uppsättning CDN-specifika begärandehuvuden som vidarebefordras från en edge-server till en ursprungsservern.
+Högsta antal Keep-Alive-begäranden | Definierar hello högsta antal begäranden för en Keep-Alive-anslutning innan den är stängd.
+Proxy särskilda rubriker | Definierar hello CDN-specifika begärandehuvuden som vidarebefordras från en kant tooan ursprungsservern.
 
 
 ###<a name="maximum-keep-alive-requests"></a>Högsta antal Keep-Alive-begäranden
-**Syfte:** definierar det maximala antalet begäranden för en Keep-Alive-anslutning innan den är stängd.
+**Syfte:** definierar hello högsta antal begäranden för en Keep-Alive-anslutning innan den är stängd.
 
-Ange det maximala antalet begäranden till ett lågt värde rekommenderas inte och kan resultera i försämrade prestanda.
+Ange hello maximalt antal begäranden tooa lågt värde rekommenderas inte och kan resultera i försämrade prestanda.
 
 Viktig information:
 
 - Ange det värdet hela heltal.
-- Ta inte med kommatecken eller punkter i det angivna värdet.
+- Ta inte med kommatecken eller punkter i hello anges värdet.
 
 **Standardvärde:** 10 000 begäranden
 
 ###<a name="proxy-special-headers"></a>Proxy särskilda rubriker
-**Syfte:** definierar en uppsättning [CDN-specifika begärandehuvuden]() som vidarebefordras från en edge-server till en ursprungsservern.
+**Syfte:** definierar hello [CDN-specifika begärandehuvuden]() som vidarebefordras från en kant tooan ursprungsservern.
 
 Viktig information:
 
-- Varje CDN-specifika begärandehuvudet som definierats i den här funktionen ska vidarebefordras till en ursprungsservern.
-- Förhindra att ett CDN-specifikt huvud som vidarebefordras till en ursprungsservern genom att ta bort den från den här listan.
+- Varje CDN-specifika begärandehuvudet som definierats i den här funktionen kommer att vidarebefordras tooan ursprungsservern.
+- Förhindra att ett CDN-specifikt huvud vidarebefordras tooan ursprungsservern genom att ta bort den från den här listan.
 
-**Standardbeteende:** alla [CDN-specifika begärandehuvuden]() vidarebefordras till den ursprungliga servern.
+**Standardbeteende:** alla [CDN-specifika begärandehuvuden]() vidarebefordras toohello ursprungsservern.
 
 ## <a name="specialty"></a>Special
 
@@ -863,30 +863,30 @@ De här funktionerna ger avancerade funktioner som endast ska användas av avanc
 
 Namn | Syfte
 -----|--------
-Cacheable ställs http-metoder | Anger den ytterligare HTTP-metoder som kan cachelagras i vårt nätverk.
-Textstorleken för Cacheable ställs begäran | Definierar tröskelvärdet för att fastställa om en POST svaret kan cachelagras.
+Cacheable ställs http-metoder | Bestämmer hello ytterligare HTTP-metoder som kan cachelagras i vårt nätverk.
+Textstorleken för Cacheable ställs begäran | Definierar hello tröskelvärdet för att fastställa om en POST svaret kan cachelagras.
 
 ###<a name="cacheable-http-methods"></a>Cacheable ställs http-metoder
-**Syfte:** anger den ytterligare HTTP-metoder som kan cachelagras i vårt nätverk.
+**Syfte:** bestämmer hello ytterligare HTTP-metoder som kan cachelagras i vårt nätverk.
 
 Viktig information:
 
-- Den här funktionen förutsätter att GET-svar alltid ska cachelagras. Hämta HTTP-metoden ska därför inte tas med när du ställer in den här funktionen.
-- Den här funktionen stöder endast HTTP POST-metoden. Cachelagra efter svar genom att ange den här funktionen: POST 
-- Som standard cachelagras bara begäranden vars brödtext är mindre än 14 Kb. Funktionen Cacheable ställs begäran brödtext storlek att ställa in textstorleken för maximal begäran.
+- Den här funktionen förutsätter att GET-svar alltid ska cachelagras. Hello hämta HTTP-metoden ska därför inte tas med när du ställer in den här funktionen.
+- Den här funktionen stöder endast hello HTTP POST-metoden. Cachelagra efter svar genom att ange den här funktionen: POST 
+- Som standard cachelagras bara begäranden vars brödtext är mindre än 14 Kb. Funktionen Cacheable ställs begäran brödtext storlek för att ange hello textstorleken för maximal begäran.
 
 **Standardbeteende:** endast GET-svar cachelagras.
 
 ###<a name="cacheable-request-body-size"></a>Textstorleken för Cacheable ställs begäran
 
-**Syfte:** definierar tröskelvärdet för att fastställa om en POST svaret kan cachelagras.
+**Syfte:** anger hello tröskelvärdet för att fastställa om en POST svaret kan cachelagras.
 
 Den här tröskeln bestäms genom att ange en högsta begäran textstorleken. Begäranden som innehåller en större brödtext i begäran cachelagras inte.
 
 Viktig information:
 
-- Den här funktionen kan bara användas när POST-svar är berättigade för cachelagring. Funktionen Cacheable ställs http-metoder för att aktivera cachelagring av POST-begäran.
-- Begärandetexten beaktas för:
+- Den här funktionen kan bara användas när POST-svar är berättigade för cachelagring. Använd hello Cacheable ställs funktionen för HTTP-metoder för att aktivera cachelagring av POST-begäran.
+- Hej begärandetexten beaktas för:
     - x-www-formuläret-urlencoded värden
     - Säkerställa en unik cache-nyckel
 - Definiera en stor maximala begäran textstorleken kan påverka prestanda för leverans av data.
@@ -897,20 +897,20 @@ Viktig information:
  
 ## <a name="url"></a>URL: EN
 
-Dessa funktioner kan en begäran att omdirigerad eller skrivas om till en annan URL.
+De här funktionerna kan en begäran toobe omdirigerad eller skrivas om tooa annan URL.
 
 Namn | Syfte
 -----|--------
-Följ omdirigeringar | Anger om begäranden kan omdirigeras till värdnamn som definierats i plats-huvudet som returneras av en kund ursprungsservern.
-URL: en omdirigering | Omdirigerar begäranden via plats-huvudet.
-URL-omskrivning  | Skriver om begärande-URL.
+Följ omdirigeringar | Anger om begäranden kan vara omdirigerade toohello värdnamn som definierats i hello platshuvud som returneras av en kund ursprungsservern.
+URL: en omdirigering | Omdirigerar begäranden hello plats kopplingshuvud.
+URL-omskrivning  | Skriver om hello URL-begäran.
 
 ###<a name="follow-redirects"></a>Följ omdirigeringar
-**Syfte:** avgör om begäranden kan omdirigeras till värdnamn som definierats i plats-huvudet som returneras av en kund ursprungsservern.
+**Syfte:** bestämmer om omdirigerade toohello värdnamn som definierats i plats-huvudet som returneras av en kund ursprungsservern kan vara.
 
 Viktig information:
 
-- Begäranden kan endast omdirigeras till kanten skapa CNAME-poster för samma plattform.
+- Begäranden kan bara vara omdirigerade tooedge skapa CNAME-poster som motsvarar toohello samma plattform.
 
 Värde|Resultat
 -|-
@@ -921,27 +921,27 @@ Disabled|Begäranden omdirigeras inte.
 ###<a name="url-redirect"></a>URL: en omdirigering
 **Syfte:** omdirigerar begäranden via plats-huvudet.
 
-Konfigurationen för den här funktionen kräver att ange följande alternativ:
+hello konfigurationen för den här funktionen kräver inställningen hello följande alternativ:
 
 Alternativ|Beskrivning
 -|-
-Kod|Välj svarskoden returneras till beställaren.
-Källan & mönster| Dessa inställningar definierar ett mönster för begäran URI som identifierar typ av begäranden kan omdirigeras. Omdirigeras endast begäranden vars URL uppfyller båda av följande kriterier: <br/> <br/> **Källa:** (eller innehålls åtkomstpunkt) Välj en relativ sökväg som identifierar en ursprungsservern. Detta är avsnittet ”/XXXX/” och namnet på slutpunkten. <br/> **Källa (mönster):** ett mönster som identifierar begäranden av relativ sökväg måste anges. Det här mönstret för reguljära uttryck måste ange en sökväg som startar direkt efter den tidigare valda innehållsåtkomst peka (se ovan). <br/> – Kontrollera att kriterierna som begäran URI (d.v.s. källa & mönster) ovan inte står i konflikt med eventuella villkor för matchning som definierats för den här funktionen. <br/> -Du måste ange ett mönster. Med ett tomt värde som mönstret matchar bara förfrågningar till rotmappen på den valda ursprungsservern (t.ex. http://cdn.mydomain.com/).
-Mål| Definiera den URL som ovan begäranden ska omdirigeras. <br/> Konstruera dynamiskt med den här URL: <br/> -Ett mönster för reguljärt uttryck <br/>-HTTP variabler <br/> Ersätta de värden som hämtats i mönstret för källan till målet mönstret med $ _n_  där  _n_  identifierar ett värde i den ordning som den hämtades. Till exempel representerar 1 USD det första värdet som avbildas i käll-mönster, medan $2 representerar det andra värdet. <br/> 
-Vi rekommenderar starkt att använda en absolut URL. Användning av en relativ URL kan omdirigera CDN URL: er till en ogiltig sökväg.
+Kod|Välj hello svarskod som ska returneras toohello beställaren.
+Källan & mönster| Dessa inställningar definierar ett mönster för begäran URI som identifierar hello typ av begäranden kan omdirigeras. Endast begäranden vars URL uppfyller båda av följande villkor hello omdirigeras: <br/> <br/> **Källa:** (eller innehålls åtkomstpunkt) Välj en relativ sökväg som identifierar en ursprungsservern. Detta är hello ”/XXXX/” avsnittet och namnet på slutpunkten. <br/> **Källa (mönster):** ett mönster som identifierar begäranden av relativ sökväg måste anges. Det här mönstret för reguljära uttryck måste ange en sökväg som startar direkt efter hello tidigare valt innehålls åtkomstpunkt (se ovan). <br/> – Kontrollera att hello begäran URI kriterier (d.v.s. källa & mönster) ovan inte står i konflikt med eventuella villkor för matchning som definierats för den här funktionen. <br/> – Se till att toospecify ett mönster. Med ett tomt värde som hello mönstret matchar endast begäranden toohello rotmapp hello valda ursprungsservern (t.ex. http://cdn.mydomain.com/).
+Mål| Definiera hello URL toowhich hello ovan begäranden ska omdirigeras. <br/> Konstruera dynamiskt med den här URL: <br/> -Ett mönster för reguljärt uttryck <br/>-HTTP variabler <br/> Ersätt hello värden sparas i hello källa mönster i hello mål mönster med hjälp av $ _n_  där  _n_  identifierar ett värde av hello ordning som den hämtades. Till exempel representerar $1 hello första värde som avbildas i hello källa mönster, medan $2 representerar hello andra värdet. <br/> 
+Det är starkt rekommenderat toouse en absolut URL. hello användning av en relativ URL kan omdirigera URL: er för CDN tooan ogiltig sökväg.
 
 **Exempelscenario**
 
-I det här exemplet visar vi hur att omdirigera en kant CNAME-URL som motsvarar denna grundläggande CDN-URL: http://marketing.azureedge.net/brochures
+I det här exemplet visar vi hur tooredirect en kant CNAME-URL som löser toothis bas-URL för CDN: http://marketing.azureedge.net/brochures
 
-Kvalificerade begäranden omdirigeras till den här grundläggande edge CNAME-URL: http://cdn.mydomain.com/resources
+Kvalificerade begäranden kommer att omdirigerade toothis grundläggande edge CNAME-URL: http://cdn.mydomain.com/resources
 
-Den här URL: en omdirigering kan uppnås genom följande konfiguration:![](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
+Den här URL: en omdirigering kan uppnås genom hello följande konfiguration:![](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
 
 **Viktiga punkter:**
 
-- Funktionen omdirigerings-URL: en definierar begäran URL: er som omdirigeras. Därför krävs inte ytterligare matchar villkoren. Även om det matchar villkoret har angetts som ”Always”, omdirigeras begäranden som pekar på mappen ”broschyrer” på ”marknadsföring” kund ursprung. 
-- Alla matchande begäranden omdirigeras till gränsen CNAME-URL som definierats i alternativet mål. 
+- hello omdirigerings-URL: en funktion definierar hello begära webbadresserna som omdirigeras. Därför krävs inte ytterligare matchar villkoren. Även om hello matchar villkoret har definierats som ”Always” begär endast den punkt toohello ”broschyrer” mapp på hello ”marknadsföring” kund ursprung omdirigeras. 
+- Alla matchande förfrågningar kommer att omdirigerade toohello kant CNAME-URL som definierats i alternativet mål. 
     - Exempelscenario #1: 
         - Exempel på begäran (CDN URL): http://marketing.azureedge.net/brochures/widgets.pdf 
         - URL-begäran (efter omdirigering): http://cdn.mydomain.com/resources/widgets.pdf  
@@ -951,48 +951,48 @@ Den här URL: en omdirigering kan uppnås genom följande konfiguration:![](./me
     - Exempelscenario #3: 
         - Exempel på begäran (kant CNAME URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
         - URL-begäran (efter omdirigering): http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
-- Variabeln begära schemat (% {schema}) har utnyttjas i alternativet mål. Detta säkerställer att begäran schemat förblir oförändrad efter omdirigeringen.
-- URL-segment som har hämtats från begäran läggs till den nya URL via ”$1”.
+- hello begära schemat (% {schema}) variabeln har utnyttjas i alternativet mål. Detta säkerställer att hello begäran schemat förblir oförändrad efter omdirigeringen.
+- hello URL-segment som har hämtats från hello-begäran är tillagda toohello ny URL-adress via ”$1”.
  
 ###<a name="url-rewrite"></a>URL-omskrivning
-**Syfte:** skriver om begärande-URL.
+**Syfte:** skriver om hello URL-begäran.
 
 Viktig information:
 
-- Konfigurationen för den här funktionen kräver att ange följande alternativ:
+- hello konfigurationen för den här funktionen kräver inställningen hello följande alternativ:
 
 Alternativ|Beskrivning
 -|-
- Källan & mönster | Dessa inställningar definierar ett mönster för begäran URI som identifierar typ av begäranden som kan skrivas. Kommer att skrivas om endast begäranden vars URL uppfyller båda av följande kriterier: <br/>     - **Källa (eller innehålls åtkomstpunkt):** Välj en relativ sökväg som identifierar en ursprungsservern. Detta är avsnittet ”/XXXX/” och namnet på slutpunkten. <br/> - **Källa (mönster):** ett mönster som identifierar begäranden av relativ sökväg måste anges. Det här mönstret för reguljära uttryck måste ange en sökväg som startar direkt efter den tidigare valda innehållsåtkomst peka (se ovan). <br/> Kontrollera att begäran URI villkoren (d.v.s. källa & mönster) ovan inte krockar med något av matchar villkoren som har definierats för den här funktionen. Se till att ange ett mönster. Med ett tomt värde som mönstret matchar bara förfrågningar till rotmappen på den valda ursprungsservern (t.ex. http://cdn.mydomain.com/). 
- Mål  |Definiera relativ URL som ovan begäranden ska skrivas med: <br/>    1. Att välja en innehålls åtkomstpunkt som identifierar en ursprungsservern. <br/>    2. Definiera en relativ sökväg med hjälp av: <br/>        -Ett mönster för reguljärt uttryck <br/>        -HTTP variabler <br/> <br/> Ersätta de värden som hämtats i mönstret för källan till målet mönstret med $ _n_  där  _n_  identifierar ett värde i den ordning som den hämtades. Till exempel representerar 1 USD det första värdet som avbildas i käll-mönster, medan $2 representerar det andra värdet. 
- Den här funktionen gör det möjligt för våra servrar för att skriva om URL: en utan att utföra en traditionell omdirigering. Detta innebär att beställaren får samma svarskoden som om omskrivet URL: en hade begärts.
+ Källan & mönster | Dessa inställningar definierar ett mönster för begäran URI som identifierar hello typ av begäranden som kan skrivas. Kommer att skrivas om endast begäranden vars URL uppfyller båda hello följande kriterier: <br/>     - **Källa (eller innehålls åtkomstpunkt):** Välj en relativ sökväg som identifierar en ursprungsservern. Detta är hello ”/XXXX/” avsnittet och namnet på slutpunkten. <br/> - **Källa (mönster):** ett mönster som identifierar begäranden av relativ sökväg måste anges. Det här mönstret för reguljära uttryck måste ange en sökväg som startar direkt efter hello tidigare valt innehålls åtkomstpunkt (se ovan). <br/> Kontrollera att hello begäran URI villkoren (d.v.s. källa & mönster) ovan inte krockar med någon av hello matchar villkoren för den här funktionen. Se till att toospecify ett mönster. Med ett tomt värde som hello mönstret matchar endast begäranden toohello rotmapp hello valda ursprungsservern (t.ex. http://cdn.mydomain.com/). 
+ Mål  |Definiera hello relativ URL toowhich hello ovan begäranden ska skrivas med: <br/>    1. Att välja en innehålls åtkomstpunkt som identifierar en ursprungsservern. <br/>    2. Definiera en relativ sökväg med hjälp av: <br/>        -Ett mönster för reguljärt uttryck <br/>        -HTTP variabler <br/> <br/> Ersätt hello värden sparas i hello källa mönster i hello mål mönster med hjälp av $ _n_  där  _n_  identifierar ett värde av hello ordning som den hämtades. Till exempel representerar $1 hello första värde som avbildas i hello källa mönster, medan $2 representerar hello andra värdet. 
+ Den här funktionen gör våra servrar edge toorewrite hello URL utan att utföra en traditionell omdirigering. Detta innebär att hello beställaren får hello samma svar code som om hello skrivas om URL: en hade begärts.
 
 **Exempelscenario 1**
 
-I det här exemplet visar vi hur att omdirigera en kant CNAME-URL som motsvarar denna grundläggande CDN-URL: http://marketing.azureedge.net/brochures/
+I det här exemplet visar vi hur tooredirect en kant CNAME-URL som löser toothis bas-URL för CDN: http://marketing.azureedge.net/brochures/
 
-Kvalificerade begäranden omdirigeras till den här grundläggande edge CNAME-URL: http://MyOrigin.azureedge.net/resources/
+Kvalificerade begäranden kommer att omdirigerade toothis grundläggande edge CNAME-URL: http://MyOrigin.azureedge.net/resources/
 
-Den här URL: en omdirigering kan uppnås genom följande konfiguration:![](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+Den här URL: en omdirigering kan uppnås genom hello följande konfiguration:![](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 
 **Exempelscenario 2**
 
-I det här exemplet visar vi hur du dirigerar om en kant CNAME-URL från versaler till gemener med reguljära uttryck.
+I det här exemplet visar vi hur tooredirect en kant CNAME-URL från versaler toolowercase med reguljära uttryck.
 
-Den här URL: en omdirigering kan uppnås genom följande konfiguration:![](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+Den här URL: en omdirigering kan uppnås genom hello följande konfiguration:![](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
 
 
 **Viktiga punkter:**
 
-- Funktionen URL-omskrivning om definierar begäran URL: er som ska skrivas. Därför krävs inte ytterligare matchar villkoren. Även om det matchar villkoret har angetts som ”Always”, ska begäranden som pekar på mappen ”broschyrer” på ”marknadsföring” kund ursprung skrivas.
+- hello URL-omskrivning om funktionen definierar hello begäran om URL: er som ska skrivas. Därför krävs inte ytterligare matchar villkoren. Även om hello matchar villkoret har definierats som ”Always” begär endast den punkt toohello ”broschyrer” mapp på hello ”marknadsföring” kund ursprung ska skrivas.
 
-- URL-segment som har hämtats från begäran läggs till den nya URL via ”$1”.
+- hello URL-segment som har hämtats från hello-begäran är tillagda toohello ny URL-adress via ”$1”.
 
 
 
 ###<a name="compatibility"></a>Efterlevnad
 
-Den här funktionen innehåller matchar villkoren som måste uppfyllas innan den kan tillämpas på en begäran. Den här funktionen är inte kompatibel med följande matchar villkor för att förhindra att ställa in motstridiga matchningsvillkor:
+Den här funktionen innehåller matchar villkoren som måste uppfyllas innan det kan tillämpade tooa begäran. Den här funktionen är inte kompatibel med hello följande matchar villkoren i ordning tooprevent ställa in motstridiga matchningsvillkor:
 
 - SOM tal
 - CDN ursprung
@@ -1015,5 +1015,5 @@ Den här funktionen innehåller matchar villkoren som måste uppfyllas innan den
 * [Regler modulreferens](cdn-rules-engine-reference.md)
 * [Regler motorn villkorsuttryck](cdn-rules-engine-reference-conditional-expressions.md)
 * [Regler motorn matchar villkor](cdn-rules-engine-reference-match-conditions.md)
-* [Åsidosätta standardbeteendet i HTTP-motorn regler](cdn-rules-engine.md)
+* [Åsidosätta HTTP standardinställningar med hjälp av hello regelmotor](cdn-rules-engine.md)
 * [Azure CDN-översikt](cdn-overview.md)

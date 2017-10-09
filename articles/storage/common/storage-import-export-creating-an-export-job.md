@@ -1,6 +1,6 @@
 ---
-title: "Skapa en export jobb för Azure Import/Export | Microsoft Docs"
-description: "Lär dig hur du skapar ett exportjobb för tjänsten Microsoft Azure Import/Export."
+title: "aaaCreate export jobb för Azure Import/Export | Microsoft Docs"
+description: "Lär dig hur toocreate export jobbet för hello Microsoft Azure Import/Export service."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,84 +14,84 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: bdeac373aa8270bd9de8f135ec7166d744fd83ae
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4a10b42cc86dbf3bcea3a515bc065e2259228ef9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Skapa ett exportjobb för tjänsten Azure Import/Export
-Skapa ett exportjobb för tjänsten Microsoft Azure Import/Export med hjälp av REST API omfattar följande steg:
+# <a name="creating-an-export-job-for-hello-azure-importexport-service"></a>Skapa ett exportjobb för hello Azure Import/Export service
+Skapa ett exportjobb för hello Microsoft Azure Import/Export-tjänsten använder hello REST API omfattar hello följande steg:
 
--   Om du väljer att exportera blobbarna.
+-   Att välja hello-blobbar tooexport.
 
 -   Hämta en leveransplats.
 
--   Skapa exportjobbet.
+-   Skapa hello exportjobb.
 
--   Leverera tomt enheter till Microsoft via en stöds operatör-tjänst.
+-   Leverera din tomma enheter tooMicrosoft via en stöds operatör-tjänst.
 
--   Uppdaterar exportjobbet med Paketinformation om.
+-   Uppdaterar hello exportjobb med hello Paketinformation.
 
--   Ta emot enheterna tillbaka från Microsoft.
+-   Ta emot hello enheter tillbaka från Microsoft.
 
- Se [med hjälp av tjänsten Windows Azure Import/Export för att överföra Data till Blob Storage](storage-import-export-service.md) för en översikt över Import/Export-tjänsten och en genomgång som visar hur du använder den [Azure-portalen](https://portal.azure.com/) att skapa och Hantera importera och exportera jobben.
+ Se [med hello Windows Azure Import/Export service tooTransfer Data tooBlob lagring](storage-import-export-service.md) för en översikt över hello Import/Export service och en genomgång som visar hur toouse hello [Azure-portalen](https://portal.azure.com/) toocreate och hantera importera och exportera jobben.
 
-## <a name="selecting-blobs-to-export"></a>Välja att exportera blobbarna
- Om du vill skapa ett exportjobb, behöver du ange en lista över blobbar som du vill exportera från ditt lagringskonto. Det finns några sätt att välja blobbar som ska exporteras:
+## <a name="selecting-blobs-tooexport"></a>Att välja blobbar tooexport
+ toocreate ett exportjobb måste tooprovide en lista över blobbar som du vill tooexport från ditt lagringskonto. Det finns ett par sätt tooselect blobbar toobe exporteras:
 
--   Du kan använda en relativ blob-sökväg för att välja en enda blob och alla dess ögonblicksbilder.
+-   Du kan använda en relativ blob sökvägen tooselect en enda blob och alla dess ögonblicksbilder.
 
--   Du kan använda en relativ blob-sökväg för att välja en enda blob undantag av dess ögonblicksbilder.
+-   Du kan använda en relativ blob sökvägen tooselect en enda blob undantag av dess ögonblicksbilder.
 
--   Du kan använda en relativ blob-sökväg och ett ögonblicksbild för att välja en ögonblicksbild.
+-   Du kan använda en relativ blob-sökväg och en ögonblicksbild tid tooselect en ögonblicksbild.
 
--   Du kan använda ett blob-prefix för att markera alla blobbar och ögonblicksbilder med det angivna prefixet.
+-   Du kan använda en blob-prefixet tooselect alla blobbar och ögonblicksbilder med hello angivna prefix.
 
--   Du kan exportera alla blobbar och ögonblicksbilder i storage-konto.
+-   Du kan exportera alla blobbar och ögonblicksbilder i hello storage-konto.
 
- Läs mer om hur du anger BLOB att exportera den [placera jobbet](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) igen.
+ Mer information om att ange-blobbar tooexport, finns hello [placera jobbet](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) igen.
 
 ## <a name="obtaining-your-shipping-location"></a>Hämta din leverans plats
-Innan du skapar ett exportjobb, måste du skaffa ett leverans platsnamn och adress genom att anropa den [få plats](https://portal.azure.com) eller [listan platser](/rest/api/storageimportexport/listlocations) igen. `List Locations`Returnerar en lista över platser och deras e-postadresser. Du kan välja en plats från listan över returnerade och leverera din hårddiskar till adressen. Du kan också använda den `Get Location` åtgärden att direkt hämta leveransadress för en viss plats.
+Innan du skapar ett exportjobb du behöver tooobtain en leverans namn och adress genom att anropa hello [få plats](https://portal.azure.com) eller [listan platser](/rest/api/storageimportexport/listlocations) igen. `List Locations`Returnerar en lista över platser och deras e-postadresser. Du kan välja en plats från hello returnerade lista och leverera din hårddiskar toothat adress. Du kan också använda hello `Get Location` åtgärden tooobtain hello leveransadress för en specifik plats direkt.
 
-Följ stegen nedan för att hämta leveransplatsen för:
+Så hello under tooobtain hello leverans platsen:
 
--   Identifiera namnet på platsen för ditt lagringskonto. Det här värdet kan hittas den **plats** på storage-konto **instrumentpanelen** i klassiskt portalen eller efterfrågade för med hjälp av service management API-åtgärd [hämta lagring Kontot egenskaper](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
+-   Identifiera hello namn hello platsen för ditt lagringskonto. Det här värdet kan hittas under hello **plats** på hello lagringskontots **instrumentpanelen** i hello klassisk portal eller efterfrågade för med hello service management API-åtgärd [hämta Lagringskontoegenskaperna](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
 
--   Hämta platsen för att utföra det här lagringskontot genom att anropa den `Get Location` igen.
+-   Hämta hello platsen som är tillgängliga tooprocess det här lagringskontot genom att anropa hello `Get Location` igen.
 
--   Om den `AlternateLocations` -egenskapen för platsen innehåller själva platsen och sedan går bra att använda den här platsen. Annars kan anropa den `Get Location` igen med en av de alternativa platserna. Den ursprungliga platsen kan tillfälligt stängt för underhåll.
+-   Om hello `AlternateLocations` egenskapen hello plats innehåller själva hello platsen så är det bra toouse den här platsen. Annars kan anropa hello `Get Location` igen med en av hello alternativa platser. hello ursprungsplatsen kan tillfälligt stängt för underhåll.
 
-## <a name="creating-the-export-job"></a>Skapa exportjobbet
- Om du vill skapa exportjobbet anropa den [placera jobbet](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) igen. Du måste ange följande information:
+## <a name="creating-hello-export-job"></a>Skapa hello exportjobb
+ toocreate hello exportjobb, anrop hello [placera jobbet](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) igen. Du behöver tooprovide hello följande information:
 
--   Ett namn för jobbet.
+-   Ett namn för hello jobbet.
 
--   Namnet på lagringskontot.
+-   Hej lagringskontonamn.
 
--   Leverans platsnamnet, hämtades i föregående steg.
+-   hello leverans platsnamn, fick i hello föregående steg.
 
 -   En jobbtyp (exportera).
 
--   Returadressen där enheterna som ska skickas när exportjobbet har slutförts.
+-   hello avsändaradress där hello enheter som ska skickas när hello exportjobb har slutförts.
 
--   Lista över blobbar (eller blob-prefix) som ska exporteras.
+-   hello lista över BLOB (eller blob-prefix) toobe exporteras.
 
 ## <a name="shipping-your-drives"></a>Leverera dina enheter
- Använd sedan verktyget Azure Import/Export för att avgöra hur många enheter som du måste skicka, baserat på blobbar som du har valt exporteras och storleken på hårddisken. Finns det [referens för Azure Import/Export verktyg](storage-import-export-tool-how-to-v1.md) mer information.
+ Sedan använder hello Azure Import/Export verktyget toodetermine hello antalet enheter som du behöver toosend, baserat på hello blob som du har valt toobe exporteras och hello enhetsstorlek. Se hello [referens för Azure Import/Export verktyg](storage-import-export-tool-how-to-v1.md) mer information.
 
- Paketera enheter i ett paket och skicka dem till den adress som du fått i tidigare steg. Observera att spåra antalet paketet för nästa steg.
+ Paketet hello enheter i en enda paketera och leverera dem toohello adress som du fått i hello tidigare steg. Observera hello spåra antalet paketet för hello nästa steg.
 
 > [!NOTE]
 >  Du måste leverera enheter via en stöds operatör-tjänst som tillhandahåller ett spårningsnummer för paketet.
 
-## <a name="updating-the-export-job-with-your-package-information"></a>Uppdaterar exportjobbet med Paketinformation
- När du har Spårningsnumret till din kan anropa den [uppdatering jobbegenskaper](/rest/api/storageimportexport/jobs#Jobs_Update) åtgärden Uppdatera namnet på operatör och spårnings-ID för jobbet. Alternativt kan du ange antalet enheter, returadressen och leveransdatum samt.
+## <a name="updating-hello-export-job-with-your-package-information"></a>Uppdaterar hello exportjobb med Paketinformation
+ När du har Spårningsnumret till din kan anropa hello [uppdatering jobbegenskaper](/rest/api/storageimportexport/jobs#Jobs_Update) operatör åtgärdsnamn tooupdated hello och spårnings-ID för hello jobbet. Alternativt kan du ange hello antalet enheter, hello avsändaradress och hello leverans samt datum.
 
-## <a name="receiving-the-package"></a>Tar emot paketet
- När din exportjobb har bearbetats returneras enheter till dig med krypterade data. Du kan hämta BitLocker-nyckel för var och en av enheterna genom att anropa den [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) igen. Sedan kan du låsa upp enheten med nyckeln. Enheten manifestfilen på varje enhet innehåller listan med filer på enheten som den ursprungliga blob-adressen för varje fil.
+## <a name="receiving-hello-package"></a>Mottagande hello-paket
+ När din exportjobb har bearbetats returnerade enheter tooyou med krypterade data. Du kan hämta hello BitLocker-nyckel för varje hello enheter genom att anropa hello [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) igen. Sedan kan du låsa upp hello-enhet med hjälp av hello nyckel. hello enhet manifestfilen på varje enhet innehåller hello lista över filer på hello enhet samt hello ursprungliga blob-adressen för varje fil.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Med hjälp av tjänsten Import/Export REST API](storage-import-export-using-the-rest-api.md)
+* [Med hjälp av hello Import/Export service REST API](storage-import-export-using-the-rest-api.md)

@@ -1,5 +1,5 @@
 ---
-title: "Dedikerade kapacitet för Machine Learning Batch Execution Service jobb | Microsoft Docs"
+title: "aaaDedicated kapacitet för Machine Learning Batch Execution Service jobb | Microsoft Docs"
 description: "Översikt över Azure Batch-tjänster för Machine Learning-jobb."
 services: machine-learning
 documentationcenter: 
@@ -13,44 +13,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 3879eb3d0c6fa9d74fff01b07f5c07d3991dfbbd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bba7970bb31c50e5b0b9d5f4ff4f0d2dacf942e1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>Azure Batch-tjänsten för Machine Learning-jobb
 
-Machine Learning Batch-Pool bearbetning innehåller kundhanterad skala för Azure Machine Learning Batch Execution Service. Klassiska gruppbearbetning för maskininlärning äger rum i en miljö med flera innehavare, vilket begränsar antalet samtidiga jobb som du kan skicka och jobb ställs i kö på grundval av first i first out. Den här osäkerhet innebär att du inte kan förutsäga när jobbet ska köras.
+Machine Learning Batch-Pool bearbetning innehåller kundhanterad skala för hello Azure Machine Learning Batch Execution Service. Klassiska batchbearbetning för machine learning sker i en miljö med flera innehavare, vilka gränser hello antal samtidiga jobb som du kan skicka och jobb i kö på grundval av first i first out. Den här osäkerhet innebär att du inte kan förutsäga när jobbet ska köras.
 
-Poolen batchbearbetning kan du skapa pooler som du kan skicka batchjobb. Du styr storleken på poolen och vilka poolen jobbet har skickats. BES-jobb körs i sin egen bearbetning utrymme som ger förutsägbar bearbetning och möjligheten att skapa resurspooler som motsvarar belastningen som du skickar.
+Poolen batchbearbetning kan toocreate pooler som du kan skicka batchjobb. Du styr hello storleken på hello poolen och toowhich pool hello jobbet har skickats. BES-jobb körs i sin egen bearbetning utrymme att tillhandahålla förutsägbar bearbetning och hello möjlighet toocreate med resurspooler som motsvarar toohello belastningen som du skickar.
 
-## <a name="how-to-use-batch-pool-processing"></a>Hur du använder behandling av Batch-Pool
+## <a name="how-toouse-batch-pool-processing"></a>Hur toouse Batch-Pool bearbetning
 
-Konfigurationen av gruppbearbetning poolen är inte tillgänglig via Azure-portalen. Om du vill använda Batch-Pool bearbetning, måste du:
+Konfigurationen av gruppbearbetning poolen är inte tillgänglig via hello Azure-portalen. toouse Batch-Pool bearbetning, måste du:
 
--   Anropa CSS om du vill skapa en Pool med Batch-kontot och få en Pool tjänst-URL och auktoriseringsnyckel
+-   Anropa CSS toocreate en Pool Batch-kontot och få en Pool tjänst-URL och auktoriseringsnyckel
 -   Skapa en ny Resource Manager-baserat webbtjänsten och faktureringsavtal
 
-Ring Microsofts kundservice och Support (CSS) för att skapa ditt konto, och ange ditt prenumerations-ID. CSS fungerar med dig för att avgöra lämpliga kapacitet för ditt scenario. CSS konfigurerar ditt konto med det maximala antalet pooler som du kan skapa och högsta antalet virtuella datorer (VM) som du kan placera i varje pool. När du har konfigurerat ditt konto finns din Pool URL: en och auktoriseringsnyckel.
+toocreate ditt konto Ring Microsofts kundservice och Support (CSS) och ange ditt prenumerations-ID. CSS fungerar med du toodetermine hello lämplig kapacitet för ditt scenario. CSS konfigurerar ditt konto med hello maximalt antal pooler kan du skapa och hello maximalt antal virtuella datorer (VM) som du kan placera i varje pool. När du har konfigurerat ditt konto finns din Pool URL: en och auktoriseringsnyckel.
 
-När ditt konto har skapats kan använda du nyckeln poolen URL: en och auktorisering för att utföra poolen hanteringsåtgärder på Batch-Pool.
+När ditt konto har skapats kan använda du hello poolen URL: en och auktorisering viktiga tooperform pool hanteringsåtgärder på Batch-Pool.
 
 ![Arkitektur för batch-pool.](media/machine-learning-dedicated-capacity-for-bes-jobs/pool-architecture.png)
 
-Du kan skapa pooler genom att anropa åtgärden Skapa poolen på poolen tjänstens Webbadress CSS som du har fått. När du skapar en pool, kan du ange hur många virtuella datorer och URL-Adressen för swagger.json av en ny Resource Manager baserat Machine Learning-webbtjänst. Den här webbtjänsten har angetts för att upprätta fakturering association. Swagger.json använder tjänsten Batch-Pool för att associera poolen med ett faktureringsavtal. Du kan köra alla BES webbtjänst, både nya Resource Manager-baserat och classic du väljer på poolen.
+Du kan skapa pooler genom att anropa hello skapa poolen igen på hello poolen tjänst-URL som angetts CSS-tooyou. När du skapar en pool kan du ange hello antalet virtuella datorer och hello URL för hello swagger.json av en ny Resource Manager baserat Machine Learning-webbtjänst. Den här webbtjänsten tillhandahålls tooestablish hello fakturering association. hello Batch-Pool-tjänsten använder hello swagger.json tooassociate hello pool med ett faktureringsavtal. Du kan köra alla BES webbtjänst, både nya Resource Manager-baserat och classic du väljer på hello poolen.
 
-Du kan använda alla nya Resource Manager-baserat webbtjänst, men tänk på att faktureringen för jobben debiteras mot den faktureringsplan som är associerade med den tjänsten. Du kanske vill skapa en webbtjänst och nya faktureringsavtal specifikt för Batch-Pool jobb som körs.
+Du kan använda alla nya Resource Manager-baserat webbtjänst, men tänk på att debiteras hello fakturering för hello jobb mot hello faktureringsplan som är associerade med den tjänsten. Du kanske vill toocreate som en webbtjänst och nya fakturering planera för Batch-Pool jobb som körs.
 
 Mer information om hur du skapar webbtjänster finns [distribuera en Azure Machine Learning-webbtjänst](machine-learning-publish-a-machine-learning-web-service.md).
 
-När du har skapat en pool kan skicka du BES jobbet med Batch begäranden URL för webbtjänsten. Du kan välja att skicka den till en pool eller klassiska batch-bearbetning. Om du vill skicka ett jobb för att bearbeta Batch-Pool du lägga till följande parameter till jobbet skicka frågans brödtext:
+När du har skapat en pool kan du skicka hello BES hello jobbet med Batch-begäranden med URL: en för hello-webbtjänsten. Du kan välja toosubmit den tooa pool eller tooclassic batch-bearbetning. toosubmit en Pool bearbetningen av jobbet tooBatch lägga hello följande begärandetexten för parametern toohello jobbet skickas:
 
 ”AzureBatchPoolId” ”:&lt;poolen ID&gt;”
 
-Om du inte lägga till parametern körs jobbet i klassiskt batch processmiljö. Om poolen har tillgängliga resurser, startar jobbet körs omedelbart. Om poolen saknar lediga resurser i ditt jobb kö tills en resurs som är tillgänglig.
+Om du inte lägga till parametern hello körs hello jobbet i hello klassiska batch processmiljö. Om hello poolen har tillgängliga resurser, startar hello jobbet körs omedelbart. Om hello poolen saknar lediga resurser i ditt jobb kö tills en resurs som är tillgänglig.
 
-Om du upptäcker att du regelbundet når kapaciteten för din pooler, och du behöver bättre kapacitet kan du anropa CSS och arbeta med en representant för att öka din kvoter.
+Om du upptäcker att du regelbundet når hello kapaciteten för din pooler, och du behöver bättre kapacitet kan du arbeta med ett representativt tooincrease kvoterna anropa CSS.
 
 Exempelbegäran:
 
@@ -97,7 +97,7 @@ https://ussouthcentral.Services.azureml.NET/subscriptions/80c77c7674ba4c8c82294c
 
 ## <a name="considerations-when-using-batch-pool-processing"></a>Information om bearbetningen av Batch-Pool
 
-Gruppbearbetning poolen är en alltid i fakturerbar tjänst och som kräver att du associerar den med en Resource Manager-baserat faktureringsavtal. Endast debiteras du för antal beräkningstimmar poolen körs på. oavsett vilket antal jobb som körs under tiden poolen. Om du skapar en pool, debiteras du för beräkningstimmar för varje virtuell dator i poolen tills poolen tas bort även om inga batchjobb körs i poolen. Fakturering för virtuella datorer startar när etableringen är klar och stoppas när de har tagits bort. Du kan använda någon av planer hittades på den [Machine Learning-priser sidan](https://azure.microsoft.com/pricing/details/machine-learning/).
+Gruppbearbetning poolen är en alltid i fakturerbar tjänst och som kräver tooassociate den med Resource Manager baserad faktureringsavtal. Endast debiteras du för hello antal beräkningstimmar hello poolen körs på. oavsett hello antal jobb som körs under tiden poolen. Om du skapar en pool, debiteras du för hello beräkningstimmar för varje virtuell dator i hello poolen tills hello poolen tas bort även om inga batchjobb körs i hello pool. Fakturering för hello virtuella datorer startar när etableringen är klar och stoppas när de har tagits bort. Du kan använda någon av hello-planer finns på hello [Machine Learning-priser sidan](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 Fakturering exempel:
 
@@ -105,9 +105,9 @@ Om du skapar en Batch-Pool med 2 virtuella datorer och ta bort den efter 24 timm
 
 Om du skapar en Batch-Pool med 4 virtuella datorer och ta bort den efter 12 timmar, är också faktureringsavtalet Debiterat 48 beräkningstimmar.
 
-Vi rekommenderar att du avsöka jobbstatus för att avgöra när jobben har slutförts. När alla jobb har körts anropa ändra storlek på poolen igen för att ange antalet virtuella datorer i poolen med noll. Om du har ont om resurser och du behöver skapa en ny pool, till exempel för att debiterar mot en annan faktureringsplan, du kan ta bort poolen i stället när dina jobb har körts.
+Vi rekommenderar att avsöka hello jobbet status toodetermine när jobben har slutförts. Anropa hello ändra storlek på poolen igen tooset hello antalet virtuella datorer i hello poolen toozero när dina jobb har körts. Om du har ont om resurser och du behöver toocreate en ny pool, till exempel toobill mot en annan faktureringsplan, du kan ta bort hello poolen i stället när dina jobb har körts.
 
 
 | **Använd bearbetning när Batch-Pool**    | **Klassiska batchbearbetning när**  |
 |---|---|
-|Du måste köra ett stort antal jobb<br>Eller<br/>Du behöver veta att dina jobb ska köras omedelbart<br/>Eller<br/>Du måste garanterad genomflöde. Du behöver exempelvis kör ett antal jobb i en angiven tidsperiod och vill skala upp dina beräkningsresurser som uppfyller dina behov.    | Du kör några jobb<br/>Och<br/> Du behöver inte jobb ska köras omedelbart |
+|Du behöver toorun ett stort antal jobb<br>Eller<br/>Du behöver tooknow som dina jobb ska köras omedelbart<br/>Eller<br/>Du måste garanterad genomflöde. Till exempel du behöver toorun ett antal jobb i en angiven tidsperiod och vill tooscale ut din beräkning resurser toomeet dina behov.    | Du kör några jobb<br/>Och<br/> Du behöver inte hello jobb toorun omedelbart |

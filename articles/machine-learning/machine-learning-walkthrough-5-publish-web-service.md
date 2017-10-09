@@ -1,6 +1,6 @@
 ---
-title: "Steg 5: Distribuera webbtjänsten för Machine Learning | Microsoft Docs"
-description: "Steg 5 i utveckla en förutsägelselösning genomgång: distribuera en prediktivt experiment i Machine Learning Studio som en webbtjänst."
+title: "Steg 5: Distribuera hello webbtjänsten för Machine Learning | Microsoft Docs"
+description: "Steg 5 i hello utveckla en förutsägelselösning genomgång: distribuera en prediktivt experiment i Machine Learning Studio som en webbtjänst."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,214 +14,214 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: cec1bcceea158a20742c7019a266dcefaac4c9cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 76391010972ed1450bbda8bfb2352c7b22b51ccc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>Genomgång steg 5: Distribuera Azure Machine Learning-webbtjänsten
-Det här är det femte steget i den här genomgången [utveckla en förutsägelseanalys i Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
+# <a name="walkthrough-step-5-deploy-hello-azure-machine-learning-web-service"></a>Genomgång steg 5: Distribuera hello Azure Machine Learning-webbtjänst
+Det här är hello femte steg i hello genomgången [utveckla en förutsägelseanalys i Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Skapa en Machine Learning-arbetsyta](machine-learning-walkthrough-1-create-ml-workspace.md)
 2. [Överför befintliga data](machine-learning-walkthrough-2-upload-data.md)
 3. [Skapa ett nytt experiment](machine-learning-walkthrough-3-create-new-experiment.md)
-4. [Träna och utvärdera modellerna](machine-learning-walkthrough-4-train-and-evaluate-models.md)
-5. **Distribuera webbtjänsten**
-6. [Få åtkomst till webbtjänsten](machine-learning-walkthrough-6-access-web-service.md)
+4. [Träna och utvärdera hello modeller](machine-learning-walkthrough-4-train-and-evaluate-models.md)
+5. **Distribuera hello-webbtjänst**
+6. [Åtkomst hello-webbtjänst](machine-learning-walkthrough-6-access-web-service.md)
 
 - - -
-Om du vill ge andra användare möjlighet att använda förutsägelsemodell som vi har utvecklat i den här genomgången, kan vi distribuera den som en webbtjänst på Azure.
+toogive andra en chansen toouse hello förutsägelsemodell som vi har utvecklat i den här genomgången, vi kan distribuera den som en webbtjänst på Azure.
 
-I det här läget har vi experimentera med vår modell. Men den distribuerade tjänsten inte längre kommer att göra utbildning - kommer att generera nya förutsägelser av bedömningen användarindata baserat på vår modell. Så är det dags att göra vissa förberedelser för att konvertera experimentet från en ***utbildning*** experimentera till en ***förutsägande*** experiment. 
+Vi har experimentera med vår modell för in toothis punkt. Men hello distribuerade tjänsten kommer inte längre toodo utbildning - vad vi toogenerate nya förutsägelser av bedömningen hello användarens indata baserat på vår modell. Så vi toodo vissa förberedelser tooconvert detta experiment från en ***utbildning*** experimentera tooa ***förutsägande*** experiment. 
 
 Detta är en process i tre steg:  
 
-1. Ta bort en av modeller
-2. Omvandla den *träningsexperiment* har vi skapat till en *prediktivt experiment*
-3. Distribuera prediktivt experiment som en webbtjänst
+1. Ta bort en hello modeller
+2. Konvertera hello *träningsexperiment* har vi skapat till en *prediktivt experiment*
+3. Distribuera hello prediktivt experiment som en webbtjänst
 
-## <a name="remove-one-of-the-models"></a>Ta bort en av modeller
+## <a name="remove-one-of-hello-models"></a>Ta bort en hello modeller
 
-Vi måste först trim experimentet ned lite. Vi har två olika modeller i försöket, men vi vill använda en modell när vi distribuera den som en webbtjänst.  
+Först måste vi tootrim experimentet ned lite. Vi har två olika modeller i hello experiment, men vi vill bara toouse en modell när vi distribuera den som en webbtjänst.  
 
-Anta att vi har valt att ökat trädet modellen presterade bättre än SVM modellen. Så att det första du gör är att ta bort den [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modulen och moduler som användes för att träna den. Du kanske vill göra en kopia av experimentet först genom att klicka på **Spara som** längst ned i arbetsytan för experimentet.
+Anta att vi har valt att hello ökat trädet modellen presterade bättre än hello SVM modellen. Så ta bort hello hello första sak toodo [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modulen och hello-moduler som användes för att träna den. Du kanske vill toomake en kopia av hello experiment först genom att klicka på **Spara som** längst hello hello experimentera arbetsytan.
 
-Vi måste du ta bort följande moduler:  
+Vi behöver toodelete hello följande moduler:  
 
 * [Two-Class Support Vector Machine][two-class-support-vector-machine]
-* [Träna modellen] [ train-model] och [Poängmodell] [ score-model] moduler som är anslutna till den
+* [Träna modellen] [ train-model] och [Poängmodell] [ score-model] moduler som var anslutna tooit
 * [Normalisera Data] [ normalize-data] (båda)
-* [Utvärdera modellen] [ evaluate-model] (eftersom vi är klar med att utvärdera modellerna)
+* [Utvärdera modellen] [ evaluate-model] (eftersom vi är klar utvärderar hello modeller)
 
-Markera varje modul och tryck på DELETE eller högerklicka på modulen och välj **ta bort**. 
+Markera varje modul och tryck på hello del. eller högerklicka på hello modulen och välj **ta bort**. 
 
-![Ta bort SVM modellen][3a]
+![Ta bort hello SVM modellen][3a]
 
 Vår modell bör nu se ut ungefär så här:
 
-![Ta bort SVM modellen][3]
+![Ta bort hello SVM modellen][3]
 
-Nu vi är redo att distribuera den här modellen med hjälp av den [två-Tvåklassförhöjt beslutsträd][two-class-boosted-decision-tree].
+Nu är klar toodeploy detta modellen med hello [två-Tvåklassförhöjt beslutsträd][two-class-boosted-decision-tree].
 
-## <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>Omvandla utbildning experimentet till prediktivt experiment
+## <a name="convert-hello-training-experiment-tooa-predictive-experiment"></a>Konvertera hello utbildning experiment tooa prediktivt experiment
 
-För att förbereda den här modellen för distribution, måste vi du konvertera den här träningsexperiment till prediktivt experiment. Detta omfattar tre steg:
+tooget detta modellen är redo för distribution måste vi tooconvert detta utbildning experiment tooa prediktivt experiment. Detta omfattar tre steg:
 
-1. Spara modellen vi har tränat och Ersätt vår utbildningsmoduler
-2. Trim experiment om du vill ta bort moduler som behövdes endast för utbildning
-3. Definiera där webbtjänsten ska ta emot indata och där det genererar utdata
+1. Spara hello modell vi har tränat och Ersätt vår utbildningsmoduler
+2. Trim hello experiment tooremove moduler som behövdes endast för utbildning
+3. Definiera där hello-webbtjänsten ska ta emot indata och där det genererar hello-utdata
 
-Vi kan göra detta manuellt, men som tur är alla tre stegen kan utföras genom att klicka på **konfigurera Web Service** längst ned i arbetsytan för experimentet (och välja den **förutsägande webbtjänsten** alternativet).
+Vi kan göra detta manuellt, men som tur är alla tre stegen kan utföras genom att klicka på **konfigurera Web Service** längst hello hello experimentet (och välja hello **förutsägande webbtjänsten** alternativet).
 
 > [!TIP]
-> Om du vill ha mer information om vad som händer när du konverterar en träningsexperiment till en prediktivt experiment, se [hur du förbereder din modell för distribution i Azure Machine Learning Studio](machine-learning-convert-training-experiment-to-scoring-experiment.md).
+> Om du vill ha mer information om vad som händer när du konverterar en utbildning experiment tooa förutsägande experiment, se [hur tooprepare modellen för distribution i Azure Machine Learning Studio](machine-learning-convert-training-experiment-to-scoring-experiment.md).
 
 När du klickar på **konfigurera Web Service**, flera saker:
 
-* Den tränade modellen konverteras till en enda **Trained Model** modulen och lagras på modulpaletten till vänster om arbetsytan för experimentet (du hittar den under **tränade modeller**)
+* hello tränad modell är konverterade tooa enda **Trained Model** modulen och lagras i hello modulen paletten toohello till vänster i hello experimentera arbetsytan (du hittar den under **tränade modeller**)
 * Moduler som användes för träning tas bort; specifikt:
   * [Two-Class Tvåklassförhöjda beslutsträdet][two-class-boosted-decision-tree]
   * [Träningsmodell][train-model]
   * [Dela Data][split]
-  * andra [köra R-skriptet] [ execute-r-script] modul som användes för testdata
-* Den sparade tränade modellen har lagts till i experimentet igen
-* **Web service indata** och **Web service utdata** moduler läggs (dessa identifiera där användarens data kommer att ange modellen och vilka data som returneras när webbtjänsten används)
+  * Hej andra [köra R-skriptet] [ execute-r-script] modul som användes för testdata
+* hello sparade tränade modellen har lagts till hello experiment
+* **Web service indata** och **Web service utdata** moduler läggs (dessa identifiera där hello användardata kommer att ange hello modellen och vilka data som returneras när hello webbtjänsten används)
 
 > [!NOTE]
-> Du kan se att experimentet sparas i två delar under flikar som lagts till överst på arbetsytan för experimentet. Den ursprungliga träningsexperiment är under fliken **träningsexperiment**, och det nyligen skapade prediktivt experimentet är **Prediktivt experiment**. Prediktivt experiment är det som vi ska distribuera som en webbtjänst.
+> Du kan se att hello experiment sparas i två delar under flikar som lagts till hello överst i hello experimentet. hello ursprungliga träningsexperiment är under hello fliken **träningsexperiment**, och hello nyskapad prediktivt experiment är **Prediktivt experiment**. Hej prediktivt experiment är hello något kommer vi att distribuera som en webbtjänst.
 
-Vi behöver vidta ytterligare ett steg med viss experimentet.
-Vi har lagt till två [köra R-skriptet] [ execute-r-script] moduler för att tillhandahålla en viktas funktion för data. Som var bara en lura vi behövs för träning och testning, så att vi kan ta reda på dessa moduler i den slutliga modellen.
-Machine Learning Studio bort en [köra R-skriptet] [ execute-r-script] modulen när den tas bort i [dela] [ split] modul. Nu när vi kan ta bort det andra och ansluta [Metadata Editor] [ metadata-editor] direkt till [Poängmodell][score-model].    
+Vi behöver tootake ytterligare ett steg med viss experimentet.
+Vi har lagt till två [köra R-skriptet] [ execute-r-script] moduler tooprovide en viktas fungera toohello data. Som var bara en lura vi behövs för träning och testning, så att vi kan ta reda på dessa moduler i hello sista modellen.
+Machine Learning Studio bort en [köra R-skriptet] [ execute-r-script] modulen när den tas bort hello [dela] [ split] modul. Nu kan vi bort hello andra och ansluta [Metadata Editor] [ metadata-editor] direkt för[Poängmodell][score-model].    
 
 Vår experimentet bör nu se ut så här:  
 
-![Poängsättning av den tränade modellen][4]  
+![Bedömningsprofil hello tränade modellen][4]  
 
 > [!NOTE]
-> Du kanske undrar varför vi kvar UCI tyska kreditkortdata datauppsättningen i prediktivt experiment. Tjänsten kommer att poängsätta användarens data, inte den ursprungliga datauppsättningen, så varför lämnar den ursprungliga datauppsättningen i modellen?
+> Du kanske undrar varför vi kvar hello UCI tyska kreditkortdata dataset i hello prediktivt experiment. hello tjänsten kommer tooscore hello användarens data, inte hello ursprungliga datauppsättningen, så varför lämnar hello ursprungliga datauppsättningen i hello modellen?
 > 
-> Det gäller att tjänsten inte behöver den ursprungliga informationen för kreditkort. Men den behöver schemat för dessa data, som innehåller information, till exempel hur många kolumner finns och vilka kolumner som är numeriska. Den här schemainformation är nödvändigt att tolka användarens data. Vi lämnar komponenterna ansluten så att poängsättningsmodul har dataset-schema när tjänsten körs. Informationen används inte bara schemat.  
+> Det gäller att hello-tjänsten inte behöver hello ursprungliga kreditkortdata. Men den behöver hello schemat för dessa data, som innehåller information, till exempel hur många kolumner finns och vilka kolumner som är numeriska. Den här schemainformationen är nödvändiga toointerpret hello användarens data. Vi lämnar komponenterna ansluten så att hello poängsättningsmodul har hello dataset schema när hello-tjänsten körs. hello data inte används bara hello schemat.  
 > 
 > 
 
-Kör experimentet en sista gång (klicka på **kör**.) Om du vill kontrollera att modellen fortfarande fungerar, klickar du på utdata från den [Poängmodell] [ score-model] modulen och välj **visa resultat**. Du kan se att ursprungliga data visas, tillsammans med kredit risk värdet (”poängsatta etiketter”) och bedömningsprofil sannolikhetsvärdet (”bedömas sannolikhet”.) 
+Kör experimentet hello en sista gång (klicka på **kör**.) Om du vill tooverify som hello modellen fortfarande fungerar, klickar du på hello utdata från hello [Poängmodell] [ score-model] modulen och välj **visa resultat**. Du kan se att hello ursprungliga data visas, tillsammans med hello kredit risk värdet (”poängsatta etiketter”) och hello bedömningen sannolikhetsvärdet (”bedömas sannolikhet”.) 
 
-## <a name="deploy-the-web-service"></a>Distribuera webbtjänsten
-Du kan distribuera experimentet som antingen en klassisk webbtjänst eller som en ny webbtjänst som baseras på Azure Resource Manager.
+## <a name="deploy-hello-web-service"></a>Distribuera hello-webbtjänst
+Du kan distribuera hello experiment som antingen en klassisk webbtjänst eller som en ny webbtjänst som baseras på Azure Resource Manager.
 
 ### <a name="deploy-as-a-classic-web-service"></a>Distribuera som ett klassiskt-webbtjänst
-Om du vill distribuera en klassisk webbtjänst som härletts från våra experiment, klickar du på **distribuera webbtjänsten** under arbetsytan och välj **distribuera webbtjänsten [klassisk]**. Machine Learning Studio distribuerar experiment som en webbtjänst och går till instrumentpanelen för webbtjänsten. Från den här sidan kan du återgå till experimentet (**visa ögonblicksbild** eller **Visa senaste**) och kör ett enkelt test av webbtjänsten (se **testa webbtjänsten** nedan). Det finns även information här för att skapa program som har åtkomst till webbtjänsten (Mer information om det finns i nästa steg i den här genomgången).
+toodeploy som ett klassiskt webbtjänsten som härletts från våra experiment, klickar du på **distribuera webbtjänsten** nedan hello arbetsytan och välj **distribuera webbtjänsten [klassisk]**. Machine Learning Studio distribuerar hello experiment som en webbtjänst och tar toohello instrumentpanel för webbtjänsten. Från den här sidan kan du returnera toohello experiment (**visa ögonblicksbild** eller **Visa senaste**) och köra en enkel hello-webbtjänsten (se **testa hello webbtjänsten** nedan). Det finns även information här för att skapa program som kan komma åt hello-webbtjänst (Mer information om det finns i hello nästa steg i den här genomgången).
 
 ![Web service-instrumentpanelen][6]
 
-Du kan konfigurera tjänsten genom att klicka på den **CONFIGURATION** fliken. Här kan du ändra tjänstens namn (den har fått namnet experiment som standard) och en beskrivning. Du kan också ge mer egna etiketter för inkommande och utgående data.  
+Du kan konfigurera hello tjänsten genom att klicka på hello **CONFIGURATION** fliken. Här kan du ändra hello tjänstnamn (det är angivet hello experiment namn som standard) och en beskrivning. Du kan också ge mer egna etiketter för hello indata och utdata.  
 
-![Konfigurera webbtjänsten][5]  
+![Konfigurera hello-webbtjänsten][5]  
 
 ### <a name="deploy-as-a-new-web-service"></a>Distribuera som en ny webbtjänst
 
 > [!NOTE] 
-> Du måste ha tillräckliga behörigheter i prenumerationen som du distribuerar webbtjänsten för att distribuera en ny webbtjänst. Mer information finns i [hantera en webbtjänst med hjälp av Azure Machine Learning-webbtjänster portal](machine-learning-manage-new-webservice.md). 
+> toodeploy en ny webbtjänst som du måste ha tillräckliga behörigheter i hello prenumeration toowhich du distribuerar hello-webbtjänsten. Mer information finns i [hantera en webbtjänst med hjälp av hello Azure Machine Learning-webbtjänster portal](machine-learning-manage-new-webservice.md). 
 
-Att distribuera en ny webbtjänst som härrör från våra experiment:
+toodeploy en ny webbtjänst som härrör från våra experiment:
 
-1. Klicka på **distribuera webbtjänsten** under arbetsytan och välj **distribuera webbtjänsten [ny]**. Machine Learning Studio överför du till Azure Machine Learning-webbtjänster **distribuera Experiment** sidan.
+1. Klicka på **distribuera webbtjänsten** nedan hello arbetsytan och välj **distribuera webbtjänsten [ny]**. Machine Learning Studio överför toohello Azure Machine Learning-webbtjänster **distribuera Experiment** sidan.
 
-2. Ange ett namn för webbtjänsten. 
+2. Ange ett namn för hello-webbtjänsten. 
 
-3. För **prisplan**, du kan välja en befintlig prisavtal eller välj ”Skapa nya” och namnge den nya planen och väljer alternativet månatliga plan. Planera nivåerna standard att planer för standardregion och webbtjänsten har distribuerats till den regionen.
+3. För **prisplan**, kan du välja en befintlig prisavtal eller välj ”Skapa nya” och ge hello nya planera ett namn och välj hello månatliga plan alternativet. hello plan nivåerna standard toohello planer för standardregion och webbtjänsten är distribuerade toothat region.
 
 4. Klicka på **distribuera**.
 
-Efter några minuter på **Quickstart** öppnas sidan för webbtjänsten.
+Efter några minuter hello **Quickstart** öppnas sidan för webbtjänsten.
 
-Du kan konfigurera tjänsten genom att klicka på den **konfigurera** fliken. Här kan du ändra tjänsten title och en beskrivning. 
+Du kan konfigurera hello tjänsten genom att klicka på hello **konfigurera** fliken. Här kan du ändra hello service title och en beskrivning. 
 
-Om du vill testa webbtjänsten klickar du på den **testa** fliken (se **testa webbtjänsten** nedan). Mer information om hur du skapar program som har åtkomst till webbtjänsten klickar du på **förbruka** fliken (nästa steg i den här genomgången hamnar i detalj).
-
-> [!TIP]
-> När du har distribuerat den, kan du uppdatera webbtjänsten. Till exempel om du vill ändra modellen, och sedan kan du redigera utbildning experiment, justera modellparametrarna och på **distribuera webbtjänsten**, välja **distribuera webbtjänsten [klassisk]** eller **distribuera webbtjänsten [ny]**. När du distribuerar experimentet igen ersätter webbtjänsten nu och Använd uppdaterade modellen.  
-> 
-> 
-
-## <a name="test-the-web-service"></a>Testa webbtjänsten
-
-När webbtjänsten används anger användarens data via den **Web service indata** modulen där den skickas till den [Poängmodell] [ score-model] modulen och poängsätts. Hur vi har konfigurerat prediktivt experiment, modellen förväntar data i samma format som den ursprungliga kredit risk datauppsättningen.
-Resultaten returneras till användaren från webbtjänsten via den **Web service utdata** modul.
+tootest hello webbtjänsten klickar du på hello **Test** fliken (se **testa hello webbtjänsten** nedan). Information om hur du skapar program som kan komma åt hello webbtjänsten klickar du på hello **förbruka** fliken (hello nästa steg i den här genomgången hamnar i detalj).
 
 > [!TIP]
-> Hur vi har prediktivt experiment som konfigurerats för hela resultat av den [Poängmodell] [ score-model] modulen returneras. Detta omfattar alla indata plus värdet kredit risk och sannolikheten för bedömningsprofil. Men returnerar något annat om du vill, t.ex, du kan returnera bara kredit risk värde. Gör detta genom att infoga en [Projektkolumner] [ project-columns] modulen mellan [Poängmodell] [ score-model] och **Web service utdata** att ta bort kolumner som du inte vill webbtjänsten för att returnera. 
+> När du har distribuerat den, kan du uppdatera hello-webbtjänsten. Till exempel om du vill toochange din modell kan sedan du kan redigera hello träningsexperiment, justera hello modellparametrarna och på **distribuera webbtjänsten**, välja **distribuera webbtjänsten [klassisk]** eller  **Distribuera webbtjänsten [ny]**. När du distribuerar hello experiment, ersätter hello webbtjänsten nu och Använd uppdaterade modellen.  
 > 
 > 
 
-Du kan testa en klassisk web service antingen i **Machine Learning Studio** eller i den **Azure Machine Learning-webbtjänster** portal.
-Du kan testa en ny webbplats tjänsten i den **Machine Learning-webbtjänster** portal.
+## <a name="test-hello-web-service"></a>Testa hello-webbtjänst
+
+När hello webbtjänsten används hello användardata anger via hello **Web service indata** modulen där det har gått toohello [Poängmodell] [ score-model] modulen och poängsätts. hello sätt som vi har konfigurerat hello prediktivt experiment, hello modellen förväntar data i hello samma format som hello ursprungliga kredit risk dataset.
+hello resultat returneras toohello användaren från hello webbtjänst via hello **Web service utdata** modul.
 
 > [!TIP]
-> Testa i Azure Machine Learning-webbtjänster portal, kan du ha portal Skapa exempeldata som du kan använda för att testa tjänsten begäran och svar. På den **konfigurera** väljer ”Ja” för **exempel Data aktiverat?**. När du öppnar fliken begäran och svar på de **Test** sidan portalen fylls exempeldata från den ursprungliga kredit risk datauppsättningen.
+> hello sätt som vi har hello prediktivt experiment konfigurerad, hello hela fås hello [Poängmodell] [ score-model] modulen returneras. Detta omfattar alla hello indata plus hello kredit risk värdet och hello bedömningen sannolikheten. Men returnerar något annat om du vill, t.ex, du kan returnera bara hello kredit risk värde. toodo detta, infoga en [Projektkolumner] [ project-columns] modulen mellan [Poängmodell] [ score-model] och hello **Web service utdata** tooeliminate kolumner som du inte vill hello web service tooreturn. 
+> 
+> 
+
+Du kan testa en klassisk web service antingen i **Machine Learning Studio** eller i hello **Azure Machine Learning-webbtjänster** portal.
+Du kan testa en ny webbtjänst endast i hello **Machine Learning-webbtjänster** portal.
+
+> [!TIP]
+> Testa i hello Azure Machine Learning-webbtjänster portal, kan du ha hello portal Skapa exempeldata som du kan använda tootest hello svar på begäranden tjänsten. På hello **konfigurera** väljer ”Ja” för **exempel Data aktiverat?**. När du öppnar fliken hello begäran och svar på hello **Test** sidan hello portal fylls exempeldata från hello ursprungliga kredit risk dataset.
 
 ### <a name="test-a-classic-web-service"></a>Testa en klassisk-webbtjänst
 
-Du kan testa en klassisk webbtjänst i Machine Learning Studio eller i Machine Learning-webbtjänster-portalen. 
+Du kan testa en klassisk webbtjänst i Machine Learning Studio eller hello Machine Learning-webbtjänster portal. 
 
 #### <a name="test-in-machine-learning-studio"></a>Testa i Machine Learning Studio
 
-1. På den **INSTRUMENTPANELEN** för webbtjänsten, klickar du på den **Test** knappen **standard Endpoint**. En dialogruta visas och du uppmanas att ange indata för tjänsten. Det här är samma kolumner som fanns i den ursprungliga kredit risk datauppsättningen.  
+1. På hello **INSTRUMENTPANELEN** för hello-webbtjänsten, klickar du på hello **Test** knappen **standard Endpoint**. En dialogruta visas och du uppmanas att ange hello indata för hello-tjänsten. Dessa är hello samma kolumner som fanns i hello ursprungliga kredit risk dataset.  
 
 2. Ange en uppsättning data och klicka sedan på **OK**. 
 
-#### <a name="test-in-the-machine-learning-web-services-portal"></a>Testa i Machine Learning-webbtjänster portal
+#### <a name="test-in-hello-machine-learning-web-services-portal"></a>Testa i hello Machine Learning-webbtjänster portal
 
-1. På den **INSTRUMENTPANELEN** för webbtjänsten, klickar du på den **Test preview** länken under **standard Endpoint**. Testsida i Azure Machine Learning-webbtjänster portal för webbtjänstslutpunkt öppnas och du uppmanas att ange indata för tjänsten. Det här är samma kolumner som fanns i den ursprungliga kredit risk datauppsättningen.
+1. På hello **INSTRUMENTPANELEN** för hello-webbtjänsten, klickar du på hello **Test preview** länken under **standard Endpoint**. hello testsida hello Azure Machine Learning-webbtjänster för i portalen hello webbtjänstslutpunkt öppnas och du uppmanas att ange hello indata för hello-tjänsten. Dessa är hello samma kolumner som fanns i hello ursprungliga kredit risk dataset.
 
 2. Klicka på **testa begäran och svar**. 
 
 ### <a name="test-a-new-web-service"></a>Testa en ny webbtjänst
 
-Du kan testa en ny webbtjänst endast i Machine Learning-webbtjänster portal.
+Du kan testa en ny webbtjänst endast i hello Machine Learning-webbtjänster portal.
 
-1. I den [Azure Machine Learning-webbtjänster](https://services.azureml.net/quickstart) klickar du på **Test** överst på sidan. Den **Test** sidan öppnas och du kan ange data för tjänsten. Inmatningsfält visas motsvarar de kolumner som fanns i den ursprungliga kredit risk datauppsättningen. 
+1. I hello [Azure Machine Learning-webbtjänster](https://services.azureml.net/quickstart) klickar du på **Test** hello överst på hello sidan. Hej **Test** sidan öppnas och du kan ange data för hello-tjänsten. hello inmatningsfält visas överensstämmer toohello kolumner som fanns i hello ursprungliga kredit risk dataset. 
 
 2. Ange en uppsättning data och klicka sedan på **Test-svar på begäranden**.
 
-Resultatet av testet visas till höger på sidan i utdatakolumnen. 
+hello visas av hello test resultaten på hello höger hello-sidan i hello utdatakolumnen. 
 
 
-## <a name="manage-the-web-service"></a>Hantera webbtjänsten
+## <a name="manage-hello-web-service"></a>Hantera hello-webbtjänst
 
-### <a name="manage-a-classic-web-service-in-the-azure-classic-portal"></a>Hantera en klassisk webbtjänst i den klassiska Azure-portalen
+### <a name="manage-a-classic-web-service-in-hello-azure-classic-portal"></a>Hantera en klassisk webbtjänst i hello klassiska Azure-portalen
 
-När du har distribuerat klassisk webbtjänsten kan du hantera den från den [klassiska Azure-portalen](https://manage.windowsazure.com).
+När du har distribuerat klassisk webbtjänsten kan du hantera den från hello [klassiska Azure-portalen](https://manage.windowsazure.com).
 
-1. Logga in på den [klassiska Azure-portalen](https://manage.windowsazure.com)
-2. Klicka på panelen för Microsoft Azure-tjänster **MACHINE LEARNING**
+1. Logga in toohello [klassiska Azure-portalen](https://manage.windowsazure.com)
+2. Klicka på hello Microsoft Azure-tjänster Kontrollpanelen **MACHINE LEARNING**
 3. Klicka på arbetsytan
-4. Klicka på den **webbtjänster** fliken
-5. Klicka på den webbtjänst som vi skapade
-6. Klicka på ”default”-slutpunkt
+4. Klicka på hello **webbtjänster** fliken
+5. Klicka på hello-webbtjänst som vi skapade
+6. Klicka på hello ”default” slutpunkt
 
-Härifrån kan du kan göra saker som övervaka hur webbtjänsten fungerar och kontrollera prestanda justeringar genom att ändra hur många samtidiga anropar tjänsten kan hantera.
+Här kan du till exempel övervaka hur hello webbtjänst fungerar och göra justeringar prestanda genom att ändra hur många samtidiga anrop hello-tjänsten kan hantera.
 
 Mer information finns i:
 
 * [Skapa slutpunkter](machine-learning-create-endpoint.md)
 * [Skalning webbtjänst](machine-learning-scaling-webservice.md)
 
-### <a name="manage-a-classic-or-new-web-service-in-the-azure-machine-learning-web-services-portal"></a>Hantera en klassisk eller ny webbtjänst i Azure Machine Learning-webbtjänster portal
+### <a name="manage-a-classic-or-new-web-service-in-hello-azure-machine-learning-web-services-portal"></a>Hantera en klassisk eller ny webbtjänst i hello Azure Machine Learning-webbtjänster portal
 
-När du har distribuerat din webbtjänst om klassiska eller nya kan du hantera den från den [Microsoft Azure Machine Learning-webbtjänster](https://services.azureml.net/quickstart) portal.
+När du har distribuerat din webbtjänst om klassiska eller nya, du kan hantera den från hello [Microsoft Azure Machine Learning-webbtjänster](https://services.azureml.net/quickstart) portal.
 
-Att övervaka prestanda för webbtjänsten:
+toomonitor hello prestanda för webbtjänsten:
 
-1. Logga in på den [Microsoft Azure Machine Learning-webbtjänster](https://services.azureml.net/quickstart) portal
+1. Logga in toohello [Microsoft Azure Machine Learning-webbtjänster](https://services.azureml.net/quickstart) portal
 2. Klicka på **webbtjänster**
 3. Klicka på din web service
-4. Klicka på den **instrumentpanelen**
+4. Klicka på hello **instrumentpanelen**
 
 - - -
-**Nästa: [få åtkomst till webbtjänsten](machine-learning-walkthrough-6-access-web-service.md)**
+**Nästa: [komma åt hello-webbtjänst](machine-learning-walkthrough-6-access-web-service.md)**
 
 [3]: ./media/machine-learning-walkthrough-5-publish-web-service/publish3.png
 [3a]: ./media/machine-learning-walkthrough-5-publish-web-service/publish3a.png

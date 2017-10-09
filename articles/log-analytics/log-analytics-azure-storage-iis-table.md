@@ -1,6 +1,6 @@
 ---
-title: "Använda blob storage för IIS- och lagring för händelser i Azure Log Analytics | Microsoft Docs"
-description: "Logganalys kan läsa loggfiler för Azure-tjänster som skriver diagnostik till tabellagring eller IIS-loggar som skrivs till blob storage."
+title: "aaaUse blob-lagring för IIS- och lagring för händelser i Azure Log Analytics | Microsoft Docs"
+description: "Logganalys kan läsa hello loggar för Azure-tjänster som skriver diagnostik tootable lagring eller IIS-loggar som skrivs tooblob lagring."
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 459ef90ca1d76bada6565bfefd7b4bd1086197d5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ff3de04dc8cb6729c1443372ec31a0e8dc47f273
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Använda Azure blob storage för IIS och Azure-tabellagring för händelser med logganalys
 
-Logganalys kan läsa loggfiler för följande tjänster som skriver diagnostik till tabellagring eller IIS-loggar som skrivs till blob storage:
+Logganalys kan läsa hello loggar för hello följande tjänster som skriver diagnostik tootable lagrings- eller IIS loggar du skriftlig tooblob lagring:
 
 * Service Fabric-kluster (förhandsgranskning)
 * Virtuella datorer
@@ -31,11 +31,11 @@ Logganalys kan läsa loggfiler för följande tjänster som skriver diagnostik t
 
 Innan logganalys kan samla in data för dessa resurser, måste Azure diagnostics aktiveras.
 
-När diagnostik är aktiverade, kan du använda Azure portal eller PowerShell konfigurera Log Analytics för att samla in loggarna.
+När diagnostik är aktiverade, kan du använda hello Azure-portalen eller PowerShell konfigurera logganalys toocollect hello loggar.
 
-Azure Diagnostics är en Azure-tillägget som gör det möjligt att samla in diagnostikdata från arbetsrollen, webbroll eller virtuell dator som körs i Azure. Data lagras i ett Azure storage-konto och sedan ska samlas in av logganalys.
+Azure Diagnostics är en Azure-tillägget som du kan använda toocollect diagnostikdata från arbetsrollen, webbroll eller virtuell dator som körs i Azure. hello data lagras i ett Azure storage-konto och sedan ska samlas in av logganalys.
 
-Log Analytics att samla in loggarna Azure-diagnostik måste loggarna ha följande platser:
+Logganalys toocollect loggarna Azure Diagnostics hello loggar måste ha hello följande platser:
 
 | Loggtyp | Resurstyp | Plats |
 | --- | --- | --- |
@@ -52,38 +52,38 @@ Log Analytics att samla in loggarna Azure-diagnostik måste loggarna ha följand
 >
 >
 
-För virtuella datorer, har du möjlighet att installera den [logganalys agent](log-analytics-azure-vm-extension.md) till den virtuella datorn att aktivera ytterligare insikter. Förutom att analysera IIS-loggar och händelseloggar kan utföra du ytterligare analys, inklusive konfiguration ändringsspårning, SQL-bedömning och utvärdering av uppdateringar.
+För virtuella datorer har hello möjlighet att installera hello [logganalys agent](log-analytics-azure-vm-extension.md) till din virtuella tooenable ytterligare insikter. Dessutom kan du göra ytterligare analys, inklusive konfiguration ändringsspårning, SQL-bedömning och utvärdering av uppdateringar toobeing kan tooanalyze IIS-loggar och händelseloggar.
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Aktivera Azure-diagnostik i en virtuell dator för insamling av webbloggar händelseloggen och IIS
-Använd följande procedur för att aktivera Azure-diagnostik i en virtuell dator för händelseloggen och IIS Logginsamling med hjälp av Microsoft Azure-portalen.
+Använd hello följa proceduren tooenable Azure-diagnostik i en virtuell dator för händelseloggen och IIS logg med hello Microsoft Azure-portalen.
 
-### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Så här aktiverar du Azure-diagnostik i en virtuell dator med Azure-portalen
-1. Installera den Virtuella Datoragenten när du skapar en virtuell dator. Om den virtuella datorn redan finns kontrollerar du att den Virtuella Datoragenten är installerad.
+### <a name="tooenable-azure-diagnostics-in-a-virtual-machine-with-hello-azure-portal"></a>tooenable Azure-diagnostik i en virtuell dator med hello Azure-portalen
+1. Installera hello VM-agenten när du skapar en virtuell dator. Om hello virtuella datorn redan finns kontrollerar du att hello VM-agenten redan är installerad.
 
-   * I Azure portal, navigerar du till den virtuella datorn, Välj **valfri konfiguration**, sedan **diagnostik** och ange **Status** till **på** .
+   * I hello Azure-portalen, navigera toohello virtuell dator, väljer **valfri konfiguration**, sedan **diagnostik** och ange **Status** för**på**.
 
-     Den virtuella datorn har filnamnstillägget Azure Diagnostics installerade och körs när åtgärden har slutförts. Det här tillägget är ansvarig för att samla in diagnostikdata.
-2. Aktivera övervakning och konfigurera händelseloggning på en befintlig virtuell dator. Du kan aktivera diagnostik på VM-nivå. Om du vill aktivera diagnostik och sedan konfigurera händelseloggning, utför du följande steg:
+     När åtgärden har slutförts har hello VM hello Azure Diagnostics installerade och körs. Det här tillägget är ansvarig för att samla in diagnostikdata.
+2. Aktivera övervakning och konfigurera händelseloggning på en befintlig virtuell dator. Du kan aktivera diagnostik på hello VM-nivå. tooenable diagnostik och sedan konfigurera händelseloggning, utföra hello följande steg:
 
-   1. Välj den virtuella datorn.
+   1. Välj hello VM.
    2. Klicka på **övervakning**.
    3. Klicka på **diagnostik**.
-   4. Ange den **Status** till **på**.
-   5. Markera varje diagnostik-logg som du vill samla in.
+   4. Ange hello **Status** för**på**.
+   5. Markera varje diagnostik-logg som du vill toocollect.
    6. Klicka på **OK**.
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Aktivera Azure-diagnostik i en webbroll för IIS-loggen och händelsen samling
-Referera till [hur att aktivera diagnostik i en molntjänst](../cloud-services/cloud-services-dotnet-diagnostics.md) allmänna anvisningar om hur du aktiverar Azure-diagnostik. Anvisningarna nedan använder den här informationen och anpassa den för användning med logganalys.
+Se för[hur tooEnable diagnostik i en molntjänst](../cloud-services/cloud-services-dotnet-diagnostics.md) allmänna anvisningar om hur du aktiverar Azure-diagnostik. hello instruktionerna nedan använder den här informationen och anpassa den för användning med logganalys.
 
 Med Azure diagnostics aktiverad:
 
-* IIS-loggar lagras som standard med loggdata överförs vid intervallet som scheduledTransferPeriod överföring.
+* IIS-loggar lagras som standard med loggdata överförs med hello scheduledTransferPeriod överföring intervall.
 * Windows-händelseloggar överförs inte som standard.
 
-### <a name="to-enable-diagnostics"></a>Aktivera diagnostik
-Aktivera Windows-händelseloggar, eller ändra scheduledTransferPeriod, konfigurera Azure-diagnostik med XML-konfigurationsfilen (diagnostics.wadcfg) enligt [steg 4: skapa konfigurationsfilen diagnostik och installera tillägget](../cloud-services/cloud-services-dotnet-diagnostics.md)
+### <a name="tooenable-diagnostics"></a>tooenable diagnostik
+tooenable händelseloggarna i Windows eller toochange Hej scheduledTransferPeriod, konfigurera Azure-diagnostik använder hello XML-konfigurationsfil (diagnostics.wadcfg) enligt [steg 4: skapa konfigurationsfilen diagnostik och installera hello tillägg](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
-Följande exempel konfigurationsfil samlar in IIS-loggar och alla händelser från program- och systemloggarna:
+hello följande exempel konfigurationsfil samlar in IIS-loggar och alla händelser från hello program och systemloggarna:
 
 ```
     <?xml version="1.0" encoding="utf-8" ?>
@@ -93,7 +93,7 @@ Följande exempel konfigurationsfil samlar in IIS-loggar och alla händelser fr�
 
       <Directories bufferQuotaInMB="0"
          scheduledTransferPeriod="PT10M">  
-        <!-- IISLogs are only relevant to Web roles -->
+        <!-- IISLogs are only relevant tooWeb roles -->
         <IISLogs container="wad-iis" directoryQuotaInMB="0" />
       </Directories>
 
@@ -107,7 +107,7 @@ Följande exempel konfigurationsfil samlar in IIS-loggar och alla händelser fr�
     </DiagnosticMonitorConfiguration>
 ```
 
-Se till att din ConfigurationSettings anger ett lagringskonto, som i följande exempel:
+Se till att din ConfigurationSettings anger ett lagringskonto, som i följande exempel hello:
 
 ```
     <ConfigurationSettings>
@@ -115,60 +115,60 @@ Se till att din ConfigurationSettings anger ett lagringskonto, som i följande e
     </ConfigurationSettings>
 ```
 
-Den **AccountName** och **AccountKey** värden finns i Azure-portalen på instrumentpanelen för storage-konto, under hantera åtkomstnycklar. Protokollet för anslutningssträngen måste vara **https**.
+Hej **AccountName** och **AccountKey** värden finns i hello Azure-portalen i hello storage-konto instrumentpanelen under hantera åtkomstnycklar. hello-protokollet för hello anslutningssträngen måste vara **https**.
 
-När den uppdaterade diagnostiska konfigurationen tillämpas på Molntjänsten och det skriver diagnostik till Azure Storage, är du redo att konfigurera logganalys.
+När hello uppdaterade diagnostikkonfiguration används skriver tooyour Molntjänsten och diagnostik tooAzure lagring, och du är redo tooconfigure logganalys.
 
-## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Använda Azure portal för att samla in loggar från Azure Storage
-Du kan använda Azure-portalen för att konfigurera Log Analytics för att samla in loggar för följande Azure-tjänster:
+## <a name="use-hello-azure-portal-toocollect-logs-from-azure-storage"></a>Använda hello Azure portal toocollect loggar från Azure Storage
+Du kan använda hello Azure portal tooconfigure logganalys toocollect hello loggar för hello följande Azure-tjänster:
 
 * Service Fabric-kluster
 * Virtuella datorer
 * Web/Worker-roller
 
-Navigera till logganalys-arbetsytan i Azure-portalen och utföra följande uppgifter:
+Navigera tooyour logganalys-arbetsytan i hello Azure-portalen och utföra hello följande uppgifter:
 
 1. Klicka på *lagringskonton loggar*
-2. Klicka på den *Lägg till* aktivitet
-3. Välj lagringskonto som innehåller diagnostik-loggar
+2. Klicka på hello *Lägg till* aktivitet
+3. Välj hello Storage-konto som innehåller hello diagnostik loggar
    * Det här kontot kan vara ett klassiska storage-konto eller ett lagringskonto i Azure Resource Manager
-4. Välj en datatyp som du vill samla in loggar för
-   * Alternativen är IIS-loggar. Händelser. Syslog (Linux) ETW-loggar. Service Fabric-händelser
-5. Värdet för källa fylls i automatiskt baserat på datatyp och kan inte ändras
-6. Klicka på OK om du vill spara konfigurationen
+4. Välj hello datatyp du vill använda toocollect loggar för
+   * hello alternativ är IIS-loggar. Händelser. Syslog (Linux) ETW-loggar. Service Fabric-händelser
+5. hello värdet fylls i automatiskt baserat på hello datatypen och kan inte ändras
+6. Klicka på OK toosave hello konfiguration
 
-Upprepa steg 2 till 6 för ytterligare lagringskonton och datatyper som du vill använda Log Analytics för att samla in.
+Upprepa steg 2 till 6 för ytterligare lagringsutrymme konton och datatyper som du vill logganalys toocollect.
 
-Du ska kunna se data från storage-konto i logganalys cirka 30 minuter. Data som skrivs till lagring när konfigurationen tillämpas visas bara. Logganalys läser inte befintliga data från lagringskontot.
+Du är kan toosee data från hello storage-konto i logganalys cirka 30 minuter. Data som skrivs toostorage efter hello konfiguration används visas bara. Logganalys läser inte hello befintlig data från hello storage-konto.
 
 > [!NOTE]
-> Portalen kontrollerar inte att källan finns i lagringskontot eller om nya data skrivs.
+> hello portal inte validerar den hello-källan finns i hello storage-konto eller om nya data skrivs.
 >
 >
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Aktivera Azure-diagnostik i en virtuell dator för händelseloggen och IIS logg med PowerShell
-Följ stegen i [konfigurera logganalys att indexera Azure diagnostics](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) du använder PowerShell för att läsa från Azure-diagnostik som skrivs till table storage.
+Använd hello stegen i [konfigurera logganalys tooindex Azure diagnostics](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) toouse PowerShell tooread från Azure-diagnostik som skrivs tootable lagring.
 
-Med hjälp av Azure PowerShell kan du mer exakt ange de händelser som skrivs till Azure Storage.
+Med hjälp av Azure PowerShell kan du mer exakt ange hello händelser som skrivs tooAzure lagring.
 Mer information finns i [aktiverar diagnostik i Azure Virtual Machines](../virtual-machines-dotnet-diagnostics.md).
 
-Du kan aktivera och uppdatera Azure diagnostics med följande PowerShell-skript.
+Du kan aktivera och uppdatera Azure diagnostics med hello följande PowerShell-skript.
 Du kan också använda det här skriptet till en konfiguration för anpassad loggning.
-Ändra skriptet för att ange storage-konto, tjänstnamn och namn på virtuell dator.
-Skriptet använder cmdlets för klassiska virtuella datorer.
+Ändra hello skriptet tooset hello storage-konto, tjänstnamn och namn på virtuell dator.
+hello-skript som använder cmdlets för klassiska virtuella datorer.
 
-Granska följande skriptexempel, kopierar den, ändra det efter behov, spara exemplet som en PowerShell-skriptfil och kör skriptet.
+Granska följande skriptexempel hello, kopierar den, ändra det efter behov, spara hello exempel som en PowerShell-skriptfil och kör sedan hello skript.
 
 ```
-    #Connect to Azure
+    #Connect tooAzure
     Add-AzureAccount
 
-    # settings to change:
+    # settings toochange:
     $wad_storage_account_name = "myStorageAccount"
     $service_name = "myService"
     $vm_name = "myVM"
 
-    #Construct Azure Diagnostics public config and convert to config format
+    #Construct Azure Diagnostics public config and convert tooconfig format
 
     # Collect just system error events:
     $wad_xml_config = "<WadCfg><DiagnosticMonitorConfiguration><WindowsEventLog scheduledTransferPeriod=""PT1M""><DataSource name=""System!* "" /></WindowsEventLog></DiagnosticMonitorConfiguration></WadCfg>"
@@ -185,7 +185,7 @@ Granska följande skriptexempel, kopierar den, ändra det efter behov, spara exe
 
     $wad_extension_name = "IaaSDiagnostics"
     $wad_publisher = "Microsoft.Azure.Diagnostics"
-    $wad_version = (Get-AzureVMAvailableExtension -Publisher $wad_publisher -ExtensionName $wad_extension_name).Version # Gets latest version of the extension
+    $wad_version = (Get-AzureVMAvailableExtension -Publisher $wad_publisher -ExtensionName $wad_extension_name).Version # Gets latest version of hello extension
 
     (Get-AzureVM -ServiceName $service_name -Name $vm_name) | Set-AzureVMExtension -ExtensionName $wad_extension_name -Publisher $wad_publisher -PublicConfiguration $wad_public_config -PrivateConfiguration $wad_private_config -Version $wad_version | Update-AzureVM
 ```
@@ -193,5 +193,5 @@ Granska följande skriptexempel, kopierar den, ändra det efter behov, spara exe
 
 ## <a name="next-steps"></a>Nästa steg
 * [Samla in loggar och mått för Azure-tjänster](log-analytics-azure-storage.md) för Azure-tjänster som stöds.
-* [Aktivera lösningar](log-analytics-add-solutions.md) att ge insikt om data.
-* [Använd sökfrågor](log-analytics-log-searches.md) att analysera data.
+* [Aktivera lösningar](log-analytics-add-solutions.md) tooprovide inblick i hello data.
+* [Använd sökfrågor](log-analytics-log-searches.md) tooanalyze hello data.
