@@ -1,5 +1,5 @@
 ---
-title: "Hantera Azure Blob Storage-resurser med Lagringsutforskaren (förhandsversion) | Microsoft Docs"
+title: "aaaManage Azure Blob Storage-resurser med Lagringsutforskaren (förhandsversion) | Microsoft Docs"
 description: "Hantera Azure Blob-behållare och Blobbar med Lagringsutforskaren (förhandsversion)"
 services: storage
 documentationcenter: na
@@ -14,206 +14,206 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: kraigb
-ms.openlocfilehash: f833027203441e12340bd93f3570de073d297223
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 503dd061b205875da127378ab48e8d465800fc09
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>Hantera Azure Blob Storage-resurser med Lagringsutforskaren (förhandsversion)
 ## <a name="overview"></a>Översikt
-[Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) är en tjänst för att lagra stora mängder Ostrukturerade data, till exempel text eller binära data som kan nås från var som helst i världen via HTTP eller HTTPS.
-Du kan använda Blob Storage för att exponera data offentligt eller lagra programdata privat. I den här artikeln lär du dig att använda Lagringsutforskaren (förhandsversion) att arbeta med blob-behållare och blobbar.
+[Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) är en tjänst för att lagra stora mängder Ostrukturerade data, till exempel text eller binära data som kan nås från var som helst i hello world via HTTP eller HTTPS.
+Du kan använda Blob storage tooexpose data offentligt toohello world eller toostore programdata privat. I den här artikeln lär du dig hur toouse Lagringsutforskaren (förhandsversion) toowork med blobbbehållare och blobbar.
 
 ## <a name="prerequisites"></a>Krav
-Du behöver följande för att slutföra stegen i den här artikeln:
+toocomplete hello stegen i den här artikeln, behöver du hello följande:
 
 * [Hämta och installera Lagringsutforskaren (förhandsversion)](http://www.storageexplorer.com)
-* [Ansluta till ett Azure-lagringskonto eller en Azure-lagringstjänst](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
+* [Ansluta tooa Azure storage-konto eller tjänst](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Skapa en blobbbehållare
 Alla blobbar måste finnas i en blobbbehållare som är en logisk gruppering av blobbar. Ett konto kan innehålla ett obegränsat antal behållare, och varje behållare kan lagra ett obegränsat antal blobbar.
 
-Följande steg visar hur du skapar en blobbbehållare i Lagringsutforskaren (förhandsversion).
+hello följande steg visar hur toocreate en blobbbehållare i Lagringsutforskaren (förhandsversion).
 
 1. Öppna Lagringsutforskaren (förhandsversion).
-2. Expandera det lagringskonto där du vill skapa blob-behållaren i den vänstra rutan.
-3. Högerklicka på **Blobbbehållare**, och på snabbmenyn - väljer **skapa Blob-behållaren**.
+2. Expandera hello storage-konto som du vill toocreate hello blob-behållaren i hello till vänster.
+3. Högerklicka på **Blobbbehållare**, och snabbmenyn hello - väljer **skapa Blob-behållaren**.
 
    ![Skapa snabbmenyn för blob-behållare][0]
-4. En textruta ska visas under den **Blobbbehållare** mapp. Ange namn för blob-behållare. Finns det [behållare namngivningsregler](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container) avsnittet för en lista över regler och begränsningar för namngivning av blob-behållare.
+4. En textruta ska visas under hello **Blobbbehållare** mapp. Ange hello namn för blob-behållare. Se hello [behållare namngivningsregler](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container) avsnittet för en lista över regler och begränsningar för namngivning av blob-behållare.
 
    ![Skapa Blob-behållare textruta][1]
-5. Tryck på **RETUR** när du är klar för att skapa blob-behållare eller **Esc** att avbryta. När blob-behållaren har skapats visas den den **Blobbbehållare** mapp för det valda lagringskontot.
+5. Tryck på **RETUR** när du är klar toocreate hello blob-behållaren eller **Esc** toocancel. När hello blob-behållaren har skapats visas den under hello **Blobbbehållare** mapp för hello markerad storage-konto.
 
    ![BLOB-behållare skapas][2]
 
 ## <a name="view-a-blob-containers-contents"></a>Visa innehållet i en blob-behållare
 BLOB-behållare innehåller blobbar och mappar (som kan också innehålla BLOB).
 
-Följande steg visar hur du visar innehållet i en blobbbehållare i Lagringsutforskaren (förhandsversion):
+hello följande steg visar hur tooview hello innehållet i en blobbbehållare i Lagringsutforskaren (förhandsversion):
 
 1. Öppna Lagringsutforskaren (förhandsversion).
-2. Expandera det lagringskonto som innehåller blob-behållare du vill visa i den vänstra rutan.
-3. Expandera lagringskontot **Blobbbehållare**.
-4. Högerklicka på blob-behållare som du vill visa, och på snabbmenyn - väljer **Öppna Redigeraren för Blob-behållaren**.
-   Du kan dubbelklicka på blob-behållare som du vill visa.
+2. Expandera hello storage-konto som innehåller hello blob-behållare som du vill tooview hello vänster.
+3. Expandera hello lagringskontots **Blobbbehållare**.
+4. Högerklicka på hello blob-behållare du vill tooview och - snabbmenyn hello - **Öppna Redigeraren för Blob-behållaren**.
+   Du kan dubbelklicka på hello blob-behållare som du vill tooview.
 
    ![Öppna blob-behållaren editor snabbmenyn][19]
-5. I huvudfönstret visas innehållet för blob-behållaren.
+5. hello huvudfönstret visar hello blob behållarens innehåll.
 
    ![Redigeraren för BLOB-behållare][3]
 
 ## <a name="delete-a-blob-container"></a>Ta bort en blob-behållare
-BLOB-behållare kan enkelt skapas och tas bort efter behov. (Att se hur finns i avsnittet om du vill ta bort enskilda blobbar [hantera blobbar i en blobbbehållare](#managing-blobs-in-a-blob-container).)
+BLOB-behållare kan enkelt skapas och tas bort efter behov. (toosee hur toodelete individuella blobbar finns toohello avsnittet [hantera blobbar i en blobbbehållare](#managing-blobs-in-a-blob-container).)
 
-Följande steg visar hur du tar bort en blobbbehållare i Lagringsutforskaren (förhandsversion):
+hello följande steg visar hur toodelete en blobbbehållare i Lagringsutforskaren (förhandsversion):
 
 1. Öppna Lagringsutforskaren (förhandsversion).
-2. Expandera det lagringskonto som innehåller blob-behållare du vill visa i den vänstra rutan.
-3. Expandera lagringskontot **Blobbbehållare**.
-4. Högerklicka på blob-behållare som du vill ta bort, och på snabbmenyn - väljer **ta bort**.
-   Du kan även trycka **ta bort** att ta bort markerade blob-behållaren.
+2. Expandera hello storage-konto som innehåller hello blob-behållare som du vill tooview hello vänster.
+3. Expandera hello lagringskontots **Blobbbehållare**.
+4. Högerklicka på hello blob-behållare du vill toodelete och - snabbmenyn hello - **ta bort**.
+   Du kan även trycka **ta bort** toodelete hello markerade blob-behållare.
 
    ![Ta bort snabbmenyn för blob-behållare][4]
-5. Välj **Ja** i bekräftelsedialogen.
+5. Välj **Ja** toohello dialogruta.
 
    ![Ta bort blobben behållare bekräftelse][5]
 
 ## <a name="copy-a-blob-container"></a>Kopiera en blob-behållare
-Lagringsutforskaren (förhandsversion) kan du kopiera en blob-behållare till Urklipp och klistra in den blob-behållaren i ett annat lagringskonto. (Se hur du kopiera enskilda blobbar, finns i avsnittet [hantera blobbar i en blobbbehållare](#managing-blobs-in-a-blob-container).)
+Lagringsutforskaren (förhandsversion) kan du toocopy en blob-behållaren toohello Urklipp och klistra in som blob-behållare till ett annat lagringskonto. (toosee hur toocopy individuella blobbar finns toohello avsnittet [hantera blobbar i en blobbbehållare](#managing-blobs-in-a-blob-container).)
 
-Följande steg visar hur du kopierar en blob-behållare från ett lagringskonto till en annan.
+hello följande steg visar hur toocopy en blob-behållare från en lagring kontot tooanother.
 
 1. Öppna Lagringsutforskaren (förhandsversion).
-2. I den vänstra rutan, expanderar du lagringskontot som innehåller blob-behållare du vill kopiera.
-3. Expandera lagringskontot **Blobbbehållare**.
-4. Högerklicka på blob-behållare som du vill kopiera, och på snabbmenyn - väljer **kopiera Blob-behållaren**.
+2. Expandera hello storage-konto som innehåller hello blob-behållare som du vill toocopy hello vänster.
+3. Expandera hello lagringskontots **Blobbbehållare**.
+4. Högerklicka på hello blob-behållare du vill toocopy och - snabbmenyn hello - **kopiera Blob-behållaren**.
 
    ![Kopiera blob-behållaren snabbmenyn][6]
-5. Högerklicka på önskat ”mål” storage-konto som du vill klistra in blob-behållare, och på snabbmenyn - väljer **klistra in Blob-behållaren**.
+5. Högerklicka på önskat hello ”mål” storage-konto som du vill toopaste hello blob-behållaren och - snabbmenyn hello - väljer **klistra in Blob-behållaren**.
 
    ![Klistra in snabbmenyn för blob-behållare][7]
 
-## <a name="get-the-sas-for-a-blob-container"></a>Hämta SAS för en blobbbehållare
-En [signatur för delad åtkomst (Shared Access Signature, SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) ger delegerad åtkomst till resurser på ditt lagringskonto.
-Det innebär att du kan ge en klient begränsad behörighet till objekt på ditt lagringskonto under en angiven tidsperiod och med en angiven uppsättning behörigheter, utan att behöva dela nycklarna för åtkomst till ditt konto.
+## <a name="get-hello-sas-for-a-blob-container"></a>Hämta hello SAS för en blob-behållare
+En [signatur för delad åtkomst (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) ger delegerad åtkomst tooresources i ditt lagringskonto.
+Det innebär att du ger en klient begränsade behörigheter tooobjects i ditt lagringskonto för en angiven tidsperiod och med en angiven uppsättning behörigheter, utan att behöva dela åtkomstnycklarna för ditt konto.
 
-Följande steg visar hur du skapar en SAS för en blob-behållare:
+hello följande steg visar hur toocreate en SAS för en blob-behållare:
 
 1. Öppna Lagringsutforskaren (förhandsversion).
-2. I den vänstra rutan, expanderar du lagringskontot som innehåller blob-behållare som du vill hämta en SAS.
-3. Expandera lagringskontot **Blobbbehållare**.
-4. Högerklicka på den önskade blobbehållaren, och på snabbmenyn - väljer **hämta signatur för delad åtkomst**.
+2. Expandera hello storage-konto som innehåller hello blob-behållare som du vill tooget en SAS hello vänster.
+3. Expandera hello lagringskontots **Blobbbehållare**.
+4. Högerklicka på hello önskade blob-behållaren och ange-snabbmenyn hello - **hämta signatur för delad åtkomst**.
 
    ![Hämta SAS snabbmenyn][8]
-5. I dialogrutan **Signatur för delad åtkomst** anger du princip, start- och förfallodatum, tidszon och åtkomstnivåer som du vill använda för resursen.
+5. I hello **signatur för delad åtkomst** dialogrutan Ange hello princip, start-och förfallodatum, tidszon och åtkomstnivåer som du vill använda för hello resurs.
 
    ![Hämta SAS-alternativ][9]
-6. När du är klar med att ange SAS-alternativen väljer du **Skapa**.
-7. En andra **signatur för delad åtkomst** dialogrutan därefter visas med en lista över blob-behållaren tillsammans med URL och QueryStrings som du kan använda för att komma åt storage-resurs.
-   Välj **Kopiera** bredvid den URL som du vill kopiera till Urklipp.
+6. När du är klar med att ange hello SAS alternativ väljer **skapa**.
+7. En andra **signatur för delad åtkomst** därefter dialogrutan visas som visar hello blob-behållaren tillsammans med hello URL och QueryStrings som du kan använda tooaccess hello storage-resursen.
+   Välj **kopiera** nästa toohello URL som du vill toocopy toohello Urklipp.
 
    ![Kopiera SAS-URL: er][10]
 8. När du är klar väljer du **Stäng**.
 
 ## <a name="manage-access-policies-for-a-blob-container"></a>Hantera principer för åtkomst för en blob-behållare
-Nedan visas hur du hanterar (lägga till och ta bort) åtkomstprinciper för en blob-behållare:
+hello följande steg visar hur toomanage (lägga till och ta bort) åtkomstprinciper för en blob-behållare:
 
 1. Öppna Lagringsutforskaren (förhandsversion).
-2. I den vänstra rutan, expanderar du lagringskontot som innehåller blob-behållaren vars åtkomstprinciper som du vill hantera.
-3. Expandera lagringskontot **Blobbbehållare**.
-4. Välj önskad blob-behållaren och - snabbmenyn - **hantera åtkomstprinciper**.
+2. Expandera hello storage-konto som innehåller hello blob-behållare vars åtkomstprinciper som du vill toomanage hello vänster.
+3. Expandera hello lagringskontots **Blobbbehållare**.
+4. Välj hello önskade blob-behållaren och - snabbmenyn hello - **hantera åtkomstprinciper**.
 
    ![Snabbmeny för hantering av åtkomstprinciper][11]
-5. Den **åtkomstprinciper** dialogrutan visar en lista över alla åtkomstprinciper som redan har skapats för valda blob-behållaren.
+5. Hej **åtkomstprinciper** dialogrutan visar en lista över alla åtkomstprinciper som redan har skapats för hello valda blob-behållare.
 
    ![Alternativ för åtkomstprincipen][12]        
-6. Gör följande beroende på åtkomstprincipens hanteringsuppgift:
+6. Följ dessa steg beroende på hello åtkomst princip hanteringsaktivitet:
 
-   * **Lägg till en ny åtkomstprincip** – Välj **Lägg till**. När åtkomstprinciepn har skapats visas den som nyligen tillagd i dialogen **Åtkomstprinciper** (med standardinställningarna).
+   * **Lägg till en ny åtkomstprincip** – Välj **Lägg till**. När genereras, hello **åtkomstprinciper** dialogrutan visar hello nyligen tillagda princip (med standardinställningarna).
    * **Redigera en åtkomstprincip** - göra alla önskade ändringar, och välj **spara**.
-   * **Ta bort en åtkomstprincip** – Välj **Ta bort** bredvid den åtkomstprincip som du vill ta bort.
+   * **Ta bort en åtkomstprincip** – Välj **ta bort** nästa toohello åtkomstprincip som du vill tooremove.
 
-## <a name="set-the-public-access-level-for-a-blob-container"></a>Att ställa in allmän åtkomst för en blob-behållare
-Varje blob-behållaren är som standard ”ingen offentlig åtkomst”.
+## <a name="set-hello-public-access-level-for-a-blob-container"></a>Ange hello offentliga åtkomstnivån för en blob-behållare
+Varje blob-behållaren är som standard för ”ingen offentlig åtkomst”.
 
-Följande steg visar hur du anger en offentlig åtkomstnivån för en blob-behållare.
+hello följande steg visar hur toospecify en offentlig åt för en blob-behållare.
 
 1. Öppna Lagringsutforskaren (förhandsversion).
-2. I den vänstra rutan, expanderar du lagringskontot som innehåller blob-behållaren vars åtkomstprinciper som du vill hantera.
-3. Expandera lagringskontot **Blobbbehållare**.
-4. Välj önskad blob-behållaren och - snabbmenyn - **ange offentliga åtkomstnivå**.
+2. Expandera hello storage-konto som innehåller hello blob-behållare vars åtkomstprinciper som du vill toomanage hello vänster.
+3. Expandera hello lagringskontots **Blobbbehållare**.
+4. Välj hello önskade blob-behållaren och - snabbmenyn hello - **ange offentliga åtkomstnivå**.
 
    ![Ange allmän åtkomst på snabbmenyn][13]
-5. I den **ange behållaren offentliga åtkomstnivå** dialogrutan Ange önskad åtkomstnivå.
+5. I hello **ange behållaren offentliga åtkomstnivå** dialogrutan Ange hello önskad åtkomstnivå.
 
    ![Ställa in allmän åtkomst][14]
 6. Välj **Använd**.
 
 ## <a name="managing-blobs-in-a-blob-container"></a>Hantera blobbar i en blobbbehållare
-När du har skapat en blob-behållare kan du ladda upp en blobb till att blob-behållare, ladda ned en blob till den lokala datorn, öppna en blob på den lokala datorn och mycket mer.
+När du har skapat en blob-behållare kan du överföra en blob toothat blob-behållare, hämta en lokal dator för blob-tooyour, öppna en blob på den lokala datorn och mycket mer.
 
-Följande steg visar hur du hanterar blobbar (och mappar) i en blobbbehållare.
+hello följande steg visar hur toomanage hello blobbar (och mappar) i en blobbbehållare.
 
 1. Öppna Lagringsutforskaren (förhandsversion).
-2. I den vänstra rutan, expanderar du lagringskontot som innehåller blob-behållare du vill hantera.
-3. Expandera lagringskontot **Blobbbehållare**.
-4. Dubbelklicka på blob-behållare som du vill visa.
-5. I huvudfönstret visas innehållet för blob-behållaren.
+2. Expandera hello storage-konto som innehåller hello blob-behållare som du vill toomanage hello vänster.
+3. Expandera hello lagringskontots **Blobbbehållare**.
+4. Dubbelklicka på hello blob-behållare som du vill tooview.
+5. hello huvudfönstret visar hello blob behållarens innehåll.
 
    ![Visa blob-behållare][3]
-6. I huvudfönstret visas innehållet för blob-behållaren.
-7. Gör följande beroende på vilken aktivitet du vill utföra:
+6. hello huvudfönstret visar hello blob behållarens innehåll.
+7. Följ dessa steg beroende på hello uppgiften som du vill att tooperform:
 
-   * **Ladda upp filer till en blob-behållare**
+   * **Ladda upp filer tooa blob-behållare**
 
-     1. Gå till verktygsfältet i huvudfönstret och välj **Överför**, och sedan **Överför filer** i den nedrullningsbara menyn.
+     1. Välj hello huvudfönstret i verktygsfältet **överför**, och sedan **Överför filer** hello nedrullningsbara menyn.
 
         ![Överföra filer][15]
-     2. I dialogen **Överför filer** dialogrutan klickar du på knappen med tre punkter (**...** ) på höger sida av textrutan **Filer** och markerar den eller de filer du vill överföra.
+     2. I hello **ladda upp filer** dialogrutan, Välj hello ellips (**...** )-knappen hello höger sida av hello **filer** textrutan tooselect hello fil(er) som du vill tooupload.
 
         ![Ladda upp filer alternativ][16]
-     3. Ange vilken typ av **Blob typen**. Artikeln [komma igång med Azure Blob storage med hjälp av .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) beskrivs skillnaderna mellan de olika typerna av blob.
-     4. Du kan också ange målmapp som de markerade filerna laddas upp. Om målmappen inte finns skapas den.
+     3. Ange hello **Blob typen**. hello artikel [komma igång med Azure Blob storage med hjälp av .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) förklarar hello skillnaderna mellan hello olika blob-typer.
+     4. Du kan också ange målmapp som hello markerade filerna laddas upp. Om hello målmappen inte finns, skapas.
      5. Välj **Överför**.
-   * **Ladda upp en mapp till en blob-behållare**
+   * **Ladda upp en mapp tooa blob-behållare**
 
-     1. Gå till verktygsfältet i huvudfönstret och klicka på **Överför**, och sedan på **Överför mapp** i den nedrullningsbara menyn.
+     1. Välj hello huvudfönstret i verktygsfältet **överför**, och sedan **överför mappen** hello nedrullningsbara menyn.
 
         ![Menyn för mappöverföring][17]
-     2. I dialogen **Överför mapp** klickar du på knappen med tre punkter (**...** ) på höger sida av textrutan **Mapp** och väljer den mapp vars innehåll du vill överföra.
+     2. I hello **överför mappen** dialogrutan, Välj hello ellips (**...** )-knappen hello höger sida av hello **mappen** text rutan tooselect hello mapp vars innehåll som du vill tooupload.
 
         ![Överför Mappalternativ][18]
-     3. Ange vilken typ av **Blob typen**. Artikeln [komma igång med Azure Blob storage med hjälp av .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) beskrivs skillnaderna mellan de olika typerna av blob.
-     4. Du kan även ange en målmapp som den markerade mappens innehåll ska överföras till. Om målmappen inte finns skapas den.
+     3. Ange hello **Blob typen**. hello artikel [komma igång med Azure Blob storage med hjälp av .NET](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts) förklarar hello skillnaderna mellan hello olika blob-typer.
+     4. Du kan också ange en målmapp i vilka hello valda mappens innehåll överförs. Om hello målmappen inte finns, skapas.
      5. Välj **Överför**.
-   * **Hämta en blobb till den lokala datorn**
+   * **Hämta en blob tooyour lokal dator**
 
-     1. Välj blob som du vill hämta.
-     2. Gå till verktygsfältet i huvudfönstret och klicka på **Hämta**.
-     3. I den **ange var du vill spara den hämta blobben** dialogrutan, ange den plats där du vill blob hämtas och du vill ge den namnet.  
+     1. Välj hello blob som du vill toodownload.
+     2. Välj hello huvudfönstret i verktygsfältet **hämta**.
+     3. I hello **ange där toosave hello hämtade blob** dialogrutan Ange hello plats där du vill att hello blob hämtas och hello namn som du vill toogive den.  
      4. Välj **Spara**.
    * **Öppna en blob på den lokala datorn**
 
-     1. Välj blob som du vill öppna.
-     2. Gå till verktygsfältet i huvudfönstret och välj **Öppna**.
-     3. Blob kommer att hämtas och öppnas med hjälp av programmet som är associerade med den blob underliggande filtyp.
-   * **Kopiera en blobb till Urklipp**
+     1. Välj hello blob som du vill tooopen.
+     2. Välj hello huvudfönstret i verktygsfältet **öppna**.
+     3. hello blob kommer att hämtas och öppnas med hello program som är associerade med hello blob underliggande filtyp.
+   * **Kopiera en blob toohello Urklipp**
 
-     1. Välj blob som du vill kopiera.
-     2. Gå till verktygsfältet i huvudfönstret och klicka på **Kopiera**.
-     3. Navigera till en annan blob-behållaren i den vänstra rutan, och dubbelklicka på den om du vill visa i huvudfönstret.
-     4. I huvudfönstret i verktygsfältet väljer **klistra in** att skapa en kopia av blobben.
+     1. Välj hello blob som du vill toocopy.
+     2. Välj hello huvudfönstret i verktygsfältet **kopiera**.
+     3. Navigera tooanother blob-behållaren i hello till vänster och dubbelklicka på den tooview i hello huvudfönstret.
+     4. Välj hello huvudfönstret i verktygsfältet **klistra in** toocreate en kopia av hello-blob.
    * **Ta bort en blobb**
 
-     1. Välj blob som du vill ta bort.
-     2. Gå till verktygsfältet i huvudfönstret och klicka på **Ta bort**.
-     3. Välj **Ja** i bekräftelsedialogen.
+     1. Välj hello blob som du vill toodelete.
+     2. Välj hello huvudfönstret i verktygsfältet **ta bort**.
+     3. Välj **Ja** toohello dialogruta.
 
 ## <a name="next-steps"></a>Nästa steg
-* Visa [ viktig information och videor för den senaste Storage Explorer-versionen (förhandsutgåva)](http://www.storageexplorer.com).
-* Läs mer om hur du [skapar program med Azure-blobbar, tabeller köer och filer](https://azure.microsoft.com/documentation/services/storage/).
+* Visa hello [senaste Lagringsutforskaren (förhandsversion) viktig information och videor](http://www.storageexplorer.com).
+* Lär dig hur för[skapa program med Azure-blobbar, tabeller, köer och filer](https://azure.microsoft.com/documentation/services/storage/).
 
 [0]: ./media/vs-azure-tools-storage-explorer-blobs/blob-containers-create-context-menu.png
 [1]: ./media/vs-azure-tools-storage-explorer-blobs/blob-container-create.png

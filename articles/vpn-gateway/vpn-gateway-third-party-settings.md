@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: delhan
-ms.openlocfilehash: 79df187c9093eb01f18b3dfdc25d1d19a2f63c62
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c695d23167ddba11283f6e223769e29b18a5c7ba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Community-förslag tredje parts VPN eller brandvägg Enhetsinställningar för Azure VPN-gateway
 
 Den här artikeln innehåller flera förslag på lösningar för tredje parts VPN eller brandväggsenheter som används med Azure VPN-gateway.
 
 > [!Note]
-> Teknisk support för VPN- eller brandvägg tredjepartsenheter tillhandahålls leverantören av enheten. 
+> Teknisk support för VPN- eller brandvägg tredjepartsenheter tillhandahålls av leverantören för hello-enheten. 
 
 ## <a name="more-information"></a>Mer information
 
-I följande tabell visas några vanliga enheter och relaterade hjälp:
+hello följande tabell visas några vanliga enheter och relaterade hjälp:
 
 |Produkt    |Referens                                                |
 |-----------|-----------------------------------------------------------|

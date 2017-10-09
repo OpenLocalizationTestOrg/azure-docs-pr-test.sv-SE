@@ -1,6 +1,6 @@
 ---
-title: "Exempel på konfiguration - Cisco ASA-enhet som ansluter till Azure VPN-gatewayer | Microsoft Docs"
-description: "Den här artikeln innehåller ett exempel på konfiguration för Cisco ASA-enhet som ansluter till Azure VPN-gatewayer."
+title: "aaaSample-konfiguration – Cisco ASA-enhet som ansluter tooAzure VPN-gatewayer | Microsoft Docs"
+description: "Den här artikeln innehåller ett exempel på konfiguration för Cisco ASA-enhet som ansluter tooAzure VPN-gatewayer."
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 10466b8928e2cd687f7961a2956b6d60823b82be
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dad13e02afe8dad2379db750eb09602e08e8ea99
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Exempel på konfiguration: Cisco ASA enhet (IKEv2/Nej BGP)
-Den här artikeln innehåller exempel konfigurationer för Cisco ASA-enheter som ansluter till Azure VPN-gatewayer.
+Den här artikeln innehåller exempel konfigurationer för Cisco ASA-enheter som ansluter tooAzure VPN-gatewayer.
 
 ## <a name="device-at-a-glance"></a>Enheten i korthet
 
@@ -39,22 +39,22 @@ Den här artikeln innehåller exempel konfigurationer för Cisco ASA-enheter som
 |                        |                                   |
 
 > [!NOTE]
-> 1. Konfigurationen nedan ansluter en Cisco ASA-enhet till en Azure **ruttbaserad** VPN-gateway med hjälp av anpassade IPsec/IKE-princip med alternativet ”UserPolicyBasedTrafficSelectors”, enligt beskrivningen i [i den här artikeln](vpn-gateway-connect-multiple-policybased-rm-ps.md).
-> 2. Det krävs ASA enheter ska kunna använda **IKEv2** med åtkomst-list-baserade konfigurationer inte VTI-baserade.
-> 3. Kontakta din VPN-leverantör enhetsspecifikationerna så principen stöds på din lokala VPN-enheter.
+> 1. hello configuration nedan ansluter en Cisco ASA enheten tooan Azure **ruttbaserad** VPN-gateway med hjälp av anpassade IPsec/IKE-princip med alternativet ”UserPolicyBasedTrafficSelectors”, enligt beskrivningen i [i den här artikeln](vpn-gateway-connect-multiple-policybased-rm-ps.md).
+> 2. Det krävs ASA enheter toouse **IKEv2** med åtkomst-list-baserade konfigurationer inte VTI-baserade.
+> 3. Kontakta din VPN-leverantör enhetsspecifikationerna tooensure hello principen stöds på din lokala VPN-enheter.
 
 ## <a name="vpn-device-requirements"></a>Krav för VPN-enhet
-Azure VPN-gatewayer använder standard IPsec/IKE-protokoll-paket för att upprätta S2S VPN-tunnlar. Referera till [om VPN-enheter](vpn-gateway-about-vpn-devices.md) för detaljerad IPsec/IKE-protokollparametrar och standard kryptografiska algoritmer för Azure VPN-gatewayer. Du kan också ange den exakta kombinationen av kryptografiska algoritmer och viktiga fördelar för en viss anslutning enligt beskrivningen i [om krav för kryptografiska](vpn-gateway-about-compliance-crypto.md). Om du väljer en specifik kombination av kryptografiska algoritmer och viktiga styrkor, kontrollera att du använder de motsvarande specifikationerna på VPN-enheter.
+Azure VPN-gatewayer Använd standard IPsec/IKE-protokoll-paket tooestablish S2S VPN-tunnlar. Se för[om VPN-enheter](vpn-gateway-about-vpn-devices.md) hello mer IPsec/IKE protokollparametrar och standard kryptografiska algoritmer för Azure VPN-gatewayer. Du kan också ange hello exakta kombinationen av kryptografiska algoritmer och viktiga fördelar för en viss anslutning enligt beskrivningen i [om krav för kryptografiska](vpn-gateway-about-compliance-crypto.md). Om du väljer en specifik kombination av kryptografiska algoritmer och viktiga styrkor, kontrollera att du använder hello motsvarande specifikationer på VPN-enheter.
 
 ## <a name="single-vpn-tunnel"></a>En VPN-tunnel
-Den här topologin består av en S2S VPN-tunnel mellan en Azure VPN-gateway och din lokala VPN-enhet. Du kan också konfigurera BGP över VPN-tunnel.
+Den här topologin består av en S2S VPN-tunnel mellan en Azure VPN-gateway och din lokala VPN-enhet. Du kan också konfigurera BGP över hello VPN-tunnel.
 
 ![en tunnel](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 
-Referera till [en tunnel installationsprogrammet](vpn-gateway-3rdparty-device-config-overview.md#singletunnel) för detaljerad, stegvisa anvisningar att skapa Azure-konfigurationer.
+Se för[en tunnel installationsprogrammet](vpn-gateway-3rdparty-device-config-overview.md#singletunnel) detaljerade stegvisa anvisningar toobuild hello Azure-konfigurationer.
 
 ### <a name="network-and-vpn-gateway-information"></a>Information om nätverk och VPN-gateway
-Det här avsnittet listas parametrarna för det här exemplet.
+Det här avsnittet listas hello parametrar för hello det här exemplet.
 
 | **Parametern**                | **Värde**                    |
 | ---                          | ---                          |
@@ -72,7 +72,7 @@ Det här avsnittet listas parametrarna för det här exemplet.
 
 ### <a name="ipsecike-policy--parameters"></a>IPSec-/ princip & parametrar
 
-I tabellen nedan visas de IPsec/IKE-algoritmer och parametrar som används i exemplet. Kontakta din VPN-enhetsspecifikationer se till alla algoritmer som anges ovan stöds av din VPN-enhetsmodeller och inbyggd programvara.
+hello tabellen nedan visar hello IPsec/IKE algoritmer och parametrar som används i hello exempel. Kontakta din VPN-enhet specifikationer toomake att alla algoritmer som anges ovan stöds av din VPN-enhetsmodeller och inbyggd programvara.
 
 | **IPsec/IKEv2**  | **Värde**                            |
 | ---              | ---                                  |
@@ -95,12 +95,12 @@ I tabellen nedan visas de IPsec/IKE-algoritmer och parametrar som används i exe
 >
 > 1. Stödet för IKEv2 kräver ASA version 8.4 och högre.
 > 2. Stöd för högre DH och PFS (utöver gruppen 5) kräver ASA version 9.x.
-> 3. IPSec-kryptering med AES-GCM och IPsec integritet med SHA-256, SHA-384, stöd för SHA-512 kräver ASA version 9.x på nyare ASA maskinvara; 5505 ASA, 5510, 5520, 5540, 5550, 5580 är **inte** stöds. (Kontrollera Leverantörsspecifikationer för att bekräfta.)
+> 3. IPSec-kryptering med AES-GCM och IPsec integritet med SHA-256, SHA-384, stöd för SHA-512 kräver ASA version 9.x på nyare ASA maskinvara; 5505 ASA, 5510, 5520, 5540, 5550, 5580 är **inte** stöds. (Kontrollera hello leverantör specifikationer tooconfirm.)
 >
 
 
 ### <a name="sample-device-configurations"></a>Exempel enhetskonfigurationer
-Skriptet nedan innehåller en exempelkonfiguration baserat på topologin och parametrarna som anges ovan. S2S VPN-tunnel konfigurationen består av följande delar:
+hello-skriptet nedan ger en exempelkonfiguration baserat på hello topologi och parametrarna som anges ovan. Hej S2S VPN-tunnel konfigurationen består av hello följande delar:
 
 1. Gränssnitt & vägar
 2. Listor
@@ -109,13 +109,13 @@ Skriptet nedan innehåller en exempelkonfiguration baserat på topologin och par
 5. Andra parametrar (TCP-MSS minskning, etc.)
 
 >[!IMPORTANT] 
->Kontrollera att du slutföra ytterligare konfigurationen nedan och ersätta platshållarna med faktiska värden:
+>Kontrollera att du slutför hello ytterligare konfiguration nedan och ersätta hello platshållarna med hello faktiska värden:
 > 
 > - Gränssnittskonfiguration för både inom och utanför gränssnitt
 > - Vägar för din innanför/privat och utanför och offentliga nätverk
-> - Se till att alla namn och nummer är unika på enheten
-> - Se till att de kryptografiska algoritmerna stöds på enheten
-> - Ersätt följande plats innehavare med de faktiska värdena
+> - Se till att alla namn och nummer är unika på hello-enhet
+> - Se till att hello kryptografiska algoritmer stöds på enheten
+> - Ersätt hello följande platshållare med hello faktiska värden
 >   - Utanför gränssnittsnamn: ”externa”
 >   - Azure_Gateway_Public_IP
 >   - OnPrem_Device_Public_IP
@@ -127,30 +127,30 @@ Skriptet nedan innehåller en exempelkonfiguration baserat på topologin och par
 #### <a name="sample-configuration"></a>Exempel på konfiguration
 
 ```
-! Sample ASA configuration for connecting to Azure VPN gateway
+! Sample ASA configuration for connecting tooAzure VPN gateway
 !
 ! Tested hardware: ASA 5505
 ! Tested version:  ASA version 9.2(4)
 !
-! Replace the following place holders with your actual values:
+! Replace hello following place holders with your actual values:
 !   - Interface names - default are "outside" and "inside"
 !   - <Azure_Gateway_Public_IP>
 !   - <OnPrem_Device_Public_IP>
 !   - <Pre_Shared_Key>
 !   - <VNetName>*
-!   - <LNGName>* ==> LocalNetworkGateway - the Azure resource that represents the
+!   - <LNGName>* ==> LocalNetworkGateway - hello Azure resource that represents the
 !     on-premises network, specifies network prefixes, device public IP, BGP info, etc.
 !   - <PrivateIPAddress> ==> Replace it with a private IP address if applicable
 !   - <Netmask> ==> Replace it with appropriate netmasks
-!   - <Nexthop> ==> Replace it with the actual nexthop IP address
+!   - <Nexthop> ==> Replace it with hello actual nexthop IP address
 !
-! (*) Must be unique names in the device configuration
+! (*) Must be unique names in hello device configuration
 !
 ! ==> Interface & route configurations
 !
-!     > <OnPrem_Device_Public_IP> address on the outside interface or vlan
-!     > <PrivateIPAddress> on the inside interface or vlan; e.g., 10.51.0.1/24
-!     > Route to connect to <Azure_Gateway_Public_IP> address
+!     > <OnPrem_Device_Public_IP> address on hello outside interface or vlan
+!     > <PrivateIPAddress> on hello inside interface or vlan; e.g., 10.51.0.1/24
+!     > Route tooconnect too<Azure_Gateway_Public_IP> address
 !
 !     > Example:
 !
@@ -175,7 +175,7 @@ Skriptet nedan innehåller en exempelkonfiguration baserat på topologin och par
 ! ==> Access lists
 !
 !     > Most firewall devices deny all traffic by default. Create access lists to
-!       (1) Allow S2S VPN tunnels between the ASA and the Azure gateway public IP address
+!       (1) Allow S2S VPN tunnels between hello ASA and hello Azure gateway public IP address
 !       (2) Construct traffic selectors as part of IPsec policy or proposal
 !
 access-list outside_access_in extended permit ip host <Azure_Gateway_Public_IP> host <OnPrem_Device_Public_IP>
@@ -189,9 +189,9 @@ object-group network Azure-<VNetName>
  network-object 10.12.0.0 255.255.0.0
 exit
 !
-!     > Object group that corresponding to the <LNGName> prefixes.
+!     > Object group that corresponding toohello <LNGName> prefixes.
 !       E.g., 10.51.0.0/16 and 10.52.0.0/16. Note that LNG = "local network gateway".
-!       In Azure network resource, a local network gateway defines the on-premises
+!       In Azure network resource, a local network gateway defines hello on-premises
 !       network properties (address prefixes, VPN device IP, BGP ASN, etc.)
 !
 object-group network <LNGName>
@@ -200,12 +200,12 @@ object-group network <LNGName>
  network-object 10.52.0.0 255.255.0.0
 exit
 !
-!     > Specify the access-list between the Azure VNet and your on-premises network.
-!       This access list defines the IPsec SA traffic selectors.
+!     > Specify hello access-list between hello Azure VNet and your on-premises network.
+!       This access list defines hello IPsec SA traffic selectors.
 !
 access-list Azure-<VNetName>-acl extended permit ip object-group <LNGName> object-group Azure-<VNetName>
 !
-!     > No NAT required between the on-premises network and Azure VNet
+!     > No NAT required between hello on-premises network and Azure VNet
 !
 nat (inside,outside) source static <LNGName> <LNGName> destination static Azure-<VNetName> Azure-<VNetName>
 !
@@ -221,8 +221,8 @@ crypto isakmp identity address
 crypto ikev2 enable outside
 !
 !     > Define IKEv2 Phase 1/Main Mode policy
-!       - Make sure the policy number is not used
-!       - integrity and prf must be the same
+!       - Make sure hello policy number is not used
+!       - integrity and prf must be hello same
 !       - DH group 14 and above require ASA version 9.x.
 !
 crypto ikev2 policy 1
@@ -254,14 +254,14 @@ crypto ipsec ikev2 ipsec-proposal AES-256
 exit
 !
 !     > Set access list & traffic selectors, PFS, IPsec protposal, SA lifetime
-!       - This sample uses "Azure-<VNetName>-map" as the crypto map name
+!       - This sample uses "Azure-<VNetName>-map" as hello crypto map name
 !       - ASA supports only one crypto map per interface, if you already have
-!         an existing crypto map assigned to your outside interface, you must use
-!         the same crypto map name, but with a different sequence number for
+!         an existing crypto map assigned tooyour outside interface, you must use
+!         hello same crypto map name, but with a different sequence number for
 !         this policy
-!       - "match address" policy uses the access-list "Azure-<VNetName>-acl" defined 
+!       - "match address" policy uses hello access-list "Azure-<VNetName>-acl" defined 
 !         previously
-!       - "ipsec-proposal" uses the proposal "AES-256" defined previously 
+!       - "ipsec-proposal" uses hello proposal "AES-256" defined previously 
 !       - PFS groups 14 and beyond requires ASA version 9.x.
 !
 crypto map Azure-<VNetName>-map 1 match address Azure-<VNetName>-acl
@@ -271,7 +271,7 @@ crypto map Azure-<VNetName>-map 1 set ikev2 ipsec-proposal AES-256
 crypto map Azure-<VNetName>-map 1 set security-association lifetime seconds 7200
 crypto map Azure-<VNetName>-map interface outside
 !
-! ==> Set TCP MSS to 1350
+! ==> Set TCP MSS too1350
 !
 sysopt connection tcpmss 1350
 !
@@ -281,16 +281,16 @@ sysopt connection tcpmss 1350
 
 Här följer några ASA-kommandon för felsökning:
 
-1. Visa IPsec- och IKE SA
+1. Visa hello IPsec och IKE SA
     - ”Visa kryptografi ipsec sa”
     - ”Visa crypto ikev2 sa”
-2. Anger felsökningsläge - detta kan få väldigt mycket brus på konsolen
+2. Anger felsökningsläge - detta kan få väldigt mycket brus på hello-konsolen
     - ”debug kryptografi ikev2 plattform <level>”
     - ”Felsöka kryptografi ikev2-protokoll <level>”
 3. Lista över aktuella konfigurationer
-    - ”Visa kör” - visar aktuella konfigurationen på enhet; Du kan använda olika underordnade kommandon för att lista vissa delar av konfigurationen. Till exempel ”visa kör crypto”, ”visa kör åtkomstlista”, ”visa kör tunnel-grupp” osv.
+    - ”Visa kör” - visar hello aktuella konfigurationer på hello enhet. Du kan använda hello olika underordnade kommandon toolist vissa delar av hello konfiguration. Till exempel ”visa kör crypto”, ”visa kör åtkomstlista”, ”visa kör tunnel-grupp” osv.
 
 
 ## <a name="next-steps"></a>Nästa steg
-Anvisningar om hur du konfigurerar aktiv-aktiv VPN-gateways för flera platser och VNet-till-VNet-anslutningar finns i [Konfigurera aktiv-aktiv VPN-gateways för flera platser och VNet-till-VNet-anslutningar](vpn-gateway-activeactive-rm-powershell.md).
+Se [konfigurera aktiv-aktiv VPN-gatewayer för anslutningar mellan platser och VNet-till-VNet-anslutningar](vpn-gateway-activeactive-rm-powershell.md) åtgärder tooconfigure aktiv-aktiv mellan platser och VNet-till-VNet-anslutningar.
 

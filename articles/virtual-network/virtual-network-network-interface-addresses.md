@@ -1,6 +1,6 @@
 ---
-title: "Konfigurera IP-adresser för en Azure nätverksgränssnittet | Microsoft Docs"
-description: "Lär dig mer om att lägga till, ändra och ta bort privata och offentliga IP-adresser för ett nätverksgränssnitt."
+title: "aaaConfigure IP-adresser för en Azure nätverksgränssnittet | Microsoft Docs"
+description: "Lär dig hur tooadd, ändra och ta bort privata och offentliga IP-adresser för ett nätverksgränssnitt."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,46 +15,46 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 17ddb30c87d757176ce9428264135252c02bf713
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 1e5ea6c65d93be9b1fda5d807500a0823c94c89c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Lägga till, ändra eller ta bort IP-adresser för ett Azure-nätverk-gränssnitt
 
-Lär dig mer om att lägga till, ändra och ta bort offentliga och privata IP-adresser för ett nätverksgränssnitt. Privata IP-adresser tilldelas ett nätverksgränssnitt kan en virtuell dator att kommunicera med andra resurser i Azure-nätverk och anslutna nätverk. En privat IP-adress kan också utgående kommunikation till Internet via en oförutsägbart IP-adress. En [offentliga IP-adressen](virtual-network-public-ip-address.md) tilldelas en gränssnittet aktiverar inkommande nätverkskommunikationen till en virtuell dator från Internet. Adressen kan även utgående kommunikation från den virtuella datorn till Internet via en förutsägbar IP-adress. Mer information finns i [förstå utgående anslutningar i Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+Lär dig hur tooadd, ändra och ta bort offentliga och privata IP-adresser för ett nätverksgränssnitt. Privata IP-adresser som tilldelats tooa nätverksgränssnittet aktivera en virtuell dator toocommunicate med andra resurser i Azure-nätverk och anslutna nätverk. En privat IP-adress kan också utgående kommunikation toohello Internet med en oförutsägbart IP-adress. En [offentliga IP-adressen](virtual-network-public-ip-address.md) tilldelade tooa nätverksgränssnittet gör att inkommande kommunikation tooa virtuell dator från hello Internet. hello-adressen kan även utgående kommunikation från hello virtuella toohello Internet med en förutsägbar IP-adress. Mer information finns i [förstå utgående anslutningar i Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
-Om du behöver för att skapa, ändra eller ta bort ett nätverksgränssnitt, kan du läsa den [hantera ett nätverksgränssnitt](virtual-network-network-interface.md) artikel. Om du behöver lägga till nätverksgränssnitt som eller ta bort nätverksgränssnitt från en virtuell dator kan läsa den [Lägg till eller ta bort nätverksgränssnitt](virtual-network-network-interface-vm.md) artikel. 
+Om du behöver toocreate, ändra eller ta bort ett nätverksgränssnitt läsa hello [hantera ett nätverksgränssnitt](virtual-network-network-interface.md) artikel. Om du behöver tooadd nätverksgränssnitt tooor ta bort nätverksgränssnitt från en virtuell dator kan läsa hello [Lägg till eller ta bort nätverksgränssnitt](virtual-network-network-interface-vm.md) artikel. 
 
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Utför följande uppgifter innan du slutför alla steg i alla avsnitt i den här artikeln:
+Fullständig hello följande uppgifter innan du slutför alla steg i alla avsnitt i den här artikeln:
 
-- Granska de [Azure begränsar](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) artikeln innehåller information om begränsningar för offentliga och privata IP-adresser.
-- Logga in på Azure [portal](https://portal.azure.com), Azure-kommandoradsgränssnittet (CLI) eller Azure PowerShell med ett Azure-konto. Om du inte redan har ett Azure-konto, registrera dig för en [ledigt utvärderingskonto](https://azure.microsoft.com/free).
-- Om du använder PowerShell-kommandon för att utföra åtgärder i den här artikeln [installera och konfigurera Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Se till att du har den senaste versionen av Azure PowerShell-kommandon som är installerad. Om du vill få hjälp med PowerShell-kommandon med exempel på, skriver `get-help <command> -full`.
-- Om Azure-kommandoradsgränssnittet (CLI)-kommandon för att utföra åtgärder i den här artikeln [installera och konfigurera Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Se till att du har den senaste versionen av Azure CLI installerad. Om du vill få hjälp med CLI-kommandon, Skriv `az <command> --help`. Du kan använda Azure Cloud-gränssnittet i stället för att installera CLI och dess krav. Azure Cloud Shell är ett kostnadsfritt Bash-gränssnitt som du kan köra direkt i Azure-portalen. Den har Azure CLI förinstallerat och har konfigurerats för användning med ditt konto. Om du vill använda molnet Shell klickar du på molnet Shell **> _** längst upp i den [portal](https://portal.azure.com).
+- Granska hello [Azure begränsar](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) artikel toolearn om gränser för offentliga och privata IP-adresser.
+- Logga in toohello Azure [portal](https://portal.azure.com), Azure-kommandoradsgränssnittet (CLI) eller Azure PowerShell med ett Azure-konto. Om du inte redan har ett Azure-konto, registrera dig för en [ledigt utvärderingskonto](https://azure.microsoft.com/free).
+- Om du använder PowerShell-kommandon toocomplete uppgifter i den här artikeln [installera och konfigurera Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json). Se till att du har hello senaste versionen av hello Azure PowerShell-kommandon som installeras. tooget hjälp för PowerShell-kommandon med exempel på, skriver `get-help <command> -full`.
+- Om du använder Azure-kommandoradsgränssnittet (CLI) kommandon toocomplete uppgifter i den här artikeln [installera och konfigurera hello Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Se till att du har hello senaste versionen av hello Azure CLI är installerad. tooget hjälp för CLI-kommandona skriver `az <command> --help`. Du kan använda hello Azure Cloud-gränssnittet i stället för att installera hello CLI och dess krav. hello Azure Cloud-gränssnittet är ett kostnadsfritt Bash-gränssnitt som du kan köra direkt i hello Azure-portalen. Den har hello Azure CLI förinstallerat och konfigurerats toouse med ditt konto. toouse hello molnet Shell, klicka på hello molnet Shell **> _** knappen hello överst i hello [portal](https://portal.azure.com).
 
 ## <a name="add-ip-addresses"></a>Lägg till IP-adresser
 
-Du kan lägga till så många [privata](#private) och [offentliga](#public) [IPv4](#ipv4) adresser som behövs för att ett nätverksgränssnitt inom de gränser som anges i den [Azure begränsar](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) artikel. Du kan inte använda portalen för att lägga till en IPv6-adress till ett befintligt nätverksgränssnitt (även om du kan använda portalen för att lägga till en privat IPv6-adress till ett nätverksgränssnitt när du skapar nätverksgränssnittet). Du kan använda PowerShell eller CLI för att lägga till en privat IPv6-adress i en [sekundära IP-konfiguration](#secondary) (så länge det finns inga befintliga sekundär IP-konfigurationer) för en befintlig nätverksgränssnitt som inte är kopplad till en virtuell dator. Du kan inte använda ett verktyg för att lägga till en offentlig IPv6-adress till ett nätverksgränssnitt. Se [IPv6](#ipv6) mer information om hur du använder IPv6-adresser. 
+Du kan lägga till så många [privata](#private) och [offentliga](#public) [IPv4](#ipv4) adresser som behövs tooa nätverksgränssnitt inom hello gränser som anges i hello [Azure gränser ](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) artikel. Du kan inte använda hello portal tooadd en IPv6-adress tooan befintliga nätverksgränssnittet (även om du kan använda hello portal tooadd ett privat nätverksgränssnitt för IPv6-adress tooa när du skapar hello nätverksgränssnittet). Du kan använda PowerShell eller CLI tooadd privata IPv6-adress tooone hello [sekundära IP-konfiguration](#secondary) (så länge det finns inga befintliga sekundär IP-konfigurationer) gränssnitt som inte är ansluten tooa virtuella för ett befintligt nätverk datorn. Du kan inte använda några verktyget tooadd en offentlig nätverksgränssnittet för IPv6-adress tooa. Se [IPv6](#ipv6) mer information om hur du använder IPv6-adresser. 
 
-1. Logga in på den [Azure-portalen](https://portal.azure.com) med ett konto som är tilldelade (minst) behörigheter för rollen Network-deltagare för din prenumeration. Läs den [inbyggda roller för rollbaserad åtkomstkontroll i Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) artikeln om du vill veta mer om hur du tilldelar roller och behörigheter till konton.
-2. I rutan som innehåller texten *söka resurser* längst upp i Azure-portalen, Skriv *nätverksgränssnitt*. När **nätverksgränssnitt** visas i sökresultaten klickar du på den.
-3. I den **nätverksgränssnitt** bladet som visas, klickar du på nätverksgränssnittet som du vill lägga till en IPv4-adress för.
-4. Klicka på **IP-konfigurationer** i den **inställningar** på bladet för nätverksgränssnittet som du har valt.
-5. Klicka på **+ Lägg till** i bladet som öppnas för IP-konfigurationer.
-6. Ange följande och klicka sedan på **OK** att stänga den **lägga till IP-konfiguration** bladet:
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) med ett konto som är tilldelade (minst) behörigheter för hello nätverket deltagarrollen för din prenumeration. Läs hello [inbyggda roller för rollbaserad åtkomstkontroll i Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) artikel toolearn mer om hur du tilldelar roller och behörigheter tooaccounts.
+2. I hello som innehåller hello text *söka resurser* överst hello i hello Azure-portalen, Skriv *nätverksgränssnitt*. När **nätverksgränssnitt** visas i sökresultaten hello klickar du på den.
+3. I hello **nätverksgränssnitt** bladet som visas, klicka på hello nätverksgränssnittet som du vill tooadd en IPv4-adress för.
+4. Klicka på **IP-konfigurationer** i hello **inställningar** avsnitt i hello bladet för hello nätverksgränssnitt som du har valt.
+5. Klicka på **+ Lägg till** i hello bladet som öppnas för IP-konfigurationer.
+6. Anger hello följande och klicka sedan på **OK** tooclose hello **lägga till IP-konfiguration** bladet:
 
     |Inställning|Krävs?|Information|
     |---|---|---|
-    |Namn|Ja|Måste vara unikt för nätverksgränssnittet|
-    |Typ|Ja|Eftersom du vill lägga till en IP-konfiguration till en befintlig nätverksgränssnitt, och varje nätverksgränssnitt måste ha en [primära](#primary) IP-konfiguration, det enda alternativet är **sekundära**.|
-    |Tilldelningsmetod för privat IP-adress|Ja|[**Dynamiska** ](#dynamic) kan ändras om den virtuella datorn startas efter att ha varit i tillståndet Stoppad (frigjord). Azure tilldelar en tillgänglig adress från adressutrymmet till undernätet nätverksgränssnittet är ansluten till. [**Statisk** ](#static) adresser som inte är publicerat tills nätverksgränssnittet tas bort. Ange en IP-adress från det undernät utrymme adressintervallet som för inte närvarande används av en annan IP-konfiguration.|
-    |Offentlig IP-adress|Nej|**Inaktiverat:** ingen offentlig IP-adressresurs är för närvarande associerad till IP-konfigurationen. **Aktiverad:** Välj en befintlig offentlig IPv4-IP-adress eller skapa en ny. Om du vill veta hur du skapar en offentlig IP-adress, läsa den [offentliga IP-adresser](virtual-network-public-ip-address.md#create-a-public-ip-address) artikel.|
-7. Manuellt lägga till sekundära privata IP-adresser till virtuella operativsystem genom att slutföra anvisningarna i den [tilldela flera IP-adresser till virtuella operativsystem](virtual-network-multiple-ip-addresses-portal.md#os-config) artikel. Se [privata](#private) IP-adresser för speciella överväganden innan du lägger till IP-adresser till ett operativsystem för virtuell dator manuellt. Lägg inte till några offentliga IP-adresser i det virtuella operativsystemet.
+    |Namn|Ja|Måste vara unikt för hello nätverksgränssnittet|
+    |Typ|Ja|Eftersom du vill lägga till en IP-konfiguration tooan befintliga nätverksgränssnittet och varje nätverksgränssnitt måste ha en [primära](#primary) IP-konfiguration, det enda alternativet är **sekundära**.|
+    |Tilldelningsmetod för privat IP-adress|Ja|[**Dynamiska** ](#dynamic) kan ändras om hello virtuella datorn startas om efter att ha i hello stoppats (frigjorts) tillstånd. Azure tilldelas en tillgänglig adress från hello adressutrymme hello undernät hello nätverksgränssnittet är anslutet till. [**Statisk** ](#static) adresser inte är publicerat tills hello nätverksgränssnittet tas bort. Ange en IP-adress från hello undernät utrymme adressintervallet som för inte närvarande används av en annan IP-konfiguration.|
+    |Offentlig IP-adress|Nej|**Inaktiverat:** ingen offentlig IP-adressresurs är för närvarande associerad toohello IP-konfiguration. **Aktiverad:** Välj en befintlig offentlig IPv4-IP-adress eller skapa en ny. toolearn hur toocreate en offentlig IP-adress för att läsa hello [offentliga IP-adresser](virtual-network-public-ip-address.md#create-a-public-ip-address) artikel.|
+7. Lägg till sekundära privata IP-adresser toohello virtuella operativsystemets manuellt genom att slutföra hello instruktionerna i hello [tilldela flera IP-adresser toovirtual datorn operativsystem](virtual-network-multiple-ip-addresses-portal.md#os-config) artikel. Se [privata](#private) IP-adresser för speciella överväganden innan du lägger till IP-adresser tooa virtuella operativsystemets manuellt. Lägg inte till några offentliga IP-adresser toohello virtuella operativsystemets.
 
 **Kommandon**
 
@@ -65,17 +65,17 @@ Du kan lägga till så många [privata](#private) och [offentliga](#public) [IPv
 
 ## <a name="change-ip-address-settings"></a>Ändra inställningar för IP-adress
 
-Du kan måste ändra tilldelningsmetod av IPv4-adress, ändra statiska IPv4-adress, eller ändra den offentliga IP-adress som tilldelats ett nätverksgränssnitt. Om du ändrar privata IPv4-adressen för en sekundär IP-konfiguration som är kopplad till ett sekundärt nätverksgränssnitt i en virtuell dator (Läs mer om [primära och sekundära nätverksgränssnitt](virtual-network-network-interface-vm.md#about)), placera den virtuella datorn i tillståndet Stoppad (frigjord) innan du slutför följande steg: 
+Du kan behöva toochange hello tilldelningsmetod för en IPv4-adress, ändra hello statisk IPv4-adress eller ändra hello offentlig IP-adress tilldelas tooa nätverksgränssnitt. Om du ändrar hello privata IPv4-adressen för en sekundär IP-konfiguration som är kopplad till ett sekundärt nätverksgränssnitt i en virtuell dator (Läs mer om [primära och sekundära nätverksgränssnitt](virtual-network-network-interface-vm.md#about)), placera hello virtuella datorn till hello stoppats (frigjorts) tillstånd innan du slutför hello följande steg: 
 
-1. Logga in på den [Azure-portalen](https://portal.azure.com) med ett konto som är tilldelade (minst) behörigheter för rollen Network-deltagare för din prenumeration. Läs den [inbyggda roller för rollbaserad åtkomstkontroll i Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) artikeln om du vill veta mer om hur du tilldelar roller och behörigheter till konton.
-2. I rutan som innehåller texten *söka resurser* längst upp i Azure-portalen, Skriv *nätverksgränssnitt*. När **nätverksgränssnitt** visas i sökresultaten klickar du på den.
-3. I den **nätverksgränssnitt** bladet som visas, klickar du på nätverksgränssnittet som du vill visa eller ändra inställningar för IP-adresser.
-4. Klicka på **IP-konfigurationer** i den **inställningar** på bladet för nätverksgränssnittet som du har valt.
-5. Klicka på IP-konfiguration som du vill ändra i listan i bladet som öppnas för IP-konfigurationer.
-6. Ändra inställningarna efter behov, med information om inställningarna i steg 6 i den [lägga till en IP-konfiguration](#create-ip-config) i den här artikeln. Klicka på **spara** att stänga bladet för IP-konfiguration som du har ändrat.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) med ett konto som är tilldelade (minst) behörigheter för hello nätverket deltagarrollen för din prenumeration. Läs hello [inbyggda roller för rollbaserad åtkomstkontroll i Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) artikel toolearn mer om hur du tilldelar roller och behörigheter tooaccounts.
+2. I hello som innehåller hello text *söka resurser* överst hello i hello Azure-portalen, Skriv *nätverksgränssnitt*. När **nätverksgränssnitt** visas i sökresultaten hello klickar du på den.
+3. I hello **nätverksgränssnitt** bladet som visas, klicka på hello nätverksgränssnittet du vill tooview eller ändra inställningar för IP-adresser.
+4. Klicka på **IP-konfigurationer** i hello **inställningar** avsnitt i hello bladet för hello nätverksgränssnitt som du har valt.
+5. Klicka på hello IP-konfiguration som du vill toomodify hello listan i hello bladet som öppnas för IP-konfigurationer.
+6. Ändra hello-inställningarna efter behov, med hjälp av hello information om hello inställningar i steg 6 i hello [lägga till en IP-konfiguration](#create-ip-config) i den här artikeln. Klicka på **spara** tooclose hello bladet för hello IP-konfiguration som du har ändrat.
 
 >[!NOTE]
->Om det primära nätverksgränssnittet har flera IP-konfigurationer och ändrar privata IP-adressen för primär IP-konfigurationen, måste du manuellt tilldela de primära och sekundära IP-adresserna till nätverksgränssnittet i Windows (krävs inte för Linux). Manuellt tilldela IP-adresser till ett nätverksgränssnitt inom ett operativsystem genom att läsa den [tilldela flera IP-adresser till virtuella datorer](virtual-network-multiple-ip-addresses-portal.md#os-config) artikel. Se [privata](#private) IP-adresser för speciella överväganden innan du lägger till IP-adresser till ett operativsystem för virtuell dator manuellt. Lägg inte till några offentliga IP-adresser i det virtuella operativsystemet.
+>Om hello primära nätverksgränssnittet har flera IP-konfigurationer och ändrar hello privata IP-adressen för hello primära IP-konfigurationen, måste du manuellt tilldela hello primära och sekundära IP-adresser toohello nätverksgränssnittet i Windows (inte krävs för Linux). toomanually tilldela IP-adresser tooa nätverksgränssnittet inom ett operativsystem, läsa hello [tilldela flera IP-adresser toovirtual datorer](virtual-network-multiple-ip-addresses-portal.md#os-config) artikel. Se [privata](#private) IP-adresser för speciella överväganden innan du lägger till IP-adresser tooa virtuella operativsystemets manuellt. Lägg inte till några offentliga IP-adresser toohello virtuella operativsystemets.
 
 **Kommandon**
 
@@ -86,14 +86,14 @@ Du kan måste ändra tilldelningsmetod av IPv4-adress, ändra statiska IPv4-adre
 
 ## <a name="remove-ip-addresses"></a>Ta bort IP-adresser
 
-Du kan ta bort [privata](#private) och [offentliga](#public) IP-adresser från ett nätverksgränssnitt, men ett nätverksgränssnitt måste alltid ha minst en privat IPv4-adress tilldelas.
+Du kan ta bort [privata](#private) och [offentliga](#public) IP-adresser från ett nätverksgränssnitt, men ett nätverksgränssnitt måste alltid ha minst en privat IPv4-adress som tilldelats tooit.
 
-1. Logga in på den [Azure-portalen](https://portal.azure.com) med ett konto som är tilldelade (minst) behörigheter för rollen Network-deltagare för din prenumeration. Läs den [inbyggda roller för rollbaserad åtkomstkontroll i Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) artikeln om du vill veta mer om hur du tilldelar roller och behörigheter till konton.
-2. I rutan som innehåller texten *söka resurser* längst upp i Azure-portalen, Skriv *nätverksgränssnitt*. När **nätverksgränssnitt** visas i sökresultaten klickar du på den.
-3. I den **nätverksgränssnitt** bladet som visas, klicka på nätverksgränssnittet som du vill ta bort IP-adresser från.
-4. Klicka på **IP-konfigurationer** i den **inställningar** på bladet för nätverksgränssnittet som du har valt.
-5. Högerklicka på en [sekundära](#secondary) IP-konfiguration (du kan inte ta bort den [primära](#primary) configuration) du vill ta bort, klicka på **ta bort**, klicka sedan på **Ja** att bekräfta borttagningen. Om konfigurationen har en offentlig IP-adressresurs som är kopplade till den, resursen har kopplats bort från IP-konfigurationen, men resursen tas inte bort.
-6. Stäng den **IP-konfigurationer** bladet.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) med ett konto som är tilldelade (minst) behörigheter för hello nätverket deltagarrollen för din prenumeration. Läs hello [inbyggda roller för rollbaserad åtkomstkontroll i Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) artikel toolearn mer om hur du tilldelar roller och behörigheter tooaccounts.
+2. I hello som innehåller hello text *söka resurser* överst hello i hello Azure-portalen, Skriv *nätverksgränssnitt*. När **nätverksgränssnitt** visas i sökresultaten hello klickar du på den.
+3. I hello **nätverksgränssnitt** bladet som visas, klicka på hello nätverksgränssnittet som du vill tooremove IP-adresser från.
+4. Klicka på **IP-konfigurationer** i hello **inställningar** avsnitt i hello bladet för hello nätverksgränssnitt som du har valt.
+5. Högerklicka på en [sekundära](#secondary) IP-konfiguration (du kan inte ta bort hello [primära](#primary) configuration) du vill toodelete, klickar på **ta bort**, klicka sedan på **Ja**  tooconfirm hello borttagning. Om hello konfiguration har en offentlig IP-adressresurs associerad tooit hello resurs har kopplats bort från hello IP-konfiguration, men hello resurs inte tas bort.
+6. Stäng hello **IP-konfigurationer** bladet.
 
 **Kommandon**
 
@@ -104,76 +104,76 @@ Du kan ta bort [privata](#private) och [offentliga](#public) IP-adresser från e
 
 ## <a name="ip-configurations"></a>IP-konfigurationer
 
-[Privata](#private) och (valfritt) [offentliga](#public) IP-adresser tilldelas till en eller flera IP-konfigurationer som tilldelats ett nätverksgränssnitt. Det finns två typer av IP-konfigurationer:
+[Privata](#private) och (valfritt) [offentliga](#public) IP-adresser tilldelas tooone eller flera IP-konfigurationer tilldelade tooa nätverksgränssnitt. Det finns två typer av IP-konfigurationer:
 
 ### <a name="primary"></a>Primär
 
 Varje nätverksgränssnitt tilldelas en primär IP-konfiguration. En primär IP-konfiguration:
 
-- Har en [privata](#private) [IPv4](#ipv4) adress som tilldelats till den. Du kan inte tilldela en privat [IPv6](#ipv6) adressen till en primär IP-konfiguration.
-- Kan också ha en [offentliga](#public) IPv4-adress som tilldelats till den. Du kan inte tilldela en offentlig IPv6-adress till en primär eller sekundär IP-konfiguration. Däremot kan du tilldela en offentlig IPv6-adress till en Azure belastningsutjämnare som kan läsa in Utjämna trafiken till en virtuell dators privat IPv6-adress. Mer information finns i [information och begränsningar för IPv6](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations).
+- Har en [privata](#private) [IPv4](#ipv4) adress som tilldelats tooit. Du kan inte tilldela en privat [IPv6](#ipv6) tooa primära IP-adresskonfiguration.
+- Kan också ha en [offentliga](#public) IPv4-adress som tilldelats tooit. Du kan inte tilldela en offentlig IPv6 tooa primär eller sekundär IP-adresskonfiguration. Du kan dock, tilldela en offentlig IPv6-adress tooan Azure belastningsutjämnare, som kan läsa in Utjämna trafiken tooa virtuella datorns privata IPv6-adress. Mer information finns i [information och begränsningar för IPv6](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations).
 
 ### <a name="secondary"></a>Sekundär
 
-Förutom en primär IP-konfiguration, kan ett nätverksgränssnitt ha noll eller flera sekundära IP-konfigurationer som tilldelats. En sekundär IP-konfiguration:
+Dessutom tooa primära IP-konfiguration, ett nätverksgränssnitt kan ha noll eller flera sekundära IP-konfigurationer som tilldelats tooit. En sekundär IP-konfiguration:
 
-- Ha måste en privat IPv4- eller IPv6-adress tilldelas till den. Om adressen är IPv6, kan nätverksgränssnittet bara ha en sekundär IP-konfiguration. Om adressen är IPv4, kan nätverkskortet ha flera sekundära IP-konfigurationer som tilldelats. Mer information om hur många privata och offentliga IPv4-adresser kan tilldelas till ett nätverksgränssnitt finns i [Azure begränsar](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) artikel.  
-- Också kan har en offentlig IPv4-adress kopplad till den, om den privata IP-adressen är IPv4. Om den privata IP-adressen är IPv6, kan du tilldela en offentlig IPv4- eller IPv6-adress till IP-konfigurationen. Tilldela flera IP-adresser till ett nätverksgränssnitt är användbart i scenarier som:
+- Måste ha en privat IPv4- eller IPv6-adress som tilldelats tooit. Om hello-adress IPv6 kan hello nätverksgränssnitt bara ha en sekundär IP-konfiguration. Om hello-adress IPv4 kan hello nätverksgränssnitt ha flera sekundära IP-konfigurationer som tilldelats tooit. toolearn mer information om hur många privata och offentliga IPv4-adresser kan tilldelas tooa nätverksgränssnitt, se hello [Azure begränsar](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) artikel.  
+- Kan också ha en offentlig IPv4-adress som tilldelats tooit om hello privata IP-adressen är IPv4. Om hello privata IP-adressen är IPv6, kan du inte tilldela en offentlig IPv4- eller IPv6-toohello IP-adresskonfiguration. Tilldela flera IP-adresser tooa nätverksgränssnittet är användbart i scenarier som:
     - Du kan hantera flera webbplatser eller tjänster med olika IP-adresser och SSL-certifikat på en enda server.
     - En virtuell dator som fungerar som en virtuell nätverksenhet, till exempel en brandvägg eller läsa in belastningsutjämning.
-    - Möjligheten att lägga till någon av de privata IPv4-adresserna för nätverksgränssnitten i en Azure-belastningsutjämnaren backend-adresspool. Tidigare kunde endast primära IPv4-adressen för det primära nätverksgränssnittet läggas till en backend-adresspool. Läs mer om hur du belastningsutjämna flera IPv4-konfigurationer i den [flera IP-konfigurationer för belastningsutjämning](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel. 
-    - Möjligheten att läsa in balansera en IPv6-adress som tilldelats ett nätverksgränssnitt. Mer information om hur du belastningsutjämna till en privat IPv6-adress finns på [belastningsutjämna IPv6-adresser](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel.
+    - Hej möjlighet tooadd någon hello privata IPv4-adresser för alla gränssnitt tooan Azure belastningsutjämnare backend-adresspool för hello nätverk. Senaste hello, kunde bara hello primära IPv4-adress för hello primära nätverksgränssnittet läggas tooa backend-adresspool. toolearn mer information om hur tooload Utjämna flera IPv4-konfigurationer finns hello [flera IP-konfigurationer för belastningsutjämning](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel. 
+    - Hej möjlighet tooload belastningsutjämna ett IPv6-adress som tilldelats tooa nätverksgränssnitt. toolearn mer information om hur tooload balansera tooa privata IPv6-adress, finns hello [belastningsutjämna IPv6-adresser](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel.
 
 
 ## <a name="address-types"></a>Adresstyper
 
-Du kan tilldela följande typer av IP-adresser till ett [IP-konfiguration](#ip-configurations):
+Du kan tilldela hello följande typer av IP-adresser tooan [IP-konfiguration](#ip-configurations):
 
 ### <a name="private"></a>Privat
 
-Privata [IPv4](#ipv4) adresser aktivera en virtuell dator att kommunicera med andra resurser i ett virtuellt nätverk eller andra anslutna nätverk. En virtuell dator kan inte lämnas inkommande eller kan den virtuella datorn kommunicera utgående med en privat [IPv6](#ipv6) adress med ett undantag. En virtuell dator kan kommunicera med Azure belastningsutjämnaren med hjälp av en IPv6-adress. Mer information finns i [information och begränsningar för IPv6](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations). 
+Privata [IPv4](#ipv4) adresser aktivera en virtuell dator toocommunicate med andra resurser i ett virtuellt nätverk eller andra anslutna nätverk. En virtuell dator kan inte lämnas inkommande, och inte heller hello virtuella kommunicera utgående med en privat [IPv6](#ipv6) adress med ett undantag. En virtuell dator kan kommunicera med hello Azure belastningsutjämnare använder en IPv6-adress. Mer information finns i [information och begränsningar för IPv6](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#details-and-limitations). 
 
-Som standard tilldelar Azure DHCP-servrar privat IPv4-adress för den [primära IP-konfigurationen](#primary) för nätverksgränssnittet till nätverksgränssnitt i virtuella operativsystem. Om nödvändigt, ska du aldrig manuellt ange IP-adressen för ett nätverksgränssnitt på den virtuella datorns operativsystem. 
+Som standard tilldelar hello Azure DHCP-servrar hello privat IPv4-adress för hello [primära IP-konfigurationen](#primary) för nätverksgränssnittet för hello network interface toohello inom hello virtuella operativsystemets. Om inte behövs bör du aldrig manuellt ange hello IP-adressen för ett nätverksgränssnitt i hello virtuella datorns operativsystem. 
 
 > [!WARNING]
-> Om IPv4-adressen som angetts som primär IP-adressen för ett nätverksgränssnitt i en virtuell dators operativsystem är allt annat än privat IPv4-adress som tilldelats den primära IP-adresskonfigurationen för det primära nätverksgränssnittet som är kopplad till en virtuell dator i Azure, förlora anslutningen till den virtuella datorn.
+> Om hello IPv4-adress har angetts som skiljer hello primära IP-adressen för ett nätverksgränssnitt i en virtuell dators operativsystem någonsin hello privat IPv4-adress som tilldelats toohello primära IP-adresskonfigurationen för hello primära nätverksgränssnittet kopplade tooa virtuell dator i Azure, förlora anslutningen toohello virtuella datorn.
 
-Det finns scenarier där det är nödvändigt att ange IP-adressen för ett nätverksgränssnitt på den virtuella datorns operativsystem manuellt. Du måste till exempel manuellt ange primära och sekundära IP-adresser för en Windows-operativsystemet när du lägger till flera IP-adresser till en virtuell Azure-dator. För en virtuell Linux-dator, kan behöver du bara ange manuellt sekundära IP-adresser. Se [lägga till IP-adresser till ett VM-operativsystem](virtual-network-multiple-ip-addresses-portal.md#os-config) mer information. När du manuellt ange IP-adress inom operativsystemet rekommenderas att du alltid tilldela adresser till IP-konfiguration för ett nätverksgränssnitt med metoden tilldelningen av statiska (i stället för dynamiska). Tilldela den adress använder den statiska metoden garanterar att adressen inte ändras i Azure. Om du behöver ändra den adress som tilldelats en IP-konfiguration, rekommenderar vi som du:
+Det finns scenarier där det är nödvändigt toomanually set hello IP-adressen för ett nätverksgränssnitt i hello virtuella datorns operativsystem. Du måste till exempel manuellt ange hello primära och sekundära IP-adresser för en Windows-operativsystemet när du lägger till flera IP-adresser tooan virtuella Azure-datorn. För en virtuell Linux-dator, kanske du bara behöver toomanually set hello sekundära IP-adresser. Se [lägga till IP-adresser tooa VM operativsystemet](virtual-network-multiple-ip-addresses-portal.md#os-config) mer information. När du manuellt ange hello IP-adress inom hello operativsystemet rekommenderas att du alltid tilldela hello adresser toohello IP-konfiguration för ett nätverksgränssnitt med hello statiska (i stället för dynamiska) tilldelningsmetod. Tilldela hello-adressen med hello statisk metod säkerställer hello adress inte ändras i Azure. Om du skulle toochange hello-adress som tilldelats tooan IP-konfiguration, rekommenderar vi som du:
 
-1. Ändra tilldelning av IP-adressen till DHCP i operativsystemet för att säkerställa att den virtuella datorn tar emot en adress från Azure DHCP-servrar, och starta om den virtuella datorn.
-2. Stoppa (frigöra) den virtuella datorn.
-3. Ändra IP-adress för IP-konfiguration i Azure.
-4. Startar den virtuella datorn.
-5. [Konfigurera manuellt](virtual-network-multiple-ip-addresses-portal.md#os-config) sekundära IP-adresser inom operativsystemet (och även den primära IP-adressen i Windows) så att den matchar vad du anger i Azure.
+1. tooensure hello virtuell dator tar emot en adress från hello Azure DHCP-servrar, ändra hello tilldelning av hello IP-adress tillbaka tooDHCP inom hello operativsystemet och starta om hello virtuell dator.
+2. Stoppa (frigöra) hello virtuell dator.
+3. Ändra hello IP-adress för hello IP-konfiguration i Azure.
+4. Starta hello virtuell dator.
+5. [Konfigurera manuellt](virtual-network-multiple-ip-addresses-portal.md#os-config) hello sekundära IP-adresser inom hello operativsystem (och även hello primära IP-adress inom Windows) toomatch du anger i Azure.
  
-Genom att följa desamma de här stegen, privat IP-adress som tilldelats nätverksgränssnittet i Azure, och inom en virtuell dators operativsystem. Om du vill hålla reda på vilka virtuella datorer i din prenumeration som du har konfigurerat IP-adresser inom ett operativsystem för manuellt, Överväg att lägga till en Azure [taggen](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags) till de virtuella datorerna. Du kan använda ”IP-adresstilldelning: statisk”, till exempel. På så sätt kan du lätt kan hitta de virtuella datorerna i din prenumeration som du har konfigurerat IP-adress för operativsystemet manuellt.
+Genom att följa stegen i hello Hej privata IP-adress som tilldelats toohello-nätverksgränssnitt i Azure, och inom en virtuell dators operativsystem, förblir hello samma. tookeep spåra som virtuella datorer i din prenumeration som du angett manuellt IP-adresser inom ett operativsystem, Överväg att lägga till en Azure [taggen](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags) toohello virtuella datorer. Du kan använda ”IP-adresstilldelning: statisk”, till exempel. På så sätt kan du lätt kan hitta hello virtuella datorer i din prenumeration som du har angett hello IP-adress för inom hello operativsystemet manuellt.
 
-Förutom att aktivera en virtuell dator att kommunicera med andra resurser i samma eller anslutna virtuella nätverk, kan en privat IP-adress även en virtuell dator att kommunicera utgående till Internet. Utgående anslutningar är källan nätverksadress översättas av Azure en oförutsägbart offentliga IP-adress. Om du vill veta mer om Azure utgående Internetanslutning kan du läsa den [Azure utgående Internetanslutning](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel. Du kan inte kommunicera inkommande från Internet till en virtuell dators privata IP-adress.
+Dessutom kan tooenabling en virtuell dator toocommunicate med andra resurser inom hello samma eller anslutna virtuella nätverk, ett privat IP-adress även en virtuell dator toocommunicate utgående toohello Internet. Utgående anslutningar är källan nätverksadress översättas av Azure tooan oförutsägbart offentlig IP-adress. Mer om Azure utgående Internetanslutning kan läsa hello toolearn [Azure utgående Internetanslutning](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel. Du kan inte kommunicera inkommande tooa virtuella datorns privata IP-adress från hello Internet.
 
 ### <a name="public"></a>Offentligt
 
-Offentliga IP-adresser för att tillåta inkommande anslutningar till en virtuell dator från Internet. Utgående anslutningar till Internet använder en förutsägbar IP-adress. Se [förstå utgående anslutningar i Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mer information. Du kan tilldela en offentlig IP-adress till en IP-konfiguration, men inte behöver. Om du inte tilldelar en offentlig IP-adress till en virtuell dator, kan det fortfarande kommunicera utgående till Internet med sin privata IP-adress. Mer information om den offentliga IP-adresser i [offentliga IP-adressen](virtual-network-public-ip-address.md) artikel.
+Offentliga IP-adresser aktivera inkommande anslutning tooa virtuell dator från hello Internet. Utgående anslutningar toohello Internet använder en förutsägbar IP-adress. Se [förstå utgående anslutningar i Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mer information. Du kan tilldela en offentlig IP-adress tooan IP-konfiguration, men inte behöver. Om du inte tilldelar en offentlig IP-adress tooa virtuell dator kan den fortfarande kommunicera utgående toohello Internet med sin privata IP-adress. Mer om den offentliga IP-adresser, läsa hello toolearn [offentliga IP-adressen](virtual-network-public-ip-address.md) artikel.
 
-Det finns begränsningar för antalet privata och offentliga IP-adresser som du kan tilldela ett nätverksgränssnitt. Mer information finns i [Azure begränsar](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) artikel.
+Det finns begränsningar toohello antalet privata och offentliga IP-adresser som du kan tilldela tooa nätverksgränssnittet. Mer information läser du hello [Azure begränsar](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) artikel.
 
 > [!NOTE]
-> Azure omvandlar en virtuell dators privata IP-adressen till en offentlig IP-adress. Operativsystemet är därför inte medveten om eventuella offentliga IP-adresser som tilldelats, så det ingen behövs någonsin manuellt tilldela en offentlig IP-adress i operativsystemet.
+> Azure omvandlar en virtuell dators privat IP-adress tooa offentliga IP-adress. Därför hello operativsystem är inte medveten om eventuella offentliga IP-adresser som tilldelats tooit, så det finns inget behov av tooever manuellt tilldela en offentlig IP-adress inom hello-operativsystemet.
 
 ## <a name="assignment-methods"></a>Metoder
 
-Offentliga och privata IP-adresser tilldelas med hjälp av följande tilldelningsmetoder för:
+Offentliga och privata IP-adresser tilldelas med hjälp av hello följande metoder:
 
 ### <a name="dynamic"></a>Dynamisk
 
-Dynamisk privata IPv4 och IPv6 tilldelas adresser (valfritt) som standard. Dynamisk kan ändras om den virtuella datorn tas i tillståndet Stoppad (frigjord) och sedan startas. Tilldela adresser med hjälp av den statiska metoden om du inte vill IPv4-adresser för att ändra för den virtuella datorn. Du kan bara tilldela en privat IPv6-adress med metoden dynamisk tilldelning. Du kan inte tilldela en IP-konfiguration med någon av metoderna en offentlig IPv6-adress.
+Dynamisk privata IPv4 och IPv6 tilldelas adresser (valfritt) som standard. Dynamisk kan ändras om hello virtuella hello stoppats (frigjorts) tillstånd och igång. Om du inte vill IPv4-adresser toochange för hello hello virtuella datorn, tilldela hello adresser med hjälp av hello statisk metod. Du kan bara tilldela en privat IPv6-adress med hjälp av hello dynamiska tilldelningsmetod. Du kan inte tilldela en offentlig IPv6 tooan IP-adresskonfiguration med någon av metoderna.
 
 ### <a name="static"></a>Statisk
 
-Adresser som har tilldelats med hjälp av den statiska metoden ändras inte förrän en virtuell dator tas bort. Du kan manuellt tilldela en statisk privat IPv4-adress till en IP-konfiguration från adressutrymmet för undernätet nätverksgränssnittet i. Du kan tilldela en offentlig eller privat statiska IPv4-adress (valfritt) till en IP-konfiguration. Du kan inte tilldela en statisk offentlig eller privat IPv6-adress till en IP-konfiguration. Mer information om hur Azure tilldelar statiska IPv4-adresser som finns i [offentliga IP-adressen](virtual-network-public-ip-address.md) artikel.
+Adresser som tilldelats med hjälp av hello statisk metod ändras inte förrän en virtuell dator tas bort. Du tilldelar manuellt en statisk privat IPv4-tooan IP-adresskonfiguration från hello-adressutrymmet för hello undernät hello nätverksgränssnitt. (Valfritt) kan du tilldela ett offentligt eller privat statisk IPv4-tooan IP-adresskonfiguration. Du kan inte tilldela en statisk offentlig eller privat IPv6 tooan IP-adresskonfiguration. toolearn mer information om hur Azure tilldelar statiska offentliga IPv4-adresser finns hello [offentliga IP-adressen](virtual-network-public-ip-address.md) artikel.
 
 ## <a name="ip-address-versions"></a>IP-adress versioner
 
-När du tilldelar adresser kan du ange följande versioner:
+Du kan ange hello följande versioner när du tilldelar adresser:
 
 ### <a name="ipv4"></a>IPv4
 
@@ -181,15 +181,15 @@ Varje nätverksgränssnitt måste ha ett [primära](#primary) IP-konfiguration m
 
 ### <a name="ipv6"></a>IPv6
 
-Du kan tilldela noll eller ett privat [IPv6](#ipv6) adress till en sekundär IP-konfiguration för ett nätverksgränssnitt. Nätverksgränssnittet kan inte ha några befintliga sekundär IP-konfigurationer. Du kan inte lägga till en IP-konfiguration med en IPv6-adress med hjälp av portalen. Använd PowerShell eller CLI för att lägga till en IP-konfiguration med en privat IPv6-adress till en befintlig nätverksgränssnitt. Nätverksgränssnittet kan inte kopplas till en befintlig virtuell dator.
+Du kan tilldela noll eller ett privat [IPv6](#ipv6) -tooone sekundära IP-adresskonfigurationen för ett nätverksgränssnitt. hello nätverksgränssnitt kan inte ha några befintliga sekundär IP-konfigurationer. Du kan inte lägga till en IP-konfiguration med en IPv6-adress med hjälp av hello portal. Använd PowerShell eller hello CLI tooadd en IP-konfiguration med en privat IPv6-adress tooan befintliga nätverksgränssnittet. hello nätverksgränssnitt får inte vara anslutna tooan befintliga VM.
 
 > [!NOTE]
-> Om du kan skapa ett nätverksgränssnitt med en IPv6-adress med hjälp av portalen, du kan inte lägga till en befintlig nätverksgränssnittet till en ny eller befintlig virtuell dator med hjälp av portalen. Använd PowerShell eller Azure CLI 2.0 för att skapa ett nätverksgränssnitt med en privat IPv6-adress och bifogar nätverksgränssnittet när du skapar en virtuell dator. Du kan inte koppla ett nätverksgränssnitt med en privat IPv6-adress som tilldelats till en befintlig virtuell dator. Du kan inte lägga till en privat IPv6-adress till en IP-konfiguration för alla nätverksgränssnitt som är kopplad till en virtuell dator med alla verktyg (portal, CLI eller PowerShell).
+> Om du kan skapa ett nätverksgränssnitt med en IPv6-adress med hjälp av hello portal, du kan inte lägga till en befintlig network interface tooa ny eller befintlig virtuell dator, med hjälp av hello portal. Använd PowerShell eller hello Azure CLI 2.0 toocreate ett nätverksgränssnitt med en privat IPv6-adress och bifogar hello nätverksgränssnittet när du skapar en virtuell dator. Du kan inte koppla ett nätverksgränssnitt med en privat IPv6-adress som tilldelats tooit tooan befintlig virtuell dator. Du kan inte lägga till en privat IPv6 tooan IP-adresskonfiguration för alla nätverk gränssnittet kopplade tooa virtuella datorer med hjälp av alla verktyg (portal, CLI eller PowerShell).
 
-Du kan inte tilldela en offentlig IPv6-adress till en primär eller sekundär IP-konfiguration.
+Du kan inte tilldela en offentlig IPv6 tooa primär eller sekundär IP-adresskonfiguration.
 
 ## <a name="next-steps"></a>Nästa steg
-Läs följande artiklar för att skapa en virtuell dator med olika IP-konfigurationer:
+toocreate en virtuell dator med olika IP-konfigurationer, läsa hello följande artiklar:
 
 |Aktivitet|Verktyget|
 |---|---|

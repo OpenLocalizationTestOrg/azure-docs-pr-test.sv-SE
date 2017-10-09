@@ -1,6 +1,6 @@
 ---
-title: "Ansluta klassiska virtuella nätverk till Azure Resource Manager VNets: PowerShell | Microsoft Docs"
-description: "Lär dig hur du skapar en VPN-anslutning mellan klassiska Vnet och Resource Manager VNets med VPN-Gateway och PowerShell"
+title: "Ansluta klassiska virtuella nätverk tooAzure Resource Manager VNets: PowerShell | Microsoft Docs"
+description: "Lär dig hur toocreate en VPN-anslutning mellan klassiska Vnet och Resource Manager VNets med VPN-Gateway och PowerShell"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
-ms.openlocfilehash: 842a32e5304977af92706cdda464286983122247
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8b1cf6ae4becf1829fa99961c5dd09a422fcc1fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Anslut virtuella nätverk från olika distributionsmodeller med hjälp av PowerShell
 
 
 
-Den här artikeln visar hur du ansluter klassiska Vnet till Resource Manager VNets så att de resurser som finns i separata distributionsmodeller för att kommunicera med varandra. Stegen i den här artikeln använder PowerShell, men du kan också skapa den här konfigurationen med hjälp av Azure portal genom att välja artikeln från den här listan.
+Den här artikeln visar hur tooconnect klassiska Vnet tooResource Manager VNets tooallow hello resurser i hello separat distribution modeller toocommunicate med varandra. hello stegen i den här artikeln använder PowerShell, men du kan också skapa den här konfigurationen med hjälp av hello Azure-portalen genom att välja hello artikel från den här listan.
 
 > [!div class="op_single_selector"]
 > * [Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -33,23 +33,23 @@ Den här artikeln visar hur du ansluter klassiska Vnet till Resource Manager VNe
 > 
 > 
 
-Ansluta ett klassiskt virtuellt nätverk till ett VNet Resource Manager liknar ansluta ett virtuellt nätverk till en lokal plats. Båda typerna av anslutning använder en VPN-gateway för att få en säker tunnel med IPsec/IKE. Du kan skapa en anslutning mellan Vnet som finns i olika prenumerationer och i olika regioner. Du kan också ansluta Vnet som redan har anslutningar till lokalt nätverk, så länge som de har konfigurerats med gatewayen är dynamisk eller ruttbaserad. Mer information om anslutningar mellan virtuella nätverk finns i [Vanliga frågor om VNet-till-VNet](#faq) i slutet av den här artikeln. 
+Ansluta ett klassiskt virtuellt nätverk tooa Resource Manager VNet är liknande tooconnecting ett VNet tooan lokal plats. Båda typerna av anslutningen använder en VPN-gateway tooprovide en säker tunnel med IPsec/IKE. Du kan skapa en anslutning mellan Vnet som finns i olika prenumerationer och i olika regioner. Du kan också ansluta Vnet som redan har anslutningar tooon lokala nätverk, så länge hello-gateway som de har konfigurerats med är dynamisk eller ruttbaserad. Mer information om VNet-till-VNet-anslutningar finns hello [VNet-till-VNet vanliga frågor och svar](#faq) hello slutet av den här artikeln. 
 
-Om ditt Vnet i samma region, kanske du vill i stället bör överväga att ansluta dem med hjälp av VNet-Peering. Ingen VPN-gateway används för VNet-peering. Mer information finns i [VNet peering (Vnet-peering)](../virtual-network/virtual-network-peering-overview.md). 
+Om ditt Vnet i hello samma region som du kanske vill tooinstead bör överväga att ansluta dem med hjälp av VNet-Peering. Ingen VPN-gateway används för VNet-peering. Mer information finns i [VNet peering (Vnet-peering)](../virtual-network/virtual-network-peering-overview.md). 
 
 ## <a name="before-beginning"></a>Innan du börjar
 
-Följande steg vägleder dig genom inställningarna som behövs för att konfigurera en gateway dynamisk eller ruttbaserad för varje VNet och skapa en VPN-anslutning mellan gatewayer. Den här konfigurationen stöder inte statisk eller principbaserad gateways.
+hello följande steg vägleder dig genom hello inställningar nödvändiga tooconfigure en dynamisk eller ruttbaserad gateway för varje VNet och skapa en VPN-anslutning mellan hello-gateway. Den här konfigurationen stöder inte statisk eller principbaserad gateways.
 
 ### <a name="prerequisites"></a>Krav
 
 * Båda Vnet har redan skapats.
-* Adressintervall för till Vnet inte överlappar varandra eller överlappar ett intervall för andra anslutningar gateway kan anslutas till.
-* Du har installerat de senaste PowerShell-cmdletarna. Se [hur du installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview) för mer information. Kontrollera att du installerar både Service Management (SM) och Resource Manager (RM)-cmdletar. 
+* hello-adressintervall för hello Vnet inte överlappar varandra eller överlappar med någon av hello-intervall för andra anslutningar hello gateways kan anslutas till.
+* Du har installerat hello senaste PowerShell-cmdlets. Se [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview) för mer information. Kontrollera att du installerar både hello Service Management (SM) och hello Resource Manager (RM) cmdlets. 
 
 ### <a name="exampleref"></a>Exempelinställningar
 
-Du kan använda värdena till att skapa en testmiljö eller hänvisa till dem för att bättre förstå exemplen i den här artikeln.
+Du kan använda dessa värden toocreate en testmiljö eller referera toothem toobetter förstå hello exemplen i den här artikeln.
 
 **Klassiska VNet-inställningarna**
 
@@ -74,22 +74,22 @@ Lokal nätverksgateway = ClassicVNetLocal <br>
 Virtuell nätverksgateway name = RMGateway <br>
 Gateway-IP-adressering konfigurationen = gwipconfig
 
-## <a name="createsmgw"></a>Avsnittet 1 – konfigurera klassiska VNet
+## <a name="createsmgw"></a>Avsnittet 1 – konfigurera hello klassiska virtuella nätverk
 ### <a name="part-1---download-your-network-configuration-file"></a>Del 1: hämta ditt nätverks-konfigurationsfil
-1. Logga in på ditt Azure-konto i PowerShell-konsol med utökade behörigheter. Följande cmdlet efterfrågar autentiseringsuppgifter för inloggning för ditt Azure-konto. När du har loggat in hämtas dina kontoinställningar så att de blir tillgängliga för Azure PowerShell. Du kan använda SM PowerShell-cmdlets för att slutföra den här delen av konfigurationen.
+1. Logga in tooyour Azure-konto i hello PowerShell-konsol med utökade behörigheter. hello efterfrågar följande cmdlet hello inloggningsuppgifterna för Azure-konto. När du loggar in hämtar den inställningarna för ditt konto, så att de är tillgängliga tooAzure PowerShell. Du använder hello SM PowerShell-cmdlets toocomplete den här delen av hello konfiguration.
 
   ```powershell
   Add-AzureAccount
   ```
-2. Exportera konfigurationsfilen Azure-nätverk genom att köra följande kommando. Du kan ändra platsen för den fil som ska exporteras till en annan plats om det behövs.
+2. Exportera konfigurationsfilen Azure-nätverk genom att köra följande kommando hello. Du kan ändra hello platsen för hello tooexport tooa annan plats om det behövs.
 
   ```powershell
   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
   ```
-3. Öppna XML-filen som du hämtade för att redigera den. Ett exempel på nätverket konfigurationsfilen finns på [nätverk Konfigurationsschemat](https://msdn.microsoft.com/library/jj157100.aspx).
+3. Öppna hello XML-fil som du hämtade tooedit den. Ett exempel på hello nätverk-konfigurationsfilen finns hello [nätverk Konfigurationsschemat](https://msdn.microsoft.com/library/jj157100.aspx).
 
-### <a name="part-2--verify-the-gateway-subnet"></a>Del 2 – verifiera gateway-undernätet.
-I den **VirtualNetworkSites** element, lägga till en gateway-undernät i ditt VNet om något inte redan har skapats. När du arbetar med nätverk konfigurationsfilen gateway-undernätet måste ha namnet ”GatewaySubnet” eller Azure kan inte identifiera och använda den som en gateway-undernätet.
+### <a name="part-2--verify-hello-gateway-subnet"></a>Del 2 – verifiera hello gateway-undernät
+I hello **VirtualNetworkSites** element, lägga till en gateway-undernätet tooyour VNet om något inte redan har skapats. När du arbetar med hello nätverket konfigurationsfilen hello gateway-undernätet måste ha namnet ”GatewaySubnet” eller Azure kan inte identifiera och använda den som en gateway-undernätet.
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -111,8 +111,8 @@ I den **VirtualNetworkSites** element, lägga till en gateway-undernät i ditt V
       </VirtualNetworkSite>
     </VirtualNetworkSites>
 
-### <a name="part-3---add-the-local-network-site"></a>Del 3 – Lägg till lokal nätverksplats
-Den lokala nätverksplatsen som du lägger till representerar RM VNet som du vill ansluta till. Lägg till en **LocalNetworkSites** element i filen om det inte redan finns. Nu i konfigurationen, kan VPNGatewayAddress vara någon giltig offentlig IP-adress eftersom vi inte har skapat en gateway för Resource Manager-VNet. När vi skapa gatewayen Ersätt vi denna platshållare IP-adress med rätt offentliga IP-adressen som har tilldelats RM-gateway.
+### <a name="part-3---add-hello-local-network-site"></a>Del 3 – Lägg till hello lokal nätverksplats
+hello lokal nätverksplats du lägger till representerar hello RM VNet toowhich som du vill tooconnect. Lägg till en **LocalNetworkSites** elementet toohello-filen om det inte redan finns. Nu i hello konfiguration kan hello VPNGatewayAddress vara någon giltig offentlig IP-adress eftersom vi inte har skapat hello-gateway för hello Resource Manager VNet. När vi har skapat hello gateway ersätta vi platshållare IP-adressen med hello korrekt offentlig IP-adress som har tilldelats toohello RM gateway.
 
     <LocalNetworkSites>
       <LocalNetworkSite name="RMVNetLocal">
@@ -123,8 +123,8 @@ Den lokala nätverksplatsen som du lägger till representerar RM VNet som du vil
       </LocalNetworkSite>
     </LocalNetworkSites>
 
-### <a name="part-4---associate-the-vnet-with-the-local-network-site"></a>En del 4 - Koppla VNet med lokal nätverksplats
-I det här avsnittet anger vi den lokala nätverksplatsen som du vill ansluta VNet. I det här fallet är det Resource Manager-VNet som refererar till tidigare. Kontrollera att namnen stämmer överens. Det här steget kan inte skapa en gateway. Anger det lokala nätverket som gatewayen ska ansluta till.
+### <a name="part-4---associate-hello-vnet-with-hello-local-network-site"></a>En del 4 - Koppla hello VNet med hello lokal nätverksplats
+I det här avsnittet anger vi hello lokal nätverksplats som du vill tooconnect hello VNet till. I det här fallet är det hello Resource Manager-VNet som refererar till tidigare. Se till att hello namn matchar. Det här steget kan inte skapa en gateway. Det anger hello lokala nätverket som hello gateway ansluter till.
 
         <Gateway>
           <ConnectionsToLocalNetwork>
@@ -134,36 +134,36 @@ I det här avsnittet anger vi den lokala nätverksplatsen som du vill ansluta VN
           </ConnectionsToLocalNetwork>
         </Gateway>
 
-### <a name="part-5---save-the-file-and-upload"></a>Del 5 – spara filen och överföra
-Spara filen och sedan importera den till Azure genom att köra följande kommando. Kontrollera att du ändrar sökvägen till filen som behövs för din miljö.
+### <a name="part-5---save-hello-file-and-upload"></a>En del 5 – spara hello-fil och överför
+Spara hello-fil och sedan importera tooAzure genom att köra följande kommando hello. Kontrollera att du ändrar hello filsökväg som behövs för din miljö.
 
 ```powershell
 Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 ```
 
-Du ser ett liknande resultat som visar att importen lyckades.
+Du ser ett liknande resultat som visar att hello importen lyckades.
 
         OperationDescription        OperationId                      OperationStatus                                                
         --------------------        -----------                      ---------------                                                
         Set-AzureVNetConfig        e0ee6e66-9167-cfa7-a746-7casb9    Succeeded 
 
-### <a name="part-6---create-the-gateway"></a>Del 6 – skapa gatewayen
+### <a name="part-6---create-hello-gateway"></a>Del 6 – skapa hello gateway
 
-Innan du kör det här exemplet finns nätverket konfigurationsfilen som du hämtade för de exakta namn som Azure förväntar sig att se. Konfigurationsfilen för nätverk innehåller värden för din klassiska virtuella nätverk. Ibland har namnen för klassiska Vnet ändrats i konfigurationsfilen nätverk när du skapar klassiska VNet-inställningarna i Azure-portalen på grund av skillnader i distributionsmodellerna. Om du använder Azure-portalen för att skapa ett klassiskt virtuellt nätverk med namnet 'klassiska virtuella nätverk, och skapas i en resursgrupp med namnet 'ClassicRG', till exempel konverteras det namn som finns i konfigurationsfilen på nätverket till ”grupp ClassicRG klassiska virtuella nätverk”. När du anger namnet på ett virtuellt nätverk som innehåller blanksteg, använder du värdet inom citattecken.
+Innan du kör det här exemplet finns toohello nätverk konfigurationsfil som du hämtade för hello exakt namn som Azure förväntar sig toosee. konfigurationsfilen för hello nätverk innehåller hello värden för din klassiska virtuella nätverk. Ibland hello hello namn för klassiska Vnet har ändrats i konfigurationsfilen för hello nätverk när du skapar klassiska VNet-inställningarna i Azure-portalen på grund av toohello skillnader i hello distributionsmodeller. Till exempel, om du har använt hello Azure portal toocreate klassiska VNet med namnet 'klassiska virtuella nätverk, och skapas i en resursgrupp med namnet 'ClassicRG' hello som finns i konfigurationsfilen för hello nätverk är konverterade too'Group ClassicRG klassiska virtuella nätverk ”. När du anger hello namnet på ett virtuellt nätverk som innehåller blanksteg, citattecken hello värde.
 
 
-Använd följande exempel för att skapa en dynamisk routning gateway:
+Använd följande exempel toocreate en dynamisk routning gateway hello:
 
 ```powershell
 New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 ```
 
-Du kan kontrollera status för gatewayen med hjälp av den **Get-AzureVNetGateway** cmdlet.
+Du kan kontrollera hello statusen för hello gateway med hjälp av hello **Get-AzureVNetGateway** cmdlet.
 
-## <a name="creatermgw"></a>Avsnitt 2: Konfigurera RM VNet-gateway
-Följ instruktionerna nedan om du vill skapa en VPN-gateway för RM-VNet. Starta inte stegen tills när du har hämtat den offentliga IP-adressen för det klassiska VNet-gateway. 
+## <a name="creatermgw"></a>Avsnitt 2: Konfigurera hello RM VNet-gateway
+toocreate en VPN-gateway för hello RM VNet, följ hello följa anvisningar. Starta inte hello steg tills när du har hämtat hello offentliga IP-adressen för gateway hello klassiska VNet. 
 
-1. Logga in på ditt Azure-konto i PowerShell-konsolen. Följande cmdlet efterfrågar autentiseringsuppgifter för inloggning för ditt Azure-konto. När du loggar in laddas inställningarna för ditt konto så att de blir tillgängliga för Azure PowerShell.
+1. Logga in tooyour Azure-konto i hello PowerShell-konsolen. hello efterfrågar följande cmdlet hello inloggningsuppgifterna för Azure-konto. När du loggar in laddas inställningarna för ditt konto så att de är tillgängliga tooAzure PowerShell.
 
   ```powershell
   Login-AzureRmAccount
@@ -175,23 +175,23 @@ Följ instruktionerna nedan om du vill skapa en VPN-gateway för RM-VNet. Starta
   Get-AzureRmSubscription
   ```
    
-  Ange den prenumeration som du vill använda.
+  Ange hello prenumeration som du vill toouse.
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```
-2. Skapa en lokal nätverksgateway. I ett virtuellt nätverk refererar den lokala gatewayen vanligtvis till den lokala platsen. I det här fallet refererar den lokala nätverksgatewayen till ditt klassiska VNet. Ge det ett namn som Azure kan referera till det och även ange adressprefixet utrymme. Azure använder det IP-adressprefix som du anger till att identifiera vilken trafik som ska skickas till den lokala platsen. Om du behöver ändra informationen här senare innan du skapar din gateway kan du ändra värdena och köra exemplet igen.
+2. Skapa en lokal nätverksgateway. I ett virtuellt nätverk refererar hello lokal nätverksgateway vanligtvis tooyour lokal plats. I det här fallet refererar hello lokal nätverksgateway tooyour klassiska virtuella nätverk. Ge det ett namn som Azure kan se tooit och även ange hello adressprefixet utrymme. Azure namnområdesprefixet hello IP-adress du anger tooidentify vilken trafik toosend tooyour lokal plats. Om du behöver senare tooadjust hello här information innan du skapar din gateway kan du ändra hello värden och kör hello exempel igen.
    
-   **-Namnet** är det namn som du vill tilldela för att referera till den lokala nätverksgatewayen.<br>
-   **-AddressPrefix** är adressutrymmet för din klassiska VNet.<br>
-   **-GatewayIpAddress** offentliga IP-adressen för det klassiska VNet gateway. Kom ihåg att ändra i följande exempel för att återspegla rätt IP-adress.<br>
+   **-Namnet** är hello-namn som du vill tooassign toorefer toohello lokal nätverksgateway.<br>
+   **-AddressPrefix** är hello adressutrymmet för ditt klassiska VNet.<br>
+   **-GatewayIpAddress** är hello offentliga IP-adressen för gateway hello klassiska VNet. Glöm toochange hello följande exempel tooreflect hello rätt IP-adress.<br>
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name ClassicVNetLocal `
   -Location "West US" -AddressPrefix "10.0.0.0/24" `
   -GatewayIpAddress "n.n.n.n" -ResourceGroupName RG1
   ```
-3. Begär offentlig IP-adress som ska allokeras till den virtuella nätverksgatewayen för Resource Manager-VNet. Du kan inte ange den IP-adress som du vill använda. IP-adressen tilldelas dynamiskt till den virtuella nätverksgatewayen. Detta betyder dock inte IP-adressen kan ändras. Endast virtuella nätverk gateway IP-adressändringarna är när gatewayen har tagits bort och återskapas. Ändringen inte över storleksändring, återställa eller andra internt Underhåll/uppgraderingar av gateway.
+3. Begär en offentlig IP-adress toobe allokerade toohello virtuell nätverksgateway för hello Resource Manager VNet. Du kan inte ange hello IP-adress som du vill toouse. hello IP-adressen tilldelas dynamiskt toohello virtuell nätverksgateway. Detta innebär dock inte hello IP-adress ändras. hello endast tid hello virtuellt gateway IP-adressändringarna är när hello gateway bort och återskapas. Ändringen inte över storleksändring, återställa eller andra internt Underhåll/uppgraderingar av hello gateway.
 
   I det här steget ska ange vi också en variabel som används i ett senare steg.
 
@@ -201,27 +201,27 @@ Följ instruktionerna nedan om du vill skapa en VPN-gateway för RM-VNet. Starta
   -AllocationMethod Dynamic
   ```
 
-4. Kontrollera att det virtuella nätverket har en gateway-undernätet. Om det finns ingen gateway-undernät, kan du lägga till en. Se till gateway-undernätet heter *GatewaySubnet*.
-5. Hämta det undernät som används för gatewayen genom att köra följande kommando. I det här steget ska ange vi också en variabel som ska användas i nästa steg.
+4. Kontrollera att det virtuella nätverket har en gateway-undernätet. Om det finns ingen gateway-undernät, kan du lägga till en. Kontrollera att hello gateway-undernätet har namnet *GatewaySubnet*.
+5. Hämta hello undernät som används för hello gateway genom att köra följande kommando hello. I det här steget kan ange vi också en variabel toobe som används i hello nästa steg.
    
-   **-Namnet** är namnet på ditt VNet Resource Manager.<br>
-   **-ResourceGroupName** är den resursgrupp som VNet som är associerad med. Gateway-undernätet måste finnas för detta virtuella nätverk och måste ha namnet *GatewaySubnet* ska fungera korrekt.<br>
+   **-Namnet** är hello namnet på ditt VNet Resource Manager.<br>
+   **-ResourceGroupName** är hello-resursgrupp som hello virtuella nätverk som är associerad med. hello gateway-undernätet måste finnas för detta virtuella nätverk och måste ha namnet *GatewaySubnet* toowork korrekt.<br>
 
   ```powershell
   $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet `
   -VirtualNetwork (Get-AzureRmVirtualNetwork -Name RMVNet -ResourceGroupName RG1)
   ``` 
 
-6. Skapa gatewaykonfigurationen för IP-adressering. Gateway-konfigurationen definierar undernätet och den offentliga IP-adress som ska användas. Använd följande exempel för att skapa din gateway-konfiguration.
+6. Skapa hello gateway IP-adressering konfiguration. gateway-konfiguration för hello definierar hello undernät och hello offentliga IP-adressen toouse. Använd följande exempel toocreate hello gateway-konfiguration.
 
-  I det här steget i **- SubnetId** och **- PublicIpAddressId** parametrar måste överföras id-egenskapen från undernätet och IP-adress-objekt, respektive. Du kan inte använda en sträng. Dessa variabler som anges i steg att begära en offentlig IP-adress och steget för att hämta undernätet.
+  I det här steget hello **- SubnetId** och **- PublicIpAddressId** parametrar måste överföras hello id-egenskapen från hello undernät och IP-adress-objekt, respektive. Du kan inte använda en sträng. Dessa variabler är inställda i hello steg toorequest en offentlig IP-adress och hello steg tooretrieve hello undernät.
 
   ```powershell
   $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig `
   -Name gwipconfig -SubnetId $subnet.id `
   -PublicIpAddressId $ipaddress.id
   ```
-7. Skapa den virtuella nätverksgatewayen för Resource Manager genom att köra följande kommando. Den `-VpnType` måste vara *RouteBased*. Det kan ta 45 minuter eller mer att skapa gatewayen.
+7. Skapa hello Resource Manager virtuella nätverks-gatewayen genom att köra följande kommando hello. Hej `-VpnType` måste vara *RouteBased*. Det kan ta 45 minuter eller mer för hello gateway toocreate.
 
   ```powershell
   New-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1 `
@@ -229,51 +229,51 @@ Följ instruktionerna nedan om du vill skapa en VPN-gateway för RM-VNet. Starta
   -IpConfigurations $gwipconfig `
   -EnableBgp $false -VpnType RouteBased
   ```
-8. Kopiera den offentliga IP-adressen när VPN-gateway har skapats. Du kan använda den för när du konfigurerar lokala nätverksinställningarna för din klassiska VNet. Du kan använda följande cmdlet för att hämta den offentliga IP-adressen. Den offentliga IP-adressen anges i returnera som *IpAddress*.
+8. Kopiera hello offentlig IP-adress när hello VPN-gateway har skapats. Du kan använda den för när du konfigurerar hello lokala nätverksinställningar för din klassiska VNet. Du kan använda hello följande cmdlet tooretrieve hello offentliga IP-adress. hello offentliga IP-adressen listas i hello returnerade som *IpAddress*.
 
   ```powershell
   Get-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName RG1
   ```
 
-## <a name="section-3-modify-the-classic-vnet-local-site-settings"></a>Avsnitt 3: Ändra inställningarna för klassiska VNet-lokala platsen
+## <a name="section-3-modify-hello-classic-vnet-local-site-settings"></a>Avsnitt 3: Ändra hello klassiska VNet lokala platsinställningar
 
-I det här avsnittet kan du arbeta med klassiska virtuella nätverk. Du ersätta platshållaren IP-adressen som du använde när du anger de lokala platsinställningar som ska användas för att ansluta till Resource Manager VNet-gateway. 
+I det här avsnittet kan du arbeta med hello klassiska virtuella nätverk. Du kan ersätta hello platshållare IP-adress som du använde när du anger hello lokala inställningar som kommer att använda tooconnect toohello Resource Manager VNet gateway. 
 
-1. Exportera konfigurationsfilen nätverk.
+1. Exportera konfigurationsfilen för hello nätverk.
 
   ```powershell
   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
   ```
-2. Använd en textredigerare och ändra värdet för VPNGatewayAddress. Ersätt platshållaren IP-adress med offentliga IP-adressen för gateway för Resource Manager och sedan spara ändringarna.
+2. Använd en textredigerare och ändra hello värdet för VPNGatewayAddress. Ersätt hello platshållare IP-adress med hello offentliga IP-adressen för hello Resource Manager-gateway och spara hello ändringar.
 
   ```
   <VPNGatewayAddress>13.68.210.16</VPNGatewayAddress>
   ```
-3. Importera konfigurationsfilen ändrade nätverk till Azure.
+3. Importera hello ändrade network configuration file tooAzure.
 
   ```powershell
   Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
   ```
 
-## <a name="connect"></a>Avsnitt 4: Skapa en anslutning mellan gatewayer
-Skapa en anslutning mellan gatewayer kräver PowerShell. Du kan behöva lägga till ditt Azure-konto om du vill använda den klassiska versionen av PowerShell-cmdlets. Det gör du genom att använda **Add-AzureAccount**.
+## <a name="connect"></a>Avsnitt 4: Skapa en anslutning mellan hello gateways
+Skapa en anslutning mellan hello gateway kräver PowerShell. Du kanske måste tooadd din Azure-konto toouse hello klassiska versionen av hello PowerShell-cmdlets. så, Använd toodo **Add-AzureAccount**.
 
-1. Ange den delade nyckeln i PowerShell-konsolen. Innan du kör cmdlet: arna finns nätverket konfigurationsfilen som du hämtade för de exakta namn som Azure förväntar sig att se. När du anger namnet på ett virtuellt nätverk som innehåller blanksteg, Använd enkla citattecken runt värdet.<br><br>I följande exempel **- VNetName** är namnet på det klassiska virtuella nätverket och **- LocalNetworkSiteName** är det namn du angav för den lokala nätverksplatsen. Den **- SharedKey** är ett värde som du skapar och ange. I exempel använde vi 'abc123', men du kan skapa och använda något mer komplicerad. Viktigt är att värdet som du anger här måste ha samma värde som du anger i nästa steg när du skapar anslutningen. Returen ska visa **Status: lyckade**.
+1. Ange den delade nyckeln i hello PowerShell-konsolen. Innan du kör hello cmdlets finns toohello nätverk konfigurationsfil som du hämtade för hello exakt namn som Azure förväntar sig toosee. När du anger hello namnet på ett virtuellt nätverk som innehåller blanksteg, Använd enkla citattecken runt hello värde.<br><br>I följande exempel **- VNetName** är hello namnet på hello klassiska virtuella nätverk och **- LocalNetworkSiteName** är hello namn du angett för hello lokal nätverksplats. Hej **- SharedKey** är ett värde som du skapar och ange. I exemplet hello vi använde 'abc123', men du kan skapa och använda något mer komplexa. hello viktig sak är att hello-värde som du anger här måste vara hello samma värde som du anger i hello nästa steg när du skapar anslutningen. hello returnerade ska visa **Status: lyckade**.
 
   ```powershell
   Set-AzureVNetGatewayKey -VNetName ClassicVNet `
   -LocalNetworkSiteName RMVNetLocal -SharedKey abc123
   ```
-2. Skapa VPN-anslutningen genom att köra följande kommandon:
+2. Skapa hello VPN-anslutning genom att köra följande kommandon hello:
    
-  Ange variablerna.
+  Ange hello variabler.
 
   ```powershell
   $vnet01gateway = Get-AzureRMLocalNetworkGateway -Name ClassicVNetLocal -ResourceGroupName RG1
   $vnet02gateway = Get-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1
   ```
    
-  Skapa anslutningen. Observera att den **- ConnectionType** är IPsec, inte Vnet2Vnet.
+  Skapa hello-anslutning. Observera att hello **- ConnectionType** är IPsec, inte Vnet2Vnet.
 
   ```powershell
   New-AzureRmVirtualNetworkGatewayConnection -Name RM-Classic -ResourceGroupName RG1 `
@@ -284,7 +284,7 @@ Skapa en anslutning mellan gatewayer kräver PowerShell. Du kan behöva lägga t
 
 ## <a name="section-5-verify-your-connections"></a>Avsnitt 5: Kontrollera anslutningarna
 
-### <a name="to-verify-the-connection-from-your-classic-vnet-to-your-resource-manager-vnet"></a>Kontrollera anslutningen från ditt klassiska VNet till Resource Manager-VNet
+### <a name="tooverify-hello-connection-from-your-classic-vnet-tooyour-resource-manager-vnet"></a>tooverify hello anslutning från din klassiska VNet tooyour Resource Manager VNet
 
 #### <a name="powershell"></a>PowerShell
 
@@ -295,7 +295,7 @@ Skapa en anslutning mellan gatewayer kräver PowerShell. Du kan behöva lägga t
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
 
-### <a name="to-verify-the-connection-from-your-resource-manager-vnet-to-your-classic-vnet"></a>Kontrollera anslutningen från Resource Manager-VNet till ditt klassiska VNet
+### <a name="tooverify-hello-connection-from-your-resource-manager-vnet-tooyour-classic-vnet"></a>tooverify hello anslutning från hanteraren för filserverresurser VNet-tooyour klassiska virtuella nätverk
 
 #### <a name="powershell"></a>PowerShell
 

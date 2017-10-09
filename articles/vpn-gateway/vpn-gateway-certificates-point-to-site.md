@@ -1,6 +1,6 @@
 ---
 title: "Generera och exporterar certifikat för plats-till-plats: PowerShell: Azure | Microsoft Docs"
-description: "Den här artikeln innehåller steg för att skapa ett självsignerat rotcertifikat, exportera den offentliga nyckeln och generera klientcertifikat med hjälp av PowerShell på Windows 10."
+description: "Den här artikeln innehåller steg toocreate ett självsignerat rotcertifikat, exportera hello offentliga nyckel och generera klientcertifikat med hjälp av PowerShell på Windows 10."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2017
 ms.author: cherylmc
-ms.openlocfilehash: f96b9b212b9322d0677e49ff95184d0feccca2df
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 11dda015368cda5ce9799fcc4f01d7c542b84fe8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10"></a>Generera och exporterar certifikat för plats-till-plats-anslutningar med hjälp av PowerShell på Windows 10
 
-Punkt-till-plats-anslutningar använder certifikat för autentisering. Den här artikeln visar hur du skapar ett självsignerat rotcertifikat och generera klientcertifikat med hjälp av PowerShell på Windows 10. Om du letar efter konfigurationssteg för punkt-till-plats, till exempel hur du överför rotcertifikat, väljer du en av artiklarna Configure punkt-till-platsen från listan nedan:
+Punkt-till-plats-anslutningar använder certifikat tooauthenticate. Den här artikeln visar hur rot toocreate ett självsignerat certifikat och generera klientcertifikat med hjälp av PowerShell på Windows 10. Om du letar efter konfigurationssteg för punkt-till-plats, t.ex. hur tooupload rotcertifikat, Välj ett av hello ' Configure punkt-till-plats-artiklar från hello följande lista:
 
 > [!div class="op_single_selector"]
 > * [Skapa självsignerat certifikat - PowerShell](vpn-gateway-certificates-point-to-site.md)
@@ -35,16 +35,16 @@ Punkt-till-plats-anslutningar använder certifikat för autentisering. Den här 
 > 
 
 
-Du måste utföra stegen i den här artikeln på en dator som kör Windows 10. PowerShell-cmdlets som används för att generera certifikat är en del av operativsystemet Windows 10 och fungerar inte på andra versioner av Windows. Windows 10-dator krävs endast för att generera certifikat. När certifikat som genereras kan du överför dem. eller installera dem på alla operativsystem stöds för klientdatorer. 
+Du måste utföra hello stegen i den här artikeln på en dator som kör Windows 10. hello PowerShell-cmdletar för att du använder toogenerate certifikat är en del av hello Windows 10-operativsystem och fungerar inte på andra versioner av Windows. hello Windows 10-dator är endast nödvändiga toogenerate hello certifikat. När hello certifikat skapas bör du överför dem. eller installera dem på alla operativsystem stöds för klientdatorer. 
 
-Om du inte har tillgång till en Windows 10-dator kan du använda [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) att generera certifikat. De certifikat som du skapar med någon av metoderna kan installeras på något [stöds](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) klientoperativsystem.
+Om du inte har åtkomst tooa Windows 10-dator kan du använda [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) toogenerate certifikat. hello certifikaten som du skapar med någon av metoderna kan installeras på någon [stöds](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) klientoperativsystem.
 
 ## <a name="rootcert"></a>Skapa ett självsignerat rotcertifikat
 
-Använd cmdleten New-SelfSignedCertificate för att skapa ett självsignerat rotcertifikat. Ytterligare parameterinformation finns [ny SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+Använd hello ny SelfSignedCertificate cmdlet toocreate ett självsignerat rotcertifikat. Ytterligare parameterinformation finns [ny SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
 1. Öppna en Windows PowerShell-konsol med utökade privilegier från en dator som kör Windows 10.
-2. Använd följande exempel för att skapa självsignerat rotcertifikatet. I följande exempel skapas ett självsignerat rotcertifikat med namnet 'P2SRootCert' som installeras automatiskt i 'Certifikat-aktuell User\Personal\Certificates'. Du kan visa certifikatet genom att öppna *certmgr.msc*, eller *Hantera användarcertifikat*.
+2. Använd följande exempel toocreate hello självsignerade rotcertifikat hello. hello skapas följande exempel ett självsignerat rotcertifikat med namnet 'P2SRootCert' som installeras automatiskt i 'Certifikat-aktuell User\Personal\Certificates'. Du kan visa hello certifikat genom att öppna *certmgr.msc*, eller *Hantera användarcertifikat*.
 
   ```powershell
   $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -53,29 +53,29 @@ Använd cmdleten New-SelfSignedCertificate för att skapa ett självsignerat rot
   -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
   ```
 
-### <a name="cer"></a>Exportera den offentliga nyckeln (.cer)
+### <a name="cer"></a>Exportera hello offentlig nyckel (.cer)
 
 [!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
 
-Filen exported.cer måste laddas upp till Azure. Instruktioner finns i [konfigurerar en punkt-till-plats-anslutning](vpn-gateway-howto-point-to-site-rm-ps.md#upload). Att lägga till ett ytterligare betrodda rotcertifikat [i det här avsnittet](vpn-gateway-howto-point-to-site-rm-ps.md#addremovecert) av artikeln.
+Hej exported.cer filen måste vara överförda tooAzure. Instruktioner finns i [konfigurerar en punkt-till-plats-anslutning](vpn-gateway-howto-point-to-site-rm-ps.md#upload). tooadd ett ytterligare betrodda rotcertifikat [i det här avsnittet](vpn-gateway-howto-point-to-site-rm-ps.md#addremovecert) i hello artikel.
 
-### <a name="export-the-self-signed-root-certificate-and-public-key-to-store-it-optional"></a>Exportera självsignerade rotcertifikat och offentliga nyckel för att lagra den (valfritt)
+### <a name="export-hello-self-signed-root-certificate-and-public-key-toostore-it-optional"></a>Exportera hello självsignerade rotcertifikat och offentliga nyckel toostore den (valfritt)
 
-Du kanske vill exportera självsignerade rotcertifikat och lagra den på ett säkert sätt. Om behövs bör du senare kan installera den på en annan dator och generera flera klientcertifikat eller exportera en annan .cer-fil. Om du vill exportera självsignerade rotcertifikat som en PFX-fil, Välj rotcertifikatet och använda samma steg som beskrivs i [exportera ett certifikat för](#clientexport).
+Du kanske vill tooexport hello självsignerade rotcertifikat och lagra den på ett säkert sätt. Om behövs bör du senare kan installera den på en annan dator och generera flera klientcertifikat eller exportera en annan .cer-fil. tooexport hello självsignerade rotcertifikat som en .pfx, Välj hello rotcertifikat och använda hello samma steg som beskrivs i [exportera ett certifikat för](#clientexport).
 
 ## <a name="clientcert"></a>Generera ett klientcertifikat
 
-Varje klientdator som ansluter till ett virtuellt nätverk med punkt-till-plats måste ha ett klientcertifikat installerat. Du genererar ett klientcertifikat från självsignerade rotcertifikatet, och sedan exportera och installera klientcertifikatet. Om klientcertifikatet inte är installerad, misslyckas autentiseringen. 
+Varje klientdator som ansluter tooa VNet med punkt-till-plats måste ha ett certifikat installerat. Du generera ett klientcertifikat från hello självsignerat rotcertifikatet, och sedan exportera och installera hello klientcertifikat. Om hello klientcertifikatet inte är installerad, misslyckas autentiseringen. 
 
-Följande steg vägleder dig genom att generera ett certifikat från ett självsignerat rotcertifikat. Du kan skapa flera klientcertifikat från samma rotcertifikat. När du skapar klientcertifikat med nedanstående steg installeras automatiskt klientcertifikatet på den dator som du använde för att generera certifikatet. Om du vill installera ett klientcertifikat på en annan dator, kan du exportera certifikatet.
+hello följande steg beskriver hur du genererar ett klientcertifikat från ett självsignerat rotcertifikat. Du kan skapa flera klientcertifikat från hello samma rotcertifikat. När du skapar klientcertifikat med hjälp av hello stegen nedan installeras hello klientcertifikat automatiskt på hello dator som du använde toogenerate hello certifikat. Om du vill tooinstall ett klientcertifikat på en annan dator, kan du exportera hello certifikat.
 
-Exemplen använder cmdleten New-SelfSignedCertificate för att generera ett certifikat som upphör att gälla i ett år. Parametern för ytterligare information, till exempel inställningsvärde olika giltighetstid för klientcertifikat, se [ny SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+hello exemplen använder hello ny SelfSignedCertificate cmdlet toogenerate ett klientcertifikat som upphör att gälla i ett år. Parametern för ytterligare information, till exempel inställningsvärde olika giltighetstid för hello klientcertifikatet finns [ny SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
 ### <a name="example-1"></a>Exempel 1
 
-Det här exemplet använder variabeln deklarerade '$cert' från föregående avsnitt. Om du stängt PowerShell-konsolen när du har skapat det självsignerade rotcertifikatet eller skapar ytterligare certifikat i en ny PowerShell-konsolsession, Följ stegen i [exempel 2](#ex2).
+Det här exemplet använder hello deklarerats '$cert' variabeln från hello föregående avsnitt. Om du har stängt hello PowerShell-konsolen efter att skapa hello självsignerade rotcertifikat eller skapar ytterligare certifikat i en ny PowerShell-konsolsession använder hello stegen i [exempel 2](#ex2).
 
-Ändra och köra exemplet för att generera ett klientcertifikat. Om du kör följande exempel utan att ändra den är resultatet ett klientcertifikat med namnet 'P2SChildCert'.  Om du vill att namnge certifikatet underordnade något annat, ändra värdet för Nätverksnamnet. Ändra inte TextExtension när du kör det här exemplet. Det klientcertifikat som du genererar installeras automatiskt i ”certifikat - aktuell User\Personal\Certificates” på datorn.
+Ändra och köra hello exempel toogenerate ett klientcertifikat. Om du kör följande exempel utan att ändra den hello är hello resultatet ett klientcertifikat med namnet 'P2SChildCert'.  Om du vill ha tooname hello underordnade certifikat något annat ändra hello CN-värdet. Ändra inte hello TextExtension när du kör det här exemplet. hello-klientcertifikat som du skapar installeras automatiskt i ”certifikat - aktuell User\Personal\Certificates” på datorn.
 
 ```powershell
 New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -87,14 +87,14 @@ New-SelfSignedCertificate -Type Custom -KeySpec Signature `
 
 ### <a name="ex2"></a>Exempel 2
 
-Om du skapar ytterligare klientcertifikat eller använder inte samma PowerShell-session som du använde för att skapa din självsignerade rotcertifikat, använder du följande steg:
+Om du skapar ytterligare certifikat, eller är inte använder hello samma PowerShell-session som du använde toocreate din självsignerat rotcertifikatet, Använd hello följande steg:
 
-1. Identifiera det självsignerade rotcertifikat som är installerad på datorn. Denna cmdlet returnerar en lista över certifikat som är installerade på datorn.
+1. Identifiera hello självsignerade rotcertifikat som är installerad på hello-dator. Denna cmdlet returnerar en lista över certifikat som är installerade på datorn.
 
   ```powershell
   Get-ChildItem -Path “Cert:\CurrentUser\My”
   ```
-2. Hitta ämnesnamnet från listan returneras och sedan kopiera tumavtrycket bredvid den till en textfil. I följande exempel finns två certifikat. CN-namn är namnet på självsignerat rotcertifikatet som du vill skapa ett underordnat certifikat. I det här fallet 'P2SRootCert'.
+2. Leta upp hello ämnesnamnet från hello returnerade lista och sedan kopiera hello tumavtryck som är placerad nästa tooit tooa text filen. I följande exempel hello, finns det två certifikat. hello CN-namn är hello namn hello självsignerade rotcertifikat som du vill toogenerate ett underordnat certifikat. I det här fallet 'P2SRootCert'.
 
   ```
   Thumbprint                                Subject
@@ -102,18 +102,18 @@ Om du skapar ytterligare klientcertifikat eller använder inte samma PowerShell-
   AED812AD883826FF76B4D1D5A77B3C08EFA79F3F  CN=P2SChildCert4
   7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655  CN=P2SRootCert
   ```
-3. Deklarera en variabel för rotcertifikatet använder certifikatets tumavtryck från föregående steg. Ersätt TUMAVTRYCKET med tumavtrycket för rotcertifikatet som du vill skapa ett underordnat certifikat.
+3. Deklarera en variabel för hello rotcertifikat använder hello tumavtryck hello föregående steg. Ersätt TUMAVTRYCKET med hello tumavtryck hello rotcertifikatet som du vill toogenerate ett underordnat certifikat.
 
   ```powershell
   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\THUMBPRINT"
   ```
 
-  Till exempel använder certifikatets tumavtryck för P2SRootCert i föregående steg, variabeln ser ut så här:
+  Till exempel använder hello tumavtrycket för P2SRootCert i hello föregående steg, hello variabeln ser ut så här:
 
   ```powershell
   $cert = Get-ChildItem -Path "Cert:\CurrentUser\My\7181AA8C1B4D34EEDB2F3D3BEC5839F3FE52D655"
   ```
-4.  Ändra och köra exemplet för att generera ett klientcertifikat. Om du kör följande exempel utan att ändra den är resultatet ett klientcertifikat med namnet 'P2SChildCert'. Om du vill att namnge certifikatet underordnade något annat, ändra värdet för Nätverksnamnet. Ändra inte TextExtension när du kör det här exemplet. Det klientcertifikat som du genererar installeras automatiskt i ”certifikat - aktuell User\Personal\Certificates” på datorn.
+4.  Ändra och köra hello exempel toogenerate ett klientcertifikat. Om du kör följande exempel utan att ändra den hello är hello resultatet ett klientcertifikat med namnet 'P2SChildCert'. Om du vill ha tooname hello underordnade certifikat något annat ändra hello CN-värdet. Ändra inte hello TextExtension när du kör det här exemplet. hello-klientcertifikat som du skapar installeras automatiskt i ”certifikat - aktuell User\Personal\Certificates” på datorn.
 
   ```powershell
   New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -135,5 +135,5 @@ Om du skapar ytterligare klientcertifikat eller använder inte samma PowerShell-
 
 Vill du fortsätta med konfigurationen punkt-till-plats. 
 
-* För **Resource Manager** modell distributionsstegen, se [konfigurerar en punkt-till-plats-anslutning till ett virtuellt nätverk](vpn-gateway-howto-point-to-site-resource-manager-portal.md). 
-* För **klassiska** modell distributionsstegen, se [konfigurerar en punkt-till-plats VPN-anslutning till ett virtuellt nätverk (klassiska)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
+* För **Resource Manager** modell distributionsstegen, se [konfigurerar en punkt-till-plats-anslutning tooa VNet](vpn-gateway-howto-point-to-site-resource-manager-portal.md). 
+* För **klassiska** modell distributionsstegen, se [konfigurerar en punkt-till-plats VPN-anslutningen tooa virtuella nätverk (klassiska)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).

@@ -1,5 +1,5 @@
 ---
-title: "Viktig information för Microsoft Azure Lagringsutforskaren (förhandsversion) | Microsoft Docs"
+title: "viktig information för aaaMicrosoft Azure Lagringsutforskaren (förhandsversion) | Microsoft Docs"
 description: "Viktig information för Microsoft Azure Lagringsutforskaren (förhandsversion)"
 services: storage
 documentationcenter: na
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 63a24f6b153390533bba0888fd1051508c65bf6e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 44ff6dc8e2015f4eb71fa13098b832fbbf48ccac
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Viktig information för Microsoft Azure Lagringsutforskaren (förhandsversion)
 
-Den här artikeln innehåller versionen viktig information för Azure Lagringsutforskaren 0.8.16 (förhandsgranskning) samt viktig information för tidigare versioner.
+Den här artikeln innehåller hello versionen viktig information för Azure Lagringsutforskaren 0.8.16 (förhandsgranskning) samt viktig information för tidigare versioner.
 
-[Microsoft Azure Lagringsutforskaren (förhandsversion)](./vs-azure-tools-storage-manage-with-storage-explorer.md) är en fristående app som gör det enkelt att arbeta med Azure Storage-data i Windows, macOS och Linux.
+[Microsoft Azure Lagringsutforskaren (förhandsversion)](./vs-azure-tools-storage-manage-with-storage-explorer.md) är en fristående app som du kan använda tooeasily fungerar med Azure Storage-data i Windows, macOS och Linux.
 
 ## <a name="version-0816-preview"></a>Version 0.8.16 (förhandsgranskning)
 8/21/2017
@@ -35,28 +35,28 @@ Den här artikeln innehåller versionen viktig information för Azure Lagringsut
 - [Azure Lagringsutforskaren (förhandsversion) för 0.8.16 för Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Ny
-* När du öppnar en blob uppmanas Lagringsutforskaren du att ladda upp den hämta filen om en ändring identifieras
+* När du öppnar en blob uppmanas Lagringsutforskaren du tooupload hello ned filen om en ändring identifieras
 * Förbättrad Azure Stack inloggning
-* Bättre prestanda för att ladda upp/hämta många små filer på samma gång
+* Förbättrad hello prestanda för att ladda upp/hämta många små filer på hello samma tid
 
 
 ### <a name="fixes"></a>Korrigeringar
-* För vissa blob-typer leder om du väljer att ”replace” under en överför hamnar i konflikt ibland överföringen startas. 
+* För vissa typer av blob leder väljer för ”Ersätt” under en överför hamnar i konflikt ibland hello överför startas. 
 * I version 0.8.15 skulle överföringar ibland av stopp vid 99%.
-* När överföringen av filer till en filresurs, om du vill överföra till en katalog som inte ännu finns, misslyckas överföra.
+* När du överför filer tooa filresurs, om du väljer tooupload tooa directory som ännu inte finns, misslyckas överföra.
 * Lagringsutforskaren felaktigt generera tidsstämplar för signaturer för delad åtkomst och tabellen.
 
 
 Kända problem
-* Med hjälp av ett namn och nyckel anslutningssträngen fungerar inte för närvarande. Den kommer att åtgärdas i nästa version. Fram till dess kan du använda bifoga med namn och nyckel.
-* Om du försöker öppna en fil med ett ogiltigt Windows-filnamn resulterar nedladdningen i en fil hittades inte.
-* När du klickar på ”Avbryt” för en uppgift, kan det ta ett tag att avbryta aktiviteten. Detta är en begränsning i biblioteket för Azure Storage-nod.
-* Fliken som initierade överföringen uppdateras när du har slutfört en blob-överföring. Detta är en förändring från tidigare beteende och medför även du tas tillbaka till roten i behållaren.
-* Om du väljer fel PIN-kod/smartkort-certifikat måste startas om för att få Lagringsutforskaren glömmer detta beslut.
-* Panelen konto inställningar kan indikera att du måste ange autentiseringsuppgifter för att filtrera prenumerationer.
+* Med hjälp av ett namn och nyckel anslutningssträngen fungerar inte för närvarande. Den kommer att åtgärdas i hello nästa utgåva. Fram till dess kan du använda bifoga med namn och nyckel.
+* Om du försöker tooopen en fil med ett ogiltigt filnamn för Windows resulterar hello download i en fil hittades inte.
+* När du klickar på ”Avbryt” för en uppgift, kan det ta ett tag för att aktiviteten toocancel. Detta är en begränsning för hello Azure lagringsnod bibliotek.
+* När du har slutfört en blob-överför uppdateras hello fliken som initierade överföringen hello. Detta är en förändring jämfört med tidigare beteende och medför även du toobe tas tillbaka toohello rot hello behållare i.
+* Om du väljer hello fel PIN-kod/smartkort-certifikat och du behöver toorestart i ordning toohave Lagringsutforskaren Glöm detta beslut.
+* hello konto inställningar panelen kan indikera att du behöver tooreenter autentiseringsuppgifter toofilter prenumerationer.
 * Byta namn på blobbar (individuellt eller i en bytt namn till blob-behållare) bevaras inte ögonblicksbilder. Alla andra egenskaper och metadata för blobbar, filer och entiteter bevaras vid ett byte av namn.
 * Även om Azure-stacken inte stöder filresurser, visas en filresurser nod fortfarande under ett bifogade Stack för Azure storage-konto.
-* Du behöver kontrollera GCC är uppdaterad – kan du göra det genom att köra följande kommandon och sedan starta om datorn för användare på Ubuntu 14.04:
+* För användare på Ubuntu 14.04 måste tooensure GCC är toodate – kan du göra det genom att köra hello följande kommandon och sedan starta om datorn:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -65,7 +65,7 @@ Kända problem
     sudo apt-get dist-upgrade
     ```
 
-* Du måste installera GConf – kan du göra det genom att köra följande kommandon och sedan starta om datorn för användare på Ubuntu nr 17.04 från:
+* Du behöver tooinstall GConf – detta kan göras genom att köra hello följande kommandon och sedan starta om datorn för användare på Ubuntu nr 17.04 från:
 
     ```
     sudo apt-get install libgconf-2-4
@@ -81,20 +81,20 @@ Kända problem
 
 ### <a name="new"></a>Ny
 
-* Uppdaterade Electron versionen till 1.7.2 för att kunna dra nytta av flera viktiga säkerhetsuppdateringar
-* Du kan nu snabbt komma åt online felsökningsguiden från Hjälp-menyn
+* Uppdaterade Electron version too1.7.2 i ordning tootake nytta av flera viktiga säkerhetsuppdateringar
+* Du kan snabbt ansluta hello online felsökningsguiden hello Hjälp-menyn
 * Lagringsutforskaren felsökning [Guide][2]
-* [Instruktioner] [ 3] om hur du ansluter till en Azure-Stack-prenumeration
+* [Instruktioner] [ 3] ansluta tooan Stack för Azure-prenumeration
 
 ### <a name="known-issues"></a>Kända problem
 
-* Knapparna i bekräftelsedialogrutan ta bort mappen registrera inte med musklickningar på Linux. Lösning är att använda på RETUR
-* Om du väljer fel PIN-kod/smartkort-certifikat måste startas om för att få Lagringsutforskaren glömmer beslutet
-* Med mer än 3 grupper av blobbar eller filer som överför samtidigt kan orsaka fel
-* Panelen konto inställningar kan indikera att du måste ange autentiseringsuppgifter för att filtrera prenumerationer
+* Knapparna i hello ta bort mappen bekräftelsedialogruta registrera inte med hello musklickningar på Linux. Lösningen är toouse hello RETUR-tangenten
+* Om du väljer hello fel PIN-kod/smartkortcertifikat sedan behöver du toorestart i ordning toohave Lagringsutforskaren Glöm hello beslut
+* Med mer än 3 grupper av blobbar eller filer överföra i hello samma kan tid orsaka fel
+* hello konto inställningar panelen kan indikera att du behöver tooreenter autentiseringsuppgifter i ordning toofilter prenumerationer
 * Byta namn på blobbar (individuellt eller i en bytt namn till blob-behållare) bevaras inte ögonblicksbilder. Alla andra egenskaper och metadata för blobbar, filer och entiteter bevaras vid ett byte av namn.
 * Även om Azure-stacken inte stöder filresurser, visas en filresurser nod fortfarande under ett bifogade Stack för Azure storage-konto. 
-* Ubuntu 14.04 installera måste gcc version uppdateras eller uppgraderas – steg för att uppgradera nedan:
+* Ubuntu 14.04 installera behov gcc version uppdateras eller uppgraderas – steg tooupgrade finns nedan:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -131,26 +131,26 @@ Kända problem
 #### <a name="new"></a>Ny
 
 * Lagringsutforskaren felsökning [Guide][2]
-* [Instruktioner] [ 3] om hur du ansluter till en Azure-Stack-prenumeration
+* [Instruktioner] [ 3] ansluta tooan Stack för Azure-prenumeration
 
 #### <a name="fixes"></a>Korrigeringar
 
 * Fast: Ladda upp filen hunnit hög orsaka en out-of-minnesfel
 * Fast: Du kan nu logga in med PIN-kod/smartkort
 * Fast: Öppna i portalen nu fungerar med Azure Kina, Tyskland Azure, Azure som tillhör amerikanska myndigheter och Azure-stacken
-* Fast: Går inte att överföra en mapp till en blobbbehållare, ”otillåten åtgärd” skulle ibland uppstå fel
+* Fast: Går inte att överföra en mapp tooa blob-behållare, ”otillåten åtgärd” skulle ibland uppstå fel
 * Fast: Markera alla inaktiverades vid hantering av ögonblicksbilder
-* Fast: Metadata för grundläggande blob kan komma att skrivas över när du visar egenskaperna för dess ögonblicksbilder
+* Fast: hello metadata för grundläggande hello-blob kan komma att skrivas över när du har visat hello egenskaper av dess ögonblicksbilder
 
 #### <a name="known-issues"></a>Kända problem
 
-* Om du väljer fel PIN-kod/smartkort-certifikat måste startas om för att få Lagringsutforskaren glömmer beslutet
-* När du har zoomat in eller ut kan zoomnivån tillfälligt återställas till Standardnivå
-* Med mer än 3 grupper av blobbar eller filer som överför samtidigt kan orsaka fel
-* Panelen konto inställningar kan indikera att du måste ange autentiseringsuppgifter för att filtrera prenumerationer
+* Om du väljer hello fel PIN-kod/smartkortcertifikat sedan behöver du toorestart i ordning toohave Lagringsutforskaren Glöm hello beslut
+* När du har zoomat in eller ut får hello zoomningsnivån tillfälligt återställa toohello Standardnivå
+* Med mer än 3 grupper av blobbar eller filer överföra i hello samma kan tid orsaka fel
+* hello konto inställningar panelen kan indikera att du behöver tooreenter autentiseringsuppgifter i ordning toofilter prenumerationer
 * Byta namn på blobbar (individuellt eller i en bytt namn till blob-behållare) bevaras inte ögonblicksbilder. Alla andra egenskaper och metadata för blobbar, filer och entiteter bevaras vid ett byte av namn.
 * Även om Azure-stacken inte stöder filresurser, visas en filresurser nod fortfarande under ett bifogade Stack för Azure storage-konto. 
-* Ubuntu 14.04 installera måste gcc version uppdateras eller uppgraderas – steg för att uppgradera nedan:
+* Ubuntu 14.04 installera behov gcc version uppdateras eller uppgraderas – steg tooupgrade finns nedan:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -165,35 +165,35 @@ Kända problem
 
 #### <a name="new"></a>Ny
 
-* Lagringsutforskaren stängs nu automatiskt när du installerar en uppdatering från meddelanden om uppdateringar
+* Lagringsutforskaren stängs nu automatiskt när du installerar en uppdatering från hello uppdateringsmeddelande
 * Lokalt Snabbåtkomst ger en förbättrad upplevelse för att arbeta med resurserna används ofta
-* I Redigeraren för Blob-behållare kan du nu se vilken virtuell dator som tillhör en lånade blob
-* Du kan nu komprimera panelen vänster
-* Identifiering nu körs samtidigt som nedladdning
-* Använda statistik i Blob-behållaren och filresursen tabell redigerare för att se storleken på ditt val eller resurs
-* Du kan nu logga in till Azure Active Directory (AAD) baserad Azure Stack-konton. 
-* Du kan överföra arkivfiler över 32MB till Premium storage-konton
+* I Redigeraren för hello Blob-behållare, kan du nu se vilken virtuell dator som tillhör en lånade blob
+* Du kan nu komprimera hello vänster panel
+* Identifiering nu körs vid hello samma tid som nedladdning
+* Använd statistik i hello Blob-behållaren och filresursen tabell redigerare toosee hello storleken på ditt val eller resurs
+* Du kan nu logga in tooAzure Active Directory (AAD) baserad Azure Stack-konton. 
+* Du kan nu arkivera Överför filer över 32 MB tooPremium storage-konton
 * Förbättrat stöd för hjälpmedel
-* Nu kan du lägga till betrodda Base64-kodat X.509-SSL-certifikat genom att gå till redigera -&gt; SSL-certifikat -&gt; Importera certifikat
+* Nu kan du lägga till betrodda Base64-kodat X.509-SSL-certifikat genom att gå tooEdit -&gt; SSL-certifikat -&gt; Importera certifikat
 
 #### <a name="fixes"></a>Korrigeringar
 
-* Fast: när du har uppdaterat en kontoautentiseringsuppgifter trädvyn kan ibland uppdateras inte automatiskt
+* Fast: när du har uppdaterat en kontoautentiseringsuppgifter hello trädvyn kan ibland uppdateras inte automatiskt
 * Fast: Generera en SAS för emulatorn köer och tabeller skulle leda till en ogiltig URL
 * Fast: premium storage-konton kan nu utökas när en proxy är aktiverat
-* Fast: Verkställ-knappen på sidan för hantering av konton fungerar inte om du hade 1 eller 0 konton som har valts
+* Fast: hello knappen Tillämpa på hello konton hanteringssidan inte fungerar om du hade 1 eller 0 konton som har valts
 * Fast: överföring av blobbar som kräver konfliktlösningar kan misslyckas - fast i 0.8.11 
 * Fast: skicka feedback har brutits i 0.8.11 - fast i 0.8.12 
 
 #### <a name="known-issues"></a>Kända problem
 
-* Efter uppgraderingen till 0.8.10, behöver du uppdatera alla dina autentiseringsuppgifter.
-* När du har zoomat in eller ut kan tillfälligt zoomnivån återställa till Standardnivå.
-* Med mer än 3 grupper av blobbar eller filer som överför samtidigt kan orsaka fel.
-* Panelen konto inställningar kan indikera att du måste ange autentiseringsuppgifter för att filtrera prenumerationer.
+* När du har uppgraderat too0.8.10 toorefresh måste alla dina autentiseringsuppgifter.
+* När du har zoomat in eller ut kan tillfälligt hello zoomningsnivån återställa toohello Standardnivå.
+* Med mer än 3 grupper av blobbar eller filer överföra i hello samma kan tid orsaka fel.
+* hello konto inställningar panelen kan indikera att du behöver tooreenter autentiseringsuppgifter i ordning toofilter prenumerationer.
 * Byta namn på blobbar (individuellt eller i en bytt namn till blob-behållare) bevaras inte ögonblicksbilder. Alla andra egenskaper och metadata för blobbar, filer och entiteter bevaras vid ett byte av namn.
 * Även om Azure-stacken inte stöder filresurser, visas en filresurser nod fortfarande under ett bifogade Stack för Azure storage-konto. 
-* Ubuntu 14.04 installera måste gcc version uppdateras eller uppgraderas – steg för att uppgradera nedan:
+* Ubuntu 14.04 installera behov gcc version uppdateras eller uppgraderas – steg tooupgrade finns nedan:
 
     ```
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -213,28 +213,28 @@ Kända problem
 
 #### <a name="new"></a>Ny
 
-* Lagringsutforskaren 0.8.9 kommer automatiskt att hämta den senaste versionen för uppdateringar.
-* Snabbkorrigering: med hjälp av en portal resulterar genererade SAS-URI att koppla ett lagringskonto i ett fel.
+* Lagringsutforskaren 0.8.9 kommer automatiskt att hämta hello senaste versionen för uppdateringar.
+* Snabbkorrigering: med hjälp av en portal generera SAS URI tooattach ett lagringskonto skulle resultera i ett fel.
 * Du kan nu skapa, hantera och främja blob ögonblicksbilder.
-* Du kan nu logga in på Azure Kina, Azure Tyskland och Azure som tillhör amerikanska myndigheter konton.
-* Du kan nu ändra zoomnivån. Använd alternativen i menyn Visa för att Zooma In, Zooma ut och Återställ Zoom.
+* Du kan nu logga in tooAzure Kina, Azure Tyskland och Azure som tillhör amerikanska myndigheter konton.
+* Du kan nu ändra hello zoomningsnivån. Använd hello alternativen i hello Visa-menyn tooZoom i Zooma ut och Återställ Zoom.
 * Unicode-tecken stöds nu i Användarmetadata för blobbar och filer.
 * Hjälpmedelsförbättringar.
-* I nästa version viktig information kan visas från meddelanden om uppdateringar. Du kan också visa aktuella viktig information från Hjälp-menyn.
+* hello nästa version viktig information kan visas från hello uppdateringsmeddelande. Du kan också visa hello aktuella viktig information hello Hjälp-menyn.
 
 #### <a name="fixes"></a>Korrigeringar
 
-* Fast: versionsnumret nu visas korrekt på Kontrollpanelen i Windows
-* Fast: sökning är inte längre begränsad till 50 000 noder
-* Fast: överföra till en filresurs som alltid roterade målkatalogen inte redan finns
+* Fast: hello versionsnumret nu visas korrekt på Kontrollpanelen i Windows
+* Fast: sökning är inte längre begränsade too50, 000 noder
+* Fast: Överför tooa filresurs roterade alltid hello målkatalogen inte redan finns
 * Fast: förbättrad stabilitet för lång överföring
 
 #### <a name="known-issues"></a>Kända problem
 
-* När du har zoomat in eller ut kan tillfälligt zoomnivån återställa till Standardnivå.
+* När du har zoomat in eller ut kan tillfälligt hello zoomningsnivån återställa toohello Standardnivå.
 * Snabbåtkomst fungerar bara med prenumerationen baserat objekt. Lokala resurser eller resurser som är anslutna via en nyckel eller SAS-token stöds inte i den här versionen.
-* Snabbåtkomst kan det ta ett par sekunder att navigera till målresursen, beroende på hur många resurser som du har.
-* Med mer än 3 grupper av blobbar eller filer som överför samtidigt kan orsaka fel.
+* Det kan ta några sekunder toonavigate toohello målresurs, beroende på hur många resurser som du har Snabbåtkomst.
+* Med mer än 3 grupper av blobbar eller filer överföra i hello samma kan tid orsaka fel.
 
 12/16/2016
 ### <a name="version-087"></a>Version 0.8.7
@@ -243,41 +243,41 @@ Kända problem
 
 #### <a name="new"></a>Ny
 
-* Du kan välja hur du löser konflikter i början av en uppdatering, hämta eller kopiera session i fönstret aktiviteter
-* Hovra över en flik om du vill se den fullständiga sökvägen till resursen lagring
-* När du klickar på en flik, synkronisering och dess plats i navigeringsfönstret vänster
+* Du kan välja hur tooresolve konflikter hello början av en uppdatering, hämta eller kopiera session i hello aktiviteter fönster
+* Hovra över en fliken toosee hello fullständig sökväg till hello lagringsresurs
+* När du klickar på en flik, synkronisering och dess plats i navigeringsfönstret för hello vänster
 
 #### <a name="fixes"></a>Korrigeringar
 
 * Fast: Lagringsutforskaren är nu ett betrott app på Mac
 * Fast: Ubuntu 14.04 igen stöds
-* Fast: Ibland Lägg till konto UI blinkar när inläsning av prenumerationer
-* Fast: Ibland inte alla lagringsresurser ingick i navigeringsfönstret vänster
-* Fast: Åtgärdsfönstret ibland visas tom åtgärder
-* Fast: Fönsterstorlek från den senaste stängd sessionen nu sparas
-* Fast: Du kan öppna flera flikar för samma resurs med hjälp av snabbmenyn
+* Fast: Ibland hello Lägg till konto UI blinkar när inläsning av prenumerationer
+* Fast: Ibland inte alla lagringsresurser ingick i navigeringsfönstret för hello vänster
+* Fast: hello åtgärdsfönstret ibland visas tom åtgärder
+* Fast: hello fönsterstorlek från hello senast stängdes session nu sparas
+* Fast: Du kan öppna flera flikar för hello samma resurs med hello snabbmenyn
 
 #### <a name="known-issues"></a>Kända problem
 
 * Snabbåtkomst fungerar bara med prenumerationen baserat objekt. Lokala resurser eller resurser som är anslutna via en nyckel eller SAS-token stöds inte i den här versionen
-* Det kan ta Snabbåtkomst en några sekunder att navigera till målresursen, beroende på hur många resurser som du har
-* Med mer än 3 grupper av blobbar eller filer som överför samtidigt kan orsaka fel
+* Det kan ta Snabbåtkomst några sekunder toonavigate toohello målresurs, beroende på hur många resurser som du har
+* Med mer än 3 grupper av blobbar eller filer överföra i hello samma kan tid orsaka fel
 * Referenser för sökning efter det att söka i ungefär 50 000 noder - prestanda kan påverkas eller kan orsaka undantag
-* Du kan se flera prompter som ber om användarens tillstånd att komma åt nyckelringar för första gången med Lagringsutforskaren på macOS. Vi rekommenderar att du väljer Tillåt alltid så uppmaningen inte visas igen
+* För hello första gången du använder hello Lagringsutforskaren på macOS, kan det finnas flera prompter som ber om användarens behörighet tooaccess nyckelringar. Vi rekommenderar att du väljer Tillåt alltid så hello prompten inte visas igen
 
 11/18/2016
 ### <a name="version-086"></a>Version 0.8.6
 
 #### <a name="new"></a>Ny
 
-* Du kan nu PIN-kod används oftast Snabbåtkomst-tjänster för enkel navigering
-* Nu kan du öppna flera redigerare på olika flikar. Enskild klickar för att öppna en tillfällig flik; Dubbelklicka om du vill öppna en permanent flik. Du kan också klicka på fliken tillfälligt så att den permanenta fliken
+* Du kan nu PIN-kod används oftast services toohello Snabbåtkomst för enkel navigering
+* Nu kan du öppna flera redigerare på olika flikar. Enkelklickning tooopen tillfälliga fliken. Dubbelklicka på tooopen en permanent flik. Du kan också klicka på hello tillfälliga fliken toomake den permanenta fliken
 * Vi har gjort märkbar prestanda och stabilitetsförbättringar för överföring och hämtning, särskilt för stora filer på snabb datorer
 * Nu kan skapa tomma ”virtuell” mappar i blob-behållare
 * Vi har nytt introducerades bred sökning med vår nya förbättrad sökningen så att du nu har två alternativ för att söka efter: 
-    * Globala Sök - bara ange en sökterm i textrutan Sök
-    * Bred sökning - Klicka på förstoringsglasikonen bredvid en nod och sedan lägga till en sökterm i slutet av sökvägen, eller högerklicka och välj ”Sök från hit”
-* Vi har lagt till olika teman: ljus (standard), mörkt, hög kontrast svart och hög kontrast vit. Gå till redigera -&gt; teman för att ändra inställningarna teman
+    * Globala Sök - bara ange en sökterm i hello Sök textruta
+    * Bred sökning - Klicka på hello förstoringsglas ikonen nästa tooa nod, och sedan lägga till en sökning termen toohello end hello sökväg eller högerklicka och välj ”Sök från hit”
+* Vi har lagt till olika teman: ljus (standard), mörkt, hög kontrast svart och hög kontrast vit. Gå tooEdit -&gt; teman toochange önskemål teman
 * Du kan ändra Blob och filegenskaper
 * Vi stöder nu kodade (base64) och kodat Kömeddelanden
 * På Linux för, ett 64-bitars operativsystem är nu krävs. Den här versionen stöder vi endast 64-bitars Ubuntu 16.04.1 LTS
@@ -289,18 +289,18 @@ Kända problem
 * Fast: Förbättrad säkerhet
 * Fast: Ibland dubbla bifogade konton kan visas
 * Fast: En blob med en odefinierad innehållstyp generera ett undantag
-* Fast: Öppna panelen fråga på en tom tabell var inte möjligt
+* Fast: Öppna hello frågan panelen på en tom tabell var inte möjligt
 * Fast: Varierar buggar i sökningen
-* Fast: Öka antalet resurser som lästs in från 50 till 100 när du klickar på ”mer belastning”
+* Fast: Ökade hello antal resurser som lästs in från 50 too100 när du klickar på ”mer belastning”
 * Fast: Första körningen om ett konto som har loggat in, vi nu välja alla prenumerationer för kontot som standard 
 
 #### <a name="known-issues"></a>Kända problem
 
-* Den här versionen av Lagringsutforskaren körs inte på Ubuntu 14.04
-* Om du vill öppna flera flikar för samma resurs kontinuerligt Klicka inte på samma resurs. Klicka på en annan resurs och sedan gå tillbaka och klicka sedan på den ursprungliga resursen att öppna den igen i en annan flik 
+* Den här versionen av hello Lagringsutforskaren körs inte på Ubuntu 14.04
+* tooopen flera flikar för hello samma resurs, vill inte kontinuerligt klickar du på hello samma resurs. Klicka på en annan resurs och sedan gå tillbaka och klicka sedan på hello ursprungliga resurs tooopen den igen i en annan flik 
 * Snabbåtkomst fungerar bara med prenumerationen baserat objekt. Lokala resurser eller resurser som är anslutna via en nyckel eller SAS-token stöds inte i den här versionen
-* Det kan ta Snabbåtkomst en några sekunder att navigera till målresursen, beroende på hur många resurser som du har
-* Med mer än 3 grupper av blobbar eller filer som överför samtidigt kan orsaka fel
+* Det kan ta Snabbåtkomst några sekunder toonavigate toohello målresurs, beroende på hur många resurser som du har
+* Med mer än 3 grupper av blobbar eller filer överföra i hello samma kan tid orsaka fel
 * Referenser för sökning efter det att söka i ungefär 50 000 noder - prestanda kan påverkas eller kan orsaka undantag
 
 10/03/2016
@@ -308,21 +308,21 @@ Kända problem
 
 #### <a name="new"></a>Ny
 
-* Kan nu använda Portal-genererade SAS nycklar för att ansluta till Lagringskonton och resurser
+* Kan nu använda Portal-genererade SAS nycklar tooattach tooStorage konton och resurser
 
 #### <a name="fixes"></a>Korrigeringar
 
-* Fast: konkurrenstillstånd under sökningen ibland orsakade noder blir inte är expanderbara
-* Fast: ”Använd HTTP” fungerar inte när du ansluter till Storage-konton med kontonamn och nyckel
+* Fast: konkurrenstillstånd under sökningen ibland orsakade noder toobecome inte är expanderbara
+* Fast: ”Använd HTTP” fungerar inte när du ansluter tooStorage konton med kontonamn och nyckel
 * Fast: SAS-nycklar (som är särskilt Portal-genererade) returnerar ett ”avslutande snedstreck” fel
 * Fast: importera tabell problem
     * Ibland har partitionsnyckel och radnyckel återförts
-    * Det gick inte att läsa ”null” partitionsnycklar
+    * Det går inte tooread ”null” partitionsnycklar
 
 #### <a name="known-issues"></a>Kända problem
 
 * Referenser för sökning efter det att söka i ungefär 50 000 noder - kan prestanda påverkas
-* Azure-stacken stöder inte filer, så försök att expandera filer visas ett fel
+* Azure-stacken stöder inte filer, så försök tooexpand filer visas ett fel
 
 09/12/2016
 ### <a name="version-084"></a>Version 0.8.4
@@ -331,9 +331,9 @@ Kända problem
 
 #### <a name="new"></a>Ny
 
-* Generera Direktlänkar till storage-konton, behållare, köer, tabeller eller filresurser för att dela och stöd för enkel åtkomst till dina resurser - Windows- och Mac OS x
-* Sök efter din blob-behållare, tabeller, köer, filresurser eller storage-konton från sökrutan
-* Nu kan du gruppera-satser i tabellen Frågebyggaren
+* Generera Direktlänkar toostorage konton, behållare, köer, tabeller, eller filresurser för delning och enkel åtkomst till resurser för tooyour - Windows och Mac OS x-stöd
+* Sök efter din blob-behållare, tabeller, köer, filresurser eller storage-konton från hello sökrutan
+* Nu kan du gruppera-satser i hello tabell Frågebyggaren
 * Byt namn på och kopiera och klistra in blob-behållare, filresurser, tabeller, BLOB, blob mappar, filer och kataloger från i SAS-anslutna konton och behållare
 * Byta namn på och kopiera blob-behållare och filresurser bevara nu egenskaper och metadata
 
@@ -354,9 +354,9 @@ Kända problem
 
 * Byt namn på behållare, tabeller, filresurser
 * Bättre frågan builder upplevelse
-* Möjlighet att spara och läsa in frågor
-* Direkta länkar till storage-konton eller behållare, köer, tabeller eller filresurser för delning och lätt att komma åt dina resurser (endast för Windows - macOS stöder kommer snart!)
-* Möjlighet att hantera och konfigurera CORS-regler
+* Möjlighet toosave och Läs in frågor
+* Direkta länkar toostorage konton eller behållare, köer, tabeller eller filresurser för delning och lätt att komma åt dina resurser (endast för Windows - macOS stöder kommer snart!)
+* Möjlighet toomanage och konfigurera CORS-regler
 
 #### <a name="fixes"></a>Korrigeringar
 
@@ -364,10 +364,10 @@ Kända problem
 
 #### <a name="known-issues"></a>Kända problem
 
-* Ibland Användargränssnittet verka fryst – maximerar fönstret hjälper dig att lösa problemet
+* Ibland hello Användargränssnittet verka fryst – maximerar fönstret hello hjälper dig att lösa problemet
 * installera macOS kan kräva förhöjd behörighet
-* Konto inställningar panelen kan indikera att du måste ange autentiseringsuppgifter för att filtrera prenumerationer
-* Byta namn på filresurser, blob-behållare och tabeller bevaras inte metadata eller andra egenskaper för behållare, till exempel filresurskvoten, offentliga åtkomstnivå eller åtkomstprinciper
+* Konto inställningar panelen kan indikera att du behöver tooreenter autentiseringsuppgifter i ordning toofilter prenumerationer
+* Byta namn på filresurser, blob-behållare och tabeller bevaras inte metadata eller andra egenskaper hello behållare, till exempel filresurskvoten, offentliga åtkomstnivå eller åtkomstprinciper
 * Byta namn på blobbar (individuellt eller i en bytt namn till blob-behållare) bevaras inte ögonblicksbilder. Alla andra egenskaper och metadata för blobbar, filer och entiteter bevaras vid ett byte av namn
 * Kopiera eller byta namn på resurser fungerar inte i SAS-anslutna konton
 
@@ -380,7 +380,7 @@ Kända problem
 
 * Storage-konton är grupperade efter prenumerationer; utveckling lagring och resurser som är anslutna via SAS eller nyckeln visas under noden (lokala och bifogad)
 * Logga ut från konton ”Azure kontoinställningar” Kontrollpanelen
-* Konfigurera proxyinställningar för att aktivera och hantera inloggning
+* Konfigurera proxy-inställningar tooenable och hantera inloggning
 * Skapa och ta bort blob-lån
 * Öppna blob-behållare, köer, tabeller och filer med enkelklickning
 
@@ -406,7 +406,7 @@ Kända problem
 #### <a name="new"></a>Ny
 
 * Stöd för resursen: visa, överföra, hämta, kopiera filer och kataloger, SAS-URI: er (skapa och ansluta)
-* Förbättrad användarupplevelse för anslutning till lagring med SAS URI: er eller konto nycklar
+* Förbättrad användarupplevelse för att ansluta tooStorage med SAS URI: er eller nycklar
 * Exportera tabell frågeresultat
 * Tabell kolumnordning och anpassning
 * Visa $logs blob-behållare och $metrics tabeller för Storage-konton med aktiverad
@@ -415,13 +415,13 @@ Kända problem
 #### <a name="fixes"></a>Korrigeringar
 
 * Fast: överföra eller hämta stora blobbar kan resultera i ofullständiga överföringar/hämtningar
-* Fast: redigera, lägga till eller importera en entitet med ett numeriskt värde (”1”) konverteras till dubbla
-* Fast: Det gick inte att expandera noden tabellen i den lokala utvecklingsmiljön
+* Fast: redigera, lägga till eller importera en entitet med ett numeriskt värde (”1”) konverteras den toodouble
+* Fast: Tooexpand hello tabell nod i hello lokala utvecklingsmiljö
 
 #### <a name="known-issues"></a>Kända problem
 
 * $metrics tabeller är inte synliga för Blob Storage-konton
-* Kömeddelanden som lagts till via programmering kan inte visas korrekt om meddelanden är kodad med Base64-kodning
+* Kömeddelanden som lagts till via programmering kan inte visas korrekt om hälsningsmeddelande kodas med Base64-kodning
 
 05/17/2016
 ### <a name="version-07201605090"></a>Version 0.7.20160509.0
@@ -436,7 +436,7 @@ Kända problem
 
 #### <a name="known-issues"></a>Kända problem
 
-* Tabeller: Lägga till, redigera eller importera en entitet som har en egenskap med ett ambiguously numeriska värde, till exempel ”1” eller ”1.0”, och användaren försöker skicka den som en `Edm.String`, värdet kommer tillbaka till klienten API som en Edm.Double
+* Tabeller: Lägga till, redigera eller importera en entitet som har en egenskap med ett ambiguously numeriska värde, till exempel ”1” eller ”1.0”, och hello användaren försöker toosend det som ett `Edm.String`, hello värdet kommer tillbaka via hello klient API som en Edm.Double
 
 03/31/2016
 
@@ -452,8 +452,8 @@ Kända problem
 * Tabell stöd: visa, frågor, exportera, importera och CRUD-åtgärder för entiteter
 * Kö stöd: visa, lägga till dequeueing meddelanden
 * Generera SAS URI: er för Storage-konton
-* Ansluta till Lagringskonton med SAS URI: er
-* Meddelanden om uppdateringar för framtida uppdateringar Lagringsutforskaren
+* Ansluta tooStorage konton med SAS URI: er
+* Meddelanden om uppdateringar för framtida uppdateringar tooStorage Explorer
 * Uppdaterade känsla och utseende
 
 #### <a name="fixes"></a>Korrigeringar
@@ -463,9 +463,9 @@ Kända problem
 ### <a name="known-issues-amp-mitigations"></a>Kända problem &amp; åtgärder
 
 * Hämta stora blob filer fungerar inte - vi rekommenderar att du använder AzCopy medan vi löser problemet 
-* Autentiseringsuppgifter att inte hämta och cachelagras om arbetsmappen hittas inte eller kan inte skrivas till
-* Om vi lägger till, redigera eller importera en entitet som har en egenskap med ett ambiguously numeriska värde, till exempel ”1” eller ”1.0”, och användaren försöker skicka den som en `Edm.String`, värdet kommer tillbaka till klienten API som en Edm.Double
-* När du importerar CSV-filer med flera rader innehåller kan data få hackas eller kodade
+* Autentiseringsuppgifter att inte hämta och cachelagras om hello arbetsmapp hittas inte eller kan inte skrivas till
+* Om vi lägger till, redigera eller importera en entitet som har en egenskap med ett ambiguously numeriska värde, till exempel ”1” eller ”1.0”, och hello användare försöker toosend det som ett `Edm.String`, hello värdet kommer tillbaka via hello klient API som en Edm.Double
+* När du importerar CSV-filer med flera rader poster kan hello data hämta hackas eller kodade
 
 02/03/2016
 
@@ -481,26 +481,26 @@ Kända problem
 
 #### <a name="new"></a>Ny
 
-* Linux-support (OSX paritet funktioner)
+* Linux-support (paritet funktioner tooOSX)
 * Lägga till blob-behållare med delad åtkomst signaturer (SAS)-nyckel
 * Lägg till Lagringskonton för Azure Kina
 * Lägg till Storage-konton med anpassade slutpunkter
-* Öppna och visa innehållet text- och blobbar
+* Öppna och visa hello innehållet text- och blobbar
 * Visa och redigera blob-egenskaper och metadata
 
 #### <a name="fixes"></a>Korrigeringar
 
-* Fast: överföra eller hämta ett stort antal blobbar (500 +) kan ibland orsaka att appen har en vit skärm 
-* Fast: när blob-behållaren offentliga åtkomstnivå kan det nya värdet uppdateras inte förrän du har angett fokus på behållaren igen. Dessutom dialogrutan alltid som standard ”ingen offentlig åtkomst” och inte det faktiska aktuella värdet.
+* Fast: överföra eller hämta ett stort antal blobbar (500 +) kan ibland orsaka hello app toohave en vit skärm 
+* Fast: när du ställer in blob-behållaren offentliga åtkomstnivå hello nya värdet uppdateras inte förrän du har angett hello fokus på hello behållare igen. Dessutom hello dialogrutan alltid som standard för ”ingen offentlig åtkomst” och inte hello faktiska aktuella värde.
 * Stöd för bättre övergripande tangentbord/tillgänglighet och UI
 * Spår historik texten ska radbrytas när den är lång med ett blanksteg
 * SAS-dialogrutan har stöd för verifiering av indata
-* Lokal lagring fortsätter att fungera även om användarens autentiseringsuppgifter har upphört att gälla
-* När du tar bort en öppen blobbehållare är blob-Utforskaren på höger sida stängd
+* Lokal lagring fortsätter toobe tillgängliga även om användarens autentiseringsuppgifter har upphört att gälla
+* När du tar bort en öppen blobbehållare stängs hello blob explorer hello höger
 
 #### <a name="known-issues"></a>Kända problem
 
-* Linux-installationen måste gcc version uppdateras eller uppgraderas – steg för att uppgradera nedan: 
+* Installera Linux måste gcc version uppdateras eller uppgraderas – steg tooupgrade finns nedan: 
     * `sudo add-apt-repository ppa:ubuntu-toolchain-r/test`
     * `sudo apt-get update`
     * `sudo apt-get upgrade`
@@ -512,29 +512,29 @@ Kända problem
 #### <a name="new"></a>Ny
 
 * macOS och versioner av Windows
-* Logga in att visa dina Lagringskonton – använda din organisations konto, Account, 2FA osv.
+* Logga in tooview Storage-konton – använda din organisations konto, Account, 2FA osv.
 * Lokal utveckling lagring (Använd storage-emulatorn endast för Windows)
 * Stöd för Azure Resource Manager och klassisk resurs
 * Skapa och ta bort blobbar, köer och tabeller
 * Sök efter specifika blobbar, köer och tabeller
-* Utforska innehållet i blob-behållare
+* Utforska hello innehållet i blob-behållare
 * Visa och navigera genom kataloger
 * Ladda upp, hämta och ta bort blobbar och mappar
 * Visa och redigera blob-egenskaper och metadata
 * Generera en SAS-nycklar
 * Hantera och skapa lagras åtkomst principer SAP)
 * Sök efter blobbar efter prefix
-* Dra 'n släppa filer att överföra eller hämta
+* Dra 'n släpper filer tooupload eller ladda ned
 
 #### <a name="known-issues"></a>Kända problem
 
-* När du ställer in blob-behållaren offentliga åtkomstnivå, uppdateras inte det nya värdet förrän du har angett fokus på behållaren igen
-* När du öppnar dialogrutan för att ställa in allmän åtkomst visas alltid ”ingen offentlig åtkomst” som standard och inte faktiska aktuella värde
+* När du ställer in blob-behållaren offentliga åtkomstnivå uppdateras hello nya värdet inte förrän du har angett hello fokus på hello behållare igen
+* När du öppnar hello dialogrutan tooset hello offentliga åtkomstnivå visas alltid ”ingen offentlig åtkomst” som standard hello och inte hello faktiska aktuella värde
 * Det går inte att byta namn på hämtade blobbar
-* Aktiviteten loggposter kommer ibland ”fastna” i en pågående tillstånd när ett fel inträffar och felet inte visas
-* Ibland kraschar eller stängs helt vit när du försöker överföra eller hämta ett stort antal blobbar
+* Aktiviteten loggposter kommer ibland ”fastna” i en pågående tillstånd när ett fel inträffar och hello fel visas inte
+* Ibland krascher och aktiverar eller inaktiverar helt vit vid tooupload eller hämta ett stort antal blobbar
 * Ibland avbryter en kopieringsåtgärd fungerar inte
-* När du skapar en behållare (tabell-blob/kön), om du vill ange ett ogiltigt namn och fortsätta med att skapa en annan under en annan Behållartyp kan inte du ange fokus på den nya typen
+* När du skapar en behållare (tabell-blob/kön), om du vill ange ett ogiltigt namn och fortsätta toocreate en annan under en annan Behållartyp du kan inte ange fokus på hello ny typ
 * Det går inte att skapa en ny mapp eller byta namn på mappen
 
 

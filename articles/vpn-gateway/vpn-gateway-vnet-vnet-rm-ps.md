@@ -1,5 +1,5 @@
 ---
-title: "Ansluta ett virtuellt Azure-nätverk till ett annat VNet: PowerShell | Microsoft Docs"
+title: "Ansluta ett virtuellt Azure-nätverk tooanother VNet: PowerShell | Microsoft Docs"
 description: "Den här artikeln visar hur du ansluter virtuella nätverk tillsammans med hjälp av Azure Resource Manager och PowerShell."
 services: vpn-gateway
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: cherylmc
-ms.openlocfilehash: 8c42c0046ccaa98c572134042fbbb7e883ef93c3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2da30c76867cc3f71d040e63e0dd15d153e15c10
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurera en VPN-gatewayanslutning mellan virtuella nätverk med hjälp av PowerShell
 
-Den här artikeln visar hur du skapar en VPN-gatewayanslutning mellan virtuella nätverk. De virtuella nätverken kan finnas i samma eller olika regioner och i samma eller olika prenumerationer. När du ansluter virtuella nätverk från olika prenumerationer, behöver inte prenumerationerna vara associerade med samma Active Directory-klient. 
+Den här artikeln beskrivs hur du toocreate en VPN-gateway-anslutningen mellan virtuella nätverk. hello virtuella nätverk kan vara i samma eller olika regioner hello och hello från samma eller olika prenumerationer. När du ansluter Vnet från olika prenumerationer, hello prenumerationer inte behöver toobe som är associerade med hello samma Active Directory-klient. 
 
-Anvisningarna i den här artikeln gäller för Resource Manager-distributionsmodellen och användning av PowerShell. Du kan också skapa den här konfigurationen med ett annat distributionsverktyg eller en annan distributionsmodell genom att välja ett annat alternativ i listan nedan:
+hello stegen i den här artikeln gäller toohello Resource Manager-modellen och använda PowerShell. Du kan också skapa den här konfigurationen med hjälp av en annan distributionsverktyget eller distributionsmodell genom att välja ett annat alternativ hello följande lista:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -37,45 +37,45 @@ Anvisningarna i den här artikeln gäller för Resource Manager-distributionsmod
 >
 >
 
-Du ansluter ett virtuellt nätverk till ett annat virtuellt nätverk (VNet-till-VNet) på nästan samma sätt som du ansluter ett VNet till en lokal plats. Båda typerna av anslutning använder en VPN-gateway för att få en säker tunnel med IPsec/IKE. Om dina VNets finns i samma region kan det vara bättre att ansluta dem med hjälp av VNet-peering. Ingen VPN-gateway används för VNet-peering. Mer information finns i [VNet peering (Vnet-peering)](../virtual-network/virtual-network-peering-overview.md).
+Ansluta ett virtuellt nätverk tooanother virtuellt nätverk (VNet-till-VNet) är liknande tooconnecting ett VNet tooan lokal plats. Båda typerna av anslutningen använder en VPN-gateway tooprovide en säker tunnel med IPsec/IKE. Om ditt Vnet i hello samma region som du kanske vill tooconsider ansluter dem med hjälp av VNet-Peering. Ingen VPN-gateway används för VNet-peering. Mer information finns i [VNet peering (Vnet-peering)](../virtual-network/virtual-network-peering-overview.md).
 
-VNet-till-VNet-kommunikation kan kombineras med konfigurationer för flera platser. Därmed kan du etablera nätverkstopologier som kombinerar anslutningar mellan olika anläggningar med virtuell nätverksanslutning enligt följande diagram:
+VNet-till-VNet-kommunikation kan kombineras med konfigurationer för flera platser. På så sätt kan du etablera nätverkstopologier som kombinerar korsanslutningar med mellan virtuell nätverksanslutning som visas i följande diagram hello:
 
 ![Om anslutningar](./media/vpn-gateway-vnet-vnet-rm-ps/aboutconnections.png)
 
 ### <a name="why-connect-virtual-networks"></a>Varför ska man ansluta virtuella nätverk?
 
-Du kan vilja ansluta virtuella nätverk av följande skäl:
+Du kanske vill tooconnect virtuella nätverk för hello följande orsaker:
 
 * **Geografisk redundans i flera regioner och geografisk närvaro**
 
   * Du kan ange din egna geografiska replikering eller synkronisering med en säker anslutning, utan att passera några Internet-slutpunkter.
-  * Med Azure Traffic Manager och Load Balancer kan du konfigurera arbetsbelastning med hög tillgänglighet och geografisk redundans över flera Azure-regioner. Ett viktigt exempel är att konfigurera att SQL alltid är aktiverat med tillgänglighetsgrupper som är spridda över flera Azure-regioner.
+  * Med Azure Traffic Manager och Load Balancer kan du konfigurera arbetsbelastning med hög tillgänglighet och geografisk redundans över flera Azure-regioner. Ett viktigt exempel är tooset in SQL Always On med Tillgänglighetsgrupper sprida över flera Azure-regioner.
 * **Regionala flernivåprogram med isolering eller administrativa gränser**
 
-  * Inom samma region kan du konfigurera flernivåprogram med flera virtuella nätverk som är anslutna till varandra på grund av isolering eller administrativa krav.
+  * Hej i samma region, du kan konfigurera flera nivåer program med flera virtuella nätverk som kopplar samman förfallodatum tooisolation eller administrativa krav.
 
-Mer information om anslutningar mellan virtuella nätverk finns i [Vanliga frågor om VNet-till-VNet](#faq) i slutet av den här artikeln.
+Mer information om VNet-till-VNet-anslutningar finns hello [VNet-till-VNet vanliga frågor och svar](#faq) hello slutet av den här artikeln.
 
 ## <a name="which-set-of-steps-should-i-use"></a>Vilka steg ska jag använda?
 
-I den här artikeln beskrivs två uppsättningar med steg. En uppsättning steg för [virtuella nätverk som finns i samma prenumeration](#samesub) och en annan för [virtuella nätverk som finns i olika prenumerationer](#difsub). Den viktigaste skillnaden mellan uppsättningarna är huruvida du kan skapa och konfigurera alla virtuella nätverk och gateway-resurser i samma PowerShell-session.
+I den här artikeln beskrivs två uppsättningar med steg. En uppsättning steg för [Vnet som finns i hello samma prenumeration](#samesub), och en annan för [Vnet som finns i olika prenumerationer](#difsub). hello viktigaste skillnaden mellan hello mängder är om du kan skapa och konfigurera alla virtuella nätverk och gateway resurser inom hello samma PowerShell-session.
 
-I stegen i den här artikeln används variabler som deklareras i början av varje avsnitt. Om du redan arbetar med befintliga virtuella nätverk kan du ändra variablerna så att de avspeglar din miljö. Information om hur du använder namnmatchning för dina virtuella nätverk finns i [Namnmatchning](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+hello använder stegen i den här artikeln variabler som har deklarerats hello början av varje avsnitt. Om du redan arbetar med befintliga Vnet, kan du ändra hello variabler tooreflect hello inställningarna i din egen miljö. Information om hur du använder namnmatchning för dina virtuella nätverk finns i [Namnmatchning](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-## <a name="samesub"></a>Så här ansluter du VNets som finns i samma prenumeration
+## <a name="samesub"></a>Hur tooconnect Vnet som används i hello samma prenumeration
 
 ![v2v-diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 ### <a name="before-you-begin"></a>Innan du börjar
 
-Du måste installera den senaste versionen av Azure Resource Managers PowerShell-cmdletar, version 4.0 eller senare, innan du börjar. Mer information om hur du installerar PowerShell-cmdletar finns i [Så här installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview).
+Innan du börjar måste du tooinstall hello senaste versionen av hello Azure Resource Manager PowerShell-cmdlets, minst 4.0 eller senare. Mer information om hur du installerar hello PowerShell-cmdlets finns [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="Step1"></a>Steg 1 – Planera dina IP-adressintervall
 
-I följande steg ska vi skapa två virtuella nätverk och deras respektive gateway-undernät och konfigurationer. Sedan ska vi skapa en VPN-anslutning mellan de två virtuella nätverken. Det är viktigt att planera IP-adressintervallen för nätverkskonfigurationen. Tänk på att inga av dina VNet-intervall eller lokala nätverksintervall får överlappa varandra på något sätt. I de här exemplen tar vi inte med någon DNS-server. Information om hur du använder namnmatchning för dina virtuella nätverk finns i [Namnmatchning](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+I följande steg hello, skapar vi två virtuella nätverk samt deras respektive gateway-undernät och konfigurationer. Vi skapar sedan en VPN-anslutning mellan hello två Vnet. Det är viktigt tooplan hello IP-adressintervall för nätverkskonfigurationen. Tänk på att inga av dina VNet-intervall eller lokala nätverksintervall får överlappa varandra på något sätt. I de här exemplen tar vi inte med någon DNS-server. Information om hur du använder namnmatchning för dina virtuella nätverk finns i [Namnmatchning](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-Vi använder följande värden i exemplen:
+Vi använder följande värden i hello exempel hello:
 
 **Värden för TestVNet1:**
 
@@ -111,7 +111,7 @@ Vi använder följande värden i exemplen:
 
 ### <a name="Step2"></a>Steg 2 – Skapa och konfigurera TestVNet1
 
-1. Deklarera dina variabler. I det här exemplet deklarerar vi variablerna med värdena för den här övningen. I de flesta fall bör du ersätta värdena med dina egna. Du kan dock använda dessa variabler om du bara vill följa anvisningarna för att bekanta dig med den här typen av konfiguration. Ändra variablerna om det behövs och kopiera och klistra in dem i PowerShell-konsolen.
+1. Deklarera dina variabler. Det här exemplet deklarerar hello variabler med hello värden för den här övningen. I de flesta fall bör du ersätta hello värdena med dina egna. Du kan använda dessa variabler om du kör via hello steg toobecome bekant med den här typen av konfiguration. Ändra hello variabler vid behov, och sedan kopiera och klistra in dem i PowerShell-konsolen.
 
   ```powershell
   $Sub1 = "Replace_With_Your_Subcription_Name"
@@ -133,19 +133,19 @@ Vi använder följande värden i exemplen:
   $Connection15 = "VNet1toVNet5"
   ```
 
-2. Anslut till ditt konto. Använd följande exempel för att ansluta:
+2. Ansluta tooyour-konto. Använd hello följande exempel toohelp du ansluta:
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-  Kontrollera prenumerationerna för kontot.
+  Kontrollera hello prenumerationer för hello-kontot.
 
   ```powershell
   Get-AzureRmSubscription
   ```
 
-  Ange den prenumeration som du vill använda.
+  Ange hello prenumeration som du vill toouse.
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionName $Sub1
@@ -155,9 +155,9 @@ Vi använder följande värden i exemplen:
   ```powershell
   New-AzureRmResourceGroup -Name $RG1 -Location $Location1
   ```
-4. Skapa undernätskonfigurationerna för TestVNet1. I det här exemplet skapas ett virtuellt nätverk med namnet TestVNet1 och tre undernät – GatewaySubnet, FrontEnd och BackEnd. När du ersätter värden är det viktigt att du alltid namnger gateway-undernätet specifikt till GatewaySubnet. Om du ger det något annat namn går det inte att skapa gatewayen.
+4. Skapa hello undernät för TestVNet1. I det här exemplet skapas ett virtuellt nätverk med namnet TestVNet1 och tre undernät – GatewaySubnet, FrontEnd och BackEnd. När du ersätter värden är det viktigt att du alltid namnger gateway-undernätet specifikt till GatewaySubnet. Om du ger det något annat namn går det inte att skapa gatewayen.
 
-  I följande exempel används variablerna som du angav tidigare. I det här exemplet använder gateway-undernätet en /27. Även om det är möjligt att skapa ett gateway-subnät som är så litet som /29 så rekommenderar vi att du skapar ett större subnät som inkluderar fler adresser genom att välja minst /28 eller /27. Det tillåter tillräckligt med adresser för att rymma möjliga övriga konfigurationer som du kan behöva i framtiden.
+  hello används följande exempel hello variabler som du angett tidigare. I det här exemplet hello gateway-undernätet med hjälp av en minst/27. Det är möjligt toocreate ett gatewayundernät så liten som /29, rekommenderar vi att du skapar ett större undernät som innehåller flera adresser genom att välja minst /28 eller minst/27. Detta gör att tillräckligt många adresser tooaccommodate möjliga ytterligare konfigurationer som du vill i hello framtida.
 
   ```powershell
   $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -170,13 +170,13 @@ Vi använder följande värden i exemplen:
   New-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 `
   -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
   ```
-6. Begär en offentlig IP-adress som ska allokeras till den gateway som du ska skapa för det virtuella nätverket. Observera att AllocationMethod är Dynamic. Du kan inte ange den IP-adress som du vill använda. Den allokeras dynamiskt till gatewayen. 
+6. Begär en offentlig IP-adress toobe allokerade toohello gateway skapas för ditt VNet. Observera att hello AllocationMethod är dynamiska. Du kan inte ange hello IP-adress som du vill toouse. Det är dynamiskt allokerade tooyour gateway. 
 
   ```powershell
   $gwpip1 = New-AzureRmPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 `
   -Location $Location1 -AllocationMethod Dynamic
   ```
-7. Skapa gateway-konfigurationen. Gateway-konfigurationen definierar undernätet och den offentliga IP-adress som ska användas. Använd exemplet för att skapa gateway-konfigurationen.
+7. Skapa hello gateway-konfigurationen. gateway-konfiguration för hello definierar hello undernät och hello offentliga IP-adressen toouse. Använd hello exempel toocreate gateway-konfiguration.
 
   ```powershell
   $vnet1 = Get-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1
@@ -184,7 +184,7 @@ Vi använder följande värden i exemplen:
   $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 `
   -Subnet $subnet1 -PublicIpAddress $gwpip1
   ```
-8. Skapa gatewayen för TestVNet1. I det här steget ska du skapa VNet-gatewayen för TestVNet1. VNet-till-VNet-konfigurationer kräver VpnType RouteBased. Att skapa en gateway kan ofta ta 45 minuter eller mer, beroende på vald gateway-SKU.
+8. Skapa hello gateway för TestVNet1. I det här steget skapar du hello virtuell nätverksgateway för din TestVNet1. VNet-till-VNet-konfigurationer kräver VpnType RouteBased. Skapa en gateway kan ofta ta 45 minuter eller mer beroende på hello markerad gateway SKU.
 
   ```powershell
   New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
@@ -194,9 +194,9 @@ Vi använder följande värden i exemplen:
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>Steg 3 – Skapa och konfigurera TestVNet4
 
-När du har konfigurerat TestVNet1 skapar du TestVNet4. Följ stegen nedan och ersätt värdena med dina egna vid behov. Det här steget kan göras inom samma PowerShell-session, eftersom den är i samma prenumeration.
+När du har konfigurerat TestVNet1 skapar du TestVNet4. Följ hello steg nedan, ersätter hello värden med dina egna vid behov. Det här steget kan utföras med hello samma PowerShell-session eftersom den är i hello samma prenumeration.
 
-1. Deklarera dina variabler. Ersätt värdena med de som du vill använda för din konfiguration.
+1. Deklarera dina variabler. Vara säker på att tooreplace hello värden med hello som du vill använda toouse för din konfiguration.
 
   ```powershell
   $RG4 = "TestRG4"
@@ -220,7 +220,7 @@ När du har konfigurerat TestVNet1 skapar du TestVNet4. Följ stegen nedan och e
   ```powershell
   New-AzureRmResourceGroup -Name $RG4 -Location $Location4
   ```
-3. Skapa undernätskonfigurationerna för TestVNet4.
+3. Skapa hello undernät för TestVNet4.
 
   ```powershell
   $fesub4 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName4 -AddressPrefix $FESubPrefix4
@@ -239,14 +239,14 @@ När du har konfigurerat TestVNet1 skapar du TestVNet4. Följ stegen nedan och e
   $gwpip4 = New-AzureRmPublicIpAddress -Name $GWIPName4 -ResourceGroupName $RG4 `
   -Location $Location4 -AllocationMethod Dynamic
   ```
-6. Skapa gateway-konfigurationen.
+6. Skapa hello gateway-konfigurationen.
 
   ```powershell
   $vnet4 = Get-AzureRmVirtualNetwork -Name $VnetName4 -ResourceGroupName $RG4
   $subnet4 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet4
   $gwipconf4 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName4 -Subnet $subnet4 -PublicIpAddress $gwpip4
   ```
-7. Skapa TestVNet4-gatewayen. Att skapa en gateway kan ofta ta 45 minuter eller mer, beroende på vald gateway-SKU.
+7. Skapa hello TestVNet4 gateway. Skapa en gateway kan ofta ta 45 minuter eller mer beroende på hello markerad gateway SKU.
 
   ```powershell
   New-AzureRmVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4 `
@@ -254,43 +254,43 @@ När du har konfigurerat TestVNet1 skapar du TestVNet4. Följ stegen nedan och e
   -VpnType RouteBased -GatewaySku VpnGw1
   ```
 
-### <a name="step-4---create-the-connections"></a>Steg 4 – Skapa anslutningarna
+### <a name="step-4---create-hello-connections"></a>Steg 4 – skapa hello-anslutningar
 
-1. Hämta båda virtuella nätverksgatewayerna. Om båda gatewayerna finns i samma prenumeration, som i exemplet, kan du slutföra det här steget i samma PowerShell-session.
+1. Hämta båda virtuella nätverksgatewayerna. Om båda hello gatewayer finns i hello samma prenumeration, som i exemplet hello, kan du slutföra det här steget i hello samma PowerShell-session.
 
   ```powershell
   $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
   $vnet4gw = Get-AzureRmVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4
   ```
-2. Skapa TestVNet1-till-TestVNet4-anslutningen. I det här steget ska du skapa anslutningen från TestVNet1 till TestVNet4. Du ser en delad nyckel som refereras i exemplen. Du kan använda egna värden för den delade nyckeln. Det är viktigt att den delade nyckeln matchar båda anslutningarna. Att skapa en anslutning kan ta en stund att slutföra.
+2. Skapa hello TestVNet1 tooTestVNet4 anslutning. I det här steget skapar du hello anslutning från TestVNet1 tooTestVNet4. Du ser en delad nyckel som refereras i hello exempel. Du kan använda egna värden för hello delad nyckel. hello viktig sak är att hello delad nyckel måste matcha för både anslutningar. Skapa en anslutning kan ta en kort när toocomplete.
 
   ```powershell
   New-AzureRmVirtualNetworkGatewayConnection -Name $Connection14 -ResourceGroupName $RG1 `
   -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet4gw -Location $Location1 `
   -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
   ```
-3. Skapa TestVNet4-till-TestVNet1-anslutningen. Det här steget liknar det ovan, förutom att du skapar anslutningen från TestVNet4 till TestVNet1. Kontrollera att de delade nycklarna matchar. Anslutningen upprättas efter några minuter.
+3. Skapa hello TestVNet4 tooTestVNet1 anslutning. Det här steget är liknande toohello en ovan, förutom att du skapar hello anslutning från TestVNet4 tooTestVNet1. Se till att matcha hello delade nycklar. hello-anslutning upprättas efter några minuter.
 
   ```powershell
   New-AzureRmVirtualNetworkGatewayConnection -Name $Connection41 -ResourceGroupName $RG4 `
   -VirtualNetworkGateway1 $vnet4gw -VirtualNetworkGateway2 $vnet1gw -Location $Location4 `
   -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
   ```
-4. Verifiera anslutningen. Mer information finns i avsnittet [Verifiera anslutningen](#verify).
+4. Verifiera anslutningen. Avsnittet hello [hur tooverify anslutningen](#verify).
 
-## <a name="difsub"></a>Så här ansluter du VNets som finns i olika prenumerationer
+## <a name="difsub"></a>Hur tooconnect Vnet som finns i olika prenumerationer
 
 ![v2v-diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
-I det här scenariot ansluter vi TestVNet1 och TestVNet5. TestVNet1 och TestVNet5 finns i olika prenumerationer. Prenumerationerna behöver inte vara associerade med samma Active Directory-klient. Skillnaden mellan de här stegen och den tidigare uppsättningen är att några av konfigurationsstegen måste utföras i en separat PowerShell-session för den andra prenumerationen. Detta gäller särskilt om två prenumerationer tillhör olika organisationer.
+I det här scenariot ansluter vi TestVNet1 och TestVNet5. TestVNet1 och TestVNet5 finns i olika prenumerationer. hello prenumerationer behöver inte toobe som är associerade med hello samma Active Directory-klient. hello skillnaden mellan dessa steg och hello tidigare uppsättningen är att vissa av hello konfigurationssteg måste toobe utförs i en separat PowerShell-session i hello kontexten av andra hello-prenumeration. Särskilt när hello två prenumerationer hör toodifferent organisationer.
 
 ### <a name="step-5---create-and-configure-testvnet1"></a>Steg 5 – Skapa och konfigurera TestVNet1
 
-Du måste slutföra [Steg 1](#Step1) och [Steg 2](#Step2) från det tidigare avsnittet för att kunna skapa och konfigurera TestVNet1 och VPN-gatewayen för TestVNet1. I den här konfigurationen krävs det inte att du skapar TestVNet4 i enlighet med föregående avsnitt, men om du gör det går det ändå att använda de här instruktionerna. När du har slutfört steg 1 och steg 2 fortsätter du med steg 6 för att skapa TestVNet5. 
+Du måste slutföra [steg 1](#Step1) och [steg 2](#Step2) från hello föregående avsnittet toocreate och konfigurera TestVNet1 hello VPN-Gateway för TestVNet1. För den här konfigurationen är du inte nödvändiga toocreate TestVNet4 från hello föregående avsnitt, men om du skapar det, kommer det står i konflikt med de här stegen. När du har slutfört steg 1 och 2 fortsätter du med steg 6 toocreate TestVNet5. 
 
-### <a name="step-6---verify-the-ip-address-ranges"></a>Steg 6 – Kontrollera IP-adressintervaller
+### <a name="step-6---verify-hello-ip-address-ranges"></a>Steg 6 – verifiera hello IP-adressintervall
 
-Det är viktigt att se till att IP-adressutrymmet för det nya virtuella nätverket, TestVNet5, inte överlappar några av dina VNet-intervall eller lokala intervall för nätverksgatewayen. I det här exemplet kan de virtuella nätverken tillhöra olika organisationer. Använd följande VNet-värden för TestVNet5 i den här övningen:
+Det är viktigt att att hello IP-adressutrymme hello nytt virtuellt nätverk, TestVNet5, inte överlappar med någon av dina VNet-adressintervall eller en lokal gateway nätverksintervall toomake. I det här exemplet kan hello virtuella nätverk höra toodifferent organisationer. Du kan använda följande värden för hello TestVNet5 hello i den här övningen:
 
 **Värden för TestVNet5:**
 
@@ -309,9 +309,9 @@ Det är viktigt att se till att IP-adressutrymmet för det nya virtuella nätver
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>Steg 7 – Skapa och konfigurera TestVNet5
 
-Det här steget måste utföras i den nya prenumerationen. Den här delen kan utföras av administratören i en annan organisation som äger prenumerationen.
+Det här steget måste utföras i hello kontext hello ny prenumeration. Den här delen kan utföras av Hej administratör i en annan organisation som äger hello prenumeration.
 
-1. Deklarera dina variabler. Ersätt värdena med de som du vill använda för din konfiguration.
+1. Deklarera dina variabler. Vara säker på att tooreplace hello värden med hello som du vill använda toouse för din konfiguration.
 
   ```powershell
   $Sub5 = "Replace_With_the_New_Subcription_Name"
@@ -331,19 +331,19 @@ Det här steget måste utföras i den nya prenumerationen. Den här delen kan ut
   $GWIPconfName5 = "gwipconf5"
   $Connection51 = "VNet5toVNet1"
   ```
-2. Anslut till Prenumeration 5. Öppna PowerShell-konsolen och anslut till ditt konto. Använd följande exempel för att ansluta:
+2. Ansluta toosubscription 5. Öppna PowerShell-konsolen och Anslut tooyour konto. Använd hello följande exempel toohelp du ansluta:
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-  Kontrollera prenumerationerna för kontot.
+  Kontrollera hello prenumerationer för hello-kontot.
 
   ```powershell
   Get-AzureRmSubscription
   ```
 
-  Ange den prenumeration som du vill använda.
+  Ange hello prenumeration som du vill toouse.
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionName $Sub5
@@ -353,7 +353,7 @@ Det här steget måste utföras i den nya prenumerationen. Den här delen kan ut
   ```powershell
   New-AzureRmResourceGroup -Name $RG5 -Location $Location5
   ```
-4. Skapa undernätskonfigurationerna för TestVNet5.
+4. Skapa hello undernät för TestVNet5.
 
   ```powershell
   $fesub5 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName5 -AddressPrefix $FESubPrefix5
@@ -372,38 +372,38 @@ Det här steget måste utföras i den nya prenumerationen. Den här delen kan ut
   $gwpip5 = New-AzureRmPublicIpAddress -Name $GWIPName5 -ResourceGroupName $RG5 `
   -Location $Location5 -AllocationMethod Dynamic
   ```
-7. Skapa gateway-konfigurationen.
+7. Skapa hello gateway-konfigurationen.
 
   ```powershell
   $vnet5 = Get-AzureRmVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5
   $subnet5  = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet5
   $gwipconf5 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName5 -Subnet $subnet5 -PublicIpAddress $gwpip5
   ```
-8. Skapa TestVNet5-gatewayen.
+8. Skapa hello TestVNet5 gateway.
 
   ```powershell
   New-AzureRmVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5 -Location $Location5 `
   -IpConfigurations $gwipconf5 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1
   ```
 
-### <a name="step-8---create-the-connections"></a>Steg 8 – Skapa anslutningarna
+### <a name="step-8---create-hello-connections"></a>Steg 8 – skapa hello-anslutningar
 
-I det här exemplet där gatewayerna finns i olika prenumerationer, har vi delat upp steget i två PowerShell-sessioner som kallas för [Prenumeration 1] och [Prenumeration 5].
+I det här exemplet eftersom hello gateways hello olika prenumerationer, har vi dela det här steget i två PowerShell-sessioner som markerats som [prenumeration 1] och [prenumeration 5].
 
-1. **[Prenumeration 1]** Hämta den virtuella nätverksgatewayen för Prenumeration 1. Logga in och anslut till Prenumeration 1 innan du kör följande exempel:
+1. **[Prenumeration 1]**  Get hello virtuell nätverksgateway för prenumerationen 1. Logga in och ansluta tooSubscription 1 innan du kör hello följande exempel:
 
   ```powershell
   $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
   ```
 
-  Kopiera utdatan från följande element och skicka dem till administratören för Prenumeration 5 via e-post eller någon annan metod.
+  Kopiera hello utdata från hello följande element och skicka dessa toohello administratör för prenumeration 5 via e-post eller någon annan metod.
 
   ```powershell
   $vnet1gw.Name
   $vnet1gw.Id
   ```
 
-  Dessa två element har värden som liknar följande exempelutdata:
+  Dessa två element har värden liknande toohello följande exempel på utdata:
 
   ```
   PS D:\> $vnet1gw.Name
@@ -411,20 +411,20 @@ I det här exemplet där gatewayerna finns i olika prenumerationer, har vi delat
   PS D:\> $vnet1gw.Id
   /subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroupsTestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
   ```
-2. **[Prenumeration 5]** Hämta den virtuella nätverksgatewayen för Prenumeration 5. Logga in och anslut till Prenumeration 5 innan du kör följande exempel:
+2. **[Prenumerationen 5]**  Get hello virtuell nätverksgateway för prenumerationen 5. Logga in och ansluta tooSubscription 5 innan du kör hello följande exempel:
 
   ```powershell
   $vnet5gw = Get-AzureRmVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5
   ```
 
-  Kopiera utdatan från följande element och skicka dem till administratören för Prenumeration 1 via e-post eller någon annan metod.
+  Kopiera hello utdata från hello följande element och skicka dessa toohello administratör för prenumeration 1 via e-post eller någon annan metod.
 
   ```powershell
   $vnet5gw.Name
   $vnet5gw.Id
   ```
 
-  Dessa två element har värden som liknar följande exempelutdata:
+  Dessa två element har värden liknande toohello följande exempel på utdata:
 
   ```
   PS C:\> $vnet5gw.Name
@@ -432,9 +432,9 @@ I det här exemplet där gatewayerna finns i olika prenumerationer, har vi delat
   PS C:\> $vnet5gw.Id
   /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
   ```
-3. **[Prenumeration 1]** Skapa TestVNet1-till-TestVNet5-anslutningen. I det här steget ska du skapa anslutningen från TestVNet1 till TestVNet5. Skillnaden här är att $vnet5gw inte kan hämtas direkt, eftersom den finns i en annan prenumeration. Du måste skapa ett nytt PowerShell-objekt med värdena från Prenumeration 1 i stegen ovan. Använd exemplet nedan. Ersätt namnet, ID:t och den delade nyckeln med dina värden. Det är viktigt att den delade nyckeln matchar båda anslutningarna. Att skapa en anslutning kan ta en stund att slutföra.
+3. **[Prenumeration 1]**  Skapa hello TestVNet1 tooTestVNet5 anslutning. I det här steget skapar du hello anslutning från TestVNet1 tooTestVNet5. hello skillnaden här är den $vnet5gw inte går att hämta direkt eftersom den tillhör en annan prenumeration. Du behöver toocreate ett nytt PowerShell-objekt med hello värden kommunicerat från prenumerationen 1 i hello stegen ovan. Använd hello exemplet nedan. Ersätt hello namn-Id och delad nyckel med egna värden. hello viktig sak är att hello delad nyckel måste matcha för både anslutningar. Skapa en anslutning kan ta en kort när toocomplete.
 
-  Anslut till Prenumeration 1 innan du kör följande exempel:
+  Anslut tooSubscription 1 innan du kör hello följande exempel:
 
   ```powershell
   $vnet5gw = New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
@@ -443,9 +443,9 @@ I det här exemplet där gatewayerna finns i olika prenumerationer, har vi delat
   $Connection15 = "VNet1toVNet5"
   New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet5gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
   ```
-4. **[Prenumeration 5]** Skapa TestVNet5-till-TestVNet1-anslutningen. Det här steget liknar det ovan, förutom att du skapar anslutningen från TestVNet5 till TestVNet1. Samma process att skapa ett PowerShell-objekt som baseras på de värden som erhållits från Prenumeration 1 gäller även här. Var noga med att de delade nycklarna matchar i det här steget.
+4. **[Prenumerationen 5]**  Skapa hello TestVNet5 tooTestVNet1 anslutning. Det här steget är liknande toohello en ovan, förutom att du skapar hello anslutning från TestVNet5 tooTestVNet1. hello samma process för att skapa ett PowerShell-objekt baserat på hello värden som hämtas från prenumerationen 1 gäller också. I det här steget Glöm inte att matcha hello delade nycklar.
 
-  Anslut till Prenumeration 5 innan du kör följande exempel:
+  Anslut tooSubscription 5 innan du kör hello följande exempel:
 
   ```powershell
   $vnet1gw = New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
@@ -454,7 +454,7 @@ I det här exemplet där gatewayerna finns i olika prenumerationer, har vi delat
   New-AzureRmVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
   ```
 
-## <a name="verify"></a>Så här verifierar du en anslutning
+## <a name="verify"></a>Hur tooverify en anslutning
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -466,5 +466,5 @@ I det här exemplet där gatewayerna finns i olika prenumerationer, har vi delat
 
 ## <a name="next-steps"></a>Nästa steg
 
-* När anslutningen är klar kan du lägga till virtuella datorer till dina virtuella nätverk. Mer information finns i [dokumentationen för Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
-* Information om BGP finns i [BGP-översikt](vpn-gateway-bgp-overview.md) och [Så här konfigurerar du BGP](vpn-gateway-bgp-resource-manager-ps.md).
+* När anslutningen är klar kan du lägga till virtuella datorer tooyour virtuella nätverk. Se hello [virtuella datorer dokumentationen](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) för mer information.
+* Information om BGP finns hello [BGP översikt](vpn-gateway-bgp-overview.md) och [hur tooconfigure BGP](vpn-gateway-bgp-resource-manager-ps.md).
