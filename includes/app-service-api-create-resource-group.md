@@ -1,11 +1,11 @@
-<span data-ttu-id="b9147-101">Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#create).</span><span class="sxs-lookup"><span data-stu-id="b9147-101">Create a resource group with the [az group create](/cli/azure/group#create) command.</span></span>
+<span data-ttu-id="82e92-101">Skapa en resursgrupp med hello [az gruppen skapa](/cli/azure/group#create) kommando.</span><span class="sxs-lookup"><span data-stu-id="82e92-101">Create a resource group with hello [az group create](/cli/azure/group#create) command.</span></span>
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 
-<span data-ttu-id="b9147-102">I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *westeurope*.</span><span class="sxs-lookup"><span data-stu-id="b9147-102">The following example creates a resource group named *myResourceGroup* in the *westeurope* location.</span></span>
+<span data-ttu-id="82e92-102">hello följande exempel skapar en resursgrupp med namnet *myResourceGroup* i hello *westeurope* plats.</span><span class="sxs-lookup"><span data-stu-id="82e92-102">hello following example creates a resource group named *myResourceGroup* in hello *westeurope* location.</span></span>
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
-<span data-ttu-id="b9147-103">Om du vill se tillgängliga platser kör du kommandot `az appservice list-locations`.</span><span class="sxs-lookup"><span data-stu-id="b9147-103">To see the available locations, run the `az appservice list-locations` command.</span></span> <span data-ttu-id="b9147-104">Du skapar vanligtvis resurser i en region nära dig.</span><span class="sxs-lookup"><span data-stu-id="b9147-104">You generally create resources in a region near you.</span></span>
+<span data-ttu-id="82e92-103">toosee hello tillgängliga platser, kör hello `az appservice list-locations` kommando.</span><span class="sxs-lookup"><span data-stu-id="82e92-103">toosee hello available locations, run hello `az appservice list-locations` command.</span></span> <span data-ttu-id="82e92-104">Du skapar vanligtvis resurser i en region nära dig.</span><span class="sxs-lookup"><span data-stu-id="82e92-104">You generally create resources in a region near you.</span></span>

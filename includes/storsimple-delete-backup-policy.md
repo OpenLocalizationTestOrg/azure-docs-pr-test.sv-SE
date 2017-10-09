@@ -1,0 +1,10 @@
+
+<!--author=SharS last changed: 11/06/15-->
+
+#### <a name="toodelete-a-storsimple-backup-policy"></a><span data-ttu-id="cb28b-101">toodelete en princip för säkerhetskopiering av StorSimple</span><span class="sxs-lookup"><span data-stu-id="cb28b-101">toodelete a StorSimple backup policy</span></span>
+1. <span data-ttu-id="cb28b-102">På hello enhet **Snabbstart** klickar du på hello **Säkerhetskopieringsprinciper** fliken. Detta tar du toohello **Säkerhetskopieringsprinciper** sidan.</span><span class="sxs-lookup"><span data-stu-id="cb28b-102">On hello device **Quick Start** page, click hello **Backup Policies** tab. This will take you toohello **Backup Policies** page.</span></span>
+2. <span data-ttu-id="cb28b-103">Välj hello princip genom att klicka var som helst i hello motsvarande rad förutom hello första kolumnen och klicka sedan på **ta bort** på hello hello sidans nederkant.</span><span class="sxs-lookup"><span data-stu-id="cb28b-103">Select hello policy by clicking anywhere in hello corresponding row except for hello first column, and then click **Delete** at hello bottom of hello page.</span></span>
+3. <span data-ttu-id="cb28b-104">Du uppmanas att bekräfta.</span><span class="sxs-lookup"><span data-stu-id="cb28b-104">You will be prompted for confirmation.</span></span> <span data-ttu-id="cb28b-105">Tänk på att ta bort en princip för säkerhetskopiering tar bort alla hello associerade säkerhetskopior.</span><span class="sxs-lookup"><span data-stu-id="cb28b-105">Keep in mind that deleting a backup policy will delete all hello associated backups.</span></span> <span data-ttu-id="cb28b-106">Klicka på **Ja** toodelete.</span><span class="sxs-lookup"><span data-stu-id="cb28b-106">Click **Yes** toodelete.</span></span>
+
+<span data-ttu-id="cb28b-107">Hej **Säkerhetskopieringsprinciper** sida blir uppdaterade toodisplay hello ny lista över principer.</span><span class="sxs-lookup"><span data-stu-id="cb28b-107">hello **Backup Policies** page will be updated toodisplay hello new list of policies.</span></span>
+

@@ -1,16 +1,16 @@
-<span data-ttu-id="05de0-101">Använd Azure CLI för att hämta URL:en för fjärrdistribution för din API-app.</span><span class="sxs-lookup"><span data-stu-id="05de0-101">Use the Azure CLI to get the remote deployment URL for your API App.</span></span> <span data-ttu-id="05de0-102">Ersätt *\<app_name>* med din webbapps namn i följande kommando.</span><span class="sxs-lookup"><span data-stu-id="05de0-102">In the following command, replace *\<app_name>* with your web app's name.</span></span>
+<span data-ttu-id="82f2d-101">Använd hello Azure CLI tooget hello Fjärrdistribution URL för API-appen.</span><span class="sxs-lookup"><span data-stu-id="82f2d-101">Use hello Azure CLI tooget hello remote deployment URL for your API App.</span></span> <span data-ttu-id="82f2d-102">Följande kommando, Ersätt i hello  *\<appnamn >* med namnet på ditt webbprogram.</span><span class="sxs-lookup"><span data-stu-id="82f2d-102">In hello following command, replace *\<app_name>* with your web app's name.</span></span>
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group myResourceGroup --query url --output tsv
 ```
 
-<span data-ttu-id="05de0-103">Konfigurera din lokala Git-distribution för att kunna push-överföra till en fjärrplats.</span><span class="sxs-lookup"><span data-stu-id="05de0-103">Configure your local Git deployment to be able to push to the remote.</span></span>
+<span data-ttu-id="82f2d-103">Konfigurera din lokala Git-distribution toobe kan toopush toohello fjärråtkomst.</span><span class="sxs-lookup"><span data-stu-id="82f2d-103">Configure your local Git deployment toobe able toopush toohello remote.</span></span>
 
 ```bash
 git remote add azure <URI from previous step>
 ```
 
-<span data-ttu-id="05de0-104">Skicka till Azure-fjärrdatabasen för att distribuera appen.</span><span class="sxs-lookup"><span data-stu-id="05de0-104">Push to the Azure remote to deploy your app.</span></span> <span data-ttu-id="05de0-105">Du uppmanas att ange lösenordet som du skapade tidigare när du skapade distributionsanvändaren.</span><span class="sxs-lookup"><span data-stu-id="05de0-105">You are prompted for the password you created earlier when you created the deployment user.</span></span> <span data-ttu-id="05de0-106">Se till att du anger det lösenord som du skapade tidigare i snabbstarten, inte lösenordet som du använde när du loggade in på Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="05de0-106">Make sure that you enter the password you created in earlier in the quickstart, and not the password you use to log in to the Azure portal.</span></span>
+<span data-ttu-id="82f2d-104">Skicka toohello Azure remote toodeploy din app.</span><span class="sxs-lookup"><span data-stu-id="82f2d-104">Push toohello Azure remote toodeploy your app.</span></span> <span data-ttu-id="82f2d-105">Du ombeds hello lösenord som du skapade tidigare när du skapade hello distribution användare.</span><span class="sxs-lookup"><span data-stu-id="82f2d-105">You are prompted for hello password you created earlier when you created hello deployment user.</span></span> <span data-ttu-id="82f2d-106">Kontrollera att du anger hello lösenordet du skapade i tidigare i hello quickstart och inte hello lösenord du använder toolog i toohello Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="82f2d-106">Make sure that you enter hello password you created in earlier in hello quickstart, and not hello password you use toolog in toohello Azure portal.</span></span>
 
 ```bash
 git push azure master

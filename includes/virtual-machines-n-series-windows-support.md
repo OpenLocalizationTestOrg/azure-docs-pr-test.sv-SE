@@ -1,0 +1,19 @@
+## <a name="supported-operating-systems-and-drivers"></a><span data-ttu-id="cbf02-101">Operativsystem och drivrutiner som stöds</span><span class="sxs-lookup"><span data-stu-id="cbf02-101">Supported operating systems and drivers</span></span>
+
+### <a name="nv-instances---nvidia-grid-drivers"></a><span data-ttu-id="cbf02-102">NV-instanser – NVIDIA GRID-drivrutiner</span><span class="sxs-lookup"><span data-stu-id="cbf02-102">NV instances - NVIDIA GRID drivers</span></span>
+
+| <span data-ttu-id="cbf02-103">Operativsystem</span><span class="sxs-lookup"><span data-stu-id="cbf02-103">OS</span></span> | <span data-ttu-id="cbf02-104">Drivrutin</span><span class="sxs-lookup"><span data-stu-id="cbf02-104">Driver</span></span> |
+| -------- |------------- |
+| <span data-ttu-id="cbf02-105">Windows Server 2016</span><span class="sxs-lookup"><span data-stu-id="cbf02-105">Windows Server 2016</span></span> | <span data-ttu-id="cbf02-106">[370.12](https://go.microsoft.com/fwlink/?linkid=836843) (.exe)</span><span class="sxs-lookup"><span data-stu-id="cbf02-106">[370.12](https://go.microsoft.com/fwlink/?linkid=836843) (.exe)</span></span> |
+| <span data-ttu-id="cbf02-107">Windows Server 2012 R2</span><span class="sxs-lookup"><span data-stu-id="cbf02-107">Windows Server 2012 R2</span></span> | <span data-ttu-id="cbf02-108">[370.12](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)</span><span class="sxs-lookup"><span data-stu-id="cbf02-108">[370.12](https://go.microsoft.com/fwlink/?linkid=836844) (.exe)</span></span>  |
+
+### <a name="nc-instances---nvidia-tesla-drivers"></a><span data-ttu-id="cbf02-109">NC-instanser – NVIDIA Tesla-drivrutiner</span><span class="sxs-lookup"><span data-stu-id="cbf02-109">NC instances - NVIDIA Tesla drivers</span></span>
+
+| <span data-ttu-id="cbf02-110">Operativsystem</span><span class="sxs-lookup"><span data-stu-id="cbf02-110">OS</span></span> | <span data-ttu-id="cbf02-111">Drivrutin</span><span class="sxs-lookup"><span data-stu-id="cbf02-111">Driver</span></span> |
+| -------- |------------- |
+| <span data-ttu-id="cbf02-112">Windows Server 2016</span><span class="sxs-lookup"><span data-stu-id="cbf02-112">Windows Server 2016</span></span> | <span data-ttu-id="cbf02-113">[376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2016-international-whql.exe) (.exe)</span><span class="sxs-lookup"><span data-stu-id="cbf02-113">[376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2016-international-whql.exe) (.exe)</span></span> |
+| <span data-ttu-id="cbf02-114">Windows Server 2012 R2</span><span class="sxs-lookup"><span data-stu-id="cbf02-114">Windows Server 2012 R2</span></span> | <span data-ttu-id="cbf02-115">[376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2008-2012r2-64bit-international-whql.exe) (.exe)</span><span class="sxs-lookup"><span data-stu-id="cbf02-115">[376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2008-2012r2-64bit-international-whql.exe) (.exe)</span></span> |
+
+> [!NOTE]
+> <span data-ttu-id="cbf02-116">Nedladdningslänkarna till Tesla-drivrutinen publiceras inom kort.</span><span class="sxs-lookup"><span data-stu-id="cbf02-116">Tesla driver download links are current at time of publication.</span></span> <span data-ttu-id="cbf02-117">Besök för hello senaste drivrutiner hello [NVIDIA](http://www.nvidia.com/) webbplats.</span><span class="sxs-lookup"><span data-stu-id="cbf02-117">For hello latest drivers, visit hello [NVIDIA](http://www.nvidia.com/) website.</span></span>
+>

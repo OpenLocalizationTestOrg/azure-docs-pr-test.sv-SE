@@ -1,6 +1,6 @@
 ---
-title: "Starta diagnostik för virtuella Windows-datorer i Azure | Microsoft-dokument"
-description: "Översikt över två felsökning funktioner för Windows-datorer i Azure"
+title: "aaaBoot diagnostik för Windows-datorer i Azure | Microsoft-dokument"
+description: "Översikt över hello två felsökning funktioner för Windows-datorer i Azure"
 services: virtual-machines-windows
 documentationcenter: virtual-machines-windows
 author: Deland-Han
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: delhan
-ms.openlocfilehash: 12edd2628d2f15ad608f940dcf5d46363d2e9172
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 353c58562929de2dc49bb8c89ce1d0d6b6a0aa18
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-boot-diagnostics-to-troubleshoot-windows-virtual-machines-in-azure"></a><span data-ttu-id="80076-103">Hur du använder startdiagnostikinställningar för att felsöka Windows-datorer i Azure</span><span class="sxs-lookup"><span data-stu-id="80076-103">How to use boot diagnostics to troubleshoot Windows virtual machines in Azure</span></span>
+# <a name="how-toouse-boot-diagnostics-tootroubleshoot-windows-virtual-machines-in-azure"></a><span data-ttu-id="7845d-103">Hur toouse starta diagnostik tootroubleshoot virtuella Windows-datorer i Azure</span><span class="sxs-lookup"><span data-stu-id="7845d-103">How toouse boot diagnostics tootroubleshoot Windows virtual machines in Azure</span></span>
 
 [!INCLUDE [virtual-machines-common-boot-diagnostics](../../../includes/virtual-machines-common-boot-diagnostics.md)]

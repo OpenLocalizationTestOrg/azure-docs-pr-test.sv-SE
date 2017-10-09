@@ -1,0 +1,6 @@
+## <a name="versions-of-hello-azure-cli"></a><span data-ttu-id="a265d-101">Versioner av hello Azure CLI</span><span class="sxs-lookup"><span data-stu-id="a265d-101">Versions of hello Azure CLI</span></span>
+
+<span data-ttu-id="a265d-102">Det finns två versioner av hello Azure-kommandoradsgränssnittet (CLI) som är tillgängliga:</span><span class="sxs-lookup"><span data-stu-id="a265d-102">There are two versions of hello Azure Command-Line Interface (CLI) currently available:</span></span>
+
+* <span data-ttu-id="a265d-103">[Azure CLI 2.0](../articles/storage/common/storage-azure-cli.md): vår nästa generations CLI som skrivits i Python, för hello Resource Manager-modellen.</span><span class="sxs-lookup"><span data-stu-id="a265d-103">[Azure CLI 2.0](../articles/storage/common/storage-azure-cli.md): Our next-generation CLI written in Python, for use with hello Resource Manager deployment model.</span></span>
+* <span data-ttu-id="a265d-104">[Azure CLI 1.0](../articles/storage/common/storage-azure-cli-nodejs.md): vår CLI som skrivits i Node.js, för både hello klassisk och Resource Manager distributionsmodellerna.</span><span class="sxs-lookup"><span data-stu-id="a265d-104">[Azure CLI 1.0](../articles/storage/common/storage-azure-cli-nodejs.md): Our CLI written in Node.js, for use with both hello classic and Resource Manager deployment models.</span></span>

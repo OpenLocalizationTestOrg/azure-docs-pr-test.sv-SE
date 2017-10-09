@@ -1,0 +1,4 @@
+> [!TIP]
+>
+> <span data-ttu-id="2dd2e-101">Om du planerar toouse hello HTTP- eller WebHook-bindningar, planera tooavoid port uttömning som kan orsakas av felaktig instansiering av `HttpClient`.</span><span class="sxs-lookup"><span data-stu-id="2dd2e-101">If you plan toouse hello HTTP or WebHook bindings, plan tooavoid port exhaustion that can be caused by improper instantiation of `HttpClient`.</span></span> <span data-ttu-id="2dd2e-102">Mer information finns i artikeln hello [felaktig instansiering antipattern](https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/).</span><span class="sxs-lookup"><span data-stu-id="2dd2e-102">For more information, review hello article [Improper Instantiation antipattern](https://docs.microsoft.com/en-us/azure/architecture/antipatterns/improper-instantiation/).</span></span>
+>

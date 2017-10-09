@@ -1,6 +1,6 @@
 ---
-title: "Framtvinga säkerhet med principer på virtuella Windows-datorer i Azure | Microsoft Docs"
-description: "Hur du använder en princip till en Azure Resource Manager Windows virtuell dator"
+title: "aaaEnforce säkerheten med hjälp av principer på virtuella Windows-datorer i Azure | Microsoft Docs"
+description: Hur tooapply princip-tooan Azure Resource Manager Windows-dator
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 246f5958478fd6d9afc9ba990413ab08429bd25d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b31c8a03ecf8eed6a929f97fe4146ea14364404f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a><span data-ttu-id="f6114-103">Tillämpa principer för virtuella Windows-datorer med Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="f6114-103">Apply policies to Windows VMs with Azure Resource Manager</span></span>
-<span data-ttu-id="f6114-104">En organisation kan tillämpa olika konventioner och regler i hela företaget med hjälp av principer.</span><span class="sxs-lookup"><span data-stu-id="f6114-104">By using policies, an organization can enforce various conventions and rules throughout the enterprise.</span></span> <span data-ttu-id="f6114-105">Tillämpning av önskat beteende kan du minimera risken när bidrar till att organisationen.</span><span class="sxs-lookup"><span data-stu-id="f6114-105">Enforcement of the desired behavior can help mitigate risk while contributing to the success of the organization.</span></span> <span data-ttu-id="f6114-106">I den här artikeln beskriver vi hur du kan använda principer för Azure Resource Manager för att definiera önskat beteende för virtuella datorer i din organisation.</span><span class="sxs-lookup"><span data-stu-id="f6114-106">In this article, we describe how you can use Azure Resource Manager policies to define the desired behavior for your organization’s Virtual Machines.</span></span>
+# <a name="apply-policies-toowindows-vms-with-azure-resource-manager"></a><span data-ttu-id="e8907-103">Tillämpa principer tooWindows virtuella datorer med Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="e8907-103">Apply policies tooWindows VMs with Azure Resource Manager</span></span>
+<span data-ttu-id="e8907-104">En organisation kan tillämpa olika konventioner och regler i hello företag med hjälp av principer.</span><span class="sxs-lookup"><span data-stu-id="e8907-104">By using policies, an organization can enforce various conventions and rules throughout hello enterprise.</span></span> <span data-ttu-id="e8907-105">Tvingande av hello önskad beteendet kan att minska risken vid bidrar toohello framgång hello organisation.</span><span class="sxs-lookup"><span data-stu-id="e8907-105">Enforcement of hello desired behavior can help mitigate risk while contributing toohello success of hello organization.</span></span> <span data-ttu-id="e8907-106">I den här artikeln beskriver vi hur du kan använda Azure Resource Manager principer toodefine hello önskad beteendet för virtuella datorer i din organisation.</span><span class="sxs-lookup"><span data-stu-id="e8907-106">In this article, we describe how you can use Azure Resource Manager policies toodefine hello desired behavior for your organization’s Virtual Machines.</span></span>
 
-<span data-ttu-id="f6114-107">En introduktion till principer, se [använda princip för att hantera resurser och åtkomstkontroll](../../azure-resource-manager/resource-manager-policy.md).</span><span class="sxs-lookup"><span data-stu-id="f6114-107">For an introduction to policies, see [Use Policy to manage resources and control access](../../azure-resource-manager/resource-manager-policy.md).</span></span>
+<span data-ttu-id="e8907-107">En introduktion toopolicies finns [använda princip toomanage resurser och kontrollera åtkomst](../../azure-resource-manager/resource-manager-policy.md).</span><span class="sxs-lookup"><span data-stu-id="e8907-107">For an introduction toopolicies, see [Use Policy toomanage resources and control access](../../azure-resource-manager/resource-manager-policy.md).</span></span>
 
-## <a name="permitted-virtual-machines"></a><span data-ttu-id="f6114-108">Tillåtna virtuella datorer</span><span class="sxs-lookup"><span data-stu-id="f6114-108">Permitted Virtual Machines</span></span>
-<span data-ttu-id="f6114-109">För att säkerställa att virtuella datorer för din organisation är kompatibla med ett program, kan du begränsa de tillåtna operativsystem.</span><span class="sxs-lookup"><span data-stu-id="f6114-109">To ensure that virtual machines for your organization are compatible with an application, you can restrict the permitted operating systems.</span></span> <span data-ttu-id="f6114-110">I exemplet nedan principen Tillåt endast Windows Server 2012 R2 Datacenter virtuella datorer som ska skapas:</span><span class="sxs-lookup"><span data-stu-id="f6114-110">In the following policy example, you allow only Windows Server 2012 R2 Datacenter Virtual Machines to be created:</span></span>
+## <a name="permitted-virtual-machines"></a><span data-ttu-id="e8907-108">Tillåtna virtuella datorer</span><span class="sxs-lookup"><span data-stu-id="e8907-108">Permitted Virtual Machines</span></span>
+<span data-ttu-id="e8907-109">tooensure att virtuella datorer för din organisation är kompatibla med ett program, kan du begränsa hello tillåtna operativsystem.</span><span class="sxs-lookup"><span data-stu-id="e8907-109">tooensure that virtual machines for your organization are compatible with an application, you can restrict hello permitted operating systems.</span></span> <span data-ttu-id="e8907-110">I följande exempel princip hello, Tillåt endast Windows Server 2012 R2 Datacenter-datorer toobe skapas:</span><span class="sxs-lookup"><span data-stu-id="e8907-110">In hello following policy example, you allow only Windows Server 2012 R2 Datacenter Virtual Machines toobe created:</span></span>
 
 ```json
 {
@@ -79,7 +79,7 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-<span data-ttu-id="f6114-111">Du kan använda jokertecken för att ändra föregående princip för att tillåta alla Windows Server Datacenter-avbildning:</span><span class="sxs-lookup"><span data-stu-id="f6114-111">Use a wild card to modify the preceding policy to allow any Windows Server Datacenter image:</span></span>
+<span data-ttu-id="e8907-111">Använd ett jokertecken toomodify hello föregående princip tooallow någon Windows Server Datacenter bild:</span><span class="sxs-lookup"><span data-stu-id="e8907-111">Use a wild card toomodify hello preceding policy tooallow any Windows Server Datacenter image:</span></span>
 
 ```json
 {
@@ -88,7 +88,7 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-<span data-ttu-id="f6114-112">Använd anyOf för att ändra föregående princip för att tillåta alla Windows Server 2012 R2 Datacenter eller högre avbildningen:</span><span class="sxs-lookup"><span data-stu-id="f6114-112">Use anyOf to modify the preceding policy to allow any Windows Server 2012 R2 Datacenter or higher image:</span></span>
+<span data-ttu-id="e8907-112">Använd anyOf toomodify hello föregående princip tooallow alla Windows Server 2012 R2 Datacenter eller högre bild:</span><span class="sxs-lookup"><span data-stu-id="e8907-112">Use anyOf toomodify hello preceding policy tooallow any Windows Server 2012 R2 Datacenter or higher image:</span></span>
 
 ```json
 {
@@ -105,11 +105,11 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-<span data-ttu-id="f6114-113">Information om principfält finns [princip alias](../../azure-resource-manager/resource-manager-policy.md#aliases).</span><span class="sxs-lookup"><span data-stu-id="f6114-113">For information about policy fields, see [Policy aliases](../../azure-resource-manager/resource-manager-policy.md#aliases).</span></span>
+<span data-ttu-id="e8907-113">Information om principfält finns [princip alias](../../azure-resource-manager/resource-manager-policy.md#aliases).</span><span class="sxs-lookup"><span data-stu-id="e8907-113">For information about policy fields, see [Policy aliases](../../azure-resource-manager/resource-manager-policy.md#aliases).</span></span>
 
-## <a name="managed-disks"></a><span data-ttu-id="f6114-114">Hanterade diskar</span><span class="sxs-lookup"><span data-stu-id="f6114-114">Managed disks</span></span>
+## <a name="managed-disks"></a><span data-ttu-id="e8907-114">Hanterade diskar</span><span class="sxs-lookup"><span data-stu-id="e8907-114">Managed disks</span></span>
 
-<span data-ttu-id="f6114-115">Om du vill kräva användning av hanterade diskar, använder du följande princip:</span><span class="sxs-lookup"><span data-stu-id="f6114-115">To require the use of managed disks, use the following policy:</span></span>
+<span data-ttu-id="e8907-115">toorequire hello användning av hanterade diskar, Använd hello följande princip:</span><span class="sxs-lookup"><span data-stu-id="e8907-115">toorequire hello use of managed disks, use hello following policy:</span></span>
 
 ```json
 {
@@ -155,11 +155,11 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-## <a name="images-for-virtual-machines"></a><span data-ttu-id="f6114-116">Avbildningar för virtuella datorer</span><span class="sxs-lookup"><span data-stu-id="f6114-116">Images for Virtual Machines</span></span>
+## <a name="images-for-virtual-machines"></a><span data-ttu-id="e8907-116">Avbildningar för virtuella datorer</span><span class="sxs-lookup"><span data-stu-id="e8907-116">Images for Virtual Machines</span></span>
 
-<span data-ttu-id="f6114-117">Av säkerhetsskäl bör kräva du att godkända anpassade avbildningar distribueras i din miljö.</span><span class="sxs-lookup"><span data-stu-id="f6114-117">For security reasons, you can require that only approved custom images are deployed in your environment.</span></span> <span data-ttu-id="f6114-118">Du kan ange antingen resursgruppen som innehåller godkända bilder eller specifika godkända bilder.</span><span class="sxs-lookup"><span data-stu-id="f6114-118">You can specify either the resource group that contains the approved images, or the specific approved images.</span></span>
+<span data-ttu-id="e8907-117">Av säkerhetsskäl bör kräva du att godkända anpassade avbildningar distribueras i din miljö.</span><span class="sxs-lookup"><span data-stu-id="e8907-117">For security reasons, you can require that only approved custom images are deployed in your environment.</span></span> <span data-ttu-id="e8907-118">Du kan ange hello resursgruppen som innehåller hello godkända bilder eller hello specifika godkända bilder.</span><span class="sxs-lookup"><span data-stu-id="e8907-118">You can specify either hello resource group that contains hello approved images, or hello specific approved images.</span></span>
 
-<span data-ttu-id="f6114-119">I följande exempel kräver avbildningar från en godkänd resursgrupp:</span><span class="sxs-lookup"><span data-stu-id="f6114-119">The following example requires images from an approved resource group:</span></span>
+<span data-ttu-id="e8907-119">följande exempel hello kräver avbildningar från en godkänd resursgrupp:</span><span class="sxs-lookup"><span data-stu-id="e8907-119">hello following example requires images from an approved resource group:</span></span>
 
 ```json
 {
@@ -186,7 +186,7 @@ ms.lasthandoff: 08/29/2017
 } 
 ```
 
-<span data-ttu-id="f6114-120">I följande exempel anger godkända image-ID: N:</span><span class="sxs-lookup"><span data-stu-id="f6114-120">The following example specifies the approved image IDs:</span></span>
+<span data-ttu-id="e8907-120">hello anger följande exempel hello godkända bild ID: N:</span><span class="sxs-lookup"><span data-stu-id="e8907-120">hello following example specifies hello approved image IDs:</span></span>
 
 ```json
 {
@@ -195,9 +195,9 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-## <a name="virtual-machine-extensions"></a><span data-ttu-id="f6114-121">Tillägg för virtuell dator</span><span class="sxs-lookup"><span data-stu-id="f6114-121">Virtual Machine extensions</span></span>
+## <a name="virtual-machine-extensions"></a><span data-ttu-id="e8907-121">Tillägg för virtuell dator</span><span class="sxs-lookup"><span data-stu-id="e8907-121">Virtual Machine extensions</span></span>
 
-<span data-ttu-id="f6114-122">Du kanske vill förbjuda användningen av vissa typer av tillägg.</span><span class="sxs-lookup"><span data-stu-id="f6114-122">You may want to forbid usage of certain types of extensions.</span></span> <span data-ttu-id="f6114-123">Till exempel kanske ett tillägg inte kompatibelt med vissa virtuella datoravbildningar.</span><span class="sxs-lookup"><span data-stu-id="f6114-123">For example, an extension may not be compatible with certain custom virtual machine images.</span></span> <span data-ttu-id="f6114-124">I följande exempel visas hur du blockerar ett specifikt filnamnstillägg.</span><span class="sxs-lookup"><span data-stu-id="f6114-124">The following example shows how to block a specific extension.</span></span> <span data-ttu-id="f6114-125">Används för utgivare och typ för att bestämma vilka tillägg som ska blockeras.</span><span class="sxs-lookup"><span data-stu-id="f6114-125">It uses publisher and type to determine which extension to block.</span></span>
+<span data-ttu-id="e8907-122">Du kanske vill tooforbid användningen av vissa typer av tillägg.</span><span class="sxs-lookup"><span data-stu-id="e8907-122">You may want tooforbid usage of certain types of extensions.</span></span> <span data-ttu-id="e8907-123">Till exempel kanske ett tillägg inte kompatibelt med vissa virtuella datoravbildningar.</span><span class="sxs-lookup"><span data-stu-id="e8907-123">For example, an extension may not be compatible with certain custom virtual machine images.</span></span> <span data-ttu-id="e8907-124">följande exempel visar hur hello tooblock ett specifikt filnamnstillägg.</span><span class="sxs-lookup"><span data-stu-id="e8907-124">hello following example shows how tooblock a specific extension.</span></span> <span data-ttu-id="e8907-125">Den använder utgivare och typen toodetermine vilka tillägg tooblock.</span><span class="sxs-lookup"><span data-stu-id="e8907-125">It uses publisher and type toodetermine which extension tooblock.</span></span>
 
 ```json
 {
@@ -225,9 +225,9 @@ ms.lasthandoff: 08/29/2017
 ```
 
 
-## <a name="azure-hybrid-use-benefit"></a><span data-ttu-id="f6114-126">Hybridrapportering i Azure används förmån</span><span class="sxs-lookup"><span data-stu-id="f6114-126">Azure Hybrid Use Benefit</span></span>
+## <a name="azure-hybrid-use-benefit"></a><span data-ttu-id="e8907-126">Hybridrapportering i Azure används förmån</span><span class="sxs-lookup"><span data-stu-id="e8907-126">Azure Hybrid Use Benefit</span></span>
 
-<span data-ttu-id="f6114-127">När du har en licens för lokala sparar du licens avgift på virtuella datorer.</span><span class="sxs-lookup"><span data-stu-id="f6114-127">When you have an on-premise license, you can save the license fee on your virtual machines.</span></span> <span data-ttu-id="f6114-128">När du inte har licensen som bör du förbjuda alternativet.</span><span class="sxs-lookup"><span data-stu-id="f6114-128">When you don't have the license, you should forbid the option.</span></span> <span data-ttu-id="f6114-129">Följande princip tillåter inte användning av Azure Hybrid Använd förmånen (AHUB):</span><span class="sxs-lookup"><span data-stu-id="f6114-129">The following policy forbids usage of Azure Hybrid Use Benefit (AHUB):</span></span>
+<span data-ttu-id="e8907-127">När du har en licens för lokala sparar du hello licens avgift på virtuella datorer.</span><span class="sxs-lookup"><span data-stu-id="e8907-127">When you have an on-premise license, you can save hello license fee on your virtual machines.</span></span> <span data-ttu-id="e8907-128">När du inte har hello licens, bör du förbjuda hello-alternativet.</span><span class="sxs-lookup"><span data-stu-id="e8907-128">When you don't have hello license, you should forbid hello option.</span></span> <span data-ttu-id="e8907-129">hello följande princip tillåter inte användning av Azure Hybrid Använd förmånen (AHUB):</span><span class="sxs-lookup"><span data-stu-id="e8907-129">hello following policy forbids usage of Azure Hybrid Use Benefit (AHUB):</span></span>
 
 ```json
 {
@@ -249,7 +249,7 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="f6114-130">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="f6114-130">Next steps</span></span>
-* <span data-ttu-id="f6114-131">När du definierar en regel (som visas i föregående exempel) behöver du skapar principdefinitionen och kopplar den till ett omfång.</span><span class="sxs-lookup"><span data-stu-id="f6114-131">After defining a policy rule (as shown in the preceding examples), you need to create the policy definition and assign it to a scope.</span></span> <span data-ttu-id="f6114-132">Omfattningen kan vara en prenumeration, resursgrupp eller resurs.</span><span class="sxs-lookup"><span data-stu-id="f6114-132">The scope can be a subscription, resource group, or resource.</span></span> <span data-ttu-id="f6114-133">Om du vill tilldela principer via portalen finns [Använd Azure-portalen för att tilldela och hantera resursprinciper](../../azure-resource-manager/resource-manager-policy-portal.md).</span><span class="sxs-lookup"><span data-stu-id="f6114-133">To assign policies through the portal, see [Use Azure portal to assign and manage resource policies](../../azure-resource-manager/resource-manager-policy-portal.md).</span></span> <span data-ttu-id="f6114-134">Om du vill tilldela principer via REST-API, PowerShell eller Azure CLI, se [tilldela och hantera principer via skript](../../azure-resource-manager/resource-manager-policy-create-assign.md).</span><span class="sxs-lookup"><span data-stu-id="f6114-134">To assign policies through REST API, PowerShell or Azure CLI, see [Assign and manage policies through script](../../azure-resource-manager/resource-manager-policy-create-assign.md).</span></span>
-* <span data-ttu-id="f6114-135">En introduktion till resursprinciper finns [resurs uppgifter](../../azure-resource-manager/resource-manager-policy.md).</span><span class="sxs-lookup"><span data-stu-id="f6114-135">For an introduction to resource policies, see [Resource policy overview](../../azure-resource-manager/resource-manager-policy.md).</span></span>
-* <span data-ttu-id="f6114-136">Vägledning för hur företag kan använda resurshanteraren för att effektivt hantera prenumerationer finns i [Azure enterprise scaffold - förebyggande prenumerationsåtgärder](../../azure-resource-manager/resource-manager-subscription-governance.md).</span><span class="sxs-lookup"><span data-stu-id="f6114-136">For guidance on how enterprises can use Resource Manager to effectively manage subscriptions, see [Azure enterprise scaffold - prescriptive subscription governance](../../azure-resource-manager/resource-manager-subscription-governance.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="e8907-130">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="e8907-130">Next steps</span></span>
+* <span data-ttu-id="e8907-131">När du har definierat en regel (som visas i föregående exempel hello) måste toocreate hello principdefinitionen och tilldela den tooa omfång.</span><span class="sxs-lookup"><span data-stu-id="e8907-131">After defining a policy rule (as shown in hello preceding examples), you need toocreate hello policy definition and assign it tooa scope.</span></span> <span data-ttu-id="e8907-132">hello scope kan vara en prenumeration, resursgrupp eller resurs.</span><span class="sxs-lookup"><span data-stu-id="e8907-132">hello scope can be a subscription, resource group, or resource.</span></span> <span data-ttu-id="e8907-133">tooassign principer hello-portalen finns i [Använd Azure portal tooassign och hantera resursprinciper](../../azure-resource-manager/resource-manager-policy-portal.md).</span><span class="sxs-lookup"><span data-stu-id="e8907-133">tooassign policies through hello portal, see [Use Azure portal tooassign and manage resource policies](../../azure-resource-manager/resource-manager-policy-portal.md).</span></span> <span data-ttu-id="e8907-134">tooassign principer via REST-API, PowerShell eller Azure CLI, se [tilldela och hantera principer via skript](../../azure-resource-manager/resource-manager-policy-create-assign.md).</span><span class="sxs-lookup"><span data-stu-id="e8907-134">tooassign policies through REST API, PowerShell or Azure CLI, see [Assign and manage policies through script](../../azure-resource-manager/resource-manager-policy-create-assign.md).</span></span>
+* <span data-ttu-id="e8907-135">En introduktion tooresource principer finns i [resurs uppgifter](../../azure-resource-manager/resource-manager-policy.md).</span><span class="sxs-lookup"><span data-stu-id="e8907-135">For an introduction tooresource policies, see [Resource policy overview](../../azure-resource-manager/resource-manager-policy.md).</span></span>
+* <span data-ttu-id="e8907-136">Anvisningar om hur företag kan använda Resource Manager tooeffectively hantera prenumerationer, se [kodskelett Azure enterprise - normativ prenumeration styrning](../../azure-resource-manager/resource-manager-subscription-governance.md).</span><span class="sxs-lookup"><span data-stu-id="e8907-136">For guidance on how enterprises can use Resource Manager tooeffectively manage subscriptions, see [Azure enterprise scaffold - prescriptive subscription governance](../../azure-resource-manager/resource-manager-subscription-governance.md).</span></span>

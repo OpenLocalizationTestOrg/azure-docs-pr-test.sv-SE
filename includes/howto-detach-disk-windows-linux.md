@@ -1,39 +1,39 @@
-<span data-ttu-id="20334-101">När du inte längre behöver en datadisk som är ansluten till en virtuell dator kan du enkelt koppla bort den.</span><span class="sxs-lookup"><span data-stu-id="20334-101">When you no longer need a data disk that's attached to a virtual machine, you can easily detach it.</span></span> <span data-ttu-id="20334-102">När du kopplar bort en disk tar du bort den från den virtuella datorn, men du tar inte bort den från Azure-lagringskontot.</span><span class="sxs-lookup"><span data-stu-id="20334-102">Detaching a disk removes the disk from the virtual machine, but doesn't delete the disk from the Azure storage account.</span></span>
+<span data-ttu-id="7042f-101">När du inte längre behöver en datadisk som är bifogade tooa virtuell dator kan du enkelt kan koppla från den.</span><span class="sxs-lookup"><span data-stu-id="7042f-101">When you no longer need a data disk that's attached tooa virtual machine, you can easily detach it.</span></span> <span data-ttu-id="7042f-102">Kopplar bort en disk tar bort hello disk från hello virtuell dator, men ta bort inte hello disken från hello Azure storage-konto.</span><span class="sxs-lookup"><span data-stu-id="7042f-102">Detaching a disk removes hello disk from hello virtual machine, but doesn't delete hello disk from hello Azure storage account.</span></span>
 
-<span data-ttu-id="20334-103">Om du vill använda befintliga data på disken igen kan du ansluta den igen till samma virtuella dator, eller till en annan.</span><span class="sxs-lookup"><span data-stu-id="20334-103">If you want to use the existing data on the disk again, you can reattach it to the same virtual machine, or another one.</span></span>  
+<span data-ttu-id="7042f-103">Om du vill toouse hello befintliga data på hello disk, du kan återansluta den toohello samma virtuella dator eller en annan.</span><span class="sxs-lookup"><span data-stu-id="7042f-103">If you want toouse hello existing data on hello disk again, you can reattach it toohello same virtual machine, or another one.</span></span>  
 
 > [!NOTE]
-> <span data-ttu-id="20334-104">För att koppla bort en operativsystemdisk måste du först ta bort den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="20334-104">To detach an operating system disk, you first need to delete the virtual machine.</span></span>
+> <span data-ttu-id="7042f-104">toodetach en operativsystemdisk, måste du först toodelete hello virtuell dator.</span><span class="sxs-lookup"><span data-stu-id="7042f-104">toodetach an operating system disk, you first need toodelete hello virtual machine.</span></span>
 >
 
-## <a name="find-the-disk"></a><span data-ttu-id="20334-105">Hitta disken</span><span class="sxs-lookup"><span data-stu-id="20334-105">Find the disk</span></span>
-<span data-ttu-id="20334-106">Följ de här stegen om du inte känner till namnet på disken eller vill kontrollera det innan du kopplar från den.</span><span class="sxs-lookup"><span data-stu-id="20334-106">If you don't know the name of the disk or want to verify it before you detach it, follow these steps.</span></span>
+## <a name="find-hello-disk"></a><span data-ttu-id="7042f-105">Hitta hello disk</span><span class="sxs-lookup"><span data-stu-id="7042f-105">Find hello disk</span></span>
+<span data-ttu-id="7042f-106">Om du inte vet hello namnet på hello disk eller vill tooverify den innan du koppla från den, Följ dessa steg.</span><span class="sxs-lookup"><span data-stu-id="7042f-106">If you don't know hello name of hello disk or want tooverify it before you detach it, follow these steps.</span></span>
 
-1. <span data-ttu-id="20334-107">Logga in på [Azure Portal](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="20334-107">Sign in to the [Azure portal](https://portal.azure.com).</span></span>
+1. <span data-ttu-id="7042f-107">Logga in toohello [Azure-portalen](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="7042f-107">Sign in toohello [Azure portal](https://portal.azure.com).</span></span>
 
-2. <span data-ttu-id="20334-108">Klicka på **Virtual Machines** och välj sedan den lämpliga virtuella enheten.</span><span class="sxs-lookup"><span data-stu-id="20334-108">Click **Virtual Machines**, and then select the appropriate VM.</span></span>
+2. <span data-ttu-id="7042f-108">Klicka på **virtuella datorer**, och sedan väljer hello lämpliga VM.</span><span class="sxs-lookup"><span data-stu-id="7042f-108">Click **Virtual Machines**, and then select hello appropriate VM.</span></span>
 
-3. <span data-ttu-id="20334-109">Klicka på **Diskar** under **Inställningar** längs vänsterkanten på instrumentpanelen för den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="20334-109">Click **Disks** along the left edge of the virtual machine dashboard, under **Settings**.</span></span>
+3. <span data-ttu-id="7042f-109">Klicka på **diskar** längs hello vänster kant hello virtuella instrumentpanelen under **inställningar**.</span><span class="sxs-lookup"><span data-stu-id="7042f-109">Click **Disks** along hello left edge of hello virtual machine dashboard, under **Settings**.</span></span>
 
- <span data-ttu-id="20334-110">Instrumentpanelen för den virtuella datorn visar namn och typ för alla anslutna diskar.</span><span class="sxs-lookup"><span data-stu-id="20334-110">The virtual machine dashboard lists the name and type of all attached disks.</span></span> <span data-ttu-id="20334-111">Den här skärmen visar till exempel en virtuell dator med en operativsystemdisk och en datadisk:</span><span class="sxs-lookup"><span data-stu-id="20334-111">For example, this screen shows a virtual machine with one operating system (OS) disk and one data disk:</span></span>
+ <span data-ttu-id="7042f-110">hello virtuella instrumentpanelen visar hello namn och typ för alla anslutna diskar.</span><span class="sxs-lookup"><span data-stu-id="7042f-110">hello virtual machine dashboard lists hello name and type of all attached disks.</span></span> <span data-ttu-id="7042f-111">Den här skärmen visar till exempel en virtuell dator med en operativsystemdisk och en datadisk:</span><span class="sxs-lookup"><span data-stu-id="7042f-111">For example, this screen shows a virtual machine with one operating system (OS) disk and one data disk:</span></span>
 
     ![Hitta datadisk](./media/howto-detach-disk-windows-linux/vmwithdisklist.png)
 
-## <a name="detach-the-disk"></a><span data-ttu-id="20334-113">Koppla från disken</span><span class="sxs-lookup"><span data-stu-id="20334-113">Detach the disk</span></span>
-1. <span data-ttu-id="20334-114">I Azure Portal klickar du på **Virtuella datorer** och sedan på namnet på den virtuella dator som har datadisken som du vill koppla från.</span><span class="sxs-lookup"><span data-stu-id="20334-114">From the Azure portal, click **Virtual Machines**, and then click the name of the virtual machine that has the data disk you want to detach.</span></span>
+## <a name="detach-hello-disk"></a><span data-ttu-id="7042f-113">Koppla bort hello disk</span><span class="sxs-lookup"><span data-stu-id="7042f-113">Detach hello disk</span></span>
+1. <span data-ttu-id="7042f-114">Hello Azure-portalen, klicka på **virtuella datorer**, och klicka sedan på hello namnet på hello virtuell dator som har hello datadisk du vill toodetach.</span><span class="sxs-lookup"><span data-stu-id="7042f-114">From hello Azure portal, click **Virtual Machines**, and then click hello name of hello virtual machine that has hello data disk you want toodetach.</span></span>
 
-2. <span data-ttu-id="20334-115">Klicka på **Diskar** under **Inställningar** längs vänsterkanten på instrumentpanelen för den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="20334-115">Click **Disks** along the left edge of the virtual machine dashboard, under **Settings**.</span></span>
+2. <span data-ttu-id="7042f-115">Klicka på **diskar** längs hello vänster kant hello virtuella instrumentpanelen under **inställningar**.</span><span class="sxs-lookup"><span data-stu-id="7042f-115">Click **Disks** along hello left edge of hello virtual machine dashboard, under **Settings**.</span></span>
 
-3. <span data-ttu-id="20334-116">Klicka på den disk som du vill koppla från.</span><span class="sxs-lookup"><span data-stu-id="20334-116">Click the disk you want to detach.</span></span>
+3. <span data-ttu-id="7042f-116">Klicka på hello disk du vill toodetach.</span><span class="sxs-lookup"><span data-stu-id="7042f-116">Click hello disk you want toodetach.</span></span>
 
-  ![Identifiera disken du vill koppla från](./media/howto-detach-disk-windows-linux/disklist.png)
+  ![Identifiera hello disk toodetach](./media/howto-detach-disk-windows-linux/disklist.png)
 
-4. <span data-ttu-id="20334-118">Klicka på **Koppla från** i kommandofältet.</span><span class="sxs-lookup"><span data-stu-id="20334-118">From the command bar, click **Detach**.</span></span>
+4. <span data-ttu-id="7042f-118">Hello kommandofältet klickar du på **Detach**.</span><span class="sxs-lookup"><span data-stu-id="7042f-118">From hello command bar, click **Detach**.</span></span>
 
-  ![Leta upp kommandot för att koppla från](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
+  ![Leta upp hello frånkoppling kommando](./media/howto-detach-disk-windows-linux/diskdetachcommand.png)
 
-5. <span data-ttu-id="20334-120">Klicka på **Ja** i bekräftelsefönstret för att koppla från disken.</span><span class="sxs-lookup"><span data-stu-id="20334-120">In the confirmation window, click **Yes** to detach the disk.</span></span>
+5. <span data-ttu-id="7042f-120">I fönstret för bekräftelse av hello klickar du på **Ja** toodetach hello disk.</span><span class="sxs-lookup"><span data-stu-id="7042f-120">In hello confirmation window, click **Yes** toodetach hello disk.</span></span>
 
-  ![Bekräfta frånkoppling av disken](./media/howto-detach-disk-windows-linux/confirmdetach.png)
+  ![Bekräfta kopplar bort hello-disk](./media/howto-detach-disk-windows-linux/confirmdetach.png)
 
-<span data-ttu-id="20334-122">Disken finns kvar i lagringsutrymmet men är inte längre kopplad till en virtuell dator.</span><span class="sxs-lookup"><span data-stu-id="20334-122">The disk remains in storage but is no longer attached to a virtual machine.</span></span>
+<span data-ttu-id="7042f-122">hello disk kvar i lagring men är inte längre kopplade tooa virtuell dator.</span><span class="sxs-lookup"><span data-stu-id="7042f-122">hello disk remains in storage but is no longer attached tooa virtual machine.</span></span>

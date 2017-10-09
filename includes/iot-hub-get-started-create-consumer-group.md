@@ -1,0 +1,10 @@
+## <a name="add-a-consumer-group-tooyour-iot-hub"></a><span data-ttu-id="4ea3d-101">Lägg till en konsument grupp tooyour IoT-hubb</span><span class="sxs-lookup"><span data-stu-id="4ea3d-101">Add a consumer group tooyour IoT hub</span></span>
+
+<span data-ttu-id="4ea3d-102">Konsumentgrupper används av program toopull data från Azure IoT Hub.</span><span class="sxs-lookup"><span data-stu-id="4ea3d-102">Consumer groups are used by applications toopull data from Azure IoT Hub.</span></span> <span data-ttu-id="4ea3d-103">I den här självstudiekursen skapar du en konsument grupp toobe som används av en kommande Azure-tjänst tooread data från IoT-hubb.</span><span class="sxs-lookup"><span data-stu-id="4ea3d-103">In this tutorial, you create a consumer group toobe used by a coming Azure service tooread data from your IoT hub.</span></span>
+
+<span data-ttu-id="4ea3d-104">tooadd en konsument grupp tooyour IoT hub så här:</span><span class="sxs-lookup"><span data-stu-id="4ea3d-104">tooadd a consumer group tooyour IoT hub, follow these steps:</span></span>
+
+1. <span data-ttu-id="4ea3d-105">I hello [Azure-portalen](https://ms.portal.azure.com/), öppna din IoT-hubb.</span><span class="sxs-lookup"><span data-stu-id="4ea3d-105">In hello [Azure portal](https://ms.portal.azure.com/), open your IoT hub.</span></span>
+2. <span data-ttu-id="4ea3d-106">Hello vänster klickar du på **slutpunkter**väljer **händelser** hello mellersta rutan Ange ett namn under **konsumentgrupper** på hello högra fönstret och klicka sedan på  **Spara**.</span><span class="sxs-lookup"><span data-stu-id="4ea3d-106">In hello left pane, click **Endpoints**, select **Events** on hello middle pane, enter a name under **Consumer groups** on hello right pane, and then click **Save**.</span></span>
+
+   ![Skapa en konsumentgrupp i din IoT-hubb](../articles/iot-hub/media/iot-hub-create-consumer-group/1_iot-hub-create-consumer-group-azure.png)

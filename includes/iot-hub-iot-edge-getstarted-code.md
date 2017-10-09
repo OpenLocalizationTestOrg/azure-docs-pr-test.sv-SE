@@ -1,6 +1,6 @@
-## <a name="typical-output"></a><span data-ttu-id="a133e-101">Vanliga utdata</span><span class="sxs-lookup"><span data-stu-id="a133e-101">Typical output</span></span>
+## <a name="typical-output"></a><span data-ttu-id="91b52-101">Vanliga utdata</span><span class="sxs-lookup"><span data-stu-id="91b52-101">Typical output</span></span>
 
-<span data-ttu-id="a133e-102">I följande exempel visas utdata skrivs till loggfilen av Hello World-exempel.</span><span class="sxs-lookup"><span data-stu-id="a133e-102">The following example shows the output written to the log file by the Hello World sample.</span></span> <span data-ttu-id="a133e-103">Utdata formateras för att de ska vara enkla att läsa:</span><span class="sxs-lookup"><span data-stu-id="a133e-103">The output is formatted for legibility:</span></span>
+<span data-ttu-id="91b52-102">hello visar följande exempel hello utdata skrivs toohello loggfilen av hello Hello World-exempel.</span><span class="sxs-lookup"><span data-stu-id="91b52-102">hello following example shows hello output written toohello log file by hello Hello World sample.</span></span> <span data-ttu-id="91b52-103">hello utdata formateras för läsbarhet:</span><span class="sxs-lookup"><span data-stu-id="91b52-103">hello output is formatted for legibility:</span></span>
 
 ```json
 [{
@@ -30,15 +30,15 @@
 }]
 ```
 
-## <a name="code-snippets"></a><span data-ttu-id="a133e-104">Kodfragment</span><span class="sxs-lookup"><span data-stu-id="a133e-104">Code snippets</span></span>
+## <a name="code-snippets"></a><span data-ttu-id="91b52-104">Kodfragment</span><span class="sxs-lookup"><span data-stu-id="91b52-104">Code snippets</span></span>
 
-<span data-ttu-id="a133e-105">I det här avsnittet beskrivs viktiga delar av koden i Hello\_World-exemplet.</span><span class="sxs-lookup"><span data-stu-id="a133e-105">This section discusses some key sections of the code in the hello\_world sample.</span></span>
+<span data-ttu-id="91b52-105">Det här avsnittet beskrivs vissa delar av hello kod i hello hello\_world-exempel.</span><span class="sxs-lookup"><span data-stu-id="91b52-105">This section discusses some key sections of hello code in hello hello\_world sample.</span></span>
 
-### <a name="iot-edge-gateway-creation"></a><span data-ttu-id="a133e-106">Skapa en IoT-Edge gateway</span><span class="sxs-lookup"><span data-stu-id="a133e-106">IoT Edge gateway creation</span></span>
+### <a name="iot-edge-gateway-creation"></a><span data-ttu-id="91b52-106">Skapa en IoT-Edge gateway</span><span class="sxs-lookup"><span data-stu-id="91b52-106">IoT Edge gateway creation</span></span>
 
-<span data-ttu-id="a133e-107">Du måste implementera en *gateway-processen*.</span><span class="sxs-lookup"><span data-stu-id="a133e-107">You must implement a *gateway process*.</span></span> <span data-ttu-id="a133e-108">Det här programmet skapar den interna infrastrukturen (broker), laddar IoT kant-moduler och konfigurerar gateway-processen.</span><span class="sxs-lookup"><span data-stu-id="a133e-108">This program creates the internal infrastructure (the broker), loads the IoT Edge modules, and configures the gateway process.</span></span> <span data-ttu-id="a133e-109">IoT Edge innehåller funktionen **Gateway\_Create\_From\_JSON** för att du ska kunna starta en gateway från en JSON-fil.</span><span class="sxs-lookup"><span data-stu-id="a133e-109">IoT Edge provides the **Gateway\_Create\_From\_JSON** function to enable you to bootstrap a gateway from a JSON file.</span></span> <span data-ttu-id="a133e-110">Att använda den **Gateway\_skapa\_från\_JSON** fungera, ange sökvägen till en JSON-fil som anger IoT kant-moduler för att läsa in.</span><span class="sxs-lookup"><span data-stu-id="a133e-110">To use the **Gateway\_Create\_From\_JSON** function, pass it the path to a JSON file that specifies the IoT Edge modules to load.</span></span>
+<span data-ttu-id="91b52-107">Du måste implementera en *gateway-processen*.</span><span class="sxs-lookup"><span data-stu-id="91b52-107">You must implement a *gateway process*.</span></span> <span data-ttu-id="91b52-108">Det här programmet skapar hello intern infrastruktur (hello broker), laddar hello IoT kant moduler, och konfigurerar hello gateway-processen.</span><span class="sxs-lookup"><span data-stu-id="91b52-108">This program creates hello internal infrastructure (hello broker), loads hello IoT Edge modules, and configures hello gateway process.</span></span> <span data-ttu-id="91b52-109">IoT-Edge tillhandahåller hello **Gateway\_skapa\_från\_JSON** fungerar tooenable toobootstrap en gateway från en JSON-fil.</span><span class="sxs-lookup"><span data-stu-id="91b52-109">IoT Edge provides hello **Gateway\_Create\_From\_JSON** function tooenable you toobootstrap a gateway from a JSON file.</span></span> <span data-ttu-id="91b52-110">toouse hello **Gateway\_skapa\_från\_JSON** fungera, skickar hello sökvägen tooa JSON-fil som anger hello IoT kant moduler tooload.</span><span class="sxs-lookup"><span data-stu-id="91b52-110">toouse hello **Gateway\_Create\_From\_JSON** function, pass it hello path tooa JSON file that specifies hello IoT Edge modules tooload.</span></span>
 
-<span data-ttu-id="a133e-111">Du hittar koden för gateway-processen i den *Hello World* exempel i den [main.c] [ lnk-main-c] fil.</span><span class="sxs-lookup"><span data-stu-id="a133e-111">You can find the code for the gateway process in the *Hello World* sample in the [main.c][lnk-main-c] file.</span></span> <span data-ttu-id="a133e-112">För att göra det enklare visas följande kodfragment som en förkortad version av gatewayprocesskoden.</span><span class="sxs-lookup"><span data-stu-id="a133e-112">For legibility, the following snippet shows an abbreviated version of the gateway process code.</span></span> <span data-ttu-id="a133e-113">Det här exempelprogrammet skapar en gateway och väntar sedan på att användaren ska trycka på tangenten **RETUR** innan den monterar ned gatewayen.</span><span class="sxs-lookup"><span data-stu-id="a133e-113">This example program creates a gateway and then waits for the user to press the **ENTER** key before it tears down the gateway.</span></span>
+<span data-ttu-id="91b52-111">Du kan hitta hello koden för hello gateway processen i hello *Hello World* exempel i hello [main.c] [ lnk-main-c] fil.</span><span class="sxs-lookup"><span data-stu-id="91b52-111">You can find hello code for hello gateway process in hello *Hello World* sample in hello [main.c][lnk-main-c] file.</span></span> <span data-ttu-id="91b52-112">För läsbarhet visas hello följande fragment en förkortad version av hello gateway processkod.</span><span class="sxs-lookup"><span data-stu-id="91b52-112">For legibility, hello following snippet shows an abbreviated version of hello gateway process code.</span></span> <span data-ttu-id="91b52-113">Det här exemplet programmet skapar en gateway och väntar sedan hello användaren toopress hello **RETUR** nyckeln innan den river ned hello gateway.</span><span class="sxs-lookup"><span data-stu-id="91b52-113">This example program creates a gateway and then waits for hello user toopress hello **ENTER** key before it tears down hello gateway.</span></span>
 
 ```c
 int main(int argc, char** argv)
@@ -46,7 +46,7 @@ int main(int argc, char** argv)
     GATEWAY_HANDLE gateway;
     if ((gateway = Gateway_Create_From_JSON(argv[1])) == NULL)
     {
-        printf("failed to create the gateway from JSON\n");
+        printf("failed toocreate hello gateway from JSON\n");
     }
     else
     {
@@ -59,16 +59,16 @@ int main(int argc, char** argv)
 }
 ```
 
-<span data-ttu-id="a133e-114">Inställningar för JSON-filen innehåller en lista över IoT kant moduler att läsa in och länkarna mellan moduler.</span><span class="sxs-lookup"><span data-stu-id="a133e-114">The JSON settings file contains a list of IoT Edge modules to load and the links between the modules.</span></span> <span data-ttu-id="a133e-115">Varje gräns för IoT-modul måste ange en:</span><span class="sxs-lookup"><span data-stu-id="a133e-115">Each IoT Edge module must specify a:</span></span>
+<span data-ttu-id="91b52-114">hello JSON-inställningsfilen innehåller en lista över IoT kant moduler tooload och hello länkar mellan hello moduler.</span><span class="sxs-lookup"><span data-stu-id="91b52-114">hello JSON settings file contains a list of IoT Edge modules tooload and hello links between hello modules.</span></span> <span data-ttu-id="91b52-115">Varje gräns för IoT-modul måste ange en:</span><span class="sxs-lookup"><span data-stu-id="91b52-115">Each IoT Edge module must specify a:</span></span>
 
-* <span data-ttu-id="a133e-116">**module_name**: ett unikt namn för modulen.</span><span class="sxs-lookup"><span data-stu-id="a133e-116">**name**: a unique name for the module.</span></span>
-* <span data-ttu-id="a133e-117">**loader**: en inläsare som anger hur önskad modul ska läsas in.</span><span class="sxs-lookup"><span data-stu-id="a133e-117">**loader**: a loader that knows how to load the desired module.</span></span> <span data-ttu-id="a133e-118">Inläsare är en tilläggspunkt för inläsning av olika typer av moduler.</span><span class="sxs-lookup"><span data-stu-id="a133e-118">Loaders are an extension point for loading different types of modules.</span></span> <span data-ttu-id="a133e-119">IoT-Edge ger inläsare för användning med moduler som skrivits i interna C, Node.js, Java och .NET.</span><span class="sxs-lookup"><span data-stu-id="a133e-119">IoT Edge provides loaders for use with modules written in native C, Node.js, Java, and .NET.</span></span> <span data-ttu-id="a133e-120">Hello World-exempel endast använder inbyggd C inläsaren eftersom alla moduler i det här exemplet är dynamisk bibliotek som skrivits i C. Mer information om hur du använder IoT kant-moduler som skrivits i olika språk finns i [Node.js](https://github.com/Azure/iot-edge/blob/master/samples/nodejs_simple_sample/), [Java](https://github.com/Azure/iot-edge/tree/master/samples/java_sample), eller [.NET](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample) prover.</span><span class="sxs-lookup"><span data-stu-id="a133e-120">The Hello World sample only uses the native C loader because all the modules in this sample are dynamic libraries written in C. For more information about how to use IoT Edge modules written in different languages, see the [Node.js](https://github.com/Azure/iot-edge/blob/master/samples/nodejs_simple_sample/), [Java](https://github.com/Azure/iot-edge/tree/master/samples/java_sample), or [.NET](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample) samples.</span></span>
-    * <span data-ttu-id="a133e-121">**namnet**: namnet på inläsaren används för att läsa in modulen.</span><span class="sxs-lookup"><span data-stu-id="a133e-121">**name**: the name of the loader used to load the module.</span></span>
-    * <span data-ttu-id="a133e-122">**entrypoint**: sökvägen till biblioteket som innehåller modulen.</span><span class="sxs-lookup"><span data-stu-id="a133e-122">**entrypoint**: the path to the library containing the module.</span></span> <span data-ttu-id="a133e-123">För Linux är det här biblioteket en SO-fil, i Windows är det en DLL-fil.</span><span class="sxs-lookup"><span data-stu-id="a133e-123">On Linux this library is a .so file, on Windows this library is a .dll file.</span></span> <span data-ttu-id="a133e-124">Den här registreringspunkten är specifik för den typ av inläsare som används.</span><span class="sxs-lookup"><span data-stu-id="a133e-124">The entry point is specific to the type of loader being used.</span></span> <span data-ttu-id="a133e-125">Startpunkten för Node.js-inläsaren är en JS-fil.</span><span class="sxs-lookup"><span data-stu-id="a133e-125">The Node.js loader entry point is a .js file.</span></span> <span data-ttu-id="a133e-126">Startpunkten för Java-inläsaren är en klassökväg och ett klassnamn.</span><span class="sxs-lookup"><span data-stu-id="a133e-126">The Java loader entry point is a classpath and a class name.</span></span> <span data-ttu-id="a133e-127">Startpunkten för .NET-inläsaren är ett namn på sammansättning och ett klassnamn.</span><span class="sxs-lookup"><span data-stu-id="a133e-127">The .NET loader entry point is an assembly name and a class name.</span></span>
+* <span data-ttu-id="91b52-116">**namnet**: ett unikt namn för hello-modulen.</span><span class="sxs-lookup"><span data-stu-id="91b52-116">**name**: a unique name for hello module.</span></span>
+* <span data-ttu-id="91b52-117">**inläsaren**: en inläsaren som vet hur tooload hello önskad modul.</span><span class="sxs-lookup"><span data-stu-id="91b52-117">**loader**: a loader that knows how tooload hello desired module.</span></span> <span data-ttu-id="91b52-118">Inläsare är en tilläggspunkt för inläsning av olika typer av moduler.</span><span class="sxs-lookup"><span data-stu-id="91b52-118">Loaders are an extension point for loading different types of modules.</span></span> <span data-ttu-id="91b52-119">IoT-Edge ger inläsare för användning med moduler som skrivits i interna C, Node.js, Java och .NET.</span><span class="sxs-lookup"><span data-stu-id="91b52-119">IoT Edge provides loaders for use with modules written in native C, Node.js, Java, and .NET.</span></span> <span data-ttu-id="91b52-120">hello Hello World-exempel endast använder hello interna C inläsaren eftersom alla hello moduler i det här exemplet är dynamisk bibliotek som skrivits i C. Mer information om hur toouse IoT kant moduler som skrivits i olika språk, se hello [Node.js](https://github.com/Azure/iot-edge/blob/master/samples/nodejs_simple_sample/), [Java](https://github.com/Azure/iot-edge/tree/master/samples/java_sample), eller [.NET](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample) prover.</span><span class="sxs-lookup"><span data-stu-id="91b52-120">hello Hello World sample only uses hello native C loader because all hello modules in this sample are dynamic libraries written in C. For more information about how toouse IoT Edge modules written in different languages, see hello [Node.js](https://github.com/Azure/iot-edge/blob/master/samples/nodejs_simple_sample/), [Java](https://github.com/Azure/iot-edge/tree/master/samples/java_sample), or [.NET](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample) samples.</span></span>
+    * <span data-ttu-id="91b52-121">**namnet**: hello namnet hello inläsaren används tooload hello modulen.</span><span class="sxs-lookup"><span data-stu-id="91b52-121">**name**: hello name of hello loader used tooload hello module.</span></span>
+    * <span data-ttu-id="91b52-122">**EntryPoint**: hello sökvägen toohello bibliotek som innehåller hello-modulen.</span><span class="sxs-lookup"><span data-stu-id="91b52-122">**entrypoint**: hello path toohello library containing hello module.</span></span> <span data-ttu-id="91b52-123">För Linux är det här biblioteket en SO-fil, i Windows är det en DLL-fil.</span><span class="sxs-lookup"><span data-stu-id="91b52-123">On Linux this library is a .so file, on Windows this library is a .dll file.</span></span> <span data-ttu-id="91b52-124">hello startpunkt är specifik toohello inläsaren används.</span><span class="sxs-lookup"><span data-stu-id="91b52-124">hello entry point is specific toohello type of loader being used.</span></span> <span data-ttu-id="91b52-125">hello startpunkten för Node.js inläsaren är en JS-fil.</span><span class="sxs-lookup"><span data-stu-id="91b52-125">hello Node.js loader entry point is a .js file.</span></span> <span data-ttu-id="91b52-126">hello startpunkten för Java-inläsaren är en klassökväg och ett klassnamn.</span><span class="sxs-lookup"><span data-stu-id="91b52-126">hello Java loader entry point is a classpath and a class name.</span></span> <span data-ttu-id="91b52-127">hello startpunkten för .NET-inläsaren är ett namn på sammansättning och ett klassnamn.</span><span class="sxs-lookup"><span data-stu-id="91b52-127">hello .NET loader entry point is an assembly name and a class name.</span></span>
 
-* <span data-ttu-id="a133e-128">**args**: all konfigurationsinformation modulen behöver.</span><span class="sxs-lookup"><span data-stu-id="a133e-128">**args**: any configuration information the module needs.</span></span>
+* <span data-ttu-id="91b52-128">**argument**: configuration information hello modul måste.</span><span class="sxs-lookup"><span data-stu-id="91b52-128">**args**: any configuration information hello module needs.</span></span>
 
-<span data-ttu-id="a133e-129">Följande kod visar JSON som används för att deklarera moduler Hello World-exempel för IoT-gränsen på Linux.</span><span class="sxs-lookup"><span data-stu-id="a133e-129">The following code shows the JSON used to declare all the IoT Edge modules for the Hello World sample on Linux.</span></span> <span data-ttu-id="a133e-130">Huruvida en modul kräver argument eller inte beror på modulens design.</span><span class="sxs-lookup"><span data-stu-id="a133e-130">Whether a module requires any arguments depends on the design of the module.</span></span> <span data-ttu-id="a133e-131">I det här exemplet använder loggningsmodulen ett argument som är sökvägen till utdatafilen och Hello\_World-modulen har inga argument.</span><span class="sxs-lookup"><span data-stu-id="a133e-131">In this example, the logger module takes an argument that is the path to the output file and the hello\_world module has no arguments.</span></span>
+<span data-ttu-id="91b52-129">följande kod visar hello JSON används toodeclare alla hello hello IoT kant moduler för hello Hello World-exempel på Linux.</span><span class="sxs-lookup"><span data-stu-id="91b52-129">hello following code shows hello JSON used toodeclare all hello IoT Edge modules for hello Hello World sample on Linux.</span></span> <span data-ttu-id="91b52-130">Om en modul kräver argument beror på hello utformning av hello-modulen.</span><span class="sxs-lookup"><span data-stu-id="91b52-130">Whether a module requires any arguments depends on hello design of hello module.</span></span> <span data-ttu-id="91b52-131">I det här exemplet hello loggaren modul har ett argument som är hello sökvägen toohello utdatafilen och hello hello\_world modulen har inga argument.</span><span class="sxs-lookup"><span data-stu-id="91b52-131">In this example, hello logger module takes an argument that is hello path toohello output file and hello hello\_world module has no arguments.</span></span>
 
 ```json
 "modules" :
@@ -96,14 +96,14 @@ int main(int argc, char** argv)
 ]
 ```
 
-<span data-ttu-id="a133e-132">JSON-filen innehåller också länkarna mellan de moduler som skickas till den asynkrona meddelandekön.</span><span class="sxs-lookup"><span data-stu-id="a133e-132">The JSON file also contains the links between the modules that are passed to the broker.</span></span> <span data-ttu-id="a133e-133">En länk har två egenskaper:</span><span class="sxs-lookup"><span data-stu-id="a133e-133">A link has two properties:</span></span>
+<span data-ttu-id="91b52-132">hello JSON-fil innehåller också hello länkar mellan hello-moduler som har skickats toohello broker.</span><span class="sxs-lookup"><span data-stu-id="91b52-132">hello JSON file also contains hello links between hello modules that are passed toohello broker.</span></span> <span data-ttu-id="91b52-133">En länk har två egenskaper:</span><span class="sxs-lookup"><span data-stu-id="91b52-133">A link has two properties:</span></span>
 
-* <span data-ttu-id="a133e-134">**källan**: ett Modulnamn från den `modules` avsnittet eller `\*`.</span><span class="sxs-lookup"><span data-stu-id="a133e-134">**source**: a module name from the `modules` section, or `\*`.</span></span>
-* <span data-ttu-id="a133e-135">**mottagare**: ett modulnamn från avsnittet `modules`.</span><span class="sxs-lookup"><span data-stu-id="a133e-135">**sink**: a module name from the `modules` section.</span></span>
+* <span data-ttu-id="91b52-134">**källan**: ett Modulnamn från hello `modules` avsnittet eller `\*`.</span><span class="sxs-lookup"><span data-stu-id="91b52-134">**source**: a module name from hello `modules` section, or `\*`.</span></span>
+* <span data-ttu-id="91b52-135">**sink**: ett Modulnamn från hello `modules` avsnitt.</span><span class="sxs-lookup"><span data-stu-id="91b52-135">**sink**: a module name from hello `modules` section.</span></span>
 
-<span data-ttu-id="a133e-136">Varje länk definierar en meddelandeväg och -riktning.</span><span class="sxs-lookup"><span data-stu-id="a133e-136">Each link defines a message route and direction.</span></span> <span data-ttu-id="a133e-137">Meddelanden från den **källa** modulen levereras till den **sink** modul.</span><span class="sxs-lookup"><span data-stu-id="a133e-137">Messages from the **source** module are delivered to the **sink** module.</span></span> <span data-ttu-id="a133e-138">Du kan ange den **källa** modulen `\*`, vilket indikerar att den **sink** modulen tar emot meddelanden från en modul.</span><span class="sxs-lookup"><span data-stu-id="a133e-138">You can set the **source** module to `\*`, which indicates that the **sink** module receives messages from any module.</span></span>
+<span data-ttu-id="91b52-136">Varje länk definierar en meddelandeväg och -riktning.</span><span class="sxs-lookup"><span data-stu-id="91b52-136">Each link defines a message route and direction.</span></span> <span data-ttu-id="91b52-137">Meddelanden från hello **källa** modulen levereras toohello **sink** modul.</span><span class="sxs-lookup"><span data-stu-id="91b52-137">Messages from hello **source** module are delivered toohello **sink** module.</span></span> <span data-ttu-id="91b52-138">Du kan ange hello **källa** modul för`\*`, vilket anger att hello **sink** modulen tar emot meddelanden från en modul.</span><span class="sxs-lookup"><span data-stu-id="91b52-138">You can set hello **source** module too`\*`, which indicates that hello **sink** module receives messages from any module.</span></span>
 
-<span data-ttu-id="a133e-139">Följande kod visar den JSON som används för att konfigurera länkar mellan moduler som används i Hello\_World-exemplet för Linux.</span><span class="sxs-lookup"><span data-stu-id="a133e-139">The following code shows the JSON used to configure links between the modules used in the hello\_world sample on Linux.</span></span> <span data-ttu-id="a133e-140">Alla meddelanden som genereras av modul `hello_world` används av modul `logger`.</span><span class="sxs-lookup"><span data-stu-id="a133e-140">Every message produced by the `hello_world` module is consumed by the `logger` module.</span></span>
+<span data-ttu-id="91b52-139">hello följande kod visar hello JSON används tooconfigure länkar mellan hello-moduler som används i hello hello\_world-exempel på Linux.</span><span class="sxs-lookup"><span data-stu-id="91b52-139">hello following code shows hello JSON used tooconfigure links between hello modules used in hello hello\_world sample on Linux.</span></span> <span data-ttu-id="91b52-140">Varje meddelande som genereras av hello `hello_world` modulen förbrukas av hello `logger` modul.</span><span class="sxs-lookup"><span data-stu-id="91b52-140">Every message produced by hello `hello_world` module is consumed by hello `logger` module.</span></span>
 
 ```json
 "links":
@@ -115,9 +115,9 @@ int main(int argc, char** argv)
 ]
 ```
 
-### <a name="helloworld-module-message-publishing"></a><span data-ttu-id="a133e-141">Meddelandepublicering från Hello\_World-modulen</span><span class="sxs-lookup"><span data-stu-id="a133e-141">Hello\_world module message publishing</span></span>
+### <a name="helloworld-module-message-publishing"></a><span data-ttu-id="91b52-141">Meddelandepublicering från Hello\_World-modulen</span><span class="sxs-lookup"><span data-stu-id="91b52-141">Hello\_world module message publishing</span></span>
 
-<span data-ttu-id="a133e-142">Du kan hitta koden som används av modulen Hello\_World för att publicera meddelanden i filen [”hello_world.c”][lnk-helloworld-c].</span><span class="sxs-lookup"><span data-stu-id="a133e-142">You can find the code used by the hello\_world module to publish messages in the ['hello_world.c'][lnk-helloworld-c] file.</span></span> <span data-ttu-id="a133e-143">Kodfragmentet nedan visar en ändrad version med ytterligare kommentarer tillagda och viss felhanteringskod tas bort för att förenkla:</span><span class="sxs-lookup"><span data-stu-id="a133e-143">The following snippet shows an amended version of the code with comments added and some error handling code removed for legibility:</span></span>
+<span data-ttu-id="91b52-142">Du kan hitta hello koden som hello hello\_world modulen toopublish meddelanden i hello ['hello_world.c'] [ lnk-helloworld-c] fil.</span><span class="sxs-lookup"><span data-stu-id="91b52-142">You can find hello code used by hello hello\_world module toopublish messages in hello ['hello_world.c'][lnk-helloworld-c] file.</span></span> <span data-ttu-id="91b52-143">hello visas följande fragment en ändrad version av hello kod med kommentarer som lagts till och vissa felhantering kod tas bort för läsbarhet:</span><span class="sxs-lookup"><span data-stu-id="91b52-143">hello following snippet shows an amended version of hello code with comments added and some error handling code removed for legibility:</span></span>
 
 ```c
 int helloWorldThread(void *param)
@@ -128,18 +128,18 @@ int helloWorldThread(void *param)
     MAP_HANDLE propertiesMap = Map_Create(NULL);
 
     // add a property named "helloWorld" with a value of "from Azure IoT
-    // Gateway SDK simple sample!" to a set of message properties that
-    // will be appended to the message before publishing it. 
+    // Gateway SDK simple sample!" tooa set of message properties that
+    // will be appended toohello message before publishing it. 
     Map_AddOrUpdate(propertiesMap, "helloWorld", "from Azure IoT Gateway SDK simple sample!")
 
-    // set the content for the message
+    // set hello content for hello message
     msgConfig.size = strlen(HELLOWORLD_MESSAGE);
     msgConfig.source = HELLOWORLD_MESSAGE;
 
-    // set the properties for the message
+    // set hello properties for hello message
     msgConfig.sourceProperties = propertiesMap;
 
-    // create a message based on the msgConfig structure
+    // create a message based on hello msgConfig structure
     MESSAGE_HANDLE helloWorldMessage = Message_Create(&msgConfig);
 
     while (1)
@@ -147,11 +147,11 @@ int helloWorldThread(void *param)
         if (handleData->stopThread)
         {
             (void)Unlock(handleData->lockHandle);
-            break; /*gets out of the thread*/
+            break; /*gets out of hello thread*/
         }
         else
         {
-            // publish the message to the broker
+            // publish hello message toohello broker
             (void)Broker_Publish(handleData->brokerHandle, helloWorldMessage);
             (void)Unlock(handleData->lockHandle);
         }
@@ -165,9 +165,9 @@ int helloWorldThread(void *param)
 }
 ```
 
-### <a name="helloworld-module-message-processing"></a><span data-ttu-id="a133e-144">Meddelandebearbetning från Hello\_World-modulen</span><span class="sxs-lookup"><span data-stu-id="a133e-144">Hello\_world module message processing</span></span>
+### <a name="helloworld-module-message-processing"></a><span data-ttu-id="91b52-144">Meddelandebearbetning från Hello\_World-modulen</span><span class="sxs-lookup"><span data-stu-id="91b52-144">Hello\_world module message processing</span></span>
 
-<span data-ttu-id="a133e-145">Hello\_world modulen bearbetar aldrig meddelanden som andra IoT kant-moduler som publicerar i Service broker.</span><span class="sxs-lookup"><span data-stu-id="a133e-145">The hello\_world module never processes messages that other IoT Edge modules publish to the broker.</span></span> <span data-ttu-id="a133e-146">Detta gör implementeringen av meddelandets återanrop i modulen Hello\_World till en icke-alternativ funktion.</span><span class="sxs-lookup"><span data-stu-id="a133e-146">Therefore, the implementation of the message callback in the hello\_world module is a no-op function.</span></span>
+<span data-ttu-id="91b52-145">hello hello\_world modulen bearbetar aldrig meddelanden att andra IoT kant moduler publicera toohello broker.</span><span class="sxs-lookup"><span data-stu-id="91b52-145">hello hello\_world module never processes messages that other IoT Edge modules publish toohello broker.</span></span> <span data-ttu-id="91b52-146">Därför hello implementering av hello-meddelande återanrop i hello hello\_world modul är en alternativ funktion.</span><span class="sxs-lookup"><span data-stu-id="91b52-146">Therefore, hello implementation of hello message callback in hello hello\_world module is a no-op function.</span></span>
 
 ```c
 static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
@@ -176,11 +176,11 @@ static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messag
 }
 ```
 
-### <a name="logger-module-message-publishing-and-processing"></a><span data-ttu-id="a133e-147">Loggningsmodulens meddelandepublicering och bearbetning</span><span class="sxs-lookup"><span data-stu-id="a133e-147">Logger module message publishing and processing</span></span>
+### <a name="logger-module-message-publishing-and-processing"></a><span data-ttu-id="91b52-147">Loggningsmodulens meddelandepublicering och bearbetning</span><span class="sxs-lookup"><span data-stu-id="91b52-147">Logger module message publishing and processing</span></span>
 
-<span data-ttu-id="a133e-148">Loggningsmodulen tar emot meddelanden från den asynkrona meddelandekön och skriver dem till en fil.</span><span class="sxs-lookup"><span data-stu-id="a133e-148">The logger module receives messages from the broker and writes them to a file.</span></span> <span data-ttu-id="a133e-149">Den publicerar aldrig meddelanden.</span><span class="sxs-lookup"><span data-stu-id="a133e-149">It never publishes any messages.</span></span> <span data-ttu-id="a133e-150">Därför anropar koden för loggningsmodulen aldrig funktionen **Broker_Publish**.</span><span class="sxs-lookup"><span data-stu-id="a133e-150">Therefore, the code of the logger module never calls the **Broker_Publish** function.</span></span>
+<span data-ttu-id="91b52-148">hello loggaren modulen tar emot meddelanden från hello broker och skriver dem tooa fil.</span><span class="sxs-lookup"><span data-stu-id="91b52-148">hello logger module receives messages from hello broker and writes them tooa file.</span></span> <span data-ttu-id="91b52-149">Den publicerar aldrig meddelanden.</span><span class="sxs-lookup"><span data-stu-id="91b52-149">It never publishes any messages.</span></span> <span data-ttu-id="91b52-150">Därför hello koden för hello loggaren modul anropar hello aldrig **Broker_Publish** funktion.</span><span class="sxs-lookup"><span data-stu-id="91b52-150">Therefore, hello code of hello logger module never calls hello **Broker_Publish** function.</span></span>
 
-<span data-ttu-id="a133e-151">Den **Logger_Receive** fungera i den [logger.c] [ lnk-logger-c] filen är återanropet Service broker anropar för att leverera meddelanden till modulen meddelandeloggfiler.</span><span class="sxs-lookup"><span data-stu-id="a133e-151">The **Logger_Receive** function in the [logger.c][lnk-logger-c] file is the callback the broker invokes to deliver messages to the logger module.</span></span> <span data-ttu-id="a133e-152">Kodfragmentet nedan visar en ändrad version med kommentarer tillagda och viss felhanteringskod tas bort för att förenkla:</span><span class="sxs-lookup"><span data-stu-id="a133e-152">The following snippet shows an amended version with comments added and some error handling code removed for legibility:</span></span>
+<span data-ttu-id="91b52-151">Hej **Logger_Receive** funktion i hello [logger.c] [ lnk-logger-c] filen är hello återanrop hello broker anropar toodeliver meddelanden toohello loggaren modulen.</span><span class="sxs-lookup"><span data-stu-id="91b52-151">hello **Logger_Receive** function in hello [logger.c][lnk-logger-c] file is hello callback hello broker invokes toodeliver messages toohello logger module.</span></span> <span data-ttu-id="91b52-152">hello visas följande fragment en ändrad version med kommentarer som lagts till och vissa felhantering kod tas bort för läsbarhet:</span><span class="sxs-lookup"><span data-stu-id="91b52-152">hello following snippet shows an amended version with comments added and some error handling code removed for legibility:</span></span>
 
 ```c
 static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
@@ -190,40 +190,40 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
     struct tm* t = localtime(&temp);
     char timetemp[80] = { 0 };
 
-    // Get the message properties from the message
+    // Get hello message properties from hello message
     CONSTMAP_HANDLE originalProperties = Message_GetProperties(messageHandle); 
     MAP_HANDLE propertiesAsMap = ConstMap_CloneWriteable(originalProperties);
 
-    // Convert the collection of properties into a JSON string
+    // Convert hello collection of properties into a JSON string
     STRING_HANDLE jsonProperties = Map_ToJSON(propertiesAsMap);
 
-    //  base64 encode the message content
+    //  base64 encode hello message content
     const CONSTBUFFER * content = Message_GetContent(messageHandle);
     STRING_HANDLE contentAsJSON = Base64_Encode_Bytes(content->buffer, content->size);
 
-    // Start the construction of the final string to be logged by adding
-    // the timestamp
+    // Start hello construction of hello final string toobe logged by adding
+    // hello timestamp
     STRING_HANDLE jsonToBeAppended = STRING_construct(",{\"time\":\"");
     STRING_concat(jsonToBeAppended, timetemp);
 
-    // Add the message properties
+    // Add hello message properties
     STRING_concat(jsonToBeAppended, "\",\"properties\":"); 
     STRING_concat_with_STRING(jsonToBeAppended, jsonProperties);
 
-    // Add the content
+    // Add hello content
     STRING_concat(jsonToBeAppended, ",\"content\":\"");
     STRING_concat_with_STRING(jsonToBeAppended, contentAsJSON);
     STRING_concat(jsonToBeAppended, "\"}]");
 
-    // Write the formatted string
+    // Write hello formatted string
     LOGGER_HANDLE_DATA *handleData = (LOGGER_HANDLE_DATA *)moduleHandle;
     addJSONString(handleData->fout, STRING_c_str(jsonToBeAppended);
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="a133e-153">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="a133e-153">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="91b52-153">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="91b52-153">Next steps</span></span>
 
-<span data-ttu-id="a133e-154">I den här artikeln får körde du en enkel IoT gräns-gatewayen som skriver meddelanden till en loggfil.</span><span class="sxs-lookup"><span data-stu-id="a133e-154">In this article, you ran a simple IoT Edge gateway that writes messages to a log file.</span></span> <span data-ttu-id="a133e-155">Om du vill köra ett exempel som skickar meddelanden till IoT-hubb finns [IoT kant – skicka meddelanden från enhet till moln med en simulerad enhet med hjälp av Linux] [ lnk-gateway-simulated-linux] eller [IoT kant – skicka meddelanden från enhet till moln med en simulerade enhet med hjälp av Windows][lnk-gateway-simulated-windows].</span><span class="sxs-lookup"><span data-stu-id="a133e-155">To run a sample that sends messages to IoT Hub, see [IoT Edge – send device-to-cloud messages with a simulated device using Linux][lnk-gateway-simulated-linux] or [IoT Edge – send device-to-cloud messages with a simulated device using Windows][lnk-gateway-simulated-windows].</span></span>
+<span data-ttu-id="91b52-154">I den här artikeln får körde du en enkel IoT gräns-gatewayen som skriver meddelanden tooa loggfilen.</span><span class="sxs-lookup"><span data-stu-id="91b52-154">In this article, you ran a simple IoT Edge gateway that writes messages tooa log file.</span></span> <span data-ttu-id="91b52-155">toorun ett exempel som skickar meddelanden tooIoT hubben, se [IoT kant – skicka meddelanden från enhet till moln med en simulerad enhet med hjälp av Linux] [ lnk-gateway-simulated-linux] eller [IoT kant – skicka meddelanden från enhet till moln med en simulerade enhet med hjälp av Windows][lnk-gateway-simulated-windows].</span><span class="sxs-lookup"><span data-stu-id="91b52-155">toorun a sample that sends messages tooIoT Hub, see [IoT Edge – send device-to-cloud messages with a simulated device using Linux][lnk-gateway-simulated-linux] or [IoT Edge – send device-to-cloud messages with a simulated device using Windows][lnk-gateway-simulated-windows].</span></span>
 
 
 <!-- Links -->

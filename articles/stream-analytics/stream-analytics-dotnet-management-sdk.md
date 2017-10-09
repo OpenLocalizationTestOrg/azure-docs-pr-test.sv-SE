@@ -1,6 +1,6 @@
 ---
-title: "Hantering av .NET SDK för Azure Stream Analytics | Microsoft Docs"
-description: "Kom igång med Stream Analytics Management .NET SDK. Lär dig hur du ställer in och kör analytics-jobb. Skapa ett projekt, indata, utdata och transformationer."
+title: "aaaManagement .NET SDK för Azure Stream Analytics | Microsoft Docs"
+description: "Kom igång med Stream Analytics Management .NET SDK. Lär dig hur tooset upp och kör analytics-jobb. Skapa ett projekt, indata, utdata och transformationer."
 keywords: .NET SDK, analytics API
 services: stream-analytics
 documentationcenter: 
@@ -15,53 +15,53 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/06/2017
 ms.author: jeffstok
-ms.openlocfilehash: f9aa812e6e82cc0f72d0cd1fe63058e53f794775
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 507c11938bc5bf2249a2e41f6bcc076db8ead3f6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a><span data-ttu-id="3b01a-106">Hantering av .NET SDK: Konfigurera och köra analytics-jobb med hjälp av Azure Stream Analytics-API: et för .NET</span><span class="sxs-lookup"><span data-stu-id="3b01a-106">Management .NET SDK: Set up and run analytics jobs using the Azure Stream Analytics API for .NET</span></span>
-<span data-ttu-id="3b01a-107">Lär dig hur du ställer in och kör analytics-jobb med hjälp av Stream Analytics-API för .NET med hantering av .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="3b01a-107">Learn how to set up and run analytics jobs using the Stream Analytics API for .NET using the Management .NET SDK.</span></span> <span data-ttu-id="3b01a-108">Ställ in ett projekt, skapa inkommande och utgående källor, omvandlingar och starta och stoppa jobb.</span><span class="sxs-lookup"><span data-stu-id="3b01a-108">Set up a project, create input and output sources, transformations, and start and stop jobs.</span></span> <span data-ttu-id="3b01a-109">För analytics-jobb kan du strömma data från Blob-lagring eller från en händelsehubb.</span><span class="sxs-lookup"><span data-stu-id="3b01a-109">For your analytics jobs, you can stream data from Blob storage or from an event hub.</span></span>
+# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-hello-azure-stream-analytics-api-for-net"></a><span data-ttu-id="aea34-106">Hantering av .NET SDK: Konfigurera och köra analytics-jobb med hello Azure Stream Analytics API för .NET</span><span class="sxs-lookup"><span data-stu-id="aea34-106">Management .NET SDK: Set up and run analytics jobs using hello Azure Stream Analytics API for .NET</span></span>
+<span data-ttu-id="aea34-107">Lär dig hur tooset in och kör analytics-jobb med hello Stream Analytics-API för att använda .NET hello Management .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="aea34-107">Learn how tooset up and run analytics jobs using hello Stream Analytics API for .NET using hello Management .NET SDK.</span></span> <span data-ttu-id="aea34-108">Ställ in ett projekt, skapa inkommande och utgående källor, omvandlingar och starta och stoppa jobb.</span><span class="sxs-lookup"><span data-stu-id="aea34-108">Set up a project, create input and output sources, transformations, and start and stop jobs.</span></span> <span data-ttu-id="aea34-109">För analytics-jobb kan du strömma data från Blob-lagring eller från en händelsehubb.</span><span class="sxs-lookup"><span data-stu-id="aea34-109">For your analytics jobs, you can stream data from Blob storage or from an event hub.</span></span>
 
-<span data-ttu-id="3b01a-110">Finns det [management referensdokumentationen för Stream Analytics-API för .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span><span class="sxs-lookup"><span data-stu-id="3b01a-110">See the [management reference documentation for the Stream Analytics API for .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span></span>
+<span data-ttu-id="aea34-110">Se hello [management i referensdokumentationen för hello Stream Analytics-API för .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span><span class="sxs-lookup"><span data-stu-id="aea34-110">See hello [management reference documentation for hello Stream Analytics API for .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span></span>
 
-<span data-ttu-id="3b01a-111">Azure Stream Analytics är en helt hanterad tjänst som tillhandahåller låg latens, hög tillgänglighet, skalbarhet, komplexa händelsebearbetning över strömmande data i molnet.</span><span class="sxs-lookup"><span data-stu-id="3b01a-111">Azure Stream Analytics is a fully managed service providing low-latency, highly available, scalable, complex event processing over streaming data in the cloud.</span></span> <span data-ttu-id="3b01a-112">Stream Analytics ger kunder möjlighet att konfigurera direktuppspelningsjobb för att analysera dataströmmar, vilket gör att enheten nära analys i realtid.</span><span class="sxs-lookup"><span data-stu-id="3b01a-112">Stream Analytics enables customers to set up streaming jobs to analyze data streams, and allows them to drive near real-time analytics.</span></span>  
+<span data-ttu-id="aea34-111">Azure Stream Analytics är en helt hanterad tjänst som tillhandahåller låg latens, hög tillgänglighet, skalbarhet, komplexa händelsebearbetning över strömmande data i hello molnet.</span><span class="sxs-lookup"><span data-stu-id="aea34-111">Azure Stream Analytics is a fully managed service providing low-latency, highly available, scalable, complex event processing over streaming data in hello cloud.</span></span> <span data-ttu-id="aea34-112">Stream Analytics gör att kunder tooset in strömning jobb tooanalyze dataströmmar och låter dem toodrive nära analys i realtid.</span><span class="sxs-lookup"><span data-stu-id="aea34-112">Stream Analytics enables customers tooset up streaming jobs tooanalyze data streams, and allows them toodrive near real-time analytics.</span></span>  
 
 > [!NOTE]
-> <span data-ttu-id="3b01a-113">Vi har uppdaterat exempelkoden i den här artikeln med Azure Stream Analytics Management .NET SDK v2.x version.</span><span class="sxs-lookup"><span data-stu-id="3b01a-113">We have updated the sample code in this article with Azure Stream Analytics Management .NET SDK v2.x version.</span></span> <span data-ttu-id="3b01a-114">Exempelkod med SDK-version använder lagecy (1.x), se [använder Management .NET SDK-v1.x för Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).</span><span class="sxs-lookup"><span data-stu-id="3b01a-114">For sample code using the uses lagecy (1.x) SDK version, please see [Use the Management .NET SDK v1.x for Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).</span></span>
+> <span data-ttu-id="aea34-113">Vi har uppdaterat hello exempelkoden i den här artikeln med Azure Stream Analytics Management .NET SDK v2.x version.</span><span class="sxs-lookup"><span data-stu-id="aea34-113">We have updated hello sample code in this article with Azure Stream Analytics Management .NET SDK v2.x version.</span></span> <span data-ttu-id="aea34-114">För exempelkod med hello använder lagecy (1.x) SDK-version, se [använder hello Management .NET SDK v1.x för Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).</span><span class="sxs-lookup"><span data-stu-id="aea34-114">For sample code using hello uses lagecy (1.x) SDK version, please see [Use hello Management .NET SDK v1.x for Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="3b01a-115">Krav</span><span class="sxs-lookup"><span data-stu-id="3b01a-115">Prerequisites</span></span>
-<span data-ttu-id="3b01a-116">Innan du påbörjar den här artikeln måste du ha:</span><span class="sxs-lookup"><span data-stu-id="3b01a-116">Before you begin this article, you must have the following:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="aea34-115">Krav</span><span class="sxs-lookup"><span data-stu-id="aea34-115">Prerequisites</span></span>
+<span data-ttu-id="aea34-116">Du måste ha hello följande innan du börjar den här artikeln:</span><span class="sxs-lookup"><span data-stu-id="aea34-116">Before you begin this article, you must have hello following:</span></span>
 
-* <span data-ttu-id="3b01a-117">Installera Visual Studio 2017 eller 2015.</span><span class="sxs-lookup"><span data-stu-id="3b01a-117">Install Visual Studio 2017 or 2015.</span></span>
-* <span data-ttu-id="3b01a-118">Hämta och installera [Azure .NET SDK](https://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="3b01a-118">Download and install [Azure .NET SDK](https://azure.microsoft.com/downloads/).</span></span>
-* <span data-ttu-id="3b01a-119">Skapa en Azure-resursgrupp i din prenumeration.</span><span class="sxs-lookup"><span data-stu-id="3b01a-119">Create an Azure Resource Group in your subscription.</span></span> <span data-ttu-id="3b01a-120">Följande är ett exempel Azure PowerShell-skript.</span><span class="sxs-lookup"><span data-stu-id="3b01a-120">The following is a sample Azure PowerShell script.</span></span> <span data-ttu-id="3b01a-121">Azure PowerShell information finns i [installera och konfigurera Azure PowerShell](/powershell/azure/overview);</span><span class="sxs-lookup"><span data-stu-id="3b01a-121">For Azure PowerShell information, see [Install and configure Azure PowerShell](/powershell/azure/overview);</span></span>  
+* <span data-ttu-id="aea34-117">Installera Visual Studio 2017 eller 2015.</span><span class="sxs-lookup"><span data-stu-id="aea34-117">Install Visual Studio 2017 or 2015.</span></span>
+* <span data-ttu-id="aea34-118">Hämta och installera [Azure .NET SDK](https://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="aea34-118">Download and install [Azure .NET SDK](https://azure.microsoft.com/downloads/).</span></span>
+* <span data-ttu-id="aea34-119">Skapa en Azure-resursgrupp i din prenumeration.</span><span class="sxs-lookup"><span data-stu-id="aea34-119">Create an Azure Resource Group in your subscription.</span></span> <span data-ttu-id="aea34-120">hello följande är ett exempel Azure PowerShell-skript.</span><span class="sxs-lookup"><span data-stu-id="aea34-120">hello following is a sample Azure PowerShell script.</span></span> <span data-ttu-id="aea34-121">Azure PowerShell information finns i [installera och konfigurera Azure PowerShell](/powershell/azure/overview);</span><span class="sxs-lookup"><span data-stu-id="aea34-121">For Azure PowerShell information, see [Install and configure Azure PowerShell](/powershell/azure/overview);</span></span>  
 
-        # Log in to your Azure account
+        # Log in tooyour Azure account
         Add-AzureAccount
 
-        # Select the Azure subscription you want to use to create the resource group
+        # Select hello Azure subscription you want toouse toocreate hello resource group
         Select-AzureSubscription -SubscriptionName <subscription name>
 
-            # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the Register-AzureRMProvider cmdlet to register the provider namespace
+            # If Stream Analytics has not been registered toohello subscription, remove hello remark symbol (#) toorun hello Register-AzureRMProvider cmdlet tooregister hello provider namespace
             #Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 
         # Create an Azure resource group
         New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
-* <span data-ttu-id="3b01a-122">Konfigurera ett inkommande käll- och utdata för användning.</span><span class="sxs-lookup"><span data-stu-id="3b01a-122">Set up an input source and output target to use.</span></span> <span data-ttu-id="3b01a-123">Mer information finns i [lägga till indata](stream-analytics-add-inputs.md) att ställa in en Exempelindata och [lägga till utdata](stream-analytics-add-outputs.md) att ställa in ett exempel på utdata.</span><span class="sxs-lookup"><span data-stu-id="3b01a-123">For further instructions see [Add Inputs](stream-analytics-add-inputs.md) to set up a sample input and [Add Outputs](stream-analytics-add-outputs.md) to set up a sample output.</span></span>
+* <span data-ttu-id="aea34-122">Ställ in ingen källa och mål toouse utdata.</span><span class="sxs-lookup"><span data-stu-id="aea34-122">Set up an input source and output target toouse.</span></span> <span data-ttu-id="aea34-123">Mer information finns i [lägga till indata](stream-analytics-add-inputs.md) tooset upp en Exempelindata och [lägga till utdata](stream-analytics-add-outputs.md) tooset upp ett exempel på utdata.</span><span class="sxs-lookup"><span data-stu-id="aea34-123">For further instructions see [Add Inputs](stream-analytics-add-inputs.md) tooset up a sample input and [Add Outputs](stream-analytics-add-outputs.md) tooset up a sample output.</span></span>
 
-## <a name="set-up-a-project"></a><span data-ttu-id="3b01a-124">Ställ in ett projekt</span><span class="sxs-lookup"><span data-stu-id="3b01a-124">Set up a project</span></span>
-<span data-ttu-id="3b01a-125">Använd Stream Analytics-API för .NET, först konfigurera ditt projekt för att skapa analytics-jobbet.</span><span class="sxs-lookup"><span data-stu-id="3b01a-125">To create an analytics job use the Stream Analytics API for .NET, first set up your project.</span></span>
+## <a name="set-up-a-project"></a><span data-ttu-id="aea34-124">Ställ in ett projekt</span><span class="sxs-lookup"><span data-stu-id="aea34-124">Set up a project</span></span>
+<span data-ttu-id="aea34-125">toocreate analytics-jobbet använda hello Stream Analytics-API för .NET, först ställa in projektet.</span><span class="sxs-lookup"><span data-stu-id="aea34-125">toocreate an analytics job use hello Stream Analytics API for .NET, first set up your project.</span></span>
 
-1. <span data-ttu-id="3b01a-126">Skapa ett konsolprogram i Visual Studio C# .NET.</span><span class="sxs-lookup"><span data-stu-id="3b01a-126">Create a Visual Studio C# .NET console application.</span></span>
-2. <span data-ttu-id="3b01a-127">Kör följande kommandon för att installera NuGet-paket i Package Manager-konsolen.</span><span class="sxs-lookup"><span data-stu-id="3b01a-127">In the Package Manager Console, run the following commands to install the NuGet packages.</span></span> <span data-ttu-id="3b01a-128">Den första är Azure Stream Analytics Management .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="3b01a-128">The first one is the Azure Stream Analytics Management .NET SDK.</span></span> <span data-ttu-id="3b01a-129">Den andra är för Azure klientautentisering.</span><span class="sxs-lookup"><span data-stu-id="3b01a-129">The second one is for Azure client authentication.</span></span>
+1. <span data-ttu-id="aea34-126">Skapa ett konsolprogram i Visual Studio C# .NET.</span><span class="sxs-lookup"><span data-stu-id="aea34-126">Create a Visual Studio C# .NET console application.</span></span>
+2. <span data-ttu-id="aea34-127">Kör hello följande kommandon i hello Package Manager-konsolen, tooinstall hello NuGet-paket.</span><span class="sxs-lookup"><span data-stu-id="aea34-127">In hello Package Manager Console, run hello following commands tooinstall hello NuGet packages.</span></span> <span data-ttu-id="aea34-128">hello först är en hello Azure Stream Analytics Management .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="aea34-128">hello first one is hello Azure Stream Analytics Management .NET SDK.</span></span> <span data-ttu-id="aea34-129">hello är andra för Azure klientautentisering.</span><span class="sxs-lookup"><span data-stu-id="aea34-129">hello second one is for Azure client authentication.</span></span>
    
         Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 2.0.0
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.3.1
-3. <span data-ttu-id="3b01a-130">Lägg till följande **appSettings** avsnitt i filen App.config:</span><span class="sxs-lookup"><span data-stu-id="3b01a-130">Add the following **appSettings** section to the App.config file:</span></span>
+3. <span data-ttu-id="aea34-130">Lägg till följande hello **appSettings** avsnittet toohello App.config-fil:</span><span class="sxs-lookup"><span data-stu-id="aea34-130">Add hello following **appSettings** section toohello App.config file:</span></span>
    
         <appSettings>
           <add key="ClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
@@ -70,15 +70,15 @@ ms.lasthandoff: 08/29/2017
           <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
         </appSettings>
 
-    <span data-ttu-id="3b01a-131">Ersätt värdena för **SubscriptionId** och **ActiveDirectoryTenantId** med din Azure-prenumeration och klient-ID: N.</span><span class="sxs-lookup"><span data-stu-id="3b01a-131">Replace values for **SubscriptionId** and **ActiveDirectoryTenantId** with your Azure subscription and tenant IDs.</span></span> <span data-ttu-id="3b01a-132">Du kan hämta dessa värden genom att köra följande Azure PowerShell-cmdlet:</span><span class="sxs-lookup"><span data-stu-id="3b01a-132">You can get these values by running the following Azure PowerShell cmdlet:</span></span>
+    <span data-ttu-id="aea34-131">Ersätt värdena för **SubscriptionId** och **ActiveDirectoryTenantId** med din Azure-prenumeration och klient-ID: N.</span><span class="sxs-lookup"><span data-stu-id="aea34-131">Replace values for **SubscriptionId** and **ActiveDirectoryTenantId** with your Azure subscription and tenant IDs.</span></span> <span data-ttu-id="aea34-132">Du kan hämta dessa värden genom att köra hello följande Azure PowerShell-cmdlet:</span><span class="sxs-lookup"><span data-stu-id="aea34-132">You can get these values by running hello following Azure PowerShell cmdlet:</span></span>
 
         Get-AzureAccount
 
-4. <span data-ttu-id="3b01a-133">Lägg till följande referens i filen .csproj:</span><span class="sxs-lookup"><span data-stu-id="3b01a-133">Add the following reference in your .csproj file:</span></span>
+4. <span data-ttu-id="aea34-133">Lägg till följande referens i filen .csproj hello:</span><span class="sxs-lookup"><span data-stu-id="aea34-133">Add hello following reference in your .csproj file:</span></span>
 
         <Reference Include="System.Configuration" />
 
-5. <span data-ttu-id="3b01a-134">Lägg till följande **med** instruktioner till källfilen (Program.cs) i projektet:</span><span class="sxs-lookup"><span data-stu-id="3b01a-134">Add the following **using** statements to the source file (Program.cs) in the project:</span></span>
+5. <span data-ttu-id="aea34-134">Lägg till följande hello **med** instruktioner toohello källfilen (Program.cs) i hello-projektet:</span><span class="sxs-lookup"><span data-stu-id="aea34-134">Add hello following **using** statements toohello source file (Program.cs) in hello project:</span></span>
    
         using System;
         using System.Collections.Generic;
@@ -90,7 +90,7 @@ ms.lasthandoff: 08/29/2017
         using Microsoft.Azure.Management.StreamAnalytics.Models;
         using Microsoft.Rest.Azure.Authentication;
         using Microsoft.Rest;
-6. <span data-ttu-id="3b01a-135">Lägg till en helper autentiseringsmetod:</span><span class="sxs-lookup"><span data-stu-id="3b01a-135">Add an authentication helper method:</span></span>
+6. <span data-ttu-id="aea34-135">Lägg till en helper autentiseringsmetod:</span><span class="sxs-lookup"><span data-stu-id="aea34-135">Add an authentication helper method:</span></span>
 
    ```
    private static async Task<ServiceClientCredentials> GetCredentials()
@@ -102,10 +102,10 @@ ms.lasthandoff: 08/29/2017
     }
    ```
 
-## <a name="create-a-stream-analytics-management-client"></a><span data-ttu-id="3b01a-136">Skapa ett Stream Analytics management-klienten</span><span class="sxs-lookup"><span data-stu-id="3b01a-136">Create a Stream Analytics management client</span></span>
-<span data-ttu-id="3b01a-137">En **StreamAnalyticsManagementClient** objektet kan du hantera jobbet och jobbet-komponenter, till exempel indata, utdata och omvandling.</span><span class="sxs-lookup"><span data-stu-id="3b01a-137">A **StreamAnalyticsManagementClient** object allows you to manage the job and the job components, such as input, output, and transformation.</span></span>
+## <a name="create-a-stream-analytics-management-client"></a><span data-ttu-id="aea34-136">Skapa ett Stream Analytics management-klienten</span><span class="sxs-lookup"><span data-stu-id="aea34-136">Create a Stream Analytics management client</span></span>
+<span data-ttu-id="aea34-137">En **StreamAnalyticsManagementClient** objektet kan du toomanage hello jobbet och hello jobbet komponenter, till exempel indata, utdata och omvandling.</span><span class="sxs-lookup"><span data-stu-id="aea34-137">A **StreamAnalyticsManagementClient** object allows you toomanage hello job and hello job components, such as input, output, and transformation.</span></span>
 
-<span data-ttu-id="3b01a-138">Lägg till följande kod i början av den **Main** metoden:</span><span class="sxs-lookup"><span data-stu-id="3b01a-138">Add the following code to the beginning of the **Main** method:</span></span>
+<span data-ttu-id="aea34-138">Lägg till följande kod toohello början av hello hello **Main** metoden:</span><span class="sxs-lookup"><span data-stu-id="aea34-138">Add hello following code toohello beginning of hello **Main** method:</span></span>
 
    ```
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
@@ -126,14 +126,14 @@ ms.lasthandoff: 08/29/2017
     };
    ```
 
-<span data-ttu-id="3b01a-139">Den **resourceGroupName** variabelns värde ska vara samma som namnet på resursgruppen som du har skapat eller plockats i förkraven.</span><span class="sxs-lookup"><span data-stu-id="3b01a-139">The **resourceGroupName** variable's value should be the same as the name of the resource group you created or picked in the prerequisite steps.</span></span>
+<span data-ttu-id="aea34-139">Hej **resourceGroupName** variabelns värde ska vara detsamma som namnet på hello hello resurs gruppen du har skapats eller plockats i hello förkraven hello.</span><span class="sxs-lookup"><span data-stu-id="aea34-139">hello **resourceGroupName** variable's value should be hello same as hello name of hello resource group you created or picked in hello prerequisite steps.</span></span>
 
-<span data-ttu-id="3b01a-140">Om du vill automatisera autentiseringsuppgifter presentation aspekt av skapa jobb, referera till [autentiserar ett huvudnamn för tjänsten med Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md).</span><span class="sxs-lookup"><span data-stu-id="3b01a-140">To automate the credential presentation aspect of job creation, refer to [Authenticating a service principal with Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md).</span></span>
+<span data-ttu-id="aea34-140">tooautomate hello autentiseringsuppgifter presentation aspekt av skapandet finns för[autentiserar ett huvudnamn för tjänsten med Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md).</span><span class="sxs-lookup"><span data-stu-id="aea34-140">tooautomate hello credential presentation aspect of job creation, refer too[Authenticating a service principal with Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md).</span></span>
 
-<span data-ttu-id="3b01a-141">De återstående avsnitten i den här artikeln förutsätter att den här koden är i början av den **Main** metod.</span><span class="sxs-lookup"><span data-stu-id="3b01a-141">The remaining sections of this article assume that this code is at the beginning of the **Main** method.</span></span>
+<span data-ttu-id="aea34-141">hello återstående avsnitten i den här artikeln förutsätter att den här koden är hello början av hello **Main** metod.</span><span class="sxs-lookup"><span data-stu-id="aea34-141">hello remaining sections of this article assume that this code is at hello beginning of hello **Main** method.</span></span>
 
-## <a name="create-a-stream-analytics-job"></a><span data-ttu-id="3b01a-142">Skapa ett Stream Analytics-jobb</span><span class="sxs-lookup"><span data-stu-id="3b01a-142">Create a Stream Analytics job</span></span>
-<span data-ttu-id="3b01a-143">Följande kod skapar en Stream Analytics-jobbet under den resursgrupp som du har definierat.</span><span class="sxs-lookup"><span data-stu-id="3b01a-143">The following code creates a Stream Analytics job under the resource group that you have defined.</span></span> <span data-ttu-id="3b01a-144">Du lägger till indata, utdata och omvandling i jobbet senare.</span><span class="sxs-lookup"><span data-stu-id="3b01a-144">You will add an input, output, and transformation to the job later.</span></span>
+## <a name="create-a-stream-analytics-job"></a><span data-ttu-id="aea34-142">Skapa ett Stream Analytics-jobb</span><span class="sxs-lookup"><span data-stu-id="aea34-142">Create a Stream Analytics job</span></span>
+<span data-ttu-id="aea34-143">hello skapar följande kod en Stream Analytics-jobbet under hello resursgrupp som du har definierat.</span><span class="sxs-lookup"><span data-stu-id="aea34-143">hello following code creates a Stream Analytics job under hello resource group that you have defined.</span></span> <span data-ttu-id="aea34-144">Du lägger till ett jobb för indata, utdata och omvandling toohello senare.</span><span class="sxs-lookup"><span data-stu-id="aea34-144">You will add an input, output, and transformation toohello job later.</span></span>
 
    ```
    // Create a streaming job
@@ -159,8 +159,8 @@ ms.lasthandoff: 08/29/2017
    StreamingJob createStreamingJobResult = streamAnalyticsManagementClient.StreamingJobs.CreateOrReplace(streamingJob, resourceGroupName, streamingJobName);
    ```
 
-## <a name="create-a-stream-analytics-input-source"></a><span data-ttu-id="3b01a-145">Skapa en inkommande Stream Analytics-källa</span><span class="sxs-lookup"><span data-stu-id="3b01a-145">Create a Stream Analytics input source</span></span>
-<span data-ttu-id="3b01a-146">Följande kod skapar en Stream Analytics-Indatakällan med Indatakällan blobbtypen och CSV-serialisering.</span><span class="sxs-lookup"><span data-stu-id="3b01a-146">The following code creates a Stream Analytics input source with the blob input source type and CSV serialization.</span></span> <span data-ttu-id="3b01a-147">Så här skapar du en hub inkommande händelsekälla **EventHubStreamInputDataSource** i stället för **BlobStreamInputDataSource**.</span><span class="sxs-lookup"><span data-stu-id="3b01a-147">To create an event hub input source, use **EventHubStreamInputDataSource** instead of **BlobStreamInputDataSource**.</span></span> <span data-ttu-id="3b01a-148">På liknande sätt kan du anpassa serialisering typ av Indatakällan.</span><span class="sxs-lookup"><span data-stu-id="3b01a-148">Similarly, you can customize the serialization type of the input source.</span></span>
+## <a name="create-a-stream-analytics-input-source"></a><span data-ttu-id="aea34-145">Skapa en inkommande Stream Analytics-källa</span><span class="sxs-lookup"><span data-stu-id="aea34-145">Create a Stream Analytics input source</span></span>
+<span data-ttu-id="aea34-146">hello skapar följande kod en Stream Analytics indatakälla hello blob indatakälla typ och CSV-serialisering.</span><span class="sxs-lookup"><span data-stu-id="aea34-146">hello following code creates a Stream Analytics input source with hello blob input source type and CSV serialization.</span></span> <span data-ttu-id="aea34-147">toocreate en hub inkommande händelsekälla, Använd **EventHubStreamInputDataSource** i stället för **BlobStreamInputDataSource**.</span><span class="sxs-lookup"><span data-stu-id="aea34-147">toocreate an event hub input source, use **EventHubStreamInputDataSource** instead of **BlobStreamInputDataSource**.</span></span> <span data-ttu-id="aea34-148">På liknande sätt kan du anpassa hello serialiseringstyp av indatakälla hello.</span><span class="sxs-lookup"><span data-stu-id="aea34-148">Similarly, you can customize hello serialization type of hello input source.</span></span>
 
    ```
    // Create an input
@@ -192,20 +192,20 @@ ms.lasthandoff: 08/29/2017
    Input createInputResult = streamAnalyticsManagementClient.Inputs.CreateOrReplace(input, resourceGroupName, streamingJobName, inputName);
    ```
 
-<span data-ttu-id="3b01a-149">Indatakällor, som från Blob-lagring eller en händelsehubb är knutna till ett visst jobb.</span><span class="sxs-lookup"><span data-stu-id="3b01a-149">Input sources, whether from Blob storage or an event hub, are tied to a specific job.</span></span> <span data-ttu-id="3b01a-150">Om du vill använda samma Indatakällan för olika jobb, måste du anropa metoden igen och ange ett annat jobbnamn.</span><span class="sxs-lookup"><span data-stu-id="3b01a-150">To use the same input source for different jobs, you must call the method again and specify a different job name.</span></span>
+<span data-ttu-id="aea34-149">Indatakällor, är från Blob-lagring eller en händelsehubb bundet tooa specifikt jobb.</span><span class="sxs-lookup"><span data-stu-id="aea34-149">Input sources, whether from Blob storage or an event hub, are tied tooa specific job.</span></span> <span data-ttu-id="aea34-150">toouse Hej samma källa för olika jobb, måste du anropa metoden hello igen och ange ett annat jobbnamn.</span><span class="sxs-lookup"><span data-stu-id="aea34-150">toouse hello same input source for different jobs, you must call hello method again and specify a different job name.</span></span>
 
-## <a name="test-a-stream-analytics-input-source"></a><span data-ttu-id="3b01a-151">Testa en Stream Analytics indatakälla</span><span class="sxs-lookup"><span data-stu-id="3b01a-151">Test a Stream Analytics input source</span></span>
-<span data-ttu-id="3b01a-152">Den **TestConnection** metoden testar om Stream Analytics-jobbet är ansluta till Indatakällan samt andra aspekter som är specifika för inkommande källtypen.</span><span class="sxs-lookup"><span data-stu-id="3b01a-152">The **TestConnection** method tests whether the Stream Analytics job is able to connect to the input source as well as other aspects specific to the input source type.</span></span> <span data-ttu-id="3b01a-153">Till exempel i blob Indatakällan du skapade tidigare, kontrollerar metoden att lagringskontonamn och nyckel kan användas för att ansluta till lagringskontot samt kontrollera att den angivna behållaren finns.</span><span class="sxs-lookup"><span data-stu-id="3b01a-153">For example, in the blob input source you created in an earlier step, the method will check that the Storage account name and key pair can be used to connect to the Storage account as well as check that the specified container exists.</span></span>
+## <a name="test-a-stream-analytics-input-source"></a><span data-ttu-id="aea34-151">Testa en Stream Analytics indatakälla</span><span class="sxs-lookup"><span data-stu-id="aea34-151">Test a Stream Analytics input source</span></span>
+<span data-ttu-id="aea34-152">Hej **TestConnection** metoden tester om hello Stream Analytics-jobbet är kan tooconnect toohello Ange källa samt andra aspekter specifika toohello ange typen av datakälla.</span><span class="sxs-lookup"><span data-stu-id="aea34-152">hello **TestConnection** method tests whether hello Stream Analytics job is able tooconnect toohello input source as well as other aspects specific toohello input source type.</span></span> <span data-ttu-id="aea34-153">Till exempel i hello blob indatakälla du skapade tidigare, kontrollerar hello metoden att hello lagringskontonamn och en nyckel kan vara används tooconnect toohello lagringskonto samt kontrollera den angivna hello-behållaren finns.</span><span class="sxs-lookup"><span data-stu-id="aea34-153">For example, in hello blob input source you created in an earlier step, hello method will check that hello Storage account name and key pair can be used tooconnect toohello Storage account as well as check that hello specified container exists.</span></span>
 
    ```
-   // Test the connection to the input
+   // Test hello connection toohello input
    ResourceTestStatus testInputResult = streamAnalyticsManagementClient.Inputs.Test(resourceGroupName, streamingJobName, inputName);
    ```
 
-## <a name="create-a-stream-analytics-output-target"></a><span data-ttu-id="3b01a-154">Skapa ett mål för Stream Analytics-utdata</span><span class="sxs-lookup"><span data-stu-id="3b01a-154">Create a Stream Analytics output target</span></span>
-<span data-ttu-id="3b01a-155">Skapa ett mål för utdata liknar att skapa ett Stream Analytics-Indatakällan.</span><span class="sxs-lookup"><span data-stu-id="3b01a-155">Creating an output target is very similar to creating a Stream Analytics input source.</span></span> <span data-ttu-id="3b01a-156">Som indatakällor, är utdata mål knutna till ett visst jobb.</span><span class="sxs-lookup"><span data-stu-id="3b01a-156">Like input sources, output targets are tied to a specific job.</span></span> <span data-ttu-id="3b01a-157">Om du vill använda samma utdata mål för olika jobb, måste du anropa metoden igen och ange ett annat jobbnamn.</span><span class="sxs-lookup"><span data-stu-id="3b01a-157">To use the same output target for different jobs, you must call the method again and specify a different job name.</span></span>
+## <a name="create-a-stream-analytics-output-target"></a><span data-ttu-id="aea34-154">Skapa ett mål för Stream Analytics-utdata</span><span class="sxs-lookup"><span data-stu-id="aea34-154">Create a Stream Analytics output target</span></span>
+<span data-ttu-id="aea34-155">Att skapa ett mål för utdata är mycket lik toocreating en Stream Analytics-Indatakällan.</span><span class="sxs-lookup"><span data-stu-id="aea34-155">Creating an output target is very similar toocreating a Stream Analytics input source.</span></span> <span data-ttu-id="aea34-156">Precis som indatakällor är utdata mål bundet tooa specifikt jobb.</span><span class="sxs-lookup"><span data-stu-id="aea34-156">Like input sources, output targets are tied tooa specific job.</span></span> <span data-ttu-id="aea34-157">toouse Hej samma utdata mål för olika jobb, måste du anropa metoden hello igen och ange ett annat jobbnamn.</span><span class="sxs-lookup"><span data-stu-id="aea34-157">toouse hello same output target for different jobs, you must call hello method again and specify a different job name.</span></span>
 
-<span data-ttu-id="3b01a-158">Följande kod skapar ett utgående mål (Azure SQL database).</span><span class="sxs-lookup"><span data-stu-id="3b01a-158">The following code creates an output target (Azure SQL database).</span></span> <span data-ttu-id="3b01a-159">Du kan anpassa utdata målets datatyp och/eller serialiseringstyp.</span><span class="sxs-lookup"><span data-stu-id="3b01a-159">You can customize the output target's data type and/or serialization type.</span></span>
+<span data-ttu-id="aea34-158">hello följande kod skapar ett utgående mål (Azure SQL database).</span><span class="sxs-lookup"><span data-stu-id="aea34-158">hello following code creates an output target (Azure SQL database).</span></span> <span data-ttu-id="aea34-159">Du kan anpassa hello utdata mål datatyp och/eller serialiseringstyp.</span><span class="sxs-lookup"><span data-stu-id="aea34-159">You can customize hello output target's data type and/or serialization type.</span></span>
 
    ```
    // Create an output
@@ -223,33 +223,33 @@ ms.lasthandoff: 08/29/2017
    Output createOutputResult = streamAnalyticsManagementClient.Outputs.CreateOrReplace(output, resourceGroupName, streamingJobName, outputName);
    ```
 
-## <a name="test-a-stream-analytics-output-target"></a><span data-ttu-id="3b01a-160">Testa ett mål för Stream Analytics-utdata</span><span class="sxs-lookup"><span data-stu-id="3b01a-160">Test a Stream Analytics output target</span></span>
-<span data-ttu-id="3b01a-161">Ett Stream Analytics utdata mål har även den **TestConnection** metod för att testa anslutningar.</span><span class="sxs-lookup"><span data-stu-id="3b01a-161">A Stream Analytics output target also has the **TestConnection** method for testing connections.</span></span>
+## <a name="test-a-stream-analytics-output-target"></a><span data-ttu-id="aea34-160">Testa ett mål för Stream Analytics-utdata</span><span class="sxs-lookup"><span data-stu-id="aea34-160">Test a Stream Analytics output target</span></span>
+<span data-ttu-id="aea34-161">Ett Stream Analytics utdata mål har också hello **TestConnection** metod för att testa anslutningar.</span><span class="sxs-lookup"><span data-stu-id="aea34-161">A Stream Analytics output target also has hello **TestConnection** method for testing connections.</span></span>
 
    ```
-   // Test the connection to the output
+   // Test hello connection toohello output
    ResourceTestStatus testOutputResult = streamAnalyticsManagementClient.Outputs.Test(resourceGroupName, streamingJobName, outputName);
    ```
 
-## <a name="create-a-stream-analytics-transformation"></a><span data-ttu-id="3b01a-162">Skapa Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="3b01a-162">Create a Stream Analytics transformation</span></span>
-<span data-ttu-id="3b01a-163">Följande kod skapar en Stream Analytics-omvandling med frågan ”Välj * från indata” och anger om du vill allokera en strömmande enhet för Stream Analytics-jobbet.</span><span class="sxs-lookup"><span data-stu-id="3b01a-163">The following code creates a Stream Analytics transformation with the query "select * from Input" and specifies to allocate one streaming unit for the Stream Analytics job.</span></span> <span data-ttu-id="3b01a-164">Läs mer om hur du justerar strömningsenheter [skala Azure Stream Analytics-jobb](stream-analytics-scale-jobs.md).</span><span class="sxs-lookup"><span data-stu-id="3b01a-164">For more information on adjusting streaming units, see [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md).</span></span>
+## <a name="create-a-stream-analytics-transformation"></a><span data-ttu-id="aea34-162">Skapa Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="aea34-162">Create a Stream Analytics transformation</span></span>
+<span data-ttu-id="aea34-163">hello följande kod skapar en Stream Analytics-omvandling med hello frågan ”Välj * från indata” och anger tooallocate en enhet för strömning hello Stream Analytics-jobbet.</span><span class="sxs-lookup"><span data-stu-id="aea34-163">hello following code creates a Stream Analytics transformation with hello query "select * from Input" and specifies tooallocate one streaming unit for hello Stream Analytics job.</span></span> <span data-ttu-id="aea34-164">Läs mer om hur du justerar strömningsenheter [skala Azure Stream Analytics-jobb](stream-analytics-scale-jobs.md).</span><span class="sxs-lookup"><span data-stu-id="aea34-164">For more information on adjusting streaming units, see [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md).</span></span>
 
    ```
    // Create a transformation
    Transformation transformation = new Transformation()
    {
-       Query = "Select Id, Name from <your input name>", // '<your input name>' should be replaced with the value you put for the 'inputName' variable above or in a previous step
+       Query = "Select Id, Name from <your input name>", // '<your input name>' should be replaced with hello value you put for hello 'inputName' variable above or in a previous step
        StreamingUnits = 1
    };
    Transformation createTransformationResult = streamAnalyticsManagementClient.Transformations.CreateOrReplace(transformation, resourceGroupName, streamingJobName, transformationName);
    ```
 
-<span data-ttu-id="3b01a-165">En omvandling är även kopplad till specifika Stream Analytics-jobbet den skapades under som indata och utdata.</span><span class="sxs-lookup"><span data-stu-id="3b01a-165">Like input and output, a transformation is also tied to the specific Stream Analytics job it was created under.</span></span>
+<span data-ttu-id="aea34-165">En omvandling är också bundet toohello specifika Stream Analytics-jobbet den skapades under som indata och utdata.</span><span class="sxs-lookup"><span data-stu-id="aea34-165">Like input and output, a transformation is also tied toohello specific Stream Analytics job it was created under.</span></span>
 
-## <a name="start-a-stream-analytics-job"></a><span data-ttu-id="3b01a-166">Starta ett Stream Analytics-jobb</span><span class="sxs-lookup"><span data-stu-id="3b01a-166">Start a Stream Analytics job</span></span>
-<span data-ttu-id="3b01a-167">När du har skapat ett Stream Analytics-jobb och dess input(s), utdata och omvandling av du startar jobbet genom att anropa den **starta** metod.</span><span class="sxs-lookup"><span data-stu-id="3b01a-167">After creating a Stream Analytics job and its input(s), output(s), and transformation, you can start the job by calling the **Start** method.</span></span>
+## <a name="start-a-stream-analytics-job"></a><span data-ttu-id="aea34-166">Starta ett Stream Analytics-jobb</span><span class="sxs-lookup"><span data-stu-id="aea34-166">Start a Stream Analytics job</span></span>
+<span data-ttu-id="aea34-167">När du har skapat ett Stream Analytics-jobb och dess input(s), utdata och omvandling av du kan starta hello jobbet genom att anropa hello **starta** metod.</span><span class="sxs-lookup"><span data-stu-id="aea34-167">After creating a Stream Analytics job and its input(s), output(s), and transformation, you can start hello job by calling hello **Start** method.</span></span>
 
-<span data-ttu-id="3b01a-168">Följande exempel kod startar ett Stream Analytics-jobb med anpassade utdata starttid inställd på 12 December 2012 12:12:12 UTC:</span><span class="sxs-lookup"><span data-stu-id="3b01a-168">The following sample code starts a Stream Analytics job with a custom output start time set to December 12, 2012, 12:12:12 UTC:</span></span>
+<span data-ttu-id="aea34-168">hello följande exempelkod startar en Stream Analytics-jobbet med en anpassad utdata start tid set tooDecember 12, 2012, 12:12:12 UTC:</span><span class="sxs-lookup"><span data-stu-id="aea34-168">hello following sample code starts a Stream Analytics job with a custom output start time set tooDecember 12, 2012, 12:12:12 UTC:</span></span>
 
    ```
    // Start a streaming job
@@ -261,34 +261,34 @@ ms.lasthandoff: 08/29/2017
    streamAnalyticsManagementClient.StreamingJobs.Start(resourceGroupName, streamingJobName, startStreamingJobParameters);
    ```
 
-## <a name="stop-a-stream-analytics-job"></a><span data-ttu-id="3b01a-169">Stoppa ett Stream Analytics-jobb</span><span class="sxs-lookup"><span data-stu-id="3b01a-169">Stop a Stream Analytics job</span></span>
-<span data-ttu-id="3b01a-170">Du kan stoppa ett Stream Analytics-jobb som körs genom att anropa den **stoppa** metod.</span><span class="sxs-lookup"><span data-stu-id="3b01a-170">You can stop a running Stream Analytics job by calling the **Stop** method.</span></span>
+## <a name="stop-a-stream-analytics-job"></a><span data-ttu-id="aea34-169">Stoppa ett Stream Analytics-jobb</span><span class="sxs-lookup"><span data-stu-id="aea34-169">Stop a Stream Analytics job</span></span>
+<span data-ttu-id="aea34-170">Du kan stoppa ett Stream Analytics-jobb som körs med anropa hello **stoppa** metod.</span><span class="sxs-lookup"><span data-stu-id="aea34-170">You can stop a running Stream Analytics job by calling hello **Stop** method.</span></span>
 
    ```
    // Stop a streaming job
    streamAnalyticsManagementClient.StreamingJobs.Stop(resourceGroupName, streamingJobName);
    ```
 
-## <a name="delete-a-stream-analytics-job"></a><span data-ttu-id="3b01a-171">Ta bort ett Stream Analytics-jobb</span><span class="sxs-lookup"><span data-stu-id="3b01a-171">Delete a Stream Analytics job</span></span>
-<span data-ttu-id="3b01a-172">Den **ta bort** metoden tar bort jobbet samt de underliggande underordnade resurser, inklusive input(s), utdata och omvandling av jobbet.</span><span class="sxs-lookup"><span data-stu-id="3b01a-172">The **Delete** method will delete the job as well as the underlying sub-resources, including input(s), output(s), and transformation of the job.</span></span>
+## <a name="delete-a-stream-analytics-job"></a><span data-ttu-id="aea34-171">Ta bort ett Stream Analytics-jobb</span><span class="sxs-lookup"><span data-stu-id="aea34-171">Delete a Stream Analytics job</span></span>
+<span data-ttu-id="aea34-172">Hej **ta bort** metoden tar bort hello projekt samt hello underliggande underordnade resurser, inklusive input(s), utdata och omvandling av hello jobb.</span><span class="sxs-lookup"><span data-stu-id="aea34-172">hello **Delete** method will delete hello job as well as hello underlying sub-resources, including input(s), output(s), and transformation of hello job.</span></span>
 
    ```
    // Delete a streaming job
    streamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, streamingJobName);
    ```
 
-## <a name="get-support"></a><span data-ttu-id="3b01a-173">Få support</span><span class="sxs-lookup"><span data-stu-id="3b01a-173">Get support</span></span>
-<span data-ttu-id="3b01a-174">För ytterligare hjälp försök vår [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).</span><span class="sxs-lookup"><span data-stu-id="3b01a-174">For further assistance, try our [Azure Stream Analytics forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).</span></span>
+## <a name="get-support"></a><span data-ttu-id="aea34-173">Få support</span><span class="sxs-lookup"><span data-stu-id="aea34-173">Get support</span></span>
+<span data-ttu-id="aea34-174">För ytterligare hjälp försök vår [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).</span><span class="sxs-lookup"><span data-stu-id="aea34-174">For further assistance, try our [Azure Stream Analytics forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="3b01a-175">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="3b01a-175">Next steps</span></span>
-<span data-ttu-id="3b01a-176">Du har lärt dig grunderna i att använda en .NET SDK för att skapa och köra analytics-jobb.</span><span class="sxs-lookup"><span data-stu-id="3b01a-176">You've learned the basics of using a .NET SDK to create and run analytics jobs.</span></span> <span data-ttu-id="3b01a-177">Läs mer i:</span><span class="sxs-lookup"><span data-stu-id="3b01a-177">To learn more, see the following:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="aea34-175">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="aea34-175">Next steps</span></span>
+<span data-ttu-id="aea34-176">Du har lärt dig hello grunderna i en .NET SDK-toocreate och kör analytics-jobb.</span><span class="sxs-lookup"><span data-stu-id="aea34-176">You've learned hello basics of using a .NET SDK toocreate and run analytics jobs.</span></span> <span data-ttu-id="aea34-177">toolearn finns fler hello följande:</span><span class="sxs-lookup"><span data-stu-id="aea34-177">toolearn more, see hello following:</span></span>
 
-* [<span data-ttu-id="3b01a-178">Introduktion till Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="3b01a-178">Introduction to Azure Stream Analytics</span></span>](stream-analytics-introduction.md)
-* [<span data-ttu-id="3b01a-179">Komma igång med Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="3b01a-179">Get started using Azure Stream Analytics</span></span>](stream-analytics-real-time-fraud-detection.md)
-* [<span data-ttu-id="3b01a-180">Skala Azure Stream Analytics-jobb</span><span class="sxs-lookup"><span data-stu-id="3b01a-180">Scale Azure Stream Analytics jobs</span></span>](stream-analytics-scale-jobs.md)
-* <span data-ttu-id="3b01a-181">[Azure Stream Analytics Management .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span><span class="sxs-lookup"><span data-stu-id="3b01a-181">[Azure Stream Analytics Management .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span></span>
-* [<span data-ttu-id="3b01a-182">Referens för Azure Stream Analytics-frågespråket</span><span class="sxs-lookup"><span data-stu-id="3b01a-182">Azure Stream Analytics Query Language Reference</span></span>](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [<span data-ttu-id="3b01a-183">Referens för Azure Stream Analytics Management REST API</span><span class="sxs-lookup"><span data-stu-id="3b01a-183">Azure Stream Analytics Management REST API Reference</span></span>](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [<span data-ttu-id="aea34-178">Introduktion tooAzure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="aea34-178">Introduction tooAzure Stream Analytics</span></span>](stream-analytics-introduction.md)
+* [<span data-ttu-id="aea34-179">Komma igång med Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="aea34-179">Get started using Azure Stream Analytics</span></span>](stream-analytics-real-time-fraud-detection.md)
+* [<span data-ttu-id="aea34-180">Skala Azure Stream Analytics-jobb</span><span class="sxs-lookup"><span data-stu-id="aea34-180">Scale Azure Stream Analytics jobs</span></span>](stream-analytics-scale-jobs.md)
+* <span data-ttu-id="aea34-181">[Azure Stream Analytics Management .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span><span class="sxs-lookup"><span data-stu-id="aea34-181">[Azure Stream Analytics Management .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span></span>
+* [<span data-ttu-id="aea34-182">Referens för Azure Stream Analytics-frågespråket</span><span class="sxs-lookup"><span data-stu-id="aea34-182">Azure Stream Analytics Query Language Reference</span></span>](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [<span data-ttu-id="aea34-183">Referens för Azure Stream Analytics Management REST API</span><span class="sxs-lookup"><span data-stu-id="aea34-183">Azure Stream Analytics Management REST API Reference</span></span>](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png

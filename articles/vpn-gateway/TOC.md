@@ -63,7 +63,7 @@
 ### [Översikt och Azure-konfiguration](vpn-gateway-3rdparty-device-config-overview.md)
 ### [Exempel: Cisco ASA-enhet (IKEv2/no BGP)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
 ## Felsöka
-### [Validera VPN-dataflöde till VNet](vpn-gateway-validate-throughput-to-vnet.md)
+### [Verifiera VPN-genomströmning tooa VNet](vpn-gateway-validate-throughput-to-vnet.md)
 ### [Community-föreslaget VPN eller brandväggsinställningar för enhet](vpn-gateway-third-party-settings.md)
 ### [Problem med punkt-till-plats-anslutning](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
 ### [Plats-till-plats-anslutningen kopplas från periodvis](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)

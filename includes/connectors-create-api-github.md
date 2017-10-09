@@ -1,0 +1,18 @@
+### <a name="prerequisites"></a><span data-ttu-id="197c5-101">Krav</span><span class="sxs-lookup"><span data-stu-id="197c5-101">Prerequisites</span></span>
+* <span data-ttu-id="197c5-102">En [GitHub](http://GitHub.com) konto</span><span class="sxs-lookup"><span data-stu-id="197c5-102">A [GitHub](http://GitHub.com) account</span></span> 
+
+<span data-ttu-id="197c5-103">Innan du kan använda ditt GitHub-konto i en logikapp, måste du godkänna hello logik app tooconnect tooyour GitHub-konto.</span><span class="sxs-lookup"><span data-stu-id="197c5-103">Before you can use your GitHub account in a Logic app, you must authorize hello Logic app tooconnect tooyour GitHub account.</span></span> <span data-ttu-id="197c5-104">Lyckligtvis kan du göra detta direkt i din logikapp på hello Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="197c5-104">Fortunately, you can do this easily from within your Logic app on hello Azure Portal.</span></span> 
+
+<span data-ttu-id="197c5-105">Här följer hello steg tooauthorize din logik app tooconnect tooyour GitHub-konto:</span><span class="sxs-lookup"><span data-stu-id="197c5-105">Here are hello steps tooauthorize your Logic app tooconnect tooyour GitHub account:</span></span>
+
+1. <span data-ttu-id="197c5-106">toocreate en anslutning tooGitHub, i hello logik app designer väljer **visa Microsoft hanterade API: er** i hello listrutan och ange sedan *GitHub* i hello sökrutan.</span><span class="sxs-lookup"><span data-stu-id="197c5-106">toocreate a connection tooGitHub, in hello Logic app designer, select **Show Microsoft managed APIs** in hello drop down list then enter *GitHub* in hello search box.</span></span> <span data-ttu-id="197c5-107">Välj hello utlösare eller åtgärden som du kommer att gilla toouse:</span><span class="sxs-lookup"><span data-stu-id="197c5-107">Select hello trigger or action you'll like toouse:</span></span>  
+   ![](./media/connectors-create-api-github/github-1.png)
+2. <span data-ttu-id="197c5-108">Om du inte skapat några anslutningar tooGitHub innan får du ange tooprovide dina GitHub-autentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="197c5-108">If you haven't created any connections tooGitHub before, you'll get prompted tooprovide your GitHub credentials.</span></span> <span data-ttu-id="197c5-109">Dessa autentiseringsuppgifter att använda tooauthorize din logik app tooconnect till och åtkomst till dina GitHub-konto data:</span><span class="sxs-lookup"><span data-stu-id="197c5-109">These credentials will be used tooauthorize your Logic app tooconnect to, and access your GitHub account's data:</span></span>  
+   ![](./media/connectors-create-api-github/github-2.png)
+3. <span data-ttu-id="197c5-110">Ange din GitHub användarens namn och lösenord tooauthorize logikappen:</span><span class="sxs-lookup"><span data-stu-id="197c5-110">Provide your GitHub user name and password tooauthorize your Logic app:</span></span>  
+   ![](./media/connectors-create-api-github/github-3.png)   
+4. <span data-ttu-id="197c5-111">Bekräfta din avsikt:</span><span class="sxs-lookup"><span data-stu-id="197c5-111">Confirm your intentions:</span></span>  
+   ![](./media/connectors-create-api-github/github-4.png)   
+5. <span data-ttu-id="197c5-112">Meddelande hello anslutningen har skapats i hello-portalen.</span><span class="sxs-lookup"><span data-stu-id="197c5-112">Notice hello connection has been created in hello portal.</span></span> <span data-ttu-id="197c5-113">Du kan nu fortsätta med hjälp av GitHub i den och skapa din logikapp:</span><span class="sxs-lookup"><span data-stu-id="197c5-113">You can now proceed with creating your Logic app and using GitHub in it:</span></span>   
+   ![](./media/connectors-create-api-github/github-5.png)   
+

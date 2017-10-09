@@ -1,0 +1,5 @@
+> [!IMPORTANT]
+> <span data-ttu-id="69ca2-101">När du arbetar med gateway-undernät kan du undvika att associera ett network security group (NSG) toohello gateway-undernät.</span><span class="sxs-lookup"><span data-stu-id="69ca2-101">When working with gateway subnets, avoid associating a network security group (NSG) toohello gateway subnet.</span></span> <span data-ttu-id="69ca2-102">Associera en säkerhet grupp toothis undernät kan orsaka din VPN-gateway toostop som fungerar som förväntat.</span><span class="sxs-lookup"><span data-stu-id="69ca2-102">Associating a network security group toothis subnet may cause your VPN gateway toostop functioning as expected.</span></span> <span data-ttu-id="69ca2-103">Mer information om nätverkssäkerhetsgrupper finns i [Vad är en nätverkssäkerhetsgrupp?](../articles/virtual-network/virtual-networks-nsg.md)</span><span class="sxs-lookup"><span data-stu-id="69ca2-103">For more information about network security groups, see [What is a network security group?](../articles/virtual-network/virtual-networks-nsg.md)</span></span>
+> 
+> 
+

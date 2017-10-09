@@ -1,0 +1,21 @@
+#### <a name="prerequisites"></a><span data-ttu-id="3fb0b-101">Krav</span><span class="sxs-lookup"><span data-stu-id="3fb0b-101">Prerequisites</span></span>
+* <span data-ttu-id="3fb0b-102">Ett Azure-konto; Du kan skapa en [kostnadsfritt konto](https://azure.microsoft.com/free)</span><span class="sxs-lookup"><span data-stu-id="3fb0b-102">An Azure account; you can create a [free account](https://azure.microsoft.com/free)</span></span>
+* <span data-ttu-id="3fb0b-103">En [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) konto</span><span class="sxs-lookup"><span data-stu-id="3fb0b-103">A [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) account</span></span> 
+
+<span data-ttu-id="3fb0b-104">Innan du kan använda ditt OneDrive-konto i en logikapp, auktorisera hello logik app tooconnect tooyour OneDrive-konto.</span><span class="sxs-lookup"><span data-stu-id="3fb0b-104">Before you can use your OneDrive account in a logic app, authorize hello logic app tooconnect tooyour OneDrive account.</span></span>  <span data-ttu-id="3fb0b-105">Du kan göra detta enkelt i din logikapp på hello Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="3fb0b-105">You can do this easily within your logic app on hello Azure portal.</span></span> 
+
+<span data-ttu-id="3fb0b-106">Godkänna ditt logik app tooconnect tooyour OneDrive-konto med hjälp av hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="3fb0b-106">Authorize your logic app tooconnect tooyour OneDrive account using hello following steps:</span></span>
+
+1. <span data-ttu-id="3fb0b-107">Skapa en logikapp.</span><span class="sxs-lookup"><span data-stu-id="3fb0b-107">Create a logic app.</span></span> <span data-ttu-id="3fb0b-108">Markera i hello Logic Apps designer **visa Microsoft hanterade API: er** i hello listrutan och ange sedan ”onedrive” i sökrutan för hello.</span><span class="sxs-lookup"><span data-stu-id="3fb0b-108">In hello Logic Apps designer, select **Show Microsoft managed APIs** in hello drop down list, and then enter "onedrive" in hello search box.</span></span> <span data-ttu-id="3fb0b-109">Välj något av hello utlösare eller åtgärder:</span><span class="sxs-lookup"><span data-stu-id="3fb0b-109">Select one of hello triggers or actions:</span></span>  
+   ![](./media/connectors-create-api-onedrive/onedrive-1.png)
+2. <span data-ttu-id="3fb0b-110">Om du inte har skapat några anslutningar tooOneDrive är ange toosign med OneDrive:</span><span class="sxs-lookup"><span data-stu-id="3fb0b-110">If you haven't previously created any connections tooOneDrive, you are prompted toosign in using your OneDrive credentials:</span></span>  
+   ![](./media/connectors-create-api-onedrive/onedrive-2.png)
+3. <span data-ttu-id="3fb0b-111">Välj **logga in**, och ange ditt användarnamn och lösenord.</span><span class="sxs-lookup"><span data-stu-id="3fb0b-111">Select **Sign in**, and enter your user name and password.</span></span> <span data-ttu-id="3fb0b-112">Välj **logga in**:</span><span class="sxs-lookup"><span data-stu-id="3fb0b-112">Select **Sign in**:</span></span>  
+   ![](./media/connectors-create-api-onedrive/onedrive-3.png)   
+   
+    <span data-ttu-id="3fb0b-113">Autentiseringsuppgifterna är används tooauthorize din logik app tooconnect till och komma åt hello data i ditt OneDrive-konto.</span><span class="sxs-lookup"><span data-stu-id="3fb0b-113">These credentials are used tooauthorize your logic app tooconnect to, and access hello data in your OneDrive account.</span></span> 
+4. <span data-ttu-id="3fb0b-114">Välj **Ja** tooauthorize hello logik app toouse OneDrive-konto:</span><span class="sxs-lookup"><span data-stu-id="3fb0b-114">Select **Yes** tooauthorize hello logic app toouse your OneDrive account:</span></span>  
+   ![](./media/connectors-create-api-onedrive/onedrive-4.png)   
+5. <span data-ttu-id="3fb0b-115">Meddelande hello anslutningen har skapats.</span><span class="sxs-lookup"><span data-stu-id="3fb0b-115">Notice hello connection has been created.</span></span> <span data-ttu-id="3fb0b-116">Nu kan fortsätta med hello andra steg i din logikapp:</span><span class="sxs-lookup"><span data-stu-id="3fb0b-116">Now, proceed with hello other steps in your logic app:</span></span>  
+   ![](./media/connectors-create-api-onedrive/onedrive-5.png)
+

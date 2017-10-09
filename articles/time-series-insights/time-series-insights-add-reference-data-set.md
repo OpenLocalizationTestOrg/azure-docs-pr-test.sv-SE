@@ -1,6 +1,6 @@
 ---
-title: "Lägga till en referensdatauppsättning i miljön för Azure Time Series Insights | Microsoft Docs"
-description: "I den här självstudien ansluter du en referensdatauppsättning till Time Series Insights-miljön"
+title: "aaaAdd referens datauppsättning tooyour Azure tid serien Insights miljö | Microsoft Docs"
+description: "Lägg till referens datauppsättning tooyour tid serien insikter miljö i den här självstudiekursen"
 keywords: 
 services: time-series-insights
 documentationcenter: 
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: venkatja
-ms.openlocfilehash: 23444297b5231e6a026bcd9ce3ee9f943bf05867
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 05e626ed81a22f2a8710b23a931ccd17c0f38ca5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal"></a><span data-ttu-id="15341-103">Skapa en referensdatauppsättning för miljön för Time Series Insights med Ibiza Portal</span><span class="sxs-lookup"><span data-stu-id="15341-103">Create a reference data set for your Time Series Insights environment using the Ibiza portal</span></span>
+# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-hello-ibiza-portal"></a><span data-ttu-id="679d9-103">Skapa en referens för datauppsättning för tid serien insikter miljön med hjälp av hello Ibiza-portalen</span><span class="sxs-lookup"><span data-stu-id="679d9-103">Create a reference data set for your Time Series Insights environment using hello Ibiza portal</span></span>
 
-<span data-ttu-id="15341-104">En referensdatauppsättning är en samling objekt som är förstärkta med händelser från din händelsekälla.</span><span class="sxs-lookup"><span data-stu-id="15341-104">A Reference Data Set is a collection of items that are augmented with the events from your event source.</span></span> <span data-ttu-id="15341-105">Bearbetningsmotorn för tidsserieinsikter kopplar en händelse från din händelsekälla till ett objekt i referensdatauppsättningen.</span><span class="sxs-lookup"><span data-stu-id="15341-105">Time Series Insights ingress engine joins an event from your event source with an item in your reference data set.</span></span> <span data-ttu-id="15341-106">Den här förhöjda händelsen är sedan tillgängliga för frågor.</span><span class="sxs-lookup"><span data-stu-id="15341-106">This augmented event is then available for query.</span></span> <span data-ttu-id="15341-107">Den här kopplingen baseras på de nycklar som definierats i referensdatauppsättningen.</span><span class="sxs-lookup"><span data-stu-id="15341-107">This join is based on the keys defined in your reference data set.</span></span>
+<span data-ttu-id="679d9-104">En referens datauppsättning är en samling objekt som är förstärkta med hello händelser från din händelsekälla.</span><span class="sxs-lookup"><span data-stu-id="679d9-104">A Reference Data Set is a collection of items that are augmented with hello events from your event source.</span></span> <span data-ttu-id="679d9-105">Bearbetningsmotorn för tidsserieinsikter kopplar en händelse från din händelsekälla till ett objekt i referensdatauppsättningen.</span><span class="sxs-lookup"><span data-stu-id="679d9-105">Time Series Insights ingress engine joins an event from your event source with an item in your reference data set.</span></span> <span data-ttu-id="679d9-106">Den här förhöjda händelsen är sedan tillgängliga för frågor.</span><span class="sxs-lookup"><span data-stu-id="679d9-106">This augmented event is then available for query.</span></span> <span data-ttu-id="679d9-107">Den här kopplingen baseras på hello nycklar som definierats i datauppsättningen referens.</span><span class="sxs-lookup"><span data-stu-id="679d9-107">This join is based on hello keys defined in your reference data set.</span></span>
 
-## <a name="steps-to-add-a-reference-data-set-to-your-environment"></a><span data-ttu-id="15341-108">Steg för att lägga till en referensdatauppsättning i din miljö</span><span class="sxs-lookup"><span data-stu-id="15341-108">Steps to add a reference data set to your environment</span></span>
+## <a name="steps-tooadd-a-reference-data-set-tooyour-environment"></a><span data-ttu-id="679d9-108">Steg tooadd en referens datauppsättning tooyour miljö</span><span class="sxs-lookup"><span data-stu-id="679d9-108">Steps tooadd a reference data set tooyour environment</span></span>
 
-1. <span data-ttu-id="15341-109">Logga in på [Ibiza portal](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="15341-109">Sign in to the [Ibiza portal](https://portal.azure.com).</span></span>
-2. <span data-ttu-id="15341-110">Klicka på ”Alla resurser” på menyn på vänster sida av Ibiza Portal.</span><span class="sxs-lookup"><span data-stu-id="15341-110">Click “All resources” in the menu on the left side of the Ibiza portal.</span></span>
-3. <span data-ttu-id="15341-111">Välj Time Series Insights-miljö.</span><span class="sxs-lookup"><span data-stu-id="15341-111">Select your Time Series Insights environment.</span></span>
+1. <span data-ttu-id="679d9-109">Logga in toohello [Ibiza-portalen](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="679d9-109">Sign in toohello [Ibiza portal](https://portal.azure.com).</span></span>
+2. <span data-ttu-id="679d9-110">Klicka på ”alla resurser” hello menyn hello vänster på hello Ibiza-portalen.</span><span class="sxs-lookup"><span data-stu-id="679d9-110">Click “All resources” in hello menu on hello left side of hello Ibiza portal.</span></span>
+3. <span data-ttu-id="679d9-111">Välj Time Series Insights-miljö.</span><span class="sxs-lookup"><span data-stu-id="679d9-111">Select your Time Series Insights environment.</span></span>
 
-    ![Skapa Time Series Insights-referensdatauppsättningen](media/add-reference-data-set/getstarted-create-reference-data-set-1.png)
+    ![Skapa hello tid serien insikter referens datauppsättning](media/add-reference-data-set/getstarted-create-reference-data-set-1.png)
 
-4. <span data-ttu-id="15341-113">Välj ”referensdatauppsättningar”, klicka på ”+ Lägg till”.</span><span class="sxs-lookup"><span data-stu-id="15341-113">Select “Reference Data Sets”, click “+ Add.”</span></span>
+4. <span data-ttu-id="679d9-113">Välj ”referensdatauppsättningar”, klicka på ”+ Lägg till”.</span><span class="sxs-lookup"><span data-stu-id="679d9-113">Select “Reference Data Sets”, click “+ Add.”</span></span>
 
-    ![Skapa Time Series Insights-referensdatauppsättningen - information](media/add-reference-data-set/getstarted-create-reference-data-set-2.png)
+    ![Skapa datauppsättning för hello tid serien insikter referens - information](media/add-reference-data-set/getstarted-create-reference-data-set-2.png)
 
-5. <span data-ttu-id="15341-115">Ange namnet på referensdatauppsättningen.</span><span class="sxs-lookup"><span data-stu-id="15341-115">Specify the name of the reference data set.</span></span>
-6. <span data-ttu-id="15341-116">Ange namnet och dess typ.</span><span class="sxs-lookup"><span data-stu-id="15341-116">Specify the key name and its type.</span></span> <span data-ttu-id="15341-117">Detta namn och typ används för att välja rätt egenskap från händelsen i din händelsekälla.</span><span class="sxs-lookup"><span data-stu-id="15341-117">This name and type is used to pick the correct property from the event in your event source.</span></span> <span data-ttu-id="15341-118">Till exempel, om du tillhandahåller nyckelnamn som ”DeviceId” och typ som ”String” söker motorn för tidserieinsikter sedan en egenskap med namnet ”DeviceId” av typen ”String” i den inkommande händelsen.</span><span class="sxs-lookup"><span data-stu-id="15341-118">For instance, if you provide key name as “DeviceId” and type as “String”, then the Time Series Insights ingress engine looks for a property with the name “DeviceId” of type “String” in the incoming event.</span></span> <span data-ttu-id="15341-119">Du kan ange mer än en nyckel att ansluta till händelsen.</span><span class="sxs-lookup"><span data-stu-id="15341-119">You can provide more than one key to join with the event.</span></span> <span data-ttu-id="15341-120">Matchningen med egenskapsnamn är skiftlägeskänslig.</span><span class="sxs-lookup"><span data-stu-id="15341-120">The property name match is case-sensitive.</span></span>
+5. <span data-ttu-id="679d9-115">Ange hello namn hello referens datauppsättning.</span><span class="sxs-lookup"><span data-stu-id="679d9-115">Specify hello name of hello reference data set.</span></span>
+6. <span data-ttu-id="679d9-116">Ange hello nyckelnamn och dess.</span><span class="sxs-lookup"><span data-stu-id="679d9-116">Specify hello key name and its type.</span></span> <span data-ttu-id="679d9-117">Den här namn och typ är används toopick hello rätt egenskap från hello händelse i din händelsekälla.</span><span class="sxs-lookup"><span data-stu-id="679d9-117">This name and type is used toopick hello correct property from hello event in your event source.</span></span> <span data-ttu-id="679d9-118">Till exempel om du tillhandahåller nyckelnamn som ”DeviceId” och typ som ”sträng” sedan hello tid serien insikter ingång letar efter en egenskap med namnet hello ”DeviceId” av typen ”sträng” i hello inkommande händelse.</span><span class="sxs-lookup"><span data-stu-id="679d9-118">For instance, if you provide key name as “DeviceId” and type as “String”, then hello Time Series Insights ingress engine looks for a property with hello name “DeviceId” of type “String” in hello incoming event.</span></span> <span data-ttu-id="679d9-119">Du kan ange flera viktiga toojoin med hello-händelse.</span><span class="sxs-lookup"><span data-stu-id="679d9-119">You can provide more than one key toojoin with hello event.</span></span> <span data-ttu-id="679d9-120">hello egenskapen matchar är skiftlägeskänslig.</span><span class="sxs-lookup"><span data-stu-id="679d9-120">hello property name match is case-sensitive.</span></span>
 
-     ![Skapa Time Series Insights-referensdatauppsättningen - information](media/add-reference-data-set/getstarted-create-reference-data-set-3.png)
+     ![Skapa datauppsättning för hello tid serien insikter referens - information](media/add-reference-data-set/getstarted-create-reference-data-set-3.png)
 
-7. <span data-ttu-id="15341-122">Klicka på ”Skapa”.</span><span class="sxs-lookup"><span data-stu-id="15341-122">Click “Create.”</span></span>
+7. <span data-ttu-id="679d9-122">Klicka på ”Skapa”.</span><span class="sxs-lookup"><span data-stu-id="679d9-122">Click “Create.”</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="15341-123">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="15341-123">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="679d9-123">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="679d9-123">Next steps</span></span>
 
-* <span data-ttu-id="15341-124">[Hantera referensdata](time-series-insights-manage-reference-data-csharp.md) programmässigt.</span><span class="sxs-lookup"><span data-stu-id="15341-124">[Manage reference data](time-series-insights-manage-reference-data-csharp.md) programmatically.</span></span>
-* <span data-ttu-id="15341-125">En fullständig API-referens, se dokumentet [Referensdata-API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) .</span><span class="sxs-lookup"><span data-stu-id="15341-125">For the complete API reference, see [Reference Data API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) document.</span></span>
+* <span data-ttu-id="679d9-124">[Hantera referensdata](time-series-insights-manage-reference-data-csharp.md) programmässigt.</span><span class="sxs-lookup"><span data-stu-id="679d9-124">[Manage reference data](time-series-insights-manage-reference-data-csharp.md) programmatically.</span></span>
+* <span data-ttu-id="679d9-125">Hello fullständiga API-referens, se [referens Data API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) dokumentet.</span><span class="sxs-lookup"><span data-stu-id="679d9-125">For hello complete API reference, see [Reference Data API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) document.</span></span>

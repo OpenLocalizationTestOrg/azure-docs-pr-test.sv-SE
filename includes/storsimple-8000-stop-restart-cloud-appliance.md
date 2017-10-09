@@ -1,37 +1,37 @@
-#### <a name="to-stop-and-start-a-cloud-appliance"></a><span data-ttu-id="2d775-101">Så här stoppar och startar du en molninstallation</span><span class="sxs-lookup"><span data-stu-id="2d775-101">To stop and start a cloud appliance</span></span>
+#### <a name="toostop-and-start-a-cloud-appliance"></a><span data-ttu-id="4d77c-101">toostop och starta en moln-installation</span><span class="sxs-lookup"><span data-stu-id="4d77c-101">toostop and start a cloud appliance</span></span>
 
-1. <span data-ttu-id="2d775-102">Om du vill stoppa en molninstallation går du till den virtuella datorn för molninstallationen.</span><span class="sxs-lookup"><span data-stu-id="2d775-102">To stop a cloud appliance, go to the VM for your cloud appliance.</span></span>
-    <span data-ttu-id="2d775-103">![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart1.png)</span><span class="sxs-lookup"><span data-stu-id="2d775-103">![StorSimple Cloud Appliance Virtual Machine](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart1.png)</span></span>
+1. <span data-ttu-id="4d77c-102">toostop en moln-enhet går toohello VM för din enhet i molnet.</span><span class="sxs-lookup"><span data-stu-id="4d77c-102">toostop a cloud appliance, go toohello VM for your cloud appliance.</span></span>
+    <span data-ttu-id="4d77c-103">![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart1.png)</span><span class="sxs-lookup"><span data-stu-id="4d77c-103">![StorSimple Cloud Appliance Virtual Machine](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart1.png)</span></span>
 
-2. <span data-ttu-id="2d775-104">Klicka på **Stoppa** i kommandofältet.</span><span class="sxs-lookup"><span data-stu-id="2d775-104">From the command bar, click **Stop**.</span></span>
+2. <span data-ttu-id="4d77c-104">Hello kommandofältet klickar du på **stoppa**.</span><span class="sxs-lookup"><span data-stu-id="4d77c-104">From hello command bar, click **Stop**.</span></span>
 
     ![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart2.png)
 
-3. <span data-ttu-id="2d775-106">Klicka på **Ja** när du uppmanas att bekräfta åtgärden.</span><span class="sxs-lookup"><span data-stu-id="2d775-106">When prompted for confirmation, click **Yes**.</span></span>
+3. <span data-ttu-id="4d77c-106">Klicka på **Ja** när du uppmanas att bekräfta åtgärden.</span><span class="sxs-lookup"><span data-stu-id="4d77c-106">When prompted for confirmation, click **Yes**.</span></span>
 
     ![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart3.png)
 
-4. <span data-ttu-id="2d775-108">När du stoppar en virtuell dator avallokeras den.</span><span class="sxs-lookup"><span data-stu-id="2d775-108">When you stop a VM, it gets deallocated.</span></span> <span data-ttu-id="2d775-109">När molninstallationen håller på att stoppas visas statusen **Frigör**.</span><span class="sxs-lookup"><span data-stu-id="2d775-109">While the cloud appliance is stopping, its status is **Deallocating**.</span></span> <span data-ttu-id="2d775-110">När molninstallationen har stoppats visas statusen **Stoppad (frigjord)**.</span><span class="sxs-lookup"><span data-stu-id="2d775-110">After the cloud appliance is stopped, its status is **Stopped (deallocated)**.</span></span>
+4. <span data-ttu-id="4d77c-108">När du stoppar en virtuell dator avallokeras den.</span><span class="sxs-lookup"><span data-stu-id="4d77c-108">When you stop a VM, it gets deallocated.</span></span> <span data-ttu-id="4d77c-109">Hello molnet installation stoppas dess status är **Deallocating**.</span><span class="sxs-lookup"><span data-stu-id="4d77c-109">While hello cloud appliance is stopping, its status is **Deallocating**.</span></span> <span data-ttu-id="4d77c-110">När hello molnet installation har avbrutits dess status är **Stoppad (frigjord)**.</span><span class="sxs-lookup"><span data-stu-id="4d77c-110">After hello cloud appliance is stopped, its status is **Stopped (deallocated)**.</span></span>
 
     ![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart4.png)
 
-5. <span data-ttu-id="2d775-112">När en virtuell dator har stoppats startar du den genom att klicka på **Starta** (knappen blir tillgänglig).</span><span class="sxs-lookup"><span data-stu-id="2d775-112">Once a VM is stopped, click **Start** (button becomes available) to start the VM.</span></span> <span data-ttu-id="2d775-113">När molninstallationen har startats visas statusen **Startad**.</span><span class="sxs-lookup"><span data-stu-id="2d775-113">After the cloud appliance has started up, its status is **Started**.</span></span>
+5. <span data-ttu-id="4d77c-112">När en virtuell dator har stoppats, klickar du på **starta** (knappen blir tillgänglig) toostart hello VM.</span><span class="sxs-lookup"><span data-stu-id="4d77c-112">Once a VM is stopped, click **Start** (button becomes available) toostart hello VM.</span></span> <span data-ttu-id="4d77c-113">När hello molnet enheten har startats dess status är **igång**.</span><span class="sxs-lookup"><span data-stu-id="4d77c-113">After hello cloud appliance has started up, its status is **Started**.</span></span>
 
     ![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart5.png)
 
-<span data-ttu-id="2d775-115">Du kan stoppa och starta en molninstallation med följande cmdlets.</span><span class="sxs-lookup"><span data-stu-id="2d775-115">Use the following cmdlets to stop and start a cloud appliance.</span></span>
+<span data-ttu-id="4d77c-115">Använd följande cmdlet: ar toostop hello och starta en moln-installation.</span><span class="sxs-lookup"><span data-stu-id="4d77c-115">Use hello following cmdlets toostop and start a cloud appliance.</span></span>
 
 `Stop-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
 `Start-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 
-#### <a name="to-restart-a-cloud-appliance"></a><span data-ttu-id="2d775-116">Så här startar du om en molninstallation</span><span class="sxs-lookup"><span data-stu-id="2d775-116">To restart a cloud appliance</span></span>
+#### <a name="toorestart-a-cloud-appliance"></a><span data-ttu-id="4d77c-116">toorestart en moln-installation</span><span class="sxs-lookup"><span data-stu-id="4d77c-116">toorestart a cloud appliance</span></span>
 
-<span data-ttu-id="2d775-117">Om du vill starta om en molninstallation går du till den virtuella datorn för molninstallationen.</span><span class="sxs-lookup"><span data-stu-id="2d775-117">To restart a cloud appliance, go to the VM for your cloud appliance.</span></span> <span data-ttu-id="2d775-118">Klicka på **Starta om** i kommandofältet.</span><span class="sxs-lookup"><span data-stu-id="2d775-118">From the command bar, click **Restart**.</span></span> <span data-ttu-id="2d775-119">Bekräfta omstarten när du uppmanas att göra det.</span><span class="sxs-lookup"><span data-stu-id="2d775-119">When prompted, confirm the restart.</span></span> <span data-ttu-id="2d775-120">När molninstallationen är redo att användas visas statusen **Körs**.</span><span class="sxs-lookup"><span data-stu-id="2d775-120">When the cloud appliance is ready for you to use, its status is **Running**.</span></span>
+<span data-ttu-id="4d77c-117">toorestart en moln-enhet går toohello VM för din enhet i molnet.</span><span class="sxs-lookup"><span data-stu-id="4d77c-117">toorestart a cloud appliance, go toohello VM for your cloud appliance.</span></span> <span data-ttu-id="4d77c-118">Hello kommandofältet klickar du på **starta om**.</span><span class="sxs-lookup"><span data-stu-id="4d77c-118">From hello command bar, click **Restart**.</span></span> <span data-ttu-id="4d77c-119">När du uppmanas bekräfta hello omstart.</span><span class="sxs-lookup"><span data-stu-id="4d77c-119">When prompted, confirm hello restart.</span></span> <span data-ttu-id="4d77c-120">När hello molnet installation är klar för du toouse, är dess status **kör**.</span><span class="sxs-lookup"><span data-stu-id="4d77c-120">When hello cloud appliance is ready for you toouse, its status is **Running**.</span></span>
 
 ![Virtuell dator i StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart6.png)
 
-<span data-ttu-id="2d775-122">Du kan starta om en molninstallation med följande cmdlet.</span><span class="sxs-lookup"><span data-stu-id="2d775-122">Use the following cmdlet to restart a cloud appliance.</span></span>
+<span data-ttu-id="4d77c-122">Använd hello följande cmdlet toorestart en moln-installation.</span><span class="sxs-lookup"><span data-stu-id="4d77c-122">Use hello following cmdlet toorestart a cloud appliance.</span></span>
 
 `Restart-AzureVM -ServiceName "MyStorSimpleservice1" -Name "MyStorSimpleDevice"`
 

@@ -1,6 +1,6 @@
 ---
-title: "Använda blob storage (objektlagring) från PHP | Microsoft Docs"
-description: Lagra ostrukturerade data i molnet med Azure Blob Storage (objektlagring).
+title: "aaaHow toouse blob storage (objektlagring) från PHP | Microsoft Docs"
+description: Lagra Ostrukturerade data i hello moln med Azure Blob storage (objektlagring).
 documentationcenter: php
 services: storage
 author: mmacy
@@ -14,44 +14,44 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-ms.openlocfilehash: 2c356d7faafa8ef4591087b5b1f949b9374732be
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 331405e583c17c4f71acacdc0078b2bc71efbef0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-blob-storage-from-php"></a><span data-ttu-id="c805d-103">Använda blob storage från PHP</span><span class="sxs-lookup"><span data-stu-id="c805d-103">How to use blob storage from PHP</span></span>
+# <a name="how-toouse-blob-storage-from-php"></a><span data-ttu-id="e111a-103">Hur toouse blob storage från PHP</span><span class="sxs-lookup"><span data-stu-id="e111a-103">How toouse blob storage from PHP</span></span>
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="overview"></a><span data-ttu-id="c805d-104">Översikt</span><span class="sxs-lookup"><span data-stu-id="c805d-104">Overview</span></span>
-<span data-ttu-id="c805d-105">Azure Blob Storage är en tjänst som lagrar ostrukturerade data i molnet som objekt/blobbar.</span><span class="sxs-lookup"><span data-stu-id="c805d-105">Azure Blob storage is a service that stores unstructured data in the cloud as objects/blobs.</span></span> <span data-ttu-id="c805d-106">Blob Storage kan lagra alla slags textdata eller binära data, till exempel ett dokument, en mediefil eller ett installationsprogram.</span><span class="sxs-lookup"><span data-stu-id="c805d-106">Blob storage can store any type of text or binary data, such as a document, media file, or application installer.</span></span> <span data-ttu-id="c805d-107">Blob Storage kallas även för objektlagring.</span><span class="sxs-lookup"><span data-stu-id="c805d-107">Blob storage is also referred to as object storage.</span></span>
+## <a name="overview"></a><span data-ttu-id="e111a-104">Översikt</span><span class="sxs-lookup"><span data-stu-id="e111a-104">Overview</span></span>
+<span data-ttu-id="e111a-105">Azure Blob storage är en tjänst som lagrar Ostrukturerade data i hello molnet som objekt/blobbar.</span><span class="sxs-lookup"><span data-stu-id="e111a-105">Azure Blob storage is a service that stores unstructured data in hello cloud as objects/blobs.</span></span> <span data-ttu-id="e111a-106">Blob Storage kan lagra alla slags textdata eller binära data, till exempel ett dokument, en mediefil eller ett installationsprogram.</span><span class="sxs-lookup"><span data-stu-id="e111a-106">Blob storage can store any type of text or binary data, such as a document, media file, or application installer.</span></span> <span data-ttu-id="e111a-107">BLOB storage är också hänvisade tooas objektlagring.</span><span class="sxs-lookup"><span data-stu-id="e111a-107">Blob storage is also referred tooas object storage.</span></span>
 
-<span data-ttu-id="c805d-108">Den här guiden visar hur du utför vanliga scenarier med hjälp av Azure blob-tjänsten.</span><span class="sxs-lookup"><span data-stu-id="c805d-108">This guide shows you how to perform common scenarios using the Azure blob service.</span></span> <span data-ttu-id="c805d-109">Exemplen är skrivna i PHP och Använd den [Azure SDK för PHP][download].</span><span class="sxs-lookup"><span data-stu-id="c805d-109">The samples are written in PHP and use the [Azure SDK for PHP][download].</span></span> <span data-ttu-id="c805d-110">Scenarier som tas upp inkluderar **överför**, **lista**, **hämtar**, och **bort** blobbar.</span><span class="sxs-lookup"><span data-stu-id="c805d-110">The scenarios covered include **uploading**, **listing**, **downloading**, and **deleting** blobs.</span></span> <span data-ttu-id="c805d-111">Mer information om blobbar finns i [nästa steg](#next-steps) avsnitt.</span><span class="sxs-lookup"><span data-stu-id="c805d-111">For more information on blobs, see the [Next steps](#next-steps) section.</span></span>
+<span data-ttu-id="e111a-108">Den här guiden visar hur tooperform vanliga scenarier med hjälp av hello Azure blob-tjänst.</span><span class="sxs-lookup"><span data-stu-id="e111a-108">This guide shows you how tooperform common scenarios using hello Azure blob service.</span></span> <span data-ttu-id="e111a-109">hello exemplen är skrivna i PHP och använder hello [Azure SDK för PHP][download].</span><span class="sxs-lookup"><span data-stu-id="e111a-109">hello samples are written in PHP and use hello [Azure SDK for PHP][download].</span></span> <span data-ttu-id="e111a-110">hello beskrivs scenarier där **överför**, **lista**, **hämtar**, och **bort** blobbar.</span><span class="sxs-lookup"><span data-stu-id="e111a-110">hello scenarios covered include **uploading**, **listing**, **downloading**, and **deleting** blobs.</span></span> <span data-ttu-id="e111a-111">Mer information om BLOB finns hello [nästa steg](#next-steps) avsnitt.</span><span class="sxs-lookup"><span data-stu-id="e111a-111">For more information on blobs, see hello [Next steps](#next-steps) section.</span></span>
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-php-application"></a><span data-ttu-id="c805d-112">Skapa en PHP-program</span><span class="sxs-lookup"><span data-stu-id="c805d-112">Create a PHP application</span></span>
-<span data-ttu-id="c805d-113">Det enda kravet för att skapa en PHP-program som använder Azure blob-tjänsten är den refererande klasser i Azure SDK för PHP från inom din kod.</span><span class="sxs-lookup"><span data-stu-id="c805d-113">The only requirement for creating a PHP application that accesses the Azure blob service is the referencing of classes in the Azure SDK for PHP from within your code.</span></span> <span data-ttu-id="c805d-114">Du kan använda alla utvecklingsverktyg för att skapa programmet, inklusive anteckningar.</span><span class="sxs-lookup"><span data-stu-id="c805d-114">You can use any development tools to create your application, including Notepad.</span></span>
+## <a name="create-a-php-application"></a><span data-ttu-id="e111a-112">Skapa en PHP-program</span><span class="sxs-lookup"><span data-stu-id="e111a-112">Create a PHP application</span></span>
+<span data-ttu-id="e111a-113">Hej krav för att skapa en PHP-program som ansluter till hello Azure blob-tjänsten är hello refererar till klasser i hello Azure SDK för PHP från inom din kod.</span><span class="sxs-lookup"><span data-stu-id="e111a-113">hello only requirement for creating a PHP application that accesses hello Azure blob service is hello referencing of classes in hello Azure SDK for PHP from within your code.</span></span> <span data-ttu-id="e111a-114">Du kan använda alla development tools toocreate ditt program, inklusive anteckningar.</span><span class="sxs-lookup"><span data-stu-id="e111a-114">You can use any development tools toocreate your application, including Notepad.</span></span>
 
-<span data-ttu-id="c805d-115">I den här guiden kan du använda tjänstens funktioner som kan anropas inom ett PHP-program lokalt eller i koden körs i en Azure-webbroll, en arbetsroll eller en webbplats.</span><span class="sxs-lookup"><span data-stu-id="c805d-115">In this guide, you use service features, which can be called within a PHP application locally or in code running within an Azure web role, worker role, or website.</span></span>
+<span data-ttu-id="e111a-115">I den här guiden kan du använda tjänstens funktioner som kan anropas inom ett PHP-program lokalt eller i koden körs i en Azure-webbroll, en arbetsroll eller en webbplats.</span><span class="sxs-lookup"><span data-stu-id="e111a-115">In this guide, you use service features, which can be called within a PHP application locally or in code running within an Azure web role, worker role, or website.</span></span>
 
-## <a name="get-the-azure-client-libraries"></a><span data-ttu-id="c805d-116">Hämta Azures klientbibliotek</span><span class="sxs-lookup"><span data-stu-id="c805d-116">Get the Azure Client Libraries</span></span>
+## <a name="get-hello-azure-client-libraries"></a><span data-ttu-id="e111a-116">Hämta hello Azure-klientbibliotek</span><span class="sxs-lookup"><span data-stu-id="e111a-116">Get hello Azure Client Libraries</span></span>
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-## <a name="configure-your-application-to-access-the-blob-service"></a><span data-ttu-id="c805d-117">Konfigurera ditt program för åtkomst till blob-tjänst</span><span class="sxs-lookup"><span data-stu-id="c805d-117">Configure your application to access the blob service</span></span>
-<span data-ttu-id="c805d-118">Om du vill använda Azure blob-tjänsten API: er, måste du:</span><span class="sxs-lookup"><span data-stu-id="c805d-118">To use the Azure blob service APIs, you need to:</span></span>
+## <a name="configure-your-application-tooaccess-hello-blob-service"></a><span data-ttu-id="e111a-117">Konfigurera ditt program tooaccess hello blob-tjänsten</span><span class="sxs-lookup"><span data-stu-id="e111a-117">Configure your application tooaccess hello blob service</span></span>
+<span data-ttu-id="e111a-118">toouse hello Azure blob-tjänsten API: er, måste du:</span><span class="sxs-lookup"><span data-stu-id="e111a-118">toouse hello Azure blob service APIs, you need to:</span></span>
 
-1. <span data-ttu-id="c805d-119">Referera till den automatiska bandladdaren filen med hjälp av den [require_once] -instruktionen och</span><span class="sxs-lookup"><span data-stu-id="c805d-119">Reference the autoloader file using the [require_once] statement, and</span></span>
-2. <span data-ttu-id="c805d-120">Referera till alla klasser som du kan använda.</span><span class="sxs-lookup"><span data-stu-id="c805d-120">Reference any classes you might use.</span></span>
+1. <span data-ttu-id="e111a-119">Referens hello bandladdaren fil med hello [require_once] -instruktionen och</span><span class="sxs-lookup"><span data-stu-id="e111a-119">Reference hello autoloader file using hello [require_once] statement, and</span></span>
+2. <span data-ttu-id="e111a-120">Referera till alla klasser som du kan använda.</span><span class="sxs-lookup"><span data-stu-id="e111a-120">Reference any classes you might use.</span></span>
 
-<span data-ttu-id="c805d-121">I följande exempel visas hur du lägger till den automatiska bandladdaren fil- och referens av **ServicesBuilder** klass.</span><span class="sxs-lookup"><span data-stu-id="c805d-121">The following example shows how to include the autoloader file and reference the **ServicesBuilder** class.</span></span>
+<span data-ttu-id="e111a-121">hello följande exempel visas hur tooinclude hello bandladdaren fil- och hello **ServicesBuilder** klass.</span><span class="sxs-lookup"><span data-stu-id="e111a-121">hello following example shows how tooinclude hello autoloader file and reference hello **ServicesBuilder** class.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="c805d-122">Exemplen i den här artikeln förutsätter att du har installerat PHP-klientbibliotek för Azure via Composer.</span><span class="sxs-lookup"><span data-stu-id="c805d-122">The examples in this article assume you have installed the PHP Client Libraries for Azure via Composer.</span></span> <span data-ttu-id="c805d-123">Om du har installerat biblioteken manuellt, måste du referera till den `WindowsAzure.php` bandladdaren filen.</span><span class="sxs-lookup"><span data-stu-id="c805d-123">If you installed the libraries manually, you need to reference the `WindowsAzure.php` autoloader file.</span></span>
+> <span data-ttu-id="e111a-122">hello exemplen i den här artikeln förutsätter att du har installerat hello PHP-klientbibliotek för Azure via Composer.</span><span class="sxs-lookup"><span data-stu-id="e111a-122">hello examples in this article assume you have installed hello PHP Client Libraries for Azure via Composer.</span></span> <span data-ttu-id="e111a-123">Om du har installerat hello bibliotek manuellt måste tooreference hello `WindowsAzure.php` bandladdaren filen.</span><span class="sxs-lookup"><span data-stu-id="e111a-123">If you installed hello libraries manually, you need tooreference hello `WindowsAzure.php` autoloader file.</span></span>
 >
 >
 
@@ -60,31 +60,31 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-<span data-ttu-id="c805d-124">I exemplen nedan, den `require_once` instruktionen visas alltid, men endast klasserna som krävs för att köra refereras.</span><span class="sxs-lookup"><span data-stu-id="c805d-124">In the examples below, the `require_once` statement will be shown always, but only the classes necessary for the example to execute are referenced.</span></span>
+<span data-ttu-id="e111a-124">I hello exemplen nedan hello `require_once` instruktionen visas alltid, men bara hello klasser krävs för hello exempel tooexecute refererar till.</span><span class="sxs-lookup"><span data-stu-id="e111a-124">In hello examples below, hello `require_once` statement will be shown always, but only hello classes necessary for hello example tooexecute are referenced.</span></span>
 
-## <a name="set-up-an-azure-storage-connection"></a><span data-ttu-id="c805d-125">Skapa en Azure storage-anslutning</span><span class="sxs-lookup"><span data-stu-id="c805d-125">Set up an Azure storage connection</span></span>
-<span data-ttu-id="c805d-126">Du måste ha en giltig anslutningssträng för att initiera klienten ett Azure blob-tjänsten.</span><span class="sxs-lookup"><span data-stu-id="c805d-126">To instantiate an Azure blob service client, you must first have a valid connection string.</span></span> <span data-ttu-id="c805d-127">Formatet för anslutningssträngen för blob-tjänsten är:</span><span class="sxs-lookup"><span data-stu-id="c805d-127">The format for the blob service connection string is:</span></span>
+## <a name="set-up-an-azure-storage-connection"></a><span data-ttu-id="e111a-125">Skapa en Azure storage-anslutning</span><span class="sxs-lookup"><span data-stu-id="e111a-125">Set up an Azure storage connection</span></span>
+<span data-ttu-id="e111a-126">tooinstantiate klienten ett Azure blob-tjänsten måste du först ha en giltig anslutningssträng.</span><span class="sxs-lookup"><span data-stu-id="e111a-126">tooinstantiate an Azure blob service client, you must first have a valid connection string.</span></span> <span data-ttu-id="e111a-127">hello-formatet för anslutningssträngen för hello blob-tjänsten är:</span><span class="sxs-lookup"><span data-stu-id="e111a-127">hello format for hello blob service connection string is:</span></span>
 
-<span data-ttu-id="c805d-128">För att komma åt en live-tjänst:</span><span class="sxs-lookup"><span data-stu-id="c805d-128">For accessing a live service:</span></span>
+<span data-ttu-id="e111a-128">För att komma åt en live-tjänst:</span><span class="sxs-lookup"><span data-stu-id="e111a-128">For accessing a live service:</span></span>
 
 ```php
 DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
 ```
 
-<span data-ttu-id="c805d-129">För att komma åt storage-emulatorn:</span><span class="sxs-lookup"><span data-stu-id="c805d-129">For accessing the storage emulator:</span></span>
+<span data-ttu-id="e111a-129">För att komma åt hello storage-emulatorn:</span><span class="sxs-lookup"><span data-stu-id="e111a-129">For accessing hello storage emulator:</span></span>
 
 ```php
 UseDevelopmentStorage=true
 ```
 
-<span data-ttu-id="c805d-130">För att skapa någon Azure-tjänst-klient, måste du använda den **ServicesBuilder** klass.</span><span class="sxs-lookup"><span data-stu-id="c805d-130">To create any Azure service client, you need to use the **ServicesBuilder** class.</span></span> <span data-ttu-id="c805d-131">Du kan:</span><span class="sxs-lookup"><span data-stu-id="c805d-131">You can:</span></span>
+<span data-ttu-id="e111a-130">toocreate alla Azure-tjänst-klienter, behöver du toouse hello **ServicesBuilder** klass.</span><span class="sxs-lookup"><span data-stu-id="e111a-130">toocreate any Azure service client, you need toouse hello **ServicesBuilder** class.</span></span> <span data-ttu-id="e111a-131">Du kan:</span><span class="sxs-lookup"><span data-stu-id="e111a-131">You can:</span></span>
 
-* <span data-ttu-id="c805d-132">Skicka anslutningssträngen till den eller</span><span class="sxs-lookup"><span data-stu-id="c805d-132">Pass the connection string directly to it or</span></span>
-* <span data-ttu-id="c805d-133">Använd den **CloudConfigurationManager (CCM)** till flera externa källor för anslutningssträngen:</span><span class="sxs-lookup"><span data-stu-id="c805d-133">Use the **CloudConfigurationManager (CCM)** to check multiple external sources for the connection string:</span></span>
-  * <span data-ttu-id="c805d-134">Som standard levereras den med stöd för en extern källa - miljövariabler.</span><span class="sxs-lookup"><span data-stu-id="c805d-134">By default, it comes with support for one external source - environmental variables.</span></span>
-  * <span data-ttu-id="c805d-135">Du kan lägga till nya källor genom att utöka den **ConnectionStringSource** klass.</span><span class="sxs-lookup"><span data-stu-id="c805d-135">You can add new sources by extending the **ConnectionStringSource** class.</span></span>
+* <span data-ttu-id="e111a-132">Skicka hello anslutning direkt string tooit eller</span><span class="sxs-lookup"><span data-stu-id="e111a-132">Pass hello connection string directly tooit or</span></span>
+* <span data-ttu-id="e111a-133">Använd hello **CloudConfigurationManager (CCM)** toocheck flera externa datakällor för hello anslutningssträngen:</span><span class="sxs-lookup"><span data-stu-id="e111a-133">Use hello **CloudConfigurationManager (CCM)** toocheck multiple external sources for hello connection string:</span></span>
+  * <span data-ttu-id="e111a-134">Som standard levereras den med stöd för en extern källa - miljövariabler.</span><span class="sxs-lookup"><span data-stu-id="e111a-134">By default, it comes with support for one external source - environmental variables.</span></span>
+  * <span data-ttu-id="e111a-135">Du kan lägga till nya källor genom att utöka hello **ConnectionStringSource** klass.</span><span class="sxs-lookup"><span data-stu-id="e111a-135">You can add new sources by extending hello **ConnectionStringSource** class.</span></span>
 
-<span data-ttu-id="c805d-136">Exempel som beskrivs här skickas anslutningssträngen direkt.</span><span class="sxs-lookup"><span data-stu-id="c805d-136">For the examples outlined here, the connection string will be passed directly.</span></span>
+<span data-ttu-id="e111a-136">Hello-exempel som beskrivs här skickas hello anslutningssträngen direkt.</span><span class="sxs-lookup"><span data-stu-id="e111a-136">For hello examples outlined here, hello connection string will be passed directly.</span></span>
 
 ```php
 require_once 'vendor/autoload.php';
@@ -94,10 +94,10 @@ use WindowsAzure\Common\ServicesBuilder;
 $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 ```
 
-## <a name="create-a-container"></a><span data-ttu-id="c805d-137">Skapa en behållare</span><span class="sxs-lookup"><span data-stu-id="c805d-137">Create a container</span></span>
+## <a name="create-a-container"></a><span data-ttu-id="e111a-137">Skapa en behållare</span><span class="sxs-lookup"><span data-stu-id="e111a-137">Create a container</span></span>
 [!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-<span data-ttu-id="c805d-138">En **BlobRestProxy** objekt kan du skapa en blob-behållare med den **createContainer** metod.</span><span class="sxs-lookup"><span data-stu-id="c805d-138">A **BlobRestProxy** object lets you create a blob container with the **createContainer** method.</span></span> <span data-ttu-id="c805d-139">När du skapar en behållare, du kan ange alternativ för behållaren, men detta så krävs inte.</span><span class="sxs-lookup"><span data-stu-id="c805d-139">When creating a container, you can set options on the container, but doing so is not required.</span></span> <span data-ttu-id="c805d-140">(I exemplet nedan visar hur du ställer in behållarens åtkomstkontrollistan (ACL) och metadata för behållaren.)</span><span class="sxs-lookup"><span data-stu-id="c805d-140">(The example below shows how to set the container access control list (ACL) and container metadata.)</span></span>
+<span data-ttu-id="e111a-138">En **BlobRestProxy** objekt kan du skapa en blob-behållare med hello **createContainer** metod.</span><span class="sxs-lookup"><span data-stu-id="e111a-138">A **BlobRestProxy** object lets you create a blob container with hello **createContainer** method.</span></span> <span data-ttu-id="e111a-139">När du skapar en behållare, du kan ange alternativ för hello behållare, men detta så krävs inte.</span><span class="sxs-lookup"><span data-stu-id="e111a-139">When creating a container, you can set options on hello container, but doing so is not required.</span></span> <span data-ttu-id="e111a-140">(hello exemplet nedan visar hur tooset hello behållaren åt åtkomstkontrollistor (ACL) och metadata för behållaren.)</span><span class="sxs-lookup"><span data-stu-id="e111a-140">(hello example below shows how tooset hello container access control list (ACL) and container metadata.)</span></span>
 
 ```php
 require_once 'vendor\autoload.php';
@@ -119,16 +119,16 @@ $createContainerOptions = new CreateContainerOptions();
 // PublicAccessType::CONTAINER_AND_BLOBS and PublicAccessType::BLOBS_ONLY.
 // CONTAINER_AND_BLOBS:
 // Specifies full public read access for container and blob data.
-// proxys can enumerate blobs within the container via anonymous
-// request, but cannot enumerate containers within the storage account.
+// proxys can enumerate blobs within hello container via anonymous
+// request, but cannot enumerate containers within hello storage account.
 //
 // BLOBS_ONLY:
 // Specifies public read access for blobs. Blob data within this
 // container can be read via anonymous request, but container data is not
-// available. proxys cannot enumerate blobs within the container via
+// available. proxys cannot enumerate blobs within hello container via
 // anonymous request.
-// If this value is not specified in the request, container data is
-// private to the account owner.
+// If this value is not specified in hello request, container data is
+// private toohello account owner.
 $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
 
 // Set container metadata.
@@ -149,12 +149,12 @@ catch(ServiceException $e){
 }
 ```
 
-<span data-ttu-id="c805d-141">Anropar **setPublicAccess (PublicAccessType::CONTAINER\_och\_BLOBBAR)** gör behållare och blob-data tillgängliga via anonyma förfrågningar.</span><span class="sxs-lookup"><span data-stu-id="c805d-141">Calling **setPublicAccess(PublicAccessType::CONTAINER\_AND\_BLOBS)** makes the container and blob data accessible via anonymous requests.</span></span> <span data-ttu-id="c805d-142">Anropar **setPublicAccess(PublicAccessType::BLOBS_ONLY)** gör endast blob-data som är tillgänglig via anonyma förfrågningar.</span><span class="sxs-lookup"><span data-stu-id="c805d-142">Calling **setPublicAccess(PublicAccessType::BLOBS_ONLY)** makes only blob data accessible via anonymous requests.</span></span> <span data-ttu-id="c805d-143">Mer information om behållaren ACL: er finns [Set behållar-ACL (REST-API)][container-acl].</span><span class="sxs-lookup"><span data-stu-id="c805d-143">For more information about container ACLs, see [Set container ACL (REST API)][container-acl].</span></span>
+<span data-ttu-id="e111a-141">Anropar **setPublicAccess (PublicAccessType::CONTAINER\_och\_BLOBBAR)** gör hello-behållaren och blob data som är tillgänglig via anonyma förfrågningar.</span><span class="sxs-lookup"><span data-stu-id="e111a-141">Calling **setPublicAccess(PublicAccessType::CONTAINER\_AND\_BLOBS)** makes hello container and blob data accessible via anonymous requests.</span></span> <span data-ttu-id="e111a-142">Anropar **setPublicAccess(PublicAccessType::BLOBS_ONLY)** gör endast blob-data som är tillgänglig via anonyma förfrågningar.</span><span class="sxs-lookup"><span data-stu-id="e111a-142">Calling **setPublicAccess(PublicAccessType::BLOBS_ONLY)** makes only blob data accessible via anonymous requests.</span></span> <span data-ttu-id="e111a-143">Mer information om behållaren ACL: er finns [Set behållar-ACL (REST-API)][container-acl].</span><span class="sxs-lookup"><span data-stu-id="e111a-143">For more information about container ACLs, see [Set container ACL (REST API)][container-acl].</span></span>
 
-<span data-ttu-id="c805d-144">Mer information om felkoder för Blob-tjänsten finns [Blob felkoder][error-codes].</span><span class="sxs-lookup"><span data-stu-id="c805d-144">For more information about Blob service error codes, see [Blob Service Error Codes][error-codes].</span></span>
+<span data-ttu-id="e111a-144">Mer information om felkoder för Blob-tjänsten finns [Blob felkoder][error-codes].</span><span class="sxs-lookup"><span data-stu-id="e111a-144">For more information about Blob service error codes, see [Blob Service Error Codes][error-codes].</span></span>
 
-## <a name="upload-a-blob-into-a-container"></a><span data-ttu-id="c805d-145">Ladda upp en blobb till en behållare</span><span class="sxs-lookup"><span data-stu-id="c805d-145">Upload a blob into a container</span></span>
-<span data-ttu-id="c805d-146">Om du vill överföra en fil som en blob, Använd den **BlobRestProxy -> createBlockBlob** metod.</span><span class="sxs-lookup"><span data-stu-id="c805d-146">To upload a file as a blob, use the **BlobRestProxy->createBlockBlob** method.</span></span> <span data-ttu-id="c805d-147">Den här åtgärden skapas blobben om den finns inte eller skrivs över om det inte.</span><span class="sxs-lookup"><span data-stu-id="c805d-147">This operation creates the blob if it doesn't exist, or overwrites it if it does.</span></span> <span data-ttu-id="c805d-148">Exemplet nedan förutsätter att behållaren redan har skapats och använder [fopen] [ fopen] att öppna filen som en dataström.</span><span class="sxs-lookup"><span data-stu-id="c805d-148">The code example below assumes that the container has already been created and uses [fopen][fopen] to open the file as a stream.</span></span>
+## <a name="upload-a-blob-into-a-container"></a><span data-ttu-id="e111a-145">Ladda upp en blobb till en behållare</span><span class="sxs-lookup"><span data-stu-id="e111a-145">Upload a blob into a container</span></span>
+<span data-ttu-id="e111a-146">tooupload en fil som en blob, Använd hello **BlobRestProxy -> createBlockBlob** metod.</span><span class="sxs-lookup"><span data-stu-id="e111a-146">tooupload a file as a blob, use hello **BlobRestProxy->createBlockBlob** method.</span></span> <span data-ttu-id="e111a-147">Den här åtgärden skapar hello blob om det inte finns, eller skrivs över om den finns.</span><span class="sxs-lookup"><span data-stu-id="e111a-147">This operation creates hello blob if it doesn't exist, or overwrites it if it does.</span></span> <span data-ttu-id="e111a-148">hello kodexemplet nedan förutsätter hello behållaren redan har skapats och använder [fopen] [ fopen] tooopen hello-filen som en dataström.</span><span class="sxs-lookup"><span data-stu-id="e111a-148">hello code example below assumes that hello container has already been created and uses [fopen][fopen] tooopen hello file as a stream.</span></span>
 
 ```php
 require_once 'vendor/autoload.php';
@@ -183,10 +183,10 @@ catch(ServiceException $e){
 }
 ```
 
-<span data-ttu-id="c805d-149">Observera att föregående exempel laddar upp en blob som en dataström.</span><span class="sxs-lookup"><span data-stu-id="c805d-149">Note that the previous sample uploads a blob as a stream.</span></span> <span data-ttu-id="c805d-150">Men en blob kan också överföras som en sträng med, till exempel den [filen\_hämta\_innehållet] [ file_get_contents] funktion.</span><span class="sxs-lookup"><span data-stu-id="c805d-150">However, a blob can also be uploaded as a string using, for example, the [file\_get\_contents][file_get_contents] function.</span></span> <span data-ttu-id="c805d-151">Om du vill göra detta med hjälp av föregående exempel, ändra `$content = fopen("c:\myfile.txt", "r");` till `$content = file_get_contents("c:\myfile.txt");`.</span><span class="sxs-lookup"><span data-stu-id="c805d-151">To do this using the previous sample, change `$content = fopen("c:\myfile.txt", "r");` to `$content = file_get_contents("c:\myfile.txt");`.</span></span>
+<span data-ttu-id="e111a-149">Observera att hello föregående exempel laddar upp en blob som en dataström.</span><span class="sxs-lookup"><span data-stu-id="e111a-149">Note that hello previous sample uploads a blob as a stream.</span></span> <span data-ttu-id="e111a-150">En blob kan dock också överföras som en sträng med till exempel hello [filen\_hämta\_innehållet] [ file_get_contents] funktion.</span><span class="sxs-lookup"><span data-stu-id="e111a-150">However, a blob can also be uploaded as a string using, for example, hello [file\_get\_contents][file_get_contents] function.</span></span> <span data-ttu-id="e111a-151">toodo denna med hello föregående exempel kan ändra `$content = fopen("c:\myfile.txt", "r");` för`$content = file_get_contents("c:\myfile.txt");`.</span><span class="sxs-lookup"><span data-stu-id="e111a-151">toodo this using hello previous sample, change `$content = fopen("c:\myfile.txt", "r");` too`$content = file_get_contents("c:\myfile.txt");`.</span></span>
 
-## <a name="list-the-blobs-in-a-container"></a><span data-ttu-id="c805d-152">Visa en lista över blobbarna i en behållare</span><span class="sxs-lookup"><span data-stu-id="c805d-152">List the blobs in a container</span></span>
-<span data-ttu-id="c805d-153">Om du vill visa blobbar i en behållare använder den **BlobRestProxy -> listBlobs** metod med en **foreach** loop loop via resultatet.</span><span class="sxs-lookup"><span data-stu-id="c805d-153">To list the blobs in a container, use the **BlobRestProxy->listBlobs** method with a **foreach** loop to loop through the result.</span></span> <span data-ttu-id="c805d-154">Följande kod visar namnet på varje blob som utdata i en behållare och visar dess URI till webbläsaren.</span><span class="sxs-lookup"><span data-stu-id="c805d-154">The following code displays the name of each blob as output in a container and displays its URI to the browser.</span></span>
+## <a name="list-hello-blobs-in-a-container"></a><span data-ttu-id="e111a-152">Lista hello blobbar i en behållare</span><span class="sxs-lookup"><span data-stu-id="e111a-152">List hello blobs in a container</span></span>
+<span data-ttu-id="e111a-153">toolist hello blobbar i en behållare använder hello **BlobRestProxy -> listBlobs** metod med en **foreach** slinga tooloop via hello resultat.</span><span class="sxs-lookup"><span data-stu-id="e111a-153">toolist hello blobs in a container, use hello **BlobRestProxy->listBlobs** method with a **foreach** loop tooloop through hello result.</span></span> <span data-ttu-id="e111a-154">hello följande kod visar hello namnet på varje blob som utdata i en behållare och visar dess URI toohello webbläsare.</span><span class="sxs-lookup"><span data-stu-id="e111a-154">hello following code displays hello name of each blob as output in a container and displays its URI toohello browser.</span></span>
 
 ```php
 require_once 'vendor/autoload.php';
@@ -218,8 +218,8 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="download-a-blob"></a><span data-ttu-id="c805d-155">Ladda ned en blob</span><span class="sxs-lookup"><span data-stu-id="c805d-155">Download a blob</span></span>
-<span data-ttu-id="c805d-156">Om du vill hämta en blob anropa den **BlobRestProxy -> getBlob** metoden anropar den **getContentStream** -metoden i den resulterande **GetBlobResult** objekt.</span><span class="sxs-lookup"><span data-stu-id="c805d-156">To download a blob, call the **BlobRestProxy->getBlob** method, then call the **getContentStream** method on the resulting **GetBlobResult** object.</span></span>
+## <a name="download-a-blob"></a><span data-ttu-id="e111a-155">Ladda ned en blob</span><span class="sxs-lookup"><span data-stu-id="e111a-155">Download a blob</span></span>
+<span data-ttu-id="e111a-156">toodownload blob anropet hello **BlobRestProxy -> getBlob** metod och sedan anropa hello **getContentStream** metod på hello resulterande **GetBlobResult** objekt.</span><span class="sxs-lookup"><span data-stu-id="e111a-156">toodownload a blob, call hello **BlobRestProxy->getBlob** method, then call hello **getContentStream** method on hello resulting **GetBlobResult** object.</span></span>
 
 ```php
 require_once 'vendor/autoload.php';
@@ -246,10 +246,10 @@ catch(ServiceException $e){
 }
 ```
 
-<span data-ttu-id="c805d-157">Observera att exemplet ovan hämtar en blob som en dataström-resurs (standardinställning).</span><span class="sxs-lookup"><span data-stu-id="c805d-157">Note that the example above gets a blob as a stream resource (the default behavior).</span></span> <span data-ttu-id="c805d-158">Du kan använda den [dataströmmen\_hämta\_innehållet] [ stream-get-contents] för att konvertera den returnerade strömmen till en sträng.</span><span class="sxs-lookup"><span data-stu-id="c805d-158">However, you can use the [stream\_get\_contents][stream-get-contents] function to convert the returned stream to a string.</span></span>
+<span data-ttu-id="e111a-157">Observera att hello-exemplet ovan hämtar en blob som en dataström-resurs (hello standardbeteendet).</span><span class="sxs-lookup"><span data-stu-id="e111a-157">Note that hello example above gets a blob as a stream resource (hello default behavior).</span></span> <span data-ttu-id="e111a-158">Du kan dock använda hello [dataströmmen\_hämta\_innehållet] [ stream-get-contents] funktionen tooconvert hello returnerade dataströmmen tooa sträng.</span><span class="sxs-lookup"><span data-stu-id="e111a-158">However, you can use hello [stream\_get\_contents][stream-get-contents] function tooconvert hello returned stream tooa string.</span></span>
 
-## <a name="delete-a-blob"></a><span data-ttu-id="c805d-159">Ta bort en blob</span><span class="sxs-lookup"><span data-stu-id="c805d-159">Delete a blob</span></span>
-<span data-ttu-id="c805d-160">Om du vill ta bort en blobb skicka behållarens namn och blobbnamnet till **BlobRestProxy -> deleteBlob**.</span><span class="sxs-lookup"><span data-stu-id="c805d-160">To delete a blob, pass the container name and blob name to **BlobRestProxy->deleteBlob**.</span></span>
+## <a name="delete-a-blob"></a><span data-ttu-id="e111a-159">Ta bort en blob</span><span class="sxs-lookup"><span data-stu-id="e111a-159">Delete a blob</span></span>
+<span data-ttu-id="e111a-160">toodelete blob klara hello behållarens namn och blobbnamnet för**BlobRestProxy -> deleteBlob**.</span><span class="sxs-lookup"><span data-stu-id="e111a-160">toodelete a blob, pass hello container name and blob name too**BlobRestProxy->deleteBlob**.</span></span>
 
 ```php
 require_once 'vendor/autoload.php';
@@ -275,8 +275,8 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="delete-a-blob-container"></a><span data-ttu-id="c805d-161">Ta bort en blob-behållare</span><span class="sxs-lookup"><span data-stu-id="c805d-161">Delete a blob container</span></span>
-<span data-ttu-id="c805d-162">Slutligen skicka behållarens namn till för att ta bort en blob-behållare, **BlobRestProxy -> deleteContainer**.</span><span class="sxs-lookup"><span data-stu-id="c805d-162">Finally, to delete a blob container, pass the container name to **BlobRestProxy->deleteContainer**.</span></span>
+## <a name="delete-a-blob-container"></a><span data-ttu-id="e111a-161">Ta bort en blob-behållare</span><span class="sxs-lookup"><span data-stu-id="e111a-161">Delete a blob container</span></span>
+<span data-ttu-id="e111a-162">Slutligen toodelete blob-behållaren skicka hello behållarnamn för**BlobRestProxy -> deleteContainer**.</span><span class="sxs-lookup"><span data-stu-id="e111a-162">Finally, toodelete a blob container, pass hello container name too**BlobRestProxy->deleteContainer**.</span></span>
 
 ```php
 require_once 'vendor/autoload.php';
@@ -301,20 +301,20 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="c805d-163">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="c805d-163">Next steps</span></span>
-<span data-ttu-id="c805d-164">Nu när du har lärt dig grunderna i Azure blob-tjänsten följa dessa länkar för att lära dig mer komplexa lagringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="c805d-164">Now that you've learned the basics of the Azure blob service, follow these links to learn about more complex storage tasks.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="e111a-163">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="e111a-163">Next steps</span></span>
+<span data-ttu-id="e111a-164">Nu när du har lärt dig grunderna hello i hello Azure blob-tjänsten ska du följa dessa länkar toolearn om mer komplexa lagringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="e111a-164">Now that you've learned hello basics of hello Azure blob service, follow these links toolearn about more complex storage tasks.</span></span>
 
-* <span data-ttu-id="c805d-165">Besök den [Azure Storage-teamets blogg](http://blogs.msdn.com/b/windowsazurestorage/)</span><span class="sxs-lookup"><span data-stu-id="c805d-165">Visit the [Azure Storage team blog](http://blogs.msdn.com/b/windowsazurestorage/)</span></span>
-* <span data-ttu-id="c805d-166">Finns det [PHP block-blob exempel](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php).</span><span class="sxs-lookup"><span data-stu-id="c805d-166">See the [PHP block blob example](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php).</span></span>
-* <span data-ttu-id="c805d-167">Finns det [PHP sidan blob exempel](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php).</span><span class="sxs-lookup"><span data-stu-id="c805d-167">See the [PHP page blob example](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php).</span></span>
-* [<span data-ttu-id="c805d-168">Överföra data med kommandoradsverktyget AzCopy</span><span class="sxs-lookup"><span data-stu-id="c805d-168">Transfer data with the AzCopy Command-Line Utility</span></span>](storage-use-azcopy.md)
+* <span data-ttu-id="e111a-165">Besök hello [Azure Storage-teamets blogg](http://blogs.msdn.com/b/windowsazurestorage/)</span><span class="sxs-lookup"><span data-stu-id="e111a-165">Visit hello [Azure Storage team blog](http://blogs.msdn.com/b/windowsazurestorage/)</span></span>
+* <span data-ttu-id="e111a-166">Se hello [PHP block-blob exempel](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php).</span><span class="sxs-lookup"><span data-stu-id="e111a-166">See hello [PHP block blob example](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php).</span></span>
+* <span data-ttu-id="e111a-167">Se hello [PHP sidan blob exempel](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php).</span><span class="sxs-lookup"><span data-stu-id="e111a-167">See hello [PHP page blob example](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php).</span></span>
+* [<span data-ttu-id="e111a-168">Överföra data med kommandoradsverktyget Azcopy hello</span><span class="sxs-lookup"><span data-stu-id="e111a-168">Transfer data with hello AzCopy Command-Line Utility</span></span>](storage-use-azcopy.md)
 
-<span data-ttu-id="c805d-169">Mer information finns också i [PHP Developer Center](/develop/php/).</span><span class="sxs-lookup"><span data-stu-id="c805d-169">For more information, see also the [PHP Developer Center](/develop/php/).</span></span>
+<span data-ttu-id="e111a-169">Mer information finns också hello [PHP Developer Center](/develop/php/).</span><span class="sxs-lookup"><span data-stu-id="e111a-169">For more information, see also hello [PHP Developer Center](/develop/php/).</span></span>
 
 [download]: http://go.microsoft.com/fwlink/?LinkID=252473
 [container-acl]: http://msdn.microsoft.com/library/azure/dd179391.aspx
 [error-codes]: http://msdn.microsoft.com/library/azure/dd179439.aspx
 [file_get_contents]: http://php.net/file_get_contents
-<span data-ttu-id="c805d-170">[require_once]: http://php.net/require_once</span><span class="sxs-lookup"><span data-stu-id="c805d-170">[require_once]: http://php.net/require_once</span></span>
+[require_once]: http://php.net/require_once
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents

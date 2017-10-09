@@ -1,0 +1,10 @@
+> [!IMPORTANT]
+> <span data-ttu-id="d1d8b-101">Microsoft Azure BizTalk Services (MABS) håller på att tas bort och ersättas av Azure Logic Apps.</span><span class="sxs-lookup"><span data-stu-id="d1d8b-101">Microsoft Azure BizTalk Services (MABS) is being retired, and replaced with Azure Logic Apps.</span></span> <span data-ttu-id="d1d8b-102">Om du använder MABS, sedan [flytta från BizTalk-tjänst tooLogic appar](../articles/logic-apps/logic-apps-move-from-mabs.md) ger vägledning om hur du flyttar din integrering lösningar tooLogic appar.</span><span class="sxs-lookup"><span data-stu-id="d1d8b-102">If you currently use MABS, then [Move from BizTalk Services tooLogic Apps](../articles/logic-apps/logic-apps-move-from-mabs.md) provides some guidance on moving your integration solutions tooLogic Apps.</span></span> 
+> 
+> <span data-ttu-id="d1d8b-103">Om du är helt ny tooLogic appar sedan föreslår vi igång här:</span><span class="sxs-lookup"><span data-stu-id="d1d8b-103">If you're brand new tooLogic Apps, then we suggest getting started here:</span></span> 
+> 
+> - [<span data-ttu-id="d1d8b-104">Vad är Logic Apps?</span><span class="sxs-lookup"><span data-stu-id="d1d8b-104">What are Logic Apps</span></span>](../articles/logic-apps/logic-apps-what-are-logic-apps.md)  
+> 
+> - <span data-ttu-id="d1d8b-105">[Skapa din första logikapp](../articles/logic-apps/logic-apps-create-a-logic-app.md), eller kom snabbt igång med en [färdig mall](../articles/logic-apps/logic-apps-use-logic-app-templates.md)</span><span class="sxs-lookup"><span data-stu-id="d1d8b-105">[Create your first logic app](../articles/logic-apps/logic-apps-create-a-logic-app.md), or quickly get started using a [pre-built template](../articles/logic-apps/logic-apps-use-logic-app-templates.md)</span></span>  
+> 
+> - <span data-ttu-id="d1d8b-106">[Visa alla hello tillgängliga kopplingar](../articles/connectors/apis-list.md) du kan använda i en logikapp</span><span class="sxs-lookup"><span data-stu-id="d1d8b-106">[View all hello available connectors](../articles/connectors/apis-list.md) you can use in a logic app</span></span>

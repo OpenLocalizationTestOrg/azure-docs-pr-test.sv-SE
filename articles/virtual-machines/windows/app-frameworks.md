@@ -1,6 +1,6 @@
 ---
-title: "Distribuera ramverk för programmet på virtuella Windows-datorer i Azure | Microsoft Docs"
-description: "Skapa populära programramverk på virtuella Windows-datorer med hjälp av Azure Resource Manager-mallar för att installera Active Directory, Docker och mycket mer."
+title: "aaaDeploy programramverk på virtuella Windows-datorer i Azure | Microsoft Docs"
+description: "Skapa populära programramverk på virtuella Windows-datorer med Azure Resource Manager mallar tooinstall Active Directory, Docker och mycket mer."
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: dlepow
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 275342413c6f4a9efc7a056bdc80b6489536576f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: cfc7f044cca36b7743d9acc25a27e2d589e866c7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-popular-application-frameworks-on-windows-using-azure-resource-manager-templates"></a><span data-ttu-id="8a3c1-103">Distribuera populära programramverk i Windows med Azure Resource Manager-mallar</span><span class="sxs-lookup"><span data-stu-id="8a3c1-103">Deploy popular application frameworks on Windows using Azure Resource Manager templates</span></span> 
+# <a name="deploy-popular-application-frameworks-on-windows-using-azure-resource-manager-templates"></a><span data-ttu-id="cb0f8-103">Distribuera populära programramverk i Windows med Azure Resource Manager-mallar</span><span class="sxs-lookup"><span data-stu-id="cb0f8-103">Deploy popular application frameworks on Windows using Azure Resource Manager templates</span></span> 
 
-<span data-ttu-id="8a3c1-104">Arbetsbelastningar kräver normalt många resurser för att fungera enligt design.</span><span class="sxs-lookup"><span data-stu-id="8a3c1-104">Workloads usually require many resources to function according to design.</span></span> <span data-ttu-id="8a3c1-105">Azure Resource Manager-mallar gör det möjligt för att du inte bara definierar hur program har konfigurerats, utan också hur resurserna som har distribuerats till support som konfigurerats program.</span><span class="sxs-lookup"><span data-stu-id="8a3c1-105">Azure Resource Manager templates make it possible for you to not only define how applications are configured, but also how the resources are deployed to support configured applications.</span></span> <span data-ttu-id="8a3c1-106">Den här artikeln ger en introduktion till de mest populära mallarna i galleriet och ger dig information för att distribuera dem med hjälp av Azure-portalen, Azure CLI eller PowerShell.</span><span class="sxs-lookup"><span data-stu-id="8a3c1-106">This article introduces you to the most popular templates in the gallery and gives you information for using the Azure portal, Azure CLI, or PowerShell to deploy them.</span></span>
+<span data-ttu-id="cb0f8-104">Arbetsbelastningar kräver normalt många resurser toofunction enligt toodesign.</span><span class="sxs-lookup"><span data-stu-id="cb0f8-104">Workloads usually require many resources toofunction according toodesign.</span></span> <span data-ttu-id="cb0f8-105">Azure Resource Manager mallarna gör det möjligt för du toonot endast definiera hur program har konfigurerats, men också hur hello resurser har distribuerats toosupport konfigurerats program.</span><span class="sxs-lookup"><span data-stu-id="cb0f8-105">Azure Resource Manager templates make it possible for you toonot only define how applications are configured, but also how hello resources are deployed toosupport configured applications.</span></span> <span data-ttu-id="cb0f8-106">Den här artikeln introducerar toohello populäraste mallar i hello galleriet och ger information om hur du använder hello Azure-portalen, Azure CLI eller PowerShell toodeploy dem.</span><span class="sxs-lookup"><span data-stu-id="cb0f8-106">This article introduces you toohello most popular templates in hello gallery and gives you information for using hello Azure portal, Azure CLI, or PowerShell toodeploy them.</span></span>
 
 [!INCLUDE [virtual-machines-common-app-frameworks](../../../includes/virtual-machines-common-app-frameworks.md)]
 

@@ -2,7 +2,7 @@
 
 
 
-<span data-ttu-id="167d5-101">När du skickar meddelanden om mallar du behöver bara ange en uppsättning egenskaper, i vårt fall skickar vi en uppsättning egenskaper som innehåller den lokaliserade versionen av den aktuella nyheten, till exempel:</span><span class="sxs-lookup"><span data-stu-id="167d5-101">When you send template notifications you only need to provide a set of properties, in our case we will send the set of properties containing the localized version of the current news, for instance:</span></span>
+<span data-ttu-id="27c89-101">När du skickar meddelanden om mallar behöver du bara tooprovide en uppsättning egenskaper, i vårt fall skickar hello uppsättning egenskaper som innehåller hello lokaliserad version av hello aktuella nyheter, till exempel:</span><span class="sxs-lookup"><span data-stu-id="27c89-101">When you send template notifications you only need tooprovide a set of properties, in our case we will send hello set of properties containing hello localized version of hello current news, for instance:</span></span>
 
     {
         "News_English": "World News in English!",
@@ -11,22 +11,22 @@
     }
 
 
-<span data-ttu-id="167d5-102">Det här avsnittet visas hur du skickar meddelanden med hjälp av en konsolapp</span><span class="sxs-lookup"><span data-stu-id="167d5-102">This section shows how to send notifications using a console app</span></span>
+<span data-ttu-id="27c89-102">Det här avsnittet visas hur toosend meddelanden med hjälp av en konsolapp</span><span class="sxs-lookup"><span data-stu-id="27c89-102">This section shows how toosend notifications using a console app</span></span>
 
-<span data-ttu-id="167d5-103">Inkluderade koden skickar till Windows Store- och iOS-enheter, eftersom serverdelen kan skicka till någon av enheterna som stöds.</span><span class="sxs-lookup"><span data-stu-id="167d5-103">The included code broadcasts to both Windows Store and iOS devices, since the backend can broadcast to any of the supported devices.</span></span>
+<span data-ttu-id="27c89-103">hello med kod sändningar tooboth Windows Store och iOS-enheter eftersom hello serverdel kan skicka tooany hello stöds enheter.</span><span class="sxs-lookup"><span data-stu-id="27c89-103">hello included code broadcasts tooboth Windows Store and iOS devices, since hello backend can broadcast tooany of hello supported devices.</span></span>
 
-### <a name="to-send-notifications-using-a-c-console-app"></a><span data-ttu-id="167d5-104">Att skicka meddelanden med en C#-konsolapp</span><span class="sxs-lookup"><span data-stu-id="167d5-104">To send notifications using a C# console app</span></span>
-<span data-ttu-id="167d5-105">Ändra den `SendTemplateNotificationAsync` metoden i konsolen appen som du skapade tidigare med följande kod.</span><span class="sxs-lookup"><span data-stu-id="167d5-105">Modify the `SendTemplateNotificationAsync` method in the console app you previously created with the following code.</span></span> <span data-ttu-id="167d5-106">Observera hur i det här fallet finns inget behov av att skicka flera meddelanden för olika språk och plattformar.</span><span class="sxs-lookup"><span data-stu-id="167d5-106">Notice how in this case there is no need to send multiple notifications for different locales and platforms.</span></span>
+### <a name="toosend-notifications-using-a-c-console-app"></a><span data-ttu-id="27c89-104">toosend meddelanden med en C#-konsolapp</span><span class="sxs-lookup"><span data-stu-id="27c89-104">toosend notifications using a C# console app</span></span>
+<span data-ttu-id="27c89-105">Ändra hello `SendTemplateNotificationAsync` metod i hello konsolprogram som du skapade tidigare med hello följande kod.</span><span class="sxs-lookup"><span data-stu-id="27c89-105">Modify hello `SendTemplateNotificationAsync` method in hello console app you previously created with hello following code.</span></span> <span data-ttu-id="27c89-106">Observera hur i det här fallet finns inget behov av toosend flera meddelanden för olika språk och plattformar.</span><span class="sxs-lookup"><span data-stu-id="27c89-106">Notice how in this case there is no need toosend multiple notifications for different locales and platforms.</span></span>
 
         private static async void SendTemplateNotificationAsync()
         {
-            // Define the notification hub.
+            // Define hello notification hub.
             NotificationHubClient hub = 
                 NotificationHubClient.CreateClientFromConnectionString(
                     "<connection string with full access>", "<hub name>");
 
-            // Sending the notification as a template notification. All template registrations that contain 
-            // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 
+            // Sending hello notification as a template notification. All template registrations that contain 
+            // "messageParam" or "News_<local selected>" and hello proper tags will receive hello notifications. 
             // This includes APNS, GCM, WNS, and MPNS template registrations.
             Dictionary<string, string> templateParams = new Dictionary<string, string>();
 
@@ -52,10 +52,10 @@
         }
 
 
-<span data-ttu-id="167d5-107">Observera att det här enkla anropet levererar lokaliserade typ av nyheterna till **alla** dina enheter, oavsett plattformen som din Meddelandehubb bygger och ger korrekt interna nyttolasten för alla enheter som prenumererar på en specifik taggen.</span><span class="sxs-lookup"><span data-stu-id="167d5-107">Note that this simple call will deliver the localized piece of news to **all** your devices, irrespective of the platform, as your Notification Hub builds and delivers the correct native payload to all the devices subscribed to a specific tag.</span></span>
+<span data-ttu-id="27c89-107">Observera att det här enkla anropet levererar hello lokaliserade typ av Nyheter för**alla** dina enheter, oavsett hello plattform som din Meddelandehubb bygger och levererar hello rätt interna nyttolast tooall hello enheter prenumererar på tooa specifik tagg.</span><span class="sxs-lookup"><span data-stu-id="27c89-107">Note that this simple call will deliver hello localized piece of news too**all** your devices, irrespective of hello platform, as your Notification Hub builds and delivers hello correct native payload tooall hello devices subscribed tooa specific tag.</span></span>
 
-### <a name="sending-the-notification-with-mobile-services"></a><span data-ttu-id="167d5-108">Skicka meddelanden med Mobile Services</span><span class="sxs-lookup"><span data-stu-id="167d5-108">Sending the notification with Mobile Services</span></span>
-<span data-ttu-id="167d5-109">Du kan använda följande skript i din Mobiltjänst Schemaläggaren:</span><span class="sxs-lookup"><span data-stu-id="167d5-109">In your Mobile Service scheduler, you can use the following script:</span></span>
+### <a name="sending-hello-notification-with-mobile-services"></a><span data-ttu-id="27c89-108">Skicka hello-meddelande med Mobile Services</span><span class="sxs-lookup"><span data-stu-id="27c89-108">Sending hello notification with Mobile Services</span></span>
+<span data-ttu-id="27c89-109">Du kan använda hello följande skript i din Mobiltjänst Schemaläggaren:</span><span class="sxs-lookup"><span data-stu-id="27c89-109">In your Mobile Service scheduler, you can use hello following script:</span></span>
 
     var azure = require('azure');
     var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string with full access>');

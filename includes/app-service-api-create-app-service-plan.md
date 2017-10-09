@@ -1,14 +1,14 @@
-<span data-ttu-id="cfc85-101">Skapa en App Service-plan med kommandot [az appservice plan create](/cli/azure/appservice/plan#create).</span><span class="sxs-lookup"><span data-stu-id="cfc85-101">Create an App Service plan with the [az appservice plan create](/cli/azure/appservice/plan#create) command.</span></span>
+<span data-ttu-id="043c2-101">Skapa en apptjänstplan med hello [az programtjänstplan skapa](/cli/azure/appservice/plan#create) kommando.</span><span class="sxs-lookup"><span data-stu-id="043c2-101">Create an App Service plan with hello [az appservice plan create](/cli/azure/appservice/plan#create) command.</span></span>
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 
-<span data-ttu-id="cfc85-102">I följande exempel skapas en App Service-plan med namnet `myAppServicePlan` på prisnivån **Kostnadsfri**:</span><span class="sxs-lookup"><span data-stu-id="cfc85-102">The following example creates an App Service plan named `myAppServicePlan` in the **Free** pricing tier:</span></span>
+<span data-ttu-id="043c2-102">hello följande exempel skapas en apptjänstplan med namnet `myAppServicePlan` i hello **lediga** prisnivån:</span><span class="sxs-lookup"><span data-stu-id="043c2-102">hello following example creates an App Service plan named `myAppServicePlan` in hello **Free** pricing tier:</span></span>
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
 ```
 
-<span data-ttu-id="cfc85-103">När App Service-planen har skapats visas information av Azure CLI. Informationen ser ut ungefär som i följande exempel:</span><span class="sxs-lookup"><span data-stu-id="cfc85-103">When the App Service plan has been created, the Azure CLI shows information similar to the following example:</span></span>
+<span data-ttu-id="043c2-103">När hello programtjänstplanen har skapats, visar hello Azure CLI information liknande toohello följande exempel:</span><span class="sxs-lookup"><span data-stu-id="043c2-103">When hello App Service plan has been created, hello Azure CLI shows information similar toohello following example:</span></span>
 
 ```json
 { 

@@ -1,0 +1,4 @@
+<span data-ttu-id="63113-101">tooenable hello SSL-port [Bläddra](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) tooyour cache i hello [Azure-portalen](https://portal.azure.com) och på **avancerade inställningar**.</span><span class="sxs-lookup"><span data-stu-id="63113-101">tooenable hello non-SSL port, [browse](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) tooyour cache in hello [Azure portal](https://portal.azure.com) and click **Advanced settings**.</span></span> <span data-ttu-id="63113-102">Klicka på **nr** för **Tillåt åtkomst endast via SSL** på hello **avancerade inställningar** bladet och klicka sedan på **spara**.</span><span class="sxs-lookup"><span data-stu-id="63113-102">Click **No** for **Allow access only via SSL** on hello **Advanced settings** blade and then click **Save**.</span></span>
+
+![Inställningar för Redis-cache](media/redis-cache-non-ssl-port/redis-cache-non-ssl-port.png)
+

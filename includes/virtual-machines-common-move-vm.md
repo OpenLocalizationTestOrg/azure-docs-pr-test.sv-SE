@@ -1,0 +1,29 @@
+
+
+## <a name="use-hello-portal-toomove-a-vm-tooa-different-subscription"></a><span data-ttu-id="32775-101">Använd hello portal toomove en annan prenumeration för VM-tooa</span><span class="sxs-lookup"><span data-stu-id="32775-101">Use hello portal toomove a VM tooa different subscription</span></span>
+<span data-ttu-id="32775-102">Du kan flytta en virtuell dator och dess tillhörande resurser tooa annan prenumeration med hjälp av hello portal.</span><span class="sxs-lookup"><span data-stu-id="32775-102">You can move a VM and it's associated resources tooa different subscription using hello portal.</span></span>
+
+1. <span data-ttu-id="32775-103">Öppna hello [Azure-portalen](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="32775-103">Open hello [Azure portal](https://portal.azure.com).</span></span>
+2. <span data-ttu-id="32775-104">Klicka på **Bläddra** > **virtuella datorer** och välj hello VM som du vill att toomove hello-listan.</span><span class="sxs-lookup"><span data-stu-id="32775-104">Click **Browse** > **Virtual machines** and select hello VM you would like toomove from hello list.</span></span>
+   
+    ![Skärmbild av hello Essentials avsnitt där du klickar på hello penna ikonen tooopen hello flytta resurser bladet.](./media/virtual-machines-common-move-vm/move-button.png)
+3. <span data-ttu-id="32775-106">I hello **Essentials** klickar du på hello **ändra prenumerationen** penna ikonen nästa toohello prenumerationsnamn.</span><span class="sxs-lookup"><span data-stu-id="32775-106">In hello **Essentials** section, click on hello **Change subscription** pencil icon next toohello subscription name.</span></span> <span data-ttu-id="32775-107">Hej **flyttar resurser** öppnas bladet.</span><span class="sxs-lookup"><span data-stu-id="32775-107">hello **Move resources** blade will open.</span></span>
+   
+    ![Skärmbild av bladet för hello flytta resurser.](./media/virtual-machines-common-move-vm/move.png)
+4. <span data-ttu-id="32775-109">Markera varje hello resurser toomove.</span><span class="sxs-lookup"><span data-stu-id="32775-109">Select each of hello resources toomove.</span></span> <span data-ttu-id="32775-110">I de flesta fall bör du flytta alla hello visas valfria resurser.</span><span class="sxs-lookup"><span data-stu-id="32775-110">In most cases, you should move all of hello listed optional resources.</span></span>
+5. <span data-ttu-id="32775-111">Välj hello **prenumeration** där du vill att hello VM toobe flyttas.</span><span class="sxs-lookup"><span data-stu-id="32775-111">Select hello **Subscription** where you want hello VM toobe moved.</span></span>
+6. <span data-ttu-id="32775-112">Välj en befintlig **resursgruppen** eller ange ett namn toohave skapas en ny resursgrupp.</span><span class="sxs-lookup"><span data-stu-id="32775-112">Select an existing **Resource group** or type a name toohave a new resource group created.</span></span>
+7. <span data-ttu-id="32775-113">När du är klar väljer du att du förstår att nya resursen med ID: N skapas och de måste toobe som används med hello VM när den flyttas, sedan klickar du på **OK**.</span><span class="sxs-lookup"><span data-stu-id="32775-113">When you are done, select that you understand that new resource IDs will be created and those need toobe used with hello VM once it is moved, then click **OK**.</span></span>
+
+## <a name="use-hello-portal-toomove-a-vm-tooanother-resource-group"></a><span data-ttu-id="32775-114">Använd hello portal toomove VM tooanother resursgrupp</span><span class="sxs-lookup"><span data-stu-id="32775-114">Use hello portal toomove a VM tooanother resource group</span></span>
+<span data-ttu-id="32775-115">Du kan flytta en virtuell dator och dess tillhörande resurser tooanother resursgrupp med hello-portalen.</span><span class="sxs-lookup"><span data-stu-id="32775-115">You can move a VM and it's associated resources tooanother resource group using hello portal.</span></span>
+
+1. <span data-ttu-id="32775-116">Öppna hello [Azure-portalen](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="32775-116">Open hello [Azure portal](https://portal.azure.com).</span></span>
+2. <span data-ttu-id="32775-117">Klicka på **Bläddra** > **resursgrupper** och välj hello resursgruppen som innehåller hello VM.</span><span class="sxs-lookup"><span data-stu-id="32775-117">Click **Browse** > **Resource groups** and select hello resource group that contains hello VM.</span></span>
+3. <span data-ttu-id="32775-118">I hello **resursgruppen** bladet väljer **flytta** hello-menyn.</span><span class="sxs-lookup"><span data-stu-id="32775-118">In hello **Resource group** blade, select **Move** from hello menu.</span></span>
+   
+    ![Skärmbild av hello flytta-knappen på hello resurs grupper-menyn.](./media/virtual-machines-common-move-vm/move-rg.png)
+4. <span data-ttu-id="32775-120">I hello **flyttar resurser** bladet välj hello resurser toobe flyttas och sedan antingen ange en befintlig resursgruppens namn eller välj toocreate en ny resursgrupp.</span><span class="sxs-lookup"><span data-stu-id="32775-120">In hello **Move resources** blade, select hello resources toobe moved and then either type an existing resource group name or choose toocreate a new resource group.</span></span> <span data-ttu-id="32775-121">När du är klar väljer du att du förstår att nya resursen med ID: N skapas och de måste toobe som används med hello VM när den flyttas, sedan klickar du på **OK**</span><span class="sxs-lookup"><span data-stu-id="32775-121">When you are done, select that you understand that new resource IDs will be created and those need toobe used with hello VM once it is moved, then click **OK**</span></span>
+   
+    ![Skärmbild av bladet för hello flytta resurser.](./media/virtual-machines-common-move-vm/move-rg-list.png)
+

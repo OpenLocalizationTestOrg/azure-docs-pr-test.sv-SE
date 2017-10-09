@@ -1,0 +1,11 @@
+<span data-ttu-id="c741f-101">hello Mobile Apps i Azure Apptjänst använder [Azure Notification Hubs] toosend push-meddelanden, så att du ska konfigurera en meddelandehubb för din mobila app.</span><span class="sxs-lookup"><span data-stu-id="c741f-101">hello Mobile Apps feature of Azure App Service uses [Azure Notification Hubs] toosend pushes, so you will be configuring a notification hub for your mobile app.</span></span>
+
+1. <span data-ttu-id="c741f-102">I hello [Azure-portalen], gå för**Apptjänster**, och klicka sedan på din app-serverdel.</span><span class="sxs-lookup"><span data-stu-id="c741f-102">In hello [Azure portal], go too**App Services**, and then click your app back end.</span></span> <span data-ttu-id="c741f-103">Under **inställningar**, klickar du på **Push**.</span><span class="sxs-lookup"><span data-stu-id="c741f-103">Under **Settings**, click **Push**.</span></span>
+2. <span data-ttu-id="c741f-104">Klicka på **Anslut** tooadd en notification hub resurs toohello app.</span><span class="sxs-lookup"><span data-stu-id="c741f-104">Click **Connect** tooadd a notification hub resource toohello app.</span></span> <span data-ttu-id="c741f-105">Du kan antingen skapa ett nav eller ansluta tooan befintliga en.</span><span class="sxs-lookup"><span data-stu-id="c741f-105">You can either create a hub or connect tooan existing one.</span></span>
+
+    ![](./media/app-service-mobile-create-notification-hub/configure-hub-flow.png)
+
+<span data-ttu-id="c741f-106">Nu har du anslutit en notification hub tooyour Mobile Apps backend-projekt.</span><span class="sxs-lookup"><span data-stu-id="c741f-106">Now you have connected a notification hub tooyour Mobile Apps back-end project.</span></span> <span data-ttu-id="c741f-107">Du kommer senare att konfigurera den här notification hub tooconnect tooa platform notification system (PNS) toopush toodevices.</span><span class="sxs-lookup"><span data-stu-id="c741f-107">Later you will configure this notification hub tooconnect tooa platform notification system (PNS) toopush toodevices.</span></span>
+
+[Azure-portalen]: https://portal.azure.com/
+[Azure Notification Hubs]: https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-push-notification-overview/

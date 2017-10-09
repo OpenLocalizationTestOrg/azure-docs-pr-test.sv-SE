@@ -1,0 +1,15 @@
+1. <span data-ttu-id="8884d-101">Kopiera hello installation toohello server och sedan öppna hello installer.</span><span class="sxs-lookup"><span data-stu-id="8884d-101">Copy hello installation toohello server, and then open hello installer.</span></span>
+2. <span data-ttu-id="8884d-102">På hello **installationsalternativ** bladet väljer **installera Mobilitetstjänsten**.</span><span class="sxs-lookup"><span data-stu-id="8884d-102">On hello **Installation Option** blade, select **Install Mobility Service**.</span></span>
+
+    ![<span data-ttu-id="8884d-103">Mobility installera alternativet sida</span><span class="sxs-lookup"><span data-stu-id="8884d-103">Mobility Service Install Option Page</span></span> ](./media/site-recovery-install-mob-svc-gui/mobility1.png)
+3. <span data-ttu-id="8884d-104">Välj hello installationsplatsen och klicka på **installera** toobeing hello installationsproceduren.</span><span class="sxs-lookup"><span data-stu-id="8884d-104">Select hello install location  and click **Install** toobeing hello installation procedure.</span></span>
+
+    ![<span data-ttu-id="8884d-105">Mobility installera platsen sida</span><span class="sxs-lookup"><span data-stu-id="8884d-105">Mobility Service Install Location Page</span></span> ](./media/site-recovery-install-mob-svc-gui/mobility2.png)
+4. <span data-ttu-id="8884d-106">Du kan använda **Installationsförlopp** sidan toomonitor hello installer pågår.</span><span class="sxs-lookup"><span data-stu-id="8884d-106">You can use **Installation Progress** page toomonitor hello installer's progress.</span></span>
+    <span data-ttu-id="8884d-107">![Mobility Service installation pågår](./media/site-recovery-install-mob-svc-gui/mobility3.png)</span><span class="sxs-lookup"><span data-stu-id="8884d-107">![Mobility Service Install Progress ](./media/site-recovery-install-mob-svc-gui/mobility3.png)</span></span>
+
+5. <span data-ttu-id="8884d-108">När installationen är klar klickar du på hello **fortsätta tooConfiguration** knappen tooregister hello Mobilitetstjänsten med serverns konfiguration.</span><span class="sxs-lookup"><span data-stu-id="8884d-108">Once installation is complete, click hello **Proceed tooConfiguration** button tooregister hello Mobility Service with your Configuration server.</span></span>
+    <span data-ttu-id="8884d-109">![Mobilitetstjänsten registrera sida](./media/site-recovery-install-mob-svc-gui/mobility4.png)</span><span class="sxs-lookup"><span data-stu-id="8884d-109">![Mobility service Register Page ](./media/site-recovery-install-mob-svc-gui/mobility4.png)</span></span>
+
+6. <span data-ttu-id="8884d-110">Klicka på hello **registrera** knappen toocomplete hello registrering.</span><span class="sxs-lookup"><span data-stu-id="8884d-110">Click on hello **Register** button toocomplete hello registration.</span></span>
+    <span data-ttu-id="8884d-111">![Mobilitetstjänsten registrera sida](./media/site-recovery-install-mob-svc-gui/mobility5.png)</span><span class="sxs-lookup"><span data-stu-id="8884d-111">![Mobility service Register Page ](./media/site-recovery-install-mob-svc-gui/mobility5.png)</span></span>

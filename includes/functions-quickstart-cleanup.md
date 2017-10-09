@@ -1,0 +1,5 @@
+<span data-ttu-id="984b3-101">Andra snabbstarter i den här samlingen bygger på den här snabbstarten.</span><span class="sxs-lookup"><span data-stu-id="984b3-101">Other quick starts in this collection build upon this quick start.</span></span> <span data-ttu-id="984b3-102">Om du tänker toocontinue toowork med efterföljande snabbstarter eller hello självstudier, rensa hello resurser som skapas på den här quick starta inte.</span><span class="sxs-lookup"><span data-stu-id="984b3-102">If you plan toocontinue on toowork with subsequent quick starts or with hello tutorials, do not clean up hello resources created in this quick start.</span></span> 
+
+<span data-ttu-id="984b3-103">Om du inte planerar toocontinue klickar du på hello **resursgruppen** för hello funktionsapp i hello portal och klicka sedan på **ta bort**.</span><span class="sxs-lookup"><span data-stu-id="984b3-103">If you do not plan toocontinue, click hello **Resource group** for hello function app in hello portal, and then click **Delete**.</span></span> 
+
+![Välj hello resurs grupp toodelete hello funktionsapp.](./media/functions-quickstart-cleanup/functions-app-delete-resource-group.png)

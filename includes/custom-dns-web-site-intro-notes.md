@@ -1,0 +1,10 @@
+<span data-ttu-id="35b5e-101">Den här artikeln är Azure App Service (Web Apps, API Apps, Mobilappar, Logic Apps); Cloud Services, se [konfigurera ett anpassat domännamn för en Azure-molntjänst](../articles/cloud-services/cloud-services-custom-domain-name.md).</span><span class="sxs-lookup"><span data-stu-id="35b5e-101">This article is for Azure App Service (Web Apps, API Apps, Mobile Apps, Logic Apps); for Cloud Services, see [Configuring a custom domain name for an Azure cloud service](../articles/cloud-services/cloud-services-custom-domain-name.md).</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="35b5e-102">Om appen är belastningsutjämnad med [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), klicka på hello selector hello överst i den här artikel tooget steg.</span><span class="sxs-lookup"><span data-stu-id="35b5e-102">If you app is load-balanced by [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), click hello selector at hello top of this article tooget specific steps.</span></span>
+> 
+> <span data-ttu-id="35b5e-103">**Anpassad domän namn inte är aktiverat kostnadsfritt nivå**.</span><span class="sxs-lookup"><span data-stu-id="35b5e-103">**Custom domain names are not enabled for Free tier**.</span></span> <span data-ttu-id="35b5e-104">Du måste [skala upp tooa högre prisnivå](../articles/app-service-web/web-sites-scale.md), vilket kan ändra hur mycket du debiteras för din prenumeration.</span><span class="sxs-lookup"><span data-stu-id="35b5e-104">You must [scale up tooa higher pricing tier](../articles/app-service-web/web-sites-scale.md), which may change how much you are billed for your subscription.</span></span> 
+> <span data-ttu-id="35b5e-105">Se [priser för Apptjänst](https://azure.microsoft.com/pricing/details/app-service/) för mer information.</span><span class="sxs-lookup"><span data-stu-id="35b5e-105">See [App Service Pricing](https://azure.microsoft.com/pricing/details/app-service/) for more information.</span></span>
+> 
+> 
+

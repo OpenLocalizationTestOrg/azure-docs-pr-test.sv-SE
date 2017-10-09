@@ -1,6 +1,6 @@
 ---
-title: "XEvent-ringbufferten koden för SQL-databas | Microsoft Docs"
-description: "Ger en Transact-SQL-kodexempel som görs enkelt och snabbt med hjälp av ringbufferten mål, i Azure SQL Database."
+title: "aaaXEvent ringbufferten koden för SQL-databas | Microsoft Docs"
+description: "Ger en Transact-SQL-kodexempel som görs enkelt och snabbt med hjälp av hello ringbufferten mål i Azure SQL Database."
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -16,52 +16,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
-ms.openlocfilehash: 6fbefe151901ac3b15d93712422878fc4d6206f1
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 21df748d9999d6837d2b5bbe4a3f47fb351b4633
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a><span data-ttu-id="7c509-103">Ring buffert mål koden för utökade händelser i SQL-databas</span><span class="sxs-lookup"><span data-stu-id="7c509-103">Ring Buffer target code for extended events in SQL Database</span></span>
+# <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a><span data-ttu-id="64d9a-103">Ring buffert mål koden för utökade händelser i SQL-databas</span><span class="sxs-lookup"><span data-stu-id="64d9a-103">Ring Buffer target code for extended events in SQL Database</span></span>
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-<span data-ttu-id="7c509-104">Du vill använda en fullständig kodexempel för enklaste snabbt sätt att avbilda och rapportera information om en utökad händelse under ett test.</span><span class="sxs-lookup"><span data-stu-id="7c509-104">You want a complete code sample for the easiest quick way to capture and report information for an extended event during a test.</span></span> <span data-ttu-id="7c509-105">Det enklaste målet för utökade händelsedata är den [ringbufferten mål](http://msdn.microsoft.com/library/ff878182.aspx).</span><span class="sxs-lookup"><span data-stu-id="7c509-105">The easiest target for extended event data is the [Ring Buffer target](http://msdn.microsoft.com/library/ff878182.aspx).</span></span>
+<span data-ttu-id="64d9a-104">Du vill använda en fullständig kodexempel för hello enklaste snabbt toocapture och rapportera information om en utökad händelse under ett test.</span><span class="sxs-lookup"><span data-stu-id="64d9a-104">You want a complete code sample for hello easiest quick way toocapture and report information for an extended event during a test.</span></span> <span data-ttu-id="64d9a-105">hello enklaste målet för utökade händelsedata är hello [ringbufferten mål](http://msdn.microsoft.com/library/ff878182.aspx).</span><span class="sxs-lookup"><span data-stu-id="64d9a-105">hello easiest target for extended event data is hello [Ring Buffer target](http://msdn.microsoft.com/library/ff878182.aspx).</span></span>
 
-<span data-ttu-id="7c509-106">Det här avsnittet presenteras en Transact-SQL-kodexempel som:</span><span class="sxs-lookup"><span data-stu-id="7c509-106">This topic presents a Transact-SQL code sample that:</span></span>
+<span data-ttu-id="64d9a-106">Det här avsnittet presenteras en Transact-SQL-kodexempel som:</span><span class="sxs-lookup"><span data-stu-id="64d9a-106">This topic presents a Transact-SQL code sample that:</span></span>
 
-1. <span data-ttu-id="7c509-107">Skapar en tabell med data för att visa med.</span><span class="sxs-lookup"><span data-stu-id="7c509-107">Creates a table with data to demonstrate with.</span></span>
-2. <span data-ttu-id="7c509-108">Skapar en session för en befintlig utökad händelse, nämligen **sqlserver.sql_statement_starting**.</span><span class="sxs-lookup"><span data-stu-id="7c509-108">Creates a session for an existing extended event, namely **sqlserver.sql_statement_starting**.</span></span>
+1. <span data-ttu-id="64d9a-107">Skapar en tabell med data toodemonstrate med.</span><span class="sxs-lookup"><span data-stu-id="64d9a-107">Creates a table with data toodemonstrate with.</span></span>
+2. <span data-ttu-id="64d9a-108">Skapar en session för en befintlig utökad händelse, nämligen **sqlserver.sql_statement_starting**.</span><span class="sxs-lookup"><span data-stu-id="64d9a-108">Creates a session for an existing extended event, namely **sqlserver.sql_statement_starting**.</span></span>
    
-   * <span data-ttu-id="7c509-109">Händelsen är begränsad till SQL-uttryck som innehåller en viss uppdatering sträng: **instruktionen som '% uppdatering tabEmployee %'**.</span><span class="sxs-lookup"><span data-stu-id="7c509-109">The event is limited to SQL statements that contain a particular Update string: **statement LIKE '%UPDATE tabEmployee%'**.</span></span>
-   * <span data-ttu-id="7c509-110">Väljer att skicka utdata för händelsen till ett mål av typen ringbufferten, nämligen **package0.ring_buffer**.</span><span class="sxs-lookup"><span data-stu-id="7c509-110">Chooses to send the output of the event to a target of type Ring Buffer, namely  **package0.ring_buffer**.</span></span>
-3. <span data-ttu-id="7c509-111">Startar händelsesessionen.</span><span class="sxs-lookup"><span data-stu-id="7c509-111">Starts the event session.</span></span>
-4. <span data-ttu-id="7c509-112">Utfärdar ett par enkla UPDATE SQL-instruktioner.</span><span class="sxs-lookup"><span data-stu-id="7c509-112">Issues a couple of simple SQL UPDATE statements.</span></span>
-5. <span data-ttu-id="7c509-113">Utfärdar en SQL SELECT-instruktion för att hämta utdata för händelse från ringbufferten.</span><span class="sxs-lookup"><span data-stu-id="7c509-113">Issues a SQL SELECT statement to retrieve event output from the Ring Buffer.</span></span>
+   * <span data-ttu-id="64d9a-109">hello händelsen är begränsad tooSQL instruktioner som innehåller en viss uppdatering sträng: **instruktionen som '% uppdatering tabEmployee %'**.</span><span class="sxs-lookup"><span data-stu-id="64d9a-109">hello event is limited tooSQL statements that contain a particular Update string: **statement LIKE '%UPDATE tabEmployee%'**.</span></span>
+   * <span data-ttu-id="64d9a-110">Väljer toosend hello utdata från hello händelse tooa mål av typen ringbufferten, nämligen **package0.ring_buffer**.</span><span class="sxs-lookup"><span data-stu-id="64d9a-110">Chooses toosend hello output of hello event tooa target of type Ring Buffer, namely  **package0.ring_buffer**.</span></span>
+3. <span data-ttu-id="64d9a-111">Startar hello händelsesessionen.</span><span class="sxs-lookup"><span data-stu-id="64d9a-111">Starts hello event session.</span></span>
+4. <span data-ttu-id="64d9a-112">Utfärdar ett par enkla UPDATE SQL-instruktioner.</span><span class="sxs-lookup"><span data-stu-id="64d9a-112">Issues a couple of simple SQL UPDATE statements.</span></span>
+5. <span data-ttu-id="64d9a-113">Utfärdar en SQL SELECT-instruktionen tooretrieve händelse utdata från hello ringbufferten.</span><span class="sxs-lookup"><span data-stu-id="64d9a-113">Issues a SQL SELECT statement tooretrieve event output from hello Ring Buffer.</span></span>
    
-   * <span data-ttu-id="7c509-114">**sys.dm_xe_database_session_targets** och andra dynamiska hanteringsvyer (av DMV: er) som är anslutna.</span><span class="sxs-lookup"><span data-stu-id="7c509-114">**sys.dm_xe_database_session_targets** and other dynamic management views (DMVs) are joined.</span></span>
-6. <span data-ttu-id="7c509-115">Stoppar händelsesessionen.</span><span class="sxs-lookup"><span data-stu-id="7c509-115">Stops the event session.</span></span>
-7. <span data-ttu-id="7c509-116">Utelämnar ringbufferten mål, om du vill frigöra resurser.</span><span class="sxs-lookup"><span data-stu-id="7c509-116">Drops the Ring Buffer target, to release its resources.</span></span>
-8. <span data-ttu-id="7c509-117">Utelämnar händelsesessionen och demo-tabellen.</span><span class="sxs-lookup"><span data-stu-id="7c509-117">Drops the event session and the demo table.</span></span>
+   * <span data-ttu-id="64d9a-114">**sys.dm_xe_database_session_targets** och andra dynamiska hanteringsvyer (av DMV: er) som är anslutna.</span><span class="sxs-lookup"><span data-stu-id="64d9a-114">**sys.dm_xe_database_session_targets** and other dynamic management views (DMVs) are joined.</span></span>
+6. <span data-ttu-id="64d9a-115">Stoppar hello händelsesessionen.</span><span class="sxs-lookup"><span data-stu-id="64d9a-115">Stops hello event session.</span></span>
+7. <span data-ttu-id="64d9a-116">Således hello ringbufferten mål, toorelease dess resurser.</span><span class="sxs-lookup"><span data-stu-id="64d9a-116">Drops hello Ring Buffer target, toorelease its resources.</span></span>
+8. <span data-ttu-id="64d9a-117">Utelämnar hello händelsesessionen och hello demo tabell.</span><span class="sxs-lookup"><span data-stu-id="64d9a-117">Drops hello event session and hello demo table.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="7c509-118">Krav</span><span class="sxs-lookup"><span data-stu-id="7c509-118">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="64d9a-118">Krav</span><span class="sxs-lookup"><span data-stu-id="64d9a-118">Prerequisites</span></span>
 
-* <span data-ttu-id="7c509-119">Ett Azure-konto och prenumeration.</span><span class="sxs-lookup"><span data-stu-id="7c509-119">An Azure account and subscription.</span></span> <span data-ttu-id="7c509-120">Registrera dig för en [kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="7c509-120">You can sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
-* <span data-ttu-id="7c509-121">Alla databaser som du kan skapa en tabell i.</span><span class="sxs-lookup"><span data-stu-id="7c509-121">Any database you can create a table in.</span></span>
+* <span data-ttu-id="64d9a-119">Ett Azure-konto och prenumeration.</span><span class="sxs-lookup"><span data-stu-id="64d9a-119">An Azure account and subscription.</span></span> <span data-ttu-id="64d9a-120">Registrera dig för en [kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="64d9a-120">You can sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+* <span data-ttu-id="64d9a-121">Alla databaser som du kan skapa en tabell i.</span><span class="sxs-lookup"><span data-stu-id="64d9a-121">Any database you can create a table in.</span></span>
   
-  * <span data-ttu-id="7c509-122">Alternativt kan du [skapa en **AdventureWorksLT** demonstrationsdatabas](sql-database-get-started.md) i minuter.</span><span class="sxs-lookup"><span data-stu-id="7c509-122">Optionally you can [create an **AdventureWorksLT** demonstration database](sql-database-get-started.md) in minutes.</span></span>
-* <span data-ttu-id="7c509-123">SQL Server Management Studio (ssms.exe), helst den senaste månatliga update-versionen.</span><span class="sxs-lookup"><span data-stu-id="7c509-123">SQL Server Management Studio (ssms.exe), ideally its latest monthly update version.</span></span> 
-  <span data-ttu-id="7c509-124">Du kan hämta den senaste ssms.exe från:</span><span class="sxs-lookup"><span data-stu-id="7c509-124">You can download the latest ssms.exe from:</span></span>
+  * <span data-ttu-id="64d9a-122">Alternativt kan du [skapa en **AdventureWorksLT** demonstrationsdatabas](sql-database-get-started.md) i minuter.</span><span class="sxs-lookup"><span data-stu-id="64d9a-122">Optionally you can [create an **AdventureWorksLT** demonstration database](sql-database-get-started.md) in minutes.</span></span>
+* <span data-ttu-id="64d9a-123">SQL Server Management Studio (ssms.exe), helst den senaste månatliga update-versionen.</span><span class="sxs-lookup"><span data-stu-id="64d9a-123">SQL Server Management Studio (ssms.exe), ideally its latest monthly update version.</span></span> 
+  <span data-ttu-id="64d9a-124">Du kan hämta hello senaste ssms.exe från:</span><span class="sxs-lookup"><span data-stu-id="64d9a-124">You can download hello latest ssms.exe from:</span></span>
   
-  * <span data-ttu-id="7c509-125">Avsnittet [Hämta SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).</span><span class="sxs-lookup"><span data-stu-id="7c509-125">Topic titled [Download SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).</span></span>
-  * [<span data-ttu-id="7c509-126">En direktlänk till nedladdningen.</span><span class="sxs-lookup"><span data-stu-id="7c509-126">A direct link to the download.</span></span>](http://go.microsoft.com/fwlink/?linkid=616025)
+  * <span data-ttu-id="64d9a-125">Avsnittet [Hämta SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).</span><span class="sxs-lookup"><span data-stu-id="64d9a-125">Topic titled [Download SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).</span></span>
+  * [<span data-ttu-id="64d9a-126">En direktlänk toohello hämtning.</span><span class="sxs-lookup"><span data-stu-id="64d9a-126">A direct link toohello download.</span></span>](http://go.microsoft.com/fwlink/?linkid=616025)
 
-## <a name="code-sample"></a><span data-ttu-id="7c509-127">Kodexempel</span><span class="sxs-lookup"><span data-stu-id="7c509-127">Code sample</span></span>
+## <a name="code-sample"></a><span data-ttu-id="64d9a-127">Kodexempel</span><span class="sxs-lookup"><span data-stu-id="64d9a-127">Code sample</span></span>
 
-<span data-ttu-id="7c509-128">Med mycket mindre ändringar, kan du köra följande kodexempel i ringbufferten på Azure SQL Database eller Microsoft SQL Server.</span><span class="sxs-lookup"><span data-stu-id="7c509-128">With very minor modification, the following Ring Buffer code sample can be run on either Azure SQL Database or Microsoft SQL Server.</span></span> <span data-ttu-id="7c509-129">Skillnaden är förekomsten av noden '_databas' i vissa dynamiska hanteringsvyer (av DMV: er), används i FROM-satsen i steg 5.</span><span class="sxs-lookup"><span data-stu-id="7c509-129">The difference is the presence of the node '_database' in the name of some dynamic management views (DMVs), used in the FROM clause in Step 5.</span></span> <span data-ttu-id="7c509-130">Exempel:</span><span class="sxs-lookup"><span data-stu-id="7c509-130">For example:</span></span>
+<span data-ttu-id="64d9a-128">Med mycket mindre ändringar, kan hello följande kodexempel i ringbufferten köras på Azure SQL Database eller Microsoft SQL Server.</span><span class="sxs-lookup"><span data-stu-id="64d9a-128">With very minor modification, hello following Ring Buffer code sample can be run on either Azure SQL Database or Microsoft SQL Server.</span></span> <span data-ttu-id="64d9a-129">hello skillnaden är hello förekomst av hello noden '_databas' i hello namnet på vissa dynamiska hanteringsvyer (av DMV: er), används i hello FROM-satsen i steg 5.</span><span class="sxs-lookup"><span data-stu-id="64d9a-129">hello difference is hello presence of hello node '_database' in hello name of some dynamic management views (DMVs), used in hello FROM clause in Step 5.</span></span> <span data-ttu-id="64d9a-130">Exempel:</span><span class="sxs-lookup"><span data-stu-id="64d9a-130">For example:</span></span>
 
-* <span data-ttu-id="7c509-131">sys.dm_xe**_databas**_session_targets</span><span class="sxs-lookup"><span data-stu-id="7c509-131">sys.dm_xe**_database**_session_targets</span></span>
-* <span data-ttu-id="7c509-132">sys.dm_xe_session_targets</span><span class="sxs-lookup"><span data-stu-id="7c509-132">sys.dm_xe_session_targets</span></span>
+* <span data-ttu-id="64d9a-131">sys.dm_xe**_databas**_session_targets</span><span class="sxs-lookup"><span data-stu-id="64d9a-131">sys.dm_xe**_database**_session_targets</span></span>
+* <span data-ttu-id="64d9a-132">sys.dm_xe_session_targets</span><span class="sxs-lookup"><span data-stu-id="64d9a-132">sys.dm_xe_session_targets</span></span>
 
 &nbsp;
 
@@ -218,15 +218,15 @@ GO
 
 &nbsp;
 
-## <a name="ring-buffer-contents"></a><span data-ttu-id="7c509-133">Ring Buffer innehållet</span><span class="sxs-lookup"><span data-stu-id="7c509-133">Ring Buffer contents</span></span>
+## <a name="ring-buffer-contents"></a><span data-ttu-id="64d9a-133">Ring Buffer innehållet</span><span class="sxs-lookup"><span data-stu-id="64d9a-133">Ring Buffer contents</span></span>
 
-<span data-ttu-id="7c509-134">Vi använde ssms.exe för att köra kodexemplet.</span><span class="sxs-lookup"><span data-stu-id="7c509-134">We used ssms.exe to run the code sample.</span></span>
+<span data-ttu-id="64d9a-134">Vi använde ssms.exe toorun hello kodexempel.</span><span class="sxs-lookup"><span data-stu-id="64d9a-134">We used ssms.exe toorun hello code sample.</span></span>
 
-<span data-ttu-id="7c509-135">Om du vill visa resultatet, vi har klickat på cellen under kolumnrubriken **target_data_XML**.</span><span class="sxs-lookup"><span data-stu-id="7c509-135">To view the results, we clicked the cell under the column header **target_data_XML**.</span></span>
+<span data-ttu-id="64d9a-135">tooview hello resultat vi klickat på hello cell under hello kolumnrubriken **target_data_XML**.</span><span class="sxs-lookup"><span data-stu-id="64d9a-135">tooview hello results, we clicked hello cell under hello column header **target_data_XML**.</span></span>
 
-<span data-ttu-id="7c509-136">Sedan i resultatfönstret klickar vi på cellen under kolumnrubriken **target_data_XML**.</span><span class="sxs-lookup"><span data-stu-id="7c509-136">Then in the results pane we clicked the cell under the column header **target_data_XML**.</span></span> <span data-ttu-id="7c509-137">Detta klickar du på Skapa en annan fil flik i ssms.exe där innehållet i resultatcellen visades som XML.</span><span class="sxs-lookup"><span data-stu-id="7c509-137">This click created another file tab in ssms.exe in which the content of the result cell was displayed, as XML.</span></span>
+<span data-ttu-id="64d9a-136">Sedan i resultatfönstret hello vi klickade hello cell under hello kolumnrubriken **target_data_XML**.</span><span class="sxs-lookup"><span data-stu-id="64d9a-136">Then in hello results pane we clicked hello cell under hello column header **target_data_XML**.</span></span> <span data-ttu-id="64d9a-137">Detta klickar du på Skapa en annan fil flik i ssms.exe i vilka hello innehållet i hello resultatcellen visades som XML.</span><span class="sxs-lookup"><span data-stu-id="64d9a-137">This click created another file tab in ssms.exe in which hello content of hello result cell was displayed, as XML.</span></span>
 
-<span data-ttu-id="7c509-138">Utdata visas i följande blocket.</span><span class="sxs-lookup"><span data-stu-id="7c509-138">The output is shown in the following block.</span></span> <span data-ttu-id="7c509-139">Det ser ut långt, men det är bara två  **<event>**  element.</span><span class="sxs-lookup"><span data-stu-id="7c509-139">It looks long, but it is just two **<event>** elements.</span></span>
+<span data-ttu-id="64d9a-138">hello utdata visas i hello följande block.</span><span class="sxs-lookup"><span data-stu-id="64d9a-138">hello output is shown in hello following block.</span></span> <span data-ttu-id="64d9a-139">Det ser ut långt, men det är bara två  **<event>**  element.</span><span class="sxs-lookup"><span data-stu-id="64d9a-139">It looks long, but it is just two **<event>** elements.</span></span>
 
 &nbsp;
 
@@ -318,9 +318,9 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 ```
 
 
-#### <a name="release-resources-held-by-your-ring-buffer"></a><span data-ttu-id="7c509-140">Frigöra resurser som innehas av Ring Buffer</span><span class="sxs-lookup"><span data-stu-id="7c509-140">Release resources held by your Ring Buffer</span></span>
+#### <a name="release-resources-held-by-your-ring-buffer"></a><span data-ttu-id="64d9a-140">Frigöra resurser som innehas av Ring Buffer</span><span class="sxs-lookup"><span data-stu-id="64d9a-140">Release resources held by your Ring Buffer</span></span>
 
-<span data-ttu-id="7c509-141">När du är klar med Ring Buffer kan du ta bort den och släpper dess resurser som utfärdar en **ALTER** ut så här:</span><span class="sxs-lookup"><span data-stu-id="7c509-141">When you are done with your Ring Buffer, you can remove it and release its resources issuing an **ALTER** like the following:</span></span>
+<span data-ttu-id="64d9a-141">När du är klar med Ring Buffer kan du ta bort den och släpper dess resurser som utfärdar en **ALTER** som hello följande:</span><span class="sxs-lookup"><span data-stu-id="64d9a-141">When you are done with your Ring Buffer, you can remove it and release its resources issuing an **ALTER** like hello following:</span></span>
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -330,7 +330,7 @@ GO
 ```
 
 
-<span data-ttu-id="7c509-142">Definitionen för händelsesessionen uppdaterats, men inte ta bort.</span><span class="sxs-lookup"><span data-stu-id="7c509-142">The definition of your event session is updated, but not dropped.</span></span> <span data-ttu-id="7c509-143">Du kan senare lägga till en annan instans av ringbufferten händelsesessionen:</span><span class="sxs-lookup"><span data-stu-id="7c509-143">Later you can add another instance of the Ring Buffer to your event session:</span></span>
+<span data-ttu-id="64d9a-142">hello definitionen för händelsesessionen uppdaterats, men inte ta bort.</span><span class="sxs-lookup"><span data-stu-id="64d9a-142">hello definition of your event session is updated, but not dropped.</span></span> <span data-ttu-id="64d9a-143">Du kan senare lägga till en annan instans av hello ringbufferten tooyour händelsesessionen:</span><span class="sxs-lookup"><span data-stu-id="64d9a-143">Later you can add another instance of hello Ring Buffer tooyour event session:</span></span>
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -343,19 +343,19 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 ```
 
 
-## <a name="more-information"></a><span data-ttu-id="7c509-144">Mer information</span><span class="sxs-lookup"><span data-stu-id="7c509-144">More information</span></span>
+## <a name="more-information"></a><span data-ttu-id="64d9a-144">Mer information</span><span class="sxs-lookup"><span data-stu-id="64d9a-144">More information</span></span>
 
-<span data-ttu-id="7c509-145">Primär avsnittet för utökade händelser på Azure SQL Database är:</span><span class="sxs-lookup"><span data-stu-id="7c509-145">The primary topic for extended events on Azure SQL Database is:</span></span>
+<span data-ttu-id="64d9a-145">hello primära avsnittet för utökade händelser på Azure SQL Database är:</span><span class="sxs-lookup"><span data-stu-id="64d9a-145">hello primary topic for extended events on Azure SQL Database is:</span></span>
 
-* <span data-ttu-id="7c509-146">[Utökad händelse överväganden i SQL-databas](sql-database-xevent-db-diff-from-svr.md), vilket står i kontrast vissa aspekter av utökade händelser som skiljer sig åt mellan Azure SQL Database jämfört med Microsoft SQL Server.</span><span class="sxs-lookup"><span data-stu-id="7c509-146">[Extended event considerations in SQL Database](sql-database-xevent-db-diff-from-svr.md), which contrasts some aspects of extended events that differ between Azure SQL Database versus Microsoft SQL Server.</span></span>
+* <span data-ttu-id="64d9a-146">[Utökad händelse överväganden i SQL-databas](sql-database-xevent-db-diff-from-svr.md), vilket står i kontrast vissa aspekter av utökade händelser som skiljer sig åt mellan Azure SQL Database jämfört med Microsoft SQL Server.</span><span class="sxs-lookup"><span data-stu-id="64d9a-146">[Extended event considerations in SQL Database](sql-database-xevent-db-diff-from-svr.md), which contrasts some aspects of extended events that differ between Azure SQL Database versus Microsoft SQL Server.</span></span>
 
-<span data-ttu-id="7c509-147">Andra exempel avsnitt i koden för utökade händelser finns på följande länkar.</span><span class="sxs-lookup"><span data-stu-id="7c509-147">Other code sample topics for extended events are available at the following links.</span></span> <span data-ttu-id="7c509-148">Du måste regelbundet kontrollera varje prov för att se om exemplet riktar sig till Microsoft SQL Server jämfört med Azure SQL Database.</span><span class="sxs-lookup"><span data-stu-id="7c509-148">However, you must routinely check any sample to see whether the sample targets Microsoft SQL Server versus Azure SQL Database.</span></span> <span data-ttu-id="7c509-149">Sedan kan du bestämma om mindre ändringar behövs för att köra exemplet.</span><span class="sxs-lookup"><span data-stu-id="7c509-149">Then you can decide whether minor changes are needed to run the sample.</span></span>
+<span data-ttu-id="64d9a-147">Andra exempel avsnitt i koden för utökade händelser finns på följande länkar hello.</span><span class="sxs-lookup"><span data-stu-id="64d9a-147">Other code sample topics for extended events are available at hello following links.</span></span> <span data-ttu-id="64d9a-148">Du måste dock regelbundet kontrollera alla exempel toosee om hello exempel riktar sig till Microsoft SQL Server jämfört med Azure SQL Database.</span><span class="sxs-lookup"><span data-stu-id="64d9a-148">However, you must routinely check any sample toosee whether hello sample targets Microsoft SQL Server versus Azure SQL Database.</span></span> <span data-ttu-id="64d9a-149">Sedan kan du bestämma om mindre ändringar är nödvändiga toorun hello exempel.</span><span class="sxs-lookup"><span data-stu-id="64d9a-149">Then you can decide whether minor changes are needed toorun hello sample.</span></span>
 
-* <span data-ttu-id="7c509-150">Kodexempel för Azure SQL Database: [händelsefilen mål koden för utökade händelser i SQL-databas](sql-database-xevent-code-event-file.md)</span><span class="sxs-lookup"><span data-stu-id="7c509-150">Code sample for Azure SQL Database: [Event File target code for extended events in SQL Database](sql-database-xevent-code-event-file.md)</span></span>
+* <span data-ttu-id="64d9a-150">Kodexempel för Azure SQL Database: [händelsefilen mål koden för utökade händelser i SQL-databas](sql-database-xevent-code-event-file.md)</span><span class="sxs-lookup"><span data-stu-id="64d9a-150">Code sample for Azure SQL Database: [Event File target code for extended events in SQL Database](sql-database-xevent-code-event-file.md)</span></span>
 
 <!--
 ('lock_acquired' event.)
 
 - Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Find hello Objects That Have hello Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->
