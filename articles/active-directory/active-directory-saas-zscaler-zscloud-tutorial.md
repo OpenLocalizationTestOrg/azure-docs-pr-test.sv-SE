@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Zscaler ZSCloud | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Zscaler ZSCloud."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Zscaler ZSCloud."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,295 +13,295 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 2b6eb113e5725260bc04f50e9218939bf28b1ff0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: af6d5c1994e715cccf959cc9fd3ba998e5b9effa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a><span data-ttu-id="0468d-103">Självstudier: Azure Active Directory-integrering med Zscaler ZSCloud</span><span class="sxs-lookup"><span data-stu-id="0468d-103">Tutorial: Azure Active Directory integration with Zscaler ZSCloud</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a><span data-ttu-id="5baa9-103">Självstudier: Azure Active Directory-integrering med Zscaler ZSCloud</span><span class="sxs-lookup"><span data-stu-id="5baa9-103">Tutorial: Azure Active Directory integration with Zscaler ZSCloud</span></span>
 
-<span data-ttu-id="0468d-104">I kursen får lära du att integrera Zscaler ZSCloud med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="0468d-104">In this tutorial, you learn how to integrate Zscaler ZSCloud with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="5baa9-104">I kursen får du lära dig hur toointegrate Zscaler ZSCloud med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="5baa9-104">In this tutorial, you learn how toointegrate Zscaler ZSCloud with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="0468d-105">Integrera Zscaler ZSCloud med Azure AD ger dig följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="0468d-105">Integrating Zscaler ZSCloud with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="5baa9-105">Integrera Zscaler ZSCloud med Azure AD ger dig hello följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="5baa9-105">Integrating Zscaler ZSCloud with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="0468d-106">Du kan styra i Azure AD som har åtkomst till Zscaler ZSCloud</span><span class="sxs-lookup"><span data-stu-id="0468d-106">You can control in Azure AD who has access to Zscaler ZSCloud</span></span>
-- <span data-ttu-id="0468d-107">Du kan aktivera användarna att automatiskt hämta loggat in på Zscaler ZSCloud (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="0468d-107">You can enable your users to automatically get signed-on to Zscaler ZSCloud (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="0468d-108">Du kan hantera dina konton i en central plats - Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="0468d-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="5baa9-106">Du kan styra i Azure AD som har åtkomst tooZscaler ZSCloud</span><span class="sxs-lookup"><span data-stu-id="5baa9-106">You can control in Azure AD who has access tooZscaler ZSCloud</span></span>
+- <span data-ttu-id="5baa9-107">Du kan aktivera din användare tooautomatically get inloggade tooZscaler ZSCloud (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="5baa9-107">You can enable your users tooautomatically get signed-on tooZscaler ZSCloud (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="5baa9-108">Du kan hantera dina konton i en central plats - hello Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="5baa9-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="0468d-109">Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="0468d-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="5baa9-109">Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="5baa9-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="0468d-110">Krav</span><span class="sxs-lookup"><span data-stu-id="0468d-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="5baa9-110">Krav</span><span class="sxs-lookup"><span data-stu-id="5baa9-110">Prerequisites</span></span>
 
-<span data-ttu-id="0468d-111">För att konfigurera Azure AD-integrering med Zscaler ZSCloud, behöver du följande:</span><span class="sxs-lookup"><span data-stu-id="0468d-111">To configure Azure AD integration with Zscaler ZSCloud, you need the following items:</span></span>
+<span data-ttu-id="5baa9-111">tooconfigure Azure AD-integrering med Zscaler ZSCloud, behöver du hello följande objekt:</span><span class="sxs-lookup"><span data-stu-id="5baa9-111">tooconfigure Azure AD integration with Zscaler ZSCloud, you need hello following items:</span></span>
 
-- <span data-ttu-id="0468d-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="0468d-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="0468d-113">En Zscaler ZSCloud enkel inloggning aktiverad prenumeration</span><span class="sxs-lookup"><span data-stu-id="0468d-113">A Zscaler ZSCloud single sign-on enabled subscription</span></span>
+- <span data-ttu-id="5baa9-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="5baa9-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="5baa9-113">En Zscaler ZSCloud enkel inloggning aktiverad prenumeration</span><span class="sxs-lookup"><span data-stu-id="5baa9-113">A Zscaler ZSCloud single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="0468d-114">Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="0468d-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="5baa9-114">tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="5baa9-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="0468d-115">Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="0468d-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="5baa9-115">tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="5baa9-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="0468d-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="0468d-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="0468d-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="0468d-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="5baa9-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="5baa9-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="5baa9-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="5baa9-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="0468d-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="0468d-118">Scenario description</span></span>
-<span data-ttu-id="0468d-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="0468d-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="0468d-120">Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="0468d-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="5baa9-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="5baa9-118">Scenario description</span></span>
+<span data-ttu-id="5baa9-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="5baa9-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="5baa9-120">hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="5baa9-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="0468d-121">Att lägga till Zscaler ZSCloud från galleriet</span><span class="sxs-lookup"><span data-stu-id="0468d-121">Adding Zscaler ZSCloud from the gallery</span></span>
-2. <span data-ttu-id="0468d-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="0468d-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="5baa9-121">Att lägga till Zscaler ZSCloud från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="5baa9-121">Adding Zscaler ZSCloud from hello gallery</span></span>
+2. <span data-ttu-id="5baa9-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="5baa9-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-zscaler-zscloud-from-the-gallery"></a><span data-ttu-id="0468d-123">Att lägga till Zscaler ZSCloud från galleriet</span><span class="sxs-lookup"><span data-stu-id="0468d-123">Adding Zscaler ZSCloud from the gallery</span></span>
-<span data-ttu-id="0468d-124">Du måste lägga till Zscaler ZSCloud från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Zscaler ZSCloud i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="0468d-124">To configure the integration of Zscaler ZSCloud into Azure AD, you need to add Zscaler ZSCloud from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-zscaler-zscloud-from-hello-gallery"></a><span data-ttu-id="5baa9-123">Att lägga till Zscaler ZSCloud från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="5baa9-123">Adding Zscaler ZSCloud from hello gallery</span></span>
+<span data-ttu-id="5baa9-124">tooconfigure hello integrering av Zscaler ZSCloud i Azure AD, behöver du tooadd Zscaler ZSCloud hello galleriet tooyour listan över hanterade SaaS-appar.</span><span class="sxs-lookup"><span data-stu-id="5baa9-124">tooconfigure hello integration of Zscaler ZSCloud into Azure AD, you need tooadd Zscaler ZSCloud from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="0468d-125">**Utför följande steg för att lägga till Zscaler ZSCloud från galleriet:**</span><span class="sxs-lookup"><span data-stu-id="0468d-125">**To add Zscaler ZSCloud from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="5baa9-125">**tooadd Zscaler ZSCloud från galleriet hello utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="5baa9-125">**tooadd Zscaler ZSCloud from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="0468d-126">I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="0468d-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="5baa9-126">I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="5baa9-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="0468d-128">Gå till **företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="0468d-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="0468d-129">Gå till **alla program**.</span><span class="sxs-lookup"><span data-stu-id="0468d-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="5baa9-128">Navigera för**företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="5baa9-129">Gå sedan för**alla program**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-129">Then go too**All applications**.</span></span>
 
     ![Program][2]
     
-3. <span data-ttu-id="0468d-131">Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="0468d-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="5baa9-131">tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5baa9-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Program][3]
 
-4. <span data-ttu-id="0468d-133">I sökrutan skriver **Zscaler ZSCloud**.</span><span class="sxs-lookup"><span data-stu-id="0468d-133">In the search box, type **Zscaler ZSCloud**.</span></span>
+4. <span data-ttu-id="5baa9-133">Skriv i sökrutan hello **Zscaler ZSCloud**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-133">In hello search box, type **Zscaler ZSCloud**.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_search.png)
 
-5. <span data-ttu-id="0468d-135">Välj i resultatpanelen **Zscaler ZSCloud**, och klicka sedan på **Lägg till** för att lägga till programmet.</span><span class="sxs-lookup"><span data-stu-id="0468d-135">In the results panel, select **Zscaler ZSCloud**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="5baa9-135">Markera hello resultat på panelen **Zscaler ZSCloud**, och klicka sedan på **Lägg till** knappen tooadd hello program.</span><span class="sxs-lookup"><span data-stu-id="5baa9-135">In hello results panel, select **Zscaler ZSCloud**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="0468d-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="0468d-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="0468d-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Zscaler ZSCloud baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="0468d-138">In this section, you configure and test Azure AD single sign-on with Zscaler ZSCloud based on a test user called "Britta Simon."</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="5baa9-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="5baa9-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="5baa9-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Zscaler ZSCloud baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="5baa9-138">In this section, you configure and test Azure AD single sign-on with Zscaler ZSCloud based on a test user called "Britta Simon."</span></span>
 
-<span data-ttu-id="0468d-139">Azure AD måste du känna till användaren i Zscaler ZSCloud motsvarighet till en användare i Azure AD för enkel inloggning ska fungera.</span><span class="sxs-lookup"><span data-stu-id="0468d-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Zscaler ZSCloud is to a user in Azure AD.</span></span> <span data-ttu-id="0468d-140">Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Zscaler ZSCloud upprättas.</span><span class="sxs-lookup"><span data-stu-id="0468d-140">In other words, a link relationship between an Azure AD user and the related user in Zscaler ZSCloud needs to be established.</span></span>
+<span data-ttu-id="5baa9-139">För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Zscaler ZSCloud är tooa i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="5baa9-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Zscaler ZSCloud is tooa user in Azure AD.</span></span> <span data-ttu-id="5baa9-140">Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i Zscaler ZSCloud toobe upprättas.</span><span class="sxs-lookup"><span data-stu-id="5baa9-140">In other words, a link relationship between an Azure AD user and hello related user in Zscaler ZSCloud needs toobe established.</span></span>
 
-<span data-ttu-id="0468d-141">Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i Zscaler ZSCloud.</span><span class="sxs-lookup"><span data-stu-id="0468d-141">This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Zscaler ZSCloud.</span></span>
+<span data-ttu-id="5baa9-141">Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i Zscaler ZSCloud.</span><span class="sxs-lookup"><span data-stu-id="5baa9-141">This link relationship is established by assigning hello value of hello **user name** in Azure AD as hello value of hello **Username** in Zscaler ZSCloud.</span></span>
 
-<span data-ttu-id="0468d-142">Om du vill konfigurera och testa Azure AD enkel inloggning med Zscaler ZSCloud, måste du utföra följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="0468d-142">To configure and test Azure AD single sign-on with Zscaler ZSCloud, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="5baa9-142">tooconfigure och testa Azure AD enkel inloggning med Zscaler ZSCloud, behöver du toocomplete hello följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="5baa9-142">tooconfigure and test Azure AD single sign-on with Zscaler ZSCloud, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="0468d-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="0468d-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="0468d-144">**[Konfigurera proxyinställningar](#configuring-proxy-settings)**  - om du vill konfigurera proxyinställningarna i Internet Explorer</span><span class="sxs-lookup"><span data-stu-id="0468d-144">**[Configuring proxy settings](#configuring-proxy-settings)** - to configure the proxy settings in Internet Explorer</span></span>
-2. <span data-ttu-id="0468d-145">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="0468d-145">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)**  - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="0468d-146">**[Skapa en testanvändare Zscaler ZSCloud](#creating-a-zscaler-zscloud-test-user)**  – har en motsvarighet för Britta Simon Zscaler ZSCloud som är kopplad till Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="0468d-146">**[Creating a Zscaler ZSCloud test user](#creating-a-zscaler-zscloud-test-user)** - to have a counterpart of Britta Simon in Zscaler ZSCloud that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="0468d-147">**[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="0468d-147">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="0468d-148">**[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="0468d-148">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="5baa9-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="5baa9-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="5baa9-144">**[Konfigurera proxyinställningar](#configuring-proxy-settings)**  -tooconfigure hello proxyinställningarna i Internet Explorer</span><span class="sxs-lookup"><span data-stu-id="5baa9-144">**[Configuring proxy settings](#configuring-proxy-settings)** - tooconfigure hello proxy settings in Internet Explorer</span></span>
+2. <span data-ttu-id="5baa9-145">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="5baa9-145">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)**  - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="5baa9-146">**[Skapa en testanvändare Zscaler ZSCloud](#creating-a-zscaler-zscloud-test-user)**  -toohave en motsvarighet för Britta Simon i Zscaler ZSCloud som är länkade toohello Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="5baa9-146">**[Creating a Zscaler ZSCloud test user](#creating-a-zscaler-zscloud-test-user)** - toohave a counterpart of Britta Simon in Zscaler ZSCloud that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="5baa9-147">**[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="5baa9-147">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="5baa9-148">**[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="5baa9-148">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="0468d-149">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="0468d-149">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="5baa9-149">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="5baa9-149">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="0468d-150">I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Zscaler ZSCloud.</span><span class="sxs-lookup"><span data-stu-id="0468d-150">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Zscaler ZSCloud application.</span></span>
+<span data-ttu-id="5baa9-150">I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Zscaler ZSCloud.</span><span class="sxs-lookup"><span data-stu-id="5baa9-150">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Zscaler ZSCloud application.</span></span>
 
-<span data-ttu-id="0468d-151">**Utför följande steg för att konfigurera Azure AD enkel inloggning med Zscaler ZSCloud:**</span><span class="sxs-lookup"><span data-stu-id="0468d-151">**To configure Azure AD single sign-on with Zscaler ZSCloud, perform the following steps:**</span></span>
+<span data-ttu-id="5baa9-151">**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Zscaler ZSCloud:**</span><span class="sxs-lookup"><span data-stu-id="5baa9-151">**tooconfigure Azure AD single sign-on with Zscaler ZSCloud, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="0468d-152">I Azure-portalen på den **Zscaler ZSCloud** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="0468d-152">In the Azure portal, on the **Zscaler ZSCloud** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="5baa9-152">I hello Azure-portalen på hello **Zscaler ZSCloud** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-152">In hello Azure portal, on hello **Zscaler ZSCloud** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurera enkel inloggning][4]
 
-2. <span data-ttu-id="0468d-154">På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="0468d-154">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="5baa9-154">På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="5baa9-154">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_samlbase.png)
 
-3. <span data-ttu-id="0468d-156">På den **Zscaler ZSCloud domän och URL: er** avsnittet, utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="0468d-156">On the **Zscaler ZSCloud Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="5baa9-156">På hello **Zscaler ZSCloud domän och URL: er** avsnittet, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="5baa9-156">On hello **Zscaler ZSCloud Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
 
-     <span data-ttu-id="0468d-158">I den **inloggnings-URL** textruta, Skriv URL: en som används av dina användare logga in i tillämpningsprogrammet ZScaler ZSCloud.</span><span class="sxs-lookup"><span data-stu-id="0468d-158">In the **Sign-on URL** textbox, type the URL used by your users to sign-on to your ZScaler ZSCloud application.</span></span>
+     <span data-ttu-id="5baa9-158">I hello **inloggnings-URL** textruta typen hello URL som används av dina användare toosign på tooyour ZScaler ZSCloud program.</span><span class="sxs-lookup"><span data-stu-id="5baa9-158">In hello **Sign-on URL** textbox, type hello URL used by your users toosign-on tooyour ZScaler ZSCloud application.</span></span>
     
     > [!NOTE] 
-    > <span data-ttu-id="0468d-159">Du måste uppdatera det här värdet med det faktiska inloggnings-URL.</span><span class="sxs-lookup"><span data-stu-id="0468d-159">You have to update this value with the actual Sign-On URL.</span></span> <span data-ttu-id="0468d-160">Kontakta [Zscaler ZSCloud klienten supportteamet](https://support.zscaler.com/hc/articles/210172606-Zscaler-is-Expanding-Its-Zscloud-Global-Footprint) att hämta det här värdet.</span><span class="sxs-lookup"><span data-stu-id="0468d-160">Contact [Zscaler ZSCloud Client support team](https://support.zscaler.com/hc/articles/210172606-Zscaler-is-Expanding-Its-Zscloud-Global-Footprint) to get this value.</span></span> 
+    > <span data-ttu-id="5baa9-159">Du har tooupdate värdet med hello faktiska inloggnings-URL.</span><span class="sxs-lookup"><span data-stu-id="5baa9-159">You have tooupdate this value with hello actual Sign-On URL.</span></span> <span data-ttu-id="5baa9-160">Kontakta [Zscaler ZSCloud klienten supportteamet](https://support.zscaler.com/hc/articles/210172606-Zscaler-is-Expanding-Its-Zscloud-Global-Footprint) tooget det här värdet.</span><span class="sxs-lookup"><span data-stu-id="5baa9-160">Contact [Zscaler ZSCloud Client support team](https://support.zscaler.com/hc/articles/210172606-Zscaler-is-Expanding-Its-Zscloud-Global-Footprint) tooget this value.</span></span> 
  
-4. <span data-ttu-id="0468d-161">På den **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara certifikatfilen på datorn.</span><span class="sxs-lookup"><span data-stu-id="0468d-161">On the **SAML Signing Certificate** section, click **Certificate (Base64)** and then save the certificate file on your computer.</span></span>
+4. <span data-ttu-id="5baa9-161">På hello **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara sedan hello certifikat på datorn.</span><span class="sxs-lookup"><span data-stu-id="5baa9-161">On hello **SAML Signing Certificate** section, click **Certificate (Base64)** and then save hello certificate file on your computer.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
 
-5. <span data-ttu-id="0468d-163">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="0468d-163">Click **Save** button.</span></span>
+5. <span data-ttu-id="5baa9-163">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="5baa9-163">Click **Save** button.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="0468d-165">På den **Zscaler ZSCloud Configuration** klickar du på **konfigurera Zscaler ZSCloud** att öppna **konfigurera inloggning** fönster.</span><span class="sxs-lookup"><span data-stu-id="0468d-165">On the **Zscaler ZSCloud Configuration** section, click **Configure Zscaler ZSCloud** to open **Configure sign-on** window.</span></span> <span data-ttu-id="0468d-166">Kopiera den **SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**</span><span class="sxs-lookup"><span data-stu-id="0468d-166">Copy the **SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="5baa9-165">På hello **Zscaler ZSCloud Configuration** klickar du på **konfigurera Zscaler ZSCloud** tooopen **konfigurera inloggning** fönster.</span><span class="sxs-lookup"><span data-stu-id="5baa9-165">On hello **Zscaler ZSCloud Configuration** section, click **Configure Zscaler ZSCloud** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="5baa9-166">Kopiera hello **SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**</span><span class="sxs-lookup"><span data-stu-id="5baa9-166">Copy hello **SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_configure.png) 
 
-7. <span data-ttu-id="0468d-168">I en annan webbläsarfönster loggar du in på webbplatsen ZScaler ZSCloud företag som administratör.</span><span class="sxs-lookup"><span data-stu-id="0468d-168">In a different web browser window, log in to your ZScaler ZSCloud company site as an administrator.</span></span>
+7. <span data-ttu-id="5baa9-168">I en annan webbläsarfönster logga in tooyour ZScaler ZSCloud företagets webbplats som administratör.</span><span class="sxs-lookup"><span data-stu-id="5baa9-168">In a different web browser window, log in tooyour ZScaler ZSCloud company site as an administrator.</span></span>
 
-8. <span data-ttu-id="0468d-169">Klicka på menyn högst upp **Administration**.</span><span class="sxs-lookup"><span data-stu-id="0468d-169">In the menu on the top, click **Administration**.</span></span>
+8. <span data-ttu-id="5baa9-169">Hello-menyn överst hello **Administration**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-169">In hello menu on hello top, click **Administration**.</span></span>
    
-    <span data-ttu-id="0468d-170">![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800206.png "Administration")</span><span class="sxs-lookup"><span data-stu-id="0468d-170">![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800206.png "Administration")</span></span>
+    <span data-ttu-id="5baa9-170">![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800206.png "Administration")</span><span class="sxs-lookup"><span data-stu-id="5baa9-170">![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800206.png "Administration")</span></span>
 
-9. <span data-ttu-id="0468d-171">Under **hantera administratörer & roller**, klickar du på **hantera användare och autentisering**.</span><span class="sxs-lookup"><span data-stu-id="0468d-171">Under **Manage Administrators & Roles**, click **Manage Users & Authentication**.</span></span>   
+9. <span data-ttu-id="5baa9-171">Under **hantera administratörer & roller**, klickar du på **hantera användare och autentisering**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-171">Under **Manage Administrators & Roles**, click **Manage Users & Authentication**.</span></span>   
             
-    <span data-ttu-id="0468d-172">![Hantera användare och autentisering](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800207.png "hantera användare och autentisering")</span><span class="sxs-lookup"><span data-stu-id="0468d-172">![Manage Users & Authentication](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800207.png "Manage Users & Authentication")</span></span>
+    <span data-ttu-id="5baa9-172">![Hantera användare och autentisering](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800207.png "hantera användare och autentisering")</span><span class="sxs-lookup"><span data-stu-id="5baa9-172">![Manage Users & Authentication](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800207.png "Manage Users & Authentication")</span></span>
 
-10. <span data-ttu-id="0468d-173">I den **Välj autentiseringsalternativ för din organisation** avsnittet, utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="0468d-173">In the **Choose Authentication Options for your Organization** section, perform the following steps:</span></span>   
+10. <span data-ttu-id="5baa9-173">I hello **Välj autentiseringsalternativ för din organisation** avsnittet, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="5baa9-173">In hello **Choose Authentication Options for your Organization** section, perform hello following steps:</span></span>   
                 
-    <span data-ttu-id="0468d-174">![Autentisering](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800208.png "autentisering")</span><span class="sxs-lookup"><span data-stu-id="0468d-174">![Authentication](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800208.png "Authentication")</span></span>
+    <span data-ttu-id="5baa9-174">![Autentisering](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800208.png "autentisering")</span><span class="sxs-lookup"><span data-stu-id="5baa9-174">![Authentication](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800208.png "Authentication")</span></span>
    
-    <span data-ttu-id="0468d-175">a.</span><span class="sxs-lookup"><span data-stu-id="0468d-175">a.</span></span> <span data-ttu-id="0468d-176">Välj **autentisera med SAML enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="0468d-176">Select **Authenticate using SAML Single Sign-On**.</span></span>
+    <span data-ttu-id="5baa9-175">a.</span><span class="sxs-lookup"><span data-stu-id="5baa9-175">a.</span></span> <span data-ttu-id="5baa9-176">Välj **autentisera med SAML enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-176">Select **Authenticate using SAML Single Sign-On**.</span></span>
 
-    <span data-ttu-id="0468d-177">b.</span><span class="sxs-lookup"><span data-stu-id="0468d-177">b.</span></span> <span data-ttu-id="0468d-178">Klicka på **konfigureras SAML enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="0468d-178">Click **Configure SAML Single Sign-On Parameters**.</span></span>
+    <span data-ttu-id="5baa9-177">b.</span><span class="sxs-lookup"><span data-stu-id="5baa9-177">b.</span></span> <span data-ttu-id="5baa9-178">Klicka på **konfigureras SAML enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-178">Click **Configure SAML Single Sign-On Parameters**.</span></span>
 
-11. <span data-ttu-id="0468d-179">På den **konfigurera SAML enkel inloggning parametrar** dialogrutan sida, utför följande steg och klicka sedan på **klar**</span><span class="sxs-lookup"><span data-stu-id="0468d-179">On the **Configure SAML Single Sign-On Parameters** dialog page, perform the following steps, and then click **Done**</span></span>
+11. <span data-ttu-id="5baa9-179">På hello **konfigurera SAML enkel inloggning parametrar** dialogrutan sida, utför följande steg hello och klicka sedan på **klar**</span><span class="sxs-lookup"><span data-stu-id="5baa9-179">On hello **Configure SAML Single Sign-On Parameters** dialog page, perform hello following steps, and then click **Done**</span></span>
 
-    <span data-ttu-id="0468d-180">![Enkel inloggning](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800209.png "enkel inloggning")</span><span class="sxs-lookup"><span data-stu-id="0468d-180">![Single Sign-On](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800209.png "Single Sign-On")</span></span>
+    <span data-ttu-id="5baa9-180">![Enkel inloggning](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800209.png "enkel inloggning")</span><span class="sxs-lookup"><span data-stu-id="5baa9-180">![Single Sign-On](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800209.png "Single Sign-On")</span></span>
     
-    <span data-ttu-id="0468d-181">a.</span><span class="sxs-lookup"><span data-stu-id="0468d-181">a.</span></span> <span data-ttu-id="0468d-182">Klistra in den **SAML inloggning tjänst-URL för enkel** värde i den **URL för SAML-portalen som användare om autentisering skickas** textruta.</span><span class="sxs-lookup"><span data-stu-id="0468d-182">Paste the **SAML Single Sign-On Service URL** value into the **URL of the SAML Portal to which users are sent for authentication** textbox.</span></span>
+    <span data-ttu-id="5baa9-181">a.</span><span class="sxs-lookup"><span data-stu-id="5baa9-181">a.</span></span> <span data-ttu-id="5baa9-182">Klistra in hello **SAML enkel inloggning Tjänstwebbadress** värdet till hello **URL för hello SAML toowhich portalanvändare skickas för autentisering** textruta.</span><span class="sxs-lookup"><span data-stu-id="5baa9-182">Paste hello **SAML Single Sign-On Service URL** value into hello **URL of hello SAML Portal toowhich users are sent for authentication** textbox.</span></span>
     
-    <span data-ttu-id="0468d-183">b.</span><span class="sxs-lookup"><span data-stu-id="0468d-183">b.</span></span> <span data-ttu-id="0468d-184">I den **attributet som innehåller inloggningsnamnet** textruta typen **NameID**.</span><span class="sxs-lookup"><span data-stu-id="0468d-184">In the **Attribute containing Login Name** textbox, type **NameID**.</span></span>
+    <span data-ttu-id="5baa9-183">b.</span><span class="sxs-lookup"><span data-stu-id="5baa9-183">b.</span></span> <span data-ttu-id="5baa9-184">I hello **attributet som innehåller inloggningsnamnet** textruta typen **NameID**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-184">In hello **Attribute containing Login Name** textbox, type **NameID**.</span></span>
     
-    <span data-ttu-id="0468d-185">c.</span><span class="sxs-lookup"><span data-stu-id="0468d-185">c.</span></span> <span data-ttu-id="0468d-186">Om du vill överföra din hämtat certifikat klickar du på **Zscaler pem**.</span><span class="sxs-lookup"><span data-stu-id="0468d-186">To upload your downloaded certificate, click **Zscaler pem**.</span></span>
+    <span data-ttu-id="5baa9-185">c.</span><span class="sxs-lookup"><span data-stu-id="5baa9-185">c.</span></span> <span data-ttu-id="5baa9-186">tooupload hämtade certifikatet, klicka på **Zscaler pem**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-186">tooupload your downloaded certificate, click **Zscaler pem**.</span></span>
     
-    <span data-ttu-id="0468d-187">d.</span><span class="sxs-lookup"><span data-stu-id="0468d-187">d.</span></span> <span data-ttu-id="0468d-188">Välj **aktivera etablering av SAML-automatiskt**.</span><span class="sxs-lookup"><span data-stu-id="0468d-188">Select **Enable SAML Auto-Provisioning**.</span></span>
+    <span data-ttu-id="5baa9-187">d.</span><span class="sxs-lookup"><span data-stu-id="5baa9-187">d.</span></span> <span data-ttu-id="5baa9-188">Välj **aktivera etablering av SAML-automatiskt**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-188">Select **Enable SAML Auto-Provisioning**.</span></span>
 
-12. <span data-ttu-id="0468d-189">På den **konfigurera användarautentisering** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="0468d-189">On the **Configure User Authentication** dialog page, perform the following steps:</span></span>
+12. <span data-ttu-id="5baa9-189">På hello **konfigurera användarautentisering** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="5baa9-189">On hello **Configure User Authentication** dialog page, perform hello following steps:</span></span>
 
-    <span data-ttu-id="0468d-190">![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800210.png "Administration")</span><span class="sxs-lookup"><span data-stu-id="0468d-190">![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800210.png "Administration")</span></span>
+    <span data-ttu-id="5baa9-190">![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800210.png "Administration")</span><span class="sxs-lookup"><span data-stu-id="5baa9-190">![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800210.png "Administration")</span></span>
     
-    <span data-ttu-id="0468d-191">a.</span><span class="sxs-lookup"><span data-stu-id="0468d-191">a.</span></span> <span data-ttu-id="0468d-192">Klicka på **Spara**.</span><span class="sxs-lookup"><span data-stu-id="0468d-192">Click **Save**.</span></span>
+    <span data-ttu-id="5baa9-191">a.</span><span class="sxs-lookup"><span data-stu-id="5baa9-191">a.</span></span> <span data-ttu-id="5baa9-192">Klicka på **Spara**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-192">Click **Save**.</span></span>
 
-    <span data-ttu-id="0468d-193">b.</span><span class="sxs-lookup"><span data-stu-id="0468d-193">b.</span></span> <span data-ttu-id="0468d-194">Klicka på **aktivera nu**.</span><span class="sxs-lookup"><span data-stu-id="0468d-194">Click **Activate Now**.</span></span>
+    <span data-ttu-id="5baa9-193">b.</span><span class="sxs-lookup"><span data-stu-id="5baa9-193">b.</span></span> <span data-ttu-id="5baa9-194">Klicka på **aktivera nu**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-194">Click **Activate Now**.</span></span>
 
-## <a name="configuring-proxy-settings"></a><span data-ttu-id="0468d-195">Konfigurera proxyinställningar</span><span class="sxs-lookup"><span data-stu-id="0468d-195">Configuring proxy settings</span></span>
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a><span data-ttu-id="0468d-196">Konfigurera proxyinställningarna i Internet Explorer</span><span class="sxs-lookup"><span data-stu-id="0468d-196">To configure the proxy settings in Internet Explorer</span></span>
+## <a name="configuring-proxy-settings"></a><span data-ttu-id="5baa9-195">Konfigurera proxyinställningar</span><span class="sxs-lookup"><span data-stu-id="5baa9-195">Configuring proxy settings</span></span>
+### <a name="tooconfigure-hello-proxy-settings-in-internet-explorer"></a><span data-ttu-id="5baa9-196">tooconfigure hello proxyinställningarna i Internet Explorer</span><span class="sxs-lookup"><span data-stu-id="5baa9-196">tooconfigure hello proxy settings in Internet Explorer</span></span>
 
-1. <span data-ttu-id="0468d-197">Starta **Internet Explorer**.</span><span class="sxs-lookup"><span data-stu-id="0468d-197">Start **Internet Explorer**.</span></span>
+1. <span data-ttu-id="5baa9-197">Starta **Internet Explorer**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-197">Start **Internet Explorer**.</span></span>
 
-2. <span data-ttu-id="0468d-198">Välj **Internetalternativ** från den **verktyg** menyn för att öppna den **Internetalternativ** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="0468d-198">Select **Internet options** from the **Tools** menu for open the **Internet Options** dialog.</span></span>   
+2. <span data-ttu-id="5baa9-198">Välj **Internetalternativ** från hello **verktyg** menyn för öppna hello **Internetalternativ** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5baa9-198">Select **Internet options** from hello **Tools** menu for open hello **Internet Options** dialog.</span></span>   
     
-     <span data-ttu-id="0468d-199">![Internet-alternativ](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769492.png "Internet-alternativ")</span><span class="sxs-lookup"><span data-stu-id="0468d-199">![Internet Options](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769492.png "Internet Options")</span></span>
+     <span data-ttu-id="5baa9-199">![Internet-alternativ](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769492.png "Internet-alternativ")</span><span class="sxs-lookup"><span data-stu-id="5baa9-199">![Internet Options](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769492.png "Internet Options")</span></span>
 
-3. <span data-ttu-id="0468d-200">Klicka på den **anslutningar** fliken.</span><span class="sxs-lookup"><span data-stu-id="0468d-200">Click the **Connections** tab.</span></span>   
+3. <span data-ttu-id="5baa9-200">Klicka på hello **anslutningar** fliken.</span><span class="sxs-lookup"><span data-stu-id="5baa9-200">Click hello **Connections** tab.</span></span>   
   
-     <span data-ttu-id="0468d-201">![Anslutningar](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769493.png "anslutningar")</span><span class="sxs-lookup"><span data-stu-id="0468d-201">![Connections](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769493.png "Connections")</span></span>
+     <span data-ttu-id="5baa9-201">![Anslutningar](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769493.png "anslutningar")</span><span class="sxs-lookup"><span data-stu-id="5baa9-201">![Connections](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769493.png "Connections")</span></span>
 
-4. <span data-ttu-id="0468d-202">Klicka på **LAN-inställningar** att öppna den **LAN-inställningar** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="0468d-202">Click **LAN settings** to open the **LAN Settings** dialog.</span></span>
+4. <span data-ttu-id="5baa9-202">Klicka på **LAN-inställningar** tooopen hello **LAN-inställningar** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5baa9-202">Click **LAN settings** tooopen hello **LAN Settings** dialog.</span></span>
 
-5. <span data-ttu-id="0468d-203">Utför följande steg i avsnittet Proxy-server:</span><span class="sxs-lookup"><span data-stu-id="0468d-203">In the Proxy server section, perform the following steps:</span></span>   
+5. <span data-ttu-id="5baa9-203">I hello avsnittet för Proxy-server, utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="5baa9-203">In hello Proxy server section, perform hello following steps:</span></span>   
    
-    <span data-ttu-id="0468d-204">![Proxyserver](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769494.png "proxyserver")</span><span class="sxs-lookup"><span data-stu-id="0468d-204">![Proxy server](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769494.png "Proxy server")</span></span>
+    <span data-ttu-id="5baa9-204">![Proxyserver](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769494.png "proxyserver")</span><span class="sxs-lookup"><span data-stu-id="5baa9-204">![Proxy server](./media/active-directory-saas-zscaler-zscloud-tutorial/ic769494.png "Proxy server")</span></span>
 
-    <span data-ttu-id="0468d-205">a.</span><span class="sxs-lookup"><span data-stu-id="0468d-205">a.</span></span> <span data-ttu-id="0468d-206">Välj **använder en proxyserver för nätverket**.</span><span class="sxs-lookup"><span data-stu-id="0468d-206">Select **Use a proxy server for your LAN**.</span></span>
+    <span data-ttu-id="5baa9-205">a.</span><span class="sxs-lookup"><span data-stu-id="5baa9-205">a.</span></span> <span data-ttu-id="5baa9-206">Välj **använder en proxyserver för nätverket**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-206">Select **Use a proxy server for your LAN**.</span></span>
 
-    <span data-ttu-id="0468d-207">b.</span><span class="sxs-lookup"><span data-stu-id="0468d-207">b.</span></span> <span data-ttu-id="0468d-208">Ange i textrutan adress **gateway.zscalerone.net**.</span><span class="sxs-lookup"><span data-stu-id="0468d-208">In the Address textbox, type **gateway.zscalerone.net**.</span></span>
+    <span data-ttu-id="5baa9-207">b.</span><span class="sxs-lookup"><span data-stu-id="5baa9-207">b.</span></span> <span data-ttu-id="5baa9-208">Skriv i hello adress textruta **gateway.zscalerone.net**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-208">In hello Address textbox, type **gateway.zscalerone.net**.</span></span>
 
-    <span data-ttu-id="0468d-209">c.</span><span class="sxs-lookup"><span data-stu-id="0468d-209">c.</span></span> <span data-ttu-id="0468d-210">Ange i textrutan Port **80**.</span><span class="sxs-lookup"><span data-stu-id="0468d-210">In the Port textbox, type **80**.</span></span>
+    <span data-ttu-id="5baa9-209">c.</span><span class="sxs-lookup"><span data-stu-id="5baa9-209">c.</span></span> <span data-ttu-id="5baa9-210">Skriv i hello Port textruta **80**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-210">In hello Port textbox, type **80**.</span></span>
 
-    <span data-ttu-id="0468d-211">d.</span><span class="sxs-lookup"><span data-stu-id="0468d-211">d.</span></span> <span data-ttu-id="0468d-212">Välj **Använd ingen proxyserver för lokala adresser**.</span><span class="sxs-lookup"><span data-stu-id="0468d-212">Select **Bypass proxy server for local addresses**.</span></span>
+    <span data-ttu-id="5baa9-211">d.</span><span class="sxs-lookup"><span data-stu-id="5baa9-211">d.</span></span> <span data-ttu-id="5baa9-212">Välj **Använd ingen proxyserver för lokala adresser**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-212">Select **Bypass proxy server for local addresses**.</span></span>
 
-    <span data-ttu-id="0468d-213">e.</span><span class="sxs-lookup"><span data-stu-id="0468d-213">e.</span></span> <span data-ttu-id="0468d-214">Klicka på **OK** att stänga den **inställningar för lokalt nätverk (LAN)** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="0468d-214">Click **OK** to close the **Local Area Network (LAN) Settings** dialog.</span></span>
+    <span data-ttu-id="5baa9-213">e.</span><span class="sxs-lookup"><span data-stu-id="5baa9-213">e.</span></span> <span data-ttu-id="5baa9-214">Klicka på **OK** tooclose hello **inställningar för lokalt nätverk (LAN)** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5baa9-214">Click **OK** tooclose hello **Local Area Network (LAN) Settings** dialog.</span></span>
 
-6. <span data-ttu-id="0468d-215">Klicka på **OK** att stänga den **Internetalternativ** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="0468d-215">Click **OK** to close the **Internet Options** dialog.</span></span>
+6. <span data-ttu-id="5baa9-215">Klicka på **OK** tooclose hello **Internetalternativ** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5baa9-215">Click **OK** tooclose hello **Internet Options** dialog.</span></span>
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="0468d-216">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="0468d-216">Creating an Azure AD test user</span></span>
-<span data-ttu-id="0468d-217">Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="0468d-217">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="5baa9-216">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="5baa9-216">Creating an Azure AD test user</span></span>
+<span data-ttu-id="5baa9-217">hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="5baa9-217">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Skapa Azure AD-användare][100]
 
-<span data-ttu-id="0468d-219">**Utför följande steg för att skapa en testanvändare i Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="0468d-219">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="5baa9-219">**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="5baa9-219">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="0468d-220">I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="0468d-220">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="5baa9-220">I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="5baa9-220">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscaler-zscloud-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="0468d-222">Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="0468d-222">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="5baa9-222">toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-222">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscaler-zscloud-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="0468d-224">Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="0468d-224">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="5baa9-224">tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5baa9-224">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscaler-zscloud-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="0468d-226">På den **användaren** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="0468d-226">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="5baa9-226">På hello **användaren** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="5baa9-226">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zscaler-zscloud-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="0468d-228">a.</span><span class="sxs-lookup"><span data-stu-id="0468d-228">a.</span></span> <span data-ttu-id="0468d-229">I den **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="0468d-229">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="5baa9-228">a.</span><span class="sxs-lookup"><span data-stu-id="5baa9-228">a.</span></span> <span data-ttu-id="5baa9-229">I hello **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-229">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="0468d-230">b.</span><span class="sxs-lookup"><span data-stu-id="0468d-230">b.</span></span> <span data-ttu-id="0468d-231">I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="0468d-231">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="5baa9-230">b.</span><span class="sxs-lookup"><span data-stu-id="5baa9-230">b.</span></span> <span data-ttu-id="5baa9-231">I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="5baa9-231">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="0468d-232">c.</span><span class="sxs-lookup"><span data-stu-id="0468d-232">c.</span></span> <span data-ttu-id="0468d-233">Välj **visa lösenordet** och anteckna värdet för den **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="0468d-233">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="5baa9-232">c.</span><span class="sxs-lookup"><span data-stu-id="5baa9-232">c.</span></span> <span data-ttu-id="5baa9-233">Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-233">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="0468d-234">d.</span><span class="sxs-lookup"><span data-stu-id="0468d-234">d.</span></span> <span data-ttu-id="0468d-235">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="0468d-235">Click **Create**.</span></span>
+    <span data-ttu-id="5baa9-234">d.</span><span class="sxs-lookup"><span data-stu-id="5baa9-234">d.</span></span> <span data-ttu-id="5baa9-235">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-235">Click **Create**.</span></span>
 
-### <a name="creating-a-zscaler-zscloud-test-user"></a><span data-ttu-id="0468d-236">Skapa en testanvändare Zscaler ZSCloud</span><span class="sxs-lookup"><span data-stu-id="0468d-236">Creating a Zscaler ZSCloud test user</span></span>
+### <a name="creating-a-zscaler-zscloud-test-user"></a><span data-ttu-id="5baa9-236">Skapa en testanvändare Zscaler ZSCloud</span><span class="sxs-lookup"><span data-stu-id="5baa9-236">Creating a Zscaler ZSCloud test user</span></span>
 
-<span data-ttu-id="0468d-237">Om du vill aktivera Azure AD-användare kan logga in på ZScaler ZSCloud etableras de till ZScaler ZSCloud.</span><span class="sxs-lookup"><span data-stu-id="0468d-237">To enable Azure AD users to log in to ZScaler ZSCloud, they must be provisioned to ZScaler ZSCloud.</span></span>  
-<span data-ttu-id="0468d-238">När det gäller ZScaler ZSCloud är etablering en manuell aktivitet.</span><span class="sxs-lookup"><span data-stu-id="0468d-238">In the case of ZScaler ZSCloud, provisioning is a manual task.</span></span>
+<span data-ttu-id="5baa9-237">tooenable Azure AD-användare toolog i tooZScaler ZSCloud, måste de vara etablerade tooZScaler ZSCloud.</span><span class="sxs-lookup"><span data-stu-id="5baa9-237">tooenable Azure AD users toolog in tooZScaler ZSCloud, they must be provisioned tooZScaler ZSCloud.</span></span>  
+<span data-ttu-id="5baa9-238">Hello gäller ZScaler ZSCloud är etablering en manuell aktivitet.</span><span class="sxs-lookup"><span data-stu-id="5baa9-238">In hello case of ZScaler ZSCloud, provisioning is a manual task.</span></span>
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a><span data-ttu-id="0468d-239">Utför följande steg för att konfigurera användaretablering:</span><span class="sxs-lookup"><span data-stu-id="0468d-239">To configure user provisioning, perform the following steps:</span></span>
+### <a name="tooconfigure-user-provisioning-perform-hello-following-steps"></a><span data-ttu-id="5baa9-239">tooconfigure användaretablering, utför följande steg hello:</span><span class="sxs-lookup"><span data-stu-id="5baa9-239">tooconfigure user provisioning, perform hello following steps:</span></span>
 
-1. <span data-ttu-id="0468d-240">Logga in på ditt **Zscaler** klient.</span><span class="sxs-lookup"><span data-stu-id="0468d-240">Log in to your **Zscaler** tenant.</span></span>
+1. <span data-ttu-id="5baa9-240">Logga in tooyour **Zscaler** klient.</span><span class="sxs-lookup"><span data-stu-id="5baa9-240">Log in tooyour **Zscaler** tenant.</span></span>
 
-2. <span data-ttu-id="0468d-241">Klicka på **Administration**.</span><span class="sxs-lookup"><span data-stu-id="0468d-241">Click **Administration**.</span></span>   
+2. <span data-ttu-id="5baa9-241">Klicka på **Administration**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-241">Click **Administration**.</span></span>   
    
-    <span data-ttu-id="0468d-242">![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781035.png "Administration")</span><span class="sxs-lookup"><span data-stu-id="0468d-242">![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781035.png "Administration")</span></span>
+    <span data-ttu-id="5baa9-242">![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781035.png "Administration")</span><span class="sxs-lookup"><span data-stu-id="5baa9-242">![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781035.png "Administration")</span></span>
 
-3. <span data-ttu-id="0468d-243">Klicka på **Användarhantering**.</span><span class="sxs-lookup"><span data-stu-id="0468d-243">Click **User Management**.</span></span>   
+3. <span data-ttu-id="5baa9-243">Klicka på **Användarhantering**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-243">Click **User Management**.</span></span>   
         
-     <span data-ttu-id="0468d-244">![Lägg till](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781037.png "Lägg till")</span><span class="sxs-lookup"><span data-stu-id="0468d-244">![Add](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781037.png "Add")</span></span>
+     <span data-ttu-id="5baa9-244">![Lägg till](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781037.png "Lägg till")</span><span class="sxs-lookup"><span data-stu-id="5baa9-244">![Add](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781037.png "Add")</span></span>
 
-4. <span data-ttu-id="0468d-245">I den **användare** klickar du på **Lägg till**.</span><span class="sxs-lookup"><span data-stu-id="0468d-245">In the **Users** tab, click **Add**.</span></span>
+4. <span data-ttu-id="5baa9-245">I hello **användare** klickar du på **Lägg till**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-245">In hello **Users** tab, click **Add**.</span></span>
       
-    <span data-ttu-id="0468d-246">![Lägg till](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781037.png "Lägg till")</span><span class="sxs-lookup"><span data-stu-id="0468d-246">![Add](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781037.png "Add")</span></span>
+    <span data-ttu-id="5baa9-246">![Lägg till](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781037.png "Lägg till")</span><span class="sxs-lookup"><span data-stu-id="5baa9-246">![Add](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781037.png "Add")</span></span>
 
-5. <span data-ttu-id="0468d-247">Utför följande steg i avsnittet Lägg till användare:</span><span class="sxs-lookup"><span data-stu-id="0468d-247">In the Add User section, perform the following steps:</span></span>
+5. <span data-ttu-id="5baa9-247">I hello lägga till användare, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="5baa9-247">In hello Add User section, perform hello following steps:</span></span>
         
-    <span data-ttu-id="0468d-248">![Lägg till användare](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781038.png "lägga till användare")</span><span class="sxs-lookup"><span data-stu-id="0468d-248">![Add User](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781038.png "Add User")</span></span>
+    <span data-ttu-id="5baa9-248">![Lägg till användare](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781038.png "lägga till användare")</span><span class="sxs-lookup"><span data-stu-id="5baa9-248">![Add User](./media/active-directory-saas-zscaler-zscloud-tutorial/ic781038.png "Add User")</span></span>
    
-    <span data-ttu-id="0468d-249">a.</span><span class="sxs-lookup"><span data-stu-id="0468d-249">a.</span></span> <span data-ttu-id="0468d-250">Typ av **UserID**, **användarens visningsnamn**, **lösenord**, **Bekräfta lösenord**, och välj sedan **grupper**och **avdelning** av en giltig AAD-konto som du vill etablera.</span><span class="sxs-lookup"><span data-stu-id="0468d-250">Type the **UserID**, **User Display Name**, **Password**, **Confirm Password**, and then select **Groups** and the **Department** of a valid AAD account you want to provision.</span></span>
+    <span data-ttu-id="5baa9-249">a.</span><span class="sxs-lookup"><span data-stu-id="5baa9-249">a.</span></span> <span data-ttu-id="5baa9-250">Typen hello **UserID**, **användarens visningsnamn**, **lösenord**, **Bekräfta lösenord**, och välj sedan **grupper**och hello **avdelning** på en giltig AAD-konto som du vill tooprovision.</span><span class="sxs-lookup"><span data-stu-id="5baa9-250">Type hello **UserID**, **User Display Name**, **Password**, **Confirm Password**, and then select **Groups** and hello **Department** of a valid AAD account you want tooprovision.</span></span>
 
-    <span data-ttu-id="0468d-251">b.</span><span class="sxs-lookup"><span data-stu-id="0468d-251">b.</span></span> <span data-ttu-id="0468d-252">Klicka på **Spara**.</span><span class="sxs-lookup"><span data-stu-id="0468d-252">Click **Save**.</span></span>
+    <span data-ttu-id="5baa9-251">b.</span><span class="sxs-lookup"><span data-stu-id="5baa9-251">b.</span></span> <span data-ttu-id="5baa9-252">Klicka på **Spara**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-252">Click **Save**.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="0468d-253">Du kan använda något annat ZScaler ZSCloud användarens konto skapas verktyg eller API: er som tillhandahålls av ZScaler ZSCloud att etablera AAD-användarkonton.</span><span class="sxs-lookup"><span data-stu-id="0468d-253">You can use any other ZScaler ZSCloud user account creation tools or APIs provided by ZScaler ZSCloud to provision AAD user accounts.</span></span>
+> <span data-ttu-id="5baa9-253">Du kan använda något annat ZScaler ZSCloud användarens konto skapas verktyg eller API: er som tillhandahålls av ZScaler ZSCloud tooprovision AAD-användarkonton.</span><span class="sxs-lookup"><span data-stu-id="5baa9-253">You can use any other ZScaler ZSCloud user account creation tools or APIs provided by ZScaler ZSCloud tooprovision AAD user accounts.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="0468d-254">Tilldela Azure AD-testanvändare</span><span class="sxs-lookup"><span data-stu-id="0468d-254">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="5baa9-254">Tilldela användare hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="5baa9-254">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="0468d-255">I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Zscaler ZSCloud.</span><span class="sxs-lookup"><span data-stu-id="0468d-255">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Zscaler ZSCloud.</span></span>
+<span data-ttu-id="5baa9-255">I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooZscaler ZSCloud.</span><span class="sxs-lookup"><span data-stu-id="5baa9-255">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooZscaler ZSCloud.</span></span>
 
 ![Tilldela användare][200] 
 
-<span data-ttu-id="0468d-257">**Om du vill tilldela Zscaler ZSCloud Britta Simon utför du följande steg:**</span><span class="sxs-lookup"><span data-stu-id="0468d-257">**To assign Britta Simon to Zscaler ZSCloud, perform the following steps:**</span></span>
+<span data-ttu-id="5baa9-257">**tooassign Britta Simon tooZscaler ZSCloud, utför följande steg hello:**</span><span class="sxs-lookup"><span data-stu-id="5baa9-257">**tooassign Britta Simon tooZscaler ZSCloud, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="0468d-258">Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="0468d-258">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="5baa9-258">I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-258">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Tilldela användare][201] 
 
-2. <span data-ttu-id="0468d-260">Välj i listan med program **Zscaler ZSCloud**.</span><span class="sxs-lookup"><span data-stu-id="0468d-260">In the applications list, select **Zscaler ZSCloud**.</span></span>
+2. <span data-ttu-id="5baa9-260">Välj i listan med program hello **Zscaler ZSCloud**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-260">In hello applications list, select **Zscaler ZSCloud**.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zscaler-zscloud-tutorial/tutorial_zscalerzscloud_app.png) 
 
-3. <span data-ttu-id="0468d-262">Klicka på menyn till vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="0468d-262">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="5baa9-262">Hello-menyn hello vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="5baa9-262">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Tilldela användare][202] 
 
-4. <span data-ttu-id="0468d-264">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="0468d-264">Click **Add** button.</span></span> <span data-ttu-id="0468d-265">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="0468d-265">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="5baa9-264">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="5baa9-264">Click **Add** button.</span></span> <span data-ttu-id="5baa9-265">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5baa9-265">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Tilldela användare][203]
 
-5. <span data-ttu-id="0468d-267">På **användare och grupper** markerar **Britta Simon** på listan användare.</span><span class="sxs-lookup"><span data-stu-id="0468d-267">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="5baa9-267">På **användare och grupper** markerar **Britta Simon** i hello användarlistan.</span><span class="sxs-lookup"><span data-stu-id="5baa9-267">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="0468d-268">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="0468d-268">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="5baa9-268">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5baa9-268">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="0468d-269">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="0468d-269">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="5baa9-269">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5baa9-269">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="0468d-270">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="0468d-270">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="5baa9-270">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="5baa9-270">Testing single sign-on</span></span>
 
-<span data-ttu-id="0468d-271">Om du vill testa dina inställningar för enkel inloggning, öppna åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="0468d-271">If you want to test your single sign-on settings, open the Access Panel.</span></span>
+<span data-ttu-id="5baa9-271">Om du vill tootest dina inställningar för enkel inloggning, öppna hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="5baa9-271">If you want tootest your single sign-on settings, open hello Access Panel.</span></span>
 
-<span data-ttu-id="0468d-272">När du klickar på panelen Zscaler ZSCloud på åtkomstpanelen du bör få automatiskt loggat in på ditt Zscaler ZSCloud program.</span><span class="sxs-lookup"><span data-stu-id="0468d-272">When you click the Zscaler ZSCloud tile in the Access Panel, you should get automatically signed-on to your Zscaler ZSCloud application.</span></span>
+<span data-ttu-id="5baa9-272">Du bör få automatiskt inloggade tooyour Zscaler ZSCloud programmet när du klickar på hello Zscaler ZSCloud panelen i hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="5baa9-272">When you click hello Zscaler ZSCloud tile in hello Access Panel, you should get automatically signed-on tooyour Zscaler ZSCloud application.</span></span>
 
-<span data-ttu-id="0468d-273">Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="0468d-273">For more information about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).</span></span> 
+<span data-ttu-id="5baa9-273">Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="5baa9-273">For more information about hello Access Panel, see [Introduction toohello Access Panel](active-directory-saas-access-panel-introduction.md).</span></span> 
 
-## <a name="additional-resources"></a><span data-ttu-id="0468d-274">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="0468d-274">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="5baa9-274">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="5baa9-274">Additional resources</span></span>
 
-* [<span data-ttu-id="0468d-275">Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="0468d-275">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="0468d-276">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="0468d-276">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="5baa9-275">Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="5baa9-275">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="5baa9-276">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="5baa9-276">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

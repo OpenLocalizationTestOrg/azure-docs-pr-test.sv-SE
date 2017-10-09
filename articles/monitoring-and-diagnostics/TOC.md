@@ -32,14 +32,14 @@
 ### [Skala skalningsuppsättningar för virtuella datorer automatiskt med Resource Manager-mallar](insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [Skala datorer i en skalningsuppsättning för virtuella datorer automatiskt](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Konfigurera webhooks och e-postaviseringar med autoskalning](insights-autoscale-to-webhook-email.md)
-## Använd aktivitetsloggen
+## Använd hello aktivitetsloggen
 ### [Visa händelser i aktivitetsloggen](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Konfigurera aviseringar i en händelse i aktivitetsloggen](monitoring-activity-log-alerts.md)
 ### [Arkivera aktivitetsloggen](monitoring-archive-activity-log.md)
-### [Strömma aktivitetsloggen till Event Hubs](monitoring-stream-activity-logs-event-hubs.md)
+### [Dataströmmen aktivitet loggen tooEvent hubbar](monitoring-stream-activity-logs-event-hubs.md)
 ### [Granska driften med Resource Manager](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Skapa aviseringar för aktivitetsloggen med Resource Manager](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
-### [Migrera till aktivitetsloggsaviseringar](monitoring-migrate-management-alerts.md)
+### [Migrera tooActivity loggen aviseringar](monitoring-migrate-management-alerts.md)
 ## Använda tjänstmeddelanden
 ### [Visa tjänstmeddelanden](monitoring-service-notifications.md)
 ### [Konfigurera aviseringar för tjänstmeddelanden](monitoring-activity-log-alerts-on-service-notifications.md)
@@ -50,13 +50,13 @@
 ### [Skapa åtgärdsgrupper med Resource Manager](monitoring-create-action-group-with-resource-manager-template.md)
 ## Hantera diagnostikloggar
 ### [Arkiv](monitoring-archive-diagnostic-logs.md)
-### [Strömma till Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+### [Dataströmmen tooEvent hubbar](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 ### [Aktivera diagnostikinställningar med Resource Manager-mallar](monitoring-enable-diagnostic-logs-using-template.md)
-## Använd REST API
+## Använd hello REST API
 ### [Genomgång med REST API](monitoring-rest-api-walkthrough.md)
 ## Använd Azure Diagnostics-tillägg
-### [Skicka till Application Insights](azure-diagnostics-configure-application-insights.md)
-### [Skicka till Event Hubs](azure-diagnostics-streaming-event-hubs.md)
+### [Skicka tooApplication insikter](azure-diagnostics-configure-application-insights.md)
+### [Skicka tooEvent hubbar](azure-diagnostics-streaming-event-hubs.md)
 ### [Felsökning](azure-diagnostics-troubleshooting.md)
 
 # Referens

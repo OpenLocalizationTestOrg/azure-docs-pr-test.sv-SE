@@ -1,6 +1,6 @@
 ---
-title: "Tillförlitliga WCF Services kommunikation stack | Microsoft Docs"
-description: "Inbyggda WCF kommunikation stacken i Service Fabric ger-klienttjänsten WCF-kommunikation för Reliable Services."
+title: aaaReliable WCF Services kommunikation stack | Microsoft Docs
+description: "hello inbyggda WCF kommunikation stacken i Service Fabric ger-klienttjänsten WCF-kommunikation för Reliable Services."
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7037620ebdc26a9f18531064bf45d058f5060e39
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7feebef4d46a6ae66d05129f47f9b5911e82aec9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="wcf-based-communication-stack-for-reliable-services"></a><span data-ttu-id="05c80-103">WCF-baserad kommunikation stacken för Reliable Services</span><span class="sxs-lookup"><span data-stu-id="05c80-103">WCF-based communication stack for Reliable Services</span></span>
-<span data-ttu-id="05c80-104">Reliable Services framework kan tjänsten författare välja stacken kommunikation som de vill använda för den här tjänsten.</span><span class="sxs-lookup"><span data-stu-id="05c80-104">The Reliable Services framework allows service authors to choose the communication stack that they want to use for their service.</span></span> <span data-ttu-id="05c80-105">De kan ansluta kommunikation stacken valfri via den **ICommunicationListener** returnerades från den [CreateServiceReplicaListeners eller CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metoder.</span><span class="sxs-lookup"><span data-stu-id="05c80-105">They can plug in the communication stack of their choice via the **ICommunicationListener** returned from the [CreateServiceReplicaListeners or CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) methods.</span></span> <span data-ttu-id="05c80-106">Ramen tillhandahåller en implementering av kommunikation stacken baserat på Windows Communication Foundation (WCF) för tjänsten programutvecklare som vill använda WCF-baserad kommunikation.</span><span class="sxs-lookup"><span data-stu-id="05c80-106">The framework provides an implementation of the communication stack based on the Windows Communication Foundation (WCF) for service authors who want to use WCF-based communication.</span></span>
+# <a name="wcf-based-communication-stack-for-reliable-services"></a><span data-ttu-id="0f146-103">WCF-baserad kommunikation stacken för Reliable Services</span><span class="sxs-lookup"><span data-stu-id="0f146-103">WCF-based communication stack for Reliable Services</span></span>
+<span data-ttu-id="0f146-104">hello Reliable Services framework kan författarna toochoose hello kommunikation stack som de vill toouse för service-tjänsten.</span><span class="sxs-lookup"><span data-stu-id="0f146-104">hello Reliable Services framework allows service authors toochoose hello communication stack that they want toouse for their service.</span></span> <span data-ttu-id="0f146-105">De kan ansluta hello kommunikation stack valfri via hello **ICommunicationListener** returnerades från hello [CreateServiceReplicaListeners eller CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metoder.</span><span class="sxs-lookup"><span data-stu-id="0f146-105">They can plug in hello communication stack of their choice via hello **ICommunicationListener** returned from hello [CreateServiceReplicaListeners or CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) methods.</span></span> <span data-ttu-id="0f146-106">hello framework tillhandahåller en implementering av hello kommunikation stack baserat på hello Windows Communication Foundation (WCF) för tjänsten programutvecklare som vill toouse WCF-baserad kommunikation.</span><span class="sxs-lookup"><span data-stu-id="0f146-106">hello framework provides an implementation of hello communication stack based on hello Windows Communication Foundation (WCF) for service authors who want toouse WCF-based communication.</span></span>
 
-## <a name="wcf-communication-listener"></a><span data-ttu-id="05c80-107">Lyssnare för WCF-kommunikation</span><span class="sxs-lookup"><span data-stu-id="05c80-107">WCF Communication Listener</span></span>
-<span data-ttu-id="05c80-108">WCF-specifika implementeringen av **ICommunicationListener** tillhandahålls av den **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** klass.</span><span class="sxs-lookup"><span data-stu-id="05c80-108">The WCF-specific implementation of **ICommunicationListener** is provided by the **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** class.</span></span>
+## <a name="wcf-communication-listener"></a><span data-ttu-id="0f146-107">Lyssnare för WCF-kommunikation</span><span class="sxs-lookup"><span data-stu-id="0f146-107">WCF Communication Listener</span></span>
+<span data-ttu-id="0f146-108">hello WCF-specifika implementering av **ICommunicationListener** tillhandahålls av hello **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** klass.</span><span class="sxs-lookup"><span data-stu-id="0f146-108">hello WCF-specific implementation of **ICommunicationListener** is provided by hello **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** class.</span></span>
 
-<span data-ttu-id="05c80-109">Att ange Säg har vi ett servicekontrakt av typen`ICalculator`</span><span class="sxs-lookup"><span data-stu-id="05c80-109">Lest say we have a service contract of type `ICalculator`</span></span>
+<span data-ttu-id="0f146-109">Att ange Säg har vi ett servicekontrakt av typen`ICalculator`</span><span class="sxs-lookup"><span data-stu-id="0f146-109">Lest say we have a service contract of type `ICalculator`</span></span>
 
 ```csharp
 [ServiceContract]
@@ -37,7 +37,7 @@ public interface ICalculator
 }
 ```
 
-<span data-ttu-id="05c80-110">Vi kan skapa en lyssnare för WCF-kommunikation i tjänsten på följande sätt.</span><span class="sxs-lookup"><span data-stu-id="05c80-110">We can create a WCF communication listener in the service the following manner.</span></span>
+<span data-ttu-id="0f146-110">Vi kan skapa en lyssnare för WCF-kommunikation i hello service hello följande sätt.</span><span class="sxs-lookup"><span data-stu-id="0f146-110">We can create a WCF communication listener in hello service hello following manner.</span></span>
 
 ```csharp
 
@@ -48,13 +48,13 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
             wcfServiceObject:this,
             serviceContext:context,
             //
-            // The name of the endpoint configured in the ServiceManifest under the Endpoints section
-            // that identifies the endpoint that the WCF ServiceHost should listen on.
+            // hello name of hello endpoint configured in hello ServiceManifest under hello Endpoints section
+            // that identifies hello endpoint that hello WCF ServiceHost should listen on.
             //
             endpointResourceName: "WcfServiceEndpoint",
 
             //
-            // Populate the binding information that you want the service to use.
+            // Populate hello binding information that you want hello service toouse.
             //
             listenerBinding: WcfUtility.CreateTcpListenerBinding()
         )
@@ -63,8 +63,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ```
 
-## <a name="writing-clients-for-the-wcf-communication-stack"></a><span data-ttu-id="05c80-111">Skrivning av klienter för stacken för WCF-kommunikation</span><span class="sxs-lookup"><span data-stu-id="05c80-111">Writing clients for the WCF communication stack</span></span>
-<span data-ttu-id="05c80-112">För att skriva klienter att kommunicera med tjänster med hjälp av WCF ramen innehåller **WcfClientCommunicationFactory**, vilket är WCF-specifika implementering av [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).</span><span class="sxs-lookup"><span data-stu-id="05c80-112">For writing clients to communicate with services by using WCF, the framework provides **WcfClientCommunicationFactory**, which is the WCF-specific implementation of [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).</span></span>
+## <a name="writing-clients-for-hello-wcf-communication-stack"></a><span data-ttu-id="0f146-111">Skrivning av klienter för hello WCF kommunikation stack</span><span class="sxs-lookup"><span data-stu-id="0f146-111">Writing clients for hello WCF communication stack</span></span>
+<span data-ttu-id="0f146-112">För att skriva klienter toocommunicate med tjänster med hjälp av WCF hello framework ger **WcfClientCommunicationFactory**, vilket är hello WCF-specifika implementering av [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).</span><span class="sxs-lookup"><span data-stu-id="0f146-112">For writing clients toocommunicate with services by using WCF, hello framework provides **WcfClientCommunicationFactory**, which is hello WCF-specific implementation of [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).</span></span>
 
 ```csharp
 
@@ -76,7 +76,7 @@ public WcfCommunicationClientFactory(
     object callback = null);
 ```
 
-<span data-ttu-id="05c80-113">Kommunikationskanalen WCF kan nås från den **WcfCommunicationClient** skapas av den **WcfCommunicationClientFactory**.</span><span class="sxs-lookup"><span data-stu-id="05c80-113">The WCF communication channel can be accessed from the **WcfCommunicationClient** created by the **WcfCommunicationClientFactory**.</span></span>
+<span data-ttu-id="0f146-113">hello WCF kommunikationskanalen kan nås från hello **WcfCommunicationClient** skapas av hello **WcfCommunicationClientFactory**.</span><span class="sxs-lookup"><span data-stu-id="0f146-113">hello WCF communication channel can be accessed from hello **WcfCommunicationClient** created by hello **WcfCommunicationClientFactory**.</span></span>
 
 ```csharp
 
@@ -90,7 +90,7 @@ public class WcfCommunicationClient : ServicePartitionClient<WcfCommunicationCli
 
 ```
 
-<span data-ttu-id="05c80-114">Klientkoden kan använda den **WcfCommunicationClientFactory** tillsammans med den **WcfCommunicationClient** som implementerar **ServicePartitionClient** att avgöra den tjänsten endpoint och kommunicera med tjänsten.</span><span class="sxs-lookup"><span data-stu-id="05c80-114">Client code can use the **WcfCommunicationClientFactory** along with the **WcfCommunicationClient** which implements **ServicePartitionClient** to determine the service endpoint and communicate with the service.</span></span>
+<span data-ttu-id="0f146-114">Klientkoden kan använda hello **WcfCommunicationClientFactory** tillsammans med hello **WcfCommunicationClient** som implementerar **ServicePartitionClient** toodetermine Hej tjänstslutpunkten och kommunicera med hello-tjänsten.</span><span class="sxs-lookup"><span data-stu-id="0f146-114">Client code can use hello **WcfCommunicationClientFactory** along with hello **WcfCommunicationClient** which implements **ServicePartitionClient** toodetermine hello service endpoint and communicate with hello service.</span></span>
 
 ```csharp
 // Create binding
@@ -102,7 +102,7 @@ var wcfClientFactory = new WcfCommunicationClientFactory<ICalculator>
     (clientBinding: binding, servicePartitionResolver: partitionResolver);
 
 //
-// Create a client for communicating with the ICalculator service that has been created with the
+// Create a client for communicating with hello ICalculator service that has been created with the
 // Singleton partition scheme.
 //
 var calculatorServiceCommunicationClient =  new WcfCommunicationClient(
@@ -111,19 +111,19 @@ var calculatorServiceCommunicationClient =  new WcfCommunicationClient(
                 ServicePartitionKey.Singleton);
 
 //
-// Call the service to perform the operation.
+// Call hello service tooperform hello operation.
 //
 var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
                 client => client.Channel.Add(2, 3)).Result;
 
 ```
 > [!NOTE]
-> <span data-ttu-id="05c80-115">Standard ServicePartitionResolver förutsätter att klienten körs i samma kluster som för tjänsten.</span><span class="sxs-lookup"><span data-stu-id="05c80-115">The default ServicePartitionResolver assumes that the client is running in same cluster as the service.</span></span> <span data-ttu-id="05c80-116">Om det inte är fallet, skapa ett ServicePartitionResolver-objekt och ange klustret anslutningens slutpunkter.</span><span class="sxs-lookup"><span data-stu-id="05c80-116">If that is not the case, create a ServicePartitionResolver object and pass in the cluster connection endpoints.</span></span>
+> <span data-ttu-id="0f146-115">hello standard ServicePartitionResolver förutsätter att hello-klienten körs i samma kluster som hello-tjänst.</span><span class="sxs-lookup"><span data-stu-id="0f146-115">hello default ServicePartitionResolver assumes that hello client is running in same cluster as hello service.</span></span> <span data-ttu-id="0f146-116">Om så är inte hello fallet, skapa ett ServicePartitionResolver-objekt och ange hello slutpunkter för klustret.</span><span class="sxs-lookup"><span data-stu-id="0f146-116">If that is not hello case, create a ServicePartitionResolver object and pass in hello cluster connection endpoints.</span></span>
 > 
 > 
 
-## <a name="next-steps"></a><span data-ttu-id="05c80-117">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="05c80-117">Next steps</span></span>
-* [<span data-ttu-id="05c80-118">Fjärrproceduranrop med Reliable Services fjärrkommunikation</span><span class="sxs-lookup"><span data-stu-id="05c80-118">Remote procedure call with Reliable Services remoting</span></span>](service-fabric-reliable-services-communication-remoting.md)
-* [<span data-ttu-id="05c80-119">Webb-API med OWIN i Reliable Services</span><span class="sxs-lookup"><span data-stu-id="05c80-119">Web API with OWIN in Reliable Services</span></span>](service-fabric-reliable-services-communication-webapi.md)
-* [<span data-ttu-id="05c80-120">Att säkra kommunikationen för Reliable Services</span><span class="sxs-lookup"><span data-stu-id="05c80-120">Securing communication for Reliable Services</span></span>](service-fabric-reliable-services-secure-communication.md)
+## <a name="next-steps"></a><span data-ttu-id="0f146-117">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="0f146-117">Next steps</span></span>
+* [<span data-ttu-id="0f146-118">Fjärrproceduranrop med Reliable Services fjärrkommunikation</span><span class="sxs-lookup"><span data-stu-id="0f146-118">Remote procedure call with Reliable Services remoting</span></span>](service-fabric-reliable-services-communication-remoting.md)
+* [<span data-ttu-id="0f146-119">Webb-API med OWIN i Reliable Services</span><span class="sxs-lookup"><span data-stu-id="0f146-119">Web API with OWIN in Reliable Services</span></span>](service-fabric-reliable-services-communication-webapi.md)
+* [<span data-ttu-id="0f146-120">Att säkra kommunikationen för Reliable Services</span><span class="sxs-lookup"><span data-stu-id="0f146-120">Securing communication for Reliable Services</span></span>](service-fabric-reliable-services-secure-communication.md)
 

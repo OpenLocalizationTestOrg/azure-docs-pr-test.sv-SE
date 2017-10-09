@@ -1,5 +1,5 @@
 ---
-title: "Azure Resource Health – Självstudier | Microsoft Docs"
+title: "aaaAzure Resource health - självstudier | Microsoft Docs"
 description: 
 services: Resource health
 author: bernardm
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/17/2017
 ms.author: bernardm
-ms.openlocfilehash: ef6709b623acb3b823ea337af0062e8c95d0478e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 124ef729fb2be77e7e3a83708d9e6c3c65f08be3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-resource-health-documentation"></a>Azure Resource Health-dokumentation
 
-Resource Health hjälper dig att diagnostisera och få support när ett problem med Azure påverkar dina resurser. Det informerar dig om det aktuella och tidigare hälsotillståndet för dina resurser och hjälper dig att åtgärda problem. Resource Health ger teknisk support när du behöver hjälp med problem med Azure-tjänster.
+Resource Health hjälper dig att diagnostisera och få support när ett problem med Azure påverkar dina resurser. Det informerar om hello aktuella och tidigare dina resursers hälsa och hjälper dig att minska problem. Resource Health ger teknisk support när du behöver hjälp med problem med Azure-tjänster.
 <ul class="panelContent cardsFTitle">
     <li>
         <a href="/azure/resource-health/resource-health-overview">

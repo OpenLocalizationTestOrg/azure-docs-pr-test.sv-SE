@@ -1,5 +1,5 @@
 ---
-title: Skapa en Python-webbapp i Azure | Microsoft Docs
+title: aaaCreate en Python-webbapp i Azure | Microsoft Docs
 description: "Distribuera din första Hello World-app med Python i Azure App Service Web Apps på bara några minuter."
 services: app-service\web
 documentationcenter: 
@@ -15,71 +15,71 @@ ms.topic: quickstart
 ms.date: 03/17/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 119f9770097c010cc360e0e204d06a307a268814
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 42178d490d8aa8eaf93710667aad598794c62c8f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-python-web-app-in-azure"></a><span data-ttu-id="c3410-103">Skapa en Python-webbapp i Azure</span><span class="sxs-lookup"><span data-stu-id="c3410-103">Create a Python web app in Azure</span></span>
+# <a name="create-a-python-web-app-in-azure"></a><span data-ttu-id="8f9f5-103">Skapa en Python-webbapp i Azure</span><span class="sxs-lookup"><span data-stu-id="8f9f5-103">Create a Python web app in Azure</span></span>
 
-<span data-ttu-id="c3410-104">Med [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) får du en mycket skalbar och automatiskt uppdaterad webbvärdtjänst.</span><span class="sxs-lookup"><span data-stu-id="c3410-104">[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) provides a highly scalable, self-patching web hosting service.</span></span>  <span data-ttu-id="c3410-105">Den här snabbstarten visar hur du utvecklar en Python-app och distribuerar den till Azure Web Apps.</span><span class="sxs-lookup"><span data-stu-id="c3410-105">This quickstart walks through how to develop and deploy a Python app to Azure Web Apps.</span></span> <span data-ttu-id="c3410-106">Du skapar webbappen med [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) och använder Git för att distribuera Python-exempelkoden till webbappen.</span><span class="sxs-lookup"><span data-stu-id="c3410-106">You create the web app using the [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), and you use Git to deploy sample Python code to the web app.</span></span>
+<span data-ttu-id="8f9f5-104">Med [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) får du en mycket skalbar och automatiskt uppdaterad webbvärdtjänst.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-104">[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) provides a highly scalable, self-patching web hosting service.</span></span>  <span data-ttu-id="8f9f5-105">Denna Snabbstart går igenom hur toodevelop och distribuera en Python app tooAzure Web Apps.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-105">This quickstart walks through how toodevelop and deploy a Python app tooAzure Web Apps.</span></span> <span data-ttu-id="8f9f5-106">Du skapar hello webbapp med hello [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), och du kan använda Git toodeploy Python-kod toohello exempelwebbapp.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-106">You create hello web app using hello [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), and you use Git toodeploy sample Python code toohello web app.</span></span>
 
 ![Exempelapp som körs i Azure](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-<span data-ttu-id="c3410-108">Du kan följa stegen nedan på en Mac-, Windows- eller Linux-dator.</span><span class="sxs-lookup"><span data-stu-id="c3410-108">You can follow the steps below using a Mac, Windows, or Linux machine.</span></span> <span data-ttu-id="c3410-109">Det tar cirka fem minuter att slutföra självstudiekursen när de nödvändiga komponenterna har installerats.</span><span class="sxs-lookup"><span data-stu-id="c3410-109">Once the prerequisites are installed, it takes about five minutes to complete the steps.</span></span>
-## <a name="prerequisites"></a><span data-ttu-id="c3410-110">Krav</span><span class="sxs-lookup"><span data-stu-id="c3410-110">Prerequisites</span></span>
+<span data-ttu-id="8f9f5-108">Du kan följa hello stegen nedan använder en Mac, Windows eller Linux-dator.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-108">You can follow hello steps below using a Mac, Windows, or Linux machine.</span></span> <span data-ttu-id="8f9f5-109">När hello nödvändiga komponenter har installerats, tar cirka fem minuter toocomplete hello steg.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-109">Once hello prerequisites are installed, it takes about five minutes toocomplete hello steps.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="8f9f5-110">Krav</span><span class="sxs-lookup"><span data-stu-id="8f9f5-110">Prerequisites</span></span>
 
-<span data-ttu-id="c3410-111">För att slutföra den här kursen behöver du:</span><span class="sxs-lookup"><span data-stu-id="c3410-111">To complete this tutorial:</span></span>
+<span data-ttu-id="8f9f5-111">toocomplete den här kursen:</span><span class="sxs-lookup"><span data-stu-id="8f9f5-111">toocomplete this tutorial:</span></span>
 
-1. [<span data-ttu-id="c3410-112">Installera Git</span><span class="sxs-lookup"><span data-stu-id="c3410-112">Install Git</span></span>](https://git-scm.com/)
-1. [<span data-ttu-id="c3410-113">Installera Python</span><span class="sxs-lookup"><span data-stu-id="c3410-113">Install Python</span></span>](https://www.python.org/downloads/)
+1. [<span data-ttu-id="8f9f5-112">Installera Git</span><span class="sxs-lookup"><span data-stu-id="8f9f5-112">Install Git</span></span>](https://git-scm.com/)
+1. [<span data-ttu-id="8f9f5-113">Installera Python</span><span class="sxs-lookup"><span data-stu-id="8f9f5-113">Install Python</span></span>](https://www.python.org/downloads/)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-<span data-ttu-id="c3410-114">Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare.</span><span class="sxs-lookup"><span data-stu-id="c3410-114">If you choose to install and use the CLI locally, this topic requires that you are running the Azure CLI version 2.0 or later.</span></span> <span data-ttu-id="c3410-115">Kör `az --version` för att hitta versionen.</span><span class="sxs-lookup"><span data-stu-id="c3410-115">Run `az --version` to find the version.</span></span> <span data-ttu-id="c3410-116">Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="c3410-116">If you need to install or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
+<span data-ttu-id="8f9f5-114">Om du väljer tooinstall och använda hello CLI lokalt kräver i det här avsnittet att du kör hello Azure CLI version 2.0 eller senare.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-114">If you choose tooinstall and use hello CLI locally, this topic requires that you are running hello Azure CLI version 2.0 or later.</span></span> <span data-ttu-id="8f9f5-115">Kör `az --version` toofind hello version.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-115">Run `az --version` toofind hello version.</span></span> <span data-ttu-id="8f9f5-116">Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="8f9f5-116">If you need tooinstall or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
 
-## <a name="download-the-sample"></a><span data-ttu-id="c3410-117">Hämta exemplet</span><span class="sxs-lookup"><span data-stu-id="c3410-117">Download the sample</span></span>
+## <a name="download-hello-sample"></a><span data-ttu-id="8f9f5-117">Hämta hello-exempel</span><span class="sxs-lookup"><span data-stu-id="8f9f5-117">Download hello sample</span></span>
 
-<span data-ttu-id="c3410-118">Kör följande kommando i ett terminalfönster för att klona databasen för exempelappen till den lokala datorn.</span><span class="sxs-lookup"><span data-stu-id="c3410-118">In a terminal window, run the following command to clone the sample app repository to your local machine.</span></span>
+<span data-ttu-id="8f9f5-118">Kör hello efter kommandot tooclone hello exempel app databasen tooyour lokala datorn i ett terminalfönster.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-118">In a terminal window, run hello following command tooclone hello sample app repository tooyour local machine.</span></span>
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
 
-<span data-ttu-id="c3410-119">Du använder det här terminalfönstret för att köra alla kommandon i den här snabbstarten.</span><span class="sxs-lookup"><span data-stu-id="c3410-119">You use this terminal window to run all the commands in this quickstart.</span></span>
+<span data-ttu-id="8f9f5-119">Du använder den här terminalfönster toorun alla hello-kommandon i denna Snabbstart.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-119">You use this terminal window toorun all hello commands in this quickstart.</span></span>
 
-<span data-ttu-id="c3410-120">Ändra till den katalog som innehåller exempelkoden.</span><span class="sxs-lookup"><span data-stu-id="c3410-120">Change to the directory that contains the sample code.</span></span>
+<span data-ttu-id="8f9f5-120">Ändra toohello katalog som innehåller hello exempelkod.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-120">Change toohello directory that contains hello sample code.</span></span>
 
 ```bash
 cd Python-docs-hello-world
 ```
 
-## <a name="run-the-app-locally"></a><span data-ttu-id="c3410-121">Köra appen lokalt</span><span class="sxs-lookup"><span data-stu-id="c3410-121">Run the app locally</span></span>
+## <a name="run-hello-app-locally"></a><span data-ttu-id="8f9f5-121">Kör hello appen lokalt</span><span class="sxs-lookup"><span data-stu-id="8f9f5-121">Run hello app locally</span></span>
 
-<span data-ttu-id="c3410-122">Installera de paket som behövs med hjälp av `pip`.</span><span class="sxs-lookup"><span data-stu-id="c3410-122">Install the required packages using `pip`.</span></span>
+<span data-ttu-id="8f9f5-122">Installera hello krävs paket med hjälp av `pip`.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-122">Install hello required packages using `pip`.</span></span>
 
 ```bash
 pip install -r requirements.txt
 ```
 
-<span data-ttu-id="c3410-123">Kör programmet lokalt genom att öppna ett terminalfönster och använda kommandot `Python` för att starta den inbyggda Python-webbservern.</span><span class="sxs-lookup"><span data-stu-id="c3410-123">Run the application locally by opening a terminal window and using the `Python` command to launch the built-in Python web server.</span></span>
+<span data-ttu-id="8f9f5-123">Kör programmet hello lokalt genom att öppna ett terminalfönster och hello `Python` kommandot toolaunch hello inbyggda Python webbservern.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-123">Run hello application locally by opening a terminal window and using hello `Python` command toolaunch hello built-in Python web server.</span></span>
 
 ```bash
 python main.py
 ```
 
-<span data-ttu-id="c3410-124">Öppna en webbläsare och navigera till exempelappen på http://localhost:5000.</span><span class="sxs-lookup"><span data-stu-id="c3410-124">Open a web browser, and navigate to the sample app at http://localhost:5000.</span></span>
+<span data-ttu-id="8f9f5-124">Öppna en webbläsare och gå toohello exempelapp på http://localhost:5000.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-124">Open a web browser, and navigate toohello sample app at http://localhost:5000.</span></span>
 
-<span data-ttu-id="c3410-125">Nu kan du se **Hello World**-meddelandet från exempelappen på sidan.</span><span class="sxs-lookup"><span data-stu-id="c3410-125">You can see the **Hello World** message from the sample app displayed in the page.</span></span>
+<span data-ttu-id="8f9f5-125">Du kan se hello **Hello World** meddelande från hello sample-appen visas i hello-sidan.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-125">You can see hello **Hello World** message from hello sample app displayed in hello page.</span></span>
 
 ![Exempelapp som körs lokalt](media/app-service-web-get-started-python/localhost-hello-world-in-browser.png)
 
-<span data-ttu-id="c3410-127">Tryck på **Ctrl+C** i terminalfönstret för att avsluta webbservern.</span><span class="sxs-lookup"><span data-stu-id="c3410-127">In your terminal window, press **Ctrl+C** to exit the web server.</span></span>
+<span data-ttu-id="8f9f5-127">Tryck på i ditt terminalfönster **Ctrl + C** tooexit hello-webbserver.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-127">In your terminal window, press **Ctrl+C** tooexit hello web server.</span></span>
 
-[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
+[!INCLUDE [Log in tooAzure](../../includes/login-to-azure.md)] 
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
@@ -91,26 +91,26 @@ python main.py
 
 ![Sida för tom webbapp](media/app-service-web-get-started-python/app-service-web-service-created.png)
 
-<span data-ttu-id="c3410-129">Nu har du skapat en ny tom webbapp på Azure.</span><span class="sxs-lookup"><span data-stu-id="c3410-129">You’ve created an empty new web app in Azure.</span></span>
+<span data-ttu-id="8f9f5-129">Nu har du skapat en ny tom webbapp på Azure.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-129">You’ve created an empty new web app in Azure.</span></span>
 
-## <a name="configure-to-use-python"></a><span data-ttu-id="c3410-130">Konfiguration för användning av Python</span><span class="sxs-lookup"><span data-stu-id="c3410-130">Configure to use Python</span></span>
+## <a name="configure-toouse-python"></a><span data-ttu-id="8f9f5-130">Konfigurera toouse Python</span><span class="sxs-lookup"><span data-stu-id="8f9f5-130">Configure toouse Python</span></span>
 
-<span data-ttu-id="c3410-131">Använd kommandot [az webapp config set](/cli/azure/webapp/config#set) och konfigurera webbappen för att använda Python version `3.4`.</span><span class="sxs-lookup"><span data-stu-id="c3410-131">Use the [az webapp config set](/cli/azure/webapp/config#set) command to configure the web app to use Python version `3.4`.</span></span>
+<span data-ttu-id="8f9f5-131">Använd hello [az webapp konfigurationsuppsättning](/cli/azure/webapp/config#set) kommandot tooconfigure hello app toouse Python webbversionen `3.4`.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-131">Use hello [az webapp config set](/cli/azure/webapp/config#set) command tooconfigure hello web app toouse Python version `3.4`.</span></span>
 
 ```azurecli-interactive
 az webapp config set --python-version 3.4 --name <app_name> --resource-group myResourceGroup
 ```
 
 
-<span data-ttu-id="c3410-132">När du anger Python-versionen på det här sättet används en standardbehållare som tillhandahålls av plattformen.</span><span class="sxs-lookup"><span data-stu-id="c3410-132">Setting the Python version this way uses a default container provided by the platform.</span></span> <span data-ttu-id="c3410-133">Om du vill använda en egen behållare kan läsa CLI-referensen för kommandot [az webapp config container set](/cli/azure/webapp/config/container#set).</span><span class="sxs-lookup"><span data-stu-id="c3410-133">To use your own container, see the CLI reference for the [az webapp config container set](/cli/azure/webapp/config/container#set) command.</span></span>
+<span data-ttu-id="8f9f5-132">Ange hello Python-versionen sätt använder en standardbehållare som tillhandahålls av hello-plattformen.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-132">Setting hello Python version this way uses a default container provided by hello platform.</span></span> <span data-ttu-id="8f9f5-133">toouse egna behållaren finns hello CLI-referens för hello [az webapp konfigurationsuppsättning behållaren](/cli/azure/webapp/config/container#set) kommando.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-133">toouse your own container, see hello CLI reference for hello [az webapp config container set](/cli/azure/webapp/config/container#set) command.</span></span>
 
 [!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+[!INCLUDE [Push tooAzure](../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 18, done.
-Delta compression using up to 4 threads.
+Delta compression using up too4 threads.
 Compressing objects: 100% (16/16), done.
 Writing objects: 100% (18/18), 4.31 KiB | 0 bytes/s, done.
 Total 18 (delta 4), reused 0 (delta 0)
@@ -146,60 +146,60 @@ remote:         1 file(s) copied.
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+toohttps://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-## <a name="browse-to-the-app"></a><span data-ttu-id="c3410-134">Bläddra till appen</span><span class="sxs-lookup"><span data-stu-id="c3410-134">Browse to the app</span></span>
+## <a name="browse-toohello-app"></a><span data-ttu-id="8f9f5-134">Bläddra toohello app</span><span class="sxs-lookup"><span data-stu-id="8f9f5-134">Browse toohello app</span></span>
 
-<span data-ttu-id="c3410-135">Bläddra till den distribuerade appen via webbläsaren.</span><span class="sxs-lookup"><span data-stu-id="c3410-135">Browse to the deployed application using your web browser.</span></span>
+<span data-ttu-id="8f9f5-135">Bläddra toohello distribuerat program med hjälp av webbläsaren.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-135">Browse toohello deployed application using your web browser.</span></span>
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-<span data-ttu-id="c3410-136">Python-exempelkoden körs i en Azure App Service-webbapp.</span><span class="sxs-lookup"><span data-stu-id="c3410-136">The Python sample code is running in an Azure App Service web app.</span></span>
+<span data-ttu-id="8f9f5-136">hello Python exempelkod körs i en webbapp i Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-136">hello Python sample code is running in an Azure App Service web app.</span></span>
 
 ![Exempelapp som körs i Azure](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
-<span data-ttu-id="c3410-138">**Grattis!**</span><span class="sxs-lookup"><span data-stu-id="c3410-138">**Congratulations!**</span></span> <span data-ttu-id="c3410-139">Du har distribuerat din första Python-app till App Service.</span><span class="sxs-lookup"><span data-stu-id="c3410-139">You've deployed your first Python app to App Service.</span></span>
+<span data-ttu-id="8f9f5-138">**Grattis!**</span><span class="sxs-lookup"><span data-stu-id="8f9f5-138">**Congratulations!**</span></span> <span data-ttu-id="8f9f5-139">Du har distribuerat din första Python app tooApp Service.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-139">You've deployed your first Python app tooApp Service.</span></span>
 
-## <a name="update-and-redeploy-the-code"></a><span data-ttu-id="c3410-140">Uppdatera och distribuera om koden</span><span class="sxs-lookup"><span data-stu-id="c3410-140">Update and redeploy the code</span></span>
+## <a name="update-and-redeploy-hello-code"></a><span data-ttu-id="8f9f5-140">Uppdatera och distribuera hello kod</span><span class="sxs-lookup"><span data-stu-id="8f9f5-140">Update and redeploy hello code</span></span>
 
-<span data-ttu-id="c3410-141">Öppna filen `main.py` i Python-appen med ett lokalt textredigeringsprogram och gör små ändringar i texten i strängen bredvid `return`-instruktionen:</span><span class="sxs-lookup"><span data-stu-id="c3410-141">Using a local text editor, open the `main.py` file in the Python app, and make a small change to the text next to the `return` statement:</span></span>
+<span data-ttu-id="8f9f5-141">Med en lokal textredigerare öppna hello `main.py` filen i hello Python-appen och göra en mindre ändring toohello text nästa toohello `return` instruktionen:</span><span class="sxs-lookup"><span data-stu-id="8f9f5-141">Using a local text editor, open hello `main.py` file in hello Python app, and make a small change toohello text next toohello `return` statement:</span></span>
 
 ```python
 return 'Hello, Azure!'
 ```
 
-<span data-ttu-id="c3410-142">Spara ändringarna på Git och skicka sedan kodändringarna till Azure.</span><span class="sxs-lookup"><span data-stu-id="c3410-142">Commit your changes in Git, and then push the code changes to Azure.</span></span>
+<span data-ttu-id="8f9f5-142">Genomför ändringarna i Git och skicka sedan hello kod ändringar tooAzure.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-142">Commit your changes in Git, and then push hello code changes tooAzure.</span></span>
 
 ```bash
 git commit -am "updated output"
 git push azure master
 ```
 
-<span data-ttu-id="c3410-143">När distributionen är klar går du tillbaka till webbläsarfönstret som öppnades när du skulle [söka efter appen](#browse-to-the-app) och klickar på knappen för att uppdatera sidan.</span><span class="sxs-lookup"><span data-stu-id="c3410-143">Once deployment has completed, switch back to the browser window that opened in the [Browse to the app](#browse-to-the-app) step, and refresh the page.</span></span>
+<span data-ttu-id="8f9f5-143">När distributionen är klar, kan du växla tillbaka toohello webbläsarfönster som öppnas i hello [Bläddra toohello app](#browse-to-the-app) steg och uppdatera hello sidan.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-143">Once deployment has completed, switch back toohello browser window that opened in hello [Browse toohello app](#browse-to-the-app) step, and refresh hello page.</span></span>
 
 ![Uppdaterad exempelapp som körs i Azure](media/app-service-web-get-started-python/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a><span data-ttu-id="c3410-145">Hantera din nya Azure-webbapp</span><span class="sxs-lookup"><span data-stu-id="c3410-145">Manage your new Azure web app</span></span>
+## <a name="manage-your-new-azure-web-app"></a><span data-ttu-id="8f9f5-145">Hantera din nya Azure-webbapp</span><span class="sxs-lookup"><span data-stu-id="8f9f5-145">Manage your new Azure web app</span></span>
 
-<span data-ttu-id="c3410-146">Gå till <a href="https://portal.azure.com" target="_blank">Azure Portal</a> för att hantera den webbapp som du skapade.</span><span class="sxs-lookup"><span data-stu-id="c3410-146">Go to the <a href="https://portal.azure.com" target="_blank">Azure portal</a> to manage the web app you created.</span></span>
+<span data-ttu-id="8f9f5-146">Gå toohello <a href="https://portal.azure.com" target="_blank">Azure-portalen</a> toomanage hello webbprogram som du skapade.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-146">Go toohello <a href="https://portal.azure.com" target="_blank">Azure portal</a> toomanage hello web app you created.</span></span>
 
-<span data-ttu-id="c3410-147">Klicka på **Apptjänster** i menyn till vänster och sedan på namnet på din Azure-webbapp.</span><span class="sxs-lookup"><span data-stu-id="c3410-147">From the left menu, click **App Services**, and then click the name of your Azure web app.</span></span>
+<span data-ttu-id="8f9f5-147">Hello vänstra menyn klickar du på **Apptjänster**, och klicka sedan på hello namnet på din Azure webbapp.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-147">From hello left menu, click **App Services**, and then click hello name of your Azure web app.</span></span>
 
-![Navigera till webbappen på Azure Portal](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
+![Portalen navigering tooAzure webbprogram](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
-<span data-ttu-id="c3410-149">Nu visas sidan Översikt för din webbapp.</span><span class="sxs-lookup"><span data-stu-id="c3410-149">You see your web app's Overview page.</span></span> <span data-ttu-id="c3410-150">Här kan du utföra grundläggande hanteringsåtgärder som att bläddra, stoppa, starta, starta om och ta bort.</span><span class="sxs-lookup"><span data-stu-id="c3410-150">Here, you can perform basic management tasks like browse, stop, start, restart, and delete.</span></span> 
+<span data-ttu-id="8f9f5-149">Nu visas sidan Översikt för din webbapp.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-149">You see your web app's Overview page.</span></span> <span data-ttu-id="8f9f5-150">Här kan du utföra grundläggande hanteringsåtgärder som att bläddra, stoppa, starta, starta om och ta bort.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-150">Here, you can perform basic management tasks like browse, stop, start, restart, and delete.</span></span> 
 
 ![App Service-blad på Azure Portal](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
 
-<span data-ttu-id="c3410-152">Menyn till vänster innehåller olika sidor för att konfigurera appen.</span><span class="sxs-lookup"><span data-stu-id="c3410-152">The left menu provides different pages for configuring your app.</span></span> 
+<span data-ttu-id="8f9f5-152">hello vänstra menyn innehåller olika sidor för att konfigurera din app.</span><span class="sxs-lookup"><span data-stu-id="8f9f5-152">hello left menu provides different pages for configuring your app.</span></span> 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a><span data-ttu-id="c3410-153">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="c3410-153">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="8f9f5-153">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="8f9f5-153">Next steps</span></span>
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="c3410-154">Python med PostgreSQL</span><span class="sxs-lookup"><span data-stu-id="c3410-154">Python with PostgreSQL</span></span>](app-service-web-tutorial-docker-python-postgresql-app.md)
+> [<span data-ttu-id="8f9f5-154">Python med PostgreSQL</span><span class="sxs-lookup"><span data-stu-id="8f9f5-154">Python with PostgreSQL</span></span>](app-service-web-tutorial-docker-python-postgresql-app.md)

@@ -22,7 +22,7 @@
 ## Skapa mallar
 ### [Metodtips för mallar](resource-manager-template-best-practices.md)
 ### [Mall-avsnitt](resource-group-authoring-templates.md)
-### [Länk till andra mallar](resource-group-linked-templates.md)
+### [Länken tooother mallar](resource-group-linked-templates.md)
 ### [Definiera beroendet mellan resurser](resource-group-define-dependencies.md)
 ### [Skapa flera instanser](resource-group-create-multiple.md)
 ### [Ange en plats](resource-manager-template-location.md)
@@ -53,8 +53,8 @@
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
 ### [Portal](resource-group-portal.md)
 ### [REST-API](resource-manager-rest-api.md)
-### [Använd taggar för att organisera resurser](resource-group-using-tags.md)
-### [Flytta resurser till ny grupp eller prenumeration](resource-group-move-resources.md)
+### [Använd taggar tooorganize resurser](resource-group-using-tags.md)
+### [Flytta resurser toonew grupp eller en prenumeration](resource-group-move-resources.md)
 ### [Styrningsexempel](resource-manager-subscription-examples.md)
 
 ## Styr åtkomsten
@@ -63,13 +63,13 @@
 #### [Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [Azure CLI 1.0](resource-group-authenticate-service-principal-cli.md)
 #### [Portal](resource-group-create-service-principal-portal.md)
-### [Autentiserings-API för att få åtkomst till prenumerationer](resource-manager-api-authentication.md)
+### [Autentisering-API tooaccess prenumerationer](resource-manager-api-authentication.md)
 ### [Lås resurser](resource-group-lock-resources.md)
 
 ## Ange resursprinciper
 ### [Vad är resursprinciper?](resource-manager-policy.md)
-### [Tilldela en princip med hjälp av portalen](resource-manager-policy-portal.md)
-### [Tilldela en princip med hjälp av skript](resource-manager-policy-create-assign.md)
+### [Använda portalen tooassign princip](resource-manager-policy-portal.md)
+### [Använda skript tooassign princip](resource-manager-policy-create-assign.md)
 ### Exempel
 #### [Taggar](resource-manager-policy-tags.md)
 #### [Namngivningskonventioner](resource-manager-policy-naming-convention.md)

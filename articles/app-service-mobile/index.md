@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Mobile Apps – Självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur du använder Mobile Apps i Azure App Service för att bygga och hantera interna iOS-, Android-, Windows- eller plattformsoberoende appar med hjälp av Xamarin eller Cordova."
+title: "aaaAzure Mobile Apps-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur toouse Mobile Apps i Azure App Service toobuild och värden interna iOS, Android eller Windows-appar eller plattformsoberoende appar med Xamarin- eller Cordova."
 services: app-service\mobile
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f660922fa2f7d5d21b4e6678233792ad6cb84041
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 09b103b274c66f515d9a34bbdcb54cf0ff3a035a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="mobile-apps-documentation"></a>Dokumentation om Mobile Apps
 
-Lär dig hur du använder Mobile Apps i Azure App Service för att bygga interna iOS-, Android-, Windows- eller plattformsoberoende appar med hjälp av Xamarin eller Cordova. Självstudier, videor, klient-SDK-dokumentation och mycket mer visar hur du bygger och hanterar serverdelen för alla sorters mobilappar.
+Lär dig hur toouse Mobile Apps i Azure App Service toobuild interna iOS, Android eller Windows-appar eller plattformsoberoende appar med Xamarin- eller Cordova. Självstudier, videor, klient-SDK-dokumentationen och mer visar hur toobuild och värden hello serverdelen för alla mobila appar.
 
 <ul class="panelContent cardsFTitle">
     <li>

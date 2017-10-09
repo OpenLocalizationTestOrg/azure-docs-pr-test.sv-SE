@@ -1,5 +1,5 @@
 ---
-title: Gruppera efter alternativ i SQL Data Warehouse | Microsoft Docs
+title: aaaGroup alternativ i SQL Data Warehouse | Microsoft Docs
 description: "Tips för gruppen av alternativen i Azure SQL Data Warehouse för utveckling av lösningar."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,25 +15,25 @@ ms.workload: data-services
 ms.custom: queries
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: da71cb834c13da5d0f5690f471efc6c696163f30
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cc443c2af4e3ef2babd74d78aa6fb57bb3c1c7ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="group-by-options-in-sql-data-warehouse"></a><span data-ttu-id="97840-103">Gruppera efter alternativ i SQL Data Warehouse</span><span class="sxs-lookup"><span data-stu-id="97840-103">Group by options in SQL Data Warehouse</span></span>
-<span data-ttu-id="97840-104">Den [GROUP BY] [ GROUP BY] satsen används för att samla in data till en sammanfattande uppsättning rader.</span><span class="sxs-lookup"><span data-stu-id="97840-104">The [GROUP BY][GROUP BY] clause is used to aggregate data to a summary set of rows.</span></span> <span data-ttu-id="97840-105">Det finns även några alternativ utökar dess funktioner som behöver bearbetas runt eftersom de inte direkt stöds av Azure SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="97840-105">It also has a few options that extend it's functionality that need to be worked around as they are not directly supported by Azure SQL Data Warehouse.</span></span>
+# <a name="group-by-options-in-sql-data-warehouse"></a><span data-ttu-id="9caf8-103">Gruppera efter alternativ i SQL Data Warehouse</span><span class="sxs-lookup"><span data-stu-id="9caf8-103">Group by options in SQL Data Warehouse</span></span>
+<span data-ttu-id="9caf8-104">Hej [GROUP BY] [ GROUP BY] satsen används tooaggregate tooa sammanfattning datauppsättning av rader.</span><span class="sxs-lookup"><span data-stu-id="9caf8-104">hello [GROUP BY][GROUP BY] clause is used tooaggregate data tooa summary set of rows.</span></span> <span data-ttu-id="9caf8-105">Det finns även några alternativ och utökar dess funktioner som behöver toobe arbetat runt eftersom de inte direkt stöds av Azure SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="9caf8-105">It also has a few options that extend it's functionality that need toobe worked around as they are not directly supported by Azure SQL Data Warehouse.</span></span>
 
-<span data-ttu-id="97840-106">Dessa alternativ är</span><span class="sxs-lookup"><span data-stu-id="97840-106">These options are</span></span>
+<span data-ttu-id="9caf8-106">Dessa alternativ är</span><span class="sxs-lookup"><span data-stu-id="9caf8-106">These options are</span></span>
 
-* <span data-ttu-id="97840-107">GROUP BY med Samlad</span><span class="sxs-lookup"><span data-stu-id="97840-107">GROUP BY with ROLLUP</span></span>
-* <span data-ttu-id="97840-108">GROUPING SETS</span><span class="sxs-lookup"><span data-stu-id="97840-108">GROUPING SETS</span></span>
-* <span data-ttu-id="97840-109">GROUP BY med kub</span><span class="sxs-lookup"><span data-stu-id="97840-109">GROUP BY with CUBE</span></span>
+* <span data-ttu-id="9caf8-107">GROUP BY med Samlad</span><span class="sxs-lookup"><span data-stu-id="9caf8-107">GROUP BY with ROLLUP</span></span>
+* <span data-ttu-id="9caf8-108">GROUPING SETS</span><span class="sxs-lookup"><span data-stu-id="9caf8-108">GROUPING SETS</span></span>
+* <span data-ttu-id="9caf8-109">GROUP BY med kub</span><span class="sxs-lookup"><span data-stu-id="9caf8-109">GROUP BY with CUBE</span></span>
 
-## <a name="rollup-and-grouping-sets-options"></a><span data-ttu-id="97840-110">Anger alternativ för insamling och gruppering</span><span class="sxs-lookup"><span data-stu-id="97840-110">Rollup and grouping sets options</span></span>
-<span data-ttu-id="97840-111">Det enklaste alternativet är att använda `UNION ALL` i stället för samlade i stället för att förlita dig på explicit syntax.</span><span class="sxs-lookup"><span data-stu-id="97840-111">The simplest option here is to use `UNION ALL` instead to perform the rollup rather than relying on the explicit syntax.</span></span> <span data-ttu-id="97840-112">Resultatet är exakt samma</span><span class="sxs-lookup"><span data-stu-id="97840-112">The result is exactly the same</span></span>
+## <a name="rollup-and-grouping-sets-options"></a><span data-ttu-id="9caf8-110">Anger alternativ för insamling och gruppering</span><span class="sxs-lookup"><span data-stu-id="9caf8-110">Rollup and grouping sets options</span></span>
+<span data-ttu-id="9caf8-111">hello enklaste alternativet här är toouse `UNION ALL` i stället tooperform hello samlad i stället för att förlita dig på hello explicit syntax.</span><span class="sxs-lookup"><span data-stu-id="9caf8-111">hello simplest option here is toouse `UNION ALL` instead tooperform hello rollup rather than relying on hello explicit syntax.</span></span> <span data-ttu-id="9caf8-112">hello resultatet är exakt hello samma</span><span class="sxs-lookup"><span data-stu-id="9caf8-112">hello result is exactly hello same</span></span>
 
-<span data-ttu-id="97840-113">Nedan visas ett exempel på en grupp med hjälp av instruktionen den `ROLLUP` alternativ:</span><span class="sxs-lookup"><span data-stu-id="97840-113">Below is an example of a group by statement using the `ROLLUP` option:</span></span>
+<span data-ttu-id="9caf8-113">Nedan visas ett exempel på ett group by-sats med hello `ROLLUP` alternativ:</span><span class="sxs-lookup"><span data-stu-id="9caf8-113">Below is an example of a group by statement using hello `ROLLUP` option:</span></span>
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -48,13 +48,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-<span data-ttu-id="97840-114">Vi har begärt följande aggregeringar med hjälp av samlad:</span><span class="sxs-lookup"><span data-stu-id="97840-114">By using ROLLUP we have requested the following aggregations:</span></span>
+<span data-ttu-id="9caf8-114">Vi har begärt följande aggregeringar hello med hjälp av samlad:</span><span class="sxs-lookup"><span data-stu-id="9caf8-114">By using ROLLUP we have requested hello following aggregations:</span></span>
 
-* <span data-ttu-id="97840-115">Land och Region</span><span class="sxs-lookup"><span data-stu-id="97840-115">Country and Region</span></span>
-* <span data-ttu-id="97840-116">Land/region</span><span class="sxs-lookup"><span data-stu-id="97840-116">Country</span></span>
-* <span data-ttu-id="97840-117">Totalsumma</span><span class="sxs-lookup"><span data-stu-id="97840-117">Grand Total</span></span>
+* <span data-ttu-id="9caf8-115">Land och Region</span><span class="sxs-lookup"><span data-stu-id="9caf8-115">Country and Region</span></span>
+* <span data-ttu-id="9caf8-116">Land/region</span><span class="sxs-lookup"><span data-stu-id="9caf8-116">Country</span></span>
+* <span data-ttu-id="9caf8-117">Totalsumma</span><span class="sxs-lookup"><span data-stu-id="9caf8-117">Grand Total</span></span>
 
-<span data-ttu-id="97840-118">Ersätt detta behöver du använda `UNION ALL`; ange aggregeringar måste uttryckligen returnera samma resultat:</span><span class="sxs-lookup"><span data-stu-id="97840-118">To replace this you will need to use `UNION ALL`; specifying the aggregations required explicitly to return the same results:</span></span>
+<span data-ttu-id="9caf8-118">tooreplace detta behöver du toouse `UNION ALL`; ange hello aggregeringar krävs explicit tooreturn hello samma resultat:</span><span class="sxs-lookup"><span data-stu-id="9caf8-118">tooreplace this you will need toouse `UNION ALL`; specifying hello aggregations required explicitly tooreturn hello same results:</span></span>
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -81,14 +81,14 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-<span data-ttu-id="97840-119">För GROUPING SETS alla vi behöver göra är antar samma huvudkonto men bara skapa UNION ALL avsnitt för aggregering nivåerna vi vill se</span><span class="sxs-lookup"><span data-stu-id="97840-119">For GROUPING SETS all we need to do is adopt the same principal but only create UNION ALL sections for the aggregation levels we want to see</span></span>
+<span data-ttu-id="9caf8-119">GROUPING SETS är allt vi behöver toodo anta hello samma primära men bara skapa UNION ALL avsnitt för hello aggregering nivåer vill vi toosee</span><span class="sxs-lookup"><span data-stu-id="9caf8-119">For GROUPING SETS all we need toodo is adopt hello same principal but only create UNION ALL sections for hello aggregation levels we want toosee</span></span>
 
-## <a name="cube-options"></a><span data-ttu-id="97840-120">Kubalternativ för</span><span class="sxs-lookup"><span data-stu-id="97840-120">Cube options</span></span>
-<span data-ttu-id="97840-121">Det är möjligt att skapa en grupp av med kub med hjälp av UNION ALL-metoden.</span><span class="sxs-lookup"><span data-stu-id="97840-121">It is possible to create a GROUP BY WITH CUBE using the UNION ALL approach.</span></span> <span data-ttu-id="97840-122">Problemet är att koden kan snabbt bli besvärlig och svårhanterliga.</span><span class="sxs-lookup"><span data-stu-id="97840-122">The problem is that the code can quickly become cumbersome and unwieldy.</span></span> <span data-ttu-id="97840-123">Om du vill undvika detta kan du använda den mer avancerade metod.</span><span class="sxs-lookup"><span data-stu-id="97840-123">To mitigate this you can use this more advanced approach.</span></span>
+## <a name="cube-options"></a><span data-ttu-id="9caf8-120">Kubalternativ för</span><span class="sxs-lookup"><span data-stu-id="9caf8-120">Cube options</span></span>
+<span data-ttu-id="9caf8-121">Det är möjligt toocreate en grupp av med kub med hello UNION ALL-metoden.</span><span class="sxs-lookup"><span data-stu-id="9caf8-121">It is possible toocreate a GROUP BY WITH CUBE using hello UNION ALL approach.</span></span> <span data-ttu-id="9caf8-122">hello problemet är att hello kod kan snabbt bli besvärlig och svårhanterliga.</span><span class="sxs-lookup"><span data-stu-id="9caf8-122">hello problem is that hello code can quickly become cumbersome and unwieldy.</span></span> <span data-ttu-id="9caf8-123">toomitigate detta kan du använda den mer avancerade metod.</span><span class="sxs-lookup"><span data-stu-id="9caf8-123">toomitigate this you can use this more advanced approach.</span></span>
 
-<span data-ttu-id="97840-124">Nu ska vi använda exemplet ovan.</span><span class="sxs-lookup"><span data-stu-id="97840-124">Let's use the example above.</span></span>
+<span data-ttu-id="9caf8-124">Nu ska vi använda hello-exemplet ovan.</span><span class="sxs-lookup"><span data-stu-id="9caf8-124">Let's use hello example above.</span></span>
 
-<span data-ttu-id="97840-125">Det första steget är att definiera 'kuben' som definierar alla nivåer av aggregation som vi vill skapa.</span><span class="sxs-lookup"><span data-stu-id="97840-125">The first step is to define the 'cube' that defines all the levels of aggregation that we want to create.</span></span> <span data-ttu-id="97840-126">Det är viktigt att notera CROSS JOIN av två härledda tabeller.</span><span class="sxs-lookup"><span data-stu-id="97840-126">It is important to take note of the CROSS JOIN of the two derived tables.</span></span> <span data-ttu-id="97840-127">Detta genererar alla nivåer för oss.</span><span class="sxs-lookup"><span data-stu-id="97840-127">This generates all the levels for us.</span></span> <span data-ttu-id="97840-128">Resten av koden är verkligen det för formatering.</span><span class="sxs-lookup"><span data-stu-id="97840-128">The rest of the code is really there for formatting.</span></span>
+<span data-ttu-id="9caf8-125">hello första steget är toodefine hello 'cube-som definierar alla hello nivåer av aggregation som vi vill toocreate.</span><span class="sxs-lookup"><span data-stu-id="9caf8-125">hello first step is toodefine hello 'cube' that defines all hello levels of aggregation that we want toocreate.</span></span> <span data-ttu-id="9caf8-126">Det är viktigt tootake anteckna hello CROSS JOIN hello härledda tabellerna.</span><span class="sxs-lookup"><span data-stu-id="9caf8-126">It is important tootake note of hello CROSS JOIN of hello two derived tables.</span></span> <span data-ttu-id="9caf8-127">Detta genererar alla hello nivåer för oss.</span><span class="sxs-lookup"><span data-stu-id="9caf8-127">This generates all hello levels for us.</span></span> <span data-ttu-id="9caf8-128">hello resten av hello koden är verkligen det för formatering.</span><span class="sxs-lookup"><span data-stu-id="9caf8-128">hello rest of hello code is really there for formatting.</span></span>
 
 ```sql
 CREATE TABLE #Cube
@@ -119,11 +119,11 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-<span data-ttu-id="97840-129">Resultaten av CTAS visas nedan:</span><span class="sxs-lookup"><span data-stu-id="97840-129">The results of the CTAS can be seen below:</span></span>
+<span data-ttu-id="9caf8-129">hello resultaten av hello CTAS visas nedan:</span><span class="sxs-lookup"><span data-stu-id="9caf8-129">hello results of hello CTAS can be seen below:</span></span>
 
 ![][1]
 
-<span data-ttu-id="97840-130">Det andra steget är att ange en måltabell för att lagra tillfälliga resultat:</span><span class="sxs-lookup"><span data-stu-id="97840-130">The second step is to specify a target table to store interim results:</span></span>
+<span data-ttu-id="9caf8-130">hello andra steget är toospecify resulterar i en target tabell toostore interim:</span><span class="sxs-lookup"><span data-stu-id="9caf8-130">hello second step is toospecify a target table toostore interim results:</span></span>
 
 ```sql
 DECLARE
@@ -146,7 +146,7 @@ WITH
 ;
 ```
 
-<span data-ttu-id="97840-131">Det tredje steget är att köras i slinga över våra kub med kolumner som utför aggregering.</span><span class="sxs-lookup"><span data-stu-id="97840-131">The third step is to loop over our cube of columns performing the aggregation.</span></span> <span data-ttu-id="97840-132">Frågan ska köras en gång för varje rad i den temporära tabellen #Cube och spara resultatet i den temporära tabellen #Results</span><span class="sxs-lookup"><span data-stu-id="97840-132">The query will run once for every row in the #Cube temporary table and store the results in the #Results temp table</span></span>
+<span data-ttu-id="9caf8-131">hello tredje steget är tooloop över våra kub med kolumner som utför hello aggregering.</span><span class="sxs-lookup"><span data-stu-id="9caf8-131">hello third step is tooloop over our cube of columns performing hello aggregation.</span></span> <span data-ttu-id="9caf8-132">hello frågan ska köras en gång för varje rad i hello #Cube tillfällig tabell och lagra hello resultat i hello #Results temporära tabellen</span><span class="sxs-lookup"><span data-stu-id="9caf8-132">hello query will run once for every row in hello #Cube temporary table and store hello results in hello #Results temp table</span></span>
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -170,7 +170,7 @@ BEGIN
 END
 ```
 
-<span data-ttu-id="97840-133">Till sist kan vi returnera resultat genom att bara läsa från den temporära tabellen #Results</span><span class="sxs-lookup"><span data-stu-id="97840-133">Lastly we can return the results by simply reading from the #Results temporary table</span></span>
+<span data-ttu-id="9caf8-133">Till sist kan vi returnera hello resultat genom att bara läsa från hello #Results tillfällig tabell</span><span class="sxs-lookup"><span data-stu-id="9caf8-133">Lastly we can return hello results by simply reading from hello #Results temporary table</span></span>
 
 ```sql
 SELECT *
@@ -179,10 +179,10 @@ ORDER BY 1,2,3
 ;
 ```
 
-<span data-ttu-id="97840-134">Genom att dela koden upp i avsnitt och genererar en slinga konstruktion blir koden mer användarvänlig och hanterbar.</span><span class="sxs-lookup"><span data-stu-id="97840-134">By breaking the code up into sections and generating a looping construct the code becomes more manageable and maintainable.</span></span>
+<span data-ttu-id="9caf8-134">Dela hello koden upp i avsnitt och generera en slinga konstruktion hello blir kod mer användarvänlig och hanterbar.</span><span class="sxs-lookup"><span data-stu-id="9caf8-134">By breaking hello code up into sections and generating a looping construct hello code becomes more manageable and maintainable.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="97840-135">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="97840-135">Next steps</span></span>
-<span data-ttu-id="97840-136">För fler utvecklingstips, se [utvecklingsöversikt][development overview].</span><span class="sxs-lookup"><span data-stu-id="97840-136">For more development tips, see [development overview][development overview].</span></span>
+## <a name="next-steps"></a><span data-ttu-id="9caf8-135">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="9caf8-135">Next steps</span></span>
+<span data-ttu-id="9caf8-136">För fler utvecklingstips, se [utvecklingsöversikt][development overview].</span><span class="sxs-lookup"><span data-stu-id="9caf8-136">For more development tips, see [development overview][development overview].</span></span>
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png

@@ -1,6 +1,6 @@
 ---
-title: "Skapa Hadoop-kluster med hjälp av Azure REST API - Azure | Microsoft Docs"
-description: "Lär dig hur du skapar HDInsight-kluster genom att skicka Azure Resource Manager-mallar REST-API: et för Azure."
+title: "Hadoop-aaaCreate kluster med hjälp av Azure REST API - Azure | Microsoft Docs"
+description: "Lär dig hur toocreate HDInsight-kluster genom att skicka Azure Resource Manager mallar toohello Azure REST API."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,31 +16,31 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/10/2017
 ms.author: larryfr
-ms.openlocfilehash: a36a41c231472ceeeb46d02ddb65549b1c79728a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 87b585e5084eccdc3d7c57483deabb4ad6e32597
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-hadoop-clusters-using-the-azure-rest-api"></a><span data-ttu-id="b9481-103">Skapa Hadoop-kluster med hjälp av Azure REST API</span><span class="sxs-lookup"><span data-stu-id="b9481-103">Create Hadoop clusters using the Azure REST API</span></span>
+# <a name="create-hadoop-clusters-using-hello-azure-rest-api"></a><span data-ttu-id="980ad-103">Skapa Hadoop-kluster med hello Azure REST API</span><span class="sxs-lookup"><span data-stu-id="980ad-103">Create Hadoop clusters using hello Azure REST API</span></span>
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-<span data-ttu-id="b9481-104">Lär dig hur du skapar ett HDInsight-kluster med hjälp av en Azure Resource Manager-mall och Azure REST API.</span><span class="sxs-lookup"><span data-stu-id="b9481-104">Learn how to create an HDInsight cluster using an Azure Resource Manager template and the Azure REST API.</span></span>
+<span data-ttu-id="980ad-104">Lär dig hur toocreate ett HDInsight-kluster med en Azure Resource Manager-mall och hello Azure REST API.</span><span class="sxs-lookup"><span data-stu-id="980ad-104">Learn how toocreate an HDInsight cluster using an Azure Resource Manager template and hello Azure REST API.</span></span>
 
-<span data-ttu-id="b9481-105">Azure REST-API kan du utföra hanteringsåtgärder på tjänster i Azure-plattformen, inklusive skapandet av nya resurser, till exempel HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="b9481-105">The Azure REST API allows you to perform management operations on services hosted in the Azure platform, including the creation of new resources such as HDInsight clusters.</span></span>
+<span data-ttu-id="980ad-105">hello Azure REST-API kan du tooperform hanteringsåtgärder på tjänster i hello Azure-plattformen, inklusive hello skapandet av nya resurser, till exempel HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="980ad-105">hello Azure REST API allows you tooperform management operations on services hosted in hello Azure platform, including hello creation of new resources such as HDInsight clusters.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="b9481-106">Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare.</span><span class="sxs-lookup"><span data-stu-id="b9481-106">Linux is the only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="b9481-107">Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="b9481-107">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
+> <span data-ttu-id="980ad-106">Linux är hello endast operativsystem på HDInsight version 3.4 eller senare.</span><span class="sxs-lookup"><span data-stu-id="980ad-106">Linux is hello only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="980ad-107">Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="980ad-107">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b9481-108">Stegen i det här dokumentet används de [curl (https://curl.haxx.se/)](https://curl.haxx.se/) verktyg för att kommunicera med Azure REST API.</span><span class="sxs-lookup"><span data-stu-id="b9481-108">The steps in this document use the [curl (https://curl.haxx.se/)](https://curl.haxx.se/) utility to communicate with the Azure REST API.</span></span>
+> <span data-ttu-id="980ad-108">hello stegen i det här dokumentet används hello [curl (https://curl.haxx.se/)](https://curl.haxx.se/) verktyget toocommunicate med hello Azure REST API.</span><span class="sxs-lookup"><span data-stu-id="980ad-108">hello steps in this document use hello [curl (https://curl.haxx.se/)](https://curl.haxx.se/) utility toocommunicate with hello Azure REST API.</span></span>
 
-## <a name="create-a-template"></a><span data-ttu-id="b9481-109">Skapa en mall</span><span class="sxs-lookup"><span data-stu-id="b9481-109">Create a template</span></span>
+## <a name="create-a-template"></a><span data-ttu-id="980ad-109">Skapa en mall</span><span class="sxs-lookup"><span data-stu-id="980ad-109">Create a template</span></span>
 
-<span data-ttu-id="b9481-110">Azure Resource Manager-mallarna är JSON-dokument som beskriver en **resursgruppen** och alla resurser i den (till exempel HDInsight.) Den här metoden mallbaserade kan du definiera de resurser som du behöver för HDInsight i en mall.</span><span class="sxs-lookup"><span data-stu-id="b9481-110">Azure Resource Manager templates are JSON documents that describe a **resource group** and all resources in it (such as HDInsight.) This template-based approach allows you to define the resources that you need for HDInsight in one template.</span></span>
+<span data-ttu-id="980ad-110">Azure Resource Manager-mallarna är JSON-dokument som beskriver en **resursgruppen** och alla resurser i den (till exempel HDInsight.) Den här metoden mallbaserade kan toodefine hello resurser som behövs för HDInsight i en mall.</span><span class="sxs-lookup"><span data-stu-id="980ad-110">Azure Resource Manager templates are JSON documents that describe a **resource group** and all resources in it (such as HDInsight.) This template-based approach allows you toodefine hello resources that you need for HDInsight in one template.</span></span>
 
-<span data-ttu-id="b9481-111">Följande JSON-dokumentet är en fusion mall och parametrar filer från [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), vilket skapar ett Linux-baserade kluster med ett lösenord för att skydda det SSH-kontot.</span><span class="sxs-lookup"><span data-stu-id="b9481-111">The following JSON document is a merger of the template and parameters files from [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), which creates a Linux-based cluster using a password to secure the SSH user account.</span></span>
+<span data-ttu-id="980ad-111">hello följande JSON-dokumentet är en sammanslagning av hello mall och parametrar filer från [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), vilket skapar en Linux-baserade kluster med hjälp av ett lösenord toosecure hello SSH-användarkontot.</span><span class="sxs-lookup"><span data-stu-id="980ad-111">hello following JSON document is a merger of hello template and parameters files from [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), which creates a Linux-based cluster using a password toosecure hello SSH user account.</span></span>
 
    ```json
    {
@@ -56,50 +56,50 @@ ms.lasthandoff: 08/18/2017
                        "storm",
                        "spark"],
                        "metadata": {
-                           "description": "The type of the HDInsight cluster to create."
+                           "description": "hello type of hello HDInsight cluster toocreate."
                        }
                    },
                    "clusterName": {
                        "type": "string",
                        "metadata": {
-                           "description": "The name of the HDInsight cluster to create."
+                           "description": "hello name of hello HDInsight cluster toocreate."
                        }
                    },
                    "clusterLoginUserName": {
                        "type": "string",
                        "metadata": {
-                           "description": "These credentials can be used to submit jobs to the cluster and to log into cluster dashboards."
+                           "description": "These credentials can be used toosubmit jobs toohello cluster and toolog into cluster dashboards."
                        }
                    },
                    "clusterLoginPassword": {
                        "type": "securestring",
                        "metadata": {
-                           "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+                           "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
                        }
                    },
                    "sshUserName": {
                        "type": "string",
                        "metadata": {
-                           "description": "These credentials can be used to remotely access the cluster."
+                           "description": "These credentials can be used tooremotely access hello cluster."
                        }
                    },
                    "sshPassword": {
                        "type": "securestring",
                        "metadata": {
-                           "description": "The password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
+                           "description": "hello password must be at least 10 characters in length and must contain at least one digit, one non-alphanumeric character, and one upper or lower case letter."
                        }
                    },
                    "clusterStorageAccountName": {
                        "type": "string",
                        "metadata": {
-                           "description": "The name of the storage account to be created and be used as the cluster's storage."
+                           "description": "hello name of hello storage account toobe created and be used as hello cluster's storage."
                        }
                    },
                    "clusterWorkerNodeCount": {
                        "type": "int",
                        "defaultValue": 4,
                        "metadata": {
-                           "description": "The number of nodes in the HDInsight cluster."
+                           "description": "hello number of nodes in hello HDInsight cluster."
                        }
                    }
                },
@@ -215,60 +215,60 @@ ms.lasthandoff: 08/18/2017
    }
    ```
 
-<span data-ttu-id="b9481-112">Det här exemplet används i stegen i det här dokumentet.</span><span class="sxs-lookup"><span data-stu-id="b9481-112">This example is used in the steps in this document.</span></span> <span data-ttu-id="b9481-113">Ersätta exemplet *värden* i den **parametrar** avsnitt med värden för klustret.</span><span class="sxs-lookup"><span data-stu-id="b9481-113">Replace the example *values* in the **Parameters** section with the values for your cluster.</span></span>
+<span data-ttu-id="980ad-112">Det här exemplet används i hello stegen i det här dokumentet.</span><span class="sxs-lookup"><span data-stu-id="980ad-112">This example is used in hello steps in this document.</span></span> <span data-ttu-id="980ad-113">Ersätt hello exempel *värden* i hello **parametrar** avsnitt med hello värden för klustret.</span><span class="sxs-lookup"><span data-stu-id="980ad-113">Replace hello example *values* in hello **Parameters** section with hello values for your cluster.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="b9481-114">Mallen använder standardvärdet för antalet arbetarnoder (4) för ett HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="b9481-114">The template uses the default number of worker nodes (4) for an HDInsight cluster.</span></span> <span data-ttu-id="b9481-115">Om du planerar på mer än 32 arbetarnoder, måste du välja en huvudnod storlek med minst 8 kärnor och 14 GB RAM-minne.</span><span class="sxs-lookup"><span data-stu-id="b9481-115">If you plan on more than 32 worker nodes, then you must select a head node size with at least 8 cores and 14 GB ram.</span></span>
+> <span data-ttu-id="980ad-114">hello-mallen använder hello standardantalet arbetarnoder (4) för ett HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="980ad-114">hello template uses hello default number of worker nodes (4) for an HDInsight cluster.</span></span> <span data-ttu-id="980ad-115">Om du planerar på mer än 32 arbetarnoder, måste du välja en huvudnod storlek med minst 8 kärnor och 14 GB RAM-minne.</span><span class="sxs-lookup"><span data-stu-id="980ad-115">If you plan on more than 32 worker nodes, then you must select a head node size with at least 8 cores and 14 GB ram.</span></span>
 >
-> <span data-ttu-id="b9481-116">Mer information om noden storlekar och relaterade kostnader finns [HDInsight priser](https://azure.microsoft.com/pricing/details/hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="b9481-116">For more information on node sizes and associated costs, see [HDInsight pricing](https://azure.microsoft.com/pricing/details/hdinsight/).</span></span>
+> <span data-ttu-id="980ad-116">Mer information om noden storlekar och relaterade kostnader finns [HDInsight priser](https://azure.microsoft.com/pricing/details/hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="980ad-116">For more information on node sizes and associated costs, see [HDInsight pricing](https://azure.microsoft.com/pricing/details/hdinsight/).</span></span>
 
-## <a name="log-in-to-your-azure-subscription"></a><span data-ttu-id="b9481-117">Logga in till din Azure-prenumeration</span><span class="sxs-lookup"><span data-stu-id="b9481-117">Log in to your Azure subscription</span></span>
+## <a name="log-in-tooyour-azure-subscription"></a><span data-ttu-id="980ad-117">Logga in tooyour Azure-prenumeration</span><span class="sxs-lookup"><span data-stu-id="980ad-117">Log in tooyour Azure subscription</span></span>
 
-<span data-ttu-id="b9481-118">Följ stegen i [Kom igång med Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) och ansluta till din prenumeration med hjälp av den `az login` kommando.</span><span class="sxs-lookup"><span data-stu-id="b9481-118">Follow the steps documented in [Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) and connect to your subscription using the `az login` command.</span></span>
+<span data-ttu-id="980ad-118">Följ stegen i hello [Kom igång med Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) och ansluta tooyour prenumeration med hjälp av hello `az login` kommando.</span><span class="sxs-lookup"><span data-stu-id="980ad-118">Follow hello steps documented in [Get started with Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) and connect tooyour subscription using hello `az login` command.</span></span>
 
-## <a name="create-a-service-principal"></a><span data-ttu-id="b9481-119">Skapa ett huvudnamn för tjänsten</span><span class="sxs-lookup"><span data-stu-id="b9481-119">Create a service principal</span></span>
+## <a name="create-a-service-principal"></a><span data-ttu-id="980ad-119">Skapa ett huvudnamn för tjänsten</span><span class="sxs-lookup"><span data-stu-id="980ad-119">Create a service principal</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b9481-120">Här är en förkortad version av den *skapa tjänstens huvudnamn med lösenord* avsnitt i den [Använd Azure CLI för att skapa ett huvudnamn för tjänsten att komma åt resurser](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password) dokumentet.</span><span class="sxs-lookup"><span data-stu-id="b9481-120">These steps are an abridged version of the *Create service principal with password* section of the [Use Azure CLI to create a service principal to access resources](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password) document.</span></span> <span data-ttu-id="b9481-121">Dessa steg att skapa ett huvudnamn för tjänsten som används för att autentisera till Azure REST API.</span><span class="sxs-lookup"><span data-stu-id="b9481-121">These steps create a service principal that is used to authenticate to the Azure REST API.</span></span>
+> <span data-ttu-id="980ad-120">Här är en förkortad version av hello *skapa tjänstens huvudnamn med lösenord* avsnitt i hello [Använd Azure CLI toocreate ett huvudnamn för tjänsten tooaccess resurser](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password) dokumentet.</span><span class="sxs-lookup"><span data-stu-id="980ad-120">These steps are an abridged version of hello *Create service principal with password* section of hello [Use Azure CLI toocreate a service principal tooaccess resources](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md#create-service-principal-with-password) document.</span></span> <span data-ttu-id="980ad-121">Dessa steg att skapa ett huvudnamn för tjänsten som används tooauthenticate toohello Azure REST API.</span><span class="sxs-lookup"><span data-stu-id="980ad-121">These steps create a service principal that is used tooauthenticate toohello Azure REST API.</span></span>
 
-1. <span data-ttu-id="b9481-122">Använd följande kommando från en kommandorad för att visa dina Azure-prenumerationer.</span><span class="sxs-lookup"><span data-stu-id="b9481-122">From a command line, use the following command to list your Azure subscriptions.</span></span>
+1. <span data-ttu-id="980ad-122">Använd följande kommando toolist hello dina Azure-prenumerationer från en kommandorad.</span><span class="sxs-lookup"><span data-stu-id="980ad-122">From a command line, use hello following command toolist your Azure subscriptions.</span></span>
 
    ```bash
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    <span data-ttu-id="b9481-123">I listan väljer du den prenumeration som du vill använda och notera den **PRENUMERATIONSID** och __Tenant_ID__ kolumner.</span><span class="sxs-lookup"><span data-stu-id="b9481-123">In the list, select the subscription that you want to use and note the **Subscription_ID** and __Tenant_ID__ columns.</span></span> <span data-ttu-id="b9481-124">Spara dessa värden.</span><span class="sxs-lookup"><span data-stu-id="b9481-124">Save these values.</span></span>
+    <span data-ttu-id="980ad-123">Markera i hello hello prenumeration som du vill använda toouse och Observera hello **PRENUMERATIONSID** och __Tenant_ID__ kolumner.</span><span class="sxs-lookup"><span data-stu-id="980ad-123">In hello list, select hello subscription that you want toouse and note hello **Subscription_ID** and __Tenant_ID__ columns.</span></span> <span data-ttu-id="980ad-124">Spara dessa värden.</span><span class="sxs-lookup"><span data-stu-id="980ad-124">Save these values.</span></span>
 
-2. <span data-ttu-id="b9481-125">Använd följande kommando för att skapa ett program i Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="b9481-125">Use the following command to create an application in Azure Active Directory.</span></span>
+2. <span data-ttu-id="980ad-125">Använd följande kommando toocreate ett program i Azure Active Directory hello.</span><span class="sxs-lookup"><span data-stu-id="980ad-125">Use hello following command toocreate an application in Azure Active Directory.</span></span>
 
    ```bash
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    <span data-ttu-id="b9481-126">Ersätt värdena för den `--display-name`, `--homepage`, och `--identifier-uris` med egna värden.</span><span class="sxs-lookup"><span data-stu-id="b9481-126">Replace the values for the `--display-name`, `--homepage`, and `--identifier-uris` with your own values.</span></span> <span data-ttu-id="b9481-127">Ange ett lösenord för den nya Active Directory-posten.</span><span class="sxs-lookup"><span data-stu-id="b9481-127">Provide a password for the new Active Directory entry.</span></span>
+    <span data-ttu-id="980ad-126">Ersätt hello värden för hello `--display-name`, `--homepage`, och `--identifier-uris` med egna värden.</span><span class="sxs-lookup"><span data-stu-id="980ad-126">Replace hello values for hello `--display-name`, `--homepage`, and `--identifier-uris` with your own values.</span></span> <span data-ttu-id="980ad-127">Ange ett lösenord för hello nya Active Directory-posten.</span><span class="sxs-lookup"><span data-stu-id="980ad-127">Provide a password for hello new Active Directory entry.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="b9481-128">Den `--home-page` och `--identifier-uris` värden behöver inte referera till en webbsida som finns på internet.</span><span class="sxs-lookup"><span data-stu-id="b9481-128">The `--home-page` and `--identifier-uris` values don't need to reference an actual web page hosted on the internet.</span></span> <span data-ttu-id="b9481-129">De måste vara unikt URI: er.</span><span class="sxs-lookup"><span data-stu-id="b9481-129">They must be unique URIs.</span></span>
+   > <span data-ttu-id="980ad-128">Hej `--home-page` och `--identifier-uris` värden behöver inte tooreference en webbsida som finns på hello internet.</span><span class="sxs-lookup"><span data-stu-id="980ad-128">hello `--home-page` and `--identifier-uris` values don't need tooreference an actual web page hosted on hello internet.</span></span> <span data-ttu-id="980ad-129">De måste vara unikt URI: er.</span><span class="sxs-lookup"><span data-stu-id="980ad-129">They must be unique URIs.</span></span>
 
-   <span data-ttu-id="b9481-130">Värdet som returneras från det här kommandot är den __App-ID__ för det nya programmet.</span><span class="sxs-lookup"><span data-stu-id="b9481-130">The value returned from this command is the __App ID__ for the new application.</span></span> <span data-ttu-id="b9481-131">Spara det här värdet.</span><span class="sxs-lookup"><span data-stu-id="b9481-131">Save this value.</span></span>
+   <span data-ttu-id="980ad-130">hello värdet som returneras från det här kommandot är hello __App-ID__ hello nya programmet.</span><span class="sxs-lookup"><span data-stu-id="980ad-130">hello value returned from this command is hello __App ID__ for hello new application.</span></span> <span data-ttu-id="980ad-131">Spara det här värdet.</span><span class="sxs-lookup"><span data-stu-id="980ad-131">Save this value.</span></span>
 
-3. <span data-ttu-id="b9481-132">Använd följande kommando för att skapa ett huvudnamn för tjänsten med hjälp av den **App-ID**.</span><span class="sxs-lookup"><span data-stu-id="b9481-132">Use the following command to create a service principal using the **App ID**.</span></span>
+3. <span data-ttu-id="980ad-132">Använd hello följande kommando toocreate ett huvudnamn för tjänsten med hjälp av hello **App-ID**.</span><span class="sxs-lookup"><span data-stu-id="980ad-132">Use hello following command toocreate a service principal using hello **App ID**.</span></span>
 
    ```bash
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     <span data-ttu-id="b9481-133">Värdet som returneras från det här kommandot är den __objekt-ID__.</span><span class="sxs-lookup"><span data-stu-id="b9481-133">The value returned from this command is the __Object ID__.</span></span> <span data-ttu-id="b9481-134">Spara det här värdet.</span><span class="sxs-lookup"><span data-stu-id="b9481-134">Save this value.</span></span>
+     <span data-ttu-id="980ad-133">hello värdet som returneras från det här kommandot är hello __objekt-ID__.</span><span class="sxs-lookup"><span data-stu-id="980ad-133">hello value returned from this command is hello __Object ID__.</span></span> <span data-ttu-id="980ad-134">Spara det här värdet.</span><span class="sxs-lookup"><span data-stu-id="980ad-134">Save this value.</span></span>
 
-4. <span data-ttu-id="b9481-135">Tilldela den **ägare** roll till tjänstens huvudnamn med den **objekt-ID** värde.</span><span class="sxs-lookup"><span data-stu-id="b9481-135">Assign the **Owner** role to the service principal using the **Object ID** value.</span></span> <span data-ttu-id="b9481-136">Använd den **prenumerations-ID** du fick tidigare.</span><span class="sxs-lookup"><span data-stu-id="b9481-136">Use the **subscription ID** you obtained earlier.</span></span>
+4. <span data-ttu-id="980ad-135">Tilldela hello **ägare** rollen toohello tjänstens huvudnamn med hjälp av hello **objekt-ID** värde.</span><span class="sxs-lookup"><span data-stu-id="980ad-135">Assign hello **Owner** role toohello service principal using hello **Object ID** value.</span></span> <span data-ttu-id="980ad-136">Använd hello **prenumerations-ID** du fick tidigare.</span><span class="sxs-lookup"><span data-stu-id="980ad-136">Use hello **subscription ID** you obtained earlier.</span></span>
 
    ```bash
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
    ```
 
-## <a name="get-an-authentication-token"></a><span data-ttu-id="b9481-137">Hämta en token för autentisering</span><span class="sxs-lookup"><span data-stu-id="b9481-137">Get an authentication token</span></span>
+## <a name="get-an-authentication-token"></a><span data-ttu-id="980ad-137">Hämta en token för autentisering</span><span class="sxs-lookup"><span data-stu-id="980ad-137">Get an authentication token</span></span>
 
-<span data-ttu-id="b9481-138">Använd följande kommando för att hämta någon autentiseringstoken:</span><span class="sxs-lookup"><span data-stu-id="b9481-138">Use the following command to retrieve an authentication token:</span></span>
+<span data-ttu-id="980ad-138">Använd följande kommando tooretrieve någon autentiseringstoken hello:</span><span class="sxs-lookup"><span data-stu-id="980ad-138">Use hello following command tooretrieve an authentication token:</span></span>
 
 ```bash
 curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
@@ -280,11 +280,11 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 --data-urlencode "resource=https://management.azure.com/"
 ```
 
-<span data-ttu-id="b9481-139">Ange `$TENANTID`, `$APPID`, och `$PASSWORD` till värdena som anskaffats eller använts tidigare.</span><span class="sxs-lookup"><span data-stu-id="b9481-139">Set `$TENANTID`, `$APPID`, and `$PASSWORD` to the values obtained or used previously.</span></span>
+<span data-ttu-id="980ad-139">Ange `$TENANTID`, `$APPID`, och `$PASSWORD` toohello värden hämtas eller använt tidigare.</span><span class="sxs-lookup"><span data-stu-id="980ad-139">Set `$TENANTID`, `$APPID`, and `$PASSWORD` toohello values obtained or used previously.</span></span>
 
-<span data-ttu-id="b9481-140">Om denna begäran lyckades, du får svar 200 serien och svarstexten innehåller ett JSON-dokument.</span><span class="sxs-lookup"><span data-stu-id="b9481-140">If this request is successful, you receive a 200 series response and the response body contains a JSON document.</span></span>
+<span data-ttu-id="980ad-140">Om denna begäran lyckades, du får svar 200 serien och hello svarstexten innehåller ett JSON-dokument.</span><span class="sxs-lookup"><span data-stu-id="980ad-140">If this request is successful, you receive a 200 series response and hello response body contains a JSON document.</span></span>
 
-<span data-ttu-id="b9481-141">JSON-dokument som returneras av denna begäran innehåller ett element med namnet **access_token**.</span><span class="sxs-lookup"><span data-stu-id="b9481-141">The JSON document returned by this request contains an element named **access_token**.</span></span> <span data-ttu-id="b9481-142">Värdet för **access_token** används för att autentiseringsbegäranden till REST API.</span><span class="sxs-lookup"><span data-stu-id="b9481-142">The value of **access_token** is used to authentication requests to the REST API.</span></span>
+<span data-ttu-id="980ad-141">hello JSON-dokument som returneras av denna begäran innehåller ett element med namnet **access_token**.</span><span class="sxs-lookup"><span data-stu-id="980ad-141">hello JSON document returned by this request contains an element named **access_token**.</span></span> <span data-ttu-id="980ad-142">Hej värdet för **access_token** är används tooauthentication begäranden toohello REST API.</span><span class="sxs-lookup"><span data-stu-id="980ad-142">hello value of **access_token** is used tooauthentication requests toohello REST API.</span></span>
 
 ```json
 {
@@ -296,14 +296,14 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 }
 ```
 
-## <a name="create-a-resource-group"></a><span data-ttu-id="b9481-143">Skapa en resursgrupp</span><span class="sxs-lookup"><span data-stu-id="b9481-143">Create a resource group</span></span>
+## <a name="create-a-resource-group"></a><span data-ttu-id="980ad-143">Skapa en resursgrupp</span><span class="sxs-lookup"><span data-stu-id="980ad-143">Create a resource group</span></span>
 
-<span data-ttu-id="b9481-144">Använd följande för att skapa en resursgrupp.</span><span class="sxs-lookup"><span data-stu-id="b9481-144">Use the following to create a resource group.</span></span>
+<span data-ttu-id="980ad-144">Använd hello följande toocreate en resursgrupp.</span><span class="sxs-lookup"><span data-stu-id="980ad-144">Use hello following toocreate a resource group.</span></span>
 
-* <span data-ttu-id="b9481-145">Ange `$SUBSCRIPTIONID` till prenumerationen ID togs emot när tjänstens huvudnamn.</span><span class="sxs-lookup"><span data-stu-id="b9481-145">Set `$SUBSCRIPTIONID` to the subscription ID received while creating the service principal.</span></span>
-* <span data-ttu-id="b9481-146">Ange `$ACCESSTOKEN` till åtkomsttoken som togs emot i föregående steg.</span><span class="sxs-lookup"><span data-stu-id="b9481-146">Set `$ACCESSTOKEN` to the access token received in the previous step.</span></span>
-* <span data-ttu-id="b9481-147">Ersätt `DATACENTERLOCATION` med du vill skapa resursgrupp och resurser i datacentret.</span><span class="sxs-lookup"><span data-stu-id="b9481-147">Replace `DATACENTERLOCATION` with the data center you wish to create the resource group, and resources, in.</span></span> <span data-ttu-id="b9481-148">Till exempel 'södra centrala USA'.</span><span class="sxs-lookup"><span data-stu-id="b9481-148">For example, 'South Central US'.</span></span>
-* <span data-ttu-id="b9481-149">Ange `$RESOURCEGROUPNAME` till namn som du vill använda för den här gruppen:</span><span class="sxs-lookup"><span data-stu-id="b9481-149">Set `$RESOURCEGROUPNAME` to the name you wish to use for this group:</span></span>
+* <span data-ttu-id="980ad-145">Ange `$SUBSCRIPTIONID` toohello prenumerations-ID togs emot när hello tjänstens huvudnamn.</span><span class="sxs-lookup"><span data-stu-id="980ad-145">Set `$SUBSCRIPTIONID` toohello subscription ID received while creating hello service principal.</span></span>
+* <span data-ttu-id="980ad-146">Ange `$ACCESSTOKEN` toohello åtkomst-token togs emot i hello föregående steg.</span><span class="sxs-lookup"><span data-stu-id="980ad-146">Set `$ACCESSTOKEN` toohello access token received in hello previous step.</span></span>
+* <span data-ttu-id="980ad-147">Ersätt `DATACENTERLOCATION` med hello Datacenter gärna toocreate hello resursgrupp och resurser i.</span><span class="sxs-lookup"><span data-stu-id="980ad-147">Replace `DATACENTERLOCATION` with hello data center you wish toocreate hello resource group, and resources, in.</span></span> <span data-ttu-id="980ad-148">Till exempel 'södra centrala USA'.</span><span class="sxs-lookup"><span data-stu-id="980ad-148">For example, 'South Central US'.</span></span>
+* <span data-ttu-id="980ad-149">Ange `$RESOURCEGROUPNAME` toohello namn som du vill toouse för den här gruppen:</span><span class="sxs-lookup"><span data-stu-id="980ad-149">Set `$RESOURCEGROUPNAME` toohello name you wish toouse for this group:</span></span>
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
@@ -314,34 +314,34 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-<span data-ttu-id="b9481-150">Om denna begäran lyckades, du får svar 200 serien och svarstexten innehåller ett JSON-dokument som innehåller information om gruppen.</span><span class="sxs-lookup"><span data-stu-id="b9481-150">If this request is successful, you receive a 200 series response and the response body contains a JSON document containing information about the group.</span></span> <span data-ttu-id="b9481-151">Den `"provisioningState"` elementet innehåller ett värde för `"Succeeded"`.</span><span class="sxs-lookup"><span data-stu-id="b9481-151">The `"provisioningState"` element contains a value of `"Succeeded"`.</span></span>
+<span data-ttu-id="980ad-150">Om denna begäran lyckades, du får svar 200 serien och hello svarstexten innehåller ett JSON-dokument som innehåller information om hello grupp.</span><span class="sxs-lookup"><span data-stu-id="980ad-150">If this request is successful, you receive a 200 series response and hello response body contains a JSON document containing information about hello group.</span></span> <span data-ttu-id="980ad-151">Hej `"provisioningState"` elementet innehåller ett värde för `"Succeeded"`.</span><span class="sxs-lookup"><span data-stu-id="980ad-151">hello `"provisioningState"` element contains a value of `"Succeeded"`.</span></span>
 
-## <a name="create-a-deployment"></a><span data-ttu-id="b9481-152">Skapa en distribution</span><span class="sxs-lookup"><span data-stu-id="b9481-152">Create a deployment</span></span>
+## <a name="create-a-deployment"></a><span data-ttu-id="980ad-152">Skapa en distribution</span><span class="sxs-lookup"><span data-stu-id="980ad-152">Create a deployment</span></span>
 
-<span data-ttu-id="b9481-153">Använd följande kommando för att distribuera mallen till resursgruppen.</span><span class="sxs-lookup"><span data-stu-id="b9481-153">Use the following command to deploy the template to the resource group.</span></span>
+<span data-ttu-id="980ad-153">Använd hello följande kommando toodeploy hello mallen toohello resursgruppen.</span><span class="sxs-lookup"><span data-stu-id="980ad-153">Use hello following command toodeploy hello template toohello resource group.</span></span>
 
-* <span data-ttu-id="b9481-154">Ange `$DEPLOYMENTNAME` till namn som du vill använda för den här distributionen.</span><span class="sxs-lookup"><span data-stu-id="b9481-154">Set `$DEPLOYMENTNAME` to the name you wish to use for this deployment.</span></span>
+* <span data-ttu-id="980ad-154">Ange `$DEPLOYMENTNAME` toohello namn som du vill toouse för den här distributionen.</span><span class="sxs-lookup"><span data-stu-id="980ad-154">Set `$DEPLOYMENTNAME` toohello name you wish toouse for this deployment.</span></span>
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
 -H "Authorization: Bearer $ACCESSTOKEN" \
 -H "Content-Type: application/json" \
--d "{set your body string to the template and parameters}"
+-d "{set your body string toohello template and parameters}"
 ```
 
 > [!NOTE]
-> <span data-ttu-id="b9481-155">Om du har sparat mallen till en fil kan du använda följande kommando i stället för `-d "{ template and parameters}"`:</span><span class="sxs-lookup"><span data-stu-id="b9481-155">If you saved the template to a file, you can use the following command instead of `-d "{ template and parameters}"`:</span></span>
+> <span data-ttu-id="980ad-155">Om du har sparat hello mallfilen tooa du kan använda följande kommando i stället för hello `-d "{ template and parameters}"`:</span><span class="sxs-lookup"><span data-stu-id="980ad-155">If you saved hello template tooa file, you can use hello following command instead of `-d "{ template and parameters}"`:</span></span>
 >
 > `--data-binary "@/path/to/file.json"`
 
-<span data-ttu-id="b9481-156">Om denna begäran lyckades, du får svar 200 serien och svarstexten innehåller ett JSON-dokument som innehåller information om distributionen.</span><span class="sxs-lookup"><span data-stu-id="b9481-156">If this request is successful, you receive a 200 series response and the response body contains a JSON document containing information about the deployment operation.</span></span>
+<span data-ttu-id="980ad-156">Om begäran lyckades, du får svar 200 serien och hello svarstexten innehåller ett JSON-dokument som innehåller information om hello distributionsåtgärder.</span><span class="sxs-lookup"><span data-stu-id="980ad-156">If this request is successful, you receive a 200 series response and hello response body contains a JSON document containing information about hello deployment operation.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="b9481-157">Distributionen har skickats, men har inte slutförts.</span><span class="sxs-lookup"><span data-stu-id="b9481-157">The deployment has been submitted, but has not completed.</span></span> <span data-ttu-id="b9481-158">Det kan ta flera minuter, vanligtvis cirka 15, för att distributionen ska slutföras.</span><span class="sxs-lookup"><span data-stu-id="b9481-158">It can take several minutes, usually around 15, for the deployment to complete.</span></span>
+> <span data-ttu-id="980ad-157">hello distributionen har skickats, men har inte slutförts.</span><span class="sxs-lookup"><span data-stu-id="980ad-157">hello deployment has been submitted, but has not completed.</span></span> <span data-ttu-id="980ad-158">Det kan ta flera minuter, vanligtvis cirka 15 för hello distribution toocomplete.</span><span class="sxs-lookup"><span data-stu-id="980ad-158">It can take several minutes, usually around 15, for hello deployment toocomplete.</span></span>
 
-## <a name="check-the-status-of-a-deployment"></a><span data-ttu-id="b9481-159">Kontrollera status för en distribution</span><span class="sxs-lookup"><span data-stu-id="b9481-159">Check the status of a deployment</span></span>
+## <a name="check-hello-status-of-a-deployment"></a><span data-ttu-id="980ad-159">Hello statusen för en distribution</span><span class="sxs-lookup"><span data-stu-id="980ad-159">Check hello status of a deployment</span></span>
 
-<span data-ttu-id="b9481-160">Om du vill kontrollera status för distributionen, använder du följande kommando:</span><span class="sxs-lookup"><span data-stu-id="b9481-160">To check the status of the deployment, use the following command:</span></span>
+<span data-ttu-id="980ad-160">toocheck hello status för hello-distributionen, Använd hello följande kommando:</span><span class="sxs-lookup"><span data-stu-id="980ad-160">toocheck hello status of hello deployment, use hello following command:</span></span>
 
 ```bash
 curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -349,29 +349,29 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-<span data-ttu-id="b9481-161">Det här kommandot returnerar ett JSON-dokument som innehåller information om distributionen.</span><span class="sxs-lookup"><span data-stu-id="b9481-161">This command returns a JSON document containing information about the deployment operation.</span></span> <span data-ttu-id="b9481-162">Den `"provisioningState"` elementet innehåller statusen för distributionen.</span><span class="sxs-lookup"><span data-stu-id="b9481-162">The `"provisioningState"` element contains the status of the deployment.</span></span> <span data-ttu-id="b9481-163">Om det här elementet innehåller ett värde av `"Succeeded"`, och sedan distributionen har slutförts.</span><span class="sxs-lookup"><span data-stu-id="b9481-163">If this element contains a value of `"Succeeded"`, then the deployment has completed successfully.</span></span>
+<span data-ttu-id="980ad-161">Det här kommandot returnerar ett JSON-dokument som innehåller information om hello distributionsåtgärder.</span><span class="sxs-lookup"><span data-stu-id="980ad-161">This command returns a JSON document containing information about hello deployment operation.</span></span> <span data-ttu-id="980ad-162">Hej `"provisioningState"` elementet innehåller hello status för hello-distributionen.</span><span class="sxs-lookup"><span data-stu-id="980ad-162">hello `"provisioningState"` element contains hello status of hello deployment.</span></span> <span data-ttu-id="980ad-163">Om det här elementet innehåller ett värde av `"Succeeded"`, och sedan hello distributionen har slutförts.</span><span class="sxs-lookup"><span data-stu-id="980ad-163">If this element contains a value of `"Succeeded"`, then hello deployment has completed successfully.</span></span>
 
-## <a name="troubleshoot"></a><span data-ttu-id="b9481-164">Felsöka</span><span class="sxs-lookup"><span data-stu-id="b9481-164">Troubleshoot</span></span>
+## <a name="troubleshoot"></a><span data-ttu-id="980ad-164">Felsöka</span><span class="sxs-lookup"><span data-stu-id="980ad-164">Troubleshoot</span></span>
 
-<span data-ttu-id="b9481-165">Om du får problem med att skapa HDInsight-kluster läser du [åtkomstkontrollkrav](hdinsight-administer-use-portal-linux.md#create-clusters).</span><span class="sxs-lookup"><span data-stu-id="b9481-165">If you run into issues with creating HDInsight clusters, see [access control requirements](hdinsight-administer-use-portal-linux.md#create-clusters).</span></span>
+<span data-ttu-id="980ad-165">Om du får problem med att skapa HDInsight-kluster läser du [åtkomstkontrollkrav](hdinsight-administer-use-portal-linux.md#create-clusters).</span><span class="sxs-lookup"><span data-stu-id="980ad-165">If you run into issues with creating HDInsight clusters, see [access control requirements](hdinsight-administer-use-portal-linux.md#create-clusters).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="b9481-166">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="b9481-166">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="980ad-166">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="980ad-166">Next steps</span></span>
 
-<span data-ttu-id="b9481-167">Nu när du har skapat ett HDInsight-kluster, kan du använda följande för att lära dig hur du arbetar med ditt kluster.</span><span class="sxs-lookup"><span data-stu-id="b9481-167">Now that you have successfully created an HDInsight cluster, use the following to learn how to work with your cluster.</span></span>
+<span data-ttu-id="980ad-167">Nu när du har skapat ett HDInsight-kluster använder du följande toolearn hur hello toowork med ditt kluster.</span><span class="sxs-lookup"><span data-stu-id="980ad-167">Now that you have successfully created an HDInsight cluster, use hello following toolearn how toowork with your cluster.</span></span>
 
-### <a name="hadoop-clusters"></a><span data-ttu-id="b9481-168">Hadoop-kluster</span><span class="sxs-lookup"><span data-stu-id="b9481-168">Hadoop clusters</span></span>
+### <a name="hadoop-clusters"></a><span data-ttu-id="980ad-168">Hadoop-kluster</span><span class="sxs-lookup"><span data-stu-id="980ad-168">Hadoop clusters</span></span>
 
-* [<span data-ttu-id="b9481-169">Använda Hive med HDInsight</span><span class="sxs-lookup"><span data-stu-id="b9481-169">Use Hive with HDInsight</span></span>](hdinsight-use-hive.md)
-* [<span data-ttu-id="b9481-170">Använda Pig med HDInsight</span><span class="sxs-lookup"><span data-stu-id="b9481-170">Use Pig with HDInsight</span></span>](hdinsight-use-pig.md)
-* [<span data-ttu-id="b9481-171">Använda MapReduce med HDInsight</span><span class="sxs-lookup"><span data-stu-id="b9481-171">Use MapReduce with HDInsight</span></span>](hdinsight-use-mapreduce.md)
+* [<span data-ttu-id="980ad-169">Använda Hive med HDInsight</span><span class="sxs-lookup"><span data-stu-id="980ad-169">Use Hive with HDInsight</span></span>](hdinsight-use-hive.md)
+* [<span data-ttu-id="980ad-170">Använda Pig med HDInsight</span><span class="sxs-lookup"><span data-stu-id="980ad-170">Use Pig with HDInsight</span></span>](hdinsight-use-pig.md)
+* [<span data-ttu-id="980ad-171">Använda MapReduce med HDInsight</span><span class="sxs-lookup"><span data-stu-id="980ad-171">Use MapReduce with HDInsight</span></span>](hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a><span data-ttu-id="b9481-172">HBase-kluster</span><span class="sxs-lookup"><span data-stu-id="b9481-172">HBase clusters</span></span>
+### <a name="hbase-clusters"></a><span data-ttu-id="980ad-172">HBase-kluster</span><span class="sxs-lookup"><span data-stu-id="980ad-172">HBase clusters</span></span>
 
-* [<span data-ttu-id="b9481-173">Kom igång med HBase på HDInsight</span><span class="sxs-lookup"><span data-stu-id="b9481-173">Get started with HBase on HDInsight</span></span>](hdinsight-hbase-tutorial-get-started-linux.md)
-* [<span data-ttu-id="b9481-174">Utveckla Java-program för HBase i HDInsight</span><span class="sxs-lookup"><span data-stu-id="b9481-174">Develop Java applications for HBase on HDInsight</span></span>](hdinsight-hbase-build-java-maven-linux.md)
+* [<span data-ttu-id="980ad-173">Kom igång med HBase på HDInsight</span><span class="sxs-lookup"><span data-stu-id="980ad-173">Get started with HBase on HDInsight</span></span>](hdinsight-hbase-tutorial-get-started-linux.md)
+* [<span data-ttu-id="980ad-174">Utveckla Java-program för HBase i HDInsight</span><span class="sxs-lookup"><span data-stu-id="980ad-174">Develop Java applications for HBase on HDInsight</span></span>](hdinsight-hbase-build-java-maven-linux.md)
 
-### <a name="storm-clusters"></a><span data-ttu-id="b9481-175">Storm-kluster</span><span class="sxs-lookup"><span data-stu-id="b9481-175">Storm clusters</span></span>
+### <a name="storm-clusters"></a><span data-ttu-id="980ad-175">Storm-kluster</span><span class="sxs-lookup"><span data-stu-id="980ad-175">Storm clusters</span></span>
 
-* [<span data-ttu-id="b9481-176">Utveckla Java-topologier för Storm på HDInsight</span><span class="sxs-lookup"><span data-stu-id="b9481-176">Develop Java topologies for Storm on HDInsight</span></span>](hdinsight-storm-develop-java-topology.md)
-* [<span data-ttu-id="b9481-177">Använda Python komponenter i Storm på HDInsight</span><span class="sxs-lookup"><span data-stu-id="b9481-177">Use Python components in Storm on HDInsight</span></span>](hdinsight-storm-develop-python-topology.md)
-* [<span data-ttu-id="b9481-178">Distribuera och övervaka topologier med Storm på HDInsight</span><span class="sxs-lookup"><span data-stu-id="b9481-178">Deploy and monitor topologies with Storm on HDInsight</span></span>](hdinsight-storm-deploy-monitor-topology-linux.md)
+* [<span data-ttu-id="980ad-176">Utveckla Java-topologier för Storm på HDInsight</span><span class="sxs-lookup"><span data-stu-id="980ad-176">Develop Java topologies for Storm on HDInsight</span></span>](hdinsight-storm-develop-java-topology.md)
+* [<span data-ttu-id="980ad-177">Använda Python komponenter i Storm på HDInsight</span><span class="sxs-lookup"><span data-stu-id="980ad-177">Use Python components in Storm on HDInsight</span></span>](hdinsight-storm-develop-python-topology.md)
+* [<span data-ttu-id="980ad-178">Distribuera och övervaka topologier med Storm på HDInsight</span><span class="sxs-lookup"><span data-stu-id="980ad-178">Deploy and monitor topologies with Storm on HDInsight</span></span>](hdinsight-storm-deploy-monitor-topology-linux.md)

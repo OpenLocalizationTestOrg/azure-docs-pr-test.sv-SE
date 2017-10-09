@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Batch – Självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur du använder Batch för att effektivt köra storskaliga, parallella program och HPC-program (databehandling med höga prestanda). Självstudier, API-referenser och annan dokumentation."
+title: "aaaAzure Batch-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur toouse Batch toorun storskaliga parallellt och högpresterande datorprogram effektivt. Självstudier, API-referenser och annan dokumentation."
 services: batch
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: bf3e8b9e8976e2b68bc0da6a3beb1dacfaef6066
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 25172c7b3462794643d1cba539fcd0d9a6c4c62e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="batch-documentation"></a>Dokumentation om Batch
 
-Lär dig hur du använder Batch för att effektivt köra storskaliga, parallella program och HPC-program (databehandling med höga prestanda) i molnet. Självstudier, API-referenser och annan dokumentation visar hur du definierar Azure-beräkningsresurser för att köra dina program parallellt eller i stor skala utan manuell konfigurering eller hantering av infrastrukturen.
+Lär dig hur hello toouse Batch toorun storskaliga parallellt och högpresterande datorprogram effektivt i molnet. Självstudier, API-referenserna och andra dokumentationen visar hur toodefine hello Azure compute resurser tooexecute dina program parallellt eller i skala utan att manuellt konfigurera eller hantera infrastrukturen.
 
 <ul class="panelContent cardsFTitle">
     <li>

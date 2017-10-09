@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Logic Apps – Självstudier, API-referens | Microsoft Docs"
-description: "Lär dig att utveckla logikappar som automatiserar och förenklar affärs-arbetsflöden mellan lokala platser och molnet. Självstudier, mallar och API-referenser."
+title: "aaaAzure Logic Apps-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur toodevelop logikappar som automatisera och förenkla business arbetsflöden mellan lokalt och hello cloud. Självstudier, mallar och API-referenser."
 services: logic-apps
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 7f9790a52365b76e9d3dd1fdf1a17ab2aaaf8b5a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5cc3a730b1b6abcb3ec0132f6e8ebf2e54775836
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="logic-apps-documentation"></a>Dokumentation om Logic Apps
 
-Lär dig hur du utvecklar Logic Apps som förenklar och integrerar skalbara arbetsflöden i molnet. Självstudier, mallar och API-referenser som hjälper dig att utforma och distribuera automatiserade affärs-arbetsflöden över lokala platser och i molnet.
+Lär dig hur hello toodevelop Logic Apps som förenklar och integrera skalbara arbetsflöden i molnet. Självstudiekurser, mallar och API refererar till hjälper dig att utforma och distribuera automatisk business arbetsflöden lokalt och hello molnet.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -106,7 +106,7 @@ Lär dig hur du utvecklar Logic Apps som förenklar och integrerar skalbara arbe
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med att skapa en anpassad API för att användas med Logic Apps</h3>
+                        <h3>Komma igång med en anpassad API toouse med Logic Apps</h3>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@
 ### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 ### [Azure CLI 2.0](dns-getstarted-cli.md)
 
-## [Delegera din domän till Azure DNS](dns-delegate-domain-azure-dns.md)
+## [Delegera din domän tooAzure DNS](dns-delegate-domain-azure-dns.md)
 ## [Skapa anpassade DNS-poster för en webbapp](dns-web-sites-custom-domain.md)
 
 # Gör så här för att
@@ -38,7 +38,7 @@
 ## [Importera och exportera en DNS-zonfil](dns-import-export.md)
 ## [Integrera med andra Azure-tjänster](dns-for-azure-services.md)
 ## [Skydda DNS-zoner och -poster](dns-protect-zones-recordsets.md)
-## [Automatisera DNS-åtgärder med DNS.NET SDK](dns-sdk.md)
+## [Automatisera DNS-åtgärder med hello .NET SDK](dns-sdk.md)
 
 ## [Anpassade domäner för Azure-resurser](dns-custom-domain.md)
 ## Felsöka

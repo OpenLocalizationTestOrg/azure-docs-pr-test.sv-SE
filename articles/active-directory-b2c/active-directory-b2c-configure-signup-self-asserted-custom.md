@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C: Ändra logga in i anpassade principer och konfigurera självbetjäningsportalen vars provider"
-description: "En genomgång för att lägga till anspråk som ska logga och konfigurera användarindata"
+description: "En genomgång för att lägga till anspråk toosign in och konfigurera hello användarindata"
 services: active-directory-b2c
 documentationcenter: 
 author: rojasja
@@ -14,30 +14,30 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/29/2017
 ms.author: joroja
-ms.openlocfilehash: 64b9d904d7d070052e125b479f4719d208c9ff85
-ms.sourcegitcommit: b0af2a2cf44101a1b1ff41bd2ad795eaef29612a
+ms.openlocfilehash: c31d737263fef3e771bdf451b809b0ca522c8fe0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a><span data-ttu-id="d02e0-103">Azure Active Directory B2C: Ändra logga in för att lägga till nya anspråk och konfigurera indata från användaren.</span><span class="sxs-lookup"><span data-stu-id="d02e0-103">Azure Active Directory B2C: Modify sign up to add new claims and configure user input.</span></span>
+# <a name="azure-active-directory-b2c-modify-sign-up-tooadd-new-claims-and-configure-user-input"></a><span data-ttu-id="0affe-103">Azure Active Directory B2C: Ändra tooadd nya anspråk-registrering och konfigurera indata från användaren.</span><span class="sxs-lookup"><span data-stu-id="0affe-103">Azure Active Directory B2C: Modify sign up tooadd new claims and configure user input.</span></span>
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-<span data-ttu-id="d02e0-104">I den här artikeln, ska du lägga till en ny post för användare som har angetts (ett anspråk) din anmälan användaren resa.</span><span class="sxs-lookup"><span data-stu-id="d02e0-104">In this article, you will add a new user provided entry (a claim) to your signup user journey.</span></span>  <span data-ttu-id="d02e0-105">Du kan konfigurera posten som en listrutan och definiera om det behövs.</span><span class="sxs-lookup"><span data-stu-id="d02e0-105">You will configure the entry as a dropdown, and define if it is required.</span></span>
+<span data-ttu-id="0affe-104">I den här artikeln får du lägga till en ny anges av användaren post (ett anspråk) tooyour signup användaren-resa.</span><span class="sxs-lookup"><span data-stu-id="0affe-104">In this article, you will add a new user provided entry (a claim) tooyour signup user journey.</span></span>  <span data-ttu-id="0affe-105">Du kan konfigurera hello-posten som en listrutan och definiera om det behövs.</span><span class="sxs-lookup"><span data-stu-id="0affe-105">You will configure hello entry as a dropdown, and define if it is required.</span></span>
 
-<span data-ttu-id="d02e0-106">Redigera Sipi att utlösa handoff för testet.</span><span class="sxs-lookup"><span data-stu-id="d02e0-106">Edited by Sipi to trigger test handoff.</span></span>
+<span data-ttu-id="0affe-106">Redigera Sipi tootrigger test handoff.</span><span class="sxs-lookup"><span data-stu-id="0affe-106">Edited by Sipi tootrigger test handoff.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="d02e0-107">Krav</span><span class="sxs-lookup"><span data-stu-id="d02e0-107">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="0affe-107">Krav</span><span class="sxs-lookup"><span data-stu-id="0affe-107">Prerequisites</span></span>
 
-* <span data-ttu-id="d02e0-108">Utför stegen i artikeln [komma igång med principer för anpassade](active-directory-b2c-get-started-custom.md).</span><span class="sxs-lookup"><span data-stu-id="d02e0-108">Complete the steps in the article [Getting Started with Custom Policies](active-directory-b2c-get-started-custom.md).</span></span>  <span data-ttu-id="d02e0-109">Testa signup/inloggning användaren resa till registreringen ett nytt lokalt konto innan du fortsätter.</span><span class="sxs-lookup"><span data-stu-id="d02e0-109">Test the signup/signin user journey to signup a new local account before proceeding.</span></span>
-
-
-<span data-ttu-id="d02e0-110">Första datainsamlingen från användarna uppnås via signup/inloggning.</span><span class="sxs-lookup"><span data-stu-id="d02e0-110">Gathering initial data from your users is achieved via signup/signin.</span></span>  <span data-ttu-id="d02e0-111">Ytterligare anspråk kan samlas in senare via profil Redigera användare resor.</span><span class="sxs-lookup"><span data-stu-id="d02e0-111">Additional claims can be gathered later via profile edit user journeys.</span></span> <span data-ttu-id="d02e0-112">När Azure AD B2C samlar in information direkt från användaren interaktivt, identitet upplevelse Framework använder dess `selfasserted provider`.</span><span class="sxs-lookup"><span data-stu-id="d02e0-112">Anytime Azure AD B2C gathers information directly from the user interactively, the Identity Experience Framework uses its `selfasserted provider`.</span></span> <span data-ttu-id="d02e0-113">Stegen nedan tillämpas när den här providern används.</span><span class="sxs-lookup"><span data-stu-id="d02e0-113">The steps below apply anytime this provider is used.</span></span>
+* <span data-ttu-id="0affe-108">Fullständig hello stegen i artikeln hello [komma igång med principer för anpassade](active-directory-b2c-get-started-custom.md).</span><span class="sxs-lookup"><span data-stu-id="0affe-108">Complete hello steps in hello article [Getting Started with Custom Policies](active-directory-b2c-get-started-custom.md).</span></span>  <span data-ttu-id="0affe-109">Testa hello signup/inloggning användaren resa toosignup ett nytt lokalt konto innan du fortsätter.</span><span class="sxs-lookup"><span data-stu-id="0affe-109">Test hello signup/signin user journey toosignup a new local account before proceeding.</span></span>
 
 
-## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a><span data-ttu-id="d02e0-114">Definiera anspråket, dess namn och användaren Indatatyp</span><span class="sxs-lookup"><span data-stu-id="d02e0-114">Define the claim, its display name and the user input type</span></span>
-<span data-ttu-id="d02e0-115">Kan be användaren för sina ort.</span><span class="sxs-lookup"><span data-stu-id="d02e0-115">Lets ask the user for their city.</span></span>  <span data-ttu-id="d02e0-116">Lägg till följande elementet så att den `<ClaimsSchema>` element i filen TrustFrameWorkExtensions princip:</span><span class="sxs-lookup"><span data-stu-id="d02e0-116">Add the following element to the `<ClaimsSchema>` element in the TrustFrameWorkExtensions policy file:</span></span>
+<span data-ttu-id="0affe-110">Första datainsamlingen från användarna uppnås via signup/inloggning.</span><span class="sxs-lookup"><span data-stu-id="0affe-110">Gathering initial data from your users is achieved via signup/signin.</span></span>  <span data-ttu-id="0affe-111">Ytterligare anspråk kan samlas in senare via profil Redigera användare resor.</span><span class="sxs-lookup"><span data-stu-id="0affe-111">Additional claims can be gathered later via profile edit user journeys.</span></span> <span data-ttu-id="0affe-112">När Azure AD B2C samlar in information direkt från hello användaren interaktivt, hello identitet upplevelse Framework använder dess `selfasserted provider`.</span><span class="sxs-lookup"><span data-stu-id="0affe-112">Anytime Azure AD B2C gathers information directly from hello user interactively, hello Identity Experience Framework uses its `selfasserted provider`.</span></span> <span data-ttu-id="0affe-113">hello stegen nedan tillämpas när den här providern används.</span><span class="sxs-lookup"><span data-stu-id="0affe-113">hello steps below apply anytime this provider is used.</span></span>
+
+
+## <a name="define-hello-claim-its-display-name-and-hello-user-input-type"></a><span data-ttu-id="0affe-114">Definiera hello anspråk, dess namn och hello användarindata typ</span><span class="sxs-lookup"><span data-stu-id="0affe-114">Define hello claim, its display name and hello user input type</span></span>
+<span data-ttu-id="0affe-115">Kan be hello användare om deras stad.</span><span class="sxs-lookup"><span data-stu-id="0affe-115">Lets ask hello user for their city.</span></span>  <span data-ttu-id="0affe-116">Lägg till följande element toohello hello `<ClaimsSchema>` element i hello TrustFrameWorkExtensions principfil:</span><span class="sxs-lookup"><span data-stu-id="0affe-116">Add hello following element toohello `<ClaimsSchema>` element in hello TrustFrameWorkExtensions policy file:</span></span>
 
 ```xml
 <ClaimType Id="city">
@@ -47,13 +47,13 @@ ms.lasthandoff: 09/28/2017
   <UserInputType>TextBox</UserInputType>
 </ClaimType>
 ```
-<span data-ttu-id="d02e0-117">Det finns ytterligare alternativ som du gör här anpassa anspråket.</span><span class="sxs-lookup"><span data-stu-id="d02e0-117">There are additional choices you can make here to customize the claim.</span></span>  <span data-ttu-id="d02e0-118">En fullständig schemat finns i den **identitet upplevelse Framework teknisk referenshandbok**.</span><span class="sxs-lookup"><span data-stu-id="d02e0-118">For a full schema, refer to the **Identity Experience Framework Technical Reference Guide**.</span></span>  <span data-ttu-id="d02e0-119">Den här guiden kommer att publiceras snart i referensavsnittet.</span><span class="sxs-lookup"><span data-stu-id="d02e0-119">This guide will be published soon in the reference section.</span></span>
+<span data-ttu-id="0affe-117">Det finns ytterligare alternativ kan du här toocustomize hello anspråk.</span><span class="sxs-lookup"><span data-stu-id="0affe-117">There are additional choices you can make here toocustomize hello claim.</span></span>  <span data-ttu-id="0affe-118">En fullständig schemat finns toohello **identitet upplevelse Framework teknisk referenshandbok**.</span><span class="sxs-lookup"><span data-stu-id="0affe-118">For a full schema, refer toohello **Identity Experience Framework Technical Reference Guide**.</span></span>  <span data-ttu-id="0affe-119">Den här guiden kommer att publiceras snart i hello referensavsnitt.</span><span class="sxs-lookup"><span data-stu-id="0affe-119">This guide will be published soon in hello reference section.</span></span>
 
-* <span data-ttu-id="d02e0-120">`<DisplayName>`är en sträng som definierar användarinriktade *etikett*</span><span class="sxs-lookup"><span data-stu-id="d02e0-120">`<DisplayName>` is a string that defines the user-facing *label*</span></span>
+* <span data-ttu-id="0affe-120">`<DisplayName>`är en sträng som definierar hello användarinriktad *etikett*</span><span class="sxs-lookup"><span data-stu-id="0affe-120">`<DisplayName>` is a string that defines hello user-facing *label*</span></span>
 
-* <span data-ttu-id="d02e0-121">`<UserHelpText>`hjälper användaren att förstå vad som krävs</span><span class="sxs-lookup"><span data-stu-id="d02e0-121">`<UserHelpText>` helps the user understand what is required</span></span>
+* <span data-ttu-id="0affe-121">`<UserHelpText>`hjälper hello användaren förstå vad som krävs</span><span class="sxs-lookup"><span data-stu-id="0affe-121">`<UserHelpText>` helps hello user understand what is required</span></span>
 
-* <span data-ttu-id="d02e0-122">`<UserInputType>`innehåller följande fyra alternativ markerade nedan:</span><span class="sxs-lookup"><span data-stu-id="d02e0-122">`<UserInputType>` has the following four options highlighted below:</span></span>
+* <span data-ttu-id="0affe-122">`<UserInputType>`innehåller hello följande fyra alternativ markerade nedan:</span><span class="sxs-lookup"><span data-stu-id="0affe-122">`<UserInputType>` has hello following four options highlighted below:</span></span>
     * `TextBox`
 ```xml
 <ClaimType Id="city">
@@ -64,7 +64,7 @@ ms.lasthandoff: 09/28/2017
 </ClaimType>
 ```
 
-    * <span data-ttu-id="d02e0-123">`RadioSingleSelectduration`-Tillämpar ett val.</span><span class="sxs-lookup"><span data-stu-id="d02e0-123">`RadioSingleSelectduration` - Enforces a single selection.</span></span>
+    * <span data-ttu-id="0affe-123">`RadioSingleSelectduration`-Tillämpar ett val.</span><span class="sxs-lookup"><span data-stu-id="0affe-123">`RadioSingleSelectduration` - Enforces a single selection.</span></span>
 ```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
@@ -78,7 +78,7 @@ ms.lasthandoff: 09/28/2017
 </ClaimType>
 ```
 
-    * <span data-ttu-id="d02e0-124">`DropdownSingleSelect`-Du kan välja endast giltigt värde.</span><span class="sxs-lookup"><span data-stu-id="d02e0-124">`DropdownSingleSelect` - Allows the selection of only valid value.</span></span>
+    * <span data-ttu-id="0affe-124">`DropdownSingleSelect`-Kan hello val av endast giltigt värde.</span><span class="sxs-lookup"><span data-stu-id="0affe-124">`DropdownSingleSelect` - Allows hello selection of only valid value.</span></span>
 
 ![Skärmbild som visar dropdown alternativet](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 09/28/2017
 ```
 
 
-* <span data-ttu-id="d02e0-126">`CheckboxMultiSelect`Gör det möjligt för att välja ett eller flera värden.</span><span class="sxs-lookup"><span data-stu-id="d02e0-126">`CheckboxMultiSelect` Allows for the selection of one or more values.</span></span>
+* <span data-ttu-id="0affe-126">`CheckboxMultiSelect`Tillåter hello val av ett eller flera värden.</span><span class="sxs-lookup"><span data-stu-id="0affe-126">`CheckboxMultiSelect` Allows for hello selection of one or more values.</span></span>
 
 ![Skärmbild av multiselect alternativet](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
@@ -115,9 +115,9 @@ ms.lasthandoff: 09/28/2017
 </ClaimType>
 ```
 
-## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a><span data-ttu-id="d02e0-128">Lägga till anspråk till inloggningssidan upp/logga in användaren resa</span><span class="sxs-lookup"><span data-stu-id="d02e0-128">Add the claim to the sign up/sign in user journey</span></span>
+## <a name="add-hello-claim-toohello-sign-upsign-in-user-journey"></a><span data-ttu-id="0affe-128">Lägg till hello anspråk toohello logga upp/logga in användaren resa</span><span class="sxs-lookup"><span data-stu-id="0affe-128">Add hello claim toohello sign up/sign in user journey</span></span>
 
-1. <span data-ttu-id="d02e0-129">Lägga till anspråk som en `<OutputClaim ClaimTypeReferenceId="city"/>` till TechnicalProfile `LocalAccountSignUpWithLogonEmail` (hittas i principfilen TrustFrameworkBase).</span><span class="sxs-lookup"><span data-stu-id="d02e0-129">Add the claim as an `<OutputClaim ClaimTypeReferenceId="city"/>` to the TechnicalProfile `LocalAccountSignUpWithLogonEmail` (found in the TrustFrameworkBase policy file).</span></span>  <span data-ttu-id="d02e0-130">Observera att den här TechnicalProfile använder SelfAssertedAttributeProvider.</span><span class="sxs-lookup"><span data-stu-id="d02e0-130">Note this TechnicalProfile uses the SelfAssertedAttributeProvider.</span></span>
+1. <span data-ttu-id="0affe-129">Lägg till hello anspråk som en `<OutputClaim ClaimTypeReferenceId="city"/>` toohello TechnicalProfile `LocalAccountSignUpWithLogonEmail` (hittas i hello TrustFrameworkBase princip-fil).</span><span class="sxs-lookup"><span data-stu-id="0affe-129">Add hello claim as an `<OutputClaim ClaimTypeReferenceId="city"/>` toohello TechnicalProfile `LocalAccountSignUpWithLogonEmail` (found in hello TrustFrameworkBase policy file).</span></span>  <span data-ttu-id="0affe-130">Observera att den här TechnicalProfile använder hello SelfAssertedAttributeProvider.</span><span class="sxs-lookup"><span data-stu-id="0affe-130">Note this TechnicalProfile uses hello SelfAssertedAttributeProvider.</span></span>
 
   ```xml
   <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -142,7 +142,7 @@ ms.lasthandoff: 09/28/2017
       <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
       <OutputClaim ClaimTypeReferenceId="authenticationSource" />
       <OutputClaim ClaimTypeReferenceId="newUser" />
-      <!-- Optional claims, to be collected from the user -->
+      <!-- Optional claims, toobe collected from hello user -->
       <OutputClaim ClaimTypeReferenceId="givenName" />
       <OutputClaim ClaimTypeReferenceId="surName" />
       <OutputClaim ClaimTypeReferenceId="city"/>
@@ -154,7 +154,7 @@ ms.lasthandoff: 09/28/2017
   </TechnicalProfile>
   ```
 
-2. <span data-ttu-id="d02e0-131">Lägga till anspråk till AAD-UserWriteUsingLogonEmail som en `<PersistedClaim ClaimTypeReferenceId="city" />` att skriva anspråk till AAD-katalogen efter insamling från användaren.</span><span class="sxs-lookup"><span data-stu-id="d02e0-131">Add the claim to the AAD-UserWriteUsingLogonEmail as a `<PersistedClaim ClaimTypeReferenceId="city" />` to write the claim to the AAD directory after collecting it from the user.</span></span> <span data-ttu-id="d02e0-132">Du kan hoppa över det här steget om du inte vill bevara anspråk i katalogen för framtida användning.</span><span class="sxs-lookup"><span data-stu-id="d02e0-132">You may skip this step if you prefer not to persist the claim in the directory for future use.</span></span>
+2. <span data-ttu-id="0affe-131">Lägg till hello anspråk toohello AAD-UserWriteUsingLogonEmail som en `<PersistedClaim ClaimTypeReferenceId="city" />` toowrite hello anspråk toohello AAD-katalogen efter insamling från hello användare.</span><span class="sxs-lookup"><span data-stu-id="0affe-131">Add hello claim toohello AAD-UserWriteUsingLogonEmail as a `<PersistedClaim ClaimTypeReferenceId="city" />` toowrite hello claim toohello AAD directory after collecting it from hello user.</span></span> <span data-ttu-id="0affe-132">Du kan hoppa över det här steget om du föredrar att inte toopersist hello anspråk i hello directory för framtida användning.</span><span class="sxs-lookup"><span data-stu-id="0affe-132">You may skip this step if you prefer not toopersist hello claim in hello directory for future use.</span></span>
 
   ```xml
   <!-- Technical profiles for local accounts -->
@@ -190,14 +190,14 @@ ms.lasthandoff: 09/28/2017
   </TechnicalProfile>
   ```
 
-3. <span data-ttu-id="d02e0-133">Lägga till anspråk till TechnicalProfile som läser från katalogen när en användare loggar in som en`<OutputClaim ClaimTypeReferenceId="city" />`</span><span class="sxs-lookup"><span data-stu-id="d02e0-133">Add the claim to the TechnicalProfile that reads from the directory when a user logs in as an `<OutputClaim ClaimTypeReferenceId="city" />`</span></span>
+3. <span data-ttu-id="0affe-133">Lägg till hello anspråk toohello TechnicalProfile som läser från hello katalog när en användare loggar in som en`<OutputClaim ClaimTypeReferenceId="city" />`</span><span class="sxs-lookup"><span data-stu-id="0affe-133">Add hello claim toohello TechnicalProfile that reads from hello directory when a user logs in as an `<OutputClaim ClaimTypeReferenceId="city" />`</span></span>
 
   ```xml
   <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
     <Metadata>
       <Item Key="Operation">Read</Item>
       <Item Key="RaiseErrorIfClaimsPrincipalDoesNotExist">true</Item>
-      <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for the provided user ID.</Item>
+      <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">An account could not be found for hello provided user ID.</Item>
     </Metadata>
     <IncludeInSso>false</IncludeInSso>
     <InputClaims>
@@ -218,7 +218,7 @@ ms.lasthandoff: 09/28/2017
   </TechnicalProfile>
   ```
 
-4. <span data-ttu-id="d02e0-134">Lägg till den `<OutputClaim ClaimTypeReferenceId="city" />` filen SignUporSignIn.xml till RP principen så att denna begäran skickas till programmet i token efter en lyckad användaren resa.</span><span class="sxs-lookup"><span data-stu-id="d02e0-134">Add the `<OutputClaim ClaimTypeReferenceId="city" />` to the RP policy file SignUporSignIn.xml so this claim is sent to the application in the token after a successful user journey.</span></span>
+4. <span data-ttu-id="0affe-134">Lägg till hello `<OutputClaim ClaimTypeReferenceId="city" />` toohello RP principfil SignUporSignIn.xml så att denna begäran skickas toohello program i hello token efter en lyckad användaren resa.</span><span class="sxs-lookup"><span data-stu-id="0affe-134">Add hello `<OutputClaim ClaimTypeReferenceId="city" />` toohello RP policy file SignUporSignIn.xml so this claim is sent toohello application in hello token after a successful user journey.</span></span>
 
   ```xml
   <RelyingParty>
@@ -240,17 +240,17 @@ ms.lasthandoff: 09/28/2017
   </RelyingParty>
   ```
 
-## <a name="test-the-custom-policy-using-run-now"></a><span data-ttu-id="d02e0-135">Testa den anpassade principen med hjälp av ”kör nu”</span><span class="sxs-lookup"><span data-stu-id="d02e0-135">Test the custom policy using "Run Now"</span></span>
+## <a name="test-hello-custom-policy-using-run-now"></a><span data-ttu-id="0affe-135">Testa hello anpassad princip med ”Kör nu”</span><span class="sxs-lookup"><span data-stu-id="0affe-135">Test hello custom policy using "Run Now"</span></span>
 
-1. <span data-ttu-id="d02e0-136">Öppna den **Azure AD B2C bladet** och gå till **identitet upplevelse Framework > anpassade principer**.</span><span class="sxs-lookup"><span data-stu-id="d02e0-136">Open the **Azure AD B2C Blade** and navigate to **Identity Experience Framework > Custom policies**.</span></span>
-2. <span data-ttu-id="d02e0-137">Välj den anpassade principen som du överfört och klicka på den **kör nu** knappen.</span><span class="sxs-lookup"><span data-stu-id="d02e0-137">Select the custom policy that you uploaded, and click the **Run now** button.</span></span>
-3. <span data-ttu-id="d02e0-138">Du ska kunna logga med en e-postadress.</span><span class="sxs-lookup"><span data-stu-id="d02e0-138">You should be able to sign up using an email address.</span></span>
+1. <span data-ttu-id="0affe-136">Öppna hello **Azure AD B2C bladet** och navigera för**identitet upplevelse Framework > anpassade principer**.</span><span class="sxs-lookup"><span data-stu-id="0affe-136">Open hello **Azure AD B2C Blade** and navigate too**Identity Experience Framework > Custom policies**.</span></span>
+2. <span data-ttu-id="0affe-137">Välj hello anpassad princip som du överfört och klicka på hello **kör nu** knappen.</span><span class="sxs-lookup"><span data-stu-id="0affe-137">Select hello custom policy that you uploaded, and click hello **Run now** button.</span></span>
+3. <span data-ttu-id="0affe-138">Du ska kunna toosign med en e-postadress.</span><span class="sxs-lookup"><span data-stu-id="0affe-138">You should be able toosign up using an email address.</span></span>
 
-<span data-ttu-id="d02e0-139">Skärmen registreringen i testläge bör se ut ungefär så här:</span><span class="sxs-lookup"><span data-stu-id="d02e0-139">The signup screen in test mode should look similar to this:</span></span>
+<span data-ttu-id="0affe-139">hello signup skärm i testläge bör se ut ungefär toothis:</span><span class="sxs-lookup"><span data-stu-id="0affe-139">hello signup screen in test mode should look similar toothis:</span></span>
 
 ![Skärmbild av alternativ för ändrade anmälan](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-  <span data-ttu-id="d02e0-141">Token tillbaka till ditt program innehåller nu den `city` anspråk som visas nedan</span><span class="sxs-lookup"><span data-stu-id="d02e0-141">The token back to your application will now include the `city` claim as shown below</span></span>
+  <span data-ttu-id="0affe-141">hello token tillbaka tooyour programmet nu omfattar hello `city` anspråk som visas nedan</span><span class="sxs-lookup"><span data-stu-id="0affe-141">hello token back tooyour application will now include hello `city` claim as shown below</span></span>
 ```json
 {
   "exp": 1493596822,
@@ -271,18 +271,18 @@ ms.lasthandoff: 09/28/2017
 }
 ```
 
-## <a name="optional-remove-email-verification-from-signup-journey"></a><span data-ttu-id="d02e0-142">Valfritt: Ta bort e-Postverifiering från registreringen resa</span><span class="sxs-lookup"><span data-stu-id="d02e0-142">Optional: Remove email verification from signup journey</span></span>
+## <a name="optional-remove-email-verification-from-signup-journey"></a><span data-ttu-id="0affe-142">Valfritt: Ta bort e-Postverifiering från registreringen resa</span><span class="sxs-lookup"><span data-stu-id="0affe-142">Optional: Remove email verification from signup journey</span></span>
 
-<span data-ttu-id="d02e0-143">Om du vill hoppa över e-Postverifiering princip författaren kan du ta bort `PartnerClaimType="Verified.Email"`.</span><span class="sxs-lookup"><span data-stu-id="d02e0-143">To skip email verification, the policy author can choose to remove `PartnerClaimType="Verified.Email"`.</span></span> <span data-ttu-id="d02e0-144">E-postadressen kommer krävs men inte kontrolleras, såvida inte ”krävs” = true tas bort.</span><span class="sxs-lookup"><span data-stu-id="d02e0-144">The email address will be required but not verified, unless “Required” = true is removed.</span></span>  <span data-ttu-id="d02e0-145">Du noga överväga om det här alternativet är rätt för din användningsfall!</span><span class="sxs-lookup"><span data-stu-id="d02e0-145">Carefully consider if this option is right for your use cases!</span></span>
+<span data-ttu-id="0affe-143">tooskip e-Postverifiering hello princip författaren kan välja tooremove `PartnerClaimType="Verified.Email"`.</span><span class="sxs-lookup"><span data-stu-id="0affe-143">tooskip email verification, hello policy author can choose tooremove `PartnerClaimType="Verified.Email"`.</span></span> <span data-ttu-id="0affe-144">hello e-postadress kommer att krävs men inte kontrolleras, såvida inte ”krävs” = true tas bort.</span><span class="sxs-lookup"><span data-stu-id="0affe-144">hello email address will be required but not verified, unless “Required” = true is removed.</span></span>  <span data-ttu-id="0affe-145">Du noga överväga om det här alternativet är rätt för din användningsfall!</span><span class="sxs-lookup"><span data-stu-id="0affe-145">Carefully consider if this option is right for your use cases!</span></span>
 
-<span data-ttu-id="d02e0-146">Verifiera e-post är aktiverat som standard i den `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` TrustFrameworkBase principfilen i starter pack:</span><span class="sxs-lookup"><span data-stu-id="d02e0-146">Verified email is enabled by default in the `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` in the TrustFrameworkBase policy file in the starter pack:</span></span>
+<span data-ttu-id="0affe-146">Verifiera e-post är aktiverat som standard i hello `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` i hello TrustFrameworkBase principfil hello startpaket:</span><span class="sxs-lookup"><span data-stu-id="0affe-146">Verified email is enabled by default in hello `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` in hello TrustFrameworkBase policy file in hello starter pack:</span></span>
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="d02e0-147">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="d02e0-147">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="0affe-147">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="0affe-147">Next steps</span></span>
 
-<span data-ttu-id="d02e0-148">Lägga till nya anspråk till flödena för sociala inloggningsnamn genom att ändra TechnicalProfiles nedan.</span><span class="sxs-lookup"><span data-stu-id="d02e0-148">Add the new claim to the flows for social account logins by changing the TechnicalProfiles listed below.</span></span> <span data-ttu-id="d02e0-149">Dessa används av sociala/federerad inloggningsnamn för att skriva och läsa informationen med hjälp av alternativeSecurityId som positioneraren.</span><span class="sxs-lookup"><span data-stu-id="d02e0-149">These are used by social/federated account logins to write and read the user data using the alternativeSecurityId as the locator.</span></span>
+<span data-ttu-id="0affe-148">Lägg till hello nya anspråk toohello flöden sociala inloggningsnamn genom att ändra hello TechnicalProfiles nedan.</span><span class="sxs-lookup"><span data-stu-id="0affe-148">Add hello new claim toohello flows for social account logins by changing hello TechnicalProfiles listed below.</span></span> <span data-ttu-id="0affe-149">Dessa används av sociala/federerat konto inloggningar toowrite och läsa hello användardata med hello alternativeSecurityId som hello lokaliserare.</span><span class="sxs-lookup"><span data-stu-id="0affe-149">These are used by social/federated account logins toowrite and read hello user data using hello alternativeSecurityId as hello locator.</span></span>
 ```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">

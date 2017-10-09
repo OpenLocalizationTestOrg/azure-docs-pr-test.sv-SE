@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med BenefitHub | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och BenefitHub."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och BenefitHub."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,224 +13,224 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 8df9c0d8443d6685253207ed1915c780275014fc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c07d6e44e8cbc79afd79c900664011b059206b56
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-benefithub"></a><span data-ttu-id="aa37b-103">Självstudier: Azure Active Directory-integrering med BenefitHub</span><span class="sxs-lookup"><span data-stu-id="aa37b-103">Tutorial: Azure Active Directory integration with BenefitHub</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-benefithub"></a><span data-ttu-id="85523-103">Självstudier: Azure Active Directory-integrering med BenefitHub</span><span class="sxs-lookup"><span data-stu-id="85523-103">Tutorial: Azure Active Directory integration with BenefitHub</span></span>
 
-<span data-ttu-id="aa37b-104">I kursen får lära du att integrera BenefitHub med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="aa37b-104">In this tutorial, you learn how to integrate BenefitHub with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="85523-104">I kursen får du lära dig hur toointegrate BenefitHub med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="85523-104">In this tutorial, you learn how toointegrate BenefitHub with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="aa37b-105">Integrera BenefitHub med Azure AD ger dig följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="aa37b-105">Integrating BenefitHub with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="85523-105">Integrera BenefitHub med Azure AD ger dig hello följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="85523-105">Integrating BenefitHub with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="aa37b-106">Du kan styra i Azure AD som har åtkomst till BenefitHub</span><span class="sxs-lookup"><span data-stu-id="aa37b-106">You can control in Azure AD who has access to BenefitHub</span></span>
-- <span data-ttu-id="aa37b-107">Du kan aktivera användarna att automatiskt hämta loggat in på BenefitHub (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="aa37b-107">You can enable your users to automatically get signed-on to BenefitHub (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="aa37b-108">Du kan hantera dina konton i en central plats - Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="aa37b-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="85523-106">Du kan styra i Azure AD som har åtkomst till tooBenefitHub</span><span class="sxs-lookup"><span data-stu-id="85523-106">You can control in Azure AD who has access tooBenefitHub</span></span>
+- <span data-ttu-id="85523-107">Du kan aktivera din användare tooautomatically get inloggade tooBenefitHub (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="85523-107">You can enable your users tooautomatically get signed-on tooBenefitHub (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="85523-108">Du kan hantera dina konton i en central plats - hello Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="85523-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="aa37b-109">Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="aa37b-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="85523-109">Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="85523-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="aa37b-110">Krav</span><span class="sxs-lookup"><span data-stu-id="aa37b-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="85523-110">Krav</span><span class="sxs-lookup"><span data-stu-id="85523-110">Prerequisites</span></span>
 
-<span data-ttu-id="aa37b-111">För att konfigurera Azure AD-integrering med BenefitHub, behöver du följande:</span><span class="sxs-lookup"><span data-stu-id="aa37b-111">To configure Azure AD integration with BenefitHub, you need the following items:</span></span>
+<span data-ttu-id="85523-111">tooconfigure Azure AD-integrering med BenefitHub, behöver du hello följande objekt:</span><span class="sxs-lookup"><span data-stu-id="85523-111">tooconfigure Azure AD integration with BenefitHub, you need hello following items:</span></span>
 
-- <span data-ttu-id="aa37b-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="aa37b-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="aa37b-113">En BenefitHub enkel inloggning på aktiverade prenumeration</span><span class="sxs-lookup"><span data-stu-id="aa37b-113">A BenefitHub single-sign on enabled subscription</span></span>
+- <span data-ttu-id="85523-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="85523-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="85523-113">En BenefitHub enkel inloggning på aktiverade prenumeration</span><span class="sxs-lookup"><span data-stu-id="85523-113">A BenefitHub single-sign on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="aa37b-114">Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="aa37b-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="85523-114">tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="85523-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="aa37b-115">Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="aa37b-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="85523-115">tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="85523-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="aa37b-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="aa37b-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="aa37b-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="aa37b-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="85523-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="85523-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="85523-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="85523-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="aa37b-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="aa37b-118">Scenario description</span></span>
-<span data-ttu-id="aa37b-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="aa37b-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="aa37b-120">Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="aa37b-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="85523-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="85523-118">Scenario description</span></span>
+<span data-ttu-id="85523-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="85523-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="85523-120">hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="85523-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="aa37b-121">Att lägga till BenefitHub från galleriet</span><span class="sxs-lookup"><span data-stu-id="aa37b-121">Adding BenefitHub from the gallery</span></span>
-2. <span data-ttu-id="aa37b-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="aa37b-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="85523-121">Att lägga till BenefitHub från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="85523-121">Adding BenefitHub from hello gallery</span></span>
+2. <span data-ttu-id="85523-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="85523-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-benefithub-from-the-gallery"></a><span data-ttu-id="aa37b-123">Att lägga till BenefitHub från galleriet</span><span class="sxs-lookup"><span data-stu-id="aa37b-123">Adding BenefitHub from the gallery</span></span>
-<span data-ttu-id="aa37b-124">Du måste lägga till BenefitHub från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av BenefitHub i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="aa37b-124">To configure the integration of BenefitHub into Azure AD, you need to add BenefitHub from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-benefithub-from-hello-gallery"></a><span data-ttu-id="85523-123">Att lägga till BenefitHub från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="85523-123">Adding BenefitHub from hello gallery</span></span>
+<span data-ttu-id="85523-124">tooconfigure hello integrering av BenefitHub i Azure AD, behöver du tooadd BenefitHub hello galleriet tooyour listan över hanterade SaaS-appar.</span><span class="sxs-lookup"><span data-stu-id="85523-124">tooconfigure hello integration of BenefitHub into Azure AD, you need tooadd BenefitHub from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="aa37b-125">**Utför följande steg för att lägga till BenefitHub från galleriet:**</span><span class="sxs-lookup"><span data-stu-id="aa37b-125">**To add BenefitHub from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="85523-125">**tooadd BenefitHub från galleriet hello utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="85523-125">**tooadd BenefitHub from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="aa37b-126">I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="aa37b-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="85523-126">I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="85523-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="aa37b-128">Gå till **företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="aa37b-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="aa37b-129">Gå till **alla program**.</span><span class="sxs-lookup"><span data-stu-id="aa37b-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="85523-128">Navigera för**företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="85523-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="85523-129">Gå sedan för**alla program**.</span><span class="sxs-lookup"><span data-stu-id="85523-129">Then go too**All applications**.</span></span>
 
     ![Program][2]
     
-3. <span data-ttu-id="aa37b-131">Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="aa37b-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="85523-131">tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="85523-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Program][3]
 
-4. <span data-ttu-id="aa37b-133">I sökrutan skriver **BenefitHub**.</span><span class="sxs-lookup"><span data-stu-id="aa37b-133">In the search box, type **BenefitHub**.</span></span>
+4. <span data-ttu-id="85523-133">Skriv i sökrutan hello **BenefitHub**.</span><span class="sxs-lookup"><span data-stu-id="85523-133">In hello search box, type **BenefitHub**.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_search.png)
 
-5. <span data-ttu-id="aa37b-135">Välj i resultatpanelen **BenefitHub**, och klicka sedan på **Lägg till** för att lägga till programmet.</span><span class="sxs-lookup"><span data-stu-id="aa37b-135">In the results panel, select **BenefitHub**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="85523-135">Markera hello resultat på panelen **BenefitHub**, och klicka sedan på **Lägg till** knappen tooadd hello program.</span><span class="sxs-lookup"><span data-stu-id="85523-135">In hello results panel, select **BenefitHub**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="aa37b-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="aa37b-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="aa37b-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med BenefitHub baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="aa37b-138">In this section, you configure and test Azure AD single sign-on with BenefitHub based on a test user called "Britta Simon."</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="85523-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="85523-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="85523-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med BenefitHub baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="85523-138">In this section, you configure and test Azure AD single sign-on with BenefitHub based on a test user called "Britta Simon."</span></span>
 
-<span data-ttu-id="aa37b-139">Azure AD måste du känna till användaren i BenefitHub motsvarighet till en användare i Azure AD för enkel inloggning ska fungera.</span><span class="sxs-lookup"><span data-stu-id="aa37b-139">For single sign-on to work, Azure AD needs to know what the counterpart user in BenefitHub is to a user in Azure AD.</span></span> <span data-ttu-id="aa37b-140">Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i BenefitHub upprättas.</span><span class="sxs-lookup"><span data-stu-id="aa37b-140">In other words, a link relationship between an Azure AD user and the related user in BenefitHub needs to be established.</span></span>
+<span data-ttu-id="85523-139">För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i BenefitHub är tooa i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="85523-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in BenefitHub is tooa user in Azure AD.</span></span> <span data-ttu-id="85523-140">Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i BenefitHub toobe upprättas.</span><span class="sxs-lookup"><span data-stu-id="85523-140">In other words, a link relationship between an Azure AD user and hello related user in BenefitHub needs toobe established.</span></span>
 
-<span data-ttu-id="aa37b-141">I BenefitHub, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.</span><span class="sxs-lookup"><span data-stu-id="aa37b-141">In BenefitHub, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="85523-141">I BenefitHub, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.</span><span class="sxs-lookup"><span data-stu-id="85523-141">In BenefitHub, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="aa37b-142">Om du vill konfigurera och testa Azure AD enkel inloggning med BenefitHub, måste du utföra följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="aa37b-142">To configure and test Azure AD single sign-on with BenefitHub, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="85523-142">tooconfigure och testa Azure AD enkel inloggning med BenefitHub, behöver du toocomplete hello följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="85523-142">tooconfigure and test Azure AD single sign-on with BenefitHub, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="aa37b-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="aa37b-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="aa37b-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="aa37b-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="aa37b-145">**[Skapa en testanvändare BenefitHub](#creating-a-benefithub-test-user)**  – du har en motsvarighet för Britta Simon i BenefitHub som är kopplad till Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="aa37b-145">**[Creating a BenefitHub test user](#creating-a-benefithub-test-user)** - to have a counterpart of Britta Simon in BenefitHub that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="aa37b-146">**[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="aa37b-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="aa37b-147">**[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="aa37b-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="85523-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="85523-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="85523-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="85523-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="85523-145">**[Skapa en testanvändare BenefitHub](#creating-a-benefithub-test-user)**  -toohave en motsvarighet för Britta Simon i BenefitHub som är länkade toohello Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="85523-145">**[Creating a BenefitHub test user](#creating-a-benefithub-test-user)** - toohave a counterpart of Britta Simon in BenefitHub that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="85523-146">**[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="85523-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="85523-147">**[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="85523-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="aa37b-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="aa37b-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="85523-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="85523-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="aa37b-149">I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt BenefitHub program.</span><span class="sxs-lookup"><span data-stu-id="aa37b-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your BenefitHub application.</span></span>
+<span data-ttu-id="85523-149">I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt BenefitHub program.</span><span class="sxs-lookup"><span data-stu-id="85523-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your BenefitHub application.</span></span>
 
-<span data-ttu-id="aa37b-150">**Utför följande steg för att konfigurera Azure AD enkel inloggning med BenefitHub:**</span><span class="sxs-lookup"><span data-stu-id="aa37b-150">**To configure Azure AD single sign-on with BenefitHub, perform the following steps:**</span></span>
+<span data-ttu-id="85523-150">**Utför följande steg hello tooconfigure Azure AD enkel inloggning med BenefitHub:**</span><span class="sxs-lookup"><span data-stu-id="85523-150">**tooconfigure Azure AD single sign-on with BenefitHub, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="aa37b-151">I Azure-portalen på den **BenefitHub** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="aa37b-151">In the Azure portal, on the **BenefitHub** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="85523-151">I hello Azure-portalen på hello **BenefitHub** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="85523-151">In hello Azure portal, on hello **BenefitHub** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurera enkel inloggning][4]
 
-2. <span data-ttu-id="aa37b-153">På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="aa37b-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="85523-153">På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="85523-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_samlbase.png)
 
-3. <span data-ttu-id="aa37b-155">På den **BenefitHub domän och URL: er** avsnittet, utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="aa37b-155">On the **BenefitHub Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="85523-155">På hello **BenefitHub domän och URL: er** avsnittet, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="85523-155">On hello **BenefitHub Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_url1.png)
   
-    <span data-ttu-id="aa37b-157">a.</span><span class="sxs-lookup"><span data-stu-id="aa37b-157">a.</span></span> <span data-ttu-id="aa37b-158">I den **identifierare** textruta typ:`urn:benefithub:passport`</span><span class="sxs-lookup"><span data-stu-id="aa37b-158">In the **Identifier** textbox, type: `urn:benefithub:passport`</span></span>
+    <span data-ttu-id="85523-157">a.</span><span class="sxs-lookup"><span data-stu-id="85523-157">a.</span></span> <span data-ttu-id="85523-158">I hello **identifierare** textruta typ:`urn:benefithub:passport`</span><span class="sxs-lookup"><span data-stu-id="85523-158">In hello **Identifier** textbox, type: `urn:benefithub:passport`</span></span>
     
-    <span data-ttu-id="aa37b-159">b.</span><span class="sxs-lookup"><span data-stu-id="aa37b-159">b.</span></span> <span data-ttu-id="aa37b-160">I den **Reply URL** textruta typ:`https://passport.benefithub.info/saml/post/ac`</span><span class="sxs-lookup"><span data-stu-id="aa37b-160">In the **Reply URL** textbox, type: `https://passport.benefithub.info/saml/post/ac`</span></span>
+    <span data-ttu-id="85523-159">b.</span><span class="sxs-lookup"><span data-stu-id="85523-159">b.</span></span> <span data-ttu-id="85523-160">I hello **Reply URL** textruta typ:`https://passport.benefithub.info/saml/post/ac`</span><span class="sxs-lookup"><span data-stu-id="85523-160">In hello **Reply URL** textbox, type: `https://passport.benefithub.info/saml/post/ac`</span></span>
 
-4. <span data-ttu-id="aa37b-161">Programmet BenefitHub förväntar SAML-intyg i ett specifikt format, vilket kräver att du kan lägga till anpassade attributmappning konfigurationen för SAML-token attribut.</span><span class="sxs-lookup"><span data-stu-id="aa37b-161">The BenefitHub application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your SAML token attributes configuration.</span></span> <span data-ttu-id="aa37b-162">Konfigurera följande anspråk för det här programmet.</span><span class="sxs-lookup"><span data-stu-id="aa37b-162">Configure the following claims for this application.</span></span> <span data-ttu-id="aa37b-163">Du kan hantera värden för attributen från den ”**användarattribut**” avsnitt på sidan för integrering av programmet.</span><span class="sxs-lookup"><span data-stu-id="aa37b-163">You can manage the values of these attributes from the "**User Attributes**" section on application integration page.</span></span> 
+4. <span data-ttu-id="85523-161">Hej BenefitHub program förväntar hello SAML intyg i ett specifikt format, vilket kräver att du tooadd attributet mappningar tooyour SAML-token attribut-konfiguration.</span><span class="sxs-lookup"><span data-stu-id="85523-161">hello BenefitHub application expects hello SAML assertions in a specific format, which requires you tooadd custom attribute mappings tooyour SAML token attributes configuration.</span></span> <span data-ttu-id="85523-162">Konfigurera hello följande anspråk för det här programmet.</span><span class="sxs-lookup"><span data-stu-id="85523-162">Configure hello following claims for this application.</span></span> <span data-ttu-id="85523-163">Du kan hantera hello värden för attributen från hello ”**användarattribut**” avsnitt på sidan för integrering av programmet.</span><span class="sxs-lookup"><span data-stu-id="85523-163">You can manage hello values of these attributes from hello "**User Attributes**" section on application integration page.</span></span> 
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_attribute.png)
 
-5. <span data-ttu-id="aa37b-165">I den **användarattribut** avsnitt på den **enkel inloggning** dialogrutan Konfigurera attribut för SAML-token som visas i den föregående bilden och utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="aa37b-165">In the **User Attributes** section on the **Single sign-on** dialog, configure SAML token attribute as shown in the preceding image and perform the following steps:</span></span>
+5. <span data-ttu-id="85523-165">I hello **användarattribut** avsnittet hello **enkel inloggning** dialogrutan Konfigurera SAML-token attribut som visas i föregående bild hello och utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="85523-165">In hello **User Attributes** section on hello **Single sign-on** dialog, configure SAML token attribute as shown in hello preceding image and perform hello following steps:</span></span>
     
-    | <span data-ttu-id="aa37b-166">Attributets namn</span><span class="sxs-lookup"><span data-stu-id="aa37b-166">Attribute Name</span></span> | <span data-ttu-id="aa37b-167">Attributvärdet</span><span class="sxs-lookup"><span data-stu-id="aa37b-167">Attribute Value</span></span> |
+    | <span data-ttu-id="85523-166">Attributets namn</span><span class="sxs-lookup"><span data-stu-id="85523-166">Attribute Name</span></span> | <span data-ttu-id="85523-167">Attributvärdet</span><span class="sxs-lookup"><span data-stu-id="85523-167">Attribute Value</span></span> |
     | ------------------- | -------------------- |    
-    | <span data-ttu-id="aa37b-168">organisations-ID</span><span class="sxs-lookup"><span data-stu-id="aa37b-168">organizationid</span></span> | <span data-ttu-id="aa37b-169">organisations-< ID ></span><span class="sxs-lookup"><span data-stu-id="aa37b-169">< organizationid ></span></span> |
+    | <span data-ttu-id="85523-168">organisations-ID</span><span class="sxs-lookup"><span data-stu-id="85523-168">organizationid</span></span> | <span data-ttu-id="85523-169">organisations-< ID ></span><span class="sxs-lookup"><span data-stu-id="85523-169">< organizationid ></span></span> |
 
     > [!NOTE]
-    > <span data-ttu-id="aa37b-170">Det här attributvärdet är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="aa37b-170">This attribute value is not real.</span></span> <span data-ttu-id="aa37b-171">Uppdatera det här värdet med faktiska organisations-ID.</span><span class="sxs-lookup"><span data-stu-id="aa37b-171">Update this value with actual organizationid.</span></span> <span data-ttu-id="aa37b-172">Kontakta [BenefitHub supportteamet](https://www.benefithub.com/Home/ContactUs) att hämta den faktiska organisations-ID.</span><span class="sxs-lookup"><span data-stu-id="aa37b-172">Contact [BenefitHub support team](https://www.benefithub.com/Home/ContactUs) to get the actual organizationid.</span></span>
+    > <span data-ttu-id="85523-170">Det här attributvärdet är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="85523-170">This attribute value is not real.</span></span> <span data-ttu-id="85523-171">Uppdatera det här värdet med faktiska organisations-ID.</span><span class="sxs-lookup"><span data-stu-id="85523-171">Update this value with actual organizationid.</span></span> <span data-ttu-id="85523-172">Kontakta [BenefitHub supportteamet](https://www.benefithub.com/Home/ContactUs) tooget hello faktiska organisations-ID.</span><span class="sxs-lookup"><span data-stu-id="85523-172">Contact [BenefitHub support team](https://www.benefithub.com/Home/ContactUs) tooget hello actual organizationid.</span></span>
     
-    <span data-ttu-id="aa37b-173">a.</span><span class="sxs-lookup"><span data-stu-id="aa37b-173">a.</span></span> <span data-ttu-id="aa37b-174">Klicka på **Lägg till attributet** att öppna den **lägga till attributet** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="aa37b-174">Click **Add attribute** to open the **Add Attribute** dialog.</span></span>
+    <span data-ttu-id="85523-173">a.</span><span class="sxs-lookup"><span data-stu-id="85523-173">a.</span></span> <span data-ttu-id="85523-174">Klicka på **Lägg till attributet** tooopen hello **lägga till attributet** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="85523-174">Click **Add attribute** tooopen hello **Add Attribute** dialog.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-benefithub-tutorial/tutorial_attribute_04.png)
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-benefithub-tutorial/tutorial_attribute_05.png)
 
-    <span data-ttu-id="aa37b-177">b.</span><span class="sxs-lookup"><span data-stu-id="aa37b-177">b.</span></span> <span data-ttu-id="aa37b-178">I den **namn** textruta ange attributets namn visas för den raden.</span><span class="sxs-lookup"><span data-stu-id="aa37b-178">In the **Name** textbox, type the attribute name shown for that row.</span></span>
+    <span data-ttu-id="85523-177">b.</span><span class="sxs-lookup"><span data-stu-id="85523-177">b.</span></span> <span data-ttu-id="85523-178">I hello **namn** textruta hello attributnamn visas för den raden.</span><span class="sxs-lookup"><span data-stu-id="85523-178">In hello **Name** textbox, type hello attribute name shown for that row.</span></span>
     
-    <span data-ttu-id="aa37b-179">c.</span><span class="sxs-lookup"><span data-stu-id="aa37b-179">c.</span></span> <span data-ttu-id="aa37b-180">Från den **värdet** listan, ange det attributvärde som visas för den raden.</span><span class="sxs-lookup"><span data-stu-id="aa37b-180">From the **Value** list, type the attribute value shown for that row.</span></span>
+    <span data-ttu-id="85523-179">c.</span><span class="sxs-lookup"><span data-stu-id="85523-179">c.</span></span> <span data-ttu-id="85523-180">Från hello **värdet** listan attributvärde för typ hello visas för den raden.</span><span class="sxs-lookup"><span data-stu-id="85523-180">From hello **Value** list, type hello attribute value shown for that row.</span></span>
     
-    <span data-ttu-id="aa37b-181">d.</span><span class="sxs-lookup"><span data-stu-id="aa37b-181">d.</span></span> <span data-ttu-id="aa37b-182">Klicka på **OK**.</span><span class="sxs-lookup"><span data-stu-id="aa37b-182">Click **Ok**.</span></span>
+    <span data-ttu-id="85523-181">d.</span><span class="sxs-lookup"><span data-stu-id="85523-181">d.</span></span> <span data-ttu-id="85523-182">Klicka på **OK**.</span><span class="sxs-lookup"><span data-stu-id="85523-182">Click **Ok**.</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="aa37b-183">Innan du kan konfigurera SAML-kontroll måste du kontakta din [BenefitHub stöd](https://www.benefithub.com/Home/ContactUs) och begära värdet för attributet för unik identifierare för din klient.</span><span class="sxs-lookup"><span data-stu-id="aa37b-183">Before you can configure the SAML assertion, you need to contact your [BenefitHub support](https://www.benefithub.com/Home/ContactUs) and request the value of the unique identifier attribute for your tenant.</span></span> <span data-ttu-id="aa37b-184">Du behöver det här värdet för att konfigurera det anpassade anspråket för ditt program.</span><span class="sxs-lookup"><span data-stu-id="aa37b-184">You need this value to configure the custom claim for your application.</span></span>
+    > <span data-ttu-id="85523-183">Innan du kan konfigurera hello SAML-kontroll måste toocontact din [BenefitHub stöd](https://www.benefithub.com/Home/ContactUs) och begära hello värdet för attributet för hello-Unik identifierare för din klient.</span><span class="sxs-lookup"><span data-stu-id="85523-183">Before you can configure hello SAML assertion, you need toocontact your [BenefitHub support](https://www.benefithub.com/Home/ContactUs) and request hello value of hello unique identifier attribute for your tenant.</span></span> <span data-ttu-id="85523-184">Du behöver det här värdet tooconfigure hello anpassat anspråk för ditt program.</span><span class="sxs-lookup"><span data-stu-id="85523-184">You need this value tooconfigure hello custom claim for your application.</span></span>
 
-6. <span data-ttu-id="aa37b-185">På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.</span><span class="sxs-lookup"><span data-stu-id="aa37b-185">On the **SAML Signing Certificate** section, click **Metadata XML** and then save the metadata file on your computer.</span></span>
+6. <span data-ttu-id="85523-185">På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.</span><span class="sxs-lookup"><span data-stu-id="85523-185">On hello **SAML Signing Certificate** section, click **Metadata XML** and then save hello metadata file on your computer.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_certificate.png) 
 
-7. <span data-ttu-id="aa37b-187">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="aa37b-187">Click **Save** button.</span></span>
+7. <span data-ttu-id="85523-187">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="85523-187">Click **Save** button.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-benefithub-tutorial/tutorial_general_400.png)
 
-8. <span data-ttu-id="aa37b-189">Konfigurera enkel inloggning på **BenefitHub** sida, måste du skicka den hämtade **XML-Metadata för** till [BenefitHub supportteamet](https://www.benefithub.com/Home/ContactUs).</span><span class="sxs-lookup"><span data-stu-id="aa37b-189">To configure single sign-on on **BenefitHub** side, you need to send the downloaded **Metadata XML** to [BenefitHub support team](https://www.benefithub.com/Home/ContactUs).</span></span> <span data-ttu-id="aa37b-190">De kan ange den här inställningen att ha SAML SSO anslutningen korrekt på båda sidor.</span><span class="sxs-lookup"><span data-stu-id="aa37b-190">They set this setting to have the SAML SSO connection set properly on both sides.</span></span>
+8. <span data-ttu-id="85523-189">tooconfigure enkel inloggning på **BenefitHub** sida, behöver du toosend hello hämtas **XML-Metadata för** för[BenefitHub supportteamet](https://www.benefithub.com/Home/ContactUs).</span><span class="sxs-lookup"><span data-stu-id="85523-189">tooconfigure single sign-on on **BenefitHub** side, you need toosend hello downloaded **Metadata XML** too[BenefitHub support team](https://www.benefithub.com/Home/ContactUs).</span></span> <span data-ttu-id="85523-190">De kan ange den här inställningen toohave hello SAML SSO anslutningen korrekt på båda sidor.</span><span class="sxs-lookup"><span data-stu-id="85523-190">They set this setting toohave hello SAML SSO connection set properly on both sides.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="aa37b-191">Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!</span><span class="sxs-lookup"><span data-stu-id="aa37b-191">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="aa37b-192">När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned.</span><span class="sxs-lookup"><span data-stu-id="aa37b-192">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="aa37b-193">Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="aa37b-193">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="85523-191">Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!</span><span class="sxs-lookup"><span data-stu-id="85523-191">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="85523-192">När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello.</span><span class="sxs-lookup"><span data-stu-id="85523-192">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="85523-193">Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="85523-193">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="aa37b-194">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="aa37b-194">Creating an Azure AD test user</span></span>
-<span data-ttu-id="aa37b-195">Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="aa37b-195">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="85523-194">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="85523-194">Creating an Azure AD test user</span></span>
+<span data-ttu-id="85523-195">hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="85523-195">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Skapa Azure AD-användare][100]
 
-<span data-ttu-id="aa37b-197">**Utför följande steg för att skapa en testanvändare i Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="aa37b-197">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="85523-197">**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="85523-197">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="aa37b-198">I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="aa37b-198">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="85523-198">I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="85523-198">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-benefithub-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="aa37b-200">Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="aa37b-200">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="85523-200">toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="85523-200">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-benefithub-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="aa37b-202">Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="aa37b-202">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="85523-202">tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="85523-202">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-benefithub-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="aa37b-204">På den **användaren** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="aa37b-204">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="85523-204">På hello **användaren** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="85523-204">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-benefithub-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="aa37b-206">a.</span><span class="sxs-lookup"><span data-stu-id="aa37b-206">a.</span></span> <span data-ttu-id="aa37b-207">I den **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="aa37b-207">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="85523-206">a.</span><span class="sxs-lookup"><span data-stu-id="85523-206">a.</span></span> <span data-ttu-id="85523-207">I hello **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="85523-207">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="aa37b-208">b.</span><span class="sxs-lookup"><span data-stu-id="aa37b-208">b.</span></span> <span data-ttu-id="aa37b-209">I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="aa37b-209">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="85523-208">b.</span><span class="sxs-lookup"><span data-stu-id="85523-208">b.</span></span> <span data-ttu-id="85523-209">I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="85523-209">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="aa37b-210">c.</span><span class="sxs-lookup"><span data-stu-id="aa37b-210">c.</span></span> <span data-ttu-id="aa37b-211">Välj **visa lösenordet** och anteckna värdet för den **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="aa37b-211">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="85523-210">c.</span><span class="sxs-lookup"><span data-stu-id="85523-210">c.</span></span> <span data-ttu-id="85523-211">Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="85523-211">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="aa37b-212">d.</span><span class="sxs-lookup"><span data-stu-id="aa37b-212">d.</span></span> <span data-ttu-id="aa37b-213">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="aa37b-213">Click **Create**.</span></span>
+    <span data-ttu-id="85523-212">d.</span><span class="sxs-lookup"><span data-stu-id="85523-212">d.</span></span> <span data-ttu-id="85523-213">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="85523-213">Click **Create**.</span></span>
  
-### <a name="creating-a-benefithub-test-user"></a><span data-ttu-id="aa37b-214">Skapa en testanvändare BenefitHub</span><span class="sxs-lookup"><span data-stu-id="aa37b-214">Creating a BenefitHub test user</span></span>
+### <a name="creating-a-benefithub-test-user"></a><span data-ttu-id="85523-214">Skapa en testanvändare BenefitHub</span><span class="sxs-lookup"><span data-stu-id="85523-214">Creating a BenefitHub test user</span></span>
 
-<span data-ttu-id="aa37b-215">I det här avsnittet skapar du en användare som kallas Britta Simon i BenefitHub.</span><span class="sxs-lookup"><span data-stu-id="aa37b-215">In this section, you create a user called Britta Simon in BenefitHub.</span></span> <span data-ttu-id="aa37b-216">Arbeta med [BenefitHub supportteamet](https://www.benefithub.com/Home/ContactUs) att lägga till användare i BenefitHub-plattformen.</span><span class="sxs-lookup"><span data-stu-id="aa37b-216">Work with [BenefitHub support team](https://www.benefithub.com/Home/ContactUs) to add the users in the BenefitHub platform.</span></span> <span data-ttu-id="aa37b-217">Användare måste skapas och aktiveras innan du använder enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="aa37b-217">Users must be created and activated before you use single sign-on.</span></span> 
+<span data-ttu-id="85523-215">I det här avsnittet skapar du en användare som kallas Britta Simon i BenefitHub.</span><span class="sxs-lookup"><span data-stu-id="85523-215">In this section, you create a user called Britta Simon in BenefitHub.</span></span> <span data-ttu-id="85523-216">Arbeta med [BenefitHub supportteamet](https://www.benefithub.com/Home/ContactUs) att lägga till hello användare i hello BenefitHub plattform.</span><span class="sxs-lookup"><span data-stu-id="85523-216">Work with [BenefitHub support team](https://www.benefithub.com/Home/ContactUs) to add hello users in hello BenefitHub platform.</span></span> <span data-ttu-id="85523-217">Användare måste skapas och aktiveras innan du använder enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="85523-217">Users must be created and activated before you use single sign-on.</span></span> 
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="aa37b-218">Tilldela Azure AD-testanvändare</span><span class="sxs-lookup"><span data-stu-id="aa37b-218">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="85523-218">Tilldela användare hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="85523-218">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="aa37b-219">I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till BenefitHub.</span><span class="sxs-lookup"><span data-stu-id="aa37b-219">In this section, you enable Britta Simon to use Azure single sign-on by granting access to BenefitHub.</span></span>
+<span data-ttu-id="85523-219">I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooBenefitHub.</span><span class="sxs-lookup"><span data-stu-id="85523-219">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooBenefitHub.</span></span>
 
 ![Tilldela användare][200] 
 
-<span data-ttu-id="aa37b-221">**Om du vill tilldela BenefitHub Britta Simon utför du följande steg:**</span><span class="sxs-lookup"><span data-stu-id="aa37b-221">**To assign Britta Simon to BenefitHub, perform the following steps:**</span></span>
+<span data-ttu-id="85523-221">**tooassign Britta Simon tooBenefitHub utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="85523-221">**tooassign Britta Simon tooBenefitHub, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="aa37b-222">Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="aa37b-222">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="85523-222">I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="85523-222">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Tilldela användare][201] 
 
-2. <span data-ttu-id="aa37b-224">Välj i listan med program **BenefitHub**.</span><span class="sxs-lookup"><span data-stu-id="aa37b-224">In the applications list, select **BenefitHub**.</span></span>
+2. <span data-ttu-id="85523-224">Välj i listan med program hello **BenefitHub**.</span><span class="sxs-lookup"><span data-stu-id="85523-224">In hello applications list, select **BenefitHub**.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-benefithub-tutorial/tutorial_benefithub_app.png) 
 
-3. <span data-ttu-id="aa37b-226">Klicka på menyn till vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="aa37b-226">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="85523-226">Hello-menyn hello vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="85523-226">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Tilldela användare][202] 
 
-4. <span data-ttu-id="aa37b-228">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="aa37b-228">Click **Add** button.</span></span> <span data-ttu-id="aa37b-229">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="aa37b-229">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="85523-228">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="85523-228">Click **Add** button.</span></span> <span data-ttu-id="85523-229">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="85523-229">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Tilldela användare][203]
 
-5. <span data-ttu-id="aa37b-231">På **användare och grupper** markerar **Britta Simon** på listan användare.</span><span class="sxs-lookup"><span data-stu-id="aa37b-231">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="85523-231">På **användare och grupper** markerar **Britta Simon** i hello användarlistan.</span><span class="sxs-lookup"><span data-stu-id="85523-231">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="aa37b-232">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="aa37b-232">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="85523-232">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="85523-232">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="aa37b-233">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="aa37b-233">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="85523-233">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="85523-233">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="aa37b-234">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="aa37b-234">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="85523-234">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="85523-234">Testing single sign-on</span></span>
 
-<span data-ttu-id="aa37b-235">I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.</span><span class="sxs-lookup"><span data-stu-id="aa37b-235">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="85523-235">I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="85523-235">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="aa37b-236">När du klickar på panelen BenefitHub på åtkomstpanelen du bör få automatiskt loggat in på ditt BenefitHub program.</span><span class="sxs-lookup"><span data-stu-id="aa37b-236">When you click the BenefitHub tile in the Access Panel, you should get automatically signed-on to your BenefitHub application.</span></span>
-<span data-ttu-id="aa37b-237">Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](https://msdn.microsoft.com/library/dn308586).</span><span class="sxs-lookup"><span data-stu-id="aa37b-237">For more information about the Access Panel, see [introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586).</span></span>
+<span data-ttu-id="85523-236">Du bör få automatiskt inloggade tooyour BenefitHub programmet när du klickar på hello BenefitHub panelen i hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="85523-236">When you click hello BenefitHub tile in hello Access Panel, you should get automatically signed-on tooyour BenefitHub application.</span></span>
+<span data-ttu-id="85523-237">Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](https://msdn.microsoft.com/library/dn308586).</span><span class="sxs-lookup"><span data-stu-id="85523-237">For more information about the Access Panel, see [introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586).</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="aa37b-238">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="aa37b-238">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="85523-238">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="85523-238">Additional resources</span></span>
 
-* [<span data-ttu-id="aa37b-239">Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="aa37b-239">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="aa37b-240">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="aa37b-240">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="85523-239">Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="85523-239">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="85523-240">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="85523-240">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

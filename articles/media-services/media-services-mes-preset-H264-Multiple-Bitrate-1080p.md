@@ -1,6 +1,6 @@
 ---
-title: "H264 Multibithastighet 1080p Media Encoder Standard förinställningen - Azure | Microsoft Docs"
-description: "Avsnittet ger en översikt över de ** H264 Multibithastighet 1080 p ** uppgiften förinställda."
+title: "aaaH264 Multibithastighet 1080p Media Encoder Standard förinställningen - Azure | Microsoft Docs"
+description: "hello avsnittet ger en översikt över hello ** H264 Multibithastighet 1080 p ** uppgiften förinställda."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: a1aa9c097ae3eba6c14476d58b432d8d8cc126c0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2b2b1f65c72c6a6a9425c49b75d10e4e411ef43d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="h264-multiple-bitrate-1080p"></a><span data-ttu-id="ed582-103">H264 Multibithastighet 1080p</span><span class="sxs-lookup"><span data-stu-id="ed582-103">H264 Multiple Bitrate 1080p</span></span>
-<span data-ttu-id="ed582-104">`Media Encoder Standard`definierar en uppsättning kodning förinställningar som du kan använda när du skapar kodning jobb.</span><span class="sxs-lookup"><span data-stu-id="ed582-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="ed582-105">Du kan använda en `preset name` att ange i vilket format du vill koda media-fil.</span><span class="sxs-lookup"><span data-stu-id="ed582-105">You can either use a `preset name` to specify into which format you would like to encode your media file.</span></span> <span data-ttu-id="ed582-106">Du kan också skapa egna JSON eller XML-baserade förinställningar (med hjälp av UTF-8- eller UTF-16-kodning.</span><span class="sxs-lookup"><span data-stu-id="ed582-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="ed582-107">Du skulle sedan överföra anpassad förinställning på kodaren.</span><span class="sxs-lookup"><span data-stu-id="ed582-107">You would then pass the custom preset to the encoder.</span></span> <span data-ttu-id="ed582-108">Lista över alla förvalda namn som stöds av det här `Media Encoder Standard` kodare, se [aktivitet förinställningar för Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="ed582-108">For the list of all the preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
+# <a name="h264-multiple-bitrate-1080p"></a><span data-ttu-id="6b1ea-103">H264 Multibithastighet 1080p</span><span class="sxs-lookup"><span data-stu-id="6b1ea-103">H264 Multiple Bitrate 1080p</span></span>
+<span data-ttu-id="6b1ea-104">`Media Encoder Standard`definierar en uppsättning kodning förinställningar som du kan använda när du skapar kodning jobb.</span><span class="sxs-lookup"><span data-stu-id="6b1ea-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="6b1ea-105">Du kan använda en `preset name` toospecify i vilket format du vill att tooencode media-fil.</span><span class="sxs-lookup"><span data-stu-id="6b1ea-105">You can either use a `preset name` toospecify into which format you would like tooencode your media file.</span></span> <span data-ttu-id="6b1ea-106">Du kan också skapa egna JSON eller XML-baserade förinställningar (med hjälp av UTF-8- eller UTF-16-kodning.</span><span class="sxs-lookup"><span data-stu-id="6b1ea-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="6b1ea-107">Du skulle sedan överföra hello anpassade förinställda toohello kodare.</span><span class="sxs-lookup"><span data-stu-id="6b1ea-107">You would then pass hello custom preset toohello encoder.</span></span> <span data-ttu-id="6b1ea-108">Hello lista över alla hello förinställningen namn som stöds av det här `Media Encoder Standard` kodare, se [aktivitet förinställningar för Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="6b1ea-108">For hello list of all hello preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
   
- <span data-ttu-id="ed582-109">Det här avsnittet beskrivs de `H264 Multiple Bitrate 1080p` förinställda XML och JSON-format.</span><span class="sxs-lookup"><span data-stu-id="ed582-109">This topic shows the `H264 Multiple Bitrate 1080p` preset in XML and JSON format.</span></span>  
+ <span data-ttu-id="6b1ea-109">Det här avsnittet visar hello `H264 Multiple Bitrate 1080p` förinställda XML och JSON-format.</span><span class="sxs-lookup"><span data-stu-id="6b1ea-109">This topic shows hello `H264 Multiple Bitrate 1080p` preset in XML and JSON format.</span></span>  
   
- <span data-ttu-id="ed582-110">Den här förinställningen producerar en uppsättning 8 GOP-justerad MP4-filer, allt från 6000 kbit/s till 400 kbit/s och AAC stereoljud.</span><span class="sxs-lookup"><span data-stu-id="ed582-110">This preset produces a set of 8 GOP-aligned MP4 files, ranging from 6000 kbps to 400 kbps, and stereo AAC audio.</span></span> <span data-ttu-id="ed582-111">Detaljerad information om profilen bithastighet, provtagning hastighet, etc. Om detta förinställda ska undersöka XML- eller JSON som anges nedan.</span><span class="sxs-lookup"><span data-stu-id="ed582-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine the XML or JSON defined below.</span></span> <span data-ttu-id="ed582-112">Förklaringar av vad varje element i dessa förinställda innebär och giltiga värden för varje element finns i [Media Encoder Standard schemat](media-services-mes-schema.md) avsnittet.</span><span class="sxs-lookup"><span data-stu-id="ed582-112">For explanations of what each element in these presets means, and the valid values for each element, see the [Media Encoder Standard schema](media-services-mes-schema.md) topic.</span></span>  
+ <span data-ttu-id="6b1ea-110">Den här förinställningen producerar en uppsättning 8 GOP-justerad MP4-filer från 6000 kbit/s too400 kbit/s och AAC stereoljud.</span><span class="sxs-lookup"><span data-stu-id="6b1ea-110">This preset produces a set of 8 GOP-aligned MP4 files, ranging from 6000 kbps too400 kbps, and stereo AAC audio.</span></span> <span data-ttu-id="6b1ea-111">Detaljerad information om profilen bithastighet, provtagning hastighet, etc. Om detta förinställda ska undersöka hello XML- eller JSON som anges nedan.</span><span class="sxs-lookup"><span data-stu-id="6b1ea-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine hello XML or JSON defined below.</span></span> <span data-ttu-id="6b1ea-112">Förklaringar av vad varje element i dessa förinställda innebär och hello giltiga värden för varje element finns hello [Media Encoder Standard schemat](media-services-mes-schema.md) avsnittet.</span><span class="sxs-lookup"><span data-stu-id="6b1ea-112">For explanations of what each element in these presets means, and hello valid values for each element, see hello [Media Encoder Standard schema](media-services-mes-schema.md) topic.</span></span>  
   
 > [!NOTE]
->  <span data-ttu-id="ed582-113">När du ändrar den `Width` och `Height` värden i lager, se till att proportionerna förblir konsekvent.</span><span class="sxs-lookup"><span data-stu-id="ed582-113">When modifying the `Width` and `Height` values across layers, make sure that the aspect ratio remains consistent.</span></span> <span data-ttu-id="ed582-114">Till exempel: 1 920 x 1 080, minst 1 280 x 720, 1080 x 576 640 x 360.</span><span class="sxs-lookup"><span data-stu-id="ed582-114">For example: 1920x1080, 1280x720, 1080x576, 640x360.</span></span> <span data-ttu-id="ed582-115">Du bör inte använda en blandning av proportioner, exempelvis: minst 1 280 x 720, 720 x 480, 640 x 360.</span><span class="sxs-lookup"><span data-stu-id="ed582-115">You should not use a mixture of aspect ratios, such as: 1280x720, 720x480, 640x360.</span></span>  
+>  <span data-ttu-id="6b1ea-113">När du ändrar hello `Width` och `Height` värden i lager, se till att hello proportionerna förblir konsekvent.</span><span class="sxs-lookup"><span data-stu-id="6b1ea-113">When modifying hello `Width` and `Height` values across layers, make sure that hello aspect ratio remains consistent.</span></span> <span data-ttu-id="6b1ea-114">Till exempel: 1 920 x 1 080, minst 1 280 x 720, 1080 x 576 640 x 360.</span><span class="sxs-lookup"><span data-stu-id="6b1ea-114">For example: 1920x1080, 1280x720, 1080x576, 640x360.</span></span> <span data-ttu-id="6b1ea-115">Du bör inte använda en blandning av proportioner, exempelvis: minst 1 280 x 720, 720 x 480, 640 x 360.</span><span class="sxs-lookup"><span data-stu-id="6b1ea-115">You should not use a mixture of aspect ratios, such as: 1280x720, 720x480, 640x360.</span></span>  
   
- <span data-ttu-id="ed582-116">XML</span><span class="sxs-lookup"><span data-stu-id="ed582-116">XML</span></span>  
+ <span data-ttu-id="6b1ea-116">XML</span><span class="sxs-lookup"><span data-stu-id="6b1ea-116">XML</span></span>  
   
 ```  
 <?xml version="1.0" encoding="utf-16"?>  
@@ -177,7 +177,7 @@ ms.lasthandoff: 08/29/2017
 </Preset>  
 ```  
   
- <span data-ttu-id="ed582-117">JSON</span><span class="sxs-lookup"><span data-stu-id="ed582-117">JSON</span></span>  
+ <span data-ttu-id="6b1ea-117">JSON</span><span class="sxs-lookup"><span data-stu-id="6b1ea-117">JSON</span></span>  
   
 ```  
 {  

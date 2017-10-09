@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Monitor – självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur du använder tjänster för övervakning och diagnostik för att spåra prestanda, upprätthålla säkerhet och identifiera trender. API-referenser, bästa metoder och mycket annat."
+title: "aaaAzure Monitor-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur toouse övervakning och diagnostik services tootrack prestanda, upprätthålla säkerheten och identifiera trender. API-referenser, bästa metoder och mycket annat."
 services: monitoring-and-diagnostics
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 5583254cd559314478bdc42e3f41171c6cf1e85a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b86390735ef74e137ec835b301b904763fad4405
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-monitor-documentation"></a>Dokumentation om Azure Monitor
 
-Lär dig hur du använder övervakning och diagnostik med Azure för att spåra prestanda, upprätthålla säkerhet och identifiera trender. Självstudier, API-referenser, bästa metoder och annan dokumentation hjälper dig att förstå användningen av övervakning och diagnostik och hur du planerar och distribuerar skalbara och tillförlitliga lösningar.
+Lär dig hur toouse Azure övervakning och diagnostik services tootrack prestanda, upprätthålla säkerheten och identifiera trender. Självstudier, API-referenser, bästa praxis och andra dokumentationen hjälper dig att förstå hello används för övervakning och diagnostik och hur tooplan och distribuera skalbara och tillförlitliga lösningar.
 
 <ul class="panelContent cardsFTitle">
     <li>

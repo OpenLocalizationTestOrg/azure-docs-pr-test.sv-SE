@@ -1,6 +1,6 @@
 ---
-title: Webbprogram med tabellagring (Node.js) | Microsoft Docs
-description: "En självstudiekurs som bygger på webbprogram med snabb kursen genom att lägga till Azure Storage-tjänster och Azure-modulen."
+title: aaaWeb app med table storage (Node.js) | Microsoft Docs
+description: "En självstudiekurs som bygger på hello Web App med en snabb genomgång genom att lägga till Azure Storage-tjänster och hello Azure-modulen."
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -14,77 +14,77 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.openlocfilehash: b802f880c1131abb7eb9ba00dd8f2e65017bc802
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7eefc09baab61cf44c98183135abe572b11812e9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="nodejs-web-application-using-storage"></a><span data-ttu-id="52d6f-103">Node.js-Webbapp som använder lagring</span><span class="sxs-lookup"><span data-stu-id="52d6f-103">Node.js Web Application using Storage</span></span>
-## <a name="overview"></a><span data-ttu-id="52d6f-104">Översikt</span><span class="sxs-lookup"><span data-stu-id="52d6f-104">Overview</span></span>
-<span data-ttu-id="52d6f-105">I den här självstudiekursen programmet du skapade i den [Node.js-Webbapp med hjälp av] kursen utökas som arbetar med data management-tjänster med Microsoft Azure-klientbibliotek för Node.js.</span><span class="sxs-lookup"><span data-stu-id="52d6f-105">In this tutorial, the application you created in the [Node.js Web Application using Express] tutorial is extended using the Microsoft Azure Client Libraries for Node.js to work with data management services.</span></span> <span data-ttu-id="52d6f-106">Du kan utöka ditt program genom att skapa en webbaserad-uppgiftslista program som du kan distribuera till Azure.</span><span class="sxs-lookup"><span data-stu-id="52d6f-106">You extend your application by creating a web-based task-list application that you can deploy to Azure.</span></span> <span data-ttu-id="52d6f-107">Listan kan användaren hämta uppgifter, lägga till nya aktiviteter och markera aktiviteter som slutförda.</span><span class="sxs-lookup"><span data-stu-id="52d6f-107">The task list allows a user to retrieve tasks, add new tasks, and mark tasks as completed.</span></span>
+# <a name="nodejs-web-application-using-storage"></a><span data-ttu-id="b71f4-103">Node.js-Webbapp som använder lagring</span><span class="sxs-lookup"><span data-stu-id="b71f4-103">Node.js Web Application using Storage</span></span>
+## <a name="overview"></a><span data-ttu-id="b71f4-104">Översikt</span><span class="sxs-lookup"><span data-stu-id="b71f4-104">Overview</span></span>
+<span data-ttu-id="b71f4-105">I den här självstudiekursen hello program som du skapade i den [Node.js-Webbapp med hjälp av] kursen utökas med hello Microsoft Azure-klientbibliotek för Node.js toowork med data management-tjänster.</span><span class="sxs-lookup"><span data-stu-id="b71f4-105">In this tutorial, hello application you created in the [Node.js Web Application using Express] tutorial is extended using hello Microsoft Azure Client Libraries for Node.js toowork with data management services.</span></span> <span data-ttu-id="b71f4-106">Du kan utöka ditt program genom att skapa ett webbaserat-uppgiftslista program som du distribuerar tooAzure.</span><span class="sxs-lookup"><span data-stu-id="b71f4-106">You extend your application by creating a web-based task-list application that you can deploy tooAzure.</span></span> <span data-ttu-id="b71f4-107">hello uppgiftslista kan användaren hämta uppgifter, lägga till nya aktiviteter och markera aktiviteter som slutförda.</span><span class="sxs-lookup"><span data-stu-id="b71f4-107">hello task list allows a user to retrieve tasks, add new tasks, and mark tasks as completed.</span></span>
 
-<span data-ttu-id="52d6f-108">Uppgiftsobjekt lagras i Azure Storage.</span><span class="sxs-lookup"><span data-stu-id="52d6f-108">The task items are stored in Azure Storage.</span></span> <span data-ttu-id="52d6f-109">Azure Storage tillhandahåller lagring av Ostrukturerade data som är feltolerant och hög tillgänglighet.</span><span class="sxs-lookup"><span data-stu-id="52d6f-109">Azure Storage provides unstructured data storage that is fault-tolerant and highly available.</span></span> <span data-ttu-id="52d6f-110">Azure Storage innehåller flera datastrukturer där du kan lagra och komma åt data.</span><span class="sxs-lookup"><span data-stu-id="52d6f-110">Azure Storage includes several data structures where you can store and access data.</span></span> <span data-ttu-id="52d6f-111">Du kan använda lagringstjänsterna från API: er som ingår i Azure SDK för Node.js eller via REST API: er.</span><span class="sxs-lookup"><span data-stu-id="52d6f-111">You can use the storage services from the APIs included in the Azure SDK for Node.js or via REST APIs.</span></span> <span data-ttu-id="52d6f-112">Mer information finns i [lagring och åtkomst till Data i Azure].</span><span class="sxs-lookup"><span data-stu-id="52d6f-112">For more information, see [Storing and Accessing Data in Azure].</span></span>
+<span data-ttu-id="b71f4-108">hello uppgiftsobjekt lagras i Azure Storage.</span><span class="sxs-lookup"><span data-stu-id="b71f4-108">hello task items are stored in Azure Storage.</span></span> <span data-ttu-id="b71f4-109">Azure Storage tillhandahåller lagring av Ostrukturerade data som är feltolerant och hög tillgänglighet.</span><span class="sxs-lookup"><span data-stu-id="b71f4-109">Azure Storage provides unstructured data storage that is fault-tolerant and highly available.</span></span> <span data-ttu-id="b71f4-110">Azure Storage innehåller flera datastrukturer där du kan lagra och komma åt data.</span><span class="sxs-lookup"><span data-stu-id="b71f4-110">Azure Storage includes several data structures where you can store and access data.</span></span> <span data-ttu-id="b71f4-111">Du kan använda hello lagringstjänster från hello API: er som ingår i hello Azure SDK för Node.js eller via REST API: er.</span><span class="sxs-lookup"><span data-stu-id="b71f4-111">You can use hello storage services from hello APIs included in hello Azure SDK for Node.js or via REST APIs.</span></span> <span data-ttu-id="b71f4-112">Mer information finns i [lagring och åtkomst till Data i Azure].</span><span class="sxs-lookup"><span data-stu-id="b71f4-112">For more information, see [Storing and Accessing Data in Azure].</span></span>
 
-<span data-ttu-id="52d6f-113">Den här kursen förutsätter att du har slutfört den [Node.js-Webbapp] och [Node.js med snabb][Node.js-Webbapp med hjälp av] självstudier.</span><span class="sxs-lookup"><span data-stu-id="52d6f-113">This tutorial assumes that you have completed the [Node.js Web Application] and [Node.js with Express][Node.js Web Application using Express] tutorials.</span></span>
+<span data-ttu-id="b71f4-113">Den här kursen förutsätter att du har slutfört hello [Node.js-Webbapp] och [Node.js med snabb][Node.js-Webbapp med hjälp av] självstudier.</span><span class="sxs-lookup"><span data-stu-id="b71f4-113">This tutorial assumes that you have completed hello [Node.js Web Application] and [Node.js with Express][Node.js Web Application using Express] tutorials.</span></span>
 
-<span data-ttu-id="52d6f-114">Det innehåller följande information:</span><span class="sxs-lookup"><span data-stu-id="52d6f-114">It contains the following information:</span></span>
+<span data-ttu-id="b71f4-114">Den innehåller hello följande information:</span><span class="sxs-lookup"><span data-stu-id="b71f4-114">It contains hello following information:</span></span>
 
-* <span data-ttu-id="52d6f-115">Hur du arbetar med motorn Jade mall</span><span class="sxs-lookup"><span data-stu-id="52d6f-115">How to work with the Jade template engine</span></span>
-* <span data-ttu-id="52d6f-116">Hur du arbetar med Azure Data Management services</span><span class="sxs-lookup"><span data-stu-id="52d6f-116">How to work with Azure Data Management services</span></span>
+* <span data-ttu-id="b71f4-115">Hur toowork med hello Jade mall-motorn</span><span class="sxs-lookup"><span data-stu-id="b71f4-115">How toowork with hello Jade template engine</span></span>
+* <span data-ttu-id="b71f4-116">Hur toowork med Azure Data Management-tjänster</span><span class="sxs-lookup"><span data-stu-id="b71f4-116">How toowork with Azure Data Management services</span></span>
 
-<span data-ttu-id="52d6f-117">Följande skärmbild visar den färdiga appen:</span><span class="sxs-lookup"><span data-stu-id="52d6f-117">The following screenshot shows the completed application:</span></span>
+<span data-ttu-id="b71f4-117">hello följande skärmbild visar hello slutförts program:</span><span class="sxs-lookup"><span data-stu-id="b71f4-117">hello following screenshot shows hello completed application:</span></span>
 
-![Slutförda webbsida i internet explorer](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
+![hello slutförts webbsida i internet explorer](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
 
-## <a name="setting-storage-credentials-in-webconfig"></a><span data-ttu-id="52d6f-119">Ange autentiseringsuppgifter för lagring i Web.Config</span><span class="sxs-lookup"><span data-stu-id="52d6f-119">Setting Storage Credentials in Web.Config</span></span>
-<span data-ttu-id="52d6f-120">Du måste överföra i lagring autentiseringsuppgifter för åtkomst till Azure Storage.</span><span class="sxs-lookup"><span data-stu-id="52d6f-120">You must pass in storage credentials to access Azure Storage.</span></span> <span data-ttu-id="52d6f-121">Detta görs genom att använda inställningarna för web.config-programmet.</span><span class="sxs-lookup"><span data-stu-id="52d6f-121">This is done by utilizing the web.config application settings.</span></span>
-<span data-ttu-id="52d6f-122">Inställningarna för web.config skickas som miljövariabler till noden, som läses sedan av Azure SDK.</span><span class="sxs-lookup"><span data-stu-id="52d6f-122">The web.config settings are passed as environment variables to Node, which are then read by the Azure SDK.</span></span>
+## <a name="setting-storage-credentials-in-webconfig"></a><span data-ttu-id="b71f4-119">Ange autentiseringsuppgifter för lagring i Web.Config</span><span class="sxs-lookup"><span data-stu-id="b71f4-119">Setting Storage Credentials in Web.Config</span></span>
+<span data-ttu-id="b71f4-120">Du måste överföra i lagring autentiseringsuppgifter tooaccess Azure Storage.</span><span class="sxs-lookup"><span data-stu-id="b71f4-120">You must pass in storage credentials tooaccess Azure Storage.</span></span> <span data-ttu-id="b71f4-121">Detta görs genom att använda hello web.config Programinställningar.</span><span class="sxs-lookup"><span data-stu-id="b71f4-121">This is done by utilizing hello web.config application settings.</span></span>
+<span data-ttu-id="b71f4-122">hello web.config inställningar skickas miljö variabler tooNode som läses sedan av hello Azure SDK.</span><span class="sxs-lookup"><span data-stu-id="b71f4-122">hello web.config settings are passed as environment variables tooNode, which are then read by hello Azure SDK.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="52d6f-123">Lagring autentiseringsuppgifter används bara när programmet distribueras till Azure.</span><span class="sxs-lookup"><span data-stu-id="52d6f-123">Storage credentials are only used when the application is deployed to Azure.</span></span> <span data-ttu-id="52d6f-124">När du kör i emulatorn använder programmet storage-emulatorn.</span><span class="sxs-lookup"><span data-stu-id="52d6f-124">When running in the emulator, the application uses the storage emulator.</span></span>
+> <span data-ttu-id="b71f4-123">Lagring autentiseringsuppgifter används bara när programmet hello är distribuerade tooAzure.</span><span class="sxs-lookup"><span data-stu-id="b71f4-123">Storage credentials are only used when hello application is deployed tooAzure.</span></span> <span data-ttu-id="b71f4-124">När du kör i hello-emulatorn använder hello programmet hello storage-emulatorn.</span><span class="sxs-lookup"><span data-stu-id="b71f4-124">When running in hello emulator, hello application uses hello storage emulator.</span></span>
 >
 >
 
-<span data-ttu-id="52d6f-125">Utför följande steg för att hämta autentiseringsuppgifter för lagringskonto och lägga till dem i web.config-inställningar:</span><span class="sxs-lookup"><span data-stu-id="52d6f-125">Perform the following steps to retrieve the storage account credentials and add them to the web.config settings:</span></span>
+<span data-ttu-id="b71f4-125">Utför följande steg tooretrieve hello lagringskontouppgifter hello och Lägg till dem toohello web.config-inställningar:</span><span class="sxs-lookup"><span data-stu-id="b71f4-125">Perform hello following steps tooretrieve hello storage account credentials and add them toohello web.config settings:</span></span>
 
-1. <span data-ttu-id="52d6f-126">Om den inte redan är öppen start av Azure PowerShell från den **starta** menyn genom att expandera **alla program, Azure**, högerklicka på **Azure PowerShell**, och välj sedan  **Kör som administratör**.</span><span class="sxs-lookup"><span data-stu-id="52d6f-126">If it is not already open, start the Azure PowerShell from the **Start** menu by expanding **All Programs, Azure**, right-click **Azure PowerShell**, and then select **Run As Administrator**.</span></span>
-2. <span data-ttu-id="52d6f-127">Ändra sökvägen till mappen som innehåller programmet.</span><span class="sxs-lookup"><span data-stu-id="52d6f-127">Change directories to the folder containing your application.</span></span> <span data-ttu-id="52d6f-128">Till exempel C:\\nod\\tasklist\\WebRole1.</span><span class="sxs-lookup"><span data-stu-id="52d6f-128">For example, C:\\node\\tasklist\\WebRole1.</span></span>
-3. <span data-ttu-id="52d6f-129">Ange följande cmdlet för att hämta kontoinformationen för lagring i Azure Powershell-fönstret:</span><span class="sxs-lookup"><span data-stu-id="52d6f-129">From the Azure Powershell window, enter the following cmdlet to retrieve the storage account information:</span></span>
+1. <span data-ttu-id="b71f4-126">Om den inte redan är öppen, starta hello Azure PowerShell från hello **starta** menyn genom att expandera **alla program, Azure**, högerklicka på **Azure PowerShell**, och välj sedan  **Kör som administratör**.</span><span class="sxs-lookup"><span data-stu-id="b71f4-126">If it is not already open, start hello Azure PowerShell from hello **Start** menu by expanding **All Programs, Azure**, right-click **Azure PowerShell**, and then select **Run As Administrator**.</span></span>
+2. <span data-ttu-id="b71f4-127">Ändra kataloger toohello mapp som innehåller programmet.</span><span class="sxs-lookup"><span data-stu-id="b71f4-127">Change directories toohello folder containing your application.</span></span> <span data-ttu-id="b71f4-128">Till exempel C:\\nod\\tasklist\\WebRole1.</span><span class="sxs-lookup"><span data-stu-id="b71f4-128">For example, C:\\node\\tasklist\\WebRole1.</span></span>
+3. <span data-ttu-id="b71f4-129">Ange följande cmdlet tooretrieve hello lagring kontoinformation hello från hello Azure Powershell-fönstret:</span><span class="sxs-lookup"><span data-stu-id="b71f4-129">From hello Azure Powershell window, enter hello following cmdlet tooretrieve hello storage account information:</span></span>
 
     ```powershell
     PS C:\node\tasklist\WebRole1> Get-AzureStorageAccounts
     ```
 
-   <span data-ttu-id="52d6f-130">Föregående cmdlet hämtar listan över storage-konton och konto nycklar som hör till din värdbaserade tjänst.</span><span class="sxs-lookup"><span data-stu-id="52d6f-130">The preceding cmdlet retrieves the list of storage accounts and account keys associated with your hosted service.</span></span>
+   <span data-ttu-id="b71f4-130">hello hämtar föregående cmdlet hello lista över storage-konton och nycklar som är associerade med din värdbaserade tjänst.</span><span class="sxs-lookup"><span data-stu-id="b71f4-130">hello preceding cmdlet retrieves hello list of storage accounts and account keys associated with your hosted service.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="52d6f-131">Eftersom Azure SDK om du skapar ett lagringskonto när du distribuerar en tjänst, ska ett lagringskonto redan finnas från att distribuera ditt program i föregående guider.</span><span class="sxs-lookup"><span data-stu-id="52d6f-131">Since the Azure SDK creates a storage account when you deploy a service, a storage account should already exist from deploying your application in the previous guides.</span></span>
+   > <span data-ttu-id="b71f4-131">Eftersom hello Azure SDK om du skapar ett lagringskonto när du distribuerar en tjänst, ska ett lagringskonto redan finnas från att distribuera ditt program i hello tidigare guider.</span><span class="sxs-lookup"><span data-stu-id="b71f4-131">Since hello Azure SDK creates a storage account when you deploy a service, a storage account should already exist from deploying your application in hello previous guides.</span></span>
    >
    >
-4. <span data-ttu-id="52d6f-132">Öppna den **ServiceDefinition.csdef** -fil som innehåller miljöinställningar som används när programmet distribueras till Azure:</span><span class="sxs-lookup"><span data-stu-id="52d6f-132">Open the **ServiceDefinition.csdef** file containing the environment settings that are used when the application is deployed to Azure:</span></span>
+4. <span data-ttu-id="b71f4-132">Öppna hello **ServiceDefinition.csdef** -fil som innehåller hello miljöinställningar som används när programmet hello är distribuerade tooAzure:</span><span class="sxs-lookup"><span data-stu-id="b71f4-132">Open hello **ServiceDefinition.csdef** file containing hello environment settings that are used when hello application is deployed tooAzure:</span></span>
 
     ```powershell
     PS C:\node\tasklist> notepad ServiceDefinition.csdef
     ```
 
-5. <span data-ttu-id="52d6f-133">Infoga följande kodblock under **miljö** element, ersätter {LAGRINGSKONTO} och {LAGRINGSÅTKOMSTNYCKEL} med namnet på kontot och den primära nyckeln för lagringskontot som du vill använda för distribution:</span><span class="sxs-lookup"><span data-stu-id="52d6f-133">Insert the following block under **Environment** element, substituting {STORAGE ACCOUNT} and {STORAGE ACCESS KEY} with the account name and the primary key for the storage account you want to use for deployment:</span></span>
+5. <span data-ttu-id="b71f4-133">Infoga hello följande blockera **miljö** element, ersätter {LAGRINGSKONTO} och {LAGRINGSÅTKOMSTNYCKEL} med hello kontonamn och hello primärnyckeln för hello storage-konto som du vill använda toouse för distributionen:</span><span class="sxs-lookup"><span data-stu-id="b71f4-133">Insert hello following block under **Environment** element, substituting {STORAGE ACCOUNT} and {STORAGE ACCESS KEY} with hello account name and hello primary key for hello storage account you want toouse for deployment:</span></span>
 
   <Variable name="AZURE_STORAGE_ACCOUNT" value="{STORAGE ACCOUNT}" />
   <Variable name="AZURE_STORAGE_ACCESS_KEY" value="{STORAGE ACCESS KEY}" />
 
-   ![Filinnehållet web.cloud.config](./media/table-storage-cloud-service-nodejs/node37.png)
+   ![Hej web.cloud.config filinnehåll](./media/table-storage-cloud-service-nodejs/node37.png)
 
-6. <span data-ttu-id="52d6f-135">Spara filen och stäng Anteckningar.</span><span class="sxs-lookup"><span data-stu-id="52d6f-135">Save the file and close notepad.</span></span>
+6. <span data-ttu-id="b71f4-135">Spara hello-filen och stäng Anteckningar.</span><span class="sxs-lookup"><span data-stu-id="b71f4-135">Save hello file and close notepad.</span></span>
 
-### <a name="install-additional-modules"></a><span data-ttu-id="52d6f-136">Installera ytterligare moduler</span><span class="sxs-lookup"><span data-stu-id="52d6f-136">Install additional modules</span></span>
-1. <span data-ttu-id="52d6f-137">Använd följande kommando för att installera [azure], [nod-uuid] [nconf] och [asynkrona] moduler lokalt samt att spara en post för att den **package.json** fil:</span><span class="sxs-lookup"><span data-stu-id="52d6f-137">Use the following command to install the [azure], [node-uuid], [nconf] and [async] modules locally as well as to save an entry for them to the **package.json** file:</span></span>
+### <a name="install-additional-modules"></a><span data-ttu-id="b71f4-136">Installera ytterligare moduler</span><span class="sxs-lookup"><span data-stu-id="b71f4-136">Install additional modules</span></span>
+1. <span data-ttu-id="b71f4-137">Använd hello efter kommandot tooinstall hello [azure], [nod-uuid], [nconf] och [asynkrona] moduler lokalt samt toosave en post för dem toohello **package.json** fil:</span><span class="sxs-lookup"><span data-stu-id="b71f4-137">Use hello following command tooinstall hello [azure], [node-uuid], [nconf] and [async] modules locally as well as toosave an entry for them toohello **package.json** file:</span></span>
 
   ```powershell
   PS C:\node\tasklist\WebRole1> npm install azure-storage node-uuid async nconf --save
   ```
 
-  <span data-ttu-id="52d6f-138">Kommandots utdata ska se ut ungefär så här:</span><span class="sxs-lookup"><span data-stu-id="52d6f-138">The output of this command should appear similar to the following:</span></span>
+  <span data-ttu-id="b71f4-138">hello utdata från kommandot ska se ut ungefär toohello följande:</span><span class="sxs-lookup"><span data-stu-id="b71f4-138">hello output of this command should appear similar toohello following:</span></span>
 
   ```
   node-uuid@1.4.1 node_modules\node-uuid
@@ -105,13 +105,13 @@ ms.lasthandoff: 08/29/2017
   └── request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
   ```
 
-## <a name="using-the-table-service-in-a-node-application"></a><span data-ttu-id="52d6f-139">Med hjälp av tjänsten tabellen i en node-App</span><span class="sxs-lookup"><span data-stu-id="52d6f-139">Using the Table service in a node application</span></span>
-<span data-ttu-id="52d6f-140">I det här avsnittet grundläggande program som skapats av den **express** kommandot utökas genom att lägga till en **task.js** -fil som innehåller modellen för dina uppgifter.</span><span class="sxs-lookup"><span data-stu-id="52d6f-140">In this section, the basic application created by the **express** command is extended by adding a **task.js** file containing the model for your tasks.</span></span> <span data-ttu-id="52d6f-141">Ändra den befintliga **app.js** filen och skapa en ny **tasklist.js** fil som används i modellen.</span><span class="sxs-lookup"><span data-stu-id="52d6f-141">Modify the existing **app.js** file and create a new **tasklist.js** file that uses the model.</span></span>
+## <a name="using-hello-table-service-in-a-node-application"></a><span data-ttu-id="b71f4-139">Använda hello tabelltjänsten i en node-App</span><span class="sxs-lookup"><span data-stu-id="b71f4-139">Using hello Table service in a node application</span></span>
+<span data-ttu-id="b71f4-140">I det här avsnittet hello grundläggande program som skapats av hello **express** kommandot utökas genom att lägga till en **task.js** -fil som innehåller hello modell för dina uppgifter.</span><span class="sxs-lookup"><span data-stu-id="b71f4-140">In this section, hello basic application created by hello **express** command is extended by adding a **task.js** file containing hello model for your tasks.</span></span> <span data-ttu-id="b71f4-141">Ändra befintliga hello **app.js** filen och skapa en ny **tasklist.js** fil som använder hello modellen.</span><span class="sxs-lookup"><span data-stu-id="b71f4-141">Modify hello existing **app.js** file and create a new **tasklist.js** file that uses hello model.</span></span>
 
-### <a name="create-the-model"></a><span data-ttu-id="52d6f-142">Skapa modellen</span><span class="sxs-lookup"><span data-stu-id="52d6f-142">Create the model</span></span>
-1. <span data-ttu-id="52d6f-143">I den **WebRole1** directory, skapa en ny katalog med namnet **modeller**.</span><span class="sxs-lookup"><span data-stu-id="52d6f-143">In the **WebRole1** directory, create a new directory named **models**.</span></span>
-2. <span data-ttu-id="52d6f-144">I den **modeller** directory, skapa en ny fil med namnet **task.js**.</span><span class="sxs-lookup"><span data-stu-id="52d6f-144">In the **models** directory, create a new file named **task.js**.</span></span> <span data-ttu-id="52d6f-145">Den här filen innehåller modellen för de aktiviteter som skapats av programmet.</span><span class="sxs-lookup"><span data-stu-id="52d6f-145">This file contains the model for the tasks created by your application.</span></span>
-3. <span data-ttu-id="52d6f-146">I början av den **task.js** lägger du till följande kod för att referera till bibliotek som krävs:</span><span class="sxs-lookup"><span data-stu-id="52d6f-146">At the beginning of the **task.js** file, add the following code to reference required libraries:</span></span>
+### <a name="create-hello-model"></a><span data-ttu-id="b71f4-142">Skapa hello modell</span><span class="sxs-lookup"><span data-stu-id="b71f4-142">Create hello model</span></span>
+1. <span data-ttu-id="b71f4-143">I hello **WebRole1** directory, skapa en ny katalog med namnet **modeller**.</span><span class="sxs-lookup"><span data-stu-id="b71f4-143">In hello **WebRole1** directory, create a new directory named **models**.</span></span>
+2. <span data-ttu-id="b71f4-144">I hello **modeller** directory, skapa en ny fil med namnet **task.js**.</span><span class="sxs-lookup"><span data-stu-id="b71f4-144">In hello **models** directory, create a new file named **task.js**.</span></span> <span data-ttu-id="b71f4-145">Den här filen innehåller hello modellen för hello aktiviteter som skapats av programmet.</span><span class="sxs-lookup"><span data-stu-id="b71f4-145">This file contains hello model for hello tasks created by your application.</span></span>
+3. <span data-ttu-id="b71f4-146">Hello början av hello **task.js** lägger du till följande kod tooreference krävs bibliotek hello:</span><span class="sxs-lookup"><span data-stu-id="b71f4-146">At hello beginning of hello **task.js** file, add hello following code tooreference required libraries:</span></span>
 
     ```nodejs
     var azure = require('azure-storage');
@@ -119,7 +119,7 @@ ms.lasthandoff: 08/29/2017
     var entityGen = azure.TableUtilities.entityGenerator;
     ```
 
-4. <span data-ttu-id="52d6f-147">Lägg till kod för att definiera och exportera aktivitetsobjektet.</span><span class="sxs-lookup"><span data-stu-id="52d6f-147">Next, add code to define and export the Task object.</span></span> <span data-ttu-id="52d6f-148">Aktivitetsobjektet ansvarar för att ansluta till tabellen.</span><span class="sxs-lookup"><span data-stu-id="52d6f-148">The Task object is responsible for connecting to the table.</span></span>
+4. <span data-ttu-id="b71f4-147">Sedan lägger du till kod toodefine och exportera hello Task-objekt.</span><span class="sxs-lookup"><span data-stu-id="b71f4-147">Next, add code toodefine and export hello Task object.</span></span> <span data-ttu-id="b71f4-148">hello aktivitetsobjektet ansvarar för att ansluta toohello tabell.</span><span class="sxs-lookup"><span data-stu-id="b71f4-148">hello Task object is responsible for connecting toohello table.</span></span>
 
     ```nodejs
     module.exports = Task;
@@ -136,7 +136,7 @@ ms.lasthandoff: 08/29/2017
     };
     ```
 
-5. <span data-ttu-id="52d6f-149">Lägg till följande kod för att definiera ytterligare metoder för aktivitetsobjektet som tillåter samverkan med data som lagras i tabellen:</span><span class="sxs-lookup"><span data-stu-id="52d6f-149">Next, add the following code to define additional methods on the Task object, which allow interactions with data stored in the table:</span></span>
+5. <span data-ttu-id="b71f4-149">Lägg till hello följande kod toodefine fler metoder på hello aktivitetsobjektet som tillåter samverkan med data som lagras i tabellen hello:</span><span class="sxs-lookup"><span data-stu-id="b71f4-149">Next, add hello following code toodefine additional methods on hello Task object, which allow interactions with data stored in hello table:</span></span>
 
     ```nodejs
     Task.prototype = {
@@ -153,7 +153,7 @@ ms.lasthandoff: 08/29/2017
 
       addItem: function(item, callback) {
         self = this;
-        // use entityGenerator to set types
+        // use entityGenerator tooset types
         // NOTE: RowKey must be a string type, even though
         // it contains a GUID in this example.
         var itemDescriptor = {
@@ -190,11 +190,11 @@ ms.lasthandoff: 08/29/2017
     }
     ```
 
-6. <span data-ttu-id="52d6f-150">Spara och Stäng den **task.js** fil.</span><span class="sxs-lookup"><span data-stu-id="52d6f-150">Save and close the **task.js** file.</span></span>
+6. <span data-ttu-id="b71f4-150">Spara och Stäng hello **task.js** fil.</span><span class="sxs-lookup"><span data-stu-id="b71f4-150">Save and close hello **task.js** file.</span></span>
 
-### <a name="create-the-controller"></a><span data-ttu-id="52d6f-151">Skapa styrningen</span><span class="sxs-lookup"><span data-stu-id="52d6f-151">Create the controller</span></span>
-1. <span data-ttu-id="52d6f-152">I den **WebRole1/vägar** directory, skapa en ny fil med namnet **tasklist.js** och öppna den i en textredigerare.</span><span class="sxs-lookup"><span data-stu-id="52d6f-152">In the **WebRole1/routes** directory, create a new file named **tasklist.js** and open it in a text editor.</span></span>
-2. <span data-ttu-id="52d6f-153">Lägg till följande kod i **tasklist.js**.</span><span class="sxs-lookup"><span data-stu-id="52d6f-153">Add the following code to **tasklist.js**.</span></span> <span data-ttu-id="52d6f-154">Den här koden läser in i azure och async-moduler som används av **tasklist.js** och definierar de **TaskList** funktion, som mottar en instans av den **aktivitet** objekt vi definierade tidigare:</span><span class="sxs-lookup"><span data-stu-id="52d6f-154">This code loads the azure and async modules, which are used by **tasklist.js** and defines the **TaskList** function, which is passed an instance of the **Task** object we defined earlier:</span></span>
+### <a name="create-hello-controller"></a><span data-ttu-id="b71f4-151">Skapa hello-styrenhet</span><span class="sxs-lookup"><span data-stu-id="b71f4-151">Create hello controller</span></span>
+1. <span data-ttu-id="b71f4-152">I hello **WebRole1/vägar** directory, skapa en ny fil med namnet **tasklist.js** och öppna den i en textredigerare.</span><span class="sxs-lookup"><span data-stu-id="b71f4-152">In hello **WebRole1/routes** directory, create a new file named **tasklist.js** and open it in a text editor.</span></span>
+2. <span data-ttu-id="b71f4-153">Lägg till följande kod för hello**tasklist.js**.</span><span class="sxs-lookup"><span data-stu-id="b71f4-153">Add hello following code too**tasklist.js**.</span></span> <span data-ttu-id="b71f4-154">Den här koden läser in hello azure och async-moduler som används av **tasklist.js** och definierar hello **TaskList** funktion, som mottar en instans av hello **aktivitet** objekt vi definierade tidigare:</span><span class="sxs-lookup"><span data-stu-id="b71f4-154">This code loads hello azure and async modules, which are used by **tasklist.js** and defines hello **TaskList** function, which is passed an instance of hello **Task** object we defined earlier:</span></span>
 
     ```nodejs
     var azure = require('azure-storage');
@@ -207,7 +207,7 @@ ms.lasthandoff: 08/29/2017
     }
     ```
 
-3. <span data-ttu-id="52d6f-155">Fortsätta att lägga till den **tasklist.js** filen genom att lägga till de metoder som används för att **showTasks**, **addTask**, och **completeTasks**:</span><span class="sxs-lookup"><span data-stu-id="52d6f-155">Continue adding to the **tasklist.js** file by adding the methods used to **showTasks**, **addTask**, and **completeTasks**:</span></span>
+3. <span data-ttu-id="b71f4-155">Fortsätt att lägga till toohello **tasklist.js** filen genom att lägga till hello-metoder som används för**showTasks**, **addTask**, och **completeTasks**:</span><span class="sxs-lookup"><span data-stu-id="b71f4-155">Continue adding toohello **tasklist.js** file by adding hello methods used too**showTasks**, **addTask**, and **completeTasks**:</span></span>
 
     ```nodejs
     TaskList.prototype = {
@@ -253,11 +253,11 @@ ms.lasthandoff: 08/29/2017
     }
     ```
 
-4. <span data-ttu-id="52d6f-156">Spara den **tasklist.js** fil.</span><span class="sxs-lookup"><span data-stu-id="52d6f-156">Save the **tasklist.js** file.</span></span>
+4. <span data-ttu-id="b71f4-156">Spara hello **tasklist.js** fil.</span><span class="sxs-lookup"><span data-stu-id="b71f4-156">Save hello **tasklist.js** file.</span></span>
 
-### <a name="modify-appjs"></a><span data-ttu-id="52d6f-157">Ändra app.js</span><span class="sxs-lookup"><span data-stu-id="52d6f-157">Modify app.js</span></span>
-1. <span data-ttu-id="52d6f-158">I den **WebRole1** katalog, öppna den **app.js** i en textredigerare.</span><span class="sxs-lookup"><span data-stu-id="52d6f-158">In the **WebRole1** directory, open the **app.js** file in a text editor.</span></span>
-2. <span data-ttu-id="52d6f-159">Lägg till följande för att läsa in modulen för azure och ange namn och partition tabellnyckel i början av filen:</span><span class="sxs-lookup"><span data-stu-id="52d6f-159">At the beginning of the file, add the following to load the azure module and set the table name and partition key:</span></span>
+### <a name="modify-appjs"></a><span data-ttu-id="b71f4-157">Ändra app.js</span><span class="sxs-lookup"><span data-stu-id="b71f4-157">Modify app.js</span></span>
+1. <span data-ttu-id="b71f4-158">I hello **WebRole1** katalog, öppna hello **app.js** i en textredigerare.</span><span class="sxs-lookup"><span data-stu-id="b71f4-158">In hello **WebRole1** directory, open hello **app.js** file in a text editor.</span></span>
+2. <span data-ttu-id="b71f4-159">Lägg till hello följande tooload hello azure modulen hello början av hello-filen, och ange hello namn och partition tabellnyckel:</span><span class="sxs-lookup"><span data-stu-id="b71f4-159">At hello beginning of hello file, add hello following tooload hello azure module and set hello table name and partition key:</span></span>
 
     ```nodejs
     var azure = require('azure-storage');
@@ -265,14 +265,14 @@ ms.lasthandoff: 08/29/2017
     var partitionKey = 'hometasks';
     ```
 
-3. <span data-ttu-id="52d6f-160">Rulla ned till där du ser följande rad i filen app.js:</span><span class="sxs-lookup"><span data-stu-id="52d6f-160">In the app.js file, scroll down to where you see the following line:</span></span>
+3. <span data-ttu-id="b71f4-160">Rulla ned toowhere som du ser i filen app.js hello hello följande rad:</span><span class="sxs-lookup"><span data-stu-id="b71f4-160">In hello app.js file, scroll down toowhere you see hello following line:</span></span>
 
     ```nodejs
     app.use('/', routes);
     app.use('/users', users);
     ```
 
-    <span data-ttu-id="52d6f-161">Ersätt de föregående raderna med följande kod.</span><span class="sxs-lookup"><span data-stu-id="52d6f-161">Replace the preceding lines with the following code.</span></span> <span data-ttu-id="52d6f-162">Den här koden initierar en instans av <strong>aktivitet</strong> med en anslutning till ditt lagringskonto.</span><span class="sxs-lookup"><span data-stu-id="52d6f-162">This code initializes an instance of <strong>Task</strong> with a connection to your storage account.</span></span> <span data-ttu-id="52d6f-163">Den <strong>aktivitet</strong> har överförts till den <strong>TaskList</strong>, som används för att kommunicera med tjänsten tabell:</span><span class="sxs-lookup"><span data-stu-id="52d6f-163">The <strong>Task</strong> is passed to the <strong>TaskList</strong>, which uses it to communicate with the Table service:</span></span>
+    <span data-ttu-id="b71f4-161">Ersätt hello föregående rader med hello följande kod.</span><span class="sxs-lookup"><span data-stu-id="b71f4-161">Replace hello preceding lines with hello following code.</span></span> <span data-ttu-id="b71f4-162">Den här koden initierar en instans av <strong>aktivitet</strong> med en anslutning tooyour storage-konto.</span><span class="sxs-lookup"><span data-stu-id="b71f4-162">This code initializes an instance of <strong>Task</strong> with a connection tooyour storage account.</span></span> <span data-ttu-id="b71f4-163">Hej <strong>aktivitet</strong> skickas toohello <strong>TaskList</strong>, som använder den toocommunicate med hello tabelltjänsten:</span><span class="sxs-lookup"><span data-stu-id="b71f4-163">hello <strong>Task</strong> is passed toohello <strong>TaskList</strong>, which uses it toocommunicate with hello Table service:</span></span>
 
     ```nodejs
     var TaskList = require('./routes/tasklist');
@@ -285,11 +285,11 @@ ms.lasthandoff: 08/29/2017
     app.post('/completetask', taskList.completeTask.bind(taskList));
     ```
 
-4. <span data-ttu-id="52d6f-164">Spara den **app.js** fil.</span><span class="sxs-lookup"><span data-stu-id="52d6f-164">Save the **app.js** file.</span></span>
+4. <span data-ttu-id="b71f4-164">Spara hello **app.js** fil.</span><span class="sxs-lookup"><span data-stu-id="b71f4-164">Save hello **app.js** file.</span></span>
 
-### <a name="modify-the-index-view"></a><span data-ttu-id="52d6f-165">Ändra indexvyn</span><span class="sxs-lookup"><span data-stu-id="52d6f-165">Modify the index view</span></span>
-1. <span data-ttu-id="52d6f-166">Ändra sökvägen till den **vyer** katalog och öppna den **index.jade** i en textredigerare.</span><span class="sxs-lookup"><span data-stu-id="52d6f-166">Change directories to the **views** directory and open the **index.jade** file in a text editor.</span></span>
-2. <span data-ttu-id="52d6f-167">Ersätt innehållet i den **index.jade** med följande kod.</span><span class="sxs-lookup"><span data-stu-id="52d6f-167">Replace the contents of the **index.jade** file with the following code.</span></span> <span data-ttu-id="52d6f-168">Den här koden definierar vyn för att visa befintliga aktiviteter och definierar ett formulär för att lägga till nya aktiviteter och markera befintliga som slutförts.</span><span class="sxs-lookup"><span data-stu-id="52d6f-168">This code defines the view for displaying existing tasks, and defines a form for adding new tasks and marking existing ones as completed.</span></span>
+### <a name="modify-hello-index-view"></a><span data-ttu-id="b71f4-165">Ändra hello indexvy</span><span class="sxs-lookup"><span data-stu-id="b71f4-165">Modify hello index view</span></span>
+1. <span data-ttu-id="b71f4-166">Ändra kataloger toohello **vyer** katalog och öppna hello **index.jade** i en textredigerare.</span><span class="sxs-lookup"><span data-stu-id="b71f4-166">Change directories toohello **views** directory and open hello **index.jade** file in a text editor.</span></span>
+2. <span data-ttu-id="b71f4-167">Ersätt hello innehållet i hello **index.jade** fil med hello följande kod.</span><span class="sxs-lookup"><span data-stu-id="b71f4-167">Replace hello contents of hello **index.jade** file with hello following code.</span></span> <span data-ttu-id="b71f4-168">Den här koden definierar hello vy för visning av befintliga aktiviteter och definierar ett formulär för att lägga till nya aktiviteter och markera befintliga som slutförts.</span><span class="sxs-lookup"><span data-stu-id="b71f4-168">This code defines hello view for displaying existing tasks, and defines a form for adding new tasks and marking existing ones as completed.</span></span>
 
     ```
     extends layout
@@ -330,50 +330,50 @@ ms.lasthandoff: 08/29/2017
         button.btn(type="submit") Add item
     ```
 
-3. <span data-ttu-id="52d6f-169">Spara och Stäng **index.jade** fil.</span><span class="sxs-lookup"><span data-stu-id="52d6f-169">Save and close **index.jade** file.</span></span>
+3. <span data-ttu-id="b71f4-169">Spara och Stäng **index.jade** fil.</span><span class="sxs-lookup"><span data-stu-id="b71f4-169">Save and close **index.jade** file.</span></span>
 
-### <a name="modify-the-global-layout"></a><span data-ttu-id="52d6f-170">Ändra globala layouten</span><span class="sxs-lookup"><span data-stu-id="52d6f-170">Modify the global layout</span></span>
-<span data-ttu-id="52d6f-171">Filen **layout.jade** i katalogen **views** används som en global mall för andra **.jade**-filer.</span><span class="sxs-lookup"><span data-stu-id="52d6f-171">The **layout.jade** file in the **views** directory is used as a global template for other **.jade** files.</span></span> <span data-ttu-id="52d6f-172">I det här steget kan du ändra den **layout.jade** fil som ska användas [Twitter Bootstrap](https://github.com/twbs/bootstrap), vilket är en verktygslåda som gör det enkelt att utforma en snygg webbplats.</span><span class="sxs-lookup"><span data-stu-id="52d6f-172">In this step, modify the **layout.jade** file to use [Twitter Bootstrap](https://github.com/twbs/bootstrap), which is a toolkit that makes it easy to design a nice looking website.</span></span>
+### <a name="modify-hello-global-layout"></a><span data-ttu-id="b71f4-170">Ändra hello globala layout</span><span class="sxs-lookup"><span data-stu-id="b71f4-170">Modify hello global layout</span></span>
+<span data-ttu-id="b71f4-171">Hej **layout.jade** filen i hello **vyer** directory används som en global mall för andra **.jade** filer.</span><span class="sxs-lookup"><span data-stu-id="b71f4-171">hello **layout.jade** file in hello **views** directory is used as a global template for other **.jade** files.</span></span> <span data-ttu-id="b71f4-172">I det här steget ändrar hello **layout.jade** filen toouse [Twitter Bootstrap](https://github.com/twbs/bootstrap), vilket är en verktygslåda som gör det enkelt toodesign en snygg webbplats.</span><span class="sxs-lookup"><span data-stu-id="b71f4-172">In this step, modify hello **layout.jade** file toouse [Twitter Bootstrap](https://github.com/twbs/bootstrap), which is a toolkit that makes it easy toodesign a nice looking website.</span></span>
 
-1. <span data-ttu-id="52d6f-173">Ladda ned och extrahera filerna för [Twitter Bootstrap](http://getbootstrap.com/).</span><span class="sxs-lookup"><span data-stu-id="52d6f-173">Download and extract the files for [Twitter Bootstrap](http://getbootstrap.com/).</span></span> <span data-ttu-id="52d6f-174">Kopiera den **bootstrap.min.css** filen från den **bootstrap\\dist\\css** mappen till den **offentliga\\matmallar** katalogen för tillämpningsprogrammet tasklist.</span><span class="sxs-lookup"><span data-stu-id="52d6f-174">Copy the **bootstrap.min.css** file from the **bootstrap\\dist\\css** folder to the **public\\stylesheets** directory of your tasklist application.</span></span>
-2. <span data-ttu-id="52d6f-175">Från den **vyer** mapp, öppna den **layout.jade** filen i en textredigerare och Ersätt innehållet med följande:</span><span class="sxs-lookup"><span data-stu-id="52d6f-175">From the **views** folder, open the **layout.jade** file in your text editor and replace the contents with the following:</span></span>
+1. <span data-ttu-id="b71f4-173">Ladda ned och extrahera hello filer för [Twitter Bootstrap](http://getbootstrap.com/).</span><span class="sxs-lookup"><span data-stu-id="b71f4-173">Download and extract hello files for [Twitter Bootstrap](http://getbootstrap.com/).</span></span> <span data-ttu-id="b71f4-174">Kopiera hello **bootstrap.min.css** filen från hello **bootstrap\\dist\\css** mappen toohello **offentliga\\matmallar** katalogen för tillämpningsprogrammet tasklist.</span><span class="sxs-lookup"><span data-stu-id="b71f4-174">Copy hello **bootstrap.min.css** file from hello **bootstrap\\dist\\css** folder toohello **public\\stylesheets** directory of your tasklist application.</span></span>
+2. <span data-ttu-id="b71f4-175">Från hello **vyer** mapp, öppna hello **layout.jade** filen i en textredigerare och Ersätt hello innehållet med hello följande:</span><span class="sxs-lookup"><span data-stu-id="b71f4-175">From hello **views** folder, open hello **layout.jade** file in your text editor and replace hello contents with hello following:</span></span>
 
-    <span data-ttu-id="52d6f-176">doctype html html head rubrik = Rubriklänk (rel = 'stylesheet', href='/stylesheets/bootstrap.min.css') länk (rel = 'stylesheet', href='/stylesheets/style.css') body.app nav.navbar.navbar standard div.navbar huvud a.navbar-brand(href='/') min  Uppgifter blockera innehåll</span><span class="sxs-lookup"><span data-stu-id="52d6f-176">doctype html  html    head      title= title      link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')      link(rel='stylesheet', href='/stylesheets/style.css')    body.app      nav.navbar.navbar-default        div.navbar-header          a.navbar-brand(href='/') My Tasks      block content</span></span>
+    <span data-ttu-id="b71f4-176">doctype html html head rubrik = Rubriklänk (rel = 'stylesheet', href='/stylesheets/bootstrap.min.css') länk (rel = 'stylesheet', href='/stylesheets/style.css') body.app nav.navbar.navbar standard div.navbar huvud a.navbar-brand(href='/') min  Uppgifter blockera innehåll</span><span class="sxs-lookup"><span data-stu-id="b71f4-176">doctype html  html    head      title= title      link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')      link(rel='stylesheet', href='/stylesheets/style.css')    body.app      nav.navbar.navbar-default        div.navbar-header          a.navbar-brand(href='/') My Tasks      block content</span></span>
 
-3. <span data-ttu-id="52d6f-177">Spara den **layout.jade** fil.</span><span class="sxs-lookup"><span data-stu-id="52d6f-177">Save the **layout.jade** file.</span></span>
+3. <span data-ttu-id="b71f4-177">Spara hello **layout.jade** fil.</span><span class="sxs-lookup"><span data-stu-id="b71f4-177">Save hello **layout.jade** file.</span></span>
 
-### <a name="running-the-application-in-the-emulator"></a><span data-ttu-id="52d6f-178">Kör programmet i emulatorn</span><span class="sxs-lookup"><span data-stu-id="52d6f-178">Running the Application in the Emulator</span></span>
-<span data-ttu-id="52d6f-179">Använd följande kommando för att starta programmet i emulatorn.</span><span class="sxs-lookup"><span data-stu-id="52d6f-179">Use the following command to start the application in the emulator.</span></span>
+### <a name="running-hello-application-in-hello-emulator"></a><span data-ttu-id="b71f4-178">Kör hello programmet hello emulatorn</span><span class="sxs-lookup"><span data-stu-id="b71f4-178">Running hello Application in hello Emulator</span></span>
+<span data-ttu-id="b71f4-179">Använd hello följande kommando toostart hello program i hello-emulatorn.</span><span class="sxs-lookup"><span data-stu-id="b71f4-179">Use hello following command toostart hello application in hello emulator.</span></span>
 
 ```powershell
 PS C:\node\tasklist\WebRole1> start-azureemulator -launch
 ```
 
-<span data-ttu-id="52d6f-180">Webbläsaren öppnas och visar följande sida:</span><span class="sxs-lookup"><span data-stu-id="52d6f-180">The browser opens and displays the following page:</span></span>
+<span data-ttu-id="b71f4-180">hello webbläsaren öppnas och visar hello följande sida:</span><span class="sxs-lookup"><span data-stu-id="b71f4-180">hello browser opens and displays hello following page:</span></span>
 
-![En webbplats som växlingsbart systemminne med titeln uppgiftslistan med en tabell som innehåller uppgifter och för att lägga till en ny uppgift.](./media/table-storage-cloud-service-nodejs/node44.png)
+![En webbplats som växlingsbart systemminne heter uppgiftslistan med en tabell som innehåller uppgifter och fält tooadd en ny uppgift.](./media/table-storage-cloud-service-nodejs/node44.png)
 
-<span data-ttu-id="52d6f-182">Använd formuläret för att lägga till objekt eller ta bort befintliga objekt genom att markera dem som slutförda.</span><span class="sxs-lookup"><span data-stu-id="52d6f-182">Use the form to add items, or remove existing items by marking them as completed.</span></span>
+<span data-ttu-id="b71f4-182">Använd hello formuläret tooadd objekt eller ta bort befintliga objekt genom att markera dem som slutförda.</span><span class="sxs-lookup"><span data-stu-id="b71f4-182">Use hello form tooadd items, or remove existing items by marking them as completed.</span></span>
 
-## <a name="publishing-the-application-to-azure"></a><span data-ttu-id="52d6f-183">Publicera program till Azure</span><span class="sxs-lookup"><span data-stu-id="52d6f-183">Publishing the Application to Azure</span></span>
-<span data-ttu-id="52d6f-184">Anropa följande cmdlet om du vill distribuera dina värdbaserade tjänsten till Azure i Windows PowerShell-fönstret.</span><span class="sxs-lookup"><span data-stu-id="52d6f-184">In the Windows PowerShell window, call the following cmdlet to redeploy your hosted service to Azure.</span></span>
+## <a name="publishing-hello-application-tooazure"></a><span data-ttu-id="b71f4-183">Publishing hello programmet tooAzure</span><span class="sxs-lookup"><span data-stu-id="b71f4-183">Publishing hello Application tooAzure</span></span>
+<span data-ttu-id="b71f4-184">Anropa hello följande cmdlet tooredeploy värdtjänsten-tooAzure i hello Windows PowerShell-fönster.</span><span class="sxs-lookup"><span data-stu-id="b71f4-184">In hello Windows PowerShell window, call hello following cmdlet tooredeploy your hosted service tooAzure.</span></span>
 
 ```powershell
 PS C:\node\tasklist\WebRole1> Publish-AzureServiceProject -name myuniquename -location datacentername -launch
 ```
 
-<span data-ttu-id="52d6f-185">Ersätt **myuniquename** med ett unikt namn för det här programmet.</span><span class="sxs-lookup"><span data-stu-id="52d6f-185">Replace **myuniquename** with a unique name for this application.</span></span> <span data-ttu-id="52d6f-186">Ersätt **datacentername** med namnet på ett Azure-datacenter som **västra USA**.</span><span class="sxs-lookup"><span data-stu-id="52d6f-186">Replace **datacentername** with the name of an Azure data center, such as **West US**.</span></span>
+<span data-ttu-id="b71f4-185">Ersätt **myuniquename** med ett unikt namn för det här programmet.</span><span class="sxs-lookup"><span data-stu-id="b71f4-185">Replace **myuniquename** with a unique name for this application.</span></span> <span data-ttu-id="b71f4-186">Ersätt **datacentername** med hello namnet på ett Azure-datacenter som **västra USA**.</span><span class="sxs-lookup"><span data-stu-id="b71f4-186">Replace **datacentername** with hello name of an Azure data center, such as **West US**.</span></span>
 
-<span data-ttu-id="52d6f-187">När distributionen är klar bör du se ett svar som liknar följande:</span><span class="sxs-lookup"><span data-stu-id="52d6f-187">After the deployment is complete, you should see a response similar to the following:</span></span>
+<span data-ttu-id="b71f4-187">När hello distributionen är klar, bör du se ett svar liknande toohello följande:</span><span class="sxs-lookup"><span data-stu-id="b71f4-187">After hello deployment is complete, you should see a response similar toohello following:</span></span>
 
 ```
   PS C:\node\tasklist> publish-azureserviceproject -servicename tasklist -location "West US"
-  WARNING: Publishing tasklist to Microsoft Azure. This may take several minutes...
+  WARNING: Publishing tasklist tooMicrosoft Azure. This may take several minutes...
   WARNING: 2:18:42 PM - Preparing runtime deployment for service 'tasklist'
   WARNING: 2:18:42 PM - Verifying storage account 'tasklist'...
   WARNING: 2:18:43 PM - Preparing deployment for tasklist with Subscription ID: 65a1016d-0f67-45d2-b838-b8f373d6d52e...
   WARNING: 2:19:01 PM - Connecting...
-  WARNING: 2:19:02 PM - Uploading Package to storage service larrystore...
+  WARNING: 2:19:02 PM - Uploading Package toostorage service larrystore...
   WARNING: 2:19:40 PM - Upgrading...
   WARNING: 2:22:48 PM - Created Deployment ID: b7134ab29b1249ff84ada2bd157f296a.
   WARNING: 2:22:48 PM - Initializing...
@@ -381,35 +381,35 @@ PS C:\node\tasklist\WebRole1> Publish-AzureServiceProject -name myuniquename -lo
   WARNING: 2:22:50 PM - Created Website URL: http://tasklist.cloudapp.net/.
 ```
 
-<span data-ttu-id="52d6f-188">Genom att ange den **-starta** alternativ i föregående cmdlet webbläsaren öppnas och visar programmet körs i Azure när publiceringen är klar.</span><span class="sxs-lookup"><span data-stu-id="52d6f-188">By specifying the **-launch** option in the previous cmdlet, the browser opens and displays your application running in Azure when publishing is completed.</span></span>
+<span data-ttu-id="b71f4-188">Genom att ange hello **-starta** alternativet i hello tidigare cmdleten hello webbläsaren öppnas och visar programmet körs i Azure när publiceringen är klar.</span><span class="sxs-lookup"><span data-stu-id="b71f4-188">By specifying hello **-launch** option in hello previous cmdlet, hello browser opens and displays your application running in Azure when publishing is completed.</span></span>
 
-![Ett webbläsarfönster som visar sidan uppgiftslistan.](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
+![Ett webbläsarfönster som visar hello uppgiftslistan sidan.](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
 
-## <a name="stopping-and-deleting-your-application"></a><span data-ttu-id="52d6f-191">Stoppa och ta bort programmet</span><span class="sxs-lookup"><span data-stu-id="52d6f-191">Stopping and Deleting Your Application</span></span>
-<span data-ttu-id="52d6f-192">När du distribuerar ditt program, kan du vill inaktivera den så att du kan undvika kostnader eller skapa och distribuera andra program inom den kostnadsfria utvärderingsversionen tidsperioden.</span><span class="sxs-lookup"><span data-stu-id="52d6f-192">After deploying your application, you may want to disable it so you can avoid costs or build and deploy other applications within the free trial time period.</span></span>
+## <a name="stopping-and-deleting-your-application"></a><span data-ttu-id="b71f4-191">Stoppa och ta bort programmet</span><span class="sxs-lookup"><span data-stu-id="b71f4-191">Stopping and Deleting Your Application</span></span>
+<span data-ttu-id="b71f4-192">Du kanske vill toodisable den så att du kan undvika kostnader eller skapa och distribuera andra program inom hello kostnadsfri utvärderingsversion tidsperiod när du distribuerar ditt program.</span><span class="sxs-lookup"><span data-stu-id="b71f4-192">After deploying your application, you may want toodisable it so you can avoid costs or build and deploy other applications within hello free trial time period.</span></span>
 
-<span data-ttu-id="52d6f-193">Azure fakturerar webbrollsinstanser per timme förbrukad servertid.</span><span class="sxs-lookup"><span data-stu-id="52d6f-193">Azure bills web role instances per hour of server time consumed.</span></span>
-<span data-ttu-id="52d6f-194">Servertid förbrukas när programmet har distribuerats, även om instanserna inte körs och är i stoppat tillstånd.</span><span class="sxs-lookup"><span data-stu-id="52d6f-194">Server time is consumed once your application is deployed, even if the instances are not running and are in the stopped state.</span></span>
+<span data-ttu-id="b71f4-193">Azure fakturerar webbrollsinstanser per timme förbrukad servertid.</span><span class="sxs-lookup"><span data-stu-id="b71f4-193">Azure bills web role instances per hour of server time consumed.</span></span>
+<span data-ttu-id="b71f4-194">Servertid förbrukas när programmet har distribuerats, även om instanserna inte körs och är i hello stoppats tillstånd.</span><span class="sxs-lookup"><span data-stu-id="b71f4-194">Server time is consumed once your application is deployed, even if the instances are not running and are in hello stopped state.</span></span>
 
-<span data-ttu-id="52d6f-195">Följande steg visar hur du stoppar och ta bort programmet.</span><span class="sxs-lookup"><span data-stu-id="52d6f-195">The following steps show you how to stop and delete your application.</span></span>
+<span data-ttu-id="b71f4-195">hello följande steg visar hur toostop och ta bort programmet.</span><span class="sxs-lookup"><span data-stu-id="b71f4-195">hello following steps show you how toostop and delete your application.</span></span>
 
-1. <span data-ttu-id="52d6f-196">Stoppa tjänstdistributionen som skapades i föregående avsnitt med följande cmdlet i Windows PowerShell-fönstret:</span><span class="sxs-lookup"><span data-stu-id="52d6f-196">In the Windows PowerShell window, stop the service deployment created in the previous section with the following cmdlet:</span></span>
+1. <span data-ttu-id="b71f4-196">Stoppa hello tjänstdistributionen som skapades i föregående avsnitt i hello med hello följande cmdlet i Windows PowerShell-fönstret hello:</span><span class="sxs-lookup"><span data-stu-id="b71f4-196">In hello Windows PowerShell window, stop hello service deployment created in hello previous section with hello following cmdlet:</span></span>
 
     ```powershell
     PS C:\node\tasklist\WebRole1> Stop-AzureService
     ```
 
-   <span data-ttu-id="52d6f-197">Det kan ta flera minuter att stoppa tjänsten.</span><span class="sxs-lookup"><span data-stu-id="52d6f-197">Stopping the service may take several minutes.</span></span> <span data-ttu-id="52d6f-198">När tjänsten har stoppats får du ett meddelande som anger att den har stoppats.</span><span class="sxs-lookup"><span data-stu-id="52d6f-198">When the service is stopped, you receive a message indicating that it has stopped.</span></span>
+   <span data-ttu-id="b71f4-197">Hello-tjänsten stoppas kan det ta flera minuter.</span><span class="sxs-lookup"><span data-stu-id="b71f4-197">Stopping hello service may take several minutes.</span></span> <span data-ttu-id="b71f4-198">När hello har stoppats, kan du få ett meddelande som anger att den har stoppats.</span><span class="sxs-lookup"><span data-stu-id="b71f4-198">When hello service is stopped, you receive a message indicating that it has stopped.</span></span>
 
-2. <span data-ttu-id="52d6f-199">Ta bort tjänsten genom att anropa följande cmdlet:</span><span class="sxs-lookup"><span data-stu-id="52d6f-199">To delete the service, call the following cmdlet:</span></span>
+2. <span data-ttu-id="b71f4-199">toodelete hello service, anrop hello följande cmdlet:</span><span class="sxs-lookup"><span data-stu-id="b71f4-199">toodelete hello service, call hello following cmdlet:</span></span>
 
     ```powershell
     PS C:\node\tasklist\WebRole1> Remove-AzureService contosotasklist
     ```
 
-   <span data-ttu-id="52d6f-200">När du uppmanas, anger du **Y** för att ta bort tjänsten.</span><span class="sxs-lookup"><span data-stu-id="52d6f-200">When prompted, enter **Y** to delete the service.</span></span>
+   <span data-ttu-id="b71f4-200">När du uppmanas, anger **Y** toodelete hello-tjänsten.</span><span class="sxs-lookup"><span data-stu-id="b71f4-200">When prompted, enter **Y** toodelete hello service.</span></span>
 
-   <span data-ttu-id="52d6f-201">Det kan ta flera minuter att ta bort tjänsten.</span><span class="sxs-lookup"><span data-stu-id="52d6f-201">Deleting the service may take several minutes.</span></span> <span data-ttu-id="52d6f-202">När tjänsten har tagits bort, visas ett meddelande som anger att tjänsten har tagits bort.</span><span class="sxs-lookup"><span data-stu-id="52d6f-202">After the service is deleted, you will receive a message indicating that the service was deleted.</span></span>
+   <span data-ttu-id="b71f4-201">Om du tar bort hello service kan ta några minuter.</span><span class="sxs-lookup"><span data-stu-id="b71f4-201">Deleting hello service may take several minutes.</span></span> <span data-ttu-id="b71f4-202">När hello-tjänsten har tagits bort, visas ett meddelande som anger att hello-tjänsten har tagits bort.</span><span class="sxs-lookup"><span data-stu-id="b71f4-202">After hello service is deleted, you will receive a message indicating that hello service was deleted.</span></span>
 
 [Node.js-Webbapp med hjälp av]: http://azure.microsoft.com/develop/nodejs/tutorials/web-app-with-express/
 [lagring och åtkomst till Data i Azure]: http://msdn.microsoft.com/library/azure/gg433040.aspx

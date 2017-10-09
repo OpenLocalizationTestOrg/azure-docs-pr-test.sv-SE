@@ -1,6 +1,6 @@
 ---
-title: Azure Billing Enterprise API - Prisdokument | Microsoft Docs
-description: "Läs mer om Reporting API: erna som gör att företag Azure-kunder att dra förbrukningsdata programmässigt."
+title: aaaAzure fakturering Enterprise API - Prisdokument | Microsoft Docs
+description: "Läs mer om hello Reporting-API: er som gör att Azure Enterprise-kunder toopull förbrukningsdata programmässigt."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 2e7d6e883abe4cee13bc5f684baf2a1ea9c6c397
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4cfe694c63fba266d117054b046d9caacb3b7197
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="reporting-apis-for-enterprise-customers---price-sheet"></a><span data-ttu-id="aea47-103">Reporting API: er för företagskunder - Prisdokument</span><span class="sxs-lookup"><span data-stu-id="aea47-103">Reporting APIs for Enterprise customers - Price Sheet</span></span>
+# <a name="reporting-apis-for-enterprise-customers---price-sheet"></a><span data-ttu-id="0c41a-103">Reporting API: er för företagskunder - Prisdokument</span><span class="sxs-lookup"><span data-stu-id="0c41a-103">Reporting APIs for Enterprise customers - Price Sheet</span></span>
 
-<span data-ttu-id="aea47-104">Price Sheet API ger den tillämpliga hastigheten för varje mätaren för den angivna registrering och fakturering Period.</span><span class="sxs-lookup"><span data-stu-id="aea47-104">The Price Sheet API provides the applicable rate for each Meter for the given Enrollment and Billing Period.</span></span>
+<span data-ttu-id="0c41a-104">hello Price Sheet API ger hello tillämpliga hastighet för varje mätaren för hello registrering och fakturering Period.</span><span class="sxs-lookup"><span data-stu-id="0c41a-104">hello Price Sheet API provides hello applicable rate for each Meter for hello given Enrollment and Billing Period.</span></span>
 
-##<a name="request"></a><span data-ttu-id="aea47-105">Förfrågan</span><span class="sxs-lookup"><span data-stu-id="aea47-105">Request</span></span>
-<span data-ttu-id="aea47-106">Allmänna rubrikegenskaper för som ska läggas till anges [här](billing-enterprise-api.md).</span><span class="sxs-lookup"><span data-stu-id="aea47-106">Common header properties that need to be added are specified [here](billing-enterprise-api.md).</span></span> <span data-ttu-id="aea47-107">Om en faktureringsperiod anges returnerade data för den aktuella faktureringsperioden.</span><span class="sxs-lookup"><span data-stu-id="aea47-107">If a billing period is not specified, then data for the current billing period is returned.</span></span>
+##<a name="request"></a><span data-ttu-id="0c41a-105">Förfrågan</span><span class="sxs-lookup"><span data-stu-id="0c41a-105">Request</span></span>
+<span data-ttu-id="0c41a-106">Allmänna sidhuvudegenskaper för som behöver toobe läggs anges [här](billing-enterprise-api.md).</span><span class="sxs-lookup"><span data-stu-id="0c41a-106">Common header properties that need toobe added are specified [here](billing-enterprise-api.md).</span></span> <span data-ttu-id="0c41a-107">Om en faktureringsperiod anges sedan returneras data för hello aktuella fakturering tidsperiod.</span><span class="sxs-lookup"><span data-stu-id="0c41a-107">If a billing period is not specified, then data for hello current billing period is returned.</span></span>
 
-|<span data-ttu-id="aea47-108">Metod</span><span class="sxs-lookup"><span data-stu-id="aea47-108">Method</span></span> | <span data-ttu-id="aea47-109">URI-begäran</span><span class="sxs-lookup"><span data-stu-id="aea47-109">Request URI</span></span>|
+|<span data-ttu-id="0c41a-108">Metod</span><span class="sxs-lookup"><span data-stu-id="0c41a-108">Method</span></span> | <span data-ttu-id="0c41a-109">URI-begäran</span><span class="sxs-lookup"><span data-stu-id="0c41a-109">Request URI</span></span>|
 |-|-|
-|<span data-ttu-id="aea47-110">HÄMTA</span><span class="sxs-lookup"><span data-stu-id="aea47-110">GET</span></span>|<span data-ttu-id="aea47-111">https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} / prisdokument</span><span class="sxs-lookup"><span data-stu-id="aea47-111">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet</span></span>|
-|<span data-ttu-id="aea47-112">HÄMTA</span><span class="sxs-lookup"><span data-stu-id="aea47-112">GET</span></span>|<span data-ttu-id="aea47-113">https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} /billingPeriods/ {billingPeriod} / prisdokument</span><span class="sxs-lookup"><span data-stu-id="aea47-113">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet</span></span>|
+|<span data-ttu-id="0c41a-110">HÄMTA</span><span class="sxs-lookup"><span data-stu-id="0c41a-110">GET</span></span>|<span data-ttu-id="0c41a-111">https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} / prisdokument</span><span class="sxs-lookup"><span data-stu-id="0c41a-111">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet</span></span>|
+|<span data-ttu-id="0c41a-112">HÄMTA</span><span class="sxs-lookup"><span data-stu-id="0c41a-112">GET</span></span>|<span data-ttu-id="0c41a-113">https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} /billingPeriods/ {billingPeriod} / prisdokument</span><span class="sxs-lookup"><span data-stu-id="0c41a-113">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet</span></span>|
 
 > [!Note]
-> <span data-ttu-id="aea47-114">Ersätt v2 med v1 i URL: en ovan om du vill använda förhandsversionen av API.</span><span class="sxs-lookup"><span data-stu-id="aea47-114">To use the preview version of API, replace v2 with v1 in the above URL.</span></span>
+> <span data-ttu-id="0c41a-114">toouse hello förhandsversionen av API, Ersätt v2 med v1 hello ovan URL.</span><span class="sxs-lookup"><span data-stu-id="0c41a-114">toouse hello preview version of API, replace v2 with v1 in hello above URL.</span></span>
 >
 
-## <a name="response"></a><span data-ttu-id="aea47-115">Svar</span><span class="sxs-lookup"><span data-stu-id="aea47-115">Response</span></span>
+## <a name="response"></a><span data-ttu-id="0c41a-115">Svar</span><span class="sxs-lookup"><span data-stu-id="0c41a-115">Response</span></span>
 
     
         [
@@ -68,29 +68,29 @@ ms.lasthandoff: 08/03/2017
     
 
 > [!Note]
-><span data-ttu-id="aea47-116">MeterId fältet är inte tillgängligt om du använder API: et för förhandsgranskning.</span><span class="sxs-lookup"><span data-stu-id="aea47-116">If you are using the Preview API, meterId field is not available.</span></span>
+><span data-ttu-id="0c41a-116">Om du använder hello Preview API är meterId fältet inte tillgängligt.</span><span class="sxs-lookup"><span data-stu-id="0c41a-116">If you are using hello Preview API, meterId field is not available.</span></span>
 >
 
-<span data-ttu-id="aea47-117">**Svaret egenskapsdefinitioner**</span><span class="sxs-lookup"><span data-stu-id="aea47-117">**Response property definitions**</span></span>
+<span data-ttu-id="0c41a-117">**Svaret egenskapsdefinitioner**</span><span class="sxs-lookup"><span data-stu-id="0c41a-117">**Response property definitions**</span></span>
 
-|<span data-ttu-id="aea47-118">Egenskapsnamn</span><span class="sxs-lookup"><span data-stu-id="aea47-118">Property Name</span></span>| <span data-ttu-id="aea47-119">Typ</span><span class="sxs-lookup"><span data-stu-id="aea47-119">Type</span></span>| <span data-ttu-id="aea47-120">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="aea47-120">Description</span></span>
+|<span data-ttu-id="0c41a-118">Egenskapsnamn</span><span class="sxs-lookup"><span data-stu-id="0c41a-118">Property Name</span></span>| <span data-ttu-id="0c41a-119">Typ</span><span class="sxs-lookup"><span data-stu-id="0c41a-119">Type</span></span>| <span data-ttu-id="0c41a-120">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="0c41a-120">Description</span></span>
 |-|-|-|
-|<span data-ttu-id="aea47-121">id</span><span class="sxs-lookup"><span data-stu-id="aea47-121">id</span></span>| <span data-ttu-id="aea47-122">Sträng</span><span class="sxs-lookup"><span data-stu-id="aea47-122">string</span></span>| <span data-ttu-id="aea47-123">Unikt Id som representerar ett visst Prisdokument objekt (mätaren av fakturering period)</span><span class="sxs-lookup"><span data-stu-id="aea47-123">The unique Id that represents a particular PriceSheet item (meter by billing period)</span></span>|
-|<span data-ttu-id="aea47-124">billingPeriodId</span><span class="sxs-lookup"><span data-stu-id="aea47-124">billingPeriodId</span></span>| <span data-ttu-id="aea47-125">Sträng</span><span class="sxs-lookup"><span data-stu-id="aea47-125">string</span></span>| <span data-ttu-id="aea47-126">Unikt Id som representerar en viss period för fakturering</span><span class="sxs-lookup"><span data-stu-id="aea47-126">The unique Id that represents a particular Billing period</span></span>|
-|<span data-ttu-id="aea47-127">meterId</span><span class="sxs-lookup"><span data-stu-id="aea47-127">meterId</span></span>| <span data-ttu-id="aea47-128">Sträng</span><span class="sxs-lookup"><span data-stu-id="aea47-128">string</span></span>| <span data-ttu-id="aea47-129">Identifierare för mätaren.</span><span class="sxs-lookup"><span data-stu-id="aea47-129">The identifier for the meter.</span></span> <span data-ttu-id="aea47-130">Det går att mappa till meterId för användning.</span><span class="sxs-lookup"><span data-stu-id="aea47-130">It can be mapped to the usage meterId.</span></span>|
-|<span data-ttu-id="aea47-131">meterName</span><span class="sxs-lookup"><span data-stu-id="aea47-131">meterName</span></span>| <span data-ttu-id="aea47-132">Sträng</span><span class="sxs-lookup"><span data-stu-id="aea47-132">string</span></span>| <span data-ttu-id="aea47-133">Namnet på mätaren</span><span class="sxs-lookup"><span data-stu-id="aea47-133">The meter name</span></span>|
-|<span data-ttu-id="aea47-134">unitOfMeasure</span><span class="sxs-lookup"><span data-stu-id="aea47-134">unitOfMeasure</span></span>| <span data-ttu-id="aea47-135">Sträng</span><span class="sxs-lookup"><span data-stu-id="aea47-135">string</span></span>| <span data-ttu-id="aea47-136">Enhet för mätning av tjänsten</span><span class="sxs-lookup"><span data-stu-id="aea47-136">The Unit of Measure for measuring the service</span></span>|
-|<span data-ttu-id="aea47-137">includedQuantity</span><span class="sxs-lookup"><span data-stu-id="aea47-137">includedQuantity</span></span>| <span data-ttu-id="aea47-138">Decimal</span><span class="sxs-lookup"><span data-stu-id="aea47-138">decimal</span></span>| <span data-ttu-id="aea47-139">Antal som ingår</span><span class="sxs-lookup"><span data-stu-id="aea47-139">Quantity that is included</span></span> |
-|<span data-ttu-id="aea47-140">partNumber</span><span class="sxs-lookup"><span data-stu-id="aea47-140">partNumber</span></span>| <span data-ttu-id="aea47-141">Sträng</span><span class="sxs-lookup"><span data-stu-id="aea47-141">string</span></span>| <span data-ttu-id="aea47-142">Artikelnumret som är associerad med mätaren</span><span class="sxs-lookup"><span data-stu-id="aea47-142">The part number associated with the Meter</span></span>|
-|<span data-ttu-id="aea47-143">Enhetspris</span><span class="sxs-lookup"><span data-stu-id="aea47-143">unitPrice</span></span>| <span data-ttu-id="aea47-144">Decimal</span><span class="sxs-lookup"><span data-stu-id="aea47-144">decimal</span></span>| <span data-ttu-id="aea47-145">Enhetspriset för mätaren</span><span class="sxs-lookup"><span data-stu-id="aea47-145">The unit price for the meter</span></span>|
-|<span data-ttu-id="aea47-146">currencyCode</span><span class="sxs-lookup"><span data-stu-id="aea47-146">currencyCode</span></span>| <span data-ttu-id="aea47-147">Sträng</span><span class="sxs-lookup"><span data-stu-id="aea47-147">string</span></span>| <span data-ttu-id="aea47-148">Koden för Enhetspris</span><span class="sxs-lookup"><span data-stu-id="aea47-148">The currency code for the unitPrice</span></span>|
+|<span data-ttu-id="0c41a-121">id</span><span class="sxs-lookup"><span data-stu-id="0c41a-121">id</span></span>| <span data-ttu-id="0c41a-122">Sträng</span><span class="sxs-lookup"><span data-stu-id="0c41a-122">string</span></span>| <span data-ttu-id="0c41a-123">hello unikt Id som representerar ett visst Prisdokument objekt (mätaren av fakturering period)</span><span class="sxs-lookup"><span data-stu-id="0c41a-123">hello unique Id that represents a particular PriceSheet item (meter by billing period)</span></span>|
+|<span data-ttu-id="0c41a-124">billingPeriodId</span><span class="sxs-lookup"><span data-stu-id="0c41a-124">billingPeriodId</span></span>| <span data-ttu-id="0c41a-125">Sträng</span><span class="sxs-lookup"><span data-stu-id="0c41a-125">string</span></span>| <span data-ttu-id="0c41a-126">hello unikt Id som representerar en viss period för fakturering</span><span class="sxs-lookup"><span data-stu-id="0c41a-126">hello unique Id that represents a particular Billing period</span></span>|
+|<span data-ttu-id="0c41a-127">meterId</span><span class="sxs-lookup"><span data-stu-id="0c41a-127">meterId</span></span>| <span data-ttu-id="0c41a-128">Sträng</span><span class="sxs-lookup"><span data-stu-id="0c41a-128">string</span></span>| <span data-ttu-id="0c41a-129">hello identifierare för hello mätaren.</span><span class="sxs-lookup"><span data-stu-id="0c41a-129">hello identifier for hello meter.</span></span> <span data-ttu-id="0c41a-130">Det kan vara mappade toohello användning meterId.</span><span class="sxs-lookup"><span data-stu-id="0c41a-130">It can be mapped toohello usage meterId.</span></span>|
+|<span data-ttu-id="0c41a-131">meterName</span><span class="sxs-lookup"><span data-stu-id="0c41a-131">meterName</span></span>| <span data-ttu-id="0c41a-132">Sträng</span><span class="sxs-lookup"><span data-stu-id="0c41a-132">string</span></span>| <span data-ttu-id="0c41a-133">hello mätaren namn</span><span class="sxs-lookup"><span data-stu-id="0c41a-133">hello meter name</span></span>|
+|<span data-ttu-id="0c41a-134">unitOfMeasure</span><span class="sxs-lookup"><span data-stu-id="0c41a-134">unitOfMeasure</span></span>| <span data-ttu-id="0c41a-135">Sträng</span><span class="sxs-lookup"><span data-stu-id="0c41a-135">string</span></span>| <span data-ttu-id="0c41a-136">hello enhet för att mäta hello-tjänsten</span><span class="sxs-lookup"><span data-stu-id="0c41a-136">hello Unit of Measure for measuring hello service</span></span>|
+|<span data-ttu-id="0c41a-137">includedQuantity</span><span class="sxs-lookup"><span data-stu-id="0c41a-137">includedQuantity</span></span>| <span data-ttu-id="0c41a-138">Decimal</span><span class="sxs-lookup"><span data-stu-id="0c41a-138">decimal</span></span>| <span data-ttu-id="0c41a-139">Antal som ingår</span><span class="sxs-lookup"><span data-stu-id="0c41a-139">Quantity that is included</span></span> |
+|<span data-ttu-id="0c41a-140">partNumber</span><span class="sxs-lookup"><span data-stu-id="0c41a-140">partNumber</span></span>| <span data-ttu-id="0c41a-141">Sträng</span><span class="sxs-lookup"><span data-stu-id="0c41a-141">string</span></span>| <span data-ttu-id="0c41a-142">hello artikelnumret som är associerade med hello mätare</span><span class="sxs-lookup"><span data-stu-id="0c41a-142">hello part number associated with hello Meter</span></span>|
+|<span data-ttu-id="0c41a-143">Enhetspris</span><span class="sxs-lookup"><span data-stu-id="0c41a-143">unitPrice</span></span>| <span data-ttu-id="0c41a-144">Decimal</span><span class="sxs-lookup"><span data-stu-id="0c41a-144">decimal</span></span>| <span data-ttu-id="0c41a-145">hello enhetspriset för hello mätare</span><span class="sxs-lookup"><span data-stu-id="0c41a-145">hello unit price for hello meter</span></span>|
+|<span data-ttu-id="0c41a-146">currencyCode</span><span class="sxs-lookup"><span data-stu-id="0c41a-146">currencyCode</span></span>| <span data-ttu-id="0c41a-147">Sträng</span><span class="sxs-lookup"><span data-stu-id="0c41a-147">string</span></span>| <span data-ttu-id="0c41a-148">hello valutakoden för hello Enhetspris</span><span class="sxs-lookup"><span data-stu-id="0c41a-148">hello currency code for hello unitPrice</span></span>|
 <br/>
-## <a name="see-also"></a><span data-ttu-id="aea47-149">Se även</span><span class="sxs-lookup"><span data-stu-id="aea47-149">See also</span></span>
+## <a name="see-also"></a><span data-ttu-id="0c41a-149">Se även</span><span class="sxs-lookup"><span data-stu-id="0c41a-149">See also</span></span>
 
-* [<span data-ttu-id="aea47-150">Fakturering punkter API</span><span class="sxs-lookup"><span data-stu-id="aea47-150">Billing Periods API</span></span>](billing-enterprise-api-billing-periods.md)
+* [<span data-ttu-id="0c41a-150">Fakturering punkter API</span><span class="sxs-lookup"><span data-stu-id="0c41a-150">Billing Periods API</span></span>](billing-enterprise-api-billing-periods.md)
 
-* [<span data-ttu-id="aea47-151">Information om användning av API</span><span class="sxs-lookup"><span data-stu-id="aea47-151">Usage Detail API</span></span>](billing-enterprise-api-usage-detail.md)
+* [<span data-ttu-id="0c41a-151">Information om användning av API</span><span class="sxs-lookup"><span data-stu-id="0c41a-151">Usage Detail API</span></span>](billing-enterprise-api-usage-detail.md)
 
-* [<span data-ttu-id="aea47-152">Belastningsutjämning och sammanfattning API</span><span class="sxs-lookup"><span data-stu-id="aea47-152">Balance and Summary API</span></span>](billing-enterprise-api-balance-summary.md)
+* [<span data-ttu-id="0c41a-152">Belastningsutjämning och sammanfattning API</span><span class="sxs-lookup"><span data-stu-id="0c41a-152">Balance and Summary API</span></span>](billing-enterprise-api-balance-summary.md)
 
-* [<span data-ttu-id="aea47-153">Marketplace Store kostnad API</span><span class="sxs-lookup"><span data-stu-id="aea47-153">Marketplace Store Charge API</span></span>](billing-enterprise-api-marketplace-storecharge.md)
+* [<span data-ttu-id="0c41a-153">Marketplace Store kostnad API</span><span class="sxs-lookup"><span data-stu-id="0c41a-153">Marketplace Store Charge API</span></span>](billing-enterprise-api-marketplace-storecharge.md)

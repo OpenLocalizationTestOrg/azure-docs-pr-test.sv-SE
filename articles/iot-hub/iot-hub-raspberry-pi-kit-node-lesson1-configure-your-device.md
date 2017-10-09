@@ -1,12 +1,12 @@
 ---
-title: 'Ansluta hallon Pi (nod) till Azure IoT - lektionen 1: Konfigurera enhet | Microsoft Docs'
-description: Configure Raspberry Pi 3 for first-time use and install the Raspbian OS, a free operating system that is optimized for the Raspberry Pi hardware.
+title: 'Ansluta hallon Pi (nod) tooAzure IoT - lektionen 1: Konfigurera enhet | Microsoft Docs'
+description: "Konfigurera hallon Pi 3 för första gången och installera hello Raspbian OS, ett ledigt operativsystem som är optimerad för hello hallon Pi maskinvara."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timlt
 tags: 
-keywords: "installera raspbian, raspbian download hur pi ansluta för att installera raspbian, raspbian inställningar, raspberry pi installera raspbian, raspberry pi installera os, raspberry pi sd-kort installera, hallon, ansluta till raspberry pi, raspberry pi-anslutning"
+keywords: installera raspbian, raspbian download hur tooinstall raspbian raspbian installationen raspberry pi installera raspbian, raspberry pi installera os, raspberry pi sd-kort installera, raspberry pi ansluta, ansluta tooraspberry pi, raspberry pi anslutning
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started
 ms.assetid: 43f7c2cf-f1a5-4dd5-93f0-7e546c6dc91e
@@ -17,105 +17,105 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: b848c48157a2310f0eb1d6398f8b9aaa4395d47f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 504a4d2a3f29717f955530812442cce2a78a6448
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-your-device"></a><span data-ttu-id="5f558-104">Konfigurera din enhet</span><span class="sxs-lookup"><span data-stu-id="5f558-104">Configure your device</span></span>
-## <a name="what-you-will-do"></a><span data-ttu-id="5f558-105">Vad du ska göra</span><span class="sxs-lookup"><span data-stu-id="5f558-105">What you will do</span></span>
-<span data-ttu-id="5f558-106">Konfigurera Pi för första gången och installera operativsystemet Raspbian.</span><span class="sxs-lookup"><span data-stu-id="5f558-106">Configure Pi for first-time use and install the Raspbian operating system.</span></span> <span data-ttu-id="5f558-107">Raspbian är ett kostnadsfritt operativsystem som är optimerad för hallon Pi-maskinvara.</span><span class="sxs-lookup"><span data-stu-id="5f558-107">Raspbian is a free operating system that is optimized for the Raspberry Pi hardware.</span></span> <span data-ttu-id="5f558-108">Om du har några problem du söker efter lösningar på den [felsökning sidan](iot-hub-raspberry-pi-kit-node-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="5f558-108">If you have any problems, you can seek solutions on the [troubleshooting page](iot-hub-raspberry-pi-kit-node-troubleshooting.md).</span></span>
+# <a name="configure-your-device"></a><span data-ttu-id="f67da-104">Konfigurera din enhet</span><span class="sxs-lookup"><span data-stu-id="f67da-104">Configure your device</span></span>
+## <a name="what-you-will-do"></a><span data-ttu-id="f67da-105">Vad du ska göra</span><span class="sxs-lookup"><span data-stu-id="f67da-105">What you will do</span></span>
+<span data-ttu-id="f67da-106">Konfigurera Pi för första gången och installera hello Raspbian operativsystem.</span><span class="sxs-lookup"><span data-stu-id="f67da-106">Configure Pi for first-time use and install hello Raspbian operating system.</span></span> <span data-ttu-id="f67da-107">Raspbian är ett kostnadsfritt operativsystem som är optimerad för hello hallon Pi maskinvara.</span><span class="sxs-lookup"><span data-stu-id="f67da-107">Raspbian is a free operating system that is optimized for hello Raspberry Pi hardware.</span></span> <span data-ttu-id="f67da-108">Om du har några problem du söker efter lösningar på hello [felsökning sidan](iot-hub-raspberry-pi-kit-node-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="f67da-108">If you have any problems, you can seek solutions on hello [troubleshooting page](iot-hub-raspberry-pi-kit-node-troubleshooting.md).</span></span>
 
-## <a name="what-you-will-learn"></a><span data-ttu-id="5f558-109">Vad får du lära dig</span><span class="sxs-lookup"><span data-stu-id="5f558-109">What you will learn</span></span>
-<span data-ttu-id="5f558-110">I den här artikeln får du lära dig:</span><span class="sxs-lookup"><span data-stu-id="5f558-110">In this article, you will learn:</span></span>
+## <a name="what-you-will-learn"></a><span data-ttu-id="f67da-109">Vad får du lära dig</span><span class="sxs-lookup"><span data-stu-id="f67da-109">What you will learn</span></span>
+<span data-ttu-id="f67da-110">I den här artikeln får du lära dig:</span><span class="sxs-lookup"><span data-stu-id="f67da-110">In this article, you will learn:</span></span>
 
-* <span data-ttu-id="5f558-111">Hur du installerar Raspbian på Pi.</span><span class="sxs-lookup"><span data-stu-id="5f558-111">How to install Raspbian on Pi.</span></span>
-* <span data-ttu-id="5f558-112">Så här uppstart Pi med hjälp av en USB-kabel.</span><span class="sxs-lookup"><span data-stu-id="5f558-112">How to power up Pi by using a USB cable.</span></span>
-* <span data-ttu-id="5f558-113">Hur du ansluter Pi till nätverket med hjälp av en Ethernet-kabel eller trådlöst nätverk.</span><span class="sxs-lookup"><span data-stu-id="5f558-113">How to connect Pi to the network by using an Ethernet cable or wireless network.</span></span>
-* <span data-ttu-id="5f558-114">Så här lägger du till en Indikator på breadboard och ansluta till Pi.</span><span class="sxs-lookup"><span data-stu-id="5f558-114">How to add an LED to the breadboard and connect it to Pi.</span></span>
+* <span data-ttu-id="f67da-111">Hur tooinstall Raspbian på Pi.</span><span class="sxs-lookup"><span data-stu-id="f67da-111">How tooinstall Raspbian on Pi.</span></span>
+* <span data-ttu-id="f67da-112">Hur toopower in Pi med hjälp av en USB-kabel.</span><span class="sxs-lookup"><span data-stu-id="f67da-112">How toopower up Pi by using a USB cable.</span></span>
+* <span data-ttu-id="f67da-113">Hur tooconnect Pi toohello nätverk med hjälp av en Ethernet-kabel eller trådlöst nätverk.</span><span class="sxs-lookup"><span data-stu-id="f67da-113">How tooconnect Pi toohello network by using an Ethernet cable or wireless network.</span></span>
+* <span data-ttu-id="f67da-114">Hur tooadd en Indikator toohello breadboard och anslut den tooPi.</span><span class="sxs-lookup"><span data-stu-id="f67da-114">How tooadd an LED toohello breadboard and connect it tooPi.</span></span>
 
-## <a name="what-you-will-need"></a><span data-ttu-id="5f558-115">Vad du behöver</span><span class="sxs-lookup"><span data-stu-id="5f558-115">What you will need</span></span>
-<span data-ttu-id="5f558-116">För att slutföra den här åtgärden behöver du följande delar från din startpaket för hallon Pi 3:</span><span class="sxs-lookup"><span data-stu-id="5f558-116">To complete this operation, you need the following parts from your Raspberry Pi 3 Starter Kit:</span></span>
+## <a name="what-you-will-need"></a><span data-ttu-id="f67da-115">Vad du behöver</span><span class="sxs-lookup"><span data-stu-id="f67da-115">What you will need</span></span>
+<span data-ttu-id="f67da-116">toocomplete den här åtgärden måste hello följande delar från din startpaket för hallon Pi 3:</span><span class="sxs-lookup"><span data-stu-id="f67da-116">toocomplete this operation, you need hello following parts from your Raspberry Pi 3 Starter Kit:</span></span>
 
-* <span data-ttu-id="5f558-117">Hallon Pi 3-kort</span><span class="sxs-lookup"><span data-stu-id="5f558-117">The Raspberry Pi 3 board</span></span>
-* <span data-ttu-id="5f558-118">16 GB microSD-kort</span><span class="sxs-lookup"><span data-stu-id="5f558-118">The 16-GB microSD card</span></span>
-* <span data-ttu-id="5f558-119">V 5-2-amp strömavbrott med 6 fotavtryck micro USB-kabel</span><span class="sxs-lookup"><span data-stu-id="5f558-119">The 5-volt 2-amp power supply with the 6-foot micro USB cable</span></span>
-* <span data-ttu-id="5f558-120">Breadboard</span><span class="sxs-lookup"><span data-stu-id="5f558-120">The breadboard</span></span>
-* <span data-ttu-id="5f558-121">Kopplingen kablar</span><span class="sxs-lookup"><span data-stu-id="5f558-121">Connector wires</span></span>
-* <span data-ttu-id="5f558-122">En 560 ohm resistor</span><span class="sxs-lookup"><span data-stu-id="5f558-122">A 560-ohm resistor</span></span>
-* <span data-ttu-id="5f558-123">En indirekt Indikator för 10 mm</span><span class="sxs-lookup"><span data-stu-id="5f558-123">A diffused 10-mm LED</span></span>
-* <span data-ttu-id="5f558-124">Ethernet-kabel</span><span class="sxs-lookup"><span data-stu-id="5f558-124">The Ethernet cable</span></span>
+* <span data-ttu-id="f67da-117">hello hallon Pi 3-kort</span><span class="sxs-lookup"><span data-stu-id="f67da-117">hello Raspberry Pi 3 board</span></span>
+* <span data-ttu-id="f67da-118">hello 16 GB microSD-kort</span><span class="sxs-lookup"><span data-stu-id="f67da-118">hello 16-GB microSD card</span></span>
+* <span data-ttu-id="f67da-119">hello v 5-2-amp strömförsörjning med hello 6 fotavtryck micro USB-kabel</span><span class="sxs-lookup"><span data-stu-id="f67da-119">hello 5-volt 2-amp power supply with hello 6-foot micro USB cable</span></span>
+* <span data-ttu-id="f67da-120">Hej breadboard</span><span class="sxs-lookup"><span data-stu-id="f67da-120">hello breadboard</span></span>
+* <span data-ttu-id="f67da-121">Kopplingen kablar</span><span class="sxs-lookup"><span data-stu-id="f67da-121">Connector wires</span></span>
+* <span data-ttu-id="f67da-122">En 560 ohm resistor</span><span class="sxs-lookup"><span data-stu-id="f67da-122">A 560-ohm resistor</span></span>
+* <span data-ttu-id="f67da-123">En indirekt Indikator för 10 mm</span><span class="sxs-lookup"><span data-stu-id="f67da-123">A diffused 10-mm LED</span></span>
+* <span data-ttu-id="f67da-124">hello Ethernet-kabel</span><span class="sxs-lookup"><span data-stu-id="f67da-124">hello Ethernet cable</span></span>
 
 ![Saker i din startpaket](media/iot-hub-raspberry-pi-lessons/lesson1/starter_kit.jpg)
 
-<span data-ttu-id="5f558-126">Du behöver också:</span><span class="sxs-lookup"><span data-stu-id="5f558-126">You also need:</span></span>
+<span data-ttu-id="f67da-126">Du behöver också:</span><span class="sxs-lookup"><span data-stu-id="f67da-126">You also need:</span></span>
 
-* <span data-ttu-id="5f558-127">En kabelansluten eller trådlös anslutning för Pi att ansluta till.</span><span class="sxs-lookup"><span data-stu-id="5f558-127">A wired or wireless connection for Pi to connect to.</span></span>
-* <span data-ttu-id="5f558-128">Ett USB-SD-kort eller miniSD kort att bränna operativsystemavbildning på microSD-kort.</span><span class="sxs-lookup"><span data-stu-id="5f558-128">A USB-SD adapter or miniSD card to burn the operating system image onto the microSD card.</span></span>
-* <span data-ttu-id="5f558-129">En dator som kör Windows, Mac eller Linux.</span><span class="sxs-lookup"><span data-stu-id="5f558-129">A computer running Windows, Mac, or Linux.</span></span> <span data-ttu-id="5f558-130">Datorn används för att installera Raspbian på microSD-kort.</span><span class="sxs-lookup"><span data-stu-id="5f558-130">The computer is used to install Raspbian on the microSD card.</span></span>
-* <span data-ttu-id="5f558-131">En Internet-anslutning att hämta verktyg och program.</span><span class="sxs-lookup"><span data-stu-id="5f558-131">An Internet connection to download the necessary tools and software.</span></span>
+* <span data-ttu-id="f67da-127">En kabelansluten eller trådlös anslutning för Pi tooconnect till.</span><span class="sxs-lookup"><span data-stu-id="f67da-127">A wired or wireless connection for Pi tooconnect to.</span></span>
+* <span data-ttu-id="f67da-128">En USB-SD-kort eller miniSD kort tooburn hello operativsystemavbildning på hello microSD-kort.</span><span class="sxs-lookup"><span data-stu-id="f67da-128">A USB-SD adapter or miniSD card tooburn hello operating system image onto hello microSD card.</span></span>
+* <span data-ttu-id="f67da-129">En dator som kör Windows, Mac eller Linux.</span><span class="sxs-lookup"><span data-stu-id="f67da-129">A computer running Windows, Mac, or Linux.</span></span> <span data-ttu-id="f67da-130">hello datorn är används tooinstall Raspbian på hello microSD-kort.</span><span class="sxs-lookup"><span data-stu-id="f67da-130">hello computer is used tooinstall Raspbian on hello microSD card.</span></span>
+* <span data-ttu-id="f67da-131">En Internet-anslutning toodownload hello nödvändiga verktyg och program.</span><span class="sxs-lookup"><span data-stu-id="f67da-131">An Internet connection toodownload hello necessary tools and software.</span></span>
 
-## <a name="install-raspbian-on-the-microsd-card"></a><span data-ttu-id="5f558-132">Installera Raspbian på microSD-kort</span><span class="sxs-lookup"><span data-stu-id="5f558-132">Install Raspbian on the microSD card</span></span>
-<span data-ttu-id="5f558-133">Förbered microSD-kort för installation av Raspbian bilden.</span><span class="sxs-lookup"><span data-stu-id="5f558-133">Prepare the microSD card for installation of the Raspbian image.</span></span>
+## <a name="install-raspbian-on-hello-microsd-card"></a><span data-ttu-id="f67da-132">Installera Raspbian på hello microSD-kort</span><span class="sxs-lookup"><span data-stu-id="f67da-132">Install Raspbian on hello microSD card</span></span>
+<span data-ttu-id="f67da-133">Förbered hello microSD-kort för installation av hello Raspbian bild.</span><span class="sxs-lookup"><span data-stu-id="f67da-133">Prepare hello microSD card for installation of hello Raspbian image.</span></span>
 
-1. <span data-ttu-id="5f558-134">Hämta Raspbian.</span><span class="sxs-lookup"><span data-stu-id="5f558-134">Download Raspbian.</span></span>
-   1. <span data-ttu-id="5f558-135">[Hämta](https://www.raspberrypi.org/downloads/raspbian/) ZIP-filen för Raspbian Jessie med Pixel.</span><span class="sxs-lookup"><span data-stu-id="5f558-135">[Download](https://www.raspberrypi.org/downloads/raspbian/) the .zip file for Raspbian Jessie with Pixel.</span></span>
-   2. <span data-ttu-id="5f558-136">Extrahera Raspbian-avbildning till en mapp på datorn.</span><span class="sxs-lookup"><span data-stu-id="5f558-136">Extract the Raspbian image to a folder on your computer.</span></span>
-2. <span data-ttu-id="5f558-137">Installera Raspbian microSD-kort.</span><span class="sxs-lookup"><span data-stu-id="5f558-137">Install Raspbian to the microSD card.</span></span>
-   1. <span data-ttu-id="5f558-138">[Hämta](https://www.etcher.io) och installera verktyget brännare Etcher SD-kort.</span><span class="sxs-lookup"><span data-stu-id="5f558-138">[Download](https://www.etcher.io) and install the Etcher SD card burner utility.</span></span>
-   2. <span data-ttu-id="5f558-139">Kör Etcher och välj Raspbian bilden som du extraherade i steg 1.</span><span class="sxs-lookup"><span data-stu-id="5f558-139">Run Etcher and select the Raspbian image that you extracted in step 1.</span></span>
-   3. <span data-ttu-id="5f558-140">Välj enhet för microSD-kort.</span><span class="sxs-lookup"><span data-stu-id="5f558-140">Select the microSD card drive.</span></span>
-      <span data-ttu-id="5f558-141">Observera att Etcher kanske redan har valt rätt enhet.</span><span class="sxs-lookup"><span data-stu-id="5f558-141">Note that Etcher may have already selected the correct drive.</span></span>
-   4. <span data-ttu-id="5f558-142">Klicka på **Flash** att installera Raspbian microSD-kort.</span><span class="sxs-lookup"><span data-stu-id="5f558-142">Click **Flash** to install Raspbian to the microSD card.</span></span>
-   5. <span data-ttu-id="5f558-143">Ta bort microSD-kort från datorn när installationen är klar.</span><span class="sxs-lookup"><span data-stu-id="5f558-143">Remove the microSD card from your computer when installation is complete.</span></span>
-      <span data-ttu-id="5f558-144">Det är säkert att ta bort microSD-kort direkt eftersom Etcher automatiskt matar ut eller demonterar microSD-kort när åtgärden har slutförts.</span><span class="sxs-lookup"><span data-stu-id="5f558-144">It's safe to remove the microSD card directly because Etcher automatically ejects or unmounts the microSD card upon completion.</span></span>
-   6. <span data-ttu-id="5f558-145">Infoga microSD-kort i Pi.</span><span class="sxs-lookup"><span data-stu-id="5f558-145">Insert the microSD card into Pi.</span></span>
+1. <span data-ttu-id="f67da-134">Hämta Raspbian.</span><span class="sxs-lookup"><span data-stu-id="f67da-134">Download Raspbian.</span></span>
+   1. <span data-ttu-id="f67da-135">[Hämta](https://www.raspberrypi.org/downloads/raspbian/) hello ZIP-filen för Raspbian Jessie med Pixel.</span><span class="sxs-lookup"><span data-stu-id="f67da-135">[Download](https://www.raspberrypi.org/downloads/raspbian/) hello .zip file for Raspbian Jessie with Pixel.</span></span>
+   2. <span data-ttu-id="f67da-136">Extrahera hello Raspbian bild tooa mapp på datorn.</span><span class="sxs-lookup"><span data-stu-id="f67da-136">Extract hello Raspbian image tooa folder on your computer.</span></span>
+2. <span data-ttu-id="f67da-137">Installera Raspbian toohello microSD-kort.</span><span class="sxs-lookup"><span data-stu-id="f67da-137">Install Raspbian toohello microSD card.</span></span>
+   1. <span data-ttu-id="f67da-138">[Hämta](https://www.etcher.io) och installera hello Etcher SD-kort brännare verktyget.</span><span class="sxs-lookup"><span data-stu-id="f67da-138">[Download](https://www.etcher.io) and install hello Etcher SD card burner utility.</span></span>
+   2. <span data-ttu-id="f67da-139">Kör Etcher och välj hello Raspbian avbildning som du extraherade i steg 1.</span><span class="sxs-lookup"><span data-stu-id="f67da-139">Run Etcher and select hello Raspbian image that you extracted in step 1.</span></span>
+   3. <span data-ttu-id="f67da-140">Välj enhet för hello microSD-kort.</span><span class="sxs-lookup"><span data-stu-id="f67da-140">Select hello microSD card drive.</span></span>
+      <span data-ttu-id="f67da-141">Observera att Etcher kanske redan har valt hello rätt enhet.</span><span class="sxs-lookup"><span data-stu-id="f67da-141">Note that Etcher may have already selected hello correct drive.</span></span>
+   4. <span data-ttu-id="f67da-142">Klicka på **Flash** tooinstall Raspbian toohello microSD-kort.</span><span class="sxs-lookup"><span data-stu-id="f67da-142">Click **Flash** tooinstall Raspbian toohello microSD card.</span></span>
+   5. <span data-ttu-id="f67da-143">Ta bort hello microSD-kort från datorn när installationen är klar.</span><span class="sxs-lookup"><span data-stu-id="f67da-143">Remove hello microSD card from your computer when installation is complete.</span></span>
+      <span data-ttu-id="f67da-144">Det är säker tooremove hello microSD-kort direkt eftersom Etcher automatiskt matar ut eller demonterar hello microSD-kort när åtgärden har slutförts.</span><span class="sxs-lookup"><span data-stu-id="f67da-144">It's safe tooremove hello microSD card directly because Etcher automatically ejects or unmounts hello microSD card upon completion.</span></span>
+   6. <span data-ttu-id="f67da-145">Infoga hello microSD-kort i Pi.</span><span class="sxs-lookup"><span data-stu-id="f67da-145">Insert hello microSD card into Pi.</span></span>
 
-![Infoga SD-kort](media/iot-hub-raspberry-pi-lessons/lesson1/insert_sdcard.jpg)
+![Infoga hello SD-kort](media/iot-hub-raspberry-pi-lessons/lesson1/insert_sdcard.jpg)
 
-## <a name="turn-on-pi"></a><span data-ttu-id="5f558-147">Aktivera Pi</span><span class="sxs-lookup"><span data-stu-id="5f558-147">Turn on Pi</span></span>
-<span data-ttu-id="5f558-148">Aktivera Pi med hjälp av micro USB-kabel och strömförsörjningen.</span><span class="sxs-lookup"><span data-stu-id="5f558-148">Turn on Pi by using the micro USB cable and the power supply.</span></span>
+## <a name="turn-on-pi"></a><span data-ttu-id="f67da-147">Aktivera Pi</span><span class="sxs-lookup"><span data-stu-id="f67da-147">Turn on Pi</span></span>
+<span data-ttu-id="f67da-148">Aktivera Pi med hjälp av hello micro USB-kabel och hello strömförsörjning.</span><span class="sxs-lookup"><span data-stu-id="f67da-148">Turn on Pi by using hello micro USB cable and hello power supply.</span></span>
 
 ![Aktivera](media/iot-hub-raspberry-pi-lessons/lesson1/micro_usb_power_on.jpg)
 
 > [!NOTE]
-> <span data-ttu-id="5f558-150">Det är viktigt att använda strömförsörjningen i paketet som är minst 2A till kontrollerar du att din hallon har tillräckligt med ström för att fungera korrekt.</span><span class="sxs-lookup"><span data-stu-id="5f558-150">It is important to use the power supply in the kit that is at least 2A to make sure that your Raspberry has enough power to work correctly.</span></span>
+> <span data-ttu-id="f67da-150">Det är viktigt toouse hello strömförsörjning i hello kit som är minst 2A toomake till att din hallon har tillräckligt med power toowork korrekt.</span><span class="sxs-lookup"><span data-stu-id="f67da-150">It is important toouse hello power supply in hello kit that is at least 2A toomake sure that your Raspberry has enough power toowork correctly.</span></span>
 
-## <a name="enable-ssh"></a><span data-ttu-id="5f558-151">Aktivera SSH</span><span class="sxs-lookup"><span data-stu-id="5f558-151">Enable SSH</span></span>
-<span data-ttu-id="5f558-152">Från och med November 2016-versionen har Raspbian SSH-server som är inaktiverad som standard.</span><span class="sxs-lookup"><span data-stu-id="5f558-152">As of the November 2016 release, Raspbian has the SSH server disabled by default.</span></span> <span data-ttu-id="5f558-153">Du måste aktivera det manuellt.</span><span class="sxs-lookup"><span data-stu-id="5f558-153">You need to enable it manually.</span></span> <span data-ttu-id="5f558-154">Du kan referera till den [officiella instruktioner](https://www.raspberrypi.org/documentation/remote-access/ssh/) eller ansluta en bildskärm och gå till **Inställningar -> hallon Pi Configuration** att aktivera SSH.</span><span class="sxs-lookup"><span data-stu-id="5f558-154">You can refer to the [official instructions](https://www.raspberrypi.org/documentation/remote-access/ssh/) or connect a monitor and go to **Preferences -> Raspberry Pi Configuration** to enable SSH.</span></span>
+## <a name="enable-ssh"></a><span data-ttu-id="f67da-151">Aktivera SSH</span><span class="sxs-lookup"><span data-stu-id="f67da-151">Enable SSH</span></span>
+<span data-ttu-id="f67da-152">Från och med hello November 2016-versionen har Raspbian hello SSH-server inaktiverad som standard.</span><span class="sxs-lookup"><span data-stu-id="f67da-152">As of hello November 2016 release, Raspbian has hello SSH server disabled by default.</span></span> <span data-ttu-id="f67da-153">Du behöver tooenable den manuellt.</span><span class="sxs-lookup"><span data-stu-id="f67da-153">You need tooenable it manually.</span></span> <span data-ttu-id="f67da-154">Du kan se toohello [officiella instruktioner](https://www.raspberrypi.org/documentation/remote-access/ssh/) eller ansluta en bildskärm och gå för**Inställningar -> hallon Pi Configuration** tooenable SSH.</span><span class="sxs-lookup"><span data-stu-id="f67da-154">You can refer toohello [official instructions](https://www.raspberrypi.org/documentation/remote-access/ssh/) or connect a monitor and go too**Preferences -> Raspberry Pi Configuration** tooenable SSH.</span></span>
 
-## <a name="connect-raspberry-pi-3-to-the-network"></a><span data-ttu-id="5f558-155">Ansluta hallon Pi 3 till nätverket</span><span class="sxs-lookup"><span data-stu-id="5f558-155">Connect Raspberry Pi 3 to the network</span></span>
-<span data-ttu-id="5f558-156">Du kan ansluta Pi till ett kabelanslutet nätverk eller till ett trådlöst nätverk.</span><span class="sxs-lookup"><span data-stu-id="5f558-156">You can connect Pi to a wired network or to a wireless network.</span></span> <span data-ttu-id="5f558-157">Kontrollera att Pi är ansluten till samma nätverk som datorn.</span><span class="sxs-lookup"><span data-stu-id="5f558-157">Make sure that Pi is connected to the same network as your computer.</span></span> <span data-ttu-id="5f558-158">Du kan till exempel ansluta Pi till samma växel som datorn är ansluten till.</span><span class="sxs-lookup"><span data-stu-id="5f558-158">For example, you can connect Pi to the same switch that your computer is connected to.</span></span>
+## <a name="connect-raspberry-pi-3-toohello-network"></a><span data-ttu-id="f67da-155">Ansluta hallon Pi 3 toohello nätverk</span><span class="sxs-lookup"><span data-stu-id="f67da-155">Connect Raspberry Pi 3 toohello network</span></span>
+<span data-ttu-id="f67da-156">Du kan ansluta Pi tooa kabelanslutna nätverk eller tooa trådlösa nätverk.</span><span class="sxs-lookup"><span data-stu-id="f67da-156">You can connect Pi tooa wired network or tooa wireless network.</span></span> <span data-ttu-id="f67da-157">Se till att Pi är anslutna toohello samma nätverk som datorn.</span><span class="sxs-lookup"><span data-stu-id="f67da-157">Make sure that Pi is connected toohello same network as your computer.</span></span> <span data-ttu-id="f67da-158">Du kan till exempel ansluta Pi toohello samma växel att datorn är ansluten till.</span><span class="sxs-lookup"><span data-stu-id="f67da-158">For example, you can connect Pi toohello same switch that your computer is connected to.</span></span>
 
-### <a name="connect-to-a-wired-network"></a><span data-ttu-id="5f558-159">Ansluta till ett kabelanslutet nätverk</span><span class="sxs-lookup"><span data-stu-id="5f558-159">Connect to a wired network</span></span>
-<span data-ttu-id="5f558-160">Använda Ethernet-kabel för att ansluta Pi till det kabelanslutna nätverket.</span><span class="sxs-lookup"><span data-stu-id="5f558-160">Use the Ethernet cable to connect Pi to your wired network.</span></span> <span data-ttu-id="5f558-161">Två indikatorer på Pi aktivera om anslutningen har upprättats.</span><span class="sxs-lookup"><span data-stu-id="5f558-161">The two LEDs on Pi turn on if the connection is established.</span></span>
+### <a name="connect-tooa-wired-network"></a><span data-ttu-id="f67da-159">Ansluta tooa kabelanslutet nätverk</span><span class="sxs-lookup"><span data-stu-id="f67da-159">Connect tooa wired network</span></span>
+<span data-ttu-id="f67da-160">Använd hello Ethernet-kabel tooconnect Pi tooyour kabelanslutna nätverket.</span><span class="sxs-lookup"><span data-stu-id="f67da-160">Use hello Ethernet cable tooconnect Pi tooyour wired network.</span></span> <span data-ttu-id="f67da-161">hello aktivera två indikatorer på Pi om hello anslutningen har upprättats.</span><span class="sxs-lookup"><span data-stu-id="f67da-161">hello two LEDs on Pi turn on if hello connection is established.</span></span>
 
 ![Ansluta med hjälp av en Ethernet-kabel](media/iot-hub-raspberry-pi-lessons/lesson1/connect_ethernet.jpg)
 
-### <a name="connect-to-a-wireless-network"></a><span data-ttu-id="5f558-163">Ansluta till ett trådlöst nätverk</span><span class="sxs-lookup"><span data-stu-id="5f558-163">Connect to a wireless network</span></span>
-<span data-ttu-id="5f558-164">Följ den [instruktioner](https://www.raspberrypi.org/learning/software-guide/wifi/) från hallon Pi Foundation ansluta Pi till det trådlösa nätverket.</span><span class="sxs-lookup"><span data-stu-id="5f558-164">Follow the [instructions](https://www.raspberrypi.org/learning/software-guide/wifi/) from the Raspberry Pi Foundation to connect Pi to your wireless network.</span></span> <span data-ttu-id="5f558-165">Dessa anvisningar måste du först ansluta en bildskärm och ett tangentbord till Pi.</span><span class="sxs-lookup"><span data-stu-id="5f558-165">These instructions require you to first connect a monitor and a keyboard to Pi.</span></span>
+### <a name="connect-tooa-wireless-network"></a><span data-ttu-id="f67da-163">Ansluta tooa trådlöst nätverk</span><span class="sxs-lookup"><span data-stu-id="f67da-163">Connect tooa wireless network</span></span>
+<span data-ttu-id="f67da-164">Följ hello [instruktioner](https://www.raspberrypi.org/learning/software-guide/wifi/) från hello hallon Pi Foundation tooconnect Pi tooyour trådlöst nätverk.</span><span class="sxs-lookup"><span data-stu-id="f67da-164">Follow hello [instructions](https://www.raspberrypi.org/learning/software-guide/wifi/) from hello Raspberry Pi Foundation tooconnect Pi tooyour wireless network.</span></span> <span data-ttu-id="f67da-165">Dessa instruktioner kräver att du toofirst ansluta en bildskärm och ett tangentbord tooPi.</span><span class="sxs-lookup"><span data-stu-id="f67da-165">These instructions require you toofirst connect a monitor and a keyboard tooPi.</span></span>
 
-## <a name="connect-the-led-to-pi"></a><span data-ttu-id="5f558-166">Anslut Indikatorn till Pi</span><span class="sxs-lookup"><span data-stu-id="5f558-166">Connect the LED to Pi</span></span>
-<span data-ttu-id="5f558-167">Slutför aktiviteten genom att använda den [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard), connector-kablar och Indikatorn på resistor.</span><span class="sxs-lookup"><span data-stu-id="5f558-167">To complete this task, use the [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard), the connector wires, the LED, and the resistor.</span></span> <span data-ttu-id="5f558-168">Anslut dem till den [allmänna o](https://www.raspberrypi.org/documentation/usage/gpio/) (GPIO)-portar för Pi.</span><span class="sxs-lookup"><span data-stu-id="5f558-168">Connect them to the [general-purpose input/output](https://www.raspberrypi.org/documentation/usage/gpio/) (GPIO) ports of Pi.</span></span>
+## <a name="connect-hello-led-toopi"></a><span data-ttu-id="f67da-166">Ansluta hello Indikator tooPi</span><span class="sxs-lookup"><span data-stu-id="f67da-166">Connect hello LED tooPi</span></span>
+<span data-ttu-id="f67da-167">toocomplete den här uppgiften, Använd hello [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard), hello connector kablar, hello Indikator och hello resistor.</span><span class="sxs-lookup"><span data-stu-id="f67da-167">toocomplete this task, use hello [breadboard](https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard), hello connector wires, hello LED, and hello resistor.</span></span> <span data-ttu-id="f67da-168">Anslut dem toohello [allmänna o](https://www.raspberrypi.org/documentation/usage/gpio/) (GPIO)-portar för Pi.</span><span class="sxs-lookup"><span data-stu-id="f67da-168">Connect them toohello [general-purpose input/output](https://www.raspberrypi.org/documentation/usage/gpio/) (GPIO) ports of Pi.</span></span>
 
 ![Breadboard Indikator och Resistor](media/iot-hub-raspberry-pi-lessons/lesson1/breadboard_led_resistor.jpg)
 
-1. <span data-ttu-id="5f558-170">Ansluta kortare del av Indikator för **GPIO GND (PIN-kod 6)**.</span><span class="sxs-lookup"><span data-stu-id="5f558-170">Connect the shorter leg of the LED to **GPIO GND (Pin 6)**.</span></span>
-2. <span data-ttu-id="5f558-171">Längre del av Indikatorn för att ansluta till en del av resistor.</span><span class="sxs-lookup"><span data-stu-id="5f558-171">Connect the longer leg of the LED to one leg of the resistor.</span></span>
-3. <span data-ttu-id="5f558-172">Ansluta andra del av resistor till **GPIO 4.7 PIN-kod**.</span><span class="sxs-lookup"><span data-stu-id="5f558-172">Connect the other leg of the resistor to **GPIO 4 (Pin 7)**.</span></span>
+1. <span data-ttu-id="f67da-170">Ansluta hello kortare ben hello Indikator för**GPIO GND (PIN-kod 6)**.</span><span class="sxs-lookup"><span data-stu-id="f67da-170">Connect hello shorter leg of hello LED too**GPIO GND (Pin 6)**.</span></span>
+2. <span data-ttu-id="f67da-171">Ansluta hello längre del av hello Indikator tooone ben hello resistor.</span><span class="sxs-lookup"><span data-stu-id="f67da-171">Connect hello longer leg of hello LED tooone leg of hello resistor.</span></span>
+3. <span data-ttu-id="f67da-172">Ansluta hello andra del av hello resistor för**GPIO 4.7 PIN-kod**.</span><span class="sxs-lookup"><span data-stu-id="f67da-172">Connect hello other leg of hello resistor too**GPIO 4 (Pin 7)**.</span></span>
 
-<span data-ttu-id="5f558-173">Observera att Indikator polaritet är viktigt.</span><span class="sxs-lookup"><span data-stu-id="5f558-173">Note that the LED polarity is important.</span></span> <span data-ttu-id="5f558-174">Den här inställningen polaritet kallas brukar aktivt lågt.</span><span class="sxs-lookup"><span data-stu-id="5f558-174">This polarity setting is commonly known as Active Low.</span></span>
+<span data-ttu-id="f67da-173">Observera att hello Indikator polaritet är viktigt.</span><span class="sxs-lookup"><span data-stu-id="f67da-173">Note that hello LED polarity is important.</span></span> <span data-ttu-id="f67da-174">Den här inställningen polaritet kallas brukar aktivt lågt.</span><span class="sxs-lookup"><span data-stu-id="f67da-174">This polarity setting is commonly known as Active Low.</span></span>
 
 ![Pinout](media/iot-hub-raspberry-pi-lessons/lesson1/pinout_breadboard.png)
 
-<span data-ttu-id="5f558-176">Grattis!</span><span class="sxs-lookup"><span data-stu-id="5f558-176">Congratulations!</span></span> <span data-ttu-id="5f558-177">Du har konfigurerat Pi.</span><span class="sxs-lookup"><span data-stu-id="5f558-177">You've successfully configured Pi.</span></span>
+<span data-ttu-id="f67da-176">Grattis!</span><span class="sxs-lookup"><span data-stu-id="f67da-176">Congratulations!</span></span> <span data-ttu-id="f67da-177">Du har konfigurerat Pi.</span><span class="sxs-lookup"><span data-stu-id="f67da-177">You've successfully configured Pi.</span></span>
 
-## <a name="summary"></a><span data-ttu-id="5f558-178">Sammanfattning</span><span class="sxs-lookup"><span data-stu-id="5f558-178">Summary</span></span>
-<span data-ttu-id="5f558-179">I den här artikeln har du lärt dig hur du konfigurerar Pi genom att installera Raspbian, ansluta Pi till ett nätverk och ansluter en Indikator till Pi.</span><span class="sxs-lookup"><span data-stu-id="5f558-179">In this article, you’ve learned how to configure Pi by installing Raspbian, connecting Pi to a network, and connecting an LED to Pi.</span></span> <span data-ttu-id="5f558-180">Observera att Indikatorn ännu inte lysa upp.</span><span class="sxs-lookup"><span data-stu-id="5f558-180">Note that the LED doesn't yet light up.</span></span> <span data-ttu-id="5f558-181">Nästa uppgift är att installera verktyg och program som förberedelse för att köra ett exempelprogram på Pi.</span><span class="sxs-lookup"><span data-stu-id="5f558-181">The next task is to install the necessary tools and software in preparation for running a sample application on Pi.</span></span>
+## <a name="summary"></a><span data-ttu-id="f67da-178">Sammanfattning</span><span class="sxs-lookup"><span data-stu-id="f67da-178">Summary</span></span>
+<span data-ttu-id="f67da-179">I den här artikeln har du lärt dig hur tooconfigure Pi genom att installera Raspbian anslutande Pi tooa nätverk och ansluter en Indikator tooPi.</span><span class="sxs-lookup"><span data-stu-id="f67da-179">In this article, you’ve learned how tooconfigure Pi by installing Raspbian, connecting Pi tooa network, and connecting an LED tooPi.</span></span> <span data-ttu-id="f67da-180">Observera att hello Indikator ännu inte lysa upp.</span><span class="sxs-lookup"><span data-stu-id="f67da-180">Note that hello LED doesn't yet light up.</span></span> <span data-ttu-id="f67da-181">hello nästa uppgift är tooinstall hello nödvändiga verktyg och program som förberedelse för att köra ett exempelprogram på Pi.</span><span class="sxs-lookup"><span data-stu-id="f67da-181">hello next task is tooinstall hello necessary tools and software in preparation for running a sample application on Pi.</span></span>
 
 ![Maskinvara är klar](media/iot-hub-raspberry-pi-lessons/lesson1/hardware_ready.jpg)
 
-## <a name="next-steps"></a><span data-ttu-id="5f558-183">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="5f558-183">Next steps</span></span>
-[<span data-ttu-id="5f558-184">Skaffa dig verktyg</span><span class="sxs-lookup"><span data-stu-id="5f558-184">Get the tools</span></span>](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
+## <a name="next-steps"></a><span data-ttu-id="f67da-183">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="f67da-183">Next steps</span></span>
+[<span data-ttu-id="f67da-184">Hämta hello-verktyg</span><span class="sxs-lookup"><span data-stu-id="f67da-184">Get hello tools</span></span>](iot-hub-raspberry-pi-kit-node-lesson1-get-the-tools-win32.md)
 

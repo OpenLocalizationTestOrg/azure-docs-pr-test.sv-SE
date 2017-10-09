@@ -1,6 +1,6 @@
 ---
-title: "Användargränssnittet för Azure Mobile Engagement - inställningar"
-description: "Lär dig att hantera de globala inställningarna för ditt program med Azure Mobile Engagement"
+title: "aaaAzure användargränssnitt för Mobile Engagement - inställningar"
+description: "Lär dig hur toomanage hello globala inställningar för din app med Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,85 +14,85 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 02d4a36c591fc5e097410b7e931d1c9ce81d68d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-manage-the-global-settings-of-your-application"></a><span data-ttu-id="d8816-103">Så här hanterar du de globala inställningarna för programmet</span><span class="sxs-lookup"><span data-stu-id="d8816-103">How to manage the global settings of your application</span></span>
-<span data-ttu-id="d8816-104">Den **inställningar** menyalternativ som är tillgängliga för ett program varierar beroende på plattform och de behörigheter som du har beviljats för programmet.</span><span class="sxs-lookup"><span data-stu-id="d8816-104">The **Settings** menu options available for an application vary, depending on the platform of the application and the permissions you have been granted for the application.</span></span> <span data-ttu-id="d8816-105">Inställningarna innefattar följande: information, projekt, Native Push, Push-hastigheten, Tag (appinfo) och kommersiellt tryck.</span><span class="sxs-lookup"><span data-stu-id="d8816-105">Settings include the following: Details, Projects, Native Push, Push Speed, Tag (app info), and Commercial Pressure.</span></span> <span data-ttu-id="d8816-106">Menyalternativet taggen (appinfo) i avsnittet inställningar kan hanteras av ditt program (med SDK) eller din serverdel (med hjälp av Device API).</span><span class="sxs-lookup"><span data-stu-id="d8816-106">The Tag (app info) menu option of the Settings section can be managed by your application (using the SDK) or by your backend (using the Device API).</span></span> 
+# <a name="how-toomanage-hello-global-settings-of-your-application"></a><span data-ttu-id="e84df-103">Hur toomanage hello globala inställningar för programmet</span><span class="sxs-lookup"><span data-stu-id="e84df-103">How toomanage hello global settings of your application</span></span>
+<span data-ttu-id="e84df-104">Hej **inställningar** menyalternativ som är tillgängliga för ett program varierar beroende på plattform hello hello program och hello behörigheter som du har beviljats för programmet hello.</span><span class="sxs-lookup"><span data-stu-id="e84df-104">hello **Settings** menu options available for an application vary, depending on hello platform of hello application and hello permissions you have been granted for hello application.</span></span> <span data-ttu-id="e84df-105">Inställningarna omfattar följande hello: information, projekt, Native Push, Push-hastigheten, Tag (appinfo) och kommersiellt tryck.</span><span class="sxs-lookup"><span data-stu-id="e84df-105">Settings include hello following: Details, Projects, Native Push, Push Speed, Tag (app info), and Commercial Pressure.</span></span> <span data-ttu-id="e84df-106">hello taggen (appinfo) menyalternativet för inställningar för hello kan hanteras av ditt program (med hello SDK) eller din serverdel (med hello Device API).</span><span class="sxs-lookup"><span data-stu-id="e84df-106">hello Tag (app info) menu option of hello Settings section can be managed by your application (using hello SDK) or by your backend (using hello Device API).</span></span> 
 
 > [!NOTE]
-> <span data-ttu-id="d8816-107">Många avsnitt i den **Mobile Engagement** portal Användargränssnittet innehåller den **Visa hjälp** knappen.</span><span class="sxs-lookup"><span data-stu-id="d8816-107">Many sections of the **Mobile Engagement** portal UI contain the **SHOW HELP** button.</span></span> <span data-ttu-id="d8816-108">Tryck på knappen för att få mer information om ett avsnitt.</span><span class="sxs-lookup"><span data-stu-id="d8816-108">Press this button to get more contextual information about a section.</span></span>
+> <span data-ttu-id="e84df-107">Många avsnitt av hello **Mobile Engagement** portalens användargränssnitt innehåller hello **Visa hjälp** knappen.</span><span class="sxs-lookup"><span data-stu-id="e84df-107">Many sections of hello **Mobile Engagement** portal UI contain hello **SHOW HELP** button.</span></span> <span data-ttu-id="e84df-108">Tryck på den här knappen tooget mer detaljerad information om ett avsnitt.</span><span class="sxs-lookup"><span data-stu-id="e84df-108">Press this button tooget more contextual information about a section.</span></span>
 > 
 > 
 
-## <a name="details"></a><span data-ttu-id="d8816-109">Information</span><span class="sxs-lookup"><span data-stu-id="d8816-109">Details</span></span>
-<span data-ttu-id="d8816-110">Kan du ändra namn och beskrivning av programmet, visa ägaren av ditt program och dina rollbehörigheter.</span><span class="sxs-lookup"><span data-stu-id="d8816-110">Allows you to change the name and description of your application, view the owner of your application and your role permissions.</span></span> 
+## <a name="details"></a><span data-ttu-id="e84df-109">Information</span><span class="sxs-lookup"><span data-stu-id="e84df-109">Details</span></span>
+<span data-ttu-id="e84df-110">Kan du toochange hello namn och beskrivning för ditt program, visa hello ägare för ditt program och dina rollbehörigheter.</span><span class="sxs-lookup"><span data-stu-id="e84df-110">Allows you toochange hello name and description of your application, view hello owner of your application and your role permissions.</span></span> 
 
-<span data-ttu-id="d8816-111">Konfiguration av kan du visa och ändra veckor starta på dagen och tiden för datakvarhållning i dag.</span><span class="sxs-lookup"><span data-stu-id="d8816-111">Analytics configuration enables  you to view or change the day weeks start on and the retention time in day(s).</span></span>
+<span data-ttu-id="e84df-111">Analytics-konfiguration kan du tooview eller ändra hello dag veckor starta på och hello kvarhållningstiden i dag.</span><span class="sxs-lookup"><span data-stu-id="e84df-111">Analytics configuration enables  you tooview or change hello day weeks start on and hello retention time in day(s).</span></span>
 
   ![settings1][46]
 
-## <a name="projects"></a><span data-ttu-id="d8816-113">Projekt</span><span class="sxs-lookup"><span data-stu-id="d8816-113">Projects</span></span>
-<span data-ttu-id="d8816-114">När du vill välja alla projekt som du vill att programmet ska visas i.</span><span class="sxs-lookup"><span data-stu-id="d8816-114">Allows you to select all projects you want your application to appear in.</span></span> 
+## <a name="projects"></a><span data-ttu-id="e84df-113">Projekt</span><span class="sxs-lookup"><span data-stu-id="e84df-113">Projects</span></span>
+<span data-ttu-id="e84df-114">Kan du tooselect alla projekt som du vill ha application-tooappear.</span><span class="sxs-lookup"><span data-stu-id="e84df-114">Allows you tooselect all projects you want your application tooappear in.</span></span> 
 
-<span data-ttu-id="d8816-115">Du kan också söka efter ett projekt och visa namn, beskrivning, ägare och dina rollbehörigheter för alla projekt som ditt program är en del av.</span><span class="sxs-lookup"><span data-stu-id="d8816-115">You can also search for a project and view the name, description, owner and your role permissions of any project your application is part of.</span></span>
+<span data-ttu-id="e84df-115">Du kan också söka efter ett projekt och visa hello namn, beskrivning, ägare och dina rollbehörigheter för alla projekt tillämpningsprogrammet är en del av.</span><span class="sxs-lookup"><span data-stu-id="e84df-115">You can also search for a project and view hello name, description, owner and your role permissions of any project your application is part of.</span></span>
 
-<span data-ttu-id="d8816-116">Mer information finns: [UI-dokumentationen – Start][Link 13]</span><span class="sxs-lookup"><span data-stu-id="d8816-116">For more information, see: [UI Documentation – Home][Link 13]</span></span>
+<span data-ttu-id="e84df-116">Mer information finns: [UI-dokumentationen – Start][Link 13]</span><span class="sxs-lookup"><span data-stu-id="e84df-116">For more information, see: [UI Documentation – Home][Link 13]</span></span>
 
   ![settings3][48]
 
-## <a name="native-push"></a><span data-ttu-id="d8816-118">Intern Push</span><span class="sxs-lookup"><span data-stu-id="d8816-118">Native Push</span></span>
-<span data-ttu-id="d8816-119">Kan du registrera ett nytt certifikat eller ta bort och befintliga certifikat för användning med intern push.</span><span class="sxs-lookup"><span data-stu-id="d8816-119">Allows you to register a new certificate or delete and existing certificate for use with native push.</span></span> <span data-ttu-id="d8816-120">Intern Push aktiverar Azure Mobile Engagement att skicka till ditt program när som helst, även när den inte körs.</span><span class="sxs-lookup"><span data-stu-id="d8816-120">Native Push enables Azure Mobile Engagement to push to your application at any time, even when it is not running.</span></span> 
+## <a name="native-push"></a><span data-ttu-id="e84df-118">Intern Push</span><span class="sxs-lookup"><span data-stu-id="e84df-118">Native Push</span></span>
+<span data-ttu-id="e84df-119">Kan du tooregister ett nytt certifikat eller ta bort och befintligt certifikat för med intern push.</span><span class="sxs-lookup"><span data-stu-id="e84df-119">Allows you tooregister a new certificate or delete and existing certificate for use with native push.</span></span> <span data-ttu-id="e84df-120">Intern Push aktiverar Azure Mobile Engagement toopush tooyour program när som helst, även om den inte körs.</span><span class="sxs-lookup"><span data-stu-id="e84df-120">Native Push enables Azure Mobile Engagement toopush tooyour application at any time, even when it is not running.</span></span> 
 
-<span data-ttu-id="d8816-121">När att tillhandahålla autentiseringsuppgifter eller certifikat för minst en Native Push-tjänst, kan du välja ”helst” när du skapar Reach-kampanjer och Använd parametern ”meddelaren” i PUSH-API.</span><span class="sxs-lookup"><span data-stu-id="d8816-121">After providing credentials or certificates for at least one Native Push service, you can select "Any time" when creating Reach Campaigns, and also use the "notifier" parameter in the PUSH API.</span></span>
+<span data-ttu-id="e84df-121">När att tillhandahålla autentiseringsuppgifter eller certifikat för minst en Native Push-tjänst, kan du välja ”helst” när du skapar Reach-kampanjer och Använd hello ”meddelaren”-parametern i hello PUSH-API.</span><span class="sxs-lookup"><span data-stu-id="e84df-121">After providing credentials or certificates for at least one Native Push service, you can select "Any time" when creating Reach Campaigns, and also use hello "notifier" parameter in hello PUSH API.</span></span>
 
-### <a name="apple-push-notification-service-apns"></a><span data-ttu-id="d8816-122">Apple Push Notification Service (APNS)</span><span class="sxs-lookup"><span data-stu-id="d8816-122">Apple Push Notification Service (APNS)</span></span>
-<span data-ttu-id="d8816-123">Om du vill aktivera Native Push med Apple Push Notification Service behöver du registrera ditt certifikat.</span><span class="sxs-lookup"><span data-stu-id="d8816-123">To enable Native Push using the Apple Push Notification Service you will need to register your certificate.</span></span> <span data-ttu-id="d8816-124">Du måste ange vilken typ av certifikat som utveckling (utveckling) eller produktion (PROD).</span><span class="sxs-lookup"><span data-stu-id="d8816-124">You will need to specify the type of certificate as either development (DEV) or production (PROD).</span></span> <span data-ttu-id="d8816-125">Du kommer sedan måste överföra ditt certifikat och lösenord.</span><span class="sxs-lookup"><span data-stu-id="d8816-125">Then you will need upload your certificate and the password.</span></span>
+### <a name="apple-push-notification-service-apns"></a><span data-ttu-id="e84df-122">Apple Push Notification Service (APNS)</span><span class="sxs-lookup"><span data-stu-id="e84df-122">Apple Push Notification Service (APNS)</span></span>
+<span data-ttu-id="e84df-123">tooenable Native Push med hello Apple Push Notification Service måste tooregister ditt certifikat.</span><span class="sxs-lookup"><span data-stu-id="e84df-123">tooenable Native Push using hello Apple Push Notification Service you will need tooregister your certificate.</span></span> <span data-ttu-id="e84df-124">Du behöver toospecify hello typ av certifikat som utveckling (utveckling) eller produktion (PROD).</span><span class="sxs-lookup"><span data-stu-id="e84df-124">You will need toospecify hello type of certificate as either development (DEV) or production (PROD).</span></span> <span data-ttu-id="e84df-125">Du kommer sedan måste överföra ditt certifikat och hello lösenord.</span><span class="sxs-lookup"><span data-stu-id="e84df-125">Then you will need upload your certificate and hello password.</span></span>
 
-<span data-ttu-id="d8816-126">Mer information finns: [- iOS - SDK-dokumentationen hur du förbereder ditt program för Apple Push-meddelanden][Link 5]</span><span class="sxs-lookup"><span data-stu-id="d8816-126">For more information, see: [SDK Documentation - iOS - How to Prepare your Application for Apple Push notifications][Link 5]</span></span>
+<span data-ttu-id="e84df-126">Mer information finns: [SDK-dokumentationen – iOS – hur tooPrepare ditt program för Apple Push-meddelanden][Link 5]</span><span class="sxs-lookup"><span data-stu-id="e84df-126">For more information, see: [SDK Documentation - iOS - How tooPrepare your Application for Apple Push notifications][Link 5]</span></span>
 
 ![settings4][49]
 
-### <a name="windows-push-notification-service-wpns"></a><span data-ttu-id="d8816-128">Windows Push Notification Service (WPNS)</span><span class="sxs-lookup"><span data-stu-id="d8816-128">Windows Push Notification Service (WPNS)</span></span>
-<span data-ttu-id="d8816-129">Om du vill aktivera systemspecifik push-avisering med Windows Notification Service måste du tillhandahålla ditt programs autentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="d8816-129">To enable Native Push using Windows Notification Service, you must provide your application's credentials.</span></span> <span data-ttu-id="d8816-130">Du behöver dina paket säkerhetsidentifierare (SID) och din hemliga nyckel.</span><span class="sxs-lookup"><span data-stu-id="d8816-130">You will need your Package security identifier (SID) and your Secret key.</span></span>
+### <a name="windows-push-notification-service-wpns"></a><span data-ttu-id="e84df-128">Windows Push Notification Service (WPNS)</span><span class="sxs-lookup"><span data-stu-id="e84df-128">Windows Push Notification Service (WPNS)</span></span>
+<span data-ttu-id="e84df-129">tooenable Native Push med Windows Notification Service, måste du ange autentiseringsuppgifter för ditt program.</span><span class="sxs-lookup"><span data-stu-id="e84df-129">tooenable Native Push using Windows Notification Service, you must provide your application's credentials.</span></span> <span data-ttu-id="e84df-130">Du behöver dina paket säkerhetsidentifierare (SID) och din hemliga nyckel.</span><span class="sxs-lookup"><span data-stu-id="e84df-130">You will need your Package security identifier (SID) and your Secret key.</span></span>
 
 ![settings5][50]
 
-### <a name="google-cloud-messaging-for-android-gcm"></a><span data-ttu-id="d8816-132">Google Cloud Messaging för Android (GCM)</span><span class="sxs-lookup"><span data-stu-id="d8816-132">Google Cloud Messaging for Android (GCM)</span></span>
-<span data-ttu-id="d8816-133">Om du vill aktivera Native Push med GCM måste du följer du anvisningarna från Google.</span><span class="sxs-lookup"><span data-stu-id="d8816-133">To enable Native Push using GCM, you need to follow the instructions from Google.</span></span> <span data-ttu-id="d8816-134">Sedan måste du klistra in en server enkla API-nyckel, konfigurerats utan IP-begränsningar.</span><span class="sxs-lookup"><span data-stu-id="d8816-134">Then you must paste a server simple API key, configured without IP restrictions.</span></span> <span data-ttu-id="d8816-135">Kräver integrering med SDK för Android v1.12.0 +.</span><span class="sxs-lookup"><span data-stu-id="d8816-135">Requires integration with the SDK for Android v1.12.0+.</span></span>
+### <a name="google-cloud-messaging-for-android-gcm"></a><span data-ttu-id="e84df-132">Google Cloud Messaging för Android (GCM)</span><span class="sxs-lookup"><span data-stu-id="e84df-132">Google Cloud Messaging for Android (GCM)</span></span>
+<span data-ttu-id="e84df-133">tooenable Native Push med GCM, behöver du toofollow hello anvisningarna från Google.</span><span class="sxs-lookup"><span data-stu-id="e84df-133">tooenable Native Push using GCM, you need toofollow hello instructions from Google.</span></span> <span data-ttu-id="e84df-134">Sedan måste du klistra in en server enkla API-nyckel, konfigurerats utan IP-begränsningar.</span><span class="sxs-lookup"><span data-stu-id="e84df-134">Then you must paste a server simple API key, configured without IP restrictions.</span></span> <span data-ttu-id="e84df-135">Kräver integrering med hello SDK för Android v1.12.0 +.</span><span class="sxs-lookup"><span data-stu-id="e84df-135">Requires integration with hello SDK for Android v1.12.0+.</span></span>
 
-<span data-ttu-id="d8816-136">Mer information finns i:</span><span class="sxs-lookup"><span data-stu-id="d8816-136">For more information, see:</span></span> 
+<span data-ttu-id="e84df-136">Mer information finns i:</span><span class="sxs-lookup"><span data-stu-id="e84df-136">For more information, see:</span></span> 
 
-* <span data-ttu-id="d8816-137">[Android för SDK-dokumentationen hur du integrerar GCM][Link 5]</span><span class="sxs-lookup"><span data-stu-id="d8816-137">[SDK Documentation Android How to Integrate GCM][Link 5]</span></span>
-* [<span data-ttu-id="d8816-138">Google GCM utvecklarhandboken</span><span class="sxs-lookup"><span data-stu-id="d8816-138">Google Developer GCM Guide</span></span>](http://developer.android.com/guide/google/gcm/gs.html)
+* <span data-ttu-id="e84df-137">[SDK-dokumentationen Android hur tooIntegrate GCM][Link 5]</span><span class="sxs-lookup"><span data-stu-id="e84df-137">[SDK Documentation Android How tooIntegrate GCM][Link 5]</span></span>
+* [<span data-ttu-id="e84df-138">Google GCM utvecklarhandboken</span><span class="sxs-lookup"><span data-stu-id="e84df-138">Google Developer GCM Guide</span></span>](http://developer.android.com/guide/google/gcm/gs.html)
 
-### <a name="amazon-device-messaging-for-android-adm"></a><span data-ttu-id="d8816-139">Amazon Device Messaging för Android (ADM)</span><span class="sxs-lookup"><span data-stu-id="d8816-139">Amazon Device Messaging for Android (ADM)</span></span>
-<span data-ttu-id="d8816-140">Om du vill aktivera Native Push med ADM, måste du ange Amazon <OAuth credentials> som består av en klient-ID och Klienthemlighet (kräver integrering med SDK för Android v2.1.0 +).</span><span class="sxs-lookup"><span data-stu-id="d8816-140">To enable Native Push using ADM, you must provide Amazon <OAuth credentials> consisting of a Client ID and Client Secret (Requires integration with SDK for Android v2.1.0+).</span></span>
+### <a name="amazon-device-messaging-for-android-adm"></a><span data-ttu-id="e84df-139">Amazon Device Messaging för Android (ADM)</span><span class="sxs-lookup"><span data-stu-id="e84df-139">Amazon Device Messaging for Android (ADM)</span></span>
+<span data-ttu-id="e84df-140">tooenable intern Push med ADM, måste du ange Amazon <OAuth credentials> som består av en klient-ID och Klienthemlighet (kräver integrering med SDK för Android v2.1.0 +).</span><span class="sxs-lookup"><span data-stu-id="e84df-140">tooenable Native Push using ADM, you must provide Amazon <OAuth credentials> consisting of a Client ID and Client Secret (Requires integration with SDK for Android v2.1.0+).</span></span>
 
-<span data-ttu-id="d8816-141">Mer information finns i:</span><span class="sxs-lookup"><span data-stu-id="d8816-141">For more information, see:</span></span> 
+<span data-ttu-id="e84df-141">Mer information finns i:</span><span class="sxs-lookup"><span data-stu-id="e84df-141">For more information, see:</span></span> 
 
-* <span data-ttu-id="d8816-142">[Android för SDK-dokumentationen hur du integrerar ADM][Link 5]</span><span class="sxs-lookup"><span data-stu-id="d8816-142">[SDK Documentation Android How to Integrate ADM][Link 5]</span></span>
-* [<span data-ttu-id="d8816-143">Amazon Developer ADM-dokumentation</span><span class="sxs-lookup"><span data-stu-id="d8816-143">Amazon Developer ADM Documentation</span></span>](https://developer.amazon.com/sdk/adm/credentials.html#Getting)
+* <span data-ttu-id="e84df-142">[SDK-dokumentationen Android hur tooIntegrate ADM][Link 5]</span><span class="sxs-lookup"><span data-stu-id="e84df-142">[SDK Documentation Android How tooIntegrate ADM][Link 5]</span></span>
+* [<span data-ttu-id="e84df-143">Amazon Developer ADM-dokumentation</span><span class="sxs-lookup"><span data-stu-id="e84df-143">Amazon Developer ADM Documentation</span></span>](https://developer.amazon.com/sdk/adm/credentials.html#Getting)
 
 ![settings6][51]
 
-## <a name="push-speed"></a><span data-ttu-id="d8816-145">Push-hastigheten</span><span class="sxs-lookup"><span data-stu-id="d8816-145">Push Speed</span></span>
-<span data-ttu-id="d8816-146">Visar aktuella push-hastigheten för ditt program och kan du definiera push-hastigheten för ditt program.</span><span class="sxs-lookup"><span data-stu-id="d8816-146">Shows the current push speed of your application and allows you to define the push speed of your application.</span></span>
+## <a name="push-speed"></a><span data-ttu-id="e84df-145">Push-hastigheten</span><span class="sxs-lookup"><span data-stu-id="e84df-145">Push Speed</span></span>
+<span data-ttu-id="e84df-146">Visar hello aktuella push-hastigheten för ditt program och ger dig toodefine hello push-hastigheten för ditt program.</span><span class="sxs-lookup"><span data-stu-id="e84df-146">Shows hello current push speed of your application and allows you toodefine hello push speed of your application.</span></span>
 
   ![settings7][52]
 
-## <a name="tag-app-info"></a><span data-ttu-id="d8816-148">Taggen (appinfo)</span><span class="sxs-lookup"><span data-stu-id="d8816-148">Tag (app info)</span></span>
+## <a name="tag-app-info"></a><span data-ttu-id="e84df-148">Taggen (appinfo)</span><span class="sxs-lookup"><span data-stu-id="e84df-148">Tag (app info)</span></span>
 ![settings11][56]
 
-## <a name="commercial-pressure"></a><span data-ttu-id="d8816-150">Kommersiellt tryck</span><span class="sxs-lookup"><span data-stu-id="d8816-150">Commercial Pressure</span></span>
+## <a name="commercial-pressure"></a><span data-ttu-id="e84df-150">Kommersiellt tryck</span><span class="sxs-lookup"><span data-stu-id="e84df-150">Commercial Pressure</span></span>
 ![settings12][57]
 
-## <a name="see-also"></a><span data-ttu-id="d8816-152">Se även</span><span class="sxs-lookup"><span data-stu-id="d8816-152">See also</span></span>
-* <span data-ttu-id="d8816-153">[Begrepp][Link 6]</span><span class="sxs-lookup"><span data-stu-id="d8816-153">[Concepts][Link 6]</span></span>
-* <span data-ttu-id="d8816-154">[Felsöka Guide Service][Link 24]</span><span class="sxs-lookup"><span data-stu-id="d8816-154">[Troubleshooting Guide Service][Link 24]</span></span>
+## <a name="see-also"></a><span data-ttu-id="e84df-152">Se även</span><span class="sxs-lookup"><span data-stu-id="e84df-152">See also</span></span>
+* <span data-ttu-id="e84df-153">[Begrepp][Link 6]</span><span class="sxs-lookup"><span data-stu-id="e84df-153">[Concepts][Link 6]</span></span>
+* <span data-ttu-id="e84df-154">[Felsöka Guide Service][Link 24]</span><span class="sxs-lookup"><span data-stu-id="e84df-154">[Troubleshooting Guide Service][Link 24]</span></span>
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png

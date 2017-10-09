@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med PostBeyond | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och PostBeyond."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och PostBeyond."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,202 +13,202 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 80b920dc99619795cbc86e8cb2e3ac2a78a71932
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 38019fd24a603732e91a1b5f7bfed5ab4edb017f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-postbeyond"></a><span data-ttu-id="d6753-103">Självstudier: Azure Active Directory-integrering med PostBeyond</span><span class="sxs-lookup"><span data-stu-id="d6753-103">Tutorial: Azure Active Directory integration with PostBeyond</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-postbeyond"></a><span data-ttu-id="6490b-103">Självstudier: Azure Active Directory-integrering med PostBeyond</span><span class="sxs-lookup"><span data-stu-id="6490b-103">Tutorial: Azure Active Directory integration with PostBeyond</span></span>
 
-<span data-ttu-id="d6753-104">I kursen får lära du att integrera PostBeyond med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="d6753-104">In this tutorial, you learn how to integrate PostBeyond with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="6490b-104">I kursen får du lära dig hur toointegrate PostBeyond med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="6490b-104">In this tutorial, you learn how toointegrate PostBeyond with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="d6753-105">Integrera PostBeyond med Azure AD ger dig följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="d6753-105">Integrating PostBeyond with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="6490b-105">Integrera PostBeyond med Azure AD ger dig hello följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="6490b-105">Integrating PostBeyond with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="d6753-106">Du kan styra i Azure AD som har åtkomst till PostBeyond</span><span class="sxs-lookup"><span data-stu-id="d6753-106">You can control in Azure AD who has access to PostBeyond</span></span>
-- <span data-ttu-id="d6753-107">Du kan aktivera användarna att automatiskt hämta loggat in på PostBeyond (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="d6753-107">You can enable your users to automatically get signed-on to PostBeyond (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="d6753-108">Du kan hantera dina konton i en central plats - Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="d6753-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="6490b-106">Du kan styra i Azure AD som har åtkomst till tooPostBeyond</span><span class="sxs-lookup"><span data-stu-id="6490b-106">You can control in Azure AD who has access tooPostBeyond</span></span>
+- <span data-ttu-id="6490b-107">Du kan aktivera din användare tooautomatically get inloggade tooPostBeyond (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="6490b-107">You can enable your users tooautomatically get signed-on tooPostBeyond (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="6490b-108">Du kan hantera dina konton i en central plats - hello Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="6490b-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="d6753-109">Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="d6753-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="6490b-109">Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="6490b-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="d6753-110">Krav</span><span class="sxs-lookup"><span data-stu-id="d6753-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="6490b-110">Krav</span><span class="sxs-lookup"><span data-stu-id="6490b-110">Prerequisites</span></span>
 
-<span data-ttu-id="d6753-111">För att konfigurera Azure AD-integrering med PostBeyond, behöver du följande:</span><span class="sxs-lookup"><span data-stu-id="d6753-111">To configure Azure AD integration with PostBeyond, you need the following items:</span></span>
+<span data-ttu-id="6490b-111">tooconfigure Azure AD-integrering med PostBeyond, behöver du hello följande objekt:</span><span class="sxs-lookup"><span data-stu-id="6490b-111">tooconfigure Azure AD integration with PostBeyond, you need hello following items:</span></span>
 
-- <span data-ttu-id="d6753-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="d6753-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="d6753-113">En PostBeyond enkel inloggning aktiverad prenumeration</span><span class="sxs-lookup"><span data-stu-id="d6753-113">A PostBeyond single sign-on enabled subscription</span></span>
+- <span data-ttu-id="6490b-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="6490b-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="6490b-113">En PostBeyond enkel inloggning aktiverad prenumeration</span><span class="sxs-lookup"><span data-stu-id="6490b-113">A PostBeyond single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="d6753-114">Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="d6753-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="6490b-114">tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="6490b-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="d6753-115">Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="d6753-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="6490b-115">tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="6490b-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="d6753-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="d6753-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="d6753-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="d6753-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="6490b-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="6490b-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="6490b-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="6490b-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="d6753-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="d6753-118">Scenario description</span></span>
-<span data-ttu-id="d6753-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="d6753-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="d6753-120">Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="d6753-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="6490b-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="6490b-118">Scenario description</span></span>
+<span data-ttu-id="6490b-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="6490b-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="6490b-120">hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="6490b-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="d6753-121">Att lägga till PostBeyond från galleriet</span><span class="sxs-lookup"><span data-stu-id="d6753-121">Adding PostBeyond from the gallery</span></span>
-2. <span data-ttu-id="d6753-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="d6753-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="6490b-121">Att lägga till PostBeyond från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="6490b-121">Adding PostBeyond from hello gallery</span></span>
+2. <span data-ttu-id="6490b-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="6490b-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-postbeyond-from-the-gallery"></a><span data-ttu-id="d6753-123">Att lägga till PostBeyond från galleriet</span><span class="sxs-lookup"><span data-stu-id="d6753-123">Adding PostBeyond from the gallery</span></span>
-<span data-ttu-id="d6753-124">Du måste lägga till PostBeyond från galleriet i listan över hanterade SaaS-appar för att konfigurera PostBeyond till Azure AD-integrering.</span><span class="sxs-lookup"><span data-stu-id="d6753-124">To configure the integration of PostBeyond into Azure AD, you need to add PostBeyond from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-postbeyond-from-hello-gallery"></a><span data-ttu-id="6490b-123">Att lägga till PostBeyond från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="6490b-123">Adding PostBeyond from hello gallery</span></span>
+<span data-ttu-id="6490b-124">tooconfigure hello integrering av PostBeyond till Azure AD, behöver du tooadd PostBeyond hello galleriet tooyour listan över hanterade SaaS-appar.</span><span class="sxs-lookup"><span data-stu-id="6490b-124">tooconfigure hello integration of PostBeyond into Azure AD, you need tooadd PostBeyond from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="d6753-125">**Utför följande steg för att lägga till PostBeyond från galleriet:**</span><span class="sxs-lookup"><span data-stu-id="d6753-125">**To add PostBeyond from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="6490b-125">**tooadd PostBeyond från galleriet hello utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="6490b-125">**tooadd PostBeyond from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="d6753-126">I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="d6753-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="6490b-126">I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="6490b-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="d6753-128">Gå till **företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="d6753-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="d6753-129">Gå till **alla program**.</span><span class="sxs-lookup"><span data-stu-id="d6753-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="6490b-128">Navigera för**företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="6490b-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="6490b-129">Gå sedan för**alla program**.</span><span class="sxs-lookup"><span data-stu-id="6490b-129">Then go too**All applications**.</span></span>
 
     ![Program][2]
     
-3. <span data-ttu-id="d6753-131">Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="d6753-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="6490b-131">tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="6490b-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Program][3]
 
-4. <span data-ttu-id="d6753-133">I sökrutan skriver **PostBeyond**.</span><span class="sxs-lookup"><span data-stu-id="d6753-133">In the search box, type **PostBeyond**.</span></span>
+4. <span data-ttu-id="6490b-133">Skriv i sökrutan hello **PostBeyond**.</span><span class="sxs-lookup"><span data-stu-id="6490b-133">In hello search box, type **PostBeyond**.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_search.png)
 
-5. <span data-ttu-id="d6753-135">Välj i resultatpanelen **PostBeyond**, och klicka sedan på **Lägg till** för att lägga till programmet.</span><span class="sxs-lookup"><span data-stu-id="d6753-135">In the results panel, select **PostBeyond**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="6490b-135">Markera hello resultat på panelen **PostBeyond**, och klicka sedan på **Lägg till** knappen tooadd hello program.</span><span class="sxs-lookup"><span data-stu-id="6490b-135">In hello results panel, select **PostBeyond**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="d6753-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="d6753-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="d6753-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med PostBeyond baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="d6753-138">In this section, you configure and test Azure AD single sign-on with PostBeyond based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="6490b-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="6490b-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="6490b-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med PostBeyond baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="6490b-138">In this section, you configure and test Azure AD single sign-on with PostBeyond based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="d6753-139">Azure AD måste du känna till användaren i PostBeyond motsvarighet till en användare i Azure AD för enkel inloggning ska fungera.</span><span class="sxs-lookup"><span data-stu-id="d6753-139">For single sign-on to work, Azure AD needs to know what the counterpart user in PostBeyond is to a user in Azure AD.</span></span> <span data-ttu-id="d6753-140">Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i PostBeyond upprättas.</span><span class="sxs-lookup"><span data-stu-id="d6753-140">In other words, a link relationship between an Azure AD user and the related user in PostBeyond needs to be established.</span></span>
+<span data-ttu-id="6490b-139">För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i PostBeyond är tooa i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="6490b-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in PostBeyond is tooa user in Azure AD.</span></span> <span data-ttu-id="6490b-140">Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i PostBeyond toobe upprättas.</span><span class="sxs-lookup"><span data-stu-id="6490b-140">In other words, a link relationship between an Azure AD user and hello related user in PostBeyond needs toobe established.</span></span>
 
-<span data-ttu-id="d6753-141">I PostBeyond, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.</span><span class="sxs-lookup"><span data-stu-id="d6753-141">In PostBeyond, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="6490b-141">I PostBeyond, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.</span><span class="sxs-lookup"><span data-stu-id="6490b-141">In PostBeyond, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="d6753-142">Om du vill konfigurera och testa Azure AD enkel inloggning med PostBeyond, måste du utföra följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="d6753-142">To configure and test Azure AD single sign-on with PostBeyond, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="6490b-142">tooconfigure och testa Azure AD enkel inloggning med PostBeyond, behöver du toocomplete hello följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="6490b-142">tooconfigure and test Azure AD single sign-on with PostBeyond, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="d6753-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="d6753-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="d6753-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="d6753-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="d6753-145">**[Skapa en PostBeyond testanvändare](#creating-a-postbeyond-test-user)**  – du har en motsvarighet för Britta Simon i PostBeyond som är kopplad till Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="d6753-145">**[Creating a PostBeyond test user](#creating-a-postbeyond-test-user)** - to have a counterpart of Britta Simon in PostBeyond that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="d6753-146">**[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="d6753-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="d6753-147">**[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="d6753-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="6490b-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="6490b-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="6490b-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="6490b-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="6490b-145">**[Skapa en PostBeyond testanvändare](#creating-a-postbeyond-test-user)**  -toohave en motsvarighet för Britta Simon i PostBeyond som är länkade toohello Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="6490b-145">**[Creating a PostBeyond test user](#creating-a-postbeyond-test-user)** - toohave a counterpart of Britta Simon in PostBeyond that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="6490b-146">**[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="6490b-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="6490b-147">**[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="6490b-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="d6753-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="d6753-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="6490b-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="6490b-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="d6753-149">I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt PostBeyond program.</span><span class="sxs-lookup"><span data-stu-id="d6753-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your PostBeyond application.</span></span>
+<span data-ttu-id="6490b-149">I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt PostBeyond program.</span><span class="sxs-lookup"><span data-stu-id="6490b-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your PostBeyond application.</span></span>
 
-<span data-ttu-id="d6753-150">**Utför följande steg för att konfigurera Azure AD enkel inloggning med PostBeyond:**</span><span class="sxs-lookup"><span data-stu-id="d6753-150">**To configure Azure AD single sign-on with PostBeyond, perform the following steps:**</span></span>
+<span data-ttu-id="6490b-150">**Utför följande steg hello tooconfigure Azure AD enkel inloggning med PostBeyond:**</span><span class="sxs-lookup"><span data-stu-id="6490b-150">**tooconfigure Azure AD single sign-on with PostBeyond, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="d6753-151">I Azure-portalen på den **PostBeyond** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="d6753-151">In the Azure portal, on the **PostBeyond** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="6490b-151">I hello Azure-portalen på hello **PostBeyond** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="6490b-151">In hello Azure portal, on hello **PostBeyond** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurera enkel inloggning][4]
 
-2. <span data-ttu-id="d6753-153">På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="d6753-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="6490b-153">På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="6490b-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_samlbase.png)
 
-3. <span data-ttu-id="d6753-155">På den **PostBeyond domän och URL: er** avsnittet, utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="d6753-155">On the **PostBeyond Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="6490b-155">På hello **PostBeyond domän och URL: er** avsnittet, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="6490b-155">On hello **PostBeyond Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_url.png)
 
-    <span data-ttu-id="d6753-157">a.</span><span class="sxs-lookup"><span data-stu-id="d6753-157">a.</span></span> <span data-ttu-id="d6753-158">I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<subdomain>.postbeyond.com`</span><span class="sxs-lookup"><span data-stu-id="d6753-158">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://<subdomain>.postbeyond.com`</span></span>
+    <span data-ttu-id="6490b-157">a.</span><span class="sxs-lookup"><span data-stu-id="6490b-157">a.</span></span> <span data-ttu-id="6490b-158">I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<subdomain>.postbeyond.com`</span><span class="sxs-lookup"><span data-stu-id="6490b-158">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://<subdomain>.postbeyond.com`</span></span>
 
-    <span data-ttu-id="d6753-159">b.</span><span class="sxs-lookup"><span data-stu-id="d6753-159">b.</span></span> <span data-ttu-id="d6753-160">I den **identifierare** textruta Skriv en URL med följande mönster:`https://<subdomain>.postbeyond.com`</span><span class="sxs-lookup"><span data-stu-id="d6753-160">In the **Identifier** textbox, type a URL using the following pattern: `https://<subdomain>.postbeyond.com`</span></span>
+    <span data-ttu-id="6490b-159">b.</span><span class="sxs-lookup"><span data-stu-id="6490b-159">b.</span></span> <span data-ttu-id="6490b-160">I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<subdomain>.postbeyond.com`</span><span class="sxs-lookup"><span data-stu-id="6490b-160">In hello **Identifier** textbox, type a URL using hello following pattern: `https://<subdomain>.postbeyond.com`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="d6753-161">Dessa värden är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="d6753-161">These values are not real.</span></span> <span data-ttu-id="d6753-162">Uppdatera dessa värden med den faktiska inloggnings-URL och identifierare.</span><span class="sxs-lookup"><span data-stu-id="d6753-162">Update these values with the actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="d6753-163">Kontakta [PostBeyond klienten supportteamet](mailto:sso@postbeyond.com) att hämta dessa värden.</span><span class="sxs-lookup"><span data-stu-id="d6753-163">Contact [PostBeyond Client support team](mailto:sso@postbeyond.com) to get these values.</span></span> 
+    > <span data-ttu-id="6490b-161">Dessa värden är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="6490b-161">These values are not real.</span></span> <span data-ttu-id="6490b-162">Uppdatera dessa värden med hello faktiska inloggnings-URL och identifierare.</span><span class="sxs-lookup"><span data-stu-id="6490b-162">Update these values with hello actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="6490b-163">Kontakta [PostBeyond klienten supportteamet](mailto:sso@postbeyond.com) tooget dessa värden.</span><span class="sxs-lookup"><span data-stu-id="6490b-163">Contact [PostBeyond Client support team](mailto:sso@postbeyond.com) tooget these values.</span></span> 
  
-4. <span data-ttu-id="d6753-164">På den **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara certifikatfilen på datorn.</span><span class="sxs-lookup"><span data-stu-id="d6753-164">On the **SAML Signing Certificate** section, click **Certificate(Base64)** and then save the certificate file on your computer.</span></span>
+4. <span data-ttu-id="6490b-164">På hello **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara sedan hello certifikat på datorn.</span><span class="sxs-lookup"><span data-stu-id="6490b-164">On hello **SAML Signing Certificate** section, click **Certificate(Base64)** and then save hello certificate file on your computer.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_certificate.png) 
 
-5. <span data-ttu-id="d6753-166">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="d6753-166">Click **Save** button.</span></span>
+5. <span data-ttu-id="6490b-166">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="6490b-166">Click **Save** button.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-postbeyond-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="d6753-168">På den **PostBeyond Configuration** klickar du på **konfigurera PostBeyond** att öppna **konfigurera inloggning** fönster.</span><span class="sxs-lookup"><span data-stu-id="d6753-168">On the **PostBeyond Configuration** section, click **Configure PostBeyond** to open **Configure sign-on** window.</span></span> <span data-ttu-id="d6753-169">Kopiera den **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**</span><span class="sxs-lookup"><span data-stu-id="d6753-169">Copy the **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="6490b-168">På hello **PostBeyond Configuration** klickar du på **konfigurera PostBeyond** tooopen **konfigurera inloggning** fönster.</span><span class="sxs-lookup"><span data-stu-id="6490b-168">On hello **PostBeyond Configuration** section, click **Configure PostBeyond** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="6490b-169">Kopiera hello **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**</span><span class="sxs-lookup"><span data-stu-id="6490b-169">Copy hello **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_configure.png) 
 
-7. <span data-ttu-id="d6753-171">Konfigurera enkel inloggning på **PostBeyond** sida, måste du skicka den hämtade **Certificate(Base64)**, **SAML enhets-ID**, **SAML enkel inloggning Tjänstwebbadress** och **Sign-Out URL** till [PostBeyond supportteamet](mailto:sso@postbeyond.com).</span><span class="sxs-lookup"><span data-stu-id="d6753-171">To configure single sign-on on **PostBeyond** side, you need to send the downloaded **Certificate(Base64)**, **SAML Entity ID**, **SAML Single Sign-On Service URL** and **Sign-Out URL** to [PostBeyond support team](mailto:sso@postbeyond.com).</span></span> <span data-ttu-id="d6753-172">De kan ange den här inställningen att ha SAML SSO anslutningen korrekt på båda sidor.</span><span class="sxs-lookup"><span data-stu-id="d6753-172">They set this setting to have the SAML SSO connection set properly on both sides.</span></span>
+7. <span data-ttu-id="6490b-171">tooconfigure enkel inloggning på **PostBeyond** sida, behöver du toosend hello hämtas **Certificate(Base64)**, **SAML enhets-ID**, **SAML enkel inloggning Tjänst-URL** och **Sign-Out URL** för[PostBeyond supportteamet](mailto:sso@postbeyond.com).</span><span class="sxs-lookup"><span data-stu-id="6490b-171">tooconfigure single sign-on on **PostBeyond** side, you need toosend hello downloaded **Certificate(Base64)**, **SAML Entity ID**, **SAML Single Sign-On Service URL** and **Sign-Out URL** too[PostBeyond support team](mailto:sso@postbeyond.com).</span></span> <span data-ttu-id="6490b-172">De kan ange den här inställningen toohave hello SAML SSO anslutningen korrekt på båda sidor.</span><span class="sxs-lookup"><span data-stu-id="6490b-172">They set this setting toohave hello SAML SSO connection set properly on both sides.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="d6753-173">Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!</span><span class="sxs-lookup"><span data-stu-id="d6753-173">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="d6753-174">När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned.</span><span class="sxs-lookup"><span data-stu-id="d6753-174">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="d6753-175">Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="d6753-175">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="6490b-173">Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!</span><span class="sxs-lookup"><span data-stu-id="6490b-173">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="6490b-174">När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello.</span><span class="sxs-lookup"><span data-stu-id="6490b-174">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="6490b-175">Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="6490b-175">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="d6753-176">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="d6753-176">Creating an Azure AD test user</span></span>
-<span data-ttu-id="d6753-177">Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="d6753-177">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="6490b-176">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="6490b-176">Creating an Azure AD test user</span></span>
+<span data-ttu-id="6490b-177">hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="6490b-177">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Skapa Azure AD-användare][100]
 
-<span data-ttu-id="d6753-179">**Utför följande steg för att skapa en testanvändare i Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="d6753-179">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="6490b-179">**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="6490b-179">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="d6753-180">I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="d6753-180">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="6490b-180">I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="6490b-180">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="d6753-182">Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="d6753-182">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="6490b-182">toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="6490b-182">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="d6753-184">Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="d6753-184">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="6490b-184">tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="6490b-184">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="d6753-186">På den **användaren** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="d6753-186">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="6490b-186">På hello **användaren** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="6490b-186">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-postbeyond-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="d6753-188">a.</span><span class="sxs-lookup"><span data-stu-id="d6753-188">a.</span></span> <span data-ttu-id="d6753-189">I den **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="d6753-189">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="6490b-188">a.</span><span class="sxs-lookup"><span data-stu-id="6490b-188">a.</span></span> <span data-ttu-id="6490b-189">I hello **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="6490b-189">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="d6753-190">b.</span><span class="sxs-lookup"><span data-stu-id="d6753-190">b.</span></span> <span data-ttu-id="d6753-191">I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="d6753-191">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="6490b-190">b.</span><span class="sxs-lookup"><span data-stu-id="6490b-190">b.</span></span> <span data-ttu-id="6490b-191">I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="6490b-191">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="d6753-192">c.</span><span class="sxs-lookup"><span data-stu-id="d6753-192">c.</span></span> <span data-ttu-id="d6753-193">Välj **visa lösenordet** och anteckna värdet för den **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="d6753-193">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="6490b-192">c.</span><span class="sxs-lookup"><span data-stu-id="6490b-192">c.</span></span> <span data-ttu-id="6490b-193">Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="6490b-193">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="d6753-194">d.</span><span class="sxs-lookup"><span data-stu-id="d6753-194">d.</span></span> <span data-ttu-id="d6753-195">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="d6753-195">Click **Create**.</span></span>
+    <span data-ttu-id="6490b-194">d.</span><span class="sxs-lookup"><span data-stu-id="6490b-194">d.</span></span> <span data-ttu-id="6490b-195">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="6490b-195">Click **Create**.</span></span>
  
-### <a name="creating-a-postbeyond-test-user"></a><span data-ttu-id="d6753-196">Skapa en PostBeyond testanvändare</span><span class="sxs-lookup"><span data-stu-id="d6753-196">Creating a PostBeyond test user</span></span>
+### <a name="creating-a-postbeyond-test-user"></a><span data-ttu-id="6490b-196">Skapa en PostBeyond testanvändare</span><span class="sxs-lookup"><span data-stu-id="6490b-196">Creating a PostBeyond test user</span></span>
 
-<span data-ttu-id="d6753-197">I det här avsnittet skapar du en användare som kallas Britta Simon i PostBeyond.</span><span class="sxs-lookup"><span data-stu-id="d6753-197">In this section, you create a user called Britta Simon in PostBeyond.</span></span> <span data-ttu-id="d6753-198">Om du inte vet hur du lägger till Britta Simon i PostBeyond arbeta med [PostBeyond supportteamet](mailto:sso@postbeyond.com) att lägga till användaren och aktivera enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="d6753-198">If you don't know how to add Britta Simon in PostBeyond, please work with [PostBeyond support team](mailto:sso@postbeyond.com) to add the test user and enable SSO.</span></span>
+<span data-ttu-id="6490b-197">I det här avsnittet skapar du en användare som kallas Britta Simon i PostBeyond.</span><span class="sxs-lookup"><span data-stu-id="6490b-197">In this section, you create a user called Britta Simon in PostBeyond.</span></span> <span data-ttu-id="6490b-198">Om du inte vet hur tooadd Britta Simon i PostBeyond, se tillsammans med [PostBeyond supportteamet](mailto:sso@postbeyond.com) tooadd hello testanvändare och aktivera enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="6490b-198">If you don't know how tooadd Britta Simon in PostBeyond, please work with [PostBeyond support team](mailto:sso@postbeyond.com) tooadd hello test user and enable SSO.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="d6753-199">Tilldela Azure AD-testanvändare</span><span class="sxs-lookup"><span data-stu-id="d6753-199">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="6490b-199">Tilldela användare hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="6490b-199">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="d6753-200">I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till PostBeyond.</span><span class="sxs-lookup"><span data-stu-id="d6753-200">In this section, you enable Britta Simon to use Azure single sign-on by granting access to PostBeyond.</span></span>
+<span data-ttu-id="6490b-200">I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooPostBeyond.</span><span class="sxs-lookup"><span data-stu-id="6490b-200">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooPostBeyond.</span></span>
 
 ![Tilldela användare][200] 
 
-<span data-ttu-id="d6753-202">**Om du vill tilldela PostBeyond Britta Simon utför du följande steg:**</span><span class="sxs-lookup"><span data-stu-id="d6753-202">**To assign Britta Simon to PostBeyond, perform the following steps:**</span></span>
+<span data-ttu-id="6490b-202">**tooassign Britta Simon tooPostBeyond utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="6490b-202">**tooassign Britta Simon tooPostBeyond, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="d6753-203">Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="d6753-203">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="6490b-203">I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="6490b-203">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Tilldela användare][201] 
 
-2. <span data-ttu-id="d6753-205">Välj i listan med program **PostBeyond**.</span><span class="sxs-lookup"><span data-stu-id="d6753-205">In the applications list, select **PostBeyond**.</span></span>
+2. <span data-ttu-id="6490b-205">Välj i listan med program hello **PostBeyond**.</span><span class="sxs-lookup"><span data-stu-id="6490b-205">In hello applications list, select **PostBeyond**.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-postbeyond-tutorial/tutorial_postbeyond_app.png) 
 
-3. <span data-ttu-id="d6753-207">Klicka på menyn till vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="d6753-207">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="6490b-207">Hello-menyn hello vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="6490b-207">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Tilldela användare][202] 
 
-4. <span data-ttu-id="d6753-209">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="d6753-209">Click **Add** button.</span></span> <span data-ttu-id="d6753-210">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="d6753-210">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="6490b-209">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="6490b-209">Click **Add** button.</span></span> <span data-ttu-id="6490b-210">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="6490b-210">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Tilldela användare][203]
 
-5. <span data-ttu-id="d6753-212">På **användare och grupper** markerar **Britta Simon** på listan användare.</span><span class="sxs-lookup"><span data-stu-id="d6753-212">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="6490b-212">På **användare och grupper** markerar **Britta Simon** i hello användarlistan.</span><span class="sxs-lookup"><span data-stu-id="6490b-212">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="d6753-213">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="d6753-213">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="6490b-213">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="6490b-213">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="d6753-214">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="d6753-214">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="6490b-214">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="6490b-214">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="d6753-215">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="d6753-215">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="6490b-215">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="6490b-215">Testing single sign-on</span></span>
 
-<span data-ttu-id="d6753-216">Syftet med det här avsnittet är att testa Azure AD SSO-konfigurationen med hjälp av panelen åtkomst.</span><span class="sxs-lookup"><span data-stu-id="d6753-216">The objective of this section is to test your Azure AD SSO configuration using the Access Panel.</span></span>
+<span data-ttu-id="6490b-216">hello syftet med det här avsnittet är tootest din Azure AD SSO konfiguration av hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="6490b-216">hello objective of this section is tootest your Azure AD SSO configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="d6753-217">När du klickar på panelen PostBeyond på panelen åtkomst som du bör få till PostBeyond inloggningssida.</span><span class="sxs-lookup"><span data-stu-id="d6753-217">When you click the PostBeyond tile in the Access Panel, you should get to the PostBeyond sign in page.</span></span> <span data-ttu-id="d6753-218">Klicka på **logga in med Office 365**, ange dina autentiseringsuppgifter för Azure AD.</span><span class="sxs-lookup"><span data-stu-id="d6753-218">Click on **Sign in with Office 365**, enter your Azure AD credentials.</span></span> <span data-ttu-id="d6753-219">Sedan kan bör du vara inloggad i PostBeyond.</span><span class="sxs-lookup"><span data-stu-id="d6753-219">Then, you should be logged in into PostBeyond.</span></span>
+<span data-ttu-id="6490b-217">När du klickar på hello PostBeyond panelen i Hej åtkomstpanelen, du bör få toohello PostBeyond inloggning på sidan.</span><span class="sxs-lookup"><span data-stu-id="6490b-217">When you click hello PostBeyond tile in hello Access Panel, you should get toohello PostBeyond sign in page.</span></span> <span data-ttu-id="6490b-218">Klicka på **logga in med Office 365**, ange dina autentiseringsuppgifter för Azure AD.</span><span class="sxs-lookup"><span data-stu-id="6490b-218">Click on **Sign in with Office 365**, enter your Azure AD credentials.</span></span> <span data-ttu-id="6490b-219">Sedan kan bör du vara inloggad i PostBeyond.</span><span class="sxs-lookup"><span data-stu-id="6490b-219">Then, you should be logged in into PostBeyond.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="d6753-220">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="d6753-220">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="6490b-220">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="6490b-220">Additional resources</span></span>
 
-* [<span data-ttu-id="d6753-221">Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="d6753-221">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="d6753-222">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="d6753-222">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="6490b-221">Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="6490b-221">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="6490b-222">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="6490b-222">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Biztalk Services – Självstudier | Microsoft Docs"
-description: "Lär dig hur du använder BizTalk Services för moln-till-lokal integrering och affärsapplikationer för SAP, Oracle EBS, SQL Server och PeopleSoft."
+title: "aaaAzure BizTalk-Services-dokumentation – självstudier | Microsoft Docs"
+description: "Lär dig hur toouse BizTalk services tooprovide moln tooon lokala och av branschspecifika programintegrering för SAP, Oracle EBS, SQL Server och PeopleSoft."
 services: biztalk-services
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 80b381d59e95297cf8d7616e6a2eb3186ab26a05
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 06411e211b987a96d4b79a93871e66157f7ecdb6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="biztalk-services-documentation"></a>Dokumentation om BizTalk Services
 
-Lär dig hur du använder BizTalk Services för moln-till-lokal integrering och affärsapplikationer för SAP, Oracle EBS, SQL Server och PeopleSoft. Självstudier och annan dokumentation visar hur du integrerar företaget och molnet.
+Lär dig hur toouse BizTalk services tooprovide moln tooon lokala och av branschspecifika programintegrering för SAP, Oracle EBS, SQL Server och PeopleSoft. Självstudiekurser och andra dokumentationen visar hur toointegrate hello enterprise och hello cloud.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Lär dig hur du använder BizTalk Services för moln-till-lokal integrering och 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med BizTalk Services med hjälp av Azure Portal</h3>
+                        <h3>Kom igång med BizTalk-tjänster med hjälp av hello Azure-portalen</h3>
                     </div>
                 </div>
             </div>

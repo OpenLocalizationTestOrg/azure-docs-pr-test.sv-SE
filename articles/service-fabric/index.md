@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Service Fabric – Självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur du använder Service Fabric mellanplattform för att paketera och distribuera mikrotjänster för program i molnskala. Självstudier, API-referenser och kodexempel."
+title: "aaaAzure Service Fabric-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur toouse Service Fabric mellanprogram plattform toopackage och distribuera mikrotjänster för molnskala program. Självstudier, API-referenser och kodexempel."
 services: service-fabric
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 95499b3ca42e17a6586f97ca3e28919d2fc64a80
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0758059e7f8604fc2fe9cff4acb826204ff8d686
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="service-fabric-documentation"></a>Dokumentation om Service Fabric
 
-Lär dig hur du använder Service Fabric för att paketera, distribuera och hantera skalbara och tillförlitliga mikrotjänster. Självstudier, API-referenser och kodexempel visas hur du använder den här mellanplattformen för att skapa och hantera program i molnskala.
+Lär dig hur toouse Service Fabric-toopackage, distribuera och hantera skalbara och tillförlitliga mikrotjänster. Självstudier, API-referenserna och koden exempel visar hur toouse denna mellanprogram plattform toobuild och hantera moln-skala program.
 
 <ul class="panelContent cardsFTitle">
     <li>

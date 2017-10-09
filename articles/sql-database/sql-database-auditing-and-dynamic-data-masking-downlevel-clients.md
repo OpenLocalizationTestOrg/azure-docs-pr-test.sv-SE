@@ -1,0 +1,84 @@
+---
+title: "aaaTable granskning TDS-omdirigering och IP-slutpunkter för Azure SQL Database | Microsoft Docs"
+description: "Läs mer om granskning, TDS-omdirigering och IP-slutpunkt ändringar när du implementerar tabell granskning i Azure SQL Database."
+services: sql-database
+documentationcenter: 
+author: giladm
+manager: jhubbard
+editor: 
+ms.assetid: 4ef19ed1-e798-43a2-ad99-0e563f93ab53
+ms.service: sql-database
+ms.custom: security
+ms.workload: data-management
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 05/31/2017
+ms.author: giladm
+ms.openlocfilehash: 966c23f92fab6fa459a515ad841bb2d5f75436aa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/06/2017
+---
+# <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a><span data-ttu-id="036be-103">Stöd för SQL Database - klientversioner och IP-slutpunkt ändras för granskning av tabell</span><span class="sxs-lookup"><span data-stu-id="036be-103">SQL Database -  Downlevel clients support and IP endpoint changes for Table Auditing</span></span>
+
+> [!IMPORTANT]
+> <span data-ttu-id="036be-104">Det här dokumentet gäller endast tooTable granskning, vilket är **nu föråldrade**.</span><span class="sxs-lookup"><span data-stu-id="036be-104">This document applies only tooTable Auditing, which is **now deprecated**.</span></span><br>
+> <span data-ttu-id="036be-105">Använd hello nya [Blobbgranskning](sql-database-auditing.md) -metoden som **inte** kräver äldre klienten anslutning sträng ändringar.</span><span class="sxs-lookup"><span data-stu-id="036be-105">Please use hello new [Blob Auditing](sql-database-auditing.md) method, which **does not** require downlevel client connection string modifications.</span></span> <span data-ttu-id="036be-106">Ytterligare information om Blobbgranskning finns i [Kom igång med SQL database auditing](sql-database-auditing.md).</span><span class="sxs-lookup"><span data-stu-id="036be-106">Additional info on Blob Auditing can be found in [Get started with SQL database auditing](sql-database-auditing.md).</span></span>
+
+<span data-ttu-id="036be-107">[Databasen granskning](sql-database-auditing.md) fungerar automatiskt med SQL-klienter som stöder TDS-omdirigering.</span><span class="sxs-lookup"><span data-stu-id="036be-107">[Database Auditing](sql-database-auditing.md) works automatically with SQL clients that support TDS redirection.</span></span> <span data-ttu-id="036be-108">Observera att omdirigering inte gäller när metoden hello Blobbgranskning.</span><span class="sxs-lookup"><span data-stu-id="036be-108">Note that redirection does not apply when using hello Blob Auditing method.</span></span>
+
+## <span data-ttu-id="036be-109"><a id="subheading-1"></a>Stöd för äldre klienter</span><span class="sxs-lookup"><span data-stu-id="036be-109"><a id="subheading-1"></a>Downlevel clients support</span></span>
+<span data-ttu-id="036be-110">Alla klienter som implementerar TDS 7.4 bör också stöd för omdirigering.</span><span class="sxs-lookup"><span data-stu-id="036be-110">Any client which implements TDS 7.4 should also support redirection.</span></span> <span data-ttu-id="036be-111">Undantag toothis inkluderar JDBC 4.0 i vilken funktion du hello omdirigering stöds inte fullt ut och Tedious för Node.JS där omdirigering inte har implementerats.</span><span class="sxs-lookup"><span data-stu-id="036be-111">Exceptions toothis include JDBC 4.0 in which hello redirection feature is not fully supported and Tedious for Node.JS in which redirection was not implemented.</span></span>
+
+<span data-ttu-id="036be-112">För ”äldre klienter”, ska d.v.s. som stöder TDS version 7.3 och hello nedan - serverns FQDN i anslutningssträngen för hello ändras:</span><span class="sxs-lookup"><span data-stu-id="036be-112">For "Downlevel clients", i.e. which support TDS version 7.3 and below - hello server FQDN in hello connection string should be modified:</span></span>
+
+<span data-ttu-id="036be-113">Ursprungliga serverns FQDN i anslutningssträngen för hello: <*servernamn*>. database.windows.net</span><span class="sxs-lookup"><span data-stu-id="036be-113">Original server FQDN in hello connection string: <*server name*>.database.windows.net</span></span>
+
+<span data-ttu-id="036be-114">Ändrade serverns FQDN i anslutningssträngen för hello: <*servernamn*> .database. **säker**. windows.net</span><span class="sxs-lookup"><span data-stu-id="036be-114">Modified server FQDN in hello connection string: <*server name*>.database.**secure**.windows.net</span></span>
+
+<span data-ttu-id="036be-115">Innehåller en lista över ”klientversioner”:</span><span class="sxs-lookup"><span data-stu-id="036be-115">A partial list of "Downlevel clients" includes:</span></span>
+
+* <span data-ttu-id="036be-116">.NET 4.0 och nedan.</span><span class="sxs-lookup"><span data-stu-id="036be-116">.NET 4.0 and below,</span></span>
+* <span data-ttu-id="036be-117">ODBC-10.0 och nedan.</span><span class="sxs-lookup"><span data-stu-id="036be-117">ODBC 10.0 and below.</span></span>
+* <span data-ttu-id="036be-118">JDBC (medan JDBC stöder TDS 7.4, hello TDS omdirigering av funktionen inte stöds fullt ut)</span><span class="sxs-lookup"><span data-stu-id="036be-118">JDBC (while JDBC does support TDS 7.4, hello TDS redirection feature is not fully supported)</span></span>
+* <span data-ttu-id="036be-119">Tråkigt (för Node.JS)</span><span class="sxs-lookup"><span data-stu-id="036be-119">Tedious (for Node.JS)</span></span>
+
+<span data-ttu-id="036be-120">**Kommentar:** hello ovan server FDQN ändring kan vara användbara också för att tillämpa en princip för SQL Server-nivå granskning utan behov av en konfiguration steg i varje databas (tillfällig lösning).</span><span class="sxs-lookup"><span data-stu-id="036be-120">**Remark:** hello above server FDQN modification may be useful also for applying a SQL Server Level Auditing policy without a need for a configuration step in each database (Temporary mitigation).</span></span>
+
+## <span data-ttu-id="036be-121"><a id="subheading-2"></a>IP-slutpunkt ändras när du aktiverar granskning</span><span class="sxs-lookup"><span data-stu-id="036be-121"><a id="subheading-2"></a>IP endpoint changes when enabling Auditing</span></span>
+<span data-ttu-id="036be-122">Observera att när du aktiverar granskning av tabellen hello IP-slutpunkt för din databas kommer att ändras.</span><span class="sxs-lookup"><span data-stu-id="036be-122">Please note that when you enable Table Auditing, hello IP endpoint of your database will change.</span></span> <span data-ttu-id="036be-123">Om du har strikt brandväggsinställningar, uppdatera dessa brandväggsinställningar därefter.</span><span class="sxs-lookup"><span data-stu-id="036be-123">If you have strict firewall settings, please update those firewall settings accordingly.</span></span>
+
+<span data-ttu-id="036be-124">hello nya IP-slutpunkt i databasen beror på hello databasen region:</span><span class="sxs-lookup"><span data-stu-id="036be-124">hello new database IP endpoint will depend on hello database region:</span></span>
+
+| <span data-ttu-id="036be-125">Databasen Region</span><span class="sxs-lookup"><span data-stu-id="036be-125">Database Region</span></span> | <span data-ttu-id="036be-126">Möjliga IP-slutpunkter</span><span class="sxs-lookup"><span data-stu-id="036be-126">Possible IP endpoints</span></span> |
+| --- | --- |
+| <span data-ttu-id="036be-127">Norra Kina</span><span class="sxs-lookup"><span data-stu-id="036be-127">China North</span></span> |<span data-ttu-id="036be-128">139.217.29.176, 139.217.28.254</span><span class="sxs-lookup"><span data-stu-id="036be-128">139.217.29.176, 139.217.28.254</span></span> |
+| <span data-ttu-id="036be-129">Östra Kina</span><span class="sxs-lookup"><span data-stu-id="036be-129">China East</span></span> |<span data-ttu-id="036be-130">42.159.245.65, 42.159.246.245</span><span class="sxs-lookup"><span data-stu-id="036be-130">42.159.245.65, 42.159.246.245</span></span> |
+| <span data-ttu-id="036be-131">Östra Australien</span><span class="sxs-lookup"><span data-stu-id="036be-131">Australia East</span></span> |<span data-ttu-id="036be-132">104.210.91.32, 40.126.244.159, 191.239.64.60, 40.126.255.94</span><span class="sxs-lookup"><span data-stu-id="036be-132">104.210.91.32, 40.126.244.159, 191.239.64.60, 40.126.255.94</span></span> |
+| <span data-ttu-id="036be-133">Sydöstra Australien</span><span class="sxs-lookup"><span data-stu-id="036be-133">Australia Southeast</span></span> |<span data-ttu-id="036be-134">191.239.184.223, 40.127.85.81, 191.239.161.83, 40.127.81.130</span><span class="sxs-lookup"><span data-stu-id="036be-134">191.239.184.223, 40.127.85.81, 191.239.161.83, 40.127.81.130</span></span> |
+| <span data-ttu-id="036be-135">Södra Brasilien</span><span class="sxs-lookup"><span data-stu-id="036be-135">Brazil South</span></span> |<span data-ttu-id="036be-136">104.41.44.161, 104.41.62.230, 23.97.99.54, 104.41.59.191</span><span class="sxs-lookup"><span data-stu-id="036be-136">104.41.44.161, 104.41.62.230, 23.97.99.54, 104.41.59.191</span></span> |
+| <span data-ttu-id="036be-137">Centrala USA</span><span class="sxs-lookup"><span data-stu-id="036be-137">Central US</span></span> |<span data-ttu-id="036be-138">104.43.255.70, 40.83.14.7, 23.99.128.244, 40.83.15.176</span><span class="sxs-lookup"><span data-stu-id="036be-138">104.43.255.70, 40.83.14.7, 23.99.128.244, 40.83.15.176</span></span> |
+| <span data-ttu-id="036be-139">Centrala USA EUAP</span><span class="sxs-lookup"><span data-stu-id="036be-139">Central US EUAP</span></span> |<span data-ttu-id="036be-140">52.180.178.16, 52.180.176.190</span><span class="sxs-lookup"><span data-stu-id="036be-140">52.180.178.16, 52.180.176.190</span></span> |
+| <span data-ttu-id="036be-141">Östasien</span><span class="sxs-lookup"><span data-stu-id="036be-141">East Asia</span></span> |<span data-ttu-id="036be-142">23.99.125.133, 13.75.40.42, 23.97.71.138, 13.94.43.245</span><span class="sxs-lookup"><span data-stu-id="036be-142">23.99.125.133, 13.75.40.42, 23.97.71.138, 13.94.43.245</span></span> |
+| <span data-ttu-id="036be-143">Östra USA 2</span><span class="sxs-lookup"><span data-stu-id="036be-143">East US 2</span></span> |<span data-ttu-id="036be-144">104.209.141.31, 104.208.238.177, 191.237.131.51, 104.208.235.50</span><span class="sxs-lookup"><span data-stu-id="036be-144">104.209.141.31, 104.208.238.177, 191.237.131.51, 104.208.235.50</span></span> |
+| <span data-ttu-id="036be-145">Östra USA</span><span class="sxs-lookup"><span data-stu-id="036be-145">East US</span></span> |<span data-ttu-id="036be-146">23.96.107.223, 104.41.150.122, 23.96.38.170, 104.41.146.44</span><span class="sxs-lookup"><span data-stu-id="036be-146">23.96.107.223, 104.41.150.122, 23.96.38.170, 104.41.146.44</span></span> |
+| <span data-ttu-id="036be-147">Östra USA EUAP</span><span class="sxs-lookup"><span data-stu-id="036be-147">East US EUAP</span></span> |<span data-ttu-id="036be-148">52.225.190.86, 52.225.191.187</span><span class="sxs-lookup"><span data-stu-id="036be-148">52.225.190.86, 52.225.191.187</span></span> |
+| <span data-ttu-id="036be-149">Indien, centrala</span><span class="sxs-lookup"><span data-stu-id="036be-149">Central India</span></span> |<span data-ttu-id="036be-150">104.211.98.219, 104.211.103.71</span><span class="sxs-lookup"><span data-stu-id="036be-150">104.211.98.219, 104.211.103.71</span></span> |
+| <span data-ttu-id="036be-151">Södra Indien</span><span class="sxs-lookup"><span data-stu-id="036be-151">South India</span></span> |<span data-ttu-id="036be-152">104.211.227.102, 104.211.225.157</span><span class="sxs-lookup"><span data-stu-id="036be-152">104.211.227.102, 104.211.225.157</span></span> |
+| <span data-ttu-id="036be-153">Indien, västra</span><span class="sxs-lookup"><span data-stu-id="036be-153">West India</span></span> |<span data-ttu-id="036be-154">104.211.161.152, 104.211.162.21</span><span class="sxs-lookup"><span data-stu-id="036be-154">104.211.161.152, 104.211.162.21</span></span> |
+| <span data-ttu-id="036be-155">Östra Japan</span><span class="sxs-lookup"><span data-stu-id="036be-155">Japan East</span></span> |<span data-ttu-id="036be-156">104.41.179.1, 40.115.253.81, 23.102.64.207, 40.115.250.196</span><span class="sxs-lookup"><span data-stu-id="036be-156">104.41.179.1, 40.115.253.81, 23.102.64.207, 40.115.250.196</span></span> |
+| <span data-ttu-id="036be-157">Västra Japan</span><span class="sxs-lookup"><span data-stu-id="036be-157">Japan West</span></span> |<span data-ttu-id="036be-158">104.214.140.140, 104.214.146.31, 191.233.32.34, 104.214.146.198</span><span class="sxs-lookup"><span data-stu-id="036be-158">104.214.140.140, 104.214.146.31, 191.233.32.34, 104.214.146.198</span></span> |
+| <span data-ttu-id="036be-159">Norra centrala USA</span><span class="sxs-lookup"><span data-stu-id="036be-159">North Central US</span></span> |<span data-ttu-id="036be-160">191.236.155.178, 23.96.192.130, 23.96.177.169, 23.96.193.231</span><span class="sxs-lookup"><span data-stu-id="036be-160">191.236.155.178, 23.96.192.130, 23.96.177.169, 23.96.193.231</span></span> |
+| <span data-ttu-id="036be-161">Norra Europa</span><span class="sxs-lookup"><span data-stu-id="036be-161">North Europe</span></span> |<span data-ttu-id="036be-162">104.41.209.221, 40.85.139.245, 137.116.251.66, 40.85.142.176</span><span class="sxs-lookup"><span data-stu-id="036be-162">104.41.209.221, 40.85.139.245, 137.116.251.66, 40.85.142.176</span></span> |
+| <span data-ttu-id="036be-163">Södra centrala USA</span><span class="sxs-lookup"><span data-stu-id="036be-163">South Central US</span></span> |<span data-ttu-id="036be-164">191.238.184.128, 40.84.190.84, 23.102.160.153, 40.84.186.66</span><span class="sxs-lookup"><span data-stu-id="036be-164">191.238.184.128, 40.84.190.84, 23.102.160.153, 40.84.186.66</span></span> |
+| <span data-ttu-id="036be-165">Sydostasien</span><span class="sxs-lookup"><span data-stu-id="036be-165">Southeast Asia</span></span> |<span data-ttu-id="036be-166">104.215.198.156, 13.76.252.200, 23.97.51.109, 13.76.252.113</span><span class="sxs-lookup"><span data-stu-id="036be-166">104.215.198.156, 13.76.252.200, 23.97.51.109, 13.76.252.113</span></span> |
+| <span data-ttu-id="036be-167">Västra Europa</span><span class="sxs-lookup"><span data-stu-id="036be-167">West Europe</span></span> |<span data-ttu-id="036be-168">104.40.230.120, 13.80.23.64, 137.117.171.161, 13.80.8.37, 104.47.167.215, 40.118.56.193, 104.40.176.73, 40.118.56.20</span><span class="sxs-lookup"><span data-stu-id="036be-168">104.40.230.120, 13.80.23.64, 137.117.171.161, 13.80.8.37, 104.47.167.215, 40.118.56.193, 104.40.176.73, 40.118.56.20</span></span> |
+| <span data-ttu-id="036be-169">Västra USA</span><span class="sxs-lookup"><span data-stu-id="036be-169">West US</span></span> |<span data-ttu-id="036be-170">191.236.123.146, 138.91.163.240, 168.62.194.148, 23.99.6.91</span><span class="sxs-lookup"><span data-stu-id="036be-170">191.236.123.146, 138.91.163.240, 168.62.194.148, 23.99.6.91</span></span> |
+| <span data-ttu-id="036be-171">Västra USA 2</span><span class="sxs-lookup"><span data-stu-id="036be-171">West US 2</span></span> |<span data-ttu-id="036be-172">13.66.224.156, 13.66.227.8</span><span class="sxs-lookup"><span data-stu-id="036be-172">13.66.224.156, 13.66.227.8</span></span> |
+| <span data-ttu-id="036be-173">Västra centrala USA</span><span class="sxs-lookup"><span data-stu-id="036be-173">West Central US</span></span> |<span data-ttu-id="036be-174">52.161.29.186, 52.161.27.213</span><span class="sxs-lookup"><span data-stu-id="036be-174">52.161.29.186, 52.161.27.213</span></span> |
+| <span data-ttu-id="036be-175">Centrala Kanada</span><span class="sxs-lookup"><span data-stu-id="036be-175">Canada Central</span></span> |<span data-ttu-id="036be-176">13.88.248.106, 13.88.248.110</span><span class="sxs-lookup"><span data-stu-id="036be-176">13.88.248.106, 13.88.248.110</span></span> |
+| <span data-ttu-id="036be-177">Östra Kanada</span><span class="sxs-lookup"><span data-stu-id="036be-177">Canada East</span></span> |<span data-ttu-id="036be-178">40.86.227.82, 40.86.225.194</span><span class="sxs-lookup"><span data-stu-id="036be-178">40.86.227.82, 40.86.225.194</span></span> |
+| <span data-ttu-id="036be-179">Storbritannien, norra</span><span class="sxs-lookup"><span data-stu-id="036be-179">UK North</span></span> |<span data-ttu-id="036be-180">13.87.101.18, 13.87.100.232</span><span class="sxs-lookup"><span data-stu-id="036be-180">13.87.101.18, 13.87.100.232</span></span> |
+| <span data-ttu-id="036be-181">Storbritannien, södra 2</span><span class="sxs-lookup"><span data-stu-id="036be-181">UK South 2</span></span> |<span data-ttu-id="036be-182">13.87.32.202, 13.87.32.226</span><span class="sxs-lookup"><span data-stu-id="036be-182">13.87.32.202, 13.87.32.226</span></span> |

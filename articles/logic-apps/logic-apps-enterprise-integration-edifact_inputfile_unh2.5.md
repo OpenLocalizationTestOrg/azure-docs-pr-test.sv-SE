@@ -1,5 +1,5 @@
 ---
-title: "Logic Apps B2B edifact avkoda lösa UNH2.5 - Azure Logic Apps | Microsoft Docs"
+title: "aaaLogic appar B2B edifact avkoda lösa UNH2.5 - Azure Logic Apps | Microsoft Docs"
 description: "Azure Logic Apps B2B edifact avkoda lösa UNH2.5"
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 62ad8183cc6e9f56255b2729a04ee7710d00a21a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6d85242d0f828fa52cdc9689938f3ba1e51b1183
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-handle-edifact-documents-having-unh25-segment"></a><span data-ttu-id="68f56-103">Hantera EDIFACT-dokument med UNH2.5 segment</span><span class="sxs-lookup"><span data-stu-id="68f56-103">How to handle EDIFACT documents having UNH2.5 segment</span></span>
-<span data-ttu-id="68f56-104">Om UNH2.5 finns i dokumentet EDIFACT används för schemat sökning.</span><span class="sxs-lookup"><span data-stu-id="68f56-104">When UNH2.5 is present in the EDIFACT document, it is being used for schema lookup.</span></span> 
+# <a name="how-toohandle-edifact-documents-having-unh25-segment"></a><span data-ttu-id="ea96c-103">Hur toohandle EDIFACT-dokument med UNH2.5 segment</span><span class="sxs-lookup"><span data-stu-id="ea96c-103">How toohandle EDIFACT documents having UNH2.5 segment</span></span>
+<span data-ttu-id="ea96c-104">Om UNH2.5 finns i hello EDIFACT dokumentet används för schemat sökning.</span><span class="sxs-lookup"><span data-stu-id="ea96c-104">When UNH2.5 is present in hello EDIFACT document, it is being used for schema lookup.</span></span> 
 
-<span data-ttu-id="68f56-105">Exempel: Fältet UNH är **EAN008** i EDIFACT-meddelande</span><span class="sxs-lookup"><span data-stu-id="68f56-105">Example: The UNH field is **EAN008** in the EDIFACT message</span></span>  
-<span data-ttu-id="68f56-106">UNH + SSDD1 + ORDER: D: 03B: FN:**EAN008**'</span><span class="sxs-lookup"><span data-stu-id="68f56-106">UNH+SSDD1+ORDERS:D:03B:UN:**EAN008**'</span></span>  
+<span data-ttu-id="ea96c-105">Exempel: hello UNH fältet är **EAN008** i hello EDIFACT-meddelande</span><span class="sxs-lookup"><span data-stu-id="ea96c-105">Example: hello UNH field is **EAN008** in hello EDIFACT message</span></span>  
+<span data-ttu-id="ea96c-106">UNH + SSDD1 + ORDER: D: 03B: FN:**EAN008**'</span><span class="sxs-lookup"><span data-stu-id="ea96c-106">UNH+SSDD1+ORDERS:D:03B:UN:**EAN008**'</span></span>  
 
-<span data-ttu-id="68f56-107">Åtgärder för att hantera meddelandet</span><span class="sxs-lookup"><span data-stu-id="68f56-107">Steps to follow to handle the message</span></span> 
-1. <span data-ttu-id="68f56-108">Uppdatera schemat</span><span class="sxs-lookup"><span data-stu-id="68f56-108">Update the schema</span></span>
-2. <span data-ttu-id="68f56-109">Kontrollera inställningarna för avtal</span><span class="sxs-lookup"><span data-stu-id="68f56-109">Check the agreement settings</span></span>  
+<span data-ttu-id="ea96c-107">Steg toofollow toohandle hello-meddelande</span><span class="sxs-lookup"><span data-stu-id="ea96c-107">Steps toofollow toohandle hello message</span></span> 
+1. <span data-ttu-id="ea96c-108">Uppdatera hello schema</span><span class="sxs-lookup"><span data-stu-id="ea96c-108">Update hello schema</span></span>
+2. <span data-ttu-id="ea96c-109">Kontrollera inställningarna för hello-avtal</span><span class="sxs-lookup"><span data-stu-id="ea96c-109">Check hello agreement settings</span></span>  
 
-## <a name="update-the-schema"></a><span data-ttu-id="68f56-110">Uppdatera schemat</span><span class="sxs-lookup"><span data-stu-id="68f56-110">Update the schema</span></span>
-<span data-ttu-id="68f56-111">Du behöver distribuera ett schema med UNH2.5 rotnodens namn för att bearbeta meddelandet.</span><span class="sxs-lookup"><span data-stu-id="68f56-111">To process the message, you need to deploy a schema with the UNH2.5 root node name.</span></span>  <span data-ttu-id="68f56-112">För ett exempel är roten schemanamnet **EFACT_D03B_ORDERS_EAN008**</span><span class="sxs-lookup"><span data-stu-id="68f56-112">For given an example, the schema root name would be **EFACT_D03B_ORDERS_EAN008**</span></span>  
+## <a name="update-hello-schema"></a><span data-ttu-id="ea96c-110">Uppdatera hello schema</span><span class="sxs-lookup"><span data-stu-id="ea96c-110">Update hello schema</span></span>
+<span data-ttu-id="ea96c-111">tooprocess hello-meddelande måste toodeploy ett schema med hello UNH2.5 rotnodens namn.</span><span class="sxs-lookup"><span data-stu-id="ea96c-111">tooprocess hello message, you need toodeploy a schema with hello UNH2.5 root node name.</span></span>  <span data-ttu-id="ea96c-112">För ett exempel hello schemanamnet rot skulle vara **EFACT_D03B_ORDERS_EAN008**</span><span class="sxs-lookup"><span data-stu-id="ea96c-112">For given an example, hello schema root name would be **EFACT_D03B_ORDERS_EAN008**</span></span>  
 
-<span data-ttu-id="68f56-113">För varje D03B_ORDERS med ett annat UNH2.5 segment, skulle du behöva distribuera en enskild schemat.</span><span class="sxs-lookup"><span data-stu-id="68f56-113">For each D03B_ORDERS with a different UNH2.5 segment, you would have to deploy an individual schema.</span></span>  
+<span data-ttu-id="ea96c-113">Du skulle ha en enskild schemat toodeploy för varje D03B_ORDERS med ett annat UNH2.5 segment.</span><span class="sxs-lookup"><span data-stu-id="ea96c-113">For each D03B_ORDERS with a different UNH2.5 segment, you would have toodeploy an individual schema.</span></span>  
 
-## <a name="add-schema-to-the-edifact-agreement"></a><span data-ttu-id="68f56-114">Lägga till schemat i EDIFACT-avtal</span><span class="sxs-lookup"><span data-stu-id="68f56-114">Add schema to the EDIFACT agreement</span></span>
-### <a name="edifact-decode"></a><span data-ttu-id="68f56-115">EDIFACT avkoda</span><span class="sxs-lookup"><span data-stu-id="68f56-115">EDIFACT Decode</span></span>
-<span data-ttu-id="68f56-116">Konfigurera schemat för att avkoda det inkommande meddelandet i EDIFACT avtalet tar emot inställningar</span><span class="sxs-lookup"><span data-stu-id="68f56-116">To Decode the incoming message, configure the schema in the EDIFACT agreement receive settings</span></span>
-1. <span data-ttu-id="68f56-117">Lägga till schemat integration-konto</span><span class="sxs-lookup"><span data-stu-id="68f56-117">Add the schema to the integration account</span></span>    
-2. <span data-ttu-id="68f56-118">Konfigurera schemat i EDIFACT avtal får inställningar.</span><span class="sxs-lookup"><span data-stu-id="68f56-118">Configure the schema in the EDIFACT agreement receive settings.</span></span> 
-3. <span data-ttu-id="68f56-119">Välj EDIFACT-avtal och klickar på **redigera som JSON**.</span><span class="sxs-lookup"><span data-stu-id="68f56-119">Select EDIFACT agreement and click **Edit as JSON**.</span></span>  <span data-ttu-id="68f56-120">Lägg till UNH2.5 värde i avtalet får **schemaReferences**
-![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)</span><span class="sxs-lookup"><span data-stu-id="68f56-120">Add UNH2.5 value in the Receive Agreement **schemaReferences**
+## <a name="add-schema-toohello-edifact-agreement"></a><span data-ttu-id="ea96c-114">Lägga till schemat toohello EDIFACT-avtal</span><span class="sxs-lookup"><span data-stu-id="ea96c-114">Add schema toohello EDIFACT agreement</span></span>
+### <a name="edifact-decode"></a><span data-ttu-id="ea96c-115">EDIFACT avkoda</span><span class="sxs-lookup"><span data-stu-id="ea96c-115">EDIFACT Decode</span></span>
+<span data-ttu-id="ea96c-116">tooDecode Hej inkommande meddelande, konfigurera hello schemat i hello EDIFACT-avtal får inställningar</span><span class="sxs-lookup"><span data-stu-id="ea96c-116">tooDecode hello incoming message, configure hello schema in hello EDIFACT agreement receive settings</span></span>
+1. <span data-ttu-id="ea96c-117">Lägg till hello schemat toohello integrering konto</span><span class="sxs-lookup"><span data-stu-id="ea96c-117">Add hello schema toohello integration account</span></span>    
+2. <span data-ttu-id="ea96c-118">Konfigurera hello schemat i hello EDIFACT-avtal får inställningar.</span><span class="sxs-lookup"><span data-stu-id="ea96c-118">Configure hello schema in hello EDIFACT agreement receive settings.</span></span> 
+3. <span data-ttu-id="ea96c-119">Välj EDIFACT-avtal och klickar på **redigera som JSON**.</span><span class="sxs-lookup"><span data-stu-id="ea96c-119">Select EDIFACT agreement and click **Edit as JSON**.</span></span>  <span data-ttu-id="ea96c-120">Lägg till UNH2.5 värde i hello Receive avtal **schemaReferences**
+![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)</span><span class="sxs-lookup"><span data-stu-id="ea96c-120">Add UNH2.5 value in hello Receive Agreement **schemaReferences**
 ![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)</span></span>
 
-### <a name="edifact-encode"></a><span data-ttu-id="68f56-121">EDIFACT koda</span><span class="sxs-lookup"><span data-stu-id="68f56-121">EDIFACT Encode</span></span>
-<span data-ttu-id="68f56-122">Konfigurera schemat för att koda det inkommande meddelandet i EDIFACT-avtal skicka inställningar</span><span class="sxs-lookup"><span data-stu-id="68f56-122">To Encode the incoming message, configure the schema in the EDIFACT agreement send settings</span></span>
-1. <span data-ttu-id="68f56-123">Lägga till schemat integration-konto</span><span class="sxs-lookup"><span data-stu-id="68f56-123">Add the schema to the integration account</span></span>    
-2. <span data-ttu-id="68f56-124">Konfigurera schemat i EDIFACT-avtal skicka inställningar.</span><span class="sxs-lookup"><span data-stu-id="68f56-124">Configure the schema in the EDIFACT agreement send settings.</span></span> 
-3. <span data-ttu-id="68f56-125">Välj EDIFACT-avtal och klickar på **redigera som JSON**.</span><span class="sxs-lookup"><span data-stu-id="68f56-125">Select EDIFACT agreement and click **Edit as JSON**.</span></span>  <span data-ttu-id="68f56-126">Lägg till UNH2.5 värde i avtalet skicka **schemaReferences**
-![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)</span><span class="sxs-lookup"><span data-stu-id="68f56-126">Add UNH2.5 value in the Send Agreement **schemaReferences**
+### <a name="edifact-encode"></a><span data-ttu-id="ea96c-121">EDIFACT koda</span><span class="sxs-lookup"><span data-stu-id="ea96c-121">EDIFACT Encode</span></span>
+<span data-ttu-id="ea96c-122">tooEncode Hej inkommande meddelande, konfigurera hello schemat i hello EDIFACT-avtal skicka inställningar</span><span class="sxs-lookup"><span data-stu-id="ea96c-122">tooEncode hello incoming message, configure hello schema in hello EDIFACT agreement send settings</span></span>
+1. <span data-ttu-id="ea96c-123">Lägg till hello schemat toohello integrering konto</span><span class="sxs-lookup"><span data-stu-id="ea96c-123">Add hello schema toohello integration account</span></span>    
+2. <span data-ttu-id="ea96c-124">Konfigurera hello schemat i hello EDIFACT-avtal skicka inställningar.</span><span class="sxs-lookup"><span data-stu-id="ea96c-124">Configure hello schema in hello EDIFACT agreement send settings.</span></span> 
+3. <span data-ttu-id="ea96c-125">Välj EDIFACT-avtal och klickar på **redigera som JSON**.</span><span class="sxs-lookup"><span data-stu-id="ea96c-125">Select EDIFACT agreement and click **Edit as JSON**.</span></span>  <span data-ttu-id="ea96c-126">Lägg till UNH2.5 värde i hello skicka avtal **schemaReferences**
+![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)</span><span class="sxs-lookup"><span data-stu-id="ea96c-126">Add UNH2.5 value in hello Send Agreement **schemaReferences**
 ![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="68f56-127">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="68f56-127">Next Steps</span></span>
-* [<span data-ttu-id="68f56-128">Mer information om integration konto avtal</span><span class="sxs-lookup"><span data-stu-id="68f56-128">Learn more about integration account agreements</span></span>](../logic-apps/logic-apps-enterprise-integration-agreements.md "Lär dig mer om enterprise integration-avtal")  
+## <a name="next-steps"></a><span data-ttu-id="ea96c-127">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="ea96c-127">Next Steps</span></span>
+* [<span data-ttu-id="ea96c-128">Mer information om integration konto avtal</span><span class="sxs-lookup"><span data-stu-id="ea96c-128">Learn more about integration account agreements</span></span>](../logic-apps/logic-apps-enterprise-integration-agreements.md "Lär dig mer om enterprise integration-avtal")  

@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med xMatters OnDemand | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och xMatters OnDemand."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och xMatters OnDemand."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,104 +13,104 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 9bfcb44ed19f167872b3cd9119e2dbdd35c82604
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7cc8f9f0d8cefc8a60b9514027437ced50c66242
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a><span data-ttu-id="95333-103">Självstudier: Azure Active Directory-integrering med xMatters OnDemand</span><span class="sxs-lookup"><span data-stu-id="95333-103">Tutorial: Azure Active Directory integration with xMatters OnDemand</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a><span data-ttu-id="3b58c-103">Självstudier: Azure Active Directory-integrering med xMatters OnDemand</span><span class="sxs-lookup"><span data-stu-id="3b58c-103">Tutorial: Azure Active Directory integration with xMatters OnDemand</span></span>
 
-<span data-ttu-id="95333-104">I kursen får lära du att integrera xMatters OnDemand med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="95333-104">In this tutorial, you learn how to integrate xMatters OnDemand with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="3b58c-104">I kursen får du lära dig hur toointegrate xMatters OnDemand med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="3b58c-104">In this tutorial, you learn how toointegrate xMatters OnDemand with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="95333-105">Integrera xMatters OnDemand med Azure AD ger dig följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="95333-105">Integrating xMatters OnDemand with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="3b58c-105">Integrera xMatters OnDemand med Azure AD ger dig hello följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="3b58c-105">Integrating xMatters OnDemand with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="95333-106">Du kan styra i Azure AD som har åtkomst till xMatters OnDemand</span><span class="sxs-lookup"><span data-stu-id="95333-106">You can control in Azure AD who has access to xMatters OnDemand</span></span>
-- <span data-ttu-id="95333-107">Du kan aktivera användarna att automatiskt hämta loggat in på xMatters OnDemand (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="95333-107">You can enable your users to automatically get signed-on to xMatters OnDemand (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="95333-108">Du kan hantera dina konton i en central plats - Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="95333-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="3b58c-106">Du kan styra i Azure AD som har åtkomst tooxMatters OnDemand</span><span class="sxs-lookup"><span data-stu-id="3b58c-106">You can control in Azure AD who has access tooxMatters OnDemand</span></span>
+- <span data-ttu-id="3b58c-107">Du kan aktivera din användare tooautomatically get inloggade tooxMatters OnDemand (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="3b58c-107">You can enable your users tooautomatically get signed-on tooxMatters OnDemand (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="3b58c-108">Du kan hantera dina konton i en central plats - hello Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="3b58c-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="95333-109">Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="95333-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="3b58c-109">Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="3b58c-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="95333-110">Krav</span><span class="sxs-lookup"><span data-stu-id="95333-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="3b58c-110">Krav</span><span class="sxs-lookup"><span data-stu-id="3b58c-110">Prerequisites</span></span>
 
-<span data-ttu-id="95333-111">För att konfigurera Azure AD-integrering med xMatters OnDemand, behöver du följande:</span><span class="sxs-lookup"><span data-stu-id="95333-111">To configure Azure AD integration with xMatters OnDemand, you need the following items:</span></span>
+<span data-ttu-id="3b58c-111">tooconfigure Azure AD-integrering med xMatters OnDemand, behöver du hello följande objekt:</span><span class="sxs-lookup"><span data-stu-id="3b58c-111">tooconfigure Azure AD integration with xMatters OnDemand, you need hello following items:</span></span>
 
-- <span data-ttu-id="95333-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="95333-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="95333-113">En xMatters OnDemand enkel inloggning aktiverad prenumeration</span><span class="sxs-lookup"><span data-stu-id="95333-113">A xMatters OnDemand single sign-on enabled subscription</span></span>
+- <span data-ttu-id="3b58c-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="3b58c-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="3b58c-113">En xMatters OnDemand enkel inloggning aktiverad prenumeration</span><span class="sxs-lookup"><span data-stu-id="3b58c-113">A xMatters OnDemand single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="95333-114">Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="95333-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="3b58c-114">tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="3b58c-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="95333-115">Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="95333-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="3b58c-115">tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="3b58c-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="95333-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="95333-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="95333-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="95333-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="3b58c-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="3b58c-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="3b58c-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="3b58c-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="95333-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="95333-118">Scenario description</span></span>
-<span data-ttu-id="95333-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="95333-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="95333-120">Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="95333-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="3b58c-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="3b58c-118">Scenario description</span></span>
+<span data-ttu-id="3b58c-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="3b58c-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="3b58c-120">hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="3b58c-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="95333-121">Att lägga till xMatters OnDemand från galleriet</span><span class="sxs-lookup"><span data-stu-id="95333-121">Adding xMatters OnDemand from the gallery</span></span>
-2. <span data-ttu-id="95333-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="95333-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="3b58c-121">Att lägga till xMatters OnDemand från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="3b58c-121">Adding xMatters OnDemand from hello gallery</span></span>
+2. <span data-ttu-id="3b58c-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="3b58c-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-xmatters-ondemand-from-the-gallery"></a><span data-ttu-id="95333-123">Att lägga till xMatters OnDemand från galleriet</span><span class="sxs-lookup"><span data-stu-id="95333-123">Adding xMatters OnDemand from the gallery</span></span>
-<span data-ttu-id="95333-124">Du måste lägga till xMatters OnDemand från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av xMatters OnDemand i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="95333-124">To configure the integration of xMatters OnDemand into Azure AD, you need to add xMatters OnDemand from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-xmatters-ondemand-from-hello-gallery"></a><span data-ttu-id="3b58c-123">Att lägga till xMatters OnDemand från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="3b58c-123">Adding xMatters OnDemand from hello gallery</span></span>
+<span data-ttu-id="3b58c-124">tooconfigure hello integrering av xMatters OnDemand i Azure AD, behöver du tooadd xMatters OnDemand hello galleriet tooyour listan över hanterade SaaS-appar.</span><span class="sxs-lookup"><span data-stu-id="3b58c-124">tooconfigure hello integration of xMatters OnDemand into Azure AD, you need tooadd xMatters OnDemand from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="95333-125">**Utför följande steg för att lägga till xMatters OnDemand från galleriet:**</span><span class="sxs-lookup"><span data-stu-id="95333-125">**To add xMatters OnDemand from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="3b58c-125">**tooadd xMatters OnDemand från galleriet hello utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="3b58c-125">**tooadd xMatters OnDemand from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="95333-126">I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="95333-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="3b58c-126">I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="3b58c-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="95333-128">Gå till **företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="95333-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="95333-129">Gå till **alla program**.</span><span class="sxs-lookup"><span data-stu-id="95333-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="3b58c-128">Navigera för**företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="3b58c-129">Gå sedan för**alla program**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-129">Then go too**All applications**.</span></span>
 
     ![Program][2]
     
-3. <span data-ttu-id="95333-131">Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="95333-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="3b58c-131">tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="3b58c-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Program][3]
 
-4. <span data-ttu-id="95333-133">I sökrutan skriver **xMatters OnDemand**.</span><span class="sxs-lookup"><span data-stu-id="95333-133">In the search box, type **xMatters OnDemand**.</span></span>
+4. <span data-ttu-id="3b58c-133">Skriv i sökrutan hello **xMatters OnDemand**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-133">In hello search box, type **xMatters OnDemand**.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_search.png)
 
-5. <span data-ttu-id="95333-135">Välj i resultatpanelen **xMatters OnDemand**, och klicka sedan på **Lägg till** för att lägga till programmet.</span><span class="sxs-lookup"><span data-stu-id="95333-135">In the results panel, select **xMatters OnDemand**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="3b58c-135">Markera hello resultat på panelen **xMatters OnDemand**, och klicka sedan på **Lägg till** knappen tooadd hello program.</span><span class="sxs-lookup"><span data-stu-id="3b58c-135">In hello results panel, select **xMatters OnDemand**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="95333-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="95333-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="95333-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med xMatters OnDemand baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="95333-138">In this section, you configure and test Azure AD single sign-on with xMatters OnDemand based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="3b58c-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="3b58c-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="3b58c-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med xMatters OnDemand baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="3b58c-138">In this section, you configure and test Azure AD single sign-on with xMatters OnDemand based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="95333-139">För enkel inloggning ska fungera, Azure AD som behöver veta vilka motsvarande användaren i xMatters OnDemand är att en användare i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="95333-139">For single sign-on to work, Azure AD needs to know what the counterpart user in xMatters OnDemand is to a user in Azure AD.</span></span> <span data-ttu-id="95333-140">Med andra ord en länk förhållandet mellan en Azure AD-användare och relaterade användaren i xMatters OnDemand måste upprättas.</span><span class="sxs-lookup"><span data-stu-id="95333-140">In other words, a link relationship between an Azure AD user and the related user in xMatters OnDemand needs to be established.</span></span>
+<span data-ttu-id="3b58c-139">För enkel inloggning toowork Azure AD måste tooknow vilka hello motsvarighet användaren i xMatters OnDemand är tooa i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="3b58c-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in xMatters OnDemand is tooa user in Azure AD.</span></span> <span data-ttu-id="3b58c-140">Med andra ord en länk mellan en Azure AD-användare och hello relaterade användare i xMatters OnDemand måste toobe upprättas.</span><span class="sxs-lookup"><span data-stu-id="3b58c-140">In other words, a link relationship between an Azure AD user and hello related user in xMatters OnDemand needs toobe established.</span></span>
 
-<span data-ttu-id="95333-141">I xMatters OnDemand, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.</span><span class="sxs-lookup"><span data-stu-id="95333-141">In xMatters OnDemand, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="3b58c-141">Tilldela hello värdet för hello i xMatters OnDemand **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.</span><span class="sxs-lookup"><span data-stu-id="3b58c-141">In xMatters OnDemand, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="95333-142">Om du vill konfigurera och testa Azure AD enkel inloggning med xMatters OnDemand, måste du utföra följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="95333-142">To configure and test Azure AD single sign-on with xMatters OnDemand, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="3b58c-142">tooconfigure och testa Azure AD enkel inloggning med xMatters OnDemand, behöver du toocomplete hello följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="3b58c-142">tooconfigure and test Azure AD single sign-on with xMatters OnDemand, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="95333-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="95333-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="95333-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="95333-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="95333-145">**[Skapa en testanvändare för xMatters OnDemand](#creating-a-xmatters-ondemand-test-user)**  – du har en motsvarighet för Britta Simon i xMatters OnDemand som är kopplad till Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="95333-145">**[Creating a xMatters OnDemand test user](#creating-a-xmatters-ondemand-test-user)** - to have a counterpart of Britta Simon in xMatters OnDemand that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="95333-146">**[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="95333-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="95333-147">**[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="95333-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="3b58c-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="3b58c-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="3b58c-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="3b58c-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="3b58c-145">**[Skapa en testanvändare för xMatters OnDemand](#creating-a-xmatters-ondemand-test-user)**  -toohave en motsvarighet för Britta Simon i xMatters OnDemand som är länkade toohello Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="3b58c-145">**[Creating a xMatters OnDemand test user](#creating-a-xmatters-ondemand-test-user)** - toohave a counterpart of Britta Simon in xMatters OnDemand that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="3b58c-146">**[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="3b58c-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="3b58c-147">**[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="3b58c-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="95333-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="95333-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="3b58c-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="3b58c-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="95333-149">I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i din xMatters OnDemand-programmet.</span><span class="sxs-lookup"><span data-stu-id="95333-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your xMatters OnDemand application.</span></span>
+<span data-ttu-id="3b58c-149">I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i din xMatters OnDemand-programmet.</span><span class="sxs-lookup"><span data-stu-id="3b58c-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your xMatters OnDemand application.</span></span>
 
-<span data-ttu-id="95333-150">**Utför följande steg för att konfigurera Azure AD enkel inloggning med xMatters OnDemand:**</span><span class="sxs-lookup"><span data-stu-id="95333-150">**To configure Azure AD single sign-on with xMatters OnDemand, perform the following steps:**</span></span>
+<span data-ttu-id="3b58c-150">**Utför följande steg hello tooconfigure Azure AD enkel inloggning med xMatters OnDemand:**</span><span class="sxs-lookup"><span data-stu-id="3b58c-150">**tooconfigure Azure AD single sign-on with xMatters OnDemand, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="95333-151">I Azure-portalen på den **xMatters OnDemand** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="95333-151">In the Azure portal, on the **xMatters OnDemand** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="3b58c-151">I hello Azure-portalen på hello **xMatters OnDemand** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-151">In hello Azure portal, on hello **xMatters OnDemand** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurera enkel inloggning][4]
 
-2. <span data-ttu-id="95333-153">På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="95333-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="3b58c-153">På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="3b58c-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_samlbase.png)
 
-3. <span data-ttu-id="95333-155">På den **xMatters OnDemand domän och URL: er** avsnittet, utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="95333-155">On the **xMatters OnDemand Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="3b58c-155">På hello **xMatters OnDemand domän och URL: er** avsnittet, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="3b58c-155">On hello **xMatters OnDemand Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
-    <span data-ttu-id="95333-157">a.</span><span class="sxs-lookup"><span data-stu-id="95333-157">a.</span></span> <span data-ttu-id="95333-158">I den **identifierare** textruta Skriv en URL med följande mönster:</span><span class="sxs-lookup"><span data-stu-id="95333-158">In the **Identifier** textbox, type a URL using the following pattern:</span></span>   
+    <span data-ttu-id="3b58c-157">a.</span><span class="sxs-lookup"><span data-stu-id="3b58c-157">a.</span></span> <span data-ttu-id="3b58c-158">I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:</span><span class="sxs-lookup"><span data-stu-id="3b58c-158">In hello **Identifier** textbox, type a URL using hello following pattern:</span></span>   
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -119,7 +119,7 @@ ms.lasthandoff: 08/03/2017
     | `https://www.xmatters.com`|
     | `https://<companyname>.xmatters.com.au/`|
 
-    <span data-ttu-id="95333-159">b.</span><span class="sxs-lookup"><span data-stu-id="95333-159">b.</span></span> <span data-ttu-id="95333-160">I den **Reply URL** textruta Skriv en URL med följande mönster:</span><span class="sxs-lookup"><span data-stu-id="95333-160">In the **Reply URL** textbox, type a URL using the following pattern:</span></span>
+    <span data-ttu-id="3b58c-159">b.</span><span class="sxs-lookup"><span data-stu-id="3b58c-159">b.</span></span> <span data-ttu-id="3b58c-160">I hello **Reply URL** textruta, ange ett URL-Adressen med hello följer mönstret:</span><span class="sxs-lookup"><span data-stu-id="3b58c-160">In hello **Reply URL** textbox, type a URL using hello following pattern:</span></span>
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au`|
@@ -128,148 +128,148 @@ ms.lasthandoff: 08/03/2017
     | `https://<companyname>.au1.xmatters.com.au/<instancename>`|
 
     > [!NOTE] 
-    > <span data-ttu-id="95333-161">Dessa värden är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="95333-161">These values are not real.</span></span> <span data-ttu-id="95333-162">Uppdatera dessa värden med den faktiska identifierare och Reply-URL.</span><span class="sxs-lookup"><span data-stu-id="95333-162">Update these values with the actual Identifier and Reply URL.</span></span> <span data-ttu-id="95333-163">Kontakta [xMatters OnDemand supportteam](https://www.xmatters.com/company/contact-us/) att hämta dessa värden.</span><span class="sxs-lookup"><span data-stu-id="95333-163">Contact [xMatters OnDemand support team](https://www.xmatters.com/company/contact-us/) to get these values.</span></span>
+    > <span data-ttu-id="3b58c-161">Dessa värden är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="3b58c-161">These values are not real.</span></span> <span data-ttu-id="3b58c-162">Uppdatera dessa värden med hello faktiska identifierare och svars-URL.</span><span class="sxs-lookup"><span data-stu-id="3b58c-162">Update these values with hello actual Identifier and Reply URL.</span></span> <span data-ttu-id="3b58c-163">Kontakta [xMatters OnDemand supportteam](https://www.xmatters.com/company/contact-us/) tooget dessa värden.</span><span class="sxs-lookup"><span data-stu-id="3b58c-163">Contact [xMatters OnDemand support team](https://www.xmatters.com/company/contact-us/) tooget these values.</span></span>
 
-4. <span data-ttu-id="95333-164">På den **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara certifikatfilen lokalt som **c:\\XMatters OnDemand.cer**.</span><span class="sxs-lookup"><span data-stu-id="95333-164">On the **SAML Signing Certificate** section, click **Certificate(Base64)** and then save the certificate file locally as **c:\\XMatters OnDemand.cer**.</span></span>
+4. <span data-ttu-id="3b58c-164">På hello **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara sedan hello certifikatfilen lokalt som **c:\\XMatters OnDemand.cer**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-164">On hello **SAML Signing Certificate** section, click **Certificate(Base64)** and then save hello certificate file locally as **c:\\XMatters OnDemand.cer**.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_certificate.png)
     
     > [!IMPORTANT]
-    > <span data-ttu-id="95333-166">Du behöver att vidarebefordra certifikatet som den [xMatters OnDemand supportteam](https://www.xmatters.com/company/contact-us/).</span><span class="sxs-lookup"><span data-stu-id="95333-166">You need to forward the certificate to the [xMatters OnDemand support team](https://www.xmatters.com/company/contact-us/).</span></span> <span data-ttu-id="95333-167">Certifikatet måste överföras av supportteamet xMatters innan du kan slutföra konfigurationen för enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="95333-167">The certificate needs to be uploaded by the xMatters support team before you can finalize the single sign-on configuration.</span></span> 
+    > <span data-ttu-id="3b58c-166">Du behöver tooforward hello certifikat toohello [xMatters OnDemand supportteam](https://www.xmatters.com/company/contact-us/).</span><span class="sxs-lookup"><span data-stu-id="3b58c-166">You need tooforward hello certificate toohello [xMatters OnDemand support team](https://www.xmatters.com/company/contact-us/).</span></span> <span data-ttu-id="3b58c-167">hello certifikat måste toobe som laddats upp av hello xMatters supportteamet innan du kan slutföra hello enkel inloggning konfigurationen.</span><span class="sxs-lookup"><span data-stu-id="3b58c-167">hello certificate needs toobe uploaded by hello xMatters support team before you can finalize hello single sign-on configuration.</span></span> 
 
-5. <span data-ttu-id="95333-168">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="95333-168">Click **Save** button.</span></span>
+5. <span data-ttu-id="3b58c-168">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="3b58c-168">Click **Save** button.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="95333-170">På den **xMatters OnDemand Configuration** klickar du på **konfigurera xMatters OnDemand** att öppna **konfigurera inloggning** fönster.</span><span class="sxs-lookup"><span data-stu-id="95333-170">On the **xMatters OnDemand Configuration** section, click **Configure xMatters OnDemand** to open **Configure sign-on** window.</span></span> <span data-ttu-id="95333-171">Kopiera den **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**</span><span class="sxs-lookup"><span data-stu-id="95333-171">Copy the **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="3b58c-170">På hello **xMatters OnDemand Configuration** klickar du på **konfigurera xMatters OnDemand** tooopen **konfigurera inloggning** fönster.</span><span class="sxs-lookup"><span data-stu-id="3b58c-170">On hello **xMatters OnDemand Configuration** section, click **Configure xMatters OnDemand** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="3b58c-171">Kopiera hello **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**</span><span class="sxs-lookup"><span data-stu-id="3b58c-171">Copy hello **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_configure.png) 
 
-7. <span data-ttu-id="95333-173">I en annan webbläsarfönster loggar du in på webbplatsen XMatters OnDemand företag som administratör.</span><span class="sxs-lookup"><span data-stu-id="95333-173">In a different web browser window, log in to your XMatters OnDemand company site as an administrator.</span></span>
+7. <span data-ttu-id="3b58c-173">I en annan webbläsarfönster logga in tooyour XMatters OnDemand företagets webbplats som administratör.</span><span class="sxs-lookup"><span data-stu-id="3b58c-173">In a different web browser window, log in tooyour XMatters OnDemand company site as an administrator.</span></span>
 
-8. <span data-ttu-id="95333-174">Klicka på i verktygsfältet högst upp **Admin**, och klicka sedan på **företagsinformation** i navigeringsfältet till vänster.</span><span class="sxs-lookup"><span data-stu-id="95333-174">In the toolbar on the top, click **Admin**, and then click **Company Details** in the navigation bar on the left side.</span></span>
+8. <span data-ttu-id="3b58c-174">Klicka i hello verktygsfältet hello längst upp **Admin**, och klicka sedan på **företagsinformation** i hello navigeringsfältet hello vänster sida.</span><span class="sxs-lookup"><span data-stu-id="3b58c-174">In hello toolbar on hello top, click **Admin**, and then click **Company Details** in hello navigation bar on hello left side.</span></span>
    
-    <span data-ttu-id="95333-175">![Admin](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "Admin")</span><span class="sxs-lookup"><span data-stu-id="95333-175">![Admin](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "Admin")</span></span>
+    <span data-ttu-id="3b58c-175">![Admin](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "Admin")</span><span class="sxs-lookup"><span data-stu-id="3b58c-175">![Admin](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "Admin")</span></span>
 
-9. <span data-ttu-id="95333-176">På den **SAML-konfiguration** utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="95333-176">On the **SAML Configuration** page, perform the following steps:</span></span>
+9. <span data-ttu-id="3b58c-176">På hello **SAML-konfiguration** utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="3b58c-176">On hello **SAML Configuration** page, perform hello following steps:</span></span>
    
-    <span data-ttu-id="95333-177">![SAML-konfiguration](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML-konfiguration")</span><span class="sxs-lookup"><span data-stu-id="95333-177">![SAML configuration](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML configuration")</span></span>
+    <span data-ttu-id="3b58c-177">![SAML-konfiguration](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML-konfiguration")</span><span class="sxs-lookup"><span data-stu-id="3b58c-177">![SAML configuration](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML configuration")</span></span>
    
-    <span data-ttu-id="95333-178">a.</span><span class="sxs-lookup"><span data-stu-id="95333-178">a.</span></span> <span data-ttu-id="95333-179">Välj **aktivera SAML**.</span><span class="sxs-lookup"><span data-stu-id="95333-179">Select **Enable SAML**.</span></span>
+    <span data-ttu-id="3b58c-178">a.</span><span class="sxs-lookup"><span data-stu-id="3b58c-178">a.</span></span> <span data-ttu-id="3b58c-179">Välj **aktivera SAML**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-179">Select **Enable SAML**.</span></span>
    
-    <span data-ttu-id="95333-180">b.</span><span class="sxs-lookup"><span data-stu-id="95333-180">b.</span></span> <span data-ttu-id="95333-181">Klistra in **SAML enhets-ID**, som du har kopierat från Azure-portalen i den **identitet Provider-ID** textruta.</span><span class="sxs-lookup"><span data-stu-id="95333-181">Paste **SAML Entity ID**, which you have copied from the Azure portal into the **Identity Provider ID** textbox.</span></span>
+    <span data-ttu-id="3b58c-180">b.</span><span class="sxs-lookup"><span data-stu-id="3b58c-180">b.</span></span> <span data-ttu-id="3b58c-181">Klistra in **SAML enhets-ID**, som du har kopierat från hello Azure-portalen i hello **identitet Provider-ID** textruta.</span><span class="sxs-lookup"><span data-stu-id="3b58c-181">Paste **SAML Entity ID**, which you have copied from hello Azure portal into hello **Identity Provider ID** textbox.</span></span>
    
-    <span data-ttu-id="95333-182">c.</span><span class="sxs-lookup"><span data-stu-id="95333-182">c.</span></span> <span data-ttu-id="95333-183">Klistra in **SAML enkel inloggning Tjänstwebbadress**, som du har kopierat från Azure-portalen i den **enkel inloggning på URL: en** textruta.</span><span class="sxs-lookup"><span data-stu-id="95333-183">Paste **SAML Single Sign-On Service URL**, which you have copied from the Azure portal into the **Single Sign On URL** textbox.</span></span>
+    <span data-ttu-id="3b58c-182">c.</span><span class="sxs-lookup"><span data-stu-id="3b58c-182">c.</span></span> <span data-ttu-id="3b58c-183">Klistra in **SAML enkel inloggning Tjänstwebbadress**, som du har kopierat från hello Azure-portalen i hello **enkel inloggning på URL: en** textruta.</span><span class="sxs-lookup"><span data-stu-id="3b58c-183">Paste **SAML Single Sign-On Service URL**, which you have copied from hello Azure portal into hello **Single Sign On URL** textbox.</span></span>
    
-    <span data-ttu-id="95333-184">d.</span><span class="sxs-lookup"><span data-stu-id="95333-184">d.</span></span> <span data-ttu-id="95333-185">Klistra in **Sign-Out URL**, som du har kopierat från Azure-portalen i den **URL för enkel logga ut** textruta.</span><span class="sxs-lookup"><span data-stu-id="95333-185">Paste **Sign-Out URL**, which you have copied from the Azure portal into the **Single Logout URL** textbox.</span></span>
+    <span data-ttu-id="3b58c-184">d.</span><span class="sxs-lookup"><span data-stu-id="3b58c-184">d.</span></span> <span data-ttu-id="3b58c-185">Klistra in **Sign-Out URL**, som du har kopierat från hello Azure-portalen i hello **URL för enkel logga ut** textruta.</span><span class="sxs-lookup"><span data-stu-id="3b58c-185">Paste **Sign-Out URL**, which you have copied from hello Azure portal into hello **Single Logout URL** textbox.</span></span>
    
-    <span data-ttu-id="95333-186">e.</span><span class="sxs-lookup"><span data-stu-id="95333-186">e.</span></span> <span data-ttu-id="95333-187">På sidan företagsinformation överst **spara ändringar**.</span><span class="sxs-lookup"><span data-stu-id="95333-187">On the Company Details page, at the top, click **Save Changes**.</span></span>
+    <span data-ttu-id="3b58c-186">e.</span><span class="sxs-lookup"><span data-stu-id="3b58c-186">e.</span></span> <span data-ttu-id="3b58c-187">Klicka på hello företagsinformation sidan hello överst **spara ändringar**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-187">On hello Company Details page, at hello top, click **Save Changes**.</span></span>
     
-    <span data-ttu-id="95333-188">![Företagets information](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "företagets information")</span><span class="sxs-lookup"><span data-stu-id="95333-188">![Company details](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "Company details")</span></span>
+    <span data-ttu-id="3b58c-188">![Företagets information](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "företagets information")</span><span class="sxs-lookup"><span data-stu-id="3b58c-188">![Company details](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "Company details")</span></span>
 
 > [!TIP]
-> <span data-ttu-id="95333-189">Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!</span><span class="sxs-lookup"><span data-stu-id="95333-189">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="95333-190">När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned.</span><span class="sxs-lookup"><span data-stu-id="95333-190">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="95333-191">Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="95333-191">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="3b58c-189">Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!</span><span class="sxs-lookup"><span data-stu-id="3b58c-189">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="3b58c-190">När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello.</span><span class="sxs-lookup"><span data-stu-id="3b58c-190">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="3b58c-191">Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="3b58c-191">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="95333-192">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="95333-192">Creating an Azure AD test user</span></span>
-<span data-ttu-id="95333-193">Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="95333-193">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="3b58c-192">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="3b58c-192">Creating an Azure AD test user</span></span>
+<span data-ttu-id="3b58c-193">hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="3b58c-193">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Skapa Azure AD-användare][100]
 
-<span data-ttu-id="95333-195">**Utför följande steg för att skapa en testanvändare i Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="95333-195">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="3b58c-195">**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="3b58c-195">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="95333-196">I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="95333-196">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="3b58c-196">I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="3b58c-196">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="95333-198">Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="95333-198">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="3b58c-198">toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-198">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="95333-200">Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="95333-200">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="3b58c-200">tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="3b58c-200">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="95333-202">På den **användaren** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="95333-202">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="3b58c-202">På hello **användaren** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="3b58c-202">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="95333-204">a.</span><span class="sxs-lookup"><span data-stu-id="95333-204">a.</span></span> <span data-ttu-id="95333-205">I den **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="95333-205">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="3b58c-204">a.</span><span class="sxs-lookup"><span data-stu-id="3b58c-204">a.</span></span> <span data-ttu-id="3b58c-205">I hello **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-205">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="95333-206">b.</span><span class="sxs-lookup"><span data-stu-id="95333-206">b.</span></span> <span data-ttu-id="95333-207">I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="95333-207">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="3b58c-206">b.</span><span class="sxs-lookup"><span data-stu-id="3b58c-206">b.</span></span> <span data-ttu-id="3b58c-207">I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="3b58c-207">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="95333-208">c.</span><span class="sxs-lookup"><span data-stu-id="95333-208">c.</span></span> <span data-ttu-id="95333-209">Välj **visa lösenordet** och anteckna värdet för den **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="95333-209">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="3b58c-208">c.</span><span class="sxs-lookup"><span data-stu-id="3b58c-208">c.</span></span> <span data-ttu-id="3b58c-209">Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-209">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="95333-210">d.</span><span class="sxs-lookup"><span data-stu-id="95333-210">d.</span></span> <span data-ttu-id="95333-211">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="95333-211">Click **Create**.</span></span>
+    <span data-ttu-id="3b58c-210">d.</span><span class="sxs-lookup"><span data-stu-id="3b58c-210">d.</span></span> <span data-ttu-id="3b58c-211">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-211">Click **Create**.</span></span>
  
-### <a name="creating-a-xmatters-ondemand-test-user"></a><span data-ttu-id="95333-212">Skapa en xMatters OnDemand testanvändare</span><span class="sxs-lookup"><span data-stu-id="95333-212">Creating a xMatters OnDemand test user</span></span>
+### <a name="creating-a-xmatters-ondemand-test-user"></a><span data-ttu-id="3b58c-212">Skapa en xMatters OnDemand testanvändare</span><span class="sxs-lookup"><span data-stu-id="3b58c-212">Creating a xMatters OnDemand test user</span></span>
 
-<span data-ttu-id="95333-213">För att aktivera Azure AD-användare kan logga in på XMatters OnDemand etableras de i XMatters OnDemand.</span><span class="sxs-lookup"><span data-stu-id="95333-213">In order to enable Azure AD users to log in to XMatters OnDemand, they must be provisioned into XMatters OnDemand.</span></span> <span data-ttu-id="95333-214">När det gäller XMatters OnDemand är etablering en manuell aktivitet.</span><span class="sxs-lookup"><span data-stu-id="95333-214">In the case of XMatters OnDemand, provisioning is a manual task.</span></span>
+<span data-ttu-id="3b58c-213">I ordning tooenable Azure AD-användare toolog i tooXMatters OnDemand, måste de etableras i XMatters OnDemand.</span><span class="sxs-lookup"><span data-stu-id="3b58c-213">In order tooenable Azure AD users toolog in tooXMatters OnDemand, they must be provisioned into XMatters OnDemand.</span></span> <span data-ttu-id="3b58c-214">Hello gäller XMatters OnDemand är etablering en manuell aktivitet.</span><span class="sxs-lookup"><span data-stu-id="3b58c-214">In hello case of XMatters OnDemand, provisioning is a manual task.</span></span>
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a><span data-ttu-id="95333-215">Utför följande steg för att etablera en användarkonton:</span><span class="sxs-lookup"><span data-stu-id="95333-215">To provision a user accounts, perform the following steps:</span></span>
-1. <span data-ttu-id="95333-216">Logga in på ditt **XMatters OnDemand** klient.</span><span class="sxs-lookup"><span data-stu-id="95333-216">Log in to your **XMatters OnDemand** tenant.</span></span>
+### <a name="tooprovision-a-user-accounts-perform-hello-following-steps"></a><span data-ttu-id="3b58c-215">tooprovision användarkonton, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="3b58c-215">tooprovision a user accounts, perform hello following steps:</span></span>
+1. <span data-ttu-id="3b58c-216">Logga in tooyour **XMatters OnDemand** klient.</span><span class="sxs-lookup"><span data-stu-id="3b58c-216">Log in tooyour **XMatters OnDemand** tenant.</span></span>
 
-2.  <span data-ttu-id="95333-217">Klicka på **användare** fliken.</span><span class="sxs-lookup"><span data-stu-id="95333-217">Click **Users** tab.</span></span> <span data-ttu-id="95333-218">och klicka sedan på **Lägg till användare**.</span><span class="sxs-lookup"><span data-stu-id="95333-218">and then click **Add User**.</span></span>
+2.  <span data-ttu-id="3b58c-217">Klicka på **användare** fliken och klicka sedan på **Lägg till användare**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-217">Click **Users** tab. and then click **Add User**.</span></span>
   
-    <span data-ttu-id="95333-219">![Användare](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "användare")</span><span class="sxs-lookup"><span data-stu-id="95333-219">![Users](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "Users")</span></span>
+    <span data-ttu-id="3b58c-218">![Användare](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "användare")</span><span class="sxs-lookup"><span data-stu-id="3b58c-218">![Users](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "Users")</span></span>
 
-3. <span data-ttu-id="95333-220">I den **lägga till en användare** avsnittet, utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="95333-220">In the **Add a User** section, perform the following steps:</span></span>
+3. <span data-ttu-id="3b58c-219">I hello **lägga till en användare** avsnittet, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="3b58c-219">In hello **Add a User** section, perform hello following steps:</span></span>
    
-    <span data-ttu-id="95333-221">![Lägga till en användare](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "lägga till en användare")</span><span class="sxs-lookup"><span data-stu-id="95333-221">![Add a User](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "Add a User")</span></span>
+    <span data-ttu-id="3b58c-220">![Lägga till en användare](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "lägga till en användare")</span><span class="sxs-lookup"><span data-stu-id="3b58c-220">![Add a User](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "Add a User")</span></span>
 
-    <span data-ttu-id="95333-222">a.</span><span class="sxs-lookup"><span data-stu-id="95333-222">a.</span></span> <span data-ttu-id="95333-223">Välj **Active**.</span><span class="sxs-lookup"><span data-stu-id="95333-223">Select **Active**.</span></span>
+    <span data-ttu-id="3b58c-221">a.</span><span class="sxs-lookup"><span data-stu-id="3b58c-221">a.</span></span> <span data-ttu-id="3b58c-222">Välj **Active**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-222">Select **Active**.</span></span>
 
-    <span data-ttu-id="95333-224">b.</span><span class="sxs-lookup"><span data-stu-id="95333-224">b.</span></span> <span data-ttu-id="95333-225">I den **användar-ID** textruta ange användar-id för användare som Brittasimon@contoso.com.</span><span class="sxs-lookup"><span data-stu-id="95333-225">In the **User ID** textbox, type the user id of user like Brittasimon@contoso.com.</span></span>
+    <span data-ttu-id="3b58c-223">b.</span><span class="sxs-lookup"><span data-stu-id="3b58c-223">b.</span></span> <span data-ttu-id="3b58c-224">I hello **användar-ID** textruta typen hello användar-id för användaren som Brittasimon@contoso.com.</span><span class="sxs-lookup"><span data-stu-id="3b58c-224">In hello **User ID** textbox, type hello user id of user like Brittasimon@contoso.com.</span></span>
    
-    <span data-ttu-id="95333-226">c.</span><span class="sxs-lookup"><span data-stu-id="95333-226">c.</span></span> <span data-ttu-id="95333-227">I den **Förnamn** textruta första typnamnet för användaren som Britta.</span><span class="sxs-lookup"><span data-stu-id="95333-227">In the **First Name** textbox, type first name of the user like Britta.</span></span>
+    <span data-ttu-id="3b58c-225">c.</span><span class="sxs-lookup"><span data-stu-id="3b58c-225">c.</span></span> <span data-ttu-id="3b58c-226">I hello **Förnamn** textruta Ange först namnet på hello användaren som Britta.</span><span class="sxs-lookup"><span data-stu-id="3b58c-226">In hello **First Name** textbox, type first name of hello user like Britta.</span></span>
 
-    <span data-ttu-id="95333-228">d.</span><span class="sxs-lookup"><span data-stu-id="95333-228">d.</span></span> <span data-ttu-id="95333-229">I den **efternamn** textruta Skriv Efternamn för användaren som Simon.</span><span class="sxs-lookup"><span data-stu-id="95333-229">In the **Last Name** textbox, type last name of the user like Simon.</span></span>
+    <span data-ttu-id="3b58c-227">d.</span><span class="sxs-lookup"><span data-stu-id="3b58c-227">d.</span></span> <span data-ttu-id="3b58c-228">I hello **efternamn** textruta hello användaren som Simon typen efternamn.</span><span class="sxs-lookup"><span data-stu-id="3b58c-228">In hello **Last Name** textbox, type last name of hello user like Simon.</span></span>
     
-    <span data-ttu-id="95333-230">e.</span><span class="sxs-lookup"><span data-stu-id="95333-230">e.</span></span> <span data-ttu-id="95333-231">I den **plats** textruta RETUR giltig plats för ett giltigt Azure AD-kontot som du vill etablera.</span><span class="sxs-lookup"><span data-stu-id="95333-231">In the **Site** textbox, Enter the valid site of a valid Azure AD account you want to provision.</span></span>
+    <span data-ttu-id="3b58c-229">e.</span><span class="sxs-lookup"><span data-stu-id="3b58c-229">e.</span></span> <span data-ttu-id="3b58c-230">I hello **plats** textruta RETUR hello giltig plats för ett giltigt Azure AD-kontot som du vill tooprovision.</span><span class="sxs-lookup"><span data-stu-id="3b58c-230">In hello **Site** textbox, Enter hello valid site of a valid Azure AD account you want tooprovision.</span></span>
     
-    <span data-ttu-id="95333-232">f.</span><span class="sxs-lookup"><span data-stu-id="95333-232">f.</span></span> <span data-ttu-id="95333-233">Klicka på **Spara**.</span><span class="sxs-lookup"><span data-stu-id="95333-233">Click **Save**.</span></span>
+    <span data-ttu-id="3b58c-231">f.</span><span class="sxs-lookup"><span data-stu-id="3b58c-231">f.</span></span> <span data-ttu-id="3b58c-232">Klicka på **Spara**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-232">Click **Save**.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="95333-234">Tilldela Azure AD-testanvändare</span><span class="sxs-lookup"><span data-stu-id="95333-234">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="3b58c-233">Tilldela användare hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="3b58c-233">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="95333-235">I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till xMatters OnDemand.</span><span class="sxs-lookup"><span data-stu-id="95333-235">In this section, you enable Britta Simon to use Azure single sign-on by granting access to xMatters OnDemand.</span></span>
+<span data-ttu-id="3b58c-234">I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooxMatters OnDemand.</span><span class="sxs-lookup"><span data-stu-id="3b58c-234">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooxMatters OnDemand.</span></span>
 
 ![Tilldela användare][200] 
 
-<span data-ttu-id="95333-237">**Om du vill tilldela xMatters OnDemand Britta Simon utför du följande steg:**</span><span class="sxs-lookup"><span data-stu-id="95333-237">**To assign Britta Simon to xMatters OnDemand, perform the following steps:**</span></span>
+<span data-ttu-id="3b58c-236">**tooassign Britta Simon tooxMatters OnDemand, utför följande steg hello:**</span><span class="sxs-lookup"><span data-stu-id="3b58c-236">**tooassign Britta Simon tooxMatters OnDemand, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="95333-238">Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="95333-238">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="3b58c-237">I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-237">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Tilldela användare][201] 
 
-2. <span data-ttu-id="95333-240">Välj i listan med program **xMatters OnDemand**.</span><span class="sxs-lookup"><span data-stu-id="95333-240">In the applications list, select **xMatters OnDemand**.</span></span>
+2. <span data-ttu-id="3b58c-239">Välj i listan med program hello **xMatters OnDemand**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-239">In hello applications list, select **xMatters OnDemand**.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_app.png) 
 
-3. <span data-ttu-id="95333-242">Klicka på menyn till vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="95333-242">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="3b58c-241">Hello-menyn hello vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="3b58c-241">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Tilldela användare][202] 
 
-4. <span data-ttu-id="95333-244">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="95333-244">Click **Add** button.</span></span> <span data-ttu-id="95333-245">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="95333-245">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="3b58c-243">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="3b58c-243">Click **Add** button.</span></span> <span data-ttu-id="3b58c-244">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="3b58c-244">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Tilldela användare][203]
 
-5. <span data-ttu-id="95333-247">På **användare och grupper** markerar **Britta Simon** på listan användare.</span><span class="sxs-lookup"><span data-stu-id="95333-247">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="3b58c-246">På **användare och grupper** markerar **Britta Simon** i hello användarlistan.</span><span class="sxs-lookup"><span data-stu-id="3b58c-246">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="95333-248">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="95333-248">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="3b58c-247">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="3b58c-247">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="95333-249">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="95333-249">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="3b58c-248">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="3b58c-248">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="95333-250">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="95333-250">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="3b58c-249">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="3b58c-249">Testing single sign-on</span></span>
 
-<span data-ttu-id="95333-251">I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.</span><span class="sxs-lookup"><span data-stu-id="95333-251">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="3b58c-250">I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="3b58c-250">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="95333-252">När du klickar på xMatters OnDemand-panelen på åtkomstpanelen du bör få automatiskt loggat in på ditt xMatters OnDemand-programmet.</span><span class="sxs-lookup"><span data-stu-id="95333-252">When you click the xMatters OnDemand tile in the Access Panel, you should get automatically signed-on to your xMatters OnDemand application.</span></span>
-<span data-ttu-id="95333-253">Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="95333-253">For more information about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).</span></span>
+<span data-ttu-id="3b58c-251">Du bör få automatiskt inloggade tooyour xMatters OnDemand programmet när du klickar på hello xMatters OnDemand-panelen i hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="3b58c-251">When you click hello xMatters OnDemand tile in hello Access Panel, you should get automatically signed-on tooyour xMatters OnDemand application.</span></span>
+<span data-ttu-id="3b58c-252">Läs mer om åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="3b58c-252">For more information about the Access Panel, see [Introduction toohello Access Panel](active-directory-saas-access-panel-introduction.md).</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="95333-254">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="95333-254">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="3b58c-253">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="3b58c-253">Additional resources</span></span>
 
-* [<span data-ttu-id="95333-255">Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="95333-255">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="95333-256">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="95333-256">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="3b58c-254">Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="3b58c-254">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="3b58c-255">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="3b58c-255">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

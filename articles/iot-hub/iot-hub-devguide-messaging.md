@@ -1,5 +1,5 @@
 ---
-title: "Förstå Azure IoT Hub-meddelanden | Microsoft Docs"
+title: aaaUnderstand Azure IoT Hub-meddelanden | Microsoft Docs
 description: "Utvecklarhandbok - enhet till moln och moln till enhet meddelanden med IoT-hubben. Innehåller information om meddelandeformat och stöds kommunikationsprotokoll."
 services: iot-hub
 documentationcenter: .net
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: f54398d7ac46bf178d2bb603669b399d25370736
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a610741e23e243f392f1c042f9ab4a00d42f734f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a><span data-ttu-id="48e79-104">Enhet till moln och moln till enhet meddelanden med IoT-hubb</span><span class="sxs-lookup"><span data-stu-id="48e79-104">Device-to-cloud and cloud-to-device messaging with IoT Hub</span></span>
+# <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a><span data-ttu-id="e6d3a-104">Enhet till moln och moln till enhet meddelanden med IoT-hubb</span><span class="sxs-lookup"><span data-stu-id="e6d3a-104">Device-to-cloud and cloud-to-device messaging with IoT Hub</span></span>
 
-<span data-ttu-id="48e79-105">Använd IoT-hubb-meddelanden för att kommunicera med dina enheter genom att:</span><span class="sxs-lookup"><span data-stu-id="48e79-105">Use IoT Hub messaging to communicate with your devices by:</span></span>
+<span data-ttu-id="e6d3a-105">Använd IoT-hubb messaging toocommunicate med dina enheter genom att:</span><span class="sxs-lookup"><span data-stu-id="e6d3a-105">Use IoT Hub messaging toocommunicate with your devices by:</span></span>
 
-* <span data-ttu-id="48e79-106">Skicka [enhet till moln] [ lnk-d2c] meddelanden från dina enheter till din lösning serverdel.</span><span class="sxs-lookup"><span data-stu-id="48e79-106">Sending [device-to-cloud][lnk-d2c] messages from your devices to your solution back end.</span></span>
-* <span data-ttu-id="48e79-107">Skicka [moln till enhet] [ lnk-c2d] meddelanden från lösningen serverdel till dina enheter.</span><span class="sxs-lookup"><span data-stu-id="48e79-107">Sending [cloud-to-device][lnk-c2d] messages from the solution back end to your devices.</span></span>
+* <span data-ttu-id="e6d3a-106">Skicka [enhet till moln] [ lnk-d2c] meddelanden från enheter tooyour lösningen serverdel.</span><span class="sxs-lookup"><span data-stu-id="e6d3a-106">Sending [device-to-cloud][lnk-d2c] messages from your devices tooyour solution back end.</span></span>
+* <span data-ttu-id="e6d3a-107">Skicka [moln till enhet] [ lnk-c2d] meddelanden från hello-lösningen avslutar tooyour enheter.</span><span class="sxs-lookup"><span data-stu-id="e6d3a-107">Sending [cloud-to-device][lnk-c2d] messages from hello solution back end tooyour devices.</span></span>
 
-<span data-ttu-id="48e79-108">Grundläggande egenskaper för IoT-hubb meddelandefunktioner är tillförlitlighet och hållbarhet av meddelanden.</span><span class="sxs-lookup"><span data-stu-id="48e79-108">Core properties of IoT Hub messaging functionality are the reliability and durability of messages.</span></span> <span data-ttu-id="48e79-109">De här egenskaperna aktiverar återhämtning för återkommande anslutning på enhetens sida och att läsa in toppar i händelsebearbetning på sidan moln.</span><span class="sxs-lookup"><span data-stu-id="48e79-109">These properties enable resilience to intermittent connectivity on the device side, and to load spikes in event processing on the cloud side.</span></span> <span data-ttu-id="48e79-110">IoT-hubb implementerar *minst en gång* leverans garanterar för både enhet till moln och moln till enhet meddelanden.</span><span class="sxs-lookup"><span data-stu-id="48e79-110">IoT Hub implements *at least once* delivery guarantees for both device-to-cloud and cloud-to-device messaging.</span></span>
+<span data-ttu-id="e6d3a-108">Grundläggande egenskaper för IoT-hubb meddelandefunktioner är hello tillförlitlighet och hållbarhet av meddelanden.</span><span class="sxs-lookup"><span data-stu-id="e6d3a-108">Core properties of IoT Hub messaging functionality are hello reliability and durability of messages.</span></span> <span data-ttu-id="e6d3a-109">De här egenskaperna aktivera återhämtning toointermittent anslutning på hello enheten sida och tooload ger spikar i diagrammet i händelsebearbetning på hello molnet sida.</span><span class="sxs-lookup"><span data-stu-id="e6d3a-109">These properties enable resilience toointermittent connectivity on hello device side, and tooload spikes in event processing on hello cloud side.</span></span> <span data-ttu-id="e6d3a-110">IoT-hubb implementerar *minst en gång* leverans garanterar för både enhet till moln och moln till enhet meddelanden.</span><span class="sxs-lookup"><span data-stu-id="e6d3a-110">IoT Hub implements *at least once* delivery guarantees for both device-to-cloud and cloud-to-device messaging.</span></span>
 
-<span data-ttu-id="48e79-111">En introduktion till funktionerna för IoT-hubb finns i artiklar [Azure och Sakernas Internet] [ lnk-azure-iot] och [översikt över tjänsten Azure IoT Hub] [ lnk-iot-hub-overview].</span><span class="sxs-lookup"><span data-stu-id="48e79-111">For an introduction to the capabilities of IoT Hub, see the articles [Azure and Internet of Things][lnk-azure-iot] and [Overview of the Azure IoT Hub service][lnk-iot-hub-overview].</span></span>
+<span data-ttu-id="e6d3a-111">En introduktion toohello funktionerna i IoT-hubb finns hello artiklar [Azure och Sakernas Internet] [ lnk-azure-iot] och [översikt över hello Azure IoT Hub service] [lnk-iot-hub-overview].</span><span class="sxs-lookup"><span data-stu-id="e6d3a-111">For an introduction toohello capabilities of IoT Hub, see hello articles [Azure and Internet of Things][lnk-azure-iot] and [Overview of hello Azure IoT Hub service][lnk-iot-hub-overview].</span></span>
 
-## <a name="when-to-use-iot-hub-messaging"></a><span data-ttu-id="48e79-112">När du ska använda IoT-hubb-meddelanden</span><span class="sxs-lookup"><span data-stu-id="48e79-112">When to use IoT Hub messaging</span></span>
+## <a name="when-toouse-iot-hub-messaging"></a><span data-ttu-id="e6d3a-112">När meddelanden om toouse IoT-hubb</span><span class="sxs-lookup"><span data-stu-id="e6d3a-112">When toouse IoT Hub messaging</span></span>
 
-<span data-ttu-id="48e79-113">Använda meddelanden från enhet till moln för att skicka tid serien telemetri och aviseringar från din enhet och moln till enhet meddelanden för envägs-meddelanden till din enhetsapp.</span><span class="sxs-lookup"><span data-stu-id="48e79-113">Use device-to-cloud messages for sending time series telemetry and alerts from your device app, and cloud-to-device messages for one-way notifications to your device app.</span></span>
+<span data-ttu-id="e6d3a-113">Använda meddelanden från enhet till moln för att skicka tid serien telemetri och aviseringar från din enhet och moln till enhet meddelanden för enkelriktade meddelanden tooyour enheten appen.</span><span class="sxs-lookup"><span data-stu-id="e6d3a-113">Use device-to-cloud messages for sending time series telemetry and alerts from your device app, and cloud-to-device messages for one-way notifications tooyour device app.</span></span>
 
-* <span data-ttu-id="48e79-114">Referera till [enhet till moln kommunikation vägledning] [ lnk-d2c-guidance] om osäkra mellan med hjälp av meddelanden från enhet till moln, rapporterade egenskaper eller ladda upp filen.</span><span class="sxs-lookup"><span data-stu-id="48e79-114">Refer to [Device-to-cloud communication guidance][lnk-d2c-guidance] if in doubt between using device-to-cloud messages, reported properties, or file upload.</span></span>
-* <span data-ttu-id="48e79-115">Referera till [moln till enhet kommunikation vägledning] [ lnk-c2d-guidance] om osäkra mellan att använda moln till enhet meddelanden, önskade egenskaper eller direkt metoder.</span><span class="sxs-lookup"><span data-stu-id="48e79-115">Refer to [Cloud-to-device communication guidance][lnk-c2d-guidance] if in doubt between using cloud-to-device messages, desired properties, or direct methods.</span></span>
+* <span data-ttu-id="e6d3a-114">Se för[enhet till moln kommunikation vägledning] [ lnk-d2c-guidance] om osäkra mellan med hjälp av meddelanden från enhet till moln, rapporterade egenskaper eller ladda upp filen.</span><span class="sxs-lookup"><span data-stu-id="e6d3a-114">Refer too[Device-to-cloud communication guidance][lnk-d2c-guidance] if in doubt between using device-to-cloud messages, reported properties, or file upload.</span></span>
+* <span data-ttu-id="e6d3a-115">Se för[moln till enhet kommunikation vägledning] [ lnk-c2d-guidance] om osäkra mellan att använda moln till enhet meddelanden, önskade egenskaper eller direkt metoder.</span><span class="sxs-lookup"><span data-stu-id="e6d3a-115">Refer too[Cloud-to-device communication guidance][lnk-c2d-guidance] if in doubt between using cloud-to-device messages, desired properties, or direct methods.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="48e79-116">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="48e79-116">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="e6d3a-116">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="e6d3a-116">Next steps</span></span>
 
-* <span data-ttu-id="48e79-117">Lär dig mer om IoT-hubb [enhet till moln messaging][lnk-d2c].</span><span class="sxs-lookup"><span data-stu-id="48e79-117">Learn about IoT Hub [device-to-cloud messaging][lnk-d2c].</span></span>
-* <span data-ttu-id="48e79-118">Lär dig mer om IoT-hubb [moln till enhet messaging][lnk-c2d].</span><span class="sxs-lookup"><span data-stu-id="48e79-118">Learn about IoT Hub [cloud-to-device messaging][lnk-c2d].</span></span>
+* <span data-ttu-id="e6d3a-117">Lär dig mer om IoT-hubb [enhet till moln messaging][lnk-d2c].</span><span class="sxs-lookup"><span data-stu-id="e6d3a-117">Learn about IoT Hub [device-to-cloud messaging][lnk-d2c].</span></span>
+* <span data-ttu-id="e6d3a-118">Lär dig mer om IoT-hubb [moln till enhet messaging][lnk-c2d].</span><span class="sxs-lookup"><span data-stu-id="e6d3a-118">Learn about IoT Hub [cloud-to-device messaging][lnk-c2d].</span></span>
 
 [lnk-azure-iot]: iot-hub-what-is-azure-iot.md
 [lnk-iot-hub-overview]: iot-hub-what-is-iot-hub.md

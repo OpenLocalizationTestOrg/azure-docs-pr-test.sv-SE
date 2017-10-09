@@ -1,6 +1,6 @@
 ---
-title: "Felsöka Azure-Behållarinstanser"
-description: "Lär dig hur du felsöker problem med Azure Container instanser"
+title: "aaaTroubleshooting Behållarinstanser som Azure"
+description: "Lär dig hur tootroubleshoot problem med Azure Container instanser"
 services: container-instances
 documentationcenter: 
 author: seanmck
@@ -17,25 +17,25 @@ ms.workload: na
 ms.date: 08/03/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 86fa4b7dca7c362f95c0243a33f03d1f2dd3ab42
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: dfec636a0a174c74a6f2e9d9c4da6e871f8d2fda
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a><span data-ttu-id="d141e-103">Felsöka distributionsproblem med Azure Container instanser</span><span class="sxs-lookup"><span data-stu-id="d141e-103">Troubleshoot deployment issues with Azure Container Instances</span></span>
+# <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a><span data-ttu-id="cea21-103">Felsöka distributionsproblem med Azure Container instanser</span><span class="sxs-lookup"><span data-stu-id="cea21-103">Troubleshoot deployment issues with Azure Container Instances</span></span>
 
-<span data-ttu-id="d141e-104">Den här artikeln visar hur du felsöker problem när du distribuerar behållare till Azure-Behållarinstanser.</span><span class="sxs-lookup"><span data-stu-id="d141e-104">This article shows how to troubleshoot issues when deploying containers to Azure Container Instances.</span></span> <span data-ttu-id="d141e-105">Här beskrivs också några vanliga problem kan du stöta på.</span><span class="sxs-lookup"><span data-stu-id="d141e-105">It also describes some of the common issues you may run into.</span></span>
+<span data-ttu-id="cea21-104">Den här artikeln visar hur tootroubleshoot problem när du distribuerar behållare tooAzure Behållarinstanser.</span><span class="sxs-lookup"><span data-stu-id="cea21-104">This article shows how tootroubleshoot issues when deploying containers tooAzure Container Instances.</span></span> <span data-ttu-id="cea21-105">Här beskrivs också några hello vanliga problem kan du stöta på.</span><span class="sxs-lookup"><span data-stu-id="cea21-105">It also describes some of hello common issues you may run into.</span></span>
 
-## <a name="getting-diagnostic-events"></a><span data-ttu-id="d141e-106">Hämtning av diagnostiska händelser</span><span class="sxs-lookup"><span data-stu-id="d141e-106">Getting diagnostic events</span></span>
+## <a name="getting-diagnostic-events"></a><span data-ttu-id="cea21-106">Hämtning av diagnostiska händelser</span><span class="sxs-lookup"><span data-stu-id="cea21-106">Getting diagnostic events</span></span>
 
-<span data-ttu-id="d141e-107">Om du vill visa loggar från din programkod i en behållare som du kan använda den [az behållaren loggar](/cli/azure/container#logs) kommando.</span><span class="sxs-lookup"><span data-stu-id="d141e-107">To view logs from your application code within a container, you can use the [az container logs](/cli/azure/container#logs) command.</span></span> <span data-ttu-id="d141e-108">Men om din behållaren inte distribuerar har du behöver diagnostisk information som tillhandahålls av Azure Behållarinstanser resursprovidern.</span><span class="sxs-lookup"><span data-stu-id="d141e-108">But if your container does not deploy successfully, you need to review the diagnostic information provided by the Azure Container Instances resource provider.</span></span> <span data-ttu-id="d141e-109">Om du vill visa händelser för din behållare, kör du följande kommando:</span><span class="sxs-lookup"><span data-stu-id="d141e-109">To view the events for your container, run the following command:</span></span>
+<span data-ttu-id="cea21-107">tooview loggar från din programkod i en behållare, kan du använda hello [az behållaren loggar](/cli/azure/container#logs) kommando.</span><span class="sxs-lookup"><span data-stu-id="cea21-107">tooview logs from your application code within a container, you can use hello [az container logs](/cli/azure/container#logs) command.</span></span> <span data-ttu-id="cea21-108">Men om din behållaren inte distribuerar har du tooreview hello diagnostisk information som tillhandahålls av hello Azure Behållarinstanser resursprovidern.</span><span class="sxs-lookup"><span data-stu-id="cea21-108">But if your container does not deploy successfully, you need tooreview hello diagnostic information provided by hello Azure Container Instances resource provider.</span></span> <span data-ttu-id="cea21-109">tooview hello händelser för din behållaren, kör hello följande kommando:</span><span class="sxs-lookup"><span data-stu-id="cea21-109">tooview hello events for your container, run hello following command:</span></span>
 
 ```azurecli-interactive
 az container show -n mycontainername -g myresourcegroup
 ```
 
-<span data-ttu-id="d141e-110">Utdata innehåller huvudegenskaper för din behållare, tillsammans med distribution av händelser:</span><span class="sxs-lookup"><span data-stu-id="d141e-110">The output includes the core properties of your container, along with deployment events:</span></span>
+<span data-ttu-id="cea21-110">hello utdata innehåller hello huvudegenskaper för din behållare, tillsammans med distribution av händelser:</span><span class="sxs-lookup"><span data-stu-id="cea21-110">hello output includes hello core properties of your container, along with deployment events:</span></span>
 
 ```bash
 {
@@ -87,13 +87,13 @@ az container show -n mycontainername -g myresourcegroup
 }
 ```
 
-## <a name="common-deployment-issues"></a><span data-ttu-id="d141e-111">Vanliga distributionsproblem med</span><span class="sxs-lookup"><span data-stu-id="d141e-111">Common deployment issues</span></span>
+## <a name="common-deployment-issues"></a><span data-ttu-id="cea21-111">Vanliga distributionsproblem med</span><span class="sxs-lookup"><span data-stu-id="cea21-111">Common deployment issues</span></span>
 
-<span data-ttu-id="d141e-112">Det finns några vanliga problem för de flesta fel i distributionen.</span><span class="sxs-lookup"><span data-stu-id="d141e-112">There are a few common issues that account for most errors in deployment.</span></span>
+<span data-ttu-id="cea21-112">Det finns några vanliga problem för de flesta fel i distributionen.</span><span class="sxs-lookup"><span data-stu-id="cea21-112">There are a few common issues that account for most errors in deployment.</span></span>
 
-### <a name="unable-to-pull-image"></a><span data-ttu-id="d141e-113">Det gick inte att pull-bild</span><span class="sxs-lookup"><span data-stu-id="d141e-113">Unable to pull image</span></span>
+### <a name="unable-toopull-image"></a><span data-ttu-id="cea21-113">Det går inte toopull bild</span><span class="sxs-lookup"><span data-stu-id="cea21-113">Unable toopull image</span></span>
 
-<span data-ttu-id="d141e-114">Om Azure Behållarinstanser inte att hämta bilden från början, ett nytt försök under en period innan förr eller senare.</span><span class="sxs-lookup"><span data-stu-id="d141e-114">If Azure Container Instances is unable to pull your image initially, it retries for some period before eventually failing.</span></span> <span data-ttu-id="d141e-115">Om bilden inte kan hämtas, visas händelser som liknar följande:</span><span class="sxs-lookup"><span data-stu-id="d141e-115">If the image cannot be pulled, events like the following are shown:</span></span>
+<span data-ttu-id="cea21-114">Om Azure-Behållarinstanser är toopull avbildningen först ett nytt försök under en period innan förr eller senare.</span><span class="sxs-lookup"><span data-stu-id="cea21-114">If Azure Container Instances is unable toopull your image initially, it retries for some period before eventually failing.</span></span> <span data-ttu-id="cea21-115">Om du inte kan hämtas hello avbildningen, visas händelser, t.ex. hello följande:</span><span class="sxs-lookup"><span data-stu-id="cea21-115">If hello image cannot be pulled, events like hello following are shown:</span></span>
 
 ```bash
 "events": [
@@ -108,7 +108,7 @@ az container show -n mycontainername -g myresourcegroup
     "count": 1,
     "firstTimestamp": "2017-08-03T22:19:32+00:00",
     "lastTimestamp": "2017-08-03T22:19:32+00:00",
-    "message": "Failed: Failed to pull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image microsoft/aci-hellowrld:latest not found",
+    "message": "Failed: Failed toopull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image microsoft/aci-hellowrld:latest not found",
     "type": "Warning"
   },
   {
@@ -121,11 +121,11 @@ az container show -n mycontainername -g myresourcegroup
 ]
 ```
 
-<span data-ttu-id="d141e-116">Lös, ta bort behållaren och försök distributionen betalande uppmärksam på att du har angett rätt avbildning.</span><span class="sxs-lookup"><span data-stu-id="d141e-116">To resolve, delete the container and retry your deployment, paying close attention that you have typed the image name correctly.</span></span>
+<span data-ttu-id="cea21-116">tooresolve, ta bort hello-behållaren och försök distributionen betalande uppmärksam på att du har angett rätt hello avbildningsnamn.</span><span class="sxs-lookup"><span data-stu-id="cea21-116">tooresolve, delete hello container and retry your deployment, paying close attention that you have typed hello image name correctly.</span></span>
 
-### <a name="container-continually-exits-and-restarts"></a><span data-ttu-id="d141e-117">Behållaren kontinuerligt avslutas och startas om</span><span class="sxs-lookup"><span data-stu-id="d141e-117">Container continually exits and restarts</span></span>
+### <a name="container-continually-exits-and-restarts"></a><span data-ttu-id="cea21-117">Behållaren kontinuerligt avslutas och startas om</span><span class="sxs-lookup"><span data-stu-id="cea21-117">Container continually exits and restarts</span></span>
 
-<span data-ttu-id="d141e-118">För närvarande stöder endast Behållarinstanser som Azure tidskrävande tjänster.</span><span class="sxs-lookup"><span data-stu-id="d141e-118">Currently, Azure Container Instances only supports long-running services.</span></span> <span data-ttu-id="d141e-119">Om din behållare körs slutförande och avslutar den automatiskt startar och körs igen.</span><span class="sxs-lookup"><span data-stu-id="d141e-119">If your container runs to completion and exits, it automatically restarts and runs again.</span></span> <span data-ttu-id="d141e-120">Om det händer visas händelser som de som följer.</span><span class="sxs-lookup"><span data-stu-id="d141e-120">If this happens, events like those following are shown.</span></span> <span data-ttu-id="d141e-121">Observera att behållaren startar och sedan startar om snabbt.</span><span class="sxs-lookup"><span data-stu-id="d141e-121">Note that the container successfully starts, then quickly restarts.</span></span> <span data-ttu-id="d141e-122">Behållaren instanser API innehåller en `retryCount` egenskap som visar hur många gånger en viss behållare har startats om.</span><span class="sxs-lookup"><span data-stu-id="d141e-122">The Container Instances API includes a `retryCount` property that shows how many times a particular container has restarted.</span></span>
+<span data-ttu-id="cea21-118">För närvarande stöder endast Behållarinstanser som Azure tidskrävande tjänster.</span><span class="sxs-lookup"><span data-stu-id="cea21-118">Currently, Azure Container Instances only supports long-running services.</span></span> <span data-ttu-id="cea21-119">Om din behållare körs toocompletion och avslutar den automatiskt startar om och körs igen.</span><span class="sxs-lookup"><span data-stu-id="cea21-119">If your container runs toocompletion and exits, it automatically restarts and runs again.</span></span> <span data-ttu-id="cea21-120">Om det händer visas händelser som de som följer.</span><span class="sxs-lookup"><span data-stu-id="cea21-120">If this happens, events like those following are shown.</span></span> <span data-ttu-id="cea21-121">Observera hello behållaren startar och sedan startar om snabbt.</span><span class="sxs-lookup"><span data-stu-id="cea21-121">Note that hello container successfully starts, then quickly restarts.</span></span> <span data-ttu-id="cea21-122">hello behållaren instanser API innehåller en `retryCount` egenskap som visar hur många gånger en viss behållare har startats om.</span><span class="sxs-lookup"><span data-stu-id="cea21-122">hello Container Instances API includes a `retryCount` property that shows how many times a particular container has restarted.</span></span>
 
 ```bash
 "events": [
@@ -189,25 +189,25 @@ az container show -n mycontainername -g myresourcegroup
 ```
 
 > [!NOTE]
-> <span data-ttu-id="d141e-123">De flesta behållaren avbildningar för Linux-distributioner kan du ange ett gränssnitt, till exempel bash, som kommandot.</span><span class="sxs-lookup"><span data-stu-id="d141e-123">Most container images for Linux distributions set a shell, such as bash, as the default command.</span></span> <span data-ttu-id="d141e-124">Eftersom ett gränssnitt på sin egen inte är en tidskrävande tjänst avsluta omedelbart i dessa behållare och faller inom en omstart loop.</span><span class="sxs-lookup"><span data-stu-id="d141e-124">Since a shell on its own is not a long-running service, these containers immediately exit and fall into a restart loop.</span></span>
+> <span data-ttu-id="cea21-123">De flesta behållaren avbildningar för Linux-distributioner kan du ange ett gränssnitt, till exempel bash, som hello Standardkommandot.</span><span class="sxs-lookup"><span data-stu-id="cea21-123">Most container images for Linux distributions set a shell, such as bash, as hello default command.</span></span> <span data-ttu-id="cea21-124">Eftersom ett gränssnitt på sin egen inte är en tidskrävande tjänst avsluta omedelbart i dessa behållare och faller inom en omstart loop.</span><span class="sxs-lookup"><span data-stu-id="cea21-124">Since a shell on its own is not a long-running service, these containers immediately exit and fall into a restart loop.</span></span>
 
-### <a name="container-takes-a-long-time-to-start"></a><span data-ttu-id="d141e-125">Behållaren tar lång tid att starta</span><span class="sxs-lookup"><span data-stu-id="d141e-125">Container takes a long time to start</span></span>
+### <a name="container-takes-a-long-time-toostart"></a><span data-ttu-id="cea21-125">Behållaren tar en lång tid toostart</span><span class="sxs-lookup"><span data-stu-id="cea21-125">Container takes a long time toostart</span></span>
 
-<span data-ttu-id="d141e-126">Om din behållaren tar lång tid att starta, men till slut lyckas, starta genom att titta på storleken på behållaren avbildningen.</span><span class="sxs-lookup"><span data-stu-id="d141e-126">If your container takes a long time to start, but eventually succeeds, start by looking at the size of your container image.</span></span> <span data-ttu-id="d141e-127">Eftersom Azure Behållarinstanser hämtar avbildningen behållare på begäran, relaterat starttiden uppstår direkt till dess storlek.</span><span class="sxs-lookup"><span data-stu-id="d141e-127">Because Azure Container Instances pulls your container image on demand, the startup time you experience is directly related to its size.</span></span>
+<span data-ttu-id="cea21-126">Om din behållaren tar en lång tid toostart, men till slut lyckas, starta genom att titta på hello storleken på behållaren avbildningen.</span><span class="sxs-lookup"><span data-stu-id="cea21-126">If your container takes a long time toostart, but eventually succeeds, start by looking at hello size of your container image.</span></span> <span data-ttu-id="cea21-127">Eftersom Azure Behållarinstanser hämtar avbildningen behållare på begäran, hello starttiden uppstår är direkt relaterade tooits storlek.</span><span class="sxs-lookup"><span data-stu-id="cea21-127">Because Azure Container Instances pulls your container image on demand, hello startup time you experience is directly related tooits size.</span></span>
 
-<span data-ttu-id="d141e-128">Du kan visa storleken på avbildningen behållare med Docker CLI:</span><span class="sxs-lookup"><span data-stu-id="d141e-128">You can view the size of your container image using the Docker CLI:</span></span>
+<span data-ttu-id="cea21-128">Du kan visa hello storleken på behållaren avbildningen med hjälp av hello Docker CLI:</span><span class="sxs-lookup"><span data-stu-id="cea21-128">You can view hello size of your container image using hello Docker CLI:</span></span>
 
 ```bash
 docker images
 ```
 
-<span data-ttu-id="d141e-129">Resultat:</span><span class="sxs-lookup"><span data-stu-id="d141e-129">Output:</span></span>
+<span data-ttu-id="cea21-129">Resultat:</span><span class="sxs-lookup"><span data-stu-id="cea21-129">Output:</span></span>
 
 ```bash
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
 microsoft/aci-helloworld               latest              7f78509b568e        13 days ago         68.1MB
 ```
 
-<span data-ttu-id="d141e-130">Nyckeln till att hålla bildstorleken små är att säkerställa att dina slutliga avbildningen inte innehåller allt som inte krävs vid körning.</span><span class="sxs-lookup"><span data-stu-id="d141e-130">The key to keeping image sizes small is ensuring that your final image does not contain anything that is not required at runtime.</span></span> <span data-ttu-id="d141e-131">Det här är ett sätt att göra med [flera steg versioner](https://docs.docker.com/engine/userguide/eng-image/multistage-build/).</span><span class="sxs-lookup"><span data-stu-id="d141e-131">One way to do this is with [multi-stage builds](https://docs.docker.com/engine/userguide/eng-image/multistage-build/).</span></span> <span data-ttu-id="d141e-132">Flera steg skapar gör det enkelt att se till att den slutliga avbildningen innehåller de artefakter som du behöver för ditt program och inte något av extra innehåll som krävdes vid byggning.</span><span class="sxs-lookup"><span data-stu-id="d141e-132">Multi-stage builds make it easy to ensure that the final image contains only the artifacts you need for your application, and not any of the extra content that was required at build time.</span></span>
+<span data-ttu-id="cea21-130">hello viktiga tookeeping bildstorleken små är att säkerställa att dina slutliga avbildningen inte innehåller allt som inte krävs vid körning.</span><span class="sxs-lookup"><span data-stu-id="cea21-130">hello key tookeeping image sizes small is ensuring that your final image does not contain anything that is not required at runtime.</span></span> <span data-ttu-id="cea21-131">Enkelriktade toodo detta är med [flera steg versioner](https://docs.docker.com/engine/userguide/eng-image/multistage-build/).</span><span class="sxs-lookup"><span data-stu-id="cea21-131">One way toodo this is with [multi-stage builds](https://docs.docker.com/engine/userguide/eng-image/multistage-build/).</span></span> <span data-ttu-id="cea21-132">Versioner av flera steg gör det enkelt tooensure att hello slutliga avbildningen innehåller endast hello artefakter som du behöver för ditt program och inte något av hello extra innehåll som krävdes vid byggning.</span><span class="sxs-lookup"><span data-stu-id="cea21-132">Multi-stage builds make it easy tooensure that hello final image contains only hello artifacts you need for your application, and not any of hello extra content that was required at build time.</span></span>
 
-<span data-ttu-id="d141e-133">Ett annat sätt att minska effekten av avbildningen pull på din behållaren starttiden är värd för behållaren avbildningen med Azure Container registret i samma region som du tänker använda Azure Container instanser.</span><span class="sxs-lookup"><span data-stu-id="d141e-133">The other way to reduce the impact of the image pull on your container's startup time is to host the container image using the Azure Container Registry in the same region where you intend to use Azure Container Instances.</span></span> <span data-ttu-id="d141e-134">Detta förkortar nätverkssökvägen behållaren avbildningen måste reser kan avsevärt minska hämtningstiden.</span><span class="sxs-lookup"><span data-stu-id="d141e-134">This shortens the network path that the container image needs to travel, significantly shortening the download time.</span></span>
+<span data-ttu-id="cea21-133">hello andra sätt tooreduce hello effekten av hello avbildningen pull på din behållaren starttiden är toohost hello behållaren avbildning med hjälp av hello Azure Container registret i hello samma region där du ska toouse Azure Container instanser.</span><span class="sxs-lookup"><span data-stu-id="cea21-133">hello other way tooreduce hello impact of hello image pull on your container's startup time is toohost hello container image using hello Azure Container Registry in hello same region where you intend toouse Azure Container Instances.</span></span> <span data-ttu-id="cea21-134">Detta förkortar hello nätverkssökväg som hello behållaren avbildningen måste tootravel avsevärt förkortar hello hämtningstiden.</span><span class="sxs-lookup"><span data-stu-id="cea21-134">This shortens hello network path that hello container image needs tootravel, significantly shortening hello download time.</span></span>

@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och rutan."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och rutan."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,198 +13,198 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 2cc2afe8ff3f0063224c94eb0b8135347051b0aa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e13a7979761a0b30ecdaac242f1f57a7f8da54c4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-box"></a><span data-ttu-id="85556-103">Självstudier: Azure Active Directory-integrering med</span><span class="sxs-lookup"><span data-stu-id="85556-103">Tutorial: Azure Active Directory integration with Box</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-box"></a><span data-ttu-id="32a72-103">Självstudier: Azure Active Directory-integrering med</span><span class="sxs-lookup"><span data-stu-id="32a72-103">Tutorial: Azure Active Directory integration with Box</span></span>
 
-<span data-ttu-id="85556-104">I kursen får lära du att integrera rutan med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="85556-104">In this tutorial, you learn how to integrate Box with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="32a72-104">I kursen får du lära dig hur toointegrate rutan med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="32a72-104">In this tutorial, you learn how toointegrate Box with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="85556-105">Integrera rutan med Azure AD ger dig följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="85556-105">Integrating Box with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="32a72-105">Integrera rutan med Azure AD ger dig hello följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="32a72-105">Integrating Box with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="85556-106">Du kan styra i Azure AD som har åtkomst till rutan</span><span class="sxs-lookup"><span data-stu-id="85556-106">You can control in Azure AD who has access to Box</span></span>
-- <span data-ttu-id="85556-107">Du kan aktivera användarna att automatiskt hämta loggat in på rutan (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="85556-107">You can enable your users to automatically get signed-on to Box (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="85556-108">Du kan hantera dina konton i en central plats - Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="85556-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="32a72-106">Du kan styra i Azure AD som har åtkomst till tooBox</span><span class="sxs-lookup"><span data-stu-id="32a72-106">You can control in Azure AD who has access tooBox</span></span>
+- <span data-ttu-id="32a72-107">Du kan aktivera din användare tooautomatically get inloggade tooBox (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="32a72-107">You can enable your users tooautomatically get signed-on tooBox (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="32a72-108">Du kan hantera dina konton i en central plats - hello Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="32a72-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="85556-109">Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="85556-109">If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="32a72-109">Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="32a72-109">If you want tooknow more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="85556-110">Krav</span><span class="sxs-lookup"><span data-stu-id="85556-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="32a72-110">Krav</span><span class="sxs-lookup"><span data-stu-id="32a72-110">Prerequisites</span></span>
 
-<span data-ttu-id="85556-111">Om du vill konfigurera Azure AD-integrering med behöver du följande:</span><span class="sxs-lookup"><span data-stu-id="85556-111">To configure Azure AD integration with Box, you need the following items:</span></span>
+<span data-ttu-id="32a72-111">tooconfigure Azure AD-integrering med måste hello följande objekt:</span><span class="sxs-lookup"><span data-stu-id="32a72-111">tooconfigure Azure AD integration with Box, you need hello following items:</span></span>
 
-- <span data-ttu-id="85556-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="85556-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="85556-113">En ruta enkel inloggning på aktiverade prenumeration</span><span class="sxs-lookup"><span data-stu-id="85556-113">A Box single-sign on enabled subscription</span></span>
+- <span data-ttu-id="32a72-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="32a72-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="32a72-113">En ruta enkel inloggning på aktiverade prenumeration</span><span class="sxs-lookup"><span data-stu-id="32a72-113">A Box single-sign on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="85556-114">Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="85556-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="32a72-114">tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="32a72-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="85556-115">Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="85556-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="32a72-115">tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="32a72-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="85556-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="85556-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="85556-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="85556-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="32a72-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="32a72-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="32a72-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="32a72-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="85556-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="85556-118">Scenario description</span></span>
-<span data-ttu-id="85556-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="85556-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="85556-120">Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="85556-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="32a72-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="32a72-118">Scenario description</span></span>
+<span data-ttu-id="32a72-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="32a72-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="32a72-120">hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="32a72-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="85556-121">Att lägga till fält från galleriet</span><span class="sxs-lookup"><span data-stu-id="85556-121">Adding Box from the gallery</span></span>
-2. <span data-ttu-id="85556-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="85556-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="32a72-121">Att lägga till fält från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="32a72-121">Adding Box from hello gallery</span></span>
+2. <span data-ttu-id="32a72-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="32a72-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-box-from-the-gallery"></a><span data-ttu-id="85556-123">Att lägga till fält från galleriet</span><span class="sxs-lookup"><span data-stu-id="85556-123">Adding Box from the gallery</span></span>
-<span data-ttu-id="85556-124">För att konfigurera integrering av rutan i Azure AD, som du behöver lägga till fält från galleriet i listan över hanterade SaaS-appar.</span><span class="sxs-lookup"><span data-stu-id="85556-124">To configure the integration of Box into Azure AD, you need to add Box from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-box-from-hello-gallery"></a><span data-ttu-id="32a72-123">Att lägga till fält från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="32a72-123">Adding Box from hello gallery</span></span>
+<span data-ttu-id="32a72-124">tooconfigure hello-integrering av Azure AD, behöver du tooadd rutan hello galleriet tooyour listan över hanterade SaaS-appar.</span><span class="sxs-lookup"><span data-stu-id="32a72-124">tooconfigure hello integration of Box into Azure AD, you need tooadd Box from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="85556-125">**Utför följande steg för att lägga till fält från galleriet:**</span><span class="sxs-lookup"><span data-stu-id="85556-125">**To add Box from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="32a72-125">**tooadd rutan från galleriet hello utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="32a72-125">**tooadd Box from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="85556-126">I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="85556-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="32a72-126">I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="32a72-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="85556-128">Gå till **företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="85556-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="85556-129">Gå till **alla program**.</span><span class="sxs-lookup"><span data-stu-id="85556-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="32a72-128">Navigera för**företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="32a72-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="32a72-129">Gå sedan för**alla program**.</span><span class="sxs-lookup"><span data-stu-id="32a72-129">Then go too**All applications**.</span></span>
 
     ![Program][2]
     
-3. <span data-ttu-id="85556-131">Klicka på **nytt program** knappen överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="85556-131">Click **New application** button on the top of the dialog.</span></span>
+3. <span data-ttu-id="32a72-131">Klicka på **nytt program** hello längst upp i hello dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="32a72-131">Click **New application** button on hello top of hello dialog.</span></span>
 
     ![Program][3]
 
-4. <span data-ttu-id="85556-133">I sökrutan skriver **rutan**.</span><span class="sxs-lookup"><span data-stu-id="85556-133">In the search box, type **Box**.</span></span>
+4. <span data-ttu-id="32a72-133">Skriv i sökrutan hello **rutan**.</span><span class="sxs-lookup"><span data-stu-id="32a72-133">In hello search box, type **Box**.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-box-tutorial/tutorial_box_search.png)
 
-5. <span data-ttu-id="85556-135">Välj i resultatpanelen **rutan**, och klicka sedan på **Lägg till** för att lägga till programmet.</span><span class="sxs-lookup"><span data-stu-id="85556-135">In the results panel, select **Box**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="32a72-135">Markera hello resultat på panelen **rutan**, och klicka sedan på **Lägg till** knappen tooadd hello program.</span><span class="sxs-lookup"><span data-stu-id="32a72-135">In hello results panel, select **Box**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-box-tutorial/tutorial_box_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="85556-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="85556-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="85556-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med rutan utifrån en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="85556-138">In this section, you configure and test Azure AD single sign-on with Box based on a test user called "Britta Simon."</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="32a72-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="32a72-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="32a72-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med rutan utifrån en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="32a72-138">In this section, you configure and test Azure AD single sign-on with Box based on a test user called "Britta Simon."</span></span>
 
-<span data-ttu-id="85556-139">Azure AD måste du känna till motsvarande användaren i till en användare i Azure AD för enkel inloggning ska fungera.</span><span class="sxs-lookup"><span data-stu-id="85556-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Box is to a user in Azure AD.</span></span> <span data-ttu-id="85556-140">Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i upprättas.</span><span class="sxs-lookup"><span data-stu-id="85556-140">In other words, a link relationship between an Azure AD user and the related user in Box needs to be established.</span></span>
+<span data-ttu-id="32a72-139">För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i rutan är tooa i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="32a72-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Box is tooa user in Azure AD.</span></span> <span data-ttu-id="32a72-140">Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användaren i toobe upprättas.</span><span class="sxs-lookup"><span data-stu-id="32a72-140">In other words, a link relationship between an Azure AD user and hello related user in Box needs toobe established.</span></span>
 
-<span data-ttu-id="85556-141">Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i rutan.</span><span class="sxs-lookup"><span data-stu-id="85556-141">This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Box.</span></span>
+<span data-ttu-id="32a72-141">Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i rutan.</span><span class="sxs-lookup"><span data-stu-id="32a72-141">This link relationship is established by assigning hello value of hello **user name** in Azure AD as hello value of hello **Username** in Box.</span></span>
 
-<span data-ttu-id="85556-142">Om du vill konfigurera och testa Azure AD enkel inloggning med måste du utföra följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="85556-142">To configure and test Azure AD single sign-on with Box, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="32a72-142">tooconfigure och testa Azure AD enkel inloggning med, behöver du toocomplete hello följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="32a72-142">tooconfigure and test Azure AD single sign-on with Box, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="85556-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="85556-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="85556-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="85556-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="85556-145">**[Skapa en testanvändare i rutan](#creating-a-box-test-user)**  – du har en motsvarighet för Britta Simon i som är kopplad till Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="85556-145">**[Creating a Box test user](#creating-a-box-test-user)** - to have a counterpart of Britta Simon in Box that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="85556-146">**[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="85556-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="85556-147">**[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="85556-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="32a72-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="32a72-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="32a72-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="32a72-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="32a72-145">**[Skapa en testanvändare i rutan](#creating-a-box-test-user)**  -toohave en motsvarighet för Britta Simon i som är länkade toohello Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="32a72-145">**[Creating a Box test user](#creating-a-box-test-user)** - toohave a counterpart of Britta Simon in Box that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="32a72-146">**[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="32a72-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="32a72-147">**[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="32a72-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="85556-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="85556-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="32a72-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="32a72-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="85556-149">I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt program i rutan.</span><span class="sxs-lookup"><span data-stu-id="85556-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Box application.</span></span>
+<span data-ttu-id="32a72-149">I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt program i rutan.</span><span class="sxs-lookup"><span data-stu-id="32a72-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Box application.</span></span>
 
-<span data-ttu-id="85556-150">**Utför följande steg för att konfigurera Azure AD enkel inloggning med:**</span><span class="sxs-lookup"><span data-stu-id="85556-150">**To configure Azure AD single sign-on with Box, perform the following steps:**</span></span>
+<span data-ttu-id="32a72-150">**Utför följande hello tooconfigure Azure AD enkel inloggning med rutan:**</span><span class="sxs-lookup"><span data-stu-id="32a72-150">**tooconfigure Azure AD single sign-on with Box, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="85556-151">I Azure-portalen på den **rutan** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="85556-151">In the Azure portal, on the **Box** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="32a72-151">I hello Azure-portalen på hello **rutan** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="32a72-151">In hello Azure portal, on hello **Box** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurera enkel inloggning][4]
 
-2. <span data-ttu-id="85556-153">På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="85556-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="32a72-153">På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="32a72-153">On hello **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-box-tutorial/tutorial_box_samlbase.png)
 
-3. <span data-ttu-id="85556-155">På den **rutan domän och URL: er** avsnittet, utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="85556-155">On the **Box Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="32a72-155">På hello **rutan domän och URL: er** avsnittet, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="32a72-155">On hello **Box Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-box-tutorial/tutorial_box_url.png)
 
-    <span data-ttu-id="85556-157">I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<subdomain>.box.com`</span><span class="sxs-lookup"><span data-stu-id="85556-157">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://<subdomain>.box.com`</span></span>
+    <span data-ttu-id="32a72-157">I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<subdomain>.box.com`</span><span class="sxs-lookup"><span data-stu-id="32a72-157">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://<subdomain>.box.com`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="85556-158">Det här värdet är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="85556-158">This value is not real.</span></span> <span data-ttu-id="85556-159">Uppdatera värdet med det faktiska inloggnings-URL.</span><span class="sxs-lookup"><span data-stu-id="85556-159">Update the value with the actual Sign-on URL.</span></span> <span data-ttu-id="85556-160">Kontakta [rutan klienten supportteamet](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) att hämta det här värdet.</span><span class="sxs-lookup"><span data-stu-id="85556-160">Contact [Box Client support team](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) to get this value.</span></span> 
+    > <span data-ttu-id="32a72-158">Det här värdet är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="32a72-158">This value is not real.</span></span> <span data-ttu-id="32a72-159">Uppdatera hello värde med hello faktiska inloggnings-URL.</span><span class="sxs-lookup"><span data-stu-id="32a72-159">Update hello value with hello actual Sign-on URL.</span></span> <span data-ttu-id="32a72-160">Kontakta [rutan klienten supportteamet](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) tooget det här värdet.</span><span class="sxs-lookup"><span data-stu-id="32a72-160">Contact [Box Client support team](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) tooget this value.</span></span> 
  
-4. <span data-ttu-id="85556-161">På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara XML-filen på datorn.</span><span class="sxs-lookup"><span data-stu-id="85556-161">On the **SAML Signing Certificate** section, click **Metadata XML** and then save the XML file on your computer.</span></span>
+4. <span data-ttu-id="32a72-161">På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara hello XML-filen på datorn.</span><span class="sxs-lookup"><span data-stu-id="32a72-161">On hello **SAML Signing Certificate** section, click **Metadata XML** and then save hello XML file on your computer.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-box-tutorial/tutorial_box_certificate.png) 
 
-5. <span data-ttu-id="85556-163">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="85556-163">Click **Save** button.</span></span>
+5. <span data-ttu-id="32a72-163">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="32a72-163">Click **Save** button.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-box-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="85556-165">För att få SSO konfigurerats för ditt program, kontakta [rutan klienten supportteamet](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) och ger dem den hämta XML-filen.</span><span class="sxs-lookup"><span data-stu-id="85556-165">To get SSO configured for your application, Contact [Box Client support team](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) and provide them with the downloaded XML file.</span></span>
+6. <span data-ttu-id="32a72-165">tooget SSO konfigurerats för ditt program, kontakta [rutan klienten supportteamet](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) och ge dem hello hämtas XML-fil.</span><span class="sxs-lookup"><span data-stu-id="32a72-165">tooget SSO configured for your application, Contact [Box Client support team](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) and provide them with hello downloaded XML file.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="85556-166">Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!</span><span class="sxs-lookup"><span data-stu-id="85556-166">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="85556-167">När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned.</span><span class="sxs-lookup"><span data-stu-id="85556-167">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="85556-168">Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="85556-168">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="32a72-166">Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!</span><span class="sxs-lookup"><span data-stu-id="32a72-166">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="32a72-167">När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello.</span><span class="sxs-lookup"><span data-stu-id="32a72-167">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="32a72-168">Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="32a72-168">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="85556-169">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="85556-169">Creating an Azure AD test user</span></span>
-<span data-ttu-id="85556-170">Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="85556-170">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="32a72-169">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="32a72-169">Creating an Azure AD test user</span></span>
+<span data-ttu-id="32a72-170">hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="32a72-170">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Skapa Azure AD-användare][100]
 
-<span data-ttu-id="85556-172">**Utför följande steg för att skapa en testanvändare i Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="85556-172">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="32a72-172">**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="32a72-172">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="85556-173">I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="85556-173">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="32a72-173">I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="32a72-173">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-box-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="85556-175">Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="85556-175">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="32a72-175">toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="32a72-175">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-box-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="85556-177">Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="85556-177">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="32a72-177">tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="32a72-177">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-box-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="85556-179">På den **användaren** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="85556-179">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="32a72-179">På hello **användaren** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="32a72-179">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-box-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="85556-181">a.</span><span class="sxs-lookup"><span data-stu-id="85556-181">a.</span></span> <span data-ttu-id="85556-182">I den **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="85556-182">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="32a72-181">a.</span><span class="sxs-lookup"><span data-stu-id="32a72-181">a.</span></span> <span data-ttu-id="32a72-182">I hello **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="32a72-182">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="85556-183">b.</span><span class="sxs-lookup"><span data-stu-id="85556-183">b.</span></span> <span data-ttu-id="85556-184">I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="85556-184">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="32a72-183">b.</span><span class="sxs-lookup"><span data-stu-id="32a72-183">b.</span></span> <span data-ttu-id="32a72-184">I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="32a72-184">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="85556-185">c.</span><span class="sxs-lookup"><span data-stu-id="85556-185">c.</span></span> <span data-ttu-id="85556-186">Välj **visa lösenordet** och anteckna värdet för den **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="85556-186">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="32a72-185">c.</span><span class="sxs-lookup"><span data-stu-id="32a72-185">c.</span></span> <span data-ttu-id="32a72-186">Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="32a72-186">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="85556-187">d.</span><span class="sxs-lookup"><span data-stu-id="85556-187">d.</span></span> <span data-ttu-id="85556-188">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="85556-188">Click **Create**.</span></span>
+    <span data-ttu-id="32a72-187">d.</span><span class="sxs-lookup"><span data-stu-id="32a72-187">d.</span></span> <span data-ttu-id="32a72-188">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="32a72-188">Click **Create**.</span></span>
  
-### <a name="creating-a-box-test-user"></a><span data-ttu-id="85556-189">Skapa en testanvändare i rutan</span><span class="sxs-lookup"><span data-stu-id="85556-189">Creating a Box test user</span></span>
+### <a name="creating-a-box-test-user"></a><span data-ttu-id="32a72-189">Skapa en testanvändare i rutan</span><span class="sxs-lookup"><span data-stu-id="32a72-189">Creating a Box test user</span></span>
 
-<span data-ttu-id="85556-190">I det här avsnittet skapas en användare som kallas Britta Simon i rutan.</span><span class="sxs-lookup"><span data-stu-id="85556-190">In this section, a user called Britta Simon is created in Box.</span></span> <span data-ttu-id="85556-191">Rutan stöder just-in-time-allokering som är aktiverad som standard.</span><span class="sxs-lookup"><span data-stu-id="85556-191">Box supports just-in-time provisioning, which is enabled by default.</span></span>
-<span data-ttu-id="85556-192">Det finns ingen åtgärd objekt i det här avsnittet.</span><span class="sxs-lookup"><span data-stu-id="85556-192">There is no action item for you in this section.</span></span> <span data-ttu-id="85556-193">Om en användare inte redan finns i rutan, skapas en ny när du försöker komma åt rutan.</span><span class="sxs-lookup"><span data-stu-id="85556-193">If a user doesn't already exist in Box, a new one is created when you attempt to access Box.</span></span>
+<span data-ttu-id="32a72-190">I det här avsnittet skapas en användare som kallas Britta Simon i rutan.</span><span class="sxs-lookup"><span data-stu-id="32a72-190">In this section, a user called Britta Simon is created in Box.</span></span> <span data-ttu-id="32a72-191">Rutan stöder just-in-time-allokering som är aktiverad som standard.</span><span class="sxs-lookup"><span data-stu-id="32a72-191">Box supports just-in-time provisioning, which is enabled by default.</span></span>
+<span data-ttu-id="32a72-192">Det finns ingen åtgärd objekt i det här avsnittet.</span><span class="sxs-lookup"><span data-stu-id="32a72-192">There is no action item for you in this section.</span></span> <span data-ttu-id="32a72-193">Om en användare inte redan finns i rutan, skapas en ny när du försöker tooaccess rutan.</span><span class="sxs-lookup"><span data-stu-id="32a72-193">If a user doesn't already exist in Box, a new one is created when you attempt tooaccess Box.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="85556-194">Tilldela Azure AD-testanvändare</span><span class="sxs-lookup"><span data-stu-id="85556-194">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="32a72-194">Tilldela användare hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="32a72-194">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="85556-195">I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till rutan.</span><span class="sxs-lookup"><span data-stu-id="85556-195">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Box.</span></span>
+<span data-ttu-id="32a72-195">I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooBox.</span><span class="sxs-lookup"><span data-stu-id="32a72-195">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooBox.</span></span>
 
 ![Tilldela användare][200] 
 
-<span data-ttu-id="85556-197">**Om du vill tilldela rutan Britta Simon utför du följande steg:**</span><span class="sxs-lookup"><span data-stu-id="85556-197">**To assign Britta Simon to Box, perform the following steps:**</span></span>
+<span data-ttu-id="32a72-197">**tooassign Britta Simon tooBox utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="32a72-197">**tooassign Britta Simon tooBox, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="85556-198">Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="85556-198">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="32a72-198">I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="32a72-198">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Tilldela användare][201] 
 
-2. <span data-ttu-id="85556-200">Välj i listan med program **rutan**.</span><span class="sxs-lookup"><span data-stu-id="85556-200">In the applications list, select **Box**.</span></span>
+2. <span data-ttu-id="32a72-200">Välj i listan med program hello **rutan**.</span><span class="sxs-lookup"><span data-stu-id="32a72-200">In hello applications list, select **Box**.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-box-tutorial/tutorial_box_app.png) 
 
-3. <span data-ttu-id="85556-202">Klicka på menyn till vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="85556-202">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="32a72-202">Hello-menyn hello vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="32a72-202">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Tilldela användare][202] 
 
-4. <span data-ttu-id="85556-204">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="85556-204">Click **Add** button.</span></span> <span data-ttu-id="85556-205">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="85556-205">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="32a72-204">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="32a72-204">Click **Add** button.</span></span> <span data-ttu-id="32a72-205">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="32a72-205">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Tilldela användare][203]
 
-5. <span data-ttu-id="85556-207">På **användare och grupper** markerar **Britta Simon** på listan användare.</span><span class="sxs-lookup"><span data-stu-id="85556-207">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="32a72-207">På **användare och grupper** markerar **Britta Simon** i hello användarlistan.</span><span class="sxs-lookup"><span data-stu-id="32a72-207">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="85556-208">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="85556-208">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="32a72-208">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="32a72-208">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="85556-209">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="85556-209">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="32a72-209">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="32a72-209">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="85556-210">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="85556-210">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="32a72-210">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="32a72-210">Testing single sign-on</span></span>
 
-<span data-ttu-id="85556-211">I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.</span><span class="sxs-lookup"><span data-stu-id="85556-211">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="32a72-211">I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="32a72-211">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="85556-212">När du klickar på rutan panelen på åtkomstpanelen bör du få inloggningssidan att hämta loggat in på ditt program i rutan.</span><span class="sxs-lookup"><span data-stu-id="85556-212">When you click the Box tile in the Access Panel, you should get login page to get signed-on to your Box application.</span></span>
+<span data-ttu-id="32a72-212">Du bör få inloggningen sidan tooget inloggade tooyour rutan programmet när du klickar på hello rutan panelen i hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="32a72-212">When you click hello Box tile in hello Access Panel, you should get login page tooget signed-on tooyour Box application.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="85556-213">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="85556-213">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="32a72-213">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="32a72-213">Additional resources</span></span>
 
-* [<span data-ttu-id="85556-214">Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="85556-214">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="85556-215">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="85556-215">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
-* [<span data-ttu-id="85556-216">Konfigurera Användaretablering</span><span class="sxs-lookup"><span data-stu-id="85556-216">Configure User Provisioning</span></span>](active-directory-saas-box-userprovisioning-tutorial.md)
+* [<span data-ttu-id="32a72-214">Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="32a72-214">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="32a72-215">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="32a72-215">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="32a72-216">Konfigurera Användaretablering</span><span class="sxs-lookup"><span data-stu-id="32a72-216">Configure User Provisioning</span></span>](active-directory-saas-box-userprovisioning-tutorial.md)
 
 
 <!--Image references-->
